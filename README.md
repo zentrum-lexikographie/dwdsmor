@@ -1,8 +1,8 @@
 DWDSmor
 =======
 
-This repository an XSLT stylesheet for generating SMOR-compatible lexicons from
-XML files in the DWDS format.
+This repository provides an XSLT stylesheet for generating SMOR-compatible
+lexicons from XML files in the DWDS format.
 
 The stylesheet may be run as follows:
 
