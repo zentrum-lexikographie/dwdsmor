@@ -8,6 +8,9 @@ The stylesheet may be run as follows:
 
     xsltproc share/dwds2smor.xsl <XML file>
 
+Caveat: the stylesheet is meant as proof of concept and currently supports only
+a very limited range of DWDS articles, such as "Mann" and "Frau".
+
 For comparison, this repo also gathers a set of legacy XSLT stylesheets which
 likewise generate SMOR-compatible lexicons from XML files:
 
