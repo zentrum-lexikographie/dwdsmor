@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+
+<ersetzung>
+
+<ersetze quelle="Substantiv"        ziel="NN"/>
+<ersetze quelle="Adjektiv"          ziel="ADJ"/>
+<ersetze quelle="Verb"              ziel="V"/>
+<ersetze quelle="Partikelverb"      ziel="PV"/>
+<ersetze quelle="Name"              ziel="NE"/>
+<ersetze quelle="Adverb"            ziel="INVAR"/>
+<ersetze quelle="Verbpartikel"      ziel="VPART"/>
+<ersetze quelle="Name_Abk"          ziel="ABK"/>
+<ersetze quelle="Adjektiv_Abk"      ziel="ABK"/>
+<ersetze quelle="Substantiv_Abk"    ziel="ABK"/>
+<ersetze quelle="Invar_Abk"         ziel="ABK"/>
+<ersetze quelle="Adposition"        ziel="ADP"/>
+<ersetze quelle="Pronomialadverb"   ziel="PRONADV"/>
+<ersetze quelle="Konjunktion"       ziel="KONJ"/>
+<ersetze quelle="Numeral"           ziel="CARD"/>
+<ersetze quelle="Interjektion"      ziel="INTJ"/>
+<ersetze quelle="Pronomen"          ziel="PRON'"/>
+<ersetze quelle="Partikel"          ziel="PTKL"/>
+<ersetze quelle="Artikel"           ziel="DET"/>
+<ersetze quelle="Substantivsuffix"  ziel="NNSUFF"/>
+<ersetze quelle="Adjektivsuffix"    ziel="ADJSUFF"/>
+<ersetze quelle="Verbsuffix"        ziel="VSUFF"/>
+<ersetze quelle="Adverbsuffix"      ziel="ADVSUFF"/>
+<ersetze quelle="Substantivpraefix" ziel="NNPRAEF"/>
+<ersetze quelle="Adjektivpraefix"   ziel="ADJPRAEF"/>
+<ersetze quelle="Verbpraefix"       ziel="VPRAEF"/>
+<ersetze quelle="Konfix"            ziel="KONFIX"/>
+<ersetze quelle="Erstglied"         ziel="DSF"/>
+
+</ersetzung>

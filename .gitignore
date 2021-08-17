@@ -1,0 +1,5 @@
+# .gitignore
+# Andreas Nolda 2021-08-17
+
+*~
+\#*
