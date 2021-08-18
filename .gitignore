@@ -8,3 +8,9 @@ tests/
 wb/
 *~
 \#*
+
+__pycache__
+*.egg-info
+
+.dir-locals.el
+.python-version
