@@ -34,6 +34,11 @@
          genitive="-"
          plural="-en"
          umlaut="no">NFem_0_en</class>
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-(e)s"
+         plural="-er"
+         umlaut="no">NNeut_es_er</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
