@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 0.1 -->
-<!-- Andreas Nolda 2021-08-17 -->
+<!-- Version 0.2 -->
+<!-- Andreas Nolda 2021-08-18 -->
 
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -13,6 +13,9 @@
             encoding="ISO-8859-1"/>
 
 <xsl:strip-space elements="*"/>
+
+<xsl:variable name="lemma"
+              select="normalize-space(/dwds:DWDS/dwds:Artikel/dwds:Formangabe/dwds:Schreibung)"/>
 
 <xsl:variable name="pos-mapping">
   <pos pos="Substantiv">NN</pos>
@@ -42,8 +45,7 @@
 <xsl:template match="dwds:Artikel">
   <xsl:apply-templates select="dwds:Formangabe"
                        mode="stem"/>
-  <xsl:apply-templates select="dwds:Formangabe"
-                       mode="lemma"/>
+  <xsl:value-of select="$lemma"/>
   <xsl:apply-templates select="dwds:Formangabe"
                        mode="pos"/>
   <!-- TODO: do not hard-code this -->
@@ -56,17 +58,45 @@
   <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
+<xsl:template name="insert-value">
+  <xsl:param name="value"/>
+  <xsl:param name="type"/>
+  <xsl:choose>
+    <xsl:when test="string-length($value)&gt;0">
+      <xsl:value-of select="$value"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:message>
+        <xsl:text>Warning: "</xsl:text>
+        <xsl:value-of select="$lemma"/>
+        <xsl:text>" has UNKNOWN </xsl:text>
+        <xsl:value-of select="$type"/>
+        <xsl:text>.</xsl:text>
+      </xsl:message>
+      <xsl:text>UNKNOWN</xsl:text>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template match="dwds:Verweise">
+  <!-- TODO: map @Typ to SMOR complexities -->
+  <xsl:variable name="complexity"
+                select="normalize-space(@Typ)"/>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$complexity"/>
+    <xsl:with-param name="type">complexity</xsl:with-param>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
+</xsl:template>
+
 <xsl:template match="dwds:Formangabe"
               mode="stem">
   <xsl:text>&lt;</xsl:text>
   <xsl:apply-templates select="dwds:Grammatik"
                        mode="pos"/>
   <xsl:text>_Stems&gt;</xsl:text>
-</xsl:template>
-
-<xsl:template match="dwds:Formangabe"
-              mode="lemma">
-  <xsl:apply-templates select="dwds:Schreibung"/>
 </xsl:template>
 
 <xsl:template match="dwds:Formangabe"
@@ -85,22 +115,15 @@
   <xsl:text>&gt;</xsl:text>
 </xsl:template>
 
-<xsl:template match="dwds:Schreibung">
-  <xsl:value-of select="normalize-space(.)"/>
-</xsl:template>
-
-<xsl:template match="dwds:Verweise">
-  <xsl:text>&lt;</xsl:text>
-  <!-- TODO: map @Typ to SMOR types -->
-  <xsl:value-of select="normalize-space(@Typ)"/>
-  <xsl:text>&gt;</xsl:text>
-</xsl:template>
-
 <xsl:template match="dwds:Grammatik"
               mode="pos">
   <xsl:variable name="pos"
                 select="normalize-space(dwds:Wortklasse)"/>
-  <xsl:value-of select="exslt:node-set($pos-mapping)/pos[@pos=$pos]"/>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="exslt:node-set($pos-mapping)/pos[@pos=$pos]"/>
+    <xsl:with-param name="type">POS</xsl:with-param>
+  </xsl:call-template>
 </xsl:template>
 
 <xsl:template match="dwds:Grammatik"
@@ -115,25 +138,31 @@
     <xsl:when test="starts-with(dwds:Plural,'-')">
       <xsl:variable name="plural"
                     select="normalize-space(dwds:Plural)"/>
-      <xsl:value-of select="exslt:node-set($class-mapping)/class[@umlaut='no']
-                                                                [@pos=$pos]
-                                                                [@gender=$gender]
-                                                                [@genitive=$genitive]
-                                                                [@plural=$plural]"/>
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="exslt:node-set($class-mapping)/class[@umlaut='no']
+                                                                    [@pos=$pos]
+                                                                    [@gender=$gender]
+                                                                    [@genitive=$genitive]
+                                                                    [@plural=$plural]"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+      </xsl:call-template>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:variable name="lemma"
-                    select="normalize-space(../dwds:Schreibung)"/>
       <xsl:variable name="plural"
                     select="concat('-',
                                    substring-after(translate(normalize-space(dwds:Plural),'äöü',
                                                                                           'aou'),
                                                    $lemma))"/>
-      <xsl:value-of select="exslt:node-set($class-mapping)/class[@umlaut='yes']
-                                                                [@pos=$pos]
-                                                                [@gender=$gender]
-                                                                [@genitive=$genitive]
-                                                                [@plural=$plural]"/>
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="exslt:node-set($class-mapping)/class[@umlaut='yes']
+                                                                    [@pos=$pos]
+                                                                    [@gender=$gender]
+                                                                    [@genitive=$genitive]
+                                                                    [@plural=$plural]"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+      </xsl:call-template>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
