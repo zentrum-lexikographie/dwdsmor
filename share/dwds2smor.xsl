@@ -60,7 +60,7 @@
 
 <xsl:template name="insert-value">
   <xsl:param name="value"/>
-  <xsl:param name="type"/>
+  <xsl:param name="type">value</xsl:param>
   <xsl:choose>
     <xsl:when test="string-length($value)&gt;0">
       <xsl:value-of select="$value"/>
