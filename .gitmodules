@@ -1,0 +1,7 @@
+[submodule "wb"]
+	path = wb
+	url = ../wb.git
+	branch = zdl-lex-server/production
+[submodule "SMORLemma"]
+	path = SMORLemma
+	url = git@github.com:rsennrich/SMORLemma.git
