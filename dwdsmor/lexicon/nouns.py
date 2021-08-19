@@ -20,6 +20,13 @@ class_mapping = {
                 False: 'NFem_0_en'
             }
         }
+    },
+    'neutr.': {
+        '-(e)s': {
+            '-er': {
+                False: 'NNeut_es_er'
+            }
+        }
     }
 }
 
