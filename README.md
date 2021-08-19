@@ -1,8 +1,63 @@
-DWDSmor
-=======
+# DWDSmor
 
-This repository provides XSLT 2 stylesheets for generating lexicons compatible
-with SMOR and SMORLemma from XML files in the DWDS format.
+_SFST/SMOR/DWDS-based German morphology_
+
+## Prerequisites
+
+* [GNU/Linux](https://www.debian.org/) (tested on Debian/Buster)
+* [Python v3](https://www.python.org/)
+* [SFST](http://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a toolbox for the
+  implementation of morphological analysers and other tools which are based on
+  finite state transducer technology
+* [xsltproc](http://xmlsoft.org/xslt/)
+
+## Setup
+
+Install build prerequisites:
+
+```sh
+apt install build-essential cmake libsfst1-1.4-dev xsltproc
+```
+
+### Git Submodules
+
+```sh
+git submodule init
+git submodule update
+```
+
+### Python setup
+
+Optionally set up a virtual environment for project builds, i. e. via
+[pyenv](https://github.com/pyenv/pyenv):
+
+```sh
+$ curl https://pyenv.run | bash
+$ make pyenv
+```
+
+or python's venv
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Then install the project and its dependencies:
+
+```sh
+make setup
+```
+## Compiling a lexicon and a SFST transducer
+
+```sh 
+make
+```
+
+## XSLT-based testbed for lexicon conversion
+
+This repository also provides an XSLT 2 stylesheet for generating SMOR-compatible
+lexicon entries from XML files in the DWDS format.
 
 The stylesheets have been tested to work with Saxon 9.9, as provided by the Debian
 package `libsaxonhe-java`. On Debian, they may be run as follows:
@@ -28,4 +83,8 @@ likewise generate SMOR-compatible lexicons from XML files:
 * `legacy/smorlemma/*.xslt`:
   part of the [SMORLemma repo at GitHub](https://github.com/rsennrich/SMORLemma/)
 
-Andreas Nolda <andreas.nolda@bbaw.de>
+## License
+
+Copyright &copy; 2021 Berlin-Brandenburg Academy of Sciences and Humanities.
+
+This project is licensed under the GNU Lesser General Public License v3.0.
