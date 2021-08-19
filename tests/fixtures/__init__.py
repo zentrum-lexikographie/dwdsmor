@@ -33,4 +33,8 @@ def lexicon():
 
 @fixture
 def lexicon_sample(lexicon):
-    return random.sample(lexicon, 100)
+    sample_size = 100
+    if len(lexicon) <= sample_size:
+        return lexicon
+    else:
+        return random.sample(lexicon, sample_size)

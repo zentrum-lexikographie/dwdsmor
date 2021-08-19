@@ -6,7 +6,7 @@ SMORLemma/smor.a SMORLemma/smor.ca: SMORLemma/lexicon/wiki-lexicon.xml
 	$(MAKE) -C SMORLemma
 
 SMORLemma/lexicon/wiki-lexicon.xml:
-	python -m dwdsmor.lexicon.cli wb $@
+	python -m dwdsmor.lexicon.cli --limit=1000 wb $@
 
 # ---------------------------------------- Project setup
 

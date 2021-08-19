@@ -33,6 +33,11 @@ def lexicon_entries(wb_dirs):
 
 
 @click.command()
+@click.option(
+    '--limit',
+    type=int,
+    default=0
+)
 @click.argument(
     'wb_dirs',
     nargs=-1,
@@ -43,9 +48,13 @@ def lexicon_entries(wb_dirs):
     nargs=1,
     type=click.File('wb')
 )
-def main(wb_dirs, output):
+def main(wb_dirs, output, limit):
+    entries = lexicon_entries(wb_dirs)
+    if limit > 0:
+        entries = itertools.islice(entries, 0, limit)
+
     lexicon = ET.Element('smor')
-    for entry in itertools.islice(lexicon_entries(wb_dirs), 0, 1000):
+    for entry in entries:
         lexicon.append(entry)
     ET.ElementTree(lexicon).write(output, encoding='UTF-8')
 
