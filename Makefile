@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+all: clean SMORLemma/smor.a SMORLemma/smor.ca test
+
 SMORLemma/smor.a SMORLemma/smor.ca: SMORLemma/lexicon/wiki-lexicon.xml
 	$(MAKE) -C SMORLemma
 
@@ -26,6 +28,7 @@ test:
 clean:
 	$(RM) -r\
 		SMORLemma/lexicon/lexicon SMORLemma/lexicon/wiki-lexicon.xml\
+		SMORLemma/lexicon/__pycache__\
 		SMORLemma/*.a SMORLemma/*.ca\
 		build *.egg-info *.cpython-38-x86_64-linux-gnu.so
 
