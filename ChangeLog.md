@@ -1,3 +1,7 @@
+2021-08-20:
+
+* add check for loanwords
+
 2021-08-18:
 
 * add more class mappings

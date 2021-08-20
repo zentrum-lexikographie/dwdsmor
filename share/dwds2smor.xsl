@@ -55,8 +55,7 @@
                        mode="pos"/>
   <!-- TODO: do not hard-code this -->
   <xsl:text>&lt;base&gt;</xsl:text>
-  <!-- TODO: do not hard-code this -->
-  <xsl:text>&lt;nativ&gt;</xsl:text>
+  <xsl:apply-templates select="dwds:Diachronie"/>
   <xsl:apply-templates select="dwds:Verweise"/>
   <xsl:apply-templates select="dwds:Formangabe"
                        mode="class"/>
@@ -81,6 +80,24 @@
       <xsl:text>UNKNOWN</xsl:text>
     </xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="dwds:Diachronie">
+  <xsl:text>&lt;</xsl:text>
+  <xsl:variable name="etymology">
+    <xsl:choose>
+      <!-- TODO: test for "klassisch" -->
+      <xsl:when test="dwds:Etymologie[text()]">fremd</xsl:when>
+      <xsl:when test="dwds:Etymologie[*]">fremd</xsl:when>
+      <xsl:otherwise>nativ</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$etymology"/>
+    <xsl:with-param name="type">etymology</xsl:with-param>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="dwds:Verweise">
