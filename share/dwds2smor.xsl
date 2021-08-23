@@ -66,11 +66,11 @@
                       select="$lemma"/>
     </xsl:apply-templates>
     <!-- for the sake of simplicity, consider only the first formation specification -->
-    <xsl:apply-templates select="../dwds:Verweise[@Typ or
-                                                  dwds:Verweis[@Typ='Binnenglied' or
-                                                               @Typ='Erstglied' or
-                                                               @Typ='Grundform' or
-                                                               @Typ='Letztglied']][1]">
+    <xsl:apply-templates select="../dwds:Verweise[not(preceding-sibling::dwds:Verweise[@Typ or
+                                                                                       dwds:Verweis[@Typ='Binnenglied' or
+                                                                                                    @Typ='Erstglied' or
+                                                                                                    @Typ='Grundform' or
+                                                                                                    @Typ='Letztglied']])]">
       <xsl:with-param name="lemma"
                       select="$lemma"/>
     </xsl:apply-templates>

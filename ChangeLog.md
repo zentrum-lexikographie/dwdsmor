@@ -1,6 +1,7 @@
 2021-08-23:
 
 * generate one lexical entry per `<Formangabe>`
+* make sure that there is exactly one formation specification
 
 2021-08-20:
 
