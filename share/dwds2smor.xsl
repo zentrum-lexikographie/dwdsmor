@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 0.3 -->
-<!-- Andreas Nolda 2021-08-20 -->
+<!-- Version 0.4 -->
+<!-- Andreas Nolda 2021-08-23 -->
 
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -15,12 +15,13 @@
 <xsl:strip-space elements="*"/>
 
 <xsl:variable name="pos-mapping">
+  <pos pos="Adjektiv">ADJ</pos>
   <pos pos="Substantiv">NN</pos>
   <!-- TODO: more POS mappings -->
   <!-- ... -->
 </xsl:variable>
 
-<xsl:variable name="class-mapping">
+<xsl:variable name="noun-class-mapping">
   <class pos="Substantiv"
          gender="mask."
          genitive="-(e)s"
@@ -36,6 +37,23 @@
          genitive="-(e)s"
          plural="-er"
          umlaut="no">NNeut_es_er</class>
+  <!-- TODO: more class mappings -->
+  <!-- ... -->
+</xsl:variable>
+
+<xsl:variable name="adjective-class-mapping">
+  <class pos="Adjektiv"
+         superlative="-"
+         umlaut="no">ADJ+</class>
+  <class pos="Adjektiv"
+         superlative="-"
+         umlaut="yes">ADJ$</class>
+  <class pos="Adjektiv"
+         superlative="-e-"
+         umlaut="no">ADJ+e</class>
+  <class pos="Adjektiv"
+         superlative="-e-"
+         umlaut="yes">ADJ$e</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -217,11 +235,9 @@
   </xsl:call-template>
 </xsl:template>
 
-<xsl:template match="dwds:Grammatik"
-              mode="class">
+<xsl:template name="noun-class">
   <xsl:param name="lemma"/>
-  <xsl:variable name="pos"
-                select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:param name="pos"/>
   <xsl:variable name="gender"
                 select="normalize-space(dwds:Genus)"/>
   <xsl:variable name="genitive"
@@ -232,11 +248,11 @@
                     select="normalize-space(dwds:Plural)"/>
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
-                        select="exslt:node-set($class-mapping)/class[@umlaut='no']
-                                                                    [@pos=$pos]
-                                                                    [@gender=$gender]
-                                                                    [@genitive=$genitive]
-                                                                    [@plural=$plural]"/>
+                        select="exslt:node-set($noun-class-mapping)/class[@umlaut='no']
+                                                                         [@pos=$pos]
+                                                                         [@gender=$gender]
+                                                                         [@genitive=$genitive]
+                                                                         [@plural=$plural]"/>
         <xsl:with-param name="type">class</xsl:with-param>
         <xsl:with-param name="lemma"
                         select="$lemma"/>
@@ -250,11 +266,113 @@
                                                    $lemma))"/>
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
-                        select="exslt:node-set($class-mapping)/class[@umlaut='yes']
-                                                                    [@pos=$pos]
-                                                                    [@gender=$gender]
-                                                                    [@genitive=$genitive]
-                                                                    [@plural=$plural]"/>
+                        select="exslt:node-set($noun-class-mapping)/class[@umlaut='yes']
+                                                                         [@pos=$pos]
+                                                                         [@gender=$gender]
+                                                                         [@genitive=$genitive]
+                                                                         [@plural=$plural]"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="adjective-class">
+  <xsl:param name="lemma"/>
+  <xsl:param name="pos"/>
+  <xsl:variable name="superlative"
+                select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
+  <xsl:choose>
+    <xsl:when test="substring-after($superlative,$lemma)='sten'">
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="exslt:node-set($adjective-class-mapping)/class[@umlaut='no']
+                                                                              [@pos=$pos]
+                                                                              [@superlative='-']"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="substring-after(translate(normalize-space($superlative),'äöü',
+                                                                            'aou'),
+                                    $lemma)='sten'">
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="exslt:node-set($adjective-class-mapping)/class[@umlaut='yes']
+                                                                              [@pos=$pos]
+                                                                              [@superlative='-']"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="substring-after($superlative,$lemma)='esten'">
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="exslt:node-set($adjective-class-mapping)/class[@umlaut='no']
+                                                                              [@pos=$pos]
+                                                                              [@superlative='-e-']"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="substring-after(translate(normalize-space($superlative),'äöü',
+                                                                            'aou'),
+                                    $lemma)='esten'">
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="exslt:node-set($adjective-class-mapping)/class[@umlaut='yes']
+                                                                              [@pos=$pos]
+                                                                              [@superlative='-e-']"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="exslt:node-set($adjective-class-mapping)/class[@umlaut='yes']
+                                                                              [@pos=$pos]
+                                                                              [@superlative=$superlative]"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template match="dwds:Grammatik"
+              mode="class">
+  <xsl:param name="lemma"/>
+  <xsl:variable name="pos"
+                select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:choose>
+    <xsl:when test="$pos='Substantiv'">
+      <xsl:call-template name="noun-class">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="pos"
+                        select="$pos"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="$pos='Adjektiv'">
+      <xsl:call-template name="adjective-class">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="pos"
+                        select="$pos"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+      <!-- unknown class -->
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"/>
         <xsl:with-param name="type">class</xsl:with-param>
         <xsl:with-param name="lemma"
                         select="$lemma"/>
@@ -264,5 +382,5 @@
 </xsl:template>
 </xsl:stylesheet>
 <!-- TODO: -->
-<!-- add support for non-nouns -->
+<!-- add support for non-nouns and non-adjectives -->
 <!-- add support for non-<base> stems (i.e. <deriv> and <kompos> stems) -->

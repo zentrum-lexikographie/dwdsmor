@@ -1,5 +1,6 @@
 2021-08-23:
 
+* add adjective class mappings
 * generate one lexical entry per `<Formangabe>`
 * make sure that there is exactly one formation specification
 
