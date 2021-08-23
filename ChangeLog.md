@@ -1,3 +1,7 @@
+2021-08-23:
+
+* generate one lexical entry per `<Formangabe>`
+
 2021-08-20:
 
 * add check for loanwords

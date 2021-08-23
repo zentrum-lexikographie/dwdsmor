@@ -14,9 +14,6 @@
 
 <xsl:strip-space elements="*"/>
 
-<xsl:variable name="lemma"
-              select="normalize-space(/dwds:DWDS/dwds:Artikel/dwds:Formangabe/dwds:Schreibung)"/>
-
 <xsl:variable name="pos-mapping">
   <pos pos="Substantiv">NN</pos>
   <!-- TODO: more POS mappings -->
@@ -48,27 +45,48 @@
 </xsl:template>
 
 <xsl:template match="dwds:Artikel">
-  <xsl:apply-templates select="dwds:Formangabe"
-                       mode="stem"/>
-  <xsl:value-of select="$lemma"/>
-  <xsl:apply-templates select="dwds:Formangabe"
-                       mode="pos"/>
-  <xsl:text>&lt;base&gt;</xsl:text>
-  <xsl:apply-templates select="dwds:Diachronie"/>
-  <!-- consider only the first formation specification -->
-  <xsl:apply-templates select="dwds:Verweise[@Typ or
-                                             dwds:Verweis[@Typ='Binnenglied' or
-                                                          @Typ='Erstglied' or
-                                                          @Typ='Grundform' or
-                                                          @Typ='Letztglied']][1]"/>
-  <xsl:apply-templates select="dwds:Formangabe"
-                       mode="class"/>
+  <!-- generate one lexical entry per <Formangabe> -->
+  <xsl:for-each select="dwds:Formangabe">
+    <xsl:variable name="lemma"
+                  select="normalize-space(dwds:Schreibung)"/>
+    <xsl:apply-templates select="."
+                         mode="stem">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:apply-templates>
+    <xsl:value-of select="$lemma"/>
+    <xsl:apply-templates select="."
+                         mode="pos">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:apply-templates>
+    <xsl:text>&lt;base&gt;</xsl:text>
+    <xsl:apply-templates select="../dwds:Diachronie">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:apply-templates>
+    <!-- for the sake of simplicity, consider only the first formation specification -->
+    <xsl:apply-templates select="../dwds:Verweise[@Typ or
+                                                  dwds:Verweis[@Typ='Binnenglied' or
+                                                               @Typ='Erstglied' or
+                                                               @Typ='Grundform' or
+                                                               @Typ='Letztglied']][1]">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:apply-templates>
+    <xsl:apply-templates select="."
+                         mode="class">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:apply-templates>
   <xsl:text>&#xA;</xsl:text>
+  </xsl:for-each>
 </xsl:template>
 
 <xsl:template name="insert-value">
   <xsl:param name="value"/>
-  <xsl:param name="type">value</xsl:param>
+  <xsl:param name="type"/>
+  <xsl:param name="lemma"/>
   <xsl:choose>
     <xsl:when test="string-length($value)&gt;0">
       <xsl:value-of select="$value"/>
@@ -87,6 +105,7 @@
 </xsl:template>
 
 <xsl:template match="dwds:Diachronie">
+  <xsl:param name="lemma"/>
   <xsl:text>&lt;</xsl:text>
   <xsl:variable name="etymology">
     <xsl:choose>
@@ -100,11 +119,14 @@
     <xsl:with-param name="value"
                     select="$etymology"/>
     <xsl:with-param name="type">etymology</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
   </xsl:call-template>
   <xsl:text>&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="dwds:Verweise">
+  <xsl:param name="lemma"/>
   <xsl:variable name="formation">
     <xsl:choose>
       <!-- conversion -->
@@ -139,47 +161,65 @@
     <xsl:with-param name="value"
                     select="$formation"/>
     <xsl:with-param name="type">formation</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
   </xsl:call-template>
   <xsl:text>&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="dwds:Formangabe"
               mode="stem">
+  <xsl:param name="lemma"/>
   <xsl:text>&lt;</xsl:text>
   <xsl:apply-templates select="dwds:Grammatik"
-                       mode="pos"/>
+                       mode="pos">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:apply-templates>
   <xsl:text>_Stems&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="dwds:Formangabe"
               mode="pos">
+  <xsl:param name="lemma"/>
   <xsl:text>&lt;</xsl:text>
   <xsl:apply-templates select="dwds:Grammatik"
-                       mode="pos"/>
+                       mode="pos">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:apply-templates>
   <xsl:text>&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="dwds:Formangabe"
               mode="class">
+  <xsl:param name="lemma"/>
   <xsl:text>&lt;</xsl:text>
   <xsl:apply-templates select="dwds:Grammatik"
-                       mode="class"/>
+                       mode="class">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:apply-templates>
   <xsl:text>&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="dwds:Grammatik"
               mode="pos">
+  <xsl:param name="lemma"/>
   <xsl:variable name="pos"
                 select="normalize-space(dwds:Wortklasse)"/>
   <xsl:call-template name="insert-value">
     <xsl:with-param name="value"
                     select="exslt:node-set($pos-mapping)/pos[@pos=$pos]"/>
     <xsl:with-param name="type">POS</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
   </xsl:call-template>
 </xsl:template>
 
 <xsl:template match="dwds:Grammatik"
               mode="class">
+  <xsl:param name="lemma"/>
   <xsl:variable name="pos"
                 select="normalize-space(dwds:Wortklasse)"/>
   <xsl:variable name="gender"
@@ -198,6 +238,8 @@
                                                                     [@genitive=$genitive]
                                                                     [@plural=$plural]"/>
         <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
       </xsl:call-template>
     </xsl:when>
     <xsl:otherwise>
@@ -214,10 +256,13 @@
                                                                     [@genitive=$genitive]
                                                                     [@plural=$plural]"/>
         <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
       </xsl:call-template>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 </xsl:stylesheet>
 <!-- TODO: -->
+<!-- add support for non-nouns -->
 <!-- add support for non-<base> stems (i.e. <deriv> and <kompos> stems) -->
