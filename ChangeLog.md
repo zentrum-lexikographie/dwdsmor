@@ -1,6 +1,7 @@
 2021-08-20:
 
 * add check for loanwords
+* add formation-type heuristics
 
 2021-08-18:
 

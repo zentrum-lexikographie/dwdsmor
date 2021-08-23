@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 0.2 -->
-<!-- Andreas Nolda 2021-08-18 -->
+<!-- Version 0.3 -->
+<!-- Andreas Nolda 2021-08-20 -->
 
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -53,10 +53,14 @@
   <xsl:value-of select="$lemma"/>
   <xsl:apply-templates select="dwds:Formangabe"
                        mode="pos"/>
-  <!-- TODO: do not hard-code this -->
   <xsl:text>&lt;base&gt;</xsl:text>
   <xsl:apply-templates select="dwds:Diachronie"/>
-  <xsl:apply-templates select="dwds:Verweise"/>
+  <!-- consider only the first formation specification -->
+  <xsl:apply-templates select="dwds:Verweise[@Typ or
+                                             dwds:Verweis[@Typ='Binnenglied' or
+                                                          @Typ='Erstglied' or
+                                                          @Typ='Grundform' or
+                                                          @Typ='Letztglied']][1]"/>
   <xsl:apply-templates select="dwds:Formangabe"
                        mode="class"/>
   <xsl:text>&#xA;</xsl:text>
@@ -86,10 +90,10 @@
   <xsl:text>&lt;</xsl:text>
   <xsl:variable name="etymology">
     <xsl:choose>
-      <!-- TODO: test for "klassisch" -->
-      <xsl:when test="dwds:Etymologie[text()]">fremd</xsl:when>
-      <xsl:when test="dwds:Etymologie[*]">fremd</xsl:when>
-      <xsl:otherwise>nativ</xsl:otherwise>
+      <xsl:when test="dwds:Etymologie[* or text()]">fremd</xsl:when>
+      <xsl:when test="not(dwds:Etymologie[* or text()])">nativ</xsl:when>
+      <!-- TODO: more etymology values -->
+      <!-- ... -->
     </xsl:choose>
   </xsl:variable>
   <xsl:call-template name="insert-value">
@@ -101,14 +105,40 @@
 </xsl:template>
 
 <xsl:template match="dwds:Verweise">
-  <!-- TODO: map @Typ to SMOR complexities -->
-  <xsl:variable name="complexity"
-                select="normalize-space(@Typ)"/>
+  <xsl:variable name="formation">
+    <xsl:choose>
+      <!-- conversion -->
+      <xsl:when test="@Typ='Konversion'">Komplex_abstrakt</xsl:when>
+      <xsl:when test="count(dwds:Verweis[@Typ='Binnenglied' or
+                                         @Typ='Erstglied' or
+                                         @Typ='Grundform' or
+                                         @Typ='Letztglied'])=1 and
+                      dwds:Verweis[@Typ='Grundform']">Komplex_abstrakt</xsl:when>
+      <!-- intransparent derivation or compounding -->
+      <xsl:when test="count(dwds:Verweis[@Typ='Binnenglied' or
+                                         @Typ='Erstglied' or
+                                         @Typ='Grundform' or
+                                         @Typ='Letztglied'])=1">Komplex_semi</xsl:when>
+      <!-- derivation or compounding -->
+      <xsl:when test="@Typ='Derivation' or
+                      @Typ='Komposition'">Komplex</xsl:when>
+      <xsl:when test="count(dwds:Verweis[@Typ='Binnenglied' or
+                                         @Typ='Erstglied' or
+                                         @Typ='Grundform' or
+                                         @Typ='Letztglied'])&gt;1">Komplex</xsl:when>
+      <!-- clipping -->
+      <xsl:when test="@Typ='Kurzwortbildung'">Kurzwort</xsl:when>
+      <!-- no formation -->
+      <xsl:when test="@Typ='Simplex'">Simplex</xsl:when>
+      <!-- TODO: more formation specifications -->
+      <!-- ... -->
+    </xsl:choose>
+  </xsl:variable>
   <xsl:text>&lt;</xsl:text>
   <xsl:call-template name="insert-value">
     <xsl:with-param name="value"
-                    select="$complexity"/>
-    <xsl:with-param name="type">complexity</xsl:with-param>
+                    select="$formation"/>
+    <xsl:with-param name="type">formation</xsl:with-param>
   </xsl:call-template>
   <xsl:text>&gt;</xsl:text>
 </xsl:template>
@@ -189,3 +219,5 @@
   </xsl:choose>
 </xsl:template>
 </xsl:stylesheet>
+<!-- TODO: -->
+<!-- add support for non-<base> stems (i.e. <deriv> and <kompos> stems) -->
