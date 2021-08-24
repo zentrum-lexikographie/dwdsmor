@@ -1,5 +1,6 @@
 2021-08-24:
 
+* port stylesheet to XSLT 2
 * add mappings for regular verbs
 * add initial support for affixes
 
