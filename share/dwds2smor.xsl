@@ -73,7 +73,7 @@
 </xsl:variable>
 
 <xsl:template match="/">
-  <xsl:apply-templates match="/dwds:DWDS/dwds:Artikel"/>
+  <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel"/>
 </xsl:template>
 
 <xsl:template match="dwds:Artikel">
