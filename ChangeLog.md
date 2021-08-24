@@ -1,5 +1,6 @@
 2021-08-24:
 
+* add mappings for regular verbs
 * add initial support for affixes
 
 2021-08-23:

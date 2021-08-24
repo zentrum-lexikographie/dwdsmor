@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 0.5 -->
+<!-- Version 0.6 -->
 <!-- Andreas Nolda 2021-08-24 -->
 
 <xsl:stylesheet version="1.0"
@@ -19,6 +19,7 @@
   <pos pos="Präfix">PREF</pos>
   <pos pos="Substantiv">NN</pos>
   <pos pos="Suffix">SUFF</pos>
+  <pos pos="Verb">V</pos>
   <!-- TODO: more POS mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -60,6 +61,17 @@
   <!-- ... -->
 </xsl:variable>
 
+<xsl:variable name="verb-class-mapping">
+  <class pos="Verb"
+         past="-te"
+         participle="ge-t">VVReg</class>
+  <class pos="Verb"
+         past="-te"
+         participle="-t">VVReg</class>
+  <!-- TODO: more class mappings -->
+  <!-- ... -->
+</xsl:variable>
+
 <xsl:template match="/">
   <xsl:apply-templates match="/dwds:DWDS/dwds:Artikel"/>
 </xsl:template>
@@ -71,13 +83,19 @@
                   select="normalize-space(dwds:Schreibung)"/>
     <xsl:variable name="pos"
                   select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
-    <xsl:apply-templates select="."
+    <xsl:if test="$pos='Verb'">
+      <xsl:apply-templates select="dwds:Grammatik"
+                           mode="participle">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:apply-templates>
+    </xsl:if>
+    <xsl:apply-templates select="dwds:Grammatik"
                          mode="stem">
       <xsl:with-param name="lemma"
                       select="$lemma"/>
     </xsl:apply-templates>
-    <xsl:value-of select="$lemma"/>
-    <xsl:apply-templates select="."
+    <xsl:apply-templates select="dwds:Grammatik"
                          mode="pos">
       <xsl:with-param name="lemma"
                       select="$lemma"/>
@@ -97,7 +115,7 @@
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:apply-templates>
-      <xsl:apply-templates select="."
+      <xsl:apply-templates select="dwds:Grammatik"
                            mode="class">
         <xsl:with-param name="lemma"
                         select="$lemma"/>
@@ -105,6 +123,51 @@
     </xsl:if>
   <xsl:text>&#xA;</xsl:text>
   </xsl:for-each>
+</xsl:template>
+
+<xsl:template name="verb-stem">
+  <xsl:param name="lemma"/>
+  <xsl:choose>
+    <xsl:when test="substring($lemma,string-length($lemma)-1)='en'">
+      <xsl:value-of select="substring($lemma,1,string-length($lemma)-2)"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="substring($lemma,1,string-length($lemma)-1)"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template match="dwds:Grammatik"
+              mode="stem">
+  <xsl:param name="lemma"/>
+  <xsl:variable name="pos"
+                select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:choose>
+    <xsl:when test="$pos='Affix' and
+                    starts-with($lemma,'-')">
+      <xsl:text>Suff</xsl:text>
+    </xsl:when>
+    <xsl:when test="$pos='Affix'">
+      <xsl:text>Pref</xsl:text>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:text>Base</xsl:text>
+    </xsl:otherwise>
+    <!-- TODO: add support for <Deriv_Stems> and <Kompos_Stems> -->
+  </xsl:choose>
+  <xsl:text>_Stems&gt;</xsl:text>
+  <xsl:choose>
+    <xsl:when test="$pos='Verb'">
+      <xsl:call-template name="verb-stem">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$lemma"/>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template name="insert-value">
@@ -128,120 +191,12 @@
   </xsl:choose>
 </xsl:template>
 
-<xsl:template match="dwds:Diachronie">
-  <xsl:param name="lemma"/>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:variable name="etymology">
-    <xsl:choose>
-      <xsl:when test="dwds:Etymologie[* or text()]">fremd</xsl:when>
-      <xsl:when test="not(dwds:Etymologie[* or text()])">nativ</xsl:when>
-      <!-- TODO: more etymology values -->
-      <!-- ... -->
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$etymology"/>
-    <xsl:with-param name="type">etymology</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-</xsl:template>
-
-<xsl:template match="dwds:Verweise">
-  <xsl:param name="lemma"/>
-  <xsl:variable name="formation">
-    <xsl:choose>
-      <!-- conversion -->
-      <xsl:when test="@Typ='Konversion'">Komplex_abstrakt</xsl:when>
-      <xsl:when test="count(dwds:Verweis[@Typ='Binnenglied' or
-                                         @Typ='Erstglied' or
-                                         @Typ='Grundform' or
-                                         @Typ='Letztglied'])=1 and
-                      dwds:Verweis[@Typ='Grundform']">Komplex_abstrakt</xsl:when>
-      <!-- intransparent derivation or compounding -->
-      <xsl:when test="count(dwds:Verweis[@Typ='Binnenglied' or
-                                         @Typ='Erstglied' or
-                                         @Typ='Grundform' or
-                                         @Typ='Letztglied'])=1">Komplex_semi</xsl:when>
-      <!-- derivation or compounding -->
-      <xsl:when test="@Typ='Derivation' or
-                      @Typ='Komposition'">Komplex</xsl:when>
-      <xsl:when test="count(dwds:Verweis[@Typ='Binnenglied' or
-                                         @Typ='Erstglied' or
-                                         @Typ='Grundform' or
-                                         @Typ='Letztglied'])&gt;1">Komplex</xsl:when>
-      <!-- clipping -->
-      <xsl:when test="@Typ='Kurzwortbildung'">Kurzwort</xsl:when>
-      <!-- no formation -->
-      <xsl:when test="@Typ='Simplex'">Simplex</xsl:when>
-      <!-- TODO: more formation specifications -->
-      <!-- ... -->
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$formation"/>
-    <xsl:with-param name="type">formation</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-</xsl:template>
-
-<xsl:template match="dwds:Formangabe"
-              mode="stem">
-  <xsl:param name="lemma"/>
-  <xsl:variable name="pos"
-                select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:choose>
-    <xsl:when test="$pos='Affix' and
-                    starts-with($lemma,'-')">
-      <xsl:text>Suff</xsl:text>
-    </xsl:when>
-    <xsl:when test="$pos='Affix'">
-      <xsl:text>Pref</xsl:text>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:text>Base</xsl:text>
-    </xsl:otherwise>
-    <!-- TODO: add support for <Deriv_Stems> and <Kompos_Stems> -->
-  </xsl:choose>
-  <xsl:text>_Stems&gt;</xsl:text>
-</xsl:template>
-
-<xsl:template match="dwds:Formangabe"
-              mode="pos">
-  <xsl:param name="lemma"/>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:apply-templates select="dwds:Grammatik"
-                       mode="pos">
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:apply-templates>
-  <xsl:text>&gt;</xsl:text>
-</xsl:template>
-
-<xsl:template match="dwds:Formangabe"
-              mode="class">
-  <xsl:param name="lemma"/>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:apply-templates select="dwds:Grammatik"
-                       mode="class">
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:apply-templates>
-  <xsl:text>&gt;</xsl:text>
-</xsl:template>
-
 <xsl:template match="dwds:Grammatik"
               mode="pos">
   <xsl:param name="lemma"/>
   <xsl:variable name="pos"
                 select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:text>&lt;</xsl:text>
   <xsl:choose>
     <xsl:when test="$pos='Affix' and
                     starts-with($lemma,'-')">
@@ -272,6 +227,7 @@
       </xsl:call-template>
     </xsl:otherwise>
   </xsl:choose>
+  <xsl:text>&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template name="adjective-class">
@@ -388,11 +344,65 @@
   </xsl:choose>
 </xsl:template>
 
+<xsl:template name="verb-class">
+  <xsl:param name="lemma"/>
+  <xsl:variable name="pos"
+                select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:variable name="stem">
+    <xsl:call-template name="verb-stem">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:call-template>
+  </xsl:variable>
+  <xsl:variable name="past"
+                select="normalize-space(dwds:Praeteritum)"/>
+  <xsl:variable name="participle"
+                select="normalize-space(dwds:Partizip_II)"/>
+  <xsl:choose>
+    <xsl:when test="$past=concat($stem,'te') and
+                    $participle=concat('ge',$stem,'t')">
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="exslt:node-set($verb-class-mapping)/class[@pos=$pos]
+                                                                         [@past='-te']
+                                                                         [@participle='ge-t']"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="$past=concat($stem,'te') and
+                    $participle=concat($stem,'t')">
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="exslt:node-set($verb-class-mapping)/class[@pos=$pos]
+                                                                         [@past='-te']
+                                                                         [@participle='-t']"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="exslt:node-set($verb-class-mapping)/class[@pos=$pos]
+                                                                         [@past=$past]
+                                                                         [@participle=$participle]"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
 <xsl:template match="dwds:Grammatik"
               mode="class">
   <xsl:param name="lemma"/>
   <xsl:variable name="pos"
                 select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:text>&lt;</xsl:text>
   <xsl:choose>
     <xsl:when test="$pos='Adjektiv'">
       <xsl:call-template name="adjective-class">
@@ -402,6 +412,12 @@
     </xsl:when>
     <xsl:when test="$pos='Substantiv'">
       <xsl:call-template name="noun-class">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="$pos='Verb'">
+      <xsl:call-template name="verb-class">
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:call-template>
@@ -416,6 +432,86 @@
       </xsl:call-template>
     </xsl:otherwise>
   </xsl:choose>
+  <xsl:text>&gt;</xsl:text>
+</xsl:template>
+
+<xsl:template match="dwds:Grammatik"
+              mode="participle">
+  <xsl:param name="lemma"/>
+  <xsl:variable name="stem">
+    <xsl:call-template name="verb-stem">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:call-template>
+  </xsl:variable>
+  <xsl:variable name="participle"
+                select="normalize-space(dwds:Partizip_II)"/>
+  <xsl:if test="$participle=concat('ge',$stem,'t')">
+    <xsl:text>&lt;ge&gt;</xsl:text>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template match="dwds:Verweise">
+  <xsl:param name="lemma"/>
+  <xsl:variable name="formation">
+    <xsl:choose>
+      <!-- conversion -->
+      <xsl:when test="@Typ='Konversion'">Komplex_abstrakt</xsl:when>
+      <xsl:when test="count(dwds:Verweis[@Typ='Binnenglied' or
+                                         @Typ='Erstglied' or
+                                         @Typ='Grundform' or
+                                         @Typ='Letztglied'])=1 and
+                      dwds:Verweis[@Typ='Grundform']">Komplex_abstrakt</xsl:when>
+      <!-- intransparent derivation or compounding -->
+      <xsl:when test="count(dwds:Verweis[@Typ='Binnenglied' or
+                                         @Typ='Erstglied' or
+                                         @Typ='Grundform' or
+                                         @Typ='Letztglied'])=1">Komplex_semi</xsl:when>
+      <!-- derivation or compounding -->
+      <xsl:when test="@Typ='Derivation' or
+                      @Typ='Komposition'">Komplex</xsl:when>
+      <xsl:when test="count(dwds:Verweis[@Typ='Binnenglied' or
+                                         @Typ='Erstglied' or
+                                         @Typ='Grundform' or
+                                         @Typ='Letztglied'])&gt;1">Komplex</xsl:when>
+      <!-- clipping -->
+      <xsl:when test="@Typ='Kurzwortbildung'">Kurzwort</xsl:when>
+      <!-- no formation -->
+      <xsl:when test="@Typ='Simplex'">Simplex</xsl:when>
+      <!-- TODO: more formation specifications -->
+      <!-- ... -->
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$formation"/>
+    <xsl:with-param name="type">formation</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
+</xsl:template>
+
+<xsl:template match="dwds:Diachronie">
+  <xsl:param name="lemma"/>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:variable name="etymology">
+    <xsl:choose>
+      <xsl:when test="dwds:Etymologie[* or text()]">fremd</xsl:when>
+      <xsl:when test="not(dwds:Etymologie[* or text()])">nativ</xsl:when>
+      <!-- TODO: more etymology values -->
+      <!-- ... -->
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$etymology"/>
+    <xsl:with-param name="type">etymology</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
 </xsl:template>
 </xsl:stylesheet>
 <!-- TODO: -->
