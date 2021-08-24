@@ -1,6 +1,7 @@
 2021-08-24:
 
 * port stylesheet to XSLT 2
+* consider only the last umlautable vowel
 * add mappings for regular verbs
 * add initial support for affixes
 

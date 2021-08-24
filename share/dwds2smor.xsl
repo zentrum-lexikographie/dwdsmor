@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 0.6 -->
+<!-- Version 0.7 -->
 <!-- Andreas Nolda 2021-08-24 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:dwds="http://www.dwds.de/ns/1.0">
+                xmlns:dwds="http://www.dwds.de/ns/1.0"
+                xmlns:n="http://andreas.nolda.org/ns/lib">
 
 <xsl:output method="text"
             encoding="ISO-8859-1"/>
@@ -77,8 +78,9 @@
 <xsl:template match="dwds:Artikel">
   <!-- generate one lexical entry per <Formangabe> -->
   <xsl:for-each select="dwds:Formangabe">
+    <!-- for the sake of simplicity, consider only the first lemma specification -->
     <xsl:variable name="lemma"
-                  select="normalize-space(dwds:Schreibung)"/>
+                  select="normalize-space(dwds:Schreibung[1])"/>
     <xsl:variable name="pos"
                   select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
     <xsl:if test="$pos='Verb'">
@@ -228,6 +230,22 @@
   <xsl:text>&gt;</xsl:text>
 </xsl:template>
 
+<xsl:function name="n:umlaut-re">
+  <xsl:param name="argument"/>
+  <!-- return a regexp matching the umlaut variant of the argument, if any -->
+  <xsl:choose>
+    <!-- replace the last vowel matching [aou] by [äöü] -->
+    <xsl:when test="matches($argument,'[aou]')">
+      <xsl:sequence select="replace($argument,'^(.*)[aou]([^äöü]*)$',
+                                              '$1[äöü]$2',
+                                              'i')"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:sequence select="$argument"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
+
 <xsl:template name="adjective-class">
   <xsl:param name="lemma"/>
   <xsl:variable name="pos"
@@ -246,9 +264,10 @@
                         select="$lemma"/>
       </xsl:call-template>
     </xsl:when>
-    <xsl:when test="substring-after(translate(normalize-space($superlative),'äöü',
-                                                                            'aou'),
-                                    $lemma)='sten'">
+    <xsl:when test="matches($superlative,
+                            concat('^',
+                                   n:umlaut-re($lemma),
+                                   'sten$'))">
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
                         select="$adjective-class-mapping/class[@umlaut='yes']
@@ -270,9 +289,10 @@
                         select="$lemma"/>
       </xsl:call-template>
     </xsl:when>
-    <xsl:when test="substring-after(translate(normalize-space($superlative),'äöü',
-                                                                            'aou'),
-                                    $lemma)='esten'">
+    <xsl:when test="matches($superlative,
+                            concat('^',
+                                   n:umlaut-re($lemma),
+                                   'esten$'))">
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
                         select="$adjective-class-mapping/class[@umlaut='yes']
@@ -325,9 +345,10 @@
     <xsl:otherwise>
       <xsl:variable name="plural"
                     select="concat('-',
-                                   substring-after(translate(normalize-space(dwds:Plural[1]),'äöü',
-                                                                                             'aou'),
-                                                   $lemma))"/>
+                                   replace(normalize-space(dwds:Plural[1]),
+                                           concat('^',
+                                                  n:umlaut-re($lemma)),
+                                           ''))"/>
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
                         select="$noun-class-mapping/class[@umlaut='yes']
