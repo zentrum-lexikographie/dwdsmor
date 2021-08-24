@@ -1,3 +1,7 @@
+2021-08-24:
+
+* add initial support for affixes
+
 2021-08-23:
 
 * add adjective class mappings
