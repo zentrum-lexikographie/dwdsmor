@@ -1,9 +1,12 @@
 SHELL := /bin/bash
 
-all: clean SMORLemma/smor.a SMORLemma/smor.ca test
+all: clean sfst/build SMORLemma/smor.a SMORLemma/smor.ca test
+
+sfst/build: | sfst
+	make -C $<
 
 SMORLemma/smor.a SMORLemma/smor.ca: SMORLemma/lexicon/wiki-lexicon.xml
-	$(MAKE) -C SMORLemma
+	$(MAKE) -C SMORLemma -f ../Makefile.SMORLemma
 
 SMORLemma/lexicon/wiki-lexicon.xml:
 	python -m dwdsmor.lexicon.cli --limit=1000 wb $@
