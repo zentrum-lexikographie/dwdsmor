@@ -14,8 +14,9 @@ SMORLemma/lexicon/wiki-lexicon.xml:
 setup: pip-install
 
 .PHONY: pip-install
-pip-install:
-	pip install -e '.[cli,test]'
+pip-install: requirements.txt
+	pip install --upgrade pip
+	pip install -r $<
 
 # ---------------------------------------- Tests
 .PHONY: test

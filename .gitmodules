@@ -5,3 +5,8 @@
 [submodule "SMORLemma"]
 	path = SMORLemma
 	url = git@github.com:rsennrich/SMORLemma.git
+	branch = lemmatiser
+[submodule "sfst"]
+	path = sfst
+	url = git@github.com:gremid/sfst.git
+	branch = generate
