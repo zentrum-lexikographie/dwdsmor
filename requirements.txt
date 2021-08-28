@@ -1,2 +1,1 @@
-./sfst
 -e .[cli,test]

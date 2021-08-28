@@ -5,18 +5,18 @@ _SFST/SMOR/DWDS-based German morphology_
 ## Prerequisites
 
 * [GNU/Linux](https://www.debian.org/) (tested on Debian/Buster)
-* [Python v3](https://www.python.org/)
-* [SFST](http://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a toolbox for the
-  implementation of morphological analysers and other tools which are based on
-  finite state transducer technology
+* [Python v3 (including dev headers)](https://www.python.org/)
+* [CMake v3.1](https://cmake.org/)
+* [Flex v2.6.4](https://github.com/westes/flex)
+* [Bison](https://www.gnu.org/software/bison/)
 * [xsltproc](http://xmlsoft.org/xslt/)
 
 ## Setup
 
-Install build prerequisites:
+Install build prerequisites, i. e. on a recent Debian GNU/Linux:
 
 ```sh
-apt install build-essential cmake libsfst1-1.4-dev xsltproc
+apt install build-essential python3 libpython3-dev cmake bison flex xsltproc
 ```
 
 ### Git Submodules
