@@ -2,10 +2,6 @@
 # Andreas Nolda 2021-08-19
 
 .venv/
-SMORLemma/
-dwdsmor/
-tests/
-wb/
 *~
 \#*
 
@@ -14,6 +10,3 @@ __pycache__
 
 .dir-locals.el
 .python-version
-
-SMORLemma/
-wb/
