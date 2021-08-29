@@ -1,0 +1,5 @@
+clojure/
+clojure-install.sh
+
+.cpcache/
+.nrepl-port

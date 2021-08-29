@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds">
+  <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+        <Pattern>[%boldWhite(%d)][%boldBlue(%-5level)][%boldGreen(%-20.20logger{20})] - %msg%n%rEx</Pattern>
+    </encoder>
+  </appender>
+  <logger name="dwdsmor" level="INFO"/>
+  <root level="INFO">
+    <appender-ref ref="CONSOLE"/>
+  </root>
+</configuration>
