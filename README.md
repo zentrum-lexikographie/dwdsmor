@@ -6,17 +6,17 @@ _SFST/SMOR/DWDS-based German morphology_
 
 * [GNU/Linux](https://www.debian.org/) (tested on Debian/Buster)
 * [Python v3 (including dev headers)](https://www.python.org/)
+* [Java >= v8](https://openjdk.java.net/)
 * [CMake v3.1](https://cmake.org/)
 * [Flex v2.6.4](https://github.com/westes/flex)
 * [Bison](https://www.gnu.org/software/bison/)
-* [xsltproc](http://xmlsoft.org/xslt/)
 
 ## Setup
 
 Install build prerequisites, i. e. on a recent Debian GNU/Linux:
 
 ```sh
-apt install build-essential python3 libpython3-dev cmake bison flex xsltproc
+apt install build-essential python3 libpython3-dev cmake bison flex
 ```
 
 ### Git Submodules
@@ -52,6 +52,26 @@ make setup
 
 ```sh 
 make
+```
+
+## Building on HLRN-IV („Lise”)
+
+Prepare the build environment On the login host:
+
+```sh
+/scratch/usr/bembbaw0/dwdsmor/hlrn/setup
+```
+
+Upload a lexicon:
+
+```sh
+scp $LEXICON bembbaw0@blogin.hlrn.de:/scratch/usr/bembbaw0/dwdsmor/SMORLemma/lexicon/lexicon
+```
+
+Run the build on a compute host:
+
+```sh
+srun /scratch/usr/bembbaw0/dwdsmor/hlrn/build 
 ```
 
 ## XSLT-based testbed for lexicon conversion
