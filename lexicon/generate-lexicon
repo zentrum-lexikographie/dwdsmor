@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec clojure/bin/clojure -M -m dwdsmor.lexicon $@

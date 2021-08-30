@@ -1,16 +1,10 @@
 #!/bin/bash
 
-module load cmake/3.16.2 gcc/9.3.0
-export CC=$(which gcc)
-export CXX=$(which g++)
-
+# Bulds happen in the WORK area
 base_dir=/scratch/usr/bembbaw0
-flex_dir=$base_dir/flex-2.6.4 
-export PATH=$flex_dir/src:$PATH
+pushd $base_dir/dwdsmor
 
-dwdsmor_dir=$base_dir/dwdsmor
-pushd $dwdsmor_dir
-
+# Check that a lexicon has been provided/uploaded
 if [ ! -f SMORLemma/lexicon/lexicon ]; then
     echo "No lexicon provided!"
     exit 1

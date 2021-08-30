@@ -1,15 +1,18 @@
 #!/bin/bash
 
+# Prepare build environment in WORK area
+base_dir=/scratch/usr/bembbaw0
+pushd $base_dir
+
+# SFST needs cmake v3.1 and a recent C++ compiler; both are available via the
+# module system
 module load cmake/3.16.2 gcc/9.3.0
 export CC=$(which gcc)
 export CXX=$(which g++)
 
-base_dir=/scratch/usr/bembbaw0
-dwdsmor_dir=$base_dir/dwdsmor
+# SFST needs flex v2.6.4; HLRN only provides v2.5, so we need to install from
+# source.
 flex_dir=$base_dir/flex-2.6.4 
-
-pushd $base_dir
-
 if [ ! -d $flex_dir ]; then
     curl -LO https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz
     tar xzf flex-2.6.4.tar.gz
@@ -17,14 +20,14 @@ if [ ! -d $flex_dir ]; then
     ./configure && make
     popd
 fi
-
 export PATH=$flex_dir/src:$PATH
 
-pushd $dwdsmor_dir
+pushd $base_dir/dwdsmor
 
-rm -rf .venv &>/dev/null
-python -m venv .venv
+# TODO: consider conda environments
+if [ ! -d .venv ]; then
+    python -m venv .venv
+fi
 source .venv/bin/activate
 
-make setup
-make sfst/build
+exec make setup

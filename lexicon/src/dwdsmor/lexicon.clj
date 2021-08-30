@@ -1,4 +1,5 @@
 (ns dwdsmor.lexicon
+  "DWDSmor lexicon generation."
   (:require [clojure.java.io :as io]
             [clojure.string :as str]
             [clojure.tools.cli :refer [parse-opts]]
@@ -9,11 +10,18 @@
   (:import [ch.qos.logback.classic Level Logger]
            java.io.File
            java.text.Collator
+           java.time.Duration
            java.util.Locale
            javax.xml.transform.stream.StreamSource
            net.sf.saxon.Configuration
+           net.sf.saxon.lib.ErrorReporter
            [net.sf.saxon.s9api MessageListener2 Processor SaxonApiException XdmDestination XdmNode XsltCompiler XsltExecutable]
            org.slf4j.LoggerFactory))
+
+;; ## XSLT/Saxon-HE
+;;
+;; We use [Saxon-HE](https://www.saxonica.com/) as a runtime environment for
+;; the XSLT-2.0-based extraction logic.
 
 (def ^Processor saxon-processor
   (Processor. (Configuration.)))
@@ -21,9 +29,40 @@
 (def ^XsltCompiler saxon-xslt-compiler
   (.newXsltCompiler saxon-processor))
 
-(defn compile-xslt
-  [s]
-  (.compile saxon-xslt-compiler (StreamSource. s)))
+(defn ^XsltExecutable compile-xslt
+  [file-path]
+  (.compile saxon-xslt-compiler (StreamSource. file-path)))
+
+(def xslt-message-listener
+  "Suppress error reporting on System/err and divert XSLT messages to the logger."
+  (proxy [ErrorReporter MessageListener2] []
+    (report [_])
+    (message [^XdmNode content _ _ _]
+      (log/debug (.getStringValue content)))))
+
+(defn xslt-fn
+  "Derive XSLT transformers from compiled stylesheet."
+  [{{:keys [^File xslt]} :options}]
+  (let [^XsltExecutable xslt (.compile saxon-xslt-compiler (StreamSource. xslt))]
+    (fn [^File article]
+      (try
+        (let [file-name   (.getName article)
+              destination (XdmDestination.)
+              transformer (doto (.load30 xslt)
+                            (.setMessageListener xslt-message-listener)
+                            (.setErrorReporter xslt-message-listener))
+              _           (.. transformer
+                              (transform (StreamSource. article) destination))
+              entries     (.. destination (getXdmNode) (getStringValue))
+              entries     (map str/trim (str/split-lines entries))]
+          (doseq [entry entries]
+            (log/debugf "%s -> %s" file-name entry))
+          entries)
+        (catch SaxonApiException e
+          (log/warnf
+           "XSLT error :: %s: %s " (.getPath article) (.getMessage e)))))))
+
+;; ## Command Line Interface
 
 (def cli-options
   [["-x" "--xslt XSLT"
@@ -32,12 +71,14 @@
    ["-o" "--output OUTPUT"
     :desc "Path of the file the generated lexicon is written to"
     :parse-fn io/file]
+   ["-s" "--smorlemma-lexica"
+    :desc "include additional lexica from SMORLemma"]
    ["-l" "--limit MAX_ENTRIES"
     :desc "Limit the number of extracted lexicon entries for testing"
     :parse-fn #(Integer/parseInt %)
     :validate [pos? "Limit has to be > 0"]]
    ["-d" "--debug"
-    :desc "Print debugging information"]
+    :desc "Print debugging information (including message from XSLT)"]
    ["-h" "--help"]])
 
 (defn usage
@@ -65,25 +106,25 @@
   ([status]
    (System/exit status))
   ([status msg]
-   (log/error msg)
+   (println msg)
    (System/exit status)))
 
 (defn parse-args
+  "Parses command line arguments and checks for required parameters."
   [args]
   (let [{:keys [options errors] :as opts} (parse-opts args cli-options)
         {:keys [xslt output]}             options]
     (cond
       (:help options) (exit 0 (usage opts))
-      (seq errors)    (exit 1 (error-msg opts))
-      (nil? xslt)     (exit 1 "No XSLT stylesheet specified")
-      (nil? output)   (exit 1 "No output file specified"))
+      (seq errors)    (exit 1 (error-msg errors))
+      (nil? xslt)     (exit 1 (error-msg ["No XSLT stylesheet specified."]))
+      (nil? output)   (exit 1 (error-msg ["No output file specified."])))
     opts))
 
-(defn configure-logging!
-  [{{:keys [debug]} :options}]
-  (let [^Logger logger (LoggerFactory/getLogger "dwdsmor")]
-    (when debug
-      (.setLevel logger Level/DEBUG))))
+;; ## Input file handling
+;;
+;; Input files are provided as paths to individual files or directory paths,
+;; which are recursively scanned for descendant files with `.xml` extension.
 
 (defn xml-file?
   [^File f]
@@ -102,53 +143,48 @@
   [{files :arguments}]
   (sort (mapcat file->xml-docs (map io/file files))))
 
-(def xslt-message-listener
-  (proxy [MessageListener2] []
-    (message [^XdmNode content _ _ _]
-      (log/debug (.getStringValue content)))))
-
-(defn xslt-fn
-  [{{:keys [^File xslt]} :options}]
-  (let [^XsltExecutable xslt (.compile saxon-xslt-compiler (StreamSource. xslt))]
-    (fn [^File article]
-      (log/debugf "< %s" (.getPath article))
-      (try
-        (let [destination (XdmDestination.)
-              transformer (doto (.load30 xslt)
-                            (.setMessageListener xslt-message-listener))
-              _           (.. transformer
-                              (transform (StreamSource. article) destination))
-              entries     (.. destination (getXdmNode) (getStringValue))
-              entries     (map str/trim (str/split-lines entries))]
-          (doseq [entry entries] (log/debugf "> %s" entry))
-          entries)
-        (catch SaxonApiException e
-          (log/errorf e "XSLT error while processing %s" (.getPath article)))))))
 
 (def sort-key
+  "Output (lexicon entries) is sorted according to German locale and case
+  insensitive."
   (let [collator (doto (Collator/getInstance Locale/GERMAN)
                    (.setStrength Collator/PRIMARY))]
     (fn [s] (.getCollationKey collator s))))
 
+(defn configure-logging!
+  "Translates `--debug` CLI option into DEBUG-level logging."
+  [{{:keys [debug]} :options}]
+  (let [^Logger logger (LoggerFactory/getLogger "dwdsmor")]
+    (when debug
+      (.setLevel logger Level/DEBUG))))
+
 (defn -main
   [& args]
-  (let [args     (parse-args args)]
+  (let [start (System/currentTimeMillis)
+        args  (parse-args args)]
     (configure-logging! args)
     (try
       (let [articles (article-files args)
+            _        (log/infof "Extracting lexicon entries from %d file(s)"
+                                (count articles))
             xslt     (xslt-fn args)
-            _        (log/info "Extracting lexicon entries")
             entries  (apply concat (cpl/upmap (cp/ncpus) xslt articles))
             limit    (get-in args [:options :limit])
             entries  (vec (cond->> entries limit (take limit)))
             _        (log/info "Sorting lexicon entries and removing duplicates")
             entries  (dedupe (sort-by sort-key entries))
-            _        (log/info "Prepending SMORLemma lexica")
-            entries  (concat smorlemma/lexicon entries)
+            entries  (concat
+                      (when (get-in args [:options :smorlemma-lexica])
+                        (log/info "Prepending SMORLemma lexica")
+                        smorlemma/lexicon)
+                      entries)
             _        (log/info "Writing lexicon entries")
             output   (get-in args [:options :output])]
         (with-open [w (io/writer output :encoding "UTF-8")]
           (doseq [chunk (interpose "\n" entries)] (.write w chunk))))
+      (let [stop     (System/currentTimeMillis)
+            duration (Duration/ofMillis (- stop start))]
+        (log/infof "Generated lexicon in %s" duration))
       (catch Throwable t
         (log/error t "Error while generating lexicon")
         (exit 4)))))

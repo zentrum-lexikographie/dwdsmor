@@ -1,25 +1,7 @@
 SHELL := /bin/bash
 
-all: sfst/build SMORLemma/smor.a SMORLemma/smor.ca
-
-sfst/build:
-	make -C sfst
-
-SMORLemma/lexicon/lexicon:
-	$(MAKE) -C lexicon
-
-SMORLemma/smor.a SMORLemma/smor.ca: SMORLemma/lexicon/lexicon
+SMORLemma/smor.a SMORLemma/smor.ca: sfst/build SMORLemma/lexicon/lexicon
 	$(MAKE) -C SMORLemma -f ../Makefile.SMORLemma
-
-# ---------------------------------------- Project setup
-
-.PHONY: setup
-setup: pip-install
-
-.PHONY: pip-install
-pip-install: requirements.txt
-	pip install --upgrade pip
-	pip install -r $<
 
 # ---------------------------------------- Tests
 .PHONY: test
@@ -30,7 +12,20 @@ test:
 
 .PHONY: clean
 clean:
-	$(RM) SMORLemma/lexicon/lexicon SMORLemma/*.a SMORLemma/*.ca
+	$(RM) SMORLemma/*.a SMORLemma/*.ca
+
+# ---------------------------------------- Project setup
+
+.PHONY: setup
+setup: pip-install sfst/build
+
+.PHONY: pip-install
+pip-install: requirements.txt
+	pip install --upgrade pip
+	pip install -r $<
+
+sfst/build:
+	make -C sfst
 
 # ---------------------------------------- pyenv support
 
