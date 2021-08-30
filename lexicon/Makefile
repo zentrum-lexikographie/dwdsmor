@@ -9,7 +9,7 @@ clean:
 
 ../SMORLemma/lexicon/lexicon: clojure
 	clojure/bin/clojure -M -m dwdsmor.lexicon\
-		-x ../share/dwds2smor.xsl\
+		-x ../share/dwds2smorlemma.xsl\
 		-o $@\
 		wb/WDG/ma/Mann-E_m_993.xml\
 		wb/WDG/fr/Frau-E_f_7828.xml
