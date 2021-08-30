@@ -5,7 +5,8 @@
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:dwds="http://www.dwds.de/ns/1.0">
+                xmlns:dwds="http://www.dwds.de/ns/1.0"
+                xmlns:n="http://andreas.nolda.org/ns/lib">
 
 <xsl:include href="mappings.xsl"/>
 
@@ -67,10 +68,13 @@
                 select="normalize-space(dwds:Wortklasse)"/>
   <xsl:choose>
     <xsl:when test="$pos='Verb'">
-      <xsl:call-template name="verb-stem">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:call-template>
+      <xsl:variable name="stem">
+        <xsl:call-template name="verb-stem">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+        </xsl:call-template>
+      </xsl:variable>
+      <xsl:value-of select="n:pair($lemma,$stem)"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$lemma"/>

@@ -2,6 +2,7 @@
 
 * add stylesheet for SMORLemma
 * add more verb class mappings
+* add `n:pair` function for generating colon-separated pairs
 
 2021-08-24:
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- mappings.xsl -->
-<!-- Version 0.2 -->
+<!-- Version 0.3 -->
 <!-- Andreas Nolda 2021-08-30 -->
 
 <xsl:stylesheet version="2.0"
@@ -90,6 +90,51 @@
       <xsl:sequence select="$argument"/>
     </xsl:otherwise>
   </xsl:choose>
+</xsl:function>
+
+<xsl:function name="n:pair">
+  <xsl:param name="argument1"/>
+  <xsl:param name="argument2"/>
+  <xsl:variable name="value">
+    <xsl:if test="string-length($argument1)&gt;0 or
+                  string-length($argument2)&gt;0">
+      <xsl:variable name="substring1"
+                    select="substring($argument1,1,1)"/>
+      <xsl:variable name="substring2"
+                    select="substring($argument2,1,1)"/>
+      <xsl:variable name="string1">
+        <xsl:choose>
+          <xsl:when test="string-length($substring1)=0">
+            <xsl:text>&lt;&gt;</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$substring1"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:variable name="string2">
+        <xsl:choose>
+          <xsl:when test="string-length($substring2)=0">
+            <xsl:text>&lt;&gt;</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$substring2"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:choose>
+        <xsl:when test="$string1=$string2">
+          <xsl:value-of select="$string1"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="concat($string1,':',$string2)"/>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:value-of select="n:pair(substring($argument1,2),
+                                   substring($argument2,2))"/>
+    </xsl:if>
+  </xsl:variable>
+  <xsl:sequence select="$value"/>
 </xsl:function>
 
 <xsl:template name="verb-stem">
