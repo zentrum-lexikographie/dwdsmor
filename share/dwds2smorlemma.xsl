@@ -26,6 +26,7 @@
                   select="normalize-space(dwds:Schreibung[1])"/>
     <xsl:variable name="pos"
                   select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
+    <xsl:text>&lt;Stem&gt;</xsl:text>
     <xsl:if test="$pos='Verb'">
       <xsl:apply-templates select="dwds:Grammatik"
                            mode="participle">
@@ -34,7 +35,7 @@
       </xsl:apply-templates>
     </xsl:if>
     <xsl:apply-templates select="dwds:Grammatik"
-                         mode="stem">
+                         mode="form">
       <xsl:with-param name="lemma"
                       select="$lemma"/>
     </xsl:apply-templates>
@@ -60,11 +61,10 @@
 </xsl:template>
 
 <xsl:template match="dwds:Grammatik"
-              mode="stem">
+              mode="form">
   <xsl:param name="lemma"/>
   <xsl:variable name="pos"
                 select="normalize-space(dwds:Wortklasse)"/>
-  <xsl:text>&lt;Stem&gt;</xsl:text>
   <xsl:choose>
     <xsl:when test="$pos='Verb'">
       <xsl:call-template name="verb-stem">
@@ -178,7 +178,7 @@
   </xsl:variable>
   <xsl:variable name="participle"
                 select="normalize-space(dwds:Partizip_II)"/>
-  <xsl:if test="$participle=concat('ge',$stem,'t')">
+  <xsl:if test="matches($participle,concat('^ge',$stem,'e?t$'))">
     <xsl:text>&lt;ge&gt;</xsl:text>
   </xsl:if>
 </xsl:template>

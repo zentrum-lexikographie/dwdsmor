@@ -39,6 +39,11 @@
                       select="$lemma"/>
     </xsl:apply-templates>
     <xsl:apply-templates select="dwds:Grammatik"
+                         mode="form">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:apply-templates>
+    <xsl:apply-templates select="dwds:Grammatik"
                          mode="pos">
       <xsl:with-param name="lemma"
                       select="$lemma"/>
@@ -88,6 +93,13 @@
     <!-- TODO: add support for <Deriv_Stems> and <Kompos_Stems> -->
   </xsl:choose>
   <xsl:text>_Stems&gt;</xsl:text>
+</xsl:template>
+
+<xsl:template match="dwds:Grammatik"
+              mode="form">
+  <xsl:param name="lemma"/>
+  <xsl:variable name="pos"
+                select="normalize-space(dwds:Wortklasse)"/>
   <xsl:choose>
     <xsl:when test="$pos='Verb'">
       <xsl:call-template name="verb-stem">
@@ -189,7 +201,7 @@
   </xsl:variable>
   <xsl:variable name="participle"
                 select="normalize-space(dwds:Partizip_II)"/>
-  <xsl:if test="$participle=concat('ge',$stem,'t')">
+  <xsl:if test="matches($participle,concat('^ge',$stem,'e?t$'))">
     <xsl:text>&lt;ge&gt;</xsl:text>
   </xsl:if>
 </xsl:template>
