@@ -1,15 +1,20 @@
 DWDSmor
 =======
 
-This repository provides an XSLT 2 stylesheet for generating SMOR-compatible
-lexicons from XML files in the DWDS format.
+This repository provides XSLT 2 stylesheets for generating lexicons compatible
+with SMOR and SMORLemma from XML files in the DWDS format.
 
-The stylesheet has been tested to work with Saxon 9.9, as provided by the Debian
-package `libsaxonhe-java`. On Debian, it may be run as follows:
+The stylesheets have been tested to work with Saxon 9.9, as provided by the Debian
+package `libsaxonhe-java`. On Debian, they may be run as follows:
 
     java -cp /usr/share/java/Saxon-HE.jar net.sf.saxon.Transform <XML file> share/dwds2smor.xsl
 
-Caveat: the stylesheet is meant as proof of concept and currently supports only
+    java -cp /usr/share/java/Saxon-HE.jar net.sf.saxon.Transform <XML file> share/dwds2smorlemma.xsl
+
+Note that both stylesheets include the stylesheet `share/mappings.xsl` with
+common mappings, functions, and templates.
+
+Caveat: the stylesheets are meant as proof of concept and currently support only
 a limited range of DWDS articles, such as "Mann", "Frau", "Kind", "alt", and
 "orgeln".
 

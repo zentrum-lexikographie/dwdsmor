@@ -1,3 +1,7 @@
+2021-08-30:
+
+* add stylesheet for SMORLemma
+
 2021-08-24:
 
 * port stylesheet to XSLT 2
