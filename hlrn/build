@@ -1,0 +1,20 @@
+#!/bin/bash
+
+module load cmake/3.16.2 gcc/9.3.0
+export CC=$(which gcc)
+export CXX=$(which g++)
+
+base_dir=/scratch/usr/bembbaw0
+flex_dir=$base_dir/flex-2.6.4 
+export PATH=$flex_dir/src:$PATH
+
+dwdsmor_dir=$base_dir/dwdsmor
+pushd $dwdsmor_dir
+
+if [ ! -f SMORLemma/lexicon/lexicon ]; then
+    echo "No lexicon provided!"
+    exit 1
+fi
+
+source .venv/bin/activate
+make

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+module load cmake/3.16.2 gcc/9.3.0
+export CC=$(which gcc)
+export CXX=$(which g++)
+
+base_dir=/scratch/usr/bembbaw0
+dwdsmor_dir=$base_dir/dwdsmor
+flex_dir=$base_dir/flex-2.6.4 
+
+pushd $base_dir
+
+if [ ! -d $flex_dir ]; then
+    curl -LO https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz
+    tar xzf flex-2.6.4.tar.gz
+    pushd $flex_dir
+    ./configure && make
+    popd
+fi
+
+export PATH=$flex_dir/src:$PATH
+
+pushd $dwdsmor_dir
+
+rm -rf .venv &>/dev/null
+python -m venv .venv
+source .venv/bin/activate
+
+make setup
+make sfst/build
