@@ -2,8 +2,8 @@ SHELL := /bin/bash
 
 all: clean sfst/build SMORLemma/smor.a SMORLemma/smor.ca
 
-sfst/build: | sfst
-	make -C $<
+sfst/build:
+	make -C sfst
 
 SMORLemma/lexicon/lexicon:
 	$(MAKE) -C lexicon
