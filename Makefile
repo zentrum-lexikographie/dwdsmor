@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-all: clean sfst/build SMORLemma/smor.a SMORLemma/smor.ca
+all: sfst/build SMORLemma/smor.a SMORLemma/smor.ca
 
 sfst/build:
 	make -C sfst
@@ -30,12 +30,7 @@ test:
 
 .PHONY: clean
 clean:
-	$(RM) -r\
-		SMORLemma/lexicon/wiki-lexicon.xml\
-		SMORLemma/lexicon/lexicon\
-		SMORLemma/lexicon/__pycache__\
-		SMORLemma/*.a SMORLemma/*.ca\
-		build *.egg-info *.cpython-38-x86_64-linux-gnu.so
+	$(RM) SMORLemma/lexicon/lexicon SMORLemma/*.a SMORLemma/*.ca
 
 # ---------------------------------------- pyenv support
 
