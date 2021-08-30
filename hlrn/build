@@ -1,8 +1,14 @@
 #!/bin/bash
 
-# Bulds happen in the WORK area
+# Builds happen in the WORK area
 base_dir=/scratch/usr/bembbaw0
 pushd $base_dir/dwdsmor
+
+# SFST needs cmake v3.1 and a recent C++ compiler; both are available via the
+# module system
+module load cmake/3.16.2 gcc/9.3.0
+export CC=$(which gcc)
+export CXX=$(which g++)
 
 # Check that a lexicon has been provided/uploaded
 if [ ! -f SMORLemma/lexicon/lexicon ]; then
