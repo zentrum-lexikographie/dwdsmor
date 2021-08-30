@@ -18,8 +18,8 @@ def smor_lemma():
 
 
 @fixture
-def lexicon():
-    with (smor_lemma_dir / 'lexicon' / 'wiki-lexicon.xml').open() as f:
+def irregular_nouns():
+    with (smor_lemma_dir / 'lexicon' / 'nouns.irreg.xml').open() as f:
         lexicon_xml = ET.parse(f)
         return list([
             {'lemma': entry.find('Lemma').text,
@@ -32,9 +32,9 @@ def lexicon():
 
 
 @fixture
-def lexicon_sample(lexicon):
+def lexicon_sample(irregular_nouns):
     sample_size = 100
-    if len(lexicon) <= sample_size:
-        return lexicon
+    if len(irregular_nouns) <= sample_size:
+        return irregular_nouns
     else:
-        return random.sample(lexicon, sample_size)
+        return random.sample(irregular_nouns, sample_size)

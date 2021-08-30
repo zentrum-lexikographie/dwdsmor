@@ -1,3 +1,4 @@
+# -*- mode: makefile-gmake -*-
 
 SOURCES = morph.fst morph2.fst basemorph.fst smor-lfg.fst basesmor.fst \
 	smor.fst smor-cap.fst smor-uc.fst smor-ss.fst smor-ascii.fst \
@@ -42,6 +43,11 @@ smor-full.a: morph-lemma.a smor-guesser.a
 
 lexicon/lexicon: lexicon/adj.irreg.lex lexicon/adpositions.closed.lex lexicon/nouns.irreg.xml lexicon/verbs.irreg.lex lexicon/affix.lex lexicon/compile_lexicon.py lexicon/wiki-lexicon.xml
 	python lexicon/compile_lexicon.py
+
+lexicon/wiki-lexicon.xml:
+	curl\
+		https://pub.cl.uzh.ch/users/sennrich/zmorge/lexica/zmorge-20150315.xml.zip |\
+		funzip >$@
 
 %.a: %.fst
 	../sfst/build/src/fst-compiler-utf8 $< $@

@@ -10,3 +10,7 @@ __pycache__
 
 .dir-locals.el
 .python-version
+
+lexicon/wb/
+sfst/
+SMORLemma/

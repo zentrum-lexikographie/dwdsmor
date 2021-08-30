@@ -4,7 +4,8 @@
             [clojure.tools.cli :refer [parse-opts]]
             [clojure.tools.logging :as log]
             [com.climate.claypoole :as cp]
-            [com.climate.claypoole.lazy :as cpl])
+            [com.climate.claypoole.lazy :as cpl]
+            [dwdsmor.smorlemma :as smorlemma])
   (:import [ch.qos.logback.classic Level Logger]
            java.io.File
            java.text.Collator
@@ -31,6 +32,10 @@
    ["-o" "--output OUTPUT"
     :desc "Path of the file the generated lexicon is written to"
     :parse-fn io/file]
+   ["-l" "--limit MAX_ENTRIES"
+    :desc "Limit the number of extracted lexicon entries for testing"
+    :parse-fn #(Integer/parseInt %)
+    :validate [pos? "Limit has to be > 0"]]
    ["-d" "--debug"
     :desc "Print debugging information"]
    ["-h" "--help"]])
@@ -95,7 +100,7 @@
 
 (defn article-files
   [{files :arguments}]
-  (mapcat file->xml-docs (map io/file files)))
+  (sort (mapcat file->xml-docs (map io/file files))))
 
 (def xslt-message-listener
   (proxy [MessageListener2] []
@@ -133,9 +138,13 @@
       (let [articles (article-files args)
             xslt     (xslt-fn args)
             _        (log/info "Extracting lexicon entries")
-            entries  (vec (apply concat (cpl/upmap (cp/ncpus) xslt articles)))
-            _        (log/info "Sorting lexicon entries")
-            entries  (sort-by sort-key entries)
+            entries  (apply concat (cpl/upmap (cp/ncpus) xslt articles))
+            limit    (get-in args [:options :limit])
+            entries  (vec (cond->> entries limit (take limit)))
+            _        (log/info "Sorting lexicon entries and removing duplicates")
+            entries  (dedupe (sort-by sort-key entries))
+            _        (log/info "Prepending SMORLemma lexica")
+            entries  (concat smorlemma/lexicon entries)
             _        (log/info "Writing lexicon entries")
             output   (get-in args [:options :output])]
         (with-open [w (io/writer output :encoding "UTF-8")]
