@@ -1,6 +1,7 @@
 2021-08-30:
 
 * add stylesheet for SMORLemma
+* add more verb class mappings
 
 2021-08-24:
 

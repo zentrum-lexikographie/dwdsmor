@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- mappings.xsl -->
-<!-- Version 0.1 -->
+<!-- Version 0.2 -->
 <!-- Andreas Nolda 2021-08-30 -->
 
 <xsl:stylesheet version="2.0"
@@ -64,6 +64,12 @@
   <class pos="Verb"
          past="-te"
          participle="-t">VVReg</class>
+  <class pos="Verb"
+         past="-ete"
+         participle="ge-et">VVReg</class>
+  <class pos="Verb"
+         past="-ete"
+         participle="-et">VVReg</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -273,6 +279,30 @@
                         select="$verb-class-mapping/class[@pos=$pos]
                                                          [@past='-te']
                                                          [@participle='-t']"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="$past=concat($stem,'ete') and
+                    $participle=concat('ge',$stem,'et')">
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="$verb-class-mapping/class[@pos=$pos]
+                                                         [@past='-ete']
+                                                         [@participle='ge-et']"/>
+        <xsl:with-param name="type">class</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="$past=concat($stem,'ete') and
+                    $participle=concat($stem,'et')">
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="$verb-class-mapping/class[@pos=$pos]
+                                                         [@past='-ete']
+                                                         [@participle='-et']"/>
         <xsl:with-param name="type">class</xsl:with-param>
         <xsl:with-param name="lemma"
                         select="$lemma"/>
