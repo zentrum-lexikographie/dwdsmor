@@ -18,6 +18,13 @@ def smor_lemma():
 
 
 @fixture
+def men_women():
+    return [
+        'Mann', 'Männer', 'Mannes', 'Männchen',
+        'Frau', 'Frauen', 'Fräulein'
+    ]
+
+@fixture
 def irregular_nouns():
     with (smor_lemma_dir / 'lexicon' / 'nouns.irreg.xml').open() as f:
         lexicon_xml = ET.parse(f)
