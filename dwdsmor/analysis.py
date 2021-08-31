@@ -227,7 +227,7 @@ def main(automaton, output_format, input, output):
         csv_writer = csv.writer(output)
         csv_writer.writerow(
             ["Word", "Analysis", "Lemma", "POS",
-             "Genus", "Numerus", "Casus", "Person" "Tempus"]
+             "Genus", "Numerus", "Casus", "Person", "Tempus"]
         )
         for word, analysis in zip(words, analyses):
             for a in analysis:
