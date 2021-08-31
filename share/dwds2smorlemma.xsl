@@ -22,42 +22,43 @@
 <xsl:template match="dwds:Artikel">
   <!-- generate one lexical entry per <Formangabe> -->
   <xsl:for-each select="dwds:Formangabe[not(normalize-space(dwds:Grammatik/dwds:Wortklasse)='Mehrwortausdruck')]">
-    <!-- for the sake of simplicity, consider only the first lemma specification -->
-    <xsl:variable name="lemma"
-                  select="normalize-space(dwds:Schreibung[1])"/>
-    <xsl:variable name="pos"
-                  select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
-    <xsl:text>&lt;Stem&gt;</xsl:text>
-    <xsl:if test="$pos='Verb'">
-      <xsl:apply-templates select="dwds:Grammatik"
-                           mode="participle">
+    <xsl:for-each select="dwds:Schreibung">
+      <xsl:variable name="lemma"
+                    select="normalize-space(.)"/>
+      <xsl:variable name="pos"
+                    select="normalize-space(../dwds:Grammatik/dwds:Wortklasse)"/>
+      <xsl:text>&lt;Stem&gt;</xsl:text>
+      <xsl:if test="$pos='Verb'">
+        <xsl:apply-templates select="../dwds:Grammatik"
+                             mode="participle">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+        </xsl:apply-templates>
+      </xsl:if>
+      <xsl:apply-templates select="../dwds:Grammatik"
+                           mode="form">
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:apply-templates>
-    </xsl:if>
-    <xsl:apply-templates select="dwds:Grammatik"
-                         mode="form">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-    </xsl:apply-templates>
-    <xsl:apply-templates select="dwds:Grammatik"
-                         mode="pos">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-    </xsl:apply-templates>
-    <xsl:text>&lt;base&gt;</xsl:text>
-    <xsl:apply-templates select="../dwds:Diachronie">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-    </xsl:apply-templates>
-    <xsl:if test="not($pos='Affix')">
-      <xsl:apply-templates select="dwds:Grammatik"
-                           mode="class">
+      <xsl:apply-templates select="../dwds:Grammatik"
+                           mode="pos">
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:apply-templates>
-    </xsl:if>
-  <xsl:text>&#xA;</xsl:text>
+      <xsl:text>&lt;base&gt;</xsl:text>
+      <xsl:apply-templates select="../../dwds:Diachronie">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:apply-templates>
+      <xsl:if test="not($pos='Affix')">
+        <xsl:apply-templates select="../dwds:Grammatik"
+                             mode="class">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+        </xsl:apply-templates>
+      </xsl:if>
+      <xsl:text>&#xA;</xsl:text>
+    </xsl:for-each>
   </xsl:for-each>
 </xsl:template>
 
