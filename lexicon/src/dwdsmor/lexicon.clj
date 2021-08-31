@@ -98,7 +98,7 @@
     ""]))
 
 (defn error-msg
-  [{:keys [errors] :as opts}]
+  [errors opts]
   (str "The following errors occurred while parsing your command:\n\n"
        (str/join \newline (conj errors "" (usage opts)))))
 
@@ -116,9 +116,9 @@
         {:keys [xslt output]}             options]
     (cond
       (:help options) (exit 0 (usage opts))
-      (seq errors)    (exit 1 (error-msg errors))
-      (nil? xslt)     (exit 1 (error-msg ["No XSLT stylesheet specified."]))
-      (nil? output)   (exit 1 (error-msg ["No output file specified."])))
+      (seq errors)    (exit 1 (error-msg errors opts))
+      (nil? xslt)     (exit 1 (error-msg ["No XSLT stylesheet specified."] opts))
+      (nil? output)   (exit 1 (error-msg ["No output file specified."] opts)))
     opts))
 
 ;; ## Input file handling
