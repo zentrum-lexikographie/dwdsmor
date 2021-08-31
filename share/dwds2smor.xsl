@@ -224,7 +224,7 @@
   </xsl:variable>
   <xsl:variable name="participle"
                 select="normalize-space(dwds:Partizip_II)"/>
-  <xsl:if test="matches($participle,concat('^ge',$stem,'e?t$'))">
+  <xsl:if test="matches($participle,concat('^ge',$stem,'e?[nt]$'))">
     <xsl:text>&lt;ge&gt;</xsl:text>
   </xsl:if>
 </xsl:template>

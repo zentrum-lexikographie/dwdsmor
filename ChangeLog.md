@@ -3,6 +3,7 @@
 * filter idioms
 * add support for multiple spellings
 * add support for multiple grammatical data
+* add support for participles of strong verbs
 * add more noun class mappings
 
 2021-08-30:
