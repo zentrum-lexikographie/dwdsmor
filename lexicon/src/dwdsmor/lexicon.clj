@@ -86,6 +86,7 @@
   (str/join
    \newline
    ["DWDSmor Lexicon Generation"
+    ""
     "Copyright (C) 2021 Berlin-Brandenburgische Akademie der Wissenschaften"
     ""
     "Usage: clojure -M -m dwdsmor.lexicon [options] <dir|*.xml>..."

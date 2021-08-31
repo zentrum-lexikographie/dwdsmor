@@ -24,6 +24,7 @@ def men_women():
         'Frau', 'Frauen', 'Fräulein'
     ]
 
+
 @fixture
 def irregular_nouns():
     with (smor_lemma_dir / 'lexicon' / 'nouns.irreg.xml').open() as f:

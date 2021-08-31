@@ -182,12 +182,7 @@ Once the setup succeeded and a lexicon is provided in
 make
 ```
 
-The resulting automata can be found in `SMORLemma/*.a` and `SMORLemma/*.ca` and
-tested via
-
-```sh 
-make test
-```
+The resulting automata can be found in `SMORLemma/*.a` and `SMORLemma/*.ca`.
 
 Depending on the size of the lexicon, this compilation process can take several
 hours, depending on available hardware resources, specifically on the amount of
@@ -198,7 +193,7 @@ reaches a state where the complete lexicon should be processed, the compilation
 could be moved to the
 [HLRN-IV](https://www.hlrn.de/supercomputer/hlrn-iv-system/) compute cluster.
 
-### Building on HLRN-IV's “Lise”
+### Build on HLRN-IV's “Lise”
 
 Lise's standard compute nodes provide 384 GB RAM, which speeds up FST
 compilation considerably in comparison to common PC hardware with smaller
@@ -227,6 +222,55 @@ You can check the status of running builds via
 
 ```sh 
 ssh bembbaw0@blogin.hlrn.de squeue -l --me
+```
+
+## Tests
+
+Compiled automata can be exercised by the test suite in `tests/`:
+
+```sh 
+make test
+```
+
+There is also a Python-based command line tool for performing morphological analyses of word forms:
+
+```plaintext 
+$ dwdsmor-analyze --help
+Usage: dwdsmor-analyze [OPTIONS] [INPUT] [OUTPUT]
+
+  DWDSmor Morphological Analysis
+
+  Copyright (C) 2021 Berlin-Brandenburgische Akademie der Wissenschaften
+
+  Feeds word forms – given as one form per line – into a finite state
+  transducer and outputs the results – valid paths through the transducer
+  representing possible analyses.
+
+  INPUT is the file with word forms to analyze (defaults to stdin).
+
+  OUTPUT is the file to write results to (defaults to stdout).
+
+Options:
+  -a, --automaton FILE  Path to the FST (compacted, i.e. *.ca)  [required]
+  --csv                 Output in CSV format (default)
+  --json                Output in JSON format
+  --help                Show this message and exit.
+```
+
+A sample run:
+
+```plaintext
+$ printf "Männern\nManns\nFrauen\nMänner" | dwdsmor-analyze -a SMORLemma/smor.ca
+Word,Analysis,Lemma,POS,Genus,Numerus,Casus,PersonTempus
+Männern,Ma:änn<+NN>:<><Masc>:<><>:e<>:r<Dat>:n<Pl>:<>,Mann,NN,Masc,Pl,Dat,,
+Manns,Mann<+NN>:<><Masc>:<><Gen>:<><Sg>:<><>:s,Mann,NN,Masc,Sg,Gen,,
+Frauen,Frau<+NN>:<><Fem>:<><>:e<>:n<Nom>:<><Pl>:<>,Frau,NN,Fem,Pl,Nom,,
+Frauen,Frau<+NN>:<><Fem>:<><>:e<>:n<Gen>:<><Pl>:<>,Frau,NN,Fem,Pl,Gen,,
+Frauen,Frau<+NN>:<><Fem>:<><>:e<>:n<Dat>:<><Pl>:<>,Frau,NN,Fem,Pl,Dat,,
+Frauen,Frau<+NN>:<><Fem>:<><>:e<>:n<Acc>:<><Pl>:<>,Frau,NN,Fem,Pl,Acc,,
+Männer,Ma:änn<+NN>:<><Masc>:<><>:e<>:r<Nom>:<><Pl>:<>,Mann,NN,Masc,Pl,Nom,,
+Männer,Ma:änn<+NN>:<><Masc>:<><>:e<>:r<Gen>:<><Pl>:<>,Mann,NN,Masc,Pl,Gen,,
+Männer,Ma:änn<+NN>:<><Masc>:<><>:e<>:r<Acc>:<><Pl>:<>,Mann,NN,Masc,Pl,Acc,,
 ```
 
 ## Contact

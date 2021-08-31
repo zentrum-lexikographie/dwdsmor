@@ -27,7 +27,7 @@ setup(
     },
     entry_points={
           'console_scripts': [
-              'dwdsmor=dwdsmor:main'
+              'dwdsmor-analyze=dwdsmor.analysis:main'
           ]
     }
 )
