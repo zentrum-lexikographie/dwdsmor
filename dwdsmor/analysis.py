@@ -14,18 +14,18 @@ Morpheme = namedtuple('Morpheme', ['word', 'lemma', 'tags'])
 
 
 class Analysis(tuple):
-    @staticmethod
-    def parse(analyses):
-        for analysis in analyses:
-            morphemes = Analysis._decode_analysis(analysis)
-            morphemes = Analysis._join_tags(morphemes)
-            morphemes = Analysis._join_untagged(morphemes)
-            yield Analysis(analysis, [Morpheme(**m) for m in morphemes])
-
     def __new__(cls, analysis, morphemes):
         inst = tuple.__new__(cls, morphemes)
         inst.analysis = analysis
         return inst
+
+    @cached_property
+    def word(self):
+        return ''.join(m.word for m in self)
+
+    @cached_property
+    def lemma(self):
+        return ''.join(m.lemma for m in self)
 
     @cached_property
     def tags(self):
@@ -36,14 +36,6 @@ class Analysis(tuple):
         for tag in self.tags:
             if tag.startswith('+'):
                 return tag[1:]
-
-    @cached_property
-    def word(self):
-        return ''.join(m.word for m in self)
-
-    @cached_property
-    def lemma(self):
-        return ''.join(m.lemma for m in self)
 
     _genus_tags = {'Fem': True, 'Neut': True, 'Masc': True}
     _numerus_tags = {'Sg': True, 'Pl': True}
@@ -164,6 +156,14 @@ class Analysis(tuple):
         return result
 
 
+def parse(analyses):
+    for analysis in analyses:
+        morphemes = Analysis._decode_analysis(analysis)
+        morphemes = Analysis._join_tags(morphemes)
+        morphemes = Analysis._join_untagged(morphemes)
+        yield Analysis(analysis, [Morpheme(**m) for m in morphemes])
+
+
 def create_transducer(file_name):
     try:
         smor = sfst.CompactTransducer(file_name)
@@ -217,7 +217,7 @@ def main(automaton, output_format, input, output):
     OUTPUT is the file to write results to (defaults to stdout).'''
     smor = create_transducer(click.format_filename(automaton))
     words = tuple(map(lambda l: l.strip(), input.readlines()))
-    analyses = tuple([Analysis.parse(smor.analyse(word)) for word in words])
+    analyses = tuple([parse(smor.analyse(word)) for word in words])
     if output_format == 'json':
         json.dump({
             word: [a.as_dict() for a in analysis]
