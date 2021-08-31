@@ -1,6 +1,7 @@
 2021-08-31:
 
 * filter idioms
+* add more noun class mappings
 
 2021-08-30:
 
