@@ -12,8 +12,7 @@ clean:
 		--xslt ../share/dwds2smorlemma.xsl\
 		--smorlemma-lexica\
 		--output $@\
-		wb/WDG/ma/Mann-E_m_993.xml\
-		wb/WDG/fr/Frau-E_f_7828.xml
+		wb
 
 clojure: clojure-install.sh
 	mkdir -p $@
