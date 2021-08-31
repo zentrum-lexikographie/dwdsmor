@@ -1,3 +1,7 @@
+2021-08-31:
+
+* filter idioms
+
 2021-08-30:
 
 * add stylesheet for SMORLemma

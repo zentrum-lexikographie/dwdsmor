@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 0.8 -->
-<!-- Andreas Nolda 2021-08-30 -->
+<!-- Version 0.9 -->
+<!-- Andreas Nolda 2021-08-31 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -21,7 +21,7 @@
 
 <xsl:template match="dwds:Artikel">
   <!-- generate one lexical entry per <Formangabe> -->
-  <xsl:for-each select="dwds:Formangabe">
+  <xsl:for-each select="dwds:Formangabe[not(normalize-space(dwds:Grammatik/dwds:Wortklasse)='Mehrwortausdruck')]">
     <!-- for the sake of simplicity, consider only the first lemma specification -->
     <xsl:variable name="lemma"
                   select="normalize-space(dwds:Schreibung[1])"/>
