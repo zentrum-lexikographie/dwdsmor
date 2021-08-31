@@ -11,6 +11,7 @@ clean:
 	@./generate-lexicon\
 		--xslt ../share/dwds2smorlemma.xsl\
 		--smorlemma-lexica\
+		--filter\
 		--output $@\
 		wb
 

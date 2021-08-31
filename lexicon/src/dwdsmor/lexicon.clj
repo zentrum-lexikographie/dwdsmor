@@ -73,6 +73,8 @@
     :parse-fn io/file]
    ["-s" "--smorlemma-lexica"
     :desc "include additional lexica from SMORLemma"]
+   ["-f" "--filter"
+    :desc "filter entries with tag <UNKNOWN>"]
    ["-l" "--limit MAX_ENTRIES"
     :desc "Limit the number of extracted lexicon entries for testing"
     :parse-fn #(Integer/parseInt %)
@@ -171,7 +173,10 @@
             xslt     (xslt-fn args)
             entries  (apply concat (cpl/upmap (cp/ncpus) xslt articles))
             limit    (get-in args [:options :limit])
-            entries  (vec (cond->> entries limit (take limit)))
+            filter?  (get-in args [:options :filter])
+            entries  (vec (cond->> entries
+                            filter? (remove #(re-seq #"<UNKNOWN>" %))
+                            limit   (take limit)))
             _        (log/info "Sorting lexicon entries and removing duplicates")
             entries  (dedupe (sort-by sort-key entries))
             entries  (concat
