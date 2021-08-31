@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- mappings.xsl -->
-<!-- Version 0.3 -->
-<!-- Andreas Nolda 2021-08-30 -->
+<!-- Version 0.4 -->
+<!-- Andreas Nolda 2021-08-31 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -185,6 +185,28 @@
   </xsl:choose>
 </xsl:template>
 
+<!-- grouping templates -->
+
+<!-- cf. https://stackoverflow.com/q/35525010 -->
+<xsl:template match="*[not(position()=last())]/*"
+              mode="grammar">
+  <xsl:param name="previous" as="element()*"/>
+  <xsl:apply-templates select="../following-sibling::*[1]/*"
+                       mode="grammar">
+    <xsl:with-param name="previous"
+                    select="$previous | ."/>
+  </xsl:apply-templates>
+</xsl:template>
+
+<xsl:template match="*[position()=last()]/*"
+              mode="grammar">
+  <xsl:param name="previous"/>
+  <dwds:Grammatik>
+    <xsl:copy-of select="$previous"/>
+    <xsl:copy-of select="."/>
+  </dwds:Grammatik>
+</xsl:template>
+
 <!-- mapping templates -->
 
 <xsl:template name="adjective-class">
@@ -267,10 +289,9 @@
   <xsl:variable name="genitive"
                 select="normalize-space(dwds:Genitiv)"/>
   <xsl:choose>
-    <!-- for the sake of simplicity, consider only the first plural specification -->
-    <xsl:when test="starts-with(dwds:Plural[1],'-')">
+    <xsl:when test="starts-with(dwds:Plural,'-')">
       <xsl:variable name="plural"
-                    select="normalize-space(dwds:Plural[1])"/>
+                    select="normalize-space(dwds:Plural)"/>
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
                         select="$noun-class-mapping/class[@umlaut='no']
@@ -286,7 +307,7 @@
     <xsl:otherwise>
       <xsl:variable name="plural"
                     select="concat('-',
-                                   replace(normalize-space(dwds:Plural[1]),
+                                   replace(normalize-space(dwds:Plural),
                                            concat('^',
                                                   n:umlaut-re($lemma)),
                                            ''))"/>

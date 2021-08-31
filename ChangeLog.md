@@ -2,6 +2,7 @@
 
 * filter idioms
 * add support for multiple spellings
+* add support for multiple grammatical data
 * add more noun class mappings
 
 2021-08-30:

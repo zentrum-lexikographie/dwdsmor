@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 0.10 -->
+<!-- Version 1.0 -->
 <!-- Andreas Nolda 2021-08-31 -->
 
 <xsl:stylesheet version="2.0"
@@ -24,39 +24,28 @@
 </xsl:template>
 
 <xsl:template match="dwds:Formangabe">
+  <xsl:variable name="data-by-name">
+    <xsl:for-each-group select="dwds:Grammatik/*"
+                        group-by="name()">
+      <xsl:element name="{name()}">
+        <xsl:copy-of select="current-group()"/>
+      </xsl:element>
+    </xsl:for-each-group>
+  </xsl:variable>
+  <xsl:variable name="data-by-group">
+    <xsl:apply-templates select="$data-by-name/*[1]/*"
+                         mode="grammar"/>
+  </xsl:variable>
   <xsl:for-each select="dwds:Schreibung">
     <xsl:variable name="lemma"
                   select="normalize-space(.)"/>
-    <xsl:variable name="pos"
-                  select="normalize-space(../dwds:Grammatik/dwds:Wortklasse)"/>
-    <xsl:if test="$pos='Verb'">
-      <xsl:apply-templates select="../dwds:Grammatik"
-                           mode="participle">
+    <xsl:variable name="etymology">
+      <xsl:apply-templates select="../../dwds:Diachronie">
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:apply-templates>
-    </xsl:if>
-    <xsl:apply-templates select="../dwds:Grammatik"
-                         mode="stem">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-    </xsl:apply-templates>
-    <xsl:apply-templates select="../dwds:Grammatik"
-                         mode="form">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-    </xsl:apply-templates>
-    <xsl:apply-templates select="../dwds:Grammatik"
-                         mode="pos">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-    </xsl:apply-templates>
-    <xsl:text>&lt;base&gt;</xsl:text>
-    <xsl:apply-templates select="../../dwds:Diachronie">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-    </xsl:apply-templates>
-    <xsl:if test="not($pos='Affix')">
+    </xsl:variable>
+    <xsl:variable name="formation">
       <!-- for the sake of simplicity, consider only the first formation specification -->
       <xsl:apply-templates select="../../dwds:Verweise[not(preceding-sibling::dwds:Verweise[@Typ or
                                                                                             dwds:Verweis[@Typ='Binnenglied' or
@@ -66,13 +55,44 @@
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:apply-templates>
-      <xsl:apply-templates select="../dwds:Grammatik"
-                           mode="class">
+    </xsl:variable>
+    <xsl:for-each select="$data-by-group/dwds:Grammatik">
+      <xsl:variable name="pos"
+                    select="normalize-space(dwds:Wortklasse)"/>
+      <xsl:if test="$pos='Verb'">
+        <xsl:apply-templates select="."
+                             mode="participle">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+        </xsl:apply-templates>
+      </xsl:if>
+      <xsl:apply-templates select="."
+                           mode="stem">
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:apply-templates>
-    </xsl:if>
-    <xsl:text>&#xA;</xsl:text>
+      <xsl:apply-templates select="."
+                           mode="form">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:apply-templates>
+      <xsl:apply-templates select="."
+                           mode="pos">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:apply-templates>
+      <xsl:text>&lt;base&gt;</xsl:text>
+      <xsl:value-of select="$etymology"/>
+      <xsl:if test="not($pos='Affix')">
+        <xsl:value-of select="$formation"/>
+        <xsl:apply-templates select="."
+                             mode="class">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+        </xsl:apply-templates>
+      </xsl:if>
+      <xsl:text>&#xA;</xsl:text>
+    </xsl:for-each>
   </xsl:for-each>
 </xsl:template>
 
