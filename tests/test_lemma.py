@@ -15,4 +15,5 @@ def test_lemma(smor_lemma, lexicon_sample):
 def test_men_women(smor_lemma, men_women):
     "Tests analysis of derivations of „Mann” and „Frau”"
     for lemma in men_women:
-        assert (len(tuple(Analysis.create(smor_lemma, lemma))) > 0), lemma
+        analyses = Analysis.parse(smor_lemma.analyse(lemma))
+        assert (len(tuple(analyses)) > 0), lemma

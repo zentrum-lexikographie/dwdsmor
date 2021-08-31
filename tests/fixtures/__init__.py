@@ -20,8 +20,8 @@ def smor_lemma():
 @fixture
 def men_women():
     return [
-        'Mann', 'Männer', 'Mannes', 'Männchen',
-        'Frau', 'Frauen', 'Fräulein'
+        'Frau', 'Frauen',
+        'Mann', 'Männer', 'Mannes'
     ]
 
 

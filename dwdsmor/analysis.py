@@ -15,8 +15,8 @@ Morpheme = namedtuple('Morpheme', ['word', 'lemma', 'tags'])
 
 class Analysis(tuple):
     @staticmethod
-    def create(transducer, word):
-        for analysis in transducer.analyse(word):
+    def parse(analyses):
+        for analysis in analyses:
             morphemes = Analysis._decode_analysis(analysis)
             morphemes = Analysis._join_tags(morphemes)
             morphemes = Analysis._join_untagged(morphemes)
@@ -217,7 +217,7 @@ def main(automaton, output_format, input, output):
     OUTPUT is the file to write results to (defaults to stdout).'''
     smor = create_transducer(click.format_filename(automaton))
     words = tuple(map(lambda l: l.strip(), input.readlines()))
-    analyses = tuple([Analysis.create(smor, word) for word in words])
+    analyses = tuple([Analysis.parse(smor.analyse(word)) for word in words])
     if output_format == 'json':
         json.dump({
             word: [a.as_dict() for a in analysis]
@@ -225,16 +225,16 @@ def main(automaton, output_format, input, output):
         }, output)
     elif output_format == 'csv':
         csv_writer = csv.writer(output)
-        csv_writer.writerow(
-            ["Word", "Analysis", "Lemma", "POS",
-             "Genus", "Numerus", "Casus", "Person", "Tempus"]
-        )
+        csv_writer.writerow([
+            "Word", "Analysis", "Lemma", "POS",
+            "Genus", "Numerus", "Casus", "Person", "Tempus"
+        ])
         for word, analysis in zip(words, analyses):
             for a in analysis:
-                csv_writer.writerow(
-                    [word, a.analysis, a.lemma, a.pos,
-                     a.genus, a.numerus, a.casus, a.person, a.tempus]
-                )
+                csv_writer.writerow([
+                    word, a.analysis, a.lemma, a.pos,
+                    a.genus, a.numerus, a.casus, a.person, a.tempus
+                ])
 
 
 if __name__ == '__main__':
