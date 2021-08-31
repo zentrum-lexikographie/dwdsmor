@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 0.9 -->
+<!-- Version 0.10 -->
 <!-- Andreas Nolda 2021-08-31 -->
 
 <xsl:stylesheet version="2.0"
@@ -19,58 +19,60 @@
 </xsl:template>
 
 <xsl:template match="dwds:Artikel">
-  <!-- generate one lexical entry per <Formangabe> -->
-  <xsl:for-each select="dwds:Formangabe[not(normalize-space(dwds:Grammatik/dwds:Wortklasse)='Mehrwortausdruck')]">
-    <xsl:for-each select="dwds:Schreibung">
-      <xsl:variable name="lemma"
-                    select="normalize-space(.)"/>
-      <xsl:variable name="pos"
-                    select="normalize-space(../dwds:Grammatik/dwds:Wortklasse)"/>
-      <xsl:if test="$pos='Verb'">
-        <xsl:apply-templates select="../dwds:Grammatik"
-                             mode="participle">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-        </xsl:apply-templates>
-      </xsl:if>
+  <!-- ignore idioms -->
+  <xsl:apply-templates select="dwds:Formangabe[not(normalize-space(dwds:Grammatik/dwds:Wortklasse)='Mehrwortausdruck')]"/>
+</xsl:template>
+
+<xsl:template match="dwds:Formangabe">
+  <xsl:for-each select="dwds:Schreibung">
+    <xsl:variable name="lemma"
+                  select="normalize-space(.)"/>
+    <xsl:variable name="pos"
+                  select="normalize-space(../dwds:Grammatik/dwds:Wortklasse)"/>
+    <xsl:if test="$pos='Verb'">
       <xsl:apply-templates select="../dwds:Grammatik"
-                           mode="stem">
+                           mode="participle">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:apply-templates>
+    </xsl:if>
+    <xsl:apply-templates select="../dwds:Grammatik"
+                         mode="stem">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:apply-templates>
+    <xsl:apply-templates select="../dwds:Grammatik"
+                         mode="form">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:apply-templates>
+    <xsl:apply-templates select="../dwds:Grammatik"
+                         mode="pos">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:apply-templates>
+    <xsl:text>&lt;base&gt;</xsl:text>
+    <xsl:apply-templates select="../../dwds:Diachronie">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:apply-templates>
+    <xsl:if test="not($pos='Affix')">
+      <!-- for the sake of simplicity, consider only the first formation specification -->
+      <xsl:apply-templates select="../../dwds:Verweise[not(preceding-sibling::dwds:Verweise[@Typ or
+                                                                                            dwds:Verweis[@Typ='Binnenglied' or
+                                                                                                         @Typ='Erstglied' or
+                                                                                                         @Typ='Grundform' or
+                                                                                                         @Typ='Letztglied']])]">
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:apply-templates>
       <xsl:apply-templates select="../dwds:Grammatik"
-                           mode="form">
+                           mode="class">
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:apply-templates>
-      <xsl:apply-templates select="../dwds:Grammatik"
-                           mode="pos">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:apply-templates>
-      <xsl:text>&lt;base&gt;</xsl:text>
-      <xsl:apply-templates select="../../dwds:Diachronie">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:apply-templates>
-      <xsl:if test="not($pos='Affix')">
-        <!-- for the sake of simplicity, consider only the first formation specification -->
-        <xsl:apply-templates select="../../dwds:Verweise[not(preceding-sibling::dwds:Verweise[@Typ or
-                                                                                              dwds:Verweis[@Typ='Binnenglied' or
-                                                                                                           @Typ='Erstglied' or
-                                                                                                           @Typ='Grundform' or
-                                                                                                           @Typ='Letztglied']])]">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-        </xsl:apply-templates>
-        <xsl:apply-templates select="../dwds:Grammatik"
-                             mode="class">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-        </xsl:apply-templates>
-      </xsl:if>
-      <xsl:text>&#xA;</xsl:text>
-    </xsl:for-each>
+    </xsl:if>
+    <xsl:text>&#xA;</xsl:text>
   </xsl:for-each>
 </xsl:template>
 
