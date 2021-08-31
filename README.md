@@ -261,7 +261,7 @@ A sample run:
 
 ```plaintext
 $ printf "Männern\nManns\nFrauen\nMänner" | dwdsmor-analyze -a SMORLemma/smor.ca
-Word,Analysis,Lemma,POS,Genus,Numerus,Casus,PersonTempus
+Word,Analysis,Lemma,POS,Genus,Numerus,Casus,Person,Tempus
 Männern,Ma:änn<+NN>:<><Masc>:<><>:e<>:r<Dat>:n<Pl>:<>,Mann,NN,Masc,Pl,Dat,,
 Manns,Mann<+NN>:<><Masc>:<><Gen>:<><Sg>:<><>:s,Mann,NN,Masc,Sg,Gen,,
 Frauen,Frau<+NN>:<><Fem>:<><>:e<>:n<Nom>:<><Pl>:<>,Frau,NN,Fem,Pl,Nom,,
