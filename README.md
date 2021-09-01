@@ -3,8 +3,8 @@
 _SFST/SMOR/DWDS-based German morphology_
 
 This project aims at developing a component for **morphological analysis of
-German word forms** mainly for **decomposing compound words** and
-**lemmatisation**. To this end we adopt
+German word forms** mainly for **segmenting morphologically complex words** and
+for **lemmatisation**. To this end we adopt:
 
 1. [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++ library
    and toolbox for finite state transducers (FSTs),
@@ -102,7 +102,7 @@ processing.
 
 After updating the submodules, a lexicon can be built via:
 
-```sh 
+```sh
 make -C lexicon
 ```
 
@@ -128,7 +128,7 @@ Copyright (C) 2021 Berlin-Brandenburgische Akademie der Wissenschaften
 
 Usage: clojure -M -m dwdsmor.lexicon [options] <dir|*.xml>...
 
-Generates a lexicon from the given XML documents and/or directories 
+Generates a lexicon from the given XML documents and/or directories
 containing XML documents (files ending in .xml).
 
 Options:
@@ -178,7 +178,7 @@ make setup
 Once the setup succeeded and a lexicon is provided in
 `SMORLemma/lexicon/lexicon`, the transducers can be compiled:
 
-```sh 
+```sh
 make
 ```
 
@@ -215,12 +215,12 @@ scp $LEXICON bembbaw0@blogin.hlrn.de:/scratch/usr/bembbaw0/dwdsmor/SMORLemma/lex
 Finally run the build on a compute host:
 
 ```sh
-ssh bembbaw0@blogin.hlrn.de sbatch /scratch/usr/bembbaw0/dwdsmor/hlrn/build 
+ssh bembbaw0@blogin.hlrn.de sbatch /scratch/usr/bembbaw0/dwdsmor/hlrn/build
 ```
 
 You can check the status of running builds via
 
-```sh 
+```sh
 ssh bembbaw0@blogin.hlrn.de squeue -l --me
 ```
 
@@ -228,13 +228,13 @@ ssh bembbaw0@blogin.hlrn.de squeue -l --me
 
 Compiled automata can be exercised by the test suite in `tests/`:
 
-```sh 
+```sh
 make test
 ```
 
 There is also a Python-based command line tool for performing morphological analyses of word forms:
 
-```plaintext 
+```plaintext
 $ dwdsmor-analyze --help
 Usage: dwdsmor-analyze [OPTIONS] [INPUT] [OUTPUT]
 
@@ -282,7 +282,7 @@ process or integrating DWDSmor with your application.
 
 ## Bibliography
 
-* A. Fitschen, “Ein Computerlinguistisches Lexikon Als Komplexes System,” 2004,
+* A. Fitschen, “Ein computerlinguistisches Lexikon als komplexes System,” 2004,
   [pdf](https://www.ims.uni-stuttgart.de/documents/ressourcen/lexika/imslex/fitschendiss.pdf).
 * Helmut Schmid, Arne Fitschen, and Ulrich Heid, “SMOR: A German Computational
   Morphology Covering Derivation, Composition and Inflection,” in Proceedings of
