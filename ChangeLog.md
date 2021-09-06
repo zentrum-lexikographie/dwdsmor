@@ -1,3 +1,7 @@
+2021-09-06:
+
+* fix inflection class for regular verbs ending in "-el" or "-er"
+
 2021-08-31:
 
 * filter idioms
