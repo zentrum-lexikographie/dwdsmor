@@ -2,14 +2,21 @@ SHELL := /bin/bash
 
 CLOJURE_VERSION := 1.10.3.943
 
-all: ../SMORLemma/lexicon/lexicon
+LEXDIR = ../SMORLemma/lexicon
+XSLDIR = ../share
+
+LEX = $(LEXDIR)/lexicon
+XSL = $(XSLDIR)/dwds2smorlemma.xsl
+LIB = $(filter-out $(XSLDIR)/dwds2%.xsl, $(wildcard $(XSLDIR)/*.xsl))
+
+all: $(LEX)
 
 clean:
-	$(RM) ../SMORLemma/lexicon/lexicon
+	$(RM) $(LEX)
 
-../SMORLemma/lexicon/lexicon: clojure
+$(LEX): clojure $(XSL) $(LIB)
 	@./generate-lexicon\
-		--xslt ../share/dwds2smorlemma.xsl\
+		--xslt $(XSL)\
 		--smorlemma-lexica\
 		--filter\
 		--output $@\
@@ -22,4 +29,3 @@ clojure: clojure-install.sh
 clojure-install.sh:
 	curl -o $@ https://download.clojure.org/install/linux-install-$(CLOJURE_VERSION).sh
 	chmod +x $@
-
