@@ -2,6 +2,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 2021-09-06:
 
+* simplify mapping.xsl
 * fix inflection class for regular verbs ending in "-el" or "-er"
 
 2021-08-31:
