@@ -74,51 +74,35 @@
 
 <xsl:variable name="verb-class-mapping">
   <class pos="Verb"
-         ending="-"
+         infinitive="-en"
          past="-te"
          participle="ge-t">VVReg</class>
   <class pos="Verb"
-         ending="-"
+         infinitive="-en"
          past="-te"
          participle="-t">VVReg</class>
   <class pos="Verb"
-         ending="-"
+         infinitive="-en"
          past="-ete"
          participle="ge-et">VVReg</class>
   <class pos="Verb"
-         ending="-"
+         infinitive="-en"
          past="-ete"
          participle="-et">VVReg</class>
   <class pos="Verb"
-         ending="-el"
+         infinitive="-n"
          past="-te"
          participle="ge-t">VVReg-el/er</class>
   <class pos="Verb"
-         ending="-el"
+         infinitive="-n"
          past="-te"
          participle="-t">VVReg-el/er</class>
   <class pos="Verb"
-         ending="-el"
+         infinitive="-n"
          past="-ete"
          participle="ge-et">VVReg-el/er</class>
   <class pos="Verb"
-         ending="-el"
-         past="-ete"
-         participle="-et">VVReg-el/er</class>
-  <class pos="Verb"
-         ending="-er"
-         past="-te"
-         participle="ge-t">VVReg-el/er</class>
-  <class pos="Verb"
-         ending="-er"
-         past="-te"
-         participle="-t">VVReg-el/er</class>
-  <class pos="Verb"
-         ending="-er"
-         past="-ete"
-         participle="ge-et">VVReg-el/er</class>
-  <class pos="Verb"
-         ending="-er"
+         infinitive="-n"
          past="-ete"
          participle="-et">VVReg-el/er</class>
   <!-- TODO: more class mappings -->
@@ -372,17 +356,8 @@
                       select="$lemma"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:variable name="ending">
-    <xsl:choose>
-      <xsl:when test="ends-with($stem,'eel')">-</xsl:when>
-      <xsl:when test="ends-with($stem,'iel')">-</xsl:when>
-      <xsl:when test="ends-with($stem,'ier')">-</xsl:when>
-      <xsl:when test="ends-with($stem,'quer')">-</xsl:when>
-      <xsl:when test="ends-with($stem,'el')">-el</xsl:when>
-      <xsl:when test="ends-with($stem,'er')">-er</xsl:when>
-      <xsl:otherwise>-</xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
+  <xsl:variable name="infinitive"
+                select="concat('-',substring-after($lemma,$stem))"/>
   <xsl:variable name="past"
                 select="normalize-space(dwds:Praeteritum)"/>
   <xsl:variable name="participle"
@@ -393,7 +368,7 @@
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
                         select="$verb-class-mapping/class[@pos=$pos]
-                                                         [@ending=$ending]
+                                                         [@infinitive=$infinitive]
                                                          [@past='-te']
                                                          [@participle='ge-t']"/>
         <xsl:with-param name="type">class</xsl:with-param>
@@ -406,7 +381,7 @@
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
                         select="$verb-class-mapping/class[@pos=$pos]
-                                                         [@ending=$ending]
+                                                         [@infinitive=$infinitive]
                                                          [@past='-te']
                                                          [@participle='-t']"/>
         <xsl:with-param name="type">class</xsl:with-param>
@@ -419,7 +394,7 @@
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
                         select="$verb-class-mapping/class[@pos=$pos]
-                                                         [@ending=$ending]
+                                                         [@infinitive=$infinitive]
                                                          [@past='-ete']
                                                          [@participle='ge-et']"/>
         <xsl:with-param name="type">class</xsl:with-param>
@@ -432,7 +407,7 @@
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
                         select="$verb-class-mapping/class[@pos=$pos]
-                                                         [@ending=$ending]
+                                                         [@infinitive=$infinitive]
                                                          [@past='-ete']
                                                          [@participle='-et']"/>
         <xsl:with-param name="type">class</xsl:with-param>
@@ -444,7 +419,7 @@
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
                         select="$verb-class-mapping/class[@pos=$pos]
-                                                         [@ending=$ending]
+                                                         [@infinitive=$infinitive]
                                                          [@past=$past]
                                                          [@participle=$participle]"/>
         <xsl:with-param name="type">class</xsl:with-param>
