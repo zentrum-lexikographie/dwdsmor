@@ -374,6 +374,10 @@
   </xsl:variable>
   <xsl:variable name="ending">
     <xsl:choose>
+      <xsl:when test="ends-with($stem,'eel')">-</xsl:when>
+      <xsl:when test="ends-with($stem,'iel')">-</xsl:when>
+      <xsl:when test="ends-with($stem,'ier')">-</xsl:when>
+      <xsl:when test="ends-with($stem,'quer')">-</xsl:when>
       <xsl:when test="ends-with($stem,'el')">-el</xsl:when>
       <xsl:when test="ends-with($stem,'er')">-er</xsl:when>
       <xsl:otherwise>-</xsl:otherwise>
