@@ -126,6 +126,14 @@
   <xsl:variable name="pos"
                 select="normalize-space(dwds:Wortklasse)"/>
   <xsl:choose>
+    <xsl:when test="$pos='Affix' and
+                    starts-with($lemma,'-')">
+      <xsl:value-of select="replace($lemma,'-(.+)','$1')"/>
+    </xsl:when>
+    <xsl:when test="$pos='Affix' and
+                    ends-with($lemma,'-')">
+      <xsl:value-of select="replace($lemma,'(.+)-','$1')"/>
+    </xsl:when>
     <xsl:when test="$pos='Verb'">
       <xsl:call-template name="verb-stem">
         <xsl:with-param name="lemma"
@@ -155,7 +163,8 @@
                         select="$lemma"/>
       </xsl:call-template>
     </xsl:when>
-    <xsl:when test="$pos='Affix'">
+    <xsl:when test="$pos='Affix' and
+                    ends-with($lemma,'-')">
       <xsl:call-template name="insert-value">
         <xsl:with-param name="value"
                         select="$pos-mapping/pos[@pos='Präfix']"/>
