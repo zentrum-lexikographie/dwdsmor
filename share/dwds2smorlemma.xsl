@@ -67,7 +67,9 @@
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:apply-templates>
-      <xsl:text>&lt;base&gt;</xsl:text>
+      <xsl:if test="not($pos='Affix')">
+        <xsl:text>&lt;base&gt;</xsl:text>
+      </xsl:if>
       <xsl:value-of select="$etymology"/>
       <xsl:if test="not($pos='Affix')">
         <xsl:apply-templates select="."
