@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- mappings.xsl -->
-<!-- Version 0.6 -->
-<!-- Andreas Nolda 2021-09-06 -->
+<!-- Version 0.7 -->
+<!-- Andreas Nolda 2021-09-09 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -21,39 +21,57 @@
 </xsl:variable>
 
 <xsl:variable name="adjective-class-mapping">
+  <!-- adjectives: -->
+  <!-- superlative: "-sten" -->
   <class pos="Adjektiv"
          superlative="-">ADJ+</class>
+  <!-- superlative: umlaut and "-sten" -->
   <class pos="Adjektiv"
-         superlative="$-">ADJ$</class>
+         superlative="&#x308;-">ADJ$</class>
+  <!-- superlative: "-esten" -->
   <class pos="Adjektiv"
          superlative="-e-">ADJ+e</class>
+  <!-- superlative: umlaut and "-esten" -->
   <class pos="Adjektiv"
-         superlative="$-e-">ADJ$e</class>
+         superlative="&#x308;-e-">ADJ$e</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
 
 <xsl:variable name="noun-class-mapping">
+  <!-- masculine nouns: -->
+  <!-- genitive singular: "-es"
+       nominative plural: "-e" -->
   <class pos="Substantiv"
          gender="mask."
          genitive="-es"
          plural="-e">NMasc_es_e</class>
+  <!-- genitive singular: "-es"
+       nominative plural: "-en" -->
   <class pos="Substantiv"
          gender="mask."
          genitive="-es"
          plural="-en">NMasc_es_en</class>
+  <!-- genitive singular: "-(e)s"
+       nominative plural: umlaut and "-er" -->
   <class pos="Substantiv"
          gender="mask."
          genitive="-(e)s"
-         plural="$-er">NMasc_es_$er</class>
+         plural="&#x308;-er">NMasc_es_$er</class>
+  <!-- all forms except nominative singular: "-en" -->
   <class pos="Substantiv"
          gender="mask."
          genitive="-en"
          plural="-en">NMasc_en_en</class>
+  <!-- feminine nouns: -->
+  <!-- nominative plural: "-en" -->
   <class pos="Substantiv"
          gender="fem."
          genitive="-"
          plural="-en">NFem_0_en</class>
+  <!-- neuter nouns: -->
+  <!-- genitive singular: "-(e)s"
+       nominative plural: "-er" -->
   <class pos="Substantiv"
          gender="neutr."
          genitive="-(e)s"
@@ -63,34 +81,59 @@
 </xsl:variable>
 
 <xsl:variable name="verb-class-mapping">
+  <!-- weak verbs: -->
+  <!-- infinitive: "-en"
+       past 3rd person singular: "-te"
+       past participle: "ge-" + "-t" -->
   <class pos="Verb"
          infinitive="-en"
          past="-te"
          participle="ge-t">VVReg</class>
+  <!-- infinitive: "-en"
+       past 3rd person singular: "-te"
+       past participle: "-t" -->
   <class pos="Verb"
          infinitive="-en"
          past="-te"
          participle="-t">VVReg</class>
+  <!-- infinitive: "-en"
+       past 3rd person singular: "-ete"
+       past participle: "ge-" + "-et" -->
   <class pos="Verb"
          infinitive="-en"
          past="-ete"
          participle="ge-et">VVReg</class>
+  <!-- infinitive: "-en"
+       past 3rd person singular: "-ete"
+       past participle: "-et" -->
   <class pos="Verb"
          infinitive="-en"
          past="-ete"
          participle="-et">VVReg</class>
+  <!-- infinitive: "-n"
+       past 3rd person singular: "-te"
+       past participle: "ge-" + "-t" -->
   <class pos="Verb"
          infinitive="-n"
          past="-te"
          participle="ge-t">VVReg-el/er</class>
+  <!-- infinitive: "-n"
+       past 3rd person singular: "-te"
+       past participle: "-t" -->
   <class pos="Verb"
          infinitive="-n"
          past="-te"
          participle="-t">VVReg-el/er</class>
+  <!-- infinitive: "-n"
+       past 3rd person singular: "-ete"
+       past participle: "ge-" + "-et" -->
   <class pos="Verb"
          infinitive="-n"
          past="-ete"
          participle="ge-et">VVReg-el/er</class>
+  <!-- infinitive: "-n"
+       past 3rd person singular: "-ete"
+       past participle: "-et" -->
   <class pos="Verb"
          infinitive="-n"
          past="-ete"
@@ -228,9 +271,9 @@
                   select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
     <xsl:choose>
       <xsl:when test="substring-after($dwds,$lemma)='sten'">-</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'sten$'))">$-</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'sten$'))">&#x308;-</xsl:when>
       <xsl:when test="substring-after($dwds,$lemma)='esten'">-e-</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'esten$'))">$-e-</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'esten$'))">&#x308;-e-</xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$dwds"/>
       </xsl:otherwise>
@@ -262,7 +305,7 @@
         <xsl:value-of select="$dwds"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="concat('$-',replace(normalize-space($dwds),concat('^',n:umlaut-re($lemma)),
+        <xsl:value-of select="concat('&#x308;-',replace(normalize-space($dwds),concat('^',n:umlaut-re($lemma)),
                                                                          ''))"/>
       </xsl:otherwise>
     </xsl:choose>
