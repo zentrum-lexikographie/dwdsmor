@@ -49,7 +49,11 @@
     <xsl:for-each select="$data-by-group/dwds:Grammatik">
       <xsl:variable name="pos"
                     select="normalize-space(dwds:Wortklasse)"/>
-      <xsl:text>&lt;Stem&gt;</xsl:text>
+      <xsl:apply-templates select="."
+                           mode="morph">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:apply-templates>
       <xsl:if test="$pos='Verb'">
         <xsl:apply-templates select="."
                              mode="participle">
@@ -81,6 +85,28 @@
       <xsl:text>&#xA;</xsl:text>
     </xsl:for-each>
   </xsl:for-each>
+</xsl:template>
+
+<xsl:template match="dwds:Grammatik"
+              mode="morph">
+  <xsl:param name="lemma"/>
+  <xsl:variable name="pos"
+                select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:choose>
+    <xsl:when test="$pos='Affix' and
+                    starts-with($lemma,'-')">
+      <xsl:text>Suffix</xsl:text>
+    </xsl:when>
+    <xsl:when test="$pos='Affix' and
+                    ends-with($lemma,'-')">
+      <xsl:text>Prefix</xsl:text>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:text>Stem</xsl:text>
+    </xsl:otherwise>
+  </xsl:choose>
+  <xsl:text>&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="dwds:Grammatik"

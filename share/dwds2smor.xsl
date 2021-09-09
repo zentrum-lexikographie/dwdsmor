@@ -67,7 +67,7 @@
         </xsl:apply-templates>
       </xsl:if>
       <xsl:apply-templates select="."
-                           mode="stem">
+                           mode="morph">
         <xsl:with-param name="lemma"
                         select="$lemma"/>
       </xsl:apply-templates>
@@ -99,7 +99,7 @@
 </xsl:template>
 
 <xsl:template match="dwds:Grammatik"
-              mode="stem">
+              mode="morph">
   <xsl:param name="lemma"/>
   <xsl:variable name="pos"
                 select="normalize-space(dwds:Wortklasse)"/>
@@ -109,7 +109,8 @@
                     starts-with($lemma,'-')">
       <xsl:text>Suff</xsl:text>
     </xsl:when>
-    <xsl:when test="$pos='Affix'">
+    <xsl:when test="$pos='Affix' and
+                    ends-with($lemma,'-')">
       <xsl:text>Pref</xsl:text>
     </xsl:when>
     <xsl:otherwise>

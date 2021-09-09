@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2021-09-09:
 
 * document class mappings
+* improve support for affixes
 
 2021-09-06:
 
