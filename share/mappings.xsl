@@ -24,16 +24,16 @@
   <!-- adjectives: -->
   <!-- superlative: "-sten" -->
   <class pos="Adjektiv"
-         superlative="-">ADJ+</class>
+         superlative="-sten">ADJ+</class>
   <!-- superlative: umlaut and "-sten" -->
   <class pos="Adjektiv"
-         superlative="&#x308;-">ADJ$</class>
+         superlative="&#x308;-sten">ADJ$</class>
   <!-- superlative: "-esten" -->
   <class pos="Adjektiv"
-         superlative="-e-">ADJ+e</class>
+         superlative="-esten">ADJ+e</class>
   <!-- superlative: umlaut and "-esten" -->
   <class pos="Adjektiv"
-         superlative="&#x308;-e-">ADJ$e</class>
+         superlative="&#x308;-esten">ADJ$e</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -270,10 +270,10 @@
     <xsl:variable name="dwds"
                   select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
     <xsl:choose>
-      <xsl:when test="substring-after($dwds,$lemma)='sten'">-</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'sten$'))">&#x308;-</xsl:when>
-      <xsl:when test="substring-after($dwds,$lemma)='esten'">-e-</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'esten$'))">&#x308;-e-</xsl:when>
+      <xsl:when test="substring-after($dwds,$lemma)='sten'">-sten</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'sten$'))">&#x308;-sten</xsl:when>
+      <xsl:when test="substring-after($dwds,$lemma)='esten'">-esten</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'esten$'))">&#x308;-esten</xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$dwds"/>
       </xsl:otherwise>
