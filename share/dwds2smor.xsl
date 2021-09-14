@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 1.1 -->
-<!-- Andreas Nolda 2021-09-09 -->
+<!-- Version 1.2 -->
+<!-- Andreas Nolda 2021-09-14 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -25,7 +25,14 @@
 
 <xsl:template match="dwds:Formangabe">
   <xsl:variable name="data-by-name">
-    <xsl:for-each-group select="dwds:Grammatik/*"
+    <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Genitiv or
+                                                 self::dwds:Genus or
+                                                 self::dwds:Komparativ or
+                                                 self::dwds:Partizip_II or
+                                                 self::dwds:Plural or
+                                                 self::dwds:Praeteritum or
+                                                 self::dwds:Superlativ or
+                                                 self::dwds:Wortklasse]"
                         group-by="name()">
       <xsl:element name="{name()}">
         <xsl:copy-of select="current-group()"/>

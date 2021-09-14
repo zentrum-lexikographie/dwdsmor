@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2021-09-14:
+
+* avoid duplicates
+
 2021-09-09:
 
 * document class mappings
