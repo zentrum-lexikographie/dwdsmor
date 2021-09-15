@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- mappings.xsl -->
-<!-- Version 0.7 -->
-<!-- Andreas Nolda 2021-09-09 -->
+<!-- Version 0.8 -->
+<!-- Andreas Nolda 2021-09-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -207,14 +207,7 @@
 
 <xsl:template name="verb-stem">
   <xsl:param name="lemma"/>
-  <xsl:choose>
-    <xsl:when test="ends-with($lemma,'en')">
-      <xsl:value-of select="substring($lemma,1,string-length($lemma)-2)"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:value-of select="substring($lemma,1,string-length($lemma)-1)"/>
-    </xsl:otherwise>
-  </xsl:choose>
+  <xsl:value-of select="replace($lemma,'^(.+?)e?n$','$1')"/>
 </xsl:template>
 
 <xsl:template name="insert-value">
@@ -270,9 +263,9 @@
     <xsl:variable name="dwds"
                   select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
     <xsl:choose>
-      <xsl:when test="substring-after($dwds,$lemma)='sten'">-sten</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',$lemma,'sten$'))">-sten</xsl:when>
       <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'sten$'))">&#x308;-sten</xsl:when>
-      <xsl:when test="substring-after($dwds,$lemma)='esten'">-esten</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',$lemma,'esten$'))">-esten</xsl:when>
       <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'esten$'))">&#x308;-esten</xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$dwds"/>
@@ -338,8 +331,8 @@
     <xsl:variable name="dwds"
                   select="normalize-space(dwds:Praeteritum)"/>
     <xsl:choose>
-      <xsl:when test="$dwds=concat($stem,'te')">-te</xsl:when>
-      <xsl:when test="$dwds=concat($stem,'ete')">-ete</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',$stem,'te$'))">-te</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',$stem,'ete$'))">-ete</xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$dwds"/>
       </xsl:otherwise>
@@ -349,10 +342,10 @@
     <xsl:variable name="dwds"
                   select="normalize-space(dwds:Partizip_II)"/>
     <xsl:choose>
-      <xsl:when test="$dwds=concat('ge',$stem,'t')">ge-t</xsl:when>
-      <xsl:when test="$dwds=concat($stem,'t')">-t</xsl:when>
-      <xsl:when test="$dwds=concat('ge',$stem,'et')">ge-et</xsl:when>
-      <xsl:when test="$dwds=concat($stem,'et')">-et</xsl:when>
+      <xsl:when test="matches($dwds,concat('^ge',$stem,'t$'))">ge-t</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',$stem,'t$'))">-t</xsl:when>
+      <xsl:when test="matches($dwds,concat('^ge',$stem,'et$'))">ge-et</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',$stem,'et$'))">-et</xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$dwds"/>
       </xsl:otherwise>
