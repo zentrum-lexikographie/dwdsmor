@@ -150,7 +150,7 @@
   <xsl:choose>
     <!-- replace the last vowel matching [aou] by [äöü] -->
     <xsl:when test="matches($argument,'[aou]')">
-      <xsl:sequence select="replace($argument,'^(.*)[aou]([^äöü]*)$',
+      <xsl:sequence select="replace($argument,'^(.*)[aou]([^aou]*)$',
                                               '$1[äöü]$2',
                                               'i')"/>
     </xsl:when>
