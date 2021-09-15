@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 1.2 -->
-<!-- Andreas Nolda 2021-09-14 -->
+<!-- Version 1.3 -->
+<!-- Andreas Nolda 2021-09-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -66,40 +66,81 @@
     <xsl:for-each select="$data-by-group/dwds:Grammatik">
       <xsl:variable name="pos"
                     select="normalize-space(dwds:Wortklasse)"/>
-      <xsl:if test="$pos='Verb'">
-        <xsl:apply-templates select="."
-                             mode="participle">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-        </xsl:apply-templates>
-      </xsl:if>
-      <xsl:apply-templates select="."
-                           mode="morph">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:apply-templates>
-      <xsl:apply-templates select="."
-                           mode="form">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:apply-templates>
-      <xsl:apply-templates select="."
-                           mode="pos">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:apply-templates>
-      <xsl:if test="not($pos='Affix')">
-        <xsl:text>&lt;base&gt;</xsl:text>
-      </xsl:if>
-      <xsl:value-of select="$etymology"/>
-      <xsl:if test="not($pos='Affix')">
-        <xsl:value-of select="$formation"/>
-        <xsl:apply-templates select="."
-                             mode="class">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-        </xsl:apply-templates>
-      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="$pos='Affix'">
+          <xsl:apply-templates select="."
+                               mode="morph">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+          <xsl:apply-templates select="."
+                               mode="form">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+          <xsl:apply-templates select="."
+                               mode="pos">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+          <xsl:value-of select="$etymology"/>
+        </xsl:when>
+        <xsl:when test="$pos='Verb'">
+          <xsl:apply-templates select="."
+                               mode="participle">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+          <xsl:apply-templates select="."
+                               mode="morph">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+          <xsl:apply-templates select="."
+                               mode="form">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+          <xsl:apply-templates select="."
+                               mode="pos">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+          <xsl:text>&lt;base&gt;</xsl:text>
+          <xsl:value-of select="$etymology"/>
+          <xsl:value-of select="$formation"/>
+          <xsl:apply-templates select="."
+                               mode="class">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="."
+                               mode="morph">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+          <xsl:apply-templates select="."
+                               mode="form">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+          <xsl:apply-templates select="."
+                               mode="pos">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+          <xsl:text>&lt;base&gt;</xsl:text>
+          <xsl:value-of select="$etymology"/>
+          <xsl:value-of select="$formation"/>
+          <xsl:apply-templates select="."
+                               mode="class">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:apply-templates>
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:text>&#xA;</xsl:text>
     </xsl:for-each>
   </xsl:for-each>
