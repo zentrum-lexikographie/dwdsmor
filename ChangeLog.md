@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2021-09-16:
 
 * add support for strong verbs
+* add support for mixed verbs
 
 2021-09-14:
 
