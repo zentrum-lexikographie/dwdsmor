@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 2.1 -->
+<!-- Version 2.2 -->
 <!-- Andreas Nolda 2021-09-16 -->
 
 <xsl:stylesheet version="2.0"
@@ -139,75 +139,467 @@
   <xsl:for-each select="dwds:Schreibung">
     <xsl:variable name="lemma"
                   select="normalize-space(.)"/>
-    <xsl:variable name="etymology">
-      <xsl:apply-templates select="../../dwds:Diachronie">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:apply-templates>
-    </xsl:variable>
-    <xsl:variable name="formation">
-      <xsl:if test="not(../dwds:Grammatik/dwds:Wortklasse[.='Affix'])">
-        <!-- for the sake of simplicity, consider only the first formation specification -->
-        <xsl:apply-templates select="../../dwds:Verweise[not(preceding-sibling::dwds:Verweise[@Typ or
-                                                                                              dwds:Verweis[@Typ='Binnenglied' or
-                                                                                                           @Typ='Erstglied' or
-                                                                                                           @Typ='Grundform' or
-                                                                                                           @Typ='Letztglied']])]">
+    <xsl:if test="string-length($lemma)&gt;0">
+      <xsl:variable name="etymology">
+        <xsl:apply-templates select="../../dwds:Diachronie">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
         </xsl:apply-templates>
-      </xsl:if>
-    </xsl:variable>
-    <xsl:for-each select="$data-by-group/dwds:Grammatik">
-      <xsl:variable name="pos"
-                    select="normalize-space(dwds:Wortklasse)"/>
-      <xsl:choose>
-        <xsl:when test="$pos='Affix'">
-          <xsl:call-template name="affix-entry">
+      </xsl:variable>
+      <xsl:variable name="formation">
+        <xsl:if test="not(../dwds:Grammatik/dwds:Wortklasse[.='Affix'])">
+          <!-- for the sake of simplicity, consider only the first formation specification -->
+          <xsl:apply-templates select="../../dwds:Verweise[not(preceding-sibling::dwds:Verweise[@Typ or
+                                                                                                dwds:Verweis[@Typ='Binnenglied' or
+                                                                                                             @Typ='Erstglied' or
+                                                                                                             @Typ='Grundform' or
+                                                                                                             @Typ='Letztglied']])]">
             <xsl:with-param name="lemma"
                             select="$lemma"/>
-            <xsl:with-param name="pos">
-              <xsl:apply-templates select="."
-                                   mode="pos">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-              </xsl:apply-templates>
-            </xsl:with-param>
-            <xsl:with-param name="etymology"
-                            select="$etymology"/>
-          </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$pos='Verb'">
-          <xsl:variable name="stem">
-            <xsl:call-template name="verb-stem">
-              <xsl:with-param name="lemma"
-                              select="$lemma"/>
-            </xsl:call-template>
-          </xsl:variable>
-          <xsl:variable name="past"
-                        select="normalize-space(dwds:Praeteritum)"/>
-          <xsl:variable name="participle"
-                        select="normalize-space(dwds:Partizip_II)"/>
-          <xsl:variable name="present-stem">
-            <xsl:call-template name="present-stem"/>
-          </xsl:variable>
-          <xsl:variable name="past-stem">
-            <xsl:call-template name="past-stem"/>
-          </xsl:variable>
-          <xsl:variable name="participle-stem">
-            <xsl:call-template name="participle-stem"/>
-          </xsl:variable>
+          </xsl:apply-templates>
+        </xsl:if>
+      </xsl:variable>
+      <xsl:for-each select="$data-by-group/dwds:Grammatik">
+        <xsl:variable name="pos"
+                      select="normalize-space(dwds:Wortklasse)"/>
+        <!-- ignore sources with missing part of speech -->
+        <xsl:if test="string-length($pos)&gt;0">
           <xsl:choose>
-            <!-- weak verbs -->
-            <xsl:when test="matches($past,concat('^',$stem,'e?te$')) and
-                            matches($participle,concat('^(ge)?',$stem,'e?t$'))">
-              <xsl:call-template name="verb-entry">
+            <!-- affixes -->
+            <xsl:when test="$pos='Affix'">
+              <xsl:call-template name="affix-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
-                <xsl:with-param name="base-stem"
-                                select="$stem"/>
-                <xsl:with-param name="current-stem"
-                                select="$stem"/>
+                <xsl:with-param name="pos">
+                  <xsl:apply-templates select="."
+                                       mode="pos">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:apply-templates>
+                </xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- verbs -->
+            <xsl:when test="$pos='Verb'">
+              <xsl:variable name="present"
+                            select="normalize-space(dwds:Praesens)"/>
+              <xsl:variable name="past"
+                            select="normalize-space(dwds:Praeteritum)"/>
+              <xsl:variable name="participle"
+                            select="normalize-space(dwds:Partizip_II)"/>
+              <!-- ignore sources with missing forms -->
+              <xsl:if test="string-length($present)&gt;0 and
+                            string-length($past)&gt;0 and
+                            string-length($participle)&gt;0">
+                <xsl:variable name="stem">
+                  <xsl:call-template name="verb-stem">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="present-stem">
+                  <xsl:call-template name="present-stem"/>
+                </xsl:variable>
+                <xsl:variable name="past-stem">
+                  <xsl:call-template name="past-stem"/>
+                </xsl:variable>
+                <xsl:variable name="participle-stem">
+                  <xsl:call-template name="participle-stem"/>
+                </xsl:variable>
+                <xsl:choose>
+                  <!-- weak verbs -->
+                  <xsl:when test="matches($past,concat('^',$stem,'e?te$')) and
+                                  matches($participle,concat('^(ge)?',$stem,'e?t$'))">
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="base-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="current-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="class">
+                        <xsl:apply-templates select="."
+                                             mode="class">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                        </xsl:apply-templates>
+                      </xsl:with-param>
+                      <xsl:with-param name="formation"
+                                      select="$formation"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- weak verbs with irregular past stem -->
+                  <xsl:when test="matches($past,concat('^',$past-stem,'e?te$')) and
+                                  matches($participle,concat('^(ge)?',$past-stem,'e?t$'))">
+                    <!-- present -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="base-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="current-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="class">VVPres</xsl:with-param>
+                      <xsl:with-param name="formation"
+                                      select="$formation"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <!-- past indicative -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="base-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="current-stem"
+                                      select="$past-stem"/>
+                      <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
+                      <xsl:with-param name="formation"
+                                      select="$formation"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <!-- past subjunctive -->
+                    <xsl:choose>
+                      <!-- past stem ending in "ach" -->
+                      <xsl:when test="matches($past-stem,'ach$')">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="base-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="current-stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                          <xsl:with-param name="formation"
+                                          select="$formation"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- Rückumlaut -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="base-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="current-stem"
+                                          select="$stem"/><!-- sic! -->
+                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                          <xsl:with-param name="formation"
+                                          select="$formation"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <!-- past participle -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="base-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="current-stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                      <xsl:with-param name="formation"
+                                      select="$formation"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- weak verbs with strong participle -->
+                  <xsl:when test="matches($past,concat('^',$stem,'e?te$')) and
+                                  matches($participle,concat('^(ge)?',$stem,'en$'))">
+                    <!-- present -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="base-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="current-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="class">VVPres</xsl:with-param>
+                      <xsl:with-param name="formation"
+                                      select="$formation"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <!-- past indicative -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="base-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="current-stem"
+                                      select="$past-stem"/>
+                      <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
+                      <xsl:with-param name="formation"
+                                      select="$formation"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <!-- past subjunctive -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="base-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="current-stem"
+                                      select="$past-stem"/>
+                      <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                      <xsl:with-param name="formation"
+                                      select="$formation"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <!-- past participle -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="base-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="current-stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="class">VVPP-en</xsl:with-param>
+                      <xsl:with-param name="formation"
+                                      select="$formation"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- strong verbs -->
+                  <xsl:otherwise>
+                    <!-- present -->
+                    <xsl:choose>
+                      <!-- uniform present stem -->
+                      <xsl:when test="$stem=$present-stem">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="base-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="current-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="class">VVPres</xsl:with-param>
+                          <xsl:with-param name="formation"
+                                          select="$formation"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- present stem for 2nd/3rd person singular with "e:i" alternation -->
+                      <xsl:when test="contains(n:pair($stem,$present-stem),'e:i')">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="base-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="current-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="class">VVPres1</xsl:with-param>
+                          <xsl:with-param name="formation"
+                                          select="$formation"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="base-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="current-stem"
+                                          select="$present-stem"/>
+                          <xsl:with-param name="class">VVPres2+Imp</xsl:with-param>
+                          <xsl:with-param name="formation"
+                                          select="$formation"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- other present stem for 2nd/3rd person singular -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="base-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="current-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
+                          <xsl:with-param name="formation"
+                                          select="$formation"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="base-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="current-stem"
+                                          select="$present-stem"/>
+                          <xsl:with-param name="class">VVPres2</xsl:with-param>
+                          <xsl:with-param name="formation"
+                                          select="$formation"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:choose>
+                      <!-- umlautable past stem -->
+                      <!-- Caveat: "e" is considered as a full vowel. -->
+                      <xsl:when test="matches($past-stem,'([aou]|au)[^aeiouäöü]*$','i')">
+                        <!-- past indicative -->
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="base-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="current-stem"
+                                          select="$past-stem"/>
+                          <xsl:with-param name="class">VVPastIndStr</xsl:with-param>
+                          <xsl:with-param name="formation"
+                                          select="$formation"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <!-- past subjunctive -->
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="base-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="current-stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
+                          <xsl:with-param name="formation"
+                                          select="$formation"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- non-umlautable past stem -->
+                      <xsl:otherwise>
+                        <!-- past -->
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="base-stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="current-stem"
+                                          select="$past-stem"/>
+                          <xsl:with-param name="class">VVPastStr</xsl:with-param>
+                          <xsl:with-param name="formation"
+                                          select="$formation"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <!-- past participle -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="base-stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="current-stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="class">VVPP-en</xsl:with-param>
+                      <xsl:with-param name="formation"
+                                      select="$formation"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                  <!-- TODO: support for irregular verbs, modal verbs, and auxiliaries -->
+                </xsl:choose>
+              </xsl:if>
+            </xsl:when>
+            <!-- adjectives -->
+            <xsl:when test="$pos='Adjektiv'">
+              <xsl:variable name="superlative"
+                            select="normalize-space(dwds:Superlativ)"/>
+              <!-- ignore sources with missing forms -->
+              <xsl:if test="string-length($superlative)&gt;0">
+                <xsl:call-template name="default-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma"/>
+                  <xsl:with-param name="pos">
+                    <xsl:apply-templates select="."
+                                         mode="pos">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                    </xsl:apply-templates>
+                  </xsl:with-param>
+                  <xsl:with-param name="class">
+                    <xsl:apply-templates select="."
+                                         mode="class">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                    </xsl:apply-templates>
+                  </xsl:with-param>
+                  <xsl:with-param name="formation"
+                                  select="$formation"/>
+                  <xsl:with-param name="etymology"
+                                  select="$etymology"/>
+                </xsl:call-template>
+              </xsl:if>
+            </xsl:when>
+            <!-- nouns -->
+            <xsl:when test="$pos='Substantiv'">
+              <xsl:variable name="gender"
+                            select="normalize-space(dwds:Genus)"/>
+              <xsl:variable name="genitive"
+                            select="normalize-space(dwds:Genitiv)"/>
+              <xsl:variable name="plural"
+                            select="normalize-space(dwds:Plural)"/>
+              <!-- ignore sources with missing forms -->
+              <xsl:if test="string-length($gender)&gt;0 and
+                            string-length($genitive)&gt;0 and
+                            string-length($plural)&gt;0">
+                <xsl:call-template name="default-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma"/>
+                  <xsl:with-param name="pos">
+                    <xsl:apply-templates select="."
+                                         mode="pos">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                    </xsl:apply-templates>
+                  </xsl:with-param>
+                  <xsl:with-param name="class">
+                    <xsl:apply-templates select="."
+                                         mode="class">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                    </xsl:apply-templates>
+                  </xsl:with-param>
+                  <xsl:with-param name="formation"
+                                  select="$formation"/>
+                  <xsl:with-param name="etymology"
+                                  select="$etymology"/>
+                </xsl:call-template>
+              </xsl:if>
+            </xsl:when>
+            <!-- other parts of speech -->
+            <xsl:otherwise>
+              <xsl:call-template name="default-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="pos">
+                  <xsl:apply-templates select="."
+                                       mode="pos">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:apply-templates>
+                </xsl:with-param>
                 <xsl:with-param name="class">
                   <xsl:apply-templates select="."
                                        mode="class">
@@ -220,322 +612,11 @@
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
-            </xsl:when>
-            <!-- weak verbs with irregular past stem -->
-            <xsl:when test="matches($past,concat('^',$past-stem,'e?te$')) and
-                            matches($participle,concat('^(ge)?',$past-stem,'e?t$'))">
-              <!-- present -->
-              <xsl:call-template name="verb-entry">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="base-stem"
-                                select="$stem"/>
-                <xsl:with-param name="current-stem"
-                                select="$stem"/>
-                <xsl:with-param name="class">VVPres</xsl:with-param>
-                <xsl:with-param name="formation"
-                                select="$formation"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-              <!-- past indicative -->
-              <xsl:call-template name="verb-entry">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="base-stem"
-                                select="$stem"/>
-                <xsl:with-param name="current-stem"
-                                select="$past-stem"/>
-                <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
-                <xsl:with-param name="formation"
-                                select="$formation"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-              <!-- past subjunctive -->
-              <xsl:choose>
-                <!-- past stem ending in "ach" -->
-                <xsl:when test="matches($past-stem,'ach$')">
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                    <xsl:with-param name="base-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="current-stem"
-                                    select="n:umlaut($past-stem)"/>
-                    <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                    <xsl:with-param name="formation"
-                                    select="$formation"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                </xsl:when>
-                <!-- Rückumlaut -->
-                <xsl:otherwise>
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                    <xsl:with-param name="base-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="current-stem"
-                                    select="$stem"/><!-- sic! -->
-                    <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                    <xsl:with-param name="formation"
-                                    select="$formation"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                </xsl:otherwise>
-              </xsl:choose>
-              <!-- past participle -->
-              <xsl:call-template name="verb-entry">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="base-stem"
-                                select="$stem"/>
-                <xsl:with-param name="current-stem"
-                                select="$participle-stem"/>
-                <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                <xsl:with-param name="formation"
-                                select="$formation"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:when>
-            <!-- weak verbs with strong participle -->
-            <xsl:when test="matches($past,concat('^',$stem,'e?te$')) and
-                            matches($participle,concat('^(ge)?',$stem,'en$'))">
-              <!-- present -->
-              <xsl:call-template name="verb-entry">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="base-stem"
-                                select="$stem"/>
-                <xsl:with-param name="current-stem"
-                                select="$stem"/>
-                <xsl:with-param name="class">VVPres</xsl:with-param>
-                <xsl:with-param name="formation"
-                                select="$formation"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-              <!-- past indicative -->
-              <xsl:call-template name="verb-entry">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="base-stem"
-                                select="$stem"/>
-                <xsl:with-param name="current-stem"
-                                select="$past-stem"/>
-                <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
-                <xsl:with-param name="formation"
-                                select="$formation"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-              <!-- past subjunctive -->
-              <xsl:call-template name="verb-entry">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="base-stem"
-                                select="$stem"/>
-                <xsl:with-param name="current-stem"
-                                select="$past-stem"/>
-                <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                <xsl:with-param name="formation"
-                                select="$formation"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-              <!-- past participle -->
-              <xsl:call-template name="verb-entry">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="base-stem"
-                                select="$stem"/>
-                <xsl:with-param name="current-stem"
-                                select="$participle-stem"/>
-                <xsl:with-param name="class">VVPP-en</xsl:with-param>
-                <xsl:with-param name="formation"
-                                select="$formation"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:when>
-            <!-- strong verbs -->
-            <xsl:otherwise>
-              <!-- present -->
-              <xsl:choose>
-                <!-- uniform present stem -->
-                <xsl:when test="$stem=$present-stem">
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                    <xsl:with-param name="base-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="current-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="class">VVPres</xsl:with-param>
-                    <xsl:with-param name="formation"
-                                    select="$formation"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                </xsl:when>
-                <!-- present stem for 2nd/3rd person singular with "e:i" alternation -->
-                <xsl:when test="contains(n:pair($stem,$present-stem),'e:i')">
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                    <xsl:with-param name="base-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="current-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="class">VVPres1</xsl:with-param>
-                    <xsl:with-param name="formation"
-                                    select="$formation"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                    <xsl:with-param name="base-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="current-stem"
-                                    select="$present-stem"/>
-                    <xsl:with-param name="class">VVPres2+Imp</xsl:with-param>
-                    <xsl:with-param name="formation"
-                                    select="$formation"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                </xsl:when>
-                <!-- other present stem for 2nd/3rd person singular -->
-                <xsl:otherwise>
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                    <xsl:with-param name="base-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="current-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
-                    <xsl:with-param name="formation"
-                                    select="$formation"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                    <xsl:with-param name="base-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="current-stem"
-                                    select="$present-stem"/>
-                    <xsl:with-param name="class">VVPres2</xsl:with-param>
-                    <xsl:with-param name="formation"
-                                    select="$formation"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                </xsl:otherwise>
-              </xsl:choose>
-              <xsl:choose>
-                <!-- umlautable past stem -->
-                <!-- Caveat: "e" is considered as a full vowel. -->
-                <xsl:when test="matches($past-stem,'([aou]|au)[^aeiouäöü]*$','i')">
-                  <!-- past indicative -->
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                    <xsl:with-param name="base-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="current-stem"
-                                    select="$past-stem"/>
-                    <xsl:with-param name="class">VVPastIndStr</xsl:with-param>
-                    <xsl:with-param name="formation"
-                                    select="$formation"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                  <!-- past subjunctive -->
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                    <xsl:with-param name="base-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="current-stem"
-                                    select="n:umlaut($past-stem)"/>
-                    <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
-                    <xsl:with-param name="formation"
-                                    select="$formation"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                </xsl:when>
-                <!-- non-umlautable past stem -->
-                <xsl:otherwise>
-                  <!-- past -->
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                    <xsl:with-param name="base-stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="current-stem"
-                                    select="$past-stem"/>
-                    <xsl:with-param name="class">VVPastStr</xsl:with-param>
-                    <xsl:with-param name="formation"
-                                    select="$formation"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                </xsl:otherwise>
-              </xsl:choose>
-              <!-- past participle -->
-              <xsl:call-template name="verb-entry">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="base-stem"
-                                select="$stem"/>
-                <xsl:with-param name="current-stem"
-                                select="$participle-stem"/>
-                <xsl:with-param name="class">VVPP-en</xsl:with-param>
-                <xsl:with-param name="formation"
-                                select="$formation"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
             </xsl:otherwise>
-            <!-- TODO: support for irregular verbs, modal verbs, and auxiliaries -->
           </xsl:choose>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:call-template name="default-entry">
-            <xsl:with-param name="lemma"
-                            select="$lemma"/>
-            <xsl:with-param name="pos">
-              <xsl:apply-templates select="."
-                                   mode="pos">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-              </xsl:apply-templates>
-            </xsl:with-param>
-            <xsl:with-param name="class">
-              <xsl:apply-templates select="."
-                                   mode="class">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-              </xsl:apply-templates>
-            </xsl:with-param>
-            <xsl:with-param name="formation"
-                            select="$formation"/>
-            <xsl:with-param name="etymology"
-                            select="$etymology"/>
-          </xsl:call-template>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:for-each>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:if>
   </xsl:for-each>
 </xsl:template>
 

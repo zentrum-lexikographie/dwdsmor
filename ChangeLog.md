@@ -5,6 +5,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 * add support for strong verbs
 * add support for mixed verbs
 * filter phrasal verbs
+* ignore sources with missing information
 
 2021-09-14:
 
