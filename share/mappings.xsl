@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- mappings.xsl -->
-<!-- Version 0.8 -->
+<!-- Version 0.9 -->
 <!-- Andreas Nolda 2021-09-15 -->
 
 <xsl:stylesheet version="2.0"
@@ -148,11 +148,52 @@
   <xsl:param name="argument"/>
   <!-- return a regexp matching the umlaut variant of the argument, if any -->
   <xsl:choose>
-    <!-- replace the last vowel matching [aou] by [äöü] -->
-    <xsl:when test="matches($argument,'[aou]')">
-      <xsl:sequence select="replace($argument,'^(.*)[aou]([^aou]*)$',
-                                              '$1[äöü]$2',
+    <!-- replace the last vowel matching ([aou]|au) by ([äöü]|äu) -->
+    <xsl:when test="matches($argument,'[aou]','i')">
+      <xsl:sequence select="replace($argument,'^(.*)([aou]|au)([^aou]*)$',
+                                              '$1([äöü]|äu)$3',
                                               'i')"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:sequence select="$argument"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
+
+<xsl:function name="n:umlaut">
+  <xsl:param name="argument"/>
+  <!-- return the umlaut variant of the argument, if any -->
+  <!-- Caveat: "e" is considered as a full vowel.
+       Therefore make sure that $argument contains no schwa endings. -->
+  <xsl:choose>
+    <!-- replace the last vowel matching ([aou]|au) by "ä", "ö", "ü", or "äu" -->
+    <xsl:when test="matches($argument,'([aou]|au)[^aeiouäöü]*$','i')">
+      <xsl:variable name="vowel"
+                    select="replace($argument,'^.*([aou]|au)[^aeiouäöü]*$',
+                                              '$1',
+                                              'i')"/>
+      <xsl:choose>
+        <xsl:when test="$vowel='a'">
+          <xsl:sequence select="replace($argument,'^(.*)([aou]|au)([^aeiouäöü]*)$',
+                                                  '$1ä$3',
+                                                  'i')"/>
+        </xsl:when>
+        <xsl:when test="$vowel='o'">
+          <xsl:sequence select="replace($argument,'^(.*)([aou]|au)([^aeiouäöü]*)$',
+                                                  '$1ö$3',
+                                                  'i')"/>
+        </xsl:when>
+        <xsl:when test="$vowel='u'">
+          <xsl:sequence select="replace($argument,'^(.*)([aou]|au)([^aeiouäöü]*)$',
+                                                  '$1ü$3',
+                                                  'i')"/>
+        </xsl:when>
+        <xsl:when test="$vowel='au'">
+          <xsl:sequence select="replace($argument,'^(.*)([aou]|au)([^aeiouäöü]*)$',
+                                                  '$1äu$3',
+                                                  'i')"/>
+        </xsl:when>
+      </xsl:choose>
     </xsl:when>
     <xsl:otherwise>
       <xsl:sequence select="$argument"/>
@@ -205,9 +246,77 @@
   <xsl:sequence select="$value"/>
 </xsl:function>
 
+<xsl:template name="affix-form">
+  <xsl:param name="lemma"/>
+  <xsl:choose>
+    <xsl:when test="starts-with($lemma,'-')">
+      <xsl:value-of select="replace($lemma,'-(.+)','$1')"/>
+    </xsl:when>
+    <xsl:when test="ends-with($lemma,'-')">
+      <xsl:value-of select="replace($lemma,'(.+)-','$1')"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$lemma"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
 <xsl:template name="verb-stem">
   <xsl:param name="lemma"/>
   <xsl:value-of select="replace($lemma,'^(.+?)e?n$','$1')"/>
+</xsl:template>
+
+<xsl:template name="present-stem">
+  <xsl:variable name="dwds"
+                select="normalize-space(dwds:Praesens)"/>
+  <xsl:choose>
+    <xsl:when test="matches($dwds,'^[^ ]+?e?t$')">
+      <xsl:value-of select="replace($dwds,'^([^ ]+?)e?t$','$1')"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$dwds"/><!-- ? -->
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="past-stem">
+  <xsl:variable name="dwds"
+                select="normalize-space(dwds:Praeteritum)"/>
+  <xsl:choose>
+    <xsl:when test="matches($dwds,'^[^ ]+?e?te$')">
+      <xsl:value-of select="replace($dwds,'^([^ ]+?)e?te$','$1')"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$dwds"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="participle-stem">
+  <xsl:variable name="dwds"
+                select="normalize-space(dwds:Partizip_II)"/>
+  <xsl:choose>
+    <xsl:when test="matches($dwds,'^(ge)?[^ ]+?e?t$')">
+      <xsl:value-of select="replace($dwds,'^(ge)?([^ ]+?)e?t$','$2')"/>
+    </xsl:when>
+    <xsl:when test="matches($dwds,'^(ge)?[^ ]+en$')">
+      <xsl:value-of select="replace($dwds,'^(ge)?([^ ]+)en$','$2')"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$dwds"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="participle-prefix">
+  <xsl:variable name="participle"
+                select="normalize-space(dwds:Partizip_II)"/>
+  <xsl:variable name="participle-stem">
+    <xsl:call-template name="participle-stem"/>
+  </xsl:variable>
+  <xsl:if test="matches($participle,concat('^ge',$participle-stem,'e?[nt]$'))">
+    <xsl:text>&lt;ge&gt;</xsl:text>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template name="insert-value">
@@ -363,5 +472,3 @@
   </xsl:call-template>
 </xsl:template>
 </xsl:stylesheet>
-<!-- TODO: -->
-<!-- add support for more parts of speech -->
