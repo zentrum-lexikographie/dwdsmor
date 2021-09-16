@@ -150,7 +150,7 @@
   <xsl:choose>
     <!-- replace the last vowel matching ([aou]|au) by ([äöü]|äu) -->
     <xsl:when test="matches($argument,'[aou]','i')">
-      <xsl:sequence select="replace($argument,'^(.*)([aou]|au)([^aou]*)$',
+      <xsl:sequence select="replace($argument,'^(.*?)([aou]|au)([^aou]*)$',
                                               '$1([äöü]|äu)$3',
                                               'i')"/>
     </xsl:when>
@@ -169,28 +169,28 @@
     <!-- replace the last vowel matching ([aou]|au) by "ä", "ö", "ü", or "äu" -->
     <xsl:when test="matches($argument,'([aou]|au)[^aeiouäöü]*$','i')">
       <xsl:variable name="vowel"
-                    select="replace($argument,'^.*([aou]|au)[^aeiouäöü]*$',
+                    select="replace($argument,'^.*?([aou]|au)[^aeiouäöü]*$',
                                               '$1',
                                               'i')"/>
       <xsl:choose>
         <xsl:when test="$vowel='a'">
-          <xsl:sequence select="replace($argument,'^(.*)([aou]|au)([^aeiouäöü]*)$',
-                                                  '$1ä$3',
+          <xsl:sequence select="replace($argument,'^(.*)a([^aeiouäöü]*)$',
+                                                  '$1ä$2',
                                                   'i')"/>
         </xsl:when>
         <xsl:when test="$vowel='o'">
-          <xsl:sequence select="replace($argument,'^(.*)([aou]|au)([^aeiouäöü]*)$',
-                                                  '$1ö$3',
+          <xsl:sequence select="replace($argument,'^(.*)o([^aeiouäöü]*)$',
+                                                  '$1ö$2',
                                                   'i')"/>
         </xsl:when>
         <xsl:when test="$vowel='u'">
-          <xsl:sequence select="replace($argument,'^(.*)([aou]|au)([^aeiouäöü]*)$',
-                                                  '$1ü$3',
+          <xsl:sequence select="replace($argument,'^(.*)u([^aeiouäöü]*)$',
+                                                  '$1ü$2',
                                                   'i')"/>
         </xsl:when>
         <xsl:when test="$vowel='au'">
-          <xsl:sequence select="replace($argument,'^(.*)([aou]|au)([^aeiouäöü]*)$',
-                                                  '$1äu$3',
+          <xsl:sequence select="replace($argument,'^(.*)au([^aeiouäöü]*)$',
+                                                  '$1äu$2',
                                                   'i')"/>
         </xsl:when>
       </xsl:choose>
