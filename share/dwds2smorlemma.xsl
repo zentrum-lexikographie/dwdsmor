@@ -408,7 +408,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:otherwise>
-            <!-- TODO: support for irregular verbs and auxiliaries -->
+            <!-- TODO: support for irregular verbs, modal verbs, and auxiliaries -->
           </xsl:choose>
         </xsl:when>
         <xsl:otherwise>
