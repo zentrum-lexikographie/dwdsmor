@@ -20,8 +20,9 @@
 </xsl:template>
 
 <xsl:template match="dwds:Artikel">
-  <!-- ignore idioms -->
-  <xsl:apply-templates select="dwds:Formangabe[not(normalize-space(dwds:Grammatik/dwds:Wortklasse)='Mehrwortausdruck')]"/>
+  <!-- ignore syntactically complex units (in particular, phrasal verbs and idioms) -->
+  <xsl:apply-templates select="dwds:Formangabe[not(dwds:Schreibung[contains(normalize-space(.),' ')] or
+                                                   dwds:Grammatik/dwds:Praesens[contains(normalize-space(.),' ')])]"/>
 </xsl:template>
 
 <xsl:template name="affix-category">

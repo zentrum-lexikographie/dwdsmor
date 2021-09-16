@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- mappings.xsl -->
-<!-- Version 0.9 -->
-<!-- Andreas Nolda 2021-09-15 -->
+<!-- Version 0.10 -->
+<!-- Andreas Nolda 2021-09-16 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -270,8 +270,8 @@
   <xsl:variable name="dwds"
                 select="normalize-space(dwds:Praesens)"/>
   <xsl:choose>
-    <xsl:when test="matches($dwds,'^[^ ]+?e?t$')">
-      <xsl:value-of select="replace($dwds,'^([^ ]+?)e?t$','$1')"/>
+    <xsl:when test="matches($dwds,'^.+?e?t$')">
+      <xsl:value-of select="replace($dwds,'^(.+?)e?t$','$1')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$dwds"/><!-- ? -->
@@ -283,8 +283,8 @@
   <xsl:variable name="dwds"
                 select="normalize-space(dwds:Praeteritum)"/>
   <xsl:choose>
-    <xsl:when test="matches($dwds,'^[^ ]+?e?te$')">
-      <xsl:value-of select="replace($dwds,'^([^ ]+?)e?te$','$1')"/>
+    <xsl:when test="matches($dwds,'^.+?e?te$')">
+      <xsl:value-of select="replace($dwds,'^(.+?)e?te$','$1')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$dwds"/>
@@ -296,11 +296,11 @@
   <xsl:variable name="dwds"
                 select="normalize-space(dwds:Partizip_II)"/>
   <xsl:choose>
-    <xsl:when test="matches($dwds,'^(ge)?[^ ]+?e?t$')">
-      <xsl:value-of select="replace($dwds,'^(ge)?([^ ]+?)e?t$','$2')"/>
+    <xsl:when test="matches($dwds,'^(ge)?.+?e?t$')">
+      <xsl:value-of select="replace($dwds,'^(ge)?(.+?)e?t$','$2')"/>
     </xsl:when>
-    <xsl:when test="matches($dwds,'^(ge)?[^ ]+en$')">
-      <xsl:value-of select="replace($dwds,'^(ge)?([^ ]+)en$','$2')"/>
+    <xsl:when test="matches($dwds,'^(ge)?.+en$')">
+      <xsl:value-of select="replace($dwds,'^(ge)?(.+)en$','$2')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$dwds"/>
