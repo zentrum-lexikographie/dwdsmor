@@ -293,14 +293,23 @@
 </xsl:template>
 
 <xsl:template name="participle-stem">
+  <xsl:param name="lemma"/>
   <xsl:variable name="dwds"
                 select="normalize-space(dwds:Partizip_II)"/>
   <xsl:choose>
-    <xsl:when test="matches($dwds,'^(ge)?.+?e?t$')">
-      <xsl:value-of select="replace($dwds,'^(ge)?(.+?)e?t$','$2')"/>
+    <xsl:when test="matches($dwds,'^ge.+?e?t$') and
+                    not(matches($dwds,concat('^',substring($lemma,1,3))))">
+      <xsl:value-of select="replace($dwds,'^ge(.+?)e?t$','$1')"/>
     </xsl:when>
-    <xsl:when test="matches($dwds,'^(ge)?.+en$')">
-      <xsl:value-of select="replace($dwds,'^(ge)?(.+)en$','$2')"/>
+    <xsl:when test="matches($dwds,'^.+?e?t$')">
+      <xsl:value-of select="replace($dwds,'^(.+?)e?t$','$1')"/>
+    </xsl:when>
+    <xsl:when test="matches($dwds,'^ge.+en$') and
+                    not(matches($dwds,concat('^',substring($lemma,1,3))))">
+      <xsl:value-of select="replace($dwds,'^ge(.+)en$','$1')"/>
+    </xsl:when>
+    <xsl:when test="matches($dwds,'^.+en$')">
+      <xsl:value-of select="replace($dwds,'^(.+)en$','$1')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$dwds"/>
@@ -309,10 +318,14 @@
 </xsl:template>
 
 <xsl:template name="participle-prefix">
+  <xsl:param name="lemma"/>
   <xsl:variable name="participle"
                 select="normalize-space(dwds:Partizip_II)"/>
   <xsl:variable name="participle-stem">
-    <xsl:call-template name="participle-stem"/>
+    <xsl:call-template name="participle-stem">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:call-template>
   </xsl:variable>
   <xsl:if test="matches($participle,concat('^ge',$participle-stem,'e?[nt]$'))">
     <xsl:text>&lt;ge&gt;</xsl:text>

@@ -74,7 +74,10 @@
   <xsl:param name="class"/>
   <xsl:param name="formation"/>
   <xsl:param name="etymology"/>
-  <xsl:call-template name="participle-prefix"/>
+  <xsl:call-template name="participle-prefix">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
   <xsl:text>&lt;Base_Stems&gt;</xsl:text>
   <xsl:value-of select="n:pair($base-stem,$current-stem)"/>
   <xsl:text>&lt;V&gt;</xsl:text>
@@ -206,7 +209,10 @@
                   <xsl:call-template name="past-stem"/>
                 </xsl:variable>
                 <xsl:variable name="participle-stem">
-                  <xsl:call-template name="participle-stem"/>
+                  <xsl:call-template name="participle-stem">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:call-template>
                 </xsl:variable>
                 <xsl:choose>
                   <!-- weak verbs -->
