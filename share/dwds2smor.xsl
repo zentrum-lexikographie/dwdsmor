@@ -332,6 +332,7 @@
                                     select="$etymology"/>
                   </xsl:call-template>
                 </xsl:when>
+                <!-- non-umlautable past stem -->
                 <xsl:otherwise>
                   <!-- past -->
                   <xsl:call-template name="verb-entry">
