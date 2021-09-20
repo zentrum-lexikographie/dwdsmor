@@ -106,8 +106,16 @@ After updating the submodules, a lexicon can be built via:
 make -C lexicon
 ```
 
-The result is stored in `SMORLemma/lexicon/lexicon` where it is picked up by the
-FST compilation process of SMORLemma.
+By default, additional lexica from SMORLemma for irregular adjectives, adverbs,
+and verbs as well as for adpositions are included. In order to built a lexicon
+without them, run:
+
+```sh
+make INCLUDE_SMORLEMMA=false -C lexicon
+```
+
+The result is stored in `SMORLemma/lexicon/lexicon`, where it is picked up by
+the FST compilation process of SMORLemma.
 
 Extracting the lexicon via `make` operates on the complete DWDS dataset. For
 testing purposes, the extraction process can be called separately and with
