@@ -7,13 +7,13 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:n="http://andreas.nolda.org/ns/lib">
 
-<xsl:include href="dwds.xsl"/>
+<xsl:include href="strings.xsl"/>
 
 <xsl:include href="forms.xsl"/>
 
-<xsl:include href="mappings.xsl"/>
+<xsl:include href="categories.xsl"/>
 
-<xsl:include href="strings.xsl"/>
+<xsl:include href="dwds.xsl"/>
 
 <xsl:output method="text"
             encoding="UTF-8"/>

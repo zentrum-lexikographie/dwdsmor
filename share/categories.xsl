@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- mappings.xsl -->
+<!-- categories.xsl -->
 <!-- Version 0.11 -->
 <!-- Andreas Nolda 2021-09-24 -->
 
@@ -7,6 +7,8 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:dwds="http://www.dwds.de/ns/1.0"
                 xmlns:n="http://andreas.nolda.org/ns/lib">
+
+<!-- parts of speech-->
 
 <xsl:variable name="pos-mapping">
   <pos pos="Adjektiv">ADJ</pos>
@@ -17,6 +19,8 @@
   <!-- TODO: more POS mappings -->
   <!-- ... -->
 </xsl:variable>
+
+<!-- inflection classes -->
 
 <xsl:variable name="adjective-class-mapping">
   <!-- adjectives: -->
@@ -35,6 +39,33 @@
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
+
+<xsl:template name="adjective-class">
+  <xsl:param name="lemma"/>
+  <xsl:variable name="pos"
+                select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:variable name="superlative">
+    <xsl:variable name="dwds"
+                  select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
+    <xsl:choose>
+      <xsl:when test="matches($dwds,concat('^',$lemma,'sten$'))">-sten</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'sten$'))">&#x308;-sten</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',$lemma,'esten$'))">-esten</xsl:when>
+      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'esten$'))">&#x308;-esten</xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$dwds"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$adjective-class-mapping/class[@pos=$pos]
+                                                          [@superlative=$superlative]"/>
+    <xsl:with-param name="type">class</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+</xsl:template>
 
 <xsl:variable name="noun-class-mapping">
   <!-- masculine nouns: -->
@@ -77,6 +108,39 @@
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
+
+<xsl:template name="noun-class">
+  <xsl:param name="lemma"/>
+  <xsl:variable name="pos"
+                select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:variable name="gender"
+                select="normalize-space(dwds:Genus)"/>
+  <xsl:variable name="genitive"
+                select="normalize-space(dwds:Genitiv)"/>
+  <xsl:variable name="plural">
+    <xsl:variable name="dwds"
+                  select="normalize-space(dwds:Plural)"/>
+    <xsl:choose>
+      <xsl:when test="starts-with($dwds,'-')">
+        <xsl:value-of select="$dwds"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="concat('&#x308;-',replace(normalize-space($dwds),concat('^',n:umlaut-re($lemma)),
+                                                                         ''))"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$noun-class-mapping/class[@pos=$pos]
+                                                     [@gender=$gender]
+                                                     [@genitive=$genitive]
+                                                     [@plural=$plural]"/>
+    <xsl:with-param name="type">class</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+</xsl:template>
 
 <xsl:variable name="verb-class-mapping">
   <!-- weak verbs: -->
@@ -139,66 +203,6 @@
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
-
-<xsl:template name="adjective-class">
-  <xsl:param name="lemma"/>
-  <xsl:variable name="pos"
-                select="normalize-space(dwds:Wortklasse)"/>
-  <xsl:variable name="superlative">
-    <xsl:variable name="dwds"
-                  select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
-    <xsl:choose>
-      <xsl:when test="matches($dwds,concat('^',$lemma,'sten$'))">-sten</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'sten$'))">&#x308;-sten</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',$lemma,'esten$'))">-esten</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'esten$'))">&#x308;-esten</xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="$dwds"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$adjective-class-mapping/class[@pos=$pos]
-                                                          [@superlative=$superlative]"/>
-    <xsl:with-param name="type">class</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-</xsl:template>
-
-<xsl:template name="noun-class">
-  <xsl:param name="lemma"/>
-  <xsl:variable name="pos"
-                select="normalize-space(dwds:Wortklasse)"/>
-  <xsl:variable name="gender"
-                select="normalize-space(dwds:Genus)"/>
-  <xsl:variable name="genitive"
-                select="normalize-space(dwds:Genitiv)"/>
-  <xsl:variable name="plural">
-    <xsl:variable name="dwds"
-                  select="normalize-space(dwds:Plural)"/>
-    <xsl:choose>
-      <xsl:when test="starts-with($dwds,'-')">
-        <xsl:value-of select="$dwds"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="concat('&#x308;-',replace(normalize-space($dwds),concat('^',n:umlaut-re($lemma)),
-                                                                         ''))"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$noun-class-mapping/class[@pos=$pos]
-                                                     [@gender=$gender]
-                                                     [@genitive=$genitive]
-                                                     [@plural=$plural]"/>
-    <xsl:with-param name="type">class</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-</xsl:template>
 
 <xsl:template name="verb-class">
   <xsl:param name="lemma"/>
