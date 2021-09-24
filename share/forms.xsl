@@ -83,7 +83,7 @@
   </xsl:choose>
 </xsl:template>
 
-<!-- prefixes of participle -->
+<!-- prefixes of participles -->
 <xsl:template name="participle-prefix">
   <xsl:param name="lemma"/>
   <xsl:variable name="participle"
