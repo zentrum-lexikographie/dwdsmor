@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- mappings.xsl -->
-<!-- Version 0.10 -->
-<!-- Andreas Nolda 2021-09-16 -->
+<!-- Version 0.11 -->
+<!-- Andreas Nolda 2021-09-24 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:dwds="http://www.dwds.de/ns/1.0"
                 xmlns:n="http://andreas.nolda.org/ns/lib">
-
-<!-- mappings -->
 
 <xsl:variable name="pos-mapping">
   <pos pos="Adjektiv">ADJ</pos>
@@ -24,16 +22,16 @@
   <!-- adjectives: -->
   <!-- superlative: "-sten" -->
   <class pos="Adjektiv"
-         superlative="-sten">ADJ+</class>
+         superlative="-sten">Adj+</class>
   <!-- superlative: umlaut and "-sten" -->
   <class pos="Adjektiv"
-         superlative="&#x308;-sten">ADJ$</class>
+         superlative="&#x308;-sten">Adj$</class>
   <!-- superlative: "-esten" -->
   <class pos="Adjektiv"
-         superlative="-esten">ADJ+e</class>
+         superlative="-esten">Adj+e</class>
   <!-- superlative: umlaut and "-esten" -->
   <class pos="Adjektiv"
-         superlative="&#x308;-esten">ADJ$e</class>
+         superlative="&#x308;-esten">Adj$e</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -141,241 +139,6 @@
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
-
-<!-- helper functions and templates -->
-
-<xsl:function name="n:umlaut-re">
-  <xsl:param name="argument"/>
-  <!-- return a regexp matching the umlaut variant of the argument, if any -->
-  <xsl:choose>
-    <!-- replace the last vowel matching ([aou]|au) by ([äöü]|äu) -->
-    <xsl:when test="matches($argument,'[aou]','i')">
-      <xsl:sequence select="replace($argument,'^(.*?)([aou]|au)([^aou]*)$',
-                                              '$1([äöü]|äu)$3',
-                                              'i')"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:sequence select="$argument"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:function>
-
-<xsl:function name="n:umlaut">
-  <xsl:param name="argument"/>
-  <!-- return the umlaut variant of the argument, if any -->
-  <!-- Caveat: "e" is considered as a full vowel.
-       Therefore make sure that $argument contains no schwa endings. -->
-  <xsl:choose>
-    <!-- replace the last vowel matching ([aou]|au) by "ä", "ö", "ü", or "äu" -->
-    <xsl:when test="matches($argument,'([aou]|au)[^aeiouäöü]*$','i')">
-      <xsl:variable name="vowel"
-                    select="replace($argument,'^.*?([aou]|au)[^aeiouäöü]*$',
-                                              '$1',
-                                              'i')"/>
-      <xsl:choose>
-        <xsl:when test="$vowel='a'">
-          <xsl:sequence select="replace($argument,'^(.*)a([^aeiouäöü]*)$',
-                                                  '$1ä$2',
-                                                  'i')"/>
-        </xsl:when>
-        <xsl:when test="$vowel='o'">
-          <xsl:sequence select="replace($argument,'^(.*)o([^aeiouäöü]*)$',
-                                                  '$1ö$2',
-                                                  'i')"/>
-        </xsl:when>
-        <xsl:when test="$vowel='u'">
-          <xsl:sequence select="replace($argument,'^(.*)u([^aeiouäöü]*)$',
-                                                  '$1ü$2',
-                                                  'i')"/>
-        </xsl:when>
-        <xsl:when test="$vowel='au'">
-          <xsl:sequence select="replace($argument,'^(.*)au([^aeiouäöü]*)$',
-                                                  '$1äu$2',
-                                                  'i')"/>
-        </xsl:when>
-      </xsl:choose>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:sequence select="$argument"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:function>
-
-<xsl:function name="n:pair">
-  <xsl:param name="argument1"/>
-  <xsl:param name="argument2"/>
-  <xsl:variable name="value">
-    <xsl:if test="string-length($argument1)&gt;0 or
-                  string-length($argument2)&gt;0">
-      <xsl:variable name="substring1"
-                    select="substring($argument1,1,1)"/>
-      <xsl:variable name="substring2"
-                    select="substring($argument2,1,1)"/>
-      <xsl:variable name="string1">
-        <xsl:choose>
-          <xsl:when test="string-length($substring1)=0">
-            <xsl:text>&lt;&gt;</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="$substring1"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:variable>
-      <xsl:variable name="string2">
-        <xsl:choose>
-          <xsl:when test="string-length($substring2)=0">
-            <xsl:text>&lt;&gt;</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="$substring2"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:variable>
-      <xsl:choose>
-        <xsl:when test="$string1=$string2">
-          <xsl:value-of select="$string1"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="concat($string1,':',$string2)"/>
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:value-of select="n:pair(substring($argument1,2),
-                                   substring($argument2,2))"/>
-    </xsl:if>
-  </xsl:variable>
-  <xsl:sequence select="$value"/>
-</xsl:function>
-
-<xsl:template name="affix-form">
-  <xsl:param name="lemma"/>
-  <xsl:choose>
-    <xsl:when test="starts-with($lemma,'-')">
-      <xsl:value-of select="replace($lemma,'-(.+)','$1')"/>
-    </xsl:when>
-    <xsl:when test="ends-with($lemma,'-')">
-      <xsl:value-of select="replace($lemma,'(.+)-','$1')"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:value-of select="$lemma"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<xsl:template name="verb-stem">
-  <xsl:param name="lemma"/>
-  <xsl:value-of select="replace($lemma,'^(.+?)e?n$','$1')"/>
-</xsl:template>
-
-<xsl:template name="present-stem">
-  <xsl:variable name="dwds"
-                select="normalize-space(dwds:Praesens)"/>
-  <xsl:choose>
-    <xsl:when test="matches($dwds,'^.+?e?t$')">
-      <xsl:value-of select="replace($dwds,'^(.+?)e?t$','$1')"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:value-of select="$dwds"/><!-- ? -->
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<xsl:template name="past-stem">
-  <xsl:variable name="dwds"
-                select="normalize-space(dwds:Praeteritum)"/>
-  <xsl:choose>
-    <xsl:when test="matches($dwds,'^.+?e?te$')">
-      <xsl:value-of select="replace($dwds,'^(.+?)e?te$','$1')"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:value-of select="$dwds"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<xsl:template name="participle-stem">
-  <xsl:param name="lemma"/>
-  <xsl:variable name="dwds"
-                select="normalize-space(dwds:Partizip_II)"/>
-  <xsl:choose>
-    <xsl:when test="matches($dwds,'^ge.+?e?t$') and
-                    not(matches($dwds,concat('^',substring($lemma,1,3))))">
-      <xsl:value-of select="replace($dwds,'^ge(.+?)e?t$','$1')"/>
-    </xsl:when>
-    <xsl:when test="matches($dwds,'^.+?e?t$')">
-      <xsl:value-of select="replace($dwds,'^(.+?)e?t$','$1')"/>
-    </xsl:when>
-    <xsl:when test="matches($dwds,'^ge.+en$') and
-                    not(matches($dwds,concat('^',substring($lemma,1,3))))">
-      <xsl:value-of select="replace($dwds,'^ge(.+)en$','$1')"/>
-    </xsl:when>
-    <xsl:when test="matches($dwds,'^.+en$')">
-      <xsl:value-of select="replace($dwds,'^(.+)en$','$1')"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:value-of select="$dwds"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<xsl:template name="participle-prefix">
-  <xsl:param name="lemma"/>
-  <xsl:variable name="participle"
-                select="normalize-space(dwds:Partizip_II)"/>
-  <xsl:variable name="participle-stem">
-    <xsl:call-template name="participle-stem">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-    </xsl:call-template>
-  </xsl:variable>
-  <xsl:if test="matches($participle,concat('^ge',$participle-stem,'e?[nt]$'))">
-    <xsl:text>&lt;ge&gt;</xsl:text>
-  </xsl:if>
-</xsl:template>
-
-<xsl:template name="insert-value">
-  <xsl:param name="value"/>
-  <xsl:param name="type"/>
-  <xsl:param name="lemma"/>
-  <xsl:choose>
-    <xsl:when test="string-length($value)&gt;0">
-      <xsl:value-of select="$value"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:message>
-        <xsl:text>Warning: "</xsl:text>
-        <xsl:value-of select="$lemma"/>
-        <xsl:text>" has UNKNOWN </xsl:text>
-        <xsl:value-of select="$type"/>
-        <xsl:text>.</xsl:text>
-      </xsl:message>
-      <xsl:text>UNKNOWN</xsl:text>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<!-- grouping templates -->
-
-<!-- cf. https://stackoverflow.com/q/35525010 -->
-<xsl:template match="*[not(position()=last())]/*"
-              mode="grammar">
-  <xsl:param name="previous" as="element()*"/>
-  <xsl:apply-templates select="../following-sibling::*[1]/*"
-                       mode="grammar">
-    <xsl:with-param name="previous"
-                    select="$previous | ."/>
-  </xsl:apply-templates>
-</xsl:template>
-
-<xsl:template match="*[position()=last()]/*"
-              mode="grammar">
-  <xsl:param name="previous"/>
-  <dwds:Grammatik>
-    <xsl:copy-of select="$previous"/>
-    <xsl:copy-of select="."/>
-  </dwds:Grammatik>
-</xsl:template>
-
-<!-- mapping templates -->
 
 <xsl:template name="adjective-class">
   <xsl:param name="lemma"/>

@@ -2,6 +2,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 2021-09-24:
 
+* modularise stylesheets
 * reduce parameters of `affix-entry`, `verb-entry`, and `default-entry`
 
 2021-09-16:
