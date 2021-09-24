@@ -64,7 +64,7 @@
   </xsl:choose>
 </xsl:function>
 
-<!-- pair $argument1 as input and $argument2 as output -->
+<!-- return the pair of $argument1 as input and $argument2 as output -->
 <xsl:function name="n:pair">
   <xsl:param name="argument1"/>
   <xsl:param name="argument2"/>
@@ -110,7 +110,7 @@
   <xsl:sequence select="$value"/>
 </xsl:function>
 
-<!-- insert $value, if any;
+<!-- output $value, if any;
      else warn about missing value of $type for $lemma -->
 <xsl:template name="insert-value">
   <xsl:param name="value"/>
