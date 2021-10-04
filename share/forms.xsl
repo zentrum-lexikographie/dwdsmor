@@ -12,10 +12,12 @@
   <xsl:param name="lemma"/>
   <xsl:choose>
     <xsl:when test="starts-with($lemma,'-')">
-      <xsl:value-of select="replace($lemma,'-(.+)','$1')"/>
+      <xsl:value-of select="replace($lemma,'-(.+)',
+                                           '$1')"/>
     </xsl:when>
     <xsl:when test="ends-with($lemma,'-')">
-      <xsl:value-of select="replace($lemma,'(.+)-','$1')"/>
+      <xsl:value-of select="replace($lemma,'(.+)-',
+                                           '$1')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$lemma"/>
@@ -26,7 +28,8 @@
 <!-- base-stem forms of verbs -->
 <xsl:template name="verb-stem">
   <xsl:param name="lemma"/>
-  <xsl:value-of select="replace($lemma,'^(.+?)e?n$','$1')"/>
+  <xsl:value-of select="replace($lemma,'^(.+?)e?n$',
+                                       '$1')"/>
 </xsl:template>
 
 <!-- present-stem forms -->
@@ -35,7 +38,8 @@
                 select="normalize-space(dwds:Praesens)"/>
   <xsl:choose>
     <xsl:when test="matches($dwds,'^.+?e?t$')">
-      <xsl:value-of select="replace($dwds,'^(.+?)e?t$','$1')"/>
+      <xsl:value-of select="replace($dwds,'^(.+?)e?t$',
+                                          '$1')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$dwds"/><!-- ? -->
@@ -49,7 +53,8 @@
                 select="normalize-space(dwds:Praeteritum)"/>
   <xsl:choose>
     <xsl:when test="matches($dwds,'^.+?e?te$')">
-      <xsl:value-of select="replace($dwds,'^(.+?)e?te$','$1')"/>
+      <xsl:value-of select="replace($dwds,'^(.+?)e?te$',
+                                          '$1')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$dwds"/>
@@ -65,17 +70,21 @@
   <xsl:choose>
     <xsl:when test="matches($dwds,'^ge.+?e?t$') and
                     not(matches($dwds,concat('^',substring($lemma,1,3))))">
-      <xsl:value-of select="replace($dwds,'^ge(.+?)e?t$','$1')"/>
+      <xsl:value-of select="replace($dwds,'^ge(.+?)e?t$',
+                                          '$1')"/>
     </xsl:when>
     <xsl:when test="matches($dwds,'^.+?e?t$')">
-      <xsl:value-of select="replace($dwds,'^(.+?)e?t$','$1')"/>
+      <xsl:value-of select="replace($dwds,'^(.+?)e?t$',
+                                          '$1')"/>
     </xsl:when>
     <xsl:when test="matches($dwds,'^ge.+en$') and
                     not(matches($dwds,concat('^',substring($lemma,1,3))))">
-      <xsl:value-of select="replace($dwds,'^ge(.+)en$','$1')"/>
+      <xsl:value-of select="replace($dwds,'^ge(.+)en$',
+                                          '$1')"/>
     </xsl:when>
     <xsl:when test="matches($dwds,'^.+en$')">
-      <xsl:value-of select="replace($dwds,'^(.+)en$','$1')"/>
+      <xsl:value-of select="replace($dwds,'^(.+)en$',
+                                          '$1')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$dwds"/>

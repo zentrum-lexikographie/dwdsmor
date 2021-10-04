@@ -125,8 +125,8 @@
         <xsl:value-of select="$dwds"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="concat('&#x308;-',replace(normalize-space($dwds),concat('^',n:umlaut-re($lemma)),
-                                                                         ''))"/>
+        <xsl:value-of select="concat('&#x308;-',replace($dwds,concat('^',n:umlaut-re($lemma)),
+                                                              ''))"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
