@@ -60,9 +60,9 @@ and [Flex v2.6.4](https://github.com/westes/flex)
 On a recent Debian GNU/Linux, install the following packages:
 
 ```sh
-apt install\
-    build-essential cmake bison flex\
-    python3 libpython3-dev\
+apt install \
+    build-essential cmake bison flex \
+    python3 libpython3-dev \
     default-jdk
 ```
 
@@ -100,7 +100,14 @@ leveraging HLRN's hardware resources for FST compilation, consider building a
 potentially large, current lexicon locally and upload it to HLRN-IV for further
 processing.
 
-After updating the submodules, a lexicon can be built via:
+In addition, a compatible Clojure version has to be installed. This can be done
+be calling:
+
+```sh
+make -C lexicon clojure
+```
+
+Then, a lexicon can be built simply by running:
 
 ```sh
 make -C lexicon
@@ -116,6 +123,13 @@ make INCLUDE_SMORLEMMA=false -C lexicon
 
 The result is stored in `SMORLemma/lexicon/lexicon`, where it is picked up by
 the FST compilation process of SMORLemma.
+
+The lexicon will be re-built if XSLT stylesheets in `share/` have changed. In
+order to re-generate the lexicon with unchanged XSLT stylesheets, first call:
+
+```sh
+make -C lexicon clean
+```
 
 Extracting the lexicon via `make` operates on the complete DWDS dataset. For
 testing purposes, the extraction process can be called separately and with
@@ -151,11 +165,11 @@ Options:
 A test run with two articles would resemble something like
 
 ```plaintext
-$ ./generate-lexicon\
-    --xslt ../share/dwds2smorlemma.xsl\
-    --output ../SMORLemma/lexicon/lexicon\
-    --debug\
-    wb/WDG/ma/Mann-E_m_993.xml\
+$ ./generate-lexicon \
+    --xslt ../share/dwds2smorlemma.xsl \
+    --output ../SMORLemma/lexicon/lexicon \
+    --debug \
+    wb/WDG/ma/Mann-E_m_993.xml \
     wb/WDG/fr/Frau-E_f_7828.xml
 [2021-08-31 08:44:39,788][INFO ][dwdsmor.lexicon     ] - Extracting lexicon entries from 2 file(s)
 [2021-08-31 08:44:40,397][DEBUG][dwdsmor.lexicon     ] - Mann-E_m_993.xml -> <Stem>Mann<NN><base><nativ><NMasc_es_$er>
@@ -163,6 +177,24 @@ $ ./generate-lexicon\
 [2021-08-31 08:44:40,399][INFO ][dwdsmor.lexicon     ] - Sorting lexicon entries and removing duplicates
 [2021-08-31 08:44:40,401][INFO ][dwdsmor.lexicon     ] - Writing lexicon entries
 [2021-08-31 08:44:40,403][INFO ][dwdsmor.lexicon     ] - Generated lexicon in PT0.624S
+```
+
+Testing can be automated by running:
+
+```sh
+make -C lexicon test
+```
+
+This generates lexica from the file lists in `lexicon/test/input/` and compares
+the outputs in `lexicon/test/output/` with pre-generated target lexica in
+`lexicon/test/target/`. Note that filenames in the file lists are relative to
+`lexicon/wb/`.
+
+In order to re-run tests with unchanged target lexica and XSLT stylesheets,
+first call:
+
+```sh
+make -C lexicon testclean
 ```
 
 ## Build FSTs
