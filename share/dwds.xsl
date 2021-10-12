@@ -72,7 +72,8 @@
     <xsl:apply-templates select="$data-by-name/*[1]/*"
                          mode="grammar"/>
   </xsl:variable>
-  <xsl:for-each select="dwds:Schreibung">
+  <!-- ignore invalid spellings -->
+  <xsl:for-each select="dwds:Schreibung[not(starts-with(@Typ,'U'))]">
     <xsl:variable name="lemma"
                   select="normalize-space(.)"/>
     <xsl:if test="string-length($lemma)&gt;0">

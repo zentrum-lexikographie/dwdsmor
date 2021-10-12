@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2021-10-12:
 
 * only consider (near-)final articles
+* ignore invalid spellings
 
 2021-09-24:
 
