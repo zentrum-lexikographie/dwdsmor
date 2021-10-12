@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 1.0 -->
-<!-- Andreas Nolda 2021-09-24 -->
+<!-- Version 1.1 -->
+<!-- Andreas Nolda 2021-10-12 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -11,12 +11,15 @@
 <xsl:strip-space elements="*"/>
 
 <xsl:template match="/">
-  <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel"/>
+  <!-- only consider (near-)final articles -->
+  <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel[@Status='Red-2' or
+                                                       @Status='Red-f']"/>
 </xsl:template>
 
 <!-- save <dwds:Artikel> for reference within <xsl:for-each> loops -->
 <xsl:variable name="article"
-              select="/dwds:DWDS/dwds:Artikel"/>
+              select="/dwds:DWDS/dwds:Artikel[@Status='Red-2' or
+                                              @Status='Red-f']"/>
 
 <!-- process <dwds:Artikel> -->
 <xsl:template match="dwds:Artikel">
