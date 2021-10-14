@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 CLOJURE_VERSION := 1.10.3.943
 
-DIFF = diff --side-by-side --report-identical-files --suppress-common-lines --width=120
+DIFF = diff --ignore-trailing-space --side-by-side --report-identical-files --suppress-common-lines --width=120
 
 SRCDIR  = $(abspath wb)
 LEXDIR  = $(abspath ../SMORLemma/lexicon)
@@ -19,7 +19,6 @@ TESTTARGET = $(TESTDIR)/target
 
 TESTINPUTS  = $(wildcard $(TESTINPUT)/*.list)
 TESTOUTPUTS = $(patsubst $(TESTINPUT)/%.list,$(TESTOUTPUT)/%.lex,$(TESTINPUTS))
-TESTTARGETS = $(patsubst $(TESTINPUT)/%.list,$(TESTTARGET)/%.lex,$(TESTINPUTS))
 
 INCLUDE_SMORLEMMA = true
 
