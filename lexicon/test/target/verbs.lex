@@ -40,7 +40,6 @@
 <Stem><ge>poofe:<>n:<><V><base><fremd><VVReg>
 <Stem><ge>salze:<>n:<><V><base><nativ><VVPP-en>
 <Stem><ge>salze:<>n:<><V><base><nativ><VVReg>
-<Stem><ge>schlägeln:<><V><base><nativ><VVReg-el/er>
 <Stem><ge>schnippse:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>schnipse:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>schreddern:<><V><base><fremd><VVReg-el/er>
