@@ -1,5 +1,5 @@
 # .gitignore
-# Andreas Nolda 2021-08-19
+# Andreas Nolda 2021-10-15
 
 .venv/
 *~
@@ -11,6 +11,7 @@ __pycache__
 .dir-locals.el
 .python-version
 
+lexicon/test/output/
 lexicon/wb/
 sfst/
 SMORLemma/
