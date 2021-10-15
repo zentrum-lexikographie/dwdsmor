@@ -46,7 +46,10 @@ clean:
 
 test: $(TESTOUTPUTS)
 
-$(TESTOUTPUT)/%: $(TESTTARGET)/% $(XSL) $(LIB)
+$(TESTOUTPUT):
+	mkdir -p $@
+
+$(TESTOUTPUT)/%: $(TESTTARGET)/% $(XSL) $(LIB) | $(TESTOUTPUT)
 	@./generate-lexicon --xslt $(XSL) --filter --output $@ \
 	  $(addprefix $(SRCDIR)/,$(file < $(patsubst $(TESTTARGET)%.lex,$(TESTINPUT)%.list,$<)))
 	@$(DIFF) $< $@ || true
