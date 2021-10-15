@@ -198,7 +198,7 @@
                   </xsl:when>
                   <!-- weak verbs with strong participle -->
                   <xsl:when test="matches($past,concat('^',$stem,'e?te$')) and
-                                  matches($participle,concat('^(ge)?',$stem,'en$'))">
+                                  matches($participle,'en$')">
                     <!-- present -->
                     <xsl:call-template name="verb-entry">
                       <xsl:with-param name="lemma"

@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2021-10-15:
 
 * add support for strong verbs with weak participle
+* add support for weak verbs with ablauted strong participle
 
 2021-10-12:
 
