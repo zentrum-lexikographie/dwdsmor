@@ -198,9 +198,11 @@ make -C lexicon testclean
 ```
 ### Update the dictionary sources to the current revision
 
-As said above, the dictionary sources are imported as a submodule, tracking the working branch of the lexicography team `zdl-lex-server/production`. In order to update the sources to the most recent revision, issue the following:
+As said above, the dictionary sources are imported as a submodule, tracking the
+working branch of the lexicography team `zdl-lex-server/production`. In order to
+update the sources to the most recent revision, issue the following:
 
-```sh 
+```sh
 git submodule update --remote lexicon/wb
 ```
 
@@ -288,7 +290,8 @@ Compiled automata can be exercised by the test suite in `tests/`:
 make test
 ```
 
-There is also a Python-based command line tool for performing morphological analyses of word forms:
+There is also a Python-based command line tool for performing morphological
+analyses of word forms:
 
 ```plaintext
 $ dwdsmor-analyze --help
