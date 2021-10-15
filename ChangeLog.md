@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2021-10-15:
+
+* add support for strong verbs with weak participle
+
 2021-10-12:
 
 * only consider (near-)final articles

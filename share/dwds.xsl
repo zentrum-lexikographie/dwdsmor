@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 1.1 -->
-<!-- Andreas Nolda 2021-10-12 -->
+<!-- Version 1.2 -->
+<!-- Andreas Nolda 2021-10-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -281,6 +281,7 @@
                         </xsl:call-template>
                       </xsl:otherwise>
                     </xsl:choose>
+                    <!-- past -->
                     <xsl:choose>
                       <!-- umlautable past stem -->
                       <!-- Caveat: "e" is considered as a full vowel. -->
@@ -315,15 +316,30 @@
                       </xsl:otherwise>
                     </xsl:choose>
                     <!-- past participle -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="class">VVPP-en</xsl:with-param>
-                    </xsl:call-template>
+                    <xsl:choose>
+                      <!-- weak participle -->
+                      <xsl:when test="matches($participle,concat('^(ge)?',$stem,'e?t$'))">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$participle-stem"/>
+                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- strong participle -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$participle-stem"/>
+                          <xsl:with-param name="class">VVPP-en</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
                   </xsl:otherwise>
-                  <!-- TODO: support for irregular verbs, modal verbs, and auxiliaries -->
+                  <!-- TODO: support for modal verbs and auxiliaries -->
                 </xsl:choose>
               </xsl:if>
             </xsl:when>
