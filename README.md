@@ -196,6 +196,22 @@ first call:
 ```sh
 make -C lexicon testclean
 ```
+### Update the dictionary sources to the current revision
+
+As said above, the dictionary sources are imported as a submodule, tracking the working branch of the lexicography team `zdl-lex-server/production`. In order to update the sources to the most recent revision, issue the following:
+
+```sh 
+git submodule update --remote lexicon/wb
+```
+
+The option `--remote` pulls the current tip of the working branch and updates
+the head of the submodule. Once you have tested the new version, commit the new
+state of the submodule:
+
+```
+git add lexicon/wb
+git commit -m 'Updates dictionary sources'
+```
 
 ## Build FSTs
 
