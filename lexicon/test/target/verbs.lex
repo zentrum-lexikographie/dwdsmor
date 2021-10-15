@@ -54,6 +54,11 @@
 <Stem><ge>spri:änge:<>n:<><V><base><nativ><VVPastKonjStr>
 <Stem><ge>spri:unge:<>n:<><V><base><nativ><VVPP-en>
 <Stem><ge>springe:<>n:<><V><base><nativ><VVPres>
+<Stem><ge>ste:ac:kk:<>e:<>n:<><V><base><nativ><VVPastIndStr>
+<Stem><ge>ste:äc:kk:<>e:<>n:<><V><base><nativ><VVPastKonjStr>
+<Stem><ge>stecke:<>n:<><V><base><nativ><VVPP-t>
+<Stem><ge>stecke:<>n:<><V><base><nativ><VVPres>
+<Stem><ge>stecke:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>tra:äge:<>n:<><V><base><nativ><VVPres2>
 <Stem><ge>tra:uge:<>n:<><V><base><nativ><VVPastIndStr>
 <Stem><ge>tra:üge:<>n:<><V><base><nativ><VVPastKonjStr>
@@ -61,6 +66,8 @@
 <Stem><ge>trage:<>n:<><V><base><nativ><VVPres1+Imp>
 <Stem><ge>trecke:<>n:<><V><base><fremd><VVReg>
 <Stem><ge>trekke:<>n:<><V><base><fremd><VVReg>
+<Stem><ge>wi:unke:<>n:<><V><base><nativ><VVPP-en>
+<Stem><ge>winke:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>zutzeln:<><V><base><nativ><VVReg-el/er>
 <Stem><ge>zuzeln:<><V><base><nativ><VVReg-el/er>
 <Stem>angiografiere:<>n:<><V><base><nativ><VVReg>
