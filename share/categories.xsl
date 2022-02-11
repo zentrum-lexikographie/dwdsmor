@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.12 -->
+<!-- Version 0.13 -->
 <!-- Andreas Nolda 2022-02-11 -->
 
 <xsl:stylesheet version="2.0"
@@ -66,14 +66,22 @@
 
 <xsl:variable name="noun-class-mapping">
   <!-- masculine nouns: -->
-  <!-- genitive singular: "-es"
+  <!-- genitive singular: "-(e)s"
        nominative plural: "-e" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-(e)s"
+         plural="-e">NMasc_es_e</class>
   <class pos="Substantiv"
          gender="mask."
          genitive="-es"
          plural="-e">NMasc_es_e</class>
-  <!-- genitive singular: "-es"
+  <!-- genitive singular: "-(e)s"
        nominative plural: "-en" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-(e)s"
+         plural="-en">NMasc_es_en</class>
   <class pos="Substantiv"
          gender="mask."
          genitive="-es"
@@ -83,6 +91,10 @@
   <class pos="Substantiv"
          gender="mask."
          genitive="-(e)s"
+         plural="&#x308;-er">NMasc_es_$er</class>
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-es"
          plural="&#x308;-er">NMasc_es_$er</class>
   <!-- all forms except nominative singular: "-en" -->
   <class pos="Substantiv"
@@ -101,6 +113,10 @@
   <class pos="Substantiv"
          gender="neutr."
          genitive="-(e)s"
+         plural="-er">NNeut_es_er</class>
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-es"
          plural="-er">NNeut_es_er</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->

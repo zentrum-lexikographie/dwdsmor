@@ -4,6 +4,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 * determine nominal and verbal inflection markers in a unified way
 * do not generate spurious lexical entries for weak verbs with weak and strong participles
+* treat genitive singular specifications "-(e)s" and "-es" as equivalent
 
 2021-10-15:
 

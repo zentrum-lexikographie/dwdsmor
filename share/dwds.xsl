@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 1.2 -->
+<!-- Version 1.3 -->
 <!-- Andreas Nolda 2021-10-15 -->
 
 <xsl:stylesheet version="2.0"
@@ -74,6 +74,12 @@
   </xsl:variable>
   <xsl:variable name="grammar-specs">
     <xsl:choose>
+      <!-- remove grammar specification for a noun with genitive singular suffix "-s" if
+           there is another grammar specification for a noun with genitive singular suffix "-es" -->
+      <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[.='-es']] and
+                      $grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[.='-s']]">
+        <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(dwds:Genitiv[.='-s'])]"/>
+      </xsl:when>
       <!-- reduce grammar specification for a weak verb with strong participle to participle if
            there is another grammar specification for a weak verb with weak participle -->
       <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'en$')]] and
