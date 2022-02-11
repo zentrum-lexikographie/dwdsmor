@@ -76,6 +76,12 @@
          gender="mask."
          genitive="-es"
          plural="-e">NMasc_es_e</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-e" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-s"
+         plural="-e">NMasc_s_e</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-en" -->
   <class pos="Substantiv"
@@ -86,6 +92,12 @@
          gender="mask."
          genitive="-es"
          plural="-en">NMasc_es_en</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-en" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-s"
+         plural="-en">NMasc_s_en</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: umlaut and "-er" -->
   <class pos="Substantiv"

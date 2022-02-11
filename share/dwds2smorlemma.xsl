@@ -177,8 +177,6 @@
 * <NMasc-s/$sse>
 * <NMasc_s_$x>
 * <NMasc_s_0>
-* <NMasc_s_e>
-* <NMasc_s_en>
 * <NMasc/Sg_0>
 * <NMasc/Sg_es>
 * <NMasc/Sg_s>
