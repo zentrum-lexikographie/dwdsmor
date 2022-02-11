@@ -52,7 +52,7 @@
 
 <!-- orthography and grammar specifications -->
 <xsl:template match="dwds:Formangabe">
-  <xsl:variable name="data-by-name">
+  <xsl:variable name="flat-grammar-specs">
     <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Genitiv or
                                                  self::dwds:Genus or
                                                  self::dwds:Komparativ or
@@ -68,16 +68,37 @@
       </xsl:element>
     </xsl:for-each-group>
   </xsl:variable>
-  <xsl:variable name="data-by-group">
-    <xsl:apply-templates select="$data-by-name/*[1]/*"
+  <xsl:variable name="grouped-grammar-specs">
+    <xsl:apply-templates select="$flat-grammar-specs/*[1]/*"
                          mode="grammar"/>
+  </xsl:variable>
+  <xsl:variable name="grammar-specs">
+    <xsl:choose>
+      <!-- reduce grammar specification for a weak verb with strong participle to participle if
+           there is another grammar specification for a weak verb with weak participle -->
+      <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'en$')]] and
+                      $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'e?t$')]] and
+                      $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'en$')]]/dwds:Praesens=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'e?t$')]]/dwds:Praesens and
+                      $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'en$')]]/dwds:Praeteritum=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'e?t$')]]/dwds:Praeteritum">
+        <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(dwds:Partizip_II[matches(.,'en$')])]"/>
+        <xsl:for-each select="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'en$')]]">
+          <dwds:Grammatik>
+            <dwds:Wortklasse>Partizip</dwds:Wortklasse>
+            <xsl:copy-of select="dwds:Partizip_II"/>
+          </dwds:Grammatik>
+        </xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:variable>
   <!-- ignore invalid spellings -->
   <xsl:for-each select="dwds:Schreibung[not(starts-with(@Typ,'U'))]">
     <xsl:variable name="lemma"
                   select="normalize-space(.)"/>
     <xsl:if test="string-length($lemma)&gt;0">
-      <xsl:for-each select="$data-by-group/dwds:Grammatik">
+      <xsl:for-each select="$grammar-specs/dwds:Grammatik">
         <xsl:variable name="pos"
                       select="normalize-space(dwds:Wortklasse)"/>
         <!-- ignore sources with missing part of speech -->
@@ -340,6 +361,42 @@
                     </xsl:choose>
                   </xsl:otherwise>
                   <!-- TODO: support for modal verbs and auxiliaries -->
+                </xsl:choose>
+              </xsl:if>
+            </xsl:when>
+            <!-- verbal participles -->
+            <xsl:when test="$pos='Partizip'">
+              <xsl:variable name="participle"
+                            select="normalize-space(dwds:Partizip_II)"/>
+              <!-- ignore sources with missing forms -->
+              <xsl:if test="string-length($participle)&gt;0">
+                <xsl:variable name="participle-stem">
+                  <xsl:call-template name="participle-stem">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:choose>
+                  <!-- weak participles -->
+                  <xsl:when test="matches($participle,'e?t$')">
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- strong participles -->
+                  <xsl:otherwise>
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="class">VVPP-en</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:otherwise>
                 </xsl:choose>
               </xsl:if>
             </xsl:when>

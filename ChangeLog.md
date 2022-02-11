@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-02-11:
 
 * determine nominal and verbal inflection markers in a unified way
+* do not generate spurious lexical entries for weak verbs with weak and strong participles
 
 2021-10-15:
 
