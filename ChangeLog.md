@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-02-11:
+
+* determine nominal and verbal inflection markers in a unified way
+
 2021-10-15:
 
 * add support for strong verbs with weak participle

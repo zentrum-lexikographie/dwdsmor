@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 1.0 -->
-<!-- Andreas Nolda 2021-09-24 -->
+<!-- Version 1.1 -->
+<!-- Andreas Nolda 2022-02-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:dwds="http://www.dwds.de/ns/1.0">
+                xmlns:dwds="http://www.dwds.de/ns/1.0"
+                xmlns:n="http://andreas.nolda.org/ns/lib">
 
 <!-- affix forms -->
 <xsl:template name="affix-form">
@@ -34,30 +35,30 @@
 
 <!-- present-stem forms -->
 <xsl:template name="present-stem">
-  <xsl:variable name="dwds"
+  <xsl:variable name="form"
                 select="normalize-space(dwds:Praesens)"/>
   <xsl:choose>
-    <xsl:when test="matches($dwds,'^.+?e?t$')">
-      <xsl:value-of select="replace($dwds,'^(.+?)e?t$',
+    <xsl:when test="matches($form,'^.+?e?t$')">
+      <xsl:value-of select="replace($form,'^(.+?)e?t$',
                                           '$1')"/>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:value-of select="$dwds"/><!-- ? -->
+      <xsl:value-of select="$form"/><!-- ? -->
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 
 <!-- past-stem forms -->
 <xsl:template name="past-stem">
-  <xsl:variable name="dwds"
+  <xsl:variable name="form"
                 select="normalize-space(dwds:Praeteritum)"/>
   <xsl:choose>
-    <xsl:when test="matches($dwds,'^.+?e?te$')">
-      <xsl:value-of select="replace($dwds,'^(.+?)e?te$',
+    <xsl:when test="matches($form,'^.+?e?te$')">
+      <xsl:value-of select="replace($form,'^(.+?)e?te$',
                                           '$1')"/>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:value-of select="$dwds"/>
+      <xsl:value-of select="$form"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -65,29 +66,29 @@
 <!-- participle-stem forms -->
 <xsl:template name="participle-stem">
   <xsl:param name="lemma"/>
-  <xsl:variable name="dwds"
+  <xsl:variable name="form"
                 select="normalize-space(dwds:Partizip_II)"/>
   <xsl:choose>
-    <xsl:when test="matches($dwds,'^ge.+?e?t$') and
-                    not(matches($dwds,concat('^',substring($lemma,1,3))))">
-      <xsl:value-of select="replace($dwds,'^ge(.+?)e?t$',
+    <xsl:when test="matches($form,'^ge.+?e?t$') and
+                    not(matches($form,concat('^',substring($lemma,1,3))))">
+      <xsl:value-of select="replace($form,'^ge(.+?)e?t$',
                                           '$1')"/>
     </xsl:when>
-    <xsl:when test="matches($dwds,'^.+?e?t$')">
-      <xsl:value-of select="replace($dwds,'^(.+?)e?t$',
+    <xsl:when test="matches($form,'^.+?e?t$')">
+      <xsl:value-of select="replace($form,'^(.+?)e?t$',
                                           '$1')"/>
     </xsl:when>
-    <xsl:when test="matches($dwds,'^ge.+en$') and
-                    not(matches($dwds,concat('^',substring($lemma,1,3))))">
-      <xsl:value-of select="replace($dwds,'^ge(.+)en$',
+    <xsl:when test="matches($form,'^ge.+en$') and
+                    not(matches($form,concat('^',substring($lemma,1,3))))">
+      <xsl:value-of select="replace($form,'^ge(.+)en$',
                                           '$1')"/>
     </xsl:when>
-    <xsl:when test="matches($dwds,'^.+en$')">
-      <xsl:value-of select="replace($dwds,'^(.+)en$',
+    <xsl:when test="matches($form,'^.+en$')">
+      <xsl:value-of select="replace($form,'^(.+)en$',
                                           '$1')"/>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:value-of select="$dwds"/>
+      <xsl:value-of select="$form"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -106,5 +107,65 @@
   <xsl:if test="matches($participle,concat('^ge',$participle-stem,'e?[nt]$'))">
     <xsl:text>&lt;ge&gt;</xsl:text>
   </xsl:if>
+</xsl:template>
+
+<!-- extract inflection marker(s) from nominal form specification, if any;
+     else return the form itself -->
+<xsl:template name="get-nominal-marker">
+  <xsl:param name="form"/>
+  <xsl:param name="lemma"/>
+  <xsl:choose>
+    <!-- suffix -->
+    <xsl:when test="starts-with($form,'-')">
+      <xsl:value-of select="$form"/>
+    </xsl:when>
+    <!-- form without umlaut nor suffix -->
+    <xsl:when test="matches($form,concat('^',$lemma,'$'))">-</xsl:when>
+    <!-- form with umlaut -->
+    <xsl:when test="matches($form,concat('^',n:umlaut-re($lemma),'$'))">&#x308;-</xsl:when>
+    <!-- form with suffix -->
+    <xsl:when test="matches($form,concat('^',$lemma,'.+$'))">
+      <xsl:value-of select="concat('-',replace($form,concat('^',$lemma),
+                                                     ''))"/>
+    </xsl:when>
+    <!-- form with umlaut and suffix -->
+    <xsl:when test="matches($form,concat('^',n:umlaut-re($lemma),'.+$'))">
+      <xsl:value-of select="concat('&#x308;-',replace($form,concat('^',n:umlaut-re($lemma)),
+                                                            ''))"/>
+    </xsl:when>
+    <!-- other form -->
+    <xsl:otherwise>
+      <xsl:value-of select="$form"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<!-- extract inflection marker(s) from verbal form specification, if any;
+     else return the form itself -->
+<xsl:template name="get-verbal-marker">
+  <xsl:param name="form"/>
+  <xsl:param name="stem"/>
+  <xsl:choose>
+    <!-- suffix -->
+    <xsl:when test="starts-with($form,'-')">
+      <xsl:value-of select="$form"/>
+    </xsl:when>
+    <!-- form without affix -->
+    <xsl:when test="matches($form,concat('^',$stem,'$'))">-</xsl:when>
+    <!-- form with suffix -->
+    <xsl:when test="matches($form,concat('^',$stem,'.+$'))">
+      <xsl:value-of select="concat('-',replace($form,concat('^',$stem),
+                                                     ''))"/>
+    </xsl:when>
+    <!-- form with "ge-" prefix and suffix -->
+    <xsl:when test="matches($form,concat('^ge',$stem,'.+$'))">
+      <xsl:value-of select="concat('ge-',replace($form,concat('^ge',$stem),
+                                                       ''))"/>
+    </xsl:when>
+    <!-- other form -->
+    <xsl:otherwise>
+      <xsl:value-of select="$form"/>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 </xsl:stylesheet>

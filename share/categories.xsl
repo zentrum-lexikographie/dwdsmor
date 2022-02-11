@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.11 -->
-<!-- Andreas Nolda 2021-09-24 -->
+<!-- Version 0.12 -->
+<!-- Andreas Nolda 2022-02-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -45,17 +45,14 @@
   <xsl:variable name="pos"
                 select="normalize-space(dwds:Wortklasse)"/>
   <xsl:variable name="superlative">
-    <xsl:variable name="dwds"
+    <xsl:variable name="form"
                   select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
-    <xsl:choose>
-      <xsl:when test="matches($dwds,concat('^',$lemma,'sten$'))">-sten</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'sten$'))">&#x308;-sten</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',$lemma,'esten$'))">-esten</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',n:umlaut-re($lemma),'esten$'))">&#x308;-esten</xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="$dwds"/>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:call-template name="get-nominal-marker">
+      <xsl:with-param name="form"
+                      select="$form"/>
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:call-template>
   </xsl:variable>
   <xsl:call-template name="insert-value">
     <xsl:with-param name="value"
@@ -115,20 +112,25 @@
                 select="normalize-space(dwds:Wortklasse)"/>
   <xsl:variable name="gender"
                 select="normalize-space(dwds:Genus)"/>
-  <xsl:variable name="genitive"
-                select="normalize-space(dwds:Genitiv)"/>
+  <xsl:variable name="genitive">
+    <xsl:variable name="form"
+                  select="normalize-space(dwds:Genitiv)"/>
+    <xsl:call-template name="get-nominal-marker">
+      <xsl:with-param name="form"
+                      select="$form"/>
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:call-template>
+  </xsl:variable>
   <xsl:variable name="plural">
-    <xsl:variable name="dwds"
+    <xsl:variable name="form"
                   select="normalize-space(dwds:Plural)"/>
-    <xsl:choose>
-      <xsl:when test="starts-with($dwds,'-')">
-        <xsl:value-of select="$dwds"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="concat('&#x308;-',replace($dwds,concat('^',n:umlaut-re($lemma)),
-                                                              ''))"/>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:call-template name="get-nominal-marker">
+      <xsl:with-param name="form"
+                      select="$form"/>
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+    </xsl:call-template>
   </xsl:variable>
   <xsl:call-template name="insert-value">
     <xsl:with-param name="value"
@@ -214,31 +216,33 @@
                       select="$lemma"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:variable name="infinitive"
-                select="concat('-',substring-after($lemma,$stem))"/>
+  <xsl:variable name="infinitive">
+    <xsl:call-template name="get-verbal-marker">
+      <xsl:with-param name="form"
+                      select="$lemma"/>
+      <xsl:with-param name="stem"
+                      select="$stem"/>
+    </xsl:call-template>
+  </xsl:variable>
   <xsl:variable name="past">
-    <xsl:variable name="dwds"
+    <xsl:variable name="form"
                   select="normalize-space(dwds:Praeteritum)"/>
-    <xsl:choose>
-      <xsl:when test="matches($dwds,concat('^',$stem,'te$'))">-te</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',$stem,'ete$'))">-ete</xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="$dwds"/>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:call-template name="get-verbal-marker">
+      <xsl:with-param name="form"
+                      select="$form"/>
+      <xsl:with-param name="stem"
+                      select="$stem"/>
+    </xsl:call-template>
   </xsl:variable>
   <xsl:variable name="participle">
-    <xsl:variable name="dwds"
+    <xsl:variable name="form"
                   select="normalize-space(dwds:Partizip_II)"/>
-    <xsl:choose>
-      <xsl:when test="matches($dwds,concat('^ge',$stem,'t$'))">ge-t</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',$stem,'t$'))">-t</xsl:when>
-      <xsl:when test="matches($dwds,concat('^ge',$stem,'et$'))">ge-et</xsl:when>
-      <xsl:when test="matches($dwds,concat('^',$stem,'et$'))">-et</xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="$dwds"/>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:call-template name="get-verbal-marker">
+      <xsl:with-param name="form"
+                      select="$form"/>
+      <xsl:with-param name="stem"
+                      select="$stem"/>
+    </xsl:call-template>
   </xsl:variable>
   <xsl:call-template name="insert-value">
     <xsl:with-param name="value"
