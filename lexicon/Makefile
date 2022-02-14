@@ -41,8 +41,10 @@ lexicon: $(LEX)
 $(LEX): $(XSL) $(LIB)
 	@./generate-lexicon --xslt $(XSL) --filter $(GENERATE_EXTRA_OPTIONS) --output $@ $(SRCDIR)
 
-clean:
-	$(RM) $(LEX)
+debug: $(LEX).debug
+
+$(LEX).debug: $(XSL) $(LIB)
+	@./generate-lexicon --xslt $(XSL) --debug $(GENERATE_EXTRA_OPTIONS) --output $@ $(SRCDIR)
 
 test: $(TESTOUTPUTS)
 
@@ -54,7 +56,13 @@ $(TESTOUTPUT)/%: $(TESTTARGET)/% $(XSL) $(LIB) $(LEX) $(TESTINPUTS) | $(TESTOUTP
 	  $(addprefix $(SRCDIR)/,$(file < $(patsubst $(TESTTARGET)%.lex,$(TESTINPUT)%.list,$<)))
 	@$(DIFF) $< $@ || true
 
+clean:
+	$(RM) $(LEX) $(LEX).debug $(TESTOUTPUTS)
+
+debugclean:
+	$(RM) $(LEX).debug
+
 testclean:
 	$(RM) $(TESTOUTPUTS)
 
-.PHONY: all clojure lexicon clean test testclean
+.PHONY: all clojure lexicon debug test clean debugclean testclean

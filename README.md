@@ -107,7 +107,32 @@ be calling:
 make -C lexicon clojure
 ```
 
-Then, a lexicon can be built simply by running:
+For lexicon generation, the shell script `lexicon/generate-lexicon` is provided
+which internally calls Clojure on `lexicon/src/dwdsmor/lexicon.clj`. The script
+supports the following parameters:
+
+```plaintext
+$ lexicon/generate-lexicon --help
+DWDSmor Lexicon Generation
+Copyright (C) 2022 Berlin-Brandenburgische Akademie der Wissenschaften
+
+Usage: clojure -M -m dwdsmor.lexicon [options] <dir|*.xml>...
+
+Generates a lexicon from the given XML documents and/or directories
+containing XML documents (files ending in .xml).
+
+Options:
+  -x, --xslt XSLT          XSLT stylesheet extracting lexicon entries from DWDS article files
+  -o, --output OUTPUT      Path of the file the generated lexicon is written to
+  -s, --smorlemma-lexica   include additional lexica from SMORLemma
+  -f, --filter             filter entries with tag <UNKNOWN>
+  -l, --limit MAX_ENTRIES  Limit the number of extracted lexicon entries for testing
+  -d, --debug              Print debugging information (including message from XSLT)
+  -h, --help
+```
+
+This script is called with appropriate options for building the DWDSmor lexicon
+by running:
 
 ```sh
 make -C lexicon
@@ -131,71 +156,38 @@ order to re-generate the lexicon with unchanged XSLT stylesheets, first call:
 make -C lexicon clean
 ```
 
-Extracting the lexicon via `make` operates on the complete DWDS dataset. For
-testing purposes, the extraction process can be called separately and with
-varying input documents. First change to the `lexicon/` directory and make sure
-that the Clojure installation is in place:
+In order to build a lexicon with debugging information, run:
 
 ```sh
-cd lexicon
-make clojure
+make -C lexicon debug
 ```
 
-Then call the extraction script as follows to list its supported parameters:
+This calls `lexicon/generate-lexicon` with the option `--debug` and without the
+option `--filter`. The result is stored in  `SMORLemma/lexicon/lexicon.debug`.
+In order to re-generate it with unchanged XSLT stylesheets, first call:
 
-```plaintext
-$ ./generate-lexicon --help
-DWDSmor Lexicon Generation
-Copyright (C) 2021 Berlin-Brandenburgische Akademie der Wissenschaften
-
-Usage: clojure -M -m dwdsmor.lexicon [options] <dir|*.xml>...
-
-Generates a lexicon from the given XML documents and/or directories
-containing XML documents (files ending in .xml).
-
-Options:
-  -x, --xslt XSLT          XSLT stylesheet extracting lexicon entries from DWDS article files
-  -o, --output OUTPUT      Path of the file the generated lexicon is written to
-  -s, --smorlemma-lexica   include additional lexica from SMORLemma
-  -l, --limit MAX_ENTRIES  Limit the number of extracted lexicon entries for testing
-  -d, --debug              Print debugging information (including message from XSLT)
-  -h, --help
+```sh
+make -C lexicon debugclean
 ```
 
-A test run with two articles would resemble something like
-
-```plaintext
-$ ./generate-lexicon \
-    --xslt ../share/dwds2smorlemma.xsl \
-    --output ../SMORLemma/lexicon/lexicon \
-    --debug \
-    wb/WDG/ma/Mann-E_m_993.xml \
-    wb/WDG/fr/Frau-E_f_7828.xml
-[2021-08-31 08:44:39,788][INFO ][dwdsmor.lexicon     ] - Extracting lexicon entries from 2 file(s)
-[2021-08-31 08:44:40,397][DEBUG][dwdsmor.lexicon     ] - Mann-E_m_993.xml -> <Stem>Mann<NN><base><nativ><NMasc_es_$er>
-[2021-08-31 08:44:40,397][DEBUG][dwdsmor.lexicon     ] - Frau-E_f_7828.xml -> <Stem>Frau<NN><base><nativ><NFem_0_en>
-[2021-08-31 08:44:40,399][INFO ][dwdsmor.lexicon     ] - Sorting lexicon entries and removing duplicates
-[2021-08-31 08:44:40,401][INFO ][dwdsmor.lexicon     ] - Writing lexicon entries
-[2021-08-31 08:44:40,403][INFO ][dwdsmor.lexicon     ] - Generated lexicon in PT0.624S
-```
-
-Testing can be automated by running:
+For regression testing, the `test` make target is provided:
 
 ```sh
 make -C lexicon test
 ```
 
-This generates lexica from the file lists in `lexicon/test/input/` and compares
-the outputs in `lexicon/test/output/` with pre-generated target lexica in
-`lexicon/test/target/`. Note that filenames in the file lists are relative to
+This generates sample lexica from the file lists in `lexicon/test/input/` and
+compares the outputs in `lexicon/test/output/` with pre-generated target lexica
+in `lexicon/test/target/`. Note that filenames in the file lists are relative to
 `lexicon/wb/`.
 
-In order to re-run tests with unchanged target lexica and XSLT stylesheets,
-first call:
+In order to re-run tests with unchanged lexicon, XSLT stylesheets, and file
+lists, first call:
 
 ```sh
 make -C lexicon testclean
 ```
+
 ### Update the dictionary sources to the current revision
 
 As said above, the dictionary sources are imported as a submodule, tracking the
