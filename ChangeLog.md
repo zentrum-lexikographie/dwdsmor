@@ -5,6 +5,12 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
   "-s" and nominative plural forms ending in "-e" or "-en"
 * add support for masculine and neuter nouns with genitive singular and
   nominative plural forms ending in "-s"
+* add support for masculine nouns with genitive singular forms ending in "-es"
+  and nominative plural forms ending in "-er"
+* add support for neuter nouns with genitive singular forms ending in "-es" and
+  umlauted nominative plural forms ending in "-er"
+* add support for masculine and neuter nouns with genitive singular forms ending
+  in "-es" and umlauted nominative plural forms ending in "-e"
 * add support for feminine nouns with nominative plural forms ending in "-n"
 
 2022-02-11:
