@@ -8,10 +8,10 @@ for **lemmatisation**. To this end we adopt:
 
 1. [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++ library
    and toolbox for finite state transducers (FSTs),
-1. [SMORLemma](https://github.com/rsennrich/SMORLemma), a modified version of
+2. [SMORLemma](https://github.com/rsennrich/SMORLemma), a modified version of
    the Stuttgart Morphology ([SMOR](https://www.cis.lmu.de/~schmid/tools/SMOR/))
    with an alternative lemmatisation component, and the
-1. [DWDS dictionary](https://www.dwds.de/) replacing
+3. [DWDS dictionary](https://www.dwds.de/) replacing
    [IMSLex](https://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/imslex/)
    as the as the lexical data source for word components and their respective
    morphological annotations (part-of-speech, inflection class etc.).
@@ -19,8 +19,9 @@ for **lemmatisation**. To this end we adopt:
 Source code in this repository implements various steps in the process of
 building and using FSTs for morphological analysis:
 
-* `lexicon/` and `share/` contain sources for extracting SMOR-compatible lexicon
-  entries from DWDS/XML documents comprising the lexical database.
+* `lexicon/` and `share/` contain sources for building the DWDSmor lexicon by
+  extracting SMOR-compatible lexicon entries from XML documents of the DWDS
+  dictionary.
 * `sfst/` and `SMORLemma/` import sources from upstream repositories as Git
   submodules, providing the mentioned FST library, the morphology as well as
   Python bindings for applying compiled FSTs.
@@ -81,7 +82,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-## Extract the lexicon from the DWDS dictionary
+## Build the DWDSmor lexicon from the DWDS dictionary
 
 Import the dictionary sources and the SMORLemma morphology via the configured
 submodules:
@@ -107,7 +108,7 @@ be calling:
 make -C lexicon clojure
 ```
 
-For lexicon generation, the shell script `lexicon/generate-lexicon` is provided
+For lexicon generation, the shell script `lexicon/generate-lexicon` is provided,
 which internally calls Clojure on `lexicon/src/dwdsmor/lexicon.clj`. The script
 supports the following parameters:
 
@@ -176,12 +177,12 @@ For regression testing, the `test` make target is provided:
 make -C lexicon test
 ```
 
-This generates sample lexica from the file lists in `lexicon/test/input/` and
-compares the outputs in `lexicon/test/output/` with pre-generated target lexica
-in `lexicon/test/target/`. Note that filenames in the file lists are relative to
-`lexicon/wb/`.
+This generates small sample lexica from the file lists in `lexicon/test/input/`
+and compares the outputs in `lexicon/test/output/` with pre-generated target
+lexica in `lexicon/test/target/`. Note that filenames in the file lists are
+relative to `lexicon/wb/`.
 
-In order to re-run tests with unchanged lexicon, XSLT stylesheets, and file
+In order to re-run tests with unchanged lexicon, XSLT stylesheets and file
 lists, first call:
 
 ```sh
