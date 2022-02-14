@@ -134,6 +134,18 @@
          gender="mask."
          genitive="-s"
          plural="-s">NMasc_s_s</class>
+  <!-- genitive singular: "-s"
+       nominative plural: unmarked -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-s"
+         plural="-">NMasc_s_0</class>
+  <!-- genitive singular: "-s"
+       nominative plural: umlaut -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-s"
+         plural="&#x308;-">NMasc_s_$</class>
   <!-- all forms except nominative singular: "-en" -->
   <class pos="Substantiv"
          gender="mask."
@@ -208,6 +220,18 @@
          gender="neutr."
          genitive="-s"
          plural="-s">NNeut_s_s</class>
+  <!-- genitive singular: "-s"
+       nominative plural: unmarked -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-s"
+         plural="-">NNeut_s_0</class>
+  <!-- genitive singular: "-s"
+       nominative plural: umlaut -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-s"
+         plural="&#x308;-">NNeut_s_$</class>
   <!-- feminine nouns: -->
   <!-- genitive singular: unmarked
        nominative plural: "-en" -->

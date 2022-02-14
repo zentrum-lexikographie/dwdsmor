@@ -9,12 +9,14 @@
 <Stem>Bild<NN><base><nativ><NNeut_es_er>
 <Stem>Brot<NN><base><nativ><NNeut_es_e>
 <Stem>Buch<NN><base><nativ><NNeut_es_$er>
+<Stem>Engel<NN><base><nativ><NMasc_s_0>
 <Stem>Feder<NN><base><nativ><NFem_0_n>
 <Stem>Feld<NN><base><nativ><NNeut_es_er>
 <Stem>Figur<NN><base><fremd><NFem_0_en>
 <Stem>Fisch<NN><base><nativ><NMasc_es_e>
 <Stem>Floß<NN><base><nativ><NNeut_es_$e>
 <Stem>Frau<NN><base><nativ><NFem_0_en>
+<Stem>Garten<NN><base><nativ><NMasc_s_$>
 <Stem>Geist<NN><base><nativ><NMasc_es_er>
 <Stem>Genie<NN><base><fremd><NNeut_s_s>
 <Stem>Haus<NN><base><nativ><NNeut_es_$er>
@@ -22,6 +24,9 @@
 <Stem>Hut<NN><base><nativ><NMasc_es_$e>
 <Stem>Idol<NN><base><fremd><NNeut_s_e>
 <Stem>Idyll<NN><base><fremd><NNeut_s_e>
+<Stem>Kater<NN><base><nativ><NMasc_s_0>
+<Stem>Kissen<NN><base><nativ><NNeut_s_0>
+<Stem>Kloster<NN><base><nativ><NNeut_s_$>
 <Stem>Leib<NN><base><nativ><NMasc_es_er>
 <Stem>Lord<NN><base><fremd><NMasc_s_s>
 <Stem>Mann<NN><base><nativ><NMasc_es_$er>
@@ -33,5 +38,7 @@
 <Stem>Ozean<NN><base><fremd><NMasc_s_e>
 <Stem>Schmerz<NN><base><nativ><NMasc_es_en>
 <Stem>Staat<NN><base><nativ><NMasc_es_en>
+<Stem>Ufer<NN><base><nativ><NNeut_s_0>
 <Stem>Uhu<NN><base><nativ><NMasc_s_s>
+<Stem>Vater<NN><base><nativ><NMasc_s_$>
 <Stem>Wald<NN><base><nativ><NMasc_es_$er>
