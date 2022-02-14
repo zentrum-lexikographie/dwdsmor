@@ -1,5 +1,12 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-02-14:
+* add support for neuter nouns with genitive singular forms ending in "-es" or
+  "-s" and nominative plural forms ending in "-e" or "-en"
+* add support for masculine and neuter nouns with genitive singular and
+  nominative plural forms ending in "-s"
+* add support for feminine nouns with nominative plural forms ending in "-n"
+
 2022-02-11:
 
 * determine nominal and verbal inflection markers in a unified way

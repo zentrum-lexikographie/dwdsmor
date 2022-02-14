@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.13 -->
-<!-- Andreas Nolda 2022-02-11 -->
+<!-- Version 0.14 -->
+<!-- Andreas Nolda 2022-02-14 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -108,18 +108,63 @@
          gender="mask."
          genitive="-es"
          plural="&#x308;-er">NMasc_es_$er</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-s" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-s"
+         plural="-s">NMasc_s_s</class>
   <!-- all forms except nominative singular: "-en" -->
   <class pos="Substantiv"
          gender="mask."
          genitive="-en"
          plural="-en">NMasc_en_en</class>
   <!-- feminine nouns: -->
-  <!-- nominative plural: "-en" -->
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" -->
   <class pos="Substantiv"
          gender="fem."
          genitive="-"
          plural="-en">NFem_0_en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-n" -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive="-"
+         plural="-n">NFem_0_n</class>
   <!-- neuter nouns: -->
+  <!-- genitive singular: "-(e)s"
+       nominative plural: "-e" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-(e)s"
+         plural="-e">NNeut_es_e</class>
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-es"
+         plural="-e">NNeut_es_e</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-e" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-s"
+         plural="-e">NNeut_s_e</class>
+  <!-- genitive singular: "-(e)s"
+       nominative plural: "-en" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-(e)s"
+         plural="-en">NNeut_es_en</class>
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-es"
+         plural="-en">NNeut_es_en</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-en" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-s"
+         plural="-en">NNeut_s_en</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-er" -->
   <class pos="Substantiv"
@@ -130,6 +175,12 @@
          gender="neutr."
          genitive="-es"
          plural="-er">NNeut_es_er</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-s" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-s"
+         plural="-s">NNeut_s_s</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
