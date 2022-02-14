@@ -40,8 +40,6 @@
 <Stem><ge>poofe:<>n:<><V><base><fremd><VVReg>
 <Stem><ge>salze:<>n:<><V><base><nativ><VVPP-en>
 <Stem><ge>salze:<>n:<><V><base><nativ><VVReg>
-<Stem><ge>schnippse:<>n:<><V><base><nativ><VVReg>
-<Stem><ge>schnipse:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>schreddern:<><V><base><fremd><VVReg-el/er>
 <Stem><ge>shreddern:<><V><base><fremd><VVReg-el/er>
 <Stem><ge>spre:ache:<>n:<><V><base><nativ><VVPastIndStr>
@@ -124,7 +122,6 @@
 <Stem>photographiere:<>n:<><V><base><nativ><VVReg>
 <Stem>recyceln:<><V><base><nativ><VVReg-el/er>
 <Stem>recycle:<>n:<><V><base><nativ><VVReg>
-<Stem>scharwänzeln:<><V><base><fremd><VVReg-el/er>
 <Stem>scharwenzeln:<><V><base><fremd><VVReg-el/er>
 <Stem>stenografiere:<>n:<><V><base><fremd><VVReg>
 <Stem>stenographiere:<>n:<><V><base><fremd><VVReg>
