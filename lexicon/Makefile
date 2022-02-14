@@ -49,7 +49,7 @@ test: $(TESTOUTPUTS)
 $(TESTOUTPUT):
 	mkdir -p $@
 
-$(TESTOUTPUT)/%: $(TESTTARGET)/% $(XSL) $(LIB) | $(TESTOUTPUT)
+$(TESTOUTPUT)/%: $(TESTTARGET)/% $(XSL) $(LIB) $(LEX) | $(TESTOUTPUT)
 	@./generate-lexicon --xslt $(XSL) --filter --output $@ \
 	  $(addprefix $(SRCDIR)/,$(file < $(patsubst $(TESTTARGET)%.lex,$(TESTINPUT)%.list,$<)))
 	@$(DIFF) $< $@ || true
