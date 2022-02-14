@@ -1,0 +1,11 @@
+<Stem>alt<ADJ><base><nativ><Adj$e>
+<Stem>früh<ADJ><base><nativ><Adj+e>
+<Stem>glatt<ADJ><base><nativ><Adj$e>
+<Stem>glatt<ADJ><base><nativ><Adj+e>
+<Stem>hoch<ADJ><base><nativ><Adj$>
+<Stem>jung<ADJ><base><nativ><Adj$>
+<Stem>kalt<ADJ><base><nativ><Adj$e>
+<Stem>klein<ADJ><base><nativ><Adj+>
+<Stem>spät<ADJ><base><nativ><Adj+e>
+<Stem>warm<ADJ><base><nativ><Adj$>
+<Stem>wenig<ADJ><base><nativ><Adj+>
