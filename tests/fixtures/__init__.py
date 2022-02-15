@@ -13,7 +13,7 @@ tests_dir = base_dir / 'tests'
 
 
 @fixture
-def smor_lemma():
+def dwdsmor_transducer():
     return sfst_transduce.CompactTransducer(
         (smor_lemma_dir / 'smor.ca').as_posix()
     )
