@@ -22,9 +22,8 @@ building and using FSTs for morphological analysis:
 * `lexicon/` and `share/` contain sources for building the DWDSmor lexicon by
   extracting SMOR-compatible lexicon entries from XML documents of the DWDS
   dictionary.
-* `sfst/` and `SMORLemma/` import sources from upstream repositories as Git
-  submodules, providing the mentioned FST library, the morphology as well as
-  Python bindings for applying compiled FSTs.
+* `SMORLemma/` import sources from an upstream repository as a Git submodule,
+  providing the morphology.
 * `dwdsmor/` and `tests/` implement a Python library and accompanying test suite
   for using DWDSmor transducers for the aforementioned linguistic tasks.
 
@@ -35,15 +34,13 @@ building and using FSTs for morphological analysis:
   GNU/Linux](https://debian.org/) (currently v10 “Buster”). While other
   UNIX-like operating systems (i. e. MacOS) might work, they are not supported.
 
-[Python v3 (including dev headers)](https://www.python.org/)
+[Python v3](https://www.python.org/)
 : DWDSmor targets Python as its primary runtime environment. Building a
   transducer involves other languages and platforms as well; for example XSLT
   and Clojure on the JVM for lexicon generation. But ultimately, compiled
   transducers are supposed to be used via SFST's commandline tools or to be
-  queried in Python applications via the included
-  [bindings](https://github.com/gremid/sfst). As the bindings are compiled as
-  part of the DWDSmor build, resources for compiling Python extensions (header
-  files, C/C++ compiler, GNU make) must be installed.
+  queried in Python applications via language-specific
+  [bindings](https://github.com/gremid/sfst-transduce).
 
 [Java (JDK) >= v8](https://openjdk.java.net/)
 : The extraction of lexicon entries from DWDS/XML articles files is implemented
@@ -53,18 +50,14 @@ building and using FSTs for morphological analysis:
   XSLT pipelines in parallel and doing some pre- and postprocessing. Saxon and
   Clojure both require a Java runtime.
 
-[CMake v3.1](https://cmake.org/), [Bison](https://www.gnu.org/software/bison/)
-and [Flex v2.6.4](https://github.com/westes/flex)
-: The SFST library and toolbox as well as its Python bindings require a recent
-  version of `cmake` and `flex`/`bison` for compilation.
+[SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/)
+: a C++ library and toolbox for finite state transducers (FSTs); please take a
+   look at its homepage for installation and usage instructions.
 
 On a recent Debian GNU/Linux, install the following packages:
 
 ```sh
-apt install \
-    build-essential cmake bison flex \
-    python3 libpython3-dev \
-    default-jdk
+apt install python3 default-jdk sfst
 ```
 
 Optionally set up a virtual environment for project builds, i. e. via
@@ -211,29 +204,30 @@ git commit -m 'Updates dictionary sources'
 ## Build FSTs
 
 For compiling the transducers based on an extracted lexicon, first initialize
-and update the submodules providing the FST library/toolbox and the SMORLemma
-morphology:
+and update the submodule providing the SMORLemma morphology:
 
 ```sh
-git submodule init sfst SMORLemma
-git submodule update sfst SMORLemma
+git submodule init SMORLemma
+git submodule update SMORLemma
 ```
 
-Then run setup routines which compile SFST and install Python dependencies (into
-the virtual environment, should you have set one up beforehand):
+Then run setup routines which install Python dependencies (into the virtual
+environment, should you have set one up beforehand):
 
 ```sh
 make setup
 ```
 
-Once the setup succeeded and a lexicon is provided in
-`SMORLemma/lexicon/lexicon`, the transducers can be compiled:
+Also make sure that you have the SFST toolbox installed, i. e. the tools
+`fst-compiler-utf8` and `fst-compact` should be available on the `$PATH`. Once
+the setup succeeded and a lexicon is provided in `SMORLemma/lexicon/lexicon`,
+the transducers can be compiled:
 
 ```sh
 make
 ```
 
-The resulting automata can be found in `SMORLemma/*.a` and `SMORLemma/*.ca`.
+Resulting automata can be found in `SMORLemma/*.a` and `SMORLemma/*.ca`.
 
 Depending on the size of the lexicon, this compilation process can take several
 hours, depending on available hardware resources, specifically on the amount of

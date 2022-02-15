@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from pytest import fixture
 
-import sfst
+import sfst_transduce
 
 
 base_dir = (Path(__file__) / '..' / '..' / '..').resolve()
@@ -14,7 +14,9 @@ tests_dir = base_dir / 'tests'
 
 @fixture
 def smor_lemma():
-    return sfst.CompactTransducer((smor_lemma_dir / 'smor.ca').as_posix())
+    return sfst_transduce.CompactTransducer(
+        (smor_lemma_dir / 'smor.ca').as_posix()
+    )
 
 
 @fixture

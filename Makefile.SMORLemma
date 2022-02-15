@@ -50,10 +50,10 @@ lexicon/wiki-lexicon.xml:
 		funzip >$@
 
 %.a: %.fst
-	../sfst/build/src/fst-compiler-utf8 $< $@
+	fst-compiler-utf8 $< $@
 
 %.ca: %.a
-	../sfst/build/src/fst-compact $< $@
+	fst-compact $< $@
 
 # DO NOT DELETE
 
