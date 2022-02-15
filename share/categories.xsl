@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.14 -->
-<!-- Andreas Nolda 2022-02-14 -->
+<!-- Version 0.15 -->
+<!-- Andreas Nolda 2022-02-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -45,12 +45,12 @@
   <xsl:param name="lemma"/>
   <xsl:variable name="pos"
                 select="normalize-space(dwds:Wortklasse)"/>
-  <xsl:variable name="superlative">
-    <xsl:variable name="form"
-                  select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
+  <xsl:variable name="superlative"
+                select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
+  <xsl:variable name="superlative-marker">
     <xsl:call-template name="get-nominal-marker">
       <xsl:with-param name="form"
-                      select="$form"/>
+                      select="$superlative"/>
       <xsl:with-param name="lemma"
                       select="$lemma"/>
     </xsl:call-template>
@@ -58,7 +58,7 @@
   <xsl:call-template name="insert-value">
     <xsl:with-param name="value"
                     select="$adjective-class-mapping/class[@pos=$pos]
-                                                          [@superlative=$superlative]"/>
+                                                          [@superlative=$superlative-marker]"/>
     <xsl:with-param name="type">class</xsl:with-param>
     <xsl:with-param name="lemma"
                     select="$lemma"/>
@@ -93,6 +93,12 @@
          gender="mask."
          genitive="-s"
          plural="-e">NMasc_s_e</class>
+  <!-- genitive singular: geminate "s" + "-es"
+       nominative plural: geminate "s" + "-e" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-ses"
+         plural="-se">NMasc-s/sse</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-en" -->
   <class pos="Substantiv"
@@ -136,7 +142,10 @@
          genitive="-s"
          plural="-s">NMasc_s_s</class>
   <!-- genitive singular: "-s"
-       nominative plural: unmarked -->
+       nominative plural: unmarked, with stem-final "n" -->
+  <!-- cf. dwds.xsl -->
+  <!-- genitive singular: "-s"
+       nominative plural: unmarked, without stem-final "n" -->
   <class pos="Substantiv"
          gender="mask."
          genitive="-s"
@@ -152,6 +161,17 @@
          gender="mask."
          genitive="-en"
          plural="-en">NMasc_en_en</class>
+  <!-- all forms except nominative singular: "-n" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-n"
+         plural="-n">NMasc_n_n</class>
+  <!-- genitive singular: unmarked
+       nominative plural: unmarked -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-"
+         plural="-">NMasc_0_x</class>
   <!-- neuter nouns: -->
   <!-- genitive singular: "-(e)s"
        nominative plural: "-e" -->
@@ -179,6 +199,12 @@
          gender="neutr."
          genitive="-s"
          plural="-e">NNeut_s_e</class>
+  <!-- genitive singular: geminate "s" + "-es"
+       nominative plural: geminate "s" + "-e" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-ses"
+         plural="-se">NNeut-s/sse</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-en" -->
   <class pos="Substantiv"
@@ -222,7 +248,10 @@
          genitive="-s"
          plural="-s">NNeut_s_s</class>
   <!-- genitive singular: "-s"
-       nominative plural: unmarked -->
+       nominative plural: unmarked, with stem-final "n" -->
+  <!-- cf. dwds.xsl -->
+  <!-- genitive singular: "-s"
+       nominative plural: unmarked, without stem-final "n" -->
   <class pos="Substantiv"
          gender="neutr."
          genitive="-s"
@@ -233,7 +262,31 @@
          gender="neutr."
          genitive="-s"
          plural="&#x308;-">NNeut_s_$</class>
+  <!-- genitive singular: unmarked
+       nominative plural: unmarked -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-"
+         plural="-">NNeut_0_x</class>
   <!-- feminine nouns: -->
+  <!-- genitive singular: unmarked
+       nominative plural: "-e" -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive="-"
+         plural="-e">NFem_0_e</class>
+  <!-- genitive singular: unmarked
+       nominative plural: umlaut and "-e" -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive="-"
+         plural="&#x308;-e">NFem_0_$e</class>
+  <!-- genitive singular: unmarked
+       nominative plural: geminate "s" + "-e" -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive="-"
+         plural="-se">NFem-s/sse</class>
   <!-- genitive singular: unmarked
        nominative plural: "-en" -->
   <class pos="Substantiv"
@@ -246,6 +299,24 @@
          gender="fem."
          genitive="-"
          plural="-n">NFem_0_n</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-s" -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive="-"
+         plural="-s">NFem_0_s</class>
+  <!-- genitive singular: unmarked
+       nominative plural: umlaut -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive="-"
+         plural="&#x308;-">NFem_0_$</class>
+  <!-- genitive singular: unmarked
+       nominative plural: unmarked -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive="-"
+         plural="-">NFem_0_x</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -256,22 +327,22 @@
                 select="normalize-space(dwds:Wortklasse)"/>
   <xsl:variable name="gender"
                 select="normalize-space(dwds:Genus)"/>
-  <xsl:variable name="genitive">
-    <xsl:variable name="form"
-                  select="normalize-space(dwds:Genitiv)"/>
+  <xsl:variable name="genitive"
+                select="normalize-space(dwds:Genitiv)"/>
+  <xsl:variable name="genitive-marker">
     <xsl:call-template name="get-nominal-marker">
       <xsl:with-param name="form"
-                      select="$form"/>
+                      select="$genitive"/>
       <xsl:with-param name="lemma"
                       select="$lemma"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:variable name="plural">
-    <xsl:variable name="form"
-                  select="normalize-space(dwds:Plural)"/>
+  <xsl:variable name="plural"
+                select="normalize-space(dwds:Plural)"/>
+  <xsl:variable name="plural-marker">
     <xsl:call-template name="get-nominal-marker">
       <xsl:with-param name="form"
-                      select="$form"/>
+                      select="$plural"/>
       <xsl:with-param name="lemma"
                       select="$lemma"/>
     </xsl:call-template>
@@ -280,8 +351,8 @@
     <xsl:with-param name="value"
                     select="$noun-class-mapping/class[@pos=$pos]
                                                      [@gender=$gender]
-                                                     [@genitive=$genitive]
-                                                     [@plural=$plural]"/>
+                                                     [@genitive=$genitive-marker]
+                                                     [@plural=$plural-marker]"/>
     <xsl:with-param name="type">class</xsl:with-param>
     <xsl:with-param name="lemma"
                     select="$lemma"/>
@@ -346,6 +417,12 @@
          infinitive="-n"
          past="-ete"
          participle="-et">VVReg-el/er</class>
+  <!-- weak verbs with irregular past stem: -->
+  <!-- cf. dwds.xsl -->
+  <!-- weak verbs with strong participle: -->
+  <!-- cf. dwds.xsl -->
+  <!-- strong verbs: -->
+  <!-- cf. dwds.xsl -->
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -360,7 +437,7 @@
                       select="$lemma"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:variable name="infinitive">
+  <xsl:variable name="infinitive-marker">
     <xsl:call-template name="get-verbal-marker">
       <xsl:with-param name="form"
                       select="$lemma"/>
@@ -368,22 +445,22 @@
                       select="$stem"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:variable name="past">
-    <xsl:variable name="form"
-                  select="normalize-space(dwds:Praeteritum)"/>
+  <xsl:variable name="past"
+                select="normalize-space(dwds:Praeteritum)"/>
+  <xsl:variable name="past-marker">
     <xsl:call-template name="get-verbal-marker">
       <xsl:with-param name="form"
-                      select="$form"/>
+                      select="$past"/>
       <xsl:with-param name="stem"
                       select="$stem"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:variable name="participle">
-    <xsl:variable name="form"
-                  select="normalize-space(dwds:Partizip_II)"/>
+  <xsl:variable name="participle"
+                select="normalize-space(dwds:Partizip_II)"/>
+  <xsl:variable name="participle-marker">
     <xsl:call-template name="get-verbal-marker">
       <xsl:with-param name="form"
-                      select="$form"/>
+                      select="$participle"/>
       <xsl:with-param name="stem"
                       select="$stem"/>
     </xsl:call-template>
@@ -391,9 +468,9 @@
   <xsl:call-template name="insert-value">
     <xsl:with-param name="value"
                     select="$verb-class-mapping/class[@pos=$pos]
-                                                     [@infinitive=$infinitive]
-                                                     [@past=$past]
-                                                     [@participle=$participle]"/>
+                                                     [@infinitive=$infinitive-marker]
+                                                     [@past=$past-marker]
+                                                     [@participle=$participle-marker]"/>
     <xsl:with-param name="type">class</xsl:with-param>
     <xsl:with-param name="lemma"
                     select="$lemma"/>

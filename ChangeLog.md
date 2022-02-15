@@ -2,6 +2,23 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 2022-02-15:
 
+* add support for nouns with unmarked genitive singular and nominative plural
+  forms
+* add support for feminine nouns with unmarked genitive singular and umlauted
+  nominative plural forms
+* add support for feminine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-s"
+* add support for feminine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-e"
+* add support for feminine nouns with unmarked genitive singular forms and
+  umlauted nominative plural forms ending in "-e"
+* add support for feminine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in geminate "s" + "-e"
+* add support for masculine and neuter nouns with genitive singular forms ending
+  in geminate "s" + "-es" and nominative plural forms ending in geminate "s" +
+  "-e"
+* add support for masculine nouns with all forms except the nominative singular
+  one ending in "-n"
 * add warnings for articles with inappropriate grammar specifications
 
 2022-02-14:
