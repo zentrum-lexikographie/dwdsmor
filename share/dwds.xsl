@@ -89,7 +89,7 @@
         <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(dwds:Partizip_II[matches(.,'en$')])]"/>
         <xsl:for-each select="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'en$')]]">
           <dwds:Grammatik>
-            <dwds:Wortklasse>Partizip</dwds:Wortklasse>
+            <dwds:Wortklasse>Partizip</dwds:Wortklasse><!-- ad-hoc POS -->
             <xsl:copy-of select="dwds:Partizip_II"/>
           </dwds:Grammatik>
         </xsl:for-each>
@@ -513,7 +513,7 @@
               <xsl:value-of select="$lemma"/>
               <xsl:text>" has a grammar specification with empty POS.</xsl:text>
             </xsl:message>
-        </xsl:otherwise>
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:for-each>
     </xsl:if>

@@ -14,6 +14,7 @@
   <pos pos="Adjektiv">ADJ</pos>
   <pos pos="Substantiv">NN</pos>
   <pos pos="Verb">V</pos>
+  <pos pos="Partizip">V</pos><!-- ad-hoc POS -->
   <pos pos="Präfix">PREF</pos>
   <pos pos="Suffix">SUFF</pos>
   <!-- TODO: more POS mappings -->
