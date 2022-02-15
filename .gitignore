@@ -15,3 +15,5 @@ lexicon/test/output/
 lexicon/wb/
 sfst/
 SMORLemma/
+
+wb-coverage-report.csv

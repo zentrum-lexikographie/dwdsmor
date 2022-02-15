@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from pytest import fixture
 
-import sfst
+import sfst_transduce
 
 
 base_dir = (Path(__file__) / '..' / '..' / '..').resolve()
@@ -13,8 +13,15 @@ tests_dir = base_dir / 'tests'
 
 
 @fixture
-def smor_lemma():
-    return sfst.CompactTransducer((smor_lemma_dir / 'smor.ca').as_posix())
+def project_dir():
+    return base_dir
+
+
+@fixture
+def dwdsmor_transducer():
+    return sfst_transduce.CompactTransducer(
+        (smor_lemma_dir / 'smor.ca').as_posix()
+    )
 
 
 @fixture
@@ -46,3 +53,55 @@ def lexicon_sample(irregular_nouns):
         return irregular_nouns
     else:
         return random.sample(irregular_nouns, sample_size)
+
+
+wb_dir = base_dir / 'lexicon' / 'wb'
+
+
+def extract_wb_entries(wb_xml_file):
+    entries = []
+    with wb_xml_file.open() as f:
+        wb_xml_doc = ET.parse(f).getroot()
+        articles = wb_xml_doc.iter('{http://www.dwds.de/ns/1.0}Artikel')
+        for article in articles:
+            article_status = article.get('Status', '')
+            if article_status != 'Red-f' and article_status != 'Red-2':
+                continue
+            forms = article.iter('{http://www.dwds.de/ns/1.0}Formangabe')
+            for form in forms:
+                pos = ''
+                grammars = form.iter('{http://www.dwds.de/ns/1.0}Grammatik')
+                for grammar in grammars:
+                    pos_tags = grammar.iter(
+                        '{http://www.dwds.de/ns/1.0}Wortklasse'
+                    )
+                    for pos_tag in pos_tags:
+                        pos = pos_tag.text or ''
+                        break
+                    break
+                if pos == 'Mehrwortausdruck':
+                    continue
+                written_reprs = form.iter(
+                    '{http://www.dwds.de/ns/1.0}Schreibung'
+                )
+                for written_repr in written_reprs:
+                    if written_repr.get('Typ', '').startswith('U'):
+                        continue
+                    entries.append({
+                        'file': wb_xml_file.relative_to(wb_dir),
+                        'article_status': article_status,
+                        'pos': pos,
+                        'written_repr': (written_repr.text or '').strip()
+                    })
+    return entries
+
+
+@fixture
+def wb_entries():
+    if not wb_dir.is_dir():
+        return []
+    return (
+        wb_entry
+        for wb_xml_file in wb_dir.glob('**/*.xml')
+        for wb_entry in extract_wb_entries(wb_xml_file)
+    )

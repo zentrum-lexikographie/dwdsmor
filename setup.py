@@ -12,7 +12,7 @@ setup(
     license='LGPLv3',
     packages=find_packages(exclude=['tests']),
     install_requires=[
-        'sfst @ git+https://github.com/gremid/sfst@generate#egg=sfst',
+        'sfst-transduce',
         'jellyfish',
     ],
     extras_require={
