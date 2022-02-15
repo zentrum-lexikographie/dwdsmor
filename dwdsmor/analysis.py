@@ -8,7 +8,7 @@ import re
 import click
 import jellyfish
 
-import sfst
+import sfst_transduce
 
 Morpheme = namedtuple('Morpheme', ['word', 'lemma', 'tags'])
 
@@ -166,7 +166,7 @@ def parse(analyses):
 
 def create_transducer(file_name):
     try:
-        smor = sfst.CompactTransducer(file_name)
+        smor = sfst_transduce.CompactTransducer(file_name)
         smor.both_layers = True
         return smor
     except RuntimeError:
