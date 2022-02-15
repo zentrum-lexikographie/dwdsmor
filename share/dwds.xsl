@@ -107,35 +107,46 @@
       <xsl:for-each select="$grammar-specs/dwds:Grammatik">
         <xsl:variable name="pos"
                       select="normalize-space(dwds:Wortklasse)"/>
-        <!-- ignore sources with missing part of speech -->
-        <xsl:if test="string-length($pos)&gt;0">
-          <xsl:choose>
-            <!-- affixes -->
-            <xsl:when test="$pos='Affix'">
-              <xsl:call-template name="affix-entry">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="pos">
-                  <xsl:apply-templates select="."
-                                       mode="pos">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                  </xsl:apply-templates>
-                </xsl:with-param>
-              </xsl:call-template>
-            </xsl:when>
-            <!-- verbs -->
-            <xsl:when test="$pos='Verb'">
-              <xsl:variable name="present"
-                            select="normalize-space(dwds:Praesens)"/>
-              <xsl:variable name="past"
-                            select="normalize-space(dwds:Praeteritum)"/>
-              <xsl:variable name="participle"
-                            select="normalize-space(dwds:Partizip_II)"/>
-              <!-- ignore sources with missing forms -->
-              <xsl:if test="string-length($present)&gt;0 and
-                            string-length($past)&gt;0 and
-                            string-length($participle)&gt;0">
+        <xsl:choose>
+          <!-- only consider articles with appropriate grammar specifications -->
+          <xsl:when test="normalize-space(dwds:Wortklasse)='Adjektiv' and
+                            string-length(normalize-space(dwds:Superlativ))&gt;0 or
+                          normalize-space(dwds:Wortklasse)='Substantiv' and
+                            string-length(normalize-space(dwds:Genus))&gt;0 and
+                            string-length(normalize-space(dwds:Genitiv))&gt;0 and
+                            string-length(normalize-space(dwds:Plural))&gt;0 or
+                          normalize-space(dwds:Wortklasse)='Verb' and
+                            string-length(normalize-space(dwds:Praesens))&gt;0 and
+                            string-length(normalize-space(dwds:Praeteritum))&gt;0 and
+                            string-length(normalize-space(dwds:Partizip_II))&gt;0 or
+                          normalize-space(dwds:Wortklasse)='Partizip' and
+                            string-length(normalize-space(dwds:Partizip_II))&gt;0 or
+                          normalize-space(dwds:Wortklasse)='Affix'">
+            <!-- TODO: more POS -->
+            <!-- ... -->
+            <xsl:choose>
+              <!-- affixes -->
+              <xsl:when test="$pos='Affix'">
+                <xsl:call-template name="affix-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma"/>
+                  <xsl:with-param name="pos">
+                    <xsl:apply-templates select="."
+                                         mode="pos">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                    </xsl:apply-templates>
+                  </xsl:with-param>
+                </xsl:call-template>
+              </xsl:when>
+              <!-- verbs -->
+              <xsl:when test="$pos='Verb'">
+                <xsl:variable name="present"
+                              select="normalize-space(dwds:Praesens)"/>
+                <xsl:variable name="past"
+                              select="normalize-space(dwds:Praeteritum)"/>
+                <xsl:variable name="participle"
+                              select="normalize-space(dwds:Partizip_II)"/>
                 <xsl:variable name="stem">
                   <xsl:call-template name="verb-stem">
                     <xsl:with-param name="lemma"
@@ -366,16 +377,13 @@
                       </xsl:otherwise>
                     </xsl:choose>
                   </xsl:otherwise>
-                  <!-- TODO: support for modal verbs and auxiliaries -->
+                  <!-- TODO: proper support for modal verbs and auxiliaries -->
                 </xsl:choose>
-              </xsl:if>
-            </xsl:when>
-            <!-- verbal participles -->
-            <xsl:when test="$pos='Partizip'">
-              <xsl:variable name="participle"
-                            select="normalize-space(dwds:Partizip_II)"/>
-              <!-- ignore sources with missing forms -->
-              <xsl:if test="string-length($participle)&gt;0">
+              </xsl:when>
+              <!-- verbal participles -->
+              <xsl:when test="$pos='Partizip'">
+                <xsl:variable name="participle"
+                              select="normalize-space(dwds:Partizip_II)"/>
                 <xsl:variable name="participle-stem">
                   <xsl:call-template name="participle-stem">
                     <xsl:with-param name="lemma"
@@ -404,14 +412,11 @@
                     </xsl:call-template>
                   </xsl:otherwise>
                 </xsl:choose>
-              </xsl:if>
-            </xsl:when>
-            <!-- adjectives -->
-            <xsl:when test="$pos='Adjektiv'">
-              <xsl:variable name="superlative"
-                            select="normalize-space(dwds:Superlativ)"/>
-              <!-- ignore sources with missing forms -->
-              <xsl:if test="string-length($superlative)&gt;0">
+              </xsl:when>
+              <!-- adjectives -->
+              <xsl:when test="$pos='Adjektiv'">
+                <xsl:variable name="superlative"
+                              select="normalize-space(dwds:Superlativ)"/>
                 <xsl:call-template name="default-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma"/>
@@ -430,20 +435,15 @@
                     </xsl:apply-templates>
                   </xsl:with-param>
                 </xsl:call-template>
-              </xsl:if>
-            </xsl:when>
-            <!-- nouns -->
-            <xsl:when test="$pos='Substantiv'">
-              <xsl:variable name="gender"
-                            select="normalize-space(dwds:Genus)"/>
-              <xsl:variable name="genitive"
-                            select="normalize-space(dwds:Genitiv)"/>
-              <xsl:variable name="plural"
-                            select="normalize-space(dwds:Plural)"/>
-              <!-- ignore sources with missing forms -->
-              <xsl:if test="string-length($gender)&gt;0 and
-                            string-length($genitive)&gt;0 and
-                            string-length($plural)&gt;0">
+              </xsl:when>
+              <!-- nouns -->
+              <xsl:when test="$pos='Substantiv'">
+                <xsl:variable name="gender"
+                              select="normalize-space(dwds:Genus)"/>
+                <xsl:variable name="genitive"
+                              select="normalize-space(dwds:Genitiv)"/>
+                <xsl:variable name="plural"
+                              select="normalize-space(dwds:Plural)"/>
                 <xsl:call-template name="default-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma"/>
@@ -462,31 +462,59 @@
                     </xsl:apply-templates>
                   </xsl:with-param>
                 </xsl:call-template>
-              </xsl:if>
-            </xsl:when>
-            <!-- other parts of speech -->
-            <xsl:otherwise>
-              <xsl:call-template name="default-entry">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="pos">
-                  <xsl:apply-templates select="."
-                                       mode="pos">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                  </xsl:apply-templates>
-                </xsl:with-param>
-                <xsl:with-param name="class">
-                  <xsl:apply-templates select="."
-                                       mode="class">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                  </xsl:apply-templates>
-                </xsl:with-param>
-              </xsl:call-template>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:if>
+              </xsl:when>
+              <!-- other parts of speech -->
+              <xsl:otherwise>
+                <xsl:call-template name="default-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma"/>
+                  <xsl:with-param name="pos">
+                    <xsl:apply-templates select="."
+                                         mode="pos">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                    </xsl:apply-templates>
+                  </xsl:with-param>
+                  <xsl:with-param name="class">
+                    <xsl:apply-templates select="."
+                                         mode="class">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                    </xsl:apply-templates>
+                  </xsl:with-param>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:when test="normalize-space(dwds:Wortklasse)='Adjektiv' or
+                          normalize-space(dwds:Wortklasse)='Substantiv' or
+                          normalize-space(dwds:Wortklasse)='Verb' or
+                          normalize-space(dwds:Wortklasse)='Partizip'">
+            <xsl:message>
+              <xsl:text>Warning: "</xsl:text>
+              <xsl:value-of select="$lemma"/>
+              <xsl:text>" has an incomplete grammar specification with POS "</xsl:text>
+              <xsl:value-of select="$pos"/>
+              <xsl:text>".</xsl:text>
+            </xsl:message>
+          </xsl:when>
+          <xsl:when test="string-length(normalize-space(dwds:Wortklasse))&gt;0">
+            <xsl:message>
+              <xsl:text>Warning: "</xsl:text>
+              <xsl:value-of select="$lemma"/>
+              <xsl:text>" has a grammar specification with unsupported POS "</xsl:text>
+              <xsl:value-of select="$pos"/>
+              <xsl:text>".</xsl:text>
+            </xsl:message>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:message>
+              <xsl:text>Warning: "</xsl:text>
+              <xsl:value-of select="$lemma"/>
+              <xsl:text>" has a grammar specification with empty POS.</xsl:text>
+            </xsl:message>
+        </xsl:otherwise>
+        </xsl:choose>
       </xsl:for-each>
     </xsl:if>
   </xsl:for-each>

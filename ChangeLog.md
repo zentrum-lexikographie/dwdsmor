@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-02-15:
+
+* add warnings for articles with inappropriate grammar specifications
+
 2022-02-14:
 * add support for neuter nouns with genitive singular forms ending in "-es" or
   "-s" and nominative plural forms ending in "-e" or "-en"

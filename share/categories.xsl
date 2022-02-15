@@ -12,10 +12,10 @@
 
 <xsl:variable name="pos-mapping">
   <pos pos="Adjektiv">ADJ</pos>
-  <pos pos="Präfix">PREF</pos>
   <pos pos="Substantiv">NN</pos>
-  <pos pos="Suffix">SUFF</pos>
   <pos pos="Verb">V</pos>
+  <pos pos="Präfix">PREF</pos>
+  <pos pos="Suffix">SUFF</pos>
   <!-- TODO: more POS mappings -->
   <!-- ... -->
 </xsl:variable>
