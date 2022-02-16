@@ -3,7 +3,7 @@
   <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
   <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-        <Pattern>[%boldBlue(%d)][%boldBlue(%-5level)][%boldGreen(%-20.20logger{20})] - %msg%n%rEx</Pattern>
+      <Pattern>%d{YYYY-MM-dd}T%d{HH:mm:ss} %-5level %msg%n%rEx</Pattern>
     </encoder>
   </appender>
   <logger name="dwdsmor" level="INFO"/>

@@ -38,7 +38,12 @@
   (proxy [ErrorReporter MessageListener2] []
     (report [_])
     (message [^XdmNode content _ _ _]
-      (log/debug (.getStringValue content)))))
+      (let [msg (.getStringValue content)]
+        (if (str/starts-with? msg "Error: ")
+          (log/error (str/replace-first msg #"Error: " ""))
+          (if (str/starts-with? msg "Warning: ")
+            (log/warn (str/replace-first msg #"Warning: " ""))
+            (log/debug msg)))))))
 
 (defn xslt-fn
   "Derive XSLT transformers from compiled stylesheet."
@@ -56,7 +61,9 @@
               entries     (.. destination (getXdmNode) (getStringValue))
               entries     (map str/trim (str/split-lines entries))]
           (doseq [entry entries]
-            (log/debugf "%s -> %s" file-name entry))
+            (if (str/blank? entry)
+              (log/debugf "%s: EMPTY" file-name)
+              (log/debugf "%s: %s" file-name entry)))
           entries)
         (catch SaxonApiException e
           (log/warnf
@@ -72,15 +79,15 @@
     :desc "Path of the file the generated lexicon is written to"
     :parse-fn io/file]
    ["-s" "--smorlemma-lexica"
-    :desc "include additional lexica from SMORLemma"]
+    :desc "Include additional lexica from SMORLemma"]
    ["-f" "--filter"
-    :desc "filter entries with tag <UNKNOWN>"]
+    :desc "Filter entries with tag <UNKNOWN>"]
    ["-l" "--limit MAX_ENTRIES"
     :desc "Limit the number of extracted lexicon entries for testing"
     :parse-fn #(Integer/parseInt %)
     :validate [pos? "Limit has to be > 0"]]
    ["-d" "--debug"
-    :desc "Print debugging information (including message from XSLT)"]
+    :desc "Print debugging information"]
    ["-h" "--help"]])
 
 (defn usage
@@ -89,7 +96,7 @@
    \newline
    ["DWDSmor Lexicon Generation"
     ""
-    "Copyright (C) 2021 Berlin-Brandenburgische Akademie der Wissenschaften"
+    "Copyright (C) 2022 Berlin-Brandenburgische Akademie der Wissenschaften"
     ""
     "Usage: clojure -M -m dwdsmor.lexicon [options] <dir|*.xml>..."
     ""

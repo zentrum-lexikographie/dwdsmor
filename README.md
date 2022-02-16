@@ -118,10 +118,10 @@ containing XML documents (files ending in .xml).
 Options:
   -x, --xslt XSLT          XSLT stylesheet extracting lexicon entries from DWDS article files
   -o, --output OUTPUT      Path of the file the generated lexicon is written to
-  -s, --smorlemma-lexica   include additional lexica from SMORLemma
-  -f, --filter             filter entries with tag <UNKNOWN>
+  -s, --smorlemma-lexica   Include additional lexica from SMORLemma
+  -f, --filter             Filter entries with tag <UNKNOWN>
   -l, --limit MAX_ENTRIES  Limit the number of extracted lexicon entries for testing
-  -d, --debug              Print debugging information (including message from XSLT)
+  -d, --debug              Print debugging information
   -h, --help
 ```
 
@@ -157,8 +157,9 @@ make -C lexicon debug
 ```
 
 This calls `lexicon/generate-lexicon` with the option `--debug` and without the
-option `--filter`. The result is stored in  `SMORLemma/lexicon/lexicon.debug`.
-In order to re-generate it with unchanged XSLT stylesheets, first call:
+option `--filter`. The result is stored in `SMORLemma/lexicon/lexicon.debug`,
+together with a log file in `SMORLemma/lexicon/lexicon.log`. In order to
+re-generate them with unchanged XSLT stylesheets, first call:
 
 ```sh
 make -C lexicon debugclean
