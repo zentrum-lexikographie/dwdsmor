@@ -80,7 +80,7 @@ def extract_wb_entries(wb_xml_file):
                         pos = pos_tag.text or ''
                         break
                     if pos == 'Substantiv':
-                        if not (grammar.findall('{http://www.dwds.de/ns/1.0}Singular') or
+                        if not (grammar.findall('{http://www.dwds.de/ns/1.0}Genitiv') or
                                 grammar.findall('{http://www.dwds.de/ns/1.0}Plural')):
                             inflection_info = 0
                     if pos == 'Verb':
