@@ -13,6 +13,7 @@ def test_wb_coverage(project_dir, dwdsmor_transducer, wb_entries):
             "Status",
             "Lemma",
             "Wortklasse",
+            "Flexionsinfo",
             "DWDSmor-Lemma",
             "DWDSmor-POS",
             "Abdeckung"
@@ -35,6 +36,7 @@ def test_wb_coverage(project_dir, dwdsmor_transducer, wb_entries):
                 wb_entry['article_status'],
                 lemma,
                 wb_entry['pos'],
+                wb_entry['inflection_info'],
                 analyzed_lemma,
                 analyzed_pos,
                 ("1" if analyzed else "0")

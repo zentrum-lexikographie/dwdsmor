@@ -70,6 +70,7 @@ def extract_wb_entries(wb_xml_file):
             forms = article.iter('{http://www.dwds.de/ns/1.0}Formangabe')
             for form in forms:
                 pos = ''
+                inflection_info = 1
                 grammars = form.iter('{http://www.dwds.de/ns/1.0}Grammatik')
                 for grammar in grammars:
                     pos_tags = grammar.iter(
@@ -78,6 +79,14 @@ def extract_wb_entries(wb_xml_file):
                     for pos_tag in pos_tags:
                         pos = pos_tag.text or ''
                         break
+                    if pos == 'Substantiv':
+                        if not (grammar.findall('{http://www.dwds.de/ns/1.0}Singular') or
+                                grammar.findall('{http://www.dwds.de/ns/1.0}Plural')):
+                            inflection_info = 0
+                    if pos == 'Verb':
+                        if not (grammar.findall('{http://www.dwds.de/ns/1.0}Praesens') or
+                                grammar.findall('{http://www.dwds.de/ns/1.0}Praeteritum')):
+                            inflection_info = 0
                     break
                 if pos == 'Mehrwortausdruck':
                     continue
@@ -91,6 +100,7 @@ def extract_wb_entries(wb_xml_file):
                         'file': wb_xml_file.relative_to(wb_dir),
                         'article_status': article_status,
                         'pos': pos,
+                        'inflection_info': inflection_info,
                         'written_repr': " ".join((written_repr.text or '').split())
                     })
     return entries
