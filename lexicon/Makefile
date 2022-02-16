@@ -39,12 +39,12 @@ clojure-install.sh:
 lexicon: $(LEX)
 
 $(LEX): $(XSL) $(LIB)
-	@./generate-lexicon --xslt $(XSL) $(GENERATE_EXTRA_OPTIONS) --filter --output $@ $(SRCDIR)
+	./generate-lexicon --xslt $(XSL) $(GENERATE_EXTRA_OPTIONS) --filter --output $@ $(SRCDIR) 2> $(LEX).log
 
 debug: $(LEX).debug
 
 $(LEX).debug: $(XSL) $(LIB)
-	@./generate-lexicon --xslt $(XSL) $(GENERATE_EXTRA_OPTIONS) --debug --output $@ $(SRCDIR) | tee $(LEX).log
+	./generate-lexicon --xslt $(XSL) $(GENERATE_EXTRA_OPTIONS) --debug --output $@ $(SRCDIR) 2> $(LEX).debug.log
 
 test: $(TESTOUTPUTS)
 
@@ -52,15 +52,15 @@ $(TESTOUTPUT):
 	mkdir -p $@
 
 $(TESTOUTPUT)/%: $(TESTTARGET)/% $(XSL) $(LIB) $(LEX) $(TESTINPUTS) | $(TESTOUTPUT)
-	@./generate-lexicon --xslt $(XSL) --filter --output $@ \
+	./generate-lexicon --xslt $(XSL) --filter --output $@ \
 	  $(addprefix $(SRCDIR)/,$(file < $(patsubst $(TESTTARGET)%.lex,$(TESTINPUT)%.list,$<)))
 	@$(DIFF) $< $@ || true
 
 clean: debugclean testclean
-	$(RM) $(LEX)
+	$(RM) $(LEX) $(LEX).log
 
 debugclean:
-	$(RM) $(LEX).debug $(LEX).log
+	$(RM) $(LEX).debug $(LEX).debug.log
 
 testclean:
 	$(RM) $(TESTOUTPUTS)

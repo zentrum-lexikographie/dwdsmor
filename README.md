@@ -132,6 +132,9 @@ by running:
 make -C lexicon
 ```
 
+A log is saved in `SMORLemma/lexicon/lexicon.log`. This includes XSLT warnings,
+if any.
+
 By default, additional lexica from SMORLemma for irregular adjectives, adverbs,
 and verbs as well as for adpositions are included. In order to built a lexicon
 without them, run:
@@ -157,8 +160,9 @@ make -C lexicon debug
 ```
 
 This calls `lexicon/generate-lexicon` with the option `--debug` and without the
-option `--filter`. The result is stored in `SMORLemma/lexicon/lexicon.debug`,
-together with a log file in `SMORLemma/lexicon/lexicon.log`. In order to
+option `--filter`. The result, which may contain `<UNKNOWN>` tags, is stored in
+`SMORLemma/lexicon/lexicon.debug`. A corresponding log file with input and
+output mappings is saved in `SMORLemma/lexicon/lexicon.debug.log`. In order to
 re-generate them with unchanged XSLT stylesheets, first call:
 
 ```sh
