@@ -1,5 +1,5 @@
 # .gitignore
-# Andreas Nolda 2021-10-15
+# Andreas Nolda 2022-02-16
 
 .venv/
 *~
@@ -13,7 +13,6 @@ __pycache__
 
 lexicon/test/output/
 lexicon/wb/
-sfst/
 SMORLemma/
 
 wb-coverage-report.csv
