@@ -1,4 +1,5 @@
 import csv
+import os
 
 import dwdsmor
 
@@ -6,7 +7,7 @@ import dwdsmor
 def test_wb_coverage(project_dir, dwdsmor_transducer, wb_entries):
     coverage_report_file = project_dir / 'wb-coverage-report.csv'
     with coverage_report_file.open('w') as report_f:
-        report_writer = csv.writer(report_f)
+        report_writer = csv.writer(report_f, lineterminator=os.linesep)
         report_writer.writerow([
             "Datei",
             "Status",
