@@ -91,7 +91,7 @@ def extract_wb_entries(wb_xml_file):
                         'file': wb_xml_file.relative_to(wb_dir),
                         'article_status': article_status,
                         'pos': pos,
-                        'written_repr': (written_repr.text or '').strip()
+                        'written_repr': " ".join((written_repr.text or '').split())
                     })
     return entries
 
