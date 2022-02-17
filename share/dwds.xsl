@@ -323,7 +323,7 @@
                     <xsl:choose>
                       <!-- umlautable past stem -->
                       <!-- Caveat: "e" is considered as a full vowel. -->
-                      <xsl:when test="matches($past-stem,'([aou]|au)[^aeiouäöü]*$','i')">
+                      <xsl:when test="matches($past-stem,'([aou]|au)[^aeiouäöü]*$')">
                         <!-- past indicative -->
                         <xsl:call-template name="verb-entry">
                           <xsl:with-param name="lemma"

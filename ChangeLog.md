@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-02-17:
+
+* generalise the functions `n:umlaut` and `n:umlaut-re` for capitalised arguments
+
 2022-02-15:
 
 * add support for nouns with unmarked genitive singular and nominative plural
