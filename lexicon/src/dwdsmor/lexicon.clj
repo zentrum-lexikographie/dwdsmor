@@ -64,7 +64,7 @@
             (if (str/blank? entry)
               (log/debugf "%s: EMPTY" file-name)
               (log/debugf "%s: %s" file-name entry)))
-          entries)
+          (remove str/blank? entries))
         (catch SaxonApiException e
           (log/warnf
            "XSLT error :: %s: %s " (.getPath article) (.getMessage e)))))))
@@ -194,7 +194,7 @@
             _        (log/info "Writing lexicon entries")
             output   (get-in args [:options :output])]
         (with-open [w (io/writer output :encoding "UTF-8")]
-          (doseq [chunk (interpose "\n" entries)] (.write w chunk))))
+          (doseq [chunk (concat (interpose "\n" entries) '("\n"))] (.write w chunk))))
       (let [stop     (System/currentTimeMillis)
             duration (Duration/ofMillis (- stop start))]
         (log/infof "Generated lexicon in %s" duration))
