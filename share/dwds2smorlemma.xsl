@@ -155,13 +155,10 @@
 * <NFem-in>
 * <NFem-is/en>
 * <NFem-is/iden>
-* <NFem-s/ssen>
 * <NFem/Pl>
 * <NFem/Sg>
 * <NFem_s_s>
 * <NMasc-Adj>
-* <NMasc-ns>
-* <NMasc-s/$sse>
 * <NMasc-us/en>
 * <NMasc-us/i>
 * <NMasc/Pl>

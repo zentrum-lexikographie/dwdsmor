@@ -184,13 +184,9 @@
 * <NFem-in>
 * <NFem-is/en>
 * <NFem-is/iden>
-* <NFem-s/$sse>
-* <NFem-s/ssen>
 * <NFem/Pl>
 * <NFem/Sg>
 * <NMasc-Adj>
-* <NMasc-ns>
-* <NMasc-s/$sse>
 * <NMasc-s/Sg>
 * <NMasc-s0/sse>
 * <NMasc-us/en>
@@ -204,9 +200,7 @@
 * <NNeut-a/ata>
 * <NNeut-a/en>
 * <NNeut-Dimin>
-* <NNeut-Herz>
 * <NNeut-on/a>
-* <NNeut-s/$sser>
 * <NNeut-um/a>
 * <NNeut-um/en>
 * <NNeut/Pl>

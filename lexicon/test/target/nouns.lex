@@ -42,6 +42,7 @@
 <Stem>Genie<NN><base><fremd><NNeut_s_s>
 <Stem>Haus<NN><base><nativ><NNeut_es_$er>
 <Stem>Hemd<NN><base><nativ><NNeut_es_en>
+<Stem>Herz<NN><base><nativ><NNeut-Herz>
 <Stem>Hügel<NN><base><nativ><NMasc_s_0>
 <Stem>Hut<NN><base><nativ><NMasc_es_$e>
 <Stem>Idol<NN><base><fremd><NNeut_s_e>
@@ -59,6 +60,8 @@
 <Stem>Mond<NN><base><nativ><NMasc_es_e>
 <Stem>Mutter<NN><base><nativ><NFem_0_$>
 <Stem>Mutter<NN><base><nativ><NFem_0_n>
+<Stem>Name<NN><base><nativ><NMasc-ns>
+<Stem>Namen<NN><base><nativ><NMasc_s_x>
 <Stem>Nerv<NN><base><fremd><NMasc_s_en>
 <Stem>Neutron<NN><base><fremd><NNeut_s_en>
 <Stem>Oma<NN><base><nativ><NFem_0_s>

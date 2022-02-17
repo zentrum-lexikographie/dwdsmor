@@ -127,6 +127,12 @@
          gender="mask."
          genitive="-s"
          plural="-n">NMasc_s_n</class>
+  <!-- genitive singular: "-ens"
+       nominative plural: "en" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-ns"
+         plural="-n">NMasc-ns</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-er" -->
   <class pos="Substantiv"
@@ -236,6 +242,12 @@
          gender="neutr."
          genitive="-s"
          plural="-en">NNeut_s_en</class>
+  <!-- genitive singular: "-ens"
+       nominative plural: "-en" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-ens"
+         plural="-en">NNeut-Herz</class>
   <!-- genitive singular: "-s"
        nominative plural: "-n" -->
   <class pos="Substantiv"
