@@ -3,6 +3,7 @@
 <Stem>Amsel<NN><base><nativ><NFem_0_n>
 <Stem>Ananas<NN><base><fremd><NFem_0_x>
 <Stem>Ananas<NN><base><fremd><NFem-s/sse>
+<Stem>Auge<NN><base><nativ><NNeut_s_n>
 <Stem>Auto<NN><base><nativ><NNeut_s_s>
 <Stem>Autor<NN><base><fremd><NMasc_en_en>
 <Stem>Autor<NN><base><fremd><NMasc_s_en>
@@ -11,6 +12,8 @@
 <Stem>Bank<NN><base><nativ><NFem_0_$e>
 <Stem>Bank<NN><base><nativ><NFem_0_en>
 <Stem>Bär<NN><base><nativ><NMasc_en_en>
+<Stem>Bauer<NN><base><nativ><NMasc_n_n>
+<Stem>Bauer<NN><base><nativ><NMasc_s_n>
 <Stem>Becken<NN><base><nativ><NNeut_s_x>
 <Stem>Bett<NN><base><nativ><NNeut_es_en>
 <Stem>Bild<NN><base><nativ><NNeut_es_er>
@@ -22,6 +25,7 @@
 <Stem>Cent<NN><base><nativ><NMasc_s_s>
 <Stem>Drache<NN><base><nativ><NMasc_n_n>
 <Stem>Drachen<NN><base><nativ><NMasc_s_x>
+<Stem>Ende<NN><base><nativ><NNeut_s_n>
 <Stem>Engel<NN><base><nativ><NMasc_s_0>
 <Stem>Ergebnis<NN><base><nativ><NNeut-s/sse>
 <Stem>Erkenntnis<NN><base><nativ><NFem-s/sse>
@@ -33,7 +37,7 @@
 <Stem>Floß<NN><base><nativ><NNeut_es_$e>
 <Stem>Frau<NN><base><nativ><NFem_0_en>
 <Stem>Frucht<NN><base><nativ><NFem_0_$e>
-<Stem>Garten<NN><base><nativ><NMasc_s_$>
+<Stem>Garten<NN><base><nativ><NMasc_s_$x>
 <Stem>Geist<NN><base><nativ><NMasc_es_er>
 <Stem>Genie<NN><base><fremd><NNeut_s_s>
 <Stem>Haus<NN><base><nativ><NNeut_es_$er>
@@ -43,14 +47,13 @@
 <Stem>Idol<NN><base><fremd><NNeut_s_e>
 <Stem>Idyll<NN><base><fremd><NNeut_s_e>
 <Stem>Jeans<NN><base><fremd><NFem_0_x>
+<Stem>Kanal<NN><base><fremd><NMasc_s_$e>
 <Stem>Kasus<NN><base><fremd><NMasc_0_x>
 <Stem>Kater<NN><base><nativ><NMasc_s_0>
 <Stem>Kissen<NN><base><nativ><NNeut_s_x>
 <Stem>Kloster<NN><base><nativ><NNeut_s_$>
 <Stem>Leib<NN><base><nativ><NMasc_es_er>
 <Stem>Lord<NN><base><fremd><NMasc_s_s>
-<Stem>Mann<NN><base><nativ><NMasc_es_$er>
-<Stem>Mann<NN><base><nativ><NMasc_es_en>
 <Stem>Maß<NN><base><nativ><NNeut_es_e>
 <Stem>Melodram<NN><base><nativ><NNeut_s_en>
 <Stem>Mond<NN><base><nativ><NMasc_es_e>
@@ -62,11 +65,14 @@
 <Stem>Opa<NN><base><nativ><NMasc_s_s>
 <Stem>Ozean<NN><base><fremd><NMasc_s_e>
 <Stem>Palais<NN><base><fremd><NNeut_0_x>
+<Stem>Rand<NN><base><nativ><NMasc_es_$er>
 <Stem>Riese<NN><base><nativ><NMasc_n_n>
 <Stem>Schmerz<NN><base><nativ><NMasc_es_en>
+<Stem>See<NN><base><nativ><NMasc_s_n>
 <Stem>SMS<NN><base><nativ><NFem_0_x>
 <Stem>SMS<NN><base><nativ><NNeut_0_x>
 <Stem>Staat<NN><base><nativ><NMasc_es_en>
+<Stem>Tenor<NN><base><fremd><NMasc_s_$e>
 <Stem>Ufer<NN><base><nativ><NNeut_s_0>
 <Stem>Uhu<NN><base><nativ><NMasc_s_s>
 <Stem>Vater<NN><base><nativ><NMasc_s_$>

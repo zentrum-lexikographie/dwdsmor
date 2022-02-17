@@ -3,6 +3,10 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-02-17:
 
 * generalise the functions `n:umlaut` and `n:umlaut-re` for capitalised arguments
+* add support for masculine and neuter nouns with genitive singular forms ending
+  in "-s" and nominative plural forms ending in "-n"
+* add support for masculine nouns with genitive singular forms ending in "-s"
+  and umlauted nominative plural forms ending in "-e"
 
 2022-02-15:
 

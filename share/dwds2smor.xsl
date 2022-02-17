@@ -200,8 +200,6 @@
 * <NMasc/Sg_es>
 * <NMasc/Sg_s>
 * <NMasc_en_e>
-* <NMasc_s_$x>
-* <NMasc_s_n>
 * <NNeut-0/ien>
 * <NNeut-a/ata>
 * <NNeut-a/en>
@@ -217,7 +215,6 @@
 * <NNeut/Sg_es>
 * <NNeut/Sg_s>
 * <NNeut_Dimin>
-* <NNeut_s_n>
 * <NSFem_0_en>
 * <NSFem_0_n>
 * <NSMasc-s/$sse>

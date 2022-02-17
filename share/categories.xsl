@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.15 -->
-<!-- Andreas Nolda 2022-02-15 -->
+<!-- Version 0.16 -->
+<!-- Andreas Nolda 2022-02-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -93,6 +93,12 @@
          gender="mask."
          genitive="-s"
          plural="-e">NMasc_s_e</class>
+  <!-- genitive singular: "-s"
+       nominative plural: umlaut and "-e" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-s"
+         plural="&#x308;-e">NMasc_s_$e</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: geminate "s" + "-e" -->
   <class pos="Substantiv"
@@ -115,6 +121,12 @@
          gender="mask."
          genitive="-s"
          plural="-en">NMasc_s_en</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-n" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-s"
+         plural="-n">NMasc_s_n</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-er" -->
   <class pos="Substantiv"
@@ -151,7 +163,10 @@
          genitive="-s"
          plural="-">NMasc_s_0</class>
   <!-- genitive singular: "-s"
-       nominative plural: umlaut -->
+       nominative plural: umlaut, with stem-final "n" -->
+  <!-- cf. dwds.xsl -->
+  <!-- genitive singular: "-s"
+       nominative plural: umlaut, without stem-final "n" -->
   <class pos="Substantiv"
          gender="mask."
          genitive="-s"
@@ -221,6 +236,12 @@
          gender="neutr."
          genitive="-s"
          plural="-en">NNeut_s_en</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-n" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-s"
+         plural="-n">NNeut_s_n</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-er" -->
   <class pos="Substantiv"
