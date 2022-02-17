@@ -23,6 +23,7 @@
 <Stem>Casus<NN><base><fremd><NMasc_0_x>
 <Stem>Cent<NN><base><nativ><NMasc_0_x>
 <Stem>Cent<NN><base><nativ><NMasc_s_s>
+<Stem>Circus<NN><base><fremd><NMasc-s0/sse>
 <Stem>Drache<NN><base><nativ><NMasc_n_n>
 <Stem>Drachen<NN><base><nativ><NMasc_s_x>
 <Stem>Ende<NN><base><nativ><NNeut_s_n>
@@ -35,7 +36,10 @@
 <Stem>Figur<NN><base><fremd><NFem_0_en>
 <Stem>Fisch<NN><base><nativ><NMasc_es_e>
 <Stem>Floß<NN><base><nativ><NNeut_es_$e>
+<Stem>Fossil<NN><base><fremd><NNeut-0/ien>
 <Stem>Frau<NN><base><nativ><NFem_0_en>
+<Stem>Freund<NN><base><nativ><NMasc_es_e>
+<Stem>Freundin<NN><base><nativ><NFem-in>
 <Stem>Frucht<NN><base><nativ><NFem_0_$e>
 <Stem>Garten<NN><base><nativ><NMasc_s_$x>
 <Stem>Geist<NN><base><nativ><NMasc_es_er>
@@ -80,3 +84,4 @@
 <Stem>Uhu<NN><base><nativ><NMasc_s_s>
 <Stem>Vater<NN><base><nativ><NMasc_s_$>
 <Stem>Wald<NN><base><nativ><NMasc_es_$er>
+<Stem>Zirkus<NN><base><fremd><NMasc-s0/sse>

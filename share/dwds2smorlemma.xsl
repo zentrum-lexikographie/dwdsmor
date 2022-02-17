@@ -152,7 +152,6 @@
 * <Name-Pl_0>
 * <Name-Pl_x>
 * <NFem-a/en>
-* <NFem-in>
 * <NFem-is/en>
 * <NFem-is/iden>
 * <NFem/Pl>
@@ -166,7 +165,6 @@
 * <NMasc/Sg_es>
 * <NMasc/Sg_s>
 * <NMasc_en_e>
-* <NNeut-0/ien>
 * <NNeut-a/ata>
 * <NNeut-a/en>
 * <NNeut-on/a>

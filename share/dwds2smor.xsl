@@ -181,14 +181,12 @@
 * <Name-Pl_x>
 * <NFem-a/en>
 * <NFem-Deriv>
-* <NFem-in>
 * <NFem-is/en>
 * <NFem-is/iden>
 * <NFem/Pl>
 * <NFem/Sg>
 * <NMasc-Adj>
 * <NMasc-s/Sg>
-* <NMasc-s0/sse>
 * <NMasc-us/en>
 * <NMasc-us/i>
 * <NMasc/Pl>
@@ -196,7 +194,6 @@
 * <NMasc/Sg_es>
 * <NMasc/Sg_s>
 * <NMasc_en_e>
-* <NNeut-0/ien>
 * <NNeut-a/ata>
 * <NNeut-a/en>
 * <NNeut-Dimin>

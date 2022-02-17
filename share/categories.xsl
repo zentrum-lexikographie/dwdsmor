@@ -105,6 +105,12 @@
          gender="mask."
          genitive="-ses"
          plural="-se">NMasc-s/sse</class>
+  <!-- genitive singular: unmarked
+       nominative plural: geminate "s" + "-e" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive="-"
+         plural="-se">NMasc-s0/sse</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-en" -->
   <class pos="Substantiv"
@@ -275,6 +281,12 @@
          genitive="-es"
          plural="&#x308;-er">NNeut_es_$er</class>
   <!-- genitive singular: "-s"
+       nominative plural: "-ien" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive="-s"
+         plural="-ien">NNeut-0/ien</class>
+  <!-- genitive singular: "-s"
        nominative plural: "-s" -->
   <class pos="Substantiv"
          gender="neutr."
@@ -326,6 +338,12 @@
          gender="fem."
          genitive="-"
          plural="-en">NFem_0_en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: geminate "n" + "-en" -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive="-"
+         plural="-nen">NFem-in</class>
   <!-- genitive singular: unmarked
        nominative plural: "-n" -->
   <class pos="Substantiv"
