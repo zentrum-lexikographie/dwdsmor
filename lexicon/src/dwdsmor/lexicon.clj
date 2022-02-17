@@ -158,7 +158,7 @@
   "Output (lexicon entries) is sorted according to German locale and case
   insensitive."
   (let [collator (doto (Collator/getInstance Locale/GERMAN)
-                   (.setStrength Collator/PRIMARY))]
+                   (.setStrength Collator/IDENTICAL))]
     (fn [s] (.getCollationKey collator s))))
 
 (defn configure-logging!
