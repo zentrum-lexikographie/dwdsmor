@@ -519,6 +519,48 @@
                       <xsl:with-param name="class">NMasc_s_$x</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
+                  <!-- genitive singular: "-ses"
+                       nominative plural: "-en" substituted for "-us" -->
+                  <xsl:when test="$gender='mask.' and
+                                  $genitive-marker='-ses' and
+                                  not(starts-with($plural-marker,'-')) and
+                                  ends-with($lemma,'us') and
+                                  matches($plural,replace($lemma,'^(.+)us$',
+                                                                 '$1en'))">
+                    <xsl:call-template name="default-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="pos">
+                        <xsl:apply-templates select="."
+                                             mode="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                        </xsl:apply-templates>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">NMasc-us/en</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- genitive singular: unmarked
+                       nominative plural: "-en" substituted for "-us" -->
+                  <xsl:when test="$gender='mask.' and
+                                  $genitive-marker='-' and
+                                  not(starts-with($plural-marker,'-')) and
+                                  ends-with($lemma,'us') and
+                                  matches($plural,replace($lemma,'^(.+)us$',
+                                                                 '$1en'))">
+                    <xsl:call-template name="default-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="pos">
+                        <xsl:apply-templates select="."
+                                             mode="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                        </xsl:apply-templates>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">NMasc-us/en</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
                   <!-- neuter nouns -->
                   <!-- genitive singular: "-s"
                        nominative plural: unmarked, with stem-final "n" -->
@@ -556,6 +598,91 @@
                         </xsl:apply-templates>
                       </xsl:with-param>
                       <xsl:with-param name="class">NNeut_s_x</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- genitive singular: "-s"
+                       nominative plural: "-en" substituted for "-a" -->
+                  <xsl:when test="$gender='neutr.' and
+                                  $genitive-marker='-s' and
+                                  not(starts-with($plural-marker,'-')) and
+                                  ends-with($lemma,'a') and
+                                  matches($plural,replace($lemma,'^(.+)a$',
+                                                                 '$1en'))">
+                    <xsl:call-template name="default-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="pos">
+                        <xsl:apply-templates select="."
+                                             mode="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                        </xsl:apply-templates>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">NNeut-a/en</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- genitive singular: "-s"
+                       nominative plural: "-en" substituted for "-um" -->
+                  <xsl:when test="$gender='neutr.' and
+                                  $genitive-marker='-s' and
+                                  not(starts-with($plural-marker,'-')) and
+                                  ends-with($lemma,'um') and
+                                  matches($plural,replace($lemma,'^(.+)um$',
+                                                                 '$1en'))">
+                    <xsl:call-template name="default-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="pos">
+                        <xsl:apply-templates select="."
+                                             mode="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                        </xsl:apply-templates>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">NNeut-um/en</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- feminine nouns -->
+                  <!-- genitive singular: unmarked
+                       nominative plural: "-en" substituted for "-a" -->
+                  <xsl:when test="$gender='fem.' and
+                                  $genitive-marker='-' and
+                                  not(starts-with($plural-marker,'-')) and
+                                  ends-with($lemma,'a') and
+                                  matches($plural,replace($lemma,'^(.+)a$',
+                                                                 '$1en'))">
+                    <xsl:call-template name="default-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="pos">
+                        <xsl:apply-templates select="."
+                                             mode="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                        </xsl:apply-templates>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">NFem-a/en</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- genitive singular: unmarked
+                       nominative plural: "-en" substituted for "-is" -->
+                  <xsl:when test="$gender='fem.' and
+                                  $genitive-marker='-' and
+                                  not(starts-with($plural-marker,'-')) and
+                                  ends-with($lemma,'is') and
+                                  matches($plural,replace($lemma,'^(.+)is$',
+                                                                 '$1en'))">
+                    <xsl:call-template name="default-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="pos">
+                        <xsl:apply-templates select="."
+                                             mode="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                        </xsl:apply-templates>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">NFem-is/en</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
                   <xsl:otherwise>

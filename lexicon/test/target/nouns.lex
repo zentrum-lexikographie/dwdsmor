@@ -3,6 +3,9 @@
 <Stem>Amsel<NN><base><nativ><NFem_0_n>
 <Stem>Ananas<NN><base><fremd><NFem_0_x>
 <Stem>Ananas<NN><base><fremd><NFem-s/sse>
+<Stem>Arena<NN><base><fremd><NFem-a/en>
+<Stem>Aroma<NN><base><fremd><NNeut_s_s>
+<Stem>Aroma<NN><base><fremd><NNeut-a/en>
 <Stem>Auge<NN><base><nativ><NNeut_s_n>
 <Stem>Auto<NN><base><nativ><NNeut_s_s>
 <Stem>Autor<NN><base><fremd><NMasc_en_en>
@@ -12,6 +15,7 @@
 <Stem>Bank<NN><base><nativ><NFem_0_$e>
 <Stem>Bank<NN><base><nativ><NFem_0_en>
 <Stem>Bär<NN><base><nativ><NMasc_en_en>
+<Stem>Basis<NN><base><fremd><NFem-is/en>
 <Stem>Bauer<NN><base><nativ><NMasc_n_n>
 <Stem>Bauer<NN><base><nativ><NMasc_s_n>
 <Stem>Becken<NN><base><nativ><NNeut_s_x>
@@ -44,6 +48,9 @@
 <Stem>Garten<NN><base><nativ><NMasc_s_$x>
 <Stem>Geist<NN><base><nativ><NMasc_es_er>
 <Stem>Genie<NN><base><fremd><NNeut_s_s>
+<Stem>Globus<NN><base><fremd><NMasc-s/sse>
+<Stem>Globus<NN><base><fremd><NMasc-s0/sse>
+<Stem>Globus<NN><base><fremd><NMasc-us/en>
 <Stem>Haus<NN><base><nativ><NNeut_es_$er>
 <Stem>Hemd<NN><base><nativ><NNeut_es_en>
 <Stem>Herz<NN><base><nativ><NNeut-Herz>
@@ -62,6 +69,7 @@
 <Stem>Maß<NN><base><nativ><NNeut_es_e>
 <Stem>Melodram<NN><base><nativ><NNeut_s_en>
 <Stem>Mond<NN><base><nativ><NMasc_es_e>
+<Stem>Museum<NN><base><fremd><NNeut-um/en>
 <Stem>Mutter<NN><base><nativ><NFem_0_$>
 <Stem>Mutter<NN><base><nativ><NFem_0_n>
 <Stem>Name<NN><base><nativ><NMasc-ns>
@@ -70,8 +78,10 @@
 <Stem>Neutron<NN><base><fremd><NNeut_s_en>
 <Stem>Oma<NN><base><nativ><NFem_0_s>
 <Stem>Opa<NN><base><nativ><NMasc_s_s>
+<Stem>Organismus<NN><base><fremd><NMasc-us/en>
 <Stem>Ozean<NN><base><fremd><NMasc_s_e>
 <Stem>Palais<NN><base><fremd><NNeut_0_x>
+<Stem>Panorama<NN><base><fremd><NNeut-a/en>
 <Stem>Rand<NN><base><nativ><NMasc_es_$er>
 <Stem>Riese<NN><base><nativ><NMasc_n_n>
 <Stem>Schmerz<NN><base><nativ><NMasc_es_en>

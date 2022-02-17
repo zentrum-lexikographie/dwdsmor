@@ -199,6 +199,12 @@
          gender="mask."
          genitive="-"
          plural="-">NMasc_0_x</class>
+  <!-- genitive singular: geminate "s" + "-es"
+       nominative plural: "-en" substituted for "-us" -->
+  <!-- cf. dwds.xsl -->
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-us" -->
+  <!-- cf. dwds.xsl -->
   <!-- neuter nouns: -->
   <!-- genitive singular: "-(e)s"
        nominative plural: "-e" -->
@@ -313,6 +319,12 @@
          gender="neutr."
          genitive="-"
          plural="-">NNeut_0_x</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-en" substituted for "-a" -->
+  <!-- cf. dwds.xsl -->
+  <!-- genitive singular: "-s"
+       nominative plural: "-en" substituted for "-um" -->
+  <!-- cf. dwds.xsl -->
   <!-- feminine nouns: -->
   <!-- genitive singular: unmarked
        nominative plural: "-e" -->
@@ -368,6 +380,12 @@
          gender="fem."
          genitive="-"
          plural="-">NFem_0_x</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-a" -->
+  <!-- cf. dwds.xsl -->
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-is" -->
+  <!-- cf. dwds.xsl -->
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>

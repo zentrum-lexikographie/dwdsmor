@@ -15,6 +15,13 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
   and nominative plural forms ending in "-ien"
 * add support for feminine nouns with unmarked genitive singular forms and
   nominative plural forms ending in geminate "n" + "-en"
+* add support for masculine nouns with genitive singular forms ending in
+  geminate "s" + "-es" or unmarked genitive singular forms and nominative plural
+  forms ending in "-en" substituted for "-us"
+* add support for neuter nouns with genitive singular forms ending in "-s" and
+  nominative plural forms ending in "-en" substituted for "-a" or "-um"
+* add support for feminine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-en" substituted for "-a" or "-is"
 
 2022-02-15:
 
