@@ -172,7 +172,7 @@ make -C lexicon debugclean
 For regression testing, the `test` make target is provided:
 
 ```sh
-make -C lexicon test
+make -s -C lexicon test
 ```
 
 This generates small sample lexica from the file lists in `lexicon/test/input/`
