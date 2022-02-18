@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.16 -->
-<!-- Andreas Nolda 2022-02-17 -->
+<!-- Version 0.17 -->
+<!-- Andreas Nolda 2022-02-18 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -71,321 +71,355 @@
        nominative plural: "-e" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-(e)s"
-         plural="-e">NMasc_es_e</class>
+         genitive-singular="-(e)s"
+         nominative-plural="-e">NMasc_es_e</class>
   <class pos="Substantiv"
          gender="mask."
-         genitive="-es"
-         plural="-e">NMasc_es_e</class>
+         genitive-singular="-es"
+         nominative-plural="-e">NMasc_es_e</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: umlaut and "-e" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-(e)s"
-         plural="&#x308;-e">NMasc_es_$e</class>
+         genitive-singular="-(e)s"
+         nominative-plural="&#x308;-e">NMasc_es_$e</class>
   <class pos="Substantiv"
          gender="mask."
-         genitive="-es"
-         plural="&#x308;-e">NMasc_es_$e</class>
+         genitive-singular="-es"
+         nominative-plural="&#x308;-e">NMasc_es_$e</class>
   <!-- genitive singular: "-s"
        nominative plural: "-e" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-s"
-         plural="-e">NMasc_s_e</class>
+         genitive-singular="-s"
+         nominative-plural="-e">NMasc_s_e</class>
   <!-- genitive singular: "-s"
        nominative plural: umlaut and "-e" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-s"
-         plural="&#x308;-e">NMasc_s_$e</class>
+         genitive-singular="-s"
+         nominative-plural="&#x308;-e">NMasc_s_$e</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: geminate "s" + "-e" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-ses"
-         plural="-se">NMasc-s/sse</class>
+         genitive-singular="-ses"
+         nominative-plural="-se">NMasc-s/sse</class>
   <!-- genitive singular: unmarked
        nominative plural: geminate "s" + "-e" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-"
-         plural="-se">NMasc-s0/sse</class>
+         genitive-singular="-"
+         nominative-plural="-se">NMasc-s0/sse</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-en" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-(e)s"
-         plural="-en">NMasc_es_en</class>
+         genitive-singular="-(e)s"
+         nominative-plural="-en">NMasc_es_en</class>
   <class pos="Substantiv"
          gender="mask."
-         genitive="-es"
-         plural="-en">NMasc_es_en</class>
+         genitive-singular="-es"
+         nominative-plural="-en">NMasc_es_en</class>
   <!-- genitive singular: "-s"
        nominative plural: "-en" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-s"
-         plural="-en">NMasc_s_en</class>
+         genitive-singular="-s"
+         nominative-plural="-en">NMasc_s_en</class>
   <!-- genitive singular: "-s"
        nominative plural: "-n" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-s"
-         plural="-n">NMasc_s_n</class>
+         genitive-singular="-s"
+         nominative-plural="-n">NMasc_s_n</class>
   <!-- genitive singular: "-ens"
        nominative plural: "en" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-ns"
-         plural="-n">NMasc-ns</class>
+         genitive-singular="-ns"
+         nominative-plural="-n">NMasc-ns</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-er" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-(e)s"
-         plural="-er">NMasc_es_er</class>
+         genitive-singular="-(e)s"
+         nominative-plural="-er">NMasc_es_er</class>
   <class pos="Substantiv"
          gender="mask."
-         genitive="-es"
-         plural="-er">NMasc_es_er</class>
+         genitive-singular="-es"
+         nominative-plural="-er">NMasc_es_er</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: umlaut and "-er" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-(e)s"
-         plural="&#x308;-er">NMasc_es_$er</class>
+         genitive-singular="-(e)s"
+         nominative-plural="&#x308;-er">NMasc_es_$er</class>
   <class pos="Substantiv"
          gender="mask."
-         genitive="-es"
-         plural="&#x308;-er">NMasc_es_$er</class>
+         genitive-singular="-es"
+         nominative-plural="&#x308;-er">NMasc_es_$er</class>
   <!-- genitive singular: "-s"
        nominative plural: "-s" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-s"
-         plural="-s">NMasc_s_s</class>
+         genitive-singular="-s"
+         nominative-plural="-s">NMasc_s_s</class>
   <!-- genitive singular: "-s"
        nominative plural: unmarked, with stem-final "n" -->
-  <!-- cf. dwds.xsl -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive-singular="-s"
+         nominative-plural="-"
+         dative-plural="-">NMasc_s_x</class>
   <!-- genitive singular: "-s"
        nominative plural: unmarked, without stem-final "n" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-s"
-         plural="-">NMasc_s_0</class>
+         genitive-singular="-s"
+         nominative-plural="-">NMasc_s_0</class>
   <!-- genitive singular: "-s"
        nominative plural: umlaut, with stem-final "n" -->
-  <!-- cf. dwds.xsl -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive-singular="-s"
+         nominative-plural="&#x308;-"
+         dative-plural="-">NMasc_s_$x</class>
   <!-- genitive singular: "-s"
        nominative plural: umlaut, without stem-final "n" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-s"
-         plural="&#x308;-">NMasc_s_$</class>
+         genitive-singular="-s"
+         nominative-plural="&#x308;-">NMasc_s_$</class>
   <!-- all forms except nominative singular: "-en" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-en"
-         plural="-en">NMasc_en_en</class>
+         genitive-singular="-en"
+         nominative-plural="-en">NMasc_en_en</class>
   <!-- all forms except nominative singular: "-n" -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-n"
-         plural="-n">NMasc_n_n</class>
+         genitive-singular="-n"
+         nominative-plural="-n">NMasc_n_n</class>
   <!-- genitive singular: unmarked
        nominative plural: unmarked -->
   <class pos="Substantiv"
          gender="mask."
-         genitive="-"
-         plural="-">NMasc_0_x</class>
+         genitive-singular="-"
+         nominative-plural="-"
+         dative-plural="-">NMasc_0_x</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: "-en" substituted for "-us" -->
-  <!-- cf. dwds.xsl -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive-singular="-ses"
+         nominative-plural="-us/en">NMasc-us/en</class>
   <!-- genitive singular: unmarked
        nominative plural: "-en" substituted for "-us" -->
-  <!-- cf. dwds.xsl -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive-singular="-"
+         nominative-plural="-us/en">NMasc-us/en</class>
   <!-- neuter nouns: -->
   <!-- genitive singular: "-(e)s"
        nominative plural: "-e" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-(e)s"
-         plural="-e">NNeut_es_e</class>
+         genitive-singular="-(e)s"
+         nominative-plural="-e">NNeut_es_e</class>
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-es"
-         plural="-e">NNeut_es_e</class>
+         genitive-singular="-es"
+         nominative-plural="-e">NNeut_es_e</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: umlaut and "-e" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-(e)s"
-         plural="&#x308;-e">NNeut_es_$e</class>
+         genitive-singular="-(e)s"
+         nominative-plural="&#x308;-e">NNeut_es_$e</class>
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-es"
-         plural="&#x308;-e">NNeut_es_$e</class>
+         genitive-singular="-es"
+         nominative-plural="&#x308;-e">NNeut_es_$e</class>
   <!-- genitive singular: "-s"
        nominative plural: "-e" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-s"
-         plural="-e">NNeut_s_e</class>
+         genitive-singular="-s"
+         nominative-plural="-e">NNeut_s_e</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: geminate "s" + "-e" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-ses"
-         plural="-se">NNeut-s/sse</class>
+         genitive-singular="-ses"
+         nominative-plural="-se">NNeut-s/sse</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-en" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-(e)s"
-         plural="-en">NNeut_es_en</class>
+         genitive-singular="-(e)s"
+         nominative-plural="-en">NNeut_es_en</class>
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-es"
-         plural="-en">NNeut_es_en</class>
+         genitive-singular="-es"
+         nominative-plural="-en">NNeut_es_en</class>
   <!-- genitive singular: "-s"
        nominative plural: "-en" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-s"
-         plural="-en">NNeut_s_en</class>
+         genitive-singular="-s"
+         nominative-plural="-en">NNeut_s_en</class>
   <!-- genitive singular: "-ens"
        nominative plural: "-en" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-ens"
-         plural="-en">NNeut-Herz</class>
+         genitive-singular="-ens"
+         nominative-plural="-en">NNeut-Herz</class>
   <!-- genitive singular: "-s"
        nominative plural: "-n" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-s"
-         plural="-n">NNeut_s_n</class>
+         genitive-singular="-s"
+         nominative-plural="-n">NNeut_s_n</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-er" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-(e)s"
-         plural="-er">NNeut_es_er</class>
+         genitive-singular="-(e)s"
+         nominative-plural="-er">NNeut_es_er</class>
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-es"
-         plural="-er">NNeut_es_er</class>
+         genitive-singular="-es"
+         nominative-plural="-er">NNeut_es_er</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: umlaut and "-er" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-(e)s"
-         plural="&#x308;-er">NNeut_es_$er</class>
+         genitive-singular="-(e)s"
+         nominative-plural="&#x308;-er">NNeut_es_$er</class>
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-es"
-         plural="&#x308;-er">NNeut_es_$er</class>
+         genitive-singular="-es"
+         nominative-plural="&#x308;-er">NNeut_es_$er</class>
   <!-- genitive singular: "-s"
        nominative plural: "-ien" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-s"
-         plural="-ien">NNeut-0/ien</class>
+         genitive-singular="-s"
+         nominative-plural="-ien">NNeut-0/ien</class>
   <!-- genitive singular: "-s"
        nominative plural: "-s" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-s"
-         plural="-s">NNeut_s_s</class>
+         genitive-singular="-s"
+         nominative-plural="-s">NNeut_s_s</class>
   <!-- genitive singular: "-s"
        nominative plural: unmarked, with stem-final "n" -->
-  <!-- cf. dwds.xsl -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-"
+         dative-plural="-">NNeut_s_x</class>
   <!-- genitive singular: "-s"
        nominative plural: unmarked, without stem-final "n" -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-s"
-         plural="-">NNeut_s_0</class>
+         genitive-singular="-s"
+         nominative-plural="-">NNeut_s_0</class>
   <!-- genitive singular: "-s"
        nominative plural: umlaut -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-s"
-         plural="&#x308;-">NNeut_s_$</class>
+         genitive-singular="-s"
+         nominative-plural="&#x308;-">NNeut_s_$</class>
   <!-- genitive singular: unmarked
        nominative plural: unmarked -->
   <class pos="Substantiv"
          gender="neutr."
-         genitive="-"
-         plural="-">NNeut_0_x</class>
+         genitive-singular="-"
+         nominative-plural="-"
+         dative-plural="-">NNeut_0_x</class>
   <!-- genitive singular: "-s"
        nominative plural: "-en" substituted for "-a" -->
-  <!-- cf. dwds.xsl -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-a/en">NNeut-a/en</class>
   <!-- genitive singular: "-s"
        nominative plural: "-en" substituted for "-um" -->
-  <!-- cf. dwds.xsl -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-um/en">NNeut-um/en</class>
   <!-- feminine nouns: -->
   <!-- genitive singular: unmarked
        nominative plural: "-e" -->
   <class pos="Substantiv"
          gender="fem."
-         genitive="-"
-         plural="-e">NFem_0_e</class>
+         genitive-singular="-"
+         nominative-plural="-e">NFem_0_e</class>
   <!-- genitive singular: unmarked
        nominative plural: umlaut and "-e" -->
   <class pos="Substantiv"
          gender="fem."
-         genitive="-"
-         plural="&#x308;-e">NFem_0_$e</class>
+         genitive-singular="-"
+         nominative-plural="&#x308;-e">NFem_0_$e</class>
   <!-- genitive singular: unmarked
        nominative plural: geminate "s" + "-e" -->
   <class pos="Substantiv"
          gender="fem."
-         genitive="-"
-         plural="-se">NFem-s/sse</class>
+         genitive-singular="-"
+         nominative-plural="-se">NFem-s/sse</class>
   <!-- genitive singular: unmarked
        nominative plural: "-en" -->
   <class pos="Substantiv"
          gender="fem."
-         genitive="-"
-         plural="-en">NFem_0_en</class>
+         genitive-singular="-"
+         nominative-plural="-en">NFem_0_en</class>
   <!-- genitive singular: unmarked
        nominative plural: geminate "n" + "-en" -->
   <class pos="Substantiv"
          gender="fem."
-         genitive="-"
-         plural="-nen">NFem-in</class>
+         genitive-singular="-"
+         nominative-plural="-nen">NFem-in</class>
   <!-- genitive singular: unmarked
        nominative plural: "-n" -->
   <class pos="Substantiv"
          gender="fem."
-         genitive="-"
-         plural="-n">NFem_0_n</class>
+         genitive-singular="-"
+         nominative-plural="-n">NFem_0_n</class>
   <!-- genitive singular: unmarked
        nominative plural: "-s" -->
   <class pos="Substantiv"
          gender="fem."
-         genitive="-"
-         plural="-s">NFem_0_s</class>
+         genitive-singular="-"
+         nominative-plural="-s">NFem_0_s</class>
   <!-- genitive singular: unmarked
        nominative plural: umlaut -->
   <class pos="Substantiv"
          gender="fem."
-         genitive="-"
-         plural="&#x308;-">NFem_0_$</class>
+         genitive-singular="-"
+         nominative-plural="&#x308;-"
+         dative-plural="-">NFem_0_$</class>
   <!-- genitive singular: unmarked
        nominative plural: unmarked -->
   <class pos="Substantiv"
          gender="fem."
-         genitive="-"
-         plural="-">NFem_0_x</class>
+         genitive-singular="-"
+         nominative-plural="-"
+         dative-plural="-">NFem_0_x</class>
   <!-- genitive singular: unmarked
        nominative plural: "-en" substituted for "-a" -->
-  <!-- cf. dwds.xsl -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive-singular="-"
+         nominative-plural="-a/en">NFem-a/en</class>
   <!-- genitive singular: unmarked
        nominative plural: "-en" substituted for "-is" -->
-  <!-- cf. dwds.xsl -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive-singular="-"
+         nominative-plural="-is/en">NFem-is/en</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -396,32 +430,95 @@
                 select="normalize-space(dwds:Wortklasse)"/>
   <xsl:variable name="gender"
                 select="normalize-space(dwds:Genus)"/>
-  <xsl:variable name="genitive"
+  <xsl:variable name="genitive-singular"
                 select="normalize-space(dwds:Genitiv)"/>
-  <xsl:variable name="genitive-marker">
+  <xsl:variable name="genitive-singular-marker">
     <xsl:call-template name="get-nominal-marker">
       <xsl:with-param name="form"
-                      select="$genitive"/>
+                      select="$genitive-singular"/>
       <xsl:with-param name="lemma"
                       select="$lemma"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:variable name="plural"
+  <xsl:variable name="nominative-plural"
                 select="normalize-space(dwds:Plural)"/>
-  <xsl:variable name="plural-marker">
+  <xsl:variable name="nominative-plural-marker">
     <xsl:call-template name="get-nominal-marker">
       <xsl:with-param name="form"
-                      select="$plural"/>
+                      select="$nominative-plural"/>
       <xsl:with-param name="lemma"
                       select="$lemma"/>
     </xsl:call-template>
   </xsl:variable>
   <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$noun-class-mapping/class[@pos=$pos]
-                                                     [@gender=$gender]
-                                                     [@genitive=$genitive-marker]
-                                                     [@plural=$plural-marker]"/>
+    <xsl:with-param name="value">
+      <xsl:choose>
+        <xsl:when test="$genitive-singular-marker='-' and
+                        ends-with($nominative-plural-marker,'-')">
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural=$nominative-plural-marker]
+                                                         [@dative-plural='-']"/>
+        </xsl:when>
+        <xsl:when test="$genitive-singular-marker='-s' and
+                        ends-with($nominative-plural-marker,'-') and
+                        ends-with($lemma,'n')">
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural=$nominative-plural-marker]
+                                                         [@dative-plural='-']"/>
+        </xsl:when>
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'a') and
+                        matches($nominative-plural,replace($lemma,'^(.+)a$',
+                                                                  '$1en'))">
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-a/en']
+                                                         [not(@dative-plural)]"/>
+        </xsl:when>
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'is') and
+                        matches($nominative-plural,replace($lemma,'^(.+)is$',
+                                                                  '$1en'))">
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-is/en']
+                                                         [not(@dative-plural)]"/>
+        </xsl:when>
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'um') and
+                        matches($nominative-plural,replace($lemma,'^(.+)um$',
+                                                                  '$1en'))">
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-um/en']
+                                                         [not(@dative-plural)]"/>
+        </xsl:when>
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'us') and
+                        matches($nominative-plural,replace($lemma,'^(.+)us$',
+                                                                  '$1en'))">
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-us/en']
+                                                         [not(@dative-plural)]"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural=$nominative-plural-marker]
+                                                         [not(@dative-plural)]"/>
+        </xsl:otherwise>
+        </xsl:choose>
+    </xsl:with-param>
     <xsl:with-param name="type">class</xsl:with-param>
     <xsl:with-param name="lemma"
                     select="$lemma"/>
