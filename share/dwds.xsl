@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 1.6 -->
+<!-- Version 1.7 -->
 <!-- Andreas Nolda 2022-02-18 -->
 
 <xsl:stylesheet version="2.0"
@@ -56,6 +56,7 @@
     <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Genitiv or
                                                  self::dwds:Genus or
                                                  self::dwds:Komparativ or
+                                                 self::dwds:Numeruspraeferenz or
                                                  self::dwds:Partizip_II or
                                                  self::dwds:Plural or
                                                  self::dwds:Praesens or
@@ -115,6 +116,12 @@
                             string-length(normalize-space(dwds:Genus))&gt;0 and
                             string-length(normalize-space(dwds:Genitiv))&gt;0 and
                             string-length(normalize-space(dwds:Plural))&gt;0 or
+                          normalize-space(dwds:Wortklasse)='Substantiv' and
+                            normalize-space(dwds:Numeruspraeferenz)='nur im Singular' and
+                            string-length(normalize-space(dwds:Genus))&gt;0 and
+                            string-length(normalize-space(dwds:Genitiv))&gt;0 or
+                          normalize-space(dwds:Wortklasse)='Substantiv' and
+                            normalize-space(dwds:Numeruspraeferenz)='nur im Plural' or
                           normalize-space(dwds:Wortklasse)='Verb' and
                             string-length(normalize-space(dwds:Praesens))&gt;0 and
                             string-length(normalize-space(dwds:Praeteritum))&gt;0 and

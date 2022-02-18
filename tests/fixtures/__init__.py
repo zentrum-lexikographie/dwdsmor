@@ -80,12 +80,13 @@ def extract_wb_entries(wb_xml_file):
                         pos = pos_tag.text or ''
                         break
                     if pos == 'Substantiv':
-                        if not (grammar.findall('{http://www.dwds.de/ns/1.0}Genitiv') or
-                                grammar.findall('{http://www.dwds.de/ns/1.0}Plural')):
+                        if not ((grammar.findall('{http://www.dwds.de/ns/1.0}Genus') and
+                                 grammar.findall('{http://www.dwds.de/ns/1.0}Genitiv')) or
+                                grammar.findall('{http://www.dwds.de/ns/1.0}Numeruspraeferenz[.="nur im Plural"]')):
                             inflection_info = 0
                     if pos == 'Verb':
                         if not (grammar.findall('{http://www.dwds.de/ns/1.0}Praesens') or
-                                grammar.findall('{http://www.dwds.de/ns/1.0}Praeteritum')):
+                                grammar.findall('{http://www.dwds.de/ns/1.0}Partizip_II')):
                             inflection_info = 0
                     break
                 if pos == 'Mehrwortausdruck':

@@ -1,3 +1,4 @@
+DWDS/009-Minimalartikel/Lachen.xml
 DWDS/012-Minimalartikel/SMS.xml
 DWDS/015-D99_DWDS/Ananas-D99_005875.xml
 DWDS/015-D99_DWDS/Apsis-D99_008778.xml
@@ -8,7 +9,10 @@ DWDS/015-D99_DWDS/Tenor-D99_163480.xml
 DWDS/lemnitzer-000-Probeartikel/E_j_50000_1-Jeans.xml
 DWDS/wahrig-001/Cent.xml
 Neuartikel-001/Melodram-E_997578569.xml
+Neuartikel-002/Bewundern-E_1373277.xml
 Neuartikel-002/Neutron-E_5052365.xml
+Neuartikel-003/Angeln-E_7441421.xml
+Neuartikel-003/Jazz-E_1457297.xml
 Neuartikel-004/Paradoxon-E_8250118.xml
 Neuartikel/Amsel-E_3862155.xml
 Neuartikel/Autor-E_1837709.xml
@@ -18,6 +22,7 @@ Neuartikel/Garten-E_3401057.xml
 Neuartikel/Herz-E_3627422.xml
 Neuartikel/Kanal-E_571884.xml
 Neuartikel/Rand-E_4406137.xml
+Neuartikel/Reif-2-E_7961326.xml
 WDG/ab/Abend-E_a_270.xml
 WDG/af/Affe-E_a_2717.xml
 WDG/ar/Arena-E_a_6831.xml
@@ -35,8 +40,12 @@ WDG/be/Bett-E_b_7847.xml
 WDG/bi/Bild-E_b_8984.xml
 WDG/br/Brot-E_b_13496.xml
 WDG/bu/Buch-E_b_14229.xml
+WDG/bu/Buergertum-E_b_15236.xml
 WDG/bu/Bus-E_b_15369.xml
+WDG/ch/Chaos-E_c_149.xml
 WDG/dr/Drache-E_d_3760.xml
+WDG/ei/Eis-E_e_2842.xml
+WDG/el/Eltern-E_e_3490.xml
 WDG/en/Ende-E_e_3799.xml
 WDG/er/Ergebnis-E_e_5433.xml
 WDG/er/Erkenntnis-E_e_5656.xml
@@ -45,6 +54,7 @@ WDG/fe/Feld-E_f_2908.xml
 WDG/fe/Feuer-E_f_4089.xml
 WDG/fi/Figur-E_f_4410.xml
 WDG/fi/Fisch-E_f_4937.xml
+WDG/fl/Flaum-E_f_5456.xml
 WDG/fl/Floss-E_f_6088.xml
 WDG/fo/Fossil-E_f_7518.xml
 WDG/fr/Frau-E_f_7828.xml
@@ -56,15 +66,19 @@ WDG/ge/Genie-E_g_4268.xml
 WDG/gl/Globus-E_g_8077.xml
 WDG/ha/Haus-E_h_2679.xml
 WDG/he/Hemd-E_h_4131.xml
+WDG/he/Heu-E_h_5162.xml
 WDG/hu/Huegel-E_h_7796.xml
 WDG/hu/Hut-E_h_8345.xml
 WDG/id/Idol-E_i_168.xml
 WDG/id/Idyll-E_i_172.xml
+WDG/ju/Jugend-E_j_720.xml
 WDG/ka/Kasus-E_k_2388.xml
 WDG/ka/Kater-E_k_2481.xml
 WDG/ki/Kissen-E_k_3972.xml
+WDG/kl/Klee-E_k_4715.xml
 WDG/kl/Kloster-E_k_5338.xml
 WDG/le/Leib-E_l_2939.xml
+WDG/le/Leute-E_l_3978.xml
 WDG/lo/Lord-E_l_5556.xml
 WDG/ma/Mass-E_m_2132.xml
 WDG/ma/Maximum-E_m_2814.xml
@@ -79,6 +93,7 @@ WDG/oz/Ozean-E_o_1846.xml
 WDG/pa/Palais-E_p_196.xml
 WDG/pa/Panorama-E_p_274.xml
 WDG/ri/Riese-E_r_5120.xml
+WDG/ru/Ruhe-E_r_6969.xml
 WDG/sc/Schema-E_s_3363.xml
 WDG/sc/Schmerz-E_s_6060.xml
 WDG/se/See-E_s_10395.xml
@@ -88,4 +103,5 @@ WDG/uf/Ufer-E_u_717.xml
 WDG/uh/Uhu-E_u_800.xml
 WDG/va/Vater-E_v_114.xml
 WDG/wa/Wald-E_w_687.xml
+WDG/wi/Wild-E_w_4755.xml
 WDG/zi/Zirkus-E_z_2428.xml

@@ -11,6 +11,10 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
   nominative plural forms ending in "-iden" substituted for "-is"
 * add support for feminine nouns with genitive singular forms ending in "-s"
   and nominative plural forms ending in "-ta"
+* add support for masculine and neuter singularia tantum with genitive singular
+  forms ending in "-es" or "-s"
+* add support for singularia tantum with unmarked genitive singular forms
+* add support for pluralia tantum
 
 2022-02-17:
 
