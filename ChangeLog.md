@@ -1,5 +1,17 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-02-18:
+
+* add support for masculine nouns with genitive singular forms ending in
+  geminate "s" + "-es" or unmarked genitive singular forms and nominative plural
+  forms ending in "-i" substituted for "-us"
+* add support for neuter nouns with genitive singular forms ending in "-s" and
+  nominative plural forms ending in "-a" substituted for "-on" or "-um"
+* add support for feminine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-iden" substituted for "-is"
+* add support for feminine nouns with genitive singular forms ending in "-s"
+  and nominative plural forms ending in "-ta"
+
 2022-02-17:
 
 * generalise the functions `n:umlaut` and `n:umlaut-re` for capitalised arguments

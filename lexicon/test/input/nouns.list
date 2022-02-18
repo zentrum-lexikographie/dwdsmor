@@ -1,5 +1,6 @@
 DWDS/012-Minimalartikel/SMS.xml
 DWDS/015-D99_DWDS/Ananas-D99_005875.xml
+DWDS/015-D99_DWDS/Apsis-D99_008778.xml
 DWDS/015-D99_DWDS/Drachen-D99_032824.xml
 DWDS/015-D99_DWDS/Oma-D99_116805.xml
 DWDS/015-D99_DWDS/Opa-D99_116981.xml
@@ -8,6 +9,7 @@ DWDS/lemnitzer-000-Probeartikel/E_j_50000_1-Jeans.xml
 DWDS/wahrig-001/Cent.xml
 Neuartikel-001/Melodram-E_997578569.xml
 Neuartikel-002/Neutron-E_5052365.xml
+Neuartikel-004/Paradoxon-E_8250118.xml
 Neuartikel/Amsel-E_3862155.xml
 Neuartikel/Autor-E_1837709.xml
 Neuartikel/Bank-2-E_7368967.xml
@@ -65,6 +67,7 @@ WDG/kl/Kloster-E_k_5338.xml
 WDG/le/Leib-E_l_2939.xml
 WDG/lo/Lord-E_l_5556.xml
 WDG/ma/Mass-E_m_2132.xml
+WDG/ma/Maximum-E_m_2814.xml
 WDG/mo/Mond-E_m_5841.xml
 WDG/mu/Museum-E_m_6913.xml
 WDG/mu/Mutter-E_m_7238.xml
@@ -76,9 +79,11 @@ WDG/oz/Ozean-E_o_1846.xml
 WDG/pa/Palais-E_p_196.xml
 WDG/pa/Panorama-E_p_274.xml
 WDG/ri/Riese-E_r_5120.xml
+WDG/sc/Schema-E_s_3363.xml
 WDG/sc/Schmerz-E_s_6060.xml
 WDG/se/See-E_s_10395.xml
 WDG/st/Staat-E_s_16612.xml
+WDG/te/Terminus-E_t_2183.xml
 WDG/uf/Ufer-E_u_717.xml
 WDG/uh/Uhu-E_u_800.xml
 WDG/va/Vater-E_v_114.xml

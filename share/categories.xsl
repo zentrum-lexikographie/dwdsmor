@@ -166,7 +166,8 @@
          genitive-singular="-s"
          nominative-plural="-s">NMasc_s_s</class>
   <!-- genitive singular: "-s"
-       nominative plural: unmarked, with stem-final "n" -->
+       nominative plural: unmarked, with stem-final "n"
+       dative plural: unmarked -->
   <class pos="Substantiv"
          gender="mask."
          genitive-singular="-s"
@@ -179,7 +180,8 @@
          genitive-singular="-s"
          nominative-plural="-">NMasc_s_0</class>
   <!-- genitive singular: "-s"
-       nominative plural: umlaut, with stem-final "n" -->
+       nominative plural: umlaut, with stem-final "n"
+       dative plural: unmarked -->
   <class pos="Substantiv"
          gender="mask."
          genitive-singular="-s"
@@ -202,7 +204,8 @@
          genitive-singular="-n"
          nominative-plural="-n">NMasc_n_n</class>
   <!-- genitive singular: unmarked
-       nominative plural: unmarked -->
+       nominative plural: unmarked
+       dative plural: unmarked -->
   <class pos="Substantiv"
          gender="mask."
          genitive-singular="-"
@@ -220,6 +223,18 @@
          gender="mask."
          genitive-singular="-"
          nominative-plural="-us/en">NMasc-us/en</class>
+  <!-- genitive singular: geminate "s" + "-es"
+       nominative plural: "-i" substituted for "-us" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive-singular="-ses"
+         nominative-plural="-us/i">NMasc-us/i</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-i" substituted for "-us" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive-singular="-"
+         nominative-plural="-us/i">NMasc-us/i</class>
   <!-- neuter nouns: -->
   <!-- genitive singular: "-(e)s"
        nominative plural: "-e" -->
@@ -314,7 +329,14 @@
          genitive-singular="-s"
          nominative-plural="-s">NNeut_s_s</class>
   <!-- genitive singular: "-s"
-       nominative plural: unmarked, with stem-final "n" -->
+       nominative plural: "-ta" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-ta">NNeut-a/ata</class>
+  <!-- genitive singular: "-s"
+       nominative plural: unmarked, with stem-final "n"
+       dative plural: unmarked -->
   <class pos="Substantiv"
          gender="neutr."
          genitive-singular="-s"
@@ -333,7 +355,8 @@
          genitive-singular="-s"
          nominative-plural="&#x308;-">NNeut_s_$</class>
   <!-- genitive singular: unmarked
-       nominative plural: unmarked -->
+       nominative plural: unmarked
+       dative plural: unmarked -->
   <class pos="Substantiv"
          gender="neutr."
          genitive-singular="-"
@@ -345,6 +368,18 @@
          gender="neutr."
          genitive-singular="-s"
          nominative-plural="-a/en">NNeut-a/en</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-a" substituted for "-on" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-on/a">NNeut-on/a</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-a" substituted for "-um" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-um/a">NNeut-um/a</class>
   <!-- genitive singular: "-s"
        nominative plural: "-en" substituted for "-um" -->
   <class pos="Substantiv"
@@ -395,14 +430,16 @@
          genitive-singular="-"
          nominative-plural="-s">NFem_0_s</class>
   <!-- genitive singular: unmarked
-       nominative plural: umlaut -->
+       nominative plural: umlaut
+       dative plural: unmarked -->
   <class pos="Substantiv"
          gender="fem."
          genitive-singular="-"
          nominative-plural="&#x308;-"
          dative-plural="-">NFem_0_$</class>
   <!-- genitive singular: unmarked
-       nominative plural: unmarked -->
+       nominative plural: unmarked
+       dative plural: unmarked -->
   <class pos="Substantiv"
          gender="fem."
          genitive-singular="-"
@@ -420,6 +457,12 @@
          gender="fem."
          genitive-singular="-"
          nominative-plural="-is/en">NFem-is/en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-iden" substituted for "-is" -->
+  <class pos="Substantiv"
+         gender="fem."
+         genitive-singular="-"
+         nominative-plural="-is/iden">NFem-is/iden</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -453,6 +496,9 @@
   <xsl:call-template name="insert-value">
     <xsl:with-param name="value">
       <xsl:choose>
+        <!-- genitive singular: unmarked
+             nominative plural: umlaut or unmarked
+             dative plural: unmarked -->
         <xsl:when test="$genitive-singular-marker='-' and
                         ends-with($nominative-plural-marker,'-')">
           <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
@@ -461,6 +507,9 @@
                                                          [@nominative-plural=$nominative-plural-marker]
                                                          [@dative-plural='-']"/>
         </xsl:when>
+        <!-- genitive singular: "-s"
+             nominative plural: umlaut or unmarked, with stem-final "n"
+             dative plural: unmarked -->
         <xsl:when test="$genitive-singular-marker='-s' and
                         ends-with($nominative-plural-marker,'-') and
                         ends-with($lemma,'n')">
@@ -470,6 +519,7 @@
                                                          [@nominative-plural=$nominative-plural-marker]
                                                          [@dative-plural='-']"/>
         </xsl:when>
+        <!-- nominative plural: "-en" substituted for "-a" -->
         <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                         ends-with($lemma,'a') and
                         matches($nominative-plural,replace($lemma,'^(.+)a$',
@@ -480,6 +530,7 @@
                                                          [@nominative-plural='-a/en']
                                                          [not(@dative-plural)]"/>
         </xsl:when>
+        <!-- nominative plural: "-en" substituted for "-is" -->
         <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                         ends-with($lemma,'is') and
                         matches($nominative-plural,replace($lemma,'^(.+)is$',
@@ -490,6 +541,40 @@
                                                          [@nominative-plural='-is/en']
                                                          [not(@dative-plural)]"/>
         </xsl:when>
+        <!-- nominative plural: "-iden" substituted for "-is" -->
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'is') and
+                        matches($nominative-plural,replace($lemma,'^(.+)is$',
+                                                                  '$1iden'))">
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-is/iden']
+                                                         [not(@dative-plural)]"/>
+        </xsl:when>
+        <!-- nominative plural: "-a" substituted for "-on" -->
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'on') and
+                        matches($nominative-plural,replace($lemma,'^(.+)on$',
+                                                                  '$1a'))">
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-on/a']
+                                                         [not(@dative-plural)]"/>
+        </xsl:when>
+        <!-- nominative plural: "-a" substituted for "-um" -->
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'um') and
+                        matches($nominative-plural,replace($lemma,'^(.+)um$',
+                                                                  '$1a'))">
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-um/a']
+                                                         [not(@dative-plural)]"/>
+        </xsl:when>
+        <!-- nominative plural: "-en" substituted for "-um" -->
         <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                         ends-with($lemma,'um') and
                         matches($nominative-plural,replace($lemma,'^(.+)um$',
@@ -500,6 +585,7 @@
                                                          [@nominative-plural='-um/en']
                                                          [not(@dative-plural)]"/>
         </xsl:when>
+        <!-- nominative plural: "-en" substituted for "-us" -->
         <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                         ends-with($lemma,'us') and
                         matches($nominative-plural,replace($lemma,'^(.+)us$',
@@ -510,6 +596,18 @@
                                                          [@nominative-plural='-us/en']
                                                          [not(@dative-plural)]"/>
         </xsl:when>
+        <!-- nominative plural: "-i" substituted for "-us" -->
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'us') and
+                        matches($nominative-plural,replace($lemma,'^(.+)us$',
+                                                                  '$1i'))">
+          <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-us/i']
+                                                         [not(@dative-plural)]"/>
+        </xsl:when>
+        <!-- other inflection classes -->
         <xsl:otherwise>
           <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                          [@gender=$gender]

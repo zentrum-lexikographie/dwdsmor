@@ -3,6 +3,7 @@
 <Stem>Amsel<NN><base><nativ><NFem_0_n>
 <Stem>Ananas<NN><base><fremd><NFem_0_x>
 <Stem>Ananas<NN><base><fremd><NFem-s/sse>
+<Stem>Apsis<NN><base><fremd><NFem-is/iden>
 <Stem>Arena<NN><base><fremd><NFem-a/en>
 <Stem>Aroma<NN><base><fremd><NNeut_s_s>
 <Stem>Aroma<NN><base><fremd><NNeut-a/en>
@@ -67,6 +68,7 @@
 <Stem>Leib<NN><base><nativ><NMasc_es_er>
 <Stem>Lord<NN><base><fremd><NMasc_s_s>
 <Stem>Maß<NN><base><nativ><NNeut_es_e>
+<Stem>Maximum<NN><base><fremd><NNeut-um/a>
 <Stem>Melodram<NN><base><nativ><NNeut_s_en>
 <Stem>Mond<NN><base><nativ><NMasc_es_e>
 <Stem>Museum<NN><base><fremd><NNeut-um/en>
@@ -82,14 +84,19 @@
 <Stem>Ozean<NN><base><fremd><NMasc_s_e>
 <Stem>Palais<NN><base><fremd><NNeut_0_x>
 <Stem>Panorama<NN><base><fremd><NNeut-a/en>
+<Stem>Paradoxon<NN><base><fremd><NNeut-on/a>
 <Stem>Rand<NN><base><nativ><NMasc_es_$er>
 <Stem>Riese<NN><base><nativ><NMasc_n_n>
+<Stem>Schema<NN><base><fremd><NNeut_s_s>
+<Stem>Schema<NN><base><fremd><NNeut-a/ata>
+<Stem>Schema<NN><base><fremd><NNeut-a/en>
 <Stem>Schmerz<NN><base><nativ><NMasc_es_en>
 <Stem>See<NN><base><nativ><NMasc_s_n>
 <Stem>SMS<NN><base><nativ><NFem_0_x>
 <Stem>SMS<NN><base><nativ><NNeut_0_x>
 <Stem>Staat<NN><base><nativ><NMasc_es_en>
 <Stem>Tenor<NN><base><fremd><NMasc_s_$e>
+<Stem>Terminus<NN><base><fremd><NMasc-us/i>
 <Stem>Ufer<NN><base><nativ><NNeut_s_0>
 <Stem>Uhu<NN><base><nativ><NMasc_s_s>
 <Stem>Vater<NN><base><nativ><NMasc_s_$>
