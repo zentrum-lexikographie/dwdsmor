@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-02-21:
+
+* add support for masculine, feminine, and neuter nominalised adjectives
+
 2022-02-18:
 
 * add support for masculine nouns with genitive singular forms ending in
