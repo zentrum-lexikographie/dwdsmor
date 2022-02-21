@@ -22,7 +22,8 @@ building and using FSTs for morphological analysis:
 * `lexicon/` and `share/` contain sources for building the DWDSmor lexicon by
   extracting SMOR-compatible lexicon entries from XML documents of the DWDS
   dictionary.
-* `SMORLemma/` import sources from an upstream repository as a Git submodule,
+* `SMORLemma/` imports sources from an
+  [SMORLemma fork](https://git.zdl.org/zdl/SMORLemma) as a Git submodule,
   providing the morphology.
 * `dwdsmor/` and `tests/` implement a Python library and accompanying test suite
   for using DWDSmor transducers for the aforementioned linguistic tasks.
@@ -68,7 +69,7 @@ $ curl https://pyenv.run | bash
 $ make pyenv
 ```
 
-or python's venv
+or Python's venv
 
 ```sh
 python3 -m venv .venv
@@ -203,7 +204,18 @@ state of the submodule:
 
 ```
 git add lexicon/wb
-git commit -m 'Updates dictionary sources'
+git commit -m "update dictionary sources"
+```
+
+### Update the SMORLemma sources to the current revision
+
+In order to update the sources of the SMORLemma fork to the most recent
+revision, issue the following commands:
+
+```sh
+git submodule update --remote SMORLemma
+git add SMORLemma
+git commit -m "update SMORLemma sources"
 ```
 
 ## Build FSTs
