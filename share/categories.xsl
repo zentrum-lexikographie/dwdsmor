@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.20 -->
+<!-- Version 0.21 -->
 <!-- Andreas Nolda 2022-02-22 -->
 
 <xsl:stylesheet version="2.0"
@@ -437,6 +437,12 @@
          genitive-singular="-s"
          nominative-plural="-a/en">NNeut-a/en</class>
   <!-- genitive singular: "-s"
+       nominative plural: "-ina" substituted for "-en" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-en/ina">NNeut-en/ina</class>
+  <!-- genitive singular: "-s"
        nominative plural: "-a" substituted for "-on" -->
   <class pos="Substantiv"
          gender="neutr."
@@ -655,6 +661,17 @@
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
                                                              [@nominative-plural='-a/en']
+                                                             [not(@dative-plural)]"/>
+            </xsl:when>
+            <!-- nominative plural: "-ina" substituted for "-en" -->
+            <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                            ends-with($lemma,'en') and
+                            matches($nominative-plural,replace($lemma,'^(.+)en$',
+                                                                      '$1ina'))">
+              <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                             [@gender=$gender]
+                                                             [@genitive-singular=$genitive-singular-marker]
+                                                             [@nominative-plural='-en/ina']
                                                              [not(@dative-plural)]"/>
             </xsl:when>
             <!-- nominative plural: "-en" substituted for "-is" -->

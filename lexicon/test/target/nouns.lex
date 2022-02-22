@@ -43,6 +43,8 @@
 <Stem>Engel<NN><base><nativ><NMasc_s_0>
 <Stem>Ergebnis<NN><base><nativ><NNeut-s/sse>
 <Stem>Erkenntnis<NN><base><nativ><NFem-s/sse>
+<Stem>Examen<NN><base><fremd><NNeut_s_x>
+<Stem>Examen<NN><base><fremd><NNeut-en/ina>
 <Stem>Feder<NN><base><nativ><NFem_0_n>
 <Stem>Feld<NN><base><nativ><NNeut_es_er>
 <Stem>Feuer<NN><base><nativ><NNeut_s_0>

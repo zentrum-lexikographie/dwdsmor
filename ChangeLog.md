@@ -5,6 +5,8 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 * generalise the functions `n:umlaut` and `n:umlaut-re` for geminate vowels
 * add support for masculine and neuter nouns with unmarked genitive singular
   forms and nominative plural forms ending in "-s"
+* add support for neuter nouns with genitive singular forms ending in "-s" and
+  nominative plural forms ending in "-ina" substituted for "-en"
 
 2022-02-21:
 
