@@ -178,7 +178,6 @@
 * <Name-Pl_0>
 * <Name-Pl_x>
 * <NFem-Deriv>
-* <NMasc-Adj>
 * <NMasc-s/Sg>
 * <NMasc_en_e>
 * <NNeut-Dimin>

@@ -33,6 +33,8 @@
 <Stem>Cent<NN><base><nativ><NMasc_s_s>
 <Stem>Chaos<NN><base><fremd><NNeut/Sg_0>
 <Stem>Circus<NN><base><fremd><NMasc-s0/sse>
+<Stem>College<NN><base><fremd><NNeut_0_s>
+<Stem>College<NN><base><fremd><NNeut_s_s>
 <Stem>Drache<NN><base><nativ><NMasc_n_n>
 <Stem>Drachen<NN><base><nativ><NMasc_s_x>
 <Stem>Eis<NN><base><nativ><NNeut/Sg_es>
@@ -49,6 +51,7 @@
 <Stem>Flaum<NN><base><nativ><NMasc/Sg_es>
 <Stem>Floß<NN><base><nativ><NNeut_es_$e>
 <Stem>Fossil<NN><base><fremd><NNeut-0/ien>
+<Stem>Foyer<NN><base><fremd><NNeut_0_s>
 <Stem>Frau<NN><base><nativ><NFem_0_en>
 <Stem>Freund<NN><base><nativ><NMasc_es_e>
 <Stem>Freundin<NN><base><nativ><NFem-in>
@@ -67,9 +70,12 @@
 <Stem>Hut<NN><base><nativ><NMasc_es_$e>
 <Stem>Idol<NN><base><fremd><NNeut_s_e>
 <Stem>Idyll<NN><base><fremd><NNeut_s_e>
+<Stem>Intercity<NN><base><nativ><NMasc_0_s>
 <Stem>Jazz<NN><base><fremd><NMasc/Sg_0>
 <Stem>Jeans<NN><base><fremd><NFem_0_x>
 <Stem>Jugend<NN><base><nativ><NFem/Sg>
+<Stem>Juni<NN><base><fremd><NMasc_0_s>
+<Stem>Juni<NN><base><fremd><NMasc_s_s>
 <Stem>Kanal<NN><base><fremd><NMasc_s_$e>
 <Stem>Kasus<NN><base><fremd><NMasc_0_x>
 <Stem>Kater<NN><base><nativ><NMasc_s_0>

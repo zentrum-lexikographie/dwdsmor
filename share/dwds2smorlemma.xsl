@@ -150,7 +150,6 @@
 * <Name-Pl_0>
 * <Name-Pl_x>
 * <NFem_s_s>
-* <NMasc-Adj>
 * <NMasc_en_e>
 * <Postp-Akk>
 * <Postp-Dat>

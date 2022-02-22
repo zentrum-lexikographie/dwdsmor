@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.19 -->
-<!-- Andreas Nolda 2022-02-21 -->
+<!-- Version 0.20 -->
+<!-- Andreas Nolda 2022-02-22 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -211,6 +211,12 @@
          gender="mask."
          genitive-singular="-s"
          nominative-plural="-s">NMasc_s_s</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-s" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive-singular="-"
+         nominative-plural="-s">NMasc_0_s</class>
   <!-- genitive singular: "-s"
        nominative plural: unmarked, with stem-final "n"
        dative plural: unmarked -->
@@ -379,6 +385,12 @@
          gender="neutr."
          genitive-singular="-s"
          nominative-plural="-s">NNeut_s_s</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-s" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-s">NNeut_0_s</class>
   <!-- genitive singular: "-s"
        nominative plural: "-ta" -->
   <class pos="Substantiv"
