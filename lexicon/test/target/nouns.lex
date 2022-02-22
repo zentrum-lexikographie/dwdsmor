@@ -108,6 +108,7 @@
 <Stem>Reif<NN><base><fremd><NMasc/Sg_es>
 <Stem>Riese<NN><base><nativ><NMasc_n_n>
 <Stem>Ruhe<NN><base><nativ><NFem/Sg>
+<Stem>Saal<NN><base><nativ><NMasc_es_$e>
 <Stem>Schema<NN><base><fremd><NNeut_s_s>
 <Stem>Schema<NN><base><fremd><NNeut-a/ata>
 <Stem>Schema<NN><base><fremd><NNeut-a/en>

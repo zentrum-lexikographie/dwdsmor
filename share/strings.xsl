@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 2.0 -->
-<!-- Andreas Nolda 2022-02-17 -->
+<!-- Version 2.1 -->
+<!-- Andreas Nolda 2022-02-22 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -10,10 +10,10 @@
 <!-- return a regex matching the umlaut variant of $argument, if any -->
 <!-- Caveat: Morphological umlaut in German affects, as a rule, the last
      full vowel in the last morph of the base form, provided that it is
-     an umlautable vowel matching /([aou]|au)/. The regex returned by
-     this function also matches forms with an umlaut preceding vowels
-     not matching /([aou]|au)/. In particular, those vowels include "e",
-     which cannot be excluded here since it may represent not only a
+     an umlautable vowel matching /([aou]|aa|oo|au)/. The regex returned
+     by this function also matches forms with an umlaut preceding vowels
+     not matching /([aou]|aa|oo|au)/. In particular, those vowels include
+     "e", which cannot be excluded here since it may represent not only a
      full vowel, but also a schwa that can indeed follow the vowel
      affected by morphological umlaut. This 'overmatching', however, is
      harmless for the intended use case, since the regex is only tested
@@ -21,14 +21,14 @@
 <xsl:function name="n:umlaut-re">
   <xsl:param name="argument"/>
   <xsl:choose>
-    <!-- replace the last vowel matching /([AOU]|Au)/ by /([ÄÖÜ]|Äu)/ -->
-    <xsl:when test="matches($argument,'^([AOU]|Au)[^aou]*$')">
-      <xsl:sequence select="replace($argument,'^([AOU]|Au)([^aou]*)$',
+    <!-- replace the last vowel matching /([AOU]|Aa|Oo|Au)/ by /([ÄÖÜ]|Äu)/ -->
+    <xsl:when test="matches($argument,'^([AOU]|Aa|Oo|Au)[^aou]*$')">
+      <xsl:sequence select="replace($argument,'^([AOU]|Aa|Oo|Au)([^aou]*)$',
                                               '([ÄÖÜ]|Äu)$2')"/>
     </xsl:when>
-    <!-- replace the last vowel matching /([aou]|au)/ by /([äöü]|äu)/ -->
-    <xsl:when test="matches($argument,'([aou]|au)[^aou]*$')">
-      <xsl:sequence select="replace($argument,'^(.*?)([aou]|au)([^aou]*)$',
+    <!-- replace the last vowel matching /([aou]|aa|oo|au)/ by /([äöü]|äu)/ -->
+    <xsl:when test="matches($argument,'([aou]|aa|oo|au)[^aou]*$')">
+      <xsl:sequence select="replace($argument,'^(.*?)([aou]|aa|oo|au)([^aou]*)$',
                                               '$1([äöü]|äu)$3')"/>
     </xsl:when>
     <xsl:otherwise>
@@ -43,10 +43,10 @@
 <xsl:function name="n:umlaut">
   <xsl:param name="argument"/>
   <xsl:choose>
-    <!-- replace the last vowel matching /([AOU]|Au)/ by "Ä", "Ö", "Ü", or "Äu" -->
-    <xsl:when test="matches($argument,'^([AOU]|Au)[^aeiouäöü]*$')">
+    <!-- replace the last vowel matching /([AOU]|Aa|Oo|Au)/ by "Ä", "Ö", "Ü", or "Äu" -->
+    <xsl:when test="matches($argument,'^([AOU]||Aa|Oo|Au)[^aeiouäöü]*$')">
       <xsl:variable name="vowel"
-                    select="replace($argument,'^([AOU]|Au)[^aeiouäöü]*$',
+                    select="replace($argument,'^([AOU]||Aa|Oo|Au)[^aeiouäöü]*$',
                                               '$1')"/>
       <xsl:choose>
         <xsl:when test="$vowel='A'">
@@ -61,16 +61,24 @@
           <xsl:sequence select="replace($argument,'^U([^aeiouäöü]*)$',
                                                   'Ü$1')"/>
         </xsl:when>
+        <xsl:when test="$vowel='Aa'">
+          <xsl:sequence select="replace($argument,'^Aa([^aeiouäöü]*)$',
+                                                  'Ä$1')"/>
+        </xsl:when>
+        <xsl:when test="$vowel='Oo'">
+          <xsl:sequence select="replace($argument,'^Oo([^aeiouäöü]*)$',
+                                                  'Ö$1')"/>
+        </xsl:when>
         <xsl:when test="$vowel='Au'">
           <xsl:sequence select="replace($argument,'^Au([^aeiouäöü]*)$',
                                                   'Äu$1')"/>
         </xsl:when>
       </xsl:choose>
     </xsl:when>
-    <!-- replace the last vowel matching /([aou]|au)/ by "ä", "ö", "ü", or "äu" -->
-    <xsl:when test="matches($argument,'([aou]|au)[^aeiouäöü]*$')">
+    <!-- replace the last vowel matching /([aou]|aa|oo|au)/ by "ä", "ö", "ü", or "äu" -->
+    <xsl:when test="matches($argument,'([aou]|aa|oo|au)[^aeiouäöü]*$')">
       <xsl:variable name="vowel"
-                    select="replace($argument,'^.*?([aou]|au)[^aeiouäöü]*$',
+                    select="replace($argument,'^.*?([aou]|aa|oo|au)[^aeiouäöü]*$',
                                               '$1')"/>
       <xsl:choose>
         <xsl:when test="$vowel='a'">
@@ -84,6 +92,14 @@
         <xsl:when test="$vowel='u'">
           <xsl:sequence select="replace($argument,'^(.*)u([^aeiouäöü]*)$',
                                                   '$1ü$2')"/>
+        </xsl:when>
+        <xsl:when test="$vowel='aa'">
+          <xsl:sequence select="replace($argument,'^(.*)aa([^aeiouäöü]*)$',
+                                                  '$1ä$2')"/>
+        </xsl:when>
+        <xsl:when test="$vowel='oo'">
+          <xsl:sequence select="replace($argument,'^(.*)oo([^aeiouäöü]*)$',
+                                                  '$1ö$2')"/>
         </xsl:when>
         <xsl:when test="$vowel='au'">
           <xsl:sequence select="replace($argument,'^(.*)au([^aeiouäöü]*)$',

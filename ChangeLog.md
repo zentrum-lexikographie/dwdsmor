@@ -2,6 +2,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 2022-02-22:
 
+* generalise the functions `n:umlaut` and `n:umlaut-re` for geminate vowels
 * add support for masculine and neuter nouns with unmarked genitive singular
   forms and nominative plural forms ending in "-s"
 

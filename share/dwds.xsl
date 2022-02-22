@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 1.7 -->
-<!-- Andreas Nolda 2022-02-18 -->
+<!-- Version 1.8 -->
+<!-- Andreas Nolda 2022-02-22 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -330,7 +330,7 @@
                     <xsl:choose>
                       <!-- umlautable past stem -->
                       <!-- Caveat: "e" is considered as a full vowel. -->
-                      <xsl:when test="matches($past-stem,'([aou]|au)[^aeiouäöü]*$')">
+                      <xsl:when test="matches($past-stem,'([aou]|aa|oo|au)[^aeiouäöü]*$')">
                         <!-- past indicative -->
                         <xsl:call-template name="verb-entry">
                           <xsl:with-param name="lemma"
