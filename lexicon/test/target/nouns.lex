@@ -35,6 +35,9 @@
 <Stem>Circus<NN><base><fremd><NMasc-s0/sse>
 <Stem>College<NN><base><fremd><NNeut_0_s>
 <Stem>College<NN><base><fremd><NNeut_s_s>
+<Stem>Deutsch<NN><base><nativ><NNeut_0_s>
+<Stem>Deutsch<NN><base><nativ><NNeut_s_s>
+<Stem>Deutsche<NN><base><nativ><NNeut-Adj/Sg>
 <Stem>Drache<NN><base><nativ><NMasc_n_n>
 <Stem>Drachen<NN><base><nativ><NMasc_s_x>
 <Stem>Eis<NN><base><nativ><NNeut/Sg_es>
@@ -72,6 +75,7 @@
 <Stem>Hut<NN><base><nativ><NMasc_es_$e>
 <Stem>Idol<NN><base><fremd><NNeut_s_e>
 <Stem>Idyll<NN><base><fremd><NNeut_s_e>
+<Stem>Innere<NN><base><nativ><NNeut-Adj/Sg>
 <Stem>Intercity<NN><base><nativ><NMasc_0_s>
 <Stem>Jazz<NN><base><fremd><NMasc/Sg_0>
 <Stem>Jeans<NN><base><fremd><NFem_0_x>

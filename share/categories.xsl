@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.21 -->
-<!-- Andreas Nolda 2022-02-22 -->
+<!-- Version 0.22 -->
+<!-- Andreas Nolda 2022-02-23 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -102,6 +102,10 @@
   <class pos="Substantiv"
          gender="neutr."
          genitive-singular="-s">NNeut/Sg_s</class>
+  <!-- nominalised adjectives: -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-n">NNeut-Adj/Sg</class>
   <!-- genitive singular: unmarked -->
   <class pos="Substantiv"
          gender="neutr."

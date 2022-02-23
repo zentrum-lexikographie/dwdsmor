@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-02-23:
+
+* add support for neuter nominalised adjectives with singular forms only
+
 2022-02-22:
 
 * generalise the functions `n:umlaut` and `n:umlaut-re` for geminate vowels
