@@ -20,6 +20,7 @@
 <Stem>Basis<NN><base><fremd><NFem-is/en>
 <Stem>Bau<>:t<>:e<>:n<NN><base><nativ><NMasc/Pl>
 <Stem>Bau<NN><base><nativ><NMasc_es_e>
+<Stem>Bau<NN><base><nativ><NMasc/Sg_es>
 <Stem>Bauer<NN><base><nativ><NMasc_n_n>
 <Stem>Bauer<NN><base><nativ><NMasc_s_n>
 <Stem>Becken<NN><base><nativ><NNeut_s_x>
