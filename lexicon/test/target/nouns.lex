@@ -18,6 +18,8 @@
 <Stem>Bank<NN><base><nativ><NFem_0_en>
 <Stem>Bär<NN><base><nativ><NMasc_en_en>
 <Stem>Basis<NN><base><fremd><NFem-is/en>
+<Stem>Bau<>:t<>:e<>:n<NN><base><nativ><NMasc/Pl>
+<Stem>Bau<NN><base><nativ><NMasc_es_e>
 <Stem>Bauer<NN><base><nativ><NMasc_n_n>
 <Stem>Bauer<NN><base><nativ><NMasc_s_n>
 <Stem>Becken<NN><base><nativ><NNeut_s_x>

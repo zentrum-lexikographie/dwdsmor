@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-02-24:
+
+* add support for masculine nouns with genitive singular forms ending in "-(e)s"
+  and nominative plural forms ending in "-ten"
+
 2022-02-23:
 
 * add support for neuter nominalised adjectives with singular forms only

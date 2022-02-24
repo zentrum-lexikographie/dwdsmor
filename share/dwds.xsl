@@ -75,14 +75,37 @@
   </xsl:variable>
   <xsl:variable name="grammar-specs">
     <xsl:choose>
-      <!-- remove grammar specification for a noun with genitive singular suffix "-s" if
-           there is another grammar specification for a noun with genitive singular suffix "-es" -->
+      <!-- remove grammar specification for a noun
+           with genitive singular form ending in "-s"
+           if there is another grammar specification for a noun
+           with genitive singular form ending in "-es" -->
       <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[.='-es']] and
                       $grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[.='-s']]">
         <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(dwds:Genitiv[.='-s'])]"/>
       </xsl:when>
-      <!-- reduce grammar specification for a weak verb with strong participle to participle if
-           there is another grammar specification for a weak verb with weak participle -->
+      <!-- reduce grammar specification for a masculine noun
+           with genitive singular form ending in "-(e)s"
+           and nominative plural form ending in "-ten"
+           if there is another grammar specification for a noun
+           with genitive singular form ending in "-(e)s"
+           and nominative plural form ending in "-e" -->
+      <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Genus='mask.']
+                                                           [dwds:Genitiv[.='-(e)s' or
+                                                                         .='-es']]
+                                                           [dwds:Plural[.='-ten']] and
+                      $grouped-grammar-specs/dwds:Grammatik[dwds:Genus='mask.']
+                                                           [dwds:Genitiv[.='-(e)s' or
+                                                                         .='-es']]
+                                                           [dwds:Plural[.='-e']]">
+        <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(dwds:Plural[.='-ten'])]"/>
+        <xsl:for-each select="$grouped-grammar-specs/dwds:Grammatik[dwds:Plural[.='-ten']]">
+          <dwds:Grammatik>
+            <xsl:copy-of select="dwds:*[not(self::dwds:Genitiv)]"/>
+          </dwds:Grammatik>
+        </xsl:for-each>
+      </xsl:when>
+      <!-- reduce grammar specification for a weak verb with strong participle to participle
+           if there is another grammar specification for a weak verb with weak participle -->
       <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'en$')]] and
                       $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'e?t$')]] and
                       $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'en$')]]/dwds:Praesens=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(.,'e?t$')]]/dwds:Praesens and
@@ -120,6 +143,8 @@
                             normalize-space(dwds:Numeruspraeferenz)='nur im Singular' and
                             string-length(normalize-space(dwds:Genus))&gt;0 and
                             string-length(normalize-space(dwds:Genitiv))&gt;0 or
+                          normalize-space(dwds:Wortklasse)='Substantiv' and
+                            string-length(normalize-space(dwds:Genus))&gt;0 or
                           normalize-space(dwds:Wortklasse)='Substantiv' and
                             normalize-space(dwds:Numeruspraeferenz)='nur im Plural' or
                           normalize-space(dwds:Wortklasse)='Verb' and
@@ -516,24 +541,104 @@
               </xsl:when>
               <!-- nouns -->
               <xsl:when test="$pos='Substantiv'">
-                <xsl:call-template name="default-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma"/>
-                  <xsl:with-param name="pos">
-                    <xsl:apply-templates select="."
-                                         mode="pos">
+                <xsl:variable name="gender"
+                              select="normalize-space(dwds:Genus)"/>
+                <xsl:variable name="genitive-singular"
+                              select="normalize-space(dwds:Genitiv)"/>
+                <xsl:variable name="genitive-singular-marker">
+                  <xsl:call-template name="get-nominal-marker">
+                    <xsl:with-param name="form"
+                                    select="$genitive-singular"/>
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="nominative-plural"
+                              select="normalize-space(dwds:Plural)"/>
+                <xsl:variable name="nominative-plural-marker">
+                  <xsl:call-template name="get-nominal-marker">
+                    <xsl:with-param name="form"
+                                    select="$nominative-plural"/>
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:choose>
+                  <!-- masculine nouns -->
+                  <!-- genitive singular: "-(e)s"
+                       nominative plural: "-ten" -->
+                  <xsl:when test="$gender='mask.' and
+                                  ($genitive-singular-marker='-(e)s' or
+                                   $genitive-singular-marker='-es') and
+                                  $nominative-plural-marker='-ten'">
+                    <xsl:call-template name="default-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
-                    </xsl:apply-templates>
-                  </xsl:with-param>
-                  <xsl:with-param name="class">
-                    <xsl:apply-templates select="."
-                                         mode="class">
+                      <xsl:with-param name="pos">
+                        <xsl:apply-templates select="."
+                                             mode="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                        </xsl:apply-templates>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">NMasc/Sg_es</xsl:with-param>
+                    </xsl:call-template>
+                    <xsl:call-template name="noun-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
-                    </xsl:apply-templates>
-                  </xsl:with-param>
-                </xsl:call-template>
+                      <xsl:with-param name="form">
+                        <xsl:choose>
+                          <xsl:when test="starts-with($nominative-plural,'-')">
+                            <xsl:value-of select="concat($lemma,substring-after($nominative-plural,'-'))"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <xsl:value-of select="$nominative-plural"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">NMasc/Pl</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <xsl:when test="$gender='mask.' and
+                                  string-length($genitive-singular-marker)=0 and
+                                  $nominative-plural-marker='-ten'">
+                    <xsl:call-template name="noun-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="form">
+                        <xsl:choose>
+                          <xsl:when test="starts-with($nominative-plural,'-')">
+                            <xsl:value-of select="concat($lemma,substring-after($nominative-plural,'-'))"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <xsl:value-of select="$nominative-plural"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">NMasc/Pl</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:call-template name="default-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="pos">
+                        <xsl:apply-templates select="."
+                                             mode="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                        </xsl:apply-templates>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">
+                        <xsl:apply-templates select="."
+                                             mode="class">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                        </xsl:apply-templates>
+                      </xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:when>
               <!-- other parts of speech -->
               <xsl:otherwise>
