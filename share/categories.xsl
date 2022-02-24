@@ -861,7 +861,7 @@
   </xsl:variable>
   <xsl:variable name="past"
                 select="normalize-space(dwds:Praeteritum)"/>
-  <xsl:variable name="past-marker">
+  <xsl:variable name="past-marker"><!-- of weak verbs -->
     <xsl:call-template name="get-verbal-marker">
       <xsl:with-param name="form"
                       select="$past"/>
@@ -871,7 +871,7 @@
   </xsl:variable>
   <xsl:variable name="participle"
                 select="normalize-space(dwds:Partizip_II)"/>
-  <xsl:variable name="participle-marker">
+  <xsl:variable name="participle-marker"><!-- of weak verbs or participles -->
     <xsl:call-template name="get-verbal-marker">
       <xsl:with-param name="form"
                       select="$participle"/>

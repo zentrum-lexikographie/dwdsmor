@@ -140,7 +140,7 @@
   </xsl:choose>
 </xsl:template>
 
-<!-- extract inflection marker(s) from verbal form specification, if any;
+<!-- extract (weak) inflection marker(s) from verbal form specification, if any;
      else return the form itself -->
 <xsl:template name="get-verbal-marker">
   <xsl:param name="form"/>
