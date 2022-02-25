@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 1.10 -->
-<!-- Andreas Nolda 2022-02-24 -->
+<!-- Version 1.11 -->
+<!-- Andreas Nolda 2022-02-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -652,7 +652,7 @@
                                           select="$lemma"/>
                         </xsl:apply-templates>
                       </xsl:with-param>
-                      <xsl:with-param name="class">NMasc_0_s</xsl:with-param>
+                      <xsl:with-param name="class">NMasc/Sg_0</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
                   <!-- neuter nouns -->
@@ -713,7 +713,7 @@
                                           select="$lemma"/>
                         </xsl:apply-templates>
                       </xsl:with-param>
-                      <xsl:with-param name="class">NNeut_0_s</xsl:with-param>
+                      <xsl:with-param name="class">NNeut/Sg_0</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
                   <!-- other nouns -->
