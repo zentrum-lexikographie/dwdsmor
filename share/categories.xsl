@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.23 -->
+<!-- Version 1.0 -->
 <!-- Andreas Nolda 2022-02-25 -->
 
 <xsl:stylesheet version="2.0"
@@ -20,6 +20,43 @@
   <!-- TODO: more POS mappings -->
   <!-- ... -->
 </xsl:variable>
+
+<xsl:template name="pos">
+  <xsl:param name="lemma"/>
+  <xsl:param name="pos"
+             select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:choose>
+    <xsl:when test="$pos='Affix' and
+                    starts-with($lemma,'-')">
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="$pos-mapping/pos[@pos='Suffix']"/>
+        <xsl:with-param name="type">POS</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="$pos='Affix' and
+                    ends-with($lemma,'-')">
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="$pos-mapping/pos[@pos='Präfix']"/>
+        <xsl:with-param name="type">POS</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:call-template name="insert-value">
+        <xsl:with-param name="value"
+                        select="$pos-mapping/pos[@pos=$pos]"/>
+        <xsl:with-param name="type">POS</xsl:with-param>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
 
 <!-- inflection classes -->
 
@@ -43,10 +80,10 @@
 
 <xsl:template name="adjective-class">
   <xsl:param name="lemma"/>
-  <xsl:variable name="pos"
-                select="normalize-space(dwds:Wortklasse)"/>
-  <xsl:variable name="superlative"
-                select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
+  <xsl:param name="pos"
+             select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:param name="superlative"
+             select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
   <xsl:variable name="superlative-marker">
     <xsl:call-template name="get-nominal-marker">
       <xsl:with-param name="form"
@@ -578,10 +615,16 @@
 
 <xsl:template name="noun-class">
   <xsl:param name="lemma"/>
-  <xsl:variable name="pos"
-                select="normalize-space(dwds:Wortklasse)"/>
-  <xsl:variable name="number-preference"
-                select="normalize-space(dwds:Numeruspraeferenz)"/>
+  <xsl:param name="pos"
+             select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:param name="gender"
+             select="normalize-space(dwds:Genus)"/>
+  <xsl:param name="genitive-singular"
+             select="normalize-space(dwds:Genitiv)"/>
+  <xsl:param name="nominative-plural"
+             select="normalize-space(dwds:Plural)"/>
+  <xsl:param name="number-preference"
+             select="normalize-space(dwds:Numeruspraeferenz)"/>
   <xsl:variable name="number">
     <xsl:choose>
       <xsl:when test="$number-preference='nur im Singular'">singular</xsl:when>
@@ -616,10 +659,6 @@
         </xsl:when>
         <!-- singularia tantum -->
         <xsl:when test="$number='singular'">
-          <xsl:variable name="gender"
-                        select="normalize-space(dwds:Genus)"/>
-          <xsl:variable name="genitive-singular"
-                        select="normalize-space(dwds:Genitiv)"/>
           <xsl:variable name="genitive-singular-marker">
             <xsl:call-template name="get-nominal-marker">
               <xsl:with-param name="form"
@@ -636,10 +675,6 @@
         </xsl:when>
         <!-- other nouns -->
         <xsl:otherwise>
-          <xsl:variable name="gender"
-                        select="normalize-space(dwds:Genus)"/>
-          <xsl:variable name="genitive-singular"
-                        select="normalize-space(dwds:Genitiv)"/>
           <xsl:variable name="genitive-singular-marker">
             <xsl:call-template name="get-nominal-marker">
               <xsl:with-param name="form"
@@ -648,8 +683,6 @@
                               select="$lemma"/>
             </xsl:call-template>
           </xsl:variable>
-          <xsl:variable name="nominative-plural"
-                        select="normalize-space(dwds:Plural)"/>
           <xsl:variable name="nominative-plural-marker">
             <xsl:call-template name="get-nominal-marker">
               <xsl:with-param name="form"
@@ -891,8 +924,12 @@
 
 <xsl:template name="verb-class">
   <xsl:param name="lemma"/>
-  <xsl:variable name="pos"
-                select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:param name="pos"
+             select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:param name="past"
+             select="normalize-space(dwds:Praeteritum)"/>
+  <xsl:param name="participle"
+             select="normalize-space(dwds:Partizip_II)"/>
   <xsl:variable name="stem">
     <xsl:call-template name="verb-stem">
       <xsl:with-param name="lemma"
@@ -907,8 +944,6 @@
                       select="$stem"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:variable name="past"
-                select="normalize-space(dwds:Praeteritum)"/>
   <xsl:variable name="past-marker"><!-- of weak verbs -->
     <xsl:call-template name="get-verbal-marker">
       <xsl:with-param name="form"
@@ -917,8 +952,6 @@
                       select="$stem"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:variable name="participle"
-                select="normalize-space(dwds:Partizip_II)"/>
   <xsl:variable name="participle-marker"><!-- of weak verbs or participles -->
     <xsl:call-template name="get-verbal-marker">
       <xsl:with-param name="form"

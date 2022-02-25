@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 1.11 -->
+<!-- Version 2.0 -->
 <!-- Andreas Nolda 2022-02-25 -->
 
 <xsl:stylesheet version="2.0"
@@ -140,11 +140,12 @@
                   <xsl:with-param name="lemma"
                                   select="$lemma"/>
                   <xsl:with-param name="pos">
-                    <xsl:apply-templates select="."
-                                         mode="pos">
+                    <xsl:call-template name="pos">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
-                    </xsl:apply-templates>
+                      <xsl:with-param name="pos"
+                                      select="$pos"/>
+                    </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
               </xsl:when>
@@ -201,11 +202,12 @@
                       <xsl:with-param name="stem"
                                       select="$stem"/>
                       <xsl:with-param name="class">
-                        <xsl:apply-templates select="."
-                                             mode="class">
+                        <xsl:call-template name="verb-class">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
                       </xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
@@ -218,11 +220,12 @@
                       <xsl:with-param name="stem"
                                       select="$stem"/>
                       <xsl:with-param name="class">
-                        <xsl:apply-templates select="."
-                                             mode="class">
+                        <xsl:call-template name="verb-class">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
                       </xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
@@ -501,18 +504,20 @@
                   <xsl:with-param name="lemma"
                                   select="$lemma"/>
                   <xsl:with-param name="pos">
-                    <xsl:apply-templates select="."
-                                         mode="pos">
+                    <xsl:call-template name="pos">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
-                    </xsl:apply-templates>
+                      <xsl:with-param name="pos"
+                                      select="$pos"/>
+                    </xsl:call-template>
                   </xsl:with-param>
                   <xsl:with-param name="class">
-                    <xsl:apply-templates select="."
-                                         mode="class">
+                    <xsl:call-template name="adjective-class">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
-                    </xsl:apply-templates>
+                      <xsl:with-param name="pos"
+                                      select="$pos"/>
+                    </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
               </xsl:when>
@@ -552,11 +557,12 @@
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
                       <xsl:with-param name="pos">
-                        <xsl:apply-templates select="."
-                                             mode="pos">
+                        <xsl:call-template name="pos">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
                       </xsl:with-param>
                       <xsl:with-param name="class">NMasc/Sg_es</xsl:with-param>
                     </xsl:call-template>
@@ -595,125 +601,81 @@
                       <xsl:with-param name="class">NMasc/Pl</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- genitive singular: "-(s)"
-                       no plural -->
+                  <!-- genitive singular: "-(s)" -->
                   <xsl:when test="$gender='mask.' and
-                                  $genitive-singular-marker='-(s)' and
-                                  string-length($nominative-plural-marker)=0">
+                                  $genitive-singular-marker='-(s)'">
                     <xsl:call-template name="default-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
                       <xsl:with-param name="pos">
-                        <xsl:apply-templates select="."
-                                             mode="pos">
+                        <xsl:call-template name="pos">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
-                      </xsl:with-param>
-                      <xsl:with-param name="class">NMasc/Sg_s</xsl:with-param>
-                    </xsl:call-template>
-                    <xsl:call-template name="default-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="pos">
-                        <xsl:apply-templates select="."
-                                             mode="pos">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
                       </xsl:with-param>
                       <xsl:with-param name="class">NMasc/Sg_0</xsl:with-param>
                     </xsl:call-template>
-                  </xsl:when>
-                  <!-- genitive singular: "-(s)"
-                       nominative plural: "-s" -->
-                  <xsl:when test="$gender='mask.' and
-                                  $genitive-singular-marker='-(s)' and
-                                  $nominative-plural-marker='-s'">
                     <xsl:call-template name="default-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
                       <xsl:with-param name="pos">
-                        <xsl:apply-templates select="."
-                                             mode="pos">
+                        <xsl:call-template name="pos">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
                       </xsl:with-param>
-                      <xsl:with-param name="class">NMasc_s_s</xsl:with-param>
-                    </xsl:call-template>
-                    <xsl:call-template name="default-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="pos">
-                        <xsl:apply-templates select="."
-                                             mode="pos">
+                      <xsl:with-param name="class">
+                        <xsl:call-template name="noun-class">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                          <xsl:with-param name="genitive-singular">-s</xsl:with-param>
+                        </xsl:call-template>
                       </xsl:with-param>
-                      <xsl:with-param name="class">NMasc/Sg_0</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
                   <!-- neuter nouns -->
-                  <!-- genitive singular: "-(s)"
-                       no plural -->
+                  <!-- genitive singular: "-(s)" -->
                   <xsl:when test="$gender='neutr.' and
-                                  $genitive-singular-marker='-(s)' and
-                                  string-length($nominative-plural-marker)=0">
+                                  $genitive-singular-marker='-(s)'">
                     <xsl:call-template name="default-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
                       <xsl:with-param name="pos">
-                        <xsl:apply-templates select="."
-                                             mode="pos">
+                        <xsl:call-template name="pos">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
-                      </xsl:with-param>
-                      <xsl:with-param name="class">NNeut/Sg_s</xsl:with-param>
-                    </xsl:call-template>
-                    <xsl:call-template name="default-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="pos">
-                        <xsl:apply-templates select="."
-                                             mode="pos">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
                       </xsl:with-param>
                       <xsl:with-param name="class">NNeut/Sg_0</xsl:with-param>
                     </xsl:call-template>
-                  </xsl:when>
-                  <!-- genitive singular: "-(s)"
-                       nominative plural: "-s" -->
-                  <xsl:when test="$gender='neutr.' and
-                                  $genitive-singular-marker='-(s)' and
-                                  $nominative-plural-marker='-s'">
                     <xsl:call-template name="default-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
                       <xsl:with-param name="pos">
-                        <xsl:apply-templates select="."
-                                             mode="pos">
+                        <xsl:call-template name="pos">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
                       </xsl:with-param>
-                      <xsl:with-param name="class">NNeut_s_s</xsl:with-param>
-                    </xsl:call-template>
-                    <xsl:call-template name="default-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="pos">
-                        <xsl:apply-templates select="."
-                                             mode="pos">
+                      <xsl:with-param name="class">
+                        <xsl:call-template name="noun-class">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                          <xsl:with-param name="genitive-singular">-s</xsl:with-param>
+                        </xsl:call-template>
                       </xsl:with-param>
-                      <xsl:with-param name="class">NNeut/Sg_0</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
                   <!-- other nouns -->
@@ -722,18 +684,20 @@
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
                       <xsl:with-param name="pos">
-                        <xsl:apply-templates select="."
-                                             mode="pos">
+                        <xsl:call-template name="pos">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
                       </xsl:with-param>
                       <xsl:with-param name="class">
-                        <xsl:apply-templates select="."
-                                             mode="class">
+                        <xsl:call-template name="noun-class">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                        </xsl:apply-templates>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
                       </xsl:with-param>
                     </xsl:call-template>
                   </xsl:otherwise>
@@ -745,18 +709,21 @@
                   <xsl:with-param name="lemma"
                                   select="$lemma"/>
                   <xsl:with-param name="pos">
-                    <xsl:apply-templates select="."
-                                         mode="pos">
+                    <xsl:call-template name="pos">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
-                    </xsl:apply-templates>
+                      <xsl:with-param name="pos"
+                                      select="$pos"/>
+                    </xsl:call-template>
                   </xsl:with-param>
                   <xsl:with-param name="class">
-                    <xsl:apply-templates select="."
-                                         mode="class">
+                    <!-- unknown class -->
+                    <xsl:call-template name="insert-value">
+                      <xsl:with-param name="value"/>
+                      <xsl:with-param name="type">class</xsl:with-param>
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
-                    </xsl:apply-templates>
+                    </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
               </xsl:otherwise>
@@ -794,82 +761,6 @@
       </xsl:for-each>
     </xsl:if>
   </xsl:for-each>
-</xsl:template>
-
-<!-- parts of speech -->
-<xsl:template match="dwds:Grammatik"
-              mode="pos">
-  <xsl:param name="lemma"/>
-  <xsl:variable name="pos"
-                select="normalize-space(dwds:Wortklasse)"/>
-  <xsl:choose>
-    <xsl:when test="$pos='Affix' and
-                    starts-with($lemma,'-')">
-      <xsl:call-template name="insert-value">
-        <xsl:with-param name="value"
-                        select="$pos-mapping/pos[@pos='Suffix']"/>
-        <xsl:with-param name="type">POS</xsl:with-param>
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:call-template>
-    </xsl:when>
-    <xsl:when test="$pos='Affix' and
-                    ends-with($lemma,'-')">
-      <xsl:call-template name="insert-value">
-        <xsl:with-param name="value"
-                        select="$pos-mapping/pos[@pos='Präfix']"/>
-        <xsl:with-param name="type">POS</xsl:with-param>
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:call-template>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:call-template name="insert-value">
-        <xsl:with-param name="value"
-                        select="$pos-mapping/pos[@pos=$pos]"/>
-        <xsl:with-param name="type">POS</xsl:with-param>
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:call-template>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<!-- inflection classes -->
-<xsl:template match="dwds:Grammatik"
-              mode="class">
-  <xsl:param name="lemma"/>
-  <xsl:variable name="pos"
-                select="normalize-space(dwds:Wortklasse)"/>
-  <xsl:choose>
-    <xsl:when test="$pos='Adjektiv'">
-      <xsl:call-template name="adjective-class">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:call-template>
-    </xsl:when>
-    <xsl:when test="$pos='Substantiv'">
-      <xsl:call-template name="noun-class">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:call-template>
-    </xsl:when>
-    <xsl:when test="$pos='Verb'">
-      <xsl:call-template name="verb-class">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:call-template>
-    </xsl:when>
-    <xsl:otherwise>
-      <!-- unknown class -->
-      <xsl:call-template name="insert-value">
-        <xsl:with-param name="value"/>
-        <xsl:with-param name="type">class</xsl:with-param>
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:call-template>
-    </xsl:otherwise>
-  </xsl:choose>
 </xsl:template>
 
 <!-- word-formation types -->
