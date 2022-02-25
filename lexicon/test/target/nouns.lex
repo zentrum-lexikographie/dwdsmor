@@ -32,6 +32,8 @@
 <Stem>Bürgertum<NN><base><nativ><NNeut/Sg_s>
 <Stem>Bus<NN><base><nativ><NMasc-s/sse>
 <Stem>Casus<NN><base><fremd><NMasc_0_x>
+<Stem>Cello<NN><base><nativ><NNeut_s_s>
+<Stem>Cello<NN><base><nativ><NNeut-o/i>
 <Stem>Cent<NN><base><nativ><NMasc_0_x>
 <Stem>Cent<NN><base><nativ><NMasc_s_s>
 <Stem>Chaos<NN><base><fremd><NNeut/Sg_0>
@@ -94,6 +96,9 @@
 <Stem>Kissen<NN><base><nativ><NNeut_s_x>
 <Stem>Klee<NN><base><nativ><NMasc/Sg_s>
 <Stem>Kloster<NN><base><nativ><NNeut_s_$>
+<Stem>Konto<NN><base><fremd><NNeut_s_s>
+<Stem>Konto<NN><base><fremd><NNeut-o/en>
+<Stem>Konto<NN><base><fremd><NNeut-o/i>
 <Stem>Lachen<NN><base><nativ><NNeut/Sg_s>
 <Stem>Leib<NN><base><nativ><NMasc_es_er>
 <Stem>Leute<NN><base><nativ><N?/Pl_0>
@@ -121,6 +126,9 @@
 <Stem>Riese<NN><base><nativ><NMasc_n_n>
 <Stem>Ruhe<NN><base><nativ><NFem/Sg>
 <Stem>Saal<NN><base><nativ><NMasc_es_$e>
+<Stem>Saldo<NN><base><fremd><NMasc_s_s>
+<Stem>Saldo<NN><base><fremd><NMasc-o/en>
+<Stem>Saldo<NN><base><fremd><NMasc-o/i>
 <Stem>Schema<NN><base><fremd><NNeut_s_s>
 <Stem>Schema<NN><base><fremd><NNeut-a/ata>
 <Stem>Schema<NN><base><fremd><NNeut-a/en>

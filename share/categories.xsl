@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 0.22 -->
-<!-- Andreas Nolda 2022-02-23 -->
+<!-- Version 0.23 -->
+<!-- Andreas Nolda 2022-02-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -240,6 +240,12 @@
          genitive-singular="-"
          nominative-plural="-"
          dative-plural="-">NMasc_0_x</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-en" substituted for "-o" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive-singular="-s"
+         nominative-plural="-o/en">NMasc-o/en</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: "-en" substituted for "-us" -->
   <class pos="Substantiv"
@@ -252,6 +258,12 @@
          gender="mask."
          genitive-singular="-"
          nominative-plural="-us/en">NMasc-us/en</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-i" substituted for "-o" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive-singular="-s"
+         nominative-plural="-o/i">NMasc-o/i</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: "-i" substituted for "-us" -->
   <class pos="Substantiv"
@@ -430,6 +442,18 @@
          gender="neutr."
          genitive-singular="-s"
          nominative-plural="-a/en">NNeut-a/en</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-en" substituted for "-o" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-o/en">NNeut-o/en</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-i" substituted for "-o" -->
+  <class pos="Substantiv"
+         gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-o/i">NNeut-o/i</class>
   <!-- genitive singular: "-s"
        nominative plural: "-ina" substituted for "-en" -->
   <class pos="Substantiv"
@@ -667,6 +691,28 @@
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
                                                              [@nominative-plural='-a/en']
+                                                             [not(@dative-plural)]"/>
+            </xsl:when>
+            <!-- nominative plural: "-en" substituted for "-o" -->
+            <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                            ends-with($lemma,'o') and
+                            matches($nominative-plural,replace($lemma,'^(.+)o$',
+                                                                      '$1en'))">
+              <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                             [@gender=$gender]
+                                                             [@genitive-singular=$genitive-singular-marker]
+                                                             [@nominative-plural='-o/en']
+                                                             [not(@dative-plural)]"/>
+            </xsl:when>
+            <!-- nominative plural: "-i" substituted for "-o" -->
+            <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                            ends-with($lemma,'o') and
+                            matches($nominative-plural,replace($lemma,'^(.+)o$',
+                                                                      '$1i'))">
+              <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                             [@gender=$gender]
+                                                             [@genitive-singular=$genitive-singular-marker]
+                                                             [@nominative-plural='-o/i']
                                                              [not(@dative-plural)]"/>
             </xsl:when>
             <!-- nominative plural: "-ina" substituted for "-en" -->
