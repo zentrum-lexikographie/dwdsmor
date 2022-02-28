@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 1.1 -->
+<!-- Version 1.2 -->
 <!-- Andreas Nolda 2022-02-28 -->
 
 <xsl:stylesheet version="2.0"
@@ -575,7 +575,7 @@
        no plural -->
   <class pos="Substantiv"
          gender="fem."
-         genitive-singular="-">NFem/Sg</class>
+         genitive-singular="-">NFem/Sg_0</class>
   <!-- genitive singular: unmarked
        nominative plural: unmarked
        dative plural: unmarked -->

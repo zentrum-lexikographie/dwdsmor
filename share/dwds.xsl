@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 2.1 -->
+<!-- Version 2.2 -->
 <!-- Andreas Nolda 2022-02-28 -->
 
 <xsl:stylesheet version="2.0"
@@ -579,26 +579,7 @@
                           </xsl:otherwise>
                         </xsl:choose>
                       </xsl:with-param>
-                      <xsl:with-param name="class">NMasc/Pl</xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <xsl:when test="$gender='mask.' and
-                                  string-length($genitive-singular-marker)=0 and
-                                  $nominative-plural-marker='-ten'">
-                    <xsl:call-template name="noun-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="form">
-                        <xsl:choose>
-                          <xsl:when test="starts-with($nominative-plural,'-')">
-                            <xsl:value-of select="concat($lemma,substring-after($nominative-plural,'-'))"/>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <xsl:value-of select="$nominative-plural"/>
-                          </xsl:otherwise>
-                        </xsl:choose>
-                      </xsl:with-param>
-                      <xsl:with-param name="class">NMasc/Pl</xsl:with-param>
+                      <xsl:with-param name="class">NMasc/Pl_x</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
                   <!-- genitive singular: "-(s)"

@@ -18,7 +18,7 @@
 <Stem>Bank<NN><base><nativ><NFem_0_en>
 <Stem>Bär<NN><base><nativ><NMasc_en_en>
 <Stem>Basis<NN><base><fremd><NFem-is/en>
-<Stem>Bau<>:t<>:e<>:n<NN><base><nativ><NMasc/Pl>
+<Stem>Bau<>:t<>:e<>:n<NN><base><nativ><NMasc/Pl_x>
 <Stem>Bau<NN><base><nativ><NMasc_es_e>
 <Stem>Bau<NN><base><nativ><NMasc/Sg_es>
 <Stem>Bauer<NN><base><nativ><NMasc_n_n>
@@ -95,7 +95,7 @@
 <Stem>Intercity<NN><base><nativ><NMasc_0_s>
 <Stem>Jazz<NN><base><fremd><NMasc/Sg_0>
 <Stem>Jeans<NN><base><fremd><NFem_0_x>
-<Stem>Jugend<NN><base><nativ><NFem/Sg>
+<Stem>Jugend<NN><base><nativ><NFem/Sg_0>
 <Stem>Juni<NN><base><fremd><NMasc_0_s>
 <Stem>Juni<NN><base><fremd><NMasc_s_s>
 <Stem>Kanal<NN><base><fremd><NMasc_s_$e>
@@ -132,7 +132,7 @@
 <Stem>Rand<NN><base><nativ><NMasc_es_$er>
 <Stem>Reif<NN><base><fremd><NMasc/Sg_es>
 <Stem>Riese<NN><base><nativ><NMasc_n_n>
-<Stem>Ruhe<NN><base><nativ><NFem/Sg>
+<Stem>Ruhe<NN><base><nativ><NFem/Sg_0>
 <Stem>Saal<NN><base><nativ><NMasc_es_$e>
 <Stem>Saldo<NN><base><fremd><NMasc_s_s>
 <Stem>Saldo<NN><base><fremd><NMasc-o/en>
