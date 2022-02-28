@@ -4,6 +4,8 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 * add support for masculine and neuter nouns with nominative plural forms ending
   in optional "-s"
+* add support for masculine nouns with nominative plural forms ending in "-e"
+  substituted for "-us"
 * add support for masculine and feminine nouns with nominative plural forms that
   are compounds with "Leute"
 

@@ -290,6 +290,12 @@
          genitive-singular="-ses"
          nominative-plural="-us/en">NMasc-us/en</class>
   <!-- genitive singular: unmarked
+       nominative plural: "-e" substituted for "-us" -->
+  <class pos="Substantiv"
+         gender="mask."
+         genitive-singular="-"
+         nominative-plural="-us/e">NMasc-us/e</class>
+  <!-- genitive singular: unmarked
        nominative plural: "-en" substituted for "-us" -->
   <class pos="Substantiv"
          gender="mask."
@@ -830,6 +836,19 @@
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
                                                              [@nominative-plural='-um/en']
+                                                             [not(@dative-plural)]"/>
+            </xsl:when>
+            <!-- nominative plural: "-e" substituted for "-us" -->
+            <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                            ends-with($lemma,'us') and
+                            matches($nominative-plural,concat('^',
+                                                              replace($lemma,'^(.+)us$',
+                                                                      '$1e'),
+                                                              '$'))">
+              <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
+                                                             [@gender=$gender]
+                                                             [@genitive-singular=$genitive-singular-marker]
+                                                             [@nominative-plural='-us/e']
                                                              [not(@dative-plural)]"/>
             </xsl:when>
             <!-- nominative plural: "-en" substituted for "-us" -->

@@ -107,6 +107,7 @@
 <Stem>Konto<NN><base><fremd><NNeut_s_s>
 <Stem>Konto<NN><base><fremd><NNeut-o/en>
 <Stem>Konto<NN><base><fremd><NNeut-o/i>
+<Stem>Kursus<NN><base><fremd><NMasc-us/e>
 <Stem>Lachen<NN><base><nativ><NNeut/Sg_s>
 <Stem>Leib<NN><base><nativ><NMasc_es_er>
 <Stem>Leute<NN><base><nativ><N?/Pl_0>
