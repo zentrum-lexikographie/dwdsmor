@@ -2,6 +2,8 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 2022-02-28:
 
+* add support for ungradable adjectives
+* add support for uninflected adjectives
 * add support for masculine and neuter nouns with nominative plural forms ending
   in optional "-s"
 * add support for masculine nouns with nominative plural forms ending in "-e"

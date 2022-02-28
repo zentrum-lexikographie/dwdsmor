@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 1.2 -->
+<!-- Version 1.3 -->
 <!-- Andreas Nolda 2022-02-28 -->
 
 <xsl:stylesheet version="2.0"
@@ -61,7 +61,7 @@
 <!-- inflection classes -->
 
 <xsl:variable name="adjective-class-mapping">
-  <!-- adjectives: -->
+  <!-- gradable adjectives: -->
   <!-- superlative: "-sten" -->
   <class pos="Adjektiv"
          superlative="-sten">Adj+</class>
@@ -74,6 +74,8 @@
   <!-- superlative: umlaut and "-esten" -->
   <class pos="Adjektiv"
          superlative="&#x308;-esten">Adj$e</class>
+  <!-- ungradable adjectives: -->
+  <class pos="Adjektiv">AdjPos</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -83,19 +85,31 @@
   <xsl:param name="pos"
              select="normalize-space(dwds:Wortklasse)"/>
   <xsl:param name="superlative"
-             select="substring-after(normalize-space(dwds:Superlativ),'am ')"/>
+             select="normalize-space(dwds:Superlativ)"/>
   <xsl:variable name="superlative-marker">
     <xsl:call-template name="get-nominal-marker">
       <xsl:with-param name="form"
-                      select="$superlative"/>
+                      select="substring-after($superlative,'am ')"/>
       <xsl:with-param name="lemma"
                       select="$lemma"/>
     </xsl:call-template>
   </xsl:variable>
   <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$adjective-class-mapping/class[@pos=$pos]
-                                                          [@superlative=$superlative-marker]"/>
+    <xsl:with-param name="value">
+      <xsl:choose>
+        <!-- ungradable adjectives -->
+        <xsl:when test="string-length($superlative)=0">
+          <xsl:value-of select="$adjective-class-mapping/class[@pos=$pos]
+                                                              [not(@superlative)]"/>
+
+        </xsl:when>
+        <!-- other adjectives -->
+        <xsl:otherwise>
+          <xsl:value-of select="$adjective-class-mapping/class[@pos=$pos]
+                                                              [@superlative=$superlative-marker]"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:with-param>
     <xsl:with-param name="type">class</xsl:with-param>
     <xsl:with-param name="lemma"
                     select="$lemma"/>

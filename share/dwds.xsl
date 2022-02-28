@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 2.2 -->
+<!-- Version 2.3 -->
 <!-- Andreas Nolda 2022-02-28 -->
 
 <xsl:stylesheet version="2.0"
@@ -55,6 +55,7 @@
   <xsl:variable name="flat-grammar-specs">
     <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Genitiv or
                                                  self::dwds:Genus or
+                                                 self::dwds:indeklinabel or
                                                  self::dwds:Komparativ or
                                                  self::dwds:Numeruspraeferenz or
                                                  self::dwds:Partizip_II or
@@ -112,8 +113,7 @@
                       select="normalize-space(dwds:Wortklasse)"/>
         <xsl:choose>
           <!-- only consider articles with appropriate grammar specifications -->
-          <xsl:when test="normalize-space(dwds:Wortklasse)='Adjektiv' and
-                            string-length(normalize-space(dwds:Superlativ))&gt;0 or
+          <xsl:when test="normalize-space(dwds:Wortklasse)='Adjektiv' or
                           normalize-space(dwds:Wortklasse)='Substantiv' and
                             string-length(normalize-space(dwds:Genus))&gt;0 and
                             string-length(normalize-space(dwds:Genitiv))&gt;0 and
@@ -149,377 +149,49 @@
                   </xsl:with-param>
                 </xsl:call-template>
               </xsl:when>
-              <!-- verbs -->
-              <xsl:when test="$pos='Verb'">
-                <!-- <xsl:variable name="present"
-                              select="normalize-space(dwds:Praesens)"/> -->
-                <xsl:variable name="past"
-                              select="normalize-space(dwds:Praeteritum)"/>
-                <xsl:variable name="participle"
-                              select="normalize-space(dwds:Partizip_II)"/>
-                <xsl:variable name="stem">
-                  <xsl:call-template name="verb-stem">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="present-stem">
-                  <xsl:call-template name="present-stem"/>
-                </xsl:variable>
-                <xsl:variable name="past-stem">
-                  <xsl:call-template name="past-stem"/>
-                </xsl:variable>
-                <xsl:variable name="participle-stem">
-                  <xsl:call-template name="participle-stem">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="past-marker"><!-- of weak verbs -->
-                  <xsl:call-template name="get-verbal-marker">
-                    <xsl:with-param name="form"
-                                    select="$past"/>
-                    <xsl:with-param name="stem"
-                                    select="$stem"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="participle-marker"><!-- of weak verbs -->
-                  <xsl:call-template name="get-verbal-marker">
-                    <xsl:with-param name="form"
-                                    select="$participle"/>
-                    <xsl:with-param name="stem"
-                                    select="$stem"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:choose>
-                  <!-- weak verbs -->
-                  <xsl:when test="$past-marker='-te' and
-                                  ($participle-marker='-t' or
-                                   $participle-marker='ge-t')">
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="class">
-                        <xsl:call-template name="verb-class">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="pos"
-                                          select="$pos"/>
-                        </xsl:call-template>
-                      </xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <xsl:when test="$past-marker='-ete' and
-                                  ($participle-marker='-et' or
-                                   $participle-marker='ge-et')">
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="class">
-                        <xsl:call-template name="verb-class">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="pos"
-                                          select="$pos"/>
-                        </xsl:call-template>
-                      </xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <!-- weak verbs with irregular past stem -->
-                  <xsl:when test="matches($past,concat('^',$past-stem,'e?te$')) and
-                                  matches($participle,concat('^(ge)?',$past-stem,'e?t$'))">
-                    <!-- present -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="class">VVPres</xsl:with-param>
-                    </xsl:call-template>
-                    <!-- past indicative -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$past-stem"/>
-                      <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
-                    </xsl:call-template>
-                    <!-- past subjunctive -->
-                    <xsl:choose>
-                      <!-- past stem ending in "ach" -->
-                      <xsl:when test="matches($past-stem,'ach$')">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="n:umlaut($past-stem)"/>
-                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- Rückumlaut -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$stem"/><!-- sic! -->
-                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                    <!-- past participle -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <!-- weak verbs with strong participle -->
-                  <xsl:when test="($past-marker='-te' or
-                                   $past-marker='-ete') and
-                                   matches($participle,'en$')">
-                    <!-- present -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="class">VVPres</xsl:with-param>
-                    </xsl:call-template>
-                    <!-- past indicative -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$past-stem"/>
-                      <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
-                    </xsl:call-template>
-                    <!-- past subjunctive -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$past-stem"/>
-                      <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                    </xsl:call-template>
-                    <!-- past participle -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="class">VVPP-en</xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <!-- strong verbs -->
-                  <xsl:otherwise>
-                    <!-- present -->
-                    <xsl:choose>
-                      <!-- uniform present stem -->
-                      <xsl:when test="$stem=$present-stem">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$stem"/>
-                          <xsl:with-param name="class">VVPres</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- present stem for 2nd/3rd person singular with "e:i" alternation -->
-                      <xsl:when test="contains(n:pair($stem,$present-stem),'e:i')">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$stem"/>
-                          <xsl:with-param name="class">VVPres1</xsl:with-param>
-                        </xsl:call-template>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$present-stem"/>
-                          <xsl:with-param name="class">VVPres2+Imp</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- other present stem for 2nd/3rd person singular -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$stem"/>
-                          <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
-                        </xsl:call-template>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$present-stem"/>
-                          <xsl:with-param name="class">VVPres2</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                    <!-- past -->
-                    <xsl:choose>
-                      <!-- umlautable past stem -->
-                      <!-- Caveat: "e" is considered as a full vowel. -->
-                      <xsl:when test="matches($past-stem,'([aou]|aa|oo|au)[^aeiouäöü]*$')">
-                        <!-- past indicative -->
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$past-stem"/>
-                          <xsl:with-param name="class">VVPastIndStr</xsl:with-param>
-                        </xsl:call-template>
-                        <!-- past subjunctive -->
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="n:umlaut($past-stem)"/>
-                          <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- non-umlautable past stem -->
-                      <xsl:otherwise>
-                        <!-- past -->
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$past-stem"/>
-                          <xsl:with-param name="class">VVPastStr</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                    <!-- past participle -->
-                    <xsl:choose>
-                      <!-- weak participle -->
-                      <xsl:when test="$participle-marker='-t' or
-                                      $participle-marker='ge-t'">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$participle-stem"/>
-                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <xsl:when test="$participle-marker='-et' or
-                                      $participle-marker='ge-et'">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$participle-stem"/>
-                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- strong participle -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="stem"
-                                          select="$participle-stem"/>
-                          <xsl:with-param name="class">VVPP-en</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:otherwise>
-                  <!-- TODO: proper support for modal verbs and auxiliaries -->
-                </xsl:choose>
-              </xsl:when>
-              <!-- verbal participles -->
-              <xsl:when test="$pos='Partizip'"><!-- ad-hoc POS -->
-                <xsl:variable name="participle"
-                              select="normalize-space(dwds:Partizip_II)"/>
-                <xsl:variable name="stem">
-                  <xsl:call-template name="verb-stem">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="participle-stem">
-                  <xsl:call-template name="participle-stem">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="participle-marker"><!-- of weak participles -->
-                  <xsl:call-template name="get-verbal-marker">
-                    <xsl:with-param name="form"
-                                    select="$participle"/>
-                    <xsl:with-param name="stem"
-                                    select="$stem"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:choose>
-                  <!-- weak participles -->
-                  <xsl:when test="$participle-marker='-t' or
-                                  $participle-marker='ge-t'">
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <xsl:when test="$participle-marker='-et' or
-                                  $participle-marker='ge-et'">
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <!-- strong participles -->
-                  <xsl:otherwise>
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="class">VVPP-en</xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:when>
               <!-- adjectives -->
               <xsl:when test="$pos='Adjektiv'">
-                <!-- <xsl:variable name="superlative"
-                              select="normalize-space(dwds:Superlativ)"/> -->
-                <xsl:call-template name="default-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma"/>
-                  <xsl:with-param name="pos">
-                    <xsl:call-template name="pos">
+                <!-- uninflected adjectives -->
+                <xsl:choose>
+                  <xsl:when test="dwds:indeklinabel">
+                    <xsl:call-template name="default-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
-                      <xsl:with-param name="pos"
-                                      select="$pos"/>
+                      <xsl:with-param name="pos">
+                        <xsl:call-template name="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">Adj0</xsl:with-param>
                     </xsl:call-template>
-                  </xsl:with-param>
-                  <xsl:with-param name="class">
-                    <xsl:call-template name="adjective-class">
+                  </xsl:when>
+                  <!-- other adjectives -->
+                  <xsl:otherwise>
+                    <xsl:call-template name="default-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma"/>
-                      <xsl:with-param name="pos"
-                                      select="$pos"/>
+                      <xsl:with-param name="pos">
+                        <xsl:call-template name="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">
+                        <xsl:call-template name="adjective-class">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
+                      </xsl:with-param>
                     </xsl:call-template>
-                  </xsl:with-param>
-                </xsl:call-template>
+                  </xsl:otherwise>
+                  </xsl:choose>
               </xsl:when>
               <!-- nouns -->
               <xsl:when test="$pos='Substantiv'">
@@ -885,6 +557,351 @@
                                           select="$pos"/>
                         </xsl:call-template>
                       </xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:when>
+              <!-- verbs -->
+              <xsl:when test="$pos='Verb'">
+                <xsl:variable name="past"
+                              select="normalize-space(dwds:Praeteritum)"/>
+                <xsl:variable name="participle"
+                              select="normalize-space(dwds:Partizip_II)"/>
+                <xsl:variable name="stem">
+                  <xsl:call-template name="verb-stem">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="present-stem">
+                  <xsl:call-template name="present-stem"/>
+                </xsl:variable>
+                <xsl:variable name="past-stem">
+                  <xsl:call-template name="past-stem"/>
+                </xsl:variable>
+                <xsl:variable name="participle-stem">
+                  <xsl:call-template name="participle-stem">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="past-marker"><!-- of weak verbs -->
+                  <xsl:call-template name="get-verbal-marker">
+                    <xsl:with-param name="form"
+                                    select="$past"/>
+                    <xsl:with-param name="stem"
+                                    select="$stem"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="participle-marker"><!-- of weak verbs -->
+                  <xsl:call-template name="get-verbal-marker">
+                    <xsl:with-param name="form"
+                                    select="$participle"/>
+                    <xsl:with-param name="stem"
+                                    select="$stem"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:choose>
+                  <!-- weak verbs -->
+                  <xsl:when test="$past-marker='-te' and
+                                  ($participle-marker='-t' or
+                                   $participle-marker='ge-t')">
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="class">
+                        <xsl:call-template name="verb-class">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
+                      </xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <xsl:when test="$past-marker='-ete' and
+                                  ($participle-marker='-et' or
+                                   $participle-marker='ge-et')">
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="class">
+                        <xsl:call-template name="verb-class">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
+                      </xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- weak verbs with irregular past stem -->
+                  <xsl:when test="matches($past,concat('^',$past-stem,'e?te$')) and
+                                  matches($participle,concat('^(ge)?',$past-stem,'e?t$'))">
+                    <!-- present -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="class">VVPres</xsl:with-param>
+                    </xsl:call-template>
+                    <!-- past indicative -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$past-stem"/>
+                      <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
+                    </xsl:call-template>
+                    <!-- past subjunctive -->
+                    <xsl:choose>
+                      <!-- past stem ending in "ach" -->
+                      <xsl:when test="matches($past-stem,'ach$')">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- Rückumlaut -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/><!-- sic! -->
+                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <!-- past participle -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- weak verbs with strong participle -->
+                  <xsl:when test="($past-marker='-te' or
+                                   $past-marker='-ete') and
+                                   matches($participle,'en$')">
+                    <!-- present -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="class">VVPres</xsl:with-param>
+                    </xsl:call-template>
+                    <!-- past indicative -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$past-stem"/>
+                      <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
+                    </xsl:call-template>
+                    <!-- past subjunctive -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$past-stem"/>
+                      <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                    </xsl:call-template>
+                    <!-- past participle -->
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="class">VVPP-en</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- strong verbs -->
+                  <xsl:otherwise>
+                    <!-- present -->
+                    <xsl:choose>
+                      <!-- uniform present stem -->
+                      <xsl:when test="$stem=$present-stem">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="class">VVPres</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- present stem for 2nd/3rd person singular with "e:i" alternation -->
+                      <xsl:when test="contains(n:pair($stem,$present-stem),'e:i')">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="class">VVPres1</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$present-stem"/>
+                          <xsl:with-param name="class">VVPres2+Imp</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- other present stem for 2nd/3rd person singular -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$present-stem"/>
+                          <xsl:with-param name="class">VVPres2</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <!-- past -->
+                    <xsl:choose>
+                      <!-- umlautable past stem -->
+                      <!-- Caveat: "e" is considered as a full vowel. -->
+                      <xsl:when test="matches($past-stem,'([aou]|aa|oo|au)[^aeiouäöü]*$')">
+                        <!-- past indicative -->
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$past-stem"/>
+                          <xsl:with-param name="class">VVPastIndStr</xsl:with-param>
+                        </xsl:call-template>
+                        <!-- past subjunctive -->
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- non-umlautable past stem -->
+                      <xsl:otherwise>
+                        <!-- past -->
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$past-stem"/>
+                          <xsl:with-param name="class">VVPastStr</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <!-- past participle -->
+                    <xsl:choose>
+                      <!-- weak participle -->
+                      <xsl:when test="$participle-marker='-t' or
+                                      $participle-marker='ge-t'">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$participle-stem"/>
+                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <xsl:when test="$participle-marker='-et' or
+                                      $participle-marker='ge-et'">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$participle-stem"/>
+                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- strong participle -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="stem"
+                                          select="$participle-stem"/>
+                          <xsl:with-param name="class">VVPP-en</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:otherwise>
+                  <!-- TODO: proper support for modal verbs and auxiliaries -->
+                </xsl:choose>
+              </xsl:when>
+              <!-- verbal participles -->
+              <xsl:when test="$pos='Partizip'"><!-- ad-hoc POS -->
+                <xsl:variable name="participle"
+                              select="normalize-space(dwds:Partizip_II)"/>
+                <xsl:variable name="stem">
+                  <xsl:call-template name="verb-stem">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="participle-stem">
+                  <xsl:call-template name="participle-stem">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="participle-marker"><!-- of weak participles -->
+                  <xsl:call-template name="get-verbal-marker">
+                    <xsl:with-param name="form"
+                                    select="$participle"/>
+                    <xsl:with-param name="stem"
+                                    select="$stem"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:choose>
+                  <!-- weak participles -->
+                  <xsl:when test="$participle-marker='-t' or
+                                  $participle-marker='ge-t'">
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <xsl:when test="$participle-marker='-et' or
+                                  $participle-marker='ge-et'">
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- strong participles -->
+                  <xsl:otherwise>
+                    <xsl:call-template name="verb-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma"/>
+                      <xsl:with-param name="stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="class">VVPP-en</xsl:with-param>
                     </xsl:call-template>
                   </xsl:otherwise>
                 </xsl:choose>
