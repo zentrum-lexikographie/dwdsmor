@@ -75,12 +75,17 @@
 <Stem>Globus<NN><base><fremd><NMasc-s/sse>
 <Stem>Globus<NN><base><fremd><NMasc-s0/sse>
 <Stem>Globus<NN><base><fremd><NMasc-us/en>
+<Stem>Grün<NN><base><nativ><NNeut_s_s>
+<Stem>Grün<NN><base><nativ><NNeut_s_x>
 <Stem>Haus<NN><base><nativ><NNeut_es_$er>
 <Stem>Hemd<NN><base><nativ><NNeut_es_en>
 <Stem>Herz<NN><base><nativ><NNeut-Herz>
 <Stem>Heu<NN><base><nativ><NNeut/Sg_s>
 <Stem>Hügel<NN><base><nativ><NMasc_s_0>
 <Stem>Hut<NN><base><nativ><NMasc_es_$e>
+<Stem>ICE<NN><base><nativ><NMasc_s_s>
+<Stem>ICE<NN><base><nativ><NMasc_s_x>
+<Stem>ICE<NN><base><nativ><NMasc/Sg_0>
 <Stem>Idol<NN><base><fremd><NNeut_s_e>
 <Stem>Idyll<NN><base><fremd><NNeut_s_e>
 <Stem>Innere<NN><base><nativ><NNeut-Adj/Sg>

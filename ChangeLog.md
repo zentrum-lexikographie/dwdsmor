@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-02-28:
+
+* add support for nouns with nominative plural forms ending in optional "-s"
+
 2022-02-25:
 
 * simplify processing of nouns with genitive singular forms ending in optional "-s"
