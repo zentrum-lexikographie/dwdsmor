@@ -53,6 +53,9 @@
 <Stem>Erkenntnis<NN><base><nativ><NFem-s/sse>
 <Stem>Examen<NN><base><fremd><NNeut_s_x>
 <Stem>Examen<NN><base><fremd><NNeut-en/ina>
+<Stem>Fachfrau<NN><base><nativ><NFem_0_en>
+<Stem>Fachleute<NN><base><nativ><N?/Pl_0>
+<Stem>Fachmann<NN><base><nativ><NMasc_es_$er>
 <Stem>Feder<NN><base><nativ><NFem_0_n>
 <Stem>Feld<NN><base><nativ><NNeut_es_er>
 <Stem>Feuer<NN><base><nativ><NNeut_s_0>

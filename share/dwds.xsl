@@ -722,6 +722,25 @@
                       </xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
+                  <!-- lemma: compound with "Mann"
+                       nominative plural: compound with "Leute" -->
+                  <xsl:when test="$gender='mask.' and
+                                  ends-with($lemma,'mann') and
+                                  ends-with($nominative-plural,'leute')">
+                    <xsl:call-template name="default-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$nominative-plural"/>
+                      <xsl:with-param name="pos">
+                        <xsl:call-template name="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">N?/Pl_0</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
                   <!-- neuter nouns -->
                   <!-- genitive singular: "-(s)"
                        nominative plural: "-(s)" -->
@@ -842,6 +861,26 @@
                           <xsl:with-param name="nominative-plural">-s</xsl:with-param>
                         </xsl:call-template>
                       </xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- feminine nouns -->
+                  <!-- lemma: compound with "Frau"
+                       nominative plural: compound with "Leute" -->
+                  <xsl:when test="$gender='fem.' and
+                                  ends-with($lemma,'frau') and
+                                  ends-with($nominative-plural,'leute')">
+                    <xsl:call-template name="default-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$nominative-plural"/>
+                      <xsl:with-param name="pos">
+                        <xsl:call-template name="pos">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="pos"
+                                          select="$pos"/>
+                        </xsl:call-template>
+                      </xsl:with-param>
+                      <xsl:with-param name="class">N?/Pl_0</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
                   <!-- other nouns -->
