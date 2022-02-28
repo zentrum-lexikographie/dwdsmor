@@ -151,8 +151,8 @@
               </xsl:when>
               <!-- adjectives -->
               <xsl:when test="$pos='Adjektiv'">
-                <!-- uninflected adjectives -->
                 <xsl:choose>
+                  <!-- uninflected adjectives -->
                   <xsl:when test="dwds:indeklinabel">
                     <xsl:call-template name="default-entry">
                       <xsl:with-param name="lemma"
@@ -168,30 +168,88 @@
                       <xsl:with-param name="class">Adj0</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- other adjectives -->
+                  <!-- inflected adjectives -->
                   <xsl:otherwise>
-                    <xsl:call-template name="default-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma"/>
-                      <xsl:with-param name="pos">
-                        <xsl:call-template name="pos">
+                    <xsl:variable name="comparative"
+                                  select="normalize-space(dwds:Komparativ)"/>
+                    <xsl:variable name="superlative"
+                                  select="normalize-space(dwds:Superlativ)"/>
+                    <xsl:variable name="comparative-marker">
+                      <xsl:call-template name="get-nominal-marker">
+                        <xsl:with-param name="form"
+                                        select="$comparative"/>
+                        <xsl:with-param name="lemma"
+                                        select="$lemma"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:variable name="superlative-marker">
+                      <xsl:call-template name="get-nominal-marker">
+                        <xsl:with-param name="form"
+                                        select="substring-after($superlative,'am ')"/>
+                        <xsl:with-param name="lemma"
+                                        select="$lemma"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <!-- irregular adjectives -->
+                      <xsl:when test="ends-with($comparative,'er') and
+                                      ends-with($superlative,'sten') and
+                                      (not(matches($comparative-marker,'^&#x308;?-')) or
+                                       not(matches($superlative-marker,'^&#x308;?-')))">
+                        <xsl:call-template name="default-entry">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                          <xsl:with-param name="pos"
-                                          select="$pos"/>
+                          <xsl:with-param name="pos">
+                            <xsl:call-template name="pos">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="pos"
+                                              select="$pos"/>
+                            </xsl:call-template>
+                          </xsl:with-param>
+                          <xsl:with-param name="class">AdjPos</xsl:with-param>
                         </xsl:call-template>
-                      </xsl:with-param>
-                      <xsl:with-param name="class">
-                        <xsl:call-template name="adjective-class">
+                        <xsl:call-template name="adjective-entry">
                           <xsl:with-param name="lemma"
                                           select="$lemma"/>
-                          <xsl:with-param name="pos"
-                                          select="$pos"/>
+                          <xsl:with-param name="form"
+                                          select="replace($comparative,'^(.+)er$','$1')"/>
+                          <xsl:with-param name="class">AdjComp</xsl:with-param>
                         </xsl:call-template>
-                      </xsl:with-param>
-                    </xsl:call-template>
+                        <xsl:call-template name="adjective-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="form"
+                                          select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                          <xsl:with-param name="class">AdjSup</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- other adjectives -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="default-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="pos">
+                            <xsl:call-template name="pos">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="pos"
+                                              select="$pos"/>
+                            </xsl:call-template>
+                          </xsl:with-param>
+                          <xsl:with-param name="class">
+                            <xsl:call-template name="adjective-class">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="pos"
+                                              select="$pos"/>
+                            </xsl:call-template>
+                          </xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
                   </xsl:otherwise>
-                  </xsl:choose>
+                </xsl:choose>
               </xsl:when>
               <!-- nouns -->
               <xsl:when test="$pos='Substantiv'">

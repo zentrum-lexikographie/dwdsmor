@@ -1,9 +1,14 @@
 <Stem>alt<ADJ><base><nativ><Adj$e>
 <Stem>echt<ADJ><base><nativ><AdjPos>
 <Stem>früh<ADJ><base><nativ><Adj+e>
+<Stem>g:bu:et:<><ADJ><base><nativ><AdjSup>
+<Stem>g:bu:et:s<>:s<ADJ><base><nativ><AdjComp>
 <Stem>glatt<ADJ><base><nativ><Adj$e>
 <Stem>glatt<ADJ><base><nativ><Adj+e>
-<Stem>hoch<ADJ><base><nativ><Adj$>
+<Stem>gut<ADJ><base><nativ><AdjPos>
+<Stem>ho:öc:hh:<><ADJ><base><nativ><AdjComp>
+<Stem>ho:öch<ADJ><base><nativ><AdjSup>
+<Stem>hoch<ADJ><base><nativ><AdjPos>
 <Stem>jung<ADJ><base><nativ><Adj$>
 <Stem>kalt<ADJ><base><nativ><Adj$e>
 <Stem>klein<ADJ><base><nativ><Adj+>

@@ -62,6 +62,32 @@
   <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
+<xsl:template name="adjective-entry">
+  <xsl:param name="lemma"/>
+  <xsl:param name="form"/>
+  <xsl:param name="class"/>
+  <xsl:text>&lt;Base_Stems&gt;</xsl:text>
+  <xsl:value-of select="n:pair($lemma,$form)"/>
+  <xsl:text>&lt;ADJ&gt;</xsl:text>
+  <xsl:text>&lt;base&gt;</xsl:text>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:call-template name="etymology">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:call-template name="formation">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:value-of select="$class"/>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&#xA;</xsl:text>
+</xsl:template>
+
 <xsl:template name="noun-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="form"/>
@@ -175,15 +201,12 @@
 * <Adj+Lang>
 * <Adj-el/er>
 * <Adj0-Up>
-* <Adj0>
 * <AdjComp>
 * <AdjNN>
 * <AdjNNSuff>
-* <AdjPos>
 * <AdjPosAttr>
 * <AdjPosPred>
 * <AdjPosSup>
-* <AdjSup>
 * <Adj~+e>
 * <Adv>
 * <Circp>
