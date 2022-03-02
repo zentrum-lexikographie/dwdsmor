@@ -2,7 +2,9 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 2022-03-02:
 
-* add support for adjectives with word-internal comparative and superlative markers
+* add support for adjectives with irregular positive forms
+* add support for adjectives with word-internal comparative and superlative
+  markers
 
 2022-02-28:
 

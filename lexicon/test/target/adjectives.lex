@@ -8,7 +8,8 @@
 <Stem>gut<ADJ><base><nativ><AdjPos>
 <Stem>ho:öc:hh:<><ADJ><base><nativ><AdjComp>
 <Stem>ho:öch<ADJ><base><nativ><AdjSup>
-<Stem>hoch<ADJ><base><nativ><AdjPos>
+<Stem>hoc:hh:<><ADJ><base><nativ><AdjPosAttr>
+<Stem>hoch<ADJ><base><nativ><AdjPosPred>
 <Stem>hochrangig<ADJ><base><nativ><Adj+>
 <Stem>höchstrangig<ADJ><base><nativ><AdjPos>
 <Stem>höherrangig<ADJ><base><nativ><AdjPos>

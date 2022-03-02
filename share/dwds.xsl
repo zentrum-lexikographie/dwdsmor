@@ -60,6 +60,7 @@
                                                  self::dwds:Numeruspraeferenz or
                                                  self::dwds:Partizip_II or
                                                  self::dwds:Plural or
+                                                 self::dwds:Positiv or
                                                  self::dwds:Praesens or
                                                  self::dwds:Praeteritum or
                                                  self::dwds:Superlativ or
@@ -170,10 +171,20 @@
                   </xsl:when>
                   <!-- inflected adjectives -->
                   <xsl:otherwise>
+                    <xsl:variable name="positive"
+                                  select="normalize-space(dwds:Positiv)"/>
                     <xsl:variable name="comparative"
                                   select="normalize-space(dwds:Komparativ)"/>
                     <xsl:variable name="superlative"
                                   select="normalize-space(dwds:Superlativ)"/>
+                    <xsl:variable name="positive-marker">
+                      <xsl:call-template name="get-nominal-marker">
+                        <xsl:with-param name="form"
+                                        select="$positive"/>
+                        <xsl:with-param name="lemma"
+                                        select="$lemma"/>
+                      </xsl:call-template>
+                    </xsl:variable>
                     <xsl:variable name="comparative-marker">
                       <xsl:call-template name="get-nominal-marker">
                         <xsl:with-param name="form"
@@ -191,6 +202,48 @@
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:choose>
+                      <!-- adjectives with irregular positive forms -->
+                      <xsl:when test="string-length($positive)&gt;0 and
+                                      not(matches($positive-marker,'^&#x308;?-'))">
+                        <xsl:call-template name="default-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="pos">
+                            <xsl:call-template name="pos">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="pos"
+                                              select="$pos"/>
+                            </xsl:call-template>
+                          </xsl:with-param>
+                          <xsl:with-param name="class">AdjPosPred</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="adjective-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="form"
+                                          select="replace($positive,'^(.+)e$','$1')"/>
+                          <xsl:with-param name="class">AdjPosAttr</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:if test="string-length($comparative)&gt;0">
+                          <xsl:call-template name="adjective-entry">
+                            <xsl:with-param name="lemma"
+                                            select="$lemma"/>
+                            <xsl:with-param name="form"
+                                            select="replace($comparative,'^(.+)er$','$1')"/>
+                            <xsl:with-param name="class">AdjComp</xsl:with-param>
+                          </xsl:call-template>
+                        </xsl:if>
+                        <xsl:if test="string-length($superlative)&gt;0">
+                          <xsl:call-template name="adjective-entry">
+                            <xsl:with-param name="lemma"
+                                            select="$lemma"/>
+                            <xsl:with-param name="form"
+                                            select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                            <xsl:with-param name="class">AdjSup</xsl:with-param>
+                          </xsl:call-template>
+                        </xsl:if>
+                      </xsl:when>
                       <!-- adjectives with irregular comparative forms -->
                       <xsl:when test="ends-with($comparative,'er') and
                                       not(matches($comparative-marker,'^&#x308;?-'))">
