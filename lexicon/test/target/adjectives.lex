@@ -9,6 +9,9 @@
 <Stem>ho:öc:hh:<><ADJ><base><nativ><AdjComp>
 <Stem>ho:öch<ADJ><base><nativ><AdjSup>
 <Stem>hoch<ADJ><base><nativ><AdjPos>
+<Stem>hochrangig<ADJ><base><nativ><Adj+>
+<Stem>höchstrangig<ADJ><base><nativ><AdjPos>
+<Stem>höherrangig<ADJ><base><nativ><AdjPos>
 <Stem>jung<ADJ><base><nativ><Adj$>
 <Stem>kalt<ADJ><base><nativ><Adj$e>
 <Stem>klein<ADJ><base><nativ><Adj+>
