@@ -244,6 +244,36 @@
                           </xsl:call-template>
                         </xsl:if>
                       </xsl:when>
+                      <!-- adjectives with the uninflected comparative form "mehr" -->
+                      <xsl:when test="$comparative='mehr'">
+                        <xsl:call-template name="default-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="pos">
+                            <xsl:call-template name="pos">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="pos"
+                                              select="$pos"/>
+                            </xsl:call-template>
+                          </xsl:with-param>
+                          <xsl:with-param name="class">AdjPos</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="adjective-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="form"
+                                          select="$comparative"/>
+                          <xsl:with-param name="class">AdjComp0</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="adjective-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="form"
+                                          select="replace($superlative,'^am (.+)sten$','$1')"/>
+                          <xsl:with-param name="class">AdjSup</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
                       <!-- adjectives with irregular comparative forms -->
                       <xsl:when test="ends-with($comparative,'er') and
                                       not(matches($comparative-marker,'^&#x308;?-'))">

@@ -19,5 +19,8 @@
 <Stem>klein<ADJ><base><nativ><Adj+>
 <Stem>rosa<ADJ><base><fremd><Adj0>
 <Stem>spät<ADJ><base><nativ><Adj+e>
+<Stem>v:mi:ee:hl:r<ADJ><base><nativ><AdjComp0>
+<Stem>v:mi:ee:il:<><ADJ><base><nativ><AdjSup>
+<Stem>viel<ADJ><base><nativ><AdjPos>
 <Stem>warm<ADJ><base><nativ><Adj$>
 <Stem>wenig<ADJ><base><nativ><Adj+>
