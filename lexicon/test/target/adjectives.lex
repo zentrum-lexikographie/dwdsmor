@@ -5,6 +5,7 @@
 <Stem>g:bu:et:s<>:s<ADJ><base><nativ><AdjComp>
 <Stem>glatt<ADJ><base><nativ><Adj$e>
 <Stem>glatt<ADJ><base><nativ><Adj+e>
+<Stem>groß<ADJ><base><nativ><Adj$>
 <Stem>gut<ADJ><base><nativ><AdjPos>
 <Stem>ho:öc:hh:<><ADJ><base><nativ><AdjComp>
 <Stem>ho:öch<ADJ><base><nativ><AdjSup>

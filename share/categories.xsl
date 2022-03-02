@@ -62,12 +62,16 @@
 
 <xsl:variable name="adjective-class-mapping">
   <!-- gradable adjectives: -->
-  <!-- superlative: "-sten" -->
+  <!-- superlative: "-sten" or "-ten" -->
   <class pos="Adjektiv"
          superlative="-sten">Adj+</class>
-  <!-- superlative: umlaut and "-sten" -->
+  <class pos="Adjektiv"
+         superlative="-ten">Adj+</class>
+  <!-- superlative: umlaut and "-sten" or  "-ten" -->
   <class pos="Adjektiv"
          superlative="&#x308;-sten">Adj$</class>
+  <class pos="Adjektiv"
+         superlative="&#x308;-ten">Adj$</class>
   <!-- superlative: "-esten" -->
   <class pos="Adjektiv"
          superlative="-esten">Adj+e</class>
