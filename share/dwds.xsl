@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 3.0 -->
+<!-- Version 3.1 -->
 <!-- Andreas Nolda 2022-03-11 -->
 
 <xsl:stylesheet version="2.0"
@@ -24,9 +24,12 @@
 <!-- process <dwds:Artikel> -->
 <xsl:template match="dwds:Artikel">
   <!-- ignore idioms and other syntactically complex units
-       except for phrasal verbs with single separable element -->
-  <xsl:apply-templates select="dwds:Formangabe[not(dwds:Schreibung[contains(normalize-space(.),' ')] or
-                                                   dwds:Grammatik/dwds:Praesens[matches(normalize-space(.),' .+ ')])]"/>
+       except for reflexive verbs and phrasal verbs -->
+  <xsl:apply-templates select="dwds:Formangabe[not(dwds:Schreibung[count(tokenize(normalize-space(.)))&gt;1])]
+                                              [not(dwds:Grammatik/dwds:Praesens[tokenize(normalize-space(.))[2]='sich']
+                                                                               [count(tokenize(normalize-space(.)))&gt;3])]
+                                              [not(dwds:Grammatik/dwds:Praesens[not(tokenize(normalize-space(.))[2]='sich')]
+                                                                               [count(tokenize(normalize-space(.)))&gt;2])]"/>
 </xsl:template>
 
 <!-- group multiple grammar specifications of the same type
@@ -806,10 +809,28 @@
               </xsl:when>
               <!-- verbs -->
               <xsl:when test="$pos='Verb'">
-                <xsl:variable name="present"
-                              select="normalize-space(dwds:Praesens)"/>
-                <xsl:variable name="past"
-                              select="normalize-space(dwds:Praeteritum)"/>
+                <xsl:variable name="present">
+                  <!-- remove "sich", if any -->
+                  <xsl:choose>
+                    <xsl:when test="tokenize(normalize-space(dwds:Praesens))[2]='sich'">
+                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praesens)),2)"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="normalize-space(dwds:Praesens)"/>
+                    </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+                <xsl:variable name="past">
+                  <!-- remove "sich", if any -->
+                  <xsl:choose>
+                    <xsl:when test="tokenize(normalize-space(dwds:Praeteritum))[2]='sich'">
+                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praeteritum)),2)"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="normalize-space(dwds:Praeteritum)"/>
+                    </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
                 <xsl:variable name="participle"
                               select="normalize-space(dwds:Partizip_II)"/>
                 <xsl:variable name="particle"
@@ -1209,8 +1230,17 @@
               </xsl:when>
               <!-- verbal participles -->
               <xsl:when test="$pos='Partizip'"><!-- ad-hoc POS -->
-                <xsl:variable name="present"
-                              select="normalize-space(dwds:Praesens)"/>
+                <xsl:variable name="present">
+                  <!-- remove "sich", if any -->
+                  <xsl:choose>
+                    <xsl:when test="tokenize(normalize-space(dwds:Praesens))[2]='sich'">
+                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praesens)),2)"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="normalize-space(dwds:Praesens)"/>
+                    </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
                 <xsl:variable name="participle"
                               select="normalize-space(dwds:Partizip_II)"/>
                 <xsl:variable name="particle"

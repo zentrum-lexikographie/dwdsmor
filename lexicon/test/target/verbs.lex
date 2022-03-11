@@ -17,6 +17,7 @@
 <Stem><ge>frage:<>n:<><V><base><nativ><VVPP-t>
 <Stem><ge>frage:<>n:<><V><base><nativ><VVPres1+Imp>
 <Stem><ge>frage:<>n:<><V><base><nativ><VVReg>
+<Stem><ge>freue:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>glubsche:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>glupsche:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>googeln:<><V><base><nativ><VVReg-el/er>
@@ -41,6 +42,11 @@
 <Stem><ge>salze:<>n:<><V><base><nativ><VVPP-en>
 <Stem><ge>salze:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>schreddern:<><V><base><fremd><VVReg-el/er>
+<Stem><ge>se:ahe:<>n:<><V><base><nativ><VVPastIndStr>
+<Stem><ge>se:ähe:<>n:<><V><base><nativ><VVPastKonjStr>
+<Stem><ge>se:ih:ee:hn:<><V><base><nativ><VVPres2+Imp>
+<Stem><ge>sehe:<>n:<><V><base><nativ><VVPP-en>
+<Stem><ge>sehe:<>n:<><V><base><nativ><VVPres1>
 <Stem><ge>shreddern:<><V><base><fremd><VVReg-el/er>
 <Stem><ge>spre:ache:<>n:<><V><base><nativ><VVPastIndStr>
 <Stem><ge>spre:äche:<>n:<><V><base><nativ><VVPastKonjStr>
@@ -174,6 +180,11 @@
 <Stem>um<VPART><ge>de:än:ck:he:<>n:<><V><base><nativ><VVPastKonjReg>
 <Stem>um<VPART><ge>de:an:ck:he:<>n:<><V><base><nativ><VVPP-t>
 <Stem>um<VPART><ge>denke:<>n:<><V><base><nativ><VVPres>
+<Stem>um<VPART><ge>se:ahe:<>n:<><V><base><nativ><VVPastIndStr>
+<Stem>um<VPART><ge>se:ähe:<>n:<><V><base><nativ><VVPastKonjStr>
+<Stem>um<VPART><ge>se:ih:ee:hn:<><V><base><nativ><VVPres2+Imp>
+<Stem>um<VPART><ge>sehe:<>n:<><V><base><nativ><VVPP-en>
+<Stem>um<VPART><ge>sehe:<>n:<><V><base><nativ><VVPres1>
 <Stem>vaciere:<>n:<><V><base><nativ><VVReg>
 <Stem>vaziere:<>n:<><V><base><nativ><VVReg>
 <Stem>verhohnepiepeln:<><V><base><nativ><VVReg-el/er>

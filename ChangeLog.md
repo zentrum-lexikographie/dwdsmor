@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-03-11:
 
 * add support for phrasal verbs
+* add support for reflexive verbs
 
 2022-03-02:
 
