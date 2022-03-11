@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-03-11:
+
+* add support for phrasal verbs
+
 2022-03-02:
 
 * add support for adjectives with irregular positive forms

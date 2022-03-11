@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 1.1 -->
-<!-- Andreas Nolda 2022-02-11 -->
+<!-- Version 2.0 -->
+<!-- Andreas Nolda 2022-03-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -35,8 +35,7 @@
 
 <!-- present-stem forms -->
 <xsl:template name="present-stem">
-  <xsl:variable name="form"
-                select="normalize-space(dwds:Praesens)"/>
+  <xsl:param name="form"/>
   <xsl:choose>
     <xsl:when test="matches($form,'^.+?e?t$')">
       <xsl:value-of select="replace($form,'^(.+?)e?t$',
@@ -50,8 +49,7 @@
 
 <!-- past-stem forms -->
 <xsl:template name="past-stem">
-  <xsl:variable name="form"
-                select="normalize-space(dwds:Praeteritum)"/>
+  <xsl:param name="form"/>
   <xsl:choose>
     <xsl:when test="matches($form,'^.+?e?te$')">
       <xsl:value-of select="replace($form,'^(.+?)e?te$',
@@ -65,9 +63,8 @@
 
 <!-- participle-stem forms -->
 <xsl:template name="participle-stem">
+  <xsl:param name="form"/>
   <xsl:param name="lemma"/>
-  <xsl:variable name="form"
-                select="normalize-space(dwds:Partizip_II)"/>
   <xsl:choose>
     <xsl:when test="matches($form,'^ge.+?e?t$') and
                     not(matches($form,concat('^',substring($lemma,1,3))))">
@@ -95,16 +92,18 @@
 
 <!-- prefixes of participles -->
 <xsl:template name="participle-prefix">
+  <xsl:param name="form"
+             select="normalize-space(dwds:Partizip_II)"/>
   <xsl:param name="lemma"/>
-  <xsl:variable name="participle"
-                select="normalize-space(dwds:Partizip_II)"/>
   <xsl:variable name="participle-stem">
     <xsl:call-template name="participle-stem">
+      <xsl:with-param name="form"
+                      select="$form"/>
       <xsl:with-param name="lemma"
                       select="$lemma"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:if test="matches($participle,concat('^ge',$participle-stem,'e?[nt]$'))">
+  <xsl:if test="matches($form,concat('^ge',$participle-stem,'e?[nt]$'))">
     <xsl:text>&lt;ge&gt;</xsl:text>
   </xsl:if>
 </xsl:template>

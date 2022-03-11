@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 3.1 -->
-<!-- Andreas Nolda 2022-02-24 -->
+<!-- Version 3.2 -->
+<!-- Andreas Nolda 2022-03-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -116,6 +116,8 @@
 
 <xsl:template name="verb-entry">
   <xsl:param name="lemma"/>
+  <xsl:param name="participle"/>
+  <xsl:param name="particle"/>
   <xsl:param name="stem"/>
   <xsl:param name="class"/>
   <xsl:variable name="base-stem">
@@ -124,11 +126,20 @@
                       select="$lemma"/>
     </xsl:call-template>
   </xsl:variable>
+  <xsl:if test="string-length($particle)&gt;0">
+    <xsl:text>&lt;Base_Stems&gt;</xsl:text>
+    <xsl:value-of select="$particle"/>
+    <xsl:text>&lt;PREF&gt;:&lt;&gt;</xsl:text>
+  </xsl:if>
   <xsl:call-template name="participle-prefix">
     <xsl:with-param name="lemma"
                     select="$lemma"/>
+    <xsl:with-param name="form"
+                    select="$participle"/>
   </xsl:call-template>
-  <xsl:text>&lt;Base_Stems&gt;</xsl:text>
+  <xsl:if test="string-length($particle)=0">
+    <xsl:text>&lt;Base_Stems&gt;</xsl:text>
+  </xsl:if>
   <xsl:value-of select="n:pair($base-stem,$stem)"/>
   <xsl:text>&lt;V&gt;</xsl:text>
   <xsl:text>&lt;base&gt;</xsl:text>
