@@ -186,14 +186,6 @@
 * <Konj-Kon>
 * <Konj-Sub>
 * <Konj-Vgl>
-* <Name-Fem_0>
-* <Name-Fem_s>
-* <Name-Masc_0>
-* <Name-Masc_s>
-* <Name-Neut_0>
-* <Name-Neut_s>
-* <Name-Pl_0>
-* <Name-Pl_x>
 * <NFem_s_s>
 * <NMasc_en_e>
 * <Postp-Akk>

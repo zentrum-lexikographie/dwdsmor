@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 3.2 -->
-<!-- Andreas Nolda 2022-03-11 -->
+<!-- Version 3.3 -->
+<!-- Andreas Nolda 2022-03-21 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -168,7 +168,14 @@
   <xsl:text>&lt;Base_Stems&gt;</xsl:text>
   <xsl:value-of select="$lemma"/>
   <xsl:text>&lt;</xsl:text>
-  <xsl:value-of select="$pos"/>
+  <xsl:choose>
+    <xsl:when test="$pos='NPROP'">
+      <xsl:text>NE</xsl:text>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$pos"/>
+    </xsl:otherwise>
+    </xsl:choose>
   <xsl:text>&gt;</xsl:text>
   <xsl:text>&lt;base&gt;</xsl:text>
   <xsl:text>&lt;</xsl:text>
@@ -193,7 +200,6 @@
 <!-- add support for the following part-of-speech categories:
 * <ABK>
 * <ADV>
-* <NE>
 * <OTHER> -->
 <!-- add support for the following inflection classes:
 * <Abk_ADJ>
@@ -228,15 +234,7 @@
 * <Konj-Kon>
 * <Konj-Sub>
 * <Konj-Vgl>
-* <Name-Fem_0>
-* <Name-Fem_s>
 * <Name-Invar>
-* <Name-Masc_0>
-* <Name-Masc_s>
-* <Name-Neut_0>
-* <Name-Neut_s>
-* <Name-Pl_0>
-* <Name-Pl_x>
 * <NFem-Deriv>
 * <NMasc-s/Sg>
 * <NMasc_en_e>

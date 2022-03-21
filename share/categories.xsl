@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 1.3 -->
-<!-- Andreas Nolda 2022-02-28 -->
+<!-- Version 2.0 -->
+<!-- Andreas Nolda 2022-03-21 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -12,6 +12,7 @@
 
 <xsl:variable name="pos-mapping">
   <pos pos="Adjektiv">ADJ</pos>
+  <pos pos="Eigenname">NPROP</pos>
   <pos pos="Substantiv">NN</pos>
   <pos pos="Verb">V</pos>
   <pos pos="Partizip">V</pos><!-- ad-hoc POS -->
@@ -904,6 +905,143 @@
                                                              [not(@dative-plural)]"/>
             </xsl:otherwise>
           </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:with-param>
+    <xsl:with-param name="type">class</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+</xsl:template>
+
+<xsl:variable name="name-class-mapping">
+  <!-- masculine proper names: -->
+  <!-- genitive singular: "-s"
+       no plural -->
+  <class pos="Eigenname"
+         gender="mask."
+         genitive-singular="-s">Name-Masc_s</class>
+  <!-- genitive singular: unmarked
+       no plural -->
+  <class pos="Eigenname"
+         gender="mask."
+         genitive-singular="-">Name-Masc_0</class>
+  <!-- neuter proper names: -->
+  <!-- genitive singular: "-s"
+       no plural -->
+  <class pos="Eigenname"
+         gender="neutr."
+         genitive-singular="-s">Name-Neut_s</class>
+  <!-- genitive singular: unmarked
+       no plural -->
+  <class pos="Eigenname"
+         gender="neutr."
+         genitive-singular="-">Name-Neut_0</class>
+  <!-- feminine proper names: -->
+  <!-- genitive singular: "-s"
+       no plural -->
+  <class pos="Eigenname"
+         gender="fem."
+         genitive-singular="-s">Name-Fem_s</class>
+  <!-- genitive singular: unmarked
+       no plural -->
+  <class pos="Eigenname"
+         gender="fem."
+         genitive-singular="-">Name-Fem_0</class>
+  <!-- plural proper names: -->
+  <!-- nominative plural: with stem-final "n"
+       dative plural: unmarked -->
+  <class pos="Eigenname"
+         dative-plural="-">Name-Pl_x</class>
+  <!-- nominative plural: without stem-final "n" -->
+  <class pos="Eigenname">Name-Pl_0</class>
+  <!-- TODO: more class mappings -->
+  <!-- ... -->
+</xsl:variable>
+
+<xsl:template name="name-class">
+  <xsl:param name="lemma"/>
+  <xsl:param name="pos"
+             select="normalize-space(dwds:Wortklasse)"/>
+  <xsl:param name="gender"
+             select="normalize-space(dwds:Genus)"/>
+  <xsl:param name="genitive-singular"
+             select="normalize-space(dwds:Genitiv)"/>
+  <xsl:param name="nominative-plural"
+             select="normalize-space(dwds:Plural)"/>
+  <xsl:param name="number-preference"
+             select="normalize-space(dwds:Numeruspraeferenz)"/>
+  <xsl:variable name="number">
+    <xsl:choose>
+      <xsl:when test="$number-preference='nur im Singular'">singular</xsl:when>
+      <xsl:when test="$number-preference='nur im Plural'">plural</xsl:when>
+      <xsl:otherwise>singular+plural</xsl:otherwise>
+      </xsl:choose>
+  </xsl:variable>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value">
+      <xsl:choose>
+        <!-- plural proper names -->
+        <xsl:when test="$number='plural'">
+          <xsl:choose>
+            <!-- nominative plural: with stem-final "n"
+                 dative plural: unmarked -->
+            <xsl:when test="ends-with($lemma,'n')">
+              <xsl:value-of select="$name-class-mapping/class[@pos=$pos]
+                                                             [not(@gender)]
+                                                             [not(@genitive-singular)]
+                                                             [not(@nominative-plural)]
+                                                             [@dative-plural='-']"/>
+            </xsl:when>
+            <!-- other plural proper names -->
+            <xsl:otherwise>
+              <xsl:value-of select="$name-class-mapping/class[@pos=$pos]
+                                                             [not(@gender)]
+                                                             [not(@genitive-singular)]
+                                                             [not(@nominative-plural)]
+                                                             [not(@dative-plural)]"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <!-- singular proper names -->
+        <xsl:when test="$number='singular'">
+          <xsl:variable name="genitive-singular-marker">
+            <xsl:call-template name="get-nominal-marker">
+              <xsl:with-param name="form"
+                              select="$genitive-singular"/>
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:value-of select="$name-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [not(@nominative-plural)]
+                                                         [not(@dative-plural)]"/>
+        </xsl:when>
+        <!-- other proper names -->
+        <xsl:otherwise>
+          <xsl:variable name="genitive-singular-marker">
+            <xsl:call-template name="get-nominal-marker">
+              <xsl:with-param name="form"
+                              select="$genitive-singular"/>
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:variable name="nominative-plural-marker">
+            <xsl:call-template name="get-nominal-marker">
+              <xsl:with-param name="form"
+                              select="$nominative-plural"/>
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:value-of select="$name-class-mapping/class[@pos=$pos]
+                                                         [@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural=$nominative-plural-marker]
+                                                         [not(@dative-plural)]"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:with-param>

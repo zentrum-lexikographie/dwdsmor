@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-03-21:
+
+* add initial support for proper names
+
 2022-03-11:
 
 * add support for phrasal verbs
