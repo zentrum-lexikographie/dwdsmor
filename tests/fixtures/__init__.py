@@ -91,6 +91,8 @@ def extract_wb_entries(wb_xml_file):
                     break
                 if pos == 'Mehrwortausdruck':
                     continue
+                if pos == '':
+                    continue
                 written_reprs = form.iter(
                     '{http://www.dwds.de/ns/1.0}Schreibung'
                 )
