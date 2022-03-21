@@ -79,7 +79,7 @@ def extract_wb_entries(wb_xml_file):
                     for pos_tag in pos_tags:
                         pos = pos_tag.text or ''
                         break
-                    if pos == 'Substantiv':
+                    if pos == 'Substantiv' or pos == 'Eigenname':
                         if not ((grammar.findall('{http://www.dwds.de/ns/1.0}Genus') and
                                  grammar.findall('{http://www.dwds.de/ns/1.0}Genitiv')) or
                                 grammar.findall('{http://www.dwds.de/ns/1.0}Numeruspraeferenz[.="nur im Plural"]')):
