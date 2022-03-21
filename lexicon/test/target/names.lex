@@ -4,3 +4,4 @@
 <Stem>Atlantik<NPROP><base><nativ><Name-Masc_s>
 <Stem>Niederlande<NPROP><base><nativ><Name-Pl_0>
 <Stem>Osteuropa<NPROP><base><nativ><Name-Neut_s>
+<Stem>USA<NPROP><base><fremd><Name-Pl_x>

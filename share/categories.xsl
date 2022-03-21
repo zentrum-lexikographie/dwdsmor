@@ -246,7 +246,7 @@
          genitive-singular="-"
          nominative-plural="-s">NMasc_0_s</class>
   <!-- genitive singular: "-s"
-       nominative plural: unmarked, with stem-final "n"
+       nominative plural: unmarked, with stem-final "n" or uppercase lemma
        dative plural: unmarked -->
   <class pos="Substantiv"
          gender="mask."
@@ -260,7 +260,7 @@
          genitive-singular="-s"
          nominative-plural="-">NMasc_s_0</class>
   <!-- genitive singular: "-s"
-       nominative plural: umlaut, with stem-final "n"
+       nominative plural: umlaut, with stem-final "n" or uppercase lemma
        dative plural: unmarked -->
   <class pos="Substantiv"
          gender="mask."
@@ -451,7 +451,7 @@
          genitive-singular="-s"
          nominative-plural="-ta">NNeut-a/ata</class>
   <!-- genitive singular: "-s"
-       nominative plural: unmarked, with stem-final "n"
+       nominative plural: unmarked, with stem-final "n" or uppercase lemma
        dative plural: unmarked -->
   <class pos="Substantiv"
          gender="neutr."
@@ -628,7 +628,7 @@
          genitive-singular="-"
          nominative-plural="-is/iden">NFem-is/iden</class>
   <!-- pluralia tantum: -->
-  <!-- nominative plural: with stem-final "n"
+  <!-- nominative plural: with stem-final "n" or uppercase lemma
        dative plural: unmarked -->
   <class pos="Substantiv"
          dative-plural="-">N?/Pl_x</class>
@@ -663,9 +663,10 @@
         <!-- pluralia tantum -->
         <xsl:when test="$number='plural'">
           <xsl:choose>
-            <!-- nominative plural: with stem-final "n"
+            <!-- nominative plural: with stem-final "n" or uppercase lemma
                  dative plural: unmarked -->
-            <xsl:when test="ends-with($lemma,'n')">
+            <xsl:when test="ends-with($lemma,'n') or
+                            matches($lemma,'^\p{Lu}+$')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [not(@gender)]
                                                              [not(@genitive-singular)]
@@ -718,11 +719,12 @@
           </xsl:variable>
           <xsl:choose>
             <!-- genitive singular: "-s"
-                 nominative plural: umlaut or unmarked, with stem-final "n"
+                 nominative plural: umlaut or unmarked, with stem-final "n" or uppercase lemma
                  dative plural: unmarked -->
             <xsl:when test="$genitive-singular-marker='-s' and
                             ends-with($nominative-plural-marker,'-') and
-                            ends-with($lemma,'n')">
+                            (ends-with($lemma,'n') or
+                             matches($lemma,'^\p{Lu}+$'))">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -984,9 +986,10 @@
         <!-- plural proper names -->
         <xsl:when test="$number='plural'">
           <xsl:choose>
-            <!-- nominative plural: with stem-final "n"
+            <!-- nominative plural: with stem-final "n" or uppercase lemma
                  dative plural: unmarked -->
-            <xsl:when test="ends-with($lemma,'n')">
+            <xsl:when test="ends-with($lemma,'n') or
+                            matches($lemma,'^\p{Lu}+$')">
               <xsl:value-of select="$name-class-mapping/class[@pos=$pos]
                                                              [not(@gender)]
                                                              [not(@genitive-singular)]

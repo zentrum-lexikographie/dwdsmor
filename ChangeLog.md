@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-03-21:
 
 * add initial support for proper names
+* ensure that dative plural forms of uppercase acronyms are not suffixed with "-n"
 
 2022-03-11:
 
