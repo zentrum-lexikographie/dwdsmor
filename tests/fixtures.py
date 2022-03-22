@@ -1,4 +1,3 @@
-import itertools
 import random
 import xml.etree.ElementTree as ET
 
@@ -8,7 +7,7 @@ from pytest import fixture
 import sfst_transduce
 
 
-base_dir = (Path(__file__) / '..' / '..' / '..').resolve()
+base_dir = (Path(__file__) /  '..' / '..').resolve()
 smor_lemma_dir = base_dir / 'SMORLemma'
 tests_dir = base_dir / 'tests'
 test_data_dir = base_dir / 'test-data'
@@ -139,4 +138,4 @@ def tuebadz_sentences():
 
 @fixture
 def tuebadz():
-    return tuple(itertools.islice(tuebadz_sentences(), 10000))
+    return tuple(tuebadz_sentences())
