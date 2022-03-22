@@ -265,25 +265,25 @@ In order to build FSTs there, log into the cluster and prepare the build
 environment:
 
 ```sh
-ssh bembbaw0@blogin.hlrn.de /scratch/usr/bembbaw0/dwdsmor/hlrn/setup
+ssh bembbaw1@blogin.hlrn.de /scratch/usr/bembbaw0/dwdsmor/hlrn/setup
 ```
 
 Then upload a lexicon:
 
 ```sh
-scp $LEXICON bembbaw0@blogin.hlrn.de:/scratch/usr/bembbaw0/dwdsmor/SMORLemma/lexicon/lexicon
+scp $LEXICON bembbaw1@blogin.hlrn.de:/scratch/usr/bembbaw1/dwdsmor/SMORLemma/lexicon/lexicon
 ```
 
 Finally run the build on a compute host:
 
 ```sh
-ssh bembbaw0@blogin.hlrn.de sbatch /scratch/usr/bembbaw0/dwdsmor/hlrn/build
+ssh bembbaw1@blogin.hlrn.de sbatch /scratch/usr/bembbaw1/dwdsmor/hlrn/build
 ```
 
 You can check the status of running builds via
 
 ```sh
-ssh bembbaw0@blogin.hlrn.de squeue -l --me
+ssh bembbaw1@blogin.hlrn.de squeue -l --me
 ```
 
 ## Tests

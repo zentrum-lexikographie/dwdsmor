@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Builds happen in the WORK area
-base_dir=/scratch/usr/bembbaw0
-pushd $base_dir/dwdsmor
+base_dir=/scratch/usr/bembbaw1
 
 # SFST needs cmake v3.1 and a recent C++ compiler; both are available via the
 # module system
@@ -10,11 +9,19 @@ module load cmake/3.16.2 gcc/9.3.0
 export CC=$(which gcc)
 export CXX=$(which g++)
 
+sfst_dir=$base_dir/sfst-1.5.5
+
+export PATH=$sfst_dir/build/src:$PATH
+export LD_LIBRARY_PATH=$sfst_dir/build/src:$LD_LIBRARY_PATH
+
+pushd $base_dir/dwdsmor
+
 # Check that a lexicon has been provided/uploaded
 if [ ! -f SMORLemma/lexicon/lexicon ]; then
     echo "No lexicon provided!"
     exit 1
 fi
+
 
 source .venv/bin/activate
 make

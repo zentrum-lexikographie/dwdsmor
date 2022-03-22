@@ -4,5 +4,5 @@
 	branch = zdl-lex-server/production
 [submodule "SMORLemma"]
 	path = SMORLemma
-	url = git@git.zdl.org:zdl/SMORLemma.git
+	url = ../SMORLemma.git
 	branch = lemmatiser
