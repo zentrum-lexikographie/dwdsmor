@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-03-22:
+
+* add support for masculine and neuter proper names with genitive singular forms
+  ending in "-es" or "-s"
+
 2022-03-21:
 
 * add initial support for proper names

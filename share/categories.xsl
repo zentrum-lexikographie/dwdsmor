@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 2.0 -->
-<!-- Andreas Nolda 2022-03-21 -->
+<!-- Version 2.1 -->
+<!-- Andreas Nolda 2022-03-22 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -918,6 +918,14 @@
 
 <xsl:variable name="name-class-mapping">
   <!-- masculine proper names: -->
+  <!-- genitive singular: "-(e)s"
+       no plural -->
+  <class pos="Eigenname"
+         gender="mask."
+         genitive-singular="-(e)s">Name-Masc_es</class>
+  <class pos="Eigenname"
+         gender="mask."
+         genitive-singular="-es">Name-Masc_es</class>
   <!-- genitive singular: "-s"
        no plural -->
   <class pos="Eigenname"
@@ -929,6 +937,14 @@
          gender="mask."
          genitive-singular="-">Name-Masc_0</class>
   <!-- neuter proper names: -->
+  <!-- genitive singular: "-(e)s"
+       no plural -->
+  <class pos="Eigenname"
+         gender="neutr."
+         genitive-singular="-(e)s">Name-Neut_es</class>
+  <class pos="Eigenname"
+         gender="neutr."
+         genitive-singular="-es">Name-Neut_es</class>
   <!-- genitive singular: "-s"
        no plural -->
   <class pos="Eigenname"
