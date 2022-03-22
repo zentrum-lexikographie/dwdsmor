@@ -22,7 +22,8 @@ setup(
         'test': [
             'pytest',
             'autoflake',
-            'flake8'
+            'flake8',
+            'dvc[ssh]'
         ]
     },
     entry_points={

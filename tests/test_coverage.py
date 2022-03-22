@@ -4,6 +4,27 @@ import os
 import dwdsmor
 
 
+def test_tuebadz_coverage(tuebadz, dwdsmor_transducer):
+    from collections import Counter
+    print(Counter((
+        w['pos'] for s in tuebadz for w in s
+    )))
+    for s in tuebadz[10:30]:
+        for w in s:
+            form, lemma, pos = (w['form'], w['lemma'], w['pos'])
+            if pos.startswith('$'):
+                continue
+            if lemma == '#refl':
+                lemma = form
+            lemma = lemma.split('%')[0]
+            lemma = lemma.replace('#', '')
+
+            analyses = dwdsmor_transducer.analyse(form)
+            analyses = dwdsmor.analysis.parse(analyses)
+
+            print((form, lemma, pos, analyses))
+
+
 def test_wb_coverage(project_dir, dwdsmor_transducer, wb_entries):
     coverage_report_file = project_dir / 'wb-coverage-report.csv'
     with coverage_report_file.open('w') as report_f:

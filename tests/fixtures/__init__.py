@@ -1,3 +1,4 @@
+import itertools
 import random
 import xml.etree.ElementTree as ET
 
@@ -10,6 +11,7 @@ import sfst_transduce
 base_dir = (Path(__file__) / '..' / '..' / '..').resolve()
 smor_lemma_dir = base_dir / 'SMORLemma'
 tests_dir = base_dir / 'tests'
+test_data_dir = base_dir / 'test-data'
 
 
 @fixture
@@ -118,3 +120,25 @@ def wb_entries():
         for wb_xml_file in wb_dir.glob('**/*.xml')
         for wb_entry in extract_wb_entries(wb_xml_file)
     )
+
+
+tuebdaz_dataset_file = test_data_dir / 'tuebadz' / 'tuebadz-11.0-exportXML-v2.xml'
+
+
+def tuebadz_sentences():
+    with tuebdaz_dataset_file.open() as f:
+        words = []
+        for ev_type, el in ET.iterparse(f, ("start", "end")):
+            if ev_type == 'start':
+                if el.tag == 'word':
+                    words.append(el.attrib.copy())
+            elif ev_type == 'end':
+                if el.tag == 'sentence':
+                    sentence = words
+                    words = []
+                    yield sentence
+
+
+@fixture
+def tuebadz():
+    return tuple(itertools.islice(tuebadz_sentences(), 3000))
