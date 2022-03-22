@@ -129,16 +129,14 @@ def tuebadz_sentences():
     with tuebdaz_dataset_file.open() as f:
         words = []
         for ev_type, el in ET.iterparse(f, ("start", "end")):
-            if ev_type == 'start':
-                if el.tag == 'word':
-                    words.append(el.attrib.copy())
-            elif ev_type == 'end':
-                if el.tag == 'sentence':
-                    sentence = words
-                    words = []
-                    yield sentence
+            if ev_type == 'start' and el.tag == 'word':
+                words.append(el.attrib.copy())
+            elif ev_type == 'end' and el.tag == 'sentence':
+                sentence = words
+                words = []
+                yield sentence
 
 
 @fixture
 def tuebadz():
-    return tuple(itertools.islice(tuebadz_sentences(), 3000))
+    return tuple(itertools.islice(tuebadz_sentences(), 10000))

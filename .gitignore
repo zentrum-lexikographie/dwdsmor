@@ -15,4 +15,4 @@ lexicon/test/output/
 lexicon/wb/
 SMORLemma/
 
-wb-coverage-report.csv
+test-reports/
