@@ -284,7 +284,6 @@
 * <VMPastKonj>
 * <VMPresPl>
 * <VMPresSg>
-* <VPastIndReg>
 * <VPastIndStr>
 * <VPastKonjStr>
 * <VPPast>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 4.0 -->
-<!-- Andreas Nolda 2022-03-21 -->
+<!-- Version 4.1 -->
+<!-- Andreas Nolda 2022-03-23 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1109,8 +1109,18 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
-                      <xsl:with-param name="stem"
-                                      select="$past-stem"/>
+                      <xsl:with-param name="stem">
+                        <xsl:choose>
+                          <xsl:when test="matches($past-stem,'[dt]$') and
+                                          matches($past-without-particle,concat('^',$past-stem,'te$'))">
+                            <!-- prevent "e" epenthesis before "-t" -->
+                            <xsl:value-of select="concat($past-stem,'&lt;FB&gt;')"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <xsl:value-of select="$past-stem"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:with-param>
                       <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
                     </xsl:call-template>
                     <!-- past subjunctive -->
@@ -1152,8 +1162,18 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
+                      <xsl:with-param name="stem">
+                        <xsl:choose>
+                          <xsl:when test="matches($participle-stem,'[dt]$') and
+                                          matches($participle-without-particle,concat('^(ge)?',$participle-stem,'t$'))">
+                            <!-- prevent "e" epenthesis before "-t" -->
+                            <xsl:value-of select="concat($participle-stem,'&lt;FB&gt;')"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <xsl:value-of select="$participle-stem"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:with-param>
                       <xsl:with-param name="class">VVPP-t</xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 2.1 -->
-<!-- Andreas Nolda 2022-02-22 -->
+<!-- Version 2.2 -->
+<!-- Andreas Nolda 2022-03-23 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -120,10 +120,30 @@
   <xsl:variable name="value">
     <xsl:if test="string-length($argument1)&gt;0 or
                   string-length($argument2)&gt;0">
-      <xsl:variable name="substring1"
-                    select="substring($argument1,1,1)"/>
-      <xsl:variable name="substring2"
-                    select="substring($argument2,1,1)"/>
+      <xsl:variable name="substring1">
+        <xsl:choose>
+          <!-- a multi-character symbol in angle brackets -->
+          <xsl:when test="matches($argument1,'^&lt;.*&gt;')">
+            <xsl:value-of select="replace($argument1,'^(&lt;.*?&gt;).*$','$1')"/>
+          </xsl:when>
+          <!-- a character -->
+          <xsl:otherwise>
+            <xsl:value-of select="substring($argument1,1,1)"/>
+          </xsl:otherwise>
+          </xsl:choose>
+      </xsl:variable>
+      <xsl:variable name="substring2">
+        <xsl:choose>
+          <!-- a multi-character symbol in angle brackets -->
+          <xsl:when test="matches($argument2,'^&lt;.*&gt;')">
+            <xsl:value-of select="replace($argument2,'^(&lt;.*?&gt;).*$','$1')"/>
+          </xsl:when>
+          <!-- a character -->
+          <xsl:otherwise>
+            <xsl:value-of select="substring($argument2,1,1)"/>
+          </xsl:otherwise>
+          </xsl:choose>
+      </xsl:variable>
       <xsl:variable name="string1">
         <xsl:choose>
           <xsl:when test="string-length($substring1)=0">
@@ -152,8 +172,8 @@
           <xsl:value-of select="concat($string1,':',$string2)"/>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:value-of select="n:pair(substring($argument1,2),
-                                   substring($argument2,2))"/>
+      <xsl:value-of select="n:pair(substring-after($argument1,$substring1),
+                                   substring-after($argument2,$substring2))"/>
     </xsl:if>
   </xsl:variable>
   <xsl:sequence select="$value"/>

@@ -44,9 +44,14 @@
 <Stem><ge>schreddern:<><V><base><fremd><VVReg-el/er>
 <Stem><ge>se:ahe:<>n:<><V><base><nativ><VVPastIndStr>
 <Stem><ge>se:ähe:<>n:<><V><base><nativ><VVPastKonjStr>
+<Stem><ge>se:ande:<FB>n:<><V><base><nativ><VVPastIndReg>
+<Stem><ge>se:ande:<FB>n:<><V><base><nativ><VVPP-t>
 <Stem><ge>se:ih:ee:hn:<><V><base><nativ><VVPres2+Imp>
 <Stem><ge>sehe:<>n:<><V><base><nativ><VVPP-en>
 <Stem><ge>sehe:<>n:<><V><base><nativ><VVPres1>
+<Stem><ge>sende:<>n:<><V><base><nativ><VVPastKonjReg>
+<Stem><ge>sende:<>n:<><V><base><nativ><VVPres>
+<Stem><ge>sende:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>shreddern:<><V><base><fremd><VVReg-el/er>
 <Stem><ge>spre:ache:<>n:<><V><base><nativ><VVPastIndStr>
 <Stem><ge>spre:äche:<>n:<><V><base><nativ><VVPastKonjStr>
@@ -69,6 +74,11 @@
 <Stem><ge>trage:<>n:<><V><base><nativ><VVPres1+Imp>
 <Stem><ge>trecke:<>n:<><V><base><fremd><VVReg>
 <Stem><ge>trekke:<>n:<><V><base><fremd><VVReg>
+<Stem><ge>we:ande:<FB>n:<><V><base><nativ><VVPastIndReg>
+<Stem><ge>we:ande:<FB>n:<><V><base><nativ><VVPP-t>
+<Stem><ge>wende:<>n:<><V><base><nativ><VVPastKonjReg>
+<Stem><ge>wende:<>n:<><V><base><nativ><VVPres>
+<Stem><ge>wende:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>werte:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>wi:unke:<>n:<><V><base><nativ><VVPP-en>
 <Stem><ge>winke:<>n:<><V><base><nativ><VVReg>

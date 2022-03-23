@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-03-23:
+
+* add support for weak verbs with irregular past stem without "e" epenthesis
+  between stem-final "d" or "t" and suffix "-t"
+
 2022-03-22:
 
 * add support for masculine and neuter proper names with genitive singular forms
