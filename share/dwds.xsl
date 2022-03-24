@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 4.1 -->
-<!-- Andreas Nolda 2022-03-23 -->
+<!-- Version 4.2 -->
+<!-- Andreas Nolda 2022-03-24 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1293,8 +1293,18 @@
                                           select="$participle-without-particle"/>
                           <xsl:with-param name="particle"
                                           select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$present-stem"/>
+                          <xsl:with-param name="stem">
+                            <xsl:choose>
+                              <xsl:when test="matches($present-stem,'[dt]$') and
+                                              matches($present-without-particle,concat('^',$present-stem,'t$'))">
+                                <!-- prevent "e" epenthesis before "-t" -->
+                                <xsl:value-of select="concat($present-stem,'&lt;FB&gt;')"/>
+                              </xsl:when>
+                              <xsl:otherwise>
+                                <xsl:value-of select="$present-stem"/>
+                              </xsl:otherwise>
+                            </xsl:choose>
+                          </xsl:with-param>
                           <xsl:with-param name="class">VVPres2</xsl:with-param>
                         </xsl:call-template>
                       </xsl:otherwise>
