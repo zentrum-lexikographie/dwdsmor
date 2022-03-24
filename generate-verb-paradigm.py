@@ -12,7 +12,7 @@ version = 1.0
 
 parser = argparse.ArgumentParser()
 parser.add_argument("lemma",
-                    help="noun")
+                    help="verb")
 parser.add_argument("-v", "--version", action="version",
                     version="{0} {1}".format(parser.prog, version))
 args = parser.parse_args()
