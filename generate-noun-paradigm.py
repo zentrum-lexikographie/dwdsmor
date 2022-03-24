@@ -36,7 +36,7 @@ def get_forms(lemma):
                                                     "<" + gender + ">" +
                                                     "<" + case + ">" +
                                                     "<" + number + ">")
-                cats = case + " " + number
+                cats = " ".join([case, number])
                 if forms:
                     paradigm.update({cats: forms})
 

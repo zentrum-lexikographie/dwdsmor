@@ -42,7 +42,7 @@ def get_forms(lemma):
                                                                        "<" + number + ">" +
                                                                        "<" + tense + ">" +
                                                                        "<" + mode + ">")
-                    cats = person + " " + number + " " + tense  + " " + mode
+                    cats = " ".join([person, number, tense, mode])
                     if forms:
                         paradigm.update({cats: forms})
 
