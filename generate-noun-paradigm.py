@@ -1,25 +1,26 @@
 #!/usr/bin/python3
 # generate-noun-paradigm.py -- generate a paradigm of noun forms
-# Andreas Nolda 2022-03-24
+# Andreas Nolda 2022-03-25
 
 import sys
 import argparse
 import sfst_transduce
 from os import path
 
-version = 1.0
+version = 1.2
+
+basedir = path.dirname(__file__)
+libdir  = path.join(basedir, "SMORLemma")
+libfile = path.join(libdir, "smor.a")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("lemma",
                     help="noun")
+parser.add_argument("-t", "--transducer", default=libfile,
+                    help="transducer file")
 parser.add_argument("-v", "--version", action="version",
                     version="{0} {1}".format(parser.prog, version))
 args = parser.parse_args()
-
-transducer_dir  = "SMORLemma"
-transducer_file = path.join(transducer_dir, "smor.a")
-
-transducer = sfst_transduce.Transducer(transducer_file)
 
 pos     = "NN"
 genders = ["Masc", "Neut", "Fem", "NoGend"]
@@ -28,14 +29,14 @@ numbers = ["Sg", "Pl"]
 
 paradigm = {}
 
-def get_forms(lemma):
+def get_forms(lemma, transducer):
     for gender in genders:
         for number in numbers:
             for case in cases:
-                forms = transducer.generate(lemma + "<+" + pos + ">" +
-                                                    "<" + gender + ">" +
-                                                    "<" + case + ">" +
-                                                    "<" + number + ">")
+                forms = transducer.generate(lemma + "<+" + pos    + ">" +
+                                                    "<"  + gender + ">" +
+                                                    "<"  + case   + ">" +
+                                                    "<"  + number + ">")
                 cats = " ".join([case, number])
                 if forms:
                     paradigm.update({cats: forms})
@@ -49,13 +50,24 @@ def print_paradigm(paradigm):
             print_forms(cats, paradigm[cats])
 
 def main():
+    e = False
     try:
-        get_forms(args.lemma)
+        transducer = sfst_transduce.Transducer(args.transducer)
+        get_forms(args.lemma, transducer)
         print_paradigm(paradigm)
+        if not paradigm:
+            print(args.lemma + ": No such lemma.", file=sys.stderr)
     except KeyboardInterrupt:
         sys.exit(130)
-    if not paradigm:
-        print(args.lemma + ": No such lemma.", file=sys.stderr)
+    except TypeError:
+        print(args.transducer + ": No such transducer file.", file=sys.stderr)
+        e = True
+    except RuntimeError:
+        print(args.transducer + ": No such transducer.", file=sys.stderr)
+        e = True
+    if e:
+        exit = 2
+    elif not paradigm:
         exit = 1
     else:
         exit = 0
