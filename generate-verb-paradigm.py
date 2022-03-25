@@ -8,7 +8,7 @@ import re
 import sfst_transduce
 from os import path
 
-version = 1.0
+version = 1.1
 
 parser = argparse.ArgumentParser()
 parser.add_argument("lemma",
@@ -28,11 +28,23 @@ numbers = ["Sg", "Pl"]
 tenses  = ["Pres", "Past"]
 modes   = ["Ind", "Subj"]
 
+imp_persons = ["2"]
+imp_numbers = numbers
+imp_modes   = ["Imp"]
+
+infs = ["Inf", "PPres", "PPast"]
+
 paradigm = {}
 
 def get_forms(lemma):
     stem  = re.sub(r"^(.+?)e?n$", r"\1", lemma)
     affix = re.sub(r"^.+?(e?n)$", r"\1", lemma)
+    for inf in infs:
+        forms = transducer.generate(stem + "<~>" + affix + "<+" + pos + ">" +
+                                                           "<" + inf + ">")
+        cats = " ".join([inf])
+        if forms:
+            paradigm.update({cats: forms})
     for tense in tenses:
         for mode in modes:
             for number in numbers:
@@ -45,6 +57,15 @@ def get_forms(lemma):
                     cats = " ".join([person, number, tense, mode])
                     if forms:
                         paradigm.update({cats: forms})
+    for mode in imp_modes:
+        for number in imp_numbers:
+            for person in imp_persons:
+                forms = transducer.generate(stem + "<~>" + affix + "<+" + pos + ">" +
+                                                                   "<" + mode + ">" +
+                                                                   "<" + number + ">")
+                cats = " ".join([person, number, mode])
+                if forms:
+                    paradigm.update({cats: forms})
 
 def print_forms(cats, forms):
     print(cats + "\t" + ", ".join(forms))
