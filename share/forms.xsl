@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 2.0 -->
-<!-- Andreas Nolda 2022-03-11 -->
+<!-- Version 3.0 -->
+<!-- Andreas Nolda 2022-03-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -12,78 +12,97 @@
 <xsl:template name="affix-form">
   <xsl:param name="lemma"/>
   <xsl:choose>
+    <!-- suffix -->
     <xsl:when test="starts-with($lemma,'-')">
-      <xsl:value-of select="replace($lemma,'-(.+)',
-                                           '$1')"/>
+      <xsl:value-of select="replace($lemma,'-(.+)','$1')"/>
     </xsl:when>
+    <!-- prefix -->
     <xsl:when test="ends-with($lemma,'-')">
-      <xsl:value-of select="replace($lemma,'(.+)-',
-                                           '$1')"/>
+      <xsl:value-of select="replace($lemma,'(.+)-','$1')"/>
     </xsl:when>
+    <!-- other form -->
     <xsl:otherwise>
       <xsl:value-of select="$lemma"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 
-<!-- base-stem forms of verbs -->
+<!-- base stem of verbs -->
 <xsl:template name="verb-stem">
   <xsl:param name="lemma"/>
-  <xsl:value-of select="replace($lemma,'^(.+?)e?n$',
-                                       '$1')"/>
+  <xsl:value-of select="replace($lemma,'e?n$','')"/>
 </xsl:template>
 
-<!-- present-stem forms -->
+<!-- present stem -->
 <xsl:template name="present-stem">
   <xsl:param name="form"/>
+  <xsl:param name="lemma"/>
   <xsl:choose>
-    <xsl:when test="matches($form,'^.+?e?t$')">
-      <xsl:value-of select="replace($form,'^(.+?)e?t$',
-                                          '$1')"/>
+    <!-- form with stem-final "tt" -->
+    <xsl:when test="matches($form,'tt$')">
+      <xsl:value-of select="$form"/>
     </xsl:when>
-    <xsl:otherwise>
-      <xsl:value-of select="$form"/><!-- ? -->
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<!-- past-stem forms -->
-<xsl:template name="past-stem">
-  <xsl:param name="form"/>
-  <xsl:choose>
-    <xsl:when test="matches($form,'^.+?e?te$')">
-      <xsl:value-of select="replace($form,'^(.+?)e?te$',
-                                          '$1')"/>
+    <!-- form without umlaut or "e"/"i"-alternation -->
+    <xsl:when test="matches($form,'^.+?e?t$') and
+                    matches($form,concat('^',replace($lemma,'e?n$',''),'e?t$'))">
+      <xsl:value-of select="replace($form,'e?t$','')"/>
     </xsl:when>
+    <!-- form with umlaut -->
+    <xsl:when test="matches($form,'^.+?e?t$') and
+                    matches($form,concat('^',n:umlaut-re(replace($lemma,'e?n$','')),'e?t$'))">
+      <xsl:value-of select="replace($form,'e?t$','')"/>
+    </xsl:when>
+    <!-- form with "e"/"i"-alternation -->
+    <xsl:when test="matches($form,'^.+?e?t$') and
+                    matches($form,concat('^',n:e-i-alternation-re(replace($lemma,'e?n$','')),'e?t$'))">
+      <xsl:value-of select="replace($form,'e?t$','')"/>
+    </xsl:when>
+    <!-- other form -->
     <xsl:otherwise>
       <xsl:value-of select="$form"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 
-<!-- participle-stem forms -->
+<!-- past stem -->
+<xsl:template name="past-stem">
+  <xsl:param name="form"/>
+  <xsl:choose>
+    <!-- weak form -->
+    <xsl:when test="matches($form,'^.+?e?te$')">
+      <xsl:value-of select="replace($form,'e?te$','')"/>
+    </xsl:when>
+    <!-- other form -->
+    <xsl:otherwise>
+      <xsl:value-of select="$form"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<!-- participle stem -->
 <xsl:template name="participle-stem">
   <xsl:param name="form"/>
   <xsl:param name="lemma"/>
   <xsl:choose>
+    <!-- weak form with "ge-" prefix -->
     <xsl:when test="matches($form,'^ge.+?e?t$') and
                     not(matches($form,concat('^',substring($lemma,1,3))))">
-      <xsl:value-of select="replace($form,'^ge(.+?)e?t$',
-                                          '$1')"/>
+      <xsl:value-of select="replace($form,'^ge(.+?)e?t$','$1')"/>
     </xsl:when>
+    <!-- weak form without "ge-" prefix -->
     <xsl:when test="matches($form,'^.+?e?t$')">
-      <xsl:value-of select="replace($form,'^(.+?)e?t$',
-                                          '$1')"/>
+      <xsl:value-of select="replace($form,'e?t$','')"/>
     </xsl:when>
+    <!-- strong form with "ge-" prefix -->
     <xsl:when test="matches($form,'^ge.+en$') and
                     not(matches($form,concat('^',substring($lemma,1,3))))">
-      <xsl:value-of select="replace($form,'^ge(.+)en$',
-                                          '$1')"/>
+      <xsl:value-of select="replace($form,'^ge(.+)en$','$1')"/>
     </xsl:when>
+    <!-- strong form without "ge-" prefix -->
     <xsl:when test="matches($form,'^.+en$')">
-      <xsl:value-of select="replace($form,'^(.+)en$',
-                                          '$1')"/>
+      <xsl:value-of select="replace($form,'en$','')"/>
     </xsl:when>
+    <!-- other form -->
     <xsl:otherwise>
       <xsl:value-of select="$form"/>
     </xsl:otherwise>
@@ -119,18 +138,16 @@
       <xsl:value-of select="$form"/>
     </xsl:when>
     <!-- form without umlaut nor suffix -->
-    <xsl:when test="matches($form,concat('^',$lemma,'$'))">-</xsl:when>
+    <xsl:when test="$form=$lemma">-</xsl:when>
     <!-- form with umlaut -->
     <xsl:when test="matches($form,concat('^',n:umlaut-re($lemma),'$'))">&#x308;-</xsl:when>
     <!-- form with suffix -->
     <xsl:when test="matches($form,concat('^',$lemma,'.+$'))">
-      <xsl:value-of select="concat('-',replace($form,concat('^',$lemma),
-                                                     ''))"/>
+      <xsl:value-of select="concat('-',replace($form,concat('^',$lemma),''))"/>
     </xsl:when>
     <!-- form with umlaut and suffix -->
     <xsl:when test="matches($form,concat('^',n:umlaut-re($lemma),'.+$'))">
-      <xsl:value-of select="concat('&#x308;-',replace($form,concat('^',n:umlaut-re($lemma)),
-                                                            ''))"/>
+      <xsl:value-of select="concat('&#x308;-',replace($form,concat('^',n:umlaut-re($lemma)),''))"/>
     </xsl:when>
     <!-- other form -->
     <xsl:otherwise>
@@ -150,16 +167,14 @@
       <xsl:value-of select="$form"/>
     </xsl:when>
     <!-- form without affix -->
-    <xsl:when test="matches($form,concat('^',$stem,'$'))">-</xsl:when>
+    <xsl:when test="$form=$stem">-</xsl:when>
     <!-- form with suffix -->
     <xsl:when test="matches($form,concat('^',$stem,'.+$'))">
-      <xsl:value-of select="concat('-',replace($form,concat('^',$stem),
-                                                     ''))"/>
+      <xsl:value-of select="concat('-',replace($form,concat('^',$stem),''))"/>
     </xsl:when>
     <!-- form with "ge-" prefix and suffix -->
     <xsl:when test="matches($form,concat('^ge',$stem,'.+$'))">
-      <xsl:value-of select="concat('ge-',replace($form,concat('^ge',$stem),
-                                                       ''))"/>
+      <xsl:value-of select="concat('ge-',replace($form,concat('^ge',$stem),''))"/>
     </xsl:when>
     <!-- other form -->
     <xsl:otherwise>

@@ -290,8 +290,6 @@
 * <VPPres>
 * <VPresKonj>
 * <VPresPlInd>
-* <VVPres2+Imp0>
-* <VVPres2t>
 * <VVPresPl>
 * <VVPresSg>
 * <WAdv> -->

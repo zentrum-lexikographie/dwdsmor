@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 2.1 -->
-<!-- Andreas Nolda 2022-03-22 -->
+<!-- Version 2.2 -->
+<!-- Andreas Nolda 2022-03-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -745,10 +745,7 @@
             <!-- nominative plural: "-en" substituted for "-a" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'a') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)a$',
-                                                                             '$1en'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'a$','en')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -758,10 +755,7 @@
             <!-- nominative plural: "-en" substituted for "-o" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'o') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)o$',
-                                                                      '$1en'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'o$','en')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -771,10 +765,7 @@
             <!-- nominative plural: "-i" substituted for "-o" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'o') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)o$',
-                                                                      '$1i'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'o$','i')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -784,10 +775,7 @@
             <!-- nominative plural: "-ina" substituted for "-en" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'en') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)en$',
-                                                                      '$1ina'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'en$','ina')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -797,10 +785,7 @@
             <!-- nominative plural: "-en" substituted for "-is" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'is') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)is$',
-                                                                      '$1en'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'is$','en')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -810,10 +795,7 @@
             <!-- nominative plural: "-iden" substituted for "-is" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'is') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)is$',
-                                                                      '$1iden'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'is$','iden')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -823,10 +805,7 @@
             <!-- nominative plural: "-a" substituted for "-on" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'on') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)on$',
-                                                                      '$1a'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'on$','a')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -836,10 +815,7 @@
             <!-- nominative plural: "-a" substituted for "-um" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'um') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)um$',
-                                                                      '$1a'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'um$','a')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -849,10 +825,7 @@
             <!-- nominative plural: "-en" substituted for "-um" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'um') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)um$',
-                                                                      '$1en'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'um$','en')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -862,10 +835,7 @@
             <!-- nominative plural: "-e" substituted for "-us" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'us') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)us$',
-                                                                      '$1e'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'us$','e')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -875,10 +845,7 @@
             <!-- nominative plural: "-en" substituted for "-us" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'us') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)us$',
-                                                                      '$1en'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'us$','en')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]
@@ -888,10 +855,7 @@
             <!-- nominative plural: "-i" substituted for "-us" -->
             <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                             ends-with($lemma,'us') and
-                            matches($nominative-plural,concat('^',
-                                                              replace($lemma,'^(.+)us$',
-                                                                      '$1i'),
-                                                              '$'))">
+                            $nominative-plural=replace($lemma,'us$','i')">
               <xsl:value-of select="$noun-class-mapping/class[@pos=$pos]
                                                              [@gender=$gender]
                                                              [@genitive-singular=$genitive-singular-marker]

@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-03-25:
+
+* fix lexical entries of irregular verbs
+
 2022-03-24:
 
 * add support for strong verbs with 2nd/3rd person singular present stem without

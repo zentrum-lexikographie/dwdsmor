@@ -223,6 +223,4 @@
 * <VPastIndStr>
 * <VPastKonjStr>
 * <VPPast>
-* <VVPres2+Imp0>
-* <VVPres2t>
 * <WAdv> -->
