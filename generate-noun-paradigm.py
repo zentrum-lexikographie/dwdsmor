@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 # generate-noun-paradigm.py -- generate a paradigm of noun forms
-# Andreas Nolda 2022-03-25
+# Andreas Nolda 2022-03-28
 
 import sys
 import argparse
+import json
 import sfst_transduce
 from blessings import Terminal
 from os import path
 
-version = 1.3
+version = 1.4
 
 basedir = path.dirname(__file__)
 libdir  = path.join(basedir, "SMORLemma")
@@ -19,6 +20,8 @@ parser.add_argument("lemma",
                     help="noun")
 parser.add_argument("-c", "--force-color", action="store_true",
                     help="preserve color and formatting when piping output")
+parser.add_argument("-j", "--json", action="store_true",
+                    help="output JSON object")
 parser.add_argument("-t", "--transducer", default=libfile,
                     help="transducer file")
 parser.add_argument("-v", "--version", action="version",
@@ -50,17 +53,21 @@ def print_forms(cats, forms):
     print(cats + "\t" + term.bold(", ".join(forms)))
 
 def print_paradigm(paradigm):
-    for cats in paradigm:
-        if paradigm[cats]:
-            print_forms(cats, paradigm[cats])
+    if args.json:
+        print(json.dumps(paradigm, ensure_ascii=False))
+    else:
+        for cats in paradigm:
+            if paradigm[cats]:
+                print_forms(cats, paradigm[cats])
 
 def main():
     e = False
     try:
         transducer = sfst_transduce.Transducer(args.transducer)
         get_forms(args.lemma, transducer)
-        print_paradigm(paradigm)
-        if not paradigm:
+        if paradigm:
+            print_paradigm(paradigm)
+        else:
             print(term.bold(args.lemma) + ": No such lemma.", file=sys.stderr)
     except KeyboardInterrupt:
         sys.exit(130)
