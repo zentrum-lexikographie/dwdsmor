@@ -1,5 +1,5 @@
 # .gitignore
-# Andreas Nolda 2022-02-16
+# Andreas Nolda 2022-03-28
 
 .venv/
 *~
@@ -17,3 +17,5 @@ SMORLemma/
 
 test-reports/
 tmp/
+
+wb-coverage-report.csv
