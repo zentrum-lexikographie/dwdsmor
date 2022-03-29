@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 4.3 -->
-<!-- Andreas Nolda 2022-03-25 -->
+<!-- Version 5.0 -->
+<!-- Andreas Nolda 2022-03-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1018,7 +1018,7 @@
                                     select="$lemma-without-particle"/>
                   </xsl:call-template>
                 </xsl:variable>
-                <xsl:variable name="past-marker"><!-- of weak verbs -->
+                <xsl:variable name="past-marker"><!-- of regular verbs -->
                   <xsl:call-template name="get-verbal-marker">
                     <xsl:with-param name="form"
                                     select="$past-without-particle"/>
@@ -1026,7 +1026,7 @@
                                     select="$stem"/>
                   </xsl:call-template>
                 </xsl:variable>
-                <xsl:variable name="participle-marker"><!-- of weak verbs -->
+                <xsl:variable name="participle-marker"><!-- of regular verbs -->
                   <xsl:call-template name="get-verbal-marker">
                     <xsl:with-param name="form"
                                     select="$participle-without-particle"/>
@@ -1035,34 +1035,11 @@
                   </xsl:call-template>
                 </xsl:variable>
                 <xsl:choose>
-                  <!-- weak verbs -->
+                  <!-- regular verbs -->
                   <xsl:when test="$past-marker='-te' and
                                   ($participle-marker='-t' or
-                                   $participle-marker='ge-t')">
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="class">
-                        <xsl:call-template name="verb-class">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="pos"
-                                          select="$pos"/>
-                          <xsl:with-param name="past"
-                                          select="$past-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                        </xsl:call-template>
-                      </xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <xsl:when test="$past-marker='-ete' and
+                                   $participle-marker='ge-t') or
+                                  $past-marker='-ete' and
                                   ($participle-marker='-et' or
                                    $participle-marker='ge-et')">
                     <xsl:call-template name="verb-entry">
@@ -1088,11 +1065,25 @@
                       </xsl:with-param>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- weak verbs with irregular past stem -->
-                  <xsl:when test="matches($past-without-particle,concat('^',$past-stem,'e?te$')) and
-                                  matches($participle-without-particle,concat('^(ge)?',$stem,'e?t$'))">
+                  <!-- irregular verbs -->
+                  <xsl:otherwise>
                     <!-- present -->
                     <xsl:choose>
+                      <!-- uniform present stem -->
+                      <xsl:when test="$stem=$present-stem">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="class">VVPres</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- present stem "hat" -->
                       <xsl:when test="$present-stem='hat'">
                         <xsl:call-template name="verb-entry">
                           <xsl:with-param name="lemma"
@@ -1115,296 +1106,6 @@
                           <xsl:with-param name="stem"
                                           select="replace($present-stem,'t$','')"/>
                           <xsl:with-param name="class">VVPres2</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$stem"/>
-                          <xsl:with-param name="class">VVPres</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                    <!-- past indicative -->
-                    <xsl:choose>
-                      <!-- past indicative with stem-final "d" or "t" without "e" epenthesis before "-t" -->
-                      <xsl:when test="matches($past-stem,'[dt]$') and
-                                      $past-without-particle=concat($past-stem,'te')">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="concat($past-stem,'&lt;FB&gt;')"/>
-                          <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$past-stem"/>
-                          <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                    <!-- past subjunctive -->
-                    <xsl:choose>
-                      <!-- past subjunctive with stem-final "d" or "t" without "e" epenthesis before "-t" -->
-                      <xsl:when test="matches($past-stem,'[dt]$') and
-                                      $past-without-particle=concat($past-stem,'te')">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="concat(n:umlaut($past-stem),'&lt;FB&gt;')"/>
-                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="n:umlaut($past-stem)"/>
-                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                    <!-- past participle -->
-                    <xsl:choose>
-                      <!-- past participle with stem-final "d" or "t" without "e" epenthesis before "-t" -->
-                      <xsl:when test="matches($participle-stem,'[dt]$') and
-                                      matches($participle-without-particle,concat('^(ge)?',$participle-stem,'t$'))">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="concat($participle-stem,'&lt;FB&gt;')"/>
-                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- other past participle -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$participle-stem"/>
-                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:when>
-                  <!-- weak verbs with irregular past stem and participle stem -->
-                  <xsl:when test="matches($past-without-particle,concat('^',$past-stem,'e?te$')) and
-                                  matches($participle-without-particle,concat('^(ge)?',$past-stem,'e?t$'))">
-                    <!-- present -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="class">VVPres</xsl:with-param>
-                    </xsl:call-template>
-                    <!-- past indicative -->
-                    <xsl:choose>
-                      <!-- past indicative with stem-final "d" or "t" without "e" epenthesis before "-t" -->
-                      <xsl:when test="matches($past-stem,'[dt]$') and
-                                      $past-without-particle=concat($past-stem,'te')">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="concat($past-stem,'&lt;FB&gt;')"/>
-                          <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$past-stem"/>
-                          <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                    <!-- past subjunctive -->
-                    <xsl:choose>
-                      <!-- past stem ending in "ach" -->
-                      <xsl:when test="matches($past-stem,'ach$')">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="n:umlaut($past-stem)"/>
-                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- Rückumlaut -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$stem"/><!-- sic! -->
-                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                    <!-- past participle -->
-                    <xsl:choose>
-                      <!-- past participle with stem-final "d" or "t" without "e" epenthesis before "-t" -->
-                      <xsl:when test="matches($participle-stem,'[dt]$') and
-                                      matches($participle-without-particle,concat('^(ge)?',$participle-stem,'t$'))">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="concat($participle-stem,'&lt;FB&gt;')"/>
-                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- other past participle -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$participle-stem"/>
-                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:when>
-                  <!-- weak verbs with strong participle -->
-                  <xsl:when test="($past-marker='-te' or
-                                   $past-marker='-ete') and
-                                   matches($participle-without-particle,'en$')">
-                    <!-- present -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="class">VVPres</xsl:with-param>
-                    </xsl:call-template>
-                    <!-- past indicative -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="stem"
-                                      select="$past-stem"/>
-                      <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
-                    </xsl:call-template>
-                    <!-- past subjunctive -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="stem"
-                                      select="$past-stem"/>
-                      <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
-                    </xsl:call-template>
-                    <!-- past participle -->
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="class">VVPP-en</xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <!-- strong verbs -->
-                  <xsl:otherwise>
-                    <!-- present -->
-                    <xsl:choose>
-                      <!-- uniform present stem -->
-                      <xsl:when test="$stem=$present-stem">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$stem"/>
-                          <xsl:with-param name="class">VVPres</xsl:with-param>
                         </xsl:call-template>
                       </xsl:when>
                       <!-- present stem for 2nd/3rd person singular with "e"/"i"-alternation with stem-final "t" -->
@@ -1538,82 +1239,185 @@
                     </xsl:choose>
                     <!-- past -->
                     <xsl:choose>
-                      <!-- umlautable past stem -->
-                      <!-- Caveat: "e" is considered as a full vowel. -->
-                      <xsl:when test="matches($past-stem,'([aou]|aa|oo|au)[^aeiouäöü]*$')">
-                        <!-- past indicative -->
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$past-stem"/>
-                          <xsl:with-param name="class">VVPastIndStr</xsl:with-param>
-                        </xsl:call-template>
+                      <!-- weak past stem -->
+                      <xsl:when test="matches($past-without-particle,concat('^',$past-stem,'e?te$'))">
+                        <xsl:choose>
+                          <!-- past indicative with stem-final "d" or "t" without "e" epenthesis before "-t" -->
+                          <xsl:when test="matches($past-stem,'[dt]$') and
+                                          $past-without-particle=concat($past-stem,'te')">
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="concat($past-stem,'&lt;FB&gt;')"/>
+                              <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- other weak past stem -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
                         <!-- past subjunctive -->
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="n:umlaut($past-stem)"/>
-                          <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
-                        </xsl:call-template>
+                        <xsl:choose>
+                          <!-- past stem "hat" -->
+                          <xsl:when test="$past-stem='hat'">
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="concat(n:umlaut($past-stem),'&lt;FB&gt;')"/>
+                              <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- past stem ending in "ach" -->
+                          <xsl:when test="matches($past-stem,'ach$')">
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="n:umlaut($past-stem)"/>
+                              <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- Rückumlaut -->
+                          <xsl:when test="matches($present-stem,'en[dn]$') and
+                                          matches($past-stem,'an[dn]$')">
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="$stem"/><!-- sic! -->
+                              <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- other weak past stem -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
                       </xsl:when>
-                      <!-- non-umlautable past stem -->
+                      <!-- strong past stem -->
                       <xsl:otherwise>
-                        <!-- past -->
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$past-stem"/>
-                          <xsl:with-param name="class">VVPastStr</xsl:with-param>
-                        </xsl:call-template>
+                        <xsl:choose>
+                          <!-- umlautable strong past stem -->
+                          <!-- Caveat: "e" is considered as a full vowel. -->
+                          <xsl:when test="matches($past-stem,'([aou]|aa|oo|au)[^aeiouäöü]*$')">
+                            <!-- past indicative -->
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="class">VVPastIndStr</xsl:with-param>
+                            </xsl:call-template>
+                            <!-- past subjunctive -->
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="n:umlaut($past-stem)"/>
+                              <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- non-umlautable strong past stem -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="class">VVPastStr</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
                       </xsl:otherwise>
                     </xsl:choose>
                     <!-- past participle -->
                     <xsl:choose>
-                      <!-- weak participle -->
-                      <xsl:when test="$participle-marker='-t' or
-                                      $participle-marker='ge-t'">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$participle-stem"/>
-                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                        </xsl:call-template>
+                      <!-- weak past participle -->
+                      <xsl:when test="matches($participle-without-particle,'e?t$')">
+                        <xsl:choose>
+                          <!-- past participle with stem-final "d" or "t" without "e" epenthesis before "-t" -->
+                          <xsl:when test="matches($participle-stem,'[dt]$') and
+                                          matches($participle-without-particle,concat('^(ge)?',$participle-stem,'t$'))">
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="concat($participle-stem,'&lt;FB&gt;')"/>
+                              <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- other weak past participle -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="$participle-stem"/>
+                              <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
                       </xsl:when>
-                      <xsl:when test="$participle-marker='-et' or
-                                      $participle-marker='ge-et'">
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$participle-stem"/>
-                          <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- strong participle -->
+                      <!-- strong past participle -->
                       <xsl:otherwise>
                         <xsl:call-template name="verb-entry">
                           <xsl:with-param name="lemma"
@@ -1629,7 +1433,7 @@
                       </xsl:otherwise>
                     </xsl:choose>
                   </xsl:otherwise>
-                  <!-- TODO: proper support for modal verbs and auxiliaries -->
+                  <!-- TODO: support for modal verbs and auxiliaries -->
                 </xsl:choose>
               </xsl:when>
               <!-- verbal participles -->
@@ -1667,7 +1471,7 @@
                                     select="$lemma-without-particle"/>
                   </xsl:call-template>
                 </xsl:variable>
-                <xsl:variable name="participle-marker"><!-- of weak participles -->
+                <xsl:variable name="participle-marker"><!-- of regular verbs -->
                   <xsl:call-template name="get-verbal-marker">
                     <xsl:with-param name="form"
                                     select="$participle-without-particle"/>
@@ -1678,20 +1482,8 @@
                 <xsl:choose>
                   <!-- weak participles -->
                   <xsl:when test="$participle-marker='-t' or
-                                  $participle-marker='ge-t'">
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="class">VVPP-t</xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <xsl:when test="$participle-marker='-et' or
+                                  $participle-marker='ge-t' or
+                                  $participle-marker='-et' or
                                   $participle-marker='ge-et'">
                     <xsl:call-template name="verb-entry">
                       <xsl:with-param name="lemma"

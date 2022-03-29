@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-03-29:
 
 * add support for weak verbs with irregular past stem and regular participle stem
+* unify processing of irregular verbs
 
 2022-03-25:
 
