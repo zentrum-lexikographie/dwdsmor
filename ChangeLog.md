@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-03-30:
+
+* add support for irregular verb "tun"
+
 2022-03-29:
 
 * add support for weak verbs with irregular past stem and regular participle stem

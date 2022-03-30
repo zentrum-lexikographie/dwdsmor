@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 5.0 -->
-<!-- Andreas Nolda 2022-03-29 -->
+<!-- Version 5.1 -->
+<!-- Andreas Nolda 2022-03-30 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -91,12 +91,12 @@
       </xsl:when>
       <!-- reduce grammar specification for a weak verb with strong participle to participle
            if there is another grammar specification for a weak verb with weak participle -->
-      <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'en$')]] and
+      <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]] and
                       $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]] and
-                      $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'en$')]]/dwds:Praesens=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]]/dwds:Praesens and
-                      $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'en$')]]/dwds:Praeteritum=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]]/dwds:Praeteritum">
-        <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(dwds:Partizip_II[matches(normalize-space(.),'en$')])]"/>
-        <xsl:for-each select="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'en$')]]">
+                      $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]]/dwds:Praesens=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]]/dwds:Praesens and
+                      $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]]/dwds:Praeteritum=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]]/dwds:Praeteritum">
+        <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(dwds:Partizip_II[matches(normalize-space(.),'e?n$')])]"/>
+        <xsl:for-each select="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]]">
           <dwds:Grammatik>
             <dwds:Wortklasse>Partizip</dwds:Wortklasse><!-- ad-hoc POS -->
             <xsl:copy-of select="dwds:Praesens"/><!-- required for identifying phrasal verbs -->
@@ -1069,8 +1069,8 @@
                   <xsl:otherwise>
                     <!-- present -->
                     <xsl:choose>
-                      <!-- uniform present stem -->
-                      <xsl:when test="$stem=$present-stem">
+                      <!-- present stem "tu" -->
+                      <xsl:when test="$present-stem='tu'">
                         <xsl:call-template name="verb-entry">
                           <xsl:with-param name="lemma"
                                           select="$lemma-without-particle"/>
@@ -1079,8 +1079,107 @@
                           <xsl:with-param name="particle"
                                           select="$particle"/>
                           <xsl:with-param name="stem"
-                                          select="$stem"/>
-                          <xsl:with-param name="class">VVPres</xsl:with-param>
+                                          select="replace($stem,'n$','')"/>
+                          <xsl:with-param name="class">VInf-n</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="concat($present-stem,'e')"/>
+                          <xsl:with-param name="class">VAPres1SgInd</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="concat($present-stem,'st')"/>
+                          <xsl:with-param name="class">VAPres2SgInd</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="concat($present-stem,'t')"/>
+                          <xsl:with-param name="class">VAPres3SgInd</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="concat($present-stem,'n')"/>
+                          <xsl:with-param name="class">VAPres1/3PlInd</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="concat($present-stem,'t')"/>
+                          <xsl:with-param name="class">VAPres2PlInd</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="concat($present-stem,'e')"/>
+                          <xsl:with-param name="class">VAPresKonjSg</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="concat($present-stem,'e')"/>
+                          <xsl:with-param name="class">VAPresKonjPl</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="$present-stem"/>
+                          <xsl:with-param name="class">VAImpSg</xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="concat($present-stem,'t')"/>
+                          <xsl:with-param name="class">VAImpPl</xsl:with-param>
                         </xsl:call-template>
                       </xsl:when>
                       <!-- present stem "hat" -->
@@ -1106,6 +1205,20 @@
                           <xsl:with-param name="stem"
                                           select="replace($present-stem,'t$','')"/>
                           <xsl:with-param name="class">VVPres2</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- uniform present stem -->
+                      <xsl:when test="$stem=$present-stem">
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="class">VVPres</xsl:with-param>
                         </xsl:call-template>
                       </xsl:when>
                       <!-- present stem for 2nd/3rd person singular with "e"/"i"-alternation with stem-final "t" -->
@@ -1336,6 +1449,31 @@
                       <!-- strong past stem -->
                       <xsl:otherwise>
                         <xsl:choose>
+                          <!-- past stem "tat" -->
+                          <xsl:when test="$past-stem='tat'">
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="class">VVPastIndStr</xsl:with-param>
+                            </xsl:call-template>
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="n:umlaut($past-stem)"/>
+                              <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
                           <!-- umlautable strong past stem -->
                           <!-- Caveat: "e" is considered as a full vowel. -->
                           <xsl:when test="matches($past-stem,'([aou]|aa|oo|au)[^aeiouäöü]*$')">
@@ -1419,17 +1557,36 @@
                       </xsl:when>
                       <!-- strong past participle -->
                       <xsl:otherwise>
-                        <xsl:call-template name="verb-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="stem"
-                                          select="$participle-stem"/>
-                          <xsl:with-param name="class">VVPP-en</xsl:with-param>
-                        </xsl:call-template>
+                        <xsl:choose>
+                          <!-- participle stem "ta" -->
+                          <xsl:when test="$participle-stem='ta'">
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="concat($participle-stem,'n')"/>
+                              <xsl:with-param name="class">VPPast</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- other strong past participle -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="stem"
+                                              select="$participle-stem"/>
+                              <xsl:with-param name="class">VVPP-en</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
                       </xsl:otherwise>
                     </xsl:choose>
                   </xsl:otherwise>

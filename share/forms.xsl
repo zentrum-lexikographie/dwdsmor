@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 3.0 -->
-<!-- Andreas Nolda 2022-03-25 -->
+<!-- Version 3.1 -->
+<!-- Andreas Nolda 2022-03-30 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -94,13 +94,13 @@
       <xsl:value-of select="replace($form,'e?t$','')"/>
     </xsl:when>
     <!-- strong form with "ge-" prefix -->
-    <xsl:when test="matches($form,'^ge.+en$') and
+    <xsl:when test="matches($form,'^ge.+?e?n$') and
                     not(matches($form,concat('^',substring($lemma,1,3))))">
-      <xsl:value-of select="replace($form,'^ge(.+)en$','$1')"/>
+      <xsl:value-of select="replace($form,'^ge(.+?)e?n$','$1')"/>
     </xsl:when>
     <!-- strong form without "ge-" prefix -->
-    <xsl:when test="matches($form,'^.+en$')">
-      <xsl:value-of select="replace($form,'en$','')"/>
+    <xsl:when test="matches($form,'^.+?e?n$')">
+      <xsl:value-of select="replace($form,'e?n$','')"/>
     </xsl:when>
     <!-- other form -->
     <xsl:otherwise>
