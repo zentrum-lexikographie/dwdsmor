@@ -40,8 +40,13 @@
 <Stem><ge>glupsche:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>googeln:<><V><base><nativ><VVReg-el/er>
 <Stem><ge>google:<>n:<><V><base><nativ><VVReg>
+<Stem><ge>ha:äb:te:<FB>n:<><V><base><nativ><VVPastKonjReg>
 <Stem><ge>ha:älte:<>n:<><V><base><nativ><VVPres2t>
 <Stem><ge>ha:il:et:le:tn:<><V><base><nativ><VVPastStr>
+<Stem><ge>hab:<>e:<>n:<><V><base><nativ><VVPres2>
+<Stem><ge>hab:te:<FB>n:<><V><base><nativ><VVPastIndReg>
+<Stem><ge>habe:<>n:<><V><base><nativ><VVPP-t>
+<Stem><ge>habe:<>n:<><V><base><nativ><VVPres1+Imp>
 <Stem><ge>halte:<>n:<><V><base><nativ><VVPP-en>
 <Stem><ge>halte:<>n:<><V><base><nativ><VVPres1+Imp>
 <Stem><ge>ke:anne:<>n:<><V><base><nativ><VVPastIndReg>
