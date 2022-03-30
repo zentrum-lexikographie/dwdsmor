@@ -54,6 +54,15 @@ def test_tuebadz_coverage(project_dir, tuebadz, dwdsmor_transducer):
     )
 
 
+def test_tuebadz_lemmatisation(project_dir, tuebadz, dwdsmor_transducer):
+    lemmatized = (lemmatize(dwdsmor_transducer, w) for s in tuebadz for w in s)
+    write_csv_report(
+        project_dir / 'test-reports' / 'tuebadz-lemmatisation.csv',
+        ('Wortklasse', 'Form', 'Lemma', 'DWDSmor', 'Lemma-Match'),
+        ((w.pos, w.form, w.lemma, w.dwdsmor_lemma, w.lemma == w.dwdsmor_lemma)
+         for w in lemmatized)
+    )
+
 def wb_coverage(dwdsmor_transducer, wb_entries):
     for wb_n, wb_entry in enumerate(wb_entries):
         lemma = wb_entry['written_repr']
