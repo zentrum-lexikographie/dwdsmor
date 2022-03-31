@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-03-31:
+
+* add support for auxiliary verb "werden"
+
 2022-03-30:
 
 * add support for irregular verb "tun"
