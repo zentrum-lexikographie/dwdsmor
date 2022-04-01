@@ -27,7 +27,7 @@
 (def sublexica
   {(io/file lexicon-dir "adj.irreg.lex")          "<ADJ>"
    (io/file lexicon-dir "adpositions.closed.lex") "<OTHER>"
-   (io/file lexicon-dir "verbs.irreg.lex")        "<V>"
+   ;; (io/file lexicon-dir "verbs.irreg.lex")        "<V>"
    (io/file lexicon-dir "adv.irreg.lex")          "<ADV>"})
 
 (def sublexicon-entries
