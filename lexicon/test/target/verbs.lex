@@ -12,9 +12,11 @@
 <Stem><ge>blase:<>n:<><V><base><nativ><VVPP-en>
 <Stem><ge>blase:<>n:<><V><base><nativ><VVPres1+Imp>
 <Stem><ge>bra:äte:<>n:<><V><base><nativ><VVPres2t>
+<Stem><ge>bra:äuche:<>n:<><V><base><nativ><VVPastKonjReg>
 <Stem><ge>bra:it:ee:tn:<><V><base><nativ><VVPastStr>
 <Stem><ge>brate:<>n:<><V><base><nativ><VVPP-en>
 <Stem><ge>brate:<>n:<><V><base><nativ><VVPres1+Imp>
+<Stem><ge>brauche:<>n:<><V><base><nativ><VVReg>
 <Stem><ge>de:an:ck:he:<>n:<><V><base><nativ><VVPastIndReg>
 <Stem><ge>de:än:ck:he:<>n:<><V><base><nativ><VVPastKonjReg>
 <Stem><ge>de:an:ck:he:<>n:<><V><base><nativ><VVPP-t>

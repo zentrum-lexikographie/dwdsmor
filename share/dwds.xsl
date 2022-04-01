@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 5.3 -->
+<!-- Version 5.4 -->
 <!-- Andreas Nolda 2022-04-01 -->
 
 <xsl:stylesheet version="2.0"
@@ -965,7 +965,7 @@
                     <xsl:otherwise>
                       <xsl:value-of select="normalize-space(dwds:Praesens)"/>
                     </xsl:otherwise>
-                    </xsl:choose>
+                  </xsl:choose>
                 </xsl:variable>
                 <xsl:variable name="past">
                   <!-- remove "sich", if any -->
@@ -976,7 +976,7 @@
                     <xsl:otherwise>
                       <xsl:value-of select="normalize-space(dwds:Praeteritum)"/>
                     </xsl:otherwise>
-                    </xsl:choose>
+                  </xsl:choose>
                 </xsl:variable>
                 <xsl:variable name="participle"
                               select="normalize-space(dwds:Partizip_II)"/>
@@ -1052,28 +1052,69 @@
                                   $past-marker='-ete' and
                                   ($participle-marker='-et' or
                                    $participle-marker='ge-et')">
-                    <xsl:call-template name="verb-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="class">
-                        <xsl:call-template name="verb-class">
+                    <xsl:choose>
+                      <!-- "brauchen" -->
+                      <xsl:when test="$lemma-without-particle='brauchen'">
+                        <xsl:call-template name="verb-entry">
                           <xsl:with-param name="lemma"
                                           select="$lemma-without-particle"/>
-                          <xsl:with-param name="pos"
-                                          select="$pos"/>
-                          <xsl:with-param name="past"
-                                          select="$past-without-particle"/>
                           <xsl:with-param name="participle"
                                           select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="class">
+                            <xsl:call-template name="verb-class">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="pos"
+                                              select="$pos"/>
+                              <xsl:with-param name="past"
+                                              select="$past-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                            </xsl:call-template>
+                          </xsl:with-param>
                         </xsl:call-template>
-                      </xsl:with-param>
-                    </xsl:call-template>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- other regular verbs -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="class">
+                            <xsl:call-template name="verb-class">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="pos"
+                                              select="$pos"/>
+                              <xsl:with-param name="past"
+                                              select="$past-without-particle"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                            </xsl:call-template>
+                          </xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
                   </xsl:when>
                   <!-- irregular verbs -->
                   <xsl:otherwise>
@@ -1963,7 +2004,6 @@
                       </xsl:otherwise>
                     </xsl:choose>
                   </xsl:otherwise>
-                  <!-- TODO: support for modal verbs -->
                 </xsl:choose>
               </xsl:when>
               <!-- verbal participles -->
@@ -1977,7 +2017,7 @@
                     <xsl:otherwise>
                       <xsl:value-of select="normalize-space(dwds:Praesens)"/>
                     </xsl:otherwise>
-                    </xsl:choose>
+                  </xsl:choose>
                 </xsl:variable>
                 <xsl:variable name="participle"
                               select="normalize-space(dwds:Partizip_II)"/>

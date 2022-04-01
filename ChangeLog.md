@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-04-01:
 
 * add support for modal verbs and related verbs
+* add support for umlauted past subjunctive forms of "brauchen"
 
 2022-03-31:
 
