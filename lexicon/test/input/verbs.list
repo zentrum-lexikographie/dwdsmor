@@ -48,6 +48,7 @@ WDG/be/besprechen-E_b_7003.xml
 WDG/bl/blasen-E_b_9815.xml
 WDG/br/braten-E_b_12282.xml
 WDG/de/denken-E_d_1573.xml
+WDG/du/duerfen-E_d_5421.xml
 WDG/er/erloeschen-E_e_5902.xml
 WDG/fa/fantasieren-E_p_2798.xml
 WDG/fr/fragen-E_f_7690.xml
@@ -60,17 +61,22 @@ WDG/ha/haben-E_h_152.xml
 WDG/ha/halten-E_h_1009.xml
 WDG/he/hektografieren-E_h_3959.xml
 WDG/ke/kennen-E_k_3003.xml
+WDG/ko/koennen-E_k_7486.xml
 WDG/la/laden-E_l_217.xml
 WDG/le/lesen-E_l_3786.xml
 WDG/li/lieben-E_l_4371.xml
 WDG/li/lithographieren-E_l_5110.xml
 WDG/ma/mahlen-E_m_510.xml
+WDG/mo/moegen-E_m_5616.xml
+WDG/mu/muessen-E_m_7083.xml
 WDG/ox/oxidieren-E_o_1844.xml
 WDG/ph/photographieren-E_p_2960.xml
 WDG/sa/salzen-E_s_777.xml
 WDG/sc/scharwenzeln-E_s_2600.xml
 WDG/se/sehen-E_s_10699.xml
+WDG/se/sein-E_s_10921.xml
 WDG/se/senden-E_s_11514.xml
+WDG/so/sollen-E_s_13646.xml
 WDG/sp/sprechen-E_s_16011.xml
 WDG/sp/springen-E_s_16168.xml
 WDG/st/stecken-E_s_18255.xml
@@ -86,4 +92,6 @@ WDG/vo/vorbedenken-E_v_5280.xml
 WDG/we/wenden-E_w_3542.xml
 WDG/we/werden-E_w_3657.xml
 WDG/we/werten-E_w_4086.xml
+WDG/wi/wissen-E_w_5504.xml
+WDG/wo/wollen-E_w_6123.xml
 WDG/ze/zerspringen-E_z_1625.xml

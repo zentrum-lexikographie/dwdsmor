@@ -205,22 +205,8 @@
 * <ProAdv>
 * <Ptkl-Ant>
 * <Ptkl-Neg>
-* <VAImpPl>
-* <VAImpSg>
-* <VAPastKonj2>
-* <VAPres1/3PlInd>
-* <VAPres1SgInd>
-* <VAPres2PlInd>
-* <VAPres2SgInd>
-* <VAPres3SgInd>
-* <VAPresKonjPl>
-* <VAPresKonjSg>
-* <VInf>
 * <VMPast>
 * <VMPastKonj>
 * <VMPresPl>
 * <VMPresSg>
-* <VPastIndStr>
-* <VPastKonjStr>
-* <VPPast>
 * <WAdv> -->
