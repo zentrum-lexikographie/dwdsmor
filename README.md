@@ -136,9 +136,9 @@ make -C lexicon
 A log is saved in `SMORLemma/lexicon/lexicon.log`. This includes XSLT warnings,
 if any.
 
-By default, additional lexica from SMORLemma for irregular adjectives and
-adverbs as well as for adpositions and affixes are included. In order to built a
-lexicon without them, run:
+By default, additional lexica from SMORLemma for irregular nouns, adjectives,
+and adverbs as well as for adpositions and affixes are included. In order to
+built a lexicon without them, run:
 
 ```sh
 make INCLUDE_SMORLEMMA=false -C lexicon
