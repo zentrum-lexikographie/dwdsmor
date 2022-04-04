@@ -136,9 +136,9 @@ make -C lexicon
 A log is saved in `SMORLemma/lexicon/lexicon.log`. This includes XSLT warnings,
 if any.
 
-By default, additional lexica from SMORLemma for irregular adjectives, adverbs,
-and verbs as well as for adpositions are included. In order to built a lexicon
-without them, run:
+By default, additional lexica from SMORLemma for irregular adjectives and
+adverbs as well as for adpositions and affixes are included. In order to built a
+lexicon without them, run:
 
 ```sh
 make INCLUDE_SMORLEMMA=false -C lexicon
@@ -241,10 +241,11 @@ the setup succeeded and a lexicon is provided in `SMORLemma/lexicon/lexicon`,
 the transducers can be compiled:
 
 ```sh
-make
+make && make install
 ```
 
-Resulting automata can be found in `SMORLemma/*.a` and `SMORLemma/*.ca`.
+Resulting automata can be found in `lib/*.a` and `lib/*.ca`, including, most
+notably, `lib/smor-full.a` and `lib/smor-full.ca`.
 
 Depending on the size of the lexicon, this compilation process can take several
 hours, depending on available hardware resources, specifically on the amount of
@@ -323,7 +324,7 @@ Options:
 A sample run:
 
 ```plaintext
-$ printf "Männern\nManns\nFrauen\nMänner" | dwdsmor-analyze -a SMORLemma/smor.ca
+$ printf "Männern\nManns\nFrauen\nMänner" | dwdsmor-analyze -a lib/smor-full.ca
 Word,Analysis,Lemma,POS,Gender,Number,Case,Person,Tense
 Männern,Ma:änn<+NN>:<><Masc>:<><>:e<>:r<Dat>:n<Pl>:<>,Mann,NN,Masc,Pl,Dat,,
 Manns,Mann<+NN>:<><Masc>:<><Gen>:<><Sg>:<><>:s,Mann,NN,Masc,Sg,Gen,,
