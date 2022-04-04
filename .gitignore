@@ -1,5 +1,5 @@
 # .gitignore
-# Andreas Nolda 2022-03-28
+# Andreas Nolda 2022-04-04
 
 .venv/
 *~
@@ -15,7 +15,6 @@ lexicon/test/output/
 lexicon/wb/
 SMORLemma/
 
+lib/
 test-reports/
 tmp/
-
-wb-coverage-report.csv

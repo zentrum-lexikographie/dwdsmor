@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # generate-noun-paradigm.py -- generate a paradigm of noun forms
-# Andreas Nolda 2022-03-28
+# Andreas Nolda 2022-04-04
 
 import sys
 import argparse
@@ -12,8 +12,8 @@ from os import path
 version = 1.4
 
 basedir = path.dirname(__file__)
-libdir  = path.join(basedir, "SMORLemma")
-libfile = path.join(libdir, "smor.a")
+libdir  = path.join(basedir, "lib")
+libfile = path.join(libdir, "smor-full.a")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("lemma",

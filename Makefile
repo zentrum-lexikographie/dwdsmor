@@ -1,9 +1,21 @@
 SHELL := /bin/bash
 
-SMORLemma/smor.a SMORLemma/smor.ca: SMORLemma/lexicon/lexicon
+# ---------------------------------------- Build
+
+.PHONY: all
+all: SMORLemma/smor-full.a SMORLemma/smor-full.ca
+
+SMORLemma/smor-full.a SMORLemma/smor-full.ca: SMORLemma/lexicon/lexicon
 	$(MAKE) -C SMORLemma -f ../Makefile.SMORLemma
 
+# ---------------------------------------- Install
+
+.PHONY: install
+install:
+	$(MAKE) -C SMORLemma -f ../Makefile.SMORLemma install INSTALL_DIR=$(realpath lib)
+
 # ---------------------------------------- Tests
+
 .PHONY: test
 test:
 	@py.test -vv -s -x tests

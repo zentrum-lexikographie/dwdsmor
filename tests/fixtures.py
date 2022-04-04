@@ -8,7 +8,7 @@ import sfst_transduce
 
 
 base_dir = (Path(__file__) /  '..' / '..').resolve()
-smor_lemma_dir = base_dir / 'SMORLemma'
+smor_lemma_dir = base_dir / 'lib'
 tests_dir = base_dir / 'tests'
 test_data_dir = base_dir / 'test-data'
 
@@ -21,7 +21,7 @@ def project_dir():
 @fixture
 def dwdsmor_transducer():
     return sfst_transduce.CompactTransducer(
-        (smor_lemma_dir / 'smor.ca').as_posix()
+        (smor_lemma_dir / 'smor-full.ca').as_posix()
     )
 
 
