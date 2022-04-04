@@ -9,7 +9,7 @@ import sfst_transduce
 from blessings import Terminal
 from os import path
 
-version = 1.4
+version = 1.5
 
 basedir = path.dirname(__file__)
 libdir  = path.join(basedir, "lib")
@@ -22,6 +22,8 @@ parser.add_argument("-c", "--force-color", action="store_true",
                     help="preserve color and formatting when piping output")
 parser.add_argument("-j", "--json", action="store_true",
                     help="output JSON object")
+parser.add_argument("-O", "--old-forms", action="store_true",
+                    help="output also archaic forms")
 parser.add_argument("-t", "--transducer", default=libfile,
                     help="transducer file")
 parser.add_argument("-v", "--version", action="version",
@@ -48,6 +50,18 @@ def get_forms(lemma, transducer):
                 cats = " ".join([case, number])
                 if forms:
                     paradigm.update({cats: forms})
+                if args.old_forms:
+                    forms = transducer.generate(lemma + "<+" + pos    + ">" +
+                                                        "<"  + gender + ">" +
+                                                        "<"  + case   + ">" +
+                                                        "<"  + number + ">" +
+                                                        "<"  + "Old"  + ">")
+                    cats = " ".join([case, number])
+                    if forms:
+                        if paradigm[cats]:
+                            paradigm[cats].extend(forms)
+                        else:
+                            paradigm.update({cats: forms})
 
 def print_forms(cats, forms):
     print(cats + "\t" + term.bold(", ".join(forms)))
