@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smor.xsl -->
-<!-- Version 3.3 -->
-<!-- Andreas Nolda 2022-03-21 -->
+<!-- Version 3.4 -->
+<!-- Andreas Nolda 2022-04-05 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -10,8 +10,6 @@
 <xsl:include href="strings.xsl"/>
 
 <xsl:include href="forms.xsl"/>
-
-<xsl:include href="categories.xsl"/>
 
 <xsl:include href="dwds.xsl"/>
 

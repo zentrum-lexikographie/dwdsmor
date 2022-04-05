@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-04-05:
+
+* modularise `dwds.xsl` and add `entries.xsl`
+
 2022-04-01:
 
 * add support for modal verbs and related verbs
