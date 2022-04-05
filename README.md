@@ -20,8 +20,8 @@ Source code in this repository implements various steps in the process of
 building and using FSTs for morphological analysis:
 
 * `lexicon/` and `share/` contain sources for building the DWDSmor lexicon by
-  extracting SMOR-compatible lexicon entries from XML documents of the DWDS
-  dictionary.
+  extracting SMORLemma-compatible lexicon entries from XML documents in the DWDS
+  format.
 * `SMORLemma/` imports sources from an
   [SMORLemma fork](https://git.zdl.org/zdl/SMORLemma) as a Git submodule,
   providing the morphology.
