@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-04-05:
 
 * modularise `dwds.xsl` and add `entries.xsl`
+* add support for multiple `<Artikel>` children of `<DWDS>`
 
 2022-04-01:
 

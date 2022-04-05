@@ -73,10 +73,10 @@
 
 (def cli-options
   [["-x" "--xslt XSLT"
-    :desc "XSLT stylesheet extracting lexicon entries from DWDS article files"
+    :desc "XSLT stylesheet"
     :parse-fn io/file]
    ["-o" "--output OUTPUT"
-    :desc "Path of the file the generated lexicon is written to"
+    :desc "Path of the generated lexicon"
     :parse-fn io/file]
    ["-s" "--smorlemma-lexica"
     :desc "Include additional lexica from SMORLemma"]
@@ -100,8 +100,7 @@
     ""
     "Usage: clojure -M -m dwdsmor.lexicon [options] <dir|*.xml>..."
     ""
-    "Generates a lexicon from the given XML documents and/or directories "
-    "containing XML documents (files ending in .xml)."
+    "Generates a DWDSmor lexicon from (directories of) XML documents in the DWDS format."
     ""
     "Options:"
     summary

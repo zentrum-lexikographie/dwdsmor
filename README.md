@@ -19,9 +19,13 @@ for **lemmatisation**. To this end we adopt:
 Source code in this repository implements various steps in the process of
 building and using FSTs for morphological analysis:
 
-* `lexicon/` and `share/` contain sources for building the DWDSmor lexicon by
-  extracting SMORLemma-compatible lexicon entries from XML documents in the DWDS
-  format.
+* `share/` contains XSLT stylesheets for extracting SMORLemma-compatible lexical
+  entries from XML documents in the DWDS format. Sample inputs and outputs can
+  be found in `samples/`.
+* `lexicon/` contains scripts for generating a DWDSmor lexicon by means of the
+  XSLT stylesheets in `share/` and the lexical data in `lexicon/wb/`, which is
+  imported from the [DWDS article repository](https://git.zdl.org/zdl/wb) as a
+  Git submodule.
 * `SMORLemma/` imports sources from an
   [SMORLemma fork](https://git.zdl.org/zdl/SMORLemma) as a Git submodule,
   providing the morphology.
@@ -44,12 +48,12 @@ building and using FSTs for morphological analysis:
   [bindings](https://github.com/gremid/sfst-transduce).
 
 [Java (JDK) >= v8](https://openjdk.java.net/)
-: The extraction of lexicon entries from DWDS/XML articles files is implemented
-  in XSLT 2, for which [Saxon-HE](https://www.saxonica.com/) is used as the
-  runtime environment. The conversion of the whole dictionary (or larger parts)
-  is orchestrated via a [Clojure](https://clojure.org/) script, running multiple
-  XSLT pipelines in parallel and doing some pre- and postprocessing. Saxon and
-  Clojure both require a Java runtime.
+: The extraction of lexicon entries from XML documents in the DWDS format is
+  implemented in XSLT 2, for which [Saxon-HE](https://www.saxonica.com/) is used
+  as the runtime environment. The conversion of the whole dictionary (or larger
+  parts) is orchestrated via a [Clojure](https://clojure.org/) script, running
+  multiple XSLT pipelines in parallel and doing some pre- and postprocessing.
+  Saxon and Clojure both require a Java runtime.
 
 [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/)
 : a C++ library and toolbox for finite state transducers (FSTs); please take a
@@ -76,7 +80,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-## Build the DWDSmor lexicon from the DWDS dictionary
+## Build a DWDSmor lexicon from the DWDS dictionary
 
 Import the dictionary sources and the SMORLemma morphology via the configured
 submodules:
@@ -113,12 +117,11 @@ Copyright (C) 2022 Berlin-Brandenburgische Akademie der Wissenschaften
 
 Usage: clojure -M -m dwdsmor.lexicon [options] <dir|*.xml>...
 
-Generates a lexicon from the given XML documents and/or directories
-containing XML documents (files ending in .xml).
+Generates a DWDSmor lexicon from (directories of) XML documents in the DWDS format.
 
 Options:
-  -x, --xslt XSLT          XSLT stylesheet extracting lexicon entries from DWDS article files
-  -o, --output OUTPUT      Path of the file the generated lexicon is written to
+  -x, --xslt XSLT          XSLT stylesheet
+  -o, --output OUTPUT      Path of the generated lexicon
   -s, --smorlemma-lexica   Include additional lexica from SMORLemma
   -f, --filter             Filter entries with tag <UNKNOWN>
   -l, --limit MAX_ENTRIES  Limit the number of extracted lexicon entries for testing
@@ -126,8 +129,8 @@ Options:
   -h, --help
 ```
 
-This script is called with appropriate options for building the DWDSmor lexicon
-by running:
+This script is called with appropriate options for building a DWDSmor lexicon by
+running:
 
 ```sh
 make -C lexicon

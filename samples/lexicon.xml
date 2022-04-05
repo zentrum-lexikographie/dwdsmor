@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DWDS xmlns="http://www.dwds.de/ns/1.0">
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Mann</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+        <Genitiv>-(e)s</Genitiv>
+        <Plural>Männer</Plural>
+      </Grammatik>
+    </Formangabe>
+    <Diachronie>
+      <Etymologie/>
+    </Diachronie>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Frau</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-</Genitiv>
+        <Plural>-en</Plural>
+      </Grammatik>
+    </Formangabe>
+    <Diachronie>
+      <Etymologie/>
+    </Diachronie>
+  </Artikel>
+</DWDS>

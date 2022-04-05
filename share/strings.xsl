@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 2.3 -->
-<!-- Andreas Nolda 2022-03-25 -->
+<!-- Version 2.4 -->
+<!-- Andreas Nolda 2022-04-05 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -180,27 +180,4 @@
   </xsl:variable>
   <xsl:sequence select="$value"/>
 </xsl:function>
-
-<!-- output $value, if any;
-     else warn about missing value of $type for $lemma -->
-<xsl:template name="insert-value">
-  <xsl:param name="value"/>
-  <xsl:param name="type"/>
-  <xsl:param name="lemma"/>
-  <xsl:choose>
-    <xsl:when test="string-length($value)&gt;0">
-      <xsl:value-of select="$value"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:message>
-        <xsl:text>Warning: "</xsl:text>
-        <xsl:value-of select="$lemma"/>
-        <xsl:text>" has UNKNOWN </xsl:text>
-        <xsl:value-of select="$type"/>
-        <xsl:text>.</xsl:text>
-      </xsl:message>
-      <xsl:text>UNKNOWN</xsl:text>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
 </xsl:stylesheet>
