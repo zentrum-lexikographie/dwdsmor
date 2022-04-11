@@ -914,7 +914,6 @@
 * <Adj&>
 * <Adj+(e)>
 * <Adj-el/er>
-* <Adj0-Up>
 * <AdjComp>
 * <AdjNNSuff>
 * <AdjPosAttr-Up>

@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-04-11:
+
+* add support for capitalised adjectives derived from geographic proper names
+
 2022-04-05:
 
 * modularise `dwds.xsl` and add `entries.xsl`

@@ -24,6 +24,7 @@
 <Stem>Bauer<NN><base><nativ><NMasc_n_n>
 <Stem>Bauer<NN><base><nativ><NMasc_s_n>
 <Stem>Becken<NN><base><nativ><NNeut_s_x>
+<Stem>Berliner<NN><base><nativ><NMasc_s_0>
 <Stem>Bett<NN><base><nativ><NNeut_es_en>
 <Stem>Bewundern<NN><base><nativ><NNeut/Sg_s>
 <Stem>Bild<NN><base><nativ><NNeut_es_er>

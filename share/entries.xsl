@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 1.1 -->
-<!-- Andreas Nolda 2022-04-05 -->
+<!-- Version 1.2 -->
+<!-- Andreas Nolda 2022-04-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -43,14 +43,28 @@
     <xsl:choose>
       <!-- uninflected adjectives -->
       <xsl:when test="$inflection='no'">
-        <xsl:call-template name="default-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="pos">ADJ</xsl:with-param>
-          <xsl:with-param name="class">Adj0</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
+        <xsl:choose>
+          <xsl:when test="matches($lemma,'^\p{Lu}')">
+            <xsl:call-template name="default-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">Adj0-Up</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="default-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">Adj0</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:when>
       <!-- inflected adjectives -->
       <xsl:otherwise>
