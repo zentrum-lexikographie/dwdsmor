@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-04-11:
 
 * add support for capitalised adjectives derived from geographic proper names
+* add support for ungradable adjectives with capitalised first member
 
 2022-04-05:
 

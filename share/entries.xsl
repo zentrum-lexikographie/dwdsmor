@@ -275,6 +275,18 @@
                               select="$etymology"/>
             </xsl:call-template>
           </xsl:when>
+          <!-- ungradable adjectives with capitalised first member -->
+          <xsl:when test="string-length($superlative)=0 and
+                          matches($lemma,'\p{Lu}\p{L}*-')">
+            <xsl:call-template name="default-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjPos-Up</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:when>
           <!-- other adjectives -->
           <xsl:otherwise>
             <xsl:call-template name="default-entry">

@@ -41,7 +41,6 @@
     <!-- ungradable adjectives -->
     <xsl:when test="string-length($superlative)=0">
       <xsl:value-of select="$adjective-class-mapping/class[not(@superlative)]"/>
-
     </xsl:when>
     <!-- other adjectives -->
     <xsl:otherwise>
