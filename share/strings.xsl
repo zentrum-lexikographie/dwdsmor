@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 2.4 -->
-<!-- Andreas Nolda 2022-04-05 -->
+<!-- Version 2.5 -->
+<!-- Andreas Nolda 2022-04-19 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -108,6 +108,20 @@
           <xsl:sequence select="replace($argument,'au([^aeiouäöü]*)$','äu$1')"/>
         </xsl:when>
       </xsl:choose>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:sequence select="$argument"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
+
+<!-- return the "ß"/"ss"-alternation variant of $argument, if any -->
+<xsl:function name="n:sz-ss-alternation">
+  <xsl:param name="argument"/>
+  <xsl:choose>
+    <!-- replace final "ß" with "ss" -->
+    <xsl:when test="matches($argument,'ß$')">
+      <xsl:sequence select="replace($argument,'ß$','ss')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:sequence select="$argument"/>

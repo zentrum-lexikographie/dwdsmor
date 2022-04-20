@@ -137,17 +137,29 @@
     <xsl:when test="starts-with($form,'-')">
       <xsl:value-of select="$form"/>
     </xsl:when>
-    <!-- form without umlaut nor suffix -->
+    <!-- form without "ß"/"ss"-alternation nor umlaut nor suffix -->
     <xsl:when test="$form=$lemma">-</xsl:when>
+    <!-- form with "ß"/"ss"-alternation -->
+    <xsl:when test="matches($form,concat('^',n:sz-ss-alternation($lemma),'$'))">ß/ss-</xsl:when>
     <!-- form with umlaut -->
     <xsl:when test="matches($form,concat('^',n:umlaut-re($lemma),'$'))">&#x308;-</xsl:when>
+    <!-- form with "ß"/"ss"-alternation and umlaut -->
+    <xsl:when test="matches($form,concat('^',n:umlaut-re(n:sz-ss-alternation($lemma)),'$'))">&#x308;ß/ss-</xsl:when>
     <!-- form with suffix -->
     <xsl:when test="matches($form,concat('^',$lemma,'.+$'))">
       <xsl:value-of select="concat('-',replace($form,concat('^',$lemma),''))"/>
     </xsl:when>
+    <!-- form with "ß"/"ss"-alternation and suffix -->
+    <xsl:when test="matches($form,concat('^',n:sz-ss-alternation($lemma),'.+$'))">
+      <xsl:value-of select="concat('ß/ss-',replace($form,concat('^',n:sz-ss-alternation($lemma)),''))"/>
+    </xsl:when>
     <!-- form with umlaut and suffix -->
     <xsl:when test="matches($form,concat('^',n:umlaut-re($lemma),'.+$'))">
       <xsl:value-of select="concat('&#x308;-',replace($form,concat('^',n:umlaut-re($lemma)),''))"/>
+    </xsl:when>
+    <!-- form with "ß"/"ss"-alternation, umlaut, and suffix -->
+    <xsl:when test="matches($form,concat('^',n:umlaut-re(n:sz-ss-alternation($lemma)),'.+$'))">
+      <xsl:value-of select="concat('&#x308;ß/ss-',replace($form,concat('^',n:umlaut-re(n:sz-ss-alternation($lemma))),''))"/>
     </xsl:when>
     <!-- other form -->
     <xsl:otherwise>

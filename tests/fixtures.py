@@ -98,7 +98,8 @@ def extract_wb_entries(wb_xml_file):
                     '{http://www.dwds.de/ns/1.0}Schreibung'
                 )
                 for written_repr in written_reprs:
-                    if written_repr.get('Typ', '').startswith('U'):
+                    written_repr_type = written_repr.get('Typ', '')
+                    if written_repr_type == 'U_NR' or written_repr_type == 'U_U':
                         continue
                     entries.append({
                         'file': wb_xml_file.relative_to(wb_dir),

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 7.0 -->
-<!-- Andreas Nolda 2022-04-05 -->
+<!-- Version 7.1 -->
+<!-- Andreas Nolda 2022-04-19 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -88,7 +88,8 @@
       </xsl:choose>
     </xsl:variable>
     <!-- ignore invalid spellings -->
-    <xsl:for-each select="dwds:Schreibung[not(starts-with(@Typ,'U'))]">
+    <xsl:for-each select="dwds:Schreibung[not(@Typ='U_NR' or
+                                              @Typ='U_U')]">
       <xsl:variable name="lemma"
                     select="normalize-space(.)"/>
       <xsl:if test="string-length($lemma)&gt;0">

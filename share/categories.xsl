@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 3.1 -->
-<!-- Andreas Nolda 2022-04-05 -->
+<!-- Version 3.2 -->
+<!-- Andreas Nolda 2022-04-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -73,6 +73,14 @@
   <class gender="mask."
          genitive-singular="-es"
          nominative-plural="&#x308;-e">NMasc_es_$e</class>
+  <!-- genitive singular: "ß"/"ss"-alternation and "-es"
+       nominative plural: "ß"/"ss"-alternation, umlaut, and "-e" -->
+  <class gender="mask."
+         genitive-singular="ß/ss-es"
+         nominative-plural="&#x308;ß/ss-e">NMasc-s/$sse</class>
+  <class gender="mask."
+         genitive-singular="-es"
+         nominative-plural="&#x308;ß/ss-e">NMasc-s/$sse</class>
   <!-- genitive singular: "-s"
        no plural -->
   <class gender="mask."
@@ -304,6 +312,14 @@
   <class gender="neutr."
          genitive-singular="-es"
          nominative-plural="&#x308;-er">NNeut_es_$er</class>
+  <!-- genitive singular: "ß"/"ss"-alternation and "-es"
+       nominative plural: "ß"/"ss"-alternation, umlaut, and "-er" -->
+  <class gender="neutr."
+         genitive-singular="ß/ss-es"
+         nominative-plural="&#x308;ß/ss-er">NNeut-s/$sser</class>
+  <class gender="neutr."
+         genitive-singular="-es"
+         nominative-plural="&#x308;ß/ss-er">NNeut-s/$sser</class>
   <!-- genitive singular: "-s"
        nominative plural: "-ien" -->
   <class gender="neutr."
@@ -405,6 +421,11 @@
   <class gender="fem."
          genitive-singular="-"
          nominative-plural="&#x308;-e">NFem_0_$e</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "ß"/"ss"-alternation, umlaut, and "-e" -->
+  <class gender="fem."
+         genitive-singular="-"
+         nominative-plural="&#x308;ß/ss-e">NFem-s/$sse</class>
   <!-- genitive singular: unmarked
        nominative plural: geminate "s" + "-e" -->
   <class gender="fem."

@@ -64,6 +64,8 @@
 <Stem>Fisch<NN><base><nativ><NMasc_es_e>
 <Stem>Flaum<NN><base><nativ><NMasc/Sg_es>
 <Stem>Floß<NN><base><nativ><NNeut_es_$e>
+<Stem>Fluss<NN><base><nativ><NMasc_es_$e>
+<Stem>Fluß<NN><base><nativ><NMasc-s/$sse>
 <Stem>Fossil<NN><base><fremd><NNeut-0/ien>
 <Stem>Foyer<NN><base><fremd><NNeut_0_s>
 <Stem>Frau<NN><base><nativ><NFem_0_en>
@@ -124,6 +126,8 @@
 <Stem>Namen<NN><base><nativ><NMasc_s_x>
 <Stem>Nerv<NN><base><fremd><NMasc_s_en>
 <Stem>Neutron<NN><base><fremd><NNeut_s_en>
+<Stem>Nuss<NN><base><nativ><NFem_0_$e>
+<Stem>Nuß<NN><base><nativ><NFem-s/$sse>
 <Stem>Oma<NN><base><nativ><NFem_0_s>
 <Stem>Opa<NN><base><nativ><NMasc_s_s>
 <Stem>Organismus<NN><base><fremd><NMasc-us/en>
@@ -142,6 +146,8 @@
 <Stem>Schema<NN><base><fremd><NNeut_s_s>
 <Stem>Schema<NN><base><fremd><NNeut-a/ata>
 <Stem>Schema<NN><base><fremd><NNeut-a/en>
+<Stem>Schloss<NN><base><nativ><NNeut_es_$er>
+<Stem>Schloß<NN><base><nativ><NNeut-s/$sser>
 <Stem>Schmerz<NN><base><nativ><NMasc_es_en>
 <Stem>See<NN><base><nativ><NMasc_s_n>
 <Stem>Shopping<NN><base><fremd><NNeut/Sg_0>
