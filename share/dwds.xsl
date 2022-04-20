@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 7.1 -->
-<!-- Andreas Nolda 2022-04-19 -->
+<!-- Version 7.2 -->
+<!-- Andreas Nolda 2022-04-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -19,8 +19,6 @@
 </xsl:template>
 
 <xsl:template match="dwds:Artikel">
-  <!-- ignore idioms and other syntactically complex units
-       except for reflexive verbs and phrasal verbs -->
   <xsl:variable name="etymology">
     <xsl:choose>
       <xsl:when test="dwds:Diachronie[dwds:Etymologie[string-length(normalize-space(.))&gt;0]]">fremd</xsl:when>
@@ -29,6 +27,8 @@
       <!-- ... -->
     </xsl:choose>
   </xsl:variable>
+  <!-- ignore idioms and other syntactically complex units
+       except for reflexive verbs and phrasal verbs -->
   <xsl:for-each select="dwds:Formangabe[not(dwds:Schreibung[count(tokenize(normalize-space(.)))&gt;1])]
                                        [not(dwds:Grammatik/dwds:Praesens[tokenize(normalize-space(.))[2]='sich']
                                                                         [count(tokenize(normalize-space(.)))&gt;3])]
@@ -90,10 +90,50 @@
     <!-- ignore invalid spellings -->
     <xsl:for-each select="dwds:Schreibung[not(@Typ='U_NR' or
                                               @Typ='U_U')]">
+      <xsl:variable name="expanded-grammar-specs">
+        <xsl:choose>
+          <!-- expand grammar specifications for old spellings with "ß"/"ss"-alternation
+               unless there are proper grammar specifications for the old spelling -->
+          <xsl:when test="starts-with(@Typ,'U') and
+                          ../dwds:Schreibung[ends-with(@Typ,'G')][.=n:sz-ss-alternation(current())]">
+            <xsl:variable name="canonical-lemma"
+                          select="../dwds:Schreibung[ends-with(@Typ,'G')][1]"/>
+            <xsl:for-each select="$grammar-specs/dwds:Grammatik">
+              <dwds:Grammatik>
+                <xsl:for-each select="*">
+                  <xsl:choose>
+                    <!-- expand grammar specifications with vocalic suffixes
+                         using the canonical lemma in new spelling -->
+                    <xsl:when test="(self::dwds:Genitiv or
+                                     self::dwds:Komparativ or
+                                     self::dwds:Plural or
+                                     self::dwds:Positiv or
+                                     self::dwds:Superlativ) and
+                                    not(starts-with(@Typ,'U')) and
+                                    matches(.,'^-[aeiouäöü]')">
+                      <xsl:element name="{name()}"
+                                   namespace="{namespace-uri()}">
+                        <xsl:value-of select="$canonical-lemma"/>
+                        <xsl:value-of select="substring-after(.,'-')"/>
+                      </xsl:element>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:copy-of select="."/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:for-each>
+              </dwds:Grammatik>
+            </xsl:for-each>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:copy-of select="$grammar-specs"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
       <xsl:variable name="lemma"
                     select="normalize-space(.)"/>
       <xsl:if test="string-length($lemma)&gt;0">
-        <xsl:for-each select="$grammar-specs/dwds:Grammatik">
+        <xsl:for-each select="$expanded-grammar-specs/dwds:Grammatik">
           <xsl:variable name="pos"
                         select="normalize-space(dwds:Wortklasse)"/>
           <xsl:choose>

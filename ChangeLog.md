@@ -2,8 +2,8 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 2022-04-20:
 
-* add support for nouns in old spelling with umlauted nominative plural forms
-  involving "ß"/"ss"-alternation
+* add support for nouns in old spelling with nominative plural forms involving
+  "ß"/"ss"-alternation
 
 2022-04-11:
 

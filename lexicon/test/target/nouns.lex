@@ -78,6 +78,8 @@
 <Stem>Garten<NN><base><nativ><NMasc_s_$x>
 <Stem>Geist<NN><base><nativ><NMasc_es_er>
 <Stem>Genie<NN><base><fremd><NNeut_s_s>
+<Stem>Geschoss<NN><base><nativ><NNeut_es_e>
+<Stem>Geschoß<NN><base><nativ><NNeut-s/sse>
 <Stem>Globus<NN><base><fremd><NMasc-s/sse>
 <Stem>Globus<NN><base><fremd><NMasc-s0/sse>
 <Stem>Globus<NN><base><fremd><NMasc-us/en>
@@ -107,6 +109,8 @@
 <Stem>Kissen<NN><base><nativ><NNeut_s_x>
 <Stem>Klee<NN><base><nativ><NMasc/Sg_s>
 <Stem>Kloster<NN><base><nativ><NNeut_s_$>
+<Stem>Kompass<NN><base><fremd><NMasc_es_e>
+<Stem>Kompaß<NN><base><fremd><NMasc-s/sse>
 <Stem>Konto<NN><base><fremd><NNeut_s_s>
 <Stem>Konto<NN><base><fremd><NNeut-o/en>
 <Stem>Konto<NN><base><fremd><NNeut-o/i>
@@ -155,12 +159,16 @@
 <Stem>SMS<NN><base><nativ><NFem_0_x>
 <Stem>SMS<NN><base><nativ><NNeut_0_x>
 <Stem>Staat<NN><base><nativ><NMasc_es_en>
+<Stem>Stewardess<NN><base><fremd><NFem_0_en>
+<Stem>Stewardeß<NN><base><fremd><NFem-s/ssen>
 <Stem>Tenor<NN><base><fremd><NMasc_s_$e>
 <Stem>Terminus<NN><base><fremd><NMasc-us/i>
 <Stem>Trecking<NN><base><fremd><NNeut_s_s>
 <Stem>Trecking<NN><base><fremd><NNeut/Sg_0>
 <Stem>Trekking<NN><base><fremd><NNeut_s_s>
 <Stem>Trekking<NN><base><fremd><NNeut/Sg_0>
+<Stem>Überfluss<NN><base><nativ><NMasc/Sg_es>
+<Stem>Überfluß<NN><base><nativ><NMasc-s/Sg>
 <Stem>Ufer<NN><base><nativ><NNeut_s_0>
 <Stem>Uhu<NN><base><nativ><NMasc_s_s>
 <Stem>Vater<NN><base><nativ><NMasc_s_$>
