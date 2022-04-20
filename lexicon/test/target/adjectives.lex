@@ -18,6 +18,10 @@
 <Stem>jung<ADJ><base><nativ><Adj$>
 <Stem>kalt<ADJ><base><nativ><Adj$e>
 <Stem>klein<ADJ><base><nativ><Adj+>
+<Stem>naß<ADJ><base><nativ><Adj~$e>
+<Stem>naß<ADJ><base><nativ><Adj~+e>
+<Stem>nass<ADJ><base><nativ><Adj$e>
+<Stem>nass<ADJ><base><nativ><Adj+e>
 <Stem>Rh-positiv<ADJ><base><nativ><AdjPos-Up>
 <Stem>rosa<ADJ><base><fremd><Adj0>
 <Stem>spät<ADJ><base><nativ><Adj+e>

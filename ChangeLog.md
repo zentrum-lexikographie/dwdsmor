@@ -4,6 +4,8 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 * add support for nouns in old spelling with nominative plural forms involving
   "ß"/"ss"-alternation
+* add support for adjectives in old spelling with inflected forms involving
+  "ß"/"ss"-alternation
 
 2022-04-11:
 

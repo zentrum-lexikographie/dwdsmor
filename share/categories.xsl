@@ -19,8 +19,12 @@
   <class superlative="&#x308;-ten">Adj$</class>
   <!-- superlative: "-esten" -->
   <class superlative="-esten">Adj+e</class>
+  <!-- superlative: "ß"/"ss"-alternation and "-esten" -->
+  <class superlative="ß/ss-esten">Adj~+e</class>
   <!-- superlative: umlaut and "-esten" -->
   <class superlative="&#x308;-esten">Adj$e</class>
+  <!-- superlative: "ß"/"ss"-alternation, umlaut, and "-esten" -->
+  <class superlative="&#x308;ß/ss-esten">Adj~$e</class>
   <!-- ungradable adjectives: -->
   <class>AdjPos</class>
 </xsl:variable>

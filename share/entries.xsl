@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 1.2 -->
-<!-- Andreas Nolda 2022-04-11 -->
+<!-- Version 1.3 -->
+<!-- Andreas Nolda 2022-04-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -95,7 +95,7 @@
         <xsl:choose>
           <!-- adjectives with irregular positive forms -->
           <xsl:when test="string-length($positive)&gt;0 and
-                          not(matches($positive-marker,'^&#x308;?-'))">
+                          not(matches($positive-marker,'^&#x308;?(ß/ss)?-'))">
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
@@ -167,7 +167,7 @@
           </xsl:when>
           <!-- adjectives with irregular comparative forms -->
           <xsl:when test="ends-with($comparative,'er') and
-                          not(matches($comparative-marker,'^&#x308;?-'))">
+                          not(matches($comparative-marker,'^&#x308;?(ß/ss)?-'))">
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
@@ -199,7 +199,7 @@
           </xsl:when>
           <!-- adjectives with irregular superlative forms -->
           <xsl:when test="ends-with($superlative,'sten') and
-                          not(matches($superlative-marker,'^&#x308;?-'))">
+                          not(matches($superlative-marker,'^&#x308;?(ß/ss)?-'))">
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
@@ -231,7 +231,7 @@
           </xsl:when>
           <!-- adjectives with word-internal comparative markers -->
           <xsl:when test="string-length($comparative)&gt;0 and
-                          not(matches($comparative-marker,'^&#x308;?-'))">
+                          not(matches($comparative-marker,'^&#x308;?(ß/ss)?-'))">
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$comparative"/>
@@ -241,7 +241,7 @@
                               select="$etymology"/>
             </xsl:call-template>
             <xsl:if test="string-length($superlative)&gt;0 and
-                          not(matches($superlative-marker,'^&#x308;?-'))">
+                          not(matches($superlative-marker,'^&#x308;?(ß/ss)?-'))">
               <xsl:call-template name="default-entry">
                 <xsl:with-param name="lemma"
                                 select="replace($superlative,'^am (.+)en$','$1')"/>
@@ -254,9 +254,9 @@
           </xsl:when>
           <!-- adjectives with word-internal superlative markers -->
           <xsl:when test="string-length($superlative)&gt;0 and
-                          not(matches($superlative-marker,'^&#x308;?-'))">
+                          not(matches($superlative-marker,'^&#x308;?(ß/ss)?-'))">
             <xsl:if test="string-length($comparative)&gt;0 and
-                          not(matches($comparative-marker,'^&#x308;?-'))">
+                          not(matches($comparative-marker,'^&#x308;?(ß/ss)?-'))">
               <xsl:call-template name="default-entry">
                 <xsl:with-param name="lemma"
                                 select="$comparative"/>
