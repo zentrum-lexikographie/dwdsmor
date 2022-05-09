@@ -955,7 +955,6 @@
 * <Adj&>
 * <Adj+(e)>
 * <Adj-el/er>
-* <AdjComp>
 * <AdjNNSuff>
 * <AdjPosAttr-Up>
 * <Adv>

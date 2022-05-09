@@ -299,7 +299,8 @@
 <Stem>photographiere:<>n:<><V><base><nativ><VVReg>
 <Stem>recyceln:<><V><base><nativ><VVReg-el/er>
 <Stem>recycle:<>n:<><V><base><nativ><VVReg>
-<Stem>scharwenzeln:<><V><base><fremd><VVReg-el/er>
+<Stem>scharwenzeln:<><V><base><nativ><VVReg-el/er>
+<Stem>scherwenzeln:<><V><base><nativ><VVReg-el/er>
 <Stem>stenografiere:<>n:<><V><base><fremd><VVReg>
 <Stem>stenographiere:<>n:<><V><base><fremd><VVReg>
 <Stem>substantiiere:<>n:<><V><base><nativ><VVReg>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 7.2 -->
-<!-- Andreas Nolda 2022-04-20 -->
+<!-- Version 7.3 -->
+<!-- Andreas Nolda 2022-05-09 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -89,7 +89,8 @@
     </xsl:variable>
     <!-- ignore invalid spellings -->
     <xsl:for-each select="dwds:Schreibung[not(@Typ='U_NR' or
-                                              @Typ='U_U')]">
+                                              @Typ='U_U' or
+                                              @Typ='U_Falschschreibung')]">
       <xsl:variable name="expanded-grammar-specs">
         <xsl:choose>
           <!-- expand grammar specifications for old spellings with "ß"/"ss"-alternation
