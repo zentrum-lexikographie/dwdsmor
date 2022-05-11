@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # generate-adjective-paradigm.py -- generate a paradigm of adjective forms
-# Andreas Nolda 2022-04-04
+# Andreas Nolda 2022-05-11
 
 import sys
 import argparse
@@ -9,7 +9,7 @@ import sfst_transduce
 from blessings import Terminal
 from os import path
 
-version = 1.0
+version = 1.1
 
 basedir = path.dirname(__file__)
 libdir  = path.join(basedir, "lib")
@@ -37,13 +37,13 @@ cases   = ["Nom", "Acc", "Dat", "Gen"]
 numbers = ["Sg", "Pl"]
 infls   = ["St", "Wk", ""]
 
-uninfls = ["Pred"]
+uninfls = ["Invar", "Pred"]
 
 paradigm = {}
 
 def get_forms(lemma, transducer):
-    for uninfl in uninfls:
-        for degree in degrees:
+    for degree in degrees:
+        for uninfl in uninfls:
             forms = transducer.generate(lemma + "<+" + pos    + ">" +
                                                 "<"  + degree + ">" +
                                                 "<"  + uninfl + ">")
