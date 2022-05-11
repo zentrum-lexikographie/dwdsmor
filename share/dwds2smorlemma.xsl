@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smorlemma.xsl -->
-<!-- Version 5.0 -->
-<!-- Andreas Nolda 2022-04-05 -->
+<!-- Version 6.0 -->
+<!-- Andreas Nolda 2022-05-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -91,6 +91,36 @@
   <xsl:text>&lt;Stem&gt;</xsl:text>
   <xsl:value-of select="n:pair($lemma,$form)"/>
   <xsl:text>&lt;ADJ&gt;</xsl:text>
+  <xsl:text>&lt;base&gt;</xsl:text>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$etymology"/>
+    <xsl:with-param name="type">etymology</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$class"/>
+    <xsl:with-param name="type">class</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&#xA;</xsl:text>
+</xsl:template>
+
+<xsl:template name="adverb-entry">
+  <xsl:param name="lemma"/>
+  <xsl:param name="form"/>
+  <xsl:param name="class"/>
+  <xsl:param name="etymology"/>
+  <xsl:text>&lt;Stem&gt;</xsl:text>
+  <xsl:value-of select="n:pair($lemma,$form)"/>
+  <xsl:text>&lt;ADV&gt;</xsl:text>
   <xsl:text>&lt;base&gt;</xsl:text>
   <xsl:text>&lt;</xsl:text>
   <xsl:call-template name="insert-value">

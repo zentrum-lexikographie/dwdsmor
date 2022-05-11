@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 1.3 -->
-<!-- Andreas Nolda 2022-04-20 -->
+<!-- Version 2.0 -->
+<!-- Andreas Nolda 2022-05-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -306,6 +306,88 @@
             </xsl:call-template>
           </xsl:otherwise>
         </xsl:choose>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="adverb-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="comparative"/>
+  <xsl:param name="superlative"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:choose>
+      <!-- adverbs with the unsuffixed comparative form "mehr" -->
+      <xsl:when test="$comparative='mehr'">
+        <xsl:call-template name="default-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="pos">ADV</xsl:with-param>
+          <xsl:with-param name="class">Adv</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="adverb-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="form"
+                          select="$comparative"/>
+          <xsl:with-param name="class">AdvComp0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="adverb-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="form"
+                          select="replace($superlative,'^am (.+)sten$','$1')"/>
+          <xsl:with-param name="class">AdvSup</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- adverbs with other comparative forms -->
+      <xsl:when test="ends-with($comparative,'er')">
+        <xsl:call-template name="default-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="pos">ADV</xsl:with-param>
+          <xsl:with-param name="class">Adv</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="adverb-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="form"
+                          select="replace($comparative,'er$','')"/>
+          <xsl:with-param name="class">AdvComp</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:if test="ends-with($superlative,'sten')">
+          <xsl:call-template name="adverb-entry">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+            <xsl:with-param name="form"
+                            select="replace($superlative,'^am (.+)sten$','$1')"/>
+            <xsl:with-param name="class">AdvSup</xsl:with-param>
+            <xsl:with-param name="etymology"
+                            select="$etymology"/>
+          </xsl:call-template>
+        </xsl:if>
+      </xsl:when>
+      <!-- other adverbs -->
+      <xsl:otherwise>
+        <xsl:call-template name="default-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="pos">ADV</xsl:with-param>
+          <xsl:with-param name="class">Adv</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:if>

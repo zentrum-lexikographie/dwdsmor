@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 7.4 -->
+<!-- Version 8.0 -->
 <!-- Andreas Nolda 2022-05-11 -->
 
 <xsl:stylesheet version="2.0"
@@ -161,6 +161,20 @@
                 </xsl:with-param>
                 <xsl:with-param name="positive"
                                 select="normalize-space(dwds:Positiv)"/>
+                <xsl:with-param name="comparative"
+                                select="normalize-space(dwds:Komparativ)"/>
+                <xsl:with-param name="superlative"
+                                select="normalize-space(dwds:Superlativ)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- adverbs and adverbial participles -->
+            <xsl:when test="$pos='Adverb' or
+                            $pos='partizipiales Adverb'">
+              <xsl:call-template name="adverb-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
                 <xsl:with-param name="comparative"
                                 select="normalize-space(dwds:Komparativ)"/>
                 <xsl:with-param name="superlative"

@@ -1,0 +1,12 @@
+<Stem>anschließend<ADV><base><nativ><Adv>
+<Stem>b:ea:hl:<>d:<><ADV><base><nativ><AdvComp>
+<Stem>b:ea:hl:ed:<><ADV><base><nativ><AdvSup>
+<Stem>ba:äld<>:e<ADV><base><nativ><AdvSup>
+<Stem>ba:äld<ADV><base><nativ><AdvComp>
+<Stem>bald<>:e<ADV><base><nativ><AdvSup>
+<Stem>bald<ADV><base><nativ><Adv>
+<Stem>bald<ADV><base><nativ><AdvComp>
+<Stem>jetzt<ADV><base><nativ><Adv>
+<Stem>o:öft<>:e<ADV><base><nativ><AdvSup>
+<Stem>o:öft<ADV><base><nativ><AdvComp>
+<Stem>oft<ADV><base><nativ><Adv>

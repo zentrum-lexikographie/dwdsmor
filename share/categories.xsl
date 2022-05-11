@@ -957,7 +957,6 @@
 * <Adj-el/er>
 * <AdjNNSuff>
 * <AdjPosAttr-Up>
-* <Adv>
 * <FamName_0>
 * <FamName_s>
 * <Intj>
