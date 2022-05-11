@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 7.3 -->
-<!-- Andreas Nolda 2022-05-09 -->
+<!-- Version 7.4 -->
+<!-- Andreas Nolda 2022-05-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -147,8 +147,9 @@
                               select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <!-- adjectives -->
-            <xsl:when test="$pos='Adjektiv'">
+            <!-- adjectives and adjectival participles -->
+            <xsl:when test="$pos='Adjektiv' or
+                            $pos='partizipiales Adjektiv'">
               <xsl:call-template name="adjective-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>

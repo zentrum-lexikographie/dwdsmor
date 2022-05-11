@@ -1,6 +1,7 @@
 <Stem>alt<ADJ><base><nativ><Adj$e>
 <Stem>Berliner<ADJ><base><nativ><Adj0-Up>
 <Stem>echt<ADJ><base><nativ><AdjPos>
+<Stem>entlegen<ADJ><base><nativ><AdjPos>
 <Stem>früh<ADJ><base><nativ><Adj+e>
 <Stem>g:bu:et:<><ADJ><base><nativ><AdjSup>
 <Stem>g:bu:et:s<>:s<ADJ><base><nativ><AdjComp>
@@ -24,9 +25,11 @@
 <Stem>nass<ADJ><base><nativ><Adj+e>
 <Stem>Rh-positiv<ADJ><base><nativ><AdjPos-Up>
 <Stem>rosa<ADJ><base><fremd><Adj0>
+<Stem>spannend<ADJ><base><nativ><Adj+>
 <Stem>spät<ADJ><base><nativ><Adj+e>
 <Stem>v:mi:ee:hl:r<ADJ><base><nativ><AdjComp0>
 <Stem>v:mi:ee:il:<><ADJ><base><nativ><AdjSup>
+<Stem>verträumt<ADJ><base><nativ><AdjPos>
 <Stem>viel<ADJ><base><nativ><AdjPos>
 <Stem>warm<ADJ><base><nativ><Adj$>
 <Stem>wenig<ADJ><base><nativ><Adj+>

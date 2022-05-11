@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-05-11:
+
+* add support for adjectival participles
+
 2022-04-20:
 
 * add support for nouns in old spelling with nominative plural forms involving
