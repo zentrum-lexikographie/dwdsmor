@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-05-12:
+
+* add support for interjections
+* add support for pronominal adverbs
+
 2022-05-11:
 
 * add support for adjectival participles

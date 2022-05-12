@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 8.0 -->
-<!-- Andreas Nolda 2022-05-11 -->
+<!-- Version 8.1 -->
+<!-- Andreas Nolda 2022-05-12 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -183,6 +183,17 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
+            <!-- pronominal adverbs -->
+            <xsl:when test="$pos='Pronominaladverb'">
+              <xsl:call-template name="default-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="pos">OTHER</xsl:with-param>
+                <xsl:with-param name="class">ProAdv</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
             <!-- nouns -->
             <xsl:when test="$pos='Substantiv' and
                              normalize-space(dwds:Numeruspraeferenz)='nur im Singular' and
@@ -319,6 +330,17 @@
                 </xsl:with-param>
                 <xsl:with-param name="participle"
                                 select="normalize-space(dwds:Partizip_II)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- interjections -->
+            <xsl:when test="$pos='Interjektion'">
+              <xsl:call-template name="default-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="pos">OTHER</xsl:with-param>
+                <xsl:with-param name="class">Intj</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>

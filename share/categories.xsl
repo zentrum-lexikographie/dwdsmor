@@ -959,7 +959,6 @@
 * <AdjPosAttr-Up>
 * <FamName_0>
 * <FamName_s>
-* <Intj>
 * <Konj-Kon>
 * <Konj-Sub>
 * <Konj-Vgl>
@@ -979,7 +978,6 @@
 * <Prep/Art-n>
 * <Prep/Art-r>
 * <Prep/Art-s>
-* <ProAdv>
 * <Ptkl-Ant>
 * <Ptkl-Neg>
 * <VMPast>

@@ -2061,5 +2061,4 @@
 <!-- TODO: -->
 <!-- add support for the following part-of-speech categories:
 * <ABBR>
-* <ADV>
 * <OTHER> -->
