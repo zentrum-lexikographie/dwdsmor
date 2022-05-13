@@ -234,8 +234,7 @@ def main():
         if words:
             analyses = tuple([parse(transducer.analyse(word)) for word in words])
             if args.json:
-                json.dump({word: [a.as_dict() for a in analysis]
-                           for word, analysis in zip(words, analyses)},
+                json.dump({word: [a.as_dict() for a in analysis] for word, analysis in zip(words, analyses)},
                           sys.stdout, ensure_ascii=False)
             else:
                 if args.csv:
@@ -245,7 +244,7 @@ def main():
                 csv_writer.writerow([term.bold("Word"),
                                      term.bright_black("Analysis"),
                                      term.bold_underline("Lemma"),
-                                     "POS",
+                                     term.underline("POS"),
                                      "Function",
                                      "Degree",
                                      "Person",
@@ -262,7 +261,7 @@ def main():
                         csv_writer.writerow([term.bold(word),
                                              term.bright_black(a.analysis),
                                              term.bold_underline(a.lemma),
-                                             a.pos,
+                                             term.underline(a.pos),
                                              a.function,
                                              a.degree,
                                              a.person,
