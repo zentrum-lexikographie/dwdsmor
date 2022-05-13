@@ -314,6 +314,7 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
+  -C, --force-color     preserve color and formatting when piping output
   -c, --csv             output CSV table
   -j, --json            output JSON object
   -l, --both-layers     output analysis and surface layer
