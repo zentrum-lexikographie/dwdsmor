@@ -3,29 +3,29 @@
 # Andreas Nolda 2022-05-13
 
 import sys
+import os
 import argparse
 import json
 import sfst_transduce
 from blessings import Terminal
-from os import path
 
-version = 1.5
+version = 1.6
 
-basedir = path.dirname(__file__)
-libdir  = path.join(basedir, "lib")
-libfile = path.join(libdir, "smor-full.a")
+basedir = os.path.dirname(__file__)
+libdir  = os.path.join(basedir, "lib")
+libfile = os.path.join(libdir, "smor-full.a")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("lemma",
-                    help="noun")
+                    help="noun lemma")
 parser.add_argument("-C", "--force-color", action="store_true",
                     help="preserve color and formatting when piping output")
 parser.add_argument("-j", "--json", action="store_true",
                     help="output JSON object")
-parser.add_argument("-O", "--old-forms", action="store_true",
+parser.add_argument("-o", "--old-forms", action="store_true",
                     help="output also archaic forms")
 parser.add_argument("-t", "--transducer", default=libfile,
-                    help="transducer file")
+                    help="transducer file (default: {0})".format(os.path.relpath(libfile, os.getcwd())))
 parser.add_argument("-v", "--version", action="version",
                     version="{0} {1}".format(parser.prog, version))
 args = parser.parse_args()

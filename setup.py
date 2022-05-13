@@ -25,10 +25,5 @@ setup(
             'flake8',
             'dvc[ssh]'
         ]
-    },
-    entry_points={
-          'console_scripts': [
-              'dwdsmor-analyze=dwdsmor.analysis:main'
-          ]
     }
 )

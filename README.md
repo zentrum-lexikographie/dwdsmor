@@ -300,72 +300,69 @@ make test
 
 ## Tools
 
-There is a Python-based command-line tool for performing morphological analyses
-of word forms:
+`dwdsmor-analyse.py` is a Python script for analysing word forms with a DWDSmor
+transducer:
 
 ```plaintext
-$ dwdsmor-analyze --help
-Usage: dwdsmor-analyze [OPTIONS] [INPUT] [OUTPUT]
+$ ./dwdsmor-analyze -h
+usage: dwdsmor-analyze.py [-h] [-c] [-j] [-l] [-t TRANSDUCER] [-v]
+                          [input] [output]
 
-  DWDSmor Morphological Analysis
+positional arguments:
+  input                 input file (one word form per line; default: stdin)
+  output                output file (default: stdout)
 
-  Copyright (C) 2022 Berlin-Brandenburgische Akademie der Wissenschaften
-
-  Feeds word forms – given as one form per line – into a finite-state
-  transducer and outputs the results – valid paths through the transducer
-  representing possible analyses.
-
-  INPUT is the file with word forms to analyze (defaults to stdin).
-
-  OUTPUT is the file to write results to (defaults to stdout).
-
-Options:
-  -a, --automaton FILE  Path to the FST (compacted, i.e. *.ca)  [required]
-  --csv                 Output in CSV format (default)
-  --json                Output in JSON format
-  --help                Show this message and exit.
+optional arguments:
+  -h, --help            show this help message and exit
+  -c, --csv             output CSV table
+  -j, --json            output JSON object
+  -l, --both-layers     output analysis and surface layer
+  -t TRANSDUCER, --transducer TRANSDUCER
+                        path to transducer file (default: lib/smor-full.ca)
+  -v, --version         show program's version number and exit
 ```
 
 ```plaintext
-$ echo Kind | dwdsmor-analyze -a lib/smor-full.ca
-Word,Analysis,Lemma,POS,Function,Degree,Person,Gender,Number,Case,Inflection,Tense,Mood,Nonfinite,Metainfo
-Kind,Kind<+NN>:<><Neut>:<><Acc>:<><Sg>:<>,Kind,NN,,,,Neut,Sg,Acc,,,,,
-Kind,Kind<+NN>:<><Neut>:<><Dat>:<><Sg>:<>,Kind,NN,,,,Neut,Sg,Dat,,,,,
-Kind,Kind<+NN>:<><Neut>:<><Nom>:<><Sg>:<>,Kind,NN,,,,Neut,Sg,Nom,,,,,
+$ echo Kind | ./dwdsmor-analyze.py
+Word	Analysis	Lemma	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
+Kind	Kind<+NN><Neut><Acc><Sg>	Kind	NN				Neut	Sg	Acc
+Kind	Kind<+NN><Neut><Dat><Sg>	Kind	NN				Neut	Sg	Dat
+Kind	Kind<+NN><Neut><Nom><Sg>	Kind	NN				Neut	Sg	Nom
 ```
 
 ```plaintext
-$ echo kleines | dwdsmor-analyze -a lib/smor-full.ca
-Word,Analysis,Lemma,POS,Function,Degree,Person,Gender,Number,Case,Inflection,Tense,Mood,Nonfinite,Metainfo
-kleines,klein<+ADJ>:<><Pos>:<><Neut>:e<Acc>:s<Sg>:<><St>:<>,klein,ADJ,,Pos,,Neut,Sg,Acc,St,,,,
-kleines,klein<+ADJ>:<><Pos>:<><Neut>:e<Nom>:s<Sg>:<><St>:<>,klein,ADJ,,Pos,,Neut,Sg,Nom,St,,,,
+$ echo kleines | ./dwdsmor-analyze.py
+Word	Analysis	Lemma	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
+kleines	klein<+ADJ><Pos><Neut><Acc><Sg><St>	klein	ADJ		Pos		Neut	Sg	Acc	St
+kleines	klein<+ADJ><Pos><Neut><Nom><Sg><St>	klein	ADJ		Pos		Neut	Sg	Nom	St
 ```
 
 ```plaintext
-$ echo schlafe | dwdsmor-analyze -a lib/smor-full.ca
-Word,Analysis,Lemma,POS,Function,Degree,Person,Gender,Number,Case,Inflection,Tense,Mood,Nonfinite,Metainfo
-schlafe,schlaf<~>:<>e:<>n:<><+V>:<><3>:e<Sg>:<><Pres>:<><Subj>:<>,schlafen,V,,,3,,Sg,,,Pres,Subj,,
-schlafe,schlaf<~>:<>e:<>n:<><+V>:<><1>:e<Sg>:<><Pres>:<><Subj>:<>,schlafen,V,,,1,,Sg,,,Pres,Subj,,
-schlafe,schlaf<~>:<>e:<>n:<><+V>:<><1>:e<Sg>:<><Pres>:<><Ind>:<>,schlafen,V,,,1,,Sg,,,Pres,Ind,,
+$ echo schlafe | ./dwdsmor-analyze.py
+Word	Analysis	Lemma	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
+schlafe	schlaf<~>en<+V><3><Sg><Pres><Subj>	schlafen	V			3		Sg			Pres	Subj
+schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen	V			1		Sg			Pres	Subj
+schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen	V			1		Sg			Pres	Ind
 ```
 
 In addition, there are Python scripts for generating noun, adjective, and verb
 paradigms:
 
 ```plaintext
-usage: generate-noun-paradigm.py [-h] [-c] [-j] [-O] [-t TRANSDUCER] [-v]
+$ ./generate-noun-paradigm.py -h
+usage: generate-noun-paradigm.py [-h] [-C] [-j] [-o] [-t TRANSDUCER] [-v]
                                  lemma
 
 positional arguments:
-  lemma                 noun
+  lemma                 noun lemma
 
 optional arguments:
   -h, --help            show this help message and exit
   -C, --force-color     preserve color and formatting when piping output
   -j, --json            output JSON object
-  -O, --old-forms       output also archaic forms
+  -o, --old-forms       output also archaic forms
   -t TRANSDUCER, --transducer TRANSDUCER
-                        transducer file
+                        transducer file (default: lib/smor-full.a)
   -v, --version         show program's version number and exit
 ```
 
@@ -382,18 +379,19 @@ Gen Pl	Kinder
 ```
 
 ```plaintext
-usage: generate-adjective-paradigm.py [-h] [-c] [-j] [-t TRANSDUCER] [-v]
+$ ./generate-adjective-paradigm.py -h
+usage: generate-adjective-paradigm.py [-h] [-C] [-j] [-t TRANSDUCER] [-v]
                                       lemma
 
 positional arguments:
-  lemma                 adjective
+  lemma                 adjective lemma
 
 optional arguments:
   -h, --help            show this help message and exit
   -C, --force-color     preserve color and formatting when piping output
   -j, --json            output JSON object
   -t TRANSDUCER, --transducer TRANSDUCER
-                        transducer file
+                        transducer file (default: lib/smor-full.a)
   -v, --version         show program's version number and exit
 ```
 
@@ -501,17 +499,18 @@ Sup NoGend Gen Pl Wk	kleinsten
 ```
 
 ```plaintext
-usage: generate-verb-paradigm.py [-h] [-c] [-j] [-t TRANSDUCER] [-v] lemma
+$ ./generate-verb-paradigm.py -h
+usage: generate-verb-paradigm.py [-h] [-C] [-j] [-t TRANSDUCER] [-v] lemma
 
 positional arguments:
-  lemma                 verb
+  lemma                 verb lemma
 
 optional arguments:
   -h, --help            show this help message and exit
   -C, --force-color     preserve color and formatting when piping output
   -j, --json            output JSON object
   -t TRANSDUCER, --transducer TRANSDUCER
-                        transducer file
+                        transducer file (default: lib/smor-full.a)
   -v, --version         show program's version number and exit
 ```
 
