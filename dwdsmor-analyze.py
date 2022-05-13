@@ -14,7 +14,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 2.1
+version = 2.2
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -217,11 +217,14 @@ class Analysis(tuple):
         return result
 
 def parse(analyses):
+    l = []
     for analysis in analyses:
         morphemes = Analysis._decode_analysis(analysis)
         morphemes = Analysis._join_tags(morphemes)
         morphemes = Analysis._join_untagged(morphemes)
-        yield Analysis(analysis, [Morpheme(**m) for m in morphemes])
+        if not morphemes in l:
+            l.append(morphemes)
+            yield Analysis(analysis, [Morpheme(**m) for m in morphemes])
 
 words = ()
 
@@ -230,9 +233,9 @@ def main():
     try:
         transducer = sfst_transduce.CompactTransducer(args.transducer)
         transducer.both_layers = args.both_layers
-        words = tuple([w.strip() for w in args.input.readlines() if w.strip()])
+        words = tuple(w.strip() for w in args.input.readlines() if w.strip())
         if words:
-            analyses = tuple([parse(transducer.analyse(word)) for word in words])
+            analyses = tuple(parse(transducer.analyse(word)) for word in words)
             if args.json:
                 json.dump({word: [a.as_dict() for a in analysis] for word, analysis in zip(words, analyses)},
                           sys.stdout, ensure_ascii=False)
