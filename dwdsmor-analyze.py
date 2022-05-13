@@ -14,7 +14,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 2.0
+version = 2.1
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -25,6 +25,8 @@ parser.add_argument("input", nargs="?", type=argparse.FileType("r"), default=sys
                     help="input file (one word form per line; default: stdin)")
 parser.add_argument("output", nargs="?", type=argparse.FileType("w"), default=sys.stdout,
                     help="output file (default: stdout)")
+parser.add_argument("-C", "--force-color", action="store_true",
+                    help="preserve color and formatting when piping output")
 parser.add_argument("-c", "--csv", action="store_true",
                     help="output CSV table")
 parser.add_argument("-j", "--json", action="store_true",
@@ -37,7 +39,7 @@ parser.add_argument("-v", "--version", action="version",
                     version="{0} {1}".format(parser.prog, version))
 args = parser.parse_args()
 
-term = Terminal()
+term = Terminal(force_styling=args.force_color)
 
 Morpheme = namedtuple("Morpheme", ["word", "lemma", "tags"])
 
@@ -240,19 +242,37 @@ def main():
                     csv_writer = csv.writer(args.output)
                 else:
                     csv_writer = csv.writer(args.output, delimiter="\t")
-                csv_writer.writerow(["Word", "Analysis",
-                                     "Lemma", "POS", "Function",
-                                     "Degree", "Person", "Gender",
-                                     "Number", "Case", "Inflection",
-                                     "Tense", "Mood", "Nonfinite",
+                csv_writer.writerow([term.bold("Word"),
+                                     term.bright_black("Analysis"),
+                                     term.bold_underline("Lemma"),
+                                     "POS",
+                                     "Function",
+                                     "Degree",
+                                     "Person",
+                                     "Gender",
+                                     "Number",
+                                     "Case",
+                                     "Inflection",
+                                     "Tense",
+                                     "Mood",
+                                     "Nonfinite",
                                      "Metainfo"])
                 for word, analysis in zip(words, analyses):
                     for a in analysis:
-                        csv_writer.writerow([word, a.analysis,
-                                             a.lemma, a.pos, a.function,
-                                             a.degree, a.person, a.gender,
-                                             a.number, a.case, a.inflection,
-                                             a.tense, a.mood, a.nonfinite,
+                        csv_writer.writerow([term.bold(word),
+                                             term.bright_black(a.analysis),
+                                             term.bold_underline(a.lemma),
+                                             a.pos,
+                                             a.function,
+                                             a.degree,
+                                             a.person,
+                                             a.gender,
+                                             a.number,
+                                             a.case,
+                                             a.inflection,
+                                             a.tense,
+                                             a.mood,
+                                             a.nonfinite,
                                              a.metainfo])
     except KeyboardInterrupt:
         sys.exit(130)
