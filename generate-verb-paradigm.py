@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # generate-verb-paradigm.py -- generate a paradigm of verb forms
-# Andreas Nolda 2022-04-04
+# Andreas Nolda 2022-05-13
 
 import sys
 import argparse
@@ -19,7 +19,7 @@ libfile = path.join(libdir, "smor-full.a")
 parser = argparse.ArgumentParser()
 parser.add_argument("lemma",
                     help="verb")
-parser.add_argument("-c", "--force-color", action="store_true",
+parser.add_argument("-C", "--force-color", action="store_true",
                     help="preserve color and formatting when piping output")
 parser.add_argument("-j", "--json", action="store_true",
                     help="output JSON object")
@@ -35,11 +35,11 @@ pos     = "V"
 persons = ["1", "2", "3"]
 numbers = ["Sg", "Pl"]
 tenses  = ["Pres", "Past"]
-modes   = ["Ind", "Subj"]
+moods   = ["Ind", "Subj"]
 
 imp_persons = ["2"]
 imp_numbers = numbers
-imp_modes   = ["Imp"]
+imp_moods   = ["Imp"]
 
 infs = ["Inf", "PPres", "PPast"]
 
@@ -55,24 +55,24 @@ def get_forms(lemma, transducer):
         if forms:
             paradigm.update({cats: forms})
     for tense in tenses:
-        for mode in modes:
+        for mood in moods:
             for number in numbers:
                 for person in persons:
                     forms = transducer.generate(stem + "<~>" + affix + "<+" + pos    + ">" +
                                                                        "<"  + person + ">" +
                                                                        "<"  + number + ">" +
                                                                        "<"  + tense  + ">" +
-                                                                       "<"  + mode   + ">")
-                    cats = " ".join([person, number, tense, mode])
+                                                                       "<"  + mood   + ">")
+                    cats = " ".join([person, number, tense, mood])
                     if forms:
                         paradigm.update({cats: forms})
-    for mode in imp_modes:
+    for mood in imp_moods:
         for number in imp_numbers:
             for person in imp_persons:
                 forms = transducer.generate(stem + "<~>" + affix + "<+" + pos    + ">" +
-                                                                   "<"  + mode   + ">" +
+                                                                   "<"  + mood   + ">" +
                                                                    "<"  + number + ">")
-                cats = " ".join([person, number, mode])
+                cats = " ".join([person, number, mood])
                 if forms:
                     paradigm.update({cats: forms})
 

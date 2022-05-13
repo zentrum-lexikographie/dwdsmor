@@ -37,11 +37,17 @@ class Analysis(tuple):
             if tag.startswith('+'):
                 return tag[1:]
 
-    _genus_tags = {'Fem': True, 'Neut': True, 'Masc': True}
-    _numerus_tags = {'Sg': True, 'Pl': True}
-    _person_tags = {'1': True, '2': True, '3': True}
-    _casus_tags = {'Nom': True, 'Gen': True, 'Dat': True, 'Acc': True}
-    _tempus_tags = {'Pres': True, 'Past': True, 'PPast': True}
+    _function_tags   = {'Pred': True, 'Adv': True}
+    _degree_tags     = {'Pos': True, 'Comp': True, 'Sup': True}
+    _person_tags     = {'1': True, '2': True, '3': True}
+    _gender_tags     = {'Fem': True, 'Neut': True, 'Masc': True, 'NoGend': True, 'Invar': True}
+    _number_tags     = {'Sg': True, 'Pl': True, 'Invar': True}
+    _case_tags       = {'Nom': True, 'Gen': True, 'Dat': True, 'Acc': True, 'Invar': True}
+    _inflection_tags = {'St': True, 'Wk': True, 'Invar': True}
+    _tense_tags      = {'Pres': True, 'Past': True}
+    _mood_tags       = {'Ind': True, 'Subj': True, 'Imp': True}
+    _nonfinite_tags  = {'Inf': True, 'PPres': True, 'PPast': True}
+    _metainfo_tags   = {'Old': True}
 
     def tag_of_type(self, type_map):
         for tag in self.tags:
@@ -49,24 +55,48 @@ class Analysis(tuple):
                 return tag
 
     @cached_property
-    def genus(self):
-        return self.tag_of_type(Analysis._genus_tags)
+    def function(self):
+        return self.tag_of_type(Analysis._function_tags)
 
     @cached_property
-    def numerus(self):
-        return self.tag_of_type(Analysis._numerus_tags)
+    def degree(self):
+        return self.tag_of_type(Analysis._degree_tags)
 
     @cached_property
     def person(self):
         return self.tag_of_type(Analysis._person_tags)
 
     @cached_property
-    def casus(self):
-        return self.tag_of_type(Analysis._casus_tags)
+    def gender(self):
+        return self.tag_of_type(Analysis._gender_tags)
 
     @cached_property
-    def tempus(self):
-        return self.tag_of_type(Analysis._tempus_tags)
+    def number(self):
+        return self.tag_of_type(Analysis._number_tags)
+
+    @cached_property
+    def case(self):
+        return self.tag_of_type(Analysis._case_tags)
+
+    @cached_property
+    def inflection(self):
+        return self.tag_of_type(Analysis._inflection_tags)
+
+    @cached_property
+    def tense(self):
+        return self.tag_of_type(Analysis._tense_tags)
+
+    @cached_property
+    def mood(self):
+        return self.tag_of_type(Analysis._mood_tags)
+
+    @cached_property
+    def nonfinite(self):
+        return self.tag_of_type(Analysis._nonfinite_tags)
+
+    @cached_property
+    def metainfo(self):
+        return self.tag_of_type(Analysis._metainfo_tags)
 
     @cached_property
     def dist_score(self):
@@ -80,11 +110,17 @@ class Analysis(tuple):
             'analysis': self.analysis,
             'lemma': self.lemma,
             'pos': self.pos,
-            'genus': self.genus,
-            'numerus': self.numerus,
-            'casus': self.casus,
+            'function': self.function,
+            'degree': self.degree,
             'person': self.person,
-            'tempus': self.tempus,
+            'gender': self.gender,
+            'number': self.number,
+            'case': self.case,
+            'inflection': self.inflection,
+            'tense': self.tense,
+            'mood': self.mood,
+            'nonfinite': self.nonfinite,
+            'metainfo': self.metainfo,
             'morphemes': [m._asdict() for m in self]
         }
 
@@ -206,9 +242,9 @@ def create_transducer(file_name):
 def main(automaton, output_format, input, output):
     '''DWDSmor Morphological Analysis
 
-    Copyright (C) 2021 Berlin-Brandenburgische Akademie der Wissenschaften
+    Copyright (C) 2022 Berlin-Brandenburgische Akademie der Wissenschaften
 
-    Feeds word forms – given as one form per line – into a finite state
+    Feeds word forms – given as one form per line – into a finite-state
     transducer and outputs the results – valid paths through the transducer
     representing possible analyses.
 
@@ -226,14 +262,16 @@ def main(automaton, output_format, input, output):
     elif output_format == 'csv':
         csv_writer = csv.writer(output)
         csv_writer.writerow([
-            "Word", "Analysis", "Lemma", "POS",
-            "Gender", "Number", "Case", "Person", "Tense"
+            "Word", "Analysis", "Lemma", "POS", "Function",
+            "Degree", "Person", "Gender", "Number", "Case", "Inflection",
+            "Tense", "Mood", "Nonfinite", "Metainfo"
         ])
         for word, analysis in zip(words, analyses):
             for a in analysis:
                 csv_writer.writerow([
-                    word, a.analysis, a.lemma, a.pos,
-                    a.genus, a.numerus, a.casus, a.person, a.tempus
+                    word, a.analysis, a.lemma, a.pos, a.function,
+                    a.degree, a.person, a.gender, a.number, a.case, a.inflection,
+                    a.tense, a.mood, a.nonfinite, a.metainfo
                 ])
 
 

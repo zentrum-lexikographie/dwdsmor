@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # generate-noun-paradigm.py -- generate a paradigm of noun forms
-# Andreas Nolda 2022-04-04
+# Andreas Nolda 2022-05-13
 
 import sys
 import argparse
@@ -18,7 +18,7 @@ libfile = path.join(libdir, "smor-full.a")
 parser = argparse.ArgumentParser()
 parser.add_argument("lemma",
                     help="noun")
-parser.add_argument("-c", "--force-color", action="store_true",
+parser.add_argument("-C", "--force-color", action="store_true",
                     help="preserve color and formatting when piping output")
 parser.add_argument("-j", "--json", action="store_true",
                     help="output JSON object")

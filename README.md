@@ -7,7 +7,7 @@ German word forms** mainly for **segmenting morphologically complex words** and
 for **lemmatisation**. To this end we adopt:
 
 1. [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++ library
-   and toolbox for finite state transducers (FSTs),
+   and toolbox for finite-state transducers (FSTs),
 2. [SMORLemma](https://github.com/rsennrich/SMORLemma), a modified version of
    the Stuttgart Morphology ([SMOR](https://www.cis.lmu.de/~schmid/tools/SMOR/))
    with an alternative lemmatisation component, and the
@@ -56,7 +56,7 @@ building and using FSTs for morphological analysis:
   Saxon and Clojure both require a Java runtime.
 
 [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/)
-: a C++ library and toolbox for finite state transducers (FSTs); please take a
+: a C++ library and toolbox for finite-state transducers (FSTs); please take a
    look at its homepage for installation and usage instructions.
 
 On a recent Debian GNU/Linux, install the following packages:
@@ -292,14 +292,16 @@ ssh bembbaw1@blogin.hlrn.de squeue -l --me
 
 ## Tests
 
-Compiled automata can be exercised by the test suite in `tests/`:
+Compiled automata can be examined with the test suite in `tests/` by running:
 
 ```sh
 make test
 ```
 
-There is also a Python-based command line tool for performing morphological
-analyses of word forms:
+## Tools
+
+There is a Python-based command-line tool for performing morphological analyses
+of word forms:
 
 ```plaintext
 $ dwdsmor-analyze --help
@@ -307,9 +309,9 @@ Usage: dwdsmor-analyze [OPTIONS] [INPUT] [OUTPUT]
 
   DWDSmor Morphological Analysis
 
-  Copyright (C) 2021 Berlin-Brandenburgische Akademie der Wissenschaften
+  Copyright (C) 2022 Berlin-Brandenburgische Akademie der Wissenschaften
 
-  Feeds word forms – given as one form per line – into a finite state
+  Feeds word forms – given as one form per line – into a finite-state
   transducer and outputs the results – valid paths through the transducer
   representing possible analyses.
 
@@ -324,20 +326,227 @@ Options:
   --help                Show this message and exit.
 ```
 
-A sample run:
+```plaintext
+$ echo Kind | dwdsmor-analyze -a lib/smor-full.ca
+Word,Analysis,Lemma,POS,Function,Degree,Person,Gender,Number,Case,Inflection,Tense,Mood,Nonfinite,Metainfo
+Kind,Kind<+NN>:<><Neut>:<><Acc>:<><Sg>:<>,Kind,NN,,,,Neut,Sg,Acc,,,,,
+Kind,Kind<+NN>:<><Neut>:<><Dat>:<><Sg>:<>,Kind,NN,,,,Neut,Sg,Dat,,,,,
+Kind,Kind<+NN>:<><Neut>:<><Nom>:<><Sg>:<>,Kind,NN,,,,Neut,Sg,Nom,,,,,
+```
 
 ```plaintext
-$ printf "Männern\nManns\nFrauen\nMänner" | dwdsmor-analyze -a lib/smor-full.ca
-Word,Analysis,Lemma,POS,Gender,Number,Case,Person,Tense
-Männern,Ma:änn<+NN>:<><Masc>:<><>:e<>:r<Dat>:n<Pl>:<>,Mann,NN,Masc,Pl,Dat,,
-Manns,Mann<+NN>:<><Masc>:<><Gen>:<><Sg>:<><>:s,Mann,NN,Masc,Sg,Gen,,
-Frauen,Frau<+NN>:<><Fem>:<><>:e<>:n<Nom>:<><Pl>:<>,Frau,NN,Fem,Pl,Nom,,
-Frauen,Frau<+NN>:<><Fem>:<><>:e<>:n<Gen>:<><Pl>:<>,Frau,NN,Fem,Pl,Gen,,
-Frauen,Frau<+NN>:<><Fem>:<><>:e<>:n<Dat>:<><Pl>:<>,Frau,NN,Fem,Pl,Dat,,
-Frauen,Frau<+NN>:<><Fem>:<><>:e<>:n<Acc>:<><Pl>:<>,Frau,NN,Fem,Pl,Acc,,
-Männer,Ma:änn<+NN>:<><Masc>:<><>:e<>:r<Nom>:<><Pl>:<>,Mann,NN,Masc,Pl,Nom,,
-Männer,Ma:änn<+NN>:<><Masc>:<><>:e<>:r<Gen>:<><Pl>:<>,Mann,NN,Masc,Pl,Gen,,
-Männer,Ma:änn<+NN>:<><Masc>:<><>:e<>:r<Acc>:<><Pl>:<>,Mann,NN,Masc,Pl,Acc,,
+$ echo kleines | dwdsmor-analyze -a lib/smor-full.ca
+Word,Analysis,Lemma,POS,Function,Degree,Person,Gender,Number,Case,Inflection,Tense,Mood,Nonfinite,Metainfo
+kleines,klein<+ADJ>:<><Pos>:<><Neut>:e<Acc>:s<Sg>:<><St>:<>,klein,ADJ,,Pos,,Neut,Sg,Acc,St,,,,
+kleines,klein<+ADJ>:<><Pos>:<><Neut>:e<Nom>:s<Sg>:<><St>:<>,klein,ADJ,,Pos,,Neut,Sg,Nom,St,,,,
+```
+
+```plaintext
+$ echo schlafe | dwdsmor-analyze -a lib/smor-full.ca
+Word,Analysis,Lemma,POS,Function,Degree,Person,Gender,Number,Case,Inflection,Tense,Mood,Nonfinite,Metainfo
+schlafe,schlaf<~>:<>e:<>n:<><+V>:<><3>:e<Sg>:<><Pres>:<><Subj>:<>,schlafen,V,,,3,,Sg,,,Pres,Subj,,
+schlafe,schlaf<~>:<>e:<>n:<><+V>:<><1>:e<Sg>:<><Pres>:<><Subj>:<>,schlafen,V,,,1,,Sg,,,Pres,Subj,,
+schlafe,schlaf<~>:<>e:<>n:<><+V>:<><1>:e<Sg>:<><Pres>:<><Ind>:<>,schlafen,V,,,1,,Sg,,,Pres,Ind,,
+```
+
+In addition, there are Python scripts for generating noun, adjective, and verb
+paradigms:
+
+```plaintext
+usage: generate-noun-paradigm.py [-h] [-c] [-j] [-O] [-t TRANSDUCER] [-v]
+                                 lemma
+
+positional arguments:
+  lemma                 noun
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -C, --force-color     preserve color and formatting when piping output
+  -j, --json            output JSON object
+  -O, --old-forms       output also archaic forms
+  -t TRANSDUCER, --transducer TRANSDUCER
+                        transducer file
+  -v, --version         show program's version number and exit
+```
+
+```plaintext
+$ ./generate-noun-paradigm.py Kind
+Nom Sg	Kind
+Acc Sg	Kind
+Dat Sg	Kind
+Gen Sg	Kinds, Kindes
+Nom Pl	Kinder
+Acc Pl	Kinder
+Dat Pl	Kindern
+Gen Pl	Kinder
+```
+
+```plaintext
+usage: generate-adjective-paradigm.py [-h] [-c] [-j] [-t TRANSDUCER] [-v]
+                                      lemma
+
+positional arguments:
+  lemma                 adjective
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -C, --force-color     preserve color and formatting when piping output
+  -j, --json            output JSON object
+  -t TRANSDUCER, --transducer TRANSDUCER
+                        transducer file
+  -v, --version         show program's version number and exit
+```
+
+```plaintext
+$ ./generate-adjective-paradigm.py klein
+Pos Pred	klein
+Comp Pred	kleiner
+Sup Pred	kleinsten
+Pos Masc Nom Sg St	kleiner
+Pos Masc Nom Sg Wk	kleine
+Pos Masc Acc Sg St	kleinen
+Pos Masc Acc Sg Wk	kleinen
+Pos Masc Dat Sg St	kleinem
+Pos Masc Dat Sg Wk	kleinen
+Pos Masc Gen Sg St	kleinen
+Pos Masc Gen Sg Wk	kleinen
+Pos Neut Nom Sg St	kleines
+Pos Neut Nom Sg Wk	kleine
+Pos Neut Acc Sg St	kleines
+Pos Neut Acc Sg Wk	kleine
+Pos Neut Dat Sg St	kleinem
+Pos Neut Dat Sg Wk	kleinen
+Pos Neut Gen Sg St	kleinen
+Pos Neut Gen Sg Wk	kleinen
+Pos Fem Nom Sg St	kleine
+Pos Fem Nom Sg Wk	kleine
+Pos Fem Acc Sg St	kleine
+Pos Fem Acc Sg Wk	kleine
+Pos Fem Dat Sg St	kleiner
+Pos Fem Dat Sg Wk	kleinen
+Pos Fem Gen Sg St	kleiner
+Pos Fem Gen Sg Wk	kleinen
+Pos NoGend Nom Pl St	kleine
+Pos NoGend Nom Pl Wk	kleinen
+Pos NoGend Acc Pl St	kleine
+Pos NoGend Acc Pl Wk	kleinen
+Pos NoGend Dat Pl St	kleinen
+Pos NoGend Dat Pl Wk	kleinen
+Pos NoGend Gen Pl St	kleiner
+Pos NoGend Gen Pl Wk	kleinen
+Comp Masc Nom Sg St	kleinerer
+Comp Masc Nom Sg Wk	kleinere
+Comp Masc Acc Sg St	kleineren
+Comp Masc Acc Sg Wk	kleineren
+Comp Masc Dat Sg St	kleinerem
+Comp Masc Dat Sg Wk	kleineren
+Comp Masc Gen Sg St	kleineren
+Comp Masc Gen Sg Wk	kleineren
+Comp Neut Nom Sg St	kleineres
+Comp Neut Nom Sg Wk	kleinere
+Comp Neut Acc Sg St	kleineres
+Comp Neut Acc Sg Wk	kleinere
+Comp Neut Dat Sg St	kleinerem
+Comp Neut Dat Sg Wk	kleineren
+Comp Neut Gen Sg St	kleineren
+Comp Neut Gen Sg Wk	kleineren
+Comp Fem Nom Sg St	kleinere
+Comp Fem Nom Sg Wk	kleinere
+Comp Fem Acc Sg St	kleinere
+Comp Fem Acc Sg Wk	kleinere
+Comp Fem Dat Sg St	kleinerer
+Comp Fem Dat Sg Wk	kleineren
+Comp Fem Gen Sg St	kleinerer
+Comp Fem Gen Sg Wk	kleineren
+Comp NoGend Nom Pl St	kleinere
+Comp NoGend Nom Pl Wk	kleineren
+Comp NoGend Acc Pl St	kleinere
+Comp NoGend Acc Pl Wk	kleineren
+Comp NoGend Dat Pl St	kleineren
+Comp NoGend Dat Pl Wk	kleineren
+Comp NoGend Gen Pl St	kleinerer
+Comp NoGend Gen Pl Wk	kleineren
+Sup Masc Nom Sg St	kleinster
+Sup Masc Nom Sg Wk	kleinste
+Sup Masc Acc Sg St	kleinsten
+Sup Masc Acc Sg Wk	kleinsten
+Sup Masc Dat Sg St	kleinstem
+Sup Masc Dat Sg Wk	kleinsten
+Sup Masc Gen Sg St	kleinsten
+Sup Masc Gen Sg Wk	kleinsten
+Sup Neut Nom Sg St	kleinstes
+Sup Neut Nom Sg Wk	kleinste
+Sup Neut Acc Sg St	kleinstes
+Sup Neut Acc Sg Wk	kleinste
+Sup Neut Dat Sg St	kleinstem
+Sup Neut Dat Sg Wk	kleinsten
+Sup Neut Gen Sg St	kleinsten
+Sup Neut Gen Sg Wk	kleinsten
+Sup Fem Nom Sg St	kleinste
+Sup Fem Nom Sg Wk	kleinste
+Sup Fem Acc Sg St	kleinste
+Sup Fem Acc Sg Wk	kleinste
+Sup Fem Dat Sg St	kleinster
+Sup Fem Dat Sg Wk	kleinsten
+Sup Fem Gen Sg St	kleinster
+Sup Fem Gen Sg Wk	kleinsten
+Sup NoGend Nom Pl St	kleinste
+Sup NoGend Nom Pl Wk	kleinsten
+Sup NoGend Acc Pl St	kleinste
+Sup NoGend Acc Pl Wk	kleinsten
+Sup NoGend Dat Pl St	kleinsten
+Sup NoGend Dat Pl Wk	kleinsten
+Sup NoGend Gen Pl St	kleinster
+Sup NoGend Gen Pl Wk	kleinsten
+```
+
+```plaintext
+usage: generate-verb-paradigm.py [-h] [-c] [-j] [-t TRANSDUCER] [-v] lemma
+
+positional arguments:
+  lemma                 verb
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -C, --force-color     preserve color and formatting when piping output
+  -j, --json            output JSON object
+  -t TRANSDUCER, --transducer TRANSDUCER
+                        transducer file
+  -v, --version         show program's version number and exit
+```
+
+```plaintext
+$ ./generate-verb-paradigm.py schlafen
+Inf	schlafen
+PPres	schlafend
+PPast	geschlafen
+1 Sg Pres Ind	schlafe
+2 Sg Pres Ind	schläfst
+3 Sg Pres Ind	schläft
+1 Pl Pres Ind	schlafen
+2 Pl Pres Ind	schlaft
+3 Pl Pres Ind	schlafen
+1 Sg Pres Subj	schlafe
+2 Sg Pres Subj	schlafest
+3 Sg Pres Subj	schlafe
+1 Pl Pres Subj	schlafen
+2 Pl Pres Subj	schlafet
+3 Pl Pres Subj	schlafen
+1 Sg Past Ind	schlief
+2 Sg Past Ind	schliefst
+3 Sg Past Ind	schlief
+1 Pl Past Ind	schliefen
+2 Pl Past Ind	schlieft
+3 Pl Past Ind	schliefen
+1 Sg Past Subj	schliefe
+2 Sg Past Subj	schliefest
+3 Sg Past Subj	schliefe
+1 Pl Past Subj	schliefen
+2 Pl Past Subj	schliefet
+3 Pl Past Subj	schliefen
+2 Sg Imp	schlaf
+2 Pl Imp	schlaft
+
 ```
 
 ## Contact
