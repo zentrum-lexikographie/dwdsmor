@@ -300,13 +300,12 @@ make test
 
 ## Tools
 
-`dwdsmor-analyse.py` is a Python script for analysing word forms with a DWDSmor
+`dwdsmor.py` is a Python script for analysing word forms with a DWDSmor
 transducer:
 
 ```plaintext
-$ ./dwdsmor-analyze -h
-usage: dwdsmor-analyze.py [-h] [-c] [-j] [-l] [-t TRANSDUCER] [-v]
-                          [input] [output]
+$ ./dwdsmor -h
+usage: dwdsmor.py [-h] [-c] [-j] [-l] [-t TRANSDUCER] [-v] [input] [output]
 
 positional arguments:
   input                 input file (one word form per line; default: stdin)
@@ -324,7 +323,7 @@ optional arguments:
 ```
 
 ```plaintext
-$ echo Kind | ./dwdsmor-analyze.py
+$ echo Kind | ./dwdsmor.py
 Word	Analysis	Lemma	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
 Kind	Kind<+NN><Neut><Acc><Sg>	Kind	NN				Neut	Sg	Acc
 Kind	Kind<+NN><Neut><Dat><Sg>	Kind	NN				Neut	Sg	Dat
@@ -332,14 +331,14 @@ Kind	Kind<+NN><Neut><Nom><Sg>	Kind	NN				Neut	Sg	Nom
 ```
 
 ```plaintext
-$ echo kleines | ./dwdsmor-analyze.py
+$ echo kleines | ./dwdsmor.py
 Word	Analysis	Lemma	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
 kleines	klein<+ADJ><Pos><Neut><Acc><Sg><St>	klein	ADJ		Pos		Neut	Sg	Acc	St
 kleines	klein<+ADJ><Pos><Neut><Nom><Sg><St>	klein	ADJ		Pos		Neut	Sg	Nom	St
 ```
 
 ```plaintext
-$ echo schlafe | ./dwdsmor-analyze.py
+$ echo schlafe | ./dwdsmor.py
 Word	Analysis	Lemma	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
 schlafe	schlaf<~>en<+V><3><Sg><Pres><Subj>	schlafen	V			3		Sg			Pres	Subj
 schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen	V			1		Sg			Pres	Subj

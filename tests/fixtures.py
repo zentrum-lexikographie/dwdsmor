@@ -26,14 +26,6 @@ def dwdsmor_transducer():
 
 
 @fixture
-def men_women():
-    return [
-        'Frau', 'Frauen',
-        'Mann', 'Männer', 'Mannes'
-    ]
-
-
-@fixture
 def irregular_nouns():
     with (smor_lemma_dir / 'lexicon' / 'nouns.irreg.xml').open() as f:
         lexicon_xml = ET.parse(f)

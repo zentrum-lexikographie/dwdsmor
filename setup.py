@@ -16,8 +16,8 @@ setup(
         'jellyfish',
     ],
     extras_require={
-        'cli': [
-            'click'
+        'dwdsmor': [
+            'blessings'
         ],
         'test': [
             'pytest',

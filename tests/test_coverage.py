@@ -1,10 +1,7 @@
-from collections import namedtuple, defaultdict
-import csv
 import os
-
+import csv
 import dwdsmor
-import dwdsmor.analysis
-
+from collections import namedtuple, defaultdict
 
 def write_csv_report(csv_report_file, csv_header, csv_rows):
     csv_report_file.parent.mkdir(parents=True, exist_ok=True)
@@ -13,7 +10,6 @@ def write_csv_report(csv_report_file, csv_header, csv_rows):
         report_writer.writerow(csv_header)
         for csv_row in csv_rows:
             report_writer.writerow(csv_row)
-
 
 tuebadz_dwdsmor_map = {
     "ADJA": {
@@ -353,18 +349,15 @@ tuebadz_dwdsmor_map = {
     }
 }
 
-
 def tuebadz_to_dwdsmor(pos, lemma):
     if pos in tuebadz_dwdsmor_map and lemma in tuebadz_dwdsmor_map[pos]:
         return tuebadz_dwdsmor_map[pos][lemma]
     else:
         return lemma
 
-
 LemmatizedWord = namedtuple(
     'LemmatizedWord', ('form', 'lemma', 'pos', 'dwdsmor_lemma', 'is_match')
 )
-
 
 def lemmatize(dwdsmor_transducer, w):
     form, lemma, pos = (w.get('form', ''), w.get('lemma', ''), w.get('pos', ''))
@@ -376,7 +369,7 @@ def lemmatize(dwdsmor_transducer, w):
         lemma = lemma.replace('#', '')
 
         analyses = dwdsmor_transducer.analyse(form)
-        analyses = tuple(dwdsmor.analysis.parse(analyses))
+        analyses = tuple(dwdsmor.parse(analyses))
         analyses = tuple(a for a in analyses if pos.startswith(a.pos)) +\
             analyses
         if len(analyses) > 0:
@@ -385,7 +378,6 @@ def lemmatize(dwdsmor_transducer, w):
     return LemmatizedWord(
         form, lemma, pos, dwdsmor_lemma, tuebadz_to_dwdsmor(pos, lemma) == dwdsmor_lemma
     )
-
 
 def test_tuebadz_coverage(project_dir, tuebadz, dwdsmor_transducer):
     lemmatized = (lemmatize(dwdsmor_transducer, w) for s in tuebadz for w in s)
@@ -399,7 +391,6 @@ def test_tuebadz_coverage(project_dir, tuebadz, dwdsmor_transducer):
          for pos, matches in (sorted(stats.items())))
     )
 
-
 def test_tuebadz_lemmatisation(project_dir, tuebadz, dwdsmor_transducer):
     lemmatized = (lemmatize(dwdsmor_transducer, w) for s in tuebadz for w in s)
     write_csv_report(
@@ -409,12 +400,11 @@ def test_tuebadz_lemmatisation(project_dir, tuebadz, dwdsmor_transducer):
          for w in lemmatized)
     )
 
-
 def wb_coverage(dwdsmor_transducer, wb_entries):
     for wb_n, wb_entry in enumerate(wb_entries):
         lemma = wb_entry['written_repr']
         analyses = dwdsmor_transducer.analyse(lemma)
-        analyses = dwdsmor.analysis.parse(analyses)
+        analyses = dwdsmor.parse(analyses)
         analyzed = False
         analyzed_lemma = ''
         analyzed_pos = ''
@@ -434,7 +424,6 @@ def wb_coverage(dwdsmor_transducer, wb_entries):
             analyzed_pos,
             ("1" if analyzed else "0")
         )
-
 
 def test_wb_coverage(project_dir, dwdsmor_transducer, wb_entries):
     write_csv_report(

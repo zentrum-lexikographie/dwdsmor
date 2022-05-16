@@ -1,1 +1,1 @@
--e .[cli,test]
+-e .[dwdsmor,test]

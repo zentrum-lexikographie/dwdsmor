@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-# dwdsmor-analyze.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-05-13
+# dwdsmor.py - analyse word forms with DWDSmor
+# Gregor Middell and Andreas Nolda 2022-05-16
 
 import sys
 import os
@@ -14,32 +14,11 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 2.2
+version = 3.0
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
 libfile = os.path.join(libdir, "smor-full.ca")
-
-parser = argparse.ArgumentParser()
-parser.add_argument("input", nargs="?", type=argparse.FileType("r"), default=sys.stdin,
-                    help="input file (one word form per line; default: stdin)")
-parser.add_argument("output", nargs="?", type=argparse.FileType("w"), default=sys.stdout,
-                    help="output file (default: stdout)")
-parser.add_argument("-C", "--force-color", action="store_true",
-                    help="preserve color and formatting when piping output")
-parser.add_argument("-c", "--csv", action="store_true",
-                    help="output CSV table")
-parser.add_argument("-j", "--json", action="store_true",
-                    help="output JSON object")
-parser.add_argument("-l", "--both-layers", action="store_true",
-                    help="output analysis and surface layer")
-parser.add_argument("-t", "--transducer", default=libfile,
-                    help="path to transducer file (default: {0})".format(os.path.relpath(libfile, os.getcwd())))
-parser.add_argument("-v", "--version", action="version",
-                    version="{0} {1}".format(parser.prog, version))
-args = parser.parse_args()
-
-term = Terminal(force_styling=args.force_color)
 
 Morpheme = namedtuple("Morpheme", ["word", "lemma", "tags"])
 
@@ -226,56 +205,88 @@ def parse(analyses):
             l.append(morphemes)
             yield Analysis(analysis, [Morpheme(**m) for m in morphemes])
 
-words = ()
+def output_dsv(words, analyses, output, force_color=False, delimiter="\t"):
+    csv_writer = csv.writer(output, delimiter=delimiter)
+    term = Terminal(force_styling=force_color)
+    csv_writer.writerow([term.bold("Word"),
+                         term.bright_black("Analysis"),
+                         term.bold_underline("Lemma"),
+                         term.underline("POS"),
+                         "Function",
+                         "Degree",
+                         "Person",
+                         "Gender",
+                         "Number",
+                         "Case",
+                         "Inflection",
+                         "Tense",
+                         "Mood",
+                         "Nonfinite",
+                         "Metainfo"])
+    for word, analysis in zip(words, analyses):
+        for a in analysis:
+            csv_writer.writerow([term.bold(word),
+                                 term.bright_black(a.analysis),
+                                 term.bold_underline(a.lemma),
+                                 term.underline(a.pos),
+                                 a.function,
+                                 a.degree,
+                                 a.person,
+                                 a.gender,
+                                 a.number,
+                                 a.case,
+                                 a.inflection,
+                                 a.tense,
+                                 a.mood,
+                                 a.nonfinite,
+                                 a.metainfo])
+
+def output_json(words, analyses, output):
+    json.dump({word: [a.as_dict() for a in analysis] for word, analysis in zip(words, analyses)},
+              output, ensure_ascii=False)
+
+def analyse(transducer, input, output, force_color=False, output_format="tsv"):
+    words = tuple(w.strip() for w in input.readlines() if w.strip())
+    if words:
+        analyses = tuple(parse(transducer.analyse(word)) for word in words)
+        if output_format == "json":
+            output_json(words, analyses, output)
+        elif output_format == "csv":
+            output_dsv(words, analyses, output, force_color, delimiter=",")
+        else:
+            output_dsv(words, analyses, output, force_color)
 
 def main():
     e = False
     try:
+        parser = argparse.ArgumentParser()
+        parser.add_argument("input", nargs="?", type=argparse.FileType("r"), default=sys.stdin,
+                            help="input file (one word form per line; default: stdin)")
+        parser.add_argument("output", nargs="?", type=argparse.FileType("w"), default=sys.stdout,
+                            help="output file (default: stdout)")
+        parser.add_argument("-C", "--force-color", action="store_true",
+                            help="preserve color and formatting when piping output")
+        parser.add_argument("-c", "--csv", action="store_true",
+                            help="output CSV table")
+        parser.add_argument("-j", "--json", action="store_true",
+                            help="output JSON object")
+        parser.add_argument("-l", "--both-layers", action="store_true",
+                            help="output analysis and surface layer")
+        parser.add_argument("-t", "--transducer", default=libfile,
+                            help="path to transducer file (default: {0})".format(os.path.relpath(libfile, os.getcwd())))
+        parser.add_argument("-v", "--version", action="version",
+                            version="{0} {1}".format(parser.prog, version))
+        args = parser.parse_args()
+        term = Terminal(force_styling=args.force_color)
         transducer = sfst_transduce.CompactTransducer(args.transducer)
         transducer.both_layers = args.both_layers
-        words = tuple(w.strip() for w in args.input.readlines() if w.strip())
-        if words:
-            analyses = tuple(parse(transducer.analyse(word)) for word in words)
-            if args.json:
-                json.dump({word: [a.as_dict() for a in analysis] for word, analysis in zip(words, analyses)},
-                          sys.stdout, ensure_ascii=False)
-            else:
-                if args.csv:
-                    csv_writer = csv.writer(args.output)
-                else:
-                    csv_writer = csv.writer(args.output, delimiter="\t")
-                csv_writer.writerow([term.bold("Word"),
-                                     term.bright_black("Analysis"),
-                                     term.bold_underline("Lemma"),
-                                     term.underline("POS"),
-                                     "Function",
-                                     "Degree",
-                                     "Person",
-                                     "Gender",
-                                     "Number",
-                                     "Case",
-                                     "Inflection",
-                                     "Tense",
-                                     "Mood",
-                                     "Nonfinite",
-                                     "Metainfo"])
-                for word, analysis in zip(words, analyses):
-                    for a in analysis:
-                        csv_writer.writerow([term.bold(word),
-                                             term.bright_black(a.analysis),
-                                             term.bold_underline(a.lemma),
-                                             term.underline(a.pos),
-                                             a.function,
-                                             a.degree,
-                                             a.person,
-                                             a.gender,
-                                             a.number,
-                                             a.case,
-                                             a.inflection,
-                                             a.tense,
-                                             a.mood,
-                                             a.nonfinite,
-                                             a.metainfo])
+        if args.json:
+            output_format = "json"
+        elif args.csv:
+            output_format = "csv"
+        else:
+            output_format = "tsv"
+        analyse(transducer, args.input, args.output, args.force_color, output_format)
     except KeyboardInterrupt:
         sys.exit(130)
     except TypeError:
@@ -285,8 +296,6 @@ def main():
         print(term.bold_red(args.transducer) + ": No such transducer.", file=sys.stderr)
         e = True
     if e:
-        exit = 2
-    elif not words:
         exit = 1
     else:
         exit = 0
