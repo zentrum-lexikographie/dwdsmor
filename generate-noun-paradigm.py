@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # generate-noun-paradigm.py -- generate a paradigm of noun forms
-# Andreas Nolda 2022-05-13
+# Andreas Nolda 2022-05-16
 
 import sys
 import os
@@ -9,28 +9,11 @@ import json
 import sfst_transduce
 from blessings import Terminal
 
-version = 1.6
+version = 2.0
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
 libfile = os.path.join(libdir, "smor-full.a")
-
-parser = argparse.ArgumentParser()
-parser.add_argument("lemma",
-                    help="noun lemma")
-parser.add_argument("-C", "--force-color", action="store_true",
-                    help="preserve color and formatting when piping output")
-parser.add_argument("-j", "--json", action="store_true",
-                    help="output JSON object")
-parser.add_argument("-o", "--old-forms", action="store_true",
-                    help="output also archaic forms")
-parser.add_argument("-t", "--transducer", default=libfile,
-                    help="transducer file (default: {0})".format(os.path.relpath(libfile, os.getcwd())))
-parser.add_argument("-v", "--version", action="version",
-                    version="{0} {1}".format(parser.prog, version))
-args = parser.parse_args()
-
-term = Terminal(force_styling=args.force_color)
 
 pos     = "NN"
 genders = ["Masc", "Neut", "Fem", "NoGend"]
@@ -39,7 +22,7 @@ numbers = ["Sg", "Pl"]
 
 paradigm = {}
 
-def get_forms(lemma, transducer):
+def get_forms(lemma, transducer, old_forms=False):
     for gender in genders:
         for number in numbers:
             for case in cases:
@@ -50,7 +33,7 @@ def get_forms(lemma, transducer):
                 cats = " ".join([case, number])
                 if forms:
                     paradigm.update({cats: forms})
-                if args.old_forms:
+                if old_forms:
                     forms = transducer.generate(lemma + "<+" + pos    + ">" +
                                                         "<"  + gender + ">" +
                                                         "<"  + case   + ">" +
@@ -63,24 +46,44 @@ def get_forms(lemma, transducer):
                         else:
                             paradigm.update({cats: forms})
 
-def print_forms(cats, forms):
+def print_forms(cats, forms, force_color=False):
+    term = Terminal(force_styling=force_color)
     print(cats + "\t" + term.bold(", ".join(forms)))
 
-def print_paradigm(paradigm):
-    if args.json:
+def print_paradigm(paradigm, force_color=False, output_format="tsv"):
+    if output_format == "json":
         print(json.dumps(paradigm, ensure_ascii=False))
     else:
         for cats in paradigm:
             if paradigm[cats]:
-                print_forms(cats, paradigm[cats])
+                print_forms(cats, paradigm[cats], force_color)
 
 def main():
     e = False
     try:
+        parser = argparse.ArgumentParser()
+        parser.add_argument("lemma",
+                            help="noun lemma")
+        parser.add_argument("-C", "--force-color", action="store_true",
+                            help="preserve color and formatting when piping output")
+        parser.add_argument("-j", "--json", action="store_true",
+                            help="output JSON object")
+        parser.add_argument("-o", "--old-forms", action="store_true",
+                            help="output also archaic forms")
+        parser.add_argument("-t", "--transducer", default=libfile,
+                            help="transducer file (default: {0})".format(os.path.relpath(libfile, os.getcwd())))
+        parser.add_argument("-v", "--version", action="version",
+                            version="{0} {1}".format(parser.prog, version))
+        args = parser.parse_args()
+        term = Terminal(force_styling=args.force_color)
         transducer = sfst_transduce.Transducer(args.transducer)
-        get_forms(args.lemma, transducer)
+        get_forms(args.lemma, transducer, old_forms=args.old_forms)
         if paradigm:
-            print_paradigm(paradigm)
+            if args.json:
+                output_format = "json"
+            else:
+                output_format = "tsv"
+            print_paradigm(paradigm, args.force_color, output_format)
         else:
             print(term.bold(args.lemma) + ": No such lemma.", file=sys.stderr)
     except KeyboardInterrupt:
