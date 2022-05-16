@@ -206,8 +206,8 @@ def parse(analyses):
             yield Analysis(analysis, [Morpheme(**m) for m in morphemes])
 
 def output_dsv(words, analyses, output, force_color=False, delimiter="\t"):
-    csv_writer = csv.writer(output, delimiter=delimiter)
     term = Terminal(force_styling=force_color)
+    csv_writer = csv.writer(output, delimiter=delimiter)
     csv_writer.writerow([term.bold("Word"),
                          term.bright_black("Analysis"),
                          term.bold_underline("Lemma"),
