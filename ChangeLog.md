@@ -4,6 +4,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 * add support for adpositions
 * add support for contracted adpositions
+* weaken idiom filter
 
 2022-05-12:
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 8.2 -->
+<!-- Version 8.3 -->
 <!-- Andreas Nolda 2022-05-17 -->
 
 <xsl:stylesheet version="2.0"
@@ -29,7 +29,7 @@
   </xsl:variable>
   <!-- ignore idioms and other syntactically complex units
        except for reflexive verbs and phrasal verbs -->
-  <xsl:for-each select="dwds:Formangabe[not(dwds:Schreibung[count(tokenize(normalize-space(.)))&gt;1])]
+  <xsl:for-each select="dwds:Formangabe[dwds:Schreibung[count(tokenize(normalize-space(.)))=1]]
                                        [not(dwds:Grammatik/dwds:Praesens[tokenize(normalize-space(.))[2]='sich']
                                                                         [count(tokenize(normalize-space(.)))&gt;3])]
                                        [not(dwds:Grammatik/dwds:Praesens[not(tokenize(normalize-space(.))[2]='sich')]
@@ -98,8 +98,9 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <!-- ignore invalid spellings -->
-    <xsl:for-each select="dwds:Schreibung[not(@Typ='U_NR' or
+    <!-- ignore idioms and invalid spellings -->
+    <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                                         [not(@Typ='U_NR' or
                                               @Typ='U_U' or
                                               @Typ='U_Falschschreibung')]">
       <xsl:variable name="expanded-grammar-specs">
