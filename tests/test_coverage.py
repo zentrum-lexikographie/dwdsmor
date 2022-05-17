@@ -4,7 +4,7 @@ import dwdsmor
 from collections import namedtuple, defaultdict
 
 # mapping between divergent STTS and SMOR part-of-speech categories
-tuebadz_dwdsmor_pos_map = {"ADJA":    ["ADJ", "INDEF", "ORD"],
+tuebadz_dwdsmor_pos_map = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
                            "ADJD":    ["ADJ"],
                            "APPO":    ["POSTP"],
                            "APPR":    ["PREP"],
@@ -56,6 +56,7 @@ tuebadz_dwdsmor_lemma_map = {"ADJA": {"älter": "alt",
                                       "ander": "andere",
                                       "besser": "gut",
                                       "best": "gut",
+                                      "ein": "eine",
                                       "größer": "groß",
                                       "größt": "groß",
                                       "höher": "hoch",
