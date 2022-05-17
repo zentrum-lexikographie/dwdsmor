@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-05-17:
+
+* add support for adpositions
+* add support for contracted adpositions
+
 2022-05-12:
 
 * add support for interjections

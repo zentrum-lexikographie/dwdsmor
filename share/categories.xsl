@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 3.2 -->
-<!-- Andreas Nolda 2022-04-20 -->
+<!-- Version 3.3 -->
+<!-- Andreas Nolda 2022-05-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -940,6 +940,56 @@
                                                  [@past=$past-marker]
                                                  [@participle=$participle-marker]"/>
 </xsl:template>
+
+<!-- other classes -->
+
+<xsl:variable name="adposition-class-mapping">
+  <!-- prepositions: -->
+  <!-- case government: accusative -->
+  <class position="pre"
+         case="accusative">Prep-Akk</class>
+  <!-- case government: dative -->
+  <class position="pre"
+         case="dative">Prep-Dat</class>
+  <!-- case government: genitive -->
+  <class position="pre"
+         case="genitive">Prep-Gen</class>
+  <!-- postpositions: -->
+  <!-- case government: accusative -->
+  <class position="post"
+         case="accusative">Postp-Akk</class>
+  <!-- case government: dative -->
+  <class position="post"
+         case="dative">Postp-Dat</class>
+  <!-- case government: genitive -->
+  <class position="post"
+         case="genitive">Postp-Gen</class>
+</xsl:variable>
+
+<xsl:template name="adposition-class">
+  <xsl:param name="lemma"/>
+  <xsl:param name="position"/>
+  <xsl:param name="case"/>
+  <xsl:value-of select="$adposition-class-mapping/class[@position=$position]
+                                                       [@case=$case]"/>
+</xsl:template>
+
+<xsl:variable name="contracted-adposition-class-mapping">
+  <!-- clitic article: "(de)m" -->
+  <class clitic="m">Prep/Art-m</class>
+  <!-- clitic article: "(de)n" -->
+  <class clitic="n">Prep/Art-n</class>
+  <!-- clitic article: "(de)r" -->
+  <class clitic="r">Prep/Art-r</class>
+  <!-- clitic article: "(da)s" -->
+  <class clitic="s">Prep/Art-s</class>
+</xsl:variable>
+
+<xsl:template name="contracted-adposition-class">
+  <xsl:param name="lemma"/>
+  <xsl:param name="clitic"/>
+  <xsl:value-of select="$contracted-adposition-class-mapping/class[@clitic=$clitic]"/>
+</xsl:template>
 </xsl:stylesheet>
 <!-- TODO: -->
 <!-- add support for the following inflection classes:
@@ -964,20 +1014,7 @@
 * <Konj-Vgl>
 * <NFem_s_s>
 * <NMasc_en_e>
-* <Postp-Akk>
-* <Postp-Dat>
-* <Postp-Gen>
 * <Pref/Sep>
-* <Prep-Akk>
-* <Prep-DA>
-* <Prep-Dat>
-* <Prep-GD>
-* <Prep-GDA>
-* <Prep-Gen>
-* <Prep/Art-m>
-* <Prep/Art-n>
-* <Prep/Art-r>
-* <Prep/Art-s>
 * <Ptkl-Ant>
 * <Ptkl-Neg>
 * <VMPast>

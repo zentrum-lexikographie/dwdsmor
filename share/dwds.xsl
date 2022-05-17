@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 8.1 -->
-<!-- Andreas Nolda 2022-05-12 -->
+<!-- Version 8.2 -->
+<!-- Andreas Nolda 2022-05-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -34,11 +34,22 @@
                                                                         [count(tokenize(normalize-space(.)))&gt;3])]
                                        [not(dwds:Grammatik/dwds:Praesens[not(tokenize(normalize-space(.))[2]='sich')]
                                                                         [count(tokenize(normalize-space(.)))&gt;2])]">
+    <xsl:variable name="basis">
+      <xsl:choose>
+        <!-- adpositional basis of contracted adposition -->
+        <xsl:when test="normalize-space(dwds:Grammatik/dwds:Wortklasse)='Präposition + Artikel'">
+          <xsl:value-of select="normalize-space(../dwds:Verweise[@Typ='Zusammenrückung']/dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma)"/>
+        </xsl:when>
+        <!-- TODO: more basis values -->
+      </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="flat-grammar-specs">
-      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Genitiv or
+      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Einschraenkung or
+                                                   self::dwds:Genitiv or
                                                    self::dwds:Genus or
                                                    self::dwds:indeklinabel or
                                                    self::dwds:Komparativ or
+                                                   self::dwds:Kasuspraeferenz or
                                                    self::dwds:Numeruspraeferenz or
                                                    self::dwds:Partizip_II or
                                                    self::dwds:Plural or
@@ -185,10 +196,9 @@
             </xsl:when>
             <!-- pronominal adverbs -->
             <xsl:when test="$pos='Pronominaladverb'">
-              <xsl:call-template name="default-entry">
+              <xsl:call-template name="other-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
-                <xsl:with-param name="pos">OTHER</xsl:with-param>
                 <xsl:with-param name="class">ProAdv</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -336,18 +346,52 @@
             </xsl:when>
             <!-- interjections -->
             <xsl:when test="$pos='Interjektion'">
-              <xsl:call-template name="default-entry">
+              <xsl:call-template name="other-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
-                <xsl:with-param name="pos">OTHER</xsl:with-param>
                 <xsl:with-param name="class">Intj</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- adpositions -->
+            <xsl:when test="$pos='Präposition'">
+              <xsl:call-template name="adposition-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="position">
+                  <xsl:choose>
+                    <xsl:when test="contains(dwds:Einschraenkung,'auch nachgestellt')">pre+post</xsl:when>
+                    <xsl:when test="contains(dwds:Einschraenkung,'nachgestellt')">post</xsl:when>
+                    <xsl:otherwise>pre</xsl:otherwise>
+                  </xsl:choose>
+                </xsl:with-param>
+                <xsl:with-param name="case">
+                  <xsl:choose>
+                    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Akkusativ'">accusative</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Dativ'">dative</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Genitiv'">genitive</xsl:when>
+                  </xsl:choose>
+                </xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- contracted adpositions -->
+            <xsl:when test="$pos='Präposition + Artikel'">
+              <xsl:call-template name="contracted-adposition-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="adposition"
+                                select="$basis"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="normalize-space(dwds:Wortklasse)='Substantiv' or
                             normalize-space(dwds:Wortklasse)='Verb' or
-                            normalize-space(dwds:Wortklasse)='Partizip'">
+                            normalize-space(dwds:Wortklasse)='Partizip' or
+                            normalize-space(dwds:Wortklasse)='Präposition'">
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
                 <xsl:value-of select="$lemma"/>

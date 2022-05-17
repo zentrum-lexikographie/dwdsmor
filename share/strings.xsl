@@ -146,7 +146,7 @@
           <xsl:otherwise>
             <xsl:value-of select="substring($argument1,1,1)"/>
           </xsl:otherwise>
-          </xsl:choose>
+        </xsl:choose>
       </xsl:variable>
       <xsl:variable name="substring2">
         <xsl:choose>
@@ -158,7 +158,7 @@
           <xsl:otherwise>
             <xsl:value-of select="substring($argument2,1,1)"/>
           </xsl:otherwise>
-          </xsl:choose>
+        </xsl:choose>
       </xsl:variable>
       <xsl:variable name="string1">
         <xsl:choose>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 2.0 -->
-<!-- Andreas Nolda 2022-05-11 -->
+<!-- Version 2.1 -->
+<!-- Andreas Nolda 2022-05-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2050,6 +2050,111 @@
           <xsl:with-param name="stem"
                           select="$participle-stem"/>
           <xsl:with-param name="class">VVPP-en</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="adposition-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="position"/>
+  <xsl:param name="case"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:choose>
+      <xsl:when test="$position='pre+post'">
+        <xsl:call-template name="other-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="class">
+            <xsl:call-template name="adposition-class">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="position">pre</xsl:with-param>
+              <xsl:with-param name="case"
+                              select="$case"/>
+            </xsl:call-template>
+          </xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="other-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="class">
+            <xsl:call-template name="adposition-class">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="position">post</xsl:with-param>
+              <xsl:with-param name="case"
+                              select="$case"/>
+            </xsl:call-template>
+          </xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="other-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="class">
+            <xsl:call-template name="adposition-class">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="position"
+                              select="$position"/>
+              <xsl:with-param name="case"
+                              select="$case"/>
+            </xsl:call-template>
+          </xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="contracted-adposition-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="adposition"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:choose>
+      <xsl:when test="string-length($adposition)&gt;0">
+        <xsl:call-template name="other-entry">
+          <xsl:with-param name="lemma"
+                          select="$adposition"/>
+          <xsl:with-param name="form"
+                          select="$lemma"/>
+          <xsl:with-param name="class">
+            <xsl:call-template name="contracted-adposition-class">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="clitic"
+                              select="replace($lemma,'^.+(.)$','$1')"/>
+            </xsl:call-template>
+          </xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="other-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="class">
+            <xsl:call-template name="contracted-adposition-class">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="clitic"
+                              select="replace($lemma,'^.+(.)$','$1')"/>
+            </xsl:call-template>
+          </xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
