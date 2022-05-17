@@ -5,6 +5,8 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 * add support for adpositions
 * add support for contracted adpositions
 * weaken idiom filter
+* add support for neuter singularia tantum with genitive singular forms ending
+  in geminate "s" + "-es"
 
 2022-05-12:
 

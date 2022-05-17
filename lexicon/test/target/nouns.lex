@@ -172,6 +172,7 @@
 <Stem>Ufer<NN><base><nativ><NNeut_s_0>
 <Stem>Uhu<NN><base><nativ><NMasc_s_s>
 <Stem>Vater<NN><base><nativ><NMasc_s_$>
+<Stem>Verständnis<NN><base><nativ><NNeut/Sg_sses>
 <Stem>Wald<NN><base><nativ><NMasc_es_$er>
 <Stem>Wild<NN><base><nativ><NNeut/Sg_es>
 <Stem>Zirkus<NN><base><fremd><NMasc-s0/sse>

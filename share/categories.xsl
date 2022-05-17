@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 3.3 -->
+<!-- Version 3.4 -->
 <!-- Andreas Nolda 2022-05-17 -->
 
 <xsl:stylesheet version="2.0"
@@ -257,6 +257,10 @@
          genitive-singular="-(e)s">NNeut/Sg_es</class>
   <class gender="neutr."
          genitive-singular="-es">NNeut/Sg_es</class>
+  <!-- genitive singular: geminate "s" + "-es"
+       no plural -->
+  <class gender="neutr."
+         genitive-singular="-ses">NNeut/Sg_sses</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-e" -->
   <class gender="neutr."
