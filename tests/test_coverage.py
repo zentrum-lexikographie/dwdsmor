@@ -483,7 +483,9 @@ def lemmatize(transducer, w):
     form, lemma, pos = (w.get("form", ""), w.get("lemma", ""), w.get("pos", ""))
     dwdsmor_lemma = ""
     dwdsmor_pos = ""
-    if not pos == "FM" or pos == "XY" or pos.startswith("$"):
+    if not (pos == "FM" or
+            pos == "XY" or
+            pos.startswith("$")):
         if pos == "PTKVZ" or lemma == "#refl":
             lemma = form
         lemma = lemma.split("%")[0]
@@ -531,7 +533,9 @@ def test_tuebadz_coverage(project_dir, tuebadz, transducer):
                      ((pos,
                        str(matches[True]),
                        str(matches[False]))
-                      for pos, matches in (sorted(stats.items()))))
+                      for pos, matches in (sorted(stats.items())) if not (pos == "FM" or
+                                                                          pos == "XY" or
+                                                                          pos.startswith("$"))))
 
 def test_tuebadz_lemmatisation(project_dir, tuebadz, transducer):
     lemmatized = (lemmatize(transducer, w) for s in tuebadz for w in s)
@@ -548,7 +552,9 @@ def test_tuebadz_lemmatisation(project_dir, tuebadz, transducer):
                        w.dwdsmor_lemma,
                        w.dwdsmor_pos,
                        w.is_match)
-                      for w in lemmatized))
+                      for w in lemmatized if not (w.pos == "FM" or
+                                                  w.pos == "XY" or
+                                                  w.pos.startswith("$"))))
 
 def wb_coverage(transducer, wb_entries):
     for wb_n, wb_entry in enumerate(wb_entries):
