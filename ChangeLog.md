@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-05-18:
+
+* add support for conjunctions
+* add support for particles
+
 2022-05-17:
 
 * add support for adpositions

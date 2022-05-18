@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 3.4 -->
-<!-- Andreas Nolda 2022-05-17 -->
+<!-- Version 3.5 -->
+<!-- Andreas Nolda 2022-05-18 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -994,6 +994,23 @@
   <xsl:param name="clitic"/>
   <xsl:value-of select="$contracted-adposition-class-mapping/class[@clitic=$clitic]"/>
 </xsl:template>
+
+<xsl:variable name="conjunction-class-mapping">
+  <!-- coordinating conjunctions: -->
+  <class type="coord">Konj-Kon</class>
+  <!-- subordinating conjunctions -->
+  <class type="subord">Konj-Sub</class>
+  <!-- infinitive conjunctions -->
+  <class type="inf">Konj-Inf</class>
+  <!-- comparative conjunctions -->
+  <class type="comp">Konj-Vgl</class>
+</xsl:variable>
+
+<xsl:template name="conjunction-class">
+  <xsl:param name="lemma"/>
+  <xsl:param name="type"/>
+  <xsl:value-of select="$conjunction-class-mapping/class[@type=$type]"/>
+</xsl:template>
 </xsl:stylesheet>
 <!-- TODO: -->
 <!-- add support for the following inflection classes:
@@ -1013,14 +1030,9 @@
 * <AdjPosAttr-Up>
 * <FamName_0>
 * <FamName_s>
-* <Konj-Kon>
-* <Konj-Sub>
-* <Konj-Vgl>
 * <NFem_s_s>
 * <NMasc_en_e>
 * <Pref/Sep>
-* <Ptkl-Ant>
-* <Ptkl-Neg>
 * <VMPast>
 * <VMPastKonj>
 * <WAdv> -->

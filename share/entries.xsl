@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 2.1 -->
-<!-- Andreas Nolda 2022-05-17 -->
+<!-- Version 2.2 -->
+<!-- Andreas Nolda 2022-05-18 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2162,8 +2162,29 @@
     </xsl:choose>
   </xsl:if>
 </xsl:template>
+
+<xsl:template name="conjunction-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="type"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+  <xsl:call-template name="other-entry">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+    <xsl:with-param name="class">
+      <xsl:call-template name="conjunction-class">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="type"
+                        select="$type"/>
+      </xsl:call-template>
+    </xsl:with-param>
+    <xsl:with-param name="etymology"
+                    select="$etymology"/>
+  </xsl:call-template>
+  </xsl:if>
+</xsl:template>
 </xsl:stylesheet>
 <!-- TODO: -->
 <!-- add support for the following part-of-speech categories:
-* <ABBR>
-* <OTHER> -->
+* <ABBR> -->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 8.3 -->
-<!-- Andreas Nolda 2022-05-17 -->
+<!-- Version 8.4 -->
+<!-- Andreas Nolda 2022-05-18 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -27,13 +27,8 @@
       <!-- ... -->
     </xsl:choose>
   </xsl:variable>
-  <!-- ignore idioms and other syntactically complex units
-       except for reflexive verbs and phrasal verbs -->
-  <xsl:for-each select="dwds:Formangabe[dwds:Schreibung[count(tokenize(normalize-space(.)))=1]]
-                                       [not(dwds:Grammatik/dwds:Praesens[tokenize(normalize-space(.))[2]='sich']
-                                                                        [count(tokenize(normalize-space(.)))&gt;3])]
-                                       [not(dwds:Grammatik/dwds:Praesens[not(tokenize(normalize-space(.))[2]='sich')]
-                                                                        [count(tokenize(normalize-space(.)))&gt;2])]">
+  <!-- ignore idioms and other syntactically complex units -->
+  <xsl:for-each select="dwds:Formangabe[dwds:Schreibung[count(tokenize(normalize-space(.)))=1]]">
     <xsl:variable name="basis">
       <xsl:choose>
         <!-- adpositional basis of contracted adposition -->
@@ -44,20 +39,31 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="flat-grammar-specs">
-      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Einschraenkung or
-                                                   self::dwds:Genitiv or
+      <!-- ignore idioms and other syntactically complex units
+           except for reflexive verbs and phrasal verbs -->
+      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse or
                                                    self::dwds:Genus or
                                                    self::dwds:indeklinabel or
-                                                   self::dwds:Komparativ or
+                                                   self::dwds:Genitiv[count(tokenize(normalize-space(.)))=1] or
+                                                   self::dwds:Plural[count(tokenize(normalize-space(.)))=1] or
+                                                   self::dwds:Positiv[count(tokenize(normalize-space(.)))=1] or
+                                                   self::dwds:Komparativ[count(tokenize(normalize-space(.)))=1] or
+                                                   self::dwds:Superlativ[tokenize(normalize-space(.))[1]='am']
+                                                                        [count(tokenize(normalize-space(.)))=2] or
+                                                   self::dwds:Superlativ[not(tokenize(normalize-space(.))[1]='am')]
+                                                                        [count(tokenize(normalize-space(.)))=1] or
+                                                   self::dwds:Praesens[tokenize(normalize-space(.))[2]='sich']
+                                                                      [count(tokenize(normalize-space(.)))&lt;4] or
+                                                   self::dwds:Praesens[not(tokenize(normalize-space(.))[2]='sich')]
+                                                                      [count(tokenize(normalize-space(.)))&lt;3] or
+                                                   self::dwds:Praeteritum[tokenize(normalize-space(.))[2]='sich']
+                                                                         [count(tokenize(normalize-space(.)))&lt;4] or
+                                                   self::dwds:Praeteritum[not(tokenize(normalize-space(.))[2]='sich')]
+                                                                         [count(tokenize(normalize-space(.)))&lt;3] or
+                                                   self::dwds:Partizip_II[count(tokenize(normalize-space(.)))=1] or
                                                    self::dwds:Kasuspraeferenz or
                                                    self::dwds:Numeruspraeferenz or
-                                                   self::dwds:Partizip_II or
-                                                   self::dwds:Plural or
-                                                   self::dwds:Positiv or
-                                                   self::dwds:Praesens or
-                                                   self::dwds:Praeteritum or
-                                                   self::dwds:Superlativ or
-                                                   self::dwds:Wortklasse]"
+                                                   self::dwds:Einschraenkung]"
                           group-by="name()">
         <xsl:element name="{name()}">
           <xsl:copy-of select="current-group()"/>
@@ -184,16 +190,81 @@
             <!-- adverbs and adverbial participles -->
             <xsl:when test="$pos='Adverb' or
                             $pos='partizipiales Adverb'">
-              <xsl:call-template name="adverb-entry-set">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="comparative"
-                                select="normalize-space(dwds:Komparativ)"/>
-                <xsl:with-param name="superlative"
-                                select="normalize-space(dwds:Superlativ)"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
+              <xsl:choose>
+                <xsl:when test="$lemma='allzu'">
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='nicht'">
+                  <xsl:call-template name="adverb-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="class">Ptkl-Neg</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='wie'">
+                  <xsl:call-template name="adverb-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="class">Konj-Vgl</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='zu'">
+                  <xsl:call-template name="adverb-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="class">Ptkl-Zu</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:call-template name="adverb-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="comparative"
+                                    select="normalize-space(dwds:Komparativ)"/>
+                    <xsl:with-param name="superlative"
+                                    select="normalize-space(dwds:Superlativ)"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:otherwise>
+              </xsl:choose>
             </xsl:when>
             <!-- pronominal adverbs -->
             <xsl:when test="$pos='Pronominaladverb'">
@@ -362,8 +433,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="position">
                   <xsl:choose>
-                    <xsl:when test="contains(dwds:Einschraenkung,'auch nachgestellt')">pre+post</xsl:when>
-                    <xsl:when test="contains(dwds:Einschraenkung,'nachgestellt')">post</xsl:when>
+                    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'auch nachgestellt')">pre+post</xsl:when>
+                    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nachgestellt')">post</xsl:when>
                     <xsl:otherwise>pre</xsl:otherwise>
                   </xsl:choose>
                 </xsl:with-param>
@@ -380,19 +451,286 @@
             </xsl:when>
             <!-- contracted adpositions -->
             <xsl:when test="$pos='Präposition + Artikel'">
-              <xsl:call-template name="contracted-adposition-entry-set">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="adposition"
-                                select="$basis"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
+              <xsl:choose>
+                <xsl:when test="$lemma='am'">
+                  <xsl:call-template name="contracted-adposition-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="adposition"
+                                    select="$basis"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:call-template name="contracted-adposition-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="adposition"
+                                    select="$basis"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <!-- conjunctions -->
+            <xsl:when test="$pos='Konjunktion'">
+              <xsl:choose>
+                <xsl:when test="$lemma='als'">
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">coord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">comp</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='auch'">
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">coord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="adverb-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='doch'">
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">coord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="class">Intj</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='sowie'">
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">coord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='trotzdem'">
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="adverb-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='wie'">
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">comp</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='&amp;' or
+                                $lemma='aber' or
+                                $lemma='außer' or
+                                $lemma='beziehungsweise' or
+                                $lemma='denn' or
+                                $lemma='entweder' or
+                                $lemma='geschweige' or
+                                $lemma='oder' or
+                                $lemma='respektive' or
+                                $lemma='sondern' or
+                                $lemma='sowie' or
+                                $lemma='sowohl' or
+                                $lemma='und' or
+                                $lemma='weder'"><!-- ... -->
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">coord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='alldieweil' or
+                                $lemma='allwo' or
+                                $lemma='bis' or
+                                $lemma='bevor' or
+                                $lemma='da' or
+                                $lemma='damit' or
+                                $lemma='daß' or
+                                $lemma='dass' or
+                                $lemma='ehe' or
+                                $lemma='eh’' or
+                                $lemma='falls' or
+                                $lemma='gleichwohl' or
+                                $lemma='indem' or
+                                $lemma='insofern' or
+                                $lemma='insoweit' or
+                                $lemma='inwieweit' or
+                                $lemma='je' or
+                                $lemma='nachdem' or
+                                $lemma='ob' or
+                                $lemma='obgleich' or
+                                $lemma='obschon' or
+                                $lemma='obwohl' or
+                                $lemma='obzwar' or
+                                $lemma='seit' or
+                                $lemma='seitdem' or
+                                $lemma='sintemalen' or
+                                $lemma='sobald' or
+                                $lemma='sodaß' or
+                                $lemma='sodass' or
+                                $lemma='sofern' or
+                                $lemma='solang' or
+                                $lemma='solange' or
+                                $lemma='sooft' or
+                                $lemma='soviel' or
+                                $lemma='soweit' or
+                                $lemma='sowenig' or
+                                $lemma='umso' or
+                                $lemma='während' or
+                                $lemma='weil' or
+                                $lemma='wenn' or
+                                $lemma='wenngleich' or
+                                $lemma='wennschon' or
+                                $lemma='wieweit' or
+                                $lemma='wiewohl' or
+                                $lemma='wofern' or
+                                $lemma='wohingegen' or
+                                $lemma='zumal'"><!-- ... -->
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='anstatt' or
+                                $lemma='statt' or
+                                $lemma='um'">
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">inf</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='desto'"><!-- ... -->
+                  <xsl:call-template name="conjunction-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="type">comp</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:call-template name="adverb-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:when>
+            <!-- particles: -->
+            <xsl:when test="$pos='Partikel'">
+              <xsl:choose>
+                <xsl:when test="$lemma='gä' or
+                                $lemma='ge' or
+                                $lemma='gell' or
+                                $lemma='gelle' or
+                                $lemma='gelt' or
+                                $lemma='nein'">
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="class">Intj</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:call-template name="adverb-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:otherwise>
+              </xsl:choose>
             </xsl:when>
             <xsl:when test="normalize-space(dwds:Wortklasse)='Substantiv' or
                             normalize-space(dwds:Wortklasse)='Verb' or
                             normalize-space(dwds:Wortklasse)='Partizip' or
-                            normalize-space(dwds:Wortklasse)='Präposition'">
+                            normalize-space(dwds:Wortklasse)='Präposition' or
+                            normalize-space(dwds:Wortklasse)='Konjunktion'">
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
                 <xsl:value-of select="$lemma"/>
