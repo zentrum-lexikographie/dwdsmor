@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-06-21:
+
+* add support for proper names with genitive forms ending in optional "'"
+
 2022-05-18:
 
 * add support for conjunctions

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DWDS xmlns="http://www.dwds.de/ns/1.0">
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Andreas</Schreibung>
+      <Grammatik>
+        <Wortklasse>Eigenname</Wortklasse>
+        <Genus>mask.</Genus>
+        <Genitiv>-(’)</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+    <Diachronie>
+      <Etymologie/>
+    </Diachronie>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Felicitas</Schreibung>
+      <Grammatik>
+        <Wortklasse>Eigenname</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-(’)</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+    <Diachronie>
+      <Etymologie/>
+    </Diachronie>
+  </Artikel>
+</DWDS>

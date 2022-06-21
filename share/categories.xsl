@@ -739,6 +739,10 @@
        no plural -->
   <class gender="mask."
          genitive-singular="-s">Name-Masc_s</class>
+  <!-- genitive singular: "-(’)"
+       no plural -->
+  <class gender="mask."
+         genitive-singular="-(’)">Name-Masc_apos</class>
   <!-- genitive singular: unmarked
        no plural -->
   <class gender="mask."
@@ -754,6 +758,10 @@
        no plural -->
   <class gender="neutr."
          genitive-singular="-s">Name-Neut_s</class>
+  <!-- genitive singular: "-(’)"
+       no plural -->
+  <class gender="neut."
+         genitive-singular="-(’)">Name-Neut_apos</class>
   <!-- genitive singular: unmarked
        no plural -->
   <class gender="neutr."
@@ -763,6 +771,10 @@
        no plural -->
   <class gender="fem."
          genitive-singular="-s">Name-Fem_s</class>
+  <!-- genitive singular: "-(’)"
+       no plural -->
+  <class gender="fem."
+         genitive-singular="-(’)">Name-Fem_apos</class>
   <!-- genitive singular: unmarked
        no plural -->
   <class gender="fem."
