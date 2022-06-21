@@ -129,8 +129,9 @@ Options:
   -h, --help
 ```
 
-This script is called with appropriate options for building a DWDSmor lexicon by
-running:
+This script is called with appropriate options for building a DWDSmor lexicon
+from DWDS dictionary articles in `lexicon/wb/` and auxiliary input files in
+`lexicon/aux/` by running:
 
 ```sh
 make -C lexicon
@@ -139,9 +140,16 @@ make -C lexicon
 A log is saved in `SMORLemma/lexicon/lexicon.log`. This includes XSLT warnings,
 if any.
 
+In order to build a lexicon without the auxiliary input files in `lexicon/aux/`,
+run:
+
+```sh
+make INCLUDE_AUX=false -C lexicon
+```
+
 By default, additional lexica from SMORLemma for irregular nouns, adjectives,
 and adverbs as well as for adpositions and affixes are included. In order to
-built a lexicon without them, run:
+build a lexicon without them, run:
 
 ```sh
 make INCLUDE_SMORLEMMA=false -C lexicon

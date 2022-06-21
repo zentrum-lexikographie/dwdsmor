@@ -5,6 +5,7 @@ CLOJURE_VERSION := 1.10.3.943
 DIFF = diff --ignore-trailing-space --side-by-side --report-identical-files --suppress-common-lines --width=120
 
 SRCDIR  = $(abspath wb)
+AUXDIR  = $(abspath aux)
 LEXDIR  = $(abspath ../SMORLemma/lexicon)
 XSLDIR  = $(abspath ../share)
 TESTDIR = $(abspath test)
@@ -20,10 +21,16 @@ TESTTARGET = $(TESTDIR)/target
 TESTINPUTS  = $(wildcard $(TESTINPUT)/*.list)
 TESTOUTPUTS = $(patsubst $(TESTINPUT)/%.list,$(TESTOUTPUT)/%.lex,$(TESTINPUTS))
 
+INCLUDE_AUX = true
+
+ifeq ($(INCLUDE_AUX),true)
+  EXTRA_DIRS = $(AUXDIR)
+endif
+
 INCLUDE_SMORLEMMA = true
 
 ifeq ($(INCLUDE_SMORLEMMA),true)
-  GENERATE_EXTRA_OPTIONS = --smorlemma-lexica
+  EXTRA_OPTIONS = --smorlemma-lexica
 endif
 
 all: lexicon
@@ -39,12 +46,12 @@ clojure-install.sh:
 lexicon: $(LEX)
 
 $(LEX): $(XSL) $(LIB)
-	./generate-lexicon --xslt $(XSL) $(GENERATE_EXTRA_OPTIONS) --filter --output $@ $(SRCDIR) 2> $(LEX).log
+	./generate-lexicon --xslt $(XSL) $(EXTRA_OPTIONS) --filter --output $@ $(SRCDIR) $(EXTRA_DIRS) 2> $(LEX).log
 
 debug: $(LEX).debug
 
 $(LEX).debug: $(XSL) $(LIB)
-	./generate-lexicon --xslt $(XSL) $(GENERATE_EXTRA_OPTIONS) --debug --output $@ $(SRCDIR) 2> $(LEX).debug.log
+	./generate-lexicon --xslt $(XSL) $(EXTRA_OPTIONS) --debug --output $@ $(SRCDIR) $(EXTRA_DIRS) 2> $(LEX).debug.log
 
 test: $(TESTOUTPUTS)
 
