@@ -21,10 +21,8 @@
 <xsl:template match="dwds:Artikel">
   <xsl:variable name="etymology">
     <xsl:choose>
-      <xsl:when test="dwds:Diachronie[dwds:Etymologie[string-length(normalize-space(.))&gt;0]]">fremd</xsl:when>
-      <xsl:when test="dwds:Diachronie[not(dwds:Etymologie[string-length(normalize-space(.))&gt;0])]">nativ</xsl:when>
-      <!-- TODO: more etymology values -->
-      <!-- ... -->
+      <xsl:when test="dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))&gt;0]">fremd</xsl:when>
+      <xsl:otherwise>nativ</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
   <!-- ignore idioms and other syntactically complex units -->
