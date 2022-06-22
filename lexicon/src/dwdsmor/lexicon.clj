@@ -2,6 +2,7 @@
   "DWDSmor lexicon generation."
   (:require [clojure.java.io :as io]
             [clojure.string :as str]
+            [clojure.set :as set]
             [clojure.tools.cli :refer [parse-opts]]
             [clojure.tools.logging :as log]
             [com.climate.claypoole :as cp]
@@ -74,6 +75,9 @@
 (def cli-options
   [["-x" "--xslt XSLT"
     :desc "XSLT stylesheet"
+    :parse-fn io/file]
+   ["-b" "--blacklist LIST"
+    :desc "list of filenames of blacklisted XML documents"
     :parse-fn io/file]
    ["-o" "--output OUTPUT"
     :desc "Path of the generated lexicon"
@@ -149,9 +153,15 @@
     :else            (exit 2 (str (str f) " does not exist"))))
 
 (defn article-files
-  [{files :arguments}]
-  (sort (mapcat file->xml-docs (map io/file files))))
-
+  [{files :arguments} blacklist]
+  (let [xmlfiles  (mapcat file->xml-docs (map io/file files))
+        blcontent (when blacklist (slurp blacklist))
+        blfiles   (when-not (empty? blcontent) (str/split blcontent #"\s+"))]
+    (if blfiles
+      (sort (set/difference (set xmlfiles)
+                            (set (flatten (for [f blfiles]
+                                            (filter #(str/ends-with? % f) xmlfiles))))))
+      (sort xmlfiles))))
 
 (def sort-key
   "Output (lexicon entries) is sorted according to German locale and case
@@ -173,25 +183,26 @@
         args  (parse-args args)]
     (configure-logging! args)
     (try
-      (let [articles (article-files args)
-            _        (log/infof "Extracting lexicon entries from %d file(s)"
-                                (count articles))
-            xslt     (xslt-fn args)
-            entries  (apply concat (cpl/upmap (cp/ncpus) xslt articles))
-            limit    (get-in args [:options :limit])
-            filter?  (get-in args [:options :filter])
-            entries  (vec (cond->> entries
-                            filter? (remove #(re-seq #"<UNKNOWN>" %))
-                            limit   (take limit)))
-            _        (log/info "Sorting lexicon entries and removing duplicates")
-            entries  (dedupe (sort-by sort-key entries))
-            entries  (concat
-                      (when (get-in args [:options :smorlemma-lexica])
-                        (log/info "Prepending SMORLemma lexica")
-                        smorlemma/lexicon)
-                      entries)
-            _        (log/info "Writing lexicon entries")
-            output   (get-in args [:options :output])]
+      (let [blacklist (get-in args [:options :blacklist])
+            articles  (article-files args blacklist)
+            _         (log/infof "Extracting lexicon entries from %d file(s)"
+                                 (count articles))
+            xslt      (xslt-fn args)
+            entries   (apply concat (cpl/upmap (cp/ncpus) xslt articles))
+            limit     (get-in args [:options :limit])
+            filter?   (get-in args [:options :filter])
+            entries   (vec (cond->> entries
+                             filter? (remove #(re-seq #"<UNKNOWN>" %))
+                             limit   (take limit)))
+            _         (log/info "Sorting lexicon entries and removing duplicates")
+            entries   (dedupe (sort-by sort-key entries))
+            entries   (concat
+                       (when (get-in args [:options :smorlemma-lexica])
+                         (log/info "Prepending SMORLemma lexica")
+                         smorlemma/lexicon)
+                       entries)
+            _         (log/info "Writing lexicon entries")
+            output    (get-in args [:options :output])]
         (with-open [w (io/writer output :encoding "UTF-8")]
           (doseq [chunk (concat (interpose "\n" entries) '("\n"))] (.write w chunk))))
       (let [stop     (System/currentTimeMillis)

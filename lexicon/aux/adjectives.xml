@@ -1,0 +1,13 @@
+<DWDS xmlns="http://www.dwds.de/ns/1.0">
+    <Artikel>
+    <Formangabe>
+      <Schreibung>hoch</Schreibung>
+      <Grammatik>
+        <Wortklasse>Adjektiv</Wortklasse>
+        <Positiv>hohe</Positiv>
+        <Komparativ>höher</Komparativ>
+        <Superlativ>am höchsten</Superlativ>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+</DWDS>

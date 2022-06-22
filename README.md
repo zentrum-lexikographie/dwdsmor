@@ -121,6 +121,7 @@ Generates a DWDSmor lexicon from (directories of) XML documents in the DWDS form
 
 Options:
   -x, --xslt XSLT          XSLT stylesheet
+  -b, --blacklist LIST     list of filenames of blacklisted XML documents
   -o, --output OUTPUT      Path of the generated lexicon
   -s, --smorlemma-lexica   Include additional lexica from SMORLemma
   -f, --filter             Filter entries with tag <UNKNOWN>
@@ -146,6 +147,8 @@ run:
 ```sh
 make INCLUDE_AUX=false -C lexicon
 ```
+
+Individual input files can be blacklisted in `lexicon/exclude.list`.
 
 By default, additional lexica from SMORLemma for irregular nouns, adjectives,
 and adverbs as well as for adpositions and affixes are included. In order to

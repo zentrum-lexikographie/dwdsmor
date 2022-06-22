@@ -21,16 +21,25 @@ TESTTARGET = $(TESTDIR)/target
 TESTINPUTS  = $(wildcard $(TESTINPUT)/*.list)
 TESTOUTPUTS = $(patsubst $(TESTINPUT)/%.list,$(TESTOUTPUT)/%.lex,$(TESTINPUTS))
 
-INCLUDE_AUX = true
+EXTRA_OPTIONS =
+EXTRA_DIRS    =
 
-ifeq ($(INCLUDE_AUX),true)
-  EXTRA_DIRS = $(AUXDIR)
+EXCLUDE = $(wildcard $(CURDIR)/exclude.list)
+
+ifneq ($(EXCLUDE),)
+  EXTRA_OPTIONS := $(EXTRA_OPTIONS) --blacklist $(EXCLUDE)
 endif
 
 INCLUDE_SMORLEMMA = true
 
 ifeq ($(INCLUDE_SMORLEMMA),true)
-  EXTRA_OPTIONS = --smorlemma-lexica
+  EXTRA_OPTIONS := $(EXTRA_OPTIONS) --smorlemma-lexica
+endif
+
+INCLUDE_AUX = true
+
+ifeq ($(INCLUDE_AUX),true)
+  EXTRA_DIRS := $(EXTRA_DIRS) $(AUXDIR)
 endif
 
 all: lexicon
@@ -60,7 +69,7 @@ $(TESTOUTPUT):
 
 $(TESTOUTPUT)/%: $(TESTTARGET)/% $(XSL) $(LIB) $(TESTINPUTS) | $(TESTOUTPUT)
 	./generate-lexicon --xslt $(XSL) --filter --output $@ \
-	  $(addprefix $(SRCDIR)/,$(file < $(patsubst $(TESTTARGET)%.lex,$(TESTINPUT)%.list,$<))) 2> /dev/null
+	  $(addprefix $(CURDIR)/,$(file < $(patsubst $(TESTTARGET)%.lex,$(TESTINPUT)%.list,$<))) 2> /dev/null
 	@$(DIFF) $< $@ || true
 
 clean: debugclean testclean

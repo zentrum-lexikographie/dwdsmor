@@ -78,8 +78,6 @@
 <Stem>Garten<NN><base><nativ><NMasc_s_$x>
 <Stem>Geist<NN><base><nativ><NMasc_es_er>
 <Stem>Genie<NN><base><fremd><NNeut_s_s>
-<Stem>Geschoss<NN><base><nativ><NNeut_es_e>
-<Stem>Geschoß<NN><base><nativ><NNeut-s/sse>
 <Stem>Globus<NN><base><fremd><NMasc-s/sse>
 <Stem>Globus<NN><base><fremd><NMasc-s0/sse>
 <Stem>Globus<NN><base><fremd><NMasc-us/en>
