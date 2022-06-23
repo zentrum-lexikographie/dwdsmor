@@ -152,16 +152,13 @@
     (.isDirectory f) (filter xml-file? (file-seq f))
     :else            (exit 2 (str (str f) " does not exist"))))
 
-(defn article-files
-  [{files :arguments} blacklist]
-  (let [xmlfiles  (mapcat file->xml-docs (map io/file files))
-        blcontent (when blacklist (slurp blacklist))
-        blfiles   (when-not (empty? blcontent) (str/split blcontent #"\s+"))]
-    (if blfiles
-      (sort (set/difference (set xmlfiles)
-                            (set (flatten (for [f blfiles]
-                                            (filter #(str/ends-with? % f) xmlfiles))))))
-      (sort xmlfiles))))
+(defn blacklisted?
+  [f]
+  (let [blacklist (with-open [in (io/reader f)]
+                    (into [] (filter not-empty) (line-seq in)))
+        preds     (map (fn [entry] #(str/ends-with? % entry)) blacklist)
+        listed?   (apply some-fn preds)]
+    (fn [f] (listed? (str f)))))
 
 (def sort-key
   "Output (lexicon entries) is sorted according to German locale and case
@@ -183,12 +180,15 @@
         args  (parse-args args)]
     (configure-logging! args)
     (try
-      (let [blacklist (get-in args [:options :blacklist])
-            articles  (article-files args blacklist)
+      (let [files     (map io/file (get-in args [:arguments]))
+            blacklist (get-in args [:options :blacklist])
+            xml-docs  (cond->> (mapcat file->xml-docs files)
+                        blacklist (remove (blacklisted? blacklist))
+                        :always   (sort))
             _         (log/infof "Extracting lexicon entries from %d file(s)"
-                                 (count articles))
+                                 (count xml-docs))
             xslt      (xslt-fn args)
-            entries   (apply concat (cpl/upmap (cp/ncpus) xslt articles))
+            entries   (apply concat (cpl/upmap (cp/ncpus) xslt xml-docs))
             limit     (get-in args [:options :limit])
             filter?   (get-in args [:options :filter])
             entries   (vec (cond->> entries
@@ -204,7 +204,8 @@
             _         (log/info "Writing lexicon entries")
             output    (get-in args [:options :output])]
         (with-open [w (io/writer output :encoding "UTF-8")]
-          (doseq [chunk (concat (interpose "\n" entries) '("\n"))] (.write w chunk))))
+          (doseq [chunk (concat (interpose "\n" entries) '("\n"))]
+            (.write w chunk))))
       (let [stop     (System/currentTimeMillis)
             duration (Duration/ofMillis (- stop start))]
         (log/infof "Generated lexicon in %s" duration))
