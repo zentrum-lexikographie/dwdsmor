@@ -1,79 +1,63 @@
-# -*- mode: makefile-gmake -*-
+# Makefile
+# Andreas Nolda 2022-06-24
 
-SOURCES = morph.fst morph2.fst basemorph.fst smor-lfg.fst basesmor.fst \
-	smor.fst smor-cap.fst smor-uc.fst smor-ss.fst smor-ascii.fst \
-	elimX.fst elim-disj.fst smor-gen.fst test.fst pref-morph.fst
+FST_COMPILE = fst-compiler-utf8
+FST_COMPACT = fst-compact
+
+TARGETS = smor.a smor.ca smor-minimal.a smor-minimal.ca \
+	smor-full.a smor-full.ca smor-cap.a smor-cap.ca smor-uc.a smor-uc.ca
 
 INSTALL_DIR ?= lib
 
-INSTALL_TARGETS = smor.a smor.ca smor-full.a smor-full.ca \
-	smor-cap.a smor-cap.ca smor-uc.a smor-uc.ca
-
-TARGETS = $(INSTALL_TARGETS) # basesmor.ca smor-ss.ca smor-ascii.ca smor-guesser.ca smor-gen.ca
-
-SHELL := /bin/bash
-
-.PHONY: all
-
 all: $(TARGETS)
 
-# basesmor.a: basemorph.a elimX.a
+smor-gen.a: smor.a
+
+smor.a: elim-disj.a smor-lfg.a
+
+smor-minimal.a: lexicon/lexicon elim-disj.a elimX.a map1.a map2.a map3.a \
+	infixfilter.a komposfilter.a uplow.a
+
+smor-full.a: symbols.fst elim-disj.a morph-lemma.a smor-guesser.a
+
+smor-cap.a: symbols.fst morph-lemma.a
+
+smor-uc.a smor-ascii.a smor-ss.a: morph-lemma.a
+
+smor-guesser.a: lexicon/guesser.lex symbols.fst flexion.fst sufffilter.fst phon.fst \
+	elim-disj.a elimX.a map1.a map2.a infixfilter.a komposfilter.a uplow.a
+
+smor-lfg.a: symbols.fst morph-lemma.a
+
+morph-lemma.a: symbols.fst morph2.a
+
+morph2.a: elim-disj.a morph.a
 
 morph.a: basemorph.a elimX.a
 
-morph-lemma.a: morph2.a morph-lemma.fst
+basemorph.a: lexicon/lexicon symbols.fst FIX.fst NUM.fst PRO.fst \
+	defaults.fst flexion.fst phon.fst sufffilter.fst \
+	map1.a map2.a map3.a infixfilter.a komposfilter.a preffilter.a uplow.a
 
-morph2.a: morph.a elim-disj.a
+PRO.fst: lexicon/pro.lex
 
-smor-lfg.a: morph-lemma.a
+elim-disj.a elimX.a map1.a map2.a map3.a: symbols.fst
 
-# smor-ss.a smor-ascii.a: morph-lemma.a
+preffilter.a infixfilter.a komposfilter.a uplow.a: symbols.fst
 
-smor-cap.a smor-uc.a: morph-lemma.a
-
-smor.a: smor-lfg.a elim-disj.a
-
-basemorph.a: map1.a map2.a map3.a lexicon/pro.lex lexicon/lexicon \
-	komposfilter.a preffilter.a infixfilter.a uplow.a
-
-# test.a: phon.a map1.a map2.a map3.a pro-lexicon lex \
-# 	komposfilter.a preffilter.a infixfilter.a uplow.a
-
-smor-guesser.a: lexicon/guesser.lex map1.a map2.a map3.a elimX.a elim-disj.a
-
-# smor-gen.a: smor.a
-
-# simple-morph.a: phon.a elim-disj.a simple-lexicon
-
-smor-full.a: morph-lemma.a smor-guesser.a
-
-# lexicon/lexicon: lexicon/adj.irreg.lex lexicon/adpositions.closed.lex lexicon/nouns.irreg.xml lexicon/verbs.irreg.lex lexicon/affix.lex lexicon/compile_lexicon.py lexicon/wiki-lexicon.xml
-#	python lexicon/compile_lexicon.py
-
-# lexicon/wiki-lexicon.xml:
-# 	curl\
-# 		https://pub.cl.uzh.ch/users/sennrich/zmorge/lexica/zmorge-20150315.xml.zip |\
-# 		funzip >$@
+lexicon/lexicon: lexicon/affix.lex lexicon/adpositions.closed.lex \
+	lexicon/verbs.irreg.lex lexicon/adv.irreg.lex lexicon/adj.irreg.lex \
+	lexicon/nouns.irreg.xml lexicon/wiki-lexicon.xml
+	python lexicon/compile_lexicon.py
 
 %.a: %.fst
-	fst-compiler-utf8 $< $@
+	$(FST_COMPILE) $< $@
 
 %.ca: %.a
-	fst-compact $< $@
+	$(FST_COMPACT) $< $@
 
-.PHONY: install
-
-install: $(INSTALL_TARGETS)
+install: $(TARGETS)
 	mkdir -p $(INSTALL_DIR)
-	install -m 644 $(INSTALL_TARGETS) $(INSTALL_DIR)
+	install -m 644 $(TARGETS) $(INSTALL_DIR)
 
-
-# DO NOT DELETE
-
-basemorph.a: NUM.fst flexion.fst defaults.fst FIX.fst phon.fst sufffilter.fst
-smor-guesser.a: sufffilter.fst
-# test.a: NUM.fst flexion.fst defaults.fst FIX.fst
-basemorph.a: PRO.fst
-# basesmor.a simple-morph.a test.a: symbols.fst
-basemorph.a elim-disj.a elimX.a infix-filter.a komposfilter.a map1.a map2.a map3.a preffilter.a smor-cap.a smor-guesser.a uplow.a: symbols.fst
-infixfilter.a komposfilter.a sufffixfilter.a prefixfilter.a: symbols.fst
+.PHONY: all install
