@@ -1,4 +1,4 @@
-# Makefile
+# SMORLemma.mk
 # Andreas Nolda 2022-06-24
 
 FST_COMPILE = fst-compiler-utf8
@@ -44,11 +44,6 @@ PRO.fst: lexicon/pro.lex
 elim-disj.a elimX.a map1.a map2.a map3.a: symbols.fst
 
 preffilter.a infixfilter.a komposfilter.a uplow.a: symbols.fst
-
-lexicon/lexicon: lexicon/affix.lex lexicon/adpositions.closed.lex \
-	lexicon/verbs.irreg.lex lexicon/adv.irreg.lex lexicon/adj.irreg.lex \
-	lexicon/nouns.irreg.xml lexicon/wiki-lexicon.xml
-	python lexicon/compile_lexicon.py
 
 %.a: %.fst
 	$(FST_COMPILE) $< $@
