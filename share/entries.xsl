@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 2.2 -->
-<!-- Andreas Nolda 2022-05-18 -->
+<!-- Version 3.0 -->
+<!-- Andreas Nolda 2022-06-27 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -11,11 +11,14 @@
 
 <xsl:template name="affix-entry-set">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
     <xsl:call-template name="affix-entry">
       <xsl:with-param name="lemma"
                       select="$lemma"/>
+      <xsl:with-param name="index"
+                      select="$index"/>
       <xsl:with-param name="pos">
         <xsl:choose>
           <xsl:when test="starts-with($lemma,'-')">
@@ -34,6 +37,7 @@
 
 <xsl:template name="adjective-entry-set">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="inflection"/>
   <xsl:param name="positive"/>
   <xsl:param name="comparative"/>
@@ -48,6 +52,8 @@
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">Adj0-Up</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -58,6 +64,8 @@
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">Adj0</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -99,6 +107,8 @@
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPosPred</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -107,6 +117,8 @@
             <xsl:call-template name="adjective-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="form"
                               select="replace($positive,'e$','')"/>
               <xsl:with-param name="class">AdjPosAttr</xsl:with-param>
@@ -117,6 +129,8 @@
               <xsl:call-template name="adjective-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="form"
                                 select="replace($comparative,'er$','')"/>
                 <xsl:with-param name="class">AdjComp</xsl:with-param>
@@ -128,6 +142,8 @@
               <xsl:call-template name="adjective-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="form"
                                 select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
                 <xsl:with-param name="class">AdjSup</xsl:with-param>
@@ -141,6 +157,8 @@
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -149,6 +167,8 @@
             <xsl:call-template name="adjective-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="form"
                               select="$comparative"/>
               <xsl:with-param name="class">AdjComp0</xsl:with-param>
@@ -158,6 +178,8 @@
             <xsl:call-template name="adjective-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="form"
                               select="replace($superlative,'^am (.+)sten$','$1')"/>
               <xsl:with-param name="class">AdjSup</xsl:with-param>
@@ -171,6 +193,8 @@
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -179,6 +203,8 @@
             <xsl:call-template name="adjective-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="form"
                               select="replace($comparative,'er$','')"/>
               <xsl:with-param name="class">AdjComp</xsl:with-param>
@@ -189,6 +215,8 @@
               <xsl:call-template name="adjective-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
                 <xsl:with-param name="form"
                                 select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
                 <xsl:with-param name="class">AdjSup</xsl:with-param>
@@ -203,6 +231,8 @@
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -212,6 +242,8 @@
               <xsl:call-template name="adjective-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="form"
                                 select="replace($comparative,'er$','')"/>
                 <xsl:with-param name="class">AdjComp</xsl:with-param>
@@ -222,6 +254,8 @@
             <xsl:call-template name="adjective-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="form"
                               select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
               <xsl:with-param name="class">AdjSup</xsl:with-param>
@@ -235,6 +269,8 @@
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$comparative"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -245,6 +281,8 @@
               <xsl:call-template name="default-entry">
                 <xsl:with-param name="lemma"
                                 select="replace($superlative,'^am (.+)en$','$1')"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="pos">ADJ</xsl:with-param>
                 <xsl:with-param name="class">AdjPos</xsl:with-param>
                 <xsl:with-param name="etymology"
@@ -260,6 +298,8 @@
               <xsl:call-template name="default-entry">
                 <xsl:with-param name="lemma"
                                 select="$comparative"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="pos">ADJ</xsl:with-param>
                 <xsl:with-param name="class">AdjPos</xsl:with-param>
                 <xsl:with-param name="etymology"
@@ -269,6 +309,8 @@
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="replace($superlative,'^am (.+)en$','$1')"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -281,6 +323,8 @@
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos-Up</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -292,6 +336,8 @@
             <xsl:call-template name="default-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">
                 <xsl:call-template name="adjective-class">
@@ -313,6 +359,7 @@
 
 <xsl:template name="adverb-entry-set">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="comparative"/>
   <xsl:param name="superlative"/>
   <xsl:param name="etymology"/>
@@ -323,6 +370,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">ADV</xsl:with-param>
           <xsl:with-param name="class">Adv</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -331,6 +380,8 @@
         <xsl:call-template name="adverb-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="form"
                           select="$comparative"/>
           <xsl:with-param name="class">AdvComp0</xsl:with-param>
@@ -340,6 +391,8 @@
         <xsl:call-template name="adverb-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="form"
                           select="replace($superlative,'^am (.+)sten$','$1')"/>
           <xsl:with-param name="class">AdvSup</xsl:with-param>
@@ -352,6 +405,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">ADV</xsl:with-param>
           <xsl:with-param name="class">Adv</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -360,6 +415,8 @@
         <xsl:call-template name="adverb-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="form"
                           select="replace($comparative,'er$','')"/>
           <xsl:with-param name="class">AdvComp</xsl:with-param>
@@ -370,6 +427,8 @@
           <xsl:call-template name="adverb-entry">
             <xsl:with-param name="lemma"
                             select="$lemma"/>
+            <xsl:with-param name="index"
+                            select="$index"/>
             <xsl:with-param name="form"
                             select="replace($superlative,'^am (.+)sten$','$1')"/>
             <xsl:with-param name="class">AdvSup</xsl:with-param>
@@ -383,6 +442,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">ADV</xsl:with-param>
           <xsl:with-param name="class">Adv</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -395,6 +456,7 @@
 
 <xsl:template name="noun-entry-set">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="gender"/>
   <xsl:param name="number"/>
   <xsl:param name="genitive-singular"/>
@@ -428,6 +490,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NMasc/Sg_es</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -436,6 +500,8 @@
         <xsl:call-template name="noun-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="form">
             <xsl:choose>
               <xsl:when test="starts-with($nominative-plural,'-')">
@@ -459,6 +525,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NMasc/Sg_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -467,6 +535,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NMasc_s_x</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -475,6 +545,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NMasc_s_s</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -487,6 +559,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NMasc/Sg_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -495,6 +569,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">
             <xsl:call-template name="noun-class">
@@ -519,6 +595,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NMasc_s_x</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -527,6 +605,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">
             <xsl:call-template name="noun-class">
@@ -553,6 +633,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$nominative-plural"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">N?/Pl_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -568,6 +650,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NNeut/Sg_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -576,6 +660,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NNeut_s_x</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -584,6 +670,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NNeut_s_s</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -596,6 +684,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NNeut/Sg_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -604,6 +694,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">
             <xsl:call-template name="noun-class">
@@ -628,6 +720,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NNeut_s_x</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -636,6 +730,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">
             <xsl:call-template name="noun-class">
@@ -663,6 +759,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$nominative-plural"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">N?/Pl_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -674,6 +772,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">
             <xsl:call-template name="noun-class">
@@ -699,6 +799,7 @@
 
 <xsl:template name="name-entry-set">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="gender"/>
   <xsl:param name="number"/>
   <xsl:param name="genitive-singular"/>
@@ -723,6 +824,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NPROP</xsl:with-param>
           <xsl:with-param name="class">Name-Masc_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -731,6 +834,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NPROP</xsl:with-param>
           <xsl:with-param name="class">Name-Masc_s</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -746,6 +851,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NPROP</xsl:with-param>
           <xsl:with-param name="class">Name-Neut_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -754,6 +861,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NPROP</xsl:with-param>
           <xsl:with-param name="class">Name-Neut_s</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -769,6 +878,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NPROP</xsl:with-param>
           <xsl:with-param name="class">Name-Fem_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -777,6 +888,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NPROP</xsl:with-param>
           <xsl:with-param name="class">Name-Fem_s</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -788,6 +901,8 @@
         <xsl:call-template name="default-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="pos">NPROP</xsl:with-param>
           <xsl:with-param name="class">
             <xsl:call-template name="name-class">
@@ -813,6 +928,7 @@
 
 <xsl:template name="verb-entry-set">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="present"/>
   <xsl:param name="past"/>
   <xsl:param name="participle"/>
@@ -896,6 +1012,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -918,6 +1036,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -934,6 +1054,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -965,6 +1087,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -978,6 +1102,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -994,6 +1120,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1007,6 +1135,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1019,6 +1149,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1032,6 +1164,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1045,6 +1179,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1057,6 +1193,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1070,6 +1208,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1083,6 +1223,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1096,6 +1238,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1109,6 +1253,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1122,6 +1268,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1138,6 +1286,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1151,6 +1301,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1164,6 +1316,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1177,6 +1331,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1190,6 +1346,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1203,6 +1361,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1216,6 +1376,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1229,6 +1391,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1242,6 +1406,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1258,6 +1424,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1271,6 +1439,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1284,6 +1454,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1297,6 +1469,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1310,6 +1484,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1323,6 +1499,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1336,6 +1514,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1349,6 +1529,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1362,6 +1544,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1385,6 +1569,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1398,6 +1584,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1414,6 +1602,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1431,6 +1621,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1444,6 +1636,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1460,6 +1654,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1473,6 +1669,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1490,6 +1688,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1503,6 +1703,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1520,6 +1722,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1533,6 +1737,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1549,6 +1755,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1562,6 +1770,8 @@
             <xsl:call-template name="verb-entry">
               <xsl:with-param name="lemma"
                               select="$lemma-without-particle"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -1586,6 +1796,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1602,6 +1814,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1621,6 +1835,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1642,6 +1858,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1658,6 +1876,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1675,6 +1895,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1691,6 +1913,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1712,6 +1936,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1725,6 +1951,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1738,6 +1966,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1754,6 +1984,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1767,6 +1999,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1784,6 +2018,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1797,6 +2033,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1813,6 +2051,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1826,6 +2066,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1839,6 +2081,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1857,6 +2101,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1871,6 +2117,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1887,6 +2135,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1912,6 +2162,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1928,6 +2180,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1949,6 +2203,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1965,6 +2221,8 @@
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
+                  <xsl:with-param name="index"
+                                  select="$index"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -1986,6 +2244,7 @@
 
 <xsl:template name="participle-entry-set">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="present"/>
   <xsl:param name="participle"/>
   <xsl:param name="etymology"/>
@@ -2027,6 +2286,8 @@
         <xsl:call-template name="verb-entry">
           <xsl:with-param name="lemma"
                           select="$lemma-without-particle"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="participle"
                           select="$participle-without-particle"/>
           <xsl:with-param name="particle"
@@ -2043,6 +2304,8 @@
         <xsl:call-template name="verb-entry">
           <xsl:with-param name="lemma"
                           select="$lemma-without-particle"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="participle"
                           select="$participle-without-particle"/>
           <xsl:with-param name="particle"
@@ -2060,6 +2323,7 @@
 
 <xsl:template name="adposition-entry-set">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="position"/>
   <xsl:param name="case"/>
   <xsl:param name="etymology"/>
@@ -2069,6 +2333,8 @@
         <xsl:call-template name="other-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="class">
             <xsl:call-template name="adposition-class">
               <xsl:with-param name="lemma"
@@ -2084,6 +2350,8 @@
         <xsl:call-template name="other-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="class">
             <xsl:call-template name="adposition-class">
               <xsl:with-param name="lemma"
@@ -2101,6 +2369,8 @@
         <xsl:call-template name="other-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="class">
             <xsl:call-template name="adposition-class">
               <xsl:with-param name="lemma"
@@ -2121,6 +2391,7 @@
 
 <xsl:template name="contracted-adposition-entry-set">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="adposition"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -2129,6 +2400,8 @@
         <xsl:call-template name="other-entry">
           <xsl:with-param name="lemma"
                           select="$adposition"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="form"
                           select="$lemma"/>
           <xsl:with-param name="class">
@@ -2147,6 +2420,8 @@
         <xsl:call-template name="other-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
           <xsl:with-param name="class">
             <xsl:call-template name="contracted-adposition-class">
               <xsl:with-param name="lemma"
@@ -2165,12 +2440,15 @@
 
 <xsl:template name="conjunction-entry-set">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="type"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
   <xsl:call-template name="other-entry">
     <xsl:with-param name="lemma"
                     select="$lemma"/>
+    <xsl:with-param name="index"
+                    select="$index"/>
     <xsl:with-param name="class">
       <xsl:call-template name="conjunction-class">
         <xsl:with-param name="lemma"

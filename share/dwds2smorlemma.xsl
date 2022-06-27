@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smorlemma.xsl -->
-<!-- Version 6.1 -->
-<!-- Andreas Nolda 2022-05-17 -->
+<!-- Version 7.0 -->
+<!-- Andreas Nolda 2022-06-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -37,8 +37,35 @@
   </xsl:choose>
 </xsl:template>
 
+<xsl:template name="insert-index">
+  <xsl:param name="index"/>
+  <xsl:param name="lemma"/>
+  <xsl:if test="string-length($index)&gt;0">
+    <xsl:choose>
+      <xsl:when test="not(string(number($index))='NaN') and
+                      $index&gt;0 and
+                      $index&lt;5">
+        <xsl:text>&lt;</xsl:text>
+        <xsl:text>IDX</xsl:text>
+        <xsl:value-of select="$index"/>
+        <xsl:text>&gt;</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message>
+          <xsl:text>Warning: "</xsl:text>
+          <xsl:value-of select="$lemma"/>
+          <xsl:text>" has UNSUPPORTED index </xsl:text>
+          <xsl:value-of select="$index"/>
+          <xsl:text>.</xsl:text>
+        </xsl:message>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:if>
+</xsl:template>
+
 <xsl:template name="affix-entry">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="pos"/>
   <xsl:param name="etymology"/>
   <xsl:text>&lt;</xsl:text>
@@ -59,6 +86,12 @@
   </xsl:call-template>
   <xsl:text>&gt;</xsl:text>
   <xsl:call-template name="affix-form">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:call-template name="insert-index">
+    <xsl:with-param name="index"
+                    select="$index"/>
     <xsl:with-param name="lemma"
                     select="$lemma"/>
   </xsl:call-template>
@@ -85,11 +118,18 @@
 
 <xsl:template name="adjective-entry">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="form"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
   <xsl:value-of select="n:pair($lemma,$form)"/>
+  <xsl:call-template name="insert-index">
+    <xsl:with-param name="index"
+                    select="$index"/>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
   <xsl:text>&lt;ADJ&gt;</xsl:text>
   <xsl:text>&lt;base&gt;</xsl:text>
   <xsl:text>&lt;</xsl:text>
@@ -115,11 +155,18 @@
 
 <xsl:template name="adverb-entry">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="form"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
   <xsl:value-of select="n:pair($lemma,$form)"/>
+  <xsl:call-template name="insert-index">
+    <xsl:with-param name="index"
+                    select="$index"/>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
   <xsl:text>&lt;ADV&gt;</xsl:text>
   <xsl:text>&lt;base&gt;</xsl:text>
   <xsl:text>&lt;</xsl:text>
@@ -145,11 +192,18 @@
 
 <xsl:template name="noun-entry">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="form"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
   <xsl:value-of select="n:pair($lemma,$form)"/>
+  <xsl:call-template name="insert-index">
+    <xsl:with-param name="index"
+                    select="$index"/>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
   <xsl:text>&lt;NN&gt;</xsl:text>
   <xsl:text>&lt;base&gt;</xsl:text>
   <xsl:text>&lt;</xsl:text>
@@ -175,6 +229,7 @@
 
 <xsl:template name="verb-entry">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="participle"/>
   <xsl:param name="particle"/>
   <xsl:param name="stem"/>
@@ -192,6 +247,12 @@
                     select="$participle"/>
   </xsl:call-template>
   <xsl:value-of select="n:pair($lemma,$stem)"/>
+  <xsl:call-template name="insert-index">
+    <xsl:with-param name="index"
+                    select="$index"/>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
   <xsl:text>&lt;V&gt;</xsl:text>
   <xsl:text>&lt;base&gt;</xsl:text>
   <xsl:text>&lt;</xsl:text>
@@ -217,6 +278,7 @@
 
 <xsl:template name="other-entry">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="form"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
@@ -229,6 +291,12 @@
       <xsl:value-of select="$lemma"/>
     </xsl:otherwise>
   </xsl:choose>
+  <xsl:call-template name="insert-index">
+    <xsl:with-param name="index"
+                    select="$index"/>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
   <xsl:text>&lt;OTHER&gt;</xsl:text>
   <xsl:text>&lt;base&gt;</xsl:text>
   <xsl:text>&lt;</xsl:text>
@@ -254,11 +322,18 @@
 
 <xsl:template name="default-entry">
   <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
   <xsl:param name="pos"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
   <xsl:value-of select="$lemma"/>
+  <xsl:call-template name="insert-index">
+    <xsl:with-param name="index"
+                    select="$index"/>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
   <xsl:text>&lt;</xsl:text>
   <xsl:call-template name="insert-value">
     <xsl:with-param name="value"

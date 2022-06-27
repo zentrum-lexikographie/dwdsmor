@@ -1,5 +1,5 @@
 <Stem>alt<ADJ><base><nativ><Adj$e>
-<Stem>Berliner<ADJ><base><nativ><Adj0-Up>
+<Stem>Berliner<IDX2><ADJ><base><nativ><Adj0-Up>
 <Stem>echt<ADJ><base><nativ><AdjPos>
 <Stem>entlegen<ADJ><base><nativ><AdjPos>
 <Stem>früh<ADJ><base><nativ><Adj+e>

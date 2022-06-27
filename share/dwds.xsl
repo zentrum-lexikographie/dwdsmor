@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 8.4 -->
-<!-- Andreas Nolda 2022-05-18 -->
+<!-- Version 9.0 -->
+<!-- Andreas Nolda 2022-06-27 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -149,6 +149,8 @@
       </xsl:variable>
       <xsl:variable name="lemma"
                     select="normalize-space(.)"/>
+      <xsl:variable name="index"
+                    select="@hidx"/>
       <xsl:if test="string-length($lemma)&gt;0">
         <xsl:for-each select="$expanded-grammar-specs/dwds:Grammatik">
           <xsl:variable name="pos"
@@ -159,8 +161,10 @@
               <xsl:call-template name="affix-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
-              <xsl:with-param name="etymology"
-                              select="$etymology"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
             <!-- adjectives and adjectival participles -->
@@ -169,6 +173,8 @@
               <xsl:call-template name="adjective-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="inflection">
                   <xsl:choose>
                     <xsl:when test="dwds:indeklinabel">no</xsl:when>
@@ -193,6 +199,8 @@
                   <xsl:call-template name="other-entry">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -202,12 +210,16 @@
                   <xsl:call-template name="adverb-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
                   <xsl:call-template name="other-entry">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="class">Ptkl-Neg</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -217,12 +229,16 @@
                   <xsl:call-template name="adverb-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
                   <xsl:call-template name="other-entry">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="class">Konj-Vgl</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -232,12 +248,16 @@
                   <xsl:call-template name="adverb-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
                   <xsl:call-template name="other-entry">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -245,6 +265,8 @@
                   <xsl:call-template name="other-entry">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="class">Ptkl-Zu</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -254,6 +276,8 @@
                   <xsl:call-template name="adverb-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="comparative"
                                     select="normalize-space(dwds:Komparativ)"/>
                     <xsl:with-param name="superlative"
@@ -269,6 +293,8 @@
               <xsl:call-template name="other-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="class">ProAdv</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -282,6 +308,8 @@
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="genitive-singular"
@@ -296,6 +324,8 @@
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="nominative-plural"
@@ -312,6 +342,8 @@
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="genitive-singular"
@@ -331,6 +363,8 @@
               <xsl:call-template name="name-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="genitive-singular"
@@ -345,6 +379,8 @@
               <xsl:call-template name="name-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="nominative-plural"
@@ -362,6 +398,8 @@
               <xsl:call-template name="verb-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="present">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
@@ -397,6 +435,8 @@
               <xsl:call-template name="participle-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="present">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
@@ -419,6 +459,8 @@
               <xsl:call-template name="other-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="class">Intj</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -429,6 +471,8 @@
               <xsl:call-template name="adposition-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
                 <xsl:with-param name="position">
                   <xsl:choose>
                     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'auch nachgestellt')">pre+post</xsl:when>
@@ -454,6 +498,8 @@
                   <xsl:call-template name="contracted-adposition-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="adposition"
                                     select="$basis"/>
                     <xsl:with-param name="etymology"
@@ -462,6 +508,8 @@
                   <xsl:call-template name="other-entry">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -471,6 +519,8 @@
                   <xsl:call-template name="contracted-adposition-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="adposition"
                                     select="$basis"/>
                     <xsl:with-param name="etymology"
@@ -486,6 +536,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -493,6 +545,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -500,6 +554,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">comp</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -509,6 +565,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -516,6 +574,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -523,6 +583,8 @@
                   <xsl:call-template name="adverb-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -531,6 +593,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -538,6 +602,8 @@
                   <xsl:call-template name="other-entry">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="class">Intj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -547,6 +613,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -554,6 +622,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -563,6 +633,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -570,6 +642,8 @@
                   <xsl:call-template name="adverb-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -578,6 +652,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -585,6 +661,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">comp</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -607,6 +685,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -662,6 +742,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -673,6 +755,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">inf</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -682,6 +766,8 @@
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="type">comp</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -691,6 +777,8 @@
                   <xsl:call-template name="adverb-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -709,6 +797,8 @@
                   <xsl:call-template name="other-entry">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="class">Intj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -718,6 +808,8 @@
                   <xsl:call-template name="adverb-entry-set">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>
+                    <xsl:with-param name="index"
+                                    select="$index"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>

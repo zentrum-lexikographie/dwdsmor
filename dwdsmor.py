@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-05-16
+# Gregor Middell and Andreas Nolda 2022-06-27
 
 import sys
 import os
@@ -39,6 +39,12 @@ class Analysis(tuple):
     @cached_property
     def tags(self):
         return [tag for m in self for tag in m.tags]
+
+    @cached_property
+    def index(self):
+        for tag in self.tags:
+            if tag.startswith("IDX"):
+                return tag[3:]
 
     @cached_property
     def pos(self):
@@ -115,6 +121,7 @@ class Analysis(tuple):
         return {"word": self.word,
                 "analysis": self.analysis,
                 "lemma": self.lemma,
+                "index": self.index,
                 "pos": self.pos,
                 "function": self.function,
                 "degree": self.degree,
@@ -208,9 +215,10 @@ def parse(analyses):
 def output_dsv(words, analyses, output, force_color=False, delimiter="\t"):
     term = Terminal(force_styling=force_color)
     csv_writer = csv.writer(output, delimiter=delimiter)
-    csv_writer.writerow([term.bold("Word"),
+    csv_writer.writerow([term.bold("Wordform"),
                          term.bright_black("Analysis"),
                          term.bold_underline("Lemma"),
+                         term.underline("Index"),
                          term.underline("POS"),
                          "Function",
                          "Degree",
@@ -225,9 +233,14 @@ def output_dsv(words, analyses, output, force_color=False, delimiter="\t"):
                          "Metainfo"])
     for word, analysis in zip(words, analyses):
         for a in analysis:
+            if a.index:
+                idx = a.index
+            else:
+                idx = ""
             csv_writer.writerow([term.bold(word),
                                  term.bright_black(a.analysis),
                                  term.bold_underline(a.lemma),
+                                 term.underline(idx),
                                  term.underline(a.pos),
                                  a.function,
                                  a.degree,

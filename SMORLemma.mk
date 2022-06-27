@@ -1,11 +1,12 @@
 # SMORLemma.mk
-# Andreas Nolda 2022-06-24
+# Andreas Nolda 2022-06-27
 
 FST_COMPILE = fst-compiler-utf8
 FST_COMPACT = fst-compact
 
-TARGETS = smor.a smor.ca smor-minimal.a smor-minimal.ca \
-	smor-full.a smor-full.ca smor-cap.a smor-cap.ca smor-uc.a smor-uc.ca
+TARGETS = smor.a smor.ca smor-index.a smor-index.ca \
+	smor-minimal.a smor-minimal.ca smor-full.a smor-full.ca \
+	smor-cap.a smor-cap.ca smor-uc.a smor-uc.ca
 
 INSTALL_DIR ?= lib
 
@@ -15,7 +16,7 @@ smor-gen.a: smor.a
 
 smor.a: elim-disj.a smor-lfg.a
 
-smor-minimal.a: lexicon/lexicon elim-disj.a elimX.a map1.a map2.a map3.a \
+smor-index.a smor-minimal.a: lexicon/lexicon elim-disj.a elimX.a map1.a map2.a map3.a \
 	infixfilter.a komposfilter.a uplow.a
 
 smor-full.a: symbols.fst elim-disj.a morph-lemma.a smor-guesser.a
