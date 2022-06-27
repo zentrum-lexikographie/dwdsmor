@@ -335,227 +335,206 @@ optional arguments:
 
 ```plaintext
 $ echo Kind | ./dwdsmor.py
-Word	Analysis	Lemma	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
-Kind	Kind<+NN><Neut><Acc><Sg>	Kind	NN				Neut	Sg	Acc
-Kind	Kind<+NN><Neut><Dat><Sg>	Kind	NN				Neut	Sg	Dat
-Kind	Kind<+NN><Neut><Nom><Sg>	Kind	NN				Neut	Sg	Nom
+Wordform	Analysis	Lemma	Index	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
+Kind	Kind<+NN><Neut><Acc><Sg>	Kind		NN				Neut	Sg	Acc
+Kind	Kind<+NN><Neut><Dat><Sg>	Kind		NN				Neut	Sg	Dat
+Kind	Kind<+NN><Neut><Nom><Sg>	Kind		NN				Neut	Sg	Nom
 ```
 
 ```plaintext
 $ echo kleines | ./dwdsmor.py
-Word	Analysis	Lemma	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
-kleines	klein<+ADJ><Pos><Neut><Acc><Sg><St>	klein	ADJ		Pos		Neut	Sg	Acc	St
-kleines	klein<+ADJ><Pos><Neut><Nom><Sg><St>	klein	ADJ		Pos		Neut	Sg	Nom	St
+Wordform	Analysis	Lemma	Index	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
+kleines	klein<+ADJ><Pos><Neut><Acc><Sg><St>	klein		ADJ		Pos		Neut	Sg	Acc	St
+kleines	klein<+ADJ><Pos><Neut><Nom><Sg><St>	klein		ADJ		Pos		Neut	Sg	Nom	St
 ```
 
 ```plaintext
 $ echo schlafe | ./dwdsmor.py
-Word	Analysis	Lemma	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
-schlafe	schlaf<~>en<+V><3><Sg><Pres><Subj>	schlafen	V			3		Sg			Pres	Subj
-schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen	V			1		Sg			Pres	Subj
-schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen	V			1		Sg			Pres	Ind
+Wordform	Analysis	Lemma	Index	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
+schlafe	schlaf<~>en<+V><3><Sg><Pres><Subj>	schlafen		V			3		Sg			Pres	Subj
+schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen		V			1		Sg			Pres	Subj
+schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen		V			1		Sg			Pres	Ind
 ```
 
-In addition, there are Python scripts for generating noun, adjective, and verb
-paradigms:
+`dwdsmor-paradigm.py` is another Python script for generating noun, adjective,
+and verb paradigms:
 
 ```plaintext
-$ ./generate-noun-paradigm.py -h
-usage: generate-noun-paradigm.py [-h] [-C] [-j] [-o] [-t TRANSDUCER] [-v]
-                                 lemma
+$ ./dwdsmor-paradigm.py -h
+usage: dwdsmor-paradigm.py [-h] [-b] [-c] [-C] [-H] [-i {1,2,3,4}] [-j] [-o]
+                           [-p {ADJ,NN,NPROP,V}] [-t TRANSDUCER] [-v] lemma [output]
 
 positional arguments:
-  lemma                 noun lemma
+  lemma                 lemma
+  output                output file (default: stdout)
 
 optional arguments:
   -h, --help            show this help message and exit
+  -b, --brief           output brief version without lemma and lexical
+                        categories
+  -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
+  -H, --no-header       suppress table header
+  -i {1,2,3,4}, --index {1,2,3,4}
+                        homographic lemma index
   -j, --json            output JSON object
   -o, --old-forms       output also archaic forms
+  -p {ADJ,NN,NPROP,V}, --pos {ADJ,NN,NPROP,V}
+                        part of speech
   -t TRANSDUCER, --transducer TRANSDUCER
-                        transducer file (default: lib/smor-full.a)
+                        transducer file (default: lib/smor-index.a)
   -v, --version         show program's version number and exit
 ```
 
 ```plaintext
-$ ./generate-noun-paradigm.py Kind
-Nom Sg	Kind
-Acc Sg	Kind
-Dat Sg	Kind
-Gen Sg	Kinds, Kindes
-Nom Pl	Kinder
-Acc Pl	Kinder
-Dat Pl	Kindern
-Gen Pl	Kinder
+$ ./dwdsmor-paradigm.py Kind
+Lemma	Index	Categories	Paradigm Categories	Paradigm Forms
+Kind		NN Neut	Nom Sg	Kind
+Kind		NN Neut	Acc Sg	Kind
+Kind		NN Neut	Dat Sg	Kind
+Kind		NN Neut	Gen Sg	Kindes, Kinds
+Kind		NN Neut	Nom Pl	Kinder
+Kind		NN Neut	Acc Pl	Kinder
+Kind		NN Neut	Dat Pl	Kindern
+Kind		NN Neut	Gen Pl	Kinder
 ```
 
 ```plaintext
-$ ./generate-adjective-paradigm.py -h
-usage: generate-adjective-paradigm.py [-h] [-C] [-j] [-t TRANSDUCER] [-v]
-                                      lemma
-
-positional arguments:
-  lemma                 adjective lemma
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -C, --force-color     preserve color and formatting when piping output
-  -j, --json            output JSON object
-  -t TRANSDUCER, --transducer TRANSDUCER
-                        transducer file (default: lib/smor-full.a)
-  -v, --version         show program's version number and exit
+$ ./dwdsmor-paradigm.py klein
+Lemma	Index	Categories	Paradigm Categories	Paradigm Forms
+klein		ADJ	Pos Pred	klein
+klein		ADJ	Comp Pred	kleiner
+klein		ADJ	Sup Pred	kleinsten
+klein		ADJ	Pos Masc Nom Sg St	kleiner
+klein		ADJ	Pos Masc Nom Sg Wk	kleine
+klein		ADJ	Pos Masc Acc Sg St	kleinen
+klein		ADJ	Pos Masc Acc Sg Wk	kleinen
+klein		ADJ	Pos Masc Dat Sg St	kleinem
+klein		ADJ	Pos Masc Dat Sg Wk	kleinen
+klein		ADJ	Pos Masc Gen Sg St	kleinen
+klein		ADJ	Pos Masc Gen Sg Wk	kleinen
+klein		ADJ	Pos Neut Nom Sg St	kleines
+klein		ADJ	Pos Neut Nom Sg Wk	kleine
+klein		ADJ	Pos Neut Acc Sg St	kleines
+klein		ADJ	Pos Neut Acc Sg Wk	kleine
+klein		ADJ	Pos Neut Dat Sg St	kleinem
+klein		ADJ	Pos Neut Dat Sg Wk	kleinen
+klein		ADJ	Pos Neut Gen Sg St	kleinen
+klein		ADJ	Pos Neut Gen Sg Wk	kleinen
+klein		ADJ	Pos Fem Nom Sg St	kleine
+klein		ADJ	Pos Fem Nom Sg Wk	kleine
+klein		ADJ	Pos Fem Acc Sg St	kleine
+klein		ADJ	Pos Fem Acc Sg Wk	kleine
+klein		ADJ	Pos Fem Dat Sg St	kleiner
+klein		ADJ	Pos Fem Dat Sg Wk	kleinen
+klein		ADJ	Pos Fem Gen Sg St	kleiner
+klein		ADJ	Pos Fem Gen Sg Wk	kleinen
+klein		ADJ	Pos NoGend Nom Pl St	kleine
+klein		ADJ	Pos NoGend Nom Pl Wk	kleinen
+klein		ADJ	Pos NoGend Acc Pl St	kleine
+klein		ADJ	Pos NoGend Acc Pl Wk	kleinen
+klein		ADJ	Pos NoGend Dat Pl St	kleinen
+klein		ADJ	Pos NoGend Dat Pl Wk	kleinen
+klein		ADJ	Pos NoGend Gen Pl St	kleiner
+klein		ADJ	Pos NoGend Gen Pl Wk	kleinen
+klein		ADJ	Comp Masc Nom Sg St	kleinerer
+klein		ADJ	Comp Masc Nom Sg Wk	kleinere
+klein		ADJ	Comp Masc Acc Sg St	kleineren
+klein		ADJ	Comp Masc Acc Sg Wk	kleineren
+klein		ADJ	Comp Masc Dat Sg St	kleinerem
+klein		ADJ	Comp Masc Dat Sg Wk	kleineren
+klein		ADJ	Comp Masc Gen Sg St	kleineren
+klein		ADJ	Comp Masc Gen Sg Wk	kleineren
+klein		ADJ	Comp Neut Nom Sg St	kleineres
+klein		ADJ	Comp Neut Nom Sg Wk	kleinere
+klein		ADJ	Comp Neut Acc Sg St	kleineres
+klein		ADJ	Comp Neut Acc Sg Wk	kleinere
+klein		ADJ	Comp Neut Dat Sg St	kleinerem
+klein		ADJ	Comp Neut Dat Sg Wk	kleineren
+klein		ADJ	Comp Neut Gen Sg St	kleineren
+klein		ADJ	Comp Neut Gen Sg Wk	kleineren
+klein		ADJ	Comp Fem Nom Sg St	kleinere
+klein		ADJ	Comp Fem Nom Sg Wk	kleinere
+klein		ADJ	Comp Fem Acc Sg St	kleinere
+klein		ADJ	Comp Fem Acc Sg Wk	kleinere
+klein		ADJ	Comp Fem Dat Sg St	kleinerer
+klein		ADJ	Comp Fem Dat Sg Wk	kleineren
+klein		ADJ	Comp Fem Gen Sg St	kleinerer
+klein		ADJ	Comp Fem Gen Sg Wk	kleineren
+klein		ADJ	Comp NoGend Nom Pl St	kleinere
+klein		ADJ	Comp NoGend Nom Pl Wk	kleineren
+klein		ADJ	Comp NoGend Acc Pl St	kleinere
+klein		ADJ	Comp NoGend Acc Pl Wk	kleineren
+klein		ADJ	Comp NoGend Dat Pl St	kleineren
+klein		ADJ	Comp NoGend Dat Pl Wk	kleineren
+klein		ADJ	Comp NoGend Gen Pl St	kleinerer
+klein		ADJ	Comp NoGend Gen Pl Wk	kleineren
+klein		ADJ	Sup Masc Nom Sg St	kleinster
+klein		ADJ	Sup Masc Nom Sg Wk	kleinste
+klein		ADJ	Sup Masc Acc Sg St	kleinsten
+klein		ADJ	Sup Masc Acc Sg Wk	kleinsten
+klein		ADJ	Sup Masc Dat Sg St	kleinstem
+klein		ADJ	Sup Masc Dat Sg Wk	kleinsten
+klein		ADJ	Sup Masc Gen Sg St	kleinsten
+klein		ADJ	Sup Masc Gen Sg Wk	kleinsten
+klein		ADJ	Sup Neut Nom Sg St	kleinstes
+klein		ADJ	Sup Neut Nom Sg Wk	kleinste
+klein		ADJ	Sup Neut Acc Sg St	kleinstes
+klein		ADJ	Sup Neut Acc Sg Wk	kleinste
+klein		ADJ	Sup Neut Dat Sg St	kleinstem
+klein		ADJ	Sup Neut Dat Sg Wk	kleinsten
+klein		ADJ	Sup Neut Gen Sg St	kleinsten
+klein		ADJ	Sup Neut Gen Sg Wk	kleinsten
+klein		ADJ	Sup Fem Nom Sg St	kleinste
+klein		ADJ	Sup Fem Nom Sg Wk	kleinste
+klein		ADJ	Sup Fem Acc Sg St	kleinste
+klein		ADJ	Sup Fem Acc Sg Wk	kleinste
+klein		ADJ	Sup Fem Dat Sg St	kleinster
+klein		ADJ	Sup Fem Dat Sg Wk	kleinsten
+klein		ADJ	Sup Fem Gen Sg St	kleinster
+klein		ADJ	Sup Fem Gen Sg Wk	kleinsten
+klein		ADJ	Sup NoGend Nom Pl St	kleinste
+klein		ADJ	Sup NoGend Nom Pl Wk	kleinsten
+klein		ADJ	Sup NoGend Acc Pl St	kleinste
+klein		ADJ	Sup NoGend Acc Pl Wk	kleinsten
+klein		ADJ	Sup NoGend Dat Pl St	kleinsten
+klein		ADJ	Sup NoGend Dat Pl Wk	kleinsten
+klein		ADJ	Sup NoGend Gen Pl St	kleinster
+klein		ADJ	Sup NoGend Gen Pl Wk	kleinsten
 ```
 
 ```plaintext
-$ ./generate-adjective-paradigm.py klein
-Pos Pred	klein
-Comp Pred	kleiner
-Sup Pred	kleinsten
-Pos Masc Nom Sg St	kleiner
-Pos Masc Nom Sg Wk	kleine
-Pos Masc Acc Sg St	kleinen
-Pos Masc Acc Sg Wk	kleinen
-Pos Masc Dat Sg St	kleinem
-Pos Masc Dat Sg Wk	kleinen
-Pos Masc Gen Sg St	kleinen
-Pos Masc Gen Sg Wk	kleinen
-Pos Neut Nom Sg St	kleines
-Pos Neut Nom Sg Wk	kleine
-Pos Neut Acc Sg St	kleines
-Pos Neut Acc Sg Wk	kleine
-Pos Neut Dat Sg St	kleinem
-Pos Neut Dat Sg Wk	kleinen
-Pos Neut Gen Sg St	kleinen
-Pos Neut Gen Sg Wk	kleinen
-Pos Fem Nom Sg St	kleine
-Pos Fem Nom Sg Wk	kleine
-Pos Fem Acc Sg St	kleine
-Pos Fem Acc Sg Wk	kleine
-Pos Fem Dat Sg St	kleiner
-Pos Fem Dat Sg Wk	kleinen
-Pos Fem Gen Sg St	kleiner
-Pos Fem Gen Sg Wk	kleinen
-Pos NoGend Nom Pl St	kleine
-Pos NoGend Nom Pl Wk	kleinen
-Pos NoGend Acc Pl St	kleine
-Pos NoGend Acc Pl Wk	kleinen
-Pos NoGend Dat Pl St	kleinen
-Pos NoGend Dat Pl Wk	kleinen
-Pos NoGend Gen Pl St	kleiner
-Pos NoGend Gen Pl Wk	kleinen
-Comp Masc Nom Sg St	kleinerer
-Comp Masc Nom Sg Wk	kleinere
-Comp Masc Acc Sg St	kleineren
-Comp Masc Acc Sg Wk	kleineren
-Comp Masc Dat Sg St	kleinerem
-Comp Masc Dat Sg Wk	kleineren
-Comp Masc Gen Sg St	kleineren
-Comp Masc Gen Sg Wk	kleineren
-Comp Neut Nom Sg St	kleineres
-Comp Neut Nom Sg Wk	kleinere
-Comp Neut Acc Sg St	kleineres
-Comp Neut Acc Sg Wk	kleinere
-Comp Neut Dat Sg St	kleinerem
-Comp Neut Dat Sg Wk	kleineren
-Comp Neut Gen Sg St	kleineren
-Comp Neut Gen Sg Wk	kleineren
-Comp Fem Nom Sg St	kleinere
-Comp Fem Nom Sg Wk	kleinere
-Comp Fem Acc Sg St	kleinere
-Comp Fem Acc Sg Wk	kleinere
-Comp Fem Dat Sg St	kleinerer
-Comp Fem Dat Sg Wk	kleineren
-Comp Fem Gen Sg St	kleinerer
-Comp Fem Gen Sg Wk	kleineren
-Comp NoGend Nom Pl St	kleinere
-Comp NoGend Nom Pl Wk	kleineren
-Comp NoGend Acc Pl St	kleinere
-Comp NoGend Acc Pl Wk	kleineren
-Comp NoGend Dat Pl St	kleineren
-Comp NoGend Dat Pl Wk	kleineren
-Comp NoGend Gen Pl St	kleinerer
-Comp NoGend Gen Pl Wk	kleineren
-Sup Masc Nom Sg St	kleinster
-Sup Masc Nom Sg Wk	kleinste
-Sup Masc Acc Sg St	kleinsten
-Sup Masc Acc Sg Wk	kleinsten
-Sup Masc Dat Sg St	kleinstem
-Sup Masc Dat Sg Wk	kleinsten
-Sup Masc Gen Sg St	kleinsten
-Sup Masc Gen Sg Wk	kleinsten
-Sup Neut Nom Sg St	kleinstes
-Sup Neut Nom Sg Wk	kleinste
-Sup Neut Acc Sg St	kleinstes
-Sup Neut Acc Sg Wk	kleinste
-Sup Neut Dat Sg St	kleinstem
-Sup Neut Dat Sg Wk	kleinsten
-Sup Neut Gen Sg St	kleinsten
-Sup Neut Gen Sg Wk	kleinsten
-Sup Fem Nom Sg St	kleinste
-Sup Fem Nom Sg Wk	kleinste
-Sup Fem Acc Sg St	kleinste
-Sup Fem Acc Sg Wk	kleinste
-Sup Fem Dat Sg St	kleinster
-Sup Fem Dat Sg Wk	kleinsten
-Sup Fem Gen Sg St	kleinster
-Sup Fem Gen Sg Wk	kleinsten
-Sup NoGend Nom Pl St	kleinste
-Sup NoGend Nom Pl Wk	kleinsten
-Sup NoGend Acc Pl St	kleinste
-Sup NoGend Acc Pl Wk	kleinsten
-Sup NoGend Dat Pl St	kleinsten
-Sup NoGend Dat Pl Wk	kleinsten
-Sup NoGend Gen Pl St	kleinster
-Sup NoGend Gen Pl Wk	kleinsten
-```
-
-```plaintext
-$ ./generate-verb-paradigm.py -h
-usage: generate-verb-paradigm.py [-h] [-C] [-j] [-t TRANSDUCER] [-v] lemma
-
-positional arguments:
-  lemma                 verb lemma
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -C, --force-color     preserve color and formatting when piping output
-  -j, --json            output JSON object
-  -t TRANSDUCER, --transducer TRANSDUCER
-                        transducer file (default: lib/smor-full.a)
-  -v, --version         show program's version number and exit
-```
-
-```plaintext
-$ ./generate-verb-paradigm.py schlafen
-Inf	schlafen
-PPres	schlafend
-PPast	geschlafen
-1 Sg Pres Ind	schlafe
-2 Sg Pres Ind	schläfst
-3 Sg Pres Ind	schläft
-1 Pl Pres Ind	schlafen
-2 Pl Pres Ind	schlaft
-3 Pl Pres Ind	schlafen
-1 Sg Pres Subj	schlafe
-2 Sg Pres Subj	schlafest
-3 Sg Pres Subj	schlafe
-1 Pl Pres Subj	schlafen
-2 Pl Pres Subj	schlafet
-3 Pl Pres Subj	schlafen
-1 Sg Past Ind	schlief
-2 Sg Past Ind	schliefst
-3 Sg Past Ind	schlief
-1 Pl Past Ind	schliefen
-2 Pl Past Ind	schlieft
-3 Pl Past Ind	schliefen
-1 Sg Past Subj	schliefe
-2 Sg Past Subj	schliefest
-3 Sg Past Subj	schliefe
-1 Pl Past Subj	schliefen
-2 Pl Past Subj	schliefet
-3 Pl Past Subj	schliefen
-2 Sg Imp	schlaf
-2 Pl Imp	schlaft
+$ ./dwdsmor-paradigm.py schlafen
+Lemma	Index	Categories	Paradigm Categories	Paradigm Forms
+schlafen		V	Inf	schlafen
+schlafen		V	PPres	schlafend
+schlafen		V	PPast	geschlafen
+schlafen		V	1 Sg Pres Ind	schlafe
+schlafen		V	2 Sg Pres Ind	schläfst
+schlafen		V	3 Sg Pres Ind	schläft
+schlafen		V	1 Pl Pres Ind	schlafen
+schlafen		V	2 Pl Pres Ind	schlaft
+schlafen		V	3 Pl Pres Ind	schlafen
+schlafen		V	1 Sg Pres Subj	schlafe
+schlafen		V	2 Sg Pres Subj	schlafest
+schlafen		V	3 Sg Pres Subj	schlafe
+schlafen		V	1 Pl Pres Subj	schlafen
+schlafen		V	2 Pl Pres Subj	schlafet
+schlafen		V	3 Pl Pres Subj	schlafen
+schlafen		V	1 Sg Past Ind	schlief
+schlafen		V	2 Sg Past Ind	schliefst
+schlafen		V	3 Sg Past Ind	schlief
+schlafen		V	1 Pl Past Ind	schliefen
+schlafen		V	2 Pl Past Ind	schlieft
+schlafen		V	3 Pl Past Ind	schliefen
+schlafen		V	1 Sg Past Subj	schliefe
+schlafen		V	2 Sg Past Subj	schliefest
+schlafen		V	3 Sg Past Subj	schliefe
+schlafen		V	1 Pl Past Subj	schliefen
+schlafen		V	2 Pl Past Subj	schliefet
+schlafen		V	3 Pl Past Subj	schliefen
+schlafen		V	2 Sg Imp	schlaf
+schlafen		V	2 Pl Imp	schlaft
 
 ```
 
