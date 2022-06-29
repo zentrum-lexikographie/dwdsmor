@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smorlemma.xsl -->
-<!-- Version 7.0 -->
-<!-- Andreas Nolda 2022-06-25 -->
+<!-- Version 7.1 -->
+<!-- Andreas Nolda 2022-06-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -237,6 +237,7 @@
   <xsl:param name="etymology"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
   <xsl:if test="string-length($particle)&gt;0">
+    <xsl:text>&lt;NoPref&gt;</xsl:text>
     <xsl:value-of select="$particle"/>
     <xsl:text>&lt;VPART&gt;</xsl:text>
   </xsl:if>

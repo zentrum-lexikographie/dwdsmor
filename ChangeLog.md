@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-06-29:
+
+* prohibit prefixation of particle verbs with another verb particle
+
 2022-06-25:
 
 * add support for homographic lemma indices
