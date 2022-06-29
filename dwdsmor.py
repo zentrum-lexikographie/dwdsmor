@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-06-27
+# Gregor Middell and Andreas Nolda 2022-06-29
 
 import sys
 import os
@@ -35,6 +35,10 @@ class Analysis(tuple):
     @cached_property
     def lemma(self):
         return "".join(m.lemma for m in self)
+
+    @cached_property
+    def segmentation(self):
+        return re.sub(r"(<IDX[^>]+>)?<\+[^>]+>.*", "", self.analysis)
 
     @cached_property
     def tags(self):
@@ -121,6 +125,7 @@ class Analysis(tuple):
         return {"word": self.word,
                 "analysis": self.analysis,
                 "lemma": self.lemma,
+                "segmentation": self.segmentation,
                 "index": self.index,
                 "pos": self.pos,
                 "function": self.function,
@@ -218,6 +223,7 @@ def output_dsv(words, analyses, output, force_color=False, delimiter="\t"):
     csv_writer.writerow([term.bold("Wordform"),
                          term.bright_black("Analysis"),
                          term.bold_underline("Lemma"),
+                         term.bright_black_underline("Segmentation"),
                          term.underline("Index"),
                          term.underline("POS"),
                          "Function",
@@ -240,6 +246,7 @@ def output_dsv(words, analyses, output, force_color=False, delimiter="\t"):
             csv_writer.writerow([term.bold(word),
                                  term.bright_black(a.analysis),
                                  term.bold_underline(a.lemma),
+                                 term.bright_black_underline(a.segmentation),
                                  term.underline(idx),
                                  term.underline(a.pos),
                                  a.function,

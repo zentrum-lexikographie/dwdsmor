@@ -39,124 +39,112 @@ nonfinites = ["Inf", "PPres", "PPast"]
 # a dictionary with category tuples as keys and form sets as values
 form_specs = {}
 
-def format_index(index):
-    if index == None:
-        return ""
-    else:
-        return "<IDX" + str(index) + ">"
-
 def analyse(lemma, transducer):
     analyses = [analysis for analysis in tuple(parse(transducer.analyse(lemma)))]
     return analyses
 
 def generate(lemma, index, pos, transducer, old_forms=False):
     analyses = analyse(lemma, transducer)
-    # morphologically segmented lemmas
-    mlemma_list = sorted({re.sub(r"(<IDX[0-9]>)?<\+[A-Z]+>.*", "", ana.analysis) for ana in analyses})
-    if pos is None:
-        pos_list = sorted({ana.pos for ana in analyses})
-    else:
-        pos_list = [pos]
-    if index is None:
-        index_list = sorted({ana.index for ana in analyses if ana.pos in pos_list})
-    else:
-        index_list = [index]
-    for index in index_list:
-        # IDX tag
-        if index == None:
-            idx = ""
+    lemma_specs = sorted({(analysis.index, analysis.pos, analysis.segmentation) for analysis in analyses})
+    if index:
+        lemma_specs = [lemma_spec for lemma_spec in lemma_specs if lemma_spec[0] == str(index)]
+    if pos:
+        lemma_specs = [lemma_spec for lemma_spec in lemma_specs if lemma_spec[1] == pos]
+    for lemma_spec in lemma_specs:
+        index = lemma_spec[0]
+        pos   = lemma_spec[1]
+        seg   = lemma_spec[2]
+        if index:
+            idx = "<IDX" + index + ">"
         else:
-            idx = "<IDX" + str(index) + ">"
-        for mlemma in mlemma_list:
-            for pos in pos_list:
-                # adjectives
-                if pos == "ADJ":
-                    # uninflected forms
-                    for degree in degrees:
-                        for uninfl in uninfls:
-                            forms = transducer.generate(mlemma + idx + "<+" + pos    + ">" +
-                                                                       "<"  + degree + ">" +
-                                                                       "<"  + uninfl + ">")
+            idx = ""
+        if pos == "ADJ":
+            # uninflected forms
+            for degree in degrees:
+                for uninfl in uninfls:
+                    forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                            "<"  + degree + ">" +
+                                                            "<"  + uninfl + ">")
+                    if forms:
+                        form_specs[index, (pos,), (degree, uninfl)] = set(forms)
+            # inflected forms
+            for degree in degrees:
+                for gender in genders:
+                    for number in numbers:
+                        for case in cases:
+                            for infl in infls:
+                                forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                                        "<"  + degree + ">" +
+                                                                        "<"  + gender + ">" +
+                                                                        "<"  + case   + ">" +
+                                                                        "<"  + number + ">" +
+                                                                        "<"  + infl   + ">")
+                                if forms:
+                                    form_specs[index, (pos,), (degree, gender, case, number, infl)] = set(forms)
+        # nouns
+        if pos == "NN" or pos == "NPROP":
+            # nominalised adjectives
+            for gender in genders:
+                for number in numbers:
+                    for case in cases:
+                        for infl in infls:
+                            forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                                    "<"  + gender + ">" +
+                                                                    "<"  + case   + ">" +
+                                                                    "<"  + number + ">" +
+                                                                    "<"  + infl   + ">")
                             if forms:
-                                form_specs[index, (pos,), (degree, uninfl)] = set(forms)
-                    # inflected forms
-                    for degree in degrees:
-                        for gender in genders:
-                            for number in numbers:
-                                for case in cases:
-                                    for infl in infls:
-                                        forms = transducer.generate(mlemma + idx + "<+" + pos    + ">" +
-                                                                                   "<"  + degree + ">" +
-                                                                                   "<"  + gender + ">" +
-                                                                                   "<"  + case   + ">" +
-                                                                                   "<"  + number + ">" +
-                                                                                   "<"  + infl   + ">")
-                                        if forms:
-                                            form_specs[index, (pos,), (degree, gender, case, number, infl)] = set(forms)
-                # nouns
-                if pos == "NN" or pos == "NPROP":
-                    # nominalised adjectives
-                    for gender in genders:
-                        for number in numbers:
-                            for case in cases:
-                                for infl in infls:
-                                    forms = transducer.generate(mlemma + idx + "<+" + pos    + ">" +
-                                                                               "<"  + gender + ">" +
-                                                                               "<"  + case   + ">" +
-                                                                               "<"  + number + ">" +
-                                                                               "<"  + infl   + ">")
-                                    if forms:
-                                        form_specs[index, (pos, gender), (case, number, infl)] = set(forms)
-                    # other nouns
-                    for gender in genders:
-                        for number in numbers:
-                            for case in cases:
-                                forms = transducer.generate(mlemma + idx + "<+" + pos    + ">" +
-                                                                           "<"  + gender + ">" +
-                                                                           "<"  + case   + ">" +
-                                                                           "<"  + number + ">")
-                                if forms:
-                                    form_specs[index, (pos, gender), (case, number)] = set(forms)
-                                if old_forms:
-                                    forms = transducer.generate(mlemma + idx + "<+" + pos    + ">" +
-                                                                               "<"  + gender + ">" +
-                                                                               "<"  + case   + ">" +
-                                                                               "<"  + number + ">" +
-                                                                               "<"  + "Old"  + ">")
-                                    if forms:
-                                        if (index, gender, case, number) in form_specs:
-                                            form_specs[index, (pos, gender), (case, number)] |= set(forms)
-                                        else:
-                                                form_specs[index, (pos, gender), (case, number)]  = set(forms)
-                # verbs
-                if pos == "V":
-                    # non-finite forms
-                    for nonfinite in nonfinites:
-                        forms = transducer.generate(mlemma + idx + "<+" + pos       + ">" +
-                                                                   "<"  + nonfinite + ">")
+                                form_specs[index, (pos, gender), (case, number, infl)] = set(forms)
+            # other nouns
+            for gender in genders:
+                for number in numbers:
+                    for case in cases:
+                        forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                                "<"  + gender + ">" +
+                                                                "<"  + case   + ">" +
+                                                                "<"  + number + ">")
                         if forms:
-                            form_specs[index, (pos,), (nonfinite,)] = set(forms)
-                    # indicative and subjunctive forms
-                    for tense in tenses:
-                        for mood in moods:
-                            for number in numbers:
-                                for person in persons:
-                                    forms = transducer.generate(mlemma + idx + "<+" + pos    + ">" +
-                                                                               "<"  + person + ">" +
-                                                                               "<"  + number + ">" +
-                                                                               "<"  + tense  + ">" +
-                                                                               "<"  + mood   + ">")
-                                    if forms:
-                                        form_specs[index, (pos,), (person, number, tense, mood)] = set(forms)
-                    # imperative forms
-                    for mood in imperative_moods:
-                        for number in imperative_numbers:
-                            for person in imperative_persons:
-                                forms = transducer.generate(mlemma + idx + "<+" + pos    + ">" +
-                                                                           "<"  + mood   + ">" +
-                                                                           "<"  + number + ">")
-                                if forms:
-                                    form_specs[index, (pos,), (person, number, mood)] = set(forms)
+                            form_specs[index, (pos, gender), (case, number)] = set(forms)
+                        if old_forms:
+                            forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                                    "<"  + gender + ">" +
+                                                                    "<"  + case   + ">" +
+                                                                    "<"  + number + ">" +
+                                                                    "<"  + "Old"  + ">")
+                            if forms:
+                                if (index, (pos, gender), (case, number)) in form_specs:
+                                    form_specs[index, (pos, gender), (case, number)] |= set(forms)
+                                else:
+                                    form_specs[index, (pos, gender), (case, number)]  = set(forms)
+        # verbs
+        if pos == "V":
+            # non-finite forms
+            for nonfinite in nonfinites:
+                forms = transducer.generate(seg + idx + "<+" + pos       + ">" +
+                                                        "<"  + nonfinite + ">")
+                if forms:
+                    form_specs[index, (pos,), (nonfinite,)] = set(forms)
+            # indicative and subjunctive forms
+            for tense in tenses:
+                for mood in moods:
+                    for number in numbers:
+                        for person in persons:
+                            forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                                     "<"  + person + ">" +
+                                                                     "<"  + number + ">" +
+                                                                     "<"  + tense  + ">" +
+                                                                     "<"  + mood   + ">")
+                            if forms:
+                                form_specs[index, (pos,), (person, number, tense, mood)] = set(forms)
+            # imperative forms
+            for mood in imperative_moods:
+                for number in imperative_numbers:
+                    for person in imperative_persons:
+                        forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                                "<"  + mood   + ">" +
+                                                                "<"  + number + ">")
+                        if forms:
+                            form_specs[index, (pos,), (person, number, mood)] = set(forms)
 
 def output_dsv(form_specs, lemma, output, brief=False, header=True, force_color=False, delimiter="\t"):
     term = Terminal(force_styling=force_color)
@@ -176,14 +164,17 @@ def output_dsv(form_specs, lemma, output, brief=False, header=True, force_color=
             csv_writer.writerow([" ".join(form_spec[2]),
                                  term.bold(", ".join(sorted(form_specs[form_spec])))])
         else:
-            if form_spec[0]:
-                idx = str(form_spec[0])
+            index   = form_spec[0]
+            lexcats = form_spec[1]
+            parcats = form_spec[2]
+            if index:
+                idx = index
             else:
                 idx = ""
             csv_writer.writerow([term.bold_underline(lemma),
                                  term.underline(idx),
-                                 term.underline(" ".join(form_spec[1])),
-                                 " ".join(form_spec[2]),
+                                 term.underline(" ".join(lexcats)),
+                                 " ".join(parcats),
                                  term.bold(", ".join(sorted(form_specs[form_spec])))])
 
 def paradigm_subset(form_specs, index, lexcat):
@@ -255,7 +246,11 @@ def main():
         if form_specs:
             output_paradigms(form_specs, args.lemma, args.index, args.pos, args.output, args.no_header, args.brief, args.force_color, output_format)
         else:
-            if args.pos:
+            if args.index and args.pos:
+                print(term.bold(args.lemma) + ": No such lemma of index {0} and part-of-speech {1}.".format(args.index, args.pos), file=sys.stderr)
+            elif args.index:
+                print(term.bold(args.lemma) + ": No such lemma of index {0}.".format(args.index), file=sys.stderr)
+            elif args.pos:
                 print(term.bold(args.lemma) + ": No such lemma of part-of-speech {0}.".format(args.pos), file=sys.stderr)
             else:
                 print(term.bold(args.lemma) + ": No such lemma.", file=sys.stderr)
