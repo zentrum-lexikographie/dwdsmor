@@ -315,8 +315,9 @@ make test
 transducer:
 
 ```plaintext
-$ ./dwdsmor -h
-usage: dwdsmor.py [-h] [-c] [-j] [-l] [-t TRANSDUCER] [-v] [input] [output]
+$ ./dwdsmor.py -h
+usage: dwdsmor.py [-h] [-a] [-c] [-C] [-H] [-j] [-t TRANSDUCER] [-v]
+                  [input] [output]
 
 positional arguments:
   input                 input file (one word form per line; default: stdin)
@@ -324,45 +325,52 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -C, --force-color     preserve color and formatting when piping output
+  -a, --full-analysis   output full analysis with surface layer and analysis
+                        layer
   -c, --csv             output CSV table
+  -C, --force-color     preserve color and formatting when piping output
+  -H, --no-header       suppress table header
   -j, --json            output JSON object
-  -l, --both-layers     output analysis and surface layer
   -t TRANSDUCER, --transducer TRANSDUCER
                         path to transducer file (default: lib/smor-full.ca)
   -v, --version         show program's version number and exit
 ```
 
+By default, `dwdsmor.py` prints a CSV table on standard output:
+
 ```plaintext
 $ echo Kind | ./dwdsmor.py
-Wordform	Analysis	Lemma	Index	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
-Kind	Kind<+NN><Neut><Acc><Sg>	Kind		NN				Neut	Sg	Acc
-Kind	Kind<+NN><Neut><Dat><Sg>	Kind		NN				Neut	Sg	Dat
-Kind	Kind<+NN><Neut><Nom><Sg>	Kind		NN				Neut	Sg	Nom
+Wordform	Analysis	Lemma	Segmentation	Index	POS	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
+Kind	Kind<+NN><Neut><Acc><Sg>	Kind	Kind		NN			Neut	Acc	Sg
+Kind	Kind<+NN><Neut><Dat><Sg>	Kind	Kind		NN			Neut	Dat	Sg
+Kind	Kind<+NN><Neut><Nom><Sg>	Kind	Kind		NN			Neut	Nom	Sg
 ```
 
 ```plaintext
 $ echo kleines | ./dwdsmor.py
-Wordform	Analysis	Lemma	Index	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
-kleines	klein<+ADJ><Pos><Neut><Acc><Sg><St>	klein		ADJ		Pos		Neut	Sg	Acc	St
-kleines	klein<+ADJ><Pos><Neut><Nom><Sg><St>	klein		ADJ		Pos		Neut	Sg	Nom	St
+Wordform	Analysis	Lemma	Segmentation	Index	POS	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
+kleines	klein<+ADJ><Pos><Neut><Acc><Sg><St>	klein	klein		ADJ	Pos		Neut	Acc	Sg	St
+kleines	klein<+ADJ><Pos><Neut><Nom><Sg><St>	klein	klein		ADJ	Pos		Neut	Nom	Sg	St
 ```
 
 ```plaintext
 $ echo schlafe | ./dwdsmor.py
-Wordform	Analysis	Lemma	Index	POS	Function	Degree	Person	Gender	Number	Case	Inflection	Tense	Mood	Nonfinite	Metainfo
-schlafe	schlaf<~>en<+V><3><Sg><Pres><Subj>	schlafen		V			3		Sg			Pres	Subj
-schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen		V			1		Sg			Pres	Subj
-schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen		V			1		Sg			Pres	Ind
+Wordform	Analysis	Lemma	Segmentation	Index	POS	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
+schlafe	schlaf<~>en<+V><3><Sg><Pres><Subj>	schlafen	schlaf<~>en		V		3			Sg				Subj	Pres
+schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen	schlaf<~>en		V		1			Sg				Subj	Pres
+schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen	schlaf<~>en		V		1			Sg				Ind	Pres
 ```
 
-`dwdsmor-paradigm.py` is another Python script for generating noun, adjective,
-and verb paradigms:
+An alternative JSON output is available with the option `--json`.
+
+`paradigm.py` is Python script for generating paradigms of adjectives, nouns,
+proper names, and verbs:
 
 ```plaintext
-$ ./dwdsmor-paradigm.py -h
-usage: dwdsmor-paradigm.py [-h] [-b] [-c] [-C] [-H] [-i {1,2,3,4}] [-j] [-o]
-                           [-p {ADJ,NN,NPROP,V}] [-t TRANSDUCER] [-v] lemma [output]
+$ ./paradigm.py -h
+usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4}] [-j] [-n] [-N] [-o]
+                   [-p {ADJ,NN,NPROP,V}] [-t TRANSDUCER] [-v]
+                   lemma [output]
 
 positional arguments:
   lemma                 lemma
@@ -370,14 +378,15 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -b, --brief           output brief version without lemma and lexical
-                        categories
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
   -H, --no-header       suppress table header
   -i {1,2,3,4}, --index {1,2,3,4}
                         homographic lemma index
   -j, --json            output JSON object
+  -n, --no-category-names
+                        do not output category names
+  -N, --no-lemma        do not output lemma, index, and lexical categories
   -o, --old-forms       output also archaic forms
   -p {ADJ,NN,NPROP,V}, --pos {ADJ,NN,NPROP,V}
                         part of speech
@@ -386,157 +395,178 @@ optional arguments:
   -v, --version         show program's version number and exit
 ```
 
+By default, `paradigm.py` outputs a similar CSV table as `dwdsmor.py`:
+
 ```plaintext
-$ ./dwdsmor-paradigm.py Kind
-Lemma	Index	Categories	Paradigm Categories	Paradigm Forms
-Kind		NN Neut	Nom Sg	Kind
-Kind		NN Neut	Acc Sg	Kind
-Kind		NN Neut	Dat Sg	Kind
-Kind		NN Neut	Gen Sg	Kindes, Kinds
-Kind		NN Neut	Nom Pl	Kinder
-Kind		NN Neut	Acc Pl	Kinder
-Kind		NN Neut	Dat Pl	Kindern
-Kind		NN Neut	Gen Pl	Kinder
+$ ./paradigm.py Kind
+Lemma	Index	POS	Gender	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Paradigm Forms
+Kind		NN	Neut				Nom	Sg						Kind
+Kind		NN	Neut				Acc	Sg						Kind
+Kind		NN	Neut				Dat	Sg						Kind
+Kind		NN	Neut				Gen	Sg						Kindes, Kinds
+Kind		NN	Neut				Nom	Pl						Kinder
+Kind		NN	Neut				Acc	Pl						Kinder
+Kind		NN	Neut				Dat	Pl						Kindern
+Kind		NN	Neut				Gen	Pl						Kinder
+```
+
+For a condensed version, the options `--no-category-names` and `--no-lemma` can
+be specified:
+
+```plaintext
+$ ./paradigm.py --no-category-names --no-lemma Kind
+Paradigm Categories	Paradigm Forms
+Nom Sg	Kind
+Acc Sg	Kind
+Dat Sg	Kind
+Gen Sg	Kindes, Kinds
+Nom Pl	Kinder
+Acc Pl	Kinder
+Dat Pl	Kindern
+Gen Pl	Kinder
 ```
 
 ```plaintext
-$ ./dwdsmor-paradigm.py klein
-Lemma	Index	Categories	Paradigm Categories	Paradigm Forms
-klein		ADJ	Pos Pred	klein
-klein		ADJ	Comp Pred	kleiner
-klein		ADJ	Sup Pred	kleinsten
-klein		ADJ	Pos Masc Nom Sg St	kleiner
-klein		ADJ	Pos Masc Nom Sg Wk	kleine
-klein		ADJ	Pos Masc Acc Sg St	kleinen
-klein		ADJ	Pos Masc Acc Sg Wk	kleinen
-klein		ADJ	Pos Masc Dat Sg St	kleinem
-klein		ADJ	Pos Masc Dat Sg Wk	kleinen
-klein		ADJ	Pos Masc Gen Sg St	kleinen
-klein		ADJ	Pos Masc Gen Sg Wk	kleinen
-klein		ADJ	Pos Neut Nom Sg St	kleines
-klein		ADJ	Pos Neut Nom Sg Wk	kleine
-klein		ADJ	Pos Neut Acc Sg St	kleines
-klein		ADJ	Pos Neut Acc Sg Wk	kleine
-klein		ADJ	Pos Neut Dat Sg St	kleinem
-klein		ADJ	Pos Neut Dat Sg Wk	kleinen
-klein		ADJ	Pos Neut Gen Sg St	kleinen
-klein		ADJ	Pos Neut Gen Sg Wk	kleinen
-klein		ADJ	Pos Fem Nom Sg St	kleine
-klein		ADJ	Pos Fem Nom Sg Wk	kleine
-klein		ADJ	Pos Fem Acc Sg St	kleine
-klein		ADJ	Pos Fem Acc Sg Wk	kleine
-klein		ADJ	Pos Fem Dat Sg St	kleiner
-klein		ADJ	Pos Fem Dat Sg Wk	kleinen
-klein		ADJ	Pos Fem Gen Sg St	kleiner
-klein		ADJ	Pos Fem Gen Sg Wk	kleinen
-klein		ADJ	Pos NoGend Nom Pl St	kleine
-klein		ADJ	Pos NoGend Nom Pl Wk	kleinen
-klein		ADJ	Pos NoGend Acc Pl St	kleine
-klein		ADJ	Pos NoGend Acc Pl Wk	kleinen
-klein		ADJ	Pos NoGend Dat Pl St	kleinen
-klein		ADJ	Pos NoGend Dat Pl Wk	kleinen
-klein		ADJ	Pos NoGend Gen Pl St	kleiner
-klein		ADJ	Pos NoGend Gen Pl Wk	kleinen
-klein		ADJ	Comp Masc Nom Sg St	kleinerer
-klein		ADJ	Comp Masc Nom Sg Wk	kleinere
-klein		ADJ	Comp Masc Acc Sg St	kleineren
-klein		ADJ	Comp Masc Acc Sg Wk	kleineren
-klein		ADJ	Comp Masc Dat Sg St	kleinerem
-klein		ADJ	Comp Masc Dat Sg Wk	kleineren
-klein		ADJ	Comp Masc Gen Sg St	kleineren
-klein		ADJ	Comp Masc Gen Sg Wk	kleineren
-klein		ADJ	Comp Neut Nom Sg St	kleineres
-klein		ADJ	Comp Neut Nom Sg Wk	kleinere
-klein		ADJ	Comp Neut Acc Sg St	kleineres
-klein		ADJ	Comp Neut Acc Sg Wk	kleinere
-klein		ADJ	Comp Neut Dat Sg St	kleinerem
-klein		ADJ	Comp Neut Dat Sg Wk	kleineren
-klein		ADJ	Comp Neut Gen Sg St	kleineren
-klein		ADJ	Comp Neut Gen Sg Wk	kleineren
-klein		ADJ	Comp Fem Nom Sg St	kleinere
-klein		ADJ	Comp Fem Nom Sg Wk	kleinere
-klein		ADJ	Comp Fem Acc Sg St	kleinere
-klein		ADJ	Comp Fem Acc Sg Wk	kleinere
-klein		ADJ	Comp Fem Dat Sg St	kleinerer
-klein		ADJ	Comp Fem Dat Sg Wk	kleineren
-klein		ADJ	Comp Fem Gen Sg St	kleinerer
-klein		ADJ	Comp Fem Gen Sg Wk	kleineren
-klein		ADJ	Comp NoGend Nom Pl St	kleinere
-klein		ADJ	Comp NoGend Nom Pl Wk	kleineren
-klein		ADJ	Comp NoGend Acc Pl St	kleinere
-klein		ADJ	Comp NoGend Acc Pl Wk	kleineren
-klein		ADJ	Comp NoGend Dat Pl St	kleineren
-klein		ADJ	Comp NoGend Dat Pl Wk	kleineren
-klein		ADJ	Comp NoGend Gen Pl St	kleinerer
-klein		ADJ	Comp NoGend Gen Pl Wk	kleineren
-klein		ADJ	Sup Masc Nom Sg St	kleinster
-klein		ADJ	Sup Masc Nom Sg Wk	kleinste
-klein		ADJ	Sup Masc Acc Sg St	kleinsten
-klein		ADJ	Sup Masc Acc Sg Wk	kleinsten
-klein		ADJ	Sup Masc Dat Sg St	kleinstem
-klein		ADJ	Sup Masc Dat Sg Wk	kleinsten
-klein		ADJ	Sup Masc Gen Sg St	kleinsten
-klein		ADJ	Sup Masc Gen Sg Wk	kleinsten
-klein		ADJ	Sup Neut Nom Sg St	kleinstes
-klein		ADJ	Sup Neut Nom Sg Wk	kleinste
-klein		ADJ	Sup Neut Acc Sg St	kleinstes
-klein		ADJ	Sup Neut Acc Sg Wk	kleinste
-klein		ADJ	Sup Neut Dat Sg St	kleinstem
-klein		ADJ	Sup Neut Dat Sg Wk	kleinsten
-klein		ADJ	Sup Neut Gen Sg St	kleinsten
-klein		ADJ	Sup Neut Gen Sg Wk	kleinsten
-klein		ADJ	Sup Fem Nom Sg St	kleinste
-klein		ADJ	Sup Fem Nom Sg Wk	kleinste
-klein		ADJ	Sup Fem Acc Sg St	kleinste
-klein		ADJ	Sup Fem Acc Sg Wk	kleinste
-klein		ADJ	Sup Fem Dat Sg St	kleinster
-klein		ADJ	Sup Fem Dat Sg Wk	kleinsten
-klein		ADJ	Sup Fem Gen Sg St	kleinster
-klein		ADJ	Sup Fem Gen Sg Wk	kleinsten
-klein		ADJ	Sup NoGend Nom Pl St	kleinste
-klein		ADJ	Sup NoGend Nom Pl Wk	kleinsten
-klein		ADJ	Sup NoGend Acc Pl St	kleinste
-klein		ADJ	Sup NoGend Acc Pl Wk	kleinsten
-klein		ADJ	Sup NoGend Dat Pl St	kleinsten
-klein		ADJ	Sup NoGend Dat Pl Wk	kleinsten
-klein		ADJ	Sup NoGend Gen Pl St	kleinster
-klein		ADJ	Sup NoGend Gen Pl Wk	kleinsten
+$ ./paradigm.py --no-category-names --no-lemma klein
+Paradigm Categories	Paradigm Forms
+Pos Pred	klein
+Comp Pred	kleiner
+Sup Pred	kleinsten
+Pos Masc Nom Sg St	kleiner
+Pos Masc Nom Sg Wk	kleine
+Pos Masc Acc Sg St	kleinen
+Pos Masc Acc Sg Wk	kleinen
+Pos Masc Dat Sg St	kleinem
+Pos Masc Dat Sg Wk	kleinen
+Pos Masc Gen Sg St	kleinen
+Pos Masc Gen Sg Wk	kleinen
+Pos Neut Nom Sg St	kleines
+Pos Neut Nom Sg Wk	kleine
+Pos Neut Acc Sg St	kleines
+Pos Neut Acc Sg Wk	kleine
+Pos Neut Dat Sg St	kleinem
+Pos Neut Dat Sg Wk	kleinen
+Pos Neut Gen Sg St	kleinen
+Pos Neut Gen Sg Wk	kleinen
+Pos Fem Nom Sg St	kleine
+Pos Fem Nom Sg Wk	kleine
+Pos Fem Acc Sg St	kleine
+Pos Fem Acc Sg Wk	kleine
+Pos Fem Dat Sg St	kleiner
+Pos Fem Dat Sg Wk	kleinen
+Pos Fem Gen Sg St	kleiner
+Pos Fem Gen Sg Wk	kleinen
+Pos NoGend Nom Pl St	kleine
+Pos NoGend Nom Pl Wk	kleinen
+Pos NoGend Acc Pl St	kleine
+Pos NoGend Acc Pl Wk	kleinen
+Pos NoGend Dat Pl St	kleinen
+Pos NoGend Dat Pl Wk	kleinen
+Pos NoGend Gen Pl St	kleiner
+Pos NoGend Gen Pl Wk	kleinen
+Comp Masc Nom Sg St	kleinerer
+Comp Masc Nom Sg Wk	kleinere
+Comp Masc Acc Sg St	kleineren
+Comp Masc Acc Sg Wk	kleineren
+Comp Masc Dat Sg St	kleinerem
+Comp Masc Dat Sg Wk	kleineren
+Comp Masc Gen Sg St	kleineren
+Comp Masc Gen Sg Wk	kleineren
+Comp Neut Nom Sg St	kleineres
+Comp Neut Nom Sg Wk	kleinere
+Comp Neut Acc Sg St	kleineres
+Comp Neut Acc Sg Wk	kleinere
+Comp Neut Dat Sg St	kleinerem
+Comp Neut Dat Sg Wk	kleineren
+Comp Neut Gen Sg St	kleineren
+Comp Neut Gen Sg Wk	kleineren
+Comp Fem Nom Sg St	kleinere
+Comp Fem Nom Sg Wk	kleinere
+Comp Fem Acc Sg St	kleinere
+Comp Fem Acc Sg Wk	kleinere
+Comp Fem Dat Sg St	kleinerer
+Comp Fem Dat Sg Wk	kleineren
+Comp Fem Gen Sg St	kleinerer
+Comp Fem Gen Sg Wk	kleineren
+Comp NoGend Nom Pl St	kleinere
+Comp NoGend Nom Pl Wk	kleineren
+Comp NoGend Acc Pl St	kleinere
+Comp NoGend Acc Pl Wk	kleineren
+Comp NoGend Dat Pl St	kleineren
+Comp NoGend Dat Pl Wk	kleineren
+Comp NoGend Gen Pl St	kleinerer
+Comp NoGend Gen Pl Wk	kleineren
+Sup Masc Nom Sg St	kleinster
+Sup Masc Nom Sg Wk	kleinste
+Sup Masc Acc Sg St	kleinsten
+Sup Masc Acc Sg Wk	kleinsten
+Sup Masc Dat Sg St	kleinstem
+Sup Masc Dat Sg Wk	kleinsten
+Sup Masc Gen Sg St	kleinsten
+Sup Masc Gen Sg Wk	kleinsten
+Sup Neut Nom Sg St	kleinstes
+Sup Neut Nom Sg Wk	kleinste
+Sup Neut Acc Sg St	kleinstes
+Sup Neut Acc Sg Wk	kleinste
+Sup Neut Dat Sg St	kleinstem
+Sup Neut Dat Sg Wk	kleinsten
+Sup Neut Gen Sg St	kleinsten
+Sup Neut Gen Sg Wk	kleinsten
+Sup Fem Nom Sg St	kleinste
+Sup Fem Nom Sg Wk	kleinste
+Sup Fem Acc Sg St	kleinste
+Sup Fem Acc Sg Wk	kleinste
+Sup Fem Dat Sg St	kleinster
+Sup Fem Dat Sg Wk	kleinsten
+Sup Fem Gen Sg St	kleinster
+Sup Fem Gen Sg Wk	kleinsten
+Sup NoGend Nom Pl St	kleinste
+Sup NoGend Nom Pl Wk	kleinsten
+Sup NoGend Acc Pl St	kleinste
+Sup NoGend Acc Pl Wk	kleinsten
+Sup NoGend Dat Pl St	kleinsten
+Sup NoGend Dat Pl Wk	kleinsten
+Sup NoGend Gen Pl St	kleinster
+Sup NoGend Gen Pl Wk	kleinsten
 ```
 
 ```plaintext
-$ ./dwdsmor-paradigm.py schlafen
-Lemma	Index	Categories	Paradigm Categories	Paradigm Forms
-schlafen		V	Inf	schlafen
-schlafen		V	PPres	schlafend
-schlafen		V	PPast	geschlafen
-schlafen		V	1 Sg Pres Ind	schlafe
-schlafen		V	2 Sg Pres Ind	schläfst
-schlafen		V	3 Sg Pres Ind	schläft
-schlafen		V	1 Pl Pres Ind	schlafen
-schlafen		V	2 Pl Pres Ind	schlaft
-schlafen		V	3 Pl Pres Ind	schlafen
-schlafen		V	1 Sg Pres Subj	schlafe
-schlafen		V	2 Sg Pres Subj	schlafest
-schlafen		V	3 Sg Pres Subj	schlafe
-schlafen		V	1 Pl Pres Subj	schlafen
-schlafen		V	2 Pl Pres Subj	schlafet
-schlafen		V	3 Pl Pres Subj	schlafen
-schlafen		V	1 Sg Past Ind	schlief
-schlafen		V	2 Sg Past Ind	schliefst
-schlafen		V	3 Sg Past Ind	schlief
-schlafen		V	1 Pl Past Ind	schliefen
-schlafen		V	2 Pl Past Ind	schlieft
-schlafen		V	3 Pl Past Ind	schliefen
-schlafen		V	1 Sg Past Subj	schliefe
-schlafen		V	2 Sg Past Subj	schliefest
-schlafen		V	3 Sg Past Subj	schliefe
-schlafen		V	1 Pl Past Subj	schliefen
-schlafen		V	2 Pl Past Subj	schliefet
-schlafen		V	3 Pl Past Subj	schliefen
-schlafen		V	2 Sg Imp	schlaf
-schlafen		V	2 Pl Imp	schlaft
+$ ./paradigm.py --no-category-names --no-lemma schlafen
+Paradigm Categories	Paradigm Forms
+Inf	schlafen
+PPres	schlafend
+PPast	geschlafen
+1 Sg Ind Pres	schlafe
+2 Sg Ind Pres	schläfst
+3 Sg Ind Pres	schläft
+1 Pl Ind Pres	schlafen
+2 Pl Ind Pres	schlaft
+3 Pl Ind Pres	schlafen
+1 Sg Subj Pres	schlafe
+2 Sg Subj Pres	schlafest
+3 Sg Subj Pres	schlafe
+1 Pl Subj Pres	schlafen
+2 Pl Subj Pres	schlafet
+3 Pl Subj Pres	schlafen
+1 Sg Ind Past	schlief
+2 Sg Ind Past	schliefst
+3 Sg Ind Past	schlief
+1 Pl Ind Past	schliefen
+2 Pl Ind Past	schlieft
+3 Pl Ind Past	schliefen
+1 Sg Subj Past	schliefe
+2 Sg Subj Past	schliefest
+3 Sg Subj Past	schliefe
+1 Pl Subj Past	schliefen
+2 Pl Subj Past	schliefet
+3 Pl Subj Past	schliefen
+2 Sg Imp	schlaf
+2 Pl Imp	schlaft
 
 ```
+
+Again, the option `--json` selects an alternative JSON output.
+
 
 ## Contact
 
