@@ -66,25 +66,35 @@
 <xsl:template name="affix-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="index"/>
-  <xsl:param name="pos"/>
+  <xsl:param name="type"/>
+  <xsl:param name="separable"/>
+  <xsl:param name="selection"/>
   <xsl:param name="etymology"/>
   <xsl:text>&lt;</xsl:text>
   <xsl:call-template name="insert-value">
     <xsl:with-param name="value">
       <xsl:choose>
-        <xsl:when test="starts-with($lemma,'-')">
-          <xsl:text>Suffix</xsl:text>
-        </xsl:when>
-        <xsl:when test="ends-with($lemma,'-')">
+        <xsl:when test="$type='prefix'">
           <xsl:text>Prefix</xsl:text>
+        </xsl:when>
+        <xsl:when test="$type='suffix'">
+          <xsl:text>Suffix</xsl:text>
         </xsl:when>
       </xsl:choose>
     </xsl:with-param>
-    <xsl:with-param name="type">affix category</xsl:with-param>
+    <xsl:with-param name="type">affix type</xsl:with-param>
     <xsl:with-param name="lemma"
                     select="$lemma"/>
   </xsl:call-template>
   <xsl:text>&gt;</xsl:text>
+  <xsl:call-template name="affix-separability">
+    <xsl:with-param name="type"
+                    select="$type"/>
+    <xsl:with-param name="separable"
+                    select="$separable"/>
+    <xsl:with-param name="selection"
+                    select="$selection"/>
+  </xsl:call-template>
   <xsl:call-template name="affix-form">
     <xsl:with-param name="lemma"
                     select="$lemma"/>
@@ -97,9 +107,26 @@
   </xsl:call-template>
   <xsl:text>&lt;</xsl:text>
   <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$pos"/>
+    <xsl:with-param name="value">
+      <xsl:choose>
+        <xsl:when test="$type='prefix'">
+          <xsl:text>PREF</xsl:text>
+        </xsl:when>
+        <xsl:when test="$type='suffix'">
+          <xsl:text>SUFF</xsl:text>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:with-param>
     <xsl:with-param name="type">POS</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$selection"/>
+    <xsl:with-param name="type">selection</xsl:with-param>
     <xsl:with-param name="lemma"
                     select="$lemma"/>
   </xsl:call-template>

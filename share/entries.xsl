@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 3.0 -->
-<!-- Andreas Nolda 2022-06-27 -->
+<!-- Version 3.1 -->
+<!-- Andreas Nolda 2022-07-01 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -12,6 +12,9 @@
 <xsl:template name="affix-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="index"/>
+  <xsl:param name="type"/>
+  <xsl:param name="separable"/>
+  <xsl:param name="selection"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
     <xsl:call-template name="affix-entry">
@@ -19,14 +22,16 @@
                       select="$lemma"/>
       <xsl:with-param name="index"
                       select="$index"/>
-      <xsl:with-param name="pos">
+      <xsl:with-param name="type"
+                      select="$type"/>
+      <xsl:with-param name="separable"
+                      select="$separable"/>
+      <xsl:with-param name="selection">
         <xsl:choose>
-          <xsl:when test="starts-with($lemma,'-')">
-            <xsl:text>SUFF</xsl:text>
-          </xsl:when>
-          <xsl:when test="ends-with($lemma,'-')">
-            <xsl:text>PREF</xsl:text>
-          </xsl:when>
+          <xsl:when test="$selection='adjective'">ADJ</xsl:when>
+          <xsl:when test="$selection='adverb'">ADV</xsl:when>
+          <xsl:when test="$selection='noun'">NN</xsl:when>
+          <xsl:when test="$selection='verb'">V</xsl:when>
         </xsl:choose>
       </xsl:with-param>
       <xsl:with-param name="etymology"

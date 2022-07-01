@@ -27,6 +27,18 @@
   </xsl:choose>
 </xsl:template>
 
+<!-- affix separability -->
+<xsl:template name="affix-separability">
+  <xsl:param name="type"/>
+  <xsl:param name="separable"/>
+  <xsl:param name="selection"/>
+  <xsl:if test="$type='prefix' and
+                $separable='no' and
+                $selection='V'">
+    <xsl:text>&lt;no-ge&gt;</xsl:text>
+  </xsl:if>
+</xsl:template>
+
 <!-- base stem of verbs -->
 <xsl:template name="verb-stem">
   <xsl:param name="lemma"/>

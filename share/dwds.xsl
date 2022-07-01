@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 9.0 -->
-<!-- Andreas Nolda 2022-06-27 -->
+<!-- Version 9.1 -->
+<!-- Andreas Nolda 2022-07-01 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -59,9 +59,11 @@
                                                    self::dwds:Praeteritum[not(tokenize(normalize-space(.))[2]='sich')]
                                                                          [count(tokenize(normalize-space(.)))&lt;3] or
                                                    self::dwds:Partizip_II[count(tokenize(normalize-space(.)))=1] or
+                                                   self::dwds:Funktionspraeferenz or
                                                    self::dwds:Kasuspraeferenz or
                                                    self::dwds:Numeruspraeferenz or
-                                                   self::dwds:Einschraenkung]"
+                                                   self::dwds:Einschraenkung or
+                                                   self::dwds:Kommentar]"
                           group-by="name()">
         <xsl:element name="{name()}">
           <xsl:copy-of select="current-group()"/>
@@ -157,16 +159,145 @@
                         select="normalize-space(dwds:Wortklasse)"/>
           <xsl:choose>
             <!-- affixes -->
-            <xsl:when test="$pos='Affix'">
+            <xsl:when test="$pos='Affix' and
+                            ends-with($lemma,'-') and
+                            normalize-space(dwds:Funktionspraeferenz)='adjektivisch'">
               <xsl:call-template name="affix-entry-set">
                 <xsl:with-param name="lemma"
-                                select="$lemma"/>
+                                select="replace($lemma,'-$','')"/>
                 <xsl:with-param name="index"
                                 select="$index"/>
+                <xsl:with-param name="type">prefix</xsl:with-param>
+                <xsl:with-param name="separable">no</xsl:with-param>
+                <xsl:with-param name="selection">adjective</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
+            <!-- <xsl:when test="$pos='Affix' and
+                            starts-with($lemma,'-') and
+                            normalize-space(dwds:Funktionspraeferenz)='adjektivisch'">
+              <xsl:call-template name="affix-entry-set">
+                <xsl:with-param name="lemma"
+                                select="replace($lemma,'^-','')"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="type">suffix</xsl:with-param>
+                <xsl:with-param name="separable">no</xsl:with-param>
+                <xsl:with-param name="selection">adjective</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when> -->
+            <xsl:when test="$pos='Affix' and
+                            ends-with($lemma,'-') and
+                            normalize-space(dwds:Funktionspraeferenz)='adverbiell'">
+              <xsl:call-template name="affix-entry-set">
+                <xsl:with-param name="lemma"
+                                select="replace($lemma,'-$','')"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="type">prefix</xsl:with-param>
+                <xsl:with-param name="separable">no</xsl:with-param>
+                <xsl:with-param name="selection">adverb</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- <xsl:when test="$pos='Affix' and
+                            starts-with($lemma,'-') and
+                            normalize-space(dwds:Funktionspraeferenz)='adverbiell'">
+              <xsl:call-template name="affix-entry-set">
+                <xsl:with-param name="lemma"
+                                select="replace($lemma,'^-','')"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="type">suffix</xsl:with-param>
+                <xsl:with-param name="separable">no</xsl:with-param>
+                <xsl:with-param name="selection">adverb</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when> -->
+            <xsl:when test="$pos='Affix' and
+                            ends-with($lemma,'-') and
+                            (normalize-space(dwds:Funktionspraeferenz)='nominal' or
+                             normalize-space(dwds:Funktionspraeferenz)='substantivisch')">
+              <xsl:call-template name="affix-entry-set">
+                <xsl:with-param name="lemma"
+                                select="replace($lemma,'-$','')"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="type">prefix</xsl:with-param>
+                <xsl:with-param name="separable">no</xsl:with-param>
+                <xsl:with-param name="selection">noun</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- <xsl:when test="$pos='Affix' and
+                            starts-with($lemma,'-') and
+                            (normalize-space(dwds:Funktionspraeferenz)='nominal' or
+                             normalize-space(dwds:Funktionspraeferenz)='substantivisch')">
+              <xsl:call-template name="affix-entry-set">
+                <xsl:with-param name="lemma"
+                                select="replace($lemma,'^-','')"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="type">suffix</xsl:with-param>
+                <xsl:with-param name="separable">no</xsl:with-param>
+                <xsl:with-param name="selection">noun</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when> -->
+            <xsl:when test="$pos='Affix' and
+                            ends-with($lemma,'-') and
+                            normalize-space(dwds:Funktionspraeferenz)='verbal' and
+                            contains(normalize-space(dwds:Kommentar),'untrennbar')">
+              <xsl:call-template name="affix-entry-set">
+                <xsl:with-param name="lemma"
+                                select="replace($lemma,'-$','')"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="type">prefix</xsl:with-param>
+                <xsl:with-param name="separable">no</xsl:with-param>
+                <xsl:with-param name="selection">verb</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Affix' and
+                            ends-with($lemma,'-') and
+                            normalize-space(dwds:Funktionspraeferenz)='verbal' and
+                            contains(normalize-space(dwds:Kommentar),'trennbar')">
+              <xsl:call-template name="affix-entry-set">
+                <xsl:with-param name="lemma"
+                                select="replace($lemma,'-$','')"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="type">prefix</xsl:with-param>
+                <xsl:with-param name="separable">yes</xsl:with-param>
+                <xsl:with-param name="selection">verb</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- <xsl:when test="$pos='Affix' and
+                            starts-with($lemma,'-') and
+                            normalize-space(dwds:Funktionspraeferenz)='verbal'">
+              <xsl:call-template name="affix-entry-set">
+                <xsl:with-param name="lemma"
+                                select="replace($lemma,'^-','')"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="type">suffix</xsl:with-param>
+                <xsl:with-param name="separable">no</xsl:with-param>
+                <xsl:with-param name="selection">noun</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when> -->
             <!-- adjectives and adjectival participles -->
             <xsl:when test="$pos='Adjektiv' or
                             $pos='partizipiales Adjektiv'">
@@ -874,3 +1005,5 @@
   </dwds:Grammatik>
 </xsl:template>
 </xsl:stylesheet>
+<!-- TODO: -->
+<!-- add proper support for suffixes -->
