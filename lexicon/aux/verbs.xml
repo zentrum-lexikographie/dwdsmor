@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DWDS xmlns="http://www.dwds.de/ns/1.0">
+  <Artikel>
+    <Formangabe>
+      <Schreibung>händeln</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>händelt</Praesens>
+        <Praeteritum>händelte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gehändelt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+</DWDS>
