@@ -9,8 +9,8 @@ import csv
 import json
 import sfst_transduce
 from dwdsmor import analyse_word
-from collections import namedtuple
 from blessings import Terminal
+from collections import namedtuple
 
 version = 1.0
 
@@ -390,9 +390,9 @@ def main():
         output_paradigms(transducer, args.lemma, args.output, args.index, args.pos, args.old_forms, args.no_category_names, args.no_lemma, args.no_header, args.force_color, output_format)
     except KeyboardInterrupt:
         sys.exit(130)
-    except TypeError:
-        print(term.bold_red(args.transducer) + ": No such transducer file.", file=sys.stderr)
-        e = True
+    # except TypeError:
+    #     print(term.bold_red(args.transducer) + ": No such transducer file.", file=sys.stderr)
+    #     e = True
     except RuntimeError:
         print(term.bold_red(args.transducer) + ": No such transducer.", file=sys.stderr)
         e = True
