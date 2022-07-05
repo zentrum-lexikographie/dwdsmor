@@ -39,7 +39,7 @@ building and using FSTs for morphological analysis:
   GNU/Linux](https://debian.org/) (currently v10 “Buster”). While other
   UNIX-like operating systems (i. e. MacOS) might work, they are not supported.
 
-[Python v3](https://www.python.org/)
+[Python >= v3.9](https://www.python.org/)
 : DWDSmor targets Python as its primary runtime environment. Building a
   transducer involves other languages and platforms as well; for example XSLT
   and Clojure on the JVM for lexicon generation. But ultimately, compiled

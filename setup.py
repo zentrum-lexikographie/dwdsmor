@@ -11,12 +11,18 @@ setup(
     author_email='zdl-it@zdl.org',
     license='LGPLv3',
     packages=find_packages(exclude=['tests']),
+    python_requires='>=3.9',
     install_requires=[
         'sfst-transduce',
         'jellyfish',
     ],
     extras_require={
         'dwdsmor': [
+            'argparse',
+            'blessings'
+        ],
+        'paradigm': [
+            'argparse',
             'blessings'
         ],
         'test': [
