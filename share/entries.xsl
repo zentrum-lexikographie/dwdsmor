@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 3.1 -->
-<!-- Andreas Nolda 2022-07-01 -->
+<!-- Version 3.2 -->
+<!-- Andreas Nolda 2022-07-05 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -647,6 +647,21 @@
         </xsl:call-template>
       </xsl:when>
       <!-- neuter nouns -->
+      <xsl:when test="$lemma='Innere' and
+                      $genitive-singular-marker='-n' and
+                      $number='singular'">
+        <xsl:call-template name="noun-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="form"
+                          select="replace($lemma,'e$','')"/>
+          <xsl:with-param name="class">NNeut-Inner</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- genitive singular: "-(s)"
            nominative plural: "-(s)" -->
       <xsl:when test="$gender='neutr.' and

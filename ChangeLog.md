@@ -1,5 +1,7 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+* add support for reduced form of "Innere" without schwa
+
 2022-06-29:
 
 * prohibit prefixation of particle verbs with another verb particle

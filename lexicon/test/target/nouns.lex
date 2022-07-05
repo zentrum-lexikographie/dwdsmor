@@ -94,7 +94,7 @@
 <Stem>ICE<NN><base><nativ><NMasc/Sg_0>
 <Stem>Idol<NN><base><fremd><NNeut_s_e>
 <Stem>Idyll<NN><base><fremd><NNeut_s_e>
-<Stem>Innere<NN><base><nativ><NNeut-Adj/Sg>
+<Stem>Innere:<><NN><base><nativ><NNeut-Inner>
 <Stem>Intercity<NN><base><nativ><NMasc_0_s>
 <Stem>Jazz<NN><base><fremd><NMasc/Sg_0>
 <Stem>Jeans<NN><base><fremd><NFem_0_x>
