@@ -1037,7 +1037,6 @@
 * <Abk_NNeut>
 * <Adj&>
 * <Adj+(e)>
-* <Adj-el/er>
 * <AdjNNSuff>
 * <AdjPosAttr-Up>
 * <FamName_0>

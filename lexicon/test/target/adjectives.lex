@@ -27,6 +27,7 @@
 <Stem>rosa<ADJ><base><fremd><Adj0>
 <Stem>spannend<ADJ><base><nativ><Adj+>
 <Stem>spät<ADJ><base><nativ><Adj+e>
+<Stem>teuer<ADJ><base><nativ><Adj-el/er>
 <Stem>v:mi:ee:hl:r<ADJ><base><nativ><AdjComp0>
 <Stem>v:mi:ee:il:<><ADJ><base><nativ><AdjSup>
 <Stem>verträumt<ADJ><base><nativ><AdjPos>

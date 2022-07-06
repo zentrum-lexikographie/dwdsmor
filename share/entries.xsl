@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 3.2 -->
-<!-- Andreas Nolda 2022-07-05 -->
+<!-- Version 3.3 -->
+<!-- Andreas Nolda 2022-07-06 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -107,6 +107,19 @@
         </xsl:variable>
         <xsl:choose>
           <!-- adjectives with irregular positive forms -->
+          <xsl:when test="matches($lemma,'e[lr]$') and
+                          $positive=replace($lemma,'e([lr])$','$1er')">
+            <xsl:call-template name="default-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">Adj-el/er</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:when>
           <xsl:when test="string-length($positive)&gt;0 and
                           not(matches($positive-marker,'^&#x308;?(ß/ss)?-'))">
             <xsl:call-template name="default-entry">
@@ -193,6 +206,19 @@
             </xsl:call-template>
           </xsl:when>
           <!-- adjectives with irregular comparative forms -->
+          <xsl:when test="matches($lemma,'e[lr]$') and
+                          $comparative=replace($lemma,'e([lr])$','$1er')">
+            <xsl:call-template name="default-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">Adj-el/er</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:when>
           <xsl:when test="ends-with($comparative,'er') and
                           not(matches($comparative-marker,'^&#x308;?(ß/ss)?-'))">
             <xsl:call-template name="default-entry">

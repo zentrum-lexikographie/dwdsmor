@@ -1,5 +1,11 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-07-06:
+
+* add support for adjectives with schwa-elision
+
+2022-07-05:
+
 * add support for reduced form of "Innere" without schwa
 
 2022-06-29:
