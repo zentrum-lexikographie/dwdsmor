@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-06-29
+# Gregor Middell and Andreas Nolda 2022-07-08
 
 import sys
 import os
@@ -14,7 +14,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 4.0
+version = 4.1
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -65,22 +65,27 @@ class Analysis(tuple):
             if tag.startswith("+"):
                 return tag[1:]
 
+    _subcat_tags     = {"Def": True, "Indef": True, "Neg": True}
     _degree_tags     = {"Pos": True, "Comp": True, "Sup": True}
     _person_tags     = {"1": True, "2": True, "3": True}
     _gender_tags     = {"Fem": True, "Neut": True, "Masc": True, "NoGend": True, "Invar": True}
     _case_tags       = {"Nom": True, "Gen": True, "Dat": True, "Acc": True, "Invar": True}
     _number_tags     = {"Sg": True, "Pl": True, "Invar": True}
-    _inflection_tags = {"St": True, "Wk": True, "Invar": True}
-    _function_tags   = {"Pred": True, "Adv": True}
+    _inflection_tags = {"St": True, "Wk": True, "NoInfl": True, "Invar": True}
+    _function_tags   = {"Attr": True, "Subst": True, "Pred": True, "Adv": True}
     _nonfinite_tags  = {"Inf": True, "PPres": True, "PPast": True}
     _mood_tags       = {"Ind": True, "Subj": True, "Imp": True}
     _tense_tags      = {"Pres": True, "Past": True}
-    _metainfo_tags   = {"Old": True, "CAP": True}
+    _metainfo_tags   = {"Old": True, "NonSt": True, "CAP": True}
 
     def tag_of_type(self, type_map):
         for tag in self.tags:
             if tag in type_map:
                 return tag
+
+    @cached_property
+    def subcat(self):
+        return self.tag_of_type(Analysis._subcat_tags)
 
     @cached_property
     def degree(self):
@@ -138,6 +143,7 @@ class Analysis(tuple):
                 "segmentedlemma": self.segmented_lemma,
                 "index": self.index,
                 "pos": self.pos,
+                "subcat": self.subcat,
                 "degree": self.degree,
                 "person": self.person,
                 "gender": self.gender,
@@ -251,6 +257,7 @@ def output_dsv(words, analyses, output, full_analysis=False, header=True, force_
                              term.bright_black_underline("Segmentation"),
                              term.underline("Index"),
                              term.underline("POS"),
+                             term.underline("Subcategory"),
                              "Degree",
                              "Person",
                              "Gender",
@@ -272,12 +279,17 @@ def output_dsv(words, analyses, output, full_analysis=False, header=True, force_
                 idx = a.index
             else:
                 idx = ""
+            if a.subcat:
+                subcat = a.subcat
+            else:
+                subcat = ""
             csv_writer.writerow([term.bold(word),
                                  term.bright_black(analysis),
                                  term.bold_underline(a.lemma),
                                  term.bright_black_underline(a.segmented_lemma),
                                  term.underline(idx),
                                  term.underline(a.pos),
+                                 term.underline(subcat),
                                  a.degree,
                                  a.person,
                                  a.gender,

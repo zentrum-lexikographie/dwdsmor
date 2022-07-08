@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-06-30
+# Andreas Nolda 2022-07-08
 
 import sys
 import os
@@ -12,21 +12,22 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 1.0
+version = 1.1
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
 libfile = os.path.join(libdir, "smor-index.a")
 
 indices     = [1, 2, 3, 4]
-pos         = ["ADJ", "NN", "NPROP", "V"]
+pos         = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "POSS", "REL", "V"]
+subcats     = ["Def", "Indef", "Neg"]
 degrees     = ["Pos", "Comp", "Sup"]
 persons     = ["1", "2", "3"]
 genders     = ["Masc", "Neut", "Fem", "NoGend"]
 cases       = ["Nom", "Acc", "Dat", "Gen"]
 numbers     = ["Sg", "Pl"]
-inflections = ["St", "Wk"]
-functions   = ["Pred"]
+inflections = ["NoInfl", "St", "Wk"]
+functions   = ["Attr", "Subst", "Pred"]
 nonfinites  = ["Inf", "PPres", "PPast"]
 moods       = ["Ind", "Subj"]
 tenses      = ["Pres", "Past"]
@@ -36,6 +37,7 @@ imperative_numbers = numbers
 imperative_moods   = ["Imp"]
 
 lexcat = ["pos",
+          "subcat",
           "gender"]
 parcat = ["degree",
           "person",
@@ -48,13 +50,13 @@ parcat = ["degree",
           "mood",
           "tense"]
 
-Lexcat = namedtuple("Lexcat", lexcat, defaults=[None])
+Lexcat = namedtuple("Lexcat", lexcat, defaults=[None] * len(lexcat[1:]))
 Parcat = namedtuple("Parcat", parcat, defaults=[None] * len(parcat))
 
 Formspec  = namedtuple("Formspec",  ["index", "lexcat", "parcat"])
 Lemmaspec = namedtuple("Lemmaspec", ["index", "segmented_lemma", "pos"])
 
-def get_formdict(transducer, index, seg, pos, old_forms=False):
+def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
     formdict = {}
     if index:
         idx = "<IDX" + index + ">"
@@ -103,6 +105,117 @@ def get_formdict(transducer, index, seg, pos, old_forms=False):
                                                          case       = case,
                                                          number     = number,
                                                          inflection = inflection))] = set(forms)
+    # cardinals and pronouns
+    if pos == "CARD" or pos == "DEM" or pos == "INDEF" or pos == "POSS" or pos == "REL":
+        for gender in genders:
+            for number in numbers:
+                for case in cases:
+                    for inflection in inflections:
+                        for function in functions:
+                            forms = transducer.generate(seg + idx + "<+" + pos        + ">" +
+                                                                    "<"  + function   + ">" +
+                                                                    "<"  + gender     + ">" +
+                                                                    "<"  + case       + ">" +
+                                                                    "<"  + number     + ">" +
+                                                                    "<"  + inflection + ">")
+                            if forms:
+                                formdict[Formspec(index,
+                                                  Lexcat(pos = pos),
+                                                  Parcat(function   = function,
+                                                         gender     = gender,
+                                                         case       = case,
+                                                         number     = number,
+                                                         inflection = inflection))] = set(forms)
+                            if nonstandard_forms:
+                                forms = transducer.generate(seg + idx + "<+" + pos        + ">" +
+                                                                        "<"  + function   + ">" +
+                                                                        "<"  + gender     + ">" +
+                                                                        "<"  + case       + ">" +
+                                                                        "<"  + number     + ">" +
+                                                                        "<"  + inflection + ">" +
+                                                                        "<"  + "NonSt"    + ">")
+                                if forms:
+                                    if (index,
+                                        Lexcat(pos    = pos),
+                                        Parcat(function   = function,
+                                               gender     = gender,
+                                               case       = case,
+                                               number     = number,
+                                               inflection = inflection)) in formdict:
+                                        formdict[Formspec(index,
+                                                          Lexcat(pos    = pos),
+                                                          Parcat(function   = function,
+                                                                 gender     = gender,
+                                                                 case       = case,
+                                                                 number     = number,
+                                                                 inflection = inflection))] |= set(forms)
+                                    else:
+                                        formdict[Formspec(index,
+                                                          Lexcat(pos    = pos),
+                                                          Parcat(function   = function,
+                                                                 gender     = gender,
+                                                                 case       = case,
+                                                                 number     = number,
+                                                                 inflection = inflection))]  = set(forms)
+    # articles
+    if pos == "ART":
+        for subcat in subcats:
+            for gender in genders:
+                for number in numbers:
+                    for case in cases:
+                        for inflection in inflections:
+                            for function in functions:
+                                forms = transducer.generate(seg + idx + "<+" + pos        + ">" +
+                                                                        "<"  + subcat     + ">" +
+                                                                        "<"  + function   + ">" +
+                                                                        "<"  + gender     + ">" +
+                                                                        "<"  + case       + ">" +
+                                                                        "<"  + number     + ">" +
+                                                                        "<"  + inflection + ">")
+                                if forms:
+                                    formdict[Formspec(index,
+                                                      Lexcat(pos    = pos,
+                                                             subcat = subcat),
+                                                      Parcat(function   = function,
+                                                             gender     = gender,
+                                                             case       = case,
+                                                             number     = number,
+                                                             inflection = inflection))] = set(forms)
+                                if nonstandard_forms:
+                                    forms = transducer.generate(seg + idx + "<+" + pos        + ">" +
+                                                                            "<"  + subcat     + ">" +
+                                                                            "<"  + function   + ">" +
+                                                                            "<"  + gender     + ">" +
+                                                                            "<"  + case       + ">" +
+                                                                            "<"  + number     + ">" +
+                                                                            "<"  + inflection + ">" +
+                                                                            "<"  + "NonSt"    + ">")
+                                    if forms:
+                                        if (index,
+                                            Lexcat(pos    = pos,
+                                                   subcat = subcat),
+                                            Parcat(function   = function,
+                                                   gender     = gender,
+                                                   case       = case,
+                                                   number     = number,
+                                                   inflection = inflection)) in formdict:
+                                            formdict[Formspec(index,
+                                                              Lexcat(pos    = pos,
+                                                                     subcat = subcat),
+                                                              Parcat(function   = function,
+                                                                     gender     = gender,
+                                                                     case       = case,
+                                                                     number     = number,
+                                                                     inflection = inflection))] |= set(forms)
+                                        else:
+                                            formdict[Formspec(index,
+                                                              Lexcat(pos    = pos,
+                                                                     subcat = subcat),
+                                                              Parcat(function   = function,
+                                                                     gender     = gender,
+                                                                     case       = case,
+                                                                     number     = number,
+                                                                     inflection = inflection))]  = set(forms)
     # nouns
     if pos == "NN" or pos == "NPROP":
         # nominalised adjectives
@@ -264,6 +377,7 @@ def output_dsv(lemma, output, formdict, no_category_names=False, no_lemma=False,
             csv_writer.writerow([term.bold_underline("Lemma"),
                                  term.underline("Index"),
                                  term.underline("POS"),
+                                 term.underline("Subcategory"),
                                  term.underline("Gender"),
                                  "Degree",
                                  "Person",
@@ -278,7 +392,7 @@ def output_dsv(lemma, output, formdict, no_category_names=False, no_lemma=False,
                                  term.bold("Paradigm Forms")])
     for formspec in formdict:
         if no_category_names and no_lemma:
-            csv_writer.writerow([" ".join(filter(None, (formspec.parcat))),
+            csv_writer.writerow([" ".join(filter(None, formspec.parcat)),
                                  term.bold(", ".join(sorted(formdict[formspec])))])
         elif no_category_names:
             csv_writer.writerow([term.bold_underline(lemma),
@@ -302,6 +416,7 @@ def output_dsv(lemma, output, formdict, no_category_names=False, no_lemma=False,
             csv_writer.writerow([term.bold_underline(lemma),
                                  term.underline(string(formspec.index)),
                                  term.underline(formspec.lexcat.pos),
+                                 term.underline(string(formspec.lexcat.subcat)),
                                  term.underline(string(formspec.lexcat.gender)),
                                  string(formspec.parcat.degree),
                                  string(formspec.parcat.person),
@@ -315,7 +430,7 @@ def output_dsv(lemma, output, formdict, no_category_names=False, no_lemma=False,
                                  string(formspec.parcat.tense),
                                  term.bold(", ".join(sorted(formdict[formspec])))])
 
-def generate_paradigms(transducer, lemma, index=None, pos=None, old_forms=False):
+def generate_paradigms(transducer, lemma, index=None, pos=None, old_forms=False, nonstandard_forms=False):
     analyses = analyse_word(transducer, lemma)
     lemmaspecs = sorted({Lemmaspec(analysis.index, analysis.segmented_lemma, analysis.pos)
                          for analysis in analyses if analysis.lemma == lemma})
@@ -325,12 +440,12 @@ def generate_paradigms(transducer, lemma, index=None, pos=None, old_forms=False)
         lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.pos == pos]
     formdict = {}
     for lemmaspec in lemmaspecs:
-        formdict |= get_formdict(transducer, *lemmaspec, old_forms=old_forms)
+        formdict |= get_formdict(transducer, *lemmaspec, old_forms=old_forms, nonstandard_forms=nonstandard_forms)
     return formdict
 
-def output_paradigms(transducer, lemma, output, index=None, pos=None, old_forms=False, no_category_names=False, no_lemma=False, header=True, force_color=False, output_format="tsv"):
+def output_paradigms(transducer, lemma, output, index=None, pos=None, old_forms=False, nonstandard_forms=False, no_category_names=False, no_lemma=False, header=True, force_color=False, output_format="tsv"):
     term = Terminal(force_styling=force_color)
-    formdict = generate_paradigms(transducer, lemma, index, pos, old_forms)
+    formdict = generate_paradigms(transducer, lemma, index, pos, old_forms, nonstandard_forms)
     if formdict:
         if output_format == "json":
             output_json(lemma, output, formdict, no_category_names, no_lemma)
@@ -353,7 +468,7 @@ def main():
     try:
         parser = argparse.ArgumentParser()
         parser.add_argument("lemma",
-                            help="lemma")
+                            help="lemma (determiners: Fem Nom Sg; nominalised adjectives: Wk)")
         parser.add_argument("output", nargs="?", type=argparse.FileType("w"), default=sys.stdout,
                             help="output file (default: stdout)")
         parser.add_argument("-c", "--csv", action="store_true",
@@ -374,6 +489,8 @@ def main():
                             help="output also archaic forms")
         parser.add_argument("-p", "--pos", choices=pos,
                             help="part of speech")
+        parser.add_argument("-s", "--nonstandard-forms", action="store_true",
+                            help="output also non-standard forms")
         parser.add_argument("-t", "--transducer", default=libfile,
                             help="transducer file (default: {0})".format(os.path.relpath(libfile, os.getcwd())))
         parser.add_argument("-v", "--version", action="version",
@@ -387,7 +504,7 @@ def main():
             output_format = "csv"
         else:
             output_format = "tsv"
-        output_paradigms(transducer, args.lemma, args.output, args.index, args.pos, args.old_forms, args.no_category_names, args.no_lemma, args.no_header, args.force_color, output_format)
+        output_paradigms(transducer, args.lemma, args.output, args.index, args.pos, args.old_forms, args.nonstandard_forms, args.no_category_names, args.no_lemma, args.no_header, args.force_color, output_format)
     except KeyboardInterrupt:
         sys.exit(130)
     # except TypeError:
