@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 2.0
+version = 2.1
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -518,23 +518,31 @@ def output_dsv(lemma, output, formdict, no_category_names=False, no_lemma=False,
                                  string(formspec.parcat.tense),
                                  term.bold(", ".join(formdict[formspec]))])
 
-def generate_paradigms(transducer, lemma, index=None, pos=None, old_forms=False, nonstandard_forms=False):
-    analyses = analyse_word(transducer, lemma)
-    lemmaspecs = sorted({Lemmaspec(analysis.index, analysis.segmented_lemma, analysis.pos)
-                         for analysis in analyses if analysis.lemma == lemma},
-                        key=lambda l: (l.index or "", l.segmented_lemma, l.pos))
-    if index:
-        lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.index == str(index)]
-    if pos:
-        lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.pos == pos]
+def generate_paradigms(transducer, lemma, index=None, pos=None, user_specified=False, old_forms=False, nonstandard_forms=False):
+    lemmaspecs = []
+    if user_specified:
+        if pos:
+            if index:
+                lemmaspecs = [Lemmaspec(str(index), lemma, pos)]
+            else:
+                lemmaspecs = [Lemmaspec(None, lemma, pos)]
+    else:
+        analyses = analyse_word(transducer, lemma)
+        lemmaspecs = sorted({Lemmaspec(analysis.index, analysis.segmented_lemma, analysis.pos)
+                             for analysis in analyses if analysis.lemma == lemma},
+                            key=lambda l: (l.index or "", l.segmented_lemma, l.pos))
+        if index:
+            lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.index == str(index)]
+        if pos:
+            lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.pos == pos]
     formdict = {}
     for lemmaspec in lemmaspecs:
         formdict.update(get_formdict(transducer, *lemmaspec, old_forms=old_forms, nonstandard_forms=nonstandard_forms))
     return formdict
 
-def output_paradigms(transducer, lemma, output, index=None, pos=None, old_forms=False, nonstandard_forms=False, no_category_names=False, no_lemma=False, header=True, force_color=False, output_format="tsv"):
+def output_paradigms(transducer, lemma, output, index=None, pos=None, user_specified=False, old_forms=False, nonstandard_forms=False, no_category_names=False, no_lemma=False, header=True, force_color=False, output_format="tsv"):
     term = Terminal(force_styling=force_color)
-    formdict = generate_paradigms(transducer, lemma, index, pos, old_forms, nonstandard_forms)
+    formdict = generate_paradigms(transducer, lemma, index, pos, user_specified, old_forms, nonstandard_forms)
     if formdict:
         if output_format == "json":
             output_json(lemma, output, formdict, no_category_names, no_lemma)
@@ -549,8 +557,10 @@ def output_paradigms(transducer, lemma, output, index=None, pos=None, old_forms=
             print(term.bold(lemma) + ": No such lemma of index {0}.".format(index), file=sys.stderr)
         elif pos:
             print(term.bold(lemma) + ": No such lemma of part-of-speech {0}.".format(pos), file=sys.stderr)
+        elif user_specified:
+            print(term.bold(lemma) + ": No user-specified part of speech for lemma.", file=sys.stderr)
         else:
-            print(term.bold(lemma) + ": No such lemma.", file=sys.stderr)
+            print(term.bold(lemma) + ": No such lemma. (For a pseudo-lemma, use --user-specified.)", file=sys.stderr)
 
 def main():
     e = False
@@ -582,6 +592,8 @@ def main():
                             help="output also non-standard forms")
         parser.add_argument("-t", "--transducer", default=libfile,
                             help="transducer file (default: {0})".format(os.path.relpath(libfile, os.getcwd())))
+        parser.add_argument("-u", "--user-specified", action="store_true",
+                            help="use only user-specified information")
         parser.add_argument("-v", "--version", action="version",
                             version="{0} {1}".format(parser.prog, version))
         args = parser.parse_args()
@@ -593,7 +605,7 @@ def main():
             output_format = "csv"
         else:
             output_format = "tsv"
-        output_paradigms(transducer, args.lemma, args.output, args.index, args.pos, args.old_forms, args.nonstandard_forms, args.no_category_names, args.no_lemma, args.no_header, args.force_color, output_format)
+        output_paradigms(transducer, args.lemma, args.output, args.index, args.pos, args.user_specified, args.old_forms, args.nonstandard_forms, args.no_category_names, args.no_lemma, args.no_header, args.force_color, output_format)
     except KeyboardInterrupt:
         sys.exit(130)
     # except TypeError:
