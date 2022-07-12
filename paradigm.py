@@ -78,6 +78,16 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
     else:
         idx = ""
     if pos == "ADJ":
+        # predicative forms
+        for degree in degrees:
+            lexcat = Lexcat(pos = pos)
+            parcat = Parcat(degree   = degree,
+                            function = "Pred")
+            forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                    "<"  + degree + ">" +
+                                                    "<"  + "Pred" + ">")
+            if forms:
+                formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
         # forms inflected for degree, but uninflected for gender, case, number, and inflectional strength
         for degree in degrees:
             lexcat = Lexcat(pos = pos)
@@ -91,15 +101,6 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                                                     "<"  + "Invar" + ">")
             if forms:
                 formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
-            for function in functions:
-                lexcat = Lexcat(pos = pos)
-                parcat = Parcat(degree   = degree,
-                                function = function)
-                forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
-                                                        "<"  + degree   + ">" +
-                                                        "<"  + function + ">")
-                if forms:
-                    formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
         # forms inflected for degree, gender, case, number, and inflectional strength
         for degree in degrees:
             for gender in genders:
