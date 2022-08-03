@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-08-03:
+
+* simplify templates for lexical entries
+
 2022-07-06:
 
 * add support for adjectives with schwa-elision

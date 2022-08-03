@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smorlemma.xsl -->
-<!-- Version 7.1 -->
-<!-- Andreas Nolda 2022-06-29 -->
+<!-- Version 8.0 -->
+<!-- Andreas Nolda 2022-08-03 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -63,6 +63,7 @@
   </xsl:if>
 </xsl:template>
 
+<!-- lexical entries for affixes -->
 <xsl:template name="affix-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="index"/>
@@ -143,117 +144,127 @@
   <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
+<!-- lexical entries for words -->
+<xsl:template name="word-entry">
+  <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
+  <xsl:param name="form"/>
+  <xsl:param name="pos"/>
+  <xsl:param name="class"/>
+  <xsl:param name="etymology"/>
+  <xsl:text>&lt;Stem&gt;</xsl:text>
+  <xsl:choose>
+    <xsl:when test="string-length($form)&gt;0">
+      <xsl:value-of select="n:pair($lemma,$form)"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$lemma"/>
+    </xsl:otherwise>
+  </xsl:choose>
+  <xsl:call-template name="insert-index">
+    <xsl:with-param name="index"
+                    select="$index"/>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$pos"/>
+    <xsl:with-param name="type">POS</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&lt;base&gt;</xsl:text>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$etymology"/>
+    <xsl:with-param name="type">etymology</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:call-template name="insert-value">
+    <xsl:with-param name="value"
+                    select="$class"/>
+    <xsl:with-param name="type">class</xsl:with-param>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&#xA;</xsl:text>
+</xsl:template>
+
+<!-- lexical entries for adjectives -->
 <xsl:template name="adjective-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="index"/>
   <xsl:param name="form"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
-  <xsl:text>&lt;Stem&gt;</xsl:text>
-  <xsl:value-of select="n:pair($lemma,$form)"/>
-  <xsl:call-template name="insert-index">
+  <xsl:call-template name="word-entry">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
     <xsl:with-param name="index"
                     select="$index"/>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&lt;ADJ&gt;</xsl:text>
-  <xsl:text>&lt;base&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$etymology"/>
-    <xsl:with-param name="type">etymology</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
+    <xsl:with-param name="form"
+                    select="$form"/>
+    <xsl:with-param name="pos">ADJ</xsl:with-param>
+    <xsl:with-param name="class"
                     select="$class"/>
-    <xsl:with-param name="type">class</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
+    <xsl:with-param name="etymology"
+                    select="$etymology"/>
   </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
+<!-- lexical entries for adverbs -->
 <xsl:template name="adverb-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="index"/>
   <xsl:param name="form"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
-  <xsl:text>&lt;Stem&gt;</xsl:text>
-  <xsl:value-of select="n:pair($lemma,$form)"/>
-  <xsl:call-template name="insert-index">
+  <xsl:call-template name="word-entry">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
     <xsl:with-param name="index"
                     select="$index"/>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&lt;ADV&gt;</xsl:text>
-  <xsl:text>&lt;base&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$etymology"/>
-    <xsl:with-param name="type">etymology</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
+    <xsl:with-param name="form"
+                    select="$form"/>
+    <xsl:with-param name="pos">ADV</xsl:with-param>
+    <xsl:with-param name="class"
                     select="$class"/>
-    <xsl:with-param name="type">class</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
+    <xsl:with-param name="etymology"
+                    select="$etymology"/>
   </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
+<!-- lexical entries for nouns -->
 <xsl:template name="noun-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="index"/>
   <xsl:param name="form"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
-  <xsl:text>&lt;Stem&gt;</xsl:text>
-  <xsl:value-of select="n:pair($lemma,$form)"/>
-  <xsl:call-template name="insert-index">
+  <xsl:call-template name="word-entry">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
     <xsl:with-param name="index"
                     select="$index"/>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&lt;NN&gt;</xsl:text>
-  <xsl:text>&lt;base&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$etymology"/>
-    <xsl:with-param name="type">etymology</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
+    <xsl:with-param name="form"
+                    select="$form"/>
+    <xsl:with-param name="pos">NN</xsl:with-param>
+    <xsl:with-param name="class"
                     select="$class"/>
-    <xsl:with-param name="type">class</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
+    <xsl:with-param name="etymology"
+                    select="$etymology"/>
   </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
+<!-- lexical entries for verbs -->
 <xsl:template name="verb-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="index"/>
@@ -304,92 +315,25 @@
   <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
+<!-- lexical entries for other words -->
 <xsl:template name="other-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="index"/>
   <xsl:param name="form"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
-  <xsl:text>&lt;Stem&gt;</xsl:text>
-  <xsl:choose>
-    <xsl:when test="string-length($form)&gt;0">
-      <xsl:value-of select="n:pair($lemma,$form)"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:value-of select="$lemma"/>
-    </xsl:otherwise>
-  </xsl:choose>
-  <xsl:call-template name="insert-index">
+  <xsl:call-template name="word-entry">
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
     <xsl:with-param name="index"
                     select="$index"/>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&lt;OTHER&gt;</xsl:text>
-  <xsl:text>&lt;base&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$etymology"/>
-    <xsl:with-param name="type">etymology</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
+    <xsl:with-param name="form"
+                    select="$form"/>
+    <xsl:with-param name="pos">OTHER</xsl:with-param>
+    <xsl:with-param name="class"
                     select="$class"/>
-    <xsl:with-param name="type">class</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&#xA;</xsl:text>
-</xsl:template>
-
-<xsl:template name="default-entry">
-  <xsl:param name="lemma"/>
-  <xsl:param name="index"/>
-  <xsl:param name="pos"/>
-  <xsl:param name="class"/>
-  <xsl:param name="etymology"/>
-  <xsl:text>&lt;Stem&gt;</xsl:text>
-  <xsl:value-of select="$lemma"/>
-  <xsl:call-template name="insert-index">
-    <xsl:with-param name="index"
-                    select="$index"/>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$pos"/>
-    <xsl:with-param name="type">POS</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&lt;base&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
+    <xsl:with-param name="etymology"
                     select="$etymology"/>
-    <xsl:with-param name="type">etymology</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
   </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:call-template name="insert-value">
-    <xsl:with-param name="value"
-                    select="$class"/>
-    <xsl:with-param name="type">class</xsl:with-param>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 </xsl:stylesheet>

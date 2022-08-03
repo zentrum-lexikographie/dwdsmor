@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 3.3 -->
-<!-- Andreas Nolda 2022-07-06 -->
+<!-- Version 3.4 -->
+<!-- Andreas Nolda 2022-08-03 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -54,7 +54,7 @@
       <xsl:when test="$inflection='no'">
         <xsl:choose>
           <xsl:when test="matches($lemma,'^\p{Lu}')">
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
               <xsl:with-param name="index"
@@ -66,7 +66,7 @@
             </xsl:call-template>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
               <xsl:with-param name="index"
@@ -109,7 +109,7 @@
           <!-- adjectives with irregular positive forms -->
           <xsl:when test="matches($lemma,'e[lr]$') and
                           $positive=replace($lemma,'e([lr])$','$1er')">
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
               <xsl:with-param name="index"
@@ -122,7 +122,7 @@
           </xsl:when>
           <xsl:when test="string-length($positive)&gt;0 and
                           not(matches($positive-marker,'^&#x308;?(ß/ss)?-'))">
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
               <xsl:with-param name="index"
@@ -172,7 +172,7 @@
           </xsl:when>
           <!-- adjectives with the uninflected comparative form "mehr" -->
           <xsl:when test="$comparative='mehr'">
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
               <xsl:with-param name="index"
@@ -208,7 +208,7 @@
           <!-- adjectives with irregular comparative forms -->
           <xsl:when test="matches($lemma,'e[lr]$') and
                           $comparative=replace($lemma,'e([lr])$','$1er')">
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
               <xsl:with-param name="index"
@@ -221,7 +221,7 @@
           </xsl:when>
           <xsl:when test="ends-with($comparative,'er') and
                           not(matches($comparative-marker,'^&#x308;?(ß/ss)?-'))">
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
               <xsl:with-param name="index"
@@ -259,7 +259,7 @@
           <!-- adjectives with irregular superlative forms -->
           <xsl:when test="ends-with($superlative,'sten') and
                           not(matches($superlative-marker,'^&#x308;?(ß/ss)?-'))">
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
               <xsl:with-param name="index"
@@ -297,7 +297,7 @@
           <!-- adjectives with word-internal comparative markers -->
           <xsl:when test="string-length($comparative)&gt;0 and
                           not(matches($comparative-marker,'^&#x308;?(ß/ss)?-'))">
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$comparative"/>
               <xsl:with-param name="index"
@@ -309,7 +309,7 @@
             </xsl:call-template>
             <xsl:if test="string-length($superlative)&gt;0 and
                           not(matches($superlative-marker,'^&#x308;?(ß/ss)?-'))">
-              <xsl:call-template name="default-entry">
+              <xsl:call-template name="word-entry">
                 <xsl:with-param name="lemma"
                                 select="replace($superlative,'^am (.+)en$','$1')"/>
                 <xsl:with-param name="index"
@@ -326,7 +326,7 @@
                           not(matches($superlative-marker,'^&#x308;?(ß/ss)?-'))">
             <xsl:if test="string-length($comparative)&gt;0 and
                           not(matches($comparative-marker,'^&#x308;?(ß/ss)?-'))">
-              <xsl:call-template name="default-entry">
+              <xsl:call-template name="word-entry">
                 <xsl:with-param name="lemma"
                                 select="$comparative"/>
                 <xsl:with-param name="index"
@@ -337,7 +337,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:if>
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="replace($superlative,'^am (.+)en$','$1')"/>
               <xsl:with-param name="index"
@@ -351,7 +351,7 @@
           <!-- ungradable adjectives with capitalised first member -->
           <xsl:when test="string-length($superlative)=0 and
                           matches($lemma,'\p{Lu}\p{L}*-')">
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
               <xsl:with-param name="index"
@@ -364,7 +364,7 @@
           </xsl:when>
           <!-- other adjectives -->
           <xsl:otherwise>
-            <xsl:call-template name="default-entry">
+            <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
               <xsl:with-param name="index"
@@ -398,7 +398,7 @@
     <xsl:choose>
       <!-- adverbs with the unsuffixed comparative form "mehr" -->
       <xsl:when test="$comparative='mehr'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -433,7 +433,7 @@
       </xsl:when>
       <!-- adverbs with other comparative forms -->
       <xsl:when test="ends-with($comparative,'er')">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -470,7 +470,7 @@
       </xsl:when>
       <!-- other adverbs -->
       <xsl:otherwise>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -518,7 +518,7 @@
                       ($genitive-singular-marker='-(e)s' or
                        $genitive-singular-marker='-es') and
                       $nominative-plural-marker='-ten'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -553,7 +553,7 @@
       <xsl:when test="$gender='mask.' and
                       $genitive-singular-marker='-(s)' and
                       $nominative-plural-marker='-(s)'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -563,7 +563,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -573,7 +573,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -587,7 +587,7 @@
       <!-- genitive singular: "-(s)" -->
       <xsl:when test="$gender='mask.' and
                       $genitive-singular-marker='-(s)'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -597,7 +597,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -623,7 +623,7 @@
       <!-- nominative plural: "-(s)" -->
       <xsl:when test="$gender='mask.' and
                       $nominative-plural-marker='-(s)'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -633,7 +633,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -661,7 +661,7 @@
       <xsl:when test="$gender='mask.' and
                       ends-with($lemma,'mann') and
                       ends-with($nominative-plural,'leute')">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$nominative-plural"/>
           <xsl:with-param name="index"
@@ -693,7 +693,7 @@
       <xsl:when test="$gender='neutr.' and
                       $genitive-singular-marker='-(s)' and
                       $nominative-plural-marker='-(s)'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -703,7 +703,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -713,7 +713,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -727,7 +727,7 @@
       <!-- genitive singular: "-(s)" -->
       <xsl:when test="$gender='neutr.' and
                       $genitive-singular-marker='-(s)'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -737,7 +737,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -763,7 +763,7 @@
       <!-- nominative plural: "-(s)" -->
       <xsl:when test="$gender='neutr.' and
                       $nominative-plural-marker='-(s)'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -773,7 +773,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -802,7 +802,7 @@
       <xsl:when test="$gender='fem.' and
                       ends-with($lemma,'frau') and
                       ends-with($nominative-plural,'leute')">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$nominative-plural"/>
           <xsl:with-param name="index"
@@ -815,7 +815,7 @@
       </xsl:when>
       <!-- other nouns -->
       <xsl:otherwise>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -867,7 +867,7 @@
       <xsl:when test="$gender='mask.' and
                       $genitive-singular-marker='-(s)' and
                       $number='singular'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -877,7 +877,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -894,7 +894,7 @@
       <xsl:when test="$gender='neutr.' and
                       $genitive-singular-marker='-(s)' and
                       $number='singular'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -904,7 +904,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -921,7 +921,7 @@
       <xsl:when test="$gender='fem.' and
                       $genitive-singular-marker='-(s)' and
                       $number='singular'">
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -931,7 +931,7 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
@@ -944,7 +944,7 @@
       </xsl:when>
       <!-- other proper names -->
       <xsl:otherwise>
-        <xsl:call-template name="default-entry">
+        <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
           <xsl:with-param name="index"
