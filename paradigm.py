@@ -440,7 +440,9 @@ def generate_paradigms(transducer, lemma, index=None, pos=None, old_forms=False,
         lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.pos == pos]
     formdict = {}
     for lemmaspec in lemmaspecs:
-        formdict |= get_formdict(transducer, *lemmaspec, old_forms=old_forms, nonstandard_forms=nonstandard_forms)
+        # Python >= v3.9
+        # formdict |= get_formdict(transducer, *lemmaspec, old_forms=old_forms, nonstandard_forms=nonstandard_forms)
+        formdict.update(get_formdict(transducer, *lemmaspec, old_forms=old_forms, nonstandard_forms=nonstandard_forms))
     return formdict
 
 def output_paradigms(transducer, lemma, output, index=None, pos=None, old_forms=False, nonstandard_forms=False, no_category_names=False, no_lemma=False, header=True, force_color=False, output_format="tsv"):
