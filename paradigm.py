@@ -510,9 +510,9 @@ def main():
     # except TypeError:
     #     print(term.bold_red(args.transducer) + ": No such transducer file.", file=sys.stderr)
     #     e = True
-    except RuntimeError:
-        print(term.bold_red(args.transducer) + ": No such transducer.", file=sys.stderr)
-        e = True
+    # except RuntimeError:
+    #     print(term.bold_red(args.transducer) + ": No such transducer.", file=sys.stderr)
+    #     e = True
     if e:
         exit = 1
     else:
