@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 3.1 -->
-<!-- Andreas Nolda 2022-03-30 -->
+<!-- Version 3.2 -->
+<!-- Andreas Nolda 2022-08-04 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -37,6 +37,12 @@
                 $selection='V'">
     <xsl:text>&lt;no-ge&gt;</xsl:text>
   </xsl:if>
+</xsl:template>
+
+<!-- stem of feminine adjectival words -->
+<xsl:template name="feminine-stem">
+  <xsl:param name="lemma"/>
+  <xsl:value-of select="replace($lemma,'i?e$','')"/>
 </xsl:template>
 
 <!-- base stem of verbs -->

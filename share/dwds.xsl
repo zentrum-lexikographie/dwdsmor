@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 9.1 -->
-<!-- Andreas Nolda 2022-07-01 -->
+<!-- Version 9.2 -->
+<!-- Andreas Nolda 2022-08-05 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -431,6 +431,33 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
+            <!-- articles -->
+            <xsl:when test="$pos='bestimmter Artikel' and
+                            string-length(normalize-space(dwds:Genus))&gt;0">
+              <xsl:call-template name="article-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='unbestimmter Artikel' and
+                            string-length(normalize-space(dwds:Genus))&gt;0">
+              <xsl:call-template name="article-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
             <!-- nouns -->
             <xsl:when test="$pos='Substantiv' and
                              normalize-space(dwds:Numeruspraeferenz)='nur im Singular' and
@@ -517,6 +544,75 @@
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- numerals -->
+            <xsl:when test="$pos='Kardinalzahl' and
+                            string-length(normalize-space(dwds:Genus))&gt;0">
+              <xsl:call-template name="numeral-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- demonstrative pronouns -->
+            <xsl:when test="$pos='Demonstrativpronomen' and
+                            string-length(normalize-space(dwds:Genus))&gt;0">
+              <xsl:call-template name="demonstrative-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- indefinite pronouns -->
+            <xsl:when test="$pos='Indefinitpronomen' and
+                            string-length(normalize-space(dwds:Genus))&gt;0">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- possessive pronouns -->
+            <xsl:when test="$pos='Possessivpronomen' and
+                            $lemma='Ew.'">
+              <xsl:call-template name="possessive-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Possessivpronomen' and
+                            string-length(normalize-space(dwds:Genus))&gt;0">
+              <xsl:call-template name="possessive-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>

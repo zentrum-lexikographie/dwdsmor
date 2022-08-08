@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-07-08
+# Gregor Middell and Andreas Nolda 2022-08-03
 
 import sys
 import os
@@ -47,7 +47,7 @@ class Analysis(tuple):
 
     @cached_property
     def segmented_lemma(self):
-        return re.sub(r"(<IDX[^>]+>)?<\+[^>]+>.*", "", self.analysis)
+        return re.sub(r"(<IDX[^>]+>)?(<\^ABBR>)?<\+[^>]+>.*", "", self.analysis)
 
     @cached_property
     def tags(self):
@@ -65,18 +65,19 @@ class Analysis(tuple):
             if tag.startswith("+"):
                 return tag[1:]
 
-    _subcat_tags     = {"Def": True, "Indef": True, "Neg": True}
-    _degree_tags     = {"Pos": True, "Comp": True, "Sup": True}
-    _person_tags     = {"1": True, "2": True, "3": True}
-    _gender_tags     = {"Fem": True, "Neut": True, "Masc": True, "NoGend": True, "Invar": True}
-    _case_tags       = {"Nom": True, "Gen": True, "Dat": True, "Acc": True, "Invar": True}
-    _number_tags     = {"Sg": True, "Pl": True, "Invar": True}
-    _inflection_tags = {"St": True, "Wk": True, "NoInfl": True, "Invar": True}
-    _function_tags   = {"Attr": True, "Subst": True, "Pred": True, "Adv": True}
-    _nonfinite_tags  = {"Inf": True, "PPres": True, "PPast": True}
-    _mood_tags       = {"Ind": True, "Subj": True, "Imp": True}
-    _tense_tags      = {"Pres": True, "Past": True}
-    _metainfo_tags   = {"Old": True, "NonSt": True, "CAP": True}
+    _subcat_tags       = {"Def": True, "Indef": True, "Neg": True}
+    _degree_tags       = {"Pos": True, "Comp": True, "Sup": True}
+    _person_tags       = {"1": True, "2": True, "3": True}
+    _gender_tags       = {"Fem": True, "Neut": True, "Masc": True, "NoGend": True, "Invar": True}
+    _case_tags         = {"Nom": True, "Gen": True, "Dat": True, "Acc": True, "Invar": True}
+    _number_tags       = {"Sg": True, "Pl": True, "Invar": True}
+    _inflection_tags   = {"St": True, "Wk": True, "NoInfl": True, "Invar": True}
+    _function_tags     = {"Attr": True, "Subst": True, "Pred": True, "Adv": True}
+    _nonfinite_tags    = {"Inf": True, "PPres": True, "PPast": True}
+    _mood_tags         = {"Ind": True, "Subj": True, "Imp": True}
+    _tense_tags        = {"Pres": True, "Past": True}
+    _abbreviation_tags = {"^ABBR": True}
+    _metainfo_tags     = {"Old": True, "NonSt": True, "CAP": True}
 
     def tag_of_type(self, type_map):
         for tag in self.tags:
@@ -128,6 +129,11 @@ class Analysis(tuple):
         return self.tag_of_type(Analysis._tense_tags)
 
     @cached_property
+    def abbreviation(self):
+        if self.tag_of_type(Analysis._abbreviation_tags):
+            return "yes"
+
+    @cached_property
     def metainfo(self):
         return self.tag_of_type(Analysis._metainfo_tags)
 
@@ -154,6 +160,7 @@ class Analysis(tuple):
                 "nonfinite": self.nonfinite,
                 "mood": self.mood,
                 "tense": self.tense,
+                "abbreviation": self.abbreviation,
                 "metainfo": self.metainfo,
                 "distscore": self.dist_score,
                 "morphemes": [m._asdict() for m in self]}
@@ -268,6 +275,7 @@ def output_dsv(words, analyses, output, full_analysis=False, header=True, force_
                              "Nonfinite",
                              "Mood",
                              "Tense",
+                             "Abbreviation",
                              "Metainfo"])
     for word, analysis in zip(words, analyses):
         for a in analysis:
@@ -300,6 +308,7 @@ def output_dsv(words, analyses, output, full_analysis=False, header=True, force_
                                  a.nonfinite,
                                  a.mood,
                                  a.tense,
+                                 a.abbreviation,
                                  a.metainfo])
 
 def output_analyses(transducer, input, output, full_analysis=False, header=True, force_color=False, output_format="tsv"):

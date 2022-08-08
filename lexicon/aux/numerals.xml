@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DWDS xmlns="http://www.dwds.de/ns/1.0">
+  <Artikel>
+    <Formangabe>
+      <Schreibung hidx="1">ein</Schreibung>
+      <Grammatik>
+        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>eine</Schreibung>
+      <Grammatik>
+        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung hidx="1">ein</Schreibung>
+      <Grammatik>
+        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <!-- <Artikel>
+    <Formangabe>
+      <Schreibung>kein</Schreibung>
+      <Grammatik>
+        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>keine</Schreibung>
+      <Grammatik>
+        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>kein</Schreibung>
+      <Grammatik>
+        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel> -->
+</DWDS>
