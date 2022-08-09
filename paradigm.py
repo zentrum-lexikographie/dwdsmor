@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-07-08
+# Andreas Nolda 2022-08-09
 
 import sys
 import os
@@ -433,7 +433,8 @@ def output_dsv(lemma, output, formdict, no_category_names=False, no_lemma=False,
 def generate_paradigms(transducer, lemma, index=None, pos=None, old_forms=False, nonstandard_forms=False):
     analyses = analyse_word(transducer, lemma)
     lemmaspecs = sorted({Lemmaspec(analysis.index, analysis.segmented_lemma, analysis.pos)
-                         for analysis in analyses if analysis.lemma == lemma})
+                         for analysis in analyses if analysis.lemma == lemma},
+                        key=lambda l: (l.index or "", l.segmented_lemma, l.pos))
     if index:
         lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.index == str(index)]
     if pos:
