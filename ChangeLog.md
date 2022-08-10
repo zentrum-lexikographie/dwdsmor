@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-08-10:
+
+* add preliminary support for relative pronouns
+
 2022-08-05:
 
 * add preliminary support for articles, pronouns, and cardinals

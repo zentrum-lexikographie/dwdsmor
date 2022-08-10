@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 3.4 -->
-<!-- Andreas Nolda 2022-08-05 -->
+<!-- Version 3.5 -->
+<!-- Andreas Nolda 2022-08-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1435,6 +1435,42 @@
       </xsl:when>
     </xsl:choose>
   </xsl:if>
+</xsl:template>
+
+<xsl:template name="relative-pronoun-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
+  <xsl:param name="gender"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:variable name="stem">
+      <xsl:call-template name="feminine-stem">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:choose>
+      <!-- "die" -->
+      <xsl:when test="$gender='fem.' and
+                      ends-with($lemma,'die')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">REL</xsl:with-param>
+          <xsl:with-param name="class">Rel</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:if>
+  <!-- TODO: -->
+  <!-- "welche" -->
+  <!-- "derethalben", "deretwegen" -->
 </xsl:template>
 
 <xsl:template name="verb-entry-set">

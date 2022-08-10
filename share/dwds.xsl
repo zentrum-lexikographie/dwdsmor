@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 9.2 -->
-<!-- Andreas Nolda 2022-08-05 -->
+<!-- Version 9.3 -->
+<!-- Andreas Nolda 2022-08-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -607,6 +607,20 @@
             <xsl:when test="$pos='Possessivpronomen' and
                             string-length(normalize-space(dwds:Genus))&gt;0">
               <xsl:call-template name="possessive-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- relative pronouns -->
+            <xsl:when test="$pos='Relativpronomen' and
+                            string-length(normalize-space(dwds:Genus))&gt;0">
+              <xsl:call-template name="relative-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
                 <xsl:with-param name="index"
