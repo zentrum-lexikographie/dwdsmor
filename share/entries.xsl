@@ -1177,6 +1177,22 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- "solche", "ebensolche" -->
+      <xsl:when test="$gender='fem.' and
+                      ends-with($lemma,'solche')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">Dem-solch</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
@@ -1187,7 +1203,6 @@
   <!-- "selben" -->
   <!-- "selber", "selbst", "höchstselbst" -->
   <!-- "deretwegen", "derethalben" -->
-  <!-- "solche", "ebensolche" -->
   <!-- "sone", "son" -->
   <!-- "dergleichen", "derlei" -->
   <!-- "alldem" -->
@@ -1238,6 +1253,22 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- "welche" -->
+      <xsl:when test="$gender='fem.' and
+                      ends-with($lemma,'welche')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef-welch</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
@@ -1271,8 +1302,43 @@
   <!-- "unsereiner" -->
   <!-- "unsereins" -->
   <!-- "was", "irgendwas", "sonstwas" -->
-  <!-- "welche", "etwelche", "irgendwelche", "sonstwelche" -->
   <!-- "zigtausend" -->
+</xsl:template>
+
+<xsl:template name="interrogative-pronoun-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="index"/>
+  <xsl:param name="gender"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:variable name="stem">
+      <xsl:call-template name="feminine-stem">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:choose>
+      <!-- "welche" -->
+      <xsl:when test="$gender='fem.' and
+                      $lemma='welche'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">WPRO</xsl:with-param>
+          <xsl:with-param name="class">WPro-welch</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:if>
+  <!-- TODO: -->
+  <!-- "wer", "was" -->
+  <!-- "wieviele", "wievielte" -->
 </xsl:template>
 
 <xsl:template name="possessive-pronoun-entry-set">
@@ -1452,7 +1518,7 @@
     <xsl:choose>
       <!-- "die" -->
       <xsl:when test="$gender='fem.' and
-                      ends-with($lemma,'die')">
+                      $lemma='die'">
         <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
@@ -1466,10 +1532,25 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- "welche" -->
+      <xsl:when test="$gender='fem.' and
+                      $lemma='welche'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">REL</xsl:with-param>
+          <xsl:with-param name="class">Rel-welch</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
-  <!-- "welche" -->
   <!-- "derethalben", "deretwegen" -->
 </xsl:template>
 
