@@ -639,6 +639,18 @@
             </xsl:when>
             <!-- interrogative pronouns -->
             <xsl:when test="$pos='Interrogativpronomen' and
+                            ($lemma='wer' or
+                             $lemma='was')">
+              <xsl:call-template name="interrogative-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Interrogativpronomen' and
                             string-length(normalize-space(dwds:Genus))&gt;0">
               <xsl:call-template name="interrogative-pronoun-entry-set">
                 <xsl:with-param name="lemma"

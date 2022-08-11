@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-08-11:
 
 * add support for personal pronouns
+* add support for more interrogative pronouns
 * add support for more indefinite pronouns
 
 2022-08-10:
