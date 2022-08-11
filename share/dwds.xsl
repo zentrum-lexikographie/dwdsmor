@@ -578,6 +578,53 @@
             </xsl:when>
             <!-- indefinite pronouns -->
             <xsl:when test="$pos='Indefinitpronomen' and
+                            ends-with($lemma,'jemand')">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Indefinitpronomen' and
+                            $lemma='niemand'">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Indefinitpronomen' and
+                            (ends-with($lemma,'was') or
+                             $lemma='ebbes')">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Indefinitpronomen' and
+                            ($lemma='nichts' or
+                             $lemma='nischt' or
+                             $lemma='nix')">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Indefinitpronomen' and
                             string-length(normalize-space(dwds:Genus))&gt;0">
               <xsl:call-template name="indefinite-pronoun-entry-set">
                 <xsl:with-param name="lemma"
@@ -612,8 +659,6 @@
                                 select="$lemma"/>
                 <xsl:with-param name="index"
                                 select="$index"/>
-                <xsl:with-param name="gender"
-                                select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>

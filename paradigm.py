@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-08-09
+# Andreas Nolda 2022-08-10
 
 import sys
 import os
@@ -12,14 +12,14 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 1.1
+version = 1.2
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
 libfile = os.path.join(libdir, "smor-index.a")
 
 indices     = [1, 2, 3, 4]
-pos         = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "POSS", "REL", "V"]
+pos         = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "POSS", "REL", "V", "WPRO"]
 subcats     = ["Def", "Indef", "Neg"]
 degrees     = ["Pos", "Comp", "Sup"]
 persons     = ["1", "2", "3"]
@@ -63,7 +63,7 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
     else:
         idx = ""
     if pos == "ADJ":
-        # uninflected forms
+        # forms inflected for degree, but uninflected for gender, case, number, and inflectional strength
         for degree in degrees:
             forms = transducer.generate(seg + idx + "<+" + pos     + ">" +
                                                     "<"  + degree  + ">" +
@@ -85,7 +85,7 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                                       Lexcat(pos = pos),
                                       Parcat(degree   = degree,
                                              function = function))] = set(forms)
-        # inflected forms
+        # forms inflected for degree, gender, case, number, and inflectional strength
         for degree in degrees:
             for gender in genders:
                 for number in numbers:
@@ -107,6 +107,39 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                                                          inflection = inflection))] = set(forms)
     # cardinals and pronouns
     if pos == "CARD" or pos == "DEM" or pos == "INDEF" or pos == "POSS" or pos == "REL":
+        # forms uninflected for case and number
+        forms = transducer.generate(seg + idx + "<+" + pos     + ">" +
+                                                "<"  + "Invar" + ">")
+        if forms:
+            formdict[Formspec(index,
+                              Lexcat(pos = pos),
+                              Parcat(case   = "Invar",
+                                     number = "Invar"))] = set(forms)
+        # forms inflected for case and number
+        for number in numbers:
+            for case in cases:
+                forms = transducer.generate(seg + idx + "<+" + pos        + ">" +
+                                                        "<"  + case       + ">" +
+                                                        "<"  + number     + ">")
+                if forms:
+                    formdict[Formspec(index,
+                                      Lexcat(pos = pos),
+                                      Parcat(case   = case,
+                                             number = number))] = set(forms)
+        # forms inflected for function, but uninflected gender, case, number, and inflectional strength
+        for function in functions:
+            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
+                                                    "<"  + function + ">" +
+                                                    "<"  + "Invar"  + ">")
+            if forms:
+                formdict[Formspec(index,
+                                  Lexcat(pos = pos),
+                                  Parcat(function   = function,
+                                         gender     = "Invar",
+                                         case       = "Invar",
+                                         number     = "Invar",
+                                         inflection = "Invar"))] = set(forms)
+        # forms inflected for function, gender, case, number, and inflectional strength
         for gender in genders:
             for number in numbers:
                 for case in cases:

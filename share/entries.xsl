@@ -1253,7 +1253,7 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
-      <!-- "welche" -->
+      <!-- "welche", "irgendwelche" -->
       <xsl:when test="$gender='fem.' and
                       ends-with($lemma,'welche')">
         <xsl:call-template name="word-entry">
@@ -1269,39 +1269,98 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- "jemand", "irgendjemand" -->
+      <xsl:when test="ends-with($lemma,'jemand')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IndefMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "niemand" -->
+      <xsl:when test="$lemma='niemand'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IndefMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "etwas", "ebbes", "was", "irgendetwas", "irgendwas", "sonstwas" -->
+      <xsl:when test="ends-with($lemma,'was') or
+                      $lemma='ebbes'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IndefNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "nichts", "nischt", "nix" -->
+      <xsl:when test="$lemma='nichts' or
+                      $lemma='nischt' or
+                      $lemma='nix'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IndefNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
   <!-- "andere" -->
   <!-- "aberhundert", "Aberhundert" -->
+  <!-- "alle" -->
   <!-- "allerlei", "jederlei" -->
   <!-- "allesamt" -->
-  <!-- "ebbes" -->
   <!-- "ebensoviel", "genausoviel", "geradesoviel", "gradesoviel", "soviel" -->
-  <!-- "blutwenig", "ebensowenig", "genausowenig", "sowenig", "zuwenig" -->
+  <!-- "ebensowenig", "genausowenig", "sowenig", "blutwenig", "zuwenig" -->
   <!-- "einige" -->
   <!-- "etliche", "jegliche" -->
-  <!-- "etwas", "irgendetwas" -->
   <!-- "irgendein" -->
-  <!-- "irgendwer", "sonstwer" -->
   <!-- "jede" -->
   <!-- "jedermann" -->
   <!-- "jedweder" -->
-  <!-- "jemand", "irgendjemand" -->
   <!-- "man" -->
   <!-- "manche" -->
+  <!-- "männiglich" -->
   <!-- "mehrere" -->
+  <!-- "meinesgleichen", "deinesgleichen", "seinesgleichen",
+       "ihresgleichen", "unsersgleichen", "euresgleichen" -->
   <!-- "mensch" -->
-  <!-- "nichts" -->
-  <!-- "niemand" -->
-  <!-- "nischt" -->
-  <!-- "nix" -->
   <!-- "paar" -->
   <!-- "sämtliche" -->
   <!-- "soundsovielte" -->
   <!-- "unsereiner" -->
   <!-- "unsereins" -->
-  <!-- "was", "irgendwas", "sonstwas" -->
+  <!-- "wer", "irgendwer", "sonstwer" -->
   <!-- "zigtausend" -->
 </xsl:template>
 
@@ -3092,5 +3151,4 @@
 </xsl:template>
 </xsl:stylesheet>
 <!-- TODO: -->
-<!-- add support for the following part-of-speech categories:
-* <ABBR> -->
+<!-- add support for abbreviations -->
