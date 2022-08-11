@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 9.3 -->
-<!-- Andreas Nolda 2022-08-10 -->
+<!-- Version 9.4 -->
+<!-- Andreas Nolda 2022-08-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -651,6 +651,27 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
+            <!-- personal pronouns -->
+            <xsl:when test="$pos='Personalpronomen' and
+                            ($lemma='du' or
+                             $lemma='Du' or
+                             $lemma='er' or
+                             $lemma='es' or
+                             $lemma='ich' or
+                             $lemma='ihr' or
+                             $lemma='Ihr' or
+                             $lemma='sie' or
+                             $lemma='Sie' or
+                             $lemma='wir')">
+              <xsl:call-template name="personal-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="index"
+                                select="$index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
             <!-- possessive pronouns -->
             <xsl:when test="$pos='Possessivpronomen' and
                             $lemma='Ew.'">
@@ -1001,7 +1022,7 @@
                                 $lemma='daß' or
                                 $lemma='dass' or
                                 $lemma='ehe' or
-                                $lemma='eh’' or
+                                $lemma='eh&#x2019;' or
                                 $lemma='falls' or
                                 $lemma='gleichwohl' or
                                 $lemma='indem' or

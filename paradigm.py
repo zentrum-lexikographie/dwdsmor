@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-08-10
+# Andreas Nolda 2022-08-11
 
 import sys
 import os
@@ -12,14 +12,14 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 1.2
+version = 1.3
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
 libfile = os.path.join(libdir, "smor-index.a")
 
 indices     = [1, 2, 3, 4]
-pos         = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "POSS", "REL", "V", "WPRO"]
+pos         = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "POSS", "PPRO", "REL", "V", "WPRO"]
 subcats     = ["Def", "Indef", "Neg"]
 degrees     = ["Pos", "Comp", "Sup"]
 persons     = ["1", "2", "3"]
@@ -27,7 +27,7 @@ genders     = ["Masc", "Neut", "Fem", "NoGend"]
 cases       = ["Nom", "Acc", "Dat", "Gen"]
 numbers     = ["Sg", "Pl"]
 inflections = ["NoInfl", "St", "Wk"]
-functions   = ["Attr", "Subst", "Pred"]
+functions   = ["Pers", "Refl", "Attr", "Subst", "Pred"]
 nonfinites  = ["Inf", "PPres", "PPast"]
 moods       = ["Ind", "Subj"]
 tenses      = ["Pres", "Past"]
@@ -38,6 +38,7 @@ imperative_moods   = ["Imp"]
 
 lexcat = ["pos",
           "subcat",
+          "person",
           "gender"]
 parcat = ["degree",
           "person",
@@ -106,7 +107,7 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                                                          number     = number,
                                                          inflection = inflection))] = set(forms)
     # cardinals and pronouns
-    if pos == "CARD" or pos == "DEM" or pos == "INDEF" or pos == "POSS" or pos == "REL":
+    if pos == "CARD" or pos == "DEM" or pos == "INDEF" or pos == "POSS" or pos == "PPRO" or pos == "REL" or pos == "WPRO":
         # forms uninflected for case and number
         forms = transducer.generate(seg + idx + "<+" + pos     + ">" +
                                                 "<"  + "Invar" + ">")
@@ -118,14 +119,156 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
         # forms inflected for case and number
         for number in numbers:
             for case in cases:
-                forms = transducer.generate(seg + idx + "<+" + pos        + ">" +
-                                                        "<"  + case       + ">" +
-                                                        "<"  + number     + ">")
+                forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                        "<"  + case   + ">" +
+                                                        "<"  + number + ">")
                 if forms:
                     formdict[Formspec(index,
                                       Lexcat(pos = pos),
                                       Parcat(case   = case,
                                              number = number))] = set(forms)
+        # forms with fixed person and inflected for function, case, and number
+        for person in persons:
+            for number in numbers:
+                for case in cases:
+                    for function in functions:
+                        forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
+                                                                "<"  + function + ">" +
+                                                                "<"  + person   + ">" +
+                                                                "<"  + case     + ">" +
+                                                                "<"  + number   + ">")
+                        if forms:
+                            formdict[Formspec(index,
+                                              Lexcat(pos    = pos,
+                                                     person = person),
+                                              Parcat(function = function,
+                                                     case     = case,
+                                                     number   = number))] = set(forms)
+                        if nonstandard_forms:
+                            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
+                                                                    "<"  + function + ">" +
+                                                                    "<"  + person   + ">" +
+                                                                    "<"  + case     + ">" +
+                                                                    "<"  + number   + ">" +
+                                                                    "<"  + "NonSt"  + ">")
+                            if forms:
+                                if (index,
+                                    Lexcat(pos    = pos,
+                                           person = person),
+                                    Parcat(function = function,
+                                           case     = case,
+                                           number   = number)) in formdict:
+                                    formdict[Formspec(index,
+                                                      Lexcat(pos    = pos,
+                                                             person = person),
+                                                      Parcat(function   = function,
+                                                             case       = case,
+                                                             number     = number))] |= set(forms)
+                                else:
+                                    formdict[Formspec(index,
+                                                      Lexcat(pos    = pos,
+                                                             person = person),
+                                                      Parcat(function   = function,
+                                                             case       = case,
+                                                             number     = number))]  = set(forms)
+                        if old_forms:
+                            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
+                                                                    "<"  + function + ">" +
+                                                                    "<"  + person   + ">" +
+                                                                    "<"  + case     + ">" +
+                                                                    "<"  + number   + ">" +
+                                                                    "<"  + "Old"  + ">")
+                            if forms:
+                                if (index,
+                                    Lexcat(pos    = pos,
+                                           person = person),
+                                    Parcat(function = function,
+                                           case     = case,
+                                           number   = number)) in formdict:
+                                    formdict[Formspec(index,
+                                                      Lexcat(pos    = pos,
+                                                             person = person),
+                                                      Parcat(function   = function,
+                                                             case       = case,
+                                                             number     = number))] |= set(forms)
+                                else:
+                                    formdict[Formspec(index,
+                                                      Lexcat(pos    = pos,
+                                                             person = person),
+                                                      Parcat(function   = function,
+                                                             case       = case,
+                                                             number     = number))]  = set(forms)
+        # forms with fixed gender and inflected for function, case, and number
+        for gender in genders:
+            for number in numbers:
+                for case in cases:
+                    for function in functions:
+                        forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
+                                                                "<"  + function + ">" +
+                                                                "<"  + gender   + ">" +
+                                                                "<"  + case     + ">" +
+                                                                "<"  + number   + ">")
+                        if forms:
+                            formdict[Formspec(index,
+                                              Lexcat(pos    = pos,
+                                                     gender = gender),
+                                              Parcat(function = function,
+                                                     case     = case,
+                                                     number   = number))] = set(forms)
+                        if nonstandard_forms:
+                            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
+                                                                    "<"  + function + ">" +
+                                                                    "<"  + gender   + ">" +
+                                                                    "<"  + case     + ">" +
+                                                                    "<"  + number   + ">" +
+                                                                    "<"  + "NonSt"  + ">")
+                            if forms:
+                                if (index,
+                                    Lexcat(pos    = pos,
+                                           gender = gender),
+                                    Parcat(function = function,
+                                           case     = case,
+                                           number   = number)) in formdict:
+                                    formdict[Formspec(index,
+                                                      Lexcat(pos    = pos,
+                                                             gender = gender),
+                                                      Parcat(function   = function,
+                                                             case       = case,
+                                                             number     = number))] |= set(forms)
+                                else:
+                                    formdict[Formspec(index,
+                                                      Lexcat(pos    = pos,
+                                                             gender = gender),
+                                                      Parcat(function   = function,
+                                                             case       = case,
+                                                             number     = number))]  = set(forms)
+                        if old_forms:
+                            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
+                                                                    "<"  + function + ">" +
+                                                                    "<"  + gender   + ">" +
+                                                                    "<"  + case     + ">" +
+                                                                    "<"  + number   + ">" +
+                                                                    "<"  + "Old"  + ">")
+                            if forms:
+                                if (index,
+                                    Lexcat(pos    = pos,
+                                           gender = gender),
+                                    Parcat(function = function,
+                                           case     = case,
+                                           number   = number)) in formdict:
+                                    formdict[Formspec(index,
+                                                      Lexcat(pos    = pos,
+                                                             gender = gender),
+                                                      Parcat(function   = function,
+                                                             case       = case,
+                                                             number     = number))] |= set(forms)
+                                else:
+                                    formdict[Formspec(index,
+                                                      Lexcat(pos    = pos,
+                                                             gender = gender),
+                                                      Parcat(function   = function,
+                                                             case       = case,
+                                                             number     = number))]  = set(forms)
         # forms inflected for function, but uninflected gender, case, number, and inflectional strength
         for function in functions:
             forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
@@ -169,14 +312,14 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                                                                         "<"  + "NonSt"    + ">")
                                 if forms:
                                     if (index,
-                                        Lexcat(pos    = pos),
+                                        Lexcat(pos = pos),
                                         Parcat(function   = function,
                                                gender     = gender,
                                                case       = case,
                                                number     = number,
                                                inflection = inflection)) in formdict:
                                         formdict[Formspec(index,
-                                                          Lexcat(pos    = pos),
+                                                          Lexcat(pos = pos),
                                                           Parcat(function   = function,
                                                                  gender     = gender,
                                                                  case       = case,
@@ -184,7 +327,7 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                                                                  inflection = inflection))] |= set(forms)
                                     else:
                                         formdict[Formspec(index,
-                                                          Lexcat(pos    = pos),
+                                                          Lexcat(pos = pos),
                                                           Parcat(function   = function,
                                                                  gender     = gender,
                                                                  case       = case,
