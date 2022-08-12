@@ -533,7 +533,7 @@
           <xsl:with-param name="lemma">eine</xsl:with-param>
           <xsl:with-param name="index"
                           select="$index"/>
-          <xsl:with-param name="form">'n</xsl:with-param>
+          <xsl:with-param name="form">’n</xsl:with-param>
           <xsl:with-param name="pos">ART</xsl:with-param>
           <xsl:with-param name="class">ArtIndef-n</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1663,7 +1663,7 @@
           <xsl:with-param name="lemma">es</xsl:with-param>
           <xsl:with-param name="index"
                           select="$index"/>
-          <xsl:with-param name="form">'s</xsl:with-param>
+          <xsl:with-param name="form">’s</xsl:with-param>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNeutNomSg-s</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1685,7 +1685,7 @@
           <xsl:with-param name="lemma">es</xsl:with-param>
           <xsl:with-param name="index"
                           select="$index"/>
-          <xsl:with-param name="form">'s</xsl:with-param>
+          <xsl:with-param name="form">’s</xsl:with-param>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNeutAccSg-s</xsl:with-param>
           <xsl:with-param name="etymology"

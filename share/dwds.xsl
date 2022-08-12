@@ -1034,7 +1034,7 @@
                                 $lemma='daß' or
                                 $lemma='dass' or
                                 $lemma='ehe' or
-                                $lemma='eh&#x2019;' or
+                                $lemma='eh’' or
                                 $lemma='falls' or
                                 $lemma='gleichwohl' or
                                 $lemma='indem' or

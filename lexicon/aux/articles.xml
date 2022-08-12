@@ -23,29 +23,6 @@
       </Grammatik>
     </Formangabe>
   </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>’n</Schreibung>
-      <Grammatik>
-        <Wortklasse>unbestimmter Artikel</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>’ne</Schreibung>
-      <Grammatik>
-        <Wortklasse>unbestimmter Artikel</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>’n</Schreibung>
-      <Grammatik>
-        <Wortklasse>unbestimmter Artikel</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
   <!-- <Artikel>
     <Formangabe>
       <Schreibung>kein</Schreibung>
