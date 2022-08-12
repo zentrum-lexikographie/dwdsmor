@@ -2,6 +2,15 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
+      <Schreibung hidx="1">alle</Schreibung>
+      <Grammatik>
+        <Wortklasse>Adjektiv</Wortklasse>
+        <Einschraenkung>nur prädikativ</Einschraenkung>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>hoch</Schreibung>
       <Grammatik>
         <Wortklasse>Adjektiv</Wortklasse>

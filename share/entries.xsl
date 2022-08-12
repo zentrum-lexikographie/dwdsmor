@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 3.6 -->
-<!-- Andreas Nolda 2022-08-11 -->
+<!-- Version 3.7 -->
+<!-- Andreas Nolda 2022-08-12 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -43,6 +43,7 @@
 <xsl:template name="adjective-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="index"/>
+  <xsl:param name="function"/>
   <xsl:param name="inflection"/>
   <xsl:param name="positive"/>
   <xsl:param name="comparative"/>
@@ -50,10 +51,24 @@
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
     <xsl:choose>
+      <!-- predicative-only adjectives -->
+      <xsl:when test="$function='pred'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="index"
+                          select="$index"/>
+          <xsl:with-param name="pos">ADJ</xsl:with-param>
+          <xsl:with-param name="class">AdjPosPred</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- uninflected adjectives -->
       <xsl:when test="$inflection='no'">
         <xsl:choose>
-          <xsl:when test="matches($lemma,'^\p{Lu}')">
+          <!-- attributive-only location adjectives -->
+          <xsl:when test="matches($lemma,'^\p{Lu}.*er$')">
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
@@ -65,7 +80,18 @@
                               select="$etymology"/>
             </xsl:call-template>
           </xsl:when>
+          <!-- other uninflected adjectives -->
           <xsl:otherwise>
+            <xsl:call-template name="word-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjPosPred</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
@@ -106,6 +132,19 @@
           </xsl:call-template>
         </xsl:variable>
         <xsl:choose>
+          <!-- attributive-only adjectives -->
+          <xsl:when test="$function='attr'">
+            <xsl:call-template name="word-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="index"
+                              select="$index"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjPosAttr</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:when>
           <!-- adjectives with irregular positive forms -->
           <xsl:when test="matches($lemma,'e[lr]$') and
                           $positive=replace($lemma,'e([lr])$','$1er')">

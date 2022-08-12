@@ -2,7 +2,7 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
-      <Schreibung>händeln</Schreibung>
+      <Schreibung hidx="3">händeln</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
         <Praesens>händelt</Praesens>

@@ -2,7 +2,6 @@ aux/adjectives.xml
 wb/Duden-1999/ve/vertraeumt-D99_178113.xml
 wb/DWDS/billes-006/hochrangig.xml
 wb/Neuartikel/Rh-positiv-E_5138708.xml
-wb/Neuartikel/rosa-E_1957460.xml
 wb/Neuartikel/spannend-E_1056216.xml
 wb/WDG-neu/warm-E_w_1362.xml
 wb/WDG/al/alt-E_a_3428.xml
@@ -17,7 +16,10 @@ wb/WDG/ju/jung-E_j_847.xml
 wb/WDG/ka/kalt-E_k_559.xml
 wb/WDG/kl/klein-E_k_4865.xml
 wb/WDG/na/nass-E_n_1159.xml
+wb/WDG/or/orange-E_o_1137.xml
+wb/WDG/or/orangen-E_o_1144.xml
 wb/WDG/sp/spaet-E_s_14514.xml
+wb/WDG/ta/tabu-E_t_65.xml
 wb/WDG/te/teuer-E_t_2332.xml
 wb/WDG/vi/viel-E_v_4395.xml
 wb/WDG/we/wenig-E_w_3586.xml

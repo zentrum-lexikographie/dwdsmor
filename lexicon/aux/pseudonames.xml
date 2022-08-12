@@ -24,7 +24,7 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>Mutter</Schreibung>
+      <Schreibung hidx="1">Mutter</Schreibung>
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>

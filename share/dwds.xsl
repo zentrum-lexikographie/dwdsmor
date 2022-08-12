@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 9.4 -->
-<!-- Andreas Nolda 2022-08-11 -->
+<!-- Version 9.5 -->
+<!-- Andreas Nolda 2022-08-12 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -76,22 +76,29 @@
     </xsl:variable>
     <xsl:variable name="grammar-specs">
       <xsl:choose>
+        <!-- remove grammar specification for an adjective
+             with <Funktionspraeferenz>adverbiell</Funktionspraeferenz> -->
+        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[normalize-space(dwds:Wortklasse)='Adjektiv' and
+                                                              normalize-space(dwds:Funktionspraeferenz)='adverbiell']">
+          <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(normalize-space(dwds:Wortklasse)='Adjektiv' and
+                                                                         normalize-space(dwds:Funktionspraeferenz)='adverbiell')]"/>
+        </xsl:when>
         <!-- remove grammar specification for a noun
              with genitive singular form ending in "-s"
              if there is another grammar specification for a noun
              with genitive singular form ending in "-es" -->
-        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[normalize-space(.)='-es']] and
-                        $grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[normalize-space(.)='-s']]">
-          <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(dwds:Genitiv[normalize-space(.)='-s'])]"/>
+        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[normalize-space(dwds:Genitiv)='-es'] and
+                        $grouped-grammar-specs/dwds:Grammatik[normalize-space(dwds:Genitiv)='-s']">
+          <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(normalize-space(dwds:Genitiv)='-s')]"/>
         </xsl:when>
         <!-- reduce grammar specification for a weak verb with strong participle to participle
              if there is another grammar specification for a weak verb with weak participle -->
-        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]] and
-                        $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]] and
-                        $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]]/dwds:Praesens=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]]/dwds:Praesens and
-                        $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]]/dwds:Praeteritum=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]]/dwds:Praeteritum">
-          <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(dwds:Partizip_II[matches(normalize-space(.),'e?n$')])]"/>
-          <xsl:for-each select="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]]">
+        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[matches(normalize-space(dwds:Partizip_II),'e?n$')] and
+                        $grouped-grammar-specs/dwds:Grammatik[matches(normalize-space(dwds:Partizip_II),'e?t$')] and
+                        $grouped-grammar-specs/dwds:Grammatik[matches(normalize-space(dwds:Partizip_II),'e?n$')]/dwds:Praesens=$grouped-grammar-specs/dwds:Grammatik[matches(normalize-space(dwds:Partizip_II),'e?t$')]/dwds:Praesens and
+                        $grouped-grammar-specs/dwds:Grammatik[matches(normalize-space(dwds:Partizip_II),'e?n$')]/dwds:Praeteritum=$grouped-grammar-specs/dwds:Grammatik[matches(normalize-space(dwds:Partizip_II),'e?t$')]/dwds:Praeteritum">
+          <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(matches(normalize-space(dwds:Partizip_II),'e?n$'))]"/>
+          <xsl:for-each select="$grouped-grammar-specs/dwds:Grammatik[matches(normalize-space(dwds:Partizip_II),'e?n$')]">
             <dwds:Grammatik>
               <dwds:Wortklasse>Partizip</dwds:Wortklasse><!-- ad-hoc POS -->
               <xsl:copy-of select="dwds:Praesens"/><!-- required for identifying phrasal verbs -->
@@ -306,6 +313,16 @@
                                 select="$lemma"/>
                 <xsl:with-param name="index"
                                 select="$index"/>
+                <xsl:with-param name="function">
+                  <xsl:choose>
+                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[not(@Frequenz)])='attributiv'">attr</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">pred</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='prädikativ'">pred</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">pred</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur prädikativ'">pred</xsl:when>
+                    <xsl:otherwise>attr+pred</xsl:otherwise>
+                  </xsl:choose>
+                </xsl:with-param>
                 <xsl:with-param name="inflection">
                   <xsl:choose>
                     <xsl:when test="dwds:indeklinabel">no</xsl:when>

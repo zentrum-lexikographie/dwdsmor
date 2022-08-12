@@ -1,3 +1,4 @@
+<Stem>alle<IDX1><ADJ><base><nativ><AdjPosPred>
 <Stem>alt<ADJ><base><nativ><Adj$e>
 <Stem>Berliner<IDX2><ADJ><base><nativ><Adj0-Up>
 <Stem>echt<ADJ><base><nativ><AdjPos>
@@ -23,10 +24,13 @@
 <Stem>naß<ADJ><base><nativ><Adj~+e>
 <Stem>nass<ADJ><base><nativ><Adj$e>
 <Stem>nass<ADJ><base><nativ><Adj+e>
+<Stem>orange<ADJ><base><fremd><Adj0>
+<Stem>orange<ADJ><base><fremd><AdjPosPred>
+<Stem>orangen<ADJ><base><fremd><AdjPosAttr>
 <Stem>Rh-positiv<ADJ><base><nativ><AdjPos-Up>
-<Stem>rosa<ADJ><base><fremd><Adj0>
 <Stem>spannend<ADJ><base><nativ><Adj+>
 <Stem>spät<ADJ><base><nativ><Adj+e>
+<Stem>tabu<ADJ><base><fremd><AdjPosPred>
 <Stem>teuer<ADJ><base><nativ><Adj-el/er>
 <Stem>v:mi:ee:hl:r<ADJ><base><nativ><AdjComp0>
 <Stem>v:mi:ee:il:<><ADJ><base><nativ><AdjSup>
