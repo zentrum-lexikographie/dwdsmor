@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-08-12
+# Andreas Nolda 2022-08-15
 
 import sys
 import os
@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 2.1
+version = 2.2
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -71,6 +71,13 @@ def add_nonstandard_forms(formdict, index, lexcat, parcat, forms):
     else:
         formdict[Formspec(index, lexcat, parcat)] = sorted(set(formatted_forms))
 
+def add_superlative_forms(formdict, index, lexcat, parcat, forms):
+    formatted_forms = ["am " + form for form in forms]
+    if (index, lexcat, parcat) in formdict:
+        formdict[Formspec(index, lexcat, parcat)].extend(sorted(set(formatted_forms)))
+    else:
+        formdict[Formspec(index, lexcat, parcat)] = sorted(set(formatted_forms))
+
 def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
     formdict = {}
     if index:
@@ -87,7 +94,10 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                                                     "<"  + degree + ">" +
                                                     "<"  + "Pred" + ">")
             if forms:
-                formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+                if degree == "Sup":
+                    add_superlative_forms(formdict, index, lexcat, parcat, forms)
+                else:
+                    formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
         # forms inflected for degree, but uninflected for gender, case, number, and inflectional strength
         for degree in degrees:
             lexcat = Lexcat(pos = pos)
