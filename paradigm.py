@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 2.2
+version = 3.0
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -20,14 +20,15 @@ libfile = os.path.join(libdir, "smor-index.a")
 
 indices     = [1, 2, 3, 4]
 pos         = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "POSS", "PPRO", "REL", "V", "WPRO"]
-subcats     = ["Def", "Indef", "Neg"]
+art_subcats = ["Def", "Indef", "Neg"]
+pro_subcats = ["Pers", "Refl"]
 degrees     = ["Pos", "Comp", "Sup"]
 persons     = ["1", "2", "3"]
 genders     = ["Masc", "Neut", "Fem", "NoGend"]
 cases       = ["Nom", "Acc", "Dat", "Gen"]
 numbers     = ["Sg", "Pl"]
 inflections = ["NoInfl", "St", "Wk"]
-functions   = ["Pers", "Refl", "Attr", "Subst", "Pred"]
+functions   = ["Attr", "Subst", "Pred"]
 nonfinites  = ["Inf", "PPres", "PPast"]
 moods       = ["Ind", "Subj"]
 tenses      = ["Pres", "Past"]
@@ -131,27 +132,158 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                                                                     "<"  + inflection + ">")
                             if forms:
                                 formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
-    # cardinals and pronouns
-    if pos == "CARD" or pos == "DEM" or pos == "INDEF" or pos == "POSS" or pos == "PPRO" or pos == "REL" or pos == "WPRO":
-        # forms uninflected for case and number
-        lexcat = Lexcat(pos = pos)
-        parcat = Parcat(case   = "Invar",
-                        number = "Invar")
-        forms = transducer.generate(seg + idx + "<+" + pos     + ">" +
-                                                "<"  + "Invar" + ">")
-        if forms:
-            formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
-        # forms inflected for case and number
-        for number in numbers:
-            for case in cases:
-                lexcat = Lexcat(pos = pos)
-                parcat = Parcat(case   = case,
-                                number = number)
-                forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
-                                                        "<"  + case   + ">" +
-                                                        "<"  + number + ">")
-                if forms:
-                    formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+    # cardinals
+    if pos == "CARD":
+        # forms inflected for function, gender, case, number, and inflectional strength
+        for gender in genders:
+            for number in numbers:
+                for case in cases:
+                    for inflection in inflections:
+                        for function in functions:
+                            lexcat = Lexcat(pos = pos)
+                            parcat = Parcat(function   = function,
+                                            gender     = gender,
+                                            case       = case,
+                                            number     = number,
+                                            inflection = inflection)
+                            forms = transducer.generate(seg + idx + "<+" + pos        + ">" +
+                                                                    "<"  + function   + ">" +
+                                                                    "<"  + gender     + ">" +
+                                                                    "<"  + case       + ">" +
+                                                                    "<"  + number     + ">" +
+                                                                    "<"  + inflection + ">")
+                            if forms:
+                                formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+    # demonstrative and possessive pronouns
+    if pos == "DEM" or pos == "POSS":
+        # forms inflected for function, but uninflected for gender, case, number, and inflectional strength
+        for function in functions:
+            lexcat = Lexcat(pos = pos)
+            parcat = Parcat(function   = function,
+                            gender     = "Invar",
+                            case       = "Invar",
+                            number     = "Invar",
+                            inflection = "Invar")
+            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
+                                                    "<"  + function + ">" +
+                                                    "<"  + "Invar"  + ">")
+            if forms:
+                formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+        # forms inflected for function, gender, case, number, and inflectional strength
+        for gender in genders:
+            for number in numbers:
+                for case in cases:
+                    for inflection in inflections:
+                        for function in functions:
+                            lexcat = Lexcat(pos = pos)
+                            parcat = Parcat(function   = function,
+                                            gender     = gender,
+                                            case       = case,
+                                            number     = number,
+                                            inflection = inflection)
+                            forms = transducer.generate(seg + idx + "<+" + pos        + ">" +
+                                                                    "<"  + function   + ">" +
+                                                                    "<"  + gender     + ">" +
+                                                                    "<"  + case       + ">" +
+                                                                    "<"  + number     + ">" +
+                                                                    "<"  + inflection + ">")
+                            if forms:
+                                formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+                            if nonstandard_forms:
+                                forms = transducer.generate(seg + idx + "<+" + pos        + ">" +
+                                                                        "<"  + function   + ">" +
+                                                                        "<"  + gender     + ">" +
+                                                                        "<"  + case       + ">" +
+                                                                        "<"  + number     + ">" +
+                                                                        "<"  + inflection + ">" +
+                                                                        "<"  + "NonSt"    + ">")
+                                if forms:
+                                    add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
+    # personal pronouns
+    if pos == "PPRO":
+        # forms with fixed person and inflected for subcat, case, and number
+        for person in persons:
+            for number in numbers:
+                for case in cases:
+                    for subcat in pro_subcats:
+                        lexcat = Lexcat(pos    = pos,
+                                        subcat = subcat,
+                                        person = person)
+                        parcat = Parcat(case   = case,
+                                        number = number)
+                        forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                                "<"  + subcat + ">" +
+                                                                "<"  + person + ">" +
+                                                                "<"  + case   + ">" +
+                                                                "<"  + number + ">")
+                        if forms:
+                            formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+                        if old_forms:
+                            forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                                    "<"  + subcat + ">" +
+                                                                    "<"  + person + ">" +
+                                                                    "<"  + case   + ">" +
+                                                                    "<"  + number + ">" +
+                                                                    "<"  + "Old"  + ">")
+                            if forms:
+                                add_old_forms(formdict, index, lexcat, parcat, forms)
+                        if nonstandard_forms:
+                            forms = transducer.generate(seg + idx + "<+" + pos     + ">" +
+                                                                    "<"  + subcat  + ">" +
+                                                                    "<"  + person  + ">" +
+                                                                    "<"  + case    + ">" +
+                                                                    "<"  + number  + ">" +
+                                                                    "<"  + "NonSt" + ">")
+                            if forms:
+                                add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
+        # forms with fixed gender and inflected for subcat, case, and number
+        for gender in genders:
+            for number in numbers:
+                for case in cases:
+                    for subcat in pro_subcats:
+                        lexcat = Lexcat(pos    = pos,
+                                        subcat = subcat,
+                                        gender = gender)
+                        parcat = Parcat(case   = case,
+                                        number = number)
+                        forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                                "<"  + subcat + ">" +
+                                                                "<"  + gender + ">" +
+                                                                "<"  + case   + ">" +
+                                                                "<"  + number + ">")
+                        if forms:
+                            formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+                        if old_forms:
+                            forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                                    "<"  + subcat + ">" +
+                                                                    "<"  + gender + ">" +
+                                                                    "<"  + case   + ">" +
+                                                                    "<"  + number + ">" +
+                                                                    "<"  + "Old"  + ">")
+                            if forms:
+                                add_old_forms(formdict, index, lexcat, parcat, forms)
+                        if nonstandard_forms:
+                            forms = transducer.generate(seg + idx + "<+" + pos     + ">" +
+                                                                    "<"  + subcat  + ">" +
+                                                                    "<"  + gender  + ">" +
+                                                                    "<"  + case    + ">" +
+                                                                    "<"  + number  + ">" +
+                                                                    "<"  + "NonSt" + ">")
+                            if forms:
+                                add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
+    # other pronouns
+    if pos == "INDEF" or pos == "REL" or pos == "WPRO":
+        # forms with fixed gender, but uninflected for case and number
+        for gender in genders:
+            lexcat = Lexcat(pos = pos,
+                            gender = gender)
+            parcat = Parcat(case       = "Invar",
+                            number     = "Invar")
+            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
+                                                    "<"  + gender + ">" +
+                                                    "<"  + "Invar"  + ">")
+            if forms:
+                formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
         # forms with fixed gender and inflected for case and number
         for gender in genders:
             for number in numbers:
@@ -182,76 +314,6 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                                                                 "<"  + "NonSt"  + ">")
                         if forms:
                             add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
-        # forms with fixed person and inflected for function, case, and number
-        for person in persons:
-            for number in numbers:
-                for case in cases:
-                    for function in functions:
-                        lexcat = Lexcat(pos    = pos,
-                                        person = person)
-                        parcat = Parcat(function = function,
-                                        case     = case,
-                                        number   = number)
-                        forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
-                                                                "<"  + function + ">" +
-                                                                "<"  + person   + ">" +
-                                                                "<"  + case     + ">" +
-                                                                "<"  + number   + ">")
-                        if forms:
-                            formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
-                        if old_forms:
-                            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
-                                                                    "<"  + function + ">" +
-                                                                    "<"  + person   + ">" +
-                                                                    "<"  + case     + ">" +
-                                                                    "<"  + number   + ">" +
-                                                                    "<"  + "Old"  + ">")
-                            if forms:
-                                add_old_forms(formdict, index, lexcat, parcat, forms)
-                        if nonstandard_forms:
-                            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
-                                                                    "<"  + function + ">" +
-                                                                    "<"  + person   + ">" +
-                                                                    "<"  + case     + ">" +
-                                                                    "<"  + number   + ">" +
-                                                                    "<"  + "NonSt"  + ">")
-                            if forms:
-                                add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
-        # forms with fixed gender and inflected for function, case, and number
-        for gender in genders:
-            for number in numbers:
-                for case in cases:
-                    for function in functions:
-                        lexcat = Lexcat(pos    = pos,
-                                        gender = gender)
-                        parcat = Parcat(function = function,
-                                        case     = case,
-                                        number   = number)
-                        forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
-                                                                "<"  + function + ">" +
-                                                                "<"  + gender   + ">" +
-                                                                "<"  + case     + ">" +
-                                                                "<"  + number   + ">")
-                        if forms:
-                            formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
-                        if old_forms:
-                            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
-                                                                    "<"  + function + ">" +
-                                                                    "<"  + gender   + ">" +
-                                                                    "<"  + case     + ">" +
-                                                                    "<"  + number   + ">" +
-                                                                    "<"  + "Old"    + ">")
-                            if forms:
-                                add_old_forms(formdict, index, lexcat, parcat, forms)
-                        if nonstandard_forms:
-                            forms = transducer.generate(seg + idx + "<+" + pos      + ">" +
-                                                                    "<"  + function + ">" +
-                                                                    "<"  + gender   + ">" +
-                                                                    "<"  + case     + ">" +
-                                                                    "<"  + number   + ">" +
-                                                                    "<"  + "NonSt"  + ">")
-                            if forms:
-                                add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
         # forms inflected for function, but uninflected for gender, case, number, and inflectional strength
         for function in functions:
             lexcat = Lexcat(pos = pos)
@@ -297,7 +359,7 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                                     add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
     # articles
     if pos == "ART":
-        for subcat in subcats:
+        for subcat in art_subcats:
             for gender in genders:
                 for number in numbers:
                     for case in cases:

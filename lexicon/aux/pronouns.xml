@@ -2,6 +2,29 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
+      <Schreibung>aller</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung hidx="2">alle</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>alles</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>dein</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
@@ -71,6 +94,29 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>ebensolcher</Schreibung>
+      <Grammatik>
+        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>ebensolche</Schreibung>
+      <Grammatik>
+        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>ebensolches</Schreibung>
+      <Grammatik>
+        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung hidx="1">ein</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
@@ -86,6 +132,52 @@
     </Formangabe>
     <Formangabe>
       <Schreibung hidx="1">ein</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>einiger</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>einige</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>einiges</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>etlicher</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>etliche</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>etliches</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>neutr.</Genus>
@@ -255,6 +347,52 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>irgendwelcher</Schreibung>
+      <Grammatik>
+        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>irgendwelche</Schreibung>
+      <Grammatik>
+        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>irgendwelches</Schreibung>
+      <Grammatik>
+        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>jedweder</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>jedwede</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>jedwedes</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>kein</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
@@ -295,6 +433,29 @@
       <Schreibung>mein</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>sämtlicher</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>sämtliche</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>sämtliches</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>

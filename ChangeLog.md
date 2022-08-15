@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-08-15:
+
+* add support for more indefinite pronouns
+
 2022-08-12:
 
 * add support for attributive-only adjectives
