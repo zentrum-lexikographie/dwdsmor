@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-08-15
+# Andreas Nolda 2022-08-16
 
 import sys
 import os
@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 3.0
+version = 3.1
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -32,10 +32,6 @@ functions   = ["Attr", "Subst", "Pred"]
 nonfinites  = ["Inf", "PPres", "PPast"]
 moods       = ["Ind", "Subj"]
 tenses      = ["Pres", "Past"]
-
-imperative_persons = ["2"]
-imperative_numbers = numbers
-imperative_moods   = ["Imp"]
 
 lexcat = ["pos",
           "subcat",
@@ -461,18 +457,15 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                         if forms:
                             formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
         # imperative forms
-        for mood in imperative_moods:
-            for number in imperative_numbers:
-                for person in imperative_persons:
-                    lexcat = Lexcat(pos = pos)
-                    parcat = Parcat(person = person,
-                                    number = number,
-                                    mood   = mood)
-                    forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
-                                                            "<"  + mood   + ">" +
-                                                            "<"  + number + ">")
-                    if forms:
-                        formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+        for number in numbers:
+                lexcat = Lexcat(pos = pos)
+                parcat = Parcat(number = number,
+                                mood   = "Imp")
+                forms = transducer.generate(seg + idx + "<+" + pos    + ">" +
+                                                        "<"  + "Imp"  + ">" +
+                                                        "<"  + number + ">")
+                if forms:
+                    formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
     return formdict
 
 def paradigm_subset(formdict, index, lexcat):
