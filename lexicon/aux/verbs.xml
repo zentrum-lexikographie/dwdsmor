@@ -2,6 +2,19 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
+      <Schreibung>dürfen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>darf</Praesens>
+        <Praeteritum>durfte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>dürfen</Partizip_II>
+        <Partizip_II>gedurft</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung hidx="3">händeln</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -9,6 +22,112 @@
         <Praeteritum>händelte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>gehändelt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>können</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>kann</Praesens>
+        <Praeteritum>konnte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>können</Partizip_II>
+        <Partizip_II>gekonnt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>lassen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>lässt</Praesens>
+        <Praeteritum>ließ</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>lassen</Partizip_II>
+        <Partizip_II>gelassen</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>mögen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>mag</Praesens>
+        <Praeteritum>mochte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>mögen</Partizip_II>
+        <Partizip_II>gemocht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>müssen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>muss</Praesens>
+        <Praeteritum>musste</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>müssen</Partizip_II>
+        <Partizip_II>gemusst</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>sollen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>soll</Praesens>
+        <Praeteritum>sollte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>sollen</Partizip_II>
+        <Partizip_II>gesollt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>werden</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>wird</Praesens>
+        <Praeteritum>wurde</Praeteritum>
+        <Auxiliar>ist</Auxiliar>
+        <Partizip_II>worden</Partizip_II>
+        <Partizip_II>geworden</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe Typ="Nebenform">
+      <Schreibung>werden</Schreibung>
+      <Aussprache>001/werden</Aussprache>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>wird</Praesens>
+        <Praeteritum>ward</Praeteritum>
+        <Auxiliar>ist</Auxiliar>
+        <Partizip_II>worden</Partizip_II>
+        <Partizip_II>geworden</Partizip_II>
+      </Grammatik>
+      <Diasystematik>
+        <Gebrauchszeitraum>veraltend</Gebrauchszeitraum>
+      </Diasystematik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>wollen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>will</Praesens>
+        <Praeteritum>wollte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>wollen</Partizip_II>
+        <Partizip_II>gewollt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>

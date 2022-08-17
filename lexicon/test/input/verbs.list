@@ -1,3 +1,4 @@
+aux/verbs.xml
 wb/Duden-1999/an/angiographieren-D99_006678.xml
 wb/Duden-1999/au/autographieren-D99_014251.xml
 wb/Duden-1999/bi/bibliographieren-D99_020483.xml
@@ -50,7 +51,6 @@ wb/WDG/bl/blasen-E_b_9815.xml
 wb/WDG/br/braten-E_b_12282.xml
 wb/WDG/br/brauchen-E_b_12377.xml
 wb/WDG/de/denken-E_d_1573.xml
-wb/WDG/du/duerfen-E_d_5421.xml
 wb/WDG/er/erloeschen-E_e_5902.xml
 wb/WDG/fa/fantasieren-E_p_2798.xml
 wb/WDG/fr/fragen-E_f_7690.xml
@@ -63,21 +63,17 @@ wb/WDG/ha/haben-E_h_152.xml
 wb/WDG/ha/halten-E_h_1009.xml
 wb/WDG/he/hektografieren-E_h_3959.xml
 wb/WDG/ke/kennen-E_k_3003.xml
-wb/WDG/ko/koennen-E_k_7486.xml
 wb/WDG/la/laden-E_l_217.xml
 wb/WDG/le/lesen-E_l_3786.xml
 wb/WDG/li/lieben-E_l_4371.xml
 wb/WDG/li/lithographieren-E_l_5110.xml
 wb/WDG/ma/mahlen-E_m_510.xml
-wb/WDG/mo/moegen-E_m_5616.xml
-wb/WDG/mu/muessen-E_m_7083.xml
 wb/WDG/ox/oxidieren-E_o_1844.xml
 wb/WDG/ph/photographieren-E_p_2960.xml
 wb/WDG/sa/salzen-E_s_777.xml
 wb/WDG/se/sehen-E_s_10699.xml
 wb/WDG/se/sein-E_s_10921.xml
 wb/WDG/se/senden-E_s_11514.xml
-wb/WDG/so/sollen-E_s_13646.xml
 wb/WDG/sp/sprechen-E_s_16011.xml
 wb/WDG/sp/springen-E_s_16168.xml
 wb/WDG/st/stecken-E_s_18255.xml
@@ -91,8 +87,6 @@ wb/WDG/um/umsehen-E_u_1205.xml
 wb/WDG/ve/verwerten-E_v_4060.xml
 wb/WDG/vo/vorbedenken-E_v_5280.xml
 wb/WDG/we/wenden-E_w_3542.xml
-wb/WDG/we/werden-E_w_3657.xml
 wb/WDG/we/werten-E_w_4086.xml
 wb/WDG/wi/wissen-E_w_5504.xml
-wb/WDG/wo/wollen-E_w_6123.xml
 wb/WDG/ze/zerspringen-E_z_1625.xml
