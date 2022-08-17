@@ -63,30 +63,6 @@
   </xsl:if>
 </xsl:template>
 
-<xsl:template name="insert-auxiliary">
-  <xsl:param name="auxiliary"/>
-  <xsl:param name="lemma"/>
-  <xsl:if test="string-length($auxiliary)&gt;0">
-    <xsl:choose>
-      <xsl:when test="$auxiliary='hat'">
-        <xsl:text>&lt;haben&gt;</xsl:text>
-      </xsl:when>
-      <xsl:when test="$auxiliary='ist'">
-        <xsl:text>&lt;sein&gt;</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:message>
-          <xsl:text>Warning: "</xsl:text>
-          <xsl:value-of select="$lemma"/>
-          <xsl:text>" has UNSUPPORTED auxiliary </xsl:text>
-          <xsl:value-of select="$auxiliary"/>
-          <xsl:text>.</xsl:text>
-        </xsl:message>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:if>
-</xsl:template>
-
 <!-- lexical entries for affixes -->
 <xsl:template name="affix-entry">
   <xsl:param name="lemma"/>
@@ -337,12 +313,16 @@
                     select="$lemma"/>
   </xsl:call-template>
   <xsl:text>&gt;</xsl:text>
-  <xsl:call-template name="insert-auxiliary">
-    <xsl:with-param name="auxiliary"
-                    select="$auxiliary"/>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
+  <xsl:if test="string-length($auxiliary)&gt;0">
+    <xsl:choose>
+      <xsl:when test="$auxiliary='hat'">
+        <xsl:text>&lt;haben&gt;</xsl:text>
+      </xsl:when>
+      <xsl:when test="$auxiliary='ist'">
+        <xsl:text>&lt;sein&gt;</xsl:text>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:if>
   <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
