@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-08-16
+# Gregor Middell and Andreas Nolda 2022-08-17
 
 import sys
 import os
 import argparse
 import re
-import jellyfish
 import sfst_transduce
 import csv
 import json
@@ -14,56 +13,41 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 4.4
+version = 5.0
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
 libfile = os.path.join(libdir, "smor-full.ca")
 
-Morpheme = namedtuple("Morpheme", ["form", "lemma", "tags"])
+Component = namedtuple("Component", ["form", "lemma", "tags"])
 
 class Analysis(tuple):
-    def __new__(cls, full_analysis, morphemes):
-        inst = tuple.__new__(cls, morphemes)
-        inst.full_analysis = full_analysis
+    def __new__(cls, analysis, components):
+        inst = tuple.__new__(cls, components)
+        inst.analysis = analysis
         return inst
-
-    def analysis_layer(self):
-        layer = re.sub(r"([^>]|<[^>]*>):([^<]|<[^>]*>)", r"\1", self.full_analysis)
-        layer = re.sub(r"<>", "", layer)
-        return layer
-
-    @cached_property
-    def analysis(self):
-        return self.analysis_layer()
 
     @cached_property
     def form(self):
-        return "".join(m.form for m in self)
+        return "".join(a.form for a in self)
 
     @cached_property
     def lemma(self):
-        return "".join(m.lemma for m in self)
+        return "".join(a.lemma for a in self)
 
     @cached_property
     def segmented_lemma(self):
-        return re.sub(r"(<\^ABBR>|<IDX[^>]+>|<haben>|<sein>)*<\+[^>]+>.*", "", self.analysis)
+        return re.sub(r"(<IDX[^>]+>)?(<\^ABBR>)?<\+[^>]+>.*", "", self.analysis)
 
     @cached_property
     def tags(self):
-        return [tag for m in self for tag in m.tags]
+        return [tag for a in self for tag in a.tags]
 
     @cached_property
     def index(self):
         for tag in self.tags:
             if tag.startswith("IDX"):
                 return tag[3:]
-
-    @cached_property
-    def aux(self):
-        for tag in self.tags:
-            if tag in ["haben", "sein"]:
-                return tag
 
     @cached_property
     def pos(self):
@@ -82,6 +66,7 @@ class Analysis(tuple):
     _nonfinite_tags    = {"Inf": True, "PPres": True, "PPast": True}
     _mood_tags         = {"Ind": True, "Subj": True, "Imp": True}
     _tense_tags        = {"Pres": True, "Past": True}
+    _auxiliary_tags    = {"haben": True, "sein": True}
     _abbreviation_tags = {"^ABBR": True}
     _metainfo_tags     = {"Old": True, "NonSt": True, "CAP": True}
 
@@ -135,6 +120,10 @@ class Analysis(tuple):
         return self.tag_of_type(Analysis._tense_tags)
 
     @cached_property
+    def auxiliary(self):
+        return self.tag_of_type(Analysis._auxiliary_tags)
+
+    @cached_property
     def abbreviation(self):
         if self.tag_of_type(Analysis._abbreviation_tags):
             return "yes"
@@ -143,20 +132,14 @@ class Analysis(tuple):
     def metainfo(self):
         return self.tag_of_type(Analysis._metainfo_tags)
 
-    @cached_property
-    def dist_score(self):
-        return jellyfish.levenshtein_distance(self.form.lower(), self.lemma.lower())
-
     def as_dict(self):
         return {"form": self.form,
                 "analysis": self.analysis,
-                "fullanalysis": self.full_analysis,
                 "lemma": self.lemma,
                 "segmentedlemma": self.segmented_lemma,
                 "index": self.index,
                 "pos": self.pos,
                 "subcat": self.subcat,
-                "aux": self.aux,
                 "degree": self.degree,
                 "person": self.person,
                 "gender": self.gender,
@@ -167,10 +150,9 @@ class Analysis(tuple):
                 "nonfinite": self.nonfinite,
                 "mood": self.mood,
                 "tense": self.tense,
+                "auxiliary": self.auxiliary,
                 "abbreviation": self.abbreviation,
-                "metainfo": self.metainfo,
-                "distscore": self.dist_score,
-                "morphemes": [m._asdict() for m in self]}
+                "metainfo": self.metainfo}
 
     _empty_component_texts = set(["", ":"])
     _curly_braces_re = re.compile(r"[{}]")
@@ -199,18 +181,18 @@ class Analysis(tuple):
     def _decode_analysis(analysis):
         # "QR-Code" -> "{:<>QR}:<>-<TRUNC>:<>Code<+NN>:<><Masc>:<><Acc>:<><Sg>:<>"
         analysis = Analysis._curly_braces_re.sub("", analysis)
-        for m in re.finditer(r"([^<]*)(?:<([^>]*)>)?", analysis):
-            text = m.group(1)
-            tag  = m.group(2) or ""
+        for a in re.finditer(r"([^<]*)(?:<([^>]*)>)?", analysis):
+            text = a.group(1)
+            tag  = a.group(2) or ""
             component = Analysis._decode_component_text(text)
             if tag != "":
                 component["tag"] = tag
             yield component
 
-    def _join_tags(analysis):
+    def _join_tags(components):
         result = []
         current = None
-        for c in analysis:
+        for c in components:
             c = c.copy()
             if current is None or c["form"] != "" or c["lemma"] != "":
                 c["tags"] = []
@@ -221,10 +203,10 @@ class Analysis(tuple):
                 del c["tag"]
         return result
 
-    def _join_untagged(analysis):
+    def _join_untagged(components):
         result = []
         buf = []
-        for c in analysis:
+        for c in components:
             buf.append(c)
             if len(c["tags"]) > 0:
                 joined = {"lemma": "", "form": "", "tags": []}
@@ -239,14 +221,14 @@ class Analysis(tuple):
         return result
 
 def parse(analyses):
-    l = []
+    component_list = []
     for analysis in analyses:
-        morphemes = Analysis._decode_analysis(analysis)
-        morphemes = Analysis._join_tags(morphemes)
-        morphemes = Analysis._join_untagged(morphemes)
-        if not morphemes in l:
-            l.append(morphemes)
-            yield Analysis(analysis, [Morpheme(**m) for m in morphemes])
+        components = Analysis._decode_analysis(analysis)
+        components = Analysis._join_tags(components)
+        components = Analysis._join_untagged(components)
+        if not components in component_list:
+            component_list.append(components)
+            yield Analysis(analysis, [Component(**c) for c in components])
 
 def analyse_word(transducer, word):
     return parse(transducer.analyse(word))
@@ -261,7 +243,7 @@ def output_json(words, analyses, output):
                               "analyses": [a.as_dict() for a in analysis]})
     json.dump(word_analyses, output, ensure_ascii=False)
 
-def output_dsv(words, analyses, output, full_analysis=False, header=True, force_color=False, delimiter="\t"):
+def output_dsv(words, analyses, output, header=True, force_color=False, delimiter="\t"):
     term = Terminal(force_styling=force_color)
     csv_writer = csv.writer(output, delimiter=delimiter)
     if header:
@@ -272,7 +254,6 @@ def output_dsv(words, analyses, output, full_analysis=False, header=True, force_
                              term.underline("Index"),
                              term.underline("POS"),
                              term.underline("Subcategory"),
-                             term.underline("Auxiliary"),
                              "Degree",
                              "Person",
                              "Gender",
@@ -283,34 +264,18 @@ def output_dsv(words, analyses, output, full_analysis=False, header=True, force_
                              "Nonfinite",
                              "Mood",
                              "Tense",
+                             "Auxiliary",
                              "Abbreviation",
                              "Metainfo"])
     for word, analysis in zip(words, analyses):
         for a in analysis:
-            if full_analysis:
-                analysis = a.full_analysis
-            else:
-                analysis = a.analysis
-            if a.index:
-                idx = a.index
-            else:
-                idx = ""
-            if a.subcat:
-                subcat = a.subcat
-            else:
-                subcat = ""
-            if a.aux:
-                aux = a.aux
-            else:
-                aux = ""
             csv_writer.writerow([term.bold(word),
-                                 term.bright_black(analysis),
+                                 term.bright_black(a.analysis),
                                  term.bold_underline(a.lemma),
                                  term.bright_black_underline(a.segmented_lemma),
-                                 term.underline(idx),
+                                 term.underline(a.index or ""),
                                  term.underline(a.pos),
-                                 term.underline(subcat),
-                                 term.underline(aux),
+                                 term.underline(a.subcat or ""),
                                  a.degree,
                                  a.person,
                                  a.gender,
@@ -321,19 +286,20 @@ def output_dsv(words, analyses, output, full_analysis=False, header=True, force_
                                  a.nonfinite,
                                  a.mood,
                                  a.tense,
+                                 a.auxiliary,
                                  a.abbreviation,
                                  a.metainfo])
 
-def output_analyses(transducer, input, output, full_analysis=False, header=True, force_color=False, output_format="tsv"):
+def output_analyses(transducer, input, output, header=True, force_color=False, output_format="tsv"):
     words = tuple(word.strip() for word in input.readlines() if word.strip())
     analyses = analyse_words(transducer, words)
     if analyses:
         if output_format == "json":
             output_json(words, analyses, output)
         elif output_format == "csv":
-            output_dsv(words, analyses, output, full_analysis, header, force_color, delimiter=",")
+            output_dsv(words, analyses, output, header, force_color, delimiter=",")
         else:
-            output_dsv(words, analyses, output, full_analysis, header, force_color)
+            output_dsv(words, analyses, output, header, force_color)
 
 def main():
     e = False
@@ -343,8 +309,6 @@ def main():
                             help="input file (one word form per line; default: stdin)")
         parser.add_argument("output", nargs="?", type=argparse.FileType("w"), default=sys.stdout,
                             help="output file (default: stdout)")
-        parser.add_argument("-a", "--full-analysis", action="store_true",
-                            help="output full analysis with surface layer and analysis layer")
         parser.add_argument("-c", "--csv", action="store_true",
                             help="output CSV table")
         parser.add_argument("-C", "--force-color", action="store_true",
@@ -360,14 +324,14 @@ def main():
         args = parser.parse_args()
         term = Terminal(force_styling=args.force_color)
         transducer = sfst_transduce.CompactTransducer(args.transducer)
-        transducer.both_layers = True
+        transducer.both_layers = False
         if args.json:
             output_format = "json"
         elif args.csv:
             output_format = "csv"
         else:
             output_format = "tsv"
-        output_analyses(transducer, args.input, args.output, args.full_analysis, args.no_header, args.force_color, output_format)
+        output_analyses(transducer, args.input, args.output, args.no_header, args.force_color, output_format)
     except KeyboardInterrupt:
         sys.exit(130)
     # except TypeError:
