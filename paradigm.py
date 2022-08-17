@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-08-16
+# Andreas Nolda 2022-08-17
 
 import sys
 import os
@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 3.1
+version = 3.2
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -32,6 +32,7 @@ functions   = ["Attr", "Subst", "Pred"]
 nonfinites  = ["Inf", "PPres", "PPast"]
 moods       = ["Ind", "Subj"]
 tenses      = ["Pres", "Past"]
+auxiliaries = ["haben", "sein"]
 
 lexcat = ["pos",
           "subcat",
@@ -431,12 +432,27 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
                             add_old_forms(formdict, index, lexcat, parcat, forms)
     # verbs
     if pos == "V":
-        # non-finite forms
-        for nonfinite in nonfinites:
+        # infinitive
+        lexcat = Lexcat(pos = pos)
+        parcat = Parcat(nonfinite = "Inf")
+        forms = transducer.generate(seg + idx + "<+" + pos   + ">" +
+                                                "<"  + "Inf" + ">")
+        if forms:
+            formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+        # present participle
+        lexcat = Lexcat(pos = pos)
+        parcat = Parcat(nonfinite = "PPres")
+        forms = transducer.generate(seg + idx + "<+" + pos     + ">" +
+                                                "<"  + "PPres" + ">")
+        if forms:
+            formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+        # past participle
+        for auxiliary in auxiliaries:
             lexcat = Lexcat(pos = pos)
-            parcat = Parcat(nonfinite = nonfinite)
+            parcat = Parcat(nonfinite = "PPast")
             forms = transducer.generate(seg + idx + "<+" + pos       + ">" +
-                                                    "<"  + nonfinite + ">")
+                                                    "<"  + "PPast"   + ">" +
+                                                    "<"  + auxiliary + ">")
             if forms:
                 formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
         # indicative and subjunctive forms
