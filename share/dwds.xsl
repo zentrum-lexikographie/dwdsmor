@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 9.6 -->
-<!-- Andreas Nolda 2022-08-15 -->
+<!-- Version 9.7 -->
+<!-- Andreas Nolda 2022-08-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -59,6 +59,7 @@
                                                    self::dwds:Praeteritum[not(tokenize(normalize-space(.))[2]='sich')]
                                                                          [count(tokenize(normalize-space(.)))&lt;3] or
                                                    self::dwds:Partizip_II[count(tokenize(normalize-space(.)))=1] or
+                                                   self::dwds:Auxiliar or
                                                    self::dwds:Funktionspraeferenz or
                                                    self::dwds:Kasuspraeferenz or
                                                    self::dwds:Numeruspraeferenz or
@@ -103,6 +104,7 @@
               <dwds:Wortklasse>Partizip</dwds:Wortklasse><!-- ad-hoc POS -->
               <xsl:copy-of select="dwds:Praesens"/><!-- required for identifying phrasal verbs -->
               <xsl:copy-of select="dwds:Partizip_II"/>
+              <xsl:copy-of select="dwds:Auxiliar"/>
             </dwds:Grammatik>
           </xsl:for-each>
         </xsl:when>
@@ -777,7 +779,8 @@
             <xsl:when test="$pos='Verb' and
                             string-length(normalize-space(dwds:Praesens))&gt;0 and
                             string-length(normalize-space(dwds:Praeteritum))&gt;0 and
-                            string-length(normalize-space(dwds:Partizip_II))&gt;0">
+                            string-length(normalize-space(dwds:Partizip_II))&gt;0 and
+                            string-length(normalize-space(dwds:Auxiliar))&gt;0">
               <xsl:call-template name="verb-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -807,6 +810,8 @@
                 </xsl:with-param>
                 <xsl:with-param name="participle"
                                 select="normalize-space(dwds:Partizip_II)"/>
+                <xsl:with-param name="auxiliary"
+                                select="normalize-space(dwds:Auxiliar)"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -814,7 +819,8 @@
             <!-- verbal participles (ad-hoc POS) -->
             <xsl:when test="$pos='Partizip' and
                             string-length(normalize-space(dwds:Praesens))&gt;0 and
-                            string-length(normalize-space(dwds:Partizip_II))&gt;0">
+                            string-length(normalize-space(dwds:Partizip_II))&gt;0 and
+                            string-length(normalize-space(dwds:Auxiliar))&gt;0">
               <xsl:call-template name="participle-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -833,6 +839,8 @@
                 </xsl:with-param>
                 <xsl:with-param name="participle"
                                 select="normalize-space(dwds:Partizip_II)"/>
+                <xsl:with-param name="auxiliary"
+                                select="normalize-space(dwds:Auxiliar)"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>

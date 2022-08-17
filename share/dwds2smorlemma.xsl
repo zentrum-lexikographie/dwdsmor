@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2smorlemma.xsl -->
-<!-- Version 8.0 -->
-<!-- Andreas Nolda 2022-08-03 -->
+<!-- Version 8.1 -->
+<!-- Andreas Nolda 2022-08-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -56,6 +56,30 @@
           <xsl:value-of select="$lemma"/>
           <xsl:text>" has UNSUPPORTED index </xsl:text>
           <xsl:value-of select="$index"/>
+          <xsl:text>.</xsl:text>
+        </xsl:message>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="insert-auxiliary">
+  <xsl:param name="auxiliary"/>
+  <xsl:param name="lemma"/>
+  <xsl:if test="string-length($auxiliary)&gt;0">
+    <xsl:choose>
+      <xsl:when test="$auxiliary='hat'">
+        <xsl:text>&lt;haben&gt;</xsl:text>
+      </xsl:when>
+      <xsl:when test="$auxiliary='ist'">
+        <xsl:text>&lt;sein&gt;</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message>
+          <xsl:text>Warning: "</xsl:text>
+          <xsl:value-of select="$lemma"/>
+          <xsl:text>" has UNSUPPORTED auxiliary </xsl:text>
+          <xsl:value-of select="$auxiliary"/>
           <xsl:text>.</xsl:text>
         </xsl:message>
       </xsl:otherwise>
@@ -272,6 +296,7 @@
   <xsl:param name="particle"/>
   <xsl:param name="stem"/>
   <xsl:param name="class"/>
+  <xsl:param name="auxiliary"/>
   <xsl:param name="etymology"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
   <xsl:if test="string-length($particle)&gt;0">
@@ -312,6 +337,12 @@
                     select="$lemma"/>
   </xsl:call-template>
   <xsl:text>&gt;</xsl:text>
+  <xsl:call-template name="insert-auxiliary">
+    <xsl:with-param name="auxiliary"
+                    select="$auxiliary"/>
+    <xsl:with-param name="lemma"
+                    select="$lemma"/>
+  </xsl:call-template>
   <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 

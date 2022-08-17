@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 3.8 -->
-<!-- Andreas Nolda 2022-08-15 -->
+<!-- Version 3.9 -->
+<!-- Andreas Nolda 2022-08-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2471,6 +2471,7 @@
   <xsl:param name="present"/>
   <xsl:param name="past"/>
   <xsl:param name="participle"/>
+  <xsl:param name="auxiliary"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
     <xsl:variable name="particle"
@@ -2569,6 +2570,8 @@
                                   select="$participle-without-particle"/>
                 </xsl:call-template>
               </xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2584,6 +2587,8 @@
               <xsl:with-param name="stem"
                               select="n:umlaut($past-stem)"/>
               <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2611,6 +2616,8 @@
                                   select="$participle-without-particle"/>
                 </xsl:call-template>
               </xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2635,6 +2642,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2650,6 +2659,8 @@
               <xsl:with-param name="stem"
                               select="replace($present-stem,'t$','')"/>
               <xsl:with-param name="class">VVPres2</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2668,6 +2679,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VInf-n</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2682,6 +2695,8 @@
                               select="$particle"/>
               <xsl:with-param name="stem">bin</xsl:with-param>
               <xsl:with-param name="class">VAPres1SgInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2697,6 +2712,8 @@
               <xsl:with-param name="stem"
                               select="concat('b',$present-stem)"/>
               <xsl:with-param name="class">VAPres2SgInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2712,6 +2729,8 @@
               <xsl:with-param name="stem"
                               select="$present-stem"/>
               <xsl:with-param name="class">VAPres3SgInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2726,6 +2745,8 @@
                               select="$particle"/>
               <xsl:with-param name="stem">sind</xsl:with-param>
               <xsl:with-param name="class">VAPres1/3PlInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2741,6 +2762,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'d')"/>
               <xsl:with-param name="class">VAPres2PlInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2756,6 +2779,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VAPresKonjSg</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2771,6 +2796,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'e')"/>
               <xsl:with-param name="class">VAPres2SgKonj</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2786,6 +2813,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'e')"/>
               <xsl:with-param name="class">VAPresKonjPl</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2801,6 +2830,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VAImpSg</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2816,6 +2847,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'d')"/>
               <xsl:with-param name="class">VAImpPl</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2834,6 +2867,8 @@
               <xsl:with-param name="stem"
                               select="replace($stem,'n$','')"/>
               <xsl:with-param name="class">VInf-n</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2849,6 +2884,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'e')"/>
               <xsl:with-param name="class">VAPres1SgInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2864,6 +2901,8 @@
               <xsl:with-param name="stem"
                               select="concat($present-stem,'st')"/>
               <xsl:with-param name="class">VAPres2SgInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2879,6 +2918,8 @@
               <xsl:with-param name="stem"
                               select="concat($present-stem,'t')"/>
               <xsl:with-param name="class">VAPres3SgInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2894,6 +2935,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'n')"/>
               <xsl:with-param name="class">VAPres1/3PlInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2909,6 +2952,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'t')"/>
               <xsl:with-param name="class">VAPres2PlInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2924,6 +2969,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VPresKonj</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2939,6 +2986,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VAImpSg</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2954,6 +3003,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'t')"/>
               <xsl:with-param name="class">VAImpPl</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2972,6 +3023,8 @@
               <xsl:with-param name="stem"
                               select="replace($stem,'en$','')"/>
               <xsl:with-param name="class">VInf-en</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -2987,6 +3040,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'e')"/>
               <xsl:with-param name="class">VAPres1SgInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3002,6 +3057,8 @@
               <xsl:with-param name="stem"
                               select="replace($present-stem,'d$','st')"/>
               <xsl:with-param name="class">VAPres2SgInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3017,6 +3074,8 @@
               <xsl:with-param name="stem"
                               select="$present-stem"/>
               <xsl:with-param name="class">VAPres3SgInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3032,6 +3091,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'en')"/>
               <xsl:with-param name="class">VAPres1/3PlInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3047,6 +3108,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'et')"/>
               <xsl:with-param name="class">VAPres2PlInd</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3062,6 +3125,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VPresKonj</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3077,6 +3142,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'e')"/>
               <xsl:with-param name="class">VAImpSg</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3092,6 +3159,8 @@
               <xsl:with-param name="stem"
                               select="concat($stem,'et')"/>
               <xsl:with-param name="class">VAImpPl</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3117,6 +3186,8 @@
               <xsl:with-param name="stem"
                               select="$present-stem"/>
               <xsl:with-param name="class">VMPresSg</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3132,6 +3203,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VMPresPl</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3150,6 +3223,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VVPres</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3169,6 +3244,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VVPres1</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3184,6 +3261,8 @@
               <xsl:with-param name="stem"
                               select="$present-stem"/>
               <xsl:with-param name="class">VVPres2+Imp0</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3202,6 +3281,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VVPres1</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3217,6 +3298,8 @@
               <xsl:with-param name="stem"
                               select="$present-stem"/>
               <xsl:with-param name="class">VVPres2+Imp</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3236,6 +3319,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3251,6 +3336,8 @@
               <xsl:with-param name="stem"
                               select="concat($present-stem,'&lt;FB&gt;')"/>
               <xsl:with-param name="class">VVPres2</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3270,6 +3357,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3285,6 +3374,8 @@
               <xsl:with-param name="stem"
                               select="$present-stem"/>
               <xsl:with-param name="class">VVPres2t</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3303,6 +3394,8 @@
               <xsl:with-param name="stem"
                               select="$stem"/>
               <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3318,6 +3411,8 @@
               <xsl:with-param name="stem"
                               select="$present-stem"/>
               <xsl:with-param name="class">VVPres2</xsl:with-param>
+              <xsl:with-param name="auxiliary"
+                              select="$auxiliary"/>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -3344,6 +3439,8 @@
                   <xsl:with-param name="stem"
                                   select="concat($past-stem,'&lt;FB&gt;')"/>
                   <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3362,6 +3459,8 @@
                   <xsl:with-param name="stem"
                                   select="$past-stem"/>
                   <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3383,6 +3482,8 @@
                   <xsl:with-param name="stem"
                                   select="concat(n:umlaut($past-stem),'&lt;FB&gt;')"/>
                   <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3406,6 +3507,8 @@
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
                   <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3424,6 +3527,8 @@
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
                   <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3443,6 +3548,8 @@
                   <xsl:with-param name="stem"
                                   select="$stem"/><!-- sic! -->
                   <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3461,6 +3568,8 @@
                   <xsl:with-param name="stem"
                                   select="$past-stem"/>
                   <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3484,6 +3593,8 @@
                   <xsl:with-param name="stem"
                                   select="$past-stem"/>
                   <xsl:with-param name="class">VPastIndStr</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3499,6 +3610,8 @@
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
                   <xsl:with-param name="class">VPastKonjStr</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3514,6 +3627,8 @@
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
                   <xsl:with-param name="class">VAPastKonj2</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3532,6 +3647,8 @@
                   <xsl:with-param name="stem"
                                   select="$past-stem"/>
                   <xsl:with-param name="class">VPastIndStr</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3547,6 +3664,8 @@
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
                   <xsl:with-param name="class">VPastKonjStr</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3566,6 +3685,8 @@
                   <xsl:with-param name="stem"
                                   select="replace($past-stem,'e$','')"/>
                   <xsl:with-param name="class">VPastIndIrreg</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3581,6 +3702,8 @@
                   <xsl:with-param name="stem"
                                   select="n:umlaut(replace($past-stem,'e$',''))"/>
                   <xsl:with-param name="class">VPastKonjStr</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3599,6 +3722,8 @@
                   <xsl:with-param name="stem"
                                   select="$past-stem"/>
                   <xsl:with-param name="class">VAPastIndSg</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3614,6 +3739,8 @@
                   <xsl:with-param name="stem"
                                   select="replace($past-stem,'a','u')"/>
                   <xsl:with-param name="class">VAPastIndPl</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3629,6 +3756,8 @@
                   <xsl:with-param name="stem"
                                   select="n:umlaut(replace($past-stem,'a','u'))"/>
                   <xsl:with-param name="class">VPastKonjStr</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3649,6 +3778,8 @@
                   <xsl:with-param name="stem"
                                   select="$past-stem"/>
                   <xsl:with-param name="class">VVPastIndStr</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3665,6 +3796,8 @@
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
                   <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3683,6 +3816,8 @@
                   <xsl:with-param name="stem"
                                   select="$past-stem"/>
                   <xsl:with-param name="class">VVPastStr</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3710,6 +3845,8 @@
                   <xsl:with-param name="stem"
                                   select="concat($participle-stem,'&lt;FB&gt;')"/>
                   <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3728,6 +3865,8 @@
                   <xsl:with-param name="stem"
                                   select="$participle-stem"/>
                   <xsl:with-param name="class">VVPP-t</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3751,6 +3890,8 @@
                   <xsl:with-param name="stem"
                                   select="concat($participle-stem,'n')"/>
                   <xsl:with-param name="class">VPPast</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3769,6 +3910,8 @@
                   <xsl:with-param name="stem"
                                   select="$participle-stem"/>
                   <xsl:with-param name="class">VVPP-en</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -3786,6 +3929,7 @@
   <xsl:param name="index"/>
   <xsl:param name="present"/>
   <xsl:param name="participle"/>
+  <xsl:param name="auxiliary"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
     <xsl:variable name="particle"
@@ -3822,7 +3966,7 @@
                       $participle-marker='ge-t' or
                       $participle-marker='-et' or
                       $participle-marker='ge-et'">
-        <xsl:call-template name="verb-entry">
+     <xsl:call-template name="verb-entry">
           <xsl:with-param name="lemma"
                           select="$lemma-without-particle"/>
           <xsl:with-param name="index"
@@ -3834,6 +3978,8 @@
           <xsl:with-param name="stem"
                           select="$participle-stem"/>
           <xsl:with-param name="class">VVPP-t</xsl:with-param>
+          <xsl:with-param name="auxiliary"
+                          select="$auxiliary"/>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -3852,6 +3998,8 @@
           <xsl:with-param name="stem"
                           select="$participle-stem"/>
           <xsl:with-param name="class">VVPP-en</xsl:with-param>
+          <xsl:with-param name="auxiliary"
+                          select="$auxiliary"/>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-08-15
+# Gregor Middell and Andreas Nolda 2022-08-16
 
 import sys
 import os
@@ -14,7 +14,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 4.3
+version = 4.4
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -47,7 +47,7 @@ class Analysis(tuple):
 
     @cached_property
     def segmented_lemma(self):
-        return re.sub(r"(<IDX[^>]+>)?(<\^ABBR>)?<\+[^>]+>.*", "", self.analysis)
+        return re.sub(r"(<\^ABBR>|<IDX[^>]+>|<haben>|<sein>)*<\+[^>]+>.*", "", self.analysis)
 
     @cached_property
     def tags(self):
@@ -58,6 +58,12 @@ class Analysis(tuple):
         for tag in self.tags:
             if tag.startswith("IDX"):
                 return tag[3:]
+
+    @cached_property
+    def aux(self):
+        for tag in self.tags:
+            if tag in ["haben", "sein"]:
+                return tag
 
     @cached_property
     def pos(self):
@@ -150,6 +156,7 @@ class Analysis(tuple):
                 "index": self.index,
                 "pos": self.pos,
                 "subcat": self.subcat,
+                "aux": self.aux,
                 "degree": self.degree,
                 "person": self.person,
                 "gender": self.gender,
@@ -265,6 +272,7 @@ def output_dsv(words, analyses, output, full_analysis=False, header=True, force_
                              term.underline("Index"),
                              term.underline("POS"),
                              term.underline("Subcategory"),
+                             term.underline("Auxiliary"),
                              "Degree",
                              "Person",
                              "Gender",
@@ -291,6 +299,10 @@ def output_dsv(words, analyses, output, full_analysis=False, header=True, force_
                 subcat = a.subcat
             else:
                 subcat = ""
+            if a.aux:
+                aux = a.aux
+            else:
+                aux = ""
             csv_writer.writerow([term.bold(word),
                                  term.bright_black(analysis),
                                  term.bold_underline(a.lemma),
@@ -298,6 +310,7 @@ def output_dsv(words, analyses, output, full_analysis=False, header=True, force_
                                  term.underline(idx),
                                  term.underline(a.pos),
                                  term.underline(subcat),
+                                 term.underline(aux),
                                  a.degree,
                                  a.person,
                                  a.gender,
