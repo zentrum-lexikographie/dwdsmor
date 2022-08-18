@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-08-17
+# Gregor Middell and Andreas Nolda 2022-08-18
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 5.0
+version = 5.1
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -56,6 +56,7 @@ class Analysis(tuple):
                 return tag[1:]
 
     _subcat_tags       = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True}
+    _auxiliary_tags    = {"haben": True, "sein": True}
     _degree_tags       = {"Pos": True, "Comp": True, "Sup": True}
     _person_tags       = {"1": True, "2": True, "3": True}
     _gender_tags       = {"Fem": True, "Neut": True, "Masc": True, "NoGend": True, "Invar": True}
@@ -66,7 +67,6 @@ class Analysis(tuple):
     _nonfinite_tags    = {"Inf": True, "PPres": True, "PPast": True}
     _mood_tags         = {"Ind": True, "Subj": True, "Imp": True}
     _tense_tags        = {"Pres": True, "Past": True}
-    _auxiliary_tags    = {"haben": True, "sein": True}
     _abbreviation_tags = {"^ABBR": True}
     _metainfo_tags     = {"Old": True, "NonSt": True, "CAP": True}
 
@@ -78,6 +78,10 @@ class Analysis(tuple):
     @cached_property
     def subcat(self):
         return self.tag_of_type(Analysis._subcat_tags)
+
+    @cached_property
+    def auxiliary(self):
+        return self.tag_of_type(Analysis._auxiliary_tags)
 
     @cached_property
     def degree(self):
@@ -120,10 +124,6 @@ class Analysis(tuple):
         return self.tag_of_type(Analysis._tense_tags)
 
     @cached_property
-    def auxiliary(self):
-        return self.tag_of_type(Analysis._auxiliary_tags)
-
-    @cached_property
     def abbreviation(self):
         if self.tag_of_type(Analysis._abbreviation_tags):
             return "yes"
@@ -140,6 +140,7 @@ class Analysis(tuple):
                 "index": self.index,
                 "pos": self.pos,
                 "subcat": self.subcat,
+                "auxiliary": self.auxiliary,
                 "degree": self.degree,
                 "person": self.person,
                 "gender": self.gender,
@@ -150,7 +151,6 @@ class Analysis(tuple):
                 "nonfinite": self.nonfinite,
                 "mood": self.mood,
                 "tense": self.tense,
-                "auxiliary": self.auxiliary,
                 "abbreviation": self.abbreviation,
                 "metainfo": self.metainfo}
 
@@ -236,6 +236,9 @@ def analyse_word(transducer, word):
 def analyse_words(transducer, words):
     return tuple(analyse_word(transducer, word) for word in words)
 
+def string(value):
+    return str(value or "")
+
 def output_json(words, analyses, output):
     word_analyses = []
     for word, analysis in zip(words, analyses):
@@ -254,6 +257,7 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                              term.underline("Index"),
                              term.underline("POS"),
                              term.underline("Subcategory"),
+                             term.underline("Auxiliary"),
                              "Degree",
                              "Person",
                              "Gender",
@@ -264,7 +268,6 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                              "Nonfinite",
                              "Mood",
                              "Tense",
-                             "Auxiliary",
                              "Abbreviation",
                              "Metainfo"])
     for word, analysis in zip(words, analyses):
@@ -273,9 +276,10 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                                  term.bright_black(a.analysis),
                                  term.bold_underline(a.lemma),
                                  term.bright_black_underline(a.segmented_lemma),
-                                 term.underline(a.index or ""),
-                                 term.underline(a.pos),
-                                 term.underline(a.subcat or ""),
+                                 term.underline(string(a.index)),
+                                 term.underline(string(a.pos)),
+                                 term.underline(string(a.subcat)),
+                                 term.underline(string(a.auxiliary)),
                                  a.degree,
                                  a.person,
                                  a.gender,
@@ -286,7 +290,6 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                                  a.nonfinite,
                                  a.mood,
                                  a.tense,
-                                 a.auxiliary,
                                  a.abbreviation,
                                  a.metainfo])
 
