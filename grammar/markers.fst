@@ -1,5 +1,5 @@
 % markers.fst
-% Version 1.0
+% Version 1.1
 % Andreas Nolda 2022-08-19
 
 % based on code from SMORLemma by Rico Sennrich
@@ -26,6 +26,9 @@ $C$ = [#char# #ss-trigger# #phon-trigger# #ss-trigger# #surface-trigger# #morphe
 
 $IMP$ = <Stem>:<CB> ($C$* <VPART>:<CB>)* $C$* | \
         <Stem>:<CB> $C$* <^imp>:<> $C$*
+
+$IMPVPART$ = <Stem>:<CB> ($C$* <VPART>:<CB>)* $C$* | \
+             <Stem>:<CB> ($C$* <VPART>:<CB>)* $C$* <^imp>:<> $C$*
 
 $C$ = [#char# #ss-trigger# #surface-trigger# #morpheme_boundary_marker# \
        <UL><INS-E><FB><^Ax><^Px><^Gen><^Del><^pl>]

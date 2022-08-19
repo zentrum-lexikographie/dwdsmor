@@ -1,5 +1,5 @@
 % dwdsmor-index.fst
-% Version 1.0
+% Version 1.1
 % Andreas Nolda 2022-08-19
 
 % based on code from SMORLemma by Rico Sennrich
@@ -23,7 +23,7 @@ $MORPH$ = $MORPH$ || $GE$
 
 $MORPH$ = $MORPH$ || $ZU$
 
-$MORPH$ = $MORPH$ || $IMP$
+$MORPH$ = $MORPH$ || $IMPVPART$
 
 $MORPH$ = $MORPH$ || $UPLOW$
 

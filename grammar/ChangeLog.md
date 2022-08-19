@@ -4,6 +4,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 * rename `smor-minimal.fst` and `smor-index.fst` to `dwdsmor-minimal.fst` and
   `dwdsmor-index.fst`, respectively
+* allow for imperative forms of particle verbs in `dwdsmor-index.fst`, but not
+  in `dwdsmor-minimal.fst`
 
 2022-08-17:
 
