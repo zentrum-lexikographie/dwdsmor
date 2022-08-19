@@ -26,9 +26,8 @@ building and using FSTs for morphological analysis:
   XSLT stylesheets in `share/` and the lexical data in `lexicon/wb/`, which is
   imported from the [DWDS article repository](https://git.zdl.org/zdl/wb) as a
   Git submodule.
-* `SMORLemma/` imports sources from an
-  [SMORLemma fork](https://git.zdl.org/zdl/SMORLemma) as a Git submodule,
-  providing the morphology.
+* `grammar/` contains an FST grammar based on SMORLemma, providing the
+  morphology.
 * `dwdsmor/` and `tests/` implement a Python library and accompanying test suite
   for using DWDSmor transducers for the aforementioned linguistic tasks.
 
@@ -82,12 +81,10 @@ source .venv/bin/activate
 
 ## Build a DWDSmor lexicon from the DWDS dictionary
 
-Import the dictionary sources and the SMORLemma morphology via the configured
-submodules:
+Import the dictionary sources via the configured submodule:
 
 ```sh
-git submodule init SMORLemma lexicon/wb
-git submodule update SMORLemma lexicon/wb
+git submodule init lexicon/wb
 ```
 
 **Note**: The imported Git repository `lexicon/wb/` is large, containing about
@@ -123,7 +120,6 @@ Options:
   -x, --xslt XSLT          XSLT stylesheet
   -b, --blacklist LIST     list of filenames of blacklisted XML documents
   -o, --output OUTPUT      Path of the generated lexicon
-  -s, --smorlemma-lexica   Include additional lexica from SMORLemma
   -f, --filter             Filter entries with tag <UNKNOWN>
   -l, --limit MAX_ENTRIES  Limit the number of extracted lexicon entries for testing
   -d, --debug              Print debugging information
@@ -138,8 +134,7 @@ from DWDS dictionary articles in `lexicon/wb/` and auxiliary input files in
 make -C lexicon
 ```
 
-A log is saved in `SMORLemma/lexicon/lexicon.log`. This includes XSLT warnings,
-if any.
+A log is saved in `grammar/lexicon.log`. This includes XSLT warnings, if any.
 
 In order to build a lexicon without the auxiliary input files in `lexicon/aux/`,
 run:
@@ -150,16 +145,8 @@ make INCLUDE_AUX=false -C lexicon
 
 Individual input files can be blacklisted in `lexicon/exclude.list`.
 
-By default, additional lexica from SMORLemma for irregular nouns, adjectives,
-and adverbs as well as for adpositions and affixes are included. In order to
-build a lexicon without them, run:
-
-```sh
-make INCLUDE_SMORLEMMA=false -C lexicon
-```
-
-The result is stored in `SMORLemma/lexicon/lexicon`, where it is picked up by
-the FST compilation process of SMORLemma.
+The result is stored in `grammar/lexicon`, where it is picked up by the FST
+compilation process.
 
 The lexicon will be re-built if XSLT stylesheets in `share/` have changed. In
 order to re-generate the lexicon with unchanged XSLT stylesheets, first call:
@@ -176,9 +163,9 @@ make -C lexicon debug
 
 This calls `lexicon/generate-lexicon` with the option `--debug` and without the
 option `--filter`. The result, which may contain `<UNKNOWN>` tags, is stored in
-`SMORLemma/lexicon/lexicon.debug`. A corresponding log file with input and
-output mappings is saved in `SMORLemma/lexicon/lexicon.debug.log`. In order to
-re-generate them with unchanged XSLT stylesheets, first call:
+`grammar/lexicon.debug`. A corresponding log file with input and output mappings
+is saved in `grammar/lexicon.debug.log`. In order to re-generate them with
+unchanged XSLT stylesheets, first call:
 
 ```sh
 make -C lexicon debugclean
@@ -221,29 +208,11 @@ git add lexicon/wb
 git commit -m "update dictionary sources"
 ```
 
-### Update the SMORLemma sources to the current revision
-
-In order to update the sources of the SMORLemma fork to the most recent
-revision, issue the following commands:
-
-```sh
-git submodule update --remote SMORLemma
-git add SMORLemma
-git commit -m "update SMORLemma sources"
-```
-
 ## Build FSTs
 
-For compiling the transducers based on an extracted lexicon, first initialize
-and update the submodule providing the SMORLemma morphology:
-
-```sh
-git submodule init SMORLemma
-git submodule update SMORLemma
-```
-
-Then run setup routines which install Python dependencies (into the virtual
-environment, should you have set one up beforehand):
+For compiling the transducers based on an extracted lexicon, first run setup
+routines which install Python dependencies (into the virtual environment, should
+you have set one up beforehand):
 
 ```sh
 make setup
@@ -251,33 +220,25 @@ make setup
 
 Also make sure that you have the SFST toolbox installed, i. e. the tools
 `fst-compiler-utf8` and `fst-compact` should be available on the `$PATH`. Once
-the setup succeeded and a lexicon is provided in `SMORLemma/lexicon/lexicon`,
-the transducers can be compiled:
+the setup succeeded and a lexicon is provided in `grammar/lexicon`, the
+transducers can be compiled:
 
 ```sh
 make && make install
 ```
 
 Resulting automata can be found in `lib/*.a` and `lib/*.ca`, including, most
-notably, `lib/smor-full.a` and `lib/smor-full.ca`.
+notably, `lib/dwdsmor.a` and `lib/dwdsmor.ca`.
 
-Depending on the size of the lexicon, this compilation process can take several
-hours, depending on available hardware resources, specifically on the amount of
-memory. On machines with less than 256 GB RAM or for fast development
-iterations, it is recommended to build FSTs based on a subset of the complete
-lexicon and test against the resulting smaller automata. Once the development
-reaches a state where the complete lexicon should be processed, the compilation
-could be moved to the
+Depending on the size of the lexicon, this compilation process can take some
+time, depending on available hardware resources, specifically on the amount of
+memory. If necessary, the compilation can be moved to the
 [HLRN-IV](https://www.hlrn.de/supercomputer/hlrn-iv-system/) compute cluster.
 
 ### Build on HLRN-IV's “Lise”
 
-Lise's standard compute nodes provide 384 GB RAM, which speeds up FST
-compilation considerably in comparison to common PC hardware with smaller
-memory.
-
-In order to build FSTs there, log into the cluster and prepare the build
-environment:
+In order to build FSTs on the HLRN-IV's “Lise”, log into the cluster and prepare
+the build environment:
 
 ```sh
 ssh bembbaw1@blogin.hlrn.de /scratch/usr/bembbaw0/dwdsmor/hlrn/setup
@@ -286,7 +247,7 @@ ssh bembbaw1@blogin.hlrn.de /scratch/usr/bembbaw0/dwdsmor/hlrn/setup
 Then upload a lexicon:
 
 ```sh
-scp $LEXICON bembbaw1@blogin.hlrn.de:/scratch/usr/bembbaw1/dwdsmor/SMORLemma/lexicon/lexicon
+scp $LEXICON bembbaw1@blogin.hlrn.de:/scratch/usr/bembbaw1/dwdsmor/grammar/lexicon
 ```
 
 Finally run the build on a compute host:

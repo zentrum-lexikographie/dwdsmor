@@ -1,5 +1,5 @@
 # .gitignore
-# Andreas Nolda 2022-04-04
+# Andreas Nolda 2022-08-19
 
 .venv/
 *~
@@ -13,8 +13,9 @@ __pycache__
 
 lexicon/test/output/
 lexicon/wb/
-SMORLemma/
+
+grammar/lexicon
 
 lib/
+
 test-reports/
-tmp/

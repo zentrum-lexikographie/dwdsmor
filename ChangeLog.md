@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-08-19:
+
+* rename `dwds2smorlemma.xsl` to `dwds2dwdsmor.xsl`
+
 2022-08-17:
 
 * add support for auxiliary tags of past participles

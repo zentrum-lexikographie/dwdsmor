@@ -6,8 +6,7 @@
             [clojure.tools.cli :refer [parse-opts]]
             [clojure.tools.logging :as log]
             [com.climate.claypoole :as cp]
-            [com.climate.claypoole.lazy :as cpl]
-            [dwdsmor.smorlemma :as smorlemma])
+            [com.climate.claypoole.lazy :as cpl])
   (:import [ch.qos.logback.classic Level Logger]
            java.io.File
            java.text.Collator
@@ -82,8 +81,6 @@
    ["-o" "--output OUTPUT"
     :desc "Path of the generated lexicon"
     :parse-fn io/file]
-   ["-s" "--smorlemma-lexica"
-    :desc "Include additional lexica from SMORLemma"]
    ["-f" "--filter"
     :desc "Filter entries with tag <UNKNOWN>"]
    ["-l" "--limit MAX_ENTRIES"
@@ -196,11 +193,6 @@
                              limit   (take limit)))
             _         (log/info "Sorting lexicon entries and removing duplicates")
             entries   (dedupe (sort-by sort-key entries))
-            entries   (concat
-                       (when (get-in args [:options :smorlemma-lexica])
-                         (log/info "Prepending SMORLemma lexica")
-                         smorlemma/lexicon)
-                       entries)
             _         (log/info "Writing lexicon entries")
             output    (get-in args [:options :output])]
         (with-open [w (io/writer output :encoding "UTF-8")]

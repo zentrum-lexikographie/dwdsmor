@@ -2,7 +2,3 @@
 	path = lexicon/wb
 	url = ../wb.git
 	branch = zdl-lex-server/production
-[submodule "SMORLemma"]
-	path = SMORLemma
-	url = ../SMORLemma.git
-	branch = lemmatiser

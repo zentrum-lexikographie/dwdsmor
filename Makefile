@@ -1,23 +1,29 @@
 # Makefile
-# Gregor Middell, Andreas Nolda 2022-06-24
+# Gregor Middell, Andreas Nolda 2022-08-19
 
-all: SMORLemma/smor-full.a SMORLemma/smor-full.ca
+all: lexicon grammar
 
-SMORLemma/smor-full.a SMORLemma/smor-full.ca: SMORLemma/lexicon/lexicon
-	$(MAKE) -C SMORLemma -f ../SMORLemma.mk
+lexicon:
+	$(MAKE) -C lexicon all
+
+grammar:
+	$(MAKE) -C grammar all
 
 install:
-	$(MAKE) -C SMORLemma -f ../SMORLemma.mk install INSTALL_DIR=$(realpath lib)
-
-test:
-	@py.test -vv -s -x tests
+	$(MAKE) -C grammar install INSTALL_DIR=$(CURDIR)/lib
 
 clean:
-	$(RM) SMORLemma/*.a SMORLemma/*.ca
+	$(RM) -C grammar clean
+
+distclean:
+	$(RM) -C grammar clean
 
 setup: requirements.txt
 	pip install --upgrade pip
 	pip install -r $<
+
+test:
+	@py.test -vv -s -x tests
 
 pyenv:
 	pyenv local || (pyenv virtualenv zdl-dwdsmor && pyenv local zdl-dwdsmor)
@@ -25,4 +31,4 @@ pyenv:
 pyenv-clean:
 	pyenv local --unset && pyenv virtualenv-delete zdl-dwdsmor
 
-.PHONY: all install test clean setup pyenv pyenv-clean
+.PHONY: all grammar lexicon install test clean distclean setup pyenv pyenv-clean

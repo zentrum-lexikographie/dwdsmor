@@ -6,12 +6,12 @@ DIFF = diff --ignore-trailing-space --side-by-side --report-identical-files --su
 
 SRCDIR  = $(abspath wb)
 AUXDIR  = $(abspath aux)
-LEXDIR  = $(abspath ../SMORLemma/lexicon)
+LEXDIR  = $(abspath ../grammar)
 XSLDIR  = $(abspath ../share)
 TESTDIR = $(abspath test)
 
 LEX = $(LEXDIR)/lexicon
-XSL = $(XSLDIR)/dwds2smorlemma.xsl
+XSL = $(XSLDIR)/dwds2dwdsmor.xsl
 LIB = $(filter-out $(XSLDIR)/dwds2%.xsl, $(wildcard $(XSLDIR)/*.xsl))
 
 TESTINPUT  = $(TESTDIR)/input
@@ -28,12 +28,6 @@ EXCLUDE = $(wildcard $(CURDIR)/exclude.list)
 
 ifneq ($(EXCLUDE),)
   EXTRA_OPTIONS := $(EXTRA_OPTIONS) --blacklist $(EXCLUDE)
-endif
-
-INCLUDE_SMORLEMMA = true
-
-ifeq ($(INCLUDE_SMORLEMMA),true)
-  EXTRA_OPTIONS := $(EXTRA_OPTIONS) --smorlemma-lexica
 endif
 
 INCLUDE_AUX = true
