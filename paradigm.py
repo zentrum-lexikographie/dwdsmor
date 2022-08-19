@@ -12,11 +12,11 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 4.0
+version = 4.1
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
-libfile = os.path.join(libdir, "smor-index.a")
+libfile = os.path.join(libdir, "dwdsmor-index.a")
 
 indices     = [1, 2, 3, 4]
 pos         = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "POSS", "PPRO", "REL", "V", "WPRO"]

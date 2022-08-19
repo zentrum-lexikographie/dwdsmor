@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-08-18
+# Gregor Middell and Andreas Nolda 2022-08-19
 
 import sys
 import os
@@ -13,11 +13,11 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 5.1
+version = 5.2
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
-libfile = os.path.join(libdir, "smor-full.ca")
+libfile = os.path.join(libdir, "dwdsmor.ca")
 
 Component = namedtuple("Component", ["form", "lemma", "tags"])
 

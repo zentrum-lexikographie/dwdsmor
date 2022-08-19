@@ -13,10 +13,10 @@ install:
 	$(MAKE) -C grammar install INSTALL_DIR=$(CURDIR)/lib
 
 clean:
-	$(RM) -C grammar clean
+	$(MAKE) -C grammar clean
 
 distclean:
-	$(RM) -C grammar clean
+	$(MAKE) -C grammar clean
 
 setup: requirements.txt
 	pip install --upgrade pip
