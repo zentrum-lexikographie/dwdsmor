@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-08-18
+# Andreas Nolda 2022-08-22
 
 import sys
 import os
@@ -582,24 +582,24 @@ def get_verb_formdict(transducer, index, seg, pos):
 def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
     # nouns
     if pos == "NN" or pos == "NPROP":
-        formdict = get_noun_formdict(transducer, index, seg, pos, old_forms=False)
+        formdict = get_noun_formdict(transducer, index, seg, pos, old_forms)
     elif pos == "ADJ":
         formdict = get_adjective_formdict(transducer, index, seg, pos)
     # articles
     elif pos == "ART":
-        formdict = get_article_formdict(transducer, index, seg, pos, nonstandard_forms=False)
+        formdict = get_article_formdict(transducer, index, seg, pos, nonstandard_forms)
     # cardinals
     elif pos == "CARD":
         formdict = get_cardinal_formdict(transducer, index, seg, pos)
     # demonstrative and possessive pronouns
     elif pos == "DEM" or pos == "POSS":
-        formdict = get_adjectival_pronoun_formdict(transducer, index, seg, pos, nonstandard_forms=False)
+        formdict = get_adjectival_pronoun_formdict(transducer, index, seg, pos, nonstandard_forms)
     # personal pronouns
     elif pos == "PPRO":
-        formdict = get_substantival_pronoun_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False)
+        formdict = get_substantival_pronoun_formdict(transducer, index, seg, pos, old_forms, nonstandard_forms)
     # other pronouns
     elif pos == "INDEF" or pos == "REL" or pos == "WPRO":
-        formdict = get_other_pronoun_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False)
+        formdict = get_other_pronoun_formdict(transducer, index, seg, pos, old_forms, nonstandard_forms)
     # verbs
     elif pos == "V":
         formdict = get_verb_formdict(transducer, index, seg, pos)
