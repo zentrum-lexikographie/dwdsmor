@@ -19,7 +19,7 @@ libdir  = os.path.join(basedir, "lib")
 libfile = os.path.join(libdir, "dwdsmor-index.a")
 
 indices     = [1, 2, 3, 4]
-pos         = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "POSS", "PPRO", "REL", "V", "WPRO"]
+psos        = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "POSS", "PPRO", "REL", "V", "WPRO"]
 art_subcats = ["Def", "Indef", "Neg"]
 pro_subcats = ["Pers", "Refl"]
 degrees     = ["Pos", "Comp", "Sup"]
@@ -802,19 +802,19 @@ def output_dsv(lemma, output, formdict, no_category_names=False, no_lemma=False,
 def generate_paradigms(transducer, lemma, index=None, pos=None, user_specified=False, old_forms=False, nonstandard_forms=False):
     lemmaspecs = []
     if user_specified:
-        if pos:
-            if index:
+        if pos in psos:
+            if index in indices:
                 lemmaspecs = [Lemmaspec(index, lemma, pos)]
             else:
                 lemmaspecs = [Lemmaspec(None, lemma, pos)]
     else:
         analyses = analyse_word(transducer, lemma)
         lemmaspecs = sorted({Lemmaspec(analysis.index, analysis.segmented_lemma, analysis.pos)
-                             for analysis in analyses if analysis.lemma == lemma},
+                             for analysis in analyses if analysis.lemma == lemma and analysis.pos in psos},
                             key=lambda l: (l.index, l.segmented_lemma, l.pos))
-        if index:
+        if index in indices:
             lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.index == str(index)]
-        if pos:
+        if pos in psos:
             lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.pos == pos]
     formdict = {}
     for lemmaspec in lemmaspecs:
@@ -867,7 +867,7 @@ def main():
                             help="do not output lemma, index, and lexical categories")
         parser.add_argument("-o", "--old-forms", action="store_true",
                             help="output also archaic forms")
-        parser.add_argument("-p", "--pos", choices=pos,
+        parser.add_argument("-p", "--pos", choices=psos,
                             help="part of speech")
         parser.add_argument("-s", "--nonstandard-forms", action="store_true",
                             help="output also non-standard forms")
