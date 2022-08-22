@@ -811,9 +811,9 @@ def generate_paradigms(transducer, lemma, index=None, pos=None, user_specified=F
         analyses = analyse_word(transducer, lemma)
         lemmaspecs = sorted({Lemmaspec(analysis.index, analysis.segmented_lemma, analysis.pos)
                              for analysis in analyses if analysis.lemma == lemma},
-                            key=lambda l: (l.index or "", l.segmented_lemma, l.pos))
+                            key=lambda l: (l.index, l.segmented_lemma, l.pos))
         if index:
-            lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.index == index]
+            lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.index == str(index)]
         if pos:
             lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs if lemmaspec.pos == pos]
     formdict = {}
