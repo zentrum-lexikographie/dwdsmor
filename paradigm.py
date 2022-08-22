@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 4.3
+version = 4.4
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -29,9 +29,8 @@ cases       = ["Nom", "Acc", "Dat", "Gen"]
 numbers     = ["Sg", "Pl"]
 inflections = ["NoInfl", "St", "Wk"]
 functions   = ["Attr", "Subst", "Pred"]
-nonfinites  = ["Inf", "PPres", "PPast"]
 moods       = ["Ind", "Subj"]
-tenses      = ["Pres", "PresPerf", "Past", "PastPerf", "Fut", "FutPerf"]
+tenses      = ["Pres", "Perf", "Past", "PastPerf", "Fut", "FutPerf"]
 auxiliaries = ["haben", "sein"]
 
 seg_haben  = "hab<~>en"
@@ -115,24 +114,29 @@ def add_nonstandard_forms(formdict, index, lexcat, parcat, forms):
         formatted_forms = [form + " (ugs.)" for form in forms]
         add_additional_forms(formdict, index, lexcat, parcat, formatted_forms)
 
-def add_superlative_adjective_forms(formdict, index, lexcat, parcat, forms):
+def add_superlative_forms(formdict, index, lexcat, parcat, forms):
     if forms:
         complex_forms = ["am " + form for form in forms]
         add_forms(formdict, index, lexcat, parcat, complex_forms)
 
-def add_perfect_verb_forms(formdict, index, lexcat, parcat, forms, participle):
+def add_perfect_forms(formdict, index, lexcat, parcat, forms, participle):
     if forms:
         complex_forms = [form + " " + participle for form in forms]
         add_forms(formdict, index, lexcat, parcat, complex_forms)
 
-def add_future_verb_forms(formdict, index, lexcat, parcat, forms, infinitive):
+def add_future_forms(formdict, index, lexcat, parcat, forms, infinitive):
     if forms:
         complex_forms = [form + " " + infinitive for form in forms]
         add_forms(formdict, index, lexcat, parcat, complex_forms)
 
-def add_future_perfect_verb_forms(formdict, index, lexcat, parcat, forms, infinitive, participle):
+def add_future_perfect_forms(formdict, index, lexcat, parcat, forms, infinitive, participle):
     if forms:
         complex_forms = [form + " " + participle + " " + infinitive for form in forms]
+        add_forms(formdict, index, lexcat, parcat, complex_forms)
+
+def add_nonfinite_perfect_forms(formdict, index, lexcat, parcat, forms, participle):
+    if forms:
+        complex_forms = [participle + " " + form for form in forms]
         add_forms(formdict, index, lexcat, parcat, complex_forms)
 
 def add_particle_verb_forms(formdict, index, lexcat, parcat, forms, particle):
@@ -200,7 +204,7 @@ def get_adjective_formdict(transducer, index, seg, pos, old_forms=False, nonstan
         categories = [degree, "Pred"]
         predicative_forms = generate_forms(transducer, index, seg, pos, categories)
         if degree == "Sup":
-            add_superlative_adjective_forms(formdict, index, lexcat, parcat, predicative_forms)
+            add_superlative_forms(formdict, index, lexcat, parcat, predicative_forms)
         else:
             add_forms(formdict, index, lexcat, parcat, predicative_forms)
         if old_forms:
@@ -501,8 +505,9 @@ def get_verb_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_
         if past_participle_forms:
             lexcat = Lexcat(pos       = pos,
                             auxiliary = auxiliary)
-            # infinitive
-            parcat = Parcat(nonfinite = "Inf")
+            # infinitives
+            parcat = Parcat(nonfinite = "Inf",
+                            tense     = "Pres")
             categories = ["Inf"]
             infinitive_forms = generate_forms(transducer, index, seg, pos, categories)
             add_forms(formdict, index, lexcat, parcat, infinitive_forms)
@@ -512,8 +517,19 @@ def get_verb_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_
             if nonstandard_forms:
                 # no such forms
                 pass
-            # present participle
-            parcat = Parcat(nonfinite = "PPres")
+            parcat = Parcat(nonfinite = "Inf",
+                            tense     = "Perf")
+            for participle in past_participle_forms:
+                add_nonfinite_perfect_forms(formdict, index, lexcat, parcat, [auxiliary], participle)
+            if old_forms:
+                # no such forms
+                pass
+            if nonstandard_forms:
+                # no such forms
+                pass
+            # participles
+            parcat = Parcat(nonfinite = "Part",
+                            tense     = "Pres")
             categories = ["PPres"]
             present_participle_forms = generate_forms(transducer, index, seg, pos, categories)
             add_forms(formdict, index, lexcat, parcat, present_participle_forms)
@@ -523,8 +539,8 @@ def get_verb_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_
             if nonstandard_forms:
                 # no such forms
                 pass
-            # past participle
-            parcat = Parcat(nonfinite = "PPast")
+            parcat = Parcat(nonfinite = "Part",
+                            tense     = "Perf")
             categories = ["PPast",
                           auxiliary]
             add_forms(formdict, index, lexcat, parcat, past_participle_forms)
@@ -543,17 +559,34 @@ def get_verb_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_
                                             number = number,
                                             mood   = mood,
                                             tense  = tense)
-                            if tense == "PresPerf" or tense == "PastPerf":
+                            if tense == "Perf":
                                 for participle in past_participle_forms:
                                     categories = [person,
                                                   number,
-                                                  tense[:-4],
+                                                  "Pres",
                                                   mood]
                                     if auxiliary == "haben":
                                         forms = generate_forms(transducer, index_haben, seg_haben, pos, categories)
                                     elif auxiliary == "sein":
                                         forms = generate_forms(transducer, index_sein, seg_sein, pos, categories)
-                                    add_perfect_verb_forms(formdict, index, lexcat, parcat, forms, participle)
+                                    add_perfect_forms(formdict, index, lexcat, parcat, forms, participle)
+                                    if old_forms:
+                                        # no such forms
+                                        pass
+                                    if nonstandard_forms:
+                                        # no such forms
+                                        pass
+                            if tense == "PastPerf":
+                                for participle in past_participle_forms:
+                                    categories = [person,
+                                                  number,
+                                                  "Past",
+                                                  mood]
+                                    if auxiliary == "haben":
+                                        forms = generate_forms(transducer, index_haben, seg_haben, pos, categories)
+                                    elif auxiliary == "sein":
+                                        forms = generate_forms(transducer, index_sein, seg_sein, pos, categories)
+                                    add_perfect_forms(formdict, index, lexcat, parcat, forms, participle)
                                     if old_forms:
                                         # no such forms
                                         pass
@@ -567,7 +600,7 @@ def get_verb_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_
                                                   "Pres",
                                                   mood]
                                     forms = generate_forms(transducer, index_werden, seg_werden, pos, categories)
-                                    add_future_verb_forms(formdict, index, lexcat, parcat, forms, infinitive)
+                                    add_future_forms(formdict, index, lexcat, parcat, forms, infinitive)
 
                                     if old_forms:
                                         # no such forms
@@ -582,7 +615,7 @@ def get_verb_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_
                                                   "Pres",
                                                   mood]
                                     forms = generate_forms(transducer, index_werden, seg_werden, pos, categories)
-                                    add_future_perfect_verb_forms(formdict, index, lexcat, parcat, forms, auxiliary, participle)
+                                    add_future_perfect_forms(formdict, index, lexcat, parcat, forms, auxiliary, participle)
 
                                     if old_forms:
                                         # no such forms
