@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 4.2
+version = 4.3
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -87,46 +87,63 @@ def generate_forms(transducer, index, seg, pos, categories):
                                     + format_categories(categories))
     return forms
 
+def generate_old_forms(transducer, index, seg, pos, categories):
+    forms = generate_forms(transducer, index, seg, pos, categories + ["Old"])
+    return forms
+
+def generate_nonstandard_forms(transducer, index, seg, pos, categories):
+    forms = generate_forms(transducer, index, seg, pos, categories + ["NonSt"])
+    return forms
+
 def add_forms(formdict, index, lexcat, parcat, forms):
-    formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+    if forms:
+        formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
+
+def add_additional_forms(formdict, index, lexcat, parcat, forms):
+    if (index, lexcat, parcat) in formdict:
+        formdict[Formspec(index, lexcat, parcat)].extend(sorted(set(forms)))
+    else:
+        formdict[Formspec(index, lexcat, parcat)] = sorted(set(forms))
 
 def add_old_forms(formdict, index, lexcat, parcat, forms):
-    formatted_forms = [form + " (va.)" for form in forms]
-    if (index, lexcat, parcat) in formdict:
-        formdict[Formspec(index, lexcat, parcat)].extend(sorted(set(formatted_forms)))
-    else:
-        formdict[Formspec(index, lexcat, parcat)] = sorted(set(formatted_forms))
+    if forms:
+        formatted_forms = [form + " (va.)" for form in forms]
+        add_additional_forms(formdict, index, lexcat, parcat, formatted_forms)
 
 def add_nonstandard_forms(formdict, index, lexcat, parcat, forms):
-    formatted_forms = [form + " (ugs.)" for form in forms]
-    if (index, lexcat, parcat) in formdict:
-        formdict[Formspec(index, lexcat, parcat)].extend(sorted(set(formatted_forms)))
-    else:
-        formdict[Formspec(index, lexcat, parcat)] = sorted(set(formatted_forms))
+    if forms:
+        formatted_forms = [form + " (ugs.)" for form in forms]
+        add_additional_forms(formdict, index, lexcat, parcat, formatted_forms)
 
 def add_superlative_adjective_forms(formdict, index, lexcat, parcat, forms):
-    complex_forms = ["am " + form for form in forms]
-    formdict[Formspec(index, lexcat, parcat)] = sorted(set(complex_forms))
+    if forms:
+        complex_forms = ["am " + form for form in forms]
+        add_forms(formdict, index, lexcat, parcat, complex_forms)
 
 def add_perfect_verb_forms(formdict, index, lexcat, parcat, forms, participle):
-    complex_forms = [form + " " + participle for form in forms]
-    formdict[Formspec(index, lexcat, parcat)] = sorted(set(complex_forms))
+    if forms:
+        complex_forms = [form + " " + participle for form in forms]
+        add_forms(formdict, index, lexcat, parcat, complex_forms)
 
 def add_future_verb_forms(formdict, index, lexcat, parcat, forms, infinitive):
-    complex_forms = [form + " " + infinitive for form in forms]
-    formdict[Formspec(index, lexcat, parcat)] = sorted(set(complex_forms))
+    if forms:
+        complex_forms = [form + " " + infinitive for form in forms]
+        add_forms(formdict, index, lexcat, parcat, complex_forms)
 
 def add_future_perfect_verb_forms(formdict, index, lexcat, parcat, forms, infinitive, participle):
-    complex_forms = [form + " " + participle + " " + infinitive for form in forms]
-    formdict[Formspec(index, lexcat, parcat)] = sorted(set(complex_forms))
+    if forms:
+        complex_forms = [form + " " + participle + " " + infinitive for form in forms]
+        add_forms(formdict, index, lexcat, parcat, complex_forms)
 
 def add_particle_verb_forms(formdict, index, lexcat, parcat, forms, particle):
-    complex_forms = [form[len(particle):] + " " + particle for form in forms]
-    formdict[Formspec(index, lexcat, parcat)] = sorted(set(complex_forms))
+    if forms:
+        complex_forms = [form[len(particle):] + " " + particle for form in forms]
+        add_forms(formdict, index, lexcat, parcat, complex_forms)
 
 def add_imperative_particle_verb_forms(formdict, index, lexcat, parcat, forms, particle):
-    complex_forms = [form + " " + particle for form in forms]
-    formdict[Formspec(index, lexcat, parcat)] = sorted(set(complex_forms))
+    if forms:
+        complex_forms = [form + " " + particle for form in forms]
+        add_forms(formdict, index, lexcat, parcat, complex_forms)
 
 def get_noun_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
     formdict = {}
@@ -140,12 +157,18 @@ def get_noun_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_
                     parcat = Parcat(case   = case,
                                     number = number,
                                     inflection = inflection)
-                    forms = generate_forms(transducer, index, seg, pos, [gender,
-                                                                         case,
-                                                                         number,
-                                                                         inflection])
-                    if forms:
-                        add_forms(formdict, index, lexcat, parcat, forms)
+                    categories = [gender,
+                                  case,
+                                  number,
+                                  inflection]
+                    forms = generate_forms(transducer, index, seg, pos, categories)
+                    add_forms(formdict, index, lexcat, parcat, forms)
+                    if old_forms:
+                        # no such forms
+                        pass
+                    if nonstandard_forms:
+                        # no such forms
+                        pass
     # other nouns
     for gender in genders:
         lexcat = Lexcat(pos    = pos,
@@ -154,54 +177,56 @@ def get_noun_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_
             for case in cases:
                 parcat = Parcat(case   = case,
                                 number = number)
-                forms = generate_forms(transducer, index, seg, pos, [gender,
-                                                                     case,
-                                                                     number])
-                if forms:
-                    add_forms(formdict, index, lexcat, parcat, forms)
+                categories = [gender,
+                              case,
+                              number]
+                forms = generate_forms(transducer, index, seg, pos, categories)
+                add_forms(formdict, index, lexcat, parcat, forms)
                 if old_forms:
-                    forms = generate_forms(transducer, index, seg, pos, [gender,
-                                                                         case,
-                                                                         number,
-                                                                         "Old"])
-                    if forms:
-                        add_old_forms(formdict, index, lexcat, parcat, forms)
+                    forms = generate_old_forms(transducer, index, seg, pos, categories)
+                    add_old_forms(formdict, index, lexcat, parcat, forms)
                 if nonstandard_forms:
-                    forms = generate_forms(transducer, index, seg, pos, [gender,
-                                                                         case,
-                                                                         number,
-                                                                         "NonSt"])
-                    if forms:
-                        add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
+                    forms = generate_nonstandard_forms(transducer, index, seg, pos, categories)
+                    add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
     return formdict
 
-def get_adjective_formdict(transducer, index, seg, pos):
+def get_adjective_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
     formdict = {}
-    # predicative forms
     lexcat = Lexcat(pos = pos)
+    # predicative forms
     for degree in degrees:
         parcat = Parcat(degree   = degree,
                         function = "Pred")
-        forms = generate_forms(transducer, index, seg, pos, [degree, "Pred"])
-        if forms:
-            if degree == "Sup":
-                add_superlative_adjective_forms(formdict, index, lexcat, parcat, forms)
-            else:
-                add_forms(formdict, index, lexcat, parcat, forms)
+        categories = [degree, "Pred"]
+        predicative_forms = generate_forms(transducer, index, seg, pos, categories)
+        if degree == "Sup":
+            add_superlative_adjective_forms(formdict, index, lexcat, parcat, predicative_forms)
+        else:
+            add_forms(formdict, index, lexcat, parcat, predicative_forms)
+        if old_forms:
+            # no such forms
+            pass
+        if nonstandard_forms:
+            # no such forms
+            pass
     # forms inflected for degree, but uninflected for gender, case, number, and inflectional strength
-    lexcat = Lexcat(pos = pos)
     for degree in degrees:
         parcat = Parcat(degree     = degree,
                         gender     = "Invar",
                         case       = "Invar",
                         number     = "Invar",
                         inflection = "Invar")
-        forms = generate_forms(transducer, index, seg, pos, [degree,
-                                                             "Invar"])
-        if forms:
-            add_forms(formdict, index, lexcat, parcat, forms)
+        categories = [degree,
+                      "Invar"]
+        forms = generate_forms(transducer, index, seg, pos, categories)
+        add_forms(formdict, index, lexcat, parcat, forms)
+        if old_forms:
+            # no such forms
+            pass
+        if nonstandard_forms:
+            # no such forms
+            pass
     # forms inflected for degree, gender, case, number, and inflectional strength
-    lexcat = Lexcat(pos = pos)
     for degree in degrees:
         for gender in genders:
             for number in numbers:
@@ -212,16 +237,22 @@ def get_adjective_formdict(transducer, index, seg, pos):
                                         case       = case,
                                         number     = number,
                                         inflection = inflection)
-                        forms = generate_forms(transducer, index, seg, pos, [degree,
-                                                                             gender,
-                                                                             case,
-                                                                             number,
-                                                                             inflection])
-                        if forms:
-                            add_forms(formdict, index, lexcat, parcat, forms)
+                        categories = [degree,
+                                      gender,
+                                      case,
+                                      number,
+                                      inflection]
+                        forms = generate_forms(transducer, index, seg, pos, categories)
+                        add_forms(formdict, index, lexcat, parcat, forms)
+                        if old_forms:
+                            # no such forms
+                            pass
+                        if nonstandard_forms:
+                            # no such forms
+                            pass
     return formdict
 
-def get_article_formdict(transducer, index, seg, pos, nonstandard_forms=False):
+def get_article_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
     formdict = {}
     for subcat in art_subcats:
         lexcat = Lexcat(pos    = pos,
@@ -236,30 +267,26 @@ def get_article_formdict(transducer, index, seg, pos, nonstandard_forms=False):
                                             case       = case,
                                             number     = number,
                                             inflection = inflection)
-                            forms = generate_forms(transducer, index, seg, pos, [subcat,
-                                                                                 function,
-                                                                                 gender,
-                                                                                 case,
-                                                                                 number,
-                                                                                 inflection])
-                            if forms:
-                                add_forms(formdict, index, lexcat, parcat, forms)
+                            categories = [subcat,
+                                          function,
+                                          gender,
+                                          case,
+                                          number,
+                                          inflection]
+                            forms = generate_forms(transducer, index, seg, pos, categories)
+                            add_forms(formdict, index, lexcat, parcat, forms)
+                            if old_forms:
+                                # no such forms
+                                pass
                             if nonstandard_forms:
-                                forms = generate_forms(transducer, index, seg, pos, [subcat,
-                                                                                     function,
-                                                                                     gender,
-                                                                                     case,
-                                                                                     number,
-                                                                                     inflection,
-                                                                                     "NonSt"])
-                                if forms:
-                                    add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
+                                forms = generate_nonstandard_forms(transducer, index, seg, pos, categories)
+                                add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
     return formdict
 
-def get_cardinal_formdict(transducer, index, seg, pos):
+def get_cardinal_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
     formdict = {}
-    # forms inflected for function, gender, case, number, and inflectional strength
     lexcat = Lexcat(pos = pos)
+    # forms inflected for function, gender, case, number, and inflectional strength
     for gender in genders:
         for number in numbers:
             for case in cases:
@@ -270,31 +297,42 @@ def get_cardinal_formdict(transducer, index, seg, pos):
                                         case       = case,
                                         number     = number,
                                         inflection = inflection)
-                        forms = generate_forms(transducer, index, seg, pos, [function,
-                                                                             gender,
-                                                                             case,
-                                                                             number,
-                                                                             inflection])
-                        if forms:
-                            add_forms(formdict, index, lexcat, parcat, forms)
+                        categories = [function,
+                                      gender,
+                                      case,
+                                      number,
+                                      inflection]
+                        forms = generate_forms(transducer, index, seg, pos, categories)
+                        add_forms(formdict, index, lexcat, parcat, forms)
+                        if old_forms:
+                            # no such forms
+                            pass
+                        if nonstandard_forms:
+                            # no such forms
+                            pass
     return formdict
 
-def get_adjectival_pronoun_formdict(transducer, index, seg, pos, nonstandard_forms=False):
+def get_adjectival_pronoun_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
     formdict = {}
-    # forms inflected for function, but uninflected for gender, case, number, and inflectional strength
     lexcat = Lexcat(pos = pos)
+    # forms inflected for function, but uninflected for gender, case, number, and inflectional strength
     for function in functions:
         parcat = Parcat(function   = function,
                         gender     = "Invar",
                         case       = "Invar",
                         number     = "Invar",
                         inflection = "Invar")
-        forms = generate_forms(transducer, index, seg, pos, [function,
-                                                             "Invar"])
-        if forms:
-            add_forms(formdict, index, lexcat, parcat, forms)
+        categories = [function,
+                      "Invar"]
+        forms = generate_forms(transducer, index, seg, pos, categories)
+        add_forms(formdict, index, lexcat, parcat, forms)
+        if old_forms:
+            # no such forms
+            pass
+        if nonstandard_forms:
+            # no such forms
+            pass
     # forms inflected for function, gender, case, number, and inflectional strength
-    lexcat = Lexcat(pos = pos)
     for gender in genders:
         for number in numbers:
             for case in cases:
@@ -305,22 +343,19 @@ def get_adjectival_pronoun_formdict(transducer, index, seg, pos, nonstandard_for
                                         case       = case,
                                         number     = number,
                                         inflection = inflection)
-                        forms = generate_forms(transducer, index, seg, pos, [function,
-                                                                             gender,
-                                                                             case,
-                                                                             number,
-                                                                             inflection])
-                        if forms:
-                            add_forms(formdict, index, lexcat, parcat, forms)
+                        categories = [function,
+                                      gender,
+                                      case,
+                                      number,
+                                      inflection]
+                        forms = generate_forms(transducer, index, seg, pos, categories)
+                        add_forms(formdict, index, lexcat, parcat, forms)
+                        if old_forms:
+                            # no such forms
+                            pass
                         if nonstandard_forms:
-                            forms = generate_forms(transducer, index, seg, pos, [function,
-                                                                                 gender,
-                                                                                 case,
-                                                                                 number,
-                                                                                 inflection,
-                                                                                 "NonSt"])
-                            if forms:
-                                add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
+                            forms = generate_nonstandard_forms(transducer, index, seg, pos, categories)
+                            add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
     return formdict
 
 def get_substantival_pronoun_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
@@ -335,28 +370,18 @@ def get_substantival_pronoun_formdict(transducer, index, seg, pos, old_forms=Fal
                                     person = person)
                     parcat = Parcat(case   = case,
                                     number = number)
-                    forms = generate_forms(transducer, index, seg, pos, [subcat,
-                                                                         person,
-                                                                         case,
-                                                                         number])
-                    if forms:
-                        add_forms(formdict, index, lexcat, parcat, forms)
+                    categories = [subcat,
+                                  person,
+                                  case,
+                                  number]
+                    forms = generate_forms(transducer, index, seg, pos, categories)
+                    add_forms(formdict, index, lexcat, parcat, forms)
                     if old_forms:
-                        forms = generate_forms(transducer, index, seg, pos, [subcat,
-                                                                             person,
-                                                                             case,
-                                                                             number,
-                                                                             "Old"])
-                        if forms:
-                            add_old_forms(formdict, index, lexcat, parcat, forms)
+                        forms = generate_old_forms(transducer, index, seg, pos, categories)
+                        add_old_forms(formdict, index, lexcat, parcat, forms)
                     if nonstandard_forms:
-                        forms = generate_forms(transducer, index, seg, pos, [subcat,
-                                                                             person,
-                                                                             case,
-                                                                             number,
-                                                                             "NonSt"])
-                        if forms:
-                            add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
+                        forms = generate_nonstandard_forms(transducer, index, seg, pos, categories)
+                        add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
     # forms with fixed gender and inflected for subcat, case, and number
     for gender in genders:
         for number in numbers:
@@ -367,28 +392,18 @@ def get_substantival_pronoun_formdict(transducer, index, seg, pos, old_forms=Fal
                                     gender = gender)
                     parcat = Parcat(case   = case,
                                     number = number)
-                    forms = generate_forms(transducer, index, seg, pos, [subcat,
-                                                                         gender,
-                                                                         case,
-                                                                         number])
-                    if forms:
-                        add_forms(formdict, index, lexcat, parcat, forms)
+                    categories = [subcat,
+                                  gender,
+                                  case,
+                                  number]
+                    forms = generate_forms(transducer, index, seg, pos, categories)
+                    add_forms(formdict, index, lexcat, parcat, forms)
                     if old_forms:
-                        forms = generate_forms(transducer, index, seg, pos, [subcat,
-                                                                             gender,
-                                                                             case,
-                                                                             number,
-                                                                             "Old"])
-                        if forms:
-                            add_old_forms(formdict, index, lexcat, parcat, forms)
+                        forms = generate_old_forms(transducer, index, seg, pos, categories)
+                        add_old_forms(formdict, index, lexcat, parcat, forms)
                     if nonstandard_forms:
-                        forms = generate_forms(transducer, index, seg, pos, [subcat,
-                                                                             gender,
-                                                                             case,
-                                                                             number,
-                                                                             "NonSt"])
-                        if forms:
-                            add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
+                        forms = generate_nonstandard_forms(transducer, index, seg, pos, categories)
+                        add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
     return formdict
 
 def get_other_pronoun_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
@@ -399,10 +414,16 @@ def get_other_pronoun_formdict(transducer, index, seg, pos, old_forms=False, non
                         gender = gender)
         parcat = Parcat(case       = "Invar",
                         number     = "Invar")
-        forms = generate_forms(transducer, index, seg, pos, [gender,
-                                                             "Invar"])
-        if forms:
-            add_forms(formdict, index, lexcat, parcat, forms)
+        categories = [gender,
+                      "Invar"]
+        forms = generate_forms(transducer, index, seg, pos, categories)
+        add_forms(formdict, index, lexcat, parcat, forms)
+        if old_forms:
+            # no such forms
+            pass
+        if nonstandard_forms:
+            # no such forms
+            pass
     # forms with fixed gender and inflected for case and number
     for gender in genders:
         lexcat = Lexcat(pos    = pos,
@@ -411,39 +432,36 @@ def get_other_pronoun_formdict(transducer, index, seg, pos, old_forms=False, non
             for case in cases:
                 parcat = Parcat(case   = case,
                                 number = number)
-                forms = generate_forms(transducer, index, seg, pos, [gender,
-                                                                     case,
-                                                                     number])
-                if forms:
-                    add_forms(formdict, index, lexcat, parcat, forms)
+                categories = [gender,
+                              case,
+                              number]
+                forms = generate_forms(transducer, index, seg, pos, categories)
+                add_forms(formdict, index, lexcat, parcat, forms)
                 if old_forms:
-                    forms = generate_forms(transducer, index, seg, pos, [gender,
-                                                                         case,
-                                                                         number,
-                                                                         "Old"])
-                    if forms:
-                        add_old_forms(formdict, index, lexcat, parcat, forms)
+                    forms = generate_old_forms(transducer, index, seg, pos, categories)
+                    add_old_forms(formdict, index, lexcat, parcat, forms)
                 if nonstandard_forms:
-                    forms = generate_forms(transducer, index, seg, pos, [gender,
-                                                                         case,
-                                                                         number,
-                                                                         "NonSt"])
-                    if forms:
-                        add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
-    # forms inflected for function, but uninflected for gender, case, number, and inflectional strength
+                    forms = generate_nonstandard_forms(transducer, index, seg, pos, categories)
+                    add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
     lexcat = Lexcat(pos = pos)
+    # forms inflected for function, but uninflected for gender, case, number, and inflectional strength
     for function in functions:
         parcat = Parcat(function   = function,
                         gender     = "Invar",
                         case       = "Invar",
                         number     = "Invar",
                         inflection = "Invar")
-        forms = generate_forms(transducer, index, seg, pos, [function,
-                                                             "Invar"])
-        if forms:
-            add_forms(formdict, index, lexcat, parcat, forms)
+        categories = [function,
+                      "Invar"]
+        forms = generate_forms(transducer, index, seg, pos, categories)
+        add_forms(formdict, index, lexcat, parcat, forms)
+        if old_forms:
+            # no such forms
+            pass
+        if nonstandard_forms:
+            # no such forms
+            pass
     # forms inflected for function, gender, case, number, and inflectional strength
-    lexcat = Lexcat(pos = pos)
     for gender in genders:
         for number in numbers:
             for case in cases:
@@ -454,59 +472,69 @@ def get_other_pronoun_formdict(transducer, index, seg, pos, old_forms=False, non
                                         case       = case,
                                         number     = number,
                                         inflection = inflection)
-                        forms = generate_forms(transducer, index, seg, pos, [function,
-                                                                             gender,
-                                                                             case,
-                                                                             number,
-                                                                             inflection])
-                        if forms:
-                            add_forms(formdict, index, lexcat, parcat, forms)
+                        categories = [function,
+                                      gender,
+                                      case,
+                                      number,
+                                      inflection]
+                        forms = generate_forms(transducer, index, seg, pos, categories)
+                        add_forms(formdict, index, lexcat, parcat, forms)
+                        if old_forms:
+                            # no such forms
+                            pass
                         if nonstandard_forms:
-                            forms = generate_forms(transducer, index, seg, pos, [function,
-                                                                                 gender,
-                                                                                 case,
-                                                                                 number,
-                                                                                 inflection,
-                                                                                 "NonSt"])
-                            if forms:
-                                add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
+                            forms = generate_nonstandard_forms(transducer, index, seg, pos, categories)
+                            add_nonstandard_forms(formdict, index, lexcat, parcat, forms)
     return formdict
 
-def get_verb_formdict(transducer, index, seg, pos):
+def get_verb_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
     formdict = {}
     if particle_boundary in seg:
         particle = seg[:seg.find(particle_boundary)]
     else:
         particle = ""
     for auxiliary in auxiliaries:
-        participle_forms = generate_forms(transducer, index, seg, pos, ["PPast",
-                                                                        auxiliary])
-        if participle_forms:
+        categories = ["PPast",
+                      auxiliary]
+        # check whether the past participle actually selects the auxiliary
+        past_participle_forms = generate_forms(transducer, index, seg, pos, categories)
+        if past_participle_forms:
+            lexcat = Lexcat(pos       = pos,
+                            auxiliary = auxiliary)
             # infinitive
-            lexcat = Lexcat(pos       = pos,
-                            auxiliary = auxiliary)
             parcat = Parcat(nonfinite = "Inf")
-            forms = generate_forms(transducer, index, seg, pos, ["Inf"])
-            if forms:
-                add_forms(formdict, index, lexcat, parcat, forms)
+            categories = ["Inf"]
+            infinitive_forms = generate_forms(transducer, index, seg, pos, categories)
+            add_forms(formdict, index, lexcat, parcat, infinitive_forms)
+            if old_forms:
+                # no such forms
+                pass
+            if nonstandard_forms:
+                # no such forms
+                pass
             # present participle
-            lexcat = Lexcat(pos       = pos,
-                            auxiliary = auxiliary)
             parcat = Parcat(nonfinite = "PPres")
-            forms = generate_forms(transducer, index, seg, pos, ["PPres"])
-            if forms:
-                add_forms(formdict, index, lexcat, parcat, forms)
+            categories = ["PPres"]
+            present_participle_forms = generate_forms(transducer, index, seg, pos, categories)
+            add_forms(formdict, index, lexcat, parcat, present_participle_forms)
+            if old_forms:
+                # no such forms
+                pass
+            if nonstandard_forms:
+                # no such forms
+                pass
             # past participle
-            lexcat = Lexcat(pos       = pos,
-                            auxiliary = auxiliary)
             parcat = Parcat(nonfinite = "PPast")
-            forms = generate_forms(transducer, index, seg, pos, ["PPast",
-                                                                 auxiliary])
-            if forms:
-                add_forms(formdict, index, lexcat, parcat, forms)
+            categories = ["PPast",
+                          auxiliary]
+            add_forms(formdict, index, lexcat, parcat, past_participle_forms)
+            if old_forms:
+                # no such forms
+                pass
+            if nonstandard_forms:
+                # no such forms
+                pass
             # indicative and subjunctive forms
-            lexcat = Lexcat(pos       = pos,
-                            auxiliary = auxiliary)
             for tense in tenses:
                 for mood in moods:
                     for number in numbers:
@@ -516,84 +544,102 @@ def get_verb_formdict(transducer, index, seg, pos):
                                             mood   = mood,
                                             tense  = tense)
                             if tense == "PresPerf" or tense == "PastPerf":
-                                for participles in [forms for [formspec, forms] in formdict.items()
-                                                    if formspec.lexcat == lexcat and
-                                                       formspec.parcat.nonfinite == "PPast"]:
-                                    for participle in participles:
-                                        if auxiliary == "haben":
-                                            forms = generate_forms(transducer, index_haben, seg_haben, pos, [person,
-                                                                                                             number,
-                                                                                                             tense[:-4],
-                                                                                                             mood])
-                                        elif auxiliary == "sein":
-                                            forms = generate_forms(transducer, index_sein, seg_sein, pos, [person,
-                                                                                                           number,
-                                                                                                           tense[:-4],
-                                                                                                           mood])
-                                        if forms:
-                                            add_perfect_verb_forms(formdict, index, lexcat, parcat, forms, participle)
+                                for participle in past_participle_forms:
+                                    categories = [person,
+                                                  number,
+                                                  tense[:-4],
+                                                  mood]
+                                    if auxiliary == "haben":
+                                        forms = generate_forms(transducer, index_haben, seg_haben, pos, categories)
+                                    elif auxiliary == "sein":
+                                        forms = generate_forms(transducer, index_sein, seg_sein, pos, categories)
+                                    add_perfect_verb_forms(formdict, index, lexcat, parcat, forms, participle)
+                                    if old_forms:
+                                        # no such forms
+                                        pass
+                                    if nonstandard_forms:
+                                        # no such forms
+                                        pass
                             elif tense == "Fut":
-                                for infinitives in [forms for [formspec, forms] in formdict.items()
-                                                    if formspec.lexcat == lexcat and
-                                                       formspec.parcat.nonfinite == "Inf"]:
-                                    for infinitive in infinitives:
-                                        forms = generate_forms(transducer, index_werden, seg_werden, pos, [person,
-                                                                                                           number,
-                                                                                                           "Pres",
-                                                                                                           mood])
-                                        if forms:
-                                            add_future_verb_forms(formdict, index, lexcat, parcat, forms, infinitive)
+                                for infinitive in infinitive_forms:
+                                    categories = [person,
+                                                  number,
+                                                  "Pres",
+                                                  mood]
+                                    forms = generate_forms(transducer, index_werden, seg_werden, pos, categories)
+                                    add_future_verb_forms(formdict, index, lexcat, parcat, forms, infinitive)
+
+                                    if old_forms:
+                                        # no such forms
+                                        pass
+                                    if nonstandard_forms:
+                                        # no such forms
+                                        pass
                             elif tense == "FutPerf":
-                                for participles in [forms for [formspec, forms] in formdict.items()
-                                                    if formspec.lexcat == lexcat and
-                                                       formspec.parcat.nonfinite == "PPast"]:
-                                    for participle in participles:
-                                        forms = generate_forms(transducer, index_werden, seg_werden, pos, [person,
-                                                                                                           number,
-                                                                                                           "Pres",
-                                                                                                           mood])
-                                        if forms:
-                                            add_future_perfect_verb_forms(formdict, index, lexcat, parcat, forms, auxiliary, participle)
+                                for participle in past_participle_forms:
+                                    categories = [person,
+                                                  number,
+                                                  "Pres",
+                                                  mood]
+                                    forms = generate_forms(transducer, index_werden, seg_werden, pos, categories)
+                                    add_future_perfect_verb_forms(formdict, index, lexcat, parcat, forms, auxiliary, participle)
+
+                                    if old_forms:
+                                        # no such forms
+                                        pass
+                                    if nonstandard_forms:
+                                        # no such forms
+                                        pass
                             else:
-                                forms = generate_forms(transducer, index, seg, pos, [person,
-                                                                                     number,
-                                                                                     tense,
-                                                                                     mood])
-                                if forms:
-                                    if particle:
-                                        add_particle_verb_forms(formdict, index, lexcat, parcat, forms, particle)
-                                    else:
-                                        add_forms(formdict, index, lexcat, parcat, forms)
+                                categories = [person,
+                                              number,
+                                              tense,
+                                              mood]
+                                forms = generate_forms(transducer, index, seg, pos, categories)
+                                if particle:
+                                    add_particle_verb_forms(formdict, index, lexcat, parcat, forms, particle)
+                                else:
+                                    add_forms(formdict, index, lexcat, parcat, forms)
+                                if old_forms:
+                                    # no such forms
+                                    pass
+                                if nonstandard_forms:
+                                    # no such forms
+                                    pass
             # imperative forms
-            lexcat = Lexcat(pos       = pos,
-                            auxiliary = auxiliary)
             for number in numbers:
                 parcat = Parcat(number = number,
                                 mood   = "Imp")
-                forms = generate_forms(transducer, index, seg, pos, ["Imp",
-                                                                     number])
-                if forms:
-                    if particle:
-                        add_particle_verb_forms(formdict, index, lexcat, parcat, forms, particle)
-                    else:
-                        add_forms(formdict, index, lexcat, parcat, forms)
+                categories = ["Imp",
+                              number]
+                forms = generate_forms(transducer, index, seg, pos, categories)
+                if particle:
+                    add_particle_verb_forms(formdict, index, lexcat, parcat, forms, particle)
+                else:
+                    add_forms(formdict, index, lexcat, parcat, forms)
+                if old_forms:
+                    # no such forms
+                    pass
+                if nonstandard_forms:
+                    # no such forms
+                    pass
     return formdict
 
 def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms=False):
     # nouns
     if pos == "NN" or pos == "NPROP":
-        formdict = get_noun_formdict(transducer, index, seg, pos, old_forms)
+        formdict = get_noun_formdict(transducer, index, seg, pos, old_forms, nonstandard_forms)
     elif pos == "ADJ":
-        formdict = get_adjective_formdict(transducer, index, seg, pos)
+        formdict = get_adjective_formdict(transducer, index, seg, pos, old_forms, nonstandard_forms)
     # articles
     elif pos == "ART":
-        formdict = get_article_formdict(transducer, index, seg, pos, nonstandard_forms)
+        formdict = get_article_formdict(transducer, index, seg, pos, old_forms, nonstandard_forms)
     # cardinals
     elif pos == "CARD":
-        formdict = get_cardinal_formdict(transducer, index, seg, pos)
+        formdict = get_cardinal_formdict(transducer, index, seg, pos, old_forms, nonstandard_forms)
     # demonstrative and possessive pronouns
     elif pos == "DEM" or pos == "POSS":
-        formdict = get_adjectival_pronoun_formdict(transducer, index, seg, pos, nonstandard_forms)
+        formdict = get_adjectival_pronoun_formdict(transducer, index, seg, pos, old_forms, nonstandard_forms)
     # personal pronouns
     elif pos == "PPRO":
         formdict = get_substantival_pronoun_formdict(transducer, index, seg, pos, old_forms, nonstandard_forms)
@@ -602,7 +648,7 @@ def get_formdict(transducer, index, seg, pos, old_forms=False, nonstandard_forms
         formdict = get_other_pronoun_formdict(transducer, index, seg, pos, old_forms, nonstandard_forms)
     # verbs
     elif pos == "V":
-        formdict = get_verb_formdict(transducer, index, seg, pos)
+        formdict = get_verb_formdict(transducer, index, seg, pos, old_forms, nonstandard_forms)
     return formdict
 
 def paradigm_subset(formdict, index, lexcat):
