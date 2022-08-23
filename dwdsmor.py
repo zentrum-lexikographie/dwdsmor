@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-08-19
+# Gregor Middell and Andreas Nolda 2022-08-23
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 5.2
+version = 6.0
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -37,16 +37,22 @@ class Analysis(tuple):
 
     @cached_property
     def segmented_lemma(self):
-        return re.sub(r"(<IDX[^>]+>)?(<\^ABBR>)?<\+[^>]+>.*", "", self.analysis)
+        return re.sub(r"(<IDX[^>]+>)?(<PAR[^>]+>)?(<\^ABBR>)?<\+[^>]+>.*", "", self.analysis)
 
     @cached_property
     def tags(self):
         return [tag for a in self for tag in a.tags]
 
     @cached_property
-    def index(self):
+    def lemma_index(self):
         for tag in self.tags:
             if tag.startswith("IDX"):
+                return tag[3:]
+
+    @cached_property
+    def paradigm_index(self):
+        for tag in self.tags:
+            if tag.startswith("PAR"):
                 return tag[3:]
 
     @cached_property
@@ -137,7 +143,8 @@ class Analysis(tuple):
                 "analysis": self.analysis,
                 "lemma": self.lemma,
                 "segmentedlemma": self.segmented_lemma,
-                "index": self.index,
+                "lemma_index": self.lemma_index,
+                "paradigm_index": self.paradigm_index,
                 "pos": self.pos,
                 "subcat": self.subcat,
                 "auxiliary": self.auxiliary,
@@ -254,7 +261,8 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                              term.bright_black("Analysis"),
                              term.bold_underline("Lemma"),
                              term.bright_black_underline("Segmentation"),
-                             term.underline("Index"),
+                             term.underline("Lemma Index"),
+                             term.underline("Paradigm Index"),
                              term.underline("POS"),
                              term.underline("Subcategory"),
                              term.underline("Auxiliary"),
@@ -276,7 +284,8 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                                  term.bright_black(a.analysis),
                                  term.bold_underline(a.lemma),
                                  term.bright_black_underline(a.segmented_lemma),
-                                 term.underline(string(a.index)),
+                                 term.underline(string(a.lemma_index)),
+                                 term.underline(string(a.paradigm_index)),
                                  term.underline(string(a.pos)),
                                  term.underline(string(a.subcat)),
                                  term.underline(string(a.auxiliary)),

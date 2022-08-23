@@ -1,11 +1,11 @@
 % elim.fst
-% Version 1.0
-% Andreas Nolda 2022-08-19
+% Version 1.1
+% Andreas Nolda 2022-08-23
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
-ALPHABET = [#char# #morpheme_boundary_marker# #lemma-index# #stemtype# #feature# \
+ALPHABET = [#char# #morpheme_boundary_marker# #lemma-index# #paradigm-index# #stemtype# #feature# \
             <VPART><Old><NonSt><X><F>] \
            [<1><3>]:<13> \
            [<Dat><Acc>]:<DA> \
@@ -25,7 +25,7 @@ ALPHABET = [#char# #morpheme_boundary_marker# #lemma-index# #stemtype# #feature#
 
 $DISJ$ = .*
 
-ALPHABET = [#char# #lemma-index# #feature# \
+ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# \
             <Old><NonSt><13><DA><GA><GD><GDA><MFN><MN><NA><NDA><NGA><NGDA><SW><AS><PA><PR><F>]
 
 $X$ = (. | \

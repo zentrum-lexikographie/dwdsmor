@@ -17,6 +17,7 @@ lexicon/wb/
 grammar/lexicon
 grammar/*.a
 grammar/*.ca
+grammar/*.log
 
 lib/
 

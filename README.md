@@ -277,8 +277,7 @@ transducer:
 
 ```plaintext
 $ ./dwdsmor.py -h
-usage: dwdsmor.py [-h] [-a] [-c] [-C] [-H] [-j] [-t TRANSDUCER] [-v]
-                  [input] [output]
+usage: dwdsmor.py [-h] [-a] [-c] [-C] [-H] [-j] [-t TRANSDUCER] [-v] [input] [output]
 
 positional arguments:
   input                 input file (one word form per line; default: stdin)
@@ -286,8 +285,7 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -a, --full-analysis   output full analysis with surface layer and analysis
-                        layer
+  -a, --full-analysis   output full analysis with surface layer and analysis layer
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
   -H, --no-header       suppress table header
@@ -301,40 +299,53 @@ By default, `dwdsmor.py` prints a CSV table on standard output:
 
 ```plaintext
 $ echo Kind | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Index	POS	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
-Kind	Kind<+NN><Neut><Acc><Sg>	Kind	Kind		NN			Neut	Acc	Sg
-Kind	Kind<+NN><Neut><Dat><Sg>	Kind	Kind		NN			Neut	Dat	Sg
-Kind	Kind<+NN><Neut><Nom><Sg>	Kind	Kind		NN			Neut	Nom	Sg
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Abbreviation	Metainfo
+Kind	Kind<+NN><Neut><Acc><Sg>	Kind	Kind			NN					Neut	Acc	Sg
+Kind	Kind<+NN><Neut><Dat><Sg>	Kind	Kind			NN					Neut	Dat	Sg
+Kind	Kind<+NN><Neut><Nom><Sg>	Kind	Kind			NN					Neut	Nom	Sg
 ```
 
 ```plaintext
 $ echo kleines | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Index	POS	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
-kleines	klein<+ADJ><Pos><Neut><Acc><Sg><St>	klein	klein		ADJ	Pos		Neut	Acc	Sg	St
-kleines	klein<+ADJ><Pos><Neut><Nom><Sg><St>	klein	klein		ADJ	Pos		Neut	Nom	Sg	St
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Abbreviation	Metainfo
+kleines	klein<+ADJ><Pos><Neut><Acc><Sg><St>	klein	klein			ADJ			Pos		Neut	Acc	Sg	St
+kleines	klein<+ADJ><Pos><Neut><Nom><Sg><St>	klein	klein			ADJ			Pos		Neut	Nom	Sg	St
+```
+
+```plaintext
+$ echo mein | ./dwdsmor.py
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Abbreviation	Metainfo
+mein	mein<~>en<+V><Imp><Sg>	meinen	mein<~>en			V							Sg				Imp
+mein	meine<PAR2><+POSS><Attr><Neut><Acc><Sg><NoInfl>	meine	meine		2	POSS					Neut	Acc	Sg	NoInfl	Attr
+mein	meine<PAR2><+POSS><Attr><Neut><Nom><Sg><NoInfl>	meine	meine		2	POSS					Neut	Nom	Sg	NoInfl	Attr
+mein	meine<PAR2><+POSS><Attr><Masc><Nom><Sg><NoInfl>	meine	meine		2	POSS					Masc	Nom	Sg	NoInfl	Attr
+mein	ich<+PPRO><Pers><1><Gen><Sg><Old>	ich	ich			PPRO	Pers			1		Gen	Sg							Old
 ```
 
 ```plaintext
 $ echo schlafe | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Index	POS	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
-schlafe	schlaf<~>en<+V><3><Sg><Pres><Subj>	schlafen	schlaf<~>en		V		3			Sg				Subj	Pres
-schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen	schlaf<~>en		V		1			Sg				Subj	Pres
-schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen	schlaf<~>en		V		1			Sg				Ind	Pres
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Abbreviation	Metainfo
+schlafe	schlaf<~>en<+V><3><Sg><Pres><Subj>	schlafen	schlaf<~>en			V				3			Sg				Subj	Pres
+schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen	schlaf<~>en			V				1			Sg				Subj	Pres
+schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen	schlaf<~>en			V				1			Sg				Ind	Pres
 ```
 
 An alternative JSON output is available with the option `--json`.
 
-`paradigm.py` is Python script for generating paradigms of adjectives, nouns,
-proper names, and verbs:
+`paradigm.py` is Python script for generating paradigms of nouns, proper names,
+articles, pronouns, cardinals, adjectives, and verbs:
 
 ```plaintext
 $ ./paradigm.py -h
-usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4}] [-j] [-n] [-N] [-o]
-                   [-p {ADJ,NN,NPROP,V}] [-t TRANSDUCER] [-v]
+usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j]
+                   [-n] [-N] [-o]
+                   [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}]
+                   [-s] [-t TRANSDUCER] [-u] [-v]
                    lemma [output]
 
 positional arguments:
-  lemma                 lemma
+  lemma                 lemma (determiners: Fem Nom Sg; nominalised
+                        adjectives: Wk)
   output                output file (default: stdout)
 
 optional arguments:
@@ -342,17 +353,22 @@ optional arguments:
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
   -H, --no-header       suppress table header
-  -i {1,2,3,4}, --index {1,2,3,4}
+  -i {1,2,3,4,5}, --lemma-index {1,2,3,4,5}
                         homographic lemma index
+  -I {1,2,3,4,5}, --paradigm-index {1,2,3,4,5}
+                        paradigm index
   -j, --json            output JSON object
   -n, --no-category-names
                         do not output category names
-  -N, --no-lemma        do not output lemma, index, and lexical categories
+  -N, --no-lemma        do not output lemma, lemma index, paradigm index, and lexical categories
   -o, --old-forms       output also archaic forms
-  -p {ADJ,NN,NPROP,V}, --pos {ADJ,NN,NPROP,V}
+  -p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}, --pos {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}
                         part of speech
+  -s, --nonstandard-forms
+                        output also non-standard forms
   -t TRANSDUCER, --transducer TRANSDUCER
-                        transducer file (default: lib/smor-index.a)
+                        transducer file (default: lib/dwdsmor-index.a)
+  -u, --user-specified  use only user-specified information
   -v, --version         show program's version number and exit
 ```
 
@@ -360,15 +376,15 @@ By default, `paradigm.py` outputs a similar CSV table as `dwdsmor.py`:
 
 ```plaintext
 $ ./paradigm.py Kind
-Lemma	Index	POS	Gender	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Paradigm Forms
-Kind		NN	Neut				Nom	Sg						Kind
-Kind		NN	Neut				Acc	Sg						Kind
-Kind		NN	Neut				Dat	Sg						Kind
-Kind		NN	Neut				Gen	Sg						Kindes, Kinds
-Kind		NN	Neut				Nom	Pl						Kinder
-Kind		NN	Neut				Acc	Pl						Kinder
-Kind		NN	Neut				Dat	Pl						Kindern
-Kind		NN	Neut				Gen	Pl						Kinder
+Lemma	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Gender	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Paradigm Forms
+Kind			NN			Neut				Nom	Sg						Kind
+Kind			NN			Neut				Acc	Sg						Kind
+Kind			NN			Neut				Dat	Sg						Kind
+Kind			NN			Neut				Gen	Sg						Kindes, Kinds
+Kind			NN			Neut				Nom	Pl						Kinder
+Kind			NN			Neut				Acc	Pl						Kinder
+Kind			NN			Neut				Dat	Pl						Kindern
+Kind			NN			Neut				Gen	Pl						Kinder
 ```
 
 For a condensed version, the options `--no-category-names` and `--no-lemma` can
@@ -392,7 +408,7 @@ $ ./paradigm.py --no-category-names --no-lemma klein
 Paradigm Categories	Paradigm Forms
 Pos Pred	klein
 Comp Pred	kleiner
-Sup Pred	kleinsten
+Sup Pred	am kleinsten
 Pos Masc Nom Sg St	kleiner
 Pos Masc Nom Sg Wk	kleine
 Pos Masc Acc Sg St	kleinen
@@ -492,11 +508,65 @@ Sup NoGend Gen Pl Wk	kleinsten
 ```
 
 ```plaintext
+$ ./paradigm.py --no-category-names --no-lemma meine
+Paradigm Categories	Paradigm Forms
+Masc Nom Sg NoInfl Attr	mein
+Masc Nom Sg St Subst	meiner
+Masc Nom Sg Wk Subst	meine
+Masc Acc Sg St Attr	meinen
+Masc Acc Sg St Subst	meinen
+Masc Acc Sg Wk Subst	meinen
+Masc Dat Sg St Attr	meinem
+Masc Dat Sg St Subst	meinem
+Masc Dat Sg Wk Subst	meinen
+Masc Gen Sg St Attr	meines
+Masc Gen Sg St Subst	meines
+Masc Gen Sg Wk Subst	meinen
+Neut Nom Sg NoInfl Attr	mein
+Neut Nom Sg St Subst	meines, meins
+Neut Nom Sg Wk Subst	meine
+Neut Acc Sg NoInfl Attr	mein
+Neut Acc Sg St Subst	meines, meins
+Neut Acc Sg Wk Subst	meine
+Neut Dat Sg St Attr	meinem
+Neut Dat Sg St Subst	meinem
+Neut Dat Sg Wk Subst	meinen
+Neut Gen Sg St Attr	meines
+Neut Gen Sg St Subst	meines
+Neut Gen Sg Wk Subst	meinen
+Fem Nom Sg St Attr	meine
+Fem Nom Sg St Subst	meine
+Fem Nom Sg Wk Subst	meine
+Fem Acc Sg St Attr	meine
+Fem Acc Sg St Subst	meine
+Fem Acc Sg Wk Subst	meine
+Fem Dat Sg St Attr	meiner
+Fem Dat Sg St Subst	meiner
+Fem Dat Sg Wk Subst	meinen
+Fem Gen Sg St Attr	meiner
+Fem Gen Sg St Subst	meiner
+Fem Gen Sg Wk Subst	meinen
+NoGend Nom Pl St Attr	meine
+NoGend Nom Pl St Subst	meine
+NoGend Nom Pl Wk Subst	meinen
+NoGend Acc Pl St Attr	meine
+NoGend Acc Pl St Subst	meine
+NoGend Acc Pl Wk Subst	meinen
+NoGend Dat Pl St Attr	meinen
+NoGend Dat Pl St Subst	meinen
+NoGend Dat Pl Wk Subst	meinen
+NoGend Gen Pl St Attr	meiner
+NoGend Gen Pl St Subst	meiner
+NoGend Gen Pl Wk Subst	meinen
+```
+
+```plaintext
 $ ./paradigm.py --no-category-names --no-lemma schlafen
 Paradigm Categories	Paradigm Forms
-Inf	schlafen
-PPres	schlafend
-PPast	geschlafen
+Inf Pres	schlafen
+Inf Perf	geschlafen haben
+Part Pres	schlafend
+Part Perf	geschlafen
 1 Sg Ind Pres	schlafe
 2 Sg Ind Pres	schläfst
 3 Sg Ind Pres	schläft
@@ -509,6 +579,18 @@ PPast	geschlafen
 1 Pl Subj Pres	schlafen
 2 Pl Subj Pres	schlafet
 3 Pl Subj Pres	schlafen
+1 Sg Ind Perf	habe geschlafen
+2 Sg Ind Perf	hast geschlafen
+3 Sg Ind Perf	hat geschlafen
+1 Pl Ind Perf	haben geschlafen
+2 Pl Ind Perf	habt geschlafen
+3 Pl Ind Perf	haben geschlafen
+1 Sg Subj Perf	habe geschlafen
+2 Sg Subj Perf	habest geschlafen
+3 Sg Subj Perf	habe geschlafen
+1 Pl Subj Perf	haben geschlafen
+2 Pl Subj Perf	habet geschlafen
+3 Pl Subj Perf	haben geschlafen
 1 Sg Ind Past	schlief
 2 Sg Ind Past	schliefst
 3 Sg Ind Past	schlief
@@ -521,9 +603,44 @@ PPast	geschlafen
 1 Pl Subj Past	schliefen
 2 Pl Subj Past	schliefet
 3 Pl Subj Past	schliefen
-2 Sg Imp	schlaf
-2 Pl Imp	schlaft
-
+1 Sg Ind PastPerf	hatte geschlafen
+2 Sg Ind PastPerf	hattest geschlafen
+3 Sg Ind PastPerf	hatte geschlafen
+1 Pl Ind PastPerf	hatten geschlafen
+2 Pl Ind PastPerf	hattet geschlafen
+3 Pl Ind PastPerf	hatten geschlafen
+1 Sg Subj PastPerf	hätte geschlafen
+2 Sg Subj PastPerf	hättest geschlafen
+3 Sg Subj PastPerf	hätte geschlafen
+1 Pl Subj PastPerf	hätten geschlafen
+2 Pl Subj PastPerf	hättet geschlafen
+3 Pl Subj PastPerf	hätten geschlafen
+1 Sg Ind Fut	werde schlafen
+2 Sg Ind Fut	wirst schlafen
+3 Sg Ind Fut	wird schlafen
+1 Pl Ind Fut	werden schlafen
+2 Pl Ind Fut	werdet schlafen
+3 Pl Ind Fut	werden schlafen
+1 Sg Subj Fut	werde schlafen
+2 Sg Subj Fut	werdest schlafen
+3 Sg Subj Fut	werde schlafen
+1 Pl Subj Fut	werden schlafen
+2 Pl Subj Fut	werdet schlafen
+3 Pl Subj Fut	werden schlafen
+1 Sg Ind FutPerf	werde geschlafen haben
+2 Sg Ind FutPerf	wirst geschlafen haben
+3 Sg Ind FutPerf	wird geschlafen haben
+1 Pl Ind FutPerf	werden geschlafen haben
+2 Pl Ind FutPerf	werdet geschlafen haben
+3 Pl Ind FutPerf	werden geschlafen haben
+1 Sg Subj FutPerf	werde geschlafen haben
+2 Sg Subj FutPerf	werdest geschlafen haben
+3 Sg Subj FutPerf	werde geschlafen haben
+1 Pl Subj FutPerf	werden geschlafen haben
+2 Pl Subj FutPerf	werdet geschlafen haben
+3 Pl Subj FutPerf	werden geschlafen haben
+Sg Imp	schlaf
+Pl Imp	schlaft
 ```
 
 Again, the option `--json` selects an alternative JSON output.

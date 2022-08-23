@@ -1,31 +1,34 @@
 % lemma-index.fst
-% Version 1.0
-% Andreas Nolda 2022-08-19
+% Version 1.1
+% Andreas Nolda 2022-08-23
 
 % based on code from SMORLemma by Rico Sennrich
 
 ALPHABET = _$MORPH$
 
-$NN$ =  ([^#lemma-index#]*<>:[#lemma-index#]?<>:<+NN><>:<Masc><>:<Nom><>:<Sg><>:<Wk>?   || $MORPH$) [#lemma-index#]?<+NN><Masc>
-$NN$ = (([^#lemma-index#]*<>:[#lemma-index#]?<>:<+NN><>:<Fem><>:<Nom><>:<Sg><>:<Wk>?    || $MORPH$) [#lemma-index#]?<+NN><Fem>)    | $NN$
-$NN$ = (([^#lemma-index#]*<>:[#lemma-index#]?<>:<+NN><>:<Neut><>:<Nom><>:<Sg><>:<Wk>?   || $MORPH$) [#lemma-index#]?<+NN><Neut>)   | $NN$
-$NN$ = (([^#lemma-index#]*<>:[#lemma-index#]?<>:<+NN><>:<NoGend><>:<Nom><>:<Pl><>:<Wk>? || $MORPH$) [#lemma-index#]?<+NN><NoGend>) | $NN$
+$C1$ = [^#lemma-index# #paradigm-index#]*<>:[#lemma-index#]?<>:[#paradigm-index#]?
+$C2$ = [#lemma-index#]? [#paradigm-index#]?
 
-$NPROP$ = (([^#lemma-index#]*<>:[#lemma-index#]?<>:<+NPROP><>:<Masc><>:<Nom><>:<Sg>   || $MORPH$) [#lemma-index#]?<+NPROP><Masc>)
-$NPROP$ = (([^#lemma-index#]*<>:[#lemma-index#]?<>:<+NPROP><>:<Fem><>:<Nom><>:<Sg>    || $MORPH$) [#lemma-index#]?<+NPROP><Fem>)    | $NPROP$
-$NPROP$ = (([^#lemma-index#]*<>:[#lemma-index#]?<>:<+NPROP><>:<Neut><>:<Nom><>:<Sg>   || $MORPH$) [#lemma-index#]?<+NPROP><Neut>)   | $NPROP$
-$NPROP$ = (([^#lemma-index#]*<>:[#lemma-index#]?<>:<+NPROP><>:<NoGend><>:<Nom><>:<Pl> || $MORPH$) [#lemma-index#]?<+NPROP><NoGend>) | $NPROP$
+$NN$ =  ($C1$ <>:<+NN><>:<Masc><>:<Nom><>:<Sg><>:<Wk>?   || $MORPH$) $C2$ <+NN><Masc>
+$NN$ = (($C1$ <>:<+NN><>:<Fem><>:<Nom><>:<Sg><>:<Wk>?    || $MORPH$) $C2$ <+NN><Fem>)    | $NN$
+$NN$ = (($C1$ <>:<+NN><>:<Neut><>:<Nom><>:<Sg><>:<Wk>?   || $MORPH$) $C2$ <+NN><Neut>)   | $NN$
+$NN$ = (($C1$ <>:<+NN><>:<NoGend><>:<Nom><>:<Pl><>:<Wk>? || $MORPH$) $C2$ <+NN><NoGend>) | $NN$
 
-$ADV$ = ([^#lemma-index#]*<>:[#lemma-index#]?<>:<+ADV> || $MORPH$) [#lemma-index#]?<+ADV>
+$NPROP$ = (($C1$ <>:<+NPROP><>:<Masc><>:<Nom><>:<Sg>   || $MORPH$) $C2$ <+NPROP><Masc>)
+$NPROP$ = (($C1$ <>:<+NPROP><>:<Fem><>:<Nom><>:<Sg>    || $MORPH$) $C2$ <+NPROP><Fem>)    | $NPROP$
+$NPROP$ = (($C1$ <>:<+NPROP><>:<Neut><>:<Nom><>:<Sg>   || $MORPH$) $C2$ <+NPROP><Neut>)   | $NPROP$
+$NPROP$ = (($C1$ <>:<+NPROP><>:<NoGend><>:<Nom><>:<Pl> || $MORPH$) $C2$ <+NPROP><NoGend>) | $NPROP$
 
-$V$ = ([^#lemma-index#]*<>:[#lemma-index#]?<>:<+V><>:<Inf> || $MORPH$) [#lemma-index#]?<+V>
+$ADV$ = ($C1$ <>:<+ADV> || $MORPH$) $C2$ <+ADV>
 
-$ADJ$ = ([^#lemma-index#]*<>:[#lemma-index#]?<>:<+ADJ><>:<Pos><>:[<Adv><Invar><Pred><Lemma>] || $MORPH$) [#lemma-index#]?<+ADJ>
+$V$ = ($C1$ <>:<+V><>:<Inf> || $MORPH$) [#lemma-index#]? [#paradigm-index#]?<+V>
+
+$ADJ$ = ($C1$ <>:<+ADJ><>:<Pos><>:[<Adv><Invar><Pred><Lemma>] || $MORPH$) $C2$ <+ADJ>
 
 $LEMMA$ = $ADV$ | $NN$ | $NPROP$ | $V$ | $ADJ$
 
 $CB$ = [#char# #morpheme_boundary_marker#]* [#char#] [#morpheme_boundary_marker#]:<>* \
-       [#lemma-index#]? [#part-of-speech#] [#feature#]*
+       [#lemma-index#]? [#paradigm-index#]? [#part-of-speech#] [#feature#]*
 
 $LEMMA$ = $LEMMA$ || $CB$
 

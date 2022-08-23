@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-08-23:
+
+* add support for paradigm indices
+
 2022-08-19:
 
 * rename `dwds2smorlemma.xsl` to `dwds2dwdsmor.xsl`

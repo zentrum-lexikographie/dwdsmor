@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 1.0
-% Andreas Nolda 2022-08-19
+% Version 1.1
+% Andreas Nolda 2022-08-23
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -45,7 +45,9 @@
 
 #origin# = <nativ><fremd><klassisch>
 
-#lemma-index# = <IDX1><IDX2><IDX3><IDX4>
+#lemma-index# = <IDX1><IDX2><IDX3><IDX4><IDX5>
+
+#paradigm-index# = <PAR1><PAR2><PAR3><PAR4><PAR5>
 
 #Abk-inflection# = <Abk_POSS>
 
