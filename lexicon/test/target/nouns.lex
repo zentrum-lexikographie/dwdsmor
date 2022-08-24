@@ -24,7 +24,6 @@
 <Stem>Bauer<IDX1><NN><base><nativ><NMasc_n_n>
 <Stem>Bauer<IDX1><NN><base><nativ><NMasc_s_n>
 <Stem>Becken<NN><base><nativ><NNeut_s_x>
-<Stem>Berliner<IDX1><NN><base><nativ><NMasc_s_0>
 <Stem>Bett<NN><base><nativ><NNeut_es_en>
 <Stem>Bewundern<NN><base><nativ><NNeut/Sg_s>
 <Stem>Bild<NN><base><nativ><NNeut_es_er>
@@ -81,6 +80,7 @@
 <Stem>Globus<NN><base><fremd><NMasc-s/sse>
 <Stem>Globus<NN><base><fremd><NMasc-s0/sse>
 <Stem>Globus<NN><base><fremd><NMasc-us/en>
+<Stem>Globus<NN><base><fremd><NMasc-us0/en>
 <Stem>Grün<NN><base><nativ><NNeut_s_s>
 <Stem>Grün<NN><base><nativ><NNeut_s_x>
 <Stem>Haus<NN><base><nativ><NNeut_es_$er>
@@ -96,7 +96,6 @@
 <Stem>Idyll<NN><base><fremd><NNeut_s_e>
 <Stem>Innere:<><NN><base><nativ><NNeut-Inner>
 <Stem>Intercity<NN><base><nativ><NMasc_0_s>
-<Stem>Jazz<NN><base><fremd><NMasc/Sg_0>
 <Stem>Jeans<NN><base><fremd><NFem_0_x>
 <Stem>Jugend<NN><base><nativ><NFem/Sg_0>
 <Stem>Juni<NN><base><fremd><NMasc_0_s>
@@ -132,7 +131,7 @@
 <Stem>Nuß<NN><base><nativ><NFem-s/$sse>
 <Stem>Oma<NN><base><nativ><NFem_0_s>
 <Stem>Opa<NN><base><nativ><NMasc_s_s>
-<Stem>Organismus<NN><base><fremd><NMasc-us/en>
+<Stem>Organismus<NN><base><fremd><NMasc-us0/en>
 <Stem>Ozean<NN><base><fremd><NMasc_s_e>
 <Stem>Palais<NN><base><fremd><NNeut_0_x>
 <Stem>Panorama<NN><base><fremd><NNeut-a/en>
@@ -160,7 +159,7 @@
 <Stem>Stewardess<NN><base><fremd><NFem_0_en>
 <Stem>Stewardeß<NN><base><fremd><NFem-s/ssen>
 <Stem>Tenor<IDX1><NN><base><fremd><NMasc_s_$e>
-<Stem>Terminus<NN><base><fremd><NMasc-us/i>
+<Stem>Terminus<NN><base><fremd><NMasc-us0/i>
 <Stem>Trecking<NN><base><fremd><NNeut_s_s>
 <Stem>Trecking<NN><base><fremd><NNeut/Sg_0>
 <Stem>Trekking<NN><base><fremd><NNeut_s_s>

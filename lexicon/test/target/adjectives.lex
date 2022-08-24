@@ -1,7 +1,7 @@
 <Stem>alle<IDX1><ADJ><base><nativ><AdjPosPred>
 <Stem>alt<ADJ><base><nativ><Adj$e>
 <Stem>Berliner<IDX2><ADJ><base><nativ><Adj0-Up>
-<Stem>echt<ADJ><base><nativ><AdjPos>
+<Stem>echt<ADJ><base><nativ><Adj+e>
 <Stem>entlegen<ADJ><base><nativ><AdjPos>
 <Stem>früh<ADJ><base><nativ><Adj+e>
 <Stem>g:bu:et:<><ADJ><base><nativ><AdjSup>
