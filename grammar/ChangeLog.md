@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-08-24:
+
+* add inflection class `NMasc-as/anten`
+
 2022-08-19:
 
 * rename `smor-minimal.fst` and `smor-index.fst` to `dwdsmor-minimal.fst` and

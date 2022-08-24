@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 3.5 -->
-<!-- Andreas Nolda 2022-05-18 -->
+<!-- Version 3.6 -->
+<!-- Andreas Nolda 2022-08-24 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -220,6 +220,11 @@
   <class gender="mask."
          genitive-singular="-s"
          nominative-plural="-o/en">NMasc-o/en</class>
+  <!-- genitive singular: geminate "s" + "-es"
+       nominative plural: "-anten" substituted for "-as" -->
+  <class gender="mask."
+         genitive-singular="-ses"
+         nominative-plural="-as/anten">NMasc-as/anten</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: "-en" substituted for "-us" -->
   <class gender="mask."
@@ -695,6 +700,15 @@
           <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
                                                          [@genitive-singular=$genitive-singular-marker]
                                                          [@nominative-plural='-us/e']
+                                                         [not(@dative-plural)]"/>
+        </xsl:when>
+        <!-- nominative plural: "-anten" substituted for "-as" -->
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'as') and
+                        $nominative-plural=replace($lemma,'as$','anten')">
+          <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-as/anten']
                                                          [not(@dative-plural)]"/>
         </xsl:when>
         <!-- nominative plural: "-en" substituted for "-us" -->

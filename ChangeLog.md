@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-08-24:
+
+* add support for masculine nouns with nominative plural forms ending in
+  "-anten" substituted for "-as"
+
 2022-08-23:
 
 * add support for paradigm indices

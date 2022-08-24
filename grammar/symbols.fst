@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 1.1
-% Andreas Nolda 2022-08-23
+% Version 1.2
+% Andreas Nolda 2022-08-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -63,11 +63,11 @@
 #Noun-inflection# = <N?/Pl_0><N?/Pl_x><NFem-Adj><NFem-a/en><NFem-in><NFem-is/en> \
                     <NFem-is/iden><NFem-s/$sse><NFem-s/sse><NFem-s/ssen><NFem/Pl_x> \
                     <NFem/Sg_0><NFem_0_$><NFem_0_$e><NFem_0_e><NFem_0_en><NFem_0_n> \
-                    <NFem_0_s><NFem_0_x><NMasc-Adj><NMasc-ns><NMasc-s/$sse> \
-                    <NMasc-s/Sg><NMasc-s/sse><NMasc-s0/sse><NMasc-o/en><NMasc-o/i> \
-                    <NMasc-us/e><NMasc-us/en><NMasc-us/i><NMasc/Pl_0><NMasc/Pl_x> \
-                    <NMasc/Sg_0><NMasc/Sg_es><NMasc/Sg_s><NMasc_0_s><NMasc_0_x> \
-                    <NMasc_en_en><NMasc_es_$e><NMasc_es_$er><NMasc_es_er> \
+                    <NFem_0_s><NFem_0_x><NMasc-Adj><NMasc-as/anten><NMasc-ns> \
+                    <NMasc-s/$sse><NMasc-s/Sg><NMasc-s/sse><NMasc-s0/sse><NMasc-o/en> \
+                    <NMasc-o/i><NMasc-us/e><NMasc-us/en><NMasc-us/i><NMasc/Pl_0> \
+                    <NMasc/Pl_x><NMasc/Sg_0><NMasc/Sg_es><NMasc/Sg_s><NMasc_0_s> \
+                    <NMasc_0_x><NMasc_en_en><NMasc_es_$e><NMasc_es_$er><NMasc_es_er> \
                     <NMasc_es_e><NMasc_es_en><NMasc_n_n><NMasc_s_$><NMasc_s_$x> \
                     <NMasc_s_0><NMasc_s_e><NMasc_s_$e><NMasc_s_en><NMasc_s_n> \
                     <NMasc_s_s><NMasc_s_x><NNeut-0/ien><NNeut-Adj><NNeut-Adj/Sg> \

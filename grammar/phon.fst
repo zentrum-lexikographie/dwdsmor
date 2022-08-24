@@ -1,6 +1,6 @@
 % phon.fst
-% Version 1.0
-% Andreas Nolda 2022-08-19
+% Version 1.1
+% Andreas Nolda 2022-08-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -256,22 +256,23 @@ $R15$ = ($Rf$ || $Rl$ || $Rm$) || ($Rn$ || $Rr$ || $Rt$)
 
 % suffix substution for plural forms
 % Virus<^pl>+en     -> Viren
+% Atlas<^pl>+anten  -> Atlanten
 % Museum<^pl>+en    -> Museen
 % Examen<^pl>+ina   -> Examina
 % Affrikata<^pl>+en -> Affrikaten
 % Konto<^pl>+en     -> Konten
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
-           [uioe]:<> <t>:t
+           [aeiou]:<> <t>:t
 
-% substitute "-is"/"-us"/"-um"/"-on"/"-os"/"-en"
+% substitute "-as"/"-is"/"-us"/"-um"/"-on"/"-os"/"-en"
 
-$R16$ = [uioe] <=> <> ([mns]:. <^pl>)
+$R16$ = [aeiou] <=> <> ([mns]:. <^pl>)
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
-           [mnsao]:<>
+           [amnos]:<>
 
-$R17$ = [mnsao] <=> <> <^pl>
+$R17$ = [amnos] <=> <> <^pl>
 
 % substitute "e"
 

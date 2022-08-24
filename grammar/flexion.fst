@@ -1,5 +1,5 @@
 % flexion.fst
-% Version 1.0
+% Version 1.1
 % Andreas Nolda 2022-08-24
 
 % based on code from SMORLemma by Rico Sennrich
@@ -276,6 +276,11 @@ $NMasc-o/en$ =              $NMasc/Sg_s$ | \
 % Saldo/Saldi
 $NMasc-o/i$ =             $NMasc/Sg_s$ | \
               {}:{<^pl>i} $NMasc/Pl_x$
+
+% Atlas/Atlanten
+$NMasc-as/anten$ =                                  $NMasc/Sg_0$ | \
+                   {<+NN><Masc><Gen><Sg>}:{<FB>ses} $N#$         | \
+                   {}:{<^pl>anten}                  $NMasc/Pl_x$
 
 % Kursus/Kurse
 $NMasc-us/e$ =             $NMasc/Sg_0$ | \
@@ -1551,13 +1556,14 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NFem_0_s>              $NFem_0_s$          | \
             <>:<NFem_0_x>              $NFem_0_x$          | \
             <>:<NMasc-Adj>             $NMasc-Adj$         | \
+            <>:<NMasc-as/anten>        $NMasc-as/anten$    | \
             <>:<NMasc-ns>              $NMasc-ns$          | \
+            <>:<NMasc-o/en>            $NMasc-o/en$        | \
+            <>:<NMasc-o/i>             $NMasc-o/i$         | \
             <>:<NMasc-s/$sse>          $NMasc-s/\$sse$     | \
             <>:<NMasc-s/Sg>            $NMasc-s/Sg$        | \
             <>:<NMasc-s/sse>           $NMasc-s/sse$       | \
             <>:<NMasc-s0/sse>          $NMasc-s0/sse$      | \
-            <>:<NMasc-o/en>            $NMasc-o/en$        | \
-            <>:<NMasc-o/i>             $NMasc-o/i$         | \
             <>:<NMasc-us/e>            $NMasc-us/e$        | \
             <>:<NMasc-us/en>           $NMasc-us/en$       | \
             <>:<NMasc-us/i>            $NMasc-us/i$        | \
