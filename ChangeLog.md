@@ -4,6 +4,8 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 * add support for masculine nouns with nominative plural forms ending in
   "-anten" substituted for "-as"
+* add support for neuter nouns with nominative plural forms ending in "-en"
+  substituted for "-us"
 
 2022-08-23:
 

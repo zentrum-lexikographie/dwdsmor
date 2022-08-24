@@ -278,23 +278,32 @@ $NMasc-o/i$ =             $NMasc/Sg_s$ | \
               {}:{<^pl>i} $NMasc/Pl_x$
 
 % Atlas/Atlanten
-$NMasc-as/anten$ =                                  $NMasc/Sg_0$ | \
-                   {<+NN><Masc><Gen><Sg>}:{<FB>ses} $N#$         | \
-                   {}:{<^pl>anten}                  $NMasc/Pl_x$
+$NMasc-as0/anten$ =                 $NMasc/Sg_0$ | \
+                    {}:{<^pl>anten} $NMasc/Pl_x$
+
+% Atlas-ses/Atlanten
+$NMasc-as/anten$ =                 $NMasc-s/Sg$ | \
+                   {}:{<^pl>anten} $NMasc/Pl_x$
 
 % Kursus/Kurse
 $NMasc-us/e$ =             $NMasc/Sg_0$ | \
                {}:{<^pl>e} $NMasc/Pl_0$
 
 % Virus/Viren
-$NMasc-us/en$ =                                  $NMasc/Sg_0$ | \
-                {<+NN><Masc><Gen><Sg>}:{<FB>ses} $N#$         | \
-                {}:{<^pl>en}                     $NMasc/Pl_x$
+$NMasc-us0/en$ =              $NMasc/Sg_0$ | \
+                 {}:{<^pl>en} $NMasc/Pl_x$
+
+% Virus-se/Viren
+$NMasc-us/en$ =              $NMasc-s/Sg$ | \
+                {}:{<^pl>en} $NMasc/Pl_x$
 
 % Intimus/Intimi
-$NMasc-us/i$ =                                  $NMasc/Sg_0$ | \
-               {<+NN><Masc><Gen><Sg>}:{<FB>ses} $N#$         | \
-               {}:{<^pl>i}                      $NMasc/Pl_x$
+$NMasc-us0/i$ =            $NMasc/Sg_0$ | \
+               {}:{<^pl>i} $NMasc/Pl_x$
+
+% Intimus-se/Intimi
+$NMasc-us/i$ =             $NMasc-s/Sg$ | \
+               {}:{<^pl>i} $NMasc/Pl_x$
 
 % Beamte(r); Gefreite(r)
 $NMasc-Adj$ = {<+NN><Masc><Nom><Sg><Wk>}:{}  $N#$ | \
@@ -423,6 +432,10 @@ $NNeut-um/a$ =             $NNeut/Sg_s$ | \
 % Museum/Museen
 $NNeut-um/en$ =              $NNeut/Sg_s$ | \
                 {}:{<^pl>en} $NNeut/Pl_x$
+
+% Virus/Viren
+$NNeut-us0/en$ =              $NNeut/Sg_0$ | \
+                 {}:{<^pl>en} $NNeut/Pl_x$
 
 % Junge(s) ('young animal')
 $NNeut-Adj$ = {<+NN><Neut><NA><Sg><Wk>}:{}   $N#$ | \
@@ -889,7 +902,7 @@ $Indef-mehrer$ = {<+INDEF>}:{<FB>} $IndefSuff-mehrer$
 $ArtIndef$ = {<+ART><Indef>}:{<FB>} $ArtIndefSuff$
 
 % 'n, 'ne (clitic article)
-$ArtIndef-n$ = {<+ART><Indef>}:{<FB>} $ArtIndefAttrSuff$ {<NonSt>}:{}
+$ArtIndef-n$ = {<+ART><Indef>}:{<FB>} $ArtIndefAttrSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 448)
 
 % einer, eine, eines (indefinite pronoun)
 $Indef-ein$ = {<+INDEF>}:{<FB>} $IndefSuff-ein$
@@ -1557,6 +1570,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NFem_0_x>              $NFem_0_x$          | \
             <>:<NMasc-Adj>             $NMasc-Adj$         | \
             <>:<NMasc-as/anten>        $NMasc-as/anten$    | \
+            <>:<NMasc-as0/anten>       $NMasc-as0/anten$   | \
             <>:<NMasc-ns>              $NMasc-ns$          | \
             <>:<NMasc-o/en>            $NMasc-o/en$        | \
             <>:<NMasc-o/i>             $NMasc-o/i$         | \
@@ -1566,7 +1580,9 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NMasc-s0/sse>          $NMasc-s0/sse$      | \
             <>:<NMasc-us/e>            $NMasc-us/e$        | \
             <>:<NMasc-us/en>           $NMasc-us/en$       | \
+            <>:<NMasc-us0/en>          $NMasc-us0/en$      | \
             <>:<NMasc-us/i>            $NMasc-us/i$        | \
+            <>:<NMasc-us0/i>           $NMasc-us0/i$       | \
             <>:<NMasc/Pl_0>            $NMasc/Pl_0$        | \
             <>:<NMasc/Pl_x>            $NMasc/Pl_x$        | \
             <>:<NMasc/Sg_0>            $NMasc/Sg_0$        | \
@@ -1605,6 +1621,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NNeut-s/sse>           $NNeut-s/sse$       | \
             <>:<NNeut-um/a>            $NNeut-um/a$        | \
             <>:<NNeut-um/en>           $NNeut-um/en$       | \
+            <>:<NNeut-us0/en>          $NNeut-us0/en$      | \
             <>:<NNeut/Pl_x>            $NNeut/Pl_x$        | \
             <>:<NNeut/Sg_0>            $NNeut/Sg_0$        | \
             <>:<NNeut/Sg_es>           $NNeut/Sg_es$       | \

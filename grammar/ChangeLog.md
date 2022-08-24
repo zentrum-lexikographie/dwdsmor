@@ -2,7 +2,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2022-08-24:
 
-* add inflection class `NMasc-as/anten`
+* add inflection classes `NMasc-as/anten`, `NMasc-as0/anten`, `NMasc-us0/i`,
+  `NMasc-us0/en`, and `NNeut-us0/en`
 
 2022-08-19:
 

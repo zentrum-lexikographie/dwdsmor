@@ -220,11 +220,21 @@
   <class gender="mask."
          genitive-singular="-s"
          nominative-plural="-o/en">NMasc-o/en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-anten" substituted for "-as" -->
+  <class gender="mask."
+         genitive-singular="-"
+         nominative-plural="-as/anten">NMasc-as0/anten</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: "-anten" substituted for "-as" -->
   <class gender="mask."
          genitive-singular="-ses"
          nominative-plural="-as/anten">NMasc-as/anten</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-us" -->
+  <class gender="mask."
+         genitive-singular="-"
+         nominative-plural="-us/en">NMasc-us0/en</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: "-en" substituted for "-us" -->
   <class gender="mask."
@@ -235,25 +245,20 @@
   <class gender="mask."
          genitive-singular="-"
          nominative-plural="-us/e">NMasc-us/e</class>
-  <!-- genitive singular: unmarked
-       nominative plural: "-en" substituted for "-us" -->
-  <class gender="mask."
-         genitive-singular="-"
-         nominative-plural="-us/en">NMasc-us/en</class>
   <!-- genitive singular: "-s"
        nominative plural: "-i" substituted for "-o" -->
   <class gender="mask."
          genitive-singular="-s"
          nominative-plural="-o/i">NMasc-o/i</class>
-  <!-- genitive singular: geminate "s" + "-es"
-       nominative plural: "-i" substituted for "-us" -->
-  <class gender="mask."
-         genitive-singular="-ses"
-         nominative-plural="-us/i">NMasc-us/i</class>
   <!-- genitive singular: unmarked
        nominative plural: "-i" substituted for "-us" -->
   <class gender="mask."
          genitive-singular="-"
+         nominative-plural="-us/i">NMasc-us0/i</class>
+  <!-- genitive singular: geminate "s" + "-es"
+       nominative plural: "-i" substituted for "-us" -->
+  <class gender="mask."
+         genitive-singular="-ses"
          nominative-plural="-us/i">NMasc-us/i</class>
   <!-- neuter nouns: -->
   <!-- genitive singular: "-(e)s"
@@ -435,6 +440,11 @@
   <class gender="neutr."
          genitive-singular="-s"
          nominative-plural="-um/en">NNeut-um/en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-us" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-us/en">NNeut-us0/en</class>
   <!-- feminine nouns: -->
   <!-- genitive singular: unmarked
        nominative plural: "-e" -->
