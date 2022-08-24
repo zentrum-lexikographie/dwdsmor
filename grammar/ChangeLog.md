@@ -4,6 +4,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 * add inflection classes `NMasc-as/anten`, `NMasc-as0/anten`, `NMasc-us0/i`,
   `NMasc-us0/en`, and `NNeut-us0/en`
+* remove support for post-verbal clitic "'s"
 
 2022-08-19:
 

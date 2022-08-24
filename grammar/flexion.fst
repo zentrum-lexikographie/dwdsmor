@@ -541,23 +541,19 @@ $Adj0-Up$ = {<+ADJ><Pos><Invar>}:{} $Adj#Up$
 % bloß, bloß-; derartig, derartig-
 $AdjPos$ = {<+ADJ><Pos><PA>}:{<FB>} $Adj#$ | \
            {<+ADJ><Pos>}:{<FB>}     $AdjFlexSuff$
-%          {<^ADJ><Pos>}:{<FB>}     $AdjNNSuff$ % nominalization
 
 % Rh-positiv, Rh-positiv-; Tbc-krank, Tbc-krank-
 $AdjPos-Up$ = {<+ADJ><Pos><PA>}:{<FB>} $Adj#Up$ | \
               {<+ADJ><Pos>}:{<FB>}     $AdjFlexSuff-Up$
-%             {<^ADJ><Pos>}:{<FB>}     $AdjNNSuff$ % nominalization
 
 % besser, besser-; höher, höher-
 $AdjComp$ = {<+ADJ><Comp><PA>}:{er} $Adj#$ | \
             {<+ADJ><Comp>}:{er}     $AdjFlexSuff$
-%           {<^ADJ><Comp>}:{er}     $AdjNNSuff$ % nominalization
 
 % best, besten, best-; hoch:höch-
 $AdjSup$ = {<+ADJ><Sup>}:{sten}     $Adj#$ | \
            {<+ADJ><Sup><PA>}:{sten} $Adj#$ | \
            {<+ADJ><Sup>}:{st}       $AdjFlexSuff$
-%          {<^ADJ><Sup>}:{st}       $AdjNNSuff$
 
 % mehr
 $AdjComp0$ = {<+ADJ><Comp><Invar>}:{} $Adj#$
@@ -611,7 +607,6 @@ $AdjPosPred$ = {<+ADJ><Pos><Pred>}:{} $Adj#$
 % ander-; vorig-
 $AdjPosAttr$ = {<+ADJ><Pos><Lemma>}:{} $Adj#$ | \
                {<+ADJ><Pos>}:{<FB>} $AdjFlexSuff$
-%              {<^ADJ><Pos>}:{}     $AdjNNSuff$  % nominalization
 
 % Ander-; Vorig-
 $AdjPosAttr-Up$ = {<+ADJ><Pos><Lemma>}:{} $Adj#Up$ | \
@@ -1130,51 +1125,49 @@ $AdvSup$ = {<+ADV><Sup>}:{sten} $Closed#$
 
 % verbs
 
-$V+(es)$ = {/'s}:{'s}? $V#$
-
 % sei; hab/habe; werde; tu
-$VAImpSg$ = {<+V><Imp><Sg>}:{<^imp>} $V+(es)$
+$VAImpSg$ = {<+V><Imp><Sg>}:{<^imp>} $V#$
 
 % seid; habt; werdet; tut
-$VAImpPl$ = {<+V><Imp><Pl>}:{<^imp>} $V+(es)$
+$VAImpPl$ = {<+V><Imp><Pl>}:{<^imp>} $V#$
 
 % bin; habe; werde; tue
-$VAPres1SgInd$ = {<+V><1><Sg><Pres><Ind>}:{} $V+(es)$
+$VAPres1SgInd$ = {<+V><1><Sg><Pres><Ind>}:{} $V#$
 
 % bist; hast; wirst; tust
-$VAPres2SgInd$ = {<+V><2><Sg><Pres><Ind>}:{} $V+(es)$
+$VAPres2SgInd$ = {<+V><2><Sg><Pres><Ind>}:{} $V#$
 
 % ist; hat; wird; tut
-$VAPres3SgInd$ = {<+V><3><Sg><Pres><Ind>}:{} $V+(es)$
+$VAPres3SgInd$ = {<+V><3><Sg><Pres><Ind>}:{} $V#$
 
 % sind; haben; werden; tun
-$VAPres1/3PlInd$ = {<+V><13><Pl><Pres><Ind>}:{} $V+(es)$
+$VAPres1/3PlInd$ = {<+V><13><Pl><Pres><Ind>}:{} $V#$
 
 % seid; habt; werdet; tut
-$VAPres2PlInd$ = {<+V><2><Pl><Pres><Ind>}:{} $V+(es)$
+$VAPres2PlInd$ = {<+V><2><Pl><Pres><Ind>}:{} $V#$
 
 % sei; habe; werde; tue
-$VAPres1/3SgKonj$ = {<+V><13><Sg><Pres><Subj>}:{<FB>} $V+(es)$
+$VAPres1/3SgKonj$ = {<+V><13><Sg><Pres><Subj>}:{<FB>} $V#$
 
 % sei-st, seie-st; habe-st; werde-st; tue-st
-$VAPres2SgKonj$ = {<+V><2><Sg><Pres><Subj>}:{<FB>st} $V+(es)$
+$VAPres2SgKonj$ = {<+V><2><Sg><Pres><Subj>}:{<FB>st} $V#$
 
-$VAPresKonjSg$ = {<+V><13><Sg><Pres><Subj>}:{<FB>}  $V+(es)$ |\ % sei-; habe-; werde-; tue-
-                 {<+V><2><Sg><Pres><Subj>}:{<FB>st} $V+(es)$ % sei-st; habe-st; werde-st; tue-st
+$VAPresKonjSg$ = {<+V><13><Sg><Pres><Subj>}:{<FB>}  $V#$ | \
+                 {<+V><2><Sg><Pres><Subj>}:{<FB>st} $V#$
 
-$VAPresKonjPl$ = {<+V><13><Pl><Pres><Subj>}:{<FB>n} $V+(es)$ |\ % seie-n; habe-n; werde-n; tu-n
-                 {<+V><2><Pl><Pres><Subj>}:{<FB>t}  $V+(es)$ % seie-t; habe-t; werde-et; tu-t
+$VAPresKonjPl$ = {<+V><13><Pl><Pres><Subj>}:{<FB>n} $V#$ | \
+                 {<+V><2><Pl><Pres><Subj>}:{<FB>t}  $V#$
 
 % ward, wardst
-$VAPastIndSg$ = {<+V><13><Sg><Past><Ind>}:{<FB>}  $V+(es)$ | \
-                {<+V><2><Sg><Past><Ind>}:{<FB>st} $V+(es)$
+$VAPastIndSg$ = {<+V><13><Sg><Past><Ind>}:{<FB>}  $V#$ | \
+                {<+V><2><Sg><Past><Ind>}:{<FB>st} $V#$
 
 % wurden, wurdet
-$VAPastIndPl$ = {<+V><13><Pl><Past><Ind>}:{<FB>en}  $V+(es)$ | \
-                {<+V><2><Pl><Past><Ind>}:{<INS-E>t} $V+(es)$
+$VAPastIndPl$ = {<+V><13><Pl><Past><Ind>}:{<FB>en}  $V#$ | \
+                {<+V><2><Pl><Past><Ind>}:{<INS-E>t} $V#$
 
-$VAPastKonj2$ = {<+V><2><Sg><Past><Subj>}:{<FB>st} $V+(es)$ |\ % wär-st
-                {<+V><2><Pl><Past><Subj>}:{<FB>t}  $V+(es)$    % wär-t
+$VAPastKonj2$ = {<+V><2><Sg><Past><Subj>}:{<FB>st} $V#$ | \
+                {<+V><2><Pl><Past><Subj>}:{<FB>t}  $V#$
 
 $haben$ = {<haben>}:{}
 
@@ -1182,11 +1175,8 @@ $sein$ = {<sein>}:{}
 
 $VPPres$ = {<+V><PPres>}:{}          $V#$ | \
            {<+V><PPres><zu>}:{<^zz>} $V#$
-%          {<^VPRES>}:{}             $Adj+$ | \
-%          {<^VPRES><zu>}:{<^zz>}    $Adj+$
 
 $VPPast$ = {<+V><PPast>}:{<^pp>} $V#$
-%          {<^VPAST>}:{<^pp>}    $Adj&$
 
 $VPPast+haben$ = $VPPast$ $haben$
 
@@ -1198,95 +1188,93 @@ $VPP-t$ =  {}:{<INS-E>t} $VPPast$
 
 $VInf$ = {<+V><Inf>}:{}          $V#$ | \
          {<+V><Inf><zu>}:{<^zz>} $V#$
-%        {<^VINF>}:{}            $NNeut/Sg_s$
 
 $VInf+PPres$ =        $VInf$ | \
                {}:{d} $VPPres$
 
 $VInfStem$ = {}:{<FB>en} $VInf+PPres$
 
-% sein, tun
+% sein, seiend; tun, tuend
 $VInfStem-n$ = {}:{<FB>n}   $VInf$ | \
-% seiend, tuend
                {}:{<FB>end} $VPPres$
 
 $VInf-en$ =    $VInfStem$
 
 $VInf-n$ =     $VInfStem-n$
 
-% kommt! schaut! arbeit-e-t
-$VImpPl$ = {<+V><Imp><Pl>}:{<INS-E>t<^imp>} $V+(es)$
+% kommt, schaut, arbeit-e-t
+$VImpPl$ = {<+V><Imp><Pl>}:{<INS-E>t<^imp>} $V#$
 
-% komm! schau! arbeit-e
-$VImpSg$ = {<+V><Imp><Sg>}:{<INS-E><^imp>} $V+(es)$
+% komm, schau, arbeit-e
+$VImpSg$ = {<+V><Imp><Sg>}:{<INS-E><^imp>} $V#$
 
-% flicht! (not: flicht-e!)
-$VImpSg0$ = {<+V><Imp><Sg>}:{<^imp>} $V+(es)$
+% flicht
+$VImpSg0$ = {<+V><Imp><Sg>}:{<^imp>} $V#$
 
 % (ich) will, bedarf
-$VPres1Irreg$ = {<+V><1><Sg><Pres><Ind>}:{<FB>} $V+(es)$
+$VPres1Irreg$ = {<+V><1><Sg><Pres><Ind>}:{<FB>} $V#$
 
 % (ich) liebe, rate, sammle
-$VPres1Reg$ = {<+V><1><Sg><Pres><Ind>}:{<FB>e} $V+(es)$
+$VPres1Reg$ = {<+V><1><Sg><Pres><Ind>}:{<FB>e} $V#$
 
 % (du) hilfst, rätst
-$VPres2Irreg$ = {<+V><2><Sg><Pres><Ind>}:{<FB>st} $V+(es)$
+$VPres2Irreg$ = {<+V><2><Sg><Pres><Ind>}:{<FB>st} $V#$
 
 % (du) liebst, biet-e-st, sammelst
-$VPres2Reg$ = {<+V><2><Sg><Pres><Ind>}:{<INS-E>st} $V+(es)$
+$VPres2Reg$ = {<+V><2><Sg><Pres><Ind>}:{<INS-E>st} $V#$
 
 % (er) rät, will
-$VPres3Irreg$ = {<+V><3><Sg><Pres><Ind>}:{<FB>} $V+(es)$
+$VPres3Irreg$ = {<+V><3><Sg><Pres><Ind>}:{<FB>} $V#$
 
 % (er) liebt, hilft, sammelt
-$VPres3Reg$ = {<+V><3><Sg><Pres><Ind>}:{<INS-E>t} $V+(es)$
+$VPres3Reg$ = {<+V><3><Sg><Pres><Ind>}:{<INS-E>t} $V#$
 
 % (wir) lieben, wollen, sammeln
-$VPresPlInd$ = {<+V><13><Pl><Pres><Ind>}:{<FB>en}  $V+(es)$ | \
+$VPresPlInd$ = {<+V><13><Pl><Pres><Ind>}:{<FB>en}  $V#$ | \
 % (ihr) liebt, biet-e-t, sammelt
-               {<+V><2><Pl><Pres><Ind>}:{<INS-E>t} $V+(es)$
+               {<+V><2><Pl><Pres><Ind>}:{<INS-E>t} $V#$
 
 % (ich) liebe, wolle, sammle
-$VPresKonj$ = {<+V><13><Sg><Pres><Subj>}:{<FB>e}  $V+(es)$ | \
+$VPresKonj$ = {<+V><13><Sg><Pres><Subj>}:{<FB>e}  $V#$ | \
 % (du) liebest, wollest, sammelst
-              {<+V><2><Sg><Pres><Subj>}:{<FB>est} $V+(es)$ | \
+              {<+V><2><Sg><Pres><Subj>}:{<FB>est} $V#$ | \
 % (wir) lieben, wollen, sammeln
-              {<+V><13><Pl><Pres><Subj>}:{<FB>en} $V+(es)$ | \
+              {<+V><13><Pl><Pres><Subj>}:{<FB>en} $V#$ | \
 % (ihr) liebet, wollet, sammelt
-              {<+V><2><Pl><Pres><Subj>}:{<FB>et}  $V+(es)$
+              {<+V><2><Pl><Pres><Subj>}:{<FB>et}  $V#$
 
 % (ich) liebte, wollte, arbeit-e-te
-$VPastIndReg$ = {<+V><13><Sg><Past><Ind>}:{<INS-E>te}  $V+(es)$ | \
+$VPastIndReg$ = {<+V><13><Sg><Past><Ind>}:{<INS-E>te}  $V#$ | \
 % (ich) brachte
-                {<+V><2><Sg><Past><Ind>}:{<INS-E>test} $V+(es)$ | \
-                {<+V><13><Pl><Past><Ind>}:{<INS-E>ten} $V+(es)$ | \
-                {<+V><2><Pl><Past><Ind>}:{<INS-E>tet}  $V+(es)$
+                {<+V><2><Sg><Past><Ind>}:{<INS-E>test} $V#$ | \
+                {<+V><13><Pl><Past><Ind>}:{<INS-E>ten} $V#$ | \
+                {<+V><2><Pl><Past><Ind>}:{<INS-E>tet}  $V#$
 
 % (ich) wurde
-$VPastIndIrreg$ = {<+V><13><Sg><Past><Ind>}:{<FB>e}  $V+(es)$ | \
-                  {<+V><2><Sg><Past><Ind>}:{<FB>est} $V+(es)$ | \
-                  {<+V><13><Pl><Past><Ind>}:{<FB>en} $V+(es)$ | \
-                  {<+V><2><Pl><Past><Ind>}:{<FB>et}  $V+(es)$
+$VPastIndIrreg$ = {<+V><13><Sg><Past><Ind>}:{<FB>e}  $V#$ | \
+                  {<+V><2><Sg><Past><Ind>}:{<FB>est} $V#$ | \
+                  {<+V><13><Pl><Past><Ind>}:{<FB>en} $V#$ | \
+                  {<+V><2><Pl><Past><Ind>}:{<FB>et}  $V#$
 
 % (ich) fuhr, ritt, fand
-$VPastIndStr$ = {<+V><13><Sg><Past><Ind>}:{<FB>}     $V+(es)$ | \
+$VPastIndStr$ = {<+V><13><Sg><Past><Ind>}:{<FB>}     $V#$ | \
 % (du) fuhrst, ritt-e-st, fand-e-st
-                {<+V><2><Sg><Past><Ind>}:{<INS-E>st} $V+(es)$ | \
-                {<+V><13><Pl><Past><Ind>}:{<FB>en}   $V+(es)$ | \
-                {<+V><2><Pl><Past><Ind>}:{<INS-E>t}  $V+(es)$
+                {<+V><2><Sg><Past><Ind>}:{<INS-E>st} $V#$ | \
+                {<+V><13><Pl><Past><Ind>}:{<FB>en}   $V#$ | \
+                {<+V><2><Pl><Past><Ind>}:{<INS-E>t}  $V#$
 
 % (ich) liebte, wollte, arbeit-e-te
-$VPastKonjReg$ = {<+V><13><Sg><Past><Subj>}:{<INS-E>te}  $V+(es)$ | \
+$VPastKonjReg$ = {<+V><13><Sg><Past><Subj>}:{<INS-E>te}  $V#$ | \
 % (ich) brächte
-                 {<+V><2><Sg><Past><Subj>}:{<INS-E>test} $V+(es)$ | \
-                 {<+V><13><Pl><Past><Subj>}:{<INS-E>ten} $V+(es)$ | \
-                 {<+V><2><Pl><Past><Subj>}:{<INS-E>tet}  $V+(es)$
+                 {<+V><2><Sg><Past><Subj>}:{<INS-E>test} $V#$ | \
+                 {<+V><13><Pl><Past><Subj>}:{<INS-E>ten} $V#$ | \
+                 {<+V><2><Pl><Past><Subj>}:{<INS-E>tet}  $V#$
 
 % (ich) führe, ritte, fände
-$VPastKonjStr$ = {<+V><13><Sg><Past><Subj>}:{<FB>e}  $V+(es)$ | \
-                 {<+V><2><Sg><Past><Subj>}:{<FB>est} $V+(es)$ | \
-                 {<+V><13><Pl><Past><Subj>}:{<FB>en} $V+(es)$ | \
-                 {<+V><2><Pl><Past><Subj>}:{<FB>et}  $V+(es)$
+$VPastKonjStr$ = {<+V><13><Sg><Past><Subj>}:{<FB>e}  $V#$ | \
+                 {<+V><2><Sg><Past><Subj>}:{<FB>est} $V#$ | \
+                 {<+V><13><Pl><Past><Subj>}:{<FB>en} $V#$ | \
+                 {<+V><2><Pl><Past><Subj>}:{<FB>et}  $V#$
 
 $VFlexPres2$ = $VPres2Irreg$ | \
                $VPres3Reg$

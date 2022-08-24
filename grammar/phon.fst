@@ -90,6 +90,8 @@ ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] <e> \
 
 $R4c$ = (ß <FB>?) <SSalt> <=> <>
 
+$R4$ = $R4a$ || $R4b$ || $R4c$
+
 
 % "e"-elision after "e"
 % Bote+e   -> Bote
@@ -111,28 +113,18 @@ $R5$ = e <=> <> ($B$ e)
 $R6$ = ([bcdfghjklmnpqrtuvwy] <FB>? $B$) e => <> (s <^Gen>)
 
 
-% "e"-elision before "'"
-% hab+e's  -> hab's
-% kauf+t's -> kauft's
-
-ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] <e> \
-           e:<>
-
-$R7$ = e <=> <> ('s)
-
-
 % adjective-"el"/"er" "e"-elision
 % dunkel<^Ax>+e -> dunkle
 % teuer<^Ax>+e  -> teure
 
-$R8$ = e <=> <> ([lr] <^Ax> $B$ e)
+$R7$ = e <=> <> ([lr] <^Ax> $B$ e)
 
 
 % optional pronoun-"er" "e"-elision
 % unser<^Px>+en   -> unsren, unsern
 % unserig<^Px>+en -> unsrigen
 
-$R8a$ = (e => <> (r(ig)? <^Px> $B$? e)) | \
+$R8$ = (e => <> (r(ig)? <^Px> $B$? e)) | \
         ((er <^Px> $B$) e => <> ([mns]))
 
 
@@ -148,14 +140,16 @@ $R8a$ = (e => <> (r(ig)? <^Px> $B$? e)) | \
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] <e> \
            e:<>
 
-$R9$ = (<e>[lr] $B$) e <=> <> (n | s?t)
+$R9a$ = (<e>[lr] $B$) e <=> <> (n | s?t)
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] <e> \
            <e>:<>
 
-$R9a$ = <e> => <> ([lr] $B$ [eui])
+$R9b$ = <e> => <> ([lr] $B$ [eui])
 
-$R10$ = <e> <=> <> (n $B$ [eui])
+$R9c$ = <e> <=> <> (n $B$ [eui])
+
+$R9$ = $R9a$ || $R9b$ || $R9c$
 
 
 % "s"-elimination
@@ -167,7 +161,7 @@ $R10$ = <e> <=> <> (n $B$ [eui])
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
            <e>:e s:<>
 
-$R11$ = ([xsßz] $B$) s <=> <> (t)
+$R10$ = ([xsßz] $B$) s <=> <> (t)
 
 
 % "e"-epenthesis
@@ -183,7 +177,7 @@ ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
 % gefeiert&ste -> gefeiertste
 % gefeiert&ste -> gefeiertste
 
-$R12$ = ([a-df-hj-z]e[rl]t) <INS-E> <=> <> (st)
+$R11$ = ([a-df-hj-z]e[rl]t) <INS-E> <=> <> (st)
 
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
@@ -191,14 +185,14 @@ ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
 
 % gewappn&t&st -> gewappnetst
 
-$R13$ = ((((c[hk])|[bdfgmp])n | [a-zäöüß]t) <INS-E> <=> e) & \
+$R12$ = ((((c[hk])|[bdfgmp])n | [a-zäöüß]t) <INS-E> <=> e) & \
         ((<INS-E>:e[dt]) <INS-E> <=> <>)
 
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
            <INS-E>:e
 
-$R14$ = ([dt]m? | tw) <INS-E> <=> e
+$R13$ = ([dt]m? | tw) <INS-E> <=> e
 
 
 % consonant reduction in old orthography
@@ -212,46 +206,47 @@ $B$ = [<CB><FB>]
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
      f:[<f><>] <OLDORTH>:<>
 
-$Rf$ = (f f <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [fF] [aeiouäöü])) & \
-       (f f <=> <x> ([#morpheme_boundary_marker#]* $B$ [fF] [aeiouäöü])) & \
-       ((f:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
+$R14a$ = (f f <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [fF] [aeiouäöü])) & \
+         (f f <=> <x> ([#morpheme_boundary_marker#]* $B$ [fF] [aeiouäöü])) & \
+         ((f:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
            l:[<l><>] <OLDORTH>:<> <f>:f
 
-$Rl$ = (l l <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [lL] [aeiouäöü])) & \
-       (l l <=> <x> ([#morpheme_boundary_marker#]* $B$ [lL] [aeiouäöü])) & \
-       ((l:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
+$R14b$ = (l l <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [lL] [aeiouäöü])) & \
+         (l l <=> <x> ([#morpheme_boundary_marker#]* $B$ [lL] [aeiouäöü])) & \
+         ((l:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
            m:[<m><>] <OLDORTH>:<> <l>:l
 
-$Rm$ = (m m <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [mM] [aeiouäöü])) & \
-       (m m <=> <x> ([#morpheme_boundary_marker#]* $B$ [mM] [aeiouäöü])) & \
-       ((m:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
+$R14c$ = (m m <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [mM] [aeiouäöü])) & \
+         (m m <=> <x> ([#morpheme_boundary_marker#]* $B$ [mM] [aeiouäöü])) & \
+         ((m:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
            n:[<n><>] <OLDORTH>:<> <m>:m
 
-$Rn$ = (n n <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [nN] [aeiouäöü])) & \
-       (n n <=> <x> ([#morpheme_boundary_marker#]* $B$ [nN] [aeiouäöü])) & \
-       ((n:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
+$R14d$ = (n n <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [nN] [aeiouäöü])) & \
+         (n n <=> <x> ([#morpheme_boundary_marker#]* $B$ [nN] [aeiouäöü])) & \
+         ((n:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
            r:[<r><>] <OLDORTH>:<> <n>:n
 
-$Rr$ = (r r <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [rR] [aeiouäöü])) & \
-       (r r <=> <x> ([#morpheme_boundary_marker#]* $B$ [rR] [aeiouäöü])) & \
-       ((r:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
+$R14e$ = (r r <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [rR] [aeiouäöü])) & \
+         (r r <=> <x> ([#morpheme_boundary_marker#]* $B$ [rR] [aeiouäöü])) & \
+         ((r:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
            t:[<t><>] <OLDORTH>:<> <r>:r
 
-$Rt$ = (t t <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [tT] [aeiouäöü])) & \
-       (t t <=> <x> ([#morpheme_boundary_marker#]* $B$ [tT] [aeiouäöü])) & \
-       ((t:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
+$R14f$ = (t t <=> <>  ([#morpheme_boundary_marker#]* <OLDORTH>:. $B$ [tT] [aeiouäöü])) & \
+         (t t <=> <x> ([#morpheme_boundary_marker#]* $B$ [tT] [aeiouäöü])) & \
+         ((t:<> [#morpheme_boundary_marker#]*) <OLDORTH> <=> <>)
 
-$R15$ = ($Rf$ || $Rl$ || $Rm$) || ($Rn$ || $Rr$ || $Rt$)
+$R14$ = ($R14a$ || $R14b$ || $R14c$) || \
+        ($R14d$ || $R14e$ || $R14f$)
 
 
 % suffix substution for plural forms
@@ -267,19 +262,21 @@ ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
 
 % substitute "-as"/"-is"/"-us"/"-um"/"-on"/"-os"/"-en"
 
-$R16$ = [aeiou] <=> <> ([mns]:. <^pl>)
+$R15a$ = [aeiou] <=> <> ([mns]:. <^pl>)
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
            [amnos]:<>
 
-$R17$ = [amnos] <=> <> <^pl>
+$R15b$ = [amnos] <=> <> <^pl>
 
 % substitute "e"
 
 ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] \
            e:<>
 
-$R18$ = e <=> <> <^Del>
+$R15c$ = e <=> <> <^Del>
+
+$R15$ = $R15a$ || $R15b$ || $R15c$
 
 
 % marker deletion
@@ -288,7 +285,7 @@ ALPHABET = [#char# #morpheme_boundary_marker# <FB><CB><^UC>] \
            [<INS-E><WB><^Ax><^Px><^Gen><^Del><^pl>]:<> \
            <FB>:<\~>
 
-$R19$ = .*
+$R16$ = .*
 
 
 % lower-case conversion
@@ -296,7 +293,7 @@ $R19$ = .*
 ALPHABET = [#char# #morpheme_boundary_marker#] <^UC> \
            <CB>:<#> [A-ZÄÖÜ]:[a-zäöü]
 
-$R20$ = <CB>:<#> [A-ZÄÖÜ] <=> [a-zäöü] [a-zäöüßáéíóú]
+$R17$ = <CB>:<#> [A-ZÄÖÜ] <=> [a-zäöü] [a-zäöüßáéíóú]
 
 
 % upper-case conversion
@@ -304,22 +301,23 @@ $R20$ = <CB>:<#> [A-ZÄÖÜ] <=> [a-zäöü] [a-zäöüßáéíóú]
 ALPHABET = [#char# #morpheme_boundary_marker#]  \
            <^UC>:<> [a-zäöü]:[A-ZÄÖÜ]
 
-$R21$ = ((<^UC>:<>) [a-zäöü] <=> [A-ZÄÖÜ]) & \
+$R18$ = ((<^UC>:<>) [a-zäöü] <=> [A-ZÄÖÜ]) & \
         !(.* <^UC>:<> .:[a-zäöü] .*)
 
 
 % word-initial morpheme-boundary deletion
 
-$R22$ = <#>:<>* <#>:<>* [#char#] [#char# #morpheme_boundary_marker#]*
+$R19$ = <#>:<>* <#>:<>* [#char#] [#char# #morpheme_boundary_marker#]*
 
 
 % duplicate morpheme-boundary deletion
 
 ALPHABET = [#char# #morpheme_boundary_marker#]
 
-$R23$ = [#morpheme_boundary_marker#]:<> ^-> (__[#morpheme_boundary_marker#])
+$R20$ = [#morpheme_boundary_marker#]:<> ^-> (__[#morpheme_boundary_marker#])
 
 
 % composition of rules
 
-$PHON$ = $R1$ || $R2$ || $R3$ || $R4a$ || $R4b$ || $R4c$ || $R5$ || $R6$ || $R7$ || $R8$ || $R8a$ || $R9$ || $R9a$ || $R10$ || $R11$ || $R12$ || $R13$ || $R14$ || $R15$ || $R16$ || $R17$ || $R18$ || $R19$ || $R20$ || $R21$ || $R22$ || $R23$
+$PHON$ = $R1$  || $R2$  || $R3$  || $R4$  || $R5$  || $R6$  || $R7$  || $R8$  || $R9$  || $R10$ || \
+         $R11$ || $R12$ || $R13$ || $R14$ || $R15$ || $R16$ || $R17$ || $R18$ || $R19$ || $R20$
