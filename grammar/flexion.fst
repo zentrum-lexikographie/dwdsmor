@@ -1,6 +1,6 @@
 % flexion.fst
 % Version 1.0
-% Andreas Nolda 2022-08-19
+% Andreas Nolda 2022-08-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -23,9 +23,9 @@ $SS$ = <OLDORTH>:<SSalt> | <>:<SS>
 $NSg_0$ = {<NGDA><Sg>}:{<FB>} $N#$
 
 % Mensch-en
-$NSg_en$ = {<Nom><Sg>}:{<FB>}      $N#$ | \
-           {<GDA><Sg>}:{<FB>en}    $N#$ | \
-           {<DA><Sg><NonSt>}:{<FB>} $N#$
+$NSg_en$ = {<Nom><Sg>}:{<FB>}       $N#$ | \
+           {<GDA><Sg>}:{<FB>en}     $N#$ | \
+           {<DA><Sg><NonSt>}:{<FB>} $N#$ % cf. Duden-Grammatik (2016: § 333)
 
 % Nachbar-n
 $NSg_n$ = {<Nom><Sg>}:{<FB>}  $N#$ | \
@@ -34,7 +34,7 @@ $NSg_n$ = {<Nom><Sg>}:{<FB>}  $N#$ | \
 % Haus-es, Geist-(e)s
 $NSg_es$ = {<NDA><Sg>}:{<FB>}         $N#$ | \
            {<Gen><Sg>}:{<FB>es<^Gen>} $N#$ | \
-           {<Dat><Sg><Old>}:{<FB>e}   $N#$
+           {<Dat><Sg><Old>}:{<FB>e}   $N#$ % cf. Duden-Grammatik (2016: § 317)
 
 % Opa-s, Klima-s
 $NSg_s$ = {<NDA><Sg>}:{<FB>}  $N#$ | \
@@ -648,7 +648,7 @@ $DemSuff$ = {<AS><Fem><NA><Sg><St>}:{e}           $Fix#$ | \
             {<AS><NoGend><NA><Pl><St>}:{e}        $Fix#$ | \
             {<AS><MN><Dat><Sg><St>}:{em}          $Fix#$ | \
             {<AS><Masc><Acc><Sg><St>}:{en}        $Fix#$ | \
-            {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \
+            {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 356)
             {<AS><NoGend><Dat><Pl><St>}:{en}      $Fix#$ | \
             {<AS><Fem><GD><Sg><St>}:{er}          $Fix#$ | \
             {<AS><Masc><Nom><Sg><St>}:{er}        $Fix#$ | \
@@ -692,13 +692,13 @@ $IndefSuff-welch$ = {<Subst><Fem><NA><Sg><St>}:{e}      $Fix#$ | \
                     {<Subst><MN><Gen><Sg><St>}:{es}     $Fix#$
 
 $IndefSuff-all$ = $DemSuff-solch/St$                            | \
-                  {<Subst><MN><Dat><Sg><Wk><NonSt>}:{en} $Fix#$ | \
+                  {<Subst><MN><Dat><Sg><Wk><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 411)
                   {<Attr><Invar>}:{}                     $Fix#$
 
 $IndefSuff-jed/St$ = {<AS><Fem><NA><Sg><St>}:{e}           $Fix#$ | \
                      {<AS><MN><Dat><Sg><St>}:{em}          $Fix#$ | \
                      {<AS><Masc><Acc><Sg><St>}:{en}        $Fix#$ | \
-                     {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \
+                     {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 356)
                      {<AS><Fem><GD><Sg><St>}:{er}          $Fix#$ | \
                      {<AS><Masc><Nom><Sg><St>}:{er}        $Fix#$ | \
                      {<AS><Neut><NA><Sg><St>}:{es}         $Fix#$ | \
@@ -764,7 +764,7 @@ $IndefSuff-ein$ = $IndefSuff-ein/St$ | \
 
 $ArtNegAttrSuff$ = $ArtIndefAttrSuff$ | \
                    {<Attr><NoGend><NA><Pl><St>}:{e}      $Fix#$ | \
-                   {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \
+                   {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 356)
                    {<Attr><NoGend><Dat><Pl><St>}:{en}    $Fix#$ | \
                    {<Attr><NoGend><Gen><Pl><St>}:{er}    $Fix#$
 
@@ -811,8 +811,8 @@ $PProAccSgSuff$ = {<Acc><Sg>}:{} $Fix#$
 
 $PProDatSgSuff$ = {<Dat><Sg>}:{} $Fix#$
 
-$PProGenSgSuff$ = {<Gen><Sg>}:{er} $Fix#$ | \
-                  {<Gen><Sg><Old>}:{} $Fix#$
+$PProGenSgSuff$ = {<Gen><Sg>}:{er}    $Fix#$ | \
+                  {<Gen><Sg><Old>}:{} $Fix#$ % cf. Duden-Grammatik (2016: § 363)
 
 $PProNomPlSuff$ = {<Nom><Pl>}:{} $Fix#$
 
@@ -820,11 +820,11 @@ $PProAccPlSuff$ = {<Acc><Pl>}:{} $Fix#$
 
 $PProDatPlSuff$ = {<Dat><Pl>}:{} $Fix#$
 
-$PProGenPlSuff$ = {<Gen><Pl>}:{er} $Fix#$ | \
-                  {<Gen><Pl><Old>}:{} $Fix#$
+$PProGenPlSuff$ = {<Gen><Pl>}:{er}    $Fix#$ | \
+                  {<Gen><Pl><Old>}:{} $Fix#$ % cf. Duden-Grammatik (2016: § 363)
 
 $PProGenPlSuff-er$ = {<Gen><Pl>}:{er}                   $Fix#$ | \
-                     {<Gen><Pl><NonSt>}:{er<^Px><FB>er} $Fix#$
+                     {<Gen><Pl><NonSt>}:{er<^Px><FB>er} $Fix#$ % cf. Duden-Grammatik (2016: § 363)
 
 $WProNomSgSuff$ = $PProNomSgSuff$
 
@@ -833,7 +833,7 @@ $WProAccSgSuff$ = $PProAccSgSuff$
 $WProDatSgSuff$ = $PProDatSgSuff$
 
 $WProGenSgSuff$ = {<Gen><Sg>}:{sen} $Fix#$ | \
-                  {<Gen><Sg><Old>}:{} $Fix#$
+                  {<Gen><Sg><Old>}:{} $Fix#$ % cf. Duden-Grammatik (2016: § 404)
 
 % der, die, das (article)
 $ArtDef$ = {<+ART><Def>}:{<FB>} $ArtDefSuff$
@@ -1056,7 +1056,7 @@ $WProNeutNomSg$ = {<+WPRO><Neut>}:{<FB>} $WProNomSgSuff$
 $WProNeutAccSg$ = {<+WPRO><Neut>}:{<FB>} $WProAccSgSuff$
 
 % was
-$WProNeutDatSg$ = {<+WPRO><Neut>}:{<FB>} $WProDatSgSuff$ {<NonSt>}:{}
+$WProNeutDatSg$ = {<+WPRO><Neut>}:{<FB>} $WProDatSgSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 404)
 
 % wessen, wes
 $WProNeutGenSg$ = {<+WPRO><Neut>}:{<FB>} $WProGenSgSuff$
