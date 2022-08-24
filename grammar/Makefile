@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2022-08-19
+# Andreas Nolda 2022-08-24
 
 FST_COMPILE = fst-compiler-utf8
 FST_COMPACT = fst-compact
@@ -18,14 +18,16 @@ INCLUDE = symbols.fst map.fst flexion.fst markers.fst phon.fst elim.fst lemma.fs
 
 INCLUDE_INDEX = $(filter-out $(INCLUDE),lemma.fst) lemma-index.fst
 
+LEXICON = lexicon
+
 INSTALL_DIR ?= lib
 
 all: $(TARGETS)
 
-%.ca: %.a
+%.ca: %.a $(LEXICON)
 	$(FST_COMPACT) $< $@
 
-%.a: %.fst
+%.a: %.fst $(LEXICON)
 	$(FST_COMPILE) $< $@
 
 $(DWDSMOR_MINIMAL): $(INCLUDE)

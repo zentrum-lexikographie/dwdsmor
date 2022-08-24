@@ -1,3 +1,6 @@
+# Makefile
+# Gregor Middell, Andreas Nolda 2022-08-24
+
 SHELL := /bin/bash
 
 CLOJURE_VERSION := 1.10.3.943
@@ -5,6 +8,7 @@ CLOJURE_VERSION := 1.10.3.943
 DIFF = diff --ignore-trailing-space --side-by-side --report-identical-files --suppress-common-lines --width=120
 
 SRCDIR  = $(abspath wb)
+SRCDIRS = $(wildcard $(SRCDIR)/*)
 AUXDIR  = $(abspath aux)
 LEXDIR  = $(abspath ../grammar)
 XSLDIR  = $(abspath ../share)
@@ -48,7 +52,7 @@ clojure-install.sh:
 
 lexicon: $(LEX)
 
-$(LEX): $(XSL) $(LIB)
+$(LEX): $(SRCDIRS) $(XSL) $(LIB)
 	./generate-lexicon --xslt $(XSL) $(EXTRA_OPTIONS) --filter --output $@ $(SRCDIR) $(EXTRA_DIRS) 2> $(LEX).log
 
 debug: $(LEX).debug
