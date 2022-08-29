@@ -1,5 +1,5 @@
 % flexion.fst
-% Version 1.4
+% Version 1.5
 % Andreas Nolda 2022-08-29
 
 % based on code from SMORLemma by Rico Sennrich
@@ -486,7 +486,7 @@ $Name-Fem_s$ = {<+NPROP><Fem>}:{} $NSg_s$
 $Name-Masc_0$ = {<+NPROP><Masc>}:{} $NSg_0$
 
 % Andreas/Andreas'
-$Name-Masc_apos$ = {<+NPROP><Masc>}:{}            $NSg_0$ | \
+$Name-Masc_apos$ = {<+NPROP><Masc>}:{}           $NSg_0$ | \
                    {<+NPROP><Masc><Gen><Sg>}:{’} $N#$
 
 $Name-Masc_es$ = {<+NPROP><Masc>}:{} $NSg_es$
@@ -790,13 +790,13 @@ $IndefSuff-ein/Wk$ = {<Subst><Fem><NA><Sg><Wk>}:{e}    $Fix#$ | \
 $IndefSuff-ein$ = $IndefSuff-ein/St$ | \
                   $IndefSuff-ein/Wk$
 
-$ArtNegAttrSuff$ = $ArtIndefAttrSuff$ | \
+$ArtNegAttrSuff$ = $ArtIndefAttrSuff$                           | \
                    {<Attr><NoGend><NA><Pl><St>}:{e}      $Fix#$ | \
                    {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 356, 425)
                    {<Attr><NoGend><Dat><Pl><St>}:{en}    $Fix#$ | \
                    {<Attr><NoGend><Gen><Pl><St>}:{er}    $Fix#$
 
-$ArtNegSubstSuff$ = $ArtIndefSubstSuff$ | \
+$ArtNegSubstSuff$ = $ArtIndefSubstSuff$                        | \
                     {<Subst><NoGend><NA><Pl><St>}:{e}   $Fix#$ | \
                     {<Subst><NoGend><Dat><Pl><St>}:{en} $Fix#$ | \
                     {<Subst><NoGend><Gen><Pl><St>}:{er} $Fix#$
@@ -1139,20 +1139,34 @@ $IProNeutGenSg$ = {<+INDEF><Neut>}:{<FB>} $IProGenSgSuff$
 
 % numerals
 
+$CardSuff0$ = {<AS><Invar>}:{} $Closed#$
+
 $CardSuff-ein/St$ = $ArtIndefSuff$
 
-$CardSuff-ein/Wk$ = {<AS><Fem><NA><Sg><Wk>}:{e}    $Fix#$ | \
-                    {<AS><Masc><Nom><Sg><Wk>}:{e}  $Fix#$ | \
-                    {<AS><Neut><NA><Sg><Wk>}:{e}   $Fix#$ | \
-                    {<AS><Fem><Gen><Sg><Wk>}:{en}  $Fix#$ | \
-                    {<AS><MN><Gen><Sg><Wk>}:{en}   $Fix#$ | \
-                    {<AS><Masc><Acc><Sg><Wk>}:{en} $Fix#$ | \
-                    {<AS><MFN><Dat><Sg><Wk>}:{en}  $Fix#$
+$CardSuff-ein/Wk$ = {<AS><Fem><NA><Sg><Wk>}:{e}    $Closed#$ | \
+                    {<AS><Masc><Nom><Sg><Wk>}:{e}  $Closed#$ | \
+                    {<AS><Neut><NA><Sg><Wk>}:{e}   $Closed#$ | \
+                    {<AS><Fem><Gen><Sg><Wk>}:{en}  $Closed#$ | \
+                    {<AS><MN><Gen><Sg><Wk>}:{en}   $Closed#$ | \
+                    {<AS><Masc><Acc><Sg><Wk>}:{en} $Closed#$ | \
+                    {<AS><MFN><Dat><Sg><Wk>}:{en}  $Closed#$
 
 $CardSuff-ein$ = $CardSuff-ein/St$ | \
                  $CardSuff-ein/Wk$
 
 $CardSuff-kein$ = $ArtNegSuff$
+
+$CardSuff-zwei$ = $CardSuff0$                                        | \
+                  {<Subst><NoGend><NA><Pl><SW><NonSt>}:{e} $Closed#$ | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Dat><Pl><SW>}:{en}      $Closed#$ | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<AS><NoGend><Gen><Pl><St>}:{er}         $Closed#$     % cf. Duden-Grammatik (2016: § 511)
+
+$CardSuff-vier$ = $CardSuff0$                                        | \
+                  {<Subst><NoGend><NA><Pl><SW><NonSt>}:{e} $Closed#$ | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Dat><Pl><SW>}:{en}      $Closed#$     % cf. Duden-Grammatik (2016: § 511)
+
+$CardSuff-sieben$ = $CardSuff0$ | \
+                    {<Subst><NoGend><NA><Pl><SW><NonSt>}:{e} $Closed#$  % cf. Duden-Grammatik (2016: § 511)
 
 % ein, eine (cardinal)
 $Card-ein$ = {<+CARD>}:{<FB>} $CardSuff-ein$
@@ -1160,14 +1174,21 @@ $Card-ein$ = {<+CARD>}:{<FB>} $CardSuff-ein$
 % kein, keine (cardinal)
 $Card-kein$ = {<+CARD>}:{<FB>} $CardSuff-kein$
 
-$TMP$ = {<AS><NoGend><NGDA><Pl><NoInfl>}:{}
+% zwei, zweien, zweier; drei, dreien, dreier
+$Card-zwei$ = {<+CARD>}:{<FB>} $CardSuff-zwei$
 
-$Card$ = <+CARD>:<> $TMP$ $Closed#$
+% vier, vieren; zwölf, zwölfen
+$Card-vier$ = {<+CARD>}:{<FB>} $CardSuff-vier$
 
-$Ord$ = <+ORD>:<>         $AdjFlexSuff$ | \
-        {<+ORD><Pred>}:{} $Closed#$
+% sieben
+$Card-sieben$ = {<+CARD>}:{<FB>} $CardSuff-sieben$
 
-$DigOrd$ = <+ORD>:<> $Closed#$
+% null; zwo; dreizehn; zwanzig; hundert
+$Card0$ = <+CARD>:<> $CardSuff0$
+
+% erst-
+$Ord$ = {<+ORD><Lemma>}:{} $Closed#$ | \
+        <+ORD>:<> $AdjFlexSuff$
 
 
 % adverbs
@@ -1569,15 +1590,17 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<ArtIndef>              $ArtIndef$          | \
             <>:<ArtIndef-n>            $ArtIndef-n$        | \
             <>:<ArtNeg>                $ArtNeg$            | \
-            <>:<Card>                  $Card$              | \
+            <>:<Card0>                 $Card0$             | \
             <>:<Card-ein>              $Card-ein$          | \
             <>:<Card-kein>             $Card-kein$         | \
+            <>:<Card-sieben>           $Card-sieben$       | \
+            <>:<Card-vier>             $Card-vier$         | \
+            <>:<Card-zwei>             $Card-zwei$         | \
             <>:<Circp>                 $Circp$             | \
             <>:<Dem>                   $Dem$               | \
             <>:<Dem-dies>              $Dem-dies$          | \
             <>:<Dem-solch>             $Dem-solch$         | \
             <>:<DemDef>                $DemDef$            | \
-            <>:<DigOrd>                $DigOrd$            | \
             <>:<FamName_0>             $FamName_0$         | \
             <>:<FamName_s>             $FamName_s$         | \
             <>:<Indef0>                $Indef0$            | \

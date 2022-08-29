@@ -1,5 +1,5 @@
 % symbols.fst
-% Version 1.3
+% Version 1.4
 % Andreas Nolda 2022-08-29
 
 % based on code from SMORLemma by Rico Sennrich
@@ -21,8 +21,8 @@
 
 #orth-trigger# = <OLDORTH>
 
-#category#  = <ABBR><ADJ><ADV><ART><CARD><DEM><DIGCARD><INDEF><NN><NPROP> \
-              <ORD><OTHER><POSS><PPRO><PRO><REL><V><WPRO>
+#category# = <ABBR><ADJ><ADV><ART><CARD><DEM><INDEF><NN><NPROP><ORD><OTHER><POSS> \
+             <PPRO><PRO><REL><V><WPRO>
 
 #auxiliary# = <haben><sein>
 
@@ -84,7 +84,7 @@
                     <Name-Neut_apos><Name-Neut_es><Name-Neut_s><Name-Pl_0> \
                     <Name-Pl_x><FamName_0><FamName_s>
 
-#Num-inflection# = <Card><Card-ein><Card-kein><DigOrd><Ord>
+#Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier><Card-zwei><Ord>
 
 #Pro-inflection# = <Dem><Dem-dies><Dem-solch><DemDef><Indef0><Indef-all><Indef-beid> \
                    <Indef-ein><Indef-einig><Indef-irgendein><Indef-irgendwelch> \

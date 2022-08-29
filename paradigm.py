@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 5.1
+version = 5.2
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -313,6 +313,23 @@ def get_article_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_
 def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_forms=False, nonstandard_forms=False):
     formdict = {}
     lexcat = Lexcat(pos = pos)
+    # forms inflected for function, but uninflected for gender, case, number, and inflectional strength
+    for function in functions:
+        parcat = Parcat(function   = function,
+                        gender     = "Invar",
+                        case       = "Invar",
+                        number     = "Invar",
+                        inflection = "Invar")
+        categories = [function,
+                      "Invar"]
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+        add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
+        if old_forms:
+            # no such forms
+            pass
+        if nonstandard_forms:
+            # no such forms
+            pass
     # forms inflected for function, gender, case, number, and inflectional strength
     for gender in genders:
         for number in numbers:
@@ -335,8 +352,8 @@ def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg, pos, old
                             # no such forms
                             pass
                         if nonstandard_forms:
-                            # no such forms
-                            pass
+                            forms = generate_nonstandard_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+                            add_nonstandard_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
     return formdict
 
 def get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_forms=False, nonstandard_forms=False):

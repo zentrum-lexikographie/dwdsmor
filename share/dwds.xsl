@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 10.1 -->
+<!-- Version 10.2 -->
 <!-- Andreas Nolda 2022-08-29 -->
 
 <xsl:stylesheet version="2.0"
@@ -559,8 +559,6 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
-                <xsl:with-param name="gender"
-                                select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
@@ -620,8 +618,6 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
-                <xsl:with-param name="gender"
-                                select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
@@ -641,6 +637,18 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Kardinalzahl'">
+              <xsl:call-template name="numeral-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
