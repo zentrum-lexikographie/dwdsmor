@@ -1,6 +1,6 @@
 % lemma.fst
-% Version 1.0
-% Andreas Nolda 2022-08-19
+% Version 1.1
+% Andreas Nolda 2022-08-29
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -31,4 +31,6 @@ $LEMMA$ = $LEMMA$ || $CB$
 
 $LEMMA1$ = (^_$LEMMA$) .*
 
-$LEMMA2$ = .* ([#part-of-speech#]-[<+V><+NN><+ADJ><+ADV><+NPROP>]) .*
+$C$ = [^#lemma-index# #paradigm-index#]*<>:[#lemma-index#]?<>:[#paradigm-index#]?
+
+$LEMMA2$ = $C$ ([#part-of-speech#]-[<+V><+NN><+ADJ><+ADV><+NPROP>]) .*
