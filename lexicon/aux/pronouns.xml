@@ -25,6 +25,14 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>beide</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>dein</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
@@ -232,6 +240,37 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>Eurige</Schreibung>
+      <Grammatik>
+        <Wortklasse>Possessivpronomen</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>Eurige</Schreibung>
+      <Grammatik>
+        <Wortklasse>Possessivpronomen</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>Eurige</Schreibung>
+      <Grammatik>
+        <Wortklasse>Possessivpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>genug</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung hidx="2">ihr</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
@@ -278,29 +317,6 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>Eurige</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>Eurige</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>Eurige</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>ihrige</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
@@ -341,6 +357,29 @@
       <Schreibung>Ihrige</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>irgendein</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>irgendeine</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>irgendein</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>
@@ -349,21 +388,21 @@
     <Formangabe>
       <Schreibung>irgendwelcher</Schreibung>
       <Grammatik>
-        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>mask.</Genus>
       </Grammatik>
     </Formangabe>
     <Formangabe>
       <Schreibung>irgendwelche</Schreibung>
       <Grammatik>
-        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>fem.</Genus>
       </Grammatik>
     </Formangabe>
     <Formangabe>
       <Schreibung>irgendwelches</Schreibung>
       <Grammatik>
-        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>
@@ -411,6 +450,14 @@
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>manche</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -539,9 +586,17 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>wer</Schreibung>
+      <Schreibung hidx="1">wer</Schreibung>
       <Grammatik>
         <Wortklasse>Interrogativpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung hidx="2">wer</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>

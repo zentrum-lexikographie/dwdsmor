@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 10.0 -->
-<!-- Andreas Nolda 2022-08-23 -->
+<!-- Version 10.1 -->
+<!-- Andreas Nolda 2022-08-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -663,7 +663,20 @@
             </xsl:when>
             <!-- indefinite pronouns -->
             <xsl:when test="$pos='Indefinitpronomen' and
-                            $lemma='mehrere'">
+                            $lemma='beide'">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Indefinitpronomen' and
+                            $lemma='genug'">
               <xsl:call-template name="indefinite-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -689,6 +702,45 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Indefinitpronomen' and
+                            ends-with($lemma,'jemand')">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Indefinitpronomen' and
+                            $lemma='mehrere'">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Indefinitpronomen' and
+                            $lemma='paar'">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Indefinitpronomen' and
                             $lemma='man'">
               <xsl:call-template name="indefinite-pronoun-entry-set">
                 <xsl:with-param name="lemma"
@@ -702,7 +754,22 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Indefinitpronomen' and
-                            ends-with($lemma,'jemand')">
+                            $lemma='manche'">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Indefinitpronomen' and
+                            ($lemma='nichts' or
+                             $lemma='nischt' or
+                             $lemma='nix')">
               <xsl:call-template name="indefinite-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -728,7 +795,7 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Indefinitpronomen' and
-                            (ends-with($lemma,'was') or
+                            (ends-with($lemma,'etwas') or
                              $lemma='ebbes')">
               <xsl:call-template name="indefinite-pronoun-entry-set">
                 <xsl:with-param name="lemma"
@@ -742,9 +809,8 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Indefinitpronomen' and
-                            ($lemma='nichts' or
-                             $lemma='nischt' or
-                             $lemma='nix')">
+                            (ends-with($lemma,'was') or
+                             ends-with($lemma,'wer'))">
               <xsl:call-template name="indefinite-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>

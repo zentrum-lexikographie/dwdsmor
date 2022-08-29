@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 4.0 -->
-<!-- Andreas Nolda 2022-08-23 -->
+<!-- Version 4.1 -->
+<!-- Andreas Nolda 2022-08-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -233,8 +233,9 @@
               </xsl:call-template>
             </xsl:if>
           </xsl:when>
-          <!-- adjectives with the uninflected comparative form "mehr" -->
-          <xsl:when test="$comparative='mehr'">
+          <!-- adjectives with the uninflected comparative form "mehr" or "weniger" -->
+          <xsl:when test="$comparative='mehr' or
+                          $comparative='weniger'">
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
@@ -244,6 +245,18 @@
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+            <xsl:call-template name="word-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjPos0</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -1423,6 +1436,24 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- "irgendeine" -->
+      <xsl:when test="$gender='fem.' and
+                      $lemma='irgendeine'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef-irgendein</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- "keine" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='keine'">
@@ -1441,9 +1472,9 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
-      <!-- "welche", "irgendwelche" -->
+      <!-- "welche" -->
       <xsl:when test="$gender='fem.' and
-                      ends-with($lemma,'welche')">
+                      $lemma='welche'">
         <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
@@ -1455,6 +1486,24 @@
                           select="$stem"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-welch</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "irgendwelche" -->
+      <xsl:when test="$gender='fem.' and
+                      $lemma='irgendwelche'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef-irgendwelch</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1532,6 +1581,40 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- "beide" -->
+      <xsl:when test="$lemma='beide'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="replace($lemma,'e$','')"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef-beid</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "manche" -->
+      <xsl:when test="$lemma='manche'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="replace($lemma,'e$','')"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef-manch</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- "mehrere" -->
       <xsl:when test="$lemma='mehrere'">
         <xsl:call-template name="word-entry">
@@ -1545,6 +1628,36 @@
                           select="replace($lemma,'e$','')"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-mehrer</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "genug" -->
+      <xsl:when test="$lemma='genug'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "paar" -->
+      <xsl:when test="$lemma='paar'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1576,7 +1689,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">Indef-jedermann</xsl:with-param>
+          <xsl:with-param name="class">IPro-jedermann</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1591,7 +1704,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">Indef-man</xsl:with-param>
+          <xsl:with-param name="class">IPro-man</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1606,7 +1719,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">IndefMasc</xsl:with-param>
+          <xsl:with-param name="class">IProMasc</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1621,13 +1734,13 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">IndefMasc</xsl:with-param>
+          <xsl:with-param name="class">IProMasc</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
-      <!-- "etwas", "ebbes", "was", "irgendetwas", "irgendwas", "sonstwas" -->
-      <xsl:when test="ends-with($lemma,'was') or
+      <!-- "etwas", "ebbes", "irgendetwas" -->
+      <xsl:when test="ends-with($lemma,'etwas') or
                       $lemma='ebbes'">
         <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
@@ -1637,7 +1750,125 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">IndefNeut</xsl:with-param>
+          <xsl:with-param name="class">IProNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "was", "irgendwas", "sonstwas" -->
+      <xsl:when test="ends-with($lemma,'was')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="$lemma"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IProNeutNomSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="$lemma"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IProNeutAccSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="$lemma"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IProNeutDatSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="replace($lemma,'was$','wes')"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IProNeutGenSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "wer", "irgendwer", "sonstwer" -->
+      <xsl:when test="ends-with($lemma,'wer')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="$lemma"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IProMascNomSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="replace($lemma,'wer$','wen')"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IProMascAccSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="replace($lemma,'wer$','wem')"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IProMascDatSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="replace($lemma,'wer$','wes')"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IProMascGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1654,7 +1885,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">IndefNeut</xsl:with-param>
+          <xsl:with-param name="class">IProNeut</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1662,28 +1893,20 @@
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
-  <!-- "andere" -->
   <!-- "aberhundert", "Aberhundert" -->
   <!-- "allerlei", "jederlei", "einerlei" -->
   <!-- "allesamt" -->
-  <!-- "beide" -->
   <!-- "ebensoviel", "genausoviel", "geradesoviel", "gradesoviel", "soviel" -->
   <!-- "ebensowenig", "genausowenig", "sowenig", "blutwenig", "zuwenig" -->
-  <!-- "genug" -->
-  <!-- "irgendein" -->
-  <!-- "manche" -->
   <!-- "männiglich" -->
   <!-- "meinesgleichen", "deinesgleichen", "seinesgleichen",
        "ihresgleichen", "unsersgleichen", "euresgleichen" -->
   <!-- "unsereiner" -->
   <!-- "unsereins" -->
   <!-- "mensch" -->
-  <!-- "paar" -->
   <!-- "soundsovielte" -->
   <!-- "unsereiner" -->
   <!-- "unsereins" -->
-  <!-- "viel", "wenig" -->
-  <!-- "wer", "irgendwer", "sonstwer" -->
   <!-- "zigtausend" -->
 </xsl:template>
 
@@ -1701,62 +1924,6 @@
       </xsl:call-template>
     </xsl:variable>
     <xsl:choose>
-      <!-- "wer" -->
-      <xsl:when test="$lemma='wer'">
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
-          <xsl:with-param name="pos">WPRO</xsl:with-param>
-          <xsl:with-param name="class">WProMascNomSg</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form">wen</xsl:with-param>
-          <xsl:with-param name="pos">WPRO</xsl:with-param>
-          <xsl:with-param name="class">WProMascAccSg</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form">wem</xsl:with-param>
-          <xsl:with-param name="pos">WPRO</xsl:with-param>
-          <xsl:with-param name="class">WProMascDatSg</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form">wes</xsl:with-param>
-          <xsl:with-param name="pos">WPRO</xsl:with-param>
-          <xsl:with-param name="class">WProMascGenSg</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
       <!-- "was" -->
       <xsl:when test="$lemma='was'">
         <xsl:call-template name="word-entry">
@@ -1815,6 +1982,62 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- "wer" -->
+      <xsl:when test="$lemma='wer'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="$lemma"/>
+          <xsl:with-param name="pos">WPRO</xsl:with-param>
+          <xsl:with-param name="class">WProMascNomSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form">wen</xsl:with-param>
+          <xsl:with-param name="pos">WPRO</xsl:with-param>
+          <xsl:with-param name="class">WProMascAccSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form">wem</xsl:with-param>
+          <xsl:with-param name="pos">WPRO</xsl:with-param>
+          <xsl:with-param name="class">WProMascDatSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form">wes</xsl:with-param>
+          <xsl:with-param name="pos">WPRO</xsl:with-param>
+          <xsl:with-param name="class">WProMascGenSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- "welche" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='welche'">
@@ -1828,7 +2051,7 @@
           <xsl:with-param name="form"
                           select="$stem"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
-          <xsl:with-param name="class">WPro-welch</xsl:with-param>
+          <xsl:with-param name="class">W-welch</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1836,7 +2059,6 @@
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
-  <!-- "wer", "was" -->
   <!-- "wieviele", "wievielte" -->
 </xsl:template>
 

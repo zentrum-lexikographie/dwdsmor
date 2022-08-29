@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 1.2
-% Andreas Nolda 2022-08-24
+% Version 1.3
+% Andreas Nolda 2022-08-29
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -86,20 +86,22 @@
 
 #Num-inflection# = <Card><Card-ein><Card-kein><DigOrd><Ord>
 
-#Pro-inflection# = <Dem><Dem-dies><Dem-solch><DemDef><Indef-all><Indef-ein> \
-                   <Indef-einig><Indef-jed><Indef-jedermann><Indef-jeglich> \
-                   <Indef-kein><Indef-man><Indef-mehrer><Indef-saemtlich><Indef-welch> \
-                   <IndefMasc><IndefNeut><Poss><Poss-er><Poss/Wk><Poss/Wk-er> \
-                   <PPro1AccPl><PPro1AccSg><PPro1DatPl><PPro1DatSg><PPro1GenPl> \
-                   <PPro1GenSg><PPro1NomPl><PPro1NomSg><PPro2AccPl><PPro2AccSg> \
-                   <PPro2DatPl><PPro2DatSg><PPro2GenPl><PPro2GenSg><PPro2NomPl> \
-                   <PPro2NomSg><PProFemAccSg><PProFemDatSg><PProFemGenSg><PProFemNomSg> \
-                   <PProMascAccSg><PProMascDatSg><PProMascGenSg><PProMascNomSg> \
-                   <PProNeutAccSg><PProNeutAccSg-s><PProNeutDatSg><PProNeutGenSg> \
-                   <PProNeutNomSg><PProNeutNomSg-s><PProNoGendAccPl><PProNoGendDatPl> \
-                   <PProNoGendGenPl><PProNoGendNomPl><PProReflFemSg><PProReflMascSg> \
-                   <PProReflNeutSg><PProReflNoGendPl><Rel><Rel-welch><WPro-welch> \
-                   <WProMascAccSg><WProMascDatSg><WProMascGenSg><WProMascNomSg> \
+#Pro-inflection# = <Dem><Dem-dies><Dem-solch><DemDef><Indef0><Indef-all><Indef-beid> \
+                   <Indef-ein><Indef-einig><Indef-irgendein><Indef-irgendwelch> \
+                   <Indef-jed><Indef-jeglich><Indef-kein><Indef-manch><Indef-mehrer> \
+                   <Indef-saemtlich><Indef-welch><IPro-jedermann><IPro-man><IProMasc> \
+                   <IProMascAccSg><IProMascDatSg><IProMascGenSg><IProMascNomSg><IProNeut> \
+                   <IProNeutAccSg><IProNeutDatSg><IProNeutGenSg><IProNeutNomSg><Poss> \
+                   <Poss-er><Poss/Wk><Poss/Wk-er><PPro1AccPl><PPro1AccSg><PPro1DatPl> \
+                   <PPro1DatSg><PPro1GenPl><PPro1GenSg><PPro1NomPl><PPro1NomSg> \
+                   <PPro2AccPl><PPro2AccSg><PPro2DatPl><PPro2DatSg><PPro2GenPl><PPro2GenSg> \
+                   <PPro2NomPl><PPro2NomSg><PProFemAccSg><PProFemDatSg><PProFemGenSg> \
+                   <PProFemNomSg><PProMascAccSg><PProMascDatSg><PProMascGenSg> \
+                   <PProMascNomSg><PProNeutAccSg><PProNeutAccSg-s><PProNeutDatSg> \
+                   <PProNeutGenSg><PProNeutNomSg><PProNeutNomSg-s><PProNoGendAccPl> \
+                   <PProNoGendDatPl><PProNoGendGenPl><PProNoGendNomPl><PProReflFemSg> \
+                   <PProReflMascSg><PProReflNeutSg><PProReflNoGendPl><Rel><Rel-welch> \
+                   <W-welch><WProMascAccSg><WProMascDatSg><WProMascGenSg><WProMascNomSg> \
                    <WProNeutAccSg><WProNeutDatSg><WProNeutGenSg><WProNeutNomSg>
 
 #Verb-inflection# = <VAImpPl><VAImpSg><VAPastIndPl><VAPastIndSg><VAPastKonj2> \

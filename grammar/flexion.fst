@@ -1,6 +1,6 @@
 % flexion.fst
-% Version 1.1
-% Andreas Nolda 2022-08-24
+% Version 1.4
+% Andreas Nolda 2022-08-29
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -661,7 +661,7 @@ $DemSuff$ = {<AS><Fem><NA><Sg><St>}:{e}           $Fix#$ | \
             {<AS><NoGend><NA><Pl><St>}:{e}        $Fix#$ | \
             {<AS><MN><Dat><Sg><St>}:{em}          $Fix#$ | \
             {<AS><Masc><Acc><Sg><St>}:{en}        $Fix#$ | \
-            {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 356)
+            {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 356, 379)
             {<AS><NoGend><Dat><Pl><St>}:{en}      $Fix#$ | \
             {<AS><Fem><GD><Sg><St>}:{er}          $Fix#$ | \
             {<AS><Masc><Nom><Sg><St>}:{er}        $Fix#$ | \
@@ -685,13 +685,13 @@ $DemSuff-solch/Wk$ = {<AS><Fem><NA><Sg><Wk>}:{e}      $Fix#$ | \
                      {<AS><NoGend><NGA><Pl><Wk>}:{en} $Fix#$
 
 $DemSuff-solch$ = $DemSuff-solch/St$ | \
-                  $DemSuff-solch/Wk$ | \
+                  $DemSuff-solch/Wk$ | \ % cf. Duden-Grammatik (2016: § 432)
                   {<Attr><Invar>}:{} $Fix#$
 
-$WProSuff-welch$ = $DemSuff-solch/St$ | \
-                   {<Attr><Invar>}:{} $Fix#$
+$WSuff-welch$ = $DemSuff-solch/St$ | \
+                {<Attr><Invar>}:{} $Fix#$
 
-$RelSuff-welch$ = $WProSuff-welch$
+$RelSuff-welch$ = $WSuff-welch$ % cf. Duden-Grammatik (2016: § 403)
 
 $IndefSuff-welch$ = {<Subst><Fem><NA><Sg><St>}:{e}      $Fix#$ | \
                     {<Subst><NoGend><NA><Pl><St>}:{e}   $Fix#$ | \
@@ -704,6 +704,8 @@ $IndefSuff-welch$ = {<Subst><Fem><NA><Sg><St>}:{e}      $Fix#$ | \
                     {<Subst><Neut><NA><Sg><St>}:{es}    $Fix#$ | \
                     {<Subst><MN><Gen><Sg><St>}:{es}     $Fix#$
 
+$IndefSuff-irgendwelch$ = $DemSuff-solch/St$
+
 $IndefSuff-all$ = $DemSuff-solch/St$                            | \
                   {<Subst><MN><Dat><Sg><Wk><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 411)
                   {<Attr><Invar>}:{}                     $Fix#$
@@ -711,7 +713,7 @@ $IndefSuff-all$ = $DemSuff-solch/St$                            | \
 $IndefSuff-jed/St$ = {<AS><Fem><NA><Sg><St>}:{e}           $Fix#$ | \
                      {<AS><MN><Dat><Sg><St>}:{em}          $Fix#$ | \
                      {<AS><Masc><Acc><Sg><St>}:{en}        $Fix#$ | \
-                     {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 356)
+                     {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 356, 422)
                      {<AS><Fem><GD><Sg><St>}:{er}          $Fix#$ | \
                      {<AS><Masc><Nom><Sg><St>}:{er}        $Fix#$ | \
                      {<AS><Neut><NA><Sg><St>}:{es}         $Fix#$ | \
@@ -735,12 +737,25 @@ $IndefSuff-saemtlich$ = $DemSuff-solch/St$ | \
                         $DemSuff-solch/Wk$ | \
                         {<Subst><Invar>}:{} $Fix#$
 
+$IndefSuff-beid$ = {<AS><NoGend><NA><Pl><St>}:{e}        $Fix#$ | \
+                   {<Subst><Neut><Dat><Sg><St>}:{em}     $Fix#$ | \
+                   {<AS><NoGend><Dat><Pl><St>}:{en}      $Fix#$ | \
+                   {<AS><NoGend><Gen><Pl><St>}:{er}      $Fix#$ | \
+                   {<Subst><Neut><NGA><Sg><St>}:{es}     $Fix#$ | \
+                   {<Subst><Neut><NA><Sg><Wk>}:{e}       $Fix#$ | \
+                   {<Subst><Neut><GD><Sg><Wk>}:{en}      $Fix#$ | \
+                   {<AS><NoGend><NGDA><Pl><Wk>}:{en}     $Fix#$
+
 $IndefSuff-einig$ = $DemSuff$
+
+$IndefSuff-manch$ = $WSuff-welch$
 
 $IndefSuff-mehrer$ = {<AS><NoGend><NA><Pl><St>}:{e}   $Fix#$ | \
                      {<AS><NoGend><Dat><Pl><St>}:{en} $Fix#$ | \
                      {<AS><NoGend><Gen><Pl><St>}:{er} $Fix#$ | \
                      {<AS><Neut><NA><Sg><St>}:{es}    $Fix#$
+
+$IndefSuff0$ = {<AS><Invar>}:{} $Fix#$
 
 $ArtIndefAttrSuff$ = {<Attr><Masc><Nom><Sg><NoInfl>}:{} $Fix#$ | \
                      {<Attr><Neut><NA><Sg><NoInfl>}:{}  $Fix#$ | \
@@ -777,7 +792,7 @@ $IndefSuff-ein$ = $IndefSuff-ein/St$ | \
 
 $ArtNegAttrSuff$ = $ArtIndefAttrSuff$ | \
                    {<Attr><NoGend><NA><Pl><St>}:{e}      $Fix#$ | \
-                   {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 356)
+                   {<Attr><MN><Gen><Sg><St><NonSt>}:{en} $Fix#$ | \ % cf. Duden-Grammatik (2016: § 356, 425)
                    {<Attr><NoGend><Dat><Pl><St>}:{en}    $Fix#$ | \
                    {<Attr><NoGend><Gen><Pl><St>}:{er}    $Fix#$
 
@@ -806,17 +821,17 @@ $PossSuff/Wk$ = {<Subst><Fem><NA><Sg><Wk>}:{e}      $Fix#$ | \
 $PossSuff$ = $PossSuff/St$ | \
              $PossSuff/Wk$
 
-$Indef0$ = {<Invar>}:{} $Fix#$
+$IProSuff0$ = {<Invar>}:{} $Fix#$
 
-$IndefSuff$ = {<NDA><Sg>}:{}   $Fix#$ | \
-              {<Acc><Sg>}:{en} $Fix#$ | \
-              {<Dat><Sg>}:{em} $Fix#$ | \
-              {<Gen><Sg>}:{es} $Fix#$
+$IProSuff$ = {<NDA><Sg>}:{}   $Fix#$ | \
+             {<Acc><Sg>}:{en} $Fix#$ | \
+             {<Dat><Sg>}:{em} $Fix#$ | \
+             {<Gen><Sg>}:{es} $Fix#$
 
-$IndefSuff-jedermann$ = {<NDA><Sg>}:{}  $Fix#$ | \
-                        {<Gen><Sg>}:{s} $Fix#$
+$IProSuff-jedermann$ = {<NDA><Sg>}:{}  $Fix#$ | \
+                       {<Gen><Sg>}:{s} $Fix#$
 
-$IndefSuff-man$ = {<Nom><Sg>}:{} $Fix#$
+$IProSuff-man$ = {<Nom><Sg>}:{} $Fix#$
 
 $PProNomSgSuff$ = {<Nom><Sg>}:{} $Fix#$
 
@@ -848,6 +863,14 @@ $WProDatSgSuff$ = $PProDatSgSuff$
 $WProGenSgSuff$ = {<Gen><Sg>}:{sen} $Fix#$ | \
                   {<Gen><Sg><Old>}:{} $Fix#$ % cf. Duden-Grammatik (2016: § 404)
 
+$IProNomSgSuff$ = $WProNomSgSuff$
+
+$IProAccSgSuff$ = $WProAccSgSuff$
+
+$IProDatSgSuff$ = $WProDatSgSuff$
+
+$IProGenSgSuff$ = {<Gen><Sg>}:{sen} $Fix#$
+
 % der, die, das (article)
 $ArtDef$ = {<+ART><Def>}:{<FB>} $ArtDefSuff$
 
@@ -867,13 +890,16 @@ $Dem-solch$ = {<+DEM>}:{<FB>} $DemSuff-solch$
 $Dem$ = {<+DEM>}:{<FB>} $DemSuff$
 
 % welcher, welche, welches, welch (interrogative pronoun)
-$WPro-welch$ = {<+WPRO>}:{<FB>} $WProSuff-welch$
+$W-welch$ = {<+WPRO>}:{<FB>} $WSuff-welch$
 
 % welcher, welche, welches, welch (relative pronoun)
 $Rel-welch$ = {<+REL>}:{<FB>} $RelSuff-welch$
 
 % welcher, welche, welches (indefinite pronoun)
 $Indef-welch$ = {<+INDEF>}:{<FB>} $IndefSuff-welch$
+
+% irgendwelcher, irgendwelche, irgendwelches (indefinite pronoun)
+$Indef-irgendwelch$ = {<+INDEF>}:{<FB>} $IndefSuff-irgendwelch$
 
 % aller, alle, alles
 $Indef-all$ = {<+INDEF>}:{<FB>} $IndefSuff-all$
@@ -887,11 +913,20 @@ $Indef-jeglich$ = {<+INDEF>}:{<FB>} $IndefSuff-jeglich$
 % sämtlicher, sämtliche, sämtliches
 $Indef-saemtlich$ = {<+INDEF>}:{<FB>} $IndefSuff-saemtlich$
 
+% beide, beides
+$Indef-beid$ = {<+INDEF>}:{<FB>} $IndefSuff-beid$
+
 % einiger, einige, einiges
 $Indef-einig$ = {<+INDEF>}:{<FB>} $IndefSuff-einig$
 
+% mancher, manche, manches, manch
+$Indef-manch$ = {<+INDEF>}:{<FB>} $IndefSuff-manch$
+
 % mehrere, mehreres
 $Indef-mehrer$ = {<+INDEF>}:{<FB>} $IndefSuff-mehrer$
+
+% genug
+$Indef0$ = {<+INDEF>}:{<FB>} $IndefSuff0$
 
 % ein, eine (article)
 $ArtIndef$ = {<+ART><Indef>}:{<FB>} $ArtIndefSuff$
@@ -901,6 +936,9 @@ $ArtIndef-n$ = {<+ART><Indef>}:{<FB>} $ArtIndefAttrSuff$ {<NonSt>}:{} % cf. Dude
 
 % einer, eine, eines (indefinite pronoun)
 $Indef-ein$ = {<+INDEF>}:{<FB>} $IndefSuff-ein$
+
+% irgendein, irgendeine
+$Indef-irgendein$ = {<+INDEF>}:{<FB>} $ArtIndefSuff$
 
 % kein, keine (article)
 $ArtNeg$ = {<+ART><Neg>}:{<FB>} $ArtNegSuff$
@@ -921,16 +959,16 @@ $Poss/Wk$ = {<+POSS>}:{<FB>} $PossSuff/Wk$
 $Poss/Wk-er$ = {<+POSS>}:{<^Px><FB>} $PossSuff/Wk$
 
 % etwas
-$IndefNeut$ = {<+INDEF><Neut>}:{<FB>} $Indef0$
+$IProNeut$ = {<+INDEF><Neut>}:{<FB>} $IProSuff0$
 
 % jemand
-$IndefMasc$ = {<+INDEF><Masc>}:{<FB>} $IndefSuff$
+$IProMasc$ = {<+INDEF><Masc>}:{<FB>} $IProSuff$
 
 % jedermann
-$Indef-jedermann$ = {<+INDEF><Masc>}:{<FB>} $IndefSuff-jedermann$
+$IPro-jedermann$ = {<+INDEF><Masc>}:{<FB>} $IProSuff-jedermann$
 
 % man
-$Indef-man$ = {<+INDEF><Masc>}:{<FB>} $IndefSuff-man$
+$IPro-man$ = {<+INDEF><Masc>}:{<FB>} $IProSuff-man$
 
 % ich
 $PPro1NomSg$ = {<+PPRO><Pers><1>}:{<FB>} $PProNomSgSuff$
@@ -1050,29 +1088,53 @@ $PProNoGendGenPl$ = {<+PPRO><Pers><NoGend>}:{<FB>} $PProGenPlSuff$
 $PProReflNoGendPl$ = {<+PPRO><Refl><NoGend>}:{<FB>} $PProAccPlSuff$ | \
                      {<+PPRO><Refl><NoGend>}:{<FB>} $PProDatPlSuff$
 
-% wer
+% wer (interrogative pronoun)
 $WProMascNomSg$ = {<+WPRO><Masc>}:{<FB>} $WProNomSgSuff$
 
-% wen
+% wen (interrogative pronoun)
 $WProMascAccSg$ = {<+WPRO><Masc>}:{<FB>} $WProAccSgSuff$
 
-% wem
+% wem (interrogative pronoun)
 $WProMascDatSg$ = {<+WPRO><Masc>}:{<FB>} $WProDatSgSuff$
 
-% wessen, wes
+% wessen, wes (interrogative pronoun)
 $WProMascGenSg$ = {<+WPRO><Masc>}:{<FB>} $WProGenSgSuff$
 
-% was
+% was (interrogative pronoun)
 $WProNeutNomSg$ = {<+WPRO><Neut>}:{<FB>} $WProNomSgSuff$
 
-% was
+% was (interrogative pronoun)
 $WProNeutAccSg$ = {<+WPRO><Neut>}:{<FB>} $WProAccSgSuff$
 
-% was
+% was (interrogative pronoun)
 $WProNeutDatSg$ = {<+WPRO><Neut>}:{<FB>} $WProDatSgSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 404)
 
-% wessen, wes
+% wessen, wes (interrogative pronoun)
 $WProNeutGenSg$ = {<+WPRO><Neut>}:{<FB>} $WProGenSgSuff$
+
+% wer (indefinite pronoun)
+$IProMascNomSg$ = {<+INDEF><Masc>}:{<FB>} $IProNomSgSuff$
+
+% wen (indefinite pronoun)
+$IProMascAccSg$ = {<+INDEF><Masc>}:{<FB>} $IProAccSgSuff$
+
+% wem (indefinite pronoun)
+$IProMascDatSg$ = {<+INDEF><Masc>}:{<FB>} $IProDatSgSuff$
+
+% wessen (indefinite pronoun)
+$IProMascGenSg$ = {<+INDEF><Masc>}:{<FB>} $IProGenSgSuff$
+
+% was (indefinite pronoun)
+$IProNeutNomSg$ = {<+INDEF><Neut>}:{<FB>} $IProNomSgSuff$
+
+% was (indefinite pronoun)
+$IProNeutAccSg$ = {<+INDEF><Neut>}:{<FB>} $IProAccSgSuff$
+
+% was (indefinite pronoun)
+$IProNeutDatSg$ = {<+INDEF><Neut>}:{<FB>} $IProDatSgSuff$ {<NonSt>}:{}
+
+% wessen (indefinite pronoun)
+$IProNeutGenSg$ = {<+INDEF><Neut>}:{<FB>} $IProGenSgSuff$
 
 
 % numerals
@@ -1518,19 +1580,32 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<DigOrd>                $DigOrd$            | \
             <>:<FamName_0>             $FamName_0$         | \
             <>:<FamName_s>             $FamName_s$         | \
+            <>:<Indef0>                $Indef0$            | \
             <>:<Indef-all>             $Indef-all$         | \
+            <>:<Indef-beid>            $Indef-beid$        | \
             <>:<Indef-ein>             $Indef-ein$         | \
             <>:<Indef-einig>           $Indef-einig$       | \
+            <>:<Indef-irgendein>       $Indef-irgendein$   | \
+            <>:<Indef-irgendwelch>     $Indef-irgendwelch$ | \
             <>:<Indef-jed>             $Indef-jed$         | \
-            <>:<Indef-jedermann>       $Indef-jedermann$   | \
             <>:<Indef-jeglich>         $Indef-jeglich$     | \
             <>:<Indef-kein>            $Indef-kein$        | \
-            <>:<Indef-man>             $Indef-man$         | \
+            <>:<Indef-manch>           $Indef-manch$       | \
             <>:<Indef-mehrer>          $Indef-mehrer$      | \
             <>:<Indef-saemtlich>       $Indef-saemtlich$   | \
             <>:<Indef-welch>           $Indef-welch$       | \
-            <>:<IndefMasc>             $IndefMasc$         | \
-            <>:<IndefNeut>             $IndefNeut$         | \
+            <>:<IPro-jedermann>        $IPro-jedermann$    | \
+            <>:<IPro-man>              $IPro-man$          | \
+            <>:<IProMasc>              $IProMasc$          | \
+            <>:<IProMascAccSg>         $IProMascAccSg$     | \
+            <>:<IProMascDatSg>         $IProMascDatSg$     | \
+            <>:<IProMascGenSg>         $IProMascGenSg$     | \
+            <>:<IProMascNomSg>         $IProMascNomSg$     | \
+            <>:<IProNeut>              $IProNeut$          | \
+            <>:<IProNeutAccSg>         $IProNeutAccSg$     | \
+            <>:<IProNeutDatSg>         $IProNeutDatSg$     | \
+            <>:<IProNeutGenSg>         $IProNeutGenSg$     | \
+            <>:<IProNeutNomSg>         $IProNeutNomSg$     | \
             <>:<Intj>                  $Intj$              | \
             <>:<IntjUp>                $IntjUp$            | \
             <>:<Konj-Inf>              $Konj-Inf$          | \
@@ -1776,7 +1851,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<VVReg-el/er><>:<haben> $VVReg-el/er+haben$ | \
             <>:<VVReg-el/er><>:<sein>  $VVReg-el/er+sein$  | \
             <>:<WAdv>                  $WAdv$              | \
-            <>:<WPro-welch>            $WPro-welch$        | \
+            <>:<W-welch>               $W-welch$           | \
             <>:<WProMascAccSg>         $WProMascAccSg$     | \
             <>:<WProMascDatSg>         $WProMascDatSg$     | \
             <>:<WProMascGenSg>         $WProMascGenSg$     | \

@@ -20,4 +20,13 @@
       </Grammatik>
     </Formangabe>
   </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ander</Schreibung>
+      <Grammatik>
+        <Wortklasse>Adjektiv</Wortklasse>
+        <Funktionspraeferenz>attributiv</Funktionspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
 </DWDS>

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-08-23
+# Andreas Nolda 2022-08-29
 
 import sys
 import os
@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 5.0
+version = 5.1
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -208,8 +208,8 @@ def get_noun_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_for
 def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_forms=False, nonstandard_forms=False):
     formdict = {}
     lexcat = Lexcat(pos = pos)
-    # predicative forms
     for degree in degrees:
+        # predicative forms of inflected forms
         parcat = Parcat(degree   = degree,
                         function = "Pred")
         categories = [degree, "Pred"]
@@ -224,8 +224,21 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg, pos, ol
         if nonstandard_forms:
             # no such forms
             pass
-    # forms inflected for degree, but uninflected for gender, case, number, and inflectional strength
+        # predicative forms of uninflected forms
+        categories = [degree, "Invar"]
+        predicative_forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+        if degree == "Sup":
+            add_superlative_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, predicative_forms)
+        else:
+            add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, predicative_forms)
+        if old_forms:
+            # no such forms
+            pass
+        if nonstandard_forms:
+            # no such forms
+            pass
     for degree in degrees:
+        # forms inflected for degree, but uninflected for gender, case, number, and inflectional strength
         parcat = Parcat(degree     = degree,
                         gender     = "Invar",
                         case       = "Invar",
@@ -241,8 +254,7 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg, pos, ol
         if nonstandard_forms:
             # no such forms
             pass
-    # forms inflected for degree, gender, case, number, and inflectional strength
-    for degree in degrees:
+        # forms inflected for degree, gender, case, number, and inflectional strength
         for gender in genders:
             for number in numbers:
                 for case in cases:
