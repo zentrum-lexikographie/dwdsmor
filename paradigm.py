@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-08-29
+# Andreas Nolda 2022-08-30
 
 import sys
 import os
@@ -12,14 +12,14 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 5.2
+version = 5.3
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
 libfile = os.path.join(libdir, "dwdsmor-index.a")
 
 indices     = [1, 2, 3, 4, 5]
-psos        = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "POSS", "PPRO", "REL", "V", "WPRO"]
+psos        = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP", "ORD", "POSS", "PPRO", "REL", "V", "WPRO"]
 art_subcats = ["Def", "Indef", "Neg"]
 pro_subcats = ["Pers", "Refl"]
 degrees     = ["Pos", "Comp", "Sup"]
@@ -354,6 +354,31 @@ def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg, pos, old
                         if nonstandard_forms:
                             forms = generate_nonstandard_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
                             add_nonstandard_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
+    return formdict
+
+def get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_forms=False, nonstandard_forms=False):
+    formdict = {}
+    lexcat = Lexcat(pos = pos)
+    for gender in genders:
+        for number in numbers:
+            for case in cases:
+                for inflection in inflections:
+                    parcat = Parcat(gender     = gender,
+                                    case       = case,
+                                    number     = number,
+                                    inflection = inflection)
+                    categories = [gender,
+                                  case,
+                                  number,
+                                  inflection]
+                    forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+                    add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
+                    if old_forms:
+                        # no such forms
+                        pass
+                    if nonstandard_forms:
+                        # no such forms
+                        pass
     return formdict
 
 def get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_forms=False, nonstandard_forms=False):
@@ -710,6 +735,9 @@ def get_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_forms=Fa
     # cardinals
     elif pos == "CARD":
         formdict = get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_forms, nonstandard_forms)
+    # cardinals
+    elif pos == "ORD":
+        formdict = get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_forms, nonstandard_forms)
     # demonstrative and possessive pronouns
     elif pos == "DEM" or pos == "POSS":
         formdict = get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_forms, nonstandard_forms)

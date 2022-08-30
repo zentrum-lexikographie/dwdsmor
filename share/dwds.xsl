@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 10.2 -->
-<!-- Andreas Nolda 2022-08-29 -->
+<!-- Version 10.3 -->
+<!-- Andreas Nolda 2022-08-30 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -625,10 +625,10 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <!-- numerals -->
+            <!-- cardinals -->
             <xsl:when test="$pos='Kardinalzahl' and
                             string-length(normalize-space(dwds:Genus))&gt;0">
-              <xsl:call-template name="numeral-entry-set">
+              <xsl:call-template name="cardinal-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
                 <xsl:with-param name="lemma-index"
@@ -642,7 +642,20 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Kardinalzahl'">
-              <xsl:call-template name="numeral-entry-set">
+              <xsl:call-template name="cardinal-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- ordinals -->
+            <xsl:when test="$pos='Ordinalzahl'">
+              <xsl:call-template name="ordinal-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
                 <xsl:with-param name="lemma-index"

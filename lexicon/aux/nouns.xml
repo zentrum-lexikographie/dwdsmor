@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DWDS xmlns="http://www.dwds.de/ns/1.0">
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Hundertste</Schreibung>
+        <Grammatik>
+          <Wortklasse>Substantiv</Wortklasse>
+          <Genus>neutr.</Genus>
+          <Genitiv>-n</Genitiv>
+          <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+        </Grammatik>
+    </Formangabe>
+  </Artikel>
+</DWDS>

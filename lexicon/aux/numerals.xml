@@ -46,4 +46,13 @@
       </Grammatik>
     </Formangabe>
   </Artikel> -->
+  <Artikel>
+    <Formangabe>
+      <Schreibung>hundertste</Schreibung>
+      <Grammatik>
+        <Wortklasse>Ordinalzahl</Wortklasse>
+      </Grammatik>
+      <Diasystematik/>
+    </Formangabe>
+  </Artikel>
 </DWDS>

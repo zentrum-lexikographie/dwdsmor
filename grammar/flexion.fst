@@ -1,6 +1,6 @@
 % flexion.fst
-% Version 1.5
-% Andreas Nolda 2022-08-29
+% Version 1.6
+% Andreas Nolda 2022-08-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1187,8 +1187,7 @@ $Card-sieben$ = {<+CARD>}:{<FB>} $CardSuff-sieben$
 $Card0$ = <+CARD>:<> $CardSuff0$
 
 % erst-
-$Ord$ = {<+ORD><Lemma>}:{} $Closed#$ | \
-        <+ORD>:<> $AdjFlexSuff$
+$Ord$ = <+ORD>:<> $AdjFlexSuff$
 
 
 % adverbs
@@ -1570,7 +1569,6 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<AdjComp>               $AdjComp$           | \
             <>:<AdjComp0>              $AdjComp0$          | \
             <>:<AdjSup>                $AdjSup$            | \
-            <>:<AdjFlexSuff>           $AdjFlexSuff$       | \
             <>:<AdjNN>                 $AdjNN$             | \
             <>:<AdjNNSuff>             $AdjNNSuff$         | \
             <>:<AdjPos>                $AdjPos$            | \

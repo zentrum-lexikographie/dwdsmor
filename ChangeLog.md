@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-08-30:
+
+* add support for ordinals
+
 2022-08-29:
 
 * add support for more indefinite pronouns

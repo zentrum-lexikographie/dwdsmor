@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 4.2 -->
-<!-- Andreas Nolda 2022-08-29 -->
+<!-- Version 4.3 -->
+<!-- Andreas Nolda 2022-08-30 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -692,6 +692,157 @@
   </xsl:if>
 </xsl:template>
 
+<xsl:template name="cardinal-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="lemma-index"/>
+  <xsl:param name="paradigm-index"/>
+  <xsl:param name="gender"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:variable name="stem">
+      <xsl:call-template name="feminine-stem">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:choose>
+      <!-- "eine" -->
+      <xsl:when test="$gender='fem.' and
+                      $lemma='eine'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">CARD</xsl:with-param>
+          <xsl:with-param name="class">Card-ein</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "keine" -->
+      <xsl:when test="$gender='fem.' and
+                      $lemma='keine'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form"
+                          select="$stem"/>
+          <xsl:with-param name="pos">CARD</xsl:with-param>
+          <xsl:with-param name="class">Card-kein</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "zwei", "drei" -->
+      <xsl:when test="$lemma='zwei' or
+                      $lemma='drei'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">CARD</xsl:with-param>
+          <xsl:with-param name="class">Card-zwei</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "vier", "fünf", "sechs", "acht", "neun", "zehn", "elf", "zwölf" -->
+      <xsl:when test="$lemma='vier' or
+                      $lemma='fünf' or
+                      $lemma='sechs' or
+                      $lemma='acht' or
+                      $lemma='neun' or
+                      $lemma='zehn' or
+                      $lemma='elf' or
+                      $lemma='zwölf'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">CARD</xsl:with-param>
+          <xsl:with-param name="class">Card-vier</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "sieben" -->
+      <xsl:when test="$lemma='sieben'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">CARD</xsl:with-param>
+          <xsl:with-param name="class">Card-sieben</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">CARD</xsl:with-param>
+          <xsl:with-param name="class">Card0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="ordinal-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="lemma-index"/>
+  <xsl:param name="paradigm-index"/>
+  <xsl:param name="gender"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:variable name="stem">
+      <xsl:call-template name="feminine-stem">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:call-template name="word-entry">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+      <xsl:with-param name="lemma-index"
+                      select="$lemma-index"/>
+      <xsl:with-param name="paradigm-index"
+                      select="$paradigm-index"/>
+      <xsl:with-param name="form"
+                      select="$stem"/>
+      <xsl:with-param name="pos">ORD</xsl:with-param>
+      <xsl:with-param name="class">Ord</xsl:with-param>
+      <xsl:with-param name="etymology"
+                      select="$etymology"/>
+    </xsl:call-template>
+  </xsl:if>
+</xsl:template>
+
 <xsl:template name="noun-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
@@ -1227,127 +1378,6 @@
                               select="$nominative-plural"/>
             </xsl:call-template>
           </xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:if>
-</xsl:template>
-
-<xsl:template name="numeral-entry-set">
-  <xsl:param name="lemma"/>
-  <xsl:param name="lemma-index"/>
-  <xsl:param name="paradigm-index"/>
-  <xsl:param name="gender"/>
-  <xsl:param name="etymology"/>
-  <xsl:if test="string-length($lemma)&gt;0">
-    <xsl:variable name="stem">
-      <xsl:call-template name="feminine-stem">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:call-template>
-    </xsl:variable>
-    <xsl:choose>
-      <!-- "eine" -->
-      <xsl:when test="$gender='fem.' and
-                      $lemma='eine'">
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$stem"/>
-          <xsl:with-param name="pos">CARD</xsl:with-param>
-          <xsl:with-param name="class">Card-ein</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
-      <!-- "keine" -->
-      <xsl:when test="$gender='fem.' and
-                      $lemma='keine'">
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$stem"/>
-          <xsl:with-param name="pos">CARD</xsl:with-param>
-          <xsl:with-param name="class">Card-kein</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
-      <!-- "zwei", "drei" -->
-      <xsl:when test="$lemma='zwei' or
-                      $lemma='drei'">
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="pos">CARD</xsl:with-param>
-          <xsl:with-param name="class">Card-zwei</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
-      <!-- "vier", "fünf", "sechs", "acht", "neun", "zehn", "elf", "zwölf" -->
-      <xsl:when test="$lemma='vier' or
-                      $lemma='fünf' or
-                      $lemma='sechs' or
-                      $lemma='acht' or
-                      $lemma='neun' or
-                      $lemma='zehn' or
-                      $lemma='elf' or
-                      $lemma='zwölf'">
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="pos">CARD</xsl:with-param>
-          <xsl:with-param name="class">Card-vier</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
-      <!-- "sieben" -->
-      <xsl:when test="$lemma='sieben'">
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="pos">CARD</xsl:with-param>
-          <xsl:with-param name="class">Card-sieben</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="pos">CARD</xsl:with-param>
-          <xsl:with-param name="class">Card0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
