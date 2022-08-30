@@ -1,5 +1,6 @@
 <Stem>alle<IDX1><ADJ><base><nativ><AdjPosPred>
 <Stem>alt<ADJ><base><nativ><Adj$e>
+<Stem>ander<ADJ><base><nativ><AdjPosAttr>
 <Stem>Berliner<IDX2><ADJ><base><nativ><Adj0-Up>
 <Stem>echt<ADJ><base><nativ><Adj+e>
 <Stem>entlegen<ADJ><base><nativ><AdjPos>
@@ -36,5 +37,9 @@
 <Stem>v:mi:ee:il:<><ADJ><base><nativ><AdjSup>
 <Stem>verträumt<ADJ><base><nativ><AdjPos>
 <Stem>viel<ADJ><base><nativ><AdjPos>
+<Stem>viel<ADJ><base><nativ><AdjPos0>
 <Stem>warm<ADJ><base><nativ><Adj$>
-<Stem>wenig<ADJ><base><nativ><Adj+>
+<Stem>wenig<>:e<>:r<ADJ><base><nativ><AdjComp0>
+<Stem>wenig<ADJ><base><nativ><AdjPos>
+<Stem>wenig<ADJ><base><nativ><AdjPos0>
+<Stem>wenig<ADJ><base><nativ><AdjSup>
