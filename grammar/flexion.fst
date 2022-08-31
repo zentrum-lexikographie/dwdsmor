@@ -995,46 +995,46 @@ $PPro2DatSg$ = {<+PPRO><Pers><2>}:{<FB>} $PProDatSgSuff$
 $PPro2GenSg$ = {<+PPRO><Pers><2>}:{<FB>} $PProGenSgSuff$
 
 % sie (singular)
-$PProFemNomSg$ = {<+PPRO><Pers><Fem>}:{<FB>} $PProNomSgSuff$
+$PProFemNomSg$ = {<+PPRO><Pers><3><Fem>}:{<FB>} $PProNomSgSuff$
 
 % sie (singular)
-$PProFemAccSg$ = {<+PPRO><Pers><Fem>}:{<FB>} $PProAccSgSuff$
+$PProFemAccSg$ = {<+PPRO><Pers><3><Fem>}:{<FB>} $PProAccSgSuff$
 
 % ihr
-$PProFemDatSg$ = {<+PPRO><Pers><Fem>}:{<FB>} $PProDatSgSuff$
+$PProFemDatSg$ = {<+PPRO><Pers><3><Fem>}:{<FB>} $PProDatSgSuff$
 
 % ihrer, ihr
-$PProFemGenSg$ = {<+PPRO><Pers><Fem>}:{<FB>} $PProGenSgSuff$
+$PProFemGenSg$ = {<+PPRO><Pers><3><Fem>}:{<FB>} $PProGenSgSuff$
 
 % er
-$PProMascNomSg$ = {<+PPRO><Pers><Masc>}:{<FB>} $PProNomSgSuff$
+$PProMascNomSg$ = {<+PPRO><Pers><3><Masc>}:{<FB>} $PProNomSgSuff$
 
 % ihn
-$PProMascAccSg$ = {<+PPRO><Pers><Masc>}:{<FB>} $PProAccSgSuff$
+$PProMascAccSg$ = {<+PPRO><Pers><3><Masc>}:{<FB>} $PProAccSgSuff$
 
 % ihm
-$PProMascDatSg$ = {<+PPRO><Pers><Masc>}:{<FB>} $PProDatSgSuff$
+$PProMascDatSg$ = {<+PPRO><Pers><3><Masc>}:{<FB>} $PProDatSgSuff$
 
 % seiner, sein
-$PProMascGenSg$ = {<+PPRO><Pers><Masc>}:{<FB>} $PProGenSgSuff$
+$PProMascGenSg$ = {<+PPRO><Pers><3><Masc>}:{<FB>} $PProGenSgSuff$
 
 % es
-$PProNeutNomSg$ = {<+PPRO><Pers><Neut>}:{<FB>} $PProNomSgSuff$
+$PProNeutNomSg$ = {<+PPRO><Pers><3><Neut>}:{<FB>} $PProNomSgSuff$
 
 % 's (clitic pronoun)
 $PProNeutNomSg-s$ = $PProNeutNomSg$ {<NonSt>}:{}
 
 % es
-$PProNeutAccSg$ = {<+PPRO><Pers><Neut>}:{<FB>} $PProAccSgSuff$
+$PProNeutAccSg$ = {<+PPRO><Pers><3><Neut>}:{<FB>} $PProAccSgSuff$
 
 % 's (clitic pronoun)
 $PProNeutAccSg-s$ = $PProNeutAccSg$ {<NonSt>}:{}
 
 % ihm
-$PProNeutDatSg$ = {<+PPRO><Pers><Neut>}:{<FB>} $PProDatSgSuff$
+$PProNeutDatSg$ = {<+PPRO><Pers><3><Neut>}:{<FB>} $PProDatSgSuff$
 
 % seiner
-$PProNeutGenSg$ = {<+PPRO><Pers><Neut>}:{<FB>} $PProGenSgSuff$
+$PProNeutGenSg$ = {<+PPRO><Pers><3><Neut>}:{<FB>} $PProGenSgSuff$
 
 % wir
 $PPro1NomPl$ = {<+PPRO><Pers><1>}:{<FB>} $PProNomPlSuff$
@@ -1061,16 +1061,16 @@ $PPro2DatPl$ = {<+PPRO><Pers><2>}:{<FB>} $PProDatPlSuff$
 $PPro2GenPl$ = {<+PPRO><Pers><2>}:{<FB>} $PProGenPlSuff-er$
 
 % sie (plural)
-$PProNoGendNomPl$ = {<+PPRO><Pers><NoGend>}:{<FB>} $PProNomPlSuff$
+$PProNoGendNomPl$ = {<+PPRO><Pers><3><NoGend>}:{<FB>} $PProNomPlSuff$
 
 % sie (plural)
-$PProNoGendAccPl$ = {<+PPRO><Pers><NoGend>}:{<FB>} $PProAccPlSuff$
+$PProNoGendAccPl$ = {<+PPRO><Pers><3><NoGend>}:{<FB>} $PProAccPlSuff$
 
 % ihr
-$PProNoGendDatPl$ = {<+PPRO><Pers><NoGend>}:{<FB>} $PProDatPlSuff$
+$PProNoGendDatPl$ = {<+PPRO><Pers><3><NoGend>}:{<FB>} $PProDatPlSuff$
 
 % ihrer, ihr
-$PProNoGendGenPl$ = {<+PPRO><Pers><NoGend>}:{<FB>} $PProGenPlSuff$
+$PProNoGendGenPl$ = {<+PPRO><Pers><3><NoGend>}:{<FB>} $PProGenPlSuff$
 
 % mich (reflexive)
 $PRefl1AccSg$ = {<+PPRO><Refl><1>}:{<FB>} $PProAccSgSuff$

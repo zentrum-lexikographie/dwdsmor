@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-08-30
+# Andreas Nolda 2022-08-31
 
 import sys
 import os
@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 5.3
+version = 5.4
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -451,6 +451,31 @@ def get_substantival_pronoun_formdict(transducer, lemma_index, paradigm_index, s
                     if nonstandard_forms:
                         forms = generate_nonstandard_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
                         add_nonstandard_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
+    # forms with fixed person and gender and inflected for subcat, case, and number
+    for person in persons:
+        for gender in genders:
+            for number in numbers:
+                for case in cases:
+                    for subcat in pro_subcats:
+                        lexcat = Lexcat(pos    = pos,
+                                        subcat = subcat,
+                                        person = person,
+                                        gender = gender)
+                        parcat = Parcat(case   = case,
+                                        number = number)
+                        categories = [subcat,
+                                      person,
+                                      gender,
+                                      case,
+                                      number]
+                        forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+                        add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
+                        if old_forms:
+                            forms = generate_old_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+                            add_old_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
+                        if nonstandard_forms:
+                            forms = generate_nonstandard_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+                            add_nonstandard_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
     # forms with fixed gender and inflected for subcat, case, and number
     for gender in genders:
         for number in numbers:
@@ -819,6 +844,7 @@ def output_dsv(lemma, output, formdict, no_category_names=False, no_lemma=False,
                                  term.underline("POS"),
                                  term.underline("Subcategory"),
                                  term.underline("Auxiliary"),
+                                 term.underline("Person"),
                                  term.underline("Gender"),
                                  "Degree",
                                  "Person",
@@ -861,6 +887,7 @@ def output_dsv(lemma, output, formdict, no_category_names=False, no_lemma=False,
                                  term.underline(formspec.lexcat.pos),
                                  term.underline(string(formspec.lexcat.subcat)),
                                  term.underline(string(formspec.lexcat.auxiliary)),
+                                 term.underline(string(formspec.lexcat.person)),
                                  term.underline(string(formspec.lexcat.gender)),
                                  string(formspec.parcat.degree),
                                  string(formspec.parcat.person),
