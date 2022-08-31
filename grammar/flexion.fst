@@ -1,6 +1,6 @@
 % flexion.fst
-% Version 1.6
-% Andreas Nolda 2022-08-30
+% Version 1.7
+% Andreas Nolda 2022-08-31
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -973,11 +973,11 @@ $IPro-man$ = {<+INDEF><Masc>}:{<FB>} $IProSuff-man$
 % ich
 $PPro1NomSg$ = {<+PPRO><Pers><1>}:{<FB>} $PProNomSgSuff$
 
-% mich
-$PPro1AccSg$ = {<+PPRO><PR><1>}:{<FB>} $PProAccSgSuff$
+% mich (irreflexive)
+$PPro1AccSg$ = {<+PPRO><Pers><1>}:{<FB>} $PProAccSgSuff$
 
-% mir
-$PPro1DatSg$ = {<+PPRO><PR><1>}:{<FB>} $PProDatSgSuff$
+% mir (irreflexive)
+$PPro1DatSg$ = {<+PPRO><Pers><1>}:{<FB>} $PProDatSgSuff$
 
 % meiner, mein
 $PPro1GenSg$ = {<+PPRO><Pers><1>}:{<FB>} $PProGenSgSuff$
@@ -985,11 +985,11 @@ $PPro1GenSg$ = {<+PPRO><Pers><1>}:{<FB>} $PProGenSgSuff$
 % du
 $PPro2NomSg$ = {<+PPRO><Pers><2>}:{<FB>} $PProNomSgSuff$
 
-% dich
-$PPro2AccSg$ = {<+PPRO><PR><2>}:{<FB>} $PProAccSgSuff$
+% dich (irreflexive)
+$PPro2AccSg$ = {<+PPRO><Pers><2>}:{<FB>} $PProAccSgSuff$
 
-% dir
-$PPro2DatSg$ = {<+PPRO><PR><2>}:{<FB>} $PProDatSgSuff$
+% dir (irreflexive)
+$PPro2DatSg$ = {<+PPRO><Pers><2>}:{<FB>} $PProDatSgSuff$
 
 % deiner, dein
 $PPro2GenSg$ = {<+PPRO><Pers><2>}:{<FB>} $PProGenSgSuff$
@@ -997,7 +997,7 @@ $PPro2GenSg$ = {<+PPRO><Pers><2>}:{<FB>} $PProGenSgSuff$
 % sie (singular)
 $PProFemNomSg$ = {<+PPRO><Pers><Fem>}:{<FB>} $PProNomSgSuff$
 
-% sie
+% sie (singular)
 $PProFemAccSg$ = {<+PPRO><Pers><Fem>}:{<FB>} $PProAccSgSuff$
 
 % ihr
@@ -1005,10 +1005,6 @@ $PProFemDatSg$ = {<+PPRO><Pers><Fem>}:{<FB>} $PProDatSgSuff$
 
 % ihrer, ihr
 $PProFemGenSg$ = {<+PPRO><Pers><Fem>}:{<FB>} $PProGenSgSuff$
-
-% sich
-$PProReflFemSg$ = {<+PPRO><Refl><Fem>}:{<FB>} $PProAccSgSuff$ | \
-                  {<+PPRO><Refl><Fem>}:{<FB>} $PProDatSgSuff$
 
 % er
 $PProMascNomSg$ = {<+PPRO><Pers><Masc>}:{<FB>} $PProNomSgSuff$
@@ -1021,10 +1017,6 @@ $PProMascDatSg$ = {<+PPRO><Pers><Masc>}:{<FB>} $PProDatSgSuff$
 
 % seiner, sein
 $PProMascGenSg$ = {<+PPRO><Pers><Masc>}:{<FB>} $PProGenSgSuff$
-
-% sich
-$PProReflMascSg$ = {<+PPRO><Refl><Masc>}:{<FB>} $PProAccSgSuff$ | \
-                   {<+PPRO><Refl><Masc>}:{<FB>} $PProDatSgSuff$
 
 % es
 $PProNeutNomSg$ = {<+PPRO><Pers><Neut>}:{<FB>} $PProNomSgSuff$
@@ -1044,18 +1036,14 @@ $PProNeutDatSg$ = {<+PPRO><Pers><Neut>}:{<FB>} $PProDatSgSuff$
 % seiner
 $PProNeutGenSg$ = {<+PPRO><Pers><Neut>}:{<FB>} $PProGenSgSuff$
 
-% sich
-$PProReflNeutSg$ = {<+PPRO><Refl><Neut>}:{<FB>} $PProAccSgSuff$ | \
-                   {<+PPRO><Refl><Neut>}:{<FB>} $PProDatSgSuff$
-
 % wir
 $PPro1NomPl$ = {<+PPRO><Pers><1>}:{<FB>} $PProNomPlSuff$
 
-% uns
-$PPro1AccPl$ = {<+PPRO><PR><1>}:{<FB>} $PProAccPlSuff$
+% uns (irreflexive)
+$PPro1AccPl$ = {<+PPRO><Pers><1>}:{<FB>} $PProAccPlSuff$
 
-% uns
-$PPro1DatPl$ = {<+PPRO><PR><1>}:{<FB>} $PProDatPlSuff$
+% uns (irreflexive)
+$PPro1DatPl$ = {<+PPRO><Pers><1>}:{<FB>} $PProDatPlSuff$
 
 % unser, unserer/unsrer
 $PPro1GenPl$ = {<+PPRO><Pers><1>}:{<FB>} $PProGenPlSuff-er$
@@ -1063,11 +1051,11 @@ $PPro1GenPl$ = {<+PPRO><Pers><1>}:{<FB>} $PProGenPlSuff-er$
 % ihr
 $PPro2NomPl$ = {<+PPRO><Pers><2>}:{<FB>} $PProNomPlSuff$
 
-% euch
-$PPro2AccPl$ = {<+PPRO><PR><2>}:{<FB>} $PProAccPlSuff$
+% euch (irreflexive)
+$PPro2AccPl$ = {<+PPRO><Pers><2>}:{<FB>} $PProAccPlSuff$
 
-% euch
-$PPro2DatPl$ = {<+PPRO><PR><2>}:{<FB>} $PProDatPlSuff$
+% euch (irreflexive)
+$PPro2DatPl$ = {<+PPRO><Pers><2>}:{<FB>} $PProDatPlSuff$
 
 % euer, eurer
 $PPro2GenPl$ = {<+PPRO><Pers><2>}:{<FB>} $PProGenPlSuff-er$
@@ -1075,7 +1063,7 @@ $PPro2GenPl$ = {<+PPRO><Pers><2>}:{<FB>} $PProGenPlSuff-er$
 % sie (plural)
 $PProNoGendNomPl$ = {<+PPRO><Pers><NoGend>}:{<FB>} $PProNomPlSuff$
 
-% sie
+% sie (plural)
 $PProNoGendAccPl$ = {<+PPRO><Pers><NoGend>}:{<FB>} $PProAccPlSuff$
 
 % ihr
@@ -1084,9 +1072,31 @@ $PProNoGendDatPl$ = {<+PPRO><Pers><NoGend>}:{<FB>} $PProDatPlSuff$
 % ihrer, ihr
 $PProNoGendGenPl$ = {<+PPRO><Pers><NoGend>}:{<FB>} $PProGenPlSuff$
 
+% mich (reflexive)
+$PRefl1AccSg$ = {<+PPRO><Refl><1>}:{<FB>} $PProAccSgSuff$
+
+% mir (reflexive)
+$PRefl1DatSg$ = {<+PPRO><Refl><1>}:{<FB>} $PProDatSgSuff$
+
+% dich (reflexive)
+$PRefl2AccSg$ = {<+PPRO><Refl><2>}:{<FB>} $PProAccSgSuff$
+
+% dir (reflexive)
+$PRefl2DatSg$ = {<+PPRO><Refl><2>}:{<FB>} $PProDatSgSuff$
+
+% uns (reflexive)
+$PRefl1Pl$ = {<+PPRO><Refl><1>}:{<FB>} $PProAccPlSuff$ | \
+             {<+PPRO><Refl><1>}:{<FB>} $PProDatPlSuff$
+
+% euch (reflexive)
+$PRefl2Pl$ = {<+PPRO><Refl><2>}:{<FB>} $PProAccPlSuff$ | \
+             {<+PPRO><Refl><2>}:{<FB>} $PProDatPlSuff$
+
 % sich
-$PProReflNoGendPl$ = {<+PPRO><Refl><NoGend>}:{<FB>} $PProAccPlSuff$ | \
-                     {<+PPRO><Refl><NoGend>}:{<FB>} $PProDatPlSuff$
+$PRefl3$ = {<+PPRO><Refl><3>}:{<FB>} $PProAccSgSuff$      | \
+           {<+PPRO><Refl><3>}:{<FB>} $PProDatSgSuff$      | \
+           {<+PPRO><Refl><3>}:{<FB>} $PProAccPlSuff$ | \
+           {<+PPRO><Refl><3>}:{<FB>} $PProDatPlSuff$
 
 % wer (interrogative pronoun)
 $WProMascNomSg$ = {<+WPRO><Masc>}:{<FB>} $WProNomSgSuff$
@@ -1782,10 +1792,13 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<PProNoGendDatPl>       $PProNoGendDatPl$   | \
             <>:<PProNoGendGenPl>       $PProNoGendGenPl$   | \
             <>:<PProNoGendNomPl>       $PProNoGendNomPl$   | \
-            <>:<PProReflFemSg>         $PProReflFemSg$     | \
-            <>:<PProReflMascSg>        $PProReflMascSg$    | \
-            <>:<PProReflNeutSg>        $PProReflNeutSg$    | \
-            <>:<PProReflNoGendPl>      $PProReflNoGendPl$  | \
+            <>:<PRefl1AccSg>           $PRefl1AccSg$       | \
+            <>:<PRefl1DatSg>           $PRefl1DatSg$       | \
+            <>:<PRefl2AccSg>           $PRefl2AccSg$       | \
+            <>:<PRefl2DatSg>           $PRefl2DatSg$       | \
+            <>:<PRefl1Pl>              $PRefl1Pl$          | \
+            <>:<PRefl2Pl>              $PRefl2Pl$          | \
+            <>:<PRefl3>                $PRefl3$            | \
             <>:<Prep-Akk>              $Prep-Akk$          | \
             <>:<Prep-Dat>              $Prep-Dat$          | \
             <>:<Prep-Gen>              $Prep-Gen$          | \

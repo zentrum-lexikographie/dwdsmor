@@ -102,6 +102,22 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>dich</Schreibung>
+      <Grammatik>
+        <Wortklasse>Reflexivpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Dich</Schreibung>
+      <Grammatik>
+        <Wortklasse>Reflexivpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>ebensolcher</Schreibung>
       <Grammatik>
         <Wortklasse>Demonstrativpronomen</Wortklasse>
@@ -189,6 +205,22 @@
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>euch</Schreibung>
+      <Grammatik>
+        <Wortklasse>Reflexivpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Euch</Schreibung>
+      <Grammatik>
+        <Wortklasse>Reflexivpronomen</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -486,6 +518,14 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>mich</Schreibung>
+      <Grammatik>
+        <Wortklasse>Reflexivpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>sämtlicher</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
@@ -550,6 +590,14 @@
       <Grammatik>
         <Wortklasse>Demonstrativpronomen</Wortklasse>
         <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>uns</Schreibung>
+      <Grammatik>
+        <Wortklasse>Reflexivpronomen</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>

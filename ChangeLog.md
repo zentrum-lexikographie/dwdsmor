@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-08-31:
+
+* add proper lemmas for reflexive personal pronouns
+
 2022-08-30:
 
 * add support for ordinals

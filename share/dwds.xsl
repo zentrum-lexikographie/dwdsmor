@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 10.3 -->
-<!-- Andreas Nolda 2022-08-30 -->
+<!-- Version 10.4 -->
+<!-- Andreas Nolda 2022-08-31 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -888,7 +888,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <!-- personal pronouns -->
+            <!-- irreflexive personal pronouns -->
             <xsl:when test="$pos='Personalpronomen' and
                             ($lemma='du' or
                              $lemma='Du' or
@@ -901,6 +901,26 @@
                              $lemma='Sie' or
                              $lemma='wir')">
               <xsl:call-template name="personal-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- reflexive personal pronouns -->
+            <xsl:when test="$pos='Reflexivpronomen' and
+                            ($lemma='dich' or
+                             $lemma='Dich' or
+                             $lemma='euch' or
+                             $lemma='Euch' or
+                             $lemma='mich' or
+                             $lemma='sich' or
+                             $lemma='uns')">
+              <xsl:call-template name="reflexive-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
                 <xsl:with-param name="lemma-index"

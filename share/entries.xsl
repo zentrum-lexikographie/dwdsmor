@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 4.3 -->
-<!-- Andreas Nolda 2022-08-30 -->
+<!-- Version 4.4 -->
+<!-- Andreas Nolda 2022-08-31 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1847,8 +1847,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProNeutNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1861,8 +1859,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProNeutAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1875,8 +1871,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProNeutDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1906,8 +1900,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProMascNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2016,8 +2008,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProNeutNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2030,8 +2020,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProNeutAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2044,8 +2032,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProNeutDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2074,8 +2060,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProMascNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2162,8 +2146,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2NomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2218,8 +2200,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2NomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2274,8 +2254,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProMascNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2320,18 +2298,6 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma">er</xsl:with-param>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form">sich</xsl:with-param>
-          <xsl:with-param name="pos">PPRO</xsl:with-param>
-          <xsl:with-param name="class">PProReflMascSg</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
       </xsl:when>
       <!-- "es", "'s" -->
       <xsl:when test="$lemma='es'">
@@ -2342,8 +2308,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNeutNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2368,8 +2332,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNeutAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2413,18 +2375,6 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma">es</xsl:with-param>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form">sich</xsl:with-param>
-          <xsl:with-param name="pos">PPRO</xsl:with-param>
-          <xsl:with-param name="class">PProReflNeutSg</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
       </xsl:when>
       <!-- "ich" -->
       <xsl:when test="$lemma='ich'">
@@ -2435,8 +2385,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro1NomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2491,8 +2439,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2NomPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2547,8 +2493,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2NomPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2603,8 +2547,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProFemNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2617,8 +2559,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendNomPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2631,8 +2571,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProFemAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2645,8 +2583,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendAccPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2704,30 +2640,6 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma">sie</xsl:with-param>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form">sich</xsl:with-param>
-          <xsl:with-param name="pos">PPRO</xsl:with-param>
-          <xsl:with-param name="class">PProReflFemSg</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma">sie</xsl:with-param>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form">sich</xsl:with-param>
-          <xsl:with-param name="pos">PPRO</xsl:with-param>
-          <xsl:with-param name="class">PProReflNoGendPl</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
       </xsl:when>
       <!-- "Sie" -->
       <xsl:when test="$lemma='Sie'">
@@ -2738,8 +2650,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendNomPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2752,8 +2662,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendAccPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2784,18 +2692,6 @@
           <xsl:with-param name="class">PProNoGendGenPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
-        </xsl:call-template>
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma">Sie</xsl:with-param>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form">sich</xsl:with-param>
-          <xsl:with-param name="pos">PPRO</xsl:with-param>
-          <xsl:with-param name="class">PProReflNoGendPl</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
         </xsl:call-template><!-- ? -->
       </xsl:when>
       <!-- "wir" -->
@@ -2807,8 +2703,6 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="$lemma"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro1NomPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2858,6 +2752,162 @@
   </xsl:if>
   <!-- TODO: -->
   <!-- "Dero", "Ihro" -->
+</xsl:template>
+
+<xsl:template name="reflexive-pronoun-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="lemma-index"/>
+  <xsl:param name="paradigm-index"/>
+  <xsl:param name="gender"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:choose>
+      <!-- "dich" -->
+      <xsl:when test="$lemma='dich'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PRefl2AccSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form">dir</xsl:with-param>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PRefl2DatSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "Dich" -->
+      <xsl:when test="$lemma='Dich'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PRefl2AccSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form">Dir</xsl:with-param>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PRefl2DatSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "euch" -->
+      <xsl:when test="$lemma='euch'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PRefl2Pl</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "Euch" -->
+      <xsl:when test="$lemma='Euch'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PRefl2Pl</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "mich" -->
+      <xsl:when test="$lemma='mich'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PRefl1AccSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="form">mir</xsl:with-param>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PRefl1DatSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "sich" -->
+      <xsl:when test="$lemma='sich'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PRefl3</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "uns" -->
+      <xsl:when test="$lemma='uns'">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PRefl1Pl</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template name="possessive-pronoun-entry-set">
