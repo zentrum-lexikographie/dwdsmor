@@ -256,7 +256,7 @@
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">AdjPos0</xsl:with-param>
+              <xsl:with-param name="class">Adj0</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
