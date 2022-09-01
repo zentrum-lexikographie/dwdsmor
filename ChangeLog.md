@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-09-01:
+
+* add support for masculine or neuter nouns with genitive singular forms ending
+  in "-(e)s" and nominative plural forms ending in "-s"
+
 2022-08-31:
 
 * add proper lemmas for reflexive personal pronouns

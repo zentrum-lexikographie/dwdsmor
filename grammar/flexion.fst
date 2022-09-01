@@ -1,6 +1,6 @@
 % flexion.fst
-% Version 1.7
-% Andreas Nolda 2022-08-31
+% Version 1.8
+% Andreas Nolda 2022-09-01
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -77,6 +77,9 @@ $N_es_\$er$ =             $NSg_es$ | \
 
 $N_es_er$ =         $NSg_es$ | \
             {}:{er} $NPl_0$
+
+$N_es_s$ =            $NSg_es$ | \
+           {}:{<FB>s} $NPl_x$
 
 $N_s_\$e$ =              $NSg_s$ | \
             {<>}:{<UL>e} $NPl_0$
@@ -220,6 +223,9 @@ $NMasc_es_er$ = {<+NN><Masc>}:{<>} $N_es_er$
 % Fleck-(e)s/Flecken
 $NMasc_es_en$ = {<+NN><Masc>}:{} $N_es_en$
 
+% Park-(e)s/Parks
+$NMasc_es_s$ = {<+NN><Masc>}:{} $N_es_s$
+
 % Adler-s/Adler; Engel-s/Engel
 $NMasc_s_0$ = {<+NN><Masc>}:{} $N_s_0$
 
@@ -351,6 +357,9 @@ $NNeut_es_\$er$ = {<+NN><Neut>}:{} $N_es_\$er$
 
 % Bett-(e)s/Betten
 $NNeut_es_en$ = {<+NN><Neut>}:{} $N_es_en$
+
+% Tablett-(e)s/Tabletts
+$NNeut_es_s$ = {<+NN><Neut>}:{} $N_es_s$
 
 % Feuer-s/Feuer; Mittel-s/Mittel
 $NNeut_s_0$ = {<+NN><Neut>}:{} $N_s_0$
@@ -1691,6 +1700,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NMasc_es_er>           $NMasc_es_er$       | \
             <>:<NMasc_es_e>            $NMasc_es_e$        | \
             <>:<NMasc_es_en>           $NMasc_es_en$       | \
+            <>:<NMasc_es_s>            $NMasc_es_s$        | \
             <>:<NMasc_n_n>             $NMasc_n_n$         | \
             <>:<NMasc_s_$>             $NMasc_s_\$$        | \
             <>:<NMasc_s_$x>            $NMasc_s_\$x$       | \
@@ -1728,6 +1738,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NNeut_es_e>            $NNeut_es_e$        | \
             <>:<NNeut_es_en>           $NNeut_es_en$       | \
             <>:<NNeut_es_er>           $NNeut_es_er$       | \
+            <>:<NNeut_es_s>            $NNeut_es_s$        | \
             <>:<NNeut_s_$>             $NNeut_s_\$$        | \
             <>:<NNeut_s_0>             $NNeut_s_0$         | \
             <>:<NNeut_s_e>             $NNeut_s_e$         | \
