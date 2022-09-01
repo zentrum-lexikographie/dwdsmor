@@ -1,5 +1,5 @@
 % flexion.fst
-% Version 1.8
+% Version 1.9
 % Andreas Nolda 2022-09-01
 
 % based on code from SMORLemma by Rico Sennrich
@@ -151,7 +151,7 @@ $NFem_0_x$ = {<+NN><Fem>}:{} $N_0_x$
 $NFem-s/ssen$ = $SS$ {<+NN><Fem>}:{} $N_0_en$
 
 % Kenntnis/Kenntnisse
-$NFem-s/sse$ = $SS$ {<+NN><Fem>}:{} $N_0_\$e$
+$NFem-s/sse$ = $SS$ {<+NN><Fem>}:{} $N_0_e$
 
 % Nuß/Nüsse
 $NFem-s/\$sse$ = $SS$ {<+NN><Fem>}:{} $N_0_\$e$

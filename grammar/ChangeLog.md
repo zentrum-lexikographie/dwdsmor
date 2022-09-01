@@ -1,5 +1,26 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-09-01:
+
+* add inflection classes `NMasc_es_s` and `NNeut_es_s`
+* fix inflection class `NFem-s/sse`
+
+2022-08-31:
+
+* replace inflection classes `PProReflFemSg`, `PProReflMascSg`,
+  `PProReflNeutSg`, and `PProReflNoGendPl` with `PRefl1AccSg`, `PRefl1DatSg`,
+  `PRefl2AccSg`, `PRefl2DatSg`, `PRefl1Pl`, `PRefl2Pl`, and `PRefl3`
+
+2022-08-29:
+
+* rename inflection classes `Card`, `Indef-jedermann`, `Indef-man`, `IndefMasc`,
+  and `WPro-welch` to `Card0`, `IPro-jedermann`, `IPro-man`, `IProMasc`, and
+  `W-welch`, respectively
+* add inflection classes `Card-zwei`, `Card-vier`, `Card-sieben`, `Indef0`,
+  `Indef-beid`, `Indef-irgendein`, `Indef-irgendwelch`, `Indef-manch`,
+  `IProMascNomSg`, `IProMascAccSg`, `IProMascGenSg`, `IProMascDatSg`,
+  `IProNeutNomSg`, `IProNeutAccSg`, `IProNeutDatSg`, and `IProNeutGenSg`
+
 2022-08-24:
 
 * add inflection classes `NMasc-as/anten`, `NMasc-as0/anten`, `NMasc-us0/i`,
