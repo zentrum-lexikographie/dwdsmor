@@ -1,11 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 2.5 -->
-<!-- Andreas Nolda 2022-04-19 -->
+<!-- Version 3.0 -->
+<!-- Andreas Nolda 2022-09-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:n="http://andreas.nolda.org/ns/lib">
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:n="http://andreas.nolda.org/ns/lib"
+                exclude-result-prefixes="xs">
+
+<xsl:variable name="strings-without-final-schwa-syllable">
+  <string>Anime</string>
+  <string>Byte</string>
+  <string>Joule</string>
+  <string>Mémoire</string>
+  <string>Striptease</string>
+  <!-- ... -->
+</xsl:variable>
+
+<!-- return true if $argument has a final schwa-syllable
+     which can be suffixed with dative plural "-n" -->
+<!-- $argument has such a final schwa-syllable iff
+     $argument ends in schwa plus optional "r" and/or "l" or
+     $argument ends in unsyllabic "l". -->
+<!-- $strings-without-final-schwa-syllable provides a list of exceptions
+     where orthographic "e" does not represent phonological schwa. -->
+<xsl:function name="n:has-final-schwa-syllable" as="xs:boolean">
+  <xsl:param name="argument"/>
+  <xsl:choose>
+    <!-- $argument matches an exception -->
+    <xsl:when test="$strings-without-final-schwa-syllable/string[matches($argument,concat(.,'$'),'i')]">
+      <!-- $argument does not have a final schwa-syllable -->
+      <xsl:sequence select="false()"/>
+    </xsl:when>
+    <!-- $argument is an uppercase acronym -->
+    <xsl:when test="matches($argument,'^\p{Lu}+$')">
+      <!-- $argument does not have a final schwa-syllable -->
+      <xsl:sequence select="false()"/>
+    </xsl:when>
+    <!-- $argument is an uppercase acronym followed by "ler" -->
+    <xsl:when test="matches($argument,'^\p{Lu}+ler$')">
+      <!-- $argument has a final schwa-syllable -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- $argument ends with digits followed by "er" -->
+    <xsl:when test="matches($argument,'[0-9]er$')">
+      <!-- $argument has a final schwa-syllable -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- $argument ends in "ee" plus optional "r" and/or "l" -->
+    <xsl:when test="matches($argument,'ee(r|l|rl)?$')">
+      <!-- $argument does not have a final schwa-syllable -->
+      <xsl:sequence select="false()"/>
+    </xsl:when>
+    <!-- $argument ends in schwa plus optional "r" and/or "l" -->
+    <xsl:when test="matches($argument,'[AEIOUÄÖÜaeiouäöüy][^aeiouäöü]*e(r|l|rl)?$')">
+      <!-- $argument has a final schwa-syllable -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- $argument ends in unsyllabic "l" -->
+    <xsl:when test="matches($argument,'[AEIOUÄÖÜaeiouäöüy][^aeiouäöü]+l$')">
+      <!-- $argument has a final schwa-syllable -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <!-- $argument does not have a final schwa-syllable -->
+      <xsl:sequence select="false()"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
 
 <!-- return a regex matching the "e"/"i"-alternation variant of $argument, if any -->
 <xsl:function name="n:e-i-alternation-re">

@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-09-02:
+
+* restrict inflection classes with dative plural "-n" to nouns with final schwa-syllable
+
 2022-09-01:
 
 * add support for masculine or neuter nouns with genitive singular forms ending
