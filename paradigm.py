@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-08-31
+# Andreas Nolda 2022-09-02
 
 import sys
 import os
@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 5.4
+version = 5.5
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -910,7 +910,7 @@ def generate_paradigms(transducer, lemma, lemma_index=None, paradigm_index=None,
         analyses = analyse_word(transducer, lemma)
         lemmaspecs = sorted({Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.segmented_lemma, analysis.pos)
                              for analysis in analyses if analysis.lemma == lemma and analysis.pos in psos},
-                            key=lambda l: (l.lemma_index, l.paradigm_index, l.segmented_lemma, l.pos))
+                            key=lambda l: (string(l.lemma_index), string(l.paradigm_index), l.segmented_lemma, l.pos))
         if lemma_index in indices:
             lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs
                           if lemmaspec.lemma_index == str(lemma_index)]
