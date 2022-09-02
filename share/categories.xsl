@@ -33,6 +33,7 @@
 <xsl:template name="adjective-class">
   <xsl:param name="lemma"/>
   <xsl:param name="superlative"/>
+  <xsl:param name="pronunciations"/>
   <xsl:variable name="superlative-marker">
     <xsl:call-template name="get-nominal-marker">
       <xsl:with-param name="form"
@@ -568,13 +569,14 @@
   <xsl:param name="number"/>
   <xsl:param name="genitive-singular"/>
   <xsl:param name="nominative-plural"/>
+  <xsl:param name="pronunciations"/>
   <xsl:choose>
     <!-- pluralia tantum -->
     <xsl:when test="$number='plural'">
       <xsl:choose>
         <!-- nominative plural: with final schwa-syllable
              dative plural: "-n" -->
-        <xsl:when test="n:has-final-schwa-syllable($lemma)">
+        <xsl:when test="n:has-final-schwa-syllable($lemma, $pronunciations)">
           <xsl:value-of select="$noun-class-mapping/class[not(@gender)]
                                                          [not(@genitive-singular)]
                                                          [not(@nominative-plural)]
@@ -627,7 +629,7 @@
              dative plural: "-n" -->
         <xsl:when test="$genitive-singular-marker='-s' and
                         ends-with($nominative-plural-marker,'-') and
-                        n:has-final-schwa-syllable($lemma)">
+                        n:has-final-schwa-syllable($lemma, $pronunciations)">
           <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
                                                          [@genitive-singular=$genitive-singular-marker]
                                                          [@nominative-plural=$nominative-plural-marker]
@@ -648,7 +650,7 @@
              dative plural: "-n" -->
         <xsl:when test="$genitive-singular-marker='-' and
                         ends-with($nominative-plural-marker,'-') and
-                        n:has-final-schwa-syllable($lemma)">
+                        n:has-final-schwa-syllable($lemma, $pronunciations)">
           <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
                                                          [@genitive-singular=$genitive-singular-marker]
                                                          [@nominative-plural=$nominative-plural-marker]
@@ -846,13 +848,14 @@
   <xsl:param name="number"/>
   <xsl:param name="genitive-singular"/>
   <xsl:param name="nominative-plural"/>
+  <xsl:param name="pronunciations"/>
   <xsl:choose>
     <!-- plural proper names -->
     <xsl:when test="$number='plural'">
       <xsl:choose>
         <!-- nominative plural: with final schwa-syllable
              dative plural: "-n" -->
-        <xsl:when test="n:has-final-schwa-syllable($lemma)">
+        <xsl:when test="n:has-final-schwa-syllable($lemma, $pronunciations)">
           <xsl:value-of select="$name-class-mapping/class[not(@gender)]
                                                          [not(@genitive-singular)]
                                                          [not(@nominative-plural)]
@@ -948,6 +951,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="past"/>
   <xsl:param name="participle"/>
+  <xsl:param name="pronunciations"/>
   <xsl:variable name="stem">
     <xsl:call-template name="verb-stem">
       <xsl:with-param name="lemma"
@@ -1012,6 +1016,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="position"/>
   <xsl:param name="case"/>
+  <xsl:param name="pronunciations"/>
   <xsl:value-of select="$adposition-class-mapping/class[@position=$position]
                                                        [@case=$case]"/>
 </xsl:template>
@@ -1030,6 +1035,7 @@
 <xsl:template name="contracted-adposition-class">
   <xsl:param name="lemma"/>
   <xsl:param name="clitic"/>
+  <xsl:param name="pronunciations"/>
   <xsl:value-of select="$contracted-adposition-class-mapping/class[@clitic=$clitic]"/>
 </xsl:template>
 
@@ -1047,6 +1053,7 @@
 <xsl:template name="conjunction-class">
   <xsl:param name="lemma"/>
   <xsl:param name="type"/>
+  <xsl:param name="pronunciations"/>
   <xsl:value-of select="$conjunction-class-mapping/class[@type=$type]"/>
 </xsl:template>
 </xsl:stylesheet>

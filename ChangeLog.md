@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-09-02:
 
 * restrict inflection classes with dative plural "-n" to nouns with final schwa-syllable
+* use phonetic transcriptions for identifying final schwa-syllables
 
 2022-09-01:
 

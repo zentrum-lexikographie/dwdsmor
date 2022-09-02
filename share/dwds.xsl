@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 10.4 -->
-<!-- Andreas Nolda 2022-08-31 -->
+<!-- Version 11.0 -->
+<!-- Andreas Nolda 2022-09-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -120,6 +120,9 @@
         <xsl:number/>
       </xsl:if>
     </xsl:variable>
+    <!-- sequence of phonetic transcriptions (if any) -->
+    <xsl:variable name="pronunciations"
+                  select="distinct-values(dwds:Aussprache[not(@class='invisible')]/@IPA)"/>
     <!-- ignore idioms and invalid spellings -->
     <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
                                          [not(@Typ='U_NR' or
@@ -189,6 +192,8 @@
                 <xsl:with-param name="type">prefix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">adjective</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -206,6 +211,8 @@
                 <xsl:with-param name="type">suffix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">adjective</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -223,6 +230,8 @@
                 <xsl:with-param name="type">prefix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">adverb</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -240,6 +249,8 @@
                 <xsl:with-param name="type">suffix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">adverb</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -258,6 +269,8 @@
                 <xsl:with-param name="type">prefix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">noun</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -276,6 +289,8 @@
                 <xsl:with-param name="type">suffix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">noun</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -294,6 +309,8 @@
                 <xsl:with-param name="type">prefix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">verb</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -312,6 +329,8 @@
                 <xsl:with-param name="type">prefix</xsl:with-param>
                 <xsl:with-param name="separable">yes</xsl:with-param>
                 <xsl:with-param name="selection">verb</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -329,6 +348,8 @@
                 <xsl:with-param name="type">suffix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">noun</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -365,6 +386,8 @@
                                 select="normalize-space(dwds:Komparativ)"/>
                 <xsl:with-param name="superlative"
                                 select="normalize-space(dwds:Superlativ)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -394,6 +417,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -417,6 +442,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -440,6 +467,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -478,6 +507,8 @@
                                     select="normalize-space(dwds:Komparativ)"/>
                     <xsl:with-param name="superlative"
                                     select="normalize-space(dwds:Superlativ)"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -510,6 +541,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -525,6 +558,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -546,6 +581,8 @@
                 <xsl:with-param name="genitive-singular"
                                 select="normalize-space(dwds:Genitiv)"/>
                 <xsl:with-param name="number">singular</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -562,6 +599,8 @@
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -584,6 +623,8 @@
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
                 <xsl:with-param name="number">singular+plural</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -605,6 +646,8 @@
                 <xsl:with-param name="genitive-singular"
                                 select="normalize-space(dwds:Genitiv)"/>
                 <xsl:with-param name="number">singular</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -621,6 +664,8 @@
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -637,6 +682,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -649,6 +696,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -662,6 +711,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -678,6 +729,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -692,6 +745,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -705,6 +760,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -718,6 +775,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -731,6 +790,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -744,6 +805,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -757,6 +820,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -770,6 +835,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -783,6 +850,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -798,6 +867,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -811,6 +882,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -825,6 +898,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -839,6 +914,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -854,6 +931,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -869,6 +948,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -884,6 +965,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -907,6 +990,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -927,6 +1012,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -941,6 +1028,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -956,6 +1045,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -972,6 +1063,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1015,6 +1108,8 @@
                                 select="normalize-space(dwds:Partizip_II)"/>
                 <xsl:with-param name="auxiliary"
                                 select="normalize-space(dwds:Auxiliar)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1046,6 +1141,8 @@
                                 select="normalize-space(dwds:Partizip_II)"/>
                 <xsl:with-param name="auxiliary"
                                 select="normalize-space(dwds:Auxiliar)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1087,6 +1184,8 @@
                     <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Genitiv'">genitive</xsl:when>
                   </xsl:choose>
                 </xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1104,6 +1203,8 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="adposition"
                                     select="$basis"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1129,6 +1230,8 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="adposition"
                                     select="$basis"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1147,6 +1250,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1158,6 +1263,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1169,6 +1276,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">comp</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1182,6 +1291,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1193,6 +1304,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1203,6 +1316,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1216,6 +1331,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1240,6 +1357,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1251,6 +1370,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1264,6 +1385,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1274,6 +1397,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1287,6 +1412,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1298,6 +1425,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">comp</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1324,6 +1453,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1383,6 +1514,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1398,6 +1531,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">inf</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1411,6 +1546,8 @@
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
                     <xsl:with-param name="type">comp</xsl:with-param>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1423,6 +1560,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1458,6 +1597,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
