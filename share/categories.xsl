@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 4.0 -->
-<!-- Andreas Nolda 2022-09-02 -->
+<!-- Version 4.1 -->
+<!-- Andreas Nolda 2022-09-05 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -106,6 +106,11 @@
   <class gender="mask."
          genitive-singular="-s"
          nominative-plural="&#x308;-e">NMasc_s_$e</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-nen" -->
+  <class gender="mask."
+         genitive-singular="-s"
+         nominative-plural="-nen">NMasc_s_nen</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: geminate "s" + "-e" -->
   <class gender="mask."
@@ -229,6 +234,11 @@
          genitive-singular="-"
          nominative-plural="-"
          dative-plural="-">NMasc_0_x</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-nen" -->
+  <class gender="mask."
+         genitive-singular="-"
+         nominative-plural="-nen">NMasc_0_nen</class>
   <!-- genitive singular: "-s"
        nominative plural: "-en" substituted for "-o" -->
   <class gender="mask."
@@ -376,7 +386,12 @@
        nominative plural: "-ien" -->
   <class gender="neutr."
          genitive-singular="-s"
-         nominative-plural="-ien">NNeut-0/ien</class>
+         nominative-plural="-ien">NNeut_s_ien</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-nen" -->
+  <class gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-nen">NNeut_s_nen</class>
   <!-- genitive singular: "-s"
        nominative plural: "-s" -->
   <class gender="neutr."
@@ -431,6 +446,11 @@
          genitive-singular="-"
          nominative-plural="-"
          dative-plural="-">NNeut_0_x</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-nen" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-nen">NNeut_0_nen</class>
   <!-- genitive singular: "-s"
        nominative plural: "-en" substituted for "-a" -->
   <class gender="neutr."

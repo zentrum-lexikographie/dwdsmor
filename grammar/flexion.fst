@@ -1,6 +1,6 @@
 % flexion.fst
-% Version 1.9
-% Andreas Nolda 2022-09-01
+% Version 1.10
+% Andreas Nolda 2022-09-05
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -275,6 +275,14 @@ $NMasc-ns$ = {<+NN><Masc><Nom><Sg>}:{}       $N#$ | \
              {<+NN><Masc><DA><Sg>}:{<FB>n}   $N#$ | \
              {<+NN><Masc>}:{n}               $NPl_x$
 
+% Embryo/Embryonen (masculine)
+$NMasc_0_nen$ =          $NMasc/Sg_0$ | \
+                {}:{nen} $NMasc/Pl_x$
+
+% Embryo-s/Embryonen (masculine)
+$NMasc_s_nen$ =          $NMasc/Sg_s$ | \
+                {}:{nen} $NMasc/Pl_x$
+
 % Saldo/Salden
 $NMasc-o/en$ =              $NMasc/Sg_s$ | \
                {}:{<^pl>en} $NMasc/Pl_x$
@@ -407,8 +415,16 @@ $NNeut-s/sse$ = $SS$ $NNeut_es_e$
 $NNeut-s/\$sser$ = $SS$ $NNeut_es_\$er$
 
 % Adverb/Adverbien
-$NNeut-0/ien$ =          $NNeut/Sg_s$ | \
+$NNeut_s_ien$ =          $NNeut/Sg_s$ | \
                 {}:{ien} $NNeut/Pl_x$
+
+% Embryo/Embryonen (neuter)
+$NNeut_0_nen$ =          $NNeut/Sg_0$ | \
+                {}:{nen} $NNeut/Pl_x$
+
+% Embryo-s/Embryonen (neuter)
+$NNeut_s_nen$ =          $NNeut/Sg_s$ | \
+                {}:{nen} $NNeut/Pl_x$
 
 % Komma/Kommata
 $NNeut-a/ata$ =         $NNeut/Sg_s$ | \
@@ -1683,36 +1699,37 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NMasc-s0/sse>          $NMasc-s0/sse$      | \
             <>:<NMasc-us/e>            $NMasc-us/e$        | \
             <>:<NMasc-us/en>           $NMasc-us/en$       | \
-            <>:<NMasc-us0/en>          $NMasc-us0/en$      | \
             <>:<NMasc-us/i>            $NMasc-us/i$        | \
+            <>:<NMasc-us0/en>          $NMasc-us0/en$      | \
             <>:<NMasc-us0/i>           $NMasc-us0/i$       | \
             <>:<NMasc/Pl_0>            $NMasc/Pl_0$        | \
             <>:<NMasc/Pl_x>            $NMasc/Pl_x$        | \
             <>:<NMasc/Sg_0>            $NMasc/Sg_0$        | \
             <>:<NMasc/Sg_es>           $NMasc/Sg_es$       | \
             <>:<NMasc/Sg_s>            $NMasc/Sg_s$        | \
+            <>:<NMasc_0_nen>           $NMasc_0_nen$       | \
             <>:<NMasc_0_s>             $NMasc_0_s$         | \
             <>:<NMasc_0_x>             $NMasc_0_x$         | \
             <>:<NMasc_en_en>           $NMasc_en_en$       | \
             <>:<NMasc_es_$e>           $NMasc_es_\$e$      | \
-            <>:<NMasc_s_$e>            $NMasc_s_\$e$       | \
             <>:<NMasc_es_$er>          $NMasc_es_\$er$     | \
-            <>:<NMasc_es_er>           $NMasc_es_er$       | \
             <>:<NMasc_es_e>            $NMasc_es_e$        | \
             <>:<NMasc_es_en>           $NMasc_es_en$       | \
+            <>:<NMasc_es_er>           $NMasc_es_er$       | \
             <>:<NMasc_es_s>            $NMasc_es_s$        | \
             <>:<NMasc_n_n>             $NMasc_n_n$         | \
             <>:<NMasc_s_$>             $NMasc_s_\$$        | \
+            <>:<NMasc_s_$e>            $NMasc_s_\$e$       | \
             <>:<NMasc_s_$x>            $NMasc_s_\$x$       | \
             <>:<NMasc_s_0>             $NMasc_s_0$         | \
             <>:<NMasc_s_e>             $NMasc_s_e$         | \
             <>:<NMasc_s_en>            $NMasc_s_en$        | \
             <>:<NMasc_s_n>             $NMasc_s_n$         | \
+            <>:<NMasc_s_nen>           $NMasc_s_nen$       | \
             <>:<NMasc_s_s>             $NMasc_s_s$         | \
             <>:<NMasc_s_x>             $NMasc_s_x$         | \
-            <>:<NNeut-0/ien>           $NNeut-0/ien$       | \
-            <>:<NNeut-Adj>             $NNeut-Adj$         | \
             <>:<NNeut-Adj/Sg>          $NNeut-Adj/Sg$      | \
+            <>:<NNeut-Adj>             $NNeut-Adj$         | \
             <>:<NNeut-Herz>            $NNeut-Herz$        | \
             <>:<NNeut-Inner>           $NNeut-Inner$       | \
             <>:<NNeut-a/ata>           $NNeut-a/ata$       | \
@@ -1729,8 +1746,9 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NNeut/Pl_x>            $NNeut/Pl_x$        | \
             <>:<NNeut/Sg_0>            $NNeut/Sg_0$        | \
             <>:<NNeut/Sg_es>           $NNeut/Sg_es$       | \
-            <>:<NNeut/Sg_sses>         $NNeut/Sg_sses$     | \
             <>:<NNeut/Sg_s>            $NNeut/Sg_s$        | \
+            <>:<NNeut/Sg_sses>         $NNeut/Sg_sses$     | \
+            <>:<NNeut_0_nen>           $NNeut_0_nen$       | \
             <>:<NNeut_0_s>             $NNeut_0_s$         | \
             <>:<NNeut_0_x>             $NNeut_0_x$         | \
             <>:<NNeut_es_$e>           $NNeut_es_\$e$      | \
@@ -1743,7 +1761,9 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NNeut_s_0>             $NNeut_s_0$         | \
             <>:<NNeut_s_e>             $NNeut_s_e$         | \
             <>:<NNeut_s_en>            $NNeut_s_en$        | \
+            <>:<NNeut_s_ien>           $NNeut_s_ien$       | \
             <>:<NNeut_s_n>             $NNeut_s_n$         | \
+            <>:<NNeut_s_nen>           $NNeut_s_nen$       | \
             <>:<NNeut_s_s>             $NNeut_s_s$         | \
             <>:<NNeut_s_x>             $NNeut_s_x$         | \
             <>:<Name-Fem_0>            $Name-Fem_0$        | \

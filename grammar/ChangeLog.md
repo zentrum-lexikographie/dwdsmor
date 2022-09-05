@@ -1,5 +1,11 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-09-05:
+
+* add inflection classes `NMasc_0_nen`, `NNeut_0_nen`, `NMasc_s_nen`, and
+  `NNeut_s_nen`
+* rename inflection class `NNeut-0/ien` to `NNeut_s_ien`
+
 2022-09-01:
 
 * add inflection classes `NMasc_es_s` and `NNeut_es_s`

@@ -1,5 +1,12 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-09-05:
+
+* add support for masculine and neuter nouns with genitive singular forms ending
+  in "-s" and nominative plural forms ending in "-nen"
+* add support for masculine and neuter nouns with unmarked genitive singular
+  forms and nominative plural forms ending in "-nen"
+
 2022-09-02:
 
 * restrict inflection classes with dative plural "-n" to nouns with final schwa-syllable

@@ -65,7 +65,7 @@
 <Stem>Floß<NN><base><nativ><NNeut_es_$e>
 <Stem>Fluss<NN><base><nativ><NMasc_es_$e>
 <Stem>Fluß<NN><base><nativ><NMasc-s/$sse>
-<Stem>Fossil<NN><base><fremd><NNeut-0/ien>
+<Stem>Fossil<NN><base><fremd><NNeut_s_ien>
 <Stem>Foyer<NN><base><fremd><NNeut_0_s>
 <Stem>Frau<NN><base><nativ><NFem_0_en>
 <Stem>Freund<NN><base><nativ><NMasc_es_e>
@@ -89,9 +89,8 @@
 <Stem>Heu<NN><base><nativ><NNeut/Sg_s>
 <Stem>Hügel<NN><base><nativ><NMasc_s_0>
 <Stem>Hut<IDX1><NN><base><nativ><NMasc_es_$e>
-<Stem>ICE<NN><base><nativ><NMasc_s_s>
+<Stem>ICE<NN><base><nativ><NMasc_0_s>
 <Stem>ICE<NN><base><nativ><NMasc_s_x>
-<Stem>ICE<NN><base><nativ><NMasc/Sg_0>
 <Stem>Idol<NN><base><fremd><NNeut_s_e>
 <Stem>Idyll<NN><base><fremd><NNeut_s_e>
 <Stem>Innere:<><NN><base><nativ><NNeut-Inner>
@@ -160,10 +159,10 @@
 <Stem>Stewardeß<NN><base><fremd><NFem-s/ssen>
 <Stem>Tenor<IDX1><NN><base><fremd><NMasc_s_$e>
 <Stem>Terminus<NN><base><fremd><NMasc-us0/i>
+<Stem>Trecking<NN><base><fremd><NNeut_0_s>
 <Stem>Trecking<NN><base><fremd><NNeut_s_s>
-<Stem>Trecking<NN><base><fremd><NNeut/Sg_0>
+<Stem>Trekking<NN><base><fremd><NNeut_0_s>
 <Stem>Trekking<NN><base><fremd><NNeut_s_s>
-<Stem>Trekking<NN><base><fremd><NNeut/Sg_0>
 <Stem>Überfluss<NN><base><nativ><NMasc/Sg_es>
 <Stem>Überfluß<NN><base><nativ><NMasc-s/Sg>
 <Stem>Ufer<NN><base><nativ><NNeut_s_0>
@@ -173,5 +172,5 @@
 <Stem>Wald<NN><base><nativ><NMasc_es_$er>
 <Stem>Wild<NN><base><nativ><NNeut/Sg_es>
 <Stem>Zirkus<NN><base><fremd><NMasc-s0/sse>
+<Stem>Zoo<NN><base><fremd><NMasc_0_s>
 <Stem>Zoo<NN><base><fremd><NMasc_s_s>
-<Stem>Zoo<NN><base><fremd><NMasc/Sg_0>
