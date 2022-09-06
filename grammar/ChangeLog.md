@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-09-06:
+
+* rewrite umlaut rule for umlaut after vowel in unsegmented lexical entries
+
 2022-09-05:
 
 * add inflection classes `NMasc_0_nen`, `NNeut_0_nen`, `NMasc_s_nen`, and

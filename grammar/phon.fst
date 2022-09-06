@@ -1,6 +1,6 @@
 % phon.fst
-% Version 1.1
-% Andreas Nolda 2022-08-24
+% Version 1.2
+% Andreas Nolda 2022-09-06
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -50,17 +50,27 @@ $R2$ = ((st<FB>) s <=> <> (t:.)) & ((st<FB>s:.) t <=> <>)
 % Schwabe<^Del>$in -> Schwäbin
 % Tochter$         -> Töchter
 
-ALPHABET = [#char# #phon-trigger# #ss-trigger# #morpheme_boundary_marker#] <e> \
-           <UL>:<FB> [aouAOU]:[äöüÄÖÜ] [ao]:<>
+ALPHABET = [#char# #phon-trigger# #ss-trigger# #morpheme_boundary_marker#] <UL><e>
 
-$Cons$   = [bcdfghjklmnpqrstvwxyzß]
-$ConsUp$ = [BCDFGHJKLMNPQRSTVWXYZ]
+$Cons$ = [bcdfghjklmnpqrstvwxyzß]
 
-$LC$ = <CB> | <WB> | <^UC> | $Cons$ | $ConsUp$
+$X$ = $Cons$* <FB>? ([#ss-trigger#] | (e ($Cons$ | <^Del>)))?
 
-$R3$ = ($LC$ [aouAOU] <=> [äöüÄÖÜ] ([aou]:.? $Cons$* <FB>? ([#ss-trigger#]|(e($Cons$|<^Del>)))? <UL>:<FB>)) & \
-       (([aA]:[äÄ]) a <=> <> ($Cons$)) & \
-       (([oO]:[öÖ]) o <=> <> ($Cons$))
+$LC$ = [#char#] | <WB> | <CB> | <^UC>
+
+$RC$ = [#char#] | <WB>
+
+$R3a$ = ({Au}:{Äu} | \
+         {au}:{äu}) $X$ <UL>:<FB> ^-> $LC$__$RC$
+
+$R3b$ = ({Aa}:Ä | \
+         {aa}:ä | \
+         {Oo}:Ö | \
+         {oo}:ö) $X$ <UL>:<FB> ^-> $LC$__$RC$
+
+$R3c$ = ([AOUaou]:[ÄÖÜäöü]) $X$ <UL>:<FB> ^-> $LC$__$RC$
+
+$R3$ = $R3a$ || $R3b$ || $R3c$
 
 
 % "ß"/"ss"-alternation
