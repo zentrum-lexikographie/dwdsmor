@@ -36,10 +36,10 @@
 <Stem>v:mi:ee:hl:r<ADJ><base><nativ><AdjComp0>
 <Stem>v:mi:ee:il:<><ADJ><base><nativ><AdjSup>
 <Stem>verträumt<ADJ><base><nativ><AdjPos>
+<Stem>viel<ADJ><base><nativ><Adj0>
 <Stem>viel<ADJ><base><nativ><AdjPos>
-<Stem>viel<ADJ><base><nativ><AdjPos0>
 <Stem>warm<ADJ><base><nativ><Adj$>
 <Stem>wenig<>:e<>:r<ADJ><base><nativ><AdjComp0>
+<Stem>wenig<ADJ><base><nativ><Adj0>
 <Stem>wenig<ADJ><base><nativ><AdjPos>
-<Stem>wenig<ADJ><base><nativ><AdjPos0>
 <Stem>wenig<ADJ><base><nativ><AdjSup>
