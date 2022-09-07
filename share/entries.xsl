@@ -163,7 +163,7 @@
           </xsl:when>
           <!-- adjectives with irregular positive forms -->
           <xsl:when test="matches($lemma,'e[lr]$') and
-                          $positive=replace($lemma,'e([lr])$','$1er')">
+                          $positive=replace($lemma,'e([lr])$','$1e')">
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
