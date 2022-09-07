@@ -7,6 +7,8 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:n="http://andreas.nolda.org/ns/lib">
 
+<xsl:param name="status" select="'Red-2,Red-f'"/>
+
 <xsl:include href="strings.xsl"/>
 
 <xsl:include href="forms.xsl"/>

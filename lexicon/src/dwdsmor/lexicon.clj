@@ -1,22 +1,23 @@
 (ns dwdsmor.lexicon
   "DWDSmor lexicon generation."
-  (:require [clojure.java.io :as io]
-            [clojure.string :as str]
-            [clojure.set :as set]
-            [clojure.tools.cli :refer [parse-opts]]
-            [clojure.tools.logging :as log]
-            [com.climate.claypoole :as cp]
-            [com.climate.claypoole.lazy :as cpl])
-  (:import [ch.qos.logback.classic Level Logger]
-           java.io.File
-           java.text.Collator
-           java.time.Duration
-           java.util.Locale
-           javax.xml.transform.stream.StreamSource
-           net.sf.saxon.Configuration
-           net.sf.saxon.lib.ErrorReporter
-           [net.sf.saxon.s9api MessageListener2 Processor SaxonApiException XdmDestination XdmNode XsltCompiler XsltExecutable]
-           org.slf4j.LoggerFactory))
+  (:require
+   [clojure.java.io :as io]
+   [clojure.string :as str]
+   [clojure.tools.cli :refer [parse-opts]]
+   [clojure.tools.logging :as log]
+   [com.climate.claypoole :as cp]
+   [com.climate.claypoole.lazy :as cpl])
+  (:import
+   (ch.qos.logback.classic Level Logger)
+   (java.io File)
+   (java.text Collator)
+   (java.time Duration)
+   (java.util Locale)
+   (javax.xml.transform.stream StreamSource)
+   (net.sf.saxon Configuration)
+   (net.sf.saxon.lib ErrorReporter)
+   (net.sf.saxon.s9api MessageListener2 Processor QName SaxonApiException XdmAtomicValue XdmDestination XdmNode XsltCompiler XsltExecutable)
+   (org.slf4j LoggerFactory)))
 
 ;; ## XSLT/Saxon-HE
 ;;
@@ -47,7 +48,7 @@
 
 (defn xslt-fn
   "Derive XSLT transformers from compiled stylesheet."
-  [{{:keys [^File xslt]} :options}]
+  [{{:keys [^File xslt status]} :options}]
   (let [^XsltExecutable xslt (.compile saxon-xslt-compiler (StreamSource. xslt))]
     (fn [^File article]
       (try
@@ -55,7 +56,9 @@
               destination (XdmDestination.)
               transformer (doto (.load30 xslt)
                             (.setMessageListener xslt-message-listener)
-                            (.setErrorReporter xslt-message-listener))
+                            (.setErrorReporter xslt-message-listener)
+                            (.setStylesheetParameters
+                             {(QName. "status") (XdmAtomicValue. status)}))
               _           (.. transformer
                               (transform (StreamSource. article) destination))
               entries     (.. destination (getXdmNode) (getStringValue))
@@ -83,6 +86,9 @@
     :parse-fn io/file]
    ["-f" "--filter"
     :desc "Filter entries with tag <UNKNOWN>"]
+   ["-s" "--status ARTICLE_STATUS"
+    :desc "Filter articles based on workflow status"
+    :default "Red-2,Red-f"]
    ["-l" "--limit MAX_ENTRIES"
     :desc "Limit the number of extracted lexicon entries for testing"
     :parse-fn #(Integer/parseInt %)
