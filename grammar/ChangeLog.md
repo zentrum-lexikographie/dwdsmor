@@ -2,7 +2,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2022-09-08:
 
-* set `$LEX$` to `DWDS.lex | aux.lex` in `dwdsmor-minimal.fst` and `dwdsmor-index.fst`
+* set `$LEX$` to `DWDS.lex` in `dwdsmor-minimal.fst`
+* set `$LEX$` to `DWDS.lex | aux.lex` in `dwdsmor-index.fst`
 * add `dwdsmor.fst` with `$LEX$` set to `DWDS.lex | DWDS-Red2.lex | aux.lex`
 
 2022-09-06:

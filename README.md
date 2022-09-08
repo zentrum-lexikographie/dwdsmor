@@ -229,10 +229,11 @@ The resulting DWDSmor transducers are:
 
 * `grammar/dwdsmor.{a,ca}`: for morphological analysis, built with the lexica
   `grammar/DWDS.lex`, `grammar/DWDS-Red2.lex`, and `grammar/aux.lex`
-* `grammar/dwdsmor-index.{a,ca}`: for paradigm generation, built with the lexica
-  `grammar/DWDS.lex` and `grammar/aux.lex`
-* `grammar/dwdsmor-minimal.{a,ca}`: for testing purposes, built with the lexica
-  `grammar/DWDS.lex` and `grammar/aux.lex`
+* `grammar/dwdsmor-index.{a,ca}`: for paradigm generation, with homographic
+  lemma indices and paradigm indices, built with the lexica `grammar/DWDS.lex`
+  and `grammar/aux.lex`
+* `grammar/dwdsmor-minimal.{a,ca}`: for testing purposes, built with the lexicon
+  `grammar/DWDS.lex`
 
 Once built, the DWDSmor transducers should be installed into `lib/`, where the
 Python scripts `dwdsmor.py` and `paradigm.py` expect them by default:

@@ -7,15 +7,7 @@
 
 #include "symbols.fst"
 
-$LEX1$ = "DWDS.lex"
-
-$LEX2$ = "DWDS-Red2.lex"
-
-$LEX3$ = "aux.lex"
-
-$LEX$ = $LEX1$ | \
-        $LEX2$ | \
-        $LEX3$
+$LEX$ = "DWDS.lex" | "DWDS-Red2.lex" | "aux.lex"
 
 #include "map.fst"
 
