@@ -1,7 +1,7 @@
 # Makefile
 # Gregor Middell, Andreas Nolda 2022-09-08
 
-DATETIME = $(shell date +%FT%TZ)
+DATETIME = $(shell date -u +%FT%TZ)
 DATE     = $(shell echo $(DATETIME) | cut -c 1-4,6-7,9-10)
 
 CPUS = $(shell nproc)
