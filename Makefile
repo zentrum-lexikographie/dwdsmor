@@ -49,7 +49,7 @@ release:
 	ln -s -r -f -n $(RELDIR) $(CURDIR)/releases/latest
 
 dist:
-	sudo rsync -a -v --exclude=/src/ $(RELDIR)/ $(DISTDIR)
+	sudo rsync -r -t -v --exclude=/src/ $(RELDIR)/ $(DISTDIR)
 
 clean:
 	$(MAKE) -C $(SRCDIR) clean
