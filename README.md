@@ -2,9 +2,9 @@
 
 _SFST/SMOR/DWDS-based German morphology_
 
-This project aims at developing a component for **morphological analysis of
-German word forms** mainly for **segmenting morphologically complex words** and
-for **lemmatisation**. To this end we adopt:
+This project provides a component for the morphological analysis of word forms
+and for the generation of paradigms of lexical words in written German. To this
+end we adopt:
 
 1. [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++ library
    and toolbox for finite-state transducers (FSTs),
@@ -16,38 +16,46 @@ for **lemmatisation**. To this end we adopt:
    as the as the lexical data source for word components and their respective
    morphological annotations (part-of-speech, inflection class etc.).
 
-Source code in this repository implements various steps in the process of
-building and using FSTs for morphological analysis:
+This repository provides source code for building DWDSmor lexica and transducers
+as well as for using DWDSmor transducers for morphological analysis and paradigm
+generation:
 
-* `share/` contains XSLT stylesheets for extracting SMORLemma-compatible lexical
-  entries from XML documents in the DWDS format. Sample inputs and outputs can
-  be found in `samples/`.
-* `lexicon/` contains scripts for generating a DWDSmor lexicon by means of the
-  XSLT stylesheets in `share/` and the lexical data in `lexicon/wb/`, which is
+* `share/` contains XSLT stylesheets for extracting lexical entries in SMORLemma
+  format form XML sources of DWDS articles. Sample inputs and outputs can be
+  found in `samples/`.
+* `lexicon/` contains scripts for building DWDSmor lexica by means of the XSLT
+  stylesheets in `share/` and the lexical data in `lexicon/wb/`, which is
   imported from the [DWDS article repository](https://git.zdl.org/zdl/wb) as a
   Git submodule.
 * `grammar/` contains an FST grammar based on SMORLemma, providing the
   morphology.
 * `dwdsmor/` and `tests/` implement a Python library and accompanying test suite
-  for using DWDSmor transducers for the aforementioned linguistic tasks.
+  for the DWDSmor transducers.
+* `dwdsmor.py` and `paradigm.py` are user-level Python scripts for morphological
+  analysis and for paradigm generation by means of DWDSmor transducers.
+
+DWDSmor is in active development. In its current stage, DWDSmor supports
+inflection for a large subset of the vocabulary of written German. Support for
+word formation will be added in future versions.
 
 ## Prerequisites
 
 [GNU/Linux](https://www.debian.org/)
-: Development, builds and tests of DWDSmor are performed on [Debian
-  GNU/Linux](https://debian.org/) (currently v10 “Buster”). While other
-  UNIX-like operating systems (i. e. MacOS) might work, they are not supported.
+: Development, builds and tests of DWDSmor are performed on the current stable
+  distribution of [Debian GNU/Linux](https://debian.org/). While other
+  UNIX-like operating systems such as MacOS should work, too, they are not
+  actively supported.
 
 [Python >= v3](https://www.python.org/)
-: DWDSmor targets Python as its primary runtime environment. Building a
-  transducer involves other languages and platforms as well; for example XSLT
-  and Clojure on the JVM for lexicon generation. But ultimately, compiled
-  transducers are supposed to be used via SFST's commandline tools or to be
-  queried in Python applications via language-specific
-  [bindings](https://github.com/gremid/sfst-transduce).
+: DWDSmor targets Python as its primary runtime environment. The DWDSmor
+  transducers can be used via SFST's commandline tools, queried in Python
+  applications via language-specific
+  [bindings](https://github.com/gremid/sfst-transduce), or used by the Python
+  scripts `dwdsmor.py` and `paradigm.py` for morphological analysis and for
+  paradigm generation.
 
 [Java (JDK) >= v8](https://openjdk.java.net/)
-: The extraction of lexicon entries from XML documents in the DWDS format is
+: The extraction of lexicon entries from XML sources of DWDS articles is
   implemented in XSLT 2, for which [Saxon-HE](https://www.saxonica.com/) is used
   as the runtime environment. The conversion of the whole dictionary (or larger
   parts) is orchestrated via a [Clojure](https://clojure.org/) script, running
@@ -56,97 +64,117 @@ building and using FSTs for morphological analysis:
 
 [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/)
 : a C++ library and toolbox for finite-state transducers (FSTs); please take a
-   look at its homepage for installation and usage instructions.
+  look at its homepage for installation and usage instructions.
 
-On a recent Debian GNU/Linux, install the following packages:
+On a Debian-based distribution, install the following packages:
 
 ```sh
-apt install python3 default-jdk sfst
+apt install python3 default-jdk libsaxonhe-java sfst
 ```
 
-Optionally set up a virtual environment for project builds, i. e. via
-[pyenv](https://github.com/pyenv/pyenv):
+Set up a virtual environment for project builds, i. e. via
+[`pyenv`](https://github.com/pyenv/pyenv):
 
 ```sh
 $ curl https://pyenv.run | bash
 $ make pyenv
 ```
 
-or Python's venv
+or Python's `venv`:
 
 ```sh
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-## Build a DWDSmor lexicon from the DWDS dictionary
+Then run the DWDSmor setup routines which install Python dependencies and a
+compatible Clojure version:
 
-Import the dictionary sources via the configured submodule:
+```sh
+make setup
+```
+
+For building DWDSmor lexica, DWDS dictionary sources are required. Import them
+via the configured submodule:
 
 ```sh
 git submodule init lexicon/wb
 ```
 
-**Note**: The imported Git repository `lexicon/wb/` is large, containing about
-260.000 XML documents and their edit history of several years. Therefore the
-lexicon extraction should not be performed in environments with [strict
-quotas](https://www.hlrn.de/doc/display/PUB/Fixing+Quota+Issues) on the number
-of files/inodes, e.g. on the HLRN-IV/ZIB compute cluster. For a workflow
-leveraging HLRN's hardware resources for FST compilation, consider building a
-potentially large, current lexicon locally and upload it to HLRN-IV for further
-processing.
-
-In addition, a compatible Clojure version has to be installed. This can be done
-be calling:
+In order to update the dictionary sources to the most recent revision, issue the
+following command:
 
 ```sh
-make -C lexicon clojure
+git submodule update --remote lexicon/wb
 ```
+
+The option `--remote` pulls the current tip of the working branch and updates
+the head of the submodule. Once you have tested the new version, commit the new
+state of the submodule:
+
+```sh
+git add lexicon/wb
+git commit -m "update dictionary sources"
+```
+
+## Building DWDSmor lexica and transducers
+
+For building DWDSmor lexica and transducers, simply run:
+
+```sh
+make all && make install
+```
+
+This will build DWDSmor lexica and transducers and install the
+latter into `lib/`, where the user-level Python scripts `dwdsmor.py` and
+`paradigm.py` expect them by default.
+
+For experts, the individual steps of building DWDSmor lexica and transducers
+will be described in more details in the following subsections.
+
+### Building DWDSmor lexica
 
 For lexicon generation, the shell script `lexicon/generate-lexicon` is provided,
 which internally calls Clojure on `lexicon/src/dwdsmor/lexicon.clj`. The script
 supports the following parameters:
 
 ```plaintext
-$ lexicon/generate-lexicon --help
-DWDSmor Lexicon Generation
-Copyright (C) 2022 Berlin-Brandenburgische Akademie der Wissenschaften
+$ lexicon/generate-lexicon -h
+Generates a DWDSmor lexicon from (directories of) XML sources of DWDS articles.
 
 Usage: clojure -M -m dwdsmor.lexicon [options] <dir|*.xml>...
 
-Generates a DWDSmor lexicon from (directories of) XML documents in the DWDS format.
-
 Options:
-  -x, --xslt XSLT          XSLT stylesheet
-  -b, --blacklist LIST     list of filenames of blacklisted XML documents
-  -o, --output OUTPUT      Path of the generated lexicon
-  -f, --filter             Filter entries with tag <UNKNOWN>
-  -l, --limit MAX_ENTRIES  Limit the number of extracted lexicon entries for testing
-  -d, --debug              Print debugging information
+  -d, --debug              print debugging information
+  -e, --exclude LIST       exclude files listed in LIST
+  -f, --filter             filter entries with tag <UNKNOWN>
+  -l, --limit MAX          only extract MAX lexicon entries
+  -o, --output OUTPUT      generated lexicon
+  -s, --status STATUS      only consider DWDS articles with status STATUS
+  -x, --xslt STYLESHEET    XSLT stylesheet
   -h, --help
 ```
 
-This script is called with appropriate options for building a DWDSmor lexicon
-from DWDS dictionary articles in `lexicon/wb/` and auxiliary input files in
-`lexicon/aux/` by running:
+This script is called with appropriate options from `lexicon/Makefile` by
+running:
 
 ```sh
-make -C lexicon
+make -C lexicon all
 ```
 
-A log is saved in `grammar/lexicon.log`. This includes XSLT warnings, if any.
+Thereby, the following lexica are built:
 
-In order to build a lexicon without the auxiliary input files in `lexicon/aux/`,
-run:
+* `grammar/DWDS.lex`, derived from DWDS articles in `lexicon/wb/` with final
+  status `Red-f`
+* `grammar/DWDS-Red2.lex`, derived from DWDS articles in `lexicon/wb/` with
+  preliminary status `Red-2`
+* `grammar/aux.lex`, derived from auxiliary input files in `lexicon/aux/`
 
-```sh
-make INCLUDE_AUX=false -C lexicon
-```
+A log is saved for each `<lexicon>` in `<lexicon>.log`. This includes XSLT
+warnings, if any.
 
-Individual input files can be blacklisted in `lexicon/exclude.list`.
-
-The result is stored in `grammar/lexicon`, where it is picked up by the FST
-compilation process.
+Individual input files can be blacklisted in `lexicon/exclude.list`. In this
+way, individual DWDS articles can be overwritten in the auxiliary input files.
 
 The lexicon will be re-built if XSLT stylesheets in `share/` have changed. In
 order to re-generate the lexicon with unchanged XSLT stylesheets, first call:
@@ -155,17 +183,17 @@ order to re-generate the lexicon with unchanged XSLT stylesheets, first call:
 make -C lexicon clean
 ```
 
-In order to build a lexicon with debugging information, run:
+In order to build lexica with debugging information, run:
 
 ```sh
 make -C lexicon debug
 ```
 
-This calls `lexicon/generate-lexicon` with the option `--debug` and without the
-option `--filter`. The result, which may contain `<UNKNOWN>` tags, is stored in
-`grammar/lexicon.debug`. A corresponding log file with input and output mappings
-is saved in `grammar/lexicon.debug.log`. In order to re-generate them with
-unchanged XSLT stylesheets, first call:
+This calls `lexicon/generate-lexicon` with option `-d` and without option `-f`.
+The results, which may contain `<UNKNOWN>` tags, are stored in
+`<lexicon>.debug`. Corresponding log files with input and output mappings are
+saved in `<lexicon>.debug.log`. In order to re-generate them with unchanged XSLT
+stylesheets, first call:
 
 ```sh
 make -C lexicon debugclean
@@ -189,95 +217,47 @@ lists, first call:
 make -C lexicon testclean
 ```
 
-### Update the dictionary sources to the current revision
+### Building DWDSmor transducers
 
-As said above, the dictionary sources are imported as a submodule, tracking the
-working branch of the lexicography team `zdl-lex-server/production`. In order to
-update the sources to the most recent revision, issue the following:
+The DWDSmor transducers are built by running:
 
 ```sh
-git submodule update --remote lexicon/wb
+make -C grammar all
 ```
 
-The option `--remote` pulls the current tip of the working branch and updates
-the head of the submodule. Once you have tested the new version, commit the new
-state of the submodule:
+The resulting DWDSmor transducers are:
 
-```
-git add lexicon/wb
-git commit -m "update dictionary sources"
-```
+* `grammar/dwdsmor.{a,ca}`: for morphological analysis, built with the lexica
+  `grammar/DWDS.lex`, `grammar/DWDS-Red2.lex`, and `grammar/aux.lex`
+* `grammar/dwdsmor-index.{a,ca}`: for paradigm generation, built with the lexica
+  `grammar/DWDS.lex` and `grammar/aux.lex`
+* `grammar/dwdsmor-minimal.{a,ca}`: for testing purposes, built with the lexica
+  `grammar/DWDS.lex` and `grammar/aux.lex`
 
-## Build FSTs
-
-For compiling the transducers based on an extracted lexicon, first run setup
-routines which install Python dependencies (into the virtual environment, should
-you have set one up beforehand):
+Once built, the DWDSmor transducers should be installed into `lib/`, where the
+Python scripts `dwdsmor.py` and `paradigm.py` expect them by default:
 
 ```sh
-make setup
+make -C grammar install
 ```
 
-Also make sure that you have the SFST toolbox installed, i. e. the tools
-`fst-compiler-utf8` and `fst-compact` should be available on the `$PATH`. Once
-the setup succeeded and a lexicon is provided in `grammar/lexicon`, the
-transducers can be compiled:
-
-```sh
-make && make install
-```
-
-Resulting automata can be found in `lib/*.a` and `lib/*.ca`, including, most
-notably, `lib/dwdsmor.a` and `lib/dwdsmor.ca`.
-
-Depending on the size of the lexicon, this compilation process can take some
-time, depending on available hardware resources, specifically on the amount of
-memory. If necessary, the compilation can be moved to the
-[HLRN-IV](https://www.hlrn.de/supercomputer/hlrn-iv-system/) compute cluster.
-
-### Build on HLRN-IV's “Lise”
-
-In order to build FSTs on the HLRN-IV's “Lise”, log into the cluster and prepare
-the build environment:
-
-```sh
-ssh bembbaw1@blogin.hlrn.de /scratch/usr/bembbaw0/dwdsmor/hlrn/setup
-```
-
-Then upload a lexicon:
-
-```sh
-scp $LEXICON bembbaw1@blogin.hlrn.de:/scratch/usr/bembbaw1/dwdsmor/grammar/lexicon
-```
-
-Finally run the build on a compute host:
-
-```sh
-ssh bembbaw1@blogin.hlrn.de sbatch /scratch/usr/bembbaw1/dwdsmor/hlrn/build
-```
-
-You can check the status of running builds via
-
-```sh
-ssh bembbaw1@blogin.hlrn.de squeue -l --me
-```
-
-## Tests
-
-Compiled automata can be examined with the test suite in `tests/` by running:
+The DWDSmor transducers can then be examined with the test suite in `tests/` by
+running:
 
 ```sh
 make test
 ```
 
-## Tools
+## Using DWDSmor
 
-`dwdsmor.py` is a Python script for analysing word forms with a DWDSmor
-transducer:
+DWDSmor provides two Python scripts for using the DWDSmor transducers.
+
+`dwdsmor.py` is a Python script for the morphological analysis of word forms in
+written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./dwdsmor.py -h
-usage: dwdsmor.py [-h] [-a] [-c] [-C] [-H] [-j] [-t TRANSDUCER] [-v] [input] [output]
+usage: dwdsmor.py [-h] [-c] [-C] [-H] [-j] [-t TRANSDUCER] [-v] [input] [output]
 
 positional arguments:
   input                 input file (one word form per line; default: stdin)
@@ -285,13 +265,12 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -a, --full-analysis   output full analysis with surface layer and analysis layer
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
   -H, --no-header       suppress table header
   -j, --json            output JSON object
   -t TRANSDUCER, --transducer TRANSDUCER
-                        path to transducer file (default: lib/smor-full.ca)
+                        path to transducer file (default: lib/dwdsmor.ca)
   -v, --version         show program's version number and exit
 ```
 
@@ -332,8 +311,8 @@ schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen	schlaf<~>en			V				1			Sg				
 
 An alternative JSON output is available with the option `--json`.
 
-`paradigm.py` is Python script for generating paradigms of nouns, proper names,
-articles, pronouns, cardinals, adjectives, and verbs:
+`paradigm.py` is Python script for the generation of paradigms of lexical words
+in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./paradigm.py -h
@@ -362,7 +341,7 @@ optional arguments:
                         do not output category names
   -N, --no-lemma        do not output lemma, lemma index, paradigm index, and lexical categories
   -o, --old-forms       output also archaic forms
-  -p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}, --pos {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}
+  -p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}, --pos {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}
                         part of speech
   -s, --nonstandard-forms
                         output also non-standard forms
@@ -648,10 +627,10 @@ Again, the option `--json` selects an alternative JSON output.
 
 ## Contact
 
-In case of any question or issues, please contact [Andreas
-Nolda](mailto:andreas.nolda@bbaw.de) for questions related to the lexicon or
-[Gregor Middell](mailto:gregor.middell@bbaw.de) for issues related to the build
-process or integrating DWDSmor with your application.
+Feel free to contact [Andreas Nolda](mailto:andreas.nolda@bbaw.de) for
+questions regarding the lexicon or the grammar and
+[Gregor Middell](mailto:gregor.middell@bbaw.de) for question related
+to the build process or the integration of DWDSmor with your application.
 
 ## Bibliography
 
@@ -677,6 +656,6 @@ process or integrating DWDSmor with your application.
 
 ## License
 
-Copyright &copy; 2021 Berlin-Brandenburg Academy of Sciences and Humanities.
+Copyright &copy; 2022 Berlin-Brandenburg Academy of Sciences and Humanities.
 
 This project is licensed under the GNU Lesser General Public License v3.0.

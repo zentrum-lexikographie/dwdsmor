@@ -1,13 +1,14 @@
 # Makefile
-# Andreas Nolda 2022-08-24
+# Andreas Nolda 2022-09-08
 
 FST_COMPILE = fst-compiler-utf8
 FST_COMPACT = fst-compact
 
+DWDSMOR         = dwdsmor.fst
 DWDSMOR_MINIMAL = dwdsmor-minimal.fst
 DWDSMOR_INDEX   = dwdsmor-index.fst
 
-FST = $(DWDSMOR_MINIMAL) $(DWDSMOR_INDEX)
+FST = $(DWDSMOR) $(DWDSMOR_MINIMAL) $(DWDSMOR_INDEX)
 
 COMPILE = $(addsuffix .a,$(basename $(FST)))
 COMPACT = $(addsuffix .ca,$(basename $(FST)))
@@ -18,32 +19,30 @@ INCLUDE = symbols.fst map.fst flexion.fst markers.fst phon.fst elim.fst lemma.fs
 
 INCLUDE_INDEX = $(filter-out $(INCLUDE),lemma.fst) lemma-index.fst
 
-LEXICON = lexicon
+LEX  = DWDS.lex
+LEX2 = DWDS-Red2.lex
 
-INSTALL_DIR ?= lib
+INSTALLDIR ?= $(realpath ../lib)
 
 all: $(TARGETS)
 
-%.ca: %.a $(LEXICON)
+%.ca: %.a
 	$(FST_COMPACT) $< $@
 
-%.a: %.fst $(LEXICON)
+%.a: %.fst
 	$(FST_COMPILE) $< $@
 
-$(DWDSMOR_MINIMAL): $(INCLUDE)
+$(DWDSMOR): $(LEX) $(LEX2) $(INCLUDE)
 
-$(DWDSMOR_INDEX): $(INCLUDE_INDEX)
+$(DWDSMOR_MINIMAL): $(LEX) $(INCLUDE)
+
+$(DWDSMOR_INDEX): $(LEX) $(INCLUDE_INDEX)
 
 install: $(TARGETS)
-	mkdir -p $(INSTALL_DIR)
-	install -m 644 $(TARGETS) $(INSTALL_DIR)
-	ln -sfr $(INSTALL_DIR)/$(addsuffix .a,$(basename $(DWDSMOR_MINIMAL))) $(INSTALL_DIR)/dwdsmor.a
-	ln -sfr $(INSTALL_DIR)/$(addsuffix .ca,$(basename $(DWDSMOR_MINIMAL))) $(INSTALL_DIR)/dwdsmor.ca
+	mkdir -p $(INSTALLDIR)
+	install -m 644 $(TARGETS) $(INSTALLDIR)
 
 clean:
 	$(RM) $(TARGETS)
 
-distclean: clean
-	$(RM) -r $(INSTALL_DIR)
-
-.PHONY: all install clean distclean
+.PHONY: all install clean

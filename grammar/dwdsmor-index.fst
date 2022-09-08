@@ -1,13 +1,18 @@
 % dwdsmor-index.fst
-% Version 1.1
-% Andreas Nolda 2022-08-19
+% Version 1.2
+% Andreas Nolda 2022-09-08
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
 #include "symbols.fst"
 
-$LEX$ = "lexicon"
+$LEX1$ = "DWDS.lex"
+
+$LEX2$ = "aux.lex"
+
+$LEX$ = $LEX1$ | \
+        $LEX2$
 
 #include "map.fst"
 

@@ -49,7 +49,7 @@
 (defn xslt-fn
   "Derive XSLT transformers from compiled stylesheet."
   [{{:keys [^File xslt status]} :options}]
-  (let [^XsltExecutable xslt (.compile saxon-xslt-compiler (StreamSource. xslt))]
+  (let [^XsltExecutable xslt (compile-xslt xslt)]
     (fn [^File article]
       (try
         (let [file-name   (.getName article)
@@ -75,39 +75,35 @@
 ;; ## Command Line Interface
 
 (def cli-options
-  [["-x" "--xslt XSLT"
-    :desc "XSLT stylesheet"
-    :parse-fn io/file]
-   ["-b" "--blacklist LIST"
-    :desc "list of filenames of blacklisted XML documents"
-    :parse-fn io/file]
-   ["-o" "--output OUTPUT"
-    :desc "Path of the generated lexicon"
+  [["-d" "--debug"
+    :desc "print debugging information"]
+   ["-e" "--exclude LIST"
+    :desc "exclude files listed in LIST"
     :parse-fn io/file]
    ["-f" "--filter"
-    :desc "Filter entries with tag <UNKNOWN>"]
-   ["-s" "--status ARTICLE_STATUS"
-    :desc "Filter articles based on workflow status"
-    :default "Red-2,Red-f"]
-   ["-l" "--limit MAX_ENTRIES"
-    :desc "Limit the number of extracted lexicon entries for testing"
+    :desc "filter entries with tag <UNKNOWN>"]
+   ["-l" "--limit MAX"
+    :desc "only extract MAX lexicon entries"
     :parse-fn #(Integer/parseInt %)
     :validate [pos? "Limit has to be > 0"]]
-   ["-d" "--debug"
-    :desc "Print debugging information"]
+   ["-o" "--output OUTPUT"
+    :desc "generated lexicon"
+    :parse-fn io/file]
+   ["-s" "--status STATUS"
+    :desc "only consider DWDS articles with status STATUS"
+    :default ""]
+   ["-x" "--xslt STYLESHEET"
+    :desc "XSLT stylesheet"
+    :parse-fn io/file]
    ["-h" "--help"]])
 
 (defn usage
   [{:keys [summary]}]
   (str/join
    \newline
-   ["DWDSmor Lexicon Generation"
-    ""
-    "Copyright (C) 2022 Berlin-Brandenburgische Akademie der Wissenschaften"
+   ["Generates a DWDSmor lexicon from (directories of) XML sources of DWDS articles."
     ""
     "Usage: clojure -M -m dwdsmor.lexicon [options] <dir|*.xml>..."
-    ""
-    "Generates a DWDSmor lexicon from (directories of) XML documents in the DWDS format."
     ""
     "Options:"
     summary
@@ -155,12 +151,12 @@
     (.isDirectory f) (filter xml-file? (file-seq f))
     :else            (exit 2 (str (str f) " does not exist"))))
 
-(defn blacklisted?
+(defn excluded?
   [f]
-  (let [blacklist (with-open [in (io/reader f)]
-                    (into [] (filter not-empty) (line-seq in)))
-        preds     (map (fn [entry] #(str/ends-with? % entry)) blacklist)
-        listed?   (apply some-fn preds)]
+  (let [exclude (with-open [in (io/reader f)]
+                  (into [] (filter not-empty) (line-seq in)))
+        preds   (map (fn [entry] #(str/ends-with? % entry)) exclude)
+        listed? (apply some-fn preds)]
     (fn [f] (listed? (str f)))))
 
 (def sort-key
@@ -184,9 +180,9 @@
     (configure-logging! args)
     (try
       (let [files     (map io/file (get-in args [:arguments]))
-            blacklist (get-in args [:options :blacklist])
+            exclude (get-in args [:options :exclude])
             xml-docs  (cond->> (mapcat file->xml-docs files)
-                        blacklist (remove (blacklisted? blacklist))
+                        exclude (remove (excluded? exclude))
                         :always   (sort))
             _         (log/infof "Extracting lexicon entries from %d file(s)"
                                  (count xml-docs))

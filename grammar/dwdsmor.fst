@@ -1,5 +1,5 @@
-% dwdsmor-minimal.fst
-% Version 1.1
+% dwdsmor.fst
+% Version 1.0
 % Andreas Nolda 2022-09-08
 
 % based on code from SMORLemma by Rico Sennrich
@@ -9,10 +9,13 @@
 
 $LEX1$ = "DWDS.lex"
 
-$LEX2$ = "aux.lex"
+$LEX2$ = "DWDS-Red2.lex"
+
+$LEX3$ = "aux.lex"
 
 $LEX$ = $LEX1$ | \
-        $LEX2$
+        $LEX2$ | \
+        $LEX3$
 
 #include "map.fst"
 

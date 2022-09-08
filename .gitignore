@@ -1,5 +1,5 @@
 # .gitignore
-# Andreas Nolda 2022-08-19
+# Andreas Nolda 2022-09-08
 
 .venv/
 *~
@@ -11,14 +11,17 @@ __pycache__
 .dir-locals.el
 .python-version
 
-lexicon/test/output/
-lexicon/wb/
+/lexicon/test/output/
+/lexicon/wb/
 
-grammar/lexicon
-grammar/*.a
-grammar/*.ca
-grammar/*.log
+/grammar/lexicon
+/grammar/*.a
+/grammar/*.ca
+/grammar/*.lex
+/grammar/*.log
 
-lib/
+/lib/
 
-test-reports/
+/releases/
+
+/test-reports/

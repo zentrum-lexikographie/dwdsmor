@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 11.0 -->
-<!-- Andreas Nolda 2022-09-02 -->
+<!-- Version 11.1 -->
+<!-- Andreas Nolda 2022-09-08 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -12,10 +12,19 @@
 
 <xsl:strip-space elements="*"/>
 
+<!-- DWDS/Artikel/@Status value -->
+<xsl:param name="status"/>
+
 <xsl:template match="/">
-  <!-- do not consider articles which are not (near-)final -->
-  <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel[not(@Status!='Red-2' and
-                                                           @Status!='Red-f')]"/>
+  <xsl:choose>
+    <xsl:when test="string-length($status)&gt;0">
+      <!-- only consider articles with $status -->
+      <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel[@Status=$status]"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel"/>
+    </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <xsl:template match="dwds:Artikel">

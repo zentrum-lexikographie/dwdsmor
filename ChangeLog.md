@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-09-08:
+
+* add `$status` parameter for specifying the status of DWDS articles to be considered
+
 2022-09-05:
 
 * add support for masculine and neuter nouns with genitive singular forms ending
