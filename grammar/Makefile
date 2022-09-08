@@ -23,7 +23,7 @@ INCLUDE         = symbols.fst map.fst flexion.fst markers.fst phon.fst elim.fst 
 INCLUDE_INDEX   = $(filter-out $(INCLUDE),lemma.fst) lemma-index.fst
 INCLUDE_MINIMAL = $(INCLUDE)
 
-INSTALLDIR ?= $(realpath ../lib)
+INSTALLDIR ?= $(abspath ../lib)
 
 all: $(TARGETS)
 

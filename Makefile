@@ -1,7 +1,8 @@
 # Makefile
 # Gregor Middell, Andreas Nolda 2022-09-08
 
-DATE = $(shell date +%Y%m%d)
+DATETIME = $(shell date +%FT%TZ)
+DATE     = $(shell echo $(DATETIME) | cut -c 1-4,6-7,9-10)
 
 CPUS = $(shell nproc)
 JOBS = $(shell expr $(CPUS) \* 3 / 4)
@@ -15,7 +16,8 @@ RELDIR    = $(CURDIR)/releases/$(DATE)
 RELLIBDIR = $(RELDIR)/lib
 RELSRCDIR = $(RELDIR)/src
 
-RELFILES    = $(CURDIR)/VERSION \
+RELFILES    = $(CURDIR)/BUILD \
+              $(CURDIR)/VERSION \
               $(CURDIR)/dwdsmor.py \
               $(CURDIR)/paradigm.py
 RELLIBFILES = $(wildcard $(INSTALLDIR)/*.a) \
@@ -28,6 +30,7 @@ DISTDIR ?= /opt/dwdsmor
 
 all: lexicon grammar
 	echo $(DATE) > $(CURDIR)/VERSION
+	echo $(DATETIME) > $(CURDIR)/BUILD
 
 lexicon:
 	$(MAKE) -C $(LEXDIR) all
