@@ -1,6 +1,6 @@
 % phon.fst
-% Version 1.2
-% Andreas Nolda 2022-09-06
+% Version 1.3
+% Andreas Nolda 2022-09-09
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -113,14 +113,16 @@ ALPHABET = [#char# #phon-trigger# #morpheme_boundary_marker#] <e> \
 $R5$ = e <=> <> ($B$ e)
 
 
-% optional e-elision with genitive
+% optional genitive e-elision
 % Tisch+es    -> Tisches, Tischs
+% Ei+es       -> Eies, Eis
 % Haus+es     -> Hauses
 % Fluß~+es    -> Flusses
 % Fuß+es      -> Fußes
 % Zeugnis~+es -> Zeugnisses
 
-$R6$ = ([bcdfghjklmnpqrtuvwy] <FB>? $B$) e => <> (s <^Gen>)
+$R6$ = (([bcdfghjklmnpqrtuvwy] <FB>? $B$) e => <> (s <^Gen>)) | \
+       (([AEae]i <FB>? $B$) e => <> (s <^Gen>))
 
 
 % adjective-"el"/"er" "e"-elision
@@ -135,7 +137,7 @@ $R7$ = e <=> <> ([lr] <^Ax> $B$ e)
 % unserig<^Px>+en -> unsrigen
 
 $R8$ = (e => <> (r(ig)? <^Px> $B$? e)) | \
-        ((er <^Px> $B$) e => <> ([mns]))
+       ((er <^Px> $B$) e => <> ([mns]))
 
 
 % verb-"el"/"er" "e"-elision

@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-09-09:
+
+* allow for genitive e-elision after diphthongs "ai" and "ei"
+
 2022-09-08:
 
 * set `$LEX$` to `DWDS.lex` in `dwdsmor-minimal.fst`
