@@ -1,7 +1,7 @@
 # Makefile
 # Gregor Middell, Andreas Nolda 2022-09-08
 
-DATETIME = $(shell date -u +%FT%TZ)
+DATETIME = $(shell date +%FT%T%z)
 DATE     = $(shell echo $(DATETIME) | cut -c 1-4,6-7,9-10)
 
 CPUS = $(shell nproc)
@@ -12,19 +12,19 @@ SRCDIR = $(CURDIR)/grammar
 
 INSTALLDIR = $(CURDIR)/lib
 
-RELDIR    = $(CURDIR)/releases/$(DATE)
-RELLIBDIR = $(RELDIR)/lib
-RELSRCDIR = $(RELDIR)/src
+RDIR    = $(CURDIR)/releases/$(DATE)
+RLIBDIR = $(RDIR)/lib
+RSRCDIR = $(RDIR)/src
 
-RELFILES    = $(CURDIR)/BUILD \
-              $(CURDIR)/VERSION \
-              $(CURDIR)/dwdsmor.py \
-              $(CURDIR)/paradigm.py
-RELLIBFILES = $(wildcard $(INSTALLDIR)/*.a) \
-              $(wildcard $(INSTALLDIR)/*.ca)
-RELSRCFILES = $(SRCDIR)/Makefile \
-              $(wildcard $(SRCDIR)/*.fst) \
-              $(wildcard $(SRCDIR)/*.lex)
+RFILES    = $(CURDIR)/BUILD \
+            $(CURDIR)/VERSION \
+            $(CURDIR)/dwdsmor.py \
+            $(CURDIR)/paradigm.py
+RLIBFILES = $(wildcard $(INSTALLDIR)/*.a) \
+            $(wildcard $(INSTALLDIR)/*.ca)
+RSRCFILES = $(SRCDIR)/Makefile \
+            $(wildcard $(SRCDIR)/*.fst) \
+            $(wildcard $(SRCDIR)/*.lex)
 
 DISTDIR ?= /opt/dwdsmor
 
@@ -42,14 +42,14 @@ install:
 	$(MAKE) -C $(SRCDIR) install INSTALLDIR=$(INSTALLDIR)
 
 release:
-	mkdir -p $(RELLIBDIR) $(RELSRCDIR)
-	cp -a $(RELFILES) $(RELDIR)
-	cp -a $(RELLIBFILES) $(RELLIBDIR)
-	cp -a $(RELSRCFILES) $(RELSRCDIR)
-	ln -s -r -f -n $(RELDIR) $(CURDIR)/releases/latest
+	mkdir -p $(RLIBDIR) $(RSRCDIR)
+	cp -a $(RFILES) $(RDIR)
+	cp -a $(RLIBFILES) $(RLIBDIR)
+	cp -a $(RSRCFILES) $(RSRCDIR)
+	ln -s -r -f -n $(RDIR) $(CURDIR)/releases/latest
 
 dist:
-	sudo rsync -r -t -v --exclude=/src/ $(RELDIR)/ $(DISTDIR)
+	sudo rsync -r -t -v --exclude=/src/ $(RDIR)/ $(DISTDIR)
 
 clean:
 	$(MAKE) -C $(SRCDIR) clean
