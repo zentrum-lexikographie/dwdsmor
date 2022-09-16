@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2022-09-09
+# Andreas Nolda 2022-09-16
 
 FST_COMPILE = fst-compiler-utf8
 FST_COMPACT = fst-compact
@@ -15,7 +15,7 @@ INCLUDE_MINIMAL = $(INCLUDE)
 
 LEX         = DWDS.lex DWDS-Red2.lex aux.lex
 LEX_INDEX   = DWDS.lex aux.lex
-LEX_MINIMAL = aux.lex
+LEX_MINIMAL = DWDS.lex
 
 INSTALLDIR ?= $(abspath ../lib)
 
