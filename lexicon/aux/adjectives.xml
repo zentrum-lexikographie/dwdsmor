@@ -5,7 +5,16 @@
       <Schreibung hidx="1">alle</Schreibung>
       <Grammatik>
         <Wortklasse>Adjektiv</Wortklasse>
-        <Einschraenkung>nur prädikativ</Einschraenkung>
+        <Funktionspraeferenz Frequenz="nur">prädikativ</Funktionspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ander</Schreibung>
+      <Grammatik>
+        <Wortklasse>Adjektiv</Wortklasse>
+        <Funktionspraeferenz Frequenz="nur">attributiv</Funktionspraeferenz>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -17,15 +26,6 @@
         <Positiv>hohe</Positiv>
         <Komparativ>höher</Komparativ>
         <Superlativ>am höchsten</Superlativ>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>ander</Schreibung>
-      <Grammatik>
-        <Wortklasse>Adjektiv</Wortklasse>
-        <Funktionspraeferenz>attributiv</Funktionspraeferenz>
       </Grammatik>
     </Formangabe>
   </Artikel>

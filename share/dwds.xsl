@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 11.1 -->
-<!-- Andreas Nolda 2022-09-08 -->
+<!-- Version 11.2 -->
+<!-- Andreas Nolda 2022-09-19 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -375,11 +375,14 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="function">
                   <xsl:choose>
-                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[not(@Frequenz)])='attributiv'">attr</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">pred</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='attributiv'">attr</xsl:when>
                     <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='prädikativ'">pred</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">pred</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">pred</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='prädikativ'">attr</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur attributiv'">attr</xsl:when>
                     <xsl:when test="normalize-space(dwds:Einschraenkung)='nur prädikativ'">pred</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">pred</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht prädikativ'">attr</xsl:when>
                     <xsl:otherwise>attr+pred</xsl:otherwise>
                   </xsl:choose>
                 </xsl:with-param>
