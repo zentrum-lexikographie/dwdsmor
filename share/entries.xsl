@@ -90,7 +90,7 @@
                               select="$etymology"/>
             </xsl:call-template>
           </xsl:when>
-          <!-- attributive-only uninflected adjectives -->
+          <!-- other attributive-only uninflected adjectives -->
           <xsl:when test="$function='attr'">
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
@@ -119,6 +119,36 @@
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
+            <xsl:if test="ends-with($comparative,'er')">
+              <xsl:call-template name="adjective-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="form"
+                                select="replace($comparative,'er$','')"/>
+                <xsl:with-param name="class">AdjComp</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
+            <xsl:if test="ends-with($superlative,'sten')">
+              <xsl:call-template name="adjective-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="form"
+                                select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="class">AdjSup</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
@@ -149,7 +179,23 @@
           </xsl:call-template>
         </xsl:variable>
         <xsl:choose>
-          <!-- attributive-only adjectives -->
+          <!-- attributive-only adjectives with capitalised first member -->
+          <xsl:when test="$function='attr' and
+                          matches($lemma,'\p{Lu}\p{L}*-')">
+            <xsl:call-template name="word-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjPosAttr-Up</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:when>
+          <!-- other attributive-only adjectives -->
           <xsl:when test="$function='attr'">
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
@@ -160,6 +206,22 @@
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPosAttr</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:when>
+          <!-- other adjectives with capitalised first member -->
+          <xsl:when test="string-length($superlative)=0 and
+                          matches($lemma,'\p{Lu}\p{L}*-')">
+            <xsl:call-template name="word-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjPos-Up</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -207,7 +269,7 @@
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
-            <xsl:if test="string-length($comparative)&gt;0">
+            <xsl:if test="ends-with($comparative,'er')">
               <xsl:call-template name="adjective-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -222,7 +284,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:if>
-            <xsl:if test="string-length($superlative)&gt;0">
+            <xsl:if test="ends-with($superlative,'sten')">
               <xsl:call-template name="adjective-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -278,19 +340,21 @@
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
-            <xsl:call-template name="adjective-entry">
-              <xsl:with-param name="lemma"
-                              select="$lemma"/>
-              <xsl:with-param name="lemma-index"
-                              select="$lemma-index"/>
-              <xsl:with-param name="paradigm-index"
-                              select="$paradigm-index"/>
-              <xsl:with-param name="form"
-                              select="replace($superlative,'^am (.+)sten$','$1')"/>
-              <xsl:with-param name="class">AdjSup</xsl:with-param>
-              <xsl:with-param name="etymology"
-                              select="$etymology"/>
-            </xsl:call-template>
+            <xsl:if test="ends-with($superlative,'sten')">
+              <xsl:call-template name="adjective-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="form"
+                                select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="class">AdjSup</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
           </xsl:when>
           <!-- adjectives with irregular comparative forms -->
           <xsl:when test="matches($lemma,'e[lr]$') and
@@ -410,11 +474,11 @@
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
-            <xsl:if test="string-length($superlative)&gt;0 and
+            <xsl:if test="string-length($comparative)&gt;0 and
                           not(matches($superlative-marker,'^&#x308;?(ß/ss)?-'))">
               <xsl:call-template name="word-entry">
                 <xsl:with-param name="lemma"
-                                select="replace($superlative,'^am (.+)en$','$1')"/>
+                                select="replace($superlative,'^(am )?(.+)$','$2')"/>
                 <xsl:with-param name="lemma-index"
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
@@ -446,7 +510,7 @@
             </xsl:if>
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
-                              select="replace($superlative,'^am (.+)en$','$1')"/>
+                              select="replace($superlative,'^(am )?(.+)$','$2')"/>
               <xsl:with-param name="lemma-index"
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
@@ -457,9 +521,25 @@
                               select="$etymology"/>
             </xsl:call-template>
           </xsl:when>
-          <!-- ungradable adjectives with capitalised first member -->
-          <xsl:when test="string-length($superlative)=0 and
-                          matches($lemma,'\p{Lu}\p{L}*-')">
+          <!-- adjectives superlative forms only: -->
+          <xsl:when test="matches($lemma,'^aller.+st$') and
+                          $superlative=concat('am ',$lemma,'en')">
+            <xsl:call-template name="adjective-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+              <xsl:with-param name="form"
+                              select="replace($superlative,'^am (.*[aeiouäöü].*)sten$','$1')"/>
+              <xsl:with-param name="class">AdjSup-aller</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:when>
+          <!-- adjectives without comparative forms: -->
+          <xsl:when test="string-length($comparative)=0">
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
@@ -468,10 +548,55 @@
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">AdjPos-Up</xsl:with-param>
+              <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
+            <xsl:if test="ends-with($superlative,'sten')">
+              <xsl:call-template name="adjective-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+                <xsl:with-param name="form"
+                                select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="class">AdjSup</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
+          </xsl:when>
+          <!-- adjectives without superlative forms: -->
+          <xsl:when test="string-length($superlative)=0">
+            <xsl:call-template name="word-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjPos</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+            <xsl:if test="ends-with($comparative,'er')">
+              <xsl:call-template name="adjective-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="form"
+                                select="replace($comparative,'er$','')"/>
+                <xsl:with-param name="class">AdjComp</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
           </xsl:when>
           <!-- other adjectives -->
           <xsl:otherwise>
@@ -540,19 +665,21 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
-        <xsl:call-template name="adverb-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="form"
-                          select="replace($superlative,'^am (.+)sten$','$1')"/>
-          <xsl:with-param name="class">AdvSup</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
+        <xsl:if test="ends-with($superlative,'sten')">
+          <xsl:call-template name="adverb-entry">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+            <xsl:with-param name="lemma-index"
+                            select="$lemma-index"/>
+            <xsl:with-param name="paradigm-index"
+                            select="$paradigm-index"/>
+            <xsl:with-param name="form"
+                            select="replace($superlative,'^am (.+)sten$','$1')"/>
+            <xsl:with-param name="class">AdvSup</xsl:with-param>
+            <xsl:with-param name="etymology"
+                            select="$etymology"/>
+          </xsl:call-template>
+        </xsl:if>
       </xsl:when>
       <!-- adverbs with other comparative forms -->
       <xsl:when test="ends-with($comparative,'er')">
@@ -4651,7 +4778,7 @@
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
     <xsl:choose>
-      <xsl:when test="$position='pre+post'">
+      <xsl:when test="$position='any'">
         <xsl:call-template name="other-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>

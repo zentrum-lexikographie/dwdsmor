@@ -596,6 +596,11 @@ $AdjComp0$ = {<+ADJ><Comp><NonAttr>}:{} $Adj#$ | \
 $AdjSup$ = {<+ADJ><Sup><NonAttr>}:{sten} $Adj#$ | \
            {<+ADJ><Sup>}:{st}            $AdjFlexSuff$
 
+% allerbesten, allerbest-; allerhöchsten, allerhöchst-
+$AdjSup-aller$ = {<+ADJ><Sup><Lemma>}:{st}     $Adj#$ | \
+                 {<+ADJ><Sup><NonAttr>}:{sten} $Adj#$ | \
+                 {<+ADJ><Sup>}:{st}            $AdjFlexSuff$
+
 % faul-, fauler-, faulst-
 $Adj+$ =           $AdjPos$  | \
          {}:{<FB>} $AdjComp$ | \
@@ -1602,6 +1607,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<AdjPosAttr-Up>         $AdjPosAttr-Up$     | \
             <>:<AdjPosNonAttr>         $AdjPosNonAttr$     | \
             <>:<AdjSup>                $AdjSup$            | \
+            <>:<AdjSup-aller>          $AdjSup-aller$      | \
             <>:<Adj~$e>                $Adj~\$e$           | \
             <>:<Adj~+e>                $Adj~+e$            | \
             <>:<Adv>                   $Adv$               | \

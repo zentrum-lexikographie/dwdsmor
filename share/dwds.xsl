@@ -375,7 +375,7 @@
                     <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">nonattr</xsl:when>
                     <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">nonattr</xsl:when>
                     <!-- no test for "nicht prädikativ", which may still allow for adverbial use -->
-                    <xsl:otherwise>attr+nonattr</xsl:otherwise>
+                    <xsl:otherwise>any</xsl:otherwise>
                   </xsl:choose>
                 </xsl:with-param>
                 <xsl:with-param name="inflection">
@@ -626,7 +626,7 @@
                                 select="normalize-space(dwds:Genitiv)"/>
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
-                <xsl:with-param name="number">singular+plural</xsl:with-param>
+                <xsl:with-param name="number">any</xsl:with-param>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -1176,7 +1176,7 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="position">
                   <xsl:choose>
-                    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'auch nachgestellt')">pre+post</xsl:when>
+                    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'auch nachgestellt')">any</xsl:when>
                     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nachgestellt')">post</xsl:when>
                     <xsl:otherwise>pre</xsl:otherwise>
                   </xsl:choose>

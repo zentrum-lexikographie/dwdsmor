@@ -21,6 +21,7 @@ $ADV$ = (.*<>:<+ADV> || $MORPH$) <+ADV>
 $V$ = (.*<>:<+V><>:<Inf> || $MORPH$) <+V>
 
 $ADJ$ = (.*<>:<+ADJ><>:<Pos><>:[<Invar><Lemma><NonAttr>] || $MORPH$) <+ADJ>
+$ADJ$ = (.*<>:<+ADJ><>:<Sup><>:<Lemma>                   || $MORPH$) <+ADJ> | $ADJ$
 
 $LEMMA$ = $ADV$ | $NN$ | $NPROP$ | $V$ | $ADJ$
 
