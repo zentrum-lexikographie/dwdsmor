@@ -2,6 +2,11 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2022-09-20:
 
+* rename inflection class `Adj0` to `AdjPos0`
+* add `<NonAttr>` categorisation to `AdjPos0` and `AdjComp0`
+* add inflection class `AdjPos0Attr`
+* rename inflection class `Adj0-Up` to `AdjPos0Attr-Up`,
+* remove inflection class `AdjPosSup`
 * replace `<Pred>` and `<Adv>` with `<NonAttr>`
 
 2022-09-09:

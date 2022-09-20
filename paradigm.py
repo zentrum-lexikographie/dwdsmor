@@ -209,23 +209,11 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg, pos, ol
     formdict = {}
     lexcat = Lexcat(pos = pos)
     for degree in degrees:
-        # non-attributive forms of inflected forms
+        # non-attributive forms
         parcat = Parcat(degree   = degree,
                         function = "NonAttr")
-        categories = [degree, "NonAttr"]
-        nonattributive_forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
-        if degree == "Sup":
-            add_superlative_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, nonattributive_forms)
-        else:
-            add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, nonattributive_forms)
-        if old_forms:
-            # no such forms
-            pass
-        if nonstandard_forms:
-            # no such forms
-            pass
-        # non-attributive forms of uninflected forms
-        categories = [degree, "Invar"]
+        categories = [degree,
+                      "NonAttr"]
         nonattributive_forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
         if degree == "Sup":
             add_superlative_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, nonattributive_forms)

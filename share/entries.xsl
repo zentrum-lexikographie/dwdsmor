@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 5.0 -->
-<!-- Andreas Nolda 2022-09-02 -->
+<!-- Version 5.1 -->
+<!-- Andreas Nolda 2022-09-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -85,7 +85,22 @@
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">Adj0-Up</xsl:with-param>
+              <xsl:with-param name="class">AdjPos0Attr-Up</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:when>
+          <!-- attributive-only uninflected adjectives -->
+          <xsl:when test="$function='attr'">
+            <xsl:call-template name="word-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjPos0Attr</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -100,19 +115,7 @@
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">AdjPosNonAttr</xsl:with-param>
-              <xsl:with-param name="etymology"
-                              select="$etymology"/>
-            </xsl:call-template>
-            <xsl:call-template name="word-entry">
-              <xsl:with-param name="lemma"
-                              select="$lemma"/>
-              <xsl:with-param name="lemma-index"
-                              select="$lemma-index"/>
-              <xsl:with-param name="paradigm-index"
-                              select="$paradigm-index"/>
-              <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">Adj0</xsl:with-param>
+              <xsl:with-param name="class">AdjPos0</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -258,7 +261,7 @@
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">Adj0</xsl:with-param>
+              <xsl:with-param name="class">AdjPos0</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>

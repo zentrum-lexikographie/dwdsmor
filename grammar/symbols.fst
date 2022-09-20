@@ -50,10 +50,10 @@
 
 #Abk-inflection# = <Abk_POSS>
 
-#Adj-inflection# = <Adj$><Adj$e><Adj&><Adj+(e)><Adj+><Adj+Lang><Adj+e><Adj-el/er> \
-                   <Adj0-Up><Adj0><AdjComp><AdjComp0><AdjFlexSuff><AdjNN><AdjNNSuff> \
-                   <AdjPos-Up><AdjPos><AdjPosAttr-Up><AdjPosAttr><AdjPosNonAttr> \
-                   <AdjPosSup><AdjSup><Adj~$e><Adj~+e>
+#Adj-inflection# = <Adj$><Adj$e><Adj&><Adj+><Adj+(e)><Adj+e><Adj+Lang><Adj-el/er> \
+                   <AdjComp><AdjComp0><AdjPos0><AdjPos0Attr><AdjPos0Attr-Up><AdjPos> \
+                   <AdjPos-Up><AdjPosAttr><AdjPosAttr-Up><AdjPosNonAttr><AdjSup> \
+                   <Adj~$e><Adj~+e>
 
 #Adv-inflection# = <Adv><AdvComp><AdvComp0><AdvSup>
 

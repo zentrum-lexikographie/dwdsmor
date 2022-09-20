@@ -1090,8 +1090,6 @@
 * <Abk_NNeut>
 * <Adj&>
 * <Adj+(e)>
-* <AdjNNSuff>
-* <AdjPosAttr-Up>
 * <FamName_0>
 * <FamName_s>
 * <NFem_s_s>

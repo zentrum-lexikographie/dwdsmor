@@ -1,5 +1,5 @@
 % flexion.fst
-% Version 1.11
+% Version 1.12
 % Andreas Nolda 2022-09-20
 
 % based on code from SMORLemma by Rico Sennrich
@@ -555,13 +555,18 @@ $AdjFlexSuff$ = $TMP$ $Adj#$
 
 $AdjFlexSuff-Up$ = $TMP$ $Adj#Up$
 
-$AdjNNSuff$ = <+NN>:<> $TMP$ $N#$
-
 % lila; klasse
-$Adj0$ = {<+ADJ><Pos><Invar>}:{} $Adj#$
+$AdjPos0$ = {<+ADJ><Pos><NonAttr>}:{} $Adj#$ | \
+            {<+ADJ><Pos><Invar>}:{}   $Adj#$
 
-% Berliner
-$Adj0-Up$ = {<+ADJ><Pos><Invar>}:{} $Adj#Up$
+% innen; feil
+$AdjPosNonAttr$ = {<+ADJ><Pos><NonAttr>}:{} $Adj#$
+
+% zig
+$AdjPos0Attr$ = {<+ADJ><Pos><Invar>}:{} $Adj#$
+
+% Berliner ('related to Berlin')
+$AdjPos0Attr-Up$ = {<+ADJ><Pos><Invar>}:{} $Adj#Up$
 
 % bloß, bloß-; derartig, derartig-
 $AdjPos$ = {<+ADJ><Pos><NonAttr>}:{<FB>} $Adj#$ | \
@@ -571,16 +576,25 @@ $AdjPos$ = {<+ADJ><Pos><NonAttr>}:{<FB>} $Adj#$ | \
 $AdjPos-Up$ = {<+ADJ><Pos><NonAttr>}:{<FB>} $Adj#Up$ | \
               {<+ADJ><Pos>}:{<FB>}          $AdjFlexSuff-Up$
 
+% ander-; vorig-
+$AdjPosAttr$ = {<+ADJ><Pos><Lemma>}:{} $Adj#$ | \
+               {<+ADJ><Pos>}:{<FB>}    $AdjFlexSuff$
+
+% Armee-eigen-
+$AdjPosAttr-Up$ = {<+ADJ><Pos><Lemma>}:{} $Adj#Up$ | \
+                  {<+ADJ><Pos>}:{<FB>}    $AdjFlexSuff-Up$
+
 % besser, besser-; höher, höher-
 $AdjComp$ = {<+ADJ><Comp><NonAttr>}:{er} $Adj#$ | \
             {<+ADJ><Comp>}:{er}          $AdjFlexSuff$
 
+% mehr; weniger
+$AdjComp0$ = {<+ADJ><Comp><NonAttr>}:{} $Adj#$ | \
+             {<+ADJ><Comp><Invar>}:{}   $Adj#$
+
 % besten, best-; höchsten, höchst-
 $AdjSup$ = {<+ADJ><Sup><NonAttr>}:{sten} $Adj#$ | \
            {<+ADJ><Sup>}:{st}            $AdjFlexSuff$
-
-% mehr
-$AdjComp0$ = {<+ADJ><Comp><Invar>}:{} $Adj#$
 
 $Adj&$ =              $AdjPos$  | \
          {}:{<FB>}    $AdjComp$ | \
@@ -625,25 +639,9 @@ $Adj~\$e$ = $SS$            $AdjPos$  | \
 % dunkel; finster
 $Adj-el/er$ = {}:{<^Ax>} $Adj+$
 
-% innen; feil
-$AdjPosNonAttr$ = {<+ADJ><Pos><NonAttr>}:{} $Adj#$
-
-% ander-; vorig-
-$AdjPosAttr$ = {<+ADJ><Pos><Lemma>}:{} $Adj#$ | \
-               {<+ADJ><Pos>}:{<FB>} $AdjFlexSuff$
-
-$AdjPosAttr-Up$ = {<+ADJ><Pos><Lemma>}:{} $Adj#Up$ | \
-                  {<+ADJ><Pos>}:{<FB>} $AdjFlexSuff-Up$
-
-% inner-, innerst-; hinter-, hinterst-
-$AdjPosSup$ = {}:{<FB>} $AdjPosAttr$ | \
-              {}:{<FB>} $AdjSup$
-
 % deutsch; [das] Deutsch
 $Adj+Lang$ = $Adj+$ | \
              $NNeut/Sg_s$
-
-$AdjNN$ = $AdjPosNonAttr$
 
 
 % articles and pronouns
@@ -1590,27 +1588,25 @@ $Pref/Sep$ = {<+VPART>}:{} $Fix#$
 % inflection transducer
 
 $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
-            <>:<Adj+>                  $Adj+$              | \
+            <>:<Adj$>                  $Adj\$$             | \
+            <>:<Adj$e>                 $Adj\$e$            | \
             <>:<Adj&>                  $Adj&$              | \
+            <>:<Adj+>                  $Adj+$              | \
             <>:<Adj+(e)>               $Adj+(e)$           | \
-            <>:<Adj+Lang>              $Adj+Lang$          | \
             <>:<Adj+e>                 $Adj+e$             | \
+            <>:<Adj+Lang>              $Adj+Lang$          | \
             <>:<Adj-el/er>             $Adj-el/er$         | \
-            <>:<Adj0>                  $Adj0$              | \
-            <>:<Adj0-Up>               $Adj0-Up$           | \
-            <>:<AdjPosAttr-Up>         $AdjPosAttr-Up$     | \
             <>:<AdjComp>               $AdjComp$           | \
             <>:<AdjComp0>              $AdjComp0$          | \
-            <>:<AdjSup>                $AdjSup$            | \
-            <>:<AdjNN>                 $AdjNN$             | \
-            <>:<AdjNNSuff>             $AdjNNSuff$         | \
+            <>:<AdjPos0>               $AdjPos0$           | \
+            <>:<AdjPos0Attr>           $AdjPos0Attr$       | \
+            <>:<AdjPos0Attr-Up>        $AdjPos0Attr-Up$    | \
             <>:<AdjPos>                $AdjPos$            | \
             <>:<AdjPos-Up>             $AdjPos-Up$         | \
             <>:<AdjPosAttr>            $AdjPosAttr$        | \
+            <>:<AdjPosAttr-Up>         $AdjPosAttr-Up$     | \
             <>:<AdjPosNonAttr>         $AdjPosNonAttr$     | \
-            <>:<AdjPosSup>             $AdjPosSup$         | \
-            <>:<Adj$>                  $Adj\$$             | \
-            <>:<Adj$e>                 $Adj\$e$            | \
+            <>:<AdjSup>                $AdjSup$            | \
             <>:<Adj~$e>                $Adj~\$e$           | \
             <>:<Adj~+e>                $Adj~+e$            | \
             <>:<Adv>                   $Adv$               | \
