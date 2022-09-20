@@ -596,10 +596,6 @@ $AdjComp0$ = {<+ADJ><Comp><NonAttr>}:{} $Adj#$ | \
 $AdjSup$ = {<+ADJ><Sup><NonAttr>}:{sten} $Adj#$ | \
            {<+ADJ><Sup>}:{st}            $AdjFlexSuff$
 
-$Adj&$ =              $AdjPos$  | \
-         {}:{<FB>}    $AdjComp$ | \
-         {}:{<INS-E>} $AdjSup$
-
 % faul-, fauler-, faulst-
 $Adj+$ =           $AdjPos$  | \
          {}:{<FB>} $AdjComp$ | \
@@ -1590,7 +1586,6 @@ $Pref/Sep$ = {<+VPART>}:{} $Fix#$
 $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<Adj$>                  $Adj\$$             | \
             <>:<Adj$e>                 $Adj\$e$            | \
-            <>:<Adj&>                  $Adj&$              | \
             <>:<Adj+>                  $Adj+$              | \
             <>:<Adj+(e)>               $Adj+(e)$           | \
             <>:<Adj+e>                 $Adj+e$             | \
