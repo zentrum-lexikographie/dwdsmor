@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
 <!-- Version 11.2 -->
-<!-- Andreas Nolda 2022-09-19 -->
+<!-- Andreas Nolda 2022-09-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -86,13 +86,6 @@
     </xsl:variable>
     <xsl:variable name="grammar-specs">
       <xsl:choose>
-        <!-- remove grammar specification for an adjective
-             with <Funktionspraeferenz>adverbiell</Funktionspraeferenz> -->
-        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[normalize-space(dwds:Wortklasse)='Adjektiv' and
-                                                              normalize-space(dwds:Funktionspraeferenz)='adverbiell']">
-          <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[not(normalize-space(dwds:Wortklasse)='Adjektiv' and
-                                                                         normalize-space(dwds:Funktionspraeferenz)='adverbiell')]"/>
-        </xsl:when>
         <!-- remove grammar specification for a noun
              with genitive singular form ending in "-s"
              if there is another grammar specification for a noun
@@ -376,13 +369,12 @@
                 <xsl:with-param name="function">
                   <xsl:choose>
                     <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='attributiv'">attr</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='prädikativ'">pred</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">pred</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='prädikativ'">attr</xsl:when>
                     <xsl:when test="normalize-space(dwds:Einschraenkung)='nur attributiv'">attr</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='prädikativ'">pred</xsl:when>
                     <xsl:when test="normalize-space(dwds:Einschraenkung)='nur prädikativ'">pred</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">pred</xsl:when>
                     <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">pred</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht prädikativ'">attr</xsl:when>
+                    <!-- no test for "nicht prädikativ", which may still allow for adverbial use -->
                     <xsl:otherwise>attr+pred</xsl:otherwise>
                   </xsl:choose>
                 </xsl:with-param>

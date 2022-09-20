@@ -1,6 +1,6 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
-2022-09-19:
+2022-09-20:
 
 * use stricter rules for identifying attributive-only or predicative-only adjectives
 
