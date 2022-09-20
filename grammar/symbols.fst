@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 1.7
-% Andreas Nolda 2022-09-05
+% Version 1.8
+% Andreas Nolda 2022-09-20
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -36,10 +36,9 @@
 #gender# = <Masc><Fem><Neut><NoGend>
 
 #feature# = #orth-trigger# #category# #auxiliary# #part-of-speech# #gender# #case# \
-            <1><2><3><Sg><Pl><Def><Indef><St><Wk><NoInfl><Pos><Comp><Sup><Pred> \
-            <Attr><Subst><PPres><PPast><Pres><Past><Imp><Ind><Inf><Subj><Pers><Refl> \
-            <Sub><Coord><Compar><^ABBR><^VPRES><^VPAST><Neg><Adj><Ant><Adv><ProAdv> \
-            <Invar><Lemma><zu>
+            <1><2><3><Sg><Pl><Def><Indef><St><Wk><NoInfl><Pos><Comp><Sup><Attr><NonAttr> \
+            <Subst><PPres><PPast><Pres><Past><Imp><Ind><Inf><Subj><Pers><Refl><Sub><Coord> \
+            <Compar><^ABBR><^VPRES><^VPAST><Neg><Adj><Ant><Adv><ProAdv><Invar><Lemma><zu>
 
 #stemtype# = <base>
 
@@ -53,7 +52,7 @@
 
 #Adj-inflection# = <Adj$><Adj$e><Adj&><Adj+(e)><Adj+><Adj+Lang><Adj+e><Adj-el/er> \
                    <Adj0-Up><Adj0><AdjComp><AdjComp0><AdjFlexSuff><AdjNN><AdjNNSuff> \
-                   <AdjPos-Up><AdjPos><AdjPosAttr-Up><AdjPosAttr><AdjPosPred> \
+                   <AdjPos-Up><AdjPos><AdjPosAttr-Up><AdjPosAttr><AdjPosNonAttr> \
                    <AdjPosSup><AdjSup><Adj~$e><Adj~+e>
 
 #Adv-inflection# = <Adv><AdvComp><AdvComp0><AdvSup>

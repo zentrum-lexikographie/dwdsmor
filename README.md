@@ -386,9 +386,9 @@ Gen Pl	Kinder
 ```plaintext
 $ ./paradigm.py --no-category-names --no-lemma klein
 Paradigm Categories	Paradigm Forms
-Pos Pred	klein
-Comp Pred	kleiner
-Sup Pred	am kleinsten
+Pos NonAttr	klein
+Comp NonAttr	kleiner
+Sup NonAttr	am kleinsten
 Pos Masc Nom Sg St	kleiner
 Pos Masc Nom Sg Wk	kleine
 Pos Masc Acc Sg St	kleinen

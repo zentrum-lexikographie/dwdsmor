@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-09-02
+# Andreas Nolda 2022-09-20
 
 import sys
 import os
@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 5.5
+version = 5.6
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -28,7 +28,7 @@ genders     = ["Masc", "Neut", "Fem", "NoGend"]
 cases       = ["Nom", "Acc", "Dat", "Gen"]
 numbers     = ["Sg", "Pl"]
 inflections = ["NoInfl", "St", "Wk"]
-functions   = ["Attr", "Subst", "Pred"]
+functions   = ["Attr", "NonAttr", "Subst"]
 moods       = ["Ind", "Subj"]
 tenses      = ["Pres", "Perf", "Past", "PastPerf", "Fut", "FutPerf"]
 auxiliaries = ["haben", "sein"]
@@ -209,28 +209,28 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg, pos, ol
     formdict = {}
     lexcat = Lexcat(pos = pos)
     for degree in degrees:
-        # predicative forms of inflected forms
+        # non-attributive forms of inflected forms
         parcat = Parcat(degree   = degree,
-                        function = "Pred")
-        categories = [degree, "Pred"]
-        predicative_forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+                        function = "NonAttr")
+        categories = [degree, "NonAttr"]
+        nonattributive_forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
         if degree == "Sup":
-            add_superlative_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, predicative_forms)
+            add_superlative_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, nonattributive_forms)
         else:
-            add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, predicative_forms)
+            add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, nonattributive_forms)
         if old_forms:
             # no such forms
             pass
         if nonstandard_forms:
             # no such forms
             pass
-        # predicative forms of uninflected forms
+        # non-attributive forms of uninflected forms
         categories = [degree, "Invar"]
-        predicative_forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+        nonattributive_forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
         if degree == "Sup":
-            add_superlative_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, predicative_forms)
+            add_superlative_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, nonattributive_forms)
         else:
-            add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, predicative_forms)
+            add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, nonattributive_forms)
         if old_forms:
             # no such forms
             pass

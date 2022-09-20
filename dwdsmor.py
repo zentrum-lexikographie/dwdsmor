@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-08-23
+# Gregor Middell and Andreas Nolda 2022-09-20
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 6.0
+version = 6.1
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -69,7 +69,7 @@ class Analysis(tuple):
     _case_tags         = {"Nom": True, "Gen": True, "Dat": True, "Acc": True, "Invar": True}
     _number_tags       = {"Sg": True, "Pl": True, "Invar": True}
     _inflection_tags   = {"St": True, "Wk": True, "NoInfl": True, "Invar": True}
-    _function_tags     = {"Attr": True, "Subst": True, "Pred": True, "Adv": True}
+    _function_tags     = {"Attr": True, "NonAttr": True, "Subst": True}
     _nonfinite_tags    = {"Inf": True, "PPres": True, "PPast": True}
     _mood_tags         = {"Ind": True, "Subj": True, "Imp": True}
     _tense_tags        = {"Pres": True, "Past": True}

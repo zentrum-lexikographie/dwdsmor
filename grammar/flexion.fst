@@ -1,6 +1,6 @@
 % flexion.fst
-% Version 1.10
-% Andreas Nolda 2022-09-05
+% Version 1.11
+% Andreas Nolda 2022-09-20
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -560,25 +560,24 @@ $AdjNNSuff$ = <+NN>:<> $TMP$ $N#$
 % lila; klasse
 $Adj0$ = {<+ADJ><Pos><Invar>}:{} $Adj#$
 
-% Lila; Klasse
+% Berliner
 $Adj0-Up$ = {<+ADJ><Pos><Invar>}:{} $Adj#Up$
 
 % bloß, bloß-; derartig, derartig-
-$AdjPos$ = {<+ADJ><Pos><PA>}:{<FB>} $Adj#$ | \
-           {<+ADJ><Pos>}:{<FB>}     $AdjFlexSuff$
+$AdjPos$ = {<+ADJ><Pos><NonAttr>}:{<FB>} $Adj#$ | \
+           {<+ADJ><Pos>}:{<FB>}          $AdjFlexSuff$
 
 % Rh-positiv, Rh-positiv-; Tbc-krank, Tbc-krank-
-$AdjPos-Up$ = {<+ADJ><Pos><PA>}:{<FB>} $Adj#Up$ | \
-              {<+ADJ><Pos>}:{<FB>}     $AdjFlexSuff-Up$
+$AdjPos-Up$ = {<+ADJ><Pos><NonAttr>}:{<FB>} $Adj#Up$ | \
+              {<+ADJ><Pos>}:{<FB>}          $AdjFlexSuff-Up$
 
 % besser, besser-; höher, höher-
-$AdjComp$ = {<+ADJ><Comp><PA>}:{er} $Adj#$ | \
-            {<+ADJ><Comp>}:{er}     $AdjFlexSuff$
+$AdjComp$ = {<+ADJ><Comp><NonAttr>}:{er} $Adj#$ | \
+            {<+ADJ><Comp>}:{er}          $AdjFlexSuff$
 
-% best, besten, best-; hoch:höch-
-$AdjSup$ = {<+ADJ><Sup>}:{sten}     $Adj#$ | \
-           {<+ADJ><Sup><PA>}:{sten} $Adj#$ | \
-           {<+ADJ><Sup>}:{st}       $AdjFlexSuff$
+% besten, best-; höchsten, höchst-
+$AdjSup$ = {<+ADJ><Sup><NonAttr>}:{sten} $Adj#$ | \
+           {<+ADJ><Sup>}:{st}            $AdjFlexSuff$
 
 % mehr
 $AdjComp0$ = {<+ADJ><Comp><Invar>}:{} $Adj#$
@@ -627,13 +626,12 @@ $Adj~\$e$ = $SS$            $AdjPos$  | \
 $Adj-el/er$ = {}:{<^Ax>} $Adj+$
 
 % innen; feil
-$AdjPosPred$ = {<+ADJ><Pos><Pred>}:{} $Adj#$
+$AdjPosNonAttr$ = {<+ADJ><Pos><NonAttr>}:{} $Adj#$
 
 % ander-; vorig-
 $AdjPosAttr$ = {<+ADJ><Pos><Lemma>}:{} $Adj#$ | \
                {<+ADJ><Pos>}:{<FB>} $AdjFlexSuff$
 
-% Ander-; Vorig-
 $AdjPosAttr-Up$ = {<+ADJ><Pos><Lemma>}:{} $Adj#Up$ | \
                   {<+ADJ><Pos>}:{<FB>} $AdjFlexSuff-Up$
 
@@ -645,7 +643,7 @@ $AdjPosSup$ = {}:{<FB>} $AdjPosAttr$ | \
 $Adj+Lang$ = $Adj+$ | \
              $NNeut/Sg_s$
 
-$AdjNN$ = $AdjPosPred$
+$AdjNN$ = $AdjPosNonAttr$
 
 
 % articles and pronouns
@@ -1609,7 +1607,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<AdjPos>                $AdjPos$            | \
             <>:<AdjPos-Up>             $AdjPos-Up$         | \
             <>:<AdjPosAttr>            $AdjPosAttr$        | \
-            <>:<AdjPosPred>            $AdjPosPred$        | \
+            <>:<AdjPosNonAttr>         $AdjPosNonAttr$     | \
             <>:<AdjPosSup>             $AdjPosSup$         | \
             <>:<Adj$>                  $Adj\$$             | \
             <>:<Adj$e>                 $Adj\$e$            | \

@@ -370,12 +370,12 @@
                   <xsl:choose>
                     <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='attributiv'">attr</xsl:when>
                     <xsl:when test="normalize-space(dwds:Einschraenkung)='nur attributiv'">attr</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='prädikativ'">pred</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur prädikativ'">pred</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">pred</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">pred</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='prädikativ'">nonattr</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur prädikativ'">nonattr</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">nonattr</xsl:when>
+                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">nonattr</xsl:when>
                     <!-- no test for "nicht prädikativ", which may still allow for adverbial use -->
-                    <xsl:otherwise>attr+pred</xsl:otherwise>
+                    <xsl:otherwise>attr+nonattr</xsl:otherwise>
                   </xsl:choose>
                 </xsl:with-param>
                 <xsl:with-param name="inflection">

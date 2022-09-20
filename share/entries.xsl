@@ -58,7 +58,7 @@
   <xsl:if test="string-length($lemma)&gt;0">
     <xsl:choose>
       <!-- predicative-only adjectives -->
-      <xsl:when test="$function='pred'">
+      <xsl:when test="$function='nonattr'">
         <xsl:call-template name="word-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
@@ -67,7 +67,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="pos">ADJ</xsl:with-param>
-          <xsl:with-param name="class">AdjPosPred</xsl:with-param>
+          <xsl:with-param name="class">AdjPosNonAttr</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -100,7 +100,7 @@
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">AdjPosPred</xsl:with-param>
+              <xsl:with-param name="class">AdjPosNonAttr</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -187,7 +187,7 @@
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">AdjPosPred</xsl:with-param>
+              <xsl:with-param name="class">AdjPosNonAttr</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
