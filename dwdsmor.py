@@ -15,9 +15,9 @@ from functools import cached_property
 
 version = 6.1
 
-basedir = os.path.dirname(__file__)
-libdir  = os.path.join(basedir, "lib")
-libfile = os.path.join(libdir, "dwdsmor.ca")
+BASEDIR = os.path.dirname(__file__)
+LIBDIR  = os.path.join(BASEDIR, "lib")
+LIBFILE = os.path.join(LIBDIR, "dwdsmor.ca")
 
 Component = namedtuple("Component", ["form", "lemma", "tags"])
 
@@ -320,8 +320,8 @@ def main():
                             help="suppress table header")
         parser.add_argument("-j", "--json", action="store_true",
                             help="output JSON object")
-        parser.add_argument("-t", "--transducer", default=libfile,
-                            help="path to transducer file (default: {0})".format(os.path.relpath(libfile, os.getcwd())))
+        parser.add_argument("-t", "--transducer", default=LIBFILE,
+                            help="path to transducer file (default: {0})".format(os.path.relpath(LIBFILE, os.getcwd())))
         parser.add_argument("-v", "--version", action="version",
                             version="{0} {1}".format(parser.prog, version))
         args = parser.parse_args()

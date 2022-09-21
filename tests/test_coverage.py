@@ -4,7 +4,7 @@ import dwdsmor
 from collections import namedtuple, defaultdict
 
 # mapping between divergent STTS and SMOR part-of-speech categories
-tuebadz_dwdsmor_pos_map = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
+TUEBADZ_DWDSMOR_POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
                            "ADJD":    ["ADJ"],
                            "APPO":    ["POSTP"],
                            "APPR":    ["PREP"],
@@ -51,7 +51,7 @@ tuebadz_dwdsmor_pos_map = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
                            "VVPP":    ["V"]}
 
 # mapping between divergent TüBa-D/Z and DWDSmor lemmas
-tuebadz_dwdsmor_lemma_map = {"ADJA": {"älter": "alt",
+TUEBADZ_DWDSMOR_LEMMA_MAP = {"ADJA": {"älter": "alt",
                                       "ältst": "alt",
                                       "ander": "andere",
                                       "besser": "gut",
@@ -461,14 +461,14 @@ tuebadz_dwdsmor_lemma_map = {"ADJA": {"älter": "alt",
                                       "wievieles": "wieviele"}}
 
 def tuebadz_to_dwdsmor_pos_list(pos):
-    if pos in tuebadz_dwdsmor_pos_map:
-        return tuebadz_dwdsmor_pos_map[pos]
+    if pos in TUEBADZ_DWDSMOR_POS_MAP:
+        return TUEBADZ_DWDSMOR_POS_MAP[pos]
     else:
         return pos
 
 def tuebadz_to_dwdsmor_lemma(pos, lemma):
-    if pos in tuebadz_dwdsmor_lemma_map and lemma in tuebadz_dwdsmor_lemma_map[pos]:
-        return tuebadz_dwdsmor_lemma_map[pos][lemma]
+    if pos in TUEBADZ_DWDSMOR_LEMMA_MAP and lemma in TUEBADZ_DWDSMOR_LEMMA_MAP[pos]:
+        return TUEBADZ_DWDSMOR_LEMMA_MAP[pos][lemma]
     else:
         return lemma
 
