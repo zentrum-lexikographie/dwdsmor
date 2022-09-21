@@ -310,7 +310,7 @@ schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen	schlaf<~>en			V				1			Sg			
 schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen	schlaf<~>en			V				1			Sg				Ind	Pres
 ```
 
-An alternative JSON output is available with the option `--json`.
+An alternative JSON output is available with the option `-j`.
 
 `paradigm.py` is Python script for the generation of paradigms of lexical words
 in written German by means of a DWDSmor transducer:
@@ -364,11 +364,10 @@ Kind			NN				Neut				Dat	Pl						Kindern
 Kind			NN				Neut				Gen	Pl						Kinder
 ```
 
-For a condensed version, the options `--no-category-names` and `--no-lemma` can
-be specified:
+For a condensed version, the options `-n` and `-N` can be specified:
 
 ```plaintext
-$ ./paradigm.py --no-category-names --no-lemma Kind
+$ ./paradigm.py -n -N Kind
 Paradigm Categories	Paradigm Forms
 Nom Sg	Kind
 Acc Sg	Kind
@@ -381,7 +380,7 @@ Gen Pl	Kinder
 ```
 
 ```plaintext
-$ ./paradigm.py --no-category-names --no-lemma klein
+$ ./paradigm.py -n -N klein
 Paradigm Categories	Paradigm Forms
 Pos Pred/Adv	klein
 Comp Pred/Adv	kleiner
@@ -485,7 +484,7 @@ Sup NoGend Gen Pl Wk Attr/Subst	kleinsten
 ```
 
 ```plaintext
-$ ./paradigm.py --no-category-names --no-lemma meine
+$ ./paradigm.py -n -N meine
 Paradigm Categories	Paradigm Forms
 Masc Nom Sg NoInfl Attr	mein
 Masc Nom Sg St Subst	meiner
@@ -538,7 +537,7 @@ NoGend Gen Pl Wk Subst	meinen
 ```
 
 ```plaintext
-$ ./paradigm.py --no-category-names --no-lemma schlafen
+$ ./paradigm.py -n -N schlafen
 Paradigm Categories	Paradigm Forms
 Inf Pres	schlafen
 Inf Perf	geschlafen haben
@@ -620,7 +619,7 @@ Sg Imp	schlaf
 Pl Imp	schlaft
 ```
 
-Again, the option `--json` selects an alternative JSON output.
+Again, the option `-j` selects an alternative JSON output.
 
 
 ## Contact
