@@ -1,6 +1,6 @@
 % lemma-index.fst
-% Version 1.2
-% Andreas Nolda 2022-09-20
+% Version 1.3
+% Andreas Nolda 2022-09-21
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -23,8 +23,9 @@ $ADV$ = ($C1$ <>:<+ADV> || $MORPH$) $C2$ <+ADV>
 
 $V$ = ($C1$ <>:<+V><>:<Inf> || $MORPH$) [#lemma-index#]? [#paradigm-index#]?<+V>
 
-$ADJ$ = ($C1$ <>:<+ADJ><>:<Pos><>:[<Invar><Lemma><NonAttr>] || $MORPH$) $C2$ <+ADJ>
-$ADJ$ = ($C1$ <>:<+ADJ><>:<Sup><>:<Lemma>                   || $MORPH$) $C2$ <+ADJ> | $ADJ$
+$ADJ$ = ($C1$ <>:<+ADJ><>:<Pos><>:<Pred/Adv>                     || $MORPH$) $C2$ <+ADJ>
+$ADJ$ = ($C1$ <>:<+ADJ><>:<Sup><>:[<Attr><Attr/Subst>]<>:<Invar> || $MORPH$) $C2$ <+ADJ> | $ADJ$
+$ADJ$ = ($C1$ <>:<+ADJ><>:[#degree#]<>:<Lemma>                   || $MORPH$) $C2$ <+ADJ> | $ADJ$
 
 $LEMMA$ = $ADV$ | $NN$ | $NPROP$ | $V$ | $ADJ$
 

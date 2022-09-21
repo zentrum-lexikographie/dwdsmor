@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 1.8
-% Andreas Nolda 2022-09-20
+% Version 1.9
+% Andreas Nolda 2022-09-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -31,14 +31,31 @@
                    <+PPRO><+PREPART><+PREP><+PROADV><+PTCL><+REL><+SYMBOL> \
                    <+TRUNC><+V><+VPART><+WADV><+WPRO>
 
-#case# = <Nom><Gen><Dat><Acc>
+#subcat# = <Pers><Refl><Def><Indef><Neg><Coord><Sub><Compar><Adv><ProAdv><Adj><Ant>
+
+#degree# = <Pos><Comp><Sup>
+
+#person# = <1><2><3>
 
 #gender# = <Masc><Fem><Neut><NoGend>
 
-#feature# = #orth-trigger# #category# #auxiliary# #part-of-speech# #gender# #case# \
-            <1><2><3><Sg><Pl><Def><Indef><St><Wk><NoInfl><Pos><Comp><Sup><Attr><NonAttr> \
-            <Subst><PPres><PPast><Pres><Past><Imp><Ind><Inf><Subj><Pers><Refl><Sub><Coord> \
-            <Compar><^ABBR><^VPRES><^VPAST><Neg><Adj><Ant><Adv><ProAdv><Invar><Lemma><zu>
+#case# = <Nom><Gen><Dat><Acc>
+
+#number# = <Sg><Pl>
+
+#infl# = <St><Wk><NoInfl><Invar>
+
+#function# = <Attr><Subst><Attr/Subst><Pred/Adv>
+
+#nonfinite# = <Inf><PPres><PPast><zu>
+
+#mood# = <Ind><Subj><Imp>
+
+#tense# = <Pres><Past>
+
+#feature# = #orth-trigger# #category# #auxiliary# #part-of-speech# #subcat# #degree# \
+            #person# #gender# #case# #number# #infl# #function# #nonfinite# #mood# #tense# \
+            <Lemma>
 
 #stemtype# = <base>
 
@@ -52,7 +69,7 @@
 
 #Adj-inflection# = <Adj$><Adj$e><Adj+><Adj+(e)><Adj+e><Adj+Lang><Adj-el/er><AdjComp> \
                    <AdjComp0><AdjPos0><AdjPos0Attr><AdjPos0Attr-Up><AdjPos><AdjPos-Up> \
-                   <AdjPosAttr><AdjPosAttr-Up><AdjPosNonAttr><AdjSup><AdjSup-aller> \
+                   <AdjPosAttr><AdjPosAttr-Up><AdjPosPred><AdjSup><AdjSup-aller> \
                    <Adj~$e><Adj~+e>
 
 #Adv-inflection# = <Adv><AdvComp><AdvComp0><AdvSup>

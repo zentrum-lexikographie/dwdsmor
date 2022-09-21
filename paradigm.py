@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-09-20
+# Andreas Nolda 2022-09-21
 
 import sys
 import os
@@ -12,7 +12,7 @@ from dwdsmor import analyse_word
 from blessings import Terminal
 from collections import namedtuple
 
-version = 5.6
+version = 5.7
 
 basedir = os.path.dirname(__file__)
 libdir  = os.path.join(basedir, "lib")
@@ -28,7 +28,7 @@ genders     = ["Masc", "Neut", "Fem", "NoGend"]
 cases       = ["Nom", "Acc", "Dat", "Gen"]
 numbers     = ["Sg", "Pl"]
 inflections = ["NoInfl", "St", "Wk"]
-functions   = ["Attr", "NonAttr", "Subst"]
+functions   = ["Attr", "Subst", "Attr/Subst", "Pred/Adv"]
 moods       = ["Ind", "Subj"]
 tenses      = ["Pres", "Perf", "Past", "PastPerf", "Fut", "FutPerf"]
 auxiliaries = ["haben", "sein"]
@@ -211,9 +211,9 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg, pos, ol
     for degree in degrees:
         # non-attributive forms
         parcat = Parcat(degree   = degree,
-                        function = "NonAttr")
+                        function = "Pred/Adv")
         categories = [degree,
-                      "NonAttr"]
+                      "Pred/Adv"]
         nonattributive_forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
         if degree == "Sup":
             add_superlative_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, nonattributive_forms)
@@ -227,44 +227,50 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg, pos, ol
             pass
     for degree in degrees:
         # forms inflected for degree, but uninflected for gender, case, number, and inflectional strength
-        parcat = Parcat(degree     = degree,
-                        gender     = "Invar",
-                        case       = "Invar",
-                        number     = "Invar",
-                        inflection = "Invar")
-        categories = [degree,
-                      "Invar"]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
-        add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
-        if old_forms:
-            # no such forms
-            pass
-        if nonstandard_forms:
-            # no such forms
-            pass
+        for function in functions:
+            parcat = Parcat(degree     = degree,
+                            function   = function,
+                            gender     = "Invar",
+                            case       = "Invar",
+                            number     = "Invar",
+                            inflection = "Invar")
+            categories = [degree,
+                          function,
+                          "Invar"]
+            forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+            add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
+            if old_forms:
+                # no such forms
+                pass
+            if nonstandard_forms:
+                # no such forms
+                pass
         # forms inflected for degree, gender, case, number, and inflectional strength
         for gender in genders:
             for number in numbers:
                 for case in cases:
                     for inflection in inflections:
-                        parcat = Parcat(degree     = degree,
-                                        gender     = gender,
-                                        case       = case,
-                                        number     = number,
-                                        inflection = inflection)
-                        categories = [degree,
-                                      gender,
-                                      case,
-                                      number,
-                                      inflection]
-                        forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
-                        add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
-                        if old_forms:
-                            # no such forms
-                            pass
-                        if nonstandard_forms:
-                            # no such forms
-                            pass
+                        for function in functions:
+                            parcat = Parcat(degree     = degree,
+                                            function   = function,
+                                            gender     = gender,
+                                            case       = case,
+                                            number     = number,
+                                            inflection = inflection)
+                            categories = [degree,
+                                          function,
+                                          gender,
+                                          case,
+                                          number,
+                                          inflection]
+                            forms = generate_forms(transducer, lemma_index, paradigm_index, seg, pos, categories)
+                            add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
+                            if old_forms:
+                                # no such forms
+                                pass
+                            if nonstandard_forms:
+                                # no such forms
+                                pass
     return formdict
 
 def get_article_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_forms=False, nonstandard_forms=False):

@@ -1,6 +1,6 @@
 % lemma.fst
-% Version 1.2
-% Andreas Nolda 2022-09-20
+% Version 1.3
+% Andreas Nolda 2022-09-21
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -20,8 +20,9 @@ $ADV$ = (.*<>:<+ADV> || $MORPH$) <+ADV>
 
 $V$ = (.*<>:<+V><>:<Inf> || $MORPH$) <+V>
 
-$ADJ$ = (.*<>:<+ADJ><>:<Pos><>:[<Invar><Lemma><NonAttr>] || $MORPH$) <+ADJ>
-$ADJ$ = (.*<>:<+ADJ><>:<Sup><>:<Lemma>                   || $MORPH$) <+ADJ> | $ADJ$
+$ADJ$ = (.*<>:<+ADJ><>:<Pos><>:<Pred/Adv>                     || $MORPH$) <+ADJ>
+$ADJ$ = (.*<>:<+ADJ><>:<Pos><>:[<Attr><Attr/Subst>]<>:<Invar> || $MORPH$) <+ADJ> | $ADJ$
+$ADJ$ = (.*<>:<+ADJ><>:[#degree#]<>:<Lemma>                   || $MORPH$) <+ADJ> | $ADJ$
 
 $LEMMA$ = $ADV$ | $NN$ | $NPROP$ | $V$ | $ADJ$
 

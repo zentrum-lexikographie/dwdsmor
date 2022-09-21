@@ -1,13 +1,17 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-09-21:
+
+* replace `<Pred>` and `<Adv>` with `<Pred/Adv>`
+* add `<Attr/Subst>` to attributive categorisations of adjectives
+
 2022-09-20:
 
 * rename inflection class `Adj0` to `AdjPos0`
 * rename inflection class `Adj0-Up` to `AdjPos0Attr-Up`,
-* add `<NonAttr>` categorisation to `AdjPos0` and `AdjComp0`
+* add predicative categorisation to `AdjPos0` and `AdjComp0`
 * add inflection classes `AdjPos0Attr` and `AdjSup-aller`
 * remove inflection classes `Adj&` and `AdjPosSup`
-* replace `<Pred>` and `<Adv>` with `<NonAttr>`
 
 2022-09-09:
 

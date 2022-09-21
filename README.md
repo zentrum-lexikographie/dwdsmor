@@ -279,7 +279,7 @@ By default, `dwdsmor.py` prints a CSV table on standard output:
 
 ```plaintext
 $ echo Kind | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Abbreviation	Metainfo
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
 Kind	Kind<+NN><Neut><Acc><Sg>	Kind	Kind			NN					Neut	Acc	Sg
 Kind	Kind<+NN><Neut><Dat><Sg>	Kind	Kind			NN					Neut	Dat	Sg
 Kind	Kind<+NN><Neut><Nom><Sg>	Kind	Kind			NN					Neut	Nom	Sg
@@ -287,24 +287,24 @@ Kind	Kind<+NN><Neut><Nom><Sg>	Kind	Kind			NN					Neut	Nom	Sg
 
 ```plaintext
 $ echo kleines | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Abbreviation	Metainfo
-kleines	klein<+ADJ><Pos><Neut><Acc><Sg><St>	klein	klein			ADJ			Pos		Neut	Acc	Sg	St
-kleines	klein<+ADJ><Pos><Neut><Nom><Sg><St>	klein	klein			ADJ			Pos		Neut	Nom	Sg	St
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
+kleines	klein<+ADJ><Pos><Attr/Subst><Neut><Acc><Sg><St>	klein	klein			ADJ			Pos		Neut	Acc	Sg	St	Attr/Subst
+kleines	klein<+ADJ><Pos><Attr/Subst><Neut><Nom><Sg><St>	klein	klein			ADJ			Pos		Neut	Nom	Sg	St	Attr/Subst
 ```
 
 ```plaintext
 $ echo mein | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Abbreviation	Metainfo
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
 mein	mein<~>en<+V><Imp><Sg>	meinen	mein<~>en			V							Sg				Imp
-mein	meine<PAR2><+POSS><Attr><Neut><Acc><Sg><NoInfl>	meine	meine		2	POSS					Neut	Acc	Sg	NoInfl	Attr
-mein	meine<PAR2><+POSS><Attr><Neut><Nom><Sg><NoInfl>	meine	meine		2	POSS					Neut	Nom	Sg	NoInfl	Attr
-mein	meine<PAR2><+POSS><Attr><Masc><Nom><Sg><NoInfl>	meine	meine		2	POSS					Masc	Nom	Sg	NoInfl	Attr
-mein	ich<+PPRO><Pers><1><Gen><Sg><Old>	ich	ich			PPRO	Pers			1		Gen	Sg							Old
+mein	meine<+POSS><Attr><Neut><Acc><Sg><NoInfl>	meine	meine			POSS					Neut	Acc	Sg	NoInfl	Attr
+mein	meine<+POSS><Attr><Neut><Nom><Sg><NoInfl>	meine	meine			POSS					Neut	Nom	Sg	NoInfl	Attr
+mein	meine<+POSS><Attr><Masc><Nom><Sg><NoInfl>	meine	meine			POSS					Masc	Nom	Sg	NoInfl	Attr
+mein	ich<+PPRO><Pers><1><Gen><Sg><Old>	ich	ich			PPRO	Pers			1		Gen	Sg						Old
 ```
 
 ```plaintext
 $ echo schlafe | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Abbreviation	Metainfo
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
 schlafe	schlaf<~>en<+V><3><Sg><Pres><Subj>	schlafen	schlaf<~>en			V				3			Sg				Subj	Pres
 schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen	schlaf<~>en			V				1			Sg				Subj	Pres
 schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen	schlaf<~>en			V				1			Sg				Ind	Pres
@@ -317,15 +317,12 @@ in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./paradigm.py -h
-usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j]
-                   [-n] [-N] [-o]
-                   [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}]
-                   [-s] [-t TRANSDUCER] [-u] [-v]
-                   lemma [output]
+usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j] [-n] [-N] [-o]
+                   [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}] [-s]
+                   [-t TRANSDUCER] [-u] [-v] lemma [output]
 
 positional arguments:
-  lemma                 lemma (determiners: Fem Nom Sg; nominalised
-                        adjectives: Wk)
+  lemma                 lemma (determiners: Fem Nom Sg; nominalised adjectives: Wk)
   output                output file (default: stdout)
 
 optional arguments:
@@ -356,15 +353,15 @@ By default, `paradigm.py` outputs a similar CSV table as `dwdsmor.py`:
 
 ```plaintext
 $ ./paradigm.py Kind
-Lemma	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Gender	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Paradigm Forms
-Kind			NN			Neut				Nom	Sg						Kind
-Kind			NN			Neut				Acc	Sg						Kind
-Kind			NN			Neut				Dat	Sg						Kind
-Kind			NN			Neut				Gen	Sg						Kindes, Kinds
-Kind			NN			Neut				Nom	Pl						Kinder
-Kind			NN			Neut				Acc	Pl						Kinder
-Kind			NN			Neut				Dat	Pl						Kindern
-Kind			NN			Neut				Gen	Pl						Kinder
+Lemma	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Person	Gender	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Paradigm Forms
+Kind			NN				Neut				Nom	Sg						Kind
+Kind			NN				Neut				Acc	Sg						Kind
+Kind			NN				Neut				Dat	Sg						Kind
+Kind			NN				Neut				Gen	Sg						Kindes, Kinds
+Kind			NN				Neut				Nom	Pl						Kinder
+Kind			NN				Neut				Acc	Pl						Kinder
+Kind			NN				Neut				Dat	Pl						Kindern
+Kind			NN				Neut				Gen	Pl						Kinder
 ```
 
 For a condensed version, the options `--no-category-names` and `--no-lemma` can
@@ -386,105 +383,105 @@ Gen Pl	Kinder
 ```plaintext
 $ ./paradigm.py --no-category-names --no-lemma klein
 Paradigm Categories	Paradigm Forms
-Pos NonAttr	klein
-Comp NonAttr	kleiner
-Sup NonAttr	am kleinsten
-Pos Masc Nom Sg St	kleiner
-Pos Masc Nom Sg Wk	kleine
-Pos Masc Acc Sg St	kleinen
-Pos Masc Acc Sg Wk	kleinen
-Pos Masc Dat Sg St	kleinem
-Pos Masc Dat Sg Wk	kleinen
-Pos Masc Gen Sg St	kleinen
-Pos Masc Gen Sg Wk	kleinen
-Pos Neut Nom Sg St	kleines
-Pos Neut Nom Sg Wk	kleine
-Pos Neut Acc Sg St	kleines
-Pos Neut Acc Sg Wk	kleine
-Pos Neut Dat Sg St	kleinem
-Pos Neut Dat Sg Wk	kleinen
-Pos Neut Gen Sg St	kleinen
-Pos Neut Gen Sg Wk	kleinen
-Pos Fem Nom Sg St	kleine
-Pos Fem Nom Sg Wk	kleine
-Pos Fem Acc Sg St	kleine
-Pos Fem Acc Sg Wk	kleine
-Pos Fem Dat Sg St	kleiner
-Pos Fem Dat Sg Wk	kleinen
-Pos Fem Gen Sg St	kleiner
-Pos Fem Gen Sg Wk	kleinen
-Pos NoGend Nom Pl St	kleine
-Pos NoGend Nom Pl Wk	kleinen
-Pos NoGend Acc Pl St	kleine
-Pos NoGend Acc Pl Wk	kleinen
-Pos NoGend Dat Pl St	kleinen
-Pos NoGend Dat Pl Wk	kleinen
-Pos NoGend Gen Pl St	kleiner
-Pos NoGend Gen Pl Wk	kleinen
-Comp Masc Nom Sg St	kleinerer
-Comp Masc Nom Sg Wk	kleinere
-Comp Masc Acc Sg St	kleineren
-Comp Masc Acc Sg Wk	kleineren
-Comp Masc Dat Sg St	kleinerem
-Comp Masc Dat Sg Wk	kleineren
-Comp Masc Gen Sg St	kleineren
-Comp Masc Gen Sg Wk	kleineren
-Comp Neut Nom Sg St	kleineres
-Comp Neut Nom Sg Wk	kleinere
-Comp Neut Acc Sg St	kleineres
-Comp Neut Acc Sg Wk	kleinere
-Comp Neut Dat Sg St	kleinerem
-Comp Neut Dat Sg Wk	kleineren
-Comp Neut Gen Sg St	kleineren
-Comp Neut Gen Sg Wk	kleineren
-Comp Fem Nom Sg St	kleinere
-Comp Fem Nom Sg Wk	kleinere
-Comp Fem Acc Sg St	kleinere
-Comp Fem Acc Sg Wk	kleinere
-Comp Fem Dat Sg St	kleinerer
-Comp Fem Dat Sg Wk	kleineren
-Comp Fem Gen Sg St	kleinerer
-Comp Fem Gen Sg Wk	kleineren
-Comp NoGend Nom Pl St	kleinere
-Comp NoGend Nom Pl Wk	kleineren
-Comp NoGend Acc Pl St	kleinere
-Comp NoGend Acc Pl Wk	kleineren
-Comp NoGend Dat Pl St	kleineren
-Comp NoGend Dat Pl Wk	kleineren
-Comp NoGend Gen Pl St	kleinerer
-Comp NoGend Gen Pl Wk	kleineren
-Sup Masc Nom Sg St	kleinster
-Sup Masc Nom Sg Wk	kleinste
-Sup Masc Acc Sg St	kleinsten
-Sup Masc Acc Sg Wk	kleinsten
-Sup Masc Dat Sg St	kleinstem
-Sup Masc Dat Sg Wk	kleinsten
-Sup Masc Gen Sg St	kleinsten
-Sup Masc Gen Sg Wk	kleinsten
-Sup Neut Nom Sg St	kleinstes
-Sup Neut Nom Sg Wk	kleinste
-Sup Neut Acc Sg St	kleinstes
-Sup Neut Acc Sg Wk	kleinste
-Sup Neut Dat Sg St	kleinstem
-Sup Neut Dat Sg Wk	kleinsten
-Sup Neut Gen Sg St	kleinsten
-Sup Neut Gen Sg Wk	kleinsten
-Sup Fem Nom Sg St	kleinste
-Sup Fem Nom Sg Wk	kleinste
-Sup Fem Acc Sg St	kleinste
-Sup Fem Acc Sg Wk	kleinste
-Sup Fem Dat Sg St	kleinster
-Sup Fem Dat Sg Wk	kleinsten
-Sup Fem Gen Sg St	kleinster
-Sup Fem Gen Sg Wk	kleinsten
-Sup NoGend Nom Pl St	kleinste
-Sup NoGend Nom Pl Wk	kleinsten
-Sup NoGend Acc Pl St	kleinste
-Sup NoGend Acc Pl Wk	kleinsten
-Sup NoGend Dat Pl St	kleinsten
-Sup NoGend Dat Pl Wk	kleinsten
-Sup NoGend Gen Pl St	kleinster
-Sup NoGend Gen Pl Wk	kleinsten
+Pos Pred/Adv	klein
+Comp Pred/Adv	kleiner
+Sup Pred/Adv	am kleinsten
+Pos Masc Nom Sg St Attr/Subst	kleiner
+Pos Masc Nom Sg Wk Attr/Subst	kleine
+Pos Masc Acc Sg St Attr/Subst	kleinen
+Pos Masc Acc Sg Wk Attr/Subst	kleinen
+Pos Masc Dat Sg St Attr/Subst	kleinem
+Pos Masc Dat Sg Wk Attr/Subst	kleinen
+Pos Masc Gen Sg St Attr/Subst	kleinen
+Pos Masc Gen Sg Wk Attr/Subst	kleinen
+Pos Neut Nom Sg St Attr/Subst	kleines
+Pos Neut Nom Sg Wk Attr/Subst	kleine
+Pos Neut Acc Sg St Attr/Subst	kleines
+Pos Neut Acc Sg Wk Attr/Subst	kleine
+Pos Neut Dat Sg St Attr/Subst	kleinem
+Pos Neut Dat Sg Wk Attr/Subst	kleinen
+Pos Neut Gen Sg St Attr/Subst	kleinen
+Pos Neut Gen Sg Wk Attr/Subst	kleinen
+Pos Fem Nom Sg St Attr/Subst	kleine
+Pos Fem Nom Sg Wk Attr/Subst	kleine
+Pos Fem Acc Sg St Attr/Subst	kleine
+Pos Fem Acc Sg Wk Attr/Subst	kleine
+Pos Fem Dat Sg St Attr/Subst	kleiner
+Pos Fem Dat Sg Wk Attr/Subst	kleinen
+Pos Fem Gen Sg St Attr/Subst	kleiner
+Pos Fem Gen Sg Wk Attr/Subst	kleinen
+Pos NoGend Nom Pl St Attr/Subst	kleine
+Pos NoGend Nom Pl Wk Attr/Subst	kleinen
+Pos NoGend Acc Pl St Attr/Subst	kleine
+Pos NoGend Acc Pl Wk Attr/Subst	kleinen
+Pos NoGend Dat Pl St Attr/Subst	kleinen
+Pos NoGend Dat Pl Wk Attr/Subst	kleinen
+Pos NoGend Gen Pl St Attr/Subst	kleiner
+Pos NoGend Gen Pl Wk Attr/Subst	kleinen
+Comp Masc Nom Sg St Attr/Subst	kleinerer
+Comp Masc Nom Sg Wk Attr/Subst	kleinere
+Comp Masc Acc Sg St Attr/Subst	kleineren
+Comp Masc Acc Sg Wk Attr/Subst	kleineren
+Comp Masc Dat Sg St Attr/Subst	kleinerem
+Comp Masc Dat Sg Wk Attr/Subst	kleineren
+Comp Masc Gen Sg St Attr/Subst	kleineren
+Comp Masc Gen Sg Wk Attr/Subst	kleineren
+Comp Neut Nom Sg St Attr/Subst	kleineres
+Comp Neut Nom Sg Wk Attr/Subst	kleinere
+Comp Neut Acc Sg St Attr/Subst	kleineres
+Comp Neut Acc Sg Wk Attr/Subst	kleinere
+Comp Neut Dat Sg St Attr/Subst	kleinerem
+Comp Neut Dat Sg Wk Attr/Subst	kleineren
+Comp Neut Gen Sg St Attr/Subst	kleineren
+Comp Neut Gen Sg Wk Attr/Subst	kleineren
+Comp Fem Nom Sg St Attr/Subst	kleinere
+Comp Fem Nom Sg Wk Attr/Subst	kleinere
+Comp Fem Acc Sg St Attr/Subst	kleinere
+Comp Fem Acc Sg Wk Attr/Subst	kleinere
+Comp Fem Dat Sg St Attr/Subst	kleinerer
+Comp Fem Dat Sg Wk Attr/Subst	kleineren
+Comp Fem Gen Sg St Attr/Subst	kleinerer
+Comp Fem Gen Sg Wk Attr/Subst	kleineren
+Comp NoGend Nom Pl St Attr/Subst	kleinere
+Comp NoGend Nom Pl Wk Attr/Subst	kleineren
+Comp NoGend Acc Pl St Attr/Subst	kleinere
+Comp NoGend Acc Pl Wk Attr/Subst	kleineren
+Comp NoGend Dat Pl St Attr/Subst	kleineren
+Comp NoGend Dat Pl Wk Attr/Subst	kleineren
+Comp NoGend Gen Pl St Attr/Subst	kleinerer
+Comp NoGend Gen Pl Wk Attr/Subst	kleineren
+Sup Masc Nom Sg St Attr/Subst	kleinster
+Sup Masc Nom Sg Wk Attr/Subst	kleinste
+Sup Masc Acc Sg St Attr/Subst	kleinsten
+Sup Masc Acc Sg Wk Attr/Subst	kleinsten
+Sup Masc Dat Sg St Attr/Subst	kleinstem
+Sup Masc Dat Sg Wk Attr/Subst	kleinsten
+Sup Masc Gen Sg St Attr/Subst	kleinsten
+Sup Masc Gen Sg Wk Attr/Subst	kleinsten
+Sup Neut Nom Sg St Attr/Subst	kleinstes
+Sup Neut Nom Sg Wk Attr/Subst	kleinste
+Sup Neut Acc Sg St Attr/Subst	kleinstes
+Sup Neut Acc Sg Wk Attr/Subst	kleinste
+Sup Neut Dat Sg St Attr/Subst	kleinstem
+Sup Neut Dat Sg Wk Attr/Subst	kleinsten
+Sup Neut Gen Sg St Attr/Subst	kleinsten
+Sup Neut Gen Sg Wk Attr/Subst	kleinsten
+Sup Fem Nom Sg St Attr/Subst	kleinste
+Sup Fem Nom Sg Wk Attr/Subst	kleinste
+Sup Fem Acc Sg St Attr/Subst	kleinste
+Sup Fem Acc Sg Wk Attr/Subst	kleinste
+Sup Fem Dat Sg St Attr/Subst	kleinster
+Sup Fem Dat Sg Wk Attr/Subst	kleinsten
+Sup Fem Gen Sg St Attr/Subst	kleinster
+Sup Fem Gen Sg Wk Attr/Subst	kleinsten
+Sup NoGend Nom Pl St Attr/Subst	kleinste
+Sup NoGend Nom Pl Wk Attr/Subst	kleinsten
+Sup NoGend Acc Pl St Attr/Subst	kleinste
+Sup NoGend Acc Pl Wk Attr/Subst	kleinsten
+Sup NoGend Dat Pl St Attr/Subst	kleinsten
+Sup NoGend Dat Pl Wk Attr/Subst	kleinsten
+Sup NoGend Gen Pl St Attr/Subst	kleinster
+Sup NoGend Gen Pl Wk Attr/Subst	kleinsten
 ```
 
 ```plaintext
