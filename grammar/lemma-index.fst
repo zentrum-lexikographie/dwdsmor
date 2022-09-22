@@ -24,7 +24,7 @@ $ADV$ = ($C1$ <>:<+ADV> || $MORPH$) $C2$ <+ADV>
 $V$ = ($C1$ <>:<+V><>:<Inf> || $MORPH$) [#lemma-index#]? [#paradigm-index#]?<+V>
 
 $ADJ$ = ($C1$ <>:<+ADJ><>:<Pos><>:<Pred/Adv>                     || $MORPH$) $C2$ <+ADJ>
-$ADJ$ = ($C1$ <>:<+ADJ><>:<Sup><>:[<Attr><Attr/Subst>]<>:<Invar> || $MORPH$) $C2$ <+ADJ> | $ADJ$
+$ADJ$ = ($C1$ <>:<+ADJ><>:<Pos><>:[<Attr><Attr/Subst>]<>:<Invar> || $MORPH$) $C2$ <+ADJ> | $ADJ$
 $ADJ$ = ($C1$ <>:<+ADJ><>:[#degree#]<>:<Lemma>                   || $MORPH$) $C2$ <+ADJ> | $ADJ$
 
 $LEMMA$ = $ADV$ | $NN$ | $NPROP$ | $V$ | $ADJ$
