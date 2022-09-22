@@ -1,6 +1,6 @@
 % flexion.fst
-% Version 1.13
-% Andreas Nolda 2022-09-21
+% Version 1.14
+% Andreas Nolda 2022-09-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -535,21 +535,21 @@ $Name-Pl_x$ = {<+NPROP><NoGend>}:{} $NPl_x$
 
 % adjectives
 
-$TMP$ = {<Fem><NA><Sg><SW>}:{e}      | \
-        {<Masc><Nom><Sg><Wk>}:{e}    | \
-        {<Neut><NA><Sg><Wk>}:{e}     | \
-        {<NoGend><NA><Pl><St>}:{e}   | \
-        {<MN><Dat><Sg><St>}:{em}     | \
-        {<Fem><Gen><Sg><Wk>}:{en}    | \
-        {<MN><Gen><Sg><SW>}:{en}     | \
-        {<Masc><Acc><Sg><SW>}:{en}   | \
-        {<MFN><Dat><Sg><Wk>}:{en}    | \
-        {<NoGend><Dat><Pl><SW>}:{en} | \
-        {<NoGend><NGA><Pl><Wk>}:{en} | \
-        {<Fem><GD><Sg><St>}:{er}     | \
-        {<Masc><Nom><Sg><St>}:{er}   | \
-        {<NoGend><Gen><Pl><St>}:{er} | \
-        {<Neut><NA><Sg><St>}:{es}
+$TMP$ = {<Attr/Subst><Fem><NA><Sg><SW>}:{e}      | \
+        {<Attr/Subst><Masc><Nom><Sg><Wk>}:{e}    | \
+        {<Attr/Subst><Neut><NA><Sg><Wk>}:{e}     | \
+        {<Attr/Subst><NoGend><NA><Pl><St>}:{e}   | \
+        {<Attr/Subst><MN><Dat><Sg><St>}:{em}     | \
+        {<Attr/Subst><Fem><Gen><Sg><Wk>}:{en}    | \
+        {<Attr/Subst><MN><Gen><Sg><SW>}:{en}     | \
+        {<Attr/Subst><Masc><Acc><Sg><SW>}:{en}   | \
+        {<Attr/Subst><MFN><Dat><Sg><Wk>}:{en}    | \
+        {<Attr/Subst><NoGend><Dat><Pl><SW>}:{en} | \
+        {<Attr/Subst><NoGend><NGA><Pl><Wk>}:{en} | \
+        {<Attr/Subst><Fem><GD><Sg><St>}:{er}     | \
+        {<Attr/Subst><Masc><Nom><Sg><St>}:{er}   | \
+        {<Attr/Subst><NoGend><Gen><Pl><St>}:{er} | \
+        {<Attr/Subst><Neut><NA><Sg><St>}:{es}
 
 $AdjFlexSuff$ = $TMP$ $Adj#$
 
@@ -558,6 +558,10 @@ $AdjFlexSuff-Up$ = $TMP$ $Adj#Up$
 % lila; klasse
 $AdjPos0$ = {<+ADJ><Pos><Pred/Adv>}:{}    $Adj#$ | \
             {<+ADJ><Pos><Attr><Invar>}:{} $Adj#$
+
+% viel; wenig
+$AdjPos0-viel$ = {<+ADJ><Pos><Pred/Adv>}:{}          $Adj#$ | \
+                 {<+ADJ><Pos><Attr/Subst><Invar>}:{} $Adj#$
 
 % innen; feil
 $AdjPosPred$ = {<+ADJ><Pos><Pred/Adv>}:{} $Adj#$
@@ -569,37 +573,37 @@ $AdjPos0Attr$ = {<+ADJ><Pos><Attr><Invar>}:{} $Adj#$
 $AdjPos0Attr-Up$ = {<+ADJ><Pos><Attr/Subst><Invar>}:{} $Adj#Up$
 
 % bloß, bloß-; derartig, derartig-
-$AdjPos$ = {<+ADJ><Pos><Pred/Adv>}:{<FB>}   $Adj#$ | \
-           {<+ADJ><Pos><Attr/Subst>}:{<FB>} $AdjFlexSuff$
+$AdjPos$ = {<+ADJ><Pos><Pred/Adv>}:{<FB>} $Adj#$ | \
+           {<+ADJ><Pos>}:{<FB>}           $AdjFlexSuff$
 
 % Rh-positiv, Rh-positiv-; Tbc-krank, Tbc-krank-
-$AdjPos-Up$ = {<+ADJ><Pos><Pred/Adv>}:{<FB>}   $Adj#Up$ | \
-              {<+ADJ><Pos><Attr/Subst>}:{<FB>} $AdjFlexSuff-Up$
+$AdjPos-Up$ = {<+ADJ><Pos><Pred/Adv>}:{<FB>} $Adj#Up$ | \
+              {<+ADJ><Pos>}:{<FB>}           $AdjFlexSuff-Up$
 
 % ander-; vorig-
-$AdjPosAttr$ = {<+ADJ><Pos><Lemma>}:{}          $Adj#$ | \
-               {<+ADJ><Pos><Attr/Subst>}:{<FB>} $AdjFlexSuff$
+$AdjPosAttr$ = {<+ADJ><Pos><Lemma>}:{} $Adj#$ | \
+               {<+ADJ><Pos>}:{<FB>}    $AdjFlexSuff$
 
 % Armee-eigen-
-$AdjPosAttr-Up$ = {<+ADJ><Pos><Lemma>}:{}          $Adj#Up$ | \
-                  {<+ADJ><Pos><Attr/Subst>}:{<FB>} $AdjFlexSuff-Up$
+$AdjPosAttr-Up$ = {<+ADJ><Pos><Lemma>}:{} $Adj#Up$ | \
+                  {<+ADJ><Pos>}:{<FB>}    $AdjFlexSuff-Up$
 
 % besser, besser-; höher, höher-
-$AdjComp$ = {<+ADJ><Comp><Pred/Adv>}:{er}   $Adj#$ | \
-            {<+ADJ><Comp><Attr/Subst>}:{er} $AdjFlexSuff$
+$AdjComp$ = {<+ADJ><Comp><Pred/Adv>}:{er} $Adj#$ | \
+            {<+ADJ><Comp>}:{er}           $AdjFlexSuff$
 
 % mehr; weniger
-$AdjComp0$ = {<+ADJ><Comp><Pred/Adv>}:{}          $Adj#$ | \
-             {<+ADJ><Comp><Attr/Subst><Invar>}:{} $Adj#$
+$AdjComp0-mehr$ = {<+ADJ><Comp><Pred/Adv>}:{}          $Adj#$ | \
+                  {<+ADJ><Comp><Attr/Subst><Invar>}:{} $Adj#$
 
 % besten, best-; höchsten, höchst-
 $AdjSup$ = {<+ADJ><Sup><Pred/Adv>}:{sten} $Adj#$ | \
-           {<+ADJ><Sup><Attr/Subst>}:{st} $AdjFlexSuff$
+           {<+ADJ><Sup>}:{st}             $AdjFlexSuff$
 
 % allerbesten, allerbest-; allerhöchsten, allerhöchst-
 $AdjSup-aller$ = {<+ADJ><Sup><Lemma>}:{st}      $Adj#$ | \
                  {<+ADJ><Sup><Pred/Adv>}:{sten} $Adj#$ | \
-                 {<+ADJ><Sup><Attr/Subst>}:{st} $AdjFlexSuff$
+                 {<+ADJ><Sup>}:{st}             $AdjFlexSuff$
 
 % faul-, fauler-, faulst-
 $Adj+$ =           $AdjPos$  | \
@@ -1219,7 +1223,7 @@ $Card-sieben$ = {<+CARD>}:{<FB>} $CardSuff-sieben$
 $Card0$ = <+CARD>:<> $CardSuff0$
 
 % erst-
-$Ord$ = <+ORD>:<> $AdjFlexSuff$
+$Ord$ = {<+ORD>}:{<FB>} $AdjFlexSuff$
 
 
 % adverbs
@@ -1597,8 +1601,9 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<Adj+Lang>              $Adj+Lang$          | \
             <>:<Adj-el/er>             $Adj-el/er$         | \
             <>:<AdjComp>               $AdjComp$           | \
-            <>:<AdjComp0>              $AdjComp0$          | \
+            <>:<AdjComp0-mehr>         $AdjComp0-mehr$     | \
             <>:<AdjPos0>               $AdjPos0$           | \
+            <>:<AdjPos0-viel>          $AdjPos0-viel$      | \
             <>:<AdjPos0Attr>           $AdjPos0Attr$       | \
             <>:<AdjPos0Attr-Up>        $AdjPos0Attr-Up$    | \
             <>:<AdjPos>                $AdjPos$            | \

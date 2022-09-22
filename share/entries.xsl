@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 5.2 -->
-<!-- Andreas Nolda 2022-09-21 -->
+<!-- Version 5.3 -->
+<!-- Andreas Nolda 2022-09-22 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -323,7 +323,7 @@
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">AdjPos0</xsl:with-param>
+              <xsl:with-param name="class">AdjPos0-viel</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -336,7 +336,7 @@
                               select="$paradigm-index"/>
               <xsl:with-param name="form"
                               select="$comparative"/>
-              <xsl:with-param name="class">AdjComp0</xsl:with-param>
+              <xsl:with-param name="class">AdjComp0-mehr</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>

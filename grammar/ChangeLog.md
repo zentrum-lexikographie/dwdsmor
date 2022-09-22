@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-09-22:
+
+* add inflection class `AdjPos0-viel`
+* rename inflection class `AdjComp0` to `AdjComp0-mehr`
+
 2022-09-21:
 
 * replace `<Pred>` and `<Adv>` with `<Pred/Adv>`
