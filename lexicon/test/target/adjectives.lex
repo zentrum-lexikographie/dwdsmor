@@ -33,13 +33,13 @@
 <Stem>spät<ADJ><base><nativ><Adj+e>
 <Stem>tabu<ADJ><base><fremd><AdjPosPred>
 <Stem>teuer<ADJ><base><nativ><Adj-el/er>
-<Stem>v:mi:ee:hl:r<ADJ><base><nativ><AdjComp0>
+<Stem>v:mi:ee:hl:r<ADJ><base><nativ><AdjComp0-mehr>
 <Stem>v:mi:ee:il:<><ADJ><base><nativ><AdjSup>
 <Stem>verträumt<ADJ><base><nativ><AdjPos>
-<Stem>viel<ADJ><base><nativ><Adj0>
 <Stem>viel<ADJ><base><nativ><AdjPos>
+<Stem>viel<ADJ><base><nativ><AdjPos0-viel>
 <Stem>warm<ADJ><base><nativ><Adj$>
-<Stem>wenig<>:e<>:r<ADJ><base><nativ><AdjComp0>
-<Stem>wenig<ADJ><base><nativ><Adj0>
+<Stem>wenig<>:e<>:r<ADJ><base><nativ><AdjComp0-mehr>
 <Stem>wenig<ADJ><base><nativ><AdjPos>
+<Stem>wenig<ADJ><base><nativ><AdjPos0-viel>
 <Stem>wenig<ADJ><base><nativ><AdjSup>

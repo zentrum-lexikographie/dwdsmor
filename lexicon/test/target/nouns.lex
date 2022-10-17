@@ -24,6 +24,7 @@
 <Stem>Bauer<IDX1><NN><base><nativ><NMasc_n_n>
 <Stem>Bauer<IDX1><NN><base><nativ><NMasc_s_n>
 <Stem>Becken<NN><base><nativ><NNeut_s_x>
+<Stem>Berliner<IDX1><NN><base><nativ><NMasc_s_0>
 <Stem>Bett<NN><base><nativ><NNeut_es_en>
 <Stem>Bewundern<NN><base><nativ><NNeut/Sg_s>
 <Stem>Bild<NN><base><nativ><NNeut_es_er>
@@ -95,6 +96,7 @@
 <Stem>Idyll<NN><base><fremd><NNeut_s_e>
 <Stem>Innere:<><NN><base><nativ><NNeut-Inner>
 <Stem>Intercity<NN><base><nativ><NMasc_0_s>
+<Stem>Jazz<NN><base><fremd><NMasc/Sg_0>
 <Stem>Jeans<NN><base><fremd><NFem_0_x>
 <Stem>Jugend<NN><base><nativ><NFem/Sg_0>
 <Stem>Juni<NN><base><fremd><NMasc_0_s>
