@@ -116,6 +116,15 @@
       </Grammatik>
     </Formangabe>
   </Artikel>
+  <!-- currently Red-2 -->
+  <Artikel>
+    <Formangabe>
+      <Schreibung>du</Schreibung>
+      <Grammatik>
+        <Wortklasse>Personalpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
   <Artikel>
     <Formangabe>
       <Schreibung>ebensolcher</Schreibung>

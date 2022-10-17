@@ -403,10 +403,10 @@
               <xsl:call-template name="adjective-entry">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
-              <xsl:with-param name="lemma-index"
-                              select="$lemma-index"/>
-              <xsl:with-param name="paradigm-index"
-                              select="$paradigm-index"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
                 <xsl:with-param name="form"
                                 select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
                 <xsl:with-param name="class">AdjSup</xsl:with-param>
