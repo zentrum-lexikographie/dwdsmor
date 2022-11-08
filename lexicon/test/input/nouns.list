@@ -13,6 +13,7 @@ wb/DWDS/017-D99_DWDS/ICE-E_810547.xml
 wb/DWDS/lemnitzer-000-Probeartikel/E_j_50000_1-Jeans.xml
 wb/DWDS/unger-004-Mix/Shopping_106.xml
 wb/DWDS/wahrig-001/Cent.xml
+wb/Neuartikel-001/Bugfix-E_6941062.xml
 wb/Neuartikel-001/Melodram-E_997578569.xml
 wb/Neuartikel-002/Bewundern-E_1373277.xml
 wb/Neuartikel-002/Kursus-E_3045132.xml
@@ -36,6 +37,7 @@ wb/Neuartikel/Kanal-E_571884.xml
 wb/Neuartikel/Kompass-E_4351901.xml
 wb/Neuartikel/Rand-E_4406137.xml
 wb/Neuartikel/Reif-2-E_7961326.xml
+wb/Neuartikel/Smartwatch-E_977630.xml
 wb/Neuartikel/Stewardess-E_s_19468-dup.xml
 wb/WDG/ab/Abend-E_a_270.xml
 wb/WDG/af/Affe-E_a_2717.xml
@@ -105,6 +107,7 @@ wb/WDG/le/Leib-E_l_2939.xml
 wb/WDG/le/Leute-E_l_3978.xml
 wb/WDG/lo/Lord-E_l_5556.xml
 wb/WDG/ma/Mass-E_m_2132.xml
+wb/WDG/ma/Mast-E_m_2413.xml
 wb/WDG/ma/Maximum-E_m_2814.xml
 wb/WDG/mo/Mond-E_m_5841.xml
 wb/WDG/mu/Museum-E_m_6913.xml
@@ -126,6 +129,7 @@ wb/WDG/sc/Schloss-E_s_5483.xml
 wb/WDG/sc/Schmerz-E_s_6060.xml
 wb/WDG/se/See-E_s_10395.xml
 wb/WDG/st/Staat-E_s_16612.xml
+wb/WDG/te/Tennismatch-E_t_2064.xml
 wb/WDG/te/Terminus-E_t_2183.xml
 wb/WDG/ue/Ueberfluss-E_u_160.xml
 wb/WDG/uf/Ufer-E_u_717.xml

@@ -1,5 +1,14 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-11-08:
+
+* add support for masculine or neuter nouns with genitive singular forms ending
+  in "-(e)s" and nominative plural forms ending in "-es"
+* add support for feminine nouns with unmarked genitive singular and nominative
+  plural forms ending in "-es"
+* add support for nouns with nominative plural forms ending ending in "-s" or "-es"
+* add support for nouns with nominative plural forms ending ending in "-e" or "-en"
+
 2022-09-20:
 
 * use stricter rules for identifying attributive-only or predicative-only adjectives

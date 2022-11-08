@@ -1,6 +1,6 @@
 % flexion.fst
-% Version 1.14
-% Andreas Nolda 2022-09-22
+% Version 1.16
+% Andreas Nolda 2022-11-08
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -9,7 +9,6 @@ $Fix#$      = <>:<Fix#>
 $Adj#$      = <>:<Low#>
 $Adj#Up$    = <>:<Up#>
 $N#$        = <>:<Up#>
-$N#Low/Up$  = <>:<Low#>
 $V#$        = <>:<Low#>
 $Closed#$   = <>:<Low#>
 $Closed#Up$ = <>:<Up#>
@@ -60,6 +59,9 @@ $N_0_en$ =             $NSg_0$ | \
 $N_0_n$ =            $NSg_0$ | \
           {}:{<FB>n} $NPl_x$
 
+$N_0_es$ =             $NSg_0$ | \
+           {}:{<FB>es} $NPl_x$
+
 $N_0_s$ =            $NSg_0$ | \
           {}:{<FB>s} $NPl_x$
 
@@ -78,9 +80,6 @@ $N_es_\$er$ =             $NSg_es$ | \
 $N_es_er$ =         $NSg_es$ | \
             {}:{er} $NPl_0$
 
-$N_es_s$ =            $NSg_es$ | \
-           {}:{<FB>s} $NPl_x$
-
 $N_s_\$e$ =              $NSg_s$ | \
             {<>}:{<UL>e} $NPl_0$
 
@@ -89,6 +88,12 @@ $N_es_e$ =            $NSg_es$ | \
 
 $N_es_en$ =             $NSg_es$ | \
             {}:{<FB>en} $NPl_x$
+
+$N_es_es$ =             $NSg_es$ | \
+            {}:{<FB>es} $NPl_x$
+
+$N_es_s$ =            $NSg_es$ | \
+           {}:{<FB>s} $NPl_x$
 
 $N_n_n$ =            $NSg_n$ | \
           {}:{<FB>n} $NPl_x$
@@ -140,6 +145,9 @@ $NFem_0_en$ = {<+NN><Fem>}:{} $N_0_en$
 
 % Hilfe/Hilfen; Tafel/Tafeln; Nummer/Nummern
 $NFem_0_n$ = {<+NN><Fem>}:{} $N_0_n$
+
+% Smartwatch/Smartwatches
+$NFem_0_es$ = {<+NN><Fem>}:{} $N_0_es$
 
 % Oma/Omas
 $NFem_0_s$ = {<+NN><Fem>}:{} $N_0_s$
@@ -205,10 +213,10 @@ $NMasc_0_s$ = {<+NN><Masc>}:{} $N_0_s$
 % Revers/Revers
 $NMasc_0_x$ = {<+NN><Masc>}:{} $N_0_x$
 
-% Tag-(e)s/Tage;
+% Tag-(e)s/Tage
 $NMasc_es_e$ = {<+NN><Masc>}:{} $N_es_e$
 
-% Arzt-(e)s/Ärzte;
+% Arzt-(e)s/Ärzte
 $NMasc_es_\$e$ = {<+NN><Masc>}:{} $N_es_\$e$
 
 % Gott-(e)s/Götter
@@ -222,6 +230,9 @@ $NMasc_es_er$ = {<+NN><Masc>}:{<>} $N_es_er$
 
 % Fleck-(e)s/Flecken
 $NMasc_es_en$ = {<+NN><Masc>}:{} $N_es_en$
+
+% Bugfix-(e)s/Bugfixes
+$NMasc_es_es$ = {<+NN><Masc>}:{} $N_es_es$
 
 % Park-(e)s/Parks
 $NMasc_es_s$ = {<+NN><Masc>}:{} $N_es_s$
@@ -249,7 +260,6 @@ $NMasc_s_n$ = {<+NN><Masc>}:{} $N_s_n$
 
 % Chef-s/Chefs; Bankier-s/Bankiers
 $NMasc_s_s$ = {<+NN><Masc>}:{} $N_s_s$
-
 
 % Fels-en/Felsen; Mensch-en/Menschen
 $NMasc_en_en$ = {<+NN><Masc>}:{} $N_en_en$
@@ -365,6 +375,9 @@ $NNeut_es_\$er$ = {<+NN><Neut>}:{} $N_es_\$er$
 
 % Bett-(e)s/Betten
 $NNeut_es_en$ = {<+NN><Neut>}:{} $N_es_en$
+
+% Match-(e)s/Matches
+$NNeut_es_es$ = {<+NN><Neut>}:{} $N_es_es$
 
 % Tablett-(e)s/Tabletts
 $NNeut_es_s$ = {<+NN><Neut>}:{} $N_es_s$
@@ -1684,6 +1697,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NFem_0_$e>             $NFem_0_\$e$        | \
             <>:<NFem_0_e>              $NFem_0_e$          | \
             <>:<NFem_0_en>             $NFem_0_en$         | \
+            <>:<NFem_0_es>             $NFem_0_es$         | \
             <>:<NFem_0_n>              $NFem_0_n$          | \
             <>:<NFem_0_s>              $NFem_0_s$          | \
             <>:<NFem_0_x>              $NFem_0_x$          | \
@@ -1716,6 +1730,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NMasc_es_e>            $NMasc_es_e$        | \
             <>:<NMasc_es_en>           $NMasc_es_en$       | \
             <>:<NMasc_es_er>           $NMasc_es_er$       | \
+            <>:<NMasc_es_es>           $NMasc_es_es$       | \
             <>:<NMasc_es_s>            $NMasc_es_s$        | \
             <>:<NMasc_n_n>             $NMasc_n_n$         | \
             <>:<NMasc_s_$>             $NMasc_s_\$$        | \
@@ -1756,6 +1771,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NNeut_es_e>            $NNeut_es_e$        | \
             <>:<NNeut_es_en>           $NNeut_es_en$       | \
             <>:<NNeut_es_er>           $NNeut_es_er$       | \
+            <>:<NNeut_es_es>           $NNeut_es_es$       | \
             <>:<NNeut_es_s>            $NNeut_es_s$        | \
             <>:<NNeut_s_$>             $NNeut_s_\$$        | \
             <>:<NNeut_s_0>             $NNeut_s_0$         | \

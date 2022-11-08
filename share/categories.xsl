@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 4.1 -->
-<!-- Andreas Nolda 2022-09-05 -->
+<!-- Version 4.2 -->
+<!-- Andreas Nolda 2022-11-08 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -124,6 +124,14 @@
   <class gender="mask."
          genitive-singular="-es"
          nominative-plural="-en">NMasc_es_en</class>
+  <!-- genitive singular: "-(e)s"
+       nominative plural: "-es" -->
+  <class gender="mask."
+         genitive-singular="-(e)s"
+         nominative-plural="-es">NMasc_es_es</class>
+  <class gender="mask."
+         genitive-singular="-es"
+         nominative-plural="-es">NMasc_es_es</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-s" -->
   <class gender="mask."
@@ -370,6 +378,14 @@
          genitive-singular="-es"
          nominative-plural="&#x308;-er">NNeut_es_$er</class>
   <!-- genitive singular: "-(e)s"
+       nominative plural: "-es" -->
+  <class gender="neutr."
+         genitive-singular="-(e)s"
+         nominative-plural="-es">NNeut_es_es</class>
+  <class gender="neutr."
+         genitive-singular="-es"
+         nominative-plural="-es">NNeut_es_es</class>
+  <!-- genitive singular: "-(e)s"
        nominative plural: "-s" -->
   <class gender="neutr."
          genitive-singular="-(e)s"
@@ -532,6 +548,11 @@
   <class gender="fem."
          genitive-singular="-"
          nominative-plural="-n">NFem_0_n</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-es" -->
+  <class gender="fem."
+         genitive-singular="-"
+         nominative-plural="-es">NFem_0_es</class>
   <!-- genitive singular: unmarked
        nominative plural: "-s" -->
   <class gender="fem."

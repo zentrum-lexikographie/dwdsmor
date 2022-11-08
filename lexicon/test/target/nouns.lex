@@ -30,6 +30,7 @@
 <Stem>Bild<NN><base><nativ><NNeut_es_er>
 <Stem>Brot<NN><base><nativ><NNeut_es_e>
 <Stem>Buch<NN><base><nativ><NNeut_es_$er>
+<Stem>Bugfix<NN><base><nativ><NMasc_es_es>
 <Stem>Bürgertum<NN><base><nativ><NNeut/Sg_s>
 <Stem>Bus<NN><base><nativ><NMasc-s/sse>
 <Stem>Casus<NN><base><fremd><NMasc_0_x>
@@ -118,6 +119,8 @@
 <Stem>Leute<NN><base><nativ><N?/Pl_0>
 <Stem>Lord<NN><base><fremd><NMasc_s_s>
 <Stem>Maß<IDX1><NN><base><nativ><NNeut_es_e>
+<Stem>Mast<IDX1><NN><base><nativ><NMasc_es_e>
+<Stem>Mast<IDX1><NN><base><nativ><NMasc_es_en>
 <Stem>Maximum<NN><base><fremd><NNeut-um/a>
 <Stem>Melodram<NN><base><nativ><NNeut_s_en>
 <Stem>Mond<NN><base><nativ><NMasc_es_e>
@@ -154,11 +157,16 @@
 <Stem>See<IDX1><NN><base><nativ><NMasc_s_n>
 <Stem>Shopping<NN><base><fremd><NNeut/Sg_0>
 <Stem>Shopping<NN><base><fremd><NNeut/Sg_s>
+<Stem>Smartwatch<NN><base><fremd><NFem_0_es>
 <Stem>SMS<PAR1><NN><base><nativ><NFem_0_x>
 <Stem>SMS<PAR2><NN><base><nativ><NNeut_0_x>
 <Stem>Staat<IDX1><NN><base><nativ><NMasc_es_en>
 <Stem>Stewardess<NN><base><fremd><NFem_0_en>
 <Stem>Stewardeß<NN><base><fremd><NFem-s/ssen>
+<Stem>Tennismatch<PAR1><NN><base><nativ><NNeut_es_es>
+<Stem>Tennismatch<PAR1><NN><base><nativ><NNeut_es_s>
+<Stem>Tennismatch<PAR2><NN><base><nativ><NMasc_es_es>
+<Stem>Tennismatch<PAR2><NN><base><nativ><NMasc_es_s>
 <Stem>Tenor<IDX1><NN><base><fremd><NMasc_s_$e>
 <Stem>Terminus<NN><base><fremd><NMasc-us0/i>
 <Stem>Trecking<NN><base><fremd><NNeut_0_s>
