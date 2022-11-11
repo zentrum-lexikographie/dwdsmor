@@ -1,5 +1,5 @@
 # .gitignore
-# Andreas Nolda 2022-09-08
+# Andreas Nolda 2022-11-11
 
 .venv/
 *~
@@ -19,6 +19,7 @@ BUILD
 /grammar/lexicon
 /grammar/*.a
 /grammar/*.ca
+/grammar/*.debug
 /grammar/*.lex
 /grammar/*.log
 
