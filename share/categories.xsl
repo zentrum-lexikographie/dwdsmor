@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 4.2 -->
-<!-- Andreas Nolda 2022-11-08 -->
+<!-- Version 4.3 -->
+<!-- Andreas Nolda 2022-11-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -106,6 +106,16 @@
   <class gender="mask."
          genitive-singular="-s"
          nominative-plural="&#x308;-e">NMasc_s_$e</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-er" -->
+  <class gender="mask."
+         genitive-singular="-s"
+         nominative-plural="-er">NMasc_s_er</class>
+  <!-- genitive singular: "-s"
+       nominative plural: umlaut and "-er" -->
+  <class gender="mask."
+         genitive-singular="-s"
+         nominative-plural="&#x308;-er">NMasc_s_$er</class>
   <!-- genitive singular: "-s"
        nominative plural: "-nen" -->
   <class gender="mask."
@@ -398,6 +408,11 @@
   <class gender="neutr."
          genitive-singular="ß/ss-es"
          nominative-plural="&#x308;ß/ss-er">NNeut-s/$sser</class>
+  <!-- genitive singular: "-s"
+       nominative plural: umlaut and "-er" -->
+  <class gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="&#x308;-er">NNeut_s_$er</class>
   <!-- genitive singular: "-s"
        nominative plural: "-ien" -->
   <class gender="neutr."

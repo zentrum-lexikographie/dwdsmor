@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 1.11
-% Andreas Nolda 2022-11-08
+% Version 1.12
+% Andreas Nolda 2022-11-11
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -86,15 +86,16 @@
                     <NMasc/Sg_0><NMasc/Sg_es><NMasc/Sg_s><NMasc_0_nen><NMasc_0_s> \
                     <NMasc_0_x><NMasc_en_en><NMasc_es_$e><NMasc_es_$er><NMasc_es_er> \
                     <NMasc_es_e><NMasc_es_en><NMasc_es_es><NMasc_es_s><NMasc_n_n><NMasc_s_$> \
-                    <NMasc_s_$x><NMasc_s_0><NMasc_s_e><NMasc_s_$e><NMasc_s_en><NMasc_s_n> \
-                    <NMasc_s_nen><NMasc_s_s><NMasc_s_x><NNeut-Adj><NNeut-Adj/Sg><NNeut-Herz> \
-                    <NNeut-Inner><NNeut-a/ata><NNeut-a/en><NNeut-en/ina><NNeut-o/en> \
-                    <NNeut-o/i><NNeut-on/a><NNeut-s/$sser><NNeut-s/sse><NNeut-um/a> \
-                    <NNeut-um/en><NNeut-us0/en><NNeut/Pl_x><NNeut/Sg_0><NNeut/Sg_es> \
-                    <NNeut/Sg_s><NNeut/Sg_sses><NNeut_0_nen><NNeut_0_s><NNeut_0_x> \
-                    <NNeut_es_$e><NNeut_es_$er><NNeut_es_e><NNeut_es_en><NNeut_es_er> \
-                    <NNeut_es_es><NNeut_es_s><NNeut_s_$><NNeut_s_0><NNeut_s_e><NNeut_s_en> \
-                    <NNeut_s_ien><NNeut_s_n><NNeut_s_nen><NNeut_s_s><NNeut_s_x><NTrunc>
+                    <NMasc_s_$x><NMasc_s_0><NMasc_s_e><NMasc_s_$e><NMasc_s_en><NMasc_s_er> \
+                    <NMasc_s_$er><NMasc_s_n><NMasc_s_nen><NMasc_s_s><NMasc_s_x><NNeut-Adj> \
+                    <NNeut-Adj/Sg><NNeut-Herz><NNeut-Inner><NNeut-a/ata><NNeut-a/en> \
+                    <NNeut-en/ina><NNeut-o/en><NNeut-o/i><NNeut-on/a><NNeut-s/$sser> \
+                    <NNeut-s/sse><NNeut-um/a><NNeut-um/en><NNeut-us0/en><NNeut/Pl_x> \
+                    <NNeut/Sg_0><NNeut/Sg_es><NNeut/Sg_s><NNeut/Sg_sses><NNeut_0_nen> \
+                    <NNeut_0_s><NNeut_0_x><NNeut_es_$e><NNeut_es_$er><NNeut_es_e> \
+                    <NNeut_es_en><NNeut_es_er><NNeut_es_es><NNeut_es_s><NNeut_s_$> \
+                    <NNeut_s_0><NNeut_s_e><NNeut_s_en><NNeut_s_$er><NNeut_s_ien><NNeut_s_n> \
+                    <NNeut_s_nen><NNeut_s_s><NNeut_s_x><NTrunc>
 
 #Name-inflection# = <Name-Fem_0><Name-Fem_apos><Name-Fem_s><Name-Masc_0> \
                     <Name-Masc_apos><Name-Masc_es><Name-Masc_s><Name-Neut_0> \

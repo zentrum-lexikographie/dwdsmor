@@ -1,6 +1,6 @@
 % flexion.fst
-% Version 1.16
-% Andreas Nolda 2022-11-08
+% Version 1.17
+% Andreas Nolda 2022-11-11
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -80,9 +80,6 @@ $N_es_\$er$ =             $NSg_es$ | \
 $N_es_er$ =         $NSg_es$ | \
             {}:{er} $NPl_0$
 
-$N_s_\$e$ =              $NSg_s$ | \
-            {<>}:{<UL>e} $NPl_0$
-
 $N_es_e$ =            $NSg_es$ | \
            {}:{<FB>e} $NPl_0$
 
@@ -110,8 +107,17 @@ $N_s_\$x$ =           $NSg_s$ | \
 $N_s_e$ =            $NSg_s$ | \
           {}:{<FB>e} $NPl_0$
 
+$N_s_\$e$ =              $NSg_s$ | \
+            {<>}:{<UL>e} $NPl_0$
+
 $N_s_en$ =             $NSg_s$ | \
            {}:{<FB>en} $NPl_x$
+
+$N_s_er$ =             $NSg_s$ | \
+           {}:{<FB>er} $NPl_x$
+
+$N_s_\$er$ =               $NSg_s$ | \
+             {<>}:{<UL>er} $NPl_0$
 
 $N_s_n$ =            $NSg_s$ | \
           {}:{<FB>n} $NPl_x$
@@ -255,6 +261,12 @@ $NMasc_s_e$ = {<+NN><Masc>}:{} $N_s_e$
 % Zeh-s/Zehen
 $NMasc_s_en$ = {<+NN><Masc>}:{} $N_s_en$
 
+% Ski-s/Skier
+$NMasc_s_er$ = {<+NN><Masc>}:{} $N_s_er$
+
+% Irrtum-s/Irrtümer
+$NMasc_s_\$er$ = {<+NN><Masc>}:{} $N_s_\$er$
+
 % Muskel-s/Muskeln; See-s/Seen
 $NMasc_s_n$ = {<+NN><Masc>}:{} $N_s_n$
 
@@ -396,6 +408,9 @@ $NNeut_s_e$ = {<+NN><Neut>}:{} $N_s_e$
 
 % Juwel-s/Juwelen
 $NNeut_s_en$ = {<+NN><Neut>}:{} $N_s_en$
+
+% Spital-s/Spitäler
+$NNeut_s_\$er$ = {<+NN><Neut>}:{} $N_s_\$er$
 
 % Auge-s/Augen
 $NNeut_s_n$ = {<+NN><Neut>}:{} $N_s_n$
@@ -1739,6 +1754,8 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NMasc_s_0>             $NMasc_s_0$         | \
             <>:<NMasc_s_e>             $NMasc_s_e$         | \
             <>:<NMasc_s_en>            $NMasc_s_en$        | \
+            <>:<NMasc_s_er>            $NMasc_s_er$        | \
+            <>:<NMasc_s_$er>           $NMasc_s_\$er$      | \
             <>:<NMasc_s_n>             $NMasc_s_n$         | \
             <>:<NMasc_s_nen>           $NMasc_s_nen$       | \
             <>:<NMasc_s_s>             $NMasc_s_s$         | \
@@ -1777,6 +1794,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NNeut_s_0>             $NNeut_s_0$         | \
             <>:<NNeut_s_e>             $NNeut_s_e$         | \
             <>:<NNeut_s_en>            $NNeut_s_en$        | \
+            <>:<NNeut_s_$er>           $NNeut_s_\$er$      | \
             <>:<NNeut_s_ien>           $NNeut_s_ien$       | \
             <>:<NNeut_s_n>             $NNeut_s_n$         | \
             <>:<NNeut_s_nen>           $NNeut_s_nen$       | \
