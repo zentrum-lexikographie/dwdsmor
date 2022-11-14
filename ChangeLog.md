@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-11-14:
 
 * add support for Arabic and Roman numerals
+* add support for punctuation marks
 
 2022-11-11:
 

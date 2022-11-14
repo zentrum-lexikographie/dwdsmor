@@ -9,7 +9,7 @@
 
 #deko-trigger# = <NoPref><ge>
 
-#char# = \ -\~¡-ÿ’
+#char# = \ -\~¡-ÿ–‐-‧‰-›⅐-⅞
 
 #phon-trigger# = <INS-E><FB><WB><CB><^UC><^Ax><^Px><^Gen><^Del><^pl>
 

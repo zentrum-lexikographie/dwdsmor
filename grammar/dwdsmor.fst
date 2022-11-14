@@ -39,6 +39,10 @@ $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 
 $MORPH$ = $ELIM$ || $MORPH$
 
+#include "punct.fst"
+
+$MORPH$ = $MORPH$ | $PUNCT$
+
 #include "lemma.fst"
 
 $MORPH$ = ($LEMMA1$ || $MORPH$) | \

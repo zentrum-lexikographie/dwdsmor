@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-09-21
+# Gregor Middell and Andreas Nolda 2022-11-14
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 6.1
+version = 6.2
 
 BASEDIR = os.path.dirname(__file__)
 LIBDIR  = os.path.join(BASEDIR, "lib")
@@ -61,7 +61,7 @@ class Analysis(tuple):
             if tag.startswith("+"):
                 return tag[1:]
 
-    _subcat_tags       = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True, "Coord": True, "Sub": True, "Compar": True}
+    _subcat_tags       = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True, "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True, "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True}
     _auxiliary_tags    = {"haben": True, "sein": True}
     _degree_tags       = {"Pos": True, "Comp": True, "Sup": True}
     _person_tags       = {"1": True, "2": True, "3": True}
