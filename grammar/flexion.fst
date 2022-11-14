@@ -1262,6 +1262,9 @@ $DigOrd$ = {<+ORD><Invar>}:{} $Fix#$
 % 1,5
 $DigFrac$ = {<+FRAC><Invar>}:{} $Fix#$
 
+% I
+$Roman$ = {<+CARD><Invar>}:{} $Fix#$
+
 
 % adverbs
 
@@ -1899,6 +1902,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<Ptkl-Zu>               $Ptkl-Zu$           | \
             <>:<Rel>                   $Rel$               | \
             <>:<Rel-welch>             $Rel-welch$         | \
+            <>:<Roman>                 $Roman$             | \
             <>:<Trunc>                 $Trunc$             | \
             <>:<VAImpPl>               $VAImpPl$           | \
             <>:<VAImpSg>               $VAImpSg$           | \

@@ -103,7 +103,7 @@
                     <Name-Pl_x><FamName_0><FamName_s>
 
 #Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier><Card-zwei> \
-                   <DigCard><DigFrac><DigOrd><Ord>
+                   <DigCard><DigFrac><DigOrd><Ord><Roman>
 
 #Pro-inflection# = <Dem><Dem-dies><Dem-solch><DemDef><Indef0><Indef-all><Indef-beid> \
                    <Indef-ein><Indef-einig><Indef-irgendein><Indef-irgendwelch> \
