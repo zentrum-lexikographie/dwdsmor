@@ -167,6 +167,7 @@
 <Stem>Spital<PAR1><NN><base><fremd><NNeut_s_$er>
 <Stem>Spital<PAR2><NN><base><fremd><NMasc_s_$er>
 <Stem>Staat<IDX1><NN><base><nativ><NMasc_es_en>
+<Stem>Stadion<NN><base><fremd><NNeut-on/en>
 <Stem>Stewardess<NN><base><fremd><NFem_0_en>
 <Stem>Stewardeß<NN><base><fremd><NFem-s/ssen>
 <Stem>Tennismatch<PAR1><NN><base><nativ><NNeut_es_es>

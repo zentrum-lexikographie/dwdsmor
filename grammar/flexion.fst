@@ -1,5 +1,5 @@
 % flexion.fst
-% Version 1.18
+% Version 1.19
 % Andreas Nolda 2022-11-14
 
 % based on code from SMORLemma by Rico Sennrich
@@ -55,6 +55,9 @@ $N_0_e$ =            $NSg_0$ | \
 
 $N_0_en$ =             $NSg_0$ | \
            {}:{<FB>en} $NPl_x$
+
+$N_0_\$en$ =             $NSg_0$ | \
+             {}:{<UL>en} $NPl_x$
 
 $N_0_n$ =            $NSg_0$ | \
           {}:{<FB>n} $NPl_x$
@@ -148,6 +151,9 @@ $NFem_0_e$ = {<+NN><Fem>}:{} $N_0_e$
 
 % Frau/Frauen; Arbeit/Arbeiten
 $NFem_0_en$ = {<+NN><Fem>}:{} $N_0_en$
+
+% Werkstatt/Werkstätten
+$NFem_0_\$en$ = {<+NN><Fem>}:{} $N_0_\$en$
 
 % Hilfe/Hilfen; Tafel/Tafeln; Nummer/Nummern
 $NFem_0_n$ = {<+NN><Fem>}:{} $N_0_n$
@@ -477,6 +483,10 @@ $NNeut-o/i$ =             $NNeut/Sg_s$ | \
 % Oxymoron/Oxymora
 $NNeut-on/a$ =             $NNeut/Sg_s$ | \
                {}:{<^pl>a} $NNeut/Pl_x$
+
+% Stadion/Stadien
+$NNeut-on/en$ =              $NNeut/Sg_s$ | \
+                {}:{<^pl>en} $NNeut/Pl_x$
 
 % Aktivum/Aktiva
 $NNeut-um/a$ =             $NNeut/Sg_s$ | \
@@ -1725,6 +1735,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NFem/Sg_0>             $NFem/Sg_0$         | \
             <>:<NFem_0_$>              $NFem_0_\$$         | \
             <>:<NFem_0_$e>             $NFem_0_\$e$        | \
+            <>:<NFem_0_$en>            $NFem_0_\$en$       | \
             <>:<NFem_0_e>              $NFem_0_e$          | \
             <>:<NFem_0_en>             $NFem_0_en$         | \
             <>:<NFem_0_es>             $NFem_0_es$         | \
@@ -1785,6 +1796,7 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<NNeut-o/en>            $NNeut-o/en$        | \
             <>:<NNeut-o/i>             $NNeut-o/i$         | \
             <>:<NNeut-on/a>            $NNeut-on/a$        | \
+            <>:<NNeut-on/en>           $NNeut-on/en$       | \
             <>:<NNeut-s/$sser>         $NNeut-s/\$sser$    | \
             <>:<NNeut-s/sse>           $NNeut-s/sse$       | \
             <>:<NNeut-um/a>            $NNeut-um/a$        | \

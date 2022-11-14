@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 4.3 -->
-<!-- Andreas Nolda 2022-11-11 -->
+<!-- Version 4.4 -->
+<!-- Andreas Nolda 2022-11-14 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -508,6 +508,11 @@
          genitive-singular="-s"
          nominative-plural="-on/a">NNeut-on/a</class>
   <!-- genitive singular: "-s"
+       nominative plural: "-en" substituted for "-on" -->
+  <class gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-on/en">NNeut-on/en</class>
+  <!-- genitive singular: "-s"
        nominative plural: "-a" substituted for "-um" -->
   <class gender="neutr."
          genitive-singular="-s"
@@ -548,6 +553,11 @@
   <class gender="fem."
          genitive-singular="-"
          nominative-plural="-en">NFem_0_en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: umlaut and "-en" -->
+  <class gender="fem."
+         genitive-singular="-"
+         nominative-plural="&#x308;-en">NFem_0_$en</class>
   <!-- genitive singular: unmarked
        nominative plural: "ß"/"ss"-alternation and "-en" -->
   <class gender="fem."
@@ -777,6 +787,14 @@
           <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
                                                          [@genitive-singular=$genitive-singular-marker]
                                                          [@nominative-plural='-on/a']"/>
+        </xsl:when>
+        <!-- nominative plural: "-en" substituted for "-on" -->
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'on') and
+                        $nominative-plural=replace($lemma,'on$','en')">
+          <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-on/en']"/>
         </xsl:when>
         <!-- nominative plural: "-a" substituted for "-um" -->
         <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and

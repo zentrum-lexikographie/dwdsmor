@@ -4,6 +4,10 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 * add support for Arabic and Roman numerals
 * add support for punctuation marks
+* add support for neuter nouns with genitive singular forms ending in "-s" and
+  nominative plural forms ending in "-en" substituted for "-on"
+* add support for feminine nouns with unmarked genitive singular forms and
+  umlauted nominative plural forms ending in "-en"
 
 2022-11-11:
 

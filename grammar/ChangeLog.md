@@ -4,6 +4,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 * add `num.fst`
 * add `punct.fst`
+* add inflection classes `NNeut-on/en` and `NFem_0_$en`
 
 2022-11-11:
 
