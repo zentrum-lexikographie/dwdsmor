@@ -1,6 +1,6 @@
 % flexion.fst
-% Version 1.17
-% Andreas Nolda 2022-11-11
+% Version 1.18
+% Andreas Nolda 2022-11-14
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1253,6 +1253,15 @@ $Card0$ = <+CARD>:<> $CardSuff0$
 % erst-
 $Ord$ = {<+ORD>}:{<FB>} $AdjFlexSuff$
 
+% 1
+$DigCard$ = {<+CARD><Invar>}:{} $Fix#$
+
+% 1.
+$DigOrd$ = {<+ORD><Invar>}:{} $Fix#$
+
+% 1,5
+$DigFrac$ = {<+FRAC><Invar>}:{} $Fix#$
+
 
 % adverbs
 
@@ -1662,6 +1671,9 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
             <>:<Dem-dies>              $Dem-dies$          | \
             <>:<Dem-solch>             $Dem-solch$         | \
             <>:<DemDef>                $DemDef$            | \
+            <>:<DigCard>               $DigCard$           | \
+            <>:<DigFrac>               $DigFrac$           | \
+            <>:<DigOrd>                $DigOrd$            | \
             <>:<FamName_0>             $FamName_0$         | \
             <>:<FamName_s>             $FamName_s$         | \
             <>:<Indef0>                $Indef0$            | \

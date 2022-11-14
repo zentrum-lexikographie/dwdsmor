@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-11-14:
+
+* add support for Arabic numerals
+
 2022-11-11:
 
 * add support for masculine nouns with genitive singular forms ending in "-s"

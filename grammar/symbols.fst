@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 1.12
-% Andreas Nolda 2022-11-11
+% Version 1.13
+% Andreas Nolda 2022-11-14
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -21,15 +21,15 @@
 
 #orth-trigger# = <OLDORTH>
 
-#category# = <ABBR><ADJ><ADV><ART><CARD><DEM><INDEF><NN><NPROP><ORD><OTHER><POSS> \
+#category# = <ABBR><ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER><POSS> \
              <PPRO><PRO><REL><V><WPRO>
 
 #auxiliary# = <haben><sein>
 
-#part-of-speech# = <+ADJ><+ADV><+ART><+CARD><+CHAR><+CIRCP><+DEM><+INDEF> \
-                   <+INTJ><+PUNCT><+CONJ><+NPROP><+NN><+ORD><+POSS><+POSTP> \
-                   <+PPRO><+PREPART><+PREP><+PROADV><+PTCL><+REL><+SYMBOL> \
-                   <+TRUNC><+V><+VPART><+WADV><+WPRO>
+#part-of-speech# = <+ADJ><+ADV><+ART><+CARD><+CHAR><+CIRCP><+DEM><+FRAC><+INDEF> \
+                   <+INTJ><+PUNCT><+CONJ><+NPROP><+NN><+ORD><+POSS><+POSTP><+PPRO> \
+                   <+PREPART><+PREP><+PROADV><+PTCL><+REL><+SYMBOL><+TRUNC><+V> \
+                   <+VPART><+WADV><+WPRO>
 
 #subcat# = <Pers><Refl><Def><Indef><Neg><Coord><Sub><Compar><Adv><ProAdv><Adj><Ant>
 
@@ -102,7 +102,8 @@
                     <Name-Neut_apos><Name-Neut_es><Name-Neut_s><Name-Pl_0> \
                     <Name-Pl_x><FamName_0><FamName_s>
 
-#Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier><Card-zwei><Ord>
+#Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier><Card-zwei> \
+                   <DigCard><DigFrac><DigOrd><Ord>
 
 #Pro-inflection# = <Dem><Dem-dies><Dem-solch><DemDef><Indef0><Indef-all><Indef-beid> \
                    <Indef-ein><Indef-einig><Indef-irgendein><Indef-irgendwelch> \

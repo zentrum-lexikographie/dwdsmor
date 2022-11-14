@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-11-14:
+
+* add inflection classes `DigCard`, `DigFrac`, and `DigOrd`
+
 2022-11-11:
 
 * add inflection classes `NMasc_s_er`, `NMasc_s_$er`, and `NNeut_s_$er`
