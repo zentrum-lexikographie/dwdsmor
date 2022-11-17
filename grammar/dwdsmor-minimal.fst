@@ -1,6 +1,6 @@
 % dwdsmor-minimal.fst
-% Version 1.1
-% Andreas Nolda 2022-09-08
+% Version 2.0
+% Andreas Nolda 2022-11-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -13,9 +13,13 @@ $LEX$ = "DWDS.lex"
 
 $LEX$ = $MAP1$ || $LEX$ || $MAP2$
 
+#include "no-wf.fst"
+
+$MORPH$ = $LEX$ || $BASEFILTER$
+
 #include "flexion.fst"
 
-$MORPH$ = $LEX$ <X>:<> $FLEXION$ || $FLEXFILTER$
+$MORPH$ = $MORPH$ <X>:<> $FLEXION$ || $FLEXFILTER$
 
 #include "markers.fst"
 

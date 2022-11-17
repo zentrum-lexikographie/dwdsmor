@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 1.14
-% Andreas Nolda 2022-11-14
+% Version 2.0
+% Andreas Nolda 2022-11-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -57,7 +57,7 @@
             #person# #gender# #case# #number# #infl# #function# #nonfinite# #mood# #tense# \
             <Lemma>
 
-#stemtype# = <base>
+#stemtype# = <base><comp>
 
 #origin# = <nativ><fremd><klassisch>
 

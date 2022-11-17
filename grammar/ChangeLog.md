@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-11-17:
+
+* add initial support for compounding
+
 2022-11-14:
 
 * add `num.fst`

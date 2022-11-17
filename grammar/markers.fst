@@ -1,6 +1,6 @@
 % markers.fst
-% Version 1.1
-% Andreas Nolda 2022-08-19
+% Version 2.0
+% Andreas Nolda 2022-11-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -24,11 +24,11 @@ $ZU$ = $C$* | \
 $C$ = [#char# #ss-trigger# #phon-trigger# #ss-trigger# #surface-trigger# #morpheme_boundary_marker# \
        <UL><Low#><Up#><Fix#>]
 
-$IMP$ = <Stem>:<CB> ($C$* <VPART>:<CB>)* $C$* | \
-        <Stem>:<CB> $C$* <^imp>:<> $C$*
+$IMP$ = <Stem>:<CB> ($C$* [<Stem><VPART>]:<CB>)* $C$* | \
+        <Stem>:<CB> ($C$* <Stem>:<CB>)* $C$* <^imp>:<> $C$*
 
-$IMPVPART$ = <Stem>:<CB> ($C$* <VPART>:<CB>)* $C$* | \
-             <Stem>:<CB> ($C$* <VPART>:<CB>)* $C$* <^imp>:<> $C$*
+$IMPVPART$ = <Stem>:<CB> ($C$* [<Stem><VPART>]:<CB>)* $C$* | \
+             <Stem>:<CB> ($C$* [<Stem><VPART>]:<CB>)* $C$* <^imp>:<> $C$*
 
 $C$ = [#char# #ss-trigger# #surface-trigger# #morpheme_boundary_marker# \
        <UL><INS-E><FB><^Ax><^Px><^Gen><^Del><^pl>]

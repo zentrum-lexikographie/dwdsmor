@@ -1,6 +1,6 @@
 % dwdsmor.fst
-% Version 1.1
-% Andreas Nolda 2022-11-14
+% Version 2.0
+% Andreas Nolda 2022-11-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -17,9 +17,13 @@ $LEX$ = $LEX$ | $NUM$
 
 $LEX$ = $MAP1$ || $LEX$ || $MAP2$
 
+#include "wf.fst"
+
+$MORPH$ = $LEX$+ || $COMPFILTER$
+
 #include "flexion.fst"
 
-$MORPH$ = $LEX$ <X>:<> $FLEXION$ || $FLEXFILTER$
+$MORPH$ = $MORPH$ <X>:<> $FLEXION$ || $FLEXFILTER$
 
 #include "markers.fst"
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 5.4 -->
-<!-- Andreas Nolda 2022-11-08 -->
+<!-- Version 6.0 -->
+<!-- Andreas Nolda 2022-11-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1430,6 +1430,29 @@
         </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="noun-comp-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="lemma-index"/>
+  <xsl:param name="paradigm-index"/>
+  <xsl:param name="comp-stem"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:call-template name="word-comp-entry">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+      <xsl:with-param name="lemma-index"
+                      select="$lemma-index"/>
+      <xsl:with-param name="paradigm-index"
+                      select="$paradigm-index"/>
+      <xsl:with-param name="comp-stem"
+                      select="$comp-stem"/>
+      <xsl:with-param name="pos">NN</xsl:with-param>
+      <xsl:with-param name="etymology"
+                      select="$etymology"/>
+    </xsl:call-template>
   </xsl:if>
 </xsl:template>
 

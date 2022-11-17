@@ -1,6 +1,6 @@
 % elim.fst
-% Version 1.3
-% Andreas Nolda 2022-09-20
+% Version 2.0
+% Andreas Nolda 2022-11-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -27,7 +27,8 @@ ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# \
             <Old><NonSt><13><DA><GA><GD><GDA><MFN><MN><NA><NDA><NGA><NGDA><SW><AS><F>]
 
 $X$ = (. | \
-       [<VPART>] <>:[#category#] <>:<X> | \
+       <>:<comp> | \
+       <VPART> <>:[#category#] <>:<X> | \
        <>:[#category#] <>:<base> <>:<X>)*
 
 $ELIM$ = $DISJ$ || $X$

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 11.2 -->
-<!-- Andreas Nolda 2022-09-20 -->
+<!-- Version 12.0 -->
+<!-- Andreas Nolda 2022-11-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -72,6 +72,7 @@
                                                    self::dwds:Funktionspraeferenz or
                                                    self::dwds:Kasuspraeferenz or
                                                    self::dwds:Numeruspraeferenz or
+                                                   self::dwds:Kompositionsstamm or
                                                    self::dwds:Einschraenkung or
                                                    self::dwds:Kommentar]"
                           group-by="name()">
@@ -629,6 +630,21 @@
                 <xsl:with-param name="number">any</xsl:with-param>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Substantiv' and
+                            string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
+              <xsl:call-template name="noun-comp-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="comp-stem"
+                                select="normalize-space(dwds:Kompositionsstamm)"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
