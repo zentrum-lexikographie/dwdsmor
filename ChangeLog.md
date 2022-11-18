@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-11-18:
+
+* align forms and analyses of compound variants
+
 2022-11-17:
 
 * add support for lexical entries of nominal compounding stems

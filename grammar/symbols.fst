@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 2.0
-% Andreas Nolda 2022-11-17
+% Version 2.1
+% Andreas Nolda 2022-11-18
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -15,7 +15,7 @@
 
 #surface-trigger# = <~n><d><e><er><n>
 
-#morpheme_boundary_marker# = <\~><#><\->
+#morpheme_boundary_marker# = <\~><#>
 
 #ss-trigger# = <SS><SSalt>
 

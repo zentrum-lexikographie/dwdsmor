@@ -11,6 +11,16 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>Kind</Schreibung>
+        <Grammatik>
+          <Wortklasse>Substantiv</Wortklasse>
+          <Kompositionsstamm>Kinder</Kompositionsstamm>
+          <Kompositionsstamm>Kinds</Kompositionsstamm>
+        </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>Schule</Schreibung>
         <Grammatik>
           <Wortklasse>Substantiv</Wortklasse>

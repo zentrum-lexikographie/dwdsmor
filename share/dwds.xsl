@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 12.0 -->
-<!-- Andreas Nolda 2022-11-17 -->
+<!-- Version 12.1 -->
+<!-- Andreas Nolda 2022-11-18 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -72,7 +72,6 @@
                                                    self::dwds:Funktionspraeferenz or
                                                    self::dwds:Kasuspraeferenz or
                                                    self::dwds:Numeruspraeferenz or
-                                                   self::dwds:Kompositionsstamm or
                                                    self::dwds:Einschraenkung or
                                                    self::dwds:Kommentar]"
                           group-by="name()">
@@ -81,9 +80,24 @@
         </xsl:element>
       </xsl:for-each-group>
     </xsl:variable>
+    <xsl:variable name="flat-word-formation-specs">
+      <!-- ignore idioms and other syntactically complex units
+           except for reflexive verbs and phrasal verbs -->
+      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse or
+                                                   self::dwds:Kompositionsstamm]"
+                          group-by="name()">
+        <xsl:element name="{name()}">
+          <xsl:copy-of select="current-group()"/>
+        </xsl:element>
+      </xsl:for-each-group>
+    </xsl:variable>
     <xsl:variable name="grouped-grammar-specs">
       <xsl:apply-templates select="$flat-grammar-specs/*[1]/*"
-                           mode="grammar"/>
+                           mode="group"/>
+    </xsl:variable>
+    <xsl:variable name="grouped-word-formation-specs">
+      <xsl:apply-templates select="$flat-word-formation-specs/*[1]/*"
+                           mode="group"/>
     </xsl:variable>
     <xsl:variable name="grammar-specs">
       <xsl:choose>
@@ -116,6 +130,8 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+    <xsl:variable name="word-formation-specs"
+                 select="$grouped-word-formation-specs"/>
     <!-- sequence number of <Formangabe> -->
     <xsl:variable name="paradigm-index">
       <!-- empty in cases where there is a single <Formangabe> -->
@@ -177,6 +193,7 @@
       <xsl:variable name="lemma-index"
                     select="@hidx"/>
       <xsl:if test="string-length($lemma)&gt;0">
+        <!-- inflection -->
         <xsl:for-each select="$expanded-grammar-specs/dwds:Grammatik">
           <xsl:variable name="pos"
                         select="normalize-space(dwds:Wortklasse)"/>
@@ -630,21 +647,6 @@
                 <xsl:with-param name="number">any</xsl:with-param>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$pos='Substantiv' and
-                            string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
-              <xsl:call-template name="noun-comp-entry-set">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
-                <xsl:with-param name="comp-stem"
-                                select="normalize-space(dwds:Kompositionsstamm)"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1656,6 +1658,53 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>
+        <!-- word formation -->
+        <xsl:for-each select="$word-formation-specs/dwds:Grammatik">
+          <xsl:variable name="pos"
+                        select="normalize-space(dwds:Wortklasse)"/>
+          <xsl:choose>
+            <xsl:when test="$pos='Substantiv' and
+                            string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
+              <xsl:call-template name="noun-comp-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="comp-stem"
+                                select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="normalize-space(dwds:Wortklasse)='Substantiv'">
+              <xsl:message>
+                <xsl:text>Warning: "</xsl:text>
+                <xsl:value-of select="$lemma"/>
+                <xsl:text>" has an incomplete word-formation specification with POS "</xsl:text>
+                <xsl:value-of select="$pos"/>
+                <xsl:text>".</xsl:text>
+              </xsl:message>
+            </xsl:when>
+            <xsl:when test="string-length(normalize-space(dwds:Wortklasse))&gt;0">
+              <xsl:message>
+                <xsl:text>Warning: "</xsl:text>
+                <xsl:value-of select="$lemma"/>
+                <xsl:text>" has a word-formation specification with unsupported POS "</xsl:text>
+                <xsl:value-of select="$pos"/>
+                <xsl:text>".</xsl:text>
+              </xsl:message>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:message>
+                <xsl:text>Warning: "</xsl:text>
+                <xsl:value-of select="$lemma"/>
+                <xsl:text>" has a word-formation specification with empty POS.</xsl:text>
+              </xsl:message>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
       </xsl:if>
     </xsl:for-each>
   </xsl:for-each>
@@ -1665,17 +1714,17 @@
      into separate <dwds:Grammatik> elements -->
 <!-- cf. https://stackoverflow.com/q/35525010 -->
 <xsl:template match="*[not(position()=last())]/*"
-              mode="grammar">
+              mode="group">
   <xsl:param name="previous" as="element()*"/>
   <xsl:apply-templates select="../following-sibling::*[1]/*"
-                       mode="grammar">
+                       mode="group">
     <xsl:with-param name="previous"
                     select="$previous | ."/>
   </xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="*[position()=last()]/*"
-              mode="grammar">
+              mode="group">
   <xsl:param name="previous"/>
   <dwds:Grammatik>
     <xsl:copy-of select="$previous"/>
