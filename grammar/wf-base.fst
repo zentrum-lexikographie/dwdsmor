@@ -1,4 +1,4 @@
-% wf.fst
+% wf-base.fst
 % Version 1.0
 % Andreas Nolda 2022-11-21
 
@@ -20,9 +20,3 @@ ALPHABET = [#entry-type# #deko-trigger# #char# #morpheme_boundary_marker# #lemma
 $BASEFILTER$ = .* [#category#]:<><base>:<> .*
 
 $BASE$ = $BaseStems$ || $BASEFILTER$
-
-$COMPFILTER$ = (.* <NN>:<><comp>:<> .*)+ .* <NN>:<><base>:<> .*
-
-$COMP$ = ($CompStems$ <#>:<>)+ $BaseStems$ || $COMPFILTER$
-
-$WF$ = $COMP$

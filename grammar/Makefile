@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2022-11-17
+# Andreas Nolda 2022-11-21
 
 FST_COMPILE = fst-compiler-utf8
 FST_COMPACT = fst-compact
@@ -9,10 +9,10 @@ FST = dwdsmor.fst dwdsmor-minimal.fst dwdsmor-index.fst
 A  = $(addsuffix .a,$(basename $(FST)))
 CA = $(addsuffix .ca,$(basename $(FST)))
 
-INCLUDE_COMMON  = symbols.fst map.fst flexion.fst markers.fst phon.fst elim.fst cleanup.fst
+INCLUDE_COMMON  = symbols.fst map.fst flexion.fst markers.fst phon.fst disj.fst cleanup.fst
 INCLUDE         = $(INCLUDE_COMMON) lemma.fst num.fst wf.fst
-INCLUDE_INDEX   = $(INCLUDE_COMMON) lemma-index.fst no-wf.fst
-INCLUDE_MINIMAL = $(INCLUDE_COMMON) lemma.fst no-wf.fst
+INCLUDE_INDEX   = $(INCLUDE_COMMON) lemma-index.fst wf-base.fst
+INCLUDE_MINIMAL = $(INCLUDE_COMMON) lemma.fst wf-minimal.fst
 
 LEX         = DWDS.lex DWDS-Red2.lex aux.lex
 LEX_INDEX   = DWDS.lex aux.lex

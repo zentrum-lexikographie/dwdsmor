@@ -1,4 +1,4 @@
-% wf.fst
+% wf-minimal.fst
 % Version 1.0
 % Andreas Nolda 2022-11-21
 
@@ -21,8 +21,8 @@ $BASEFILTER$ = .* [#category#]:<><base>:<> .*
 
 $BASE$ = $BaseStems$ || $BASEFILTER$
 
-$COMPFILTER$ = (.* <NN>:<><comp>:<> .*)+ .* <NN>:<><base>:<> .*
+$COMPFILTER$ = .* <NN>:<><comp>:<> .* <NN>:<><base>:<> .*
 
-$COMP$ = ($CompStems$ <#>:<>)+ $BaseStems$ || $COMPFILTER$
+$COMP$ = $CompStems$ <#>:<> $BaseStems$ || $COMPFILTER$
 
 $WF$ = $COMP$
