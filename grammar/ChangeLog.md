@@ -2,6 +2,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2022-11-21:
 
+* rename `dwdsmor-minimal.fst` to `dwdsmor-finite.fst`, and add
+  `DWDS-Red2.lex`, `aux.lex`, `punct.fst`, and `num-finite.fst` to it
 * restore original SMOR processing of category and stem-type features
 
 2022-11-17:

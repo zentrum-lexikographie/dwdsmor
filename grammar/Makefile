@@ -4,19 +4,20 @@
 FST_COMPILE = fst-compiler-utf8
 FST_COMPACT = fst-compact
 
-FST = dwdsmor.fst dwdsmor-minimal.fst dwdsmor-index.fst
+FST = dwdsmor.fst dwdsmor-finite.fst dwdsmor-index.fst
 
 A  = $(addsuffix .a,$(basename $(FST)))
 CA = $(addsuffix .ca,$(basename $(FST)))
 
-INCLUDE_COMMON  = symbols.fst map.fst flexion.fst markers.fst phon.fst disj.fst cleanup.fst
-INCLUDE         = $(INCLUDE_COMMON) lemma.fst num.fst wf.fst
-INCLUDE_INDEX   = $(INCLUDE_COMMON) lemma-index.fst wf-base.fst
-INCLUDE_MINIMAL = $(INCLUDE_COMMON) lemma.fst wf-minimal.fst
+INCLUDE_COMMON = symbols.fst map.fst flexion.fst markers.fst phon.fst disj.fst cleanup.fst
+INCLUDE        = $(INCLUDE_COMMON) lemma.fst num.fst wf.fst punct.fst
+INCLUDE_FINITE = $(INCLUDE_COMMON) lemma.fst num-finite.fst wf-finite.fst punct.fst
+INCLUDE_INDEX  = $(INCLUDE_COMMON) lemma-index.fst wf-base.fst
 
-LEX         = DWDS.lex DWDS-Red2.lex aux.lex
-LEX_INDEX   = DWDS.lex aux.lex
-LEX_MINIMAL = DWDS.lex
+LEX_COMMON = DWDS.lex aux.lex
+LEX        = $(LEX_COMMON) DWDS-Red2.lex
+LEX_FINITE = $(LEX_COMMON) DWDS-Red2.lex
+LEX_INDEX  = $(LEX_COMMON)
 
 INSTALLDIR ?= $(abspath ../lib)
 
@@ -27,9 +28,9 @@ all: $(A) $(CA)
 
 dwdsmor.a: dwdsmor.fst $(LEX) $(INCLUDE)
 	$(FST_COMPILE) $< $@
-dwdsmor-index.a: dwdsmor-index.fst $(LEX_INDEX) $(INCLUDE_INDEX)
+dwdsmor-finite.a: dwdsmor-finite.fst $(LEX_FINITE) $(INCLUDE_FINITE)
 	$(FST_COMPILE) $< $@
-dwdsmor-minimal.a: dwdsmor-minimal.fst $(LEX_MINIMAL) $(INCLUDE_MINIMAL)
+dwdsmor-index.a: dwdsmor-index.fst $(LEX_INDEX) $(INCLUDE_INDEX)
 	$(FST_COMPILE) $< $@
 
 install: $(A) $(CA)

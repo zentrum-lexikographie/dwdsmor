@@ -1,4 +1,4 @@
-% wf-minimal.fst
+% wf-finite.fst
 % Version 1.0
 % Andreas Nolda 2022-11-21
 

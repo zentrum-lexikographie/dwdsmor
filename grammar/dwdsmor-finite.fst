@@ -1,4 +1,4 @@
-% dwdsmor-minimal.fst
+% dwdsmor-finite.fst
 % Version 2.0
 % Andreas Nolda 2022-11-21
 
@@ -7,13 +7,17 @@
 
 #include "symbols.fst"
 
-$LEX$ = "DWDS.lex"
+$LEX$ = "DWDS.lex" | "DWDS-Red2.lex" | "aux.lex"
+
+#include "num-finite.fst"
+
+$LEX$ = $LEX$ | $NUM$
 
 #include "map.fst"
 
 $LEX$ = $MAP1$ || $LEX$ || $MAP2$
 
-#include "wf-minimal.fst"
+#include "wf-finite.fst"
 
 $LEX$ = $BASE$ | $WF$
 
@@ -38,6 +42,10 @@ $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 #include "disj.fst"
 
 $MORPH$ = $DISJ$ || $MORPH$
+
+#include "punct.fst"
+
+$MORPH$ = $MORPH$ | $PUNCT$
 
 #include "lemma.fst"
 
