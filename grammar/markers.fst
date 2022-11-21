@@ -5,7 +5,7 @@
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
-$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# #morpheme_boundary_marker# \
+$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# #morpheme-boundary# \
        <UL><VPART><Low#><Up#><Fix#><^imp><^zz><zu>]
 
 $GE$ = $C$* | \
@@ -13,7 +13,7 @@ $GE$ = $C$* | \
        $C$* <ge>:<> $C$* | \
        $C$* $C$* <^pp>:<> $C$*
 
-$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# #morpheme_boundary_marker# \
+$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# #morpheme-boundary# \
        <UL><VPART><Low#><Up#><Fix#><^imp>]
 
 $C$ = $C$ | <zu>:<>
@@ -21,7 +21,7 @@ $C$ = $C$ | <zu>:<>
 $ZU$ = $C$* | \
        $C$* <VPART> {<>}:{zu} $C$* <^zz>:<> $C$*
 
-$C$ = [#char# #ss-trigger# #phon-trigger# #ss-trigger# #surface-trigger# #morpheme_boundary_marker# \
+$C$ = [#char# #ss-trigger# #phon-trigger# #ss-trigger# #surface-trigger# #morpheme-boundary# \
        <UL><Low#><Up#><Fix#>]
 
 $IMP$ = <Stem>:<CB> ($C$* [<Stem><VPART>]:<CB>)* $C$* | \
@@ -30,7 +30,7 @@ $IMP$ = <Stem>:<CB> ($C$* [<Stem><VPART>]:<CB>)* $C$* | \
 $IMPVPART$ = <Stem>:<CB> ($C$* [<Stem><VPART>]:<CB>)* $C$* | \
              <Stem>:<CB> ($C$* [<Stem><VPART>]:<CB>)* $C$* <^imp>:<> $C$*
 
-$C$ = [#char# #ss-trigger# #surface-trigger# #morpheme_boundary_marker# \
+$C$ = [#char# #ss-trigger# #surface-trigger# #morpheme-boundary# \
        <UL><INS-E><FB><^Ax><^Px><^Gen><^Del><^pl>]
 
 $UPLOW$ = <CB>:<>        $C$ ($C$ | <CB>)* <Fix#>:<> | \

@@ -1991,10 +1991,9 @@ $FLEXION$ = <>:<Abk_POSS>              $Abk_POSS$          | \
 
 % inflection filter
 
-ALPHABET = [#char# #ss-trigger# #surface-trigger# #morpheme_boundary_marker#] <FB><VPART> \
-           <^Ax><^Px><Ge-Nom><UL><ge><zu><CB> \
-           <INS-E><^imp><^zz><ge><^pp><^pl><^Gen><^Del><Fix#><Low#><Up#> \
-           [#entry-type#]
+ALPHABET = [#entry-type# #char# #ss-trigger# #surface-trigger# #morpheme-boundary# \
+            <INS-E><FB><CB><VPART><Ge-Nom><UL><ge><zu><^Ax><^Px><^imp><^zz><^pp> \
+            <^pl><^Gen><^Del><Fix#><Low#><Up#>]
 
 $=INFL$ = [#inflection#]:<>
 

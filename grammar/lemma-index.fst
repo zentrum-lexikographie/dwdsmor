@@ -29,7 +29,7 @@ $ADJ$ = ($C1$ <>:<+ADJ><>:[#degree#]<>:<Lemma>                   || $MORPH$) $C2
 
 $LEMMA$ = $ADV$ | $NN$ | $NPROP$ | $V$ | $ADJ$
 
-$CB$ = [#char# #morpheme_boundary_marker#]* [#char#] [#morpheme_boundary_marker#]:<>* \
+$CB$ = [#char# #morpheme-boundary#]* [#char#] [#morpheme-boundary#]:<>* \
        [#lemma-index#]? [#paradigm-index#]? [#part-of-speech#] [#feature#]*
 
 $LEMMA$ = $LEMMA$ || $CB$

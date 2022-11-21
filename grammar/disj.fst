@@ -5,8 +5,8 @@
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
-ALPHABET = [#char# #morpheme_boundary_marker# #lemma-index# #paradigm-index# #feature# \
-            <VPART><Old><NonSt><F>] \
+ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# #feature# \
+            <VPART><Old><NonSt>] \
            [<1><3>]:<13> \
            [<Dat><Acc>]:<DA> \
            [<Gen><Acc>]:<GA> \

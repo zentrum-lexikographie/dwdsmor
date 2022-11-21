@@ -8,21 +8,25 @@
 #include "symbols.fst"
 
 ALPHABET = [#char# #lemma-index# #paradigm-index#] \
-           <>:[#entry-type# #deko-trigger# #category# #stemtype# #origin# #inflection# #auxiliary# <FB>]
+           <>:[#entry-type# #deko-trigger# #category# #stemtype# #origin# \
+               #inflection# #auxiliary# <FB>]
 
 $MAP1$ = (. | <VPART> <V>:<> <>:<ge>? [#char#])*
 
-$ANY$ = [#entry-type# #deko-trigger# #char# #morpheme_boundary_marker# #lemma-index# #paradigm-index# \
-         #category# #stemtype# #origin# #inflection# #auxiliary# <FB><VPART><e>]*
+$ANY$ = [#entry-type# #deko-trigger# #char# #morpheme-boundary# #lemma-index# \
+         #paradigm-index# #category# #stemtype# #origin# #inflection# #auxiliary# \
+         <FB><VPART><e>]*
 
-ALPHABET = [#entry-type# #deko-trigger# #char# #morpheme_boundary_marker# #lemma-index# #paradigm-index# \
-            #category# #stemtype# #origin# #inflection# #auxiliary# <FB><VPART>] \
+ALPHABET = [#entry-type# #deko-trigger# #char# #morpheme-boundary# #lemma-index# \
+            #paradigm-index# #category# #stemtype# #origin# #inflection# #auxiliary# \
+            <FB><VPART>] \
            e:<e>
 
-$E$ = e <=> <e> ([lr] [#lemma-index#]? [#paradigm-index#]? <V> [#stemtype#] [#origin#] <VVReg-el/er>)
+$E$ = e <=> <e> ([lr] [#lemma-index#]? [#paradigm-index#]? \
+                 <V> [#stemtype#] [#origin#] <VVReg-el/er>)
 
-ALPHABET = [#entry-type# #char# #morpheme_boundary_marker# \
-            #category# #stemtype# #origin# #inflection# #auxiliary# <FB><VPART><e><ge>] \
+ALPHABET = [#entry-type# #char# #morpheme-boundary# #category# #stemtype# #origin# \
+            #inflection# #auxiliary# <FB><VPART><e><ge>] \
            [#lemma-index# #paradigm-index# <NoPref>]:<>
 
 $MAP2$ = $ANY$ || $E$ || .*

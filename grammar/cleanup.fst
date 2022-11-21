@@ -8,4 +8,4 @@
 
 $CLEANUP1$ = [^<Lemma>]*
 
-$CLEANUP2$ = ([#char#]* [#morpheme_boundary_marker#]:<>*)*
+$CLEANUP2$ = ([#char#]* [#morpheme-boundary#]:<>*)*

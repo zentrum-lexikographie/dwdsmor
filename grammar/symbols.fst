@@ -15,7 +15,7 @@
 
 #surface-trigger# = <~n><d><e><er><n>
 
-#morpheme_boundary_marker# = <\~><#>
+#morpheme-boundary# = <\~><#>
 
 #ss-trigger# = <SS><SSalt>
 

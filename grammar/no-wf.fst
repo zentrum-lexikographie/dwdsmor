@@ -7,7 +7,7 @@
 
 % compounding filter
 
-ALPHABET = [#entry-type# #char# #morpheme_boundary_marker# #inflection# #auxiliary# \
+ALPHABET = [#entry-type# #char# #morpheme-boundary# #inflection# #auxiliary# \
             <FB><VPART><e><ge>]
 
 $BASEFILTER$ = (.* <base>:<> .*)

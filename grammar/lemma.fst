@@ -26,7 +26,7 @@ $ADJ$ = (.*<>:<+ADJ><>:[#degree#]<>:<Lemma>                   || $MORPH$) <+ADJ>
 
 $LEMMA$ = $ADV$ | $NN$ | $NPROP$ | $V$ | $ADJ$
 
-$CB$ = [#char# #morpheme_boundary_marker#]* [#char#] [#morpheme_boundary_marker#]:<>* \
+$CB$ = [#char# #morpheme-boundary#]* [#char#] [#morpheme-boundary#]:<>* \
        [#part-of-speech#] [#feature#]*
 
 $LEMMA$ = $LEMMA$ || $CB$
