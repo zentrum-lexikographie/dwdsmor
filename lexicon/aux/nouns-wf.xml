@@ -15,7 +15,7 @@
         <Grammatik>
           <Wortklasse>Substantiv</Wortklasse>
           <Kompositionsstamm>Kinder</Kompositionsstamm>
-          <Kompositionsstamm>Kinds</Kompositionsstamm>
+          <!-- <Kompositionsstamm>Kinds</Kompositionsstamm> --><!-- unproduktiv -->
         </Grammatik>
     </Formangabe>
   </Artikel>
