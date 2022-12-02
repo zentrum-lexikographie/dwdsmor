@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 12.1 -->
-<!-- Andreas Nolda 2022-11-18 -->
+<!-- Version 13.0 -->
+<!-- Andreas Nolda 2022-12-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -10,24 +10,49 @@
 
 <xsl:include href="entries.xsl"/>
 
+<xsl:include href="files.xsl"/>
+
 <xsl:strip-space elements="*"/>
 
-<!-- DWDS/Artikel/@Status value -->
-<xsl:param name="status"/>
+<!-- file listing sources to be included -->
+<xsl:param name="manifest-file"/>
 
+<xsl:variable name="manifest">
+  <xsl:if test="doc-available(n:absolute-path($manifest-file))">
+    <xsl:copy-of select="doc(n:absolute-path($manifest-file))/manifest/*"/>
+  </xsl:if>
+</xsl:variable>
+
+<!-- process sources listed in $manifest-file -->
+<xsl:template name="xsl:initial-template">
+  <xsl:for-each select="distinct-values($manifest/source/@href)">
+    <xsl:call-template name="process-sources">
+      <xsl:with-param name="file"
+                      select="."/>
+    </xsl:call-template>
+  </xsl:for-each>
+</xsl:template>
+
+<xsl:template name="process-sources">
+  <xsl:param name="file"/>
+  <xsl:for-each select="doc(n:absolute-path($file))">
+    <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel[not(@Status!='Red-f')]">
+      <xsl:with-param name="file"
+                      select="$file"/>
+    </xsl:apply-templates>
+  </xsl:for-each>
+</xsl:template>
+
+<!-- process individual source (for testing purposes) -->
 <xsl:template match="/">
-  <xsl:choose>
-    <xsl:when test="string-length($status)&gt;0">
-      <!-- only consider articles with $status -->
-      <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel[@Status=$status]"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel"/>
-    </xsl:otherwise>
-    </xsl:choose>
+  <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel">
+    <xsl:with-param name="file"
+                    select="n:relative-path(document-uri(/))"/>
+  </xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="dwds:Artikel">
+  <xsl:param name="file"/>
   <xsl:variable name="etymology">
     <xsl:choose>
       <xsl:when test="dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))&gt;0]">fremd</xsl:when>
@@ -192,8 +217,11 @@
       <!-- homograph index -->
       <xsl:variable name="lemma-index"
                     select="@hidx"/>
+      <!-- spelling type -->
+      <xsl:variable name="spelling-type"
+                    select="@Typ"/>
       <xsl:if test="string-length($lemma)&gt;0">
-        <!-- inflection -->
+        <!-- affixes and inflection stems -->
         <xsl:for-each select="$expanded-grammar-specs/dwds:Grammatik">
           <xsl:variable name="pos"
                         select="normalize-space(dwds:Wortklasse)"/>
@@ -1627,24 +1655,28 @@
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:when>
-            <xsl:when test="normalize-space(dwds:Wortklasse)='Substantiv' or
-                            normalize-space(dwds:Wortklasse)='Verb' or
-                            normalize-space(dwds:Wortklasse)='Partizip' or
-                            normalize-space(dwds:Wortklasse)='Präposition' or
-                            normalize-space(dwds:Wortklasse)='Konjunktion'">
+            <xsl:when test="$pos='Substantiv' or
+                            $pos='Verb' or
+                            $pos='Partizip' or
+                            $pos='Präposition' or
+                            $pos='Konjunktion'">
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
                 <xsl:value-of select="$lemma"/>
-                <xsl:text>" has an incomplete grammar specification with POS "</xsl:text>
+                <xsl:text>" in </xsl:text>
+                <xsl:value-of select="$file"/>
+                <xsl:text> has an incomplete grammar specification with POS "</xsl:text>
                 <xsl:value-of select="$pos"/>
                 <xsl:text>".</xsl:text>
               </xsl:message>
             </xsl:when>
-            <xsl:when test="string-length(normalize-space(dwds:Wortklasse))&gt;0">
+            <xsl:when test="string-length($pos)&gt;0">
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
                 <xsl:value-of select="$lemma"/>
-                <xsl:text>" has a grammar specification with unsupported POS "</xsl:text>
+                <xsl:text>" in </xsl:text>
+                <xsl:value-of select="$file"/>
+                <xsl:text> has a grammar specification with unsupported POS "</xsl:text>
                 <xsl:value-of select="$pos"/>
                 <xsl:text>".</xsl:text>
               </xsl:message>
@@ -1653,36 +1685,97 @@
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
                 <xsl:value-of select="$lemma"/>
-                <xsl:text>" has a grammar specification with empty POS.</xsl:text>
+                <xsl:text>" in </xsl:text>
+                <xsl:value-of select="$file"/>
+                <xsl:text> has a grammar specification with empty POS.</xsl:text>
               </xsl:message>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>
-        <!-- word formation -->
+        <!-- compounding stems directly encoded in DWDS sources -->
         <xsl:for-each select="$word-formation-specs/dwds:Grammatik">
           <xsl:variable name="pos"
                         select="normalize-space(dwds:Wortklasse)"/>
           <xsl:choose>
-            <xsl:when test="$pos='Substantiv' and
+            <xsl:when test="$pos='Adjektiv' and
                             string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
-              <xsl:call-template name="noun-comp-entry-set">
+              <xsl:call-template name="adjective-comp-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
                 <xsl:with-param name="comp-stem"
                                 select="normalize-space(dwds:Kompositionsstamm)"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:when test="normalize-space(dwds:Wortklasse)='Substantiv'">
+            <xsl:when test="$pos='Substantiv' and
+                            string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
+              <xsl:call-template name="noun-comp-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="comp-stem"
+                                select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Eigenname' and
+                            string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
+              <xsl:call-template name="name-comp-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="comp-stem"
+                                select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Kardinalzahl' and
+                            string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
+              <xsl:call-template name="cardinal-comp-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="comp-stem"
+                                select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Ordinalzahl' and
+                            string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
+              <xsl:call-template name="ordinal-comp-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="comp-stem"
+                                select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Verb' and
+                            string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
+              <xsl:call-template name="verb-comp-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="comp-stem"
+                                select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- ... -->
+            <!-- <xsl:when test="$pos='Adjektiv' or
+                            $pos='Substantiv' or
+                            $pos='Eigenname' or
+                            $pos='Kardinalzahl' or
+                            $pos='Ordinalzahl' or
+                            $pos='Verb'">
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
                 <xsl:value-of select="$lemma"/>
-                <xsl:text>" has an incomplete word-formation specification with POS "</xsl:text>
+                <xsl:text>" in </xsl:text>
+                <xsl:value-of select="$file"/>
+                <xsl:text> has an incomplete word-formation specification with POS "</xsl:text>
                 <xsl:value-of select="$pos"/>
                 <xsl:text>".</xsl:text>
               </xsl:message>
@@ -1691,7 +1784,9 @@
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
                 <xsl:value-of select="$lemma"/>
-                <xsl:text>" has a word-formation specification with unsupported POS "</xsl:text>
+                <xsl:text>" in </xsl:text>
+                <xsl:value-of select="$file"/>
+                <xsl:text> has a word-formation specification with unsupported POS "</xsl:text>
                 <xsl:value-of select="$pos"/>
                 <xsl:text>".</xsl:text>
               </xsl:message>
@@ -1700,10 +1795,168 @@
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
                 <xsl:value-of select="$lemma"/>
-                <xsl:text>" has a word-formation specification with empty POS.</xsl:text>
+                <xsl:text>" in </xsl:text>
+                <xsl:value-of select="$file"/>
+                <xsl:text> has a word-formation specification with empty POS.</xsl:text>
               </xsl:message>
-            </xsl:otherwise>
+            </xsl:otherwise> -->
           </xsl:choose>
+        </xsl:for-each>
+        <!-- compounding stems inferred from links to the compound bases -->
+        <xsl:for-each select="../../dwds:Verweise[not(@Typ!='Komposition')]
+                                                 [dwds:Verweis[@Typ='Erstglied']]
+                                                 [not(dwds:Verweis[@Typ='Binnenglied'])]
+                                                 [dwds:Verweis[@Typ='Letztglied']]">
+          <xsl:variable name="basis1"
+                        select="normalize-space(dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma)"/>
+          <xsl:variable name="basis2"
+                        select="normalize-space(dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma)"/>
+          <!-- ignore affixes -->
+          <xsl:if test="not(ends-with($basis1,'-')) and
+                        not(starts-with($basis2,'-'))">
+            <xsl:variable name="index1"
+                          select="string(dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma/@hidx)"/>
+            <xsl:variable name="index2"
+                          select="string(dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma/@hidx)"/>
+            <xsl:variable name="file1">
+              <xsl:choose>
+                <xsl:when test="string-length($index1)&gt;0">
+                  <xsl:value-of select="$manifest/source[@lemma=$basis1]
+                                                        [@index=$index1][1]/@href"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="$manifest/source[@lemma=$basis1][1]/@href"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="file2">
+              <xsl:choose>
+                <xsl:when test="string-length($index2)&gt;0">
+                  <xsl:value-of select="$manifest/source[@lemma=$basis2]
+                                                        [@index=$index2][1]/@href"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="$manifest/source[@lemma=$basis2][1]/@href"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="article1">
+              <xsl:if test="doc-available(n:absolute-path($file1))">
+                <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel/*"/>
+              </xsl:if>
+            </xsl:variable>
+            <xsl:variable name="article2">
+              <xsl:if test="doc-available(n:absolute-path($file2))">
+                <xsl:copy-of select="doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel/*"/>
+              </xsl:if>
+            </xsl:variable>
+            <xsl:variable name="etymology1">
+              <xsl:choose>
+                <xsl:when test="$article1/dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))&gt;0]">fremd</xsl:when>
+                <xsl:otherwise>nativ</xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <!-- For the sake of simplicity, we only consider the first part-of-speech category.  -->
+            <xsl:variable name="pos1"
+                          select="normalize-space($article1/dwds:Formangabe[1]/dwds:Grammatik/dwds:Wortklasse)"/>
+            <xsl:if test="string-length($pos1)&gt;0">
+              <xsl:for-each select="distinct-values($article1/dwds:Formangabe/dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                                                                                             [not(@Typ='U_NR' or
+                                                                                                  @Typ='U_U' or
+                                                                                                  @Typ='U_Falschschreibung')])">
+                <xsl:variable name="lemma1"
+                              select="normalize-space(.)"/>
+                <xsl:if test="string-length($lemma1)&gt;0">
+                  <xsl:for-each select="distinct-values($article2/dwds:Formangabe/dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                                                                                                     [not(@Typ='U_NR' or
+                                                                                                          @Typ='U_U' or
+                                                                                                          @Typ='U_Falschschreibung')])">
+                    <xsl:variable name="lemma2"
+                                  select="normalize-space(.)"/>
+                    <xsl:if test="string-length($lemma2)&gt;0">
+                      <xsl:variable name="comp-stem">
+                        <xsl:call-template name="comp-stem">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="lemma1"
+                                          select="$lemma1"/>
+                          <xsl:with-param name="lemma2"
+                                          select="$lemma2"/>
+                          <xsl:with-param name="spelling-type"
+                                          select="$spelling-type"/>
+                        </xsl:call-template>
+                      </xsl:variable>
+                      <xsl:if test="string-length($comp-stem)&gt;0">
+                        <xsl:choose>
+                          <xsl:when test="$pos1='Adjektiv'">
+                            <xsl:call-template name="adjective-comp-entry-set">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="comp-stem"
+                                              select="$comp-stem"/>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology1"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <xsl:when test="$pos1='Substantiv'">
+                            <xsl:call-template name="noun-comp-entry-set">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="comp-stem"
+                                              select="$comp-stem"/>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology1"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <xsl:when test="$pos1='Eigenname'">
+                            <xsl:call-template name="name-comp-entry-set">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="comp-stem"
+                                              select="$comp-stem"/>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology1"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <xsl:when test="$pos1='Kardinalzahl'">
+                            <xsl:call-template name="cardinal-comp-entry-set">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="comp-stem"
+                                              select="$comp-stem"/>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology1"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <xsl:when test="$pos1='Ordinalzahl'">
+                            <xsl:call-template name="ordinal-comp-entry-set">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="comp-stem"
+                                              select="$comp-stem"/>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology1"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <xsl:when test="$pos1='Verb'">
+                            <xsl:call-template name="verb-comp-entry-set">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="comp-stem"
+                                              select="$comp-stem"/>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology1"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- ... -->
+                        </xsl:choose>
+                      </xsl:if>
+                    </xsl:if>
+                  </xsl:for-each>
+                </xsl:if>
+              </xsl:for-each>
+            </xsl:if>
+          </xsl:if>
         </xsl:for-each>
       </xsl:if>
     </xsl:for-each>
@@ -1713,6 +1966,7 @@
 <!-- group multiple grammar specifications of the same type
      into separate <dwds:Grammatik> elements -->
 <!-- cf. https://stackoverflow.com/q/35525010 -->
+
 <xsl:template match="*[not(position()=last())]/*"
               mode="group">
   <xsl:param name="previous" as="element()*"/>
@@ -1732,5 +1986,3 @@
   </dwds:Grammatik>
 </xsl:template>
 </xsl:stylesheet>
-<!-- TODO: -->
-<!-- add proper support for suffixes -->

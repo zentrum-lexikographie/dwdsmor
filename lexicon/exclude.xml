@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exclude>
+  <source href="wb/Neuartikel/handeln-3-E_9547227.xml"/>
+  <source href="wb/WDG/al/alle-E_a_3261.xml"/>
+  <source href="wb/WDG/du/duerfen-E_d_5421.xml"/>
+  <source href="wb/WDG/ho/hoch-E_h_6185.xml"/>
+  <source href="wb/WDG/hu/Hundertste-E_h_8128.xml"/>
+  <source href="wb/WDG/ko/koennen-E_k_7486.xml"/>
+  <source href="wb/WDG/la/lassen-E_l_1299.xml"/>
+  <source href="wb/WDG/mo/moegen-E_m_5616.xml"/>
+  <source href="wb/WDG/mu/muessen-E_m_7083.xml"/>
+  <source href="wb/WDG/so/sollen-E_s_13646.xml"/>
+  <source href="wb/WDG/we/werden-E_w_3657.xml"/>
+  <source href="wb/WDG/wo/wollen-E_w_6123.xml"/>
+</exclude>

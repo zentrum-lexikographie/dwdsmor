@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <source lemma="Alpen" href="wb/WDG/al/Alpen-E_a_3395_1.xml"/>
+  <source lemma="Altmark" href="wb/DWDS/017-D99_DWDS/Altmark-E_m_1582.xml"/>
+  <source lemma="Atlantik" href="wb/EtymWB/Atlantik.xml"/>
+  <source lemma="Niederlande" href="wb/WDG/ni/Niederlande-E_n_2567.xml"/>
+  <source lemma="Osteuropa" href="wb/Neuartikel/Osteuropa-E_7973339.xml"/>
+  <source lemma="Rhein" href="wb/Neuartikel-002/Rhein-E_5762505.xml"/>
+  <source lemma="USA" href="wb/Neuartikel/USA-E_7354303.xml"/>
+</manifest>

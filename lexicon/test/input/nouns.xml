@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <source lemma="Abend" href="wb/WDG/ab/Abend-E_a_270.xml"/>
+  <source lemma="Affe" href="wb/WDG/af/Affe-E_a_2717.xml"/>
+  <source lemma="Amsel" href="wb/Neuartikel/Amsel-E_3862155.xml"/>
+  <source lemma="Ananas" href="wb/DWDS/015-D99_DWDS/Ananas-D99_005875.xml"/>
+  <source lemma="Angeln" href="wb/Neuartikel-003/Angeln-E_7441421.xml"/>
+  <source lemma="Apsis" href="wb/DWDS/015-D99_DWDS/Apsis-D99_008778.xml"/>
+  <source lemma="Arena" href="wb/WDG/ar/Arena-E_a_6831.xml"/>
+  <source lemma="Aroma" href="wb/WDG/ar/Aroma-E_a_7082.xml"/>
+  <source lemma="Auge" href="wb/WDG/au/Auge-E_a_9053.xml"/>
+  <source lemma="Auto" href="wb/WDG/au/Auto-E_a_11062.xml"/>
+  <source lemma="Autor" href="wb/Neuartikel/Autor-E_1837709.xml"/>
+  <source lemma="Bach" href="wb/WDG/ba/Bach-E_b_35.xml"/>
+  <source lemma="Band" index="3" href="wb/WDG/ba/Band-E_b_1164.xml"/>
+  <source lemma="Bank" index="1" href="wb/WDG/ba/Bank-E_b_1231.xml"/>
+  <source lemma="Bank" index="2" href="wb/Neuartikel/Bank-2-E_7368967.xml"/>
+  <source lemma="Bär" href="wb/WDG/ba/Baer-E_b_1506.xml"/>
+  <source lemma="Basis" href="wb/WDG/ba/Basis-E_b_1841.xml"/>
+  <source lemma="Bau" href="wb/WDG/ba/Bau-E_b_2052.xml"/>
+  <source lemma="Bauer" index="1" href="wb/WDG/ba/Bauer-E_b_2506.xml"/>
+  <source lemma="Becken" href="wb/WDG/be/Becken-E_b_3161.xml"/>
+  <source lemma="Berliner" index="1" href="wb/Neuartikel/Berliner-1-E_6149241.xml"/>
+  <source lemma="Bett" href="wb/WDG/be/Bett-E_b_7847.xml"/>
+  <source lemma="Bewundern" href="wb/Neuartikel-002/Bewundern-E_1373277.xml"/>
+  <source lemma="Bild" href="wb/WDG/bi/Bild-E_b_8984.xml"/>
+  <source lemma="Brot" href="wb/WDG/br/Brot-E_b_13496.xml"/>
+  <source lemma="Buch" href="wb/WDG/bu/Buch-E_b_14229.xml"/>
+  <source lemma="Bugfix" href="wb/Neuartikel-001/Bugfix-E_6941062.xml"/>
+  <source lemma="Bürgertum" href="wb/WDG/bu/Buergertum-E_b_15236.xml"/>
+  <source lemma="Bus" href="wb/WDG/bu/Bus-E_b_15369.xml"/>
+  <source lemma="Casus" href="wb/WDG/ka/Kasus-E_k_2388.xml"/>
+  <source lemma="Cello" href="wb/WDG/ce/Cello-E_c_85.xml"/>
+  <source lemma="Cent" href="wb/DWDS/wahrig-001/Cent.xml"/>
+  <source lemma="Chaos" href="wb/WDG/ch/Chaos-E_c_149.xml"/>
+  <source lemma="Circus" href="wb/WDG/zi/Zirkus-E_z_2428.xml"/>
+  <source lemma="College" href="wb/WDG/co/College-E_c_703.xml"/>
+  <source lemma="Drache" href="wb/WDG/dr/Drache-E_d_3760.xml"/>
+  <source lemma="Drachen" href="wb/DWDS/015-D99_DWDS/Drachen-D99_032824.xml"/>
+  <source lemma="Eis" index="1" href="wb/WDG/ei/Eis-E_e_2842.xml"/>
+  <source lemma="Eltern" href="wb/WDG/el/Eltern-E_e_3490.xml"/>
+  <source lemma="Ende" href="wb/WDG/en/Ende-E_e_3799.xml"/>
+  <source lemma="Engel" href="wb/Neuartikel/Engel-E_6582514.xml"/>
+  <source lemma="Ergebnis" href="wb/WDG/er/Ergebnis-E_e_5433.xml"/>
+  <source lemma="Erkenntnis" index="1" href="wb/WDG/er/Erkenntnis-E_e_5656.xml"/>
+  <source lemma="Examen" href="wb/WDG/ex/Examen-E_e_7250.xml"/>
+  <source lemma="Fachfrau" href="wb/Neuartikel/Fachfrau-dup.xml"/>
+  <source lemma="Fachmann" href="wb/Neuartikel/Fachmann-E_f_257-dup.xml"/>
+  <source lemma="Feder" index="1" href="wb/WDG/fe/Feder-E_f_2415.xml"/>
+  <source lemma="Feld" href="wb/WDG/fe/Feld-E_f_2908.xml"/>
+  <source lemma="Feuer" href="wb/WDG/fe/Feuer-E_f_4089.xml"/>
+  <source lemma="Figur" href="wb/WDG/fi/Figur-E_f_4410.xml"/>
+  <source lemma="Fisch" href="wb/WDG/fi/Fisch-E_f_4937.xml"/>
+  <source lemma="Flaum" href="wb/WDG/fl/Flaum-E_f_5456.xml"/>
+  <source lemma="Floß" href="wb/WDG/fl/Floss-E_f_6088.xml"/>
+  <source lemma="Fluss" href="wb/WDG/fl/Fluss-E_f_6509.xml"/>
+  <source lemma="Fluß" href="wb/WDG/fl/Fluss-E_f_6509.xml"/>
+  <source lemma="Fossil" href="wb/WDG/fo/Fossil-E_f_7518.xml"/>
+  <source lemma="Foyer" href="wb/WDG/fo/Foyer-E_f_7535.xml"/>
+  <source lemma="Frau" href="wb/WDG/fr/Frau-E_f_7828.xml"/>
+  <source lemma="Freund" href="wb/WDG/fr/Freund-E_f_8599.xml"/>
+  <source lemma="Freundin" href="wb/WDG/fr/Freundin-E_f_8600.xml"/>
+  <source lemma="Frucht" href="wb/WDG/fr/Frucht-E_f_9262.xml"/>
+  <source lemma="Funk" index="1" href="wb/WDG/fu/Funk-E_f_10110.xml"/>
+  <source lemma="Funk" index="2" href="wb/Neuartikel/Funk-2-E_2798929.xml"/>
+  <source lemma="Garten" href="wb/Neuartikel/Garten-E_3401057.xml"/>
+  <source lemma="Geist" index="1" href="wb/WDG/ge/Geist-E_g_3087.xml"/>
+  <source lemma="Genie" href="wb/WDG/ge/Genie-E_g_4268.xml"/>
+  <source lemma="Globus" href="wb/WDG/gl/Globus-E_g_8077.xml"/>
+  <source lemma="Grün" href="wb/Neuartikel/Gruen-E_1105613.xml"/>
+  <source lemma="Haus" href="wb/WDG/ha/Haus-E_h_2679.xml"/>
+  <source lemma="Hemd" href="wb/WDG/he/Hemd-E_h_4131.xml"/>
+  <source lemma="Herz" href="wb/Neuartikel/Herz-E_3627422.xml"/>
+  <source lemma="Heu" href="wb/WDG/he/Heu-E_h_5162.xml"/>
+  <source lemma="Hügel" href="wb/WDG/hu/Huegel-E_h_7796.xml"/>
+  <source lemma="ICE" href="wb/DWDS/017-D99_DWDS/ICE-E_810547.xml"/>
+  <source lemma="Idol" href="wb/WDG/id/Idol-E_i_168.xml"/>
+  <source lemma="Idyll" href="wb/WDG/id/Idyll-E_i_172.xml"/>
+  <source lemma="Innere" href="wb/WDG/in/Innere-E_i_992.xml"/>
+  <source lemma="Intercity" href="wb/DWDS/014-Minimalartikel/Intercity.xml"/>
+  <source lemma="Jeans" href="wb/DWDS/lemnitzer-000-Probeartikel/E_j_50000_1-Jeans.xml"/>
+  <source lemma="Jugend" href="wb/WDG/ju/Jugend-E_j_720.xml"/>
+  <source lemma="Juni" href="wb/WDG/ju/Juni-E_j_960.xml"/>
+  <source lemma="Kanal" href="wb/Neuartikel/Kanal-E_571884.xml"/>
+  <source lemma="Kasus" href="wb/WDG/ka/Kasus-E_k_2388.xml"/>
+  <source lemma="Kater" href="wb/WDG/ka/Kater-E_k_2481.xml"/>
+  <source lemma="Kissen" href="wb/WDG/ki/Kissen-E_k_3972.xml"/>
+  <source lemma="Klee" href="wb/WDG/kl/Klee-E_k_4715.xml"/>
+  <source lemma="Kloster" href="wb/WDG/kl/Kloster-E_k_5338.xml"/>
+  <source lemma="Kompass" href="wb/Neuartikel/Kompass-E_4351901.xml"/>
+  <source lemma="Kompaß" href="wb/Neuartikel/Kompass-E_4351901.xml"/>
+  <source lemma="Konto" href="wb/WDG/ko/Konto-E_k_7728.xml"/>
+  <source lemma="Kursus" href="wb/Neuartikel-002/Kursus-E_3045132.xml"/>
+  <source lemma="Lachen" href="wb/DWDS/009-Minimalartikel/Lachen.xml"/>
+  <source lemma="Leib" href="wb/WDG/le/Leib-E_l_2939.xml"/>
+  <source lemma="Leute" href="wb/WDG/le/Leute-E_l_3978.xml"/>
+  <source lemma="Lord" href="wb/WDG/lo/Lord-E_l_5556.xml"/>
+  <source lemma="Mast" index="1" href="wb/WDG/ma/Mast-E_m_2413.xml"/>
+  <source lemma="Maximum" href="wb/WDG/ma/Maximum-E_m_2814.xml"/>
+  <source lemma="Maß" index="1" href="wb/WDG/ma/Mass-E_m_2132.xml"/>
+  <source lemma="Melodram" href="wb/Neuartikel-001/Melodram-E_997578569.xml"/>
+  <source lemma="Mond" href="wb/WDG/mo/Mond-E_m_5841.xml"/>
+  <source lemma="Museum" href="wb/WDG/mu/Museum-E_m_6913.xml"/>
+  <source lemma="Mutter" index="1" href="wb/WDG/mu/Mutter-E_m_7238.xml"/>
+  <source lemma="Mutter" index="2" href="wb/WDG/mu/Mutter-E_m_7299.xml"/>
+  <source lemma="Name" href="wb/WDG/na/Name-E_n_868.xml"/>
+  <source lemma="Namen" href="wb/WDG/na/Name-E_n_868.xml"/>
+  <source lemma="Nerv" href="wb/WDG/ne/Nerv-E_n_1865.xml"/>
+  <source lemma="Neutron" href="wb/Neuartikel-002/Neutron-E_5052365.xml"/>
+  <source lemma="Nuss" href="wb/WDG/nu/Nuss-E_n_3292.xml"/>
+  <source lemma="Nuß" href="wb/WDG/nu/Nuss-E_n_3292.xml"/>
+  <source lemma="Oma" href="wb/DWDS/015-D99_DWDS/Oma-D99_116805.xml"/>
+  <source lemma="Opa" href="wb/DWDS/015-D99_DWDS/Opa-D99_116981.xml"/>
+  <source lemma="Organismus" href="wb/WDG/or/Organismus-E_o_1468.xml"/>
+  <source lemma="Ozean" href="wb/WDG/oz/Ozean-E_o_1846.xml"/>
+  <source lemma="Palais" href="wb/WDG/pa/Palais-E_p_196.xml"/>
+  <source lemma="Panorama" href="wb/WDG/pa/Panorama-E_p_274.xml"/>
+  <source lemma="Paradoxon" href="wb/Neuartikel-004/Paradoxon-E_8250118.xml"/>
+  <source lemma="Rand" href="wb/Neuartikel/Rand-E_4406137.xml"/>
+  <source lemma="Reif" index="2" href="wb/Neuartikel/Reif-2-E_7961326.xml"/>
+  <source lemma="Riese" href="wb/WDG/ri/Riese-E_r_5120.xml"/>
+  <source lemma="Ruhe" href="wb/WDG/ru/Ruhe-E_r_6969.xml"/>
+  <source lemma="Saal" href="wb/WDG/sa/Saal-E_s_8.xml"/>
+  <source lemma="Saldo" href="wb/WDG/sa/Saldo-E_s_648.xml"/>
+  <source lemma="Schema" href="wb/WDG/sc/Schema-E_s_3363.xml"/>
+  <source lemma="Schi" href="wb/WDG/sk/Ski-E_s_3589.xml"/>
+  <source lemma="Schloss" index="2" href="wb/WDG/sc/Schloss-E_s_5483.xml"/>
+  <source lemma="Schloß" index="2" href="wb/WDG/sc/Schloss-E_s_5483.xml"/>
+  <source lemma="Schmerz" href="wb/WDG/sc/Schmerz-E_s_6060.xml"/>
+  <source lemma="See" index="1" href="wb/WDG/se/See-E_s_10395.xml"/>
+  <source lemma="Shopping" href="wb/DWDS/unger-004-Mix/Shopping_106.xml"/>
+  <source lemma="Ski" href="wb/WDG/sk/Ski-E_s_3589.xml"/>
+  <source lemma="Smartwatch" href="wb/Neuartikel/Smartwatch-E_977630.xml"/>
+  <source lemma="SMS" href="wb/DWDS/012-Minimalartikel/SMS.xml"/>
+  <source lemma="Spital" href="wb/WDG/sp/Spital-E_s_15480.xml"/>
+  <source lemma="Staat" index="1" href="wb/WDG/st/Staat-E_s_16612.xml"/>
+  <source lemma="Stadion" href="wb/Neuartikel/Stadion-E_2627162.xml"/>
+  <source lemma="Stewardess" href="wb/Neuartikel/Stewardess-E_s_19468-dup.xml"/>
+  <source lemma="Stewardeß" href="wb/Neuartikel/Stewardess-E_s_19468-dup.xml"/>
+  <source lemma="Tennismatch" href="wb/WDG/te/Tennismatch-E_t_2064.xml"/>
+  <source lemma="Tenor" index="1" href="wb/DWDS/015-D99_DWDS/Tenor-D99_163480.xml"/>
+  <source lemma="Terminus" href="wb/WDG/te/Terminus-E_t_2183.xml"/>
+  <source lemma="Trecking" href="wb/DWDS/015-D99_DWDS/Trekking-D99_167023.xml"/>
+  <source lemma="Trekking" href="wb/DWDS/015-D99_DWDS/Trekking-D99_167023.xml"/>
+  <source lemma="Überfluss" href="wb/WDG/ue/Ueberfluss-E_u_160.xml"/>
+  <source lemma="Überfluß" href="wb/WDG/ue/Ueberfluss-E_u_160.xml"/>
+  <source lemma="Ufer" href="wb/WDG/uf/Ufer-E_u_717.xml"/>
+  <source lemma="Uhu" href="wb/WDG/uh/Uhu-E_u_800.xml"/>
+  <source lemma="Vater" href="wb/WDG/va/Vater-E_v_114.xml"/>
+  <source lemma="Verständnis" href="wb/WDG/ve/Verstaendnis-E_v_3382.xml"/>
+  <source lemma="Wald" href="wb/WDG/wa/Wald-E_w_687.xml"/>
+  <source lemma="Wild" href="wb/WDG/wi/Wild-E_w_4755.xml"/>
+  <source lemma="Zirkus" href="wb/WDG/zi/Zirkus-E_z_2428.xml"/>
+  <source lemma="Zoo" href="wb/DWDS/015-D99_DWDS/Zoo-D99_191108.xml"/>
+</manifest>

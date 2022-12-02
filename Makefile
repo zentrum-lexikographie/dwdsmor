@@ -1,5 +1,5 @@
 # Makefile
-# Gregor Middell, Andreas Nolda 2022-09-08
+# Andreas Nolda 2022-11-30
 
 DATETIME = $(shell date +%FT%T%z)
 DATE     = $(shell echo $(DATETIME) | cut -c 1-4,6-7,9-10)
@@ -58,7 +58,6 @@ clean:
 setup: requirements.txt
 	pip install --upgrade pip
 	pip install -r $<
-	make -C $(LEXDIR) clojure
 
 test:
 	@py.test -vv -s -x tests

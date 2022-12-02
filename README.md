@@ -57,10 +57,7 @@ word formation will be added in future versions.
 [Java (JDK) >= v8](https://openjdk.java.net/)
 : The extraction of lexicon entries from XML sources of DWDS articles is
   implemented in XSLT 2, for which [Saxon-HE](https://www.saxonica.com/) is used
-  as the runtime environment. The conversion of the whole dictionary (or larger
-  parts) is orchestrated via a [Clojure](https://clojure.org/) script, running
-  multiple XSLT pipelines in parallel and doing some pre- and postprocessing.
-  Saxon and Clojure both require a Java runtime.
+  as the runtime environment. Saxon requires a Java runtime.
 
 [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/)
 : a C++ library and toolbox for finite-state transducers (FSTs); please take a
@@ -87,8 +84,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Then run the DWDSmor setup routines which install Python dependencies and a
-compatible Clojure version:
+Then run the DWDSmor setup routine in order to install Python dependencies:
 
 ```sh
 make setup
@@ -134,46 +130,18 @@ will be described in more details in the following subsections.
 
 ### Building DWDSmor lexica
 
-For lexicon generation, the shell script `lexicon/generate-lexicon` is provided,
-which internally calls Clojure on `lexicon/src/dwdsmor/lexicon.clj`. The script
-supports the following parameters:
+For generating a lexicon from XML sources of DWDS articles in `lexicon/wb/`
+`lexicon/aux/`, run:
 
-```plaintext
-$ lexicon/generate-lexicon -h
-Generates a DWDSmor lexicon from (directories of) XML sources of DWDS articles.
-
-Usage: clojure -M -m dwdsmor.lexicon [options] <dir|*.xml>...
-
-Options:
-  -d, --debug              print debugging information
-  -e, --exclude LIST       exclude files listed in LIST
-  -f, --filter             filter entries with tag <UNKNOWN>
-  -l, --limit MAX          only extract MAX lexicon entries
-  -o, --output OUTPUT      generated lexicon
-  -s, --status STATUS      only consider DWDS articles with status STATUS
-  -x, --xslt STYLESHEET    XSLT stylesheet
-  -h, --help
-```
-
-This script is called with appropriate options from `lexicon/Makefile` by
-running:
 
 ```sh
-make -C lexicon all
+make lexicon
 ```
 
-Thereby, the following lexica are built:
+The lexicon is saved as `grammar/dwds.lex`. A log file can be found in
+`grammar/dwds.log` which includes XSLT warnings, if any.
 
-* `grammar/DWDS.lex`, derived from DWDS articles in `lexicon/wb/` with final
-  status `Red-f`
-* `grammar/DWDS-Red2.lex`, derived from DWDS articles in `lexicon/wb/` with
-  preliminary status `Red-2`
-* `grammar/aux.lex`, derived from auxiliary input files in `lexicon/aux/`
-
-A log is saved for each `<lexicon>` in `<lexicon>.log`. This includes XSLT
-warnings, if any.
-
-Individual input files can be blacklisted in `lexicon/exclude.list`. In this
+Individual input files can be blacklisted in `lexicon/exclude.xml`. In this
 way, individual DWDS articles can be overwritten in the auxiliary input files.
 
 The lexicon will be re-built if XSLT stylesheets in `share/` have changed. In
@@ -181,22 +149,6 @@ order to re-generate the lexicon with unchanged XSLT stylesheets, first call:
 
 ```sh
 make -C lexicon clean
-```
-
-In order to build lexica with debugging information, run:
-
-```sh
-make -C lexicon debug
-```
-
-This calls `lexicon/generate-lexicon` with option `-d` and without option `-f`.
-The results, which may contain `<UNKNOWN>` tags, are stored in
-`<lexicon>.debug`. Corresponding log files with input and output mappings are
-saved in `<lexicon>.debug.log`. In order to re-generate them with unchanged XSLT
-stylesheets, first call:
-
-```sh
-make -C lexicon debugclean
 ```
 
 For regression testing, the `test` make target is provided:
@@ -227,14 +179,12 @@ make -C grammar all
 
 The resulting DWDSmor transducers are:
 
-* `grammar/dwdsmor.{a,ca}`: for morphological analysis, built with the lexica
-  `grammar/DWDS.lex`, `grammar/DWDS-Red2.lex`, and `grammar/aux.lex`
-* `grammar/dwdsmor-finite.{a,ca}`: for testing purposes, with a finite
-  word-formation component, also built with the lexica `grammar/DWDS.lex`,
-  `grammar/DWDS-Red2.lex`, and `grammar/aux.lex`
-* `grammar/dwdsmor-index.{a,ca}`: for paradigm generation, with homographic
-  lemma indices and paradigm indices, built with the lexica `grammar/DWDS.lex`
-  and `grammar/aux.lex`
+* `grammar/dwdsmor.{a,ca}`: for morphological analysis, with inflection and
+  word-formation components
+* `grammar/dwdsmor-finite.{a,ca}`: for testing purposes, with an inflection
+  component and a finite word-formation component
+* `grammar/dwdsmor-index.{a,ca}`: for paradigm generation, with an inflection
+  component including paradigm indices and homographic lemma indices
 
 Once built, the DWDSmor transducers should be installed into `lib/`, where the
 Python scripts `dwdsmor.py` and `paradigm.py` expect them by default:

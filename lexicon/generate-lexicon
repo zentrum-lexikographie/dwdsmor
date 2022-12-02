@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-set -e
-
-cd $(dirname $(realpath $0))
-
-exec clojure/bin/clojure -M -m dwdsmor.lexicon $@
-
-exit 0

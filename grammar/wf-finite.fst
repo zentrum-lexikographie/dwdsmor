@@ -1,6 +1,6 @@
 % wf-finite.fst
-% Version 1.0
-% Andreas Nolda 2022-11-21
+% Version 1.1
+% Andreas Nolda 2022-12-01
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -21,7 +21,7 @@ $BASEFILTER$ = .* [#category#]:<><base>:<> .*
 
 $BASE$ = $BaseStems$ || $BASEFILTER$
 
-$COMPFILTER$ = .* <NN>:<><comp>:<> .* <NN>:<><base>:<> .*
+$COMPFILTER$ = .* [<ADJ><CARD><NN><NPROP><ORD><V>]:<><comp>:<> .* <NN>:<><base>:<> .*
 
 $COMP$ = $CompStems$ <#>:<> $BaseStems$ || $COMPFILTER$
 

@@ -1,13 +1,13 @@
 % dwdsmor.fst
 % Version 2.0
-% Andreas Nolda 2022-11-21
+% Andreas Nolda 2022-12-02
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
 #include "symbols.fst"
 
-$LEX$ = "DWDS.lex" | "DWDS-Red2.lex" | "aux.lex"
+$LEX$ = "dwds.lex"
 
 #include "num.fst"
 

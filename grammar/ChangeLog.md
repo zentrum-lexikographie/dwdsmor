@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-12-02:
+
+* replace `DWDS.lex`, `DWDS-Red2.lex`, and `aux.lex` with `dwds.lex`
+* add support for non-nominal compounding stems
+
 2022-11-21:
 
 * rename `dwdsmor-minimal.fst` to `dwdsmor-finite.fst`, and add

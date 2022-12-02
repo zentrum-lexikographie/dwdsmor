@@ -1,83 +1,56 @@
 # Makefile
-# Gregor Middell, Andreas Nolda 2022-09-08
+# Andreas Nolda 2022-12-02
 
-SHELL := /bin/bash
+SAXON = java -cp /usr/share/java/Saxon-HE.jar net.sf.saxon.Transform
+DIFF  = diff -s -y -Z --suppress-common-lines -W 120
 
-CLOJURE_VERSION := 1.10.3.943
-
-DIFF = diff -s -y -Z --suppress-common-lines -W 120
-
-SRCDIR  = $(abspath wb)
+SRCDIR  = $(CURDIR)/wb
 SRCDIRS = $(wildcard $(SRCDIR)/*)
-AUXDIR  = $(abspath aux)
-LEXDIR  = $(abspath ../grammar)
-XSLDIR  = $(abspath ../share)
-TESTDIR = $(abspath test)
+AUXDIR  = $(CURDIR)/aux
+LEXDIR  = $(abspath $(CURDIR)/../grammar)
+XSLDIR  = $(abspath $(CURDIR)/../share)
+TESTDIR = $(CURDIR)/test
 
-LEX     = $(LEXDIR)/DWDS.lex
-LEXRED2 = $(LEXDIR)/DWDS-Red2.lex
-LEXAUX  = $(LEXDIR)/aux.lex
+MANIFEST = $(CURDIR)/manifest.xml
+EXCLUDE  = $(CURDIR)/exclude.xml
 
-EXCL = $(wildcard $(CURDIR)/exclude.list)
+LEX = $(LEXDIR)/dwds.lex
+LOG = $(LEXDIR)/dwds.log
 
-XSL = $(XSLDIR)/dwds2dwdsmor.xsl
-LIB = $(filter-out $(XSLDIR)/dwds2%.xsl, $(wildcard $(XSLDIR)/*.xsl))
+MANIFESTXSL = $(XSLDIR)/dwds2manifest.xsl
+LEXXSL      = $(XSLDIR)/dwds2dwdsmor.xsl
+LEXLIB      = $(filter-out $(XSLDIR)/dwds2%.xsl, $(wildcard $(XSLDIR)/*.xsl))
 
 TESTINPUT  = $(TESTDIR)/input
 TESTOUTPUT = $(TESTDIR)/output
 TESTTARGET = $(TESTDIR)/target
 
-TESTINPUTS  = $(wildcard $(TESTINPUT)/*.list)
-TESTOUTPUTS = $(patsubst $(TESTINPUT)/%.list,$(TESTOUTPUT)/%.lex,$(TESTINPUTS))
+TESTINPUTS  = $(wildcard $(TESTINPUT)/*.xml)
+TESTOUTPUTS = $(patsubst $(TESTINPUT)/%.xml,$(TESTOUTPUT)/%.lex,$(TESTINPUTS))
 
 all: lexicon
 
-clojure: clojure-install.sh
-	mkdir -p $@
-	./clojure-install.sh --prefix $(CURDIR)/$@
+lexicon: $(MANIFEST) $(LEX)
 
-clojure-install.sh:
-	curl -o $@ https://download.clojure.org/install/linux-install-$(CLOJURE_VERSION).sh
-	chmod +x $@
+$(MANIFEST): $(SRCDIRS) $(MANIFESTXSL)
+	$(SAXON) -xsl:$(MANIFESTXSL) -it -o:$@ dwds-dir=$(SRCDIR) aux-dir=$(AUXDIR) exclude-file=$(EXCLUDE)
 
-lexicon: $(LEX) $(LEXRED2) $(LEXAUX)
-
-$(LEX): $(SRCDIRS) $(XSL) $(LIB)
-	./generate-lexicon -x $(XSL) -e $(EXCL) -s Red-f -f -o $@ $(SRCDIR) 2> $(LEX).log
-
-$(LEXRED2): $(SRCDIRS) $(XSL) $(LIB)
-	./generate-lexicon -x $(XSL) -e $(EXCL) -s Red-2 -f -o $@ $(SRCDIR) 2> $(LEXRED2).log
-
-$(LEXAUX): $(AUXDIR) $(XSL) $(LIB)
-	./generate-lexicon -x $(XSL) -f -o $@ $(AUXDIR) 2> $(LEXAUX).log
-
-debug: $(LEX).debug $(LEXRED2).debug $(LEXAUX).debug
-
-$(LEX).debug: $(XSL) $(LIB)
-	./generate-lexicon -x $(XSL) -e $(EXCL) -s Red-f -d -o $@ $(SRCDIR) 2> $(LEX).debug.log
-
-$(LEXRED2).debug: $(XSL) $(LIB)
-	./generate-lexicon -x $(XSL) -e $(EXCL) -s Red-2 -d -o $@ $(SRCDIR) 2> $(LEXRED2).debug.log
-
-$(LEXAUX).debug: $(XSL) $(LIB)
-	./generate-lexicon -x $(XSL) -d -o $@ $(AUXDIR) 2> $(LEXAUX).debug.log
+$(LEX): $(SRCDIRS) $(LEXXSL) $(LEXLIB)
+	$(SAXON) -xsl:$(LEXXSL) -it manifest-file=$(MANIFEST) 2> $(LOG) | sort -u > $@
 
 test: $(TESTOUTPUTS)
 
 $(TESTOUTPUT):
 	mkdir -p $@
 
-$(TESTOUTPUT)/%: $(TESTTARGET)/% $(XSL) $(LIB) $(TESTINPUTS) | $(TESTOUTPUT)
-	./generate-lexicon -x $(XSL) -f -o $@ $(addprefix $(CURDIR)/,$(file < $(patsubst $(TESTTARGET)%.lex,$(TESTINPUT)%.list,$<))) 2> /dev/null
+$(TESTOUTPUT)/%: $(TESTTARGET)/% $(LEXXSL) $(LEXLIB) $(TESTINPUTS) | $(TESTOUTPUT)
+	$(SAXON) -xsl:$(LEXXSL) -it manifest-file=$(patsubst $(TESTTARGET)/%.lex,$(TESTINPUT)/%.xml,$<) 2> /dev/null | sort -u > $@
 	@$(DIFF) $< $@ || true
 
-clean: debugclean testclean
-	$(RM) $(LEX) $(LEXRED2) $(LEXAUX) $(LEX).log $(LEXRED2).log $(LEXAUX).log
-
-debugclean:
-	$(RM) $(LEX).debug $(LEXRED2).debug $(LEXAUX).debug $(LEX).debug.log $(LEXRED2).debug.log $(LEXAUX).debug.log
+clean: testclean
+	$(RM) $(MANIFEST) $(LEX) $(LOG)
 
 testclean:
 	$(RM) $(TESTOUTPUTS)
 
-.PHONY: all clojure lexicon debug test clean debugclean testclean
+.PHONY: all lexicon test clean testclean

@@ -1,5 +1,15 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-12-02:
+
+* add `dwds2manifest.xsl` for generating `manifest.xml` from DWDS articles in
+  `$dwds-dir` and `$aux-dir`
+* respect `exclude.xml` while generating `manifest.xml`
+* recursively process DWDS articles in `$dwds-dir` and `$aux-dir`
+* infer lexical entries of compounding stems from links to compound bases in
+  DWDS articles listed in `manifest.xml`
+* add file names to warnings
+
 2022-11-21:
 
 * rename `dwdsmor-minimal.fst` to `dwdsmor-finite.fst`
