@@ -1,6 +1,6 @@
 % map.fst
-% Version 2.0
-% Andreas Nolda 2022-11-21
+% Version 3.0
+% Andreas Nolda 2022-12-05
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -9,7 +9,9 @@
 
 ALPHABET = [#char# #lemma-index# #paradigm-index#] \
            <>:[#entry-type# #deko-trigger# #category# #stemtype# #origin# \
-               #inflection# #auxiliary# <FB>]
+               #inflection# #auxiliary#] \
+           <#>:<VPART> \
+           <\~>:<FB>
 
 $MAP1$ = (. | <VPART> <V>:<> <>:<ge>? [#char#])*
 
@@ -25,8 +27,8 @@ ALPHABET = [#entry-type# #deko-trigger# #char# #morpheme-boundary# #lemma-index#
 $E$ = e <=> <e> ([lr] [#lemma-index#]? [#paradigm-index#]? \
                  <V> [#stemtype#] [#origin#] <VVReg-el/er>)
 
-ALPHABET = [#entry-type# #char# #morpheme-boundary# #category# #stemtype# #origin# \
-            #inflection# #auxiliary# <FB><VPART><e><ge>] \
-           [#lemma-index# #paradigm-index# <NoPref>]:<>
+ALPHABET = [#entry-type# #char# #category# #stemtype# #origin# #inflection# #auxiliary# \
+            <FB><VPART><e><ge>] \
+           [#morpheme-boundary# #lemma-index# #paradigm-index# <NoPref>]:<>
 
 $MAP2$ = $ANY$ || $E$ || .*

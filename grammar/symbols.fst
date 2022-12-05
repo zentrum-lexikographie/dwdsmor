@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 2.1
-% Andreas Nolda 2022-11-18
+% Version 3.0
+% Andreas Nolda 2022-12-05
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -11,11 +11,11 @@
 
 #char# = \ -\~¡-ÿ–‐-‧‰-›⅐-⅞
 
-#phon-trigger# = <INS-E><FB><WB><CB><^UC><^Ax><^Px><^Gen><^Del><^pl>
+#phon-trigger# = <INS-E><FB><WB><CB><^Ax><^Px><^Gen><^Del><^pl>
 
 #surface-trigger# = <~n><d><e><er><n>
 
-#morpheme-boundary# = <\~><#>
+#morpheme-boundary# = <\~><\=><#>
 
 #ss-trigger# = <SS><SSalt>
 
@@ -53,8 +53,10 @@
 
 #tense# = <Pres><Past>
 
-#feature# = #orth-trigger# #category# #auxiliary# #part-of-speech# #subcat# #degree# \
-            #person# #gender# #case# #number# #infl# #function# #nonfinite# #mood# #tense# \
+#metainfo# = <NonSt><Old>
+
+#feature# = #category# #auxiliary# #part-of-speech# #subcat# #degree# #person# #gender# \
+            #case# #number# #infl# #function# #nonfinite# #mood# #tense# #metainfo# \
             <Lemma>
 
 #stemtype# = <base><comp>
@@ -68,9 +70,8 @@
 #Abk-inflection# = <Abk_POSS>
 
 #Adj-inflection# = <Adj$><Adj$e><Adj+><Adj+(e)><Adj+e><Adj+Lang><Adj-el/er><AdjComp> \
-                   <AdjComp0-mehr><AdjPos0><AdjPos0-viel><AdjPos0Attr><AdjPos0Attr-Up> \
-                   <AdjPos><AdjPos-Up><AdjPosAttr><AdjPosAttr-Up><AdjPosPred><AdjSup> \
-                   <AdjSup-aller><Adj~$e><Adj~+e>
+                   <AdjComp0-mehr><AdjPos0><AdjPos0-viel><AdjPos0Attr><AdjPos0AttrSubst> \
+                   <AdjPos><AdjPosAttr><AdjPosPred><AdjSup><AdjSup-aller><Adj~$e><Adj~+e>
 
 #Adv-inflection# = <Adv><AdvComp><AdvComp0><AdvSup>
 
@@ -134,12 +135,11 @@
                     <VVPres2+Imp><VVPres2><VVPres2t><VVPres><VVPresPl><VVPresSg> \
                     <VVReg-el/er><VVReg><VVRegFin>
 
-#Other-inflection# = <Circp><Intj><IntjUp><Konj-Inf><Konj-Kon><Konj-Sub><Konj-Vgl> \
-                     <PInd-Invar><Postp-Akk><Postp-Dat><Postp-Gen><Pref/Adj><Pref/Adv> \
-                     <Pref/N><Pref/ProAdv><Pref/Sep><Pref/V><Prep-Akk><Prep-DA> \
-                     <Prep-Dat><Prep-GD><Prep-GDA><Prep-Gen><Prep/Art-m><Prep/Art-n> \
-                     <Prep/Art-r><Prep/Art-s><ProAdv><Ptkl-Adj><Ptkl-Ant><Ptkl-Neg> \
-                     <Ptkl-Zu><Trunc><WAdv>
+#Other-inflection# = <Circp><Intj><Konj-Inf><Konj-Kon><Konj-Sub><Konj-Vgl><PInd-Invar> \
+                     <Postp-Akk><Postp-Dat><Postp-Gen><Pref/Adj><Pref/Adv><Pref/N> \
+                     <Pref/ProAdv><Pref/Sep><Pref/V><Prep-Akk><Prep-DA><Prep-Dat><Prep-GD> \
+                     <Prep-GDA><Prep-Gen><Prep/Art-m><Prep/Art-n><Prep/Art-r><Prep/Art-s> \
+                     <ProAdv><Ptkl-Adj><Ptkl-Ant><Ptkl-Neg><Ptkl-Zu><Trunc><WAdv>
 
 #inflection# = #Abk-inflection# #Adj-inflection# #Adv-inflection# #Art-inflection# \
                #Noun-inflection# #Name-inflection# #Num-inflection# #Pro-inflection# \

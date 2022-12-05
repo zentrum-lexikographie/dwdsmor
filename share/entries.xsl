@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 7.0 -->
-<!-- Andreas Nolda 2022-11-28 -->
+<!-- Version 8.0 -->
+<!-- Andreas Nolda 2022-12-05 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -85,7 +85,7 @@
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">AdjPos0Attr-Up</xsl:with-param>
+              <xsl:with-param name="class">AdjPos0AttrSubst</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -179,23 +179,7 @@
           </xsl:call-template>
         </xsl:variable>
         <xsl:choose>
-          <!-- attributive-only adjectives with capitalised first member -->
-          <xsl:when test="$function='attr' and
-                          matches($lemma,'\p{Lu}\p{L}*-')">
-            <xsl:call-template name="word-entry">
-              <xsl:with-param name="lemma"
-                              select="$lemma"/>
-              <xsl:with-param name="lemma-index"
-                              select="$lemma-index"/>
-              <xsl:with-param name="paradigm-index"
-                              select="$paradigm-index"/>
-              <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">AdjPosAttr-Up</xsl:with-param>
-              <xsl:with-param name="etymology"
-                              select="$etymology"/>
-            </xsl:call-template>
-          </xsl:when>
-          <!-- other attributive-only adjectives -->
+          <!-- attributive-only adjectives -->
           <xsl:when test="$function='attr'">
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
@@ -206,22 +190,6 @@
                               select="$paradigm-index"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPosAttr</xsl:with-param>
-              <xsl:with-param name="etymology"
-                              select="$etymology"/>
-            </xsl:call-template>
-          </xsl:when>
-          <!-- other adjectives with capitalised first member -->
-          <xsl:when test="string-length($superlative)=0 and
-                          matches($lemma,'\p{Lu}\p{L}*-')">
-            <xsl:call-template name="word-entry">
-              <xsl:with-param name="lemma"
-                              select="$lemma"/>
-              <xsl:with-param name="lemma-index"
-                              select="$lemma-index"/>
-              <xsl:with-param name="paradigm-index"
-                              select="$paradigm-index"/>
-              <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">AdjPos-Up</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>

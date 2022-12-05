@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 11.0 -->
-<!-- Andreas Nolda 2022-11-30 -->
+<!-- Version 11.1 -->
+<!-- Andreas Nolda 2022-12-05 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -284,6 +284,8 @@
   <xsl:param name="class"/>
   <xsl:param name="auxiliary"/>
   <xsl:param name="etymology"/>
+  <xsl:variable name="segmented-lemma"
+                select="replace($lemma,'(e?n)$','&lt;FB&gt;$1')"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
   <xsl:if test="string-length($particle)&gt;0">
     <xsl:text>&lt;NoPref&gt;</xsl:text>
@@ -296,7 +298,7 @@
     <xsl:with-param name="form"
                     select="$participle"/>
   </xsl:call-template>
-  <xsl:value-of select="n:pair($lemma,$stem)"/>
+  <xsl:value-of select="n:pair($segmented-lemma,$stem)"/>
   <xsl:call-template name="insert-lemma-index">
     <xsl:with-param name="lemma-index"
                     select="$lemma-index"/>

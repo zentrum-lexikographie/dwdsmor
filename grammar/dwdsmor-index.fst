@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 2.0
-% Andreas Nolda 2022-12-02
+% Version 3.0
+% Andreas Nolda 2022-12-05
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -29,8 +29,6 @@ $MORPH$ = $MORPH$ || $ZU$
 
 $MORPH$ = $MORPH$ || $IMPVPART$
 
-$MORPH$ = $MORPH$ || $UPLOW$
-
 #include "phon.fst"
 
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
@@ -39,13 +37,8 @@ $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 
 $MORPH$ = $DISJ$ || $MORPH$
 
-#include "lemma-index.fst"
-
-$MORPH$ = ($LEMMA1$ || $MORPH$) | \
-          ($LEMMA2$ || $MORPH$)
-
 #include "cleanup.fst"
 
-$MORPH$ = $CLEANUP1$ || $MORPH$ || $CLEANUP2$
+$MORPH$ = $CLEANUP1$ || $CLEANUP2$ || $MORPH$
 
 $MORPH$

@@ -1,7 +1,7 @@
 <Stem>alle<IDX1><ADJ><base><nativ><AdjPosPred>
 <Stem>alt<ADJ><base><nativ><Adj$e>
 <Stem>ander<ADJ><base><nativ><AdjPosAttr>
-<Stem>Berliner<IDX2><ADJ><base><nativ><AdjPos0Attr-Up>
+<Stem>Berliner<IDX2><ADJ><base><nativ><AdjPos0AttrSubst>
 <Stem>echt<ADJ><base><nativ><Adj+e>
 <Stem>entlegen<ADJ><base><nativ><AdjPos>
 <Stem>früh<ADJ><base><nativ><Adj+e>
@@ -28,7 +28,7 @@
 <Stem>orange<ADJ><base><fremd><Adj0>
 <Stem>orange<ADJ><base><fremd><AdjPosPred>
 <Stem>orangen<ADJ><base><fremd><AdjPosAttr>
-<Stem>Rh-positiv<PAR1><ADJ><base><nativ><AdjPos-Up>
+<Stem>Rh-positiv<PAR1><ADJ><base><nativ><AdjPos>
 <Stem>spannend<ADJ><base><nativ><Adj+>
 <Stem>spät<ADJ><base><nativ><Adj+e>
 <Stem>tabu<ADJ><base><fremd><AdjPosPred>

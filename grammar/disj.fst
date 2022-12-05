@@ -1,12 +1,12 @@
 % disj.fst
-% Version 2.0
-% Andreas Nolda 2022-11-21
+% Version 3.0
+% Andreas Nolda 2022-12-05
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
 ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# #feature# \
-            <VPART><Old><NonSt>] \
+            <VPART><OLDORTH><Old><NonSt>] \
            [<1><3>]:<13> \
            [<Dat><Acc>]:<DA> \
            [<Gen><Acc>]:<GA> \

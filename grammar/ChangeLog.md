@@ -1,5 +1,17 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-12-05:
+
+* directly generate surface lemmas for compounds
+* add support for hyphenated compounds
+* remove `lemma.fst` and `lemma-index.fst`
+* use `<#>` as a morpheme-boundary marker between compound members, `<=>` before
+  hyphens, and `<~>` before suffixes of compounding stems
+* downcase non-first compound members in non-hyphenated compounds
+* do not manipulate letter case via inflection classes
+* remove inflection classes `AdjPos-Up`, `AdjPosAttr-Up`, and `IntjUp`
+* rename inflection class `AdjPos0Attr-Up` to `AdjPos0AttrSubst`
+
 2022-12-02:
 
 * replace `DWDS.lex`, `DWDS-Red2.lex`, and `aux.lex` with `dwds.lex`

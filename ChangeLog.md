@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-12-05:
+
+* add `<FB>` before suffixes of compounding stems
+
 2022-12-02:
 
 * add `dwds2manifest.xsl` for generating `manifest.xml` from DWDS articles in

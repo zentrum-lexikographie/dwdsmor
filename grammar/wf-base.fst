@@ -1,6 +1,6 @@
 % wf-base.fst
-% Version 1.0
-% Andreas Nolda 2022-11-21
+% Version 1.1
+% Andreas Nolda 2022-12-05
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -11,7 +11,6 @@ ALPHABET = [#deko-trigger# #char# #morpheme-boundary# #lemma-index# #paradigm-in
             #category# #origin# #inflection# #auxiliary# <Stem><FB><VPART><e><ge>]
 
 $BaseStems$ = $LEX$ || <Stem> .* <base> .*
-$CompStems$ = $LEX$ || <Stem> .* <comp> .*
 
 ALPHABET = [#entry-type# #deko-trigger# #char# #morpheme-boundary# #lemma-index# \
             #paradigm-index# #inflection# #auxiliary# <Stem><FB><VPART><e><ge>] \

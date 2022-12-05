@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-11-14
+# Gregor Middell and Andreas Nolda 2022-12-05
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 6.2
+version = 6.3
 
 BASEDIR = os.path.dirname(__file__)
 LIBDIR  = os.path.join(BASEDIR, "lib")
@@ -154,9 +154,6 @@ class Analysis(tuple):
                 "tense": self.tense,
                 "metainfo": self.metainfo}
 
-    _empty_component_texts = set(["", ":"])
-    _curly_braces_re = re.compile(r"[{}]")
-
     def _decode_component_text(text):
         lemma = ""
         form  = ""
@@ -179,8 +176,6 @@ class Analysis(tuple):
         return {"lemma": lemma, "form": form}
 
     def _decode_analysis(analysis):
-        # "QR-Code" -> "{:<>QR}:<>-<TRUNC>:<>Code<+NN>:<><Masc>:<><Acc>:<><Sg>:<>"
-        analysis = Analysis._curly_braces_re.sub("", analysis)
         for a in re.finditer(r"([^<]*)(?:<([^>]*)>)?", analysis):
             text = a.group(1)
             tag  = a.group(2) or ""
