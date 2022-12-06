@@ -18,7 +18,7 @@ def project_dir():
 
 @fixture
 def transducer():
-    return sfst_transduce.CompactTransducer((smor_lemma_dir / "smor-full.ca").as_posix())
+    return sfst_transduce.CompactTransducer((smor_lemma_dir / "dwdsmor.ca").as_posix())
 
 @fixture
 def irregular_nouns():
@@ -77,7 +77,7 @@ def extract_wb_entries(wb_xml_file):
                 written_reprs = form.iter("{http://www.dwds.de/ns/1.0}Schreibung")
                 for written_repr in written_reprs:
                     written_repr_type = written_repr.get("Typ", "")
-                    if written_repr_type == "U_NR" or written_repr_type == "U_U":
+                    if written_repr_type == "U_NR" or written_repr_type == "U_U" or written_repr_type == "U_Falschschreibung":
                         continue
                     entries.append({"file": wb_xml_file.relative_to(wb_dir),
                                     "article_status": article_status,
