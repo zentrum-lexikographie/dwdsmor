@@ -23,7 +23,7 @@
       </Grammatik>
     </Formangabe>
   </Artikel>
-  <!-- <Artikel>
+  <Artikel>
     <Formangabe>
       <Schreibung>kein</Schreibung>
       <Grammatik>
@@ -45,5 +45,5 @@
         <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>
-  </Artikel> -->
+  </Artikel>
 </DWDS>

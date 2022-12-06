@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 8.1 -->
+<!-- Version 8.2 -->
 <!-- Andreas Nolda 2022-12-06 -->
 
 <xsl:stylesheet version="2.0"
@@ -860,6 +860,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='der'"/>
+      <xsl:when test="$lemma='das'"/>
       <!-- "eine", "'ne" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='eine'">
@@ -893,6 +895,7 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='ein'"/>
       <!-- "keine" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='keine'">
@@ -913,6 +916,7 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='kein'"/>
     </xsl:choose>
   </xsl:if>
 </xsl:template>
@@ -953,6 +957,7 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='ein'"/>
       <!-- "keine" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='keine'">
@@ -973,6 +978,7 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='kein'"/>
       <!-- "zwei", "drei" -->
       <xsl:when test="$lemma='zwei' or
                       $lemma='drei'">
@@ -1872,6 +1878,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="ends-with($lemma,'dieser')"/>
+      <xsl:when test="ends-with($lemma,'dieses')"/>
       <!-- "jene", "ebenjene" -->
       <xsl:when test="$gender='fem.' and
                       ends-with($lemma,'jene')">
@@ -1892,6 +1900,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="ends-with($lemma,'jener')"/>
+      <xsl:when test="ends-with($lemma,'jenes')"/>
       <!-- "die", "ebendie" -->
       <xsl:when test="$gender='fem.' and
                       ends-with($lemma,'die')">
@@ -1912,6 +1922,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="ends-with($lemma,'der')"/>
+      <xsl:when test="ends-with($lemma,'das')"/>
       <!-- "solche", "ebensolche" -->
       <xsl:when test="$gender='fem.' and
                       ends-with($lemma,'solche')">
@@ -1932,6 +1944,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="ends-with($lemma,'solcher')"/>
+      <xsl:when test="ends-with($lemma,'solches')"/>
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
@@ -1983,6 +1997,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='einer'"/>
+      <xsl:when test="$lemma='eines'"/>
       <!-- "irgendeine" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='irgendeine'">
@@ -2003,6 +2019,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='irgendeiner'"/>
+      <xsl:when test="$lemma='irgendeines'"/>
       <!-- "keine" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='keine'">
@@ -2023,6 +2041,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='keiner'"/>
+      <xsl:when test="$lemma='keines'"/>
       <!-- "welche" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='welche'">
@@ -2043,6 +2063,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='welcher'"/>
+      <xsl:when test="$lemma='welches'"/>
       <!-- "irgendwelche" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='irgendwelche'">
@@ -2063,6 +2085,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='irgendwelcher'"/>
+      <xsl:when test="$lemma='irgendwelches'"/>
       <!-- "einige" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='einige'">
@@ -2083,6 +2107,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='einiger'"/>
+      <xsl:when test="$lemma='einiges'"/>
       <!-- "alle" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='alle'">
@@ -2103,6 +2129,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='aller'"/>
+      <xsl:when test="$lemma='alles'"/>
       <!-- "jede" -->
       <xsl:when test="$gender='fem.' and
                       ($lemma='jede' or
@@ -2124,6 +2152,10 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='jeder' or
+                      $lemma='jedweder'"/>
+      <xsl:when test="$lemma='jedes' or
+                      $lemma='jedwedes'"/>
       <!-- "jegliche" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='jegliche'">
@@ -2144,6 +2176,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='jeglicher'"/>
+      <xsl:when test="$lemma='jegliches'"/>
       <!-- "beide" -->
       <xsl:when test="$lemma='beide'">
         <xsl:call-template name="word-entry">
@@ -2663,6 +2697,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='welcher'"/>
+      <xsl:when test="$lemma='welches'"/>
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
@@ -3600,6 +3636,7 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="ends-with($lemma,'ein')"/>
       <!-- "ihre", "Ihre" -->
       <xsl:when test="$gender='fem.' and
                       ($lemma='ihre' or
@@ -3621,6 +3658,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='ihr' or
+                      $lemma='Ihr'"/>
       <!-- "unsere" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='unsere'">
@@ -3641,6 +3680,7 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='unser'"/>
       <!-- "eure", "Eure" -->
       <xsl:when test="$gender='fem.' and
                       ($lemma='eure' or
@@ -3662,6 +3702,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='euer' or
+                      $lemma='Euer'"/>
       <!-- "Ew." -->
       <xsl:when test="$lemma='Ew.'">
         <xsl:call-template name="word-entry">
@@ -3801,6 +3843,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='der'"/>
+      <xsl:when test="$lemma='das'"/>
       <!-- "welche" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='welche'">
@@ -3821,6 +3865,8 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$lemma='welcher'"/>
+      <xsl:when test="$lemma='welches'"/>
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
