@@ -177,9 +177,11 @@
           <!-- expand grammar specifications for old spellings with "ß"/"ss"-alternation
                unless there are proper grammar specifications for the old spelling -->
           <xsl:when test="starts-with(@Typ,'U') and
-                          ../dwds:Schreibung[ends-with(@Typ,'G')][.=n:sz-ss-alternation(current())]">
+                          ../dwds:Schreibung[not(@Typ) or
+                                             ends-with(@Typ,'G')][.=n:sz-ss-alternation(current())]">
             <xsl:variable name="canonical-lemma"
-                          select="../dwds:Schreibung[ends-with(@Typ,'G')][1]"/>
+                          select="../dwds:Schreibung[not(@Typ) or
+                                                     ends-with(@Typ,'G')][1]"/>
             <xsl:for-each select="$grammar-specs/dwds:Grammatik">
               <dwds:Grammatik>
                 <xsl:for-each select="*">
