@@ -1,5 +1,5 @@
 % wf.fst
-% Version 2.0
+% Version 2.1
 % Andreas Nolda 2022-12-05
 
 % based on code from SMORLemma by Rico Sennrich
@@ -19,20 +19,34 @@ $C2$ = [A-ZÄÖÜ]:[a-zäöü] [#char#]*
 $BaseStemsDC$ = $C1$ .* || $BaseStems$ || <Stem> $C2$ .* <base> .*
 $CompStemsDC$ = $C1$ .* || $CompStems$ || <Stem> $C2$ .* <comp> .*
 
-ALPHABET = [#deko-trigger# #char# #morpheme-boundary# #lemma-index# #paradigm-index# \
-            #inflection# #auxiliary# <Stem><FB><VPART><e><ge>] \
-           [#category# #origin#]:<>
+ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
+            #inflection# #auxiliary# <FB><VPART><e><ge>] \
+           [#deko-trigger# #stemtype# #category# #origin#]:<>
 
-$BASEFILTER$ = .* [#category#]:<><base>:<> .*
+$BASEFILTER$ = <Stem> .*
 
 $BASE$ = $BaseStems$ || $BASEFILTER$
 
-$HYPH$   = <\=>:<FB> \- <#>:<>
-$NOHYPH$ =              <#>:<>
+$H$ = [<Hyph><NoHyph>]:[\-<>]
 
-$COMPFILTER$ = (.* <NN>:<><comp>:<> .*)  \
-               (.* <NN>:<><comp>:<> .*)* \
-               (.* <NN>:<><base>:<> .*)
+$CompRestrPOS$ = (<Stem> .* <NN>:<> .* $H$) \
+                 (<Stem> .* <NN>:<> .* $H$)* \
+                 (<Stem> .* <NN>:<> .*)
+
+$CompRestrAbbr$ = !(((<Stem> .* $H$)* \
+                     (<Stem> <Abbr>:<> .* <NoHyph>:<>) \
+                     (<Stem> .* $H$)* \
+                     (<Stem> .*)) | \
+                    ((<Stem> .* $H$)* \
+                     (<Stem> <Abbr>:<> .*)))
+
+$COMPFILTER$ = $CompRestrPOS$ & $CompRestrAbbr$
+
+$HB$ = <\=>:<FB>
+$CB$ =  <#>:<>
+
+$HYPH$   = $HB$ \-:<Hyph>   $CB$
+$NOHYPH$ =      <>:<NoHyph> $CB$
 
 $COMP$ = $CompStems$ \
          ($HYPH$ $CompStems$ | $NOHYPH$ $CompStemsDC$)* \

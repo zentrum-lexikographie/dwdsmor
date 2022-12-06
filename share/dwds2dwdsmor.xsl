@@ -73,6 +73,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="type"/>
   <xsl:param name="separable"/>
   <xsl:param name="selection"/>
@@ -87,6 +88,9 @@
     </xsl:when>
   </xsl:choose>
   <xsl:text>&gt;</xsl:text>
+  <xsl:if test="$abbreviation='yes'">
+    <xsl:text>&lt;Abbr&gt;</xsl:text>
+  </xsl:if>
   <xsl:call-template name="affix-separability">
     <xsl:with-param name="type"
                     select="$type"/>
@@ -136,10 +140,14 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="form"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="pos"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
+  <xsl:if test="$abbreviation='yes'">
+    <xsl:text>&lt;Abbr&gt;</xsl:text>
+  </xsl:if>
   <xsl:choose>
     <xsl:when test="string-length($form)&gt;0">
       <xsl:value-of select="n:pair($lemma,$form)"/>
@@ -177,9 +185,13 @@
 <xsl:template name="word-comp-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="comp-stem"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="pos"/>
   <xsl:param name="etymology"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
+  <xsl:if test="$abbreviation='yes'">
+    <xsl:text>&lt;Abbr&gt;</xsl:text>
+  </xsl:if>
   <xsl:choose>
     <xsl:when test="string-length($comp-stem)&gt;0">
       <xsl:value-of select="n:segment($lemma,$comp-stem)"/>
@@ -204,6 +216,7 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="form"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
   <xsl:call-template name="word-entry">
@@ -215,6 +228,8 @@
                     select="$paradigm-index"/>
     <xsl:with-param name="form"
                     select="$form"/>
+    <xsl:with-param name="abbreviation"
+                    select="$abbreviation"/>
     <xsl:with-param name="pos">ADJ</xsl:with-param>
     <xsl:with-param name="class"
                     select="$class"/>
@@ -229,6 +244,7 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="form"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
   <xsl:call-template name="word-entry">
@@ -240,6 +256,8 @@
                     select="$paradigm-index"/>
     <xsl:with-param name="form"
                     select="$form"/>
+    <xsl:with-param name="abbreviation"
+                    select="$abbreviation"/>
     <xsl:with-param name="pos">ADV</xsl:with-param>
     <xsl:with-param name="class"
                     select="$class"/>
@@ -254,6 +272,7 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="form"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
   <xsl:call-template name="word-entry">
@@ -265,6 +284,8 @@
                     select="$paradigm-index"/>
     <xsl:with-param name="form"
                     select="$form"/>
+    <xsl:with-param name="abbreviation"
+                    select="$abbreviation"/>
     <xsl:with-param name="pos">NN</xsl:with-param>
     <xsl:with-param name="class"
                     select="$class"/>
@@ -278,6 +299,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="participle"/>
   <xsl:param name="particle"/>
   <xsl:param name="stem"/>
@@ -287,6 +309,9 @@
   <xsl:variable name="segmented-lemma"
                 select="replace($lemma,'(e?n)$','&lt;FB&gt;$1')"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
+  <xsl:if test="$abbreviation='yes'">
+    <xsl:text>&lt;Abbr&gt;</xsl:text>
+  </xsl:if>
   <xsl:if test="string-length($particle)&gt;0">
     <xsl:text>&lt;NoPref&gt;</xsl:text>
     <xsl:value-of select="$particle"/>
@@ -338,6 +363,7 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="form"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
   <xsl:call-template name="word-entry">
@@ -349,6 +375,8 @@
                     select="$paradigm-index"/>
     <xsl:with-param name="form"
                     select="$form"/>
+    <xsl:with-param name="abbreviation"
+                    select="$abbreviation"/>
     <xsl:with-param name="pos">OTHER</xsl:with-param>
     <xsl:with-param name="class"
                     select="$class"/>

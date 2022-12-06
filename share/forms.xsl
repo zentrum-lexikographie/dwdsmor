@@ -223,7 +223,7 @@
     <xsl:choose>
       <!-- hyphenated spellings ("Schiff-Fahrt") -->
       <xsl:when test="matches($lemma,concat('-',$lemma2,'$'),'i')">
-        <xsl:call-template name="get-comp-stem-case">
+        <xsl:call-template name="set-comp-stem-case">
           <xsl:with-param name="lemma"
                           select="$lemma1"/>
           <xsl:with-param name="comp-stem"
@@ -234,7 +234,7 @@
       <xsl:when test="$spelling-type='U' and
                       matches($lemma1,'([flmnprt])\1$') and
                       matches(substring($lemma1,string-length($lemma1)),substring($lemma2,1,1),'i')">
-        <xsl:call-template name="get-comp-stem-case">
+        <xsl:call-template name="set-comp-stem-case">
           <xsl:with-param name="lemma"
                           select="$lemma1"/>
           <xsl:with-param name="comp-stem"
@@ -243,7 +243,7 @@
       </xsl:when>
       <!-- new spellings ("Schifffahrt") -->
       <xsl:otherwise>
-        <xsl:call-template name="get-comp-stem-case">
+        <xsl:call-template name="set-comp-stem-case">
           <xsl:with-param name="lemma"
                           select="$lemma1"/>
           <xsl:with-param name="comp-stem"
@@ -255,7 +255,7 @@
 </xsl:template>
 
 <!-- adjust case of compounding stem as required -->
-<xsl:template name="get-comp-stem-case">
+<xsl:template name="set-comp-stem-case">
   <xsl:param name="lemma"/>
   <xsl:param name="comp-stem"/>
   <xsl:choose>

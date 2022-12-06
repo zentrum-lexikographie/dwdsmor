@@ -1,5 +1,5 @@
 % map.fst
-% Version 3.0
+% Version 3.1
 % Andreas Nolda 2022-12-05
 
 % based on code from SMORLemma by Rico Sennrich
@@ -9,7 +9,7 @@
 
 ALPHABET = [#char# #lemma-index# #paradigm-index#] \
            <>:[#entry-type# #deko-trigger# #category# #stemtype# #origin# \
-               #inflection# #auxiliary#] \
+               #inflection# #auxiliary# <ge>] \
            <#>:<VPART> \
            <\~>:<FB>
 
@@ -17,17 +17,17 @@ $MAP1$ = (. | <VPART> <V>:<> <>:<ge>? [#char#])*
 
 $ANY$ = [#entry-type# #deko-trigger# #char# #morpheme-boundary# #lemma-index# \
          #paradigm-index# #category# #stemtype# #origin# #inflection# #auxiliary# \
-         <FB><VPART><e>]*
+         <FB><VPART><e><ge>]*
 
 ALPHABET = [#entry-type# #deko-trigger# #char# #morpheme-boundary# #lemma-index# \
             #paradigm-index# #category# #stemtype# #origin# #inflection# #auxiliary# \
-            <FB><VPART>] \
+            <FB><VPART><ge>] \
            e:<e>
 
 $E$ = e <=> <e> ([lr] [#lemma-index#]? [#paradigm-index#]? \
                  <V> [#stemtype#] [#origin#] <VVReg-el/er>)
 
-ALPHABET = [#entry-type# #char# #category# #stemtype# #origin# #inflection# #auxiliary# \
+ALPHABET = [#entry-type# #deko-trigger# #char# #category# #stemtype# #origin# #inflection# #auxiliary# \
             <FB><VPART><e><ge>] \
            [#morpheme-boundary# #lemma-index# #paradigm-index# <NoPref>]:<>
 

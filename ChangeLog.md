@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-12-05:
 
 * add `<FB>` before suffixes of compounding stems
+* add `<Abbr>` in lexical entries of abbreviations
 
 2022-12-02:
 

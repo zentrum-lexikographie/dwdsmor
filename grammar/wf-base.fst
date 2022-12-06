@@ -12,10 +12,10 @@ ALPHABET = [#deko-trigger# #char# #morpheme-boundary# #lemma-index# #paradigm-in
 
 $BaseStems$ = $LEX$ || <Stem> .* <base> .*
 
-ALPHABET = [#entry-type# #deko-trigger# #char# #morpheme-boundary# #lemma-index# \
-            #paradigm-index# #inflection# #auxiliary# <Stem><FB><VPART><e><ge>] \
-           [#category# #origin#]:<>
+ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
+            #inflection# #auxiliary# <FB><VPART><e><ge>] \
+           [#deko-trigger# #stemtype# #category# #origin#]:<>
 
-$BASEFILTER$ = .* [#category#]:<><base>:<> .*
+$BASEFILTER$ = <Stem> .*
 
 $BASE$ = $BaseStems$ || $BASEFILTER$

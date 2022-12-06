@@ -1,5 +1,5 @@
 % symbols.fst
-% Version 3.0
+% Version 3.1
 % Andreas Nolda 2022-12-05
 
 % based on code from SMORLemma by Rico Sennrich
@@ -7,7 +7,7 @@
 
 #entry-type# = <Stem><Suffix><Prefix>
 
-#deko-trigger# = <NoPref><ge>
+#deko-trigger# = <NoPref><Abbr>
 
 #char# = \ -\~¡-ÿ–‐-‧‰-›⅐-⅞
 

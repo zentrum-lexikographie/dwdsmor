@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 13.0 -->
-<!-- Andreas Nolda 2022-12-02 -->
+<!-- Version 13.1 -->
+<!-- Andreas Nolda 2022-12-06 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -54,13 +54,13 @@
 <xsl:template match="dwds:Artikel">
   <xsl:param name="file"/>
   <xsl:variable name="etymology">
-    <xsl:choose>
-      <xsl:when test="dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))&gt;0]">fremd</xsl:when>
-      <xsl:otherwise>nativ</xsl:otherwise>
-    </xsl:choose>
+    <xsl:call-template name="get-etymology-value"/>
   </xsl:variable>
   <!-- ignore idioms and other syntactically complex units -->
   <xsl:for-each select="dwds:Formangabe[dwds:Schreibung[count(tokenize(normalize-space(.)))=1]]">
+    <xsl:variable name="abbreviation">
+      <xsl:call-template name="get-abbreviation-value"/>
+    </xsl:variable>
     <xsl:variable name="basis">
       <xsl:choose>
         <!-- adpositional basis of contracted adposition -->
@@ -237,6 +237,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="type">prefix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">adjective</xsl:with-param>
@@ -256,6 +258,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="type">suffix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">adjective</xsl:with-param>
@@ -275,6 +279,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="type">prefix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">adverb</xsl:with-param>
@@ -294,6 +300,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="type">suffix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">adverb</xsl:with-param>
@@ -314,6 +322,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="type">prefix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">noun</xsl:with-param>
@@ -334,6 +344,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="type">suffix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">noun</xsl:with-param>
@@ -354,6 +366,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="type">prefix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">verb</xsl:with-param>
@@ -374,6 +388,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="type">prefix</xsl:with-param>
                 <xsl:with-param name="separable">yes</xsl:with-param>
                 <xsl:with-param name="selection">verb</xsl:with-param>
@@ -393,6 +409,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="type">suffix</xsl:with-param>
                 <xsl:with-param name="separable">no</xsl:with-param>
                 <xsl:with-param name="selection">noun</xsl:with-param>
@@ -412,23 +430,13 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="function">
-                  <xsl:choose>
-                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='attributiv'">attr</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur attributiv'">attr</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='prädikativ'">nonattr</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur prädikativ'">nonattr</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">nonattr</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">nonattr</xsl:when>
-                    <!-- no test for "nicht prädikativ", which may still allow for adverbial use -->
-                    <xsl:otherwise>any</xsl:otherwise>
-                  </xsl:choose>
+                  <xsl:call-template name="get-function-value"/>
                 </xsl:with-param>
                 <xsl:with-param name="inflection">
-                  <xsl:choose>
-                    <xsl:when test="dwds:indeklinabel">no</xsl:when>
-                    <xsl:otherwise>yes</xsl:otherwise>
-                  </xsl:choose>
+                  <xsl:call-template name="get-inflection-value"/>
                 </xsl:with-param>
                 <xsl:with-param name="positive"
                                 select="normalize-space(dwds:Positiv)"/>
@@ -454,6 +462,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -467,6 +477,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -479,6 +491,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="class">Ptkl-Neg</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -492,6 +506,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -504,6 +520,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="class">Konj-Vgl</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -517,6 +535,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -529,6 +549,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -540,6 +562,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="class">Ptkl-Zu</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -553,6 +577,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="comparative"
                                     select="normalize-space(dwds:Komparativ)"/>
                     <xsl:with-param name="superlative"
@@ -574,6 +600,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">ProAdv</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -589,6 +617,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="pronunciations"
@@ -606,6 +636,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="pronunciations"
@@ -626,6 +658,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="genitive-singular"
@@ -646,6 +680,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
@@ -666,6 +702,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="genitive-singular"
@@ -691,6 +729,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="genitive-singular"
@@ -711,6 +751,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
@@ -730,6 +772,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="pronunciations"
@@ -746,6 +790,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -761,6 +807,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -777,6 +825,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="pronunciations"
@@ -795,6 +845,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -810,6 +862,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -825,6 +879,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -840,6 +896,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -855,6 +913,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -870,6 +930,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -885,6 +947,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -900,6 +964,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -917,6 +983,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -932,6 +1000,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -948,6 +1018,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -964,6 +1036,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -979,6 +1053,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="pronunciations"
@@ -998,6 +1074,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -1013,6 +1091,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="pronunciations"
@@ -1040,6 +1120,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -1062,6 +1144,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -1078,6 +1162,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -1093,6 +1179,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="pronunciations"
@@ -1111,6 +1199,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="pronunciations"
@@ -1132,6 +1222,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="present">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
@@ -1176,6 +1268,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="present">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
@@ -1206,6 +1300,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">Intj</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -1220,19 +1316,13 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="position">
-                  <xsl:choose>
-                    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'auch nachgestellt')">any</xsl:when>
-                    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nachgestellt')">post</xsl:when>
-                    <xsl:otherwise>pre</xsl:otherwise>
-                  </xsl:choose>
+                  <xsl:call-template name="get-position-value"/>
                 </xsl:with-param>
                 <xsl:with-param name="case">
-                  <xsl:choose>
-                    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Akkusativ'">accusative</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Dativ'">dative</xsl:when>
-                    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Genitiv'">genitive</xsl:when>
-                  </xsl:choose>
+                  <xsl:call-template name="get-case-value"/>
                 </xsl:with-param>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
@@ -1251,6 +1341,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="adposition"
                                     select="$basis"/>
                     <xsl:with-param name="pronunciations"
@@ -1265,6 +1357,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -1278,6 +1372,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="adposition"
                                     select="$basis"/>
                     <xsl:with-param name="pronunciations"
@@ -1299,6 +1395,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1312,6 +1410,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1325,6 +1425,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">comp</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1340,6 +1442,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1353,6 +1457,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1366,6 +1472,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -1380,6 +1488,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1393,6 +1503,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="class">Intj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -1406,6 +1518,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1419,6 +1533,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1434,6 +1550,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1447,6 +1565,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -1461,6 +1581,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1474,6 +1596,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">comp</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1502,6 +1626,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">coord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1563,6 +1689,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">subord</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1580,6 +1708,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">inf</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1595,6 +1725,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="type">comp</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
@@ -1610,6 +1742,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -1634,6 +1768,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="class">Intj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
@@ -1647,6 +1783,8 @@
                                     select="$lemma-index"/>
                     <xsl:with-param name="paradigm-index"
                                     select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -1704,6 +1842,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="comp-stem"
                                 select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1715,6 +1855,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="comp-stem"
                                 select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1726,6 +1868,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="comp-stem"
                                 select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1737,6 +1881,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="comp-stem"
                                 select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1748,6 +1894,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="comp-stem"
                                 select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1759,6 +1907,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="comp-stem"
                                 select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1850,112 +2000,134 @@
                 <xsl:copy-of select="doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel/*"/>
               </xsl:if>
             </xsl:variable>
-            <xsl:variable name="etymology1">
-              <xsl:choose>
-                <xsl:when test="$article1/dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))&gt;0]">fremd</xsl:when>
-                <xsl:otherwise>nativ</xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
-            <!-- For the sake of simplicity, we only consider the first part-of-speech category.  -->
-            <xsl:variable name="pos1"
-                          select="normalize-space($article1/dwds:Formangabe[1]/dwds:Grammatik/dwds:Wortklasse)"/>
-            <xsl:if test="string-length($pos1)&gt;0">
-              <xsl:for-each select="distinct-values($article1/dwds:Formangabe/dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
-                                                                                             [not(@Typ='U_NR' or
-                                                                                                  @Typ='U_U' or
-                                                                                                  @Typ='U_Falschschreibung')])">
-                <xsl:variable name="lemma1"
-                              select="normalize-space(.)"/>
-                <xsl:if test="string-length($lemma1)&gt;0">
-                  <xsl:for-each select="distinct-values($article2/dwds:Formangabe/dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
-                                                                                                     [not(@Typ='U_NR' or
-                                                                                                          @Typ='U_U' or
-                                                                                                          @Typ='U_Falschschreibung')])">
-                    <xsl:variable name="lemma2"
+            <xsl:for-each select="$article1">
+              <xsl:variable name="etymology1">
+                <xsl:call-template name="get-etymology-value"/>
+              </xsl:variable>
+              <!-- ignore abbreviations -->
+              <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
+                <xsl:variable name="pos1"
+                              select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
+                <xsl:if test="string-length($pos1)&gt;0">
+                  <xsl:variable name="abbreviation1">
+                    <xsl:call-template name="get-abbreviation-value"/>
+                  </xsl:variable>
+                  <!-- ignore idioms and invalid spellings -->
+                  <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                                                       [not(@Typ='U_NR' or
+                                                            @Typ='U_U' or
+                                                            @Typ='U_Falschschreibung')]">
+                    <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
-                    <xsl:if test="string-length($lemma2)&gt;0">
-                      <xsl:variable name="comp-stem">
-                        <xsl:call-template name="comp-stem">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma"/>
-                          <xsl:with-param name="lemma1"
-                                          select="$lemma1"/>
-                          <xsl:with-param name="lemma2"
-                                          select="$lemma2"/>
-                          <xsl:with-param name="spelling-type"
-                                          select="$spelling-type"/>
-                        </xsl:call-template>
-                      </xsl:variable>
-                      <xsl:if test="string-length($comp-stem)&gt;0">
-                        <xsl:choose>
-                          <xsl:when test="$pos1='Adjektiv'">
-                            <xsl:call-template name="adjective-comp-entry-set">
-                              <xsl:with-param name="lemma"
-                                              select="$lemma1"/>
-                              <xsl:with-param name="comp-stem"
-                                              select="$comp-stem"/>
-                              <xsl:with-param name="etymology"
-                                              select="$etymology1"/>
-                            </xsl:call-template>
-                          </xsl:when>
-                          <xsl:when test="$pos1='Substantiv'">
-                            <xsl:call-template name="noun-comp-entry-set">
-                              <xsl:with-param name="lemma"
-                                              select="$lemma1"/>
-                              <xsl:with-param name="comp-stem"
-                                              select="$comp-stem"/>
-                              <xsl:with-param name="etymology"
-                                              select="$etymology1"/>
-                            </xsl:call-template>
-                          </xsl:when>
-                          <xsl:when test="$pos1='Eigenname'">
-                            <xsl:call-template name="name-comp-entry-set">
-                              <xsl:with-param name="lemma"
-                                              select="$lemma1"/>
-                              <xsl:with-param name="comp-stem"
-                                              select="$comp-stem"/>
-                              <xsl:with-param name="etymology"
-                                              select="$etymology1"/>
-                            </xsl:call-template>
-                          </xsl:when>
-                          <xsl:when test="$pos1='Kardinalzahl'">
-                            <xsl:call-template name="cardinal-comp-entry-set">
-                              <xsl:with-param name="lemma"
-                                              select="$lemma1"/>
-                              <xsl:with-param name="comp-stem"
-                                              select="$comp-stem"/>
-                              <xsl:with-param name="etymology"
-                                              select="$etymology1"/>
-                            </xsl:call-template>
-                          </xsl:when>
-                          <xsl:when test="$pos1='Ordinalzahl'">
-                            <xsl:call-template name="ordinal-comp-entry-set">
-                              <xsl:with-param name="lemma"
-                                              select="$lemma1"/>
-                              <xsl:with-param name="comp-stem"
-                                              select="$comp-stem"/>
-                              <xsl:with-param name="etymology"
-                                              select="$etymology1"/>
-                            </xsl:call-template>
-                          </xsl:when>
-                          <xsl:when test="$pos1='Verb'">
-                            <xsl:call-template name="verb-comp-entry-set">
-                              <xsl:with-param name="lemma"
-                                              select="$lemma1"/>
-                              <xsl:with-param name="comp-stem"
-                                              select="$comp-stem"/>
-                              <xsl:with-param name="etymology"
-                                              select="$etymology1"/>
-                            </xsl:call-template>
-                          </xsl:when>
-                          <!-- ... -->
-                        </xsl:choose>
-                      </xsl:if>
+                    <xsl:if test="string-length($lemma1)&gt;0">
+                      <xsl:for-each select="$article2">
+                        <!-- ignore abbreviations -->
+                        <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
+                          <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                                                               [not(@Typ='U_NR' or
+                                                                    @Typ='U_U' or
+                                                                    @Typ='U_Falschschreibung')]">
+                            <xsl:variable name="lemma2"
+                                          select="normalize-space(.)"/>
+                            <xsl:if test="string-length($lemma2)&gt;0">
+                              <xsl:variable name="comp-stem">
+                                <xsl:call-template name="comp-stem">
+                                  <xsl:with-param name="lemma"
+                                                  select="$lemma"/>
+                                  <xsl:with-param name="lemma1"
+                                                  select="$lemma1"/>
+                                  <xsl:with-param name="lemma2"
+                                                  select="$lemma2"/>
+                                  <xsl:with-param name="spelling-type"
+                                                  select="$spelling-type"/>
+                                </xsl:call-template>
+                              </xsl:variable>
+                              <xsl:if test="string-length($comp-stem)&gt;0">
+                                <xsl:choose>
+                                  <xsl:when test="$pos1='Adjektiv'">
+                                    <xsl:call-template name="adjective-comp-entry-set">
+                                      <xsl:with-param name="lemma"
+                                                      select="$lemma1"/>
+                                      <xsl:with-param name="comp-stem"
+                                                      select="$comp-stem"/>
+                                      <xsl:with-param name="abbreviation"
+                                                      select="$abbreviation1"/>
+                                      <xsl:with-param name="etymology"
+                                                      select="$etymology1"/>
+                                    </xsl:call-template>
+                                  </xsl:when>
+                                  <xsl:when test="$pos1='Substantiv'">
+                                    <xsl:call-template name="noun-comp-entry-set">
+                                      <xsl:with-param name="lemma"
+                                                      select="$lemma1"/>
+                                      <xsl:with-param name="comp-stem"
+                                                      select="$comp-stem"/>
+                                      <xsl:with-param name="abbreviation"
+                                                      select="$abbreviation1"/>
+                                      <xsl:with-param name="etymology"
+                                                      select="$etymology1"/>
+                                    </xsl:call-template>
+                                  </xsl:when>
+                                  <xsl:when test="$pos1='Eigenname'">
+                                    <xsl:call-template name="name-comp-entry-set">
+                                      <xsl:with-param name="lemma"
+                                                      select="$lemma1"/>
+                                      <xsl:with-param name="comp-stem"
+                                                      select="$comp-stem"/>
+                                      <xsl:with-param name="abbreviation"
+                                                      select="$abbreviation1"/>
+                                      <xsl:with-param name="etymology"
+                                                      select="$etymology1"/>
+                                    </xsl:call-template>
+                                  </xsl:when>
+                                  <xsl:when test="$pos1='Kardinalzahl'">
+                                    <xsl:call-template name="cardinal-comp-entry-set">
+                                      <xsl:with-param name="lemma"
+                                                      select="$lemma1"/>
+                                      <xsl:with-param name="comp-stem"
+                                                      select="$comp-stem"/>
+                                      <xsl:with-param name="abbreviation"
+                                                      select="$abbreviation1"/>
+                                      <xsl:with-param name="etymology"
+                                                      select="$etymology1"/>
+                                    </xsl:call-template>
+                                  </xsl:when>
+                                  <xsl:when test="$pos1='Ordinalzahl'">
+                                    <xsl:call-template name="ordinal-comp-entry-set">
+                                      <xsl:with-param name="lemma"
+                                                      select="$lemma1"/>
+                                      <xsl:with-param name="comp-stem"
+                                                      select="$comp-stem"/>
+                                      <xsl:with-param name="abbreviation"
+                                                      select="$abbreviation1"/>
+                                      <xsl:with-param name="etymology"
+                                                      select="$etymology1"/>
+                                    </xsl:call-template>
+                                  </xsl:when>
+                                  <xsl:when test="$pos1='Verb'">
+                                    <xsl:call-template name="verb-comp-entry-set">
+                                      <xsl:with-param name="lemma"
+                                                      select="$lemma1"/>
+                                      <xsl:with-param name="comp-stem"
+                                                      select="$comp-stem"/>
+                                      <xsl:with-param name="abbreviation"
+                                                      select="$abbreviation1"/>
+                                      <xsl:with-param name="etymology"
+                                                      select="$etymology1"/>
+                                    </xsl:call-template>
+                                  </xsl:when>
+                                  <!-- ... -->
+                                </xsl:choose>
+                              </xsl:if>
+                            </xsl:if>
+                          </xsl:for-each>
+                        </xsl:for-each>
+                      </xsl:for-each>
                     </xsl:if>
                   </xsl:for-each>
                 </xsl:if>
               </xsl:for-each>
-            </xsl:if>
+            </xsl:for-each>
           </xsl:if>
         </xsl:for-each>
       </xsl:if>
@@ -1984,5 +2156,63 @@
     <xsl:copy-of select="$previous"/>
     <xsl:copy-of select="."/>
   </dwds:Grammatik>
+</xsl:template>
+
+<xsl:template name="get-etymology-value">
+  <xsl:choose>
+    <xsl:when test="dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))&gt;0]">fremd</xsl:when>
+    <xsl:otherwise>nativ</xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="get-abbreviation-value">
+  <xsl:choose>
+    <xsl:when test="@Typ='Abkürzung'">yes</xsl:when>
+    <xsl:when test="../dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
+                                                  [normalize-space(.)='Buchstabe']">yes</xsl:when>
+    <xsl:when test="../dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
+                                                  [normalize-space(.)='Tonbezeichnung']">yes</xsl:when>
+    <xsl:when test="../dwds:Lesart/dwds:Definition[@Typ='Basis']
+                                                  [matches(normalize-space(.),'^der Laut \p{L}$')]">yes</xsl:when>
+    <xsl:when test="../dwds:Lesart/dwds:Definition[@Typ='Basis']
+                                                  [matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]">yes</xsl:when>
+    <xsl:otherwise>no</xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="get-function-value">
+  <xsl:choose>
+    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='attributiv'">attr</xsl:when>
+    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur attributiv'">attr</xsl:when>
+    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='prädikativ'">nonattr</xsl:when>
+    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur prädikativ'">nonattr</xsl:when>
+    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">nonattr</xsl:when>
+    <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">nonattr</xsl:when>
+    <!-- no test for "nicht prädikativ", which may still allow for adverbial use -->
+    <xsl:otherwise>any</xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="get-inflection-value">
+  <xsl:choose>
+    <xsl:when test="dwds:indeklinabel">no</xsl:when>
+    <xsl:otherwise>yes</xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="get-position-value">
+  <xsl:choose>
+    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'auch nachgestellt')">any</xsl:when>
+    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nachgestellt')">post</xsl:when>
+    <xsl:otherwise>pre</xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="get-case-value">
+  <xsl:choose>
+    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Akkusativ'">accusative</xsl:when>
+    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Dativ'">dative</xsl:when>
+    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Genitiv'">genitive</xsl:when>
+  </xsl:choose>
 </xsl:template>
 </xsl:stylesheet>

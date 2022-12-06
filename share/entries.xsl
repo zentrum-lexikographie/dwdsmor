@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 8.0 -->
-<!-- Andreas Nolda 2022-12-05 -->
+<!-- Version 8.1 -->
+<!-- Andreas Nolda 2022-12-06 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -13,6 +13,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="type"/>
   <xsl:param name="separable"/>
   <xsl:param name="selection"/>
@@ -26,6 +27,8 @@
                       select="$lemma-index"/>
       <xsl:with-param name="paradigm-index"
                       select="$paradigm-index"/>
+      <xsl:with-param name="abbreviation"
+                      select="$abbreviation"/>
       <xsl:with-param name="type"
                       select="$type"/>
       <xsl:with-param name="separable"
@@ -48,6 +51,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="function"/>
   <xsl:param name="inflection"/>
   <xsl:param name="positive"/>
@@ -66,6 +70,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">ADJ</xsl:with-param>
           <xsl:with-param name="class">AdjPosPred</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -84,6 +90,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos0AttrSubst</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -99,6 +107,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos0Attr</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -114,6 +124,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos0</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -129,6 +141,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="form"
                                 select="replace($comparative,'er$','')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">AdjComp</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -144,6 +158,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="form"
                                 select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">AdjSup</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -188,6 +204,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPosAttr</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -204,6 +222,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">Adj-el/er</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -219,6 +239,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPosPred</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -233,6 +255,8 @@
                               select="$paradigm-index"/>
               <xsl:with-param name="form"
                               select="replace($positive,'e$','')"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="class">AdjPosAttr</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
@@ -247,6 +271,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="form"
                                 select="replace($comparative,'er$','')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">AdjComp</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -262,6 +288,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="form"
                                 select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">AdjSup</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -278,6 +306,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -290,6 +320,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos0-viel</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -304,6 +336,8 @@
                               select="$paradigm-index"/>
               <xsl:with-param name="form"
                               select="$comparative"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="class">AdjComp0-mehr</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
@@ -318,6 +352,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="form"
                                 select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">AdjSup</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -334,6 +370,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">Adj-el/er</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -349,6 +387,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -363,6 +403,8 @@
                               select="$paradigm-index"/>
               <xsl:with-param name="form"
                               select="replace($comparative,'er$','')"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="class">AdjComp</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
@@ -377,6 +419,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="form"
                                 select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">AdjSup</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -393,6 +437,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -408,6 +454,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="form"
                                 select="replace($comparative,'er$','')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">AdjComp</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -422,6 +470,8 @@
                               select="$paradigm-index"/>
               <xsl:with-param name="form"
                               select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="class">AdjSup</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
@@ -437,6 +487,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -451,6 +503,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pos">ADJ</xsl:with-param>
                 <xsl:with-param name="class">AdjPos</xsl:with-param>
                 <xsl:with-param name="etymology"
@@ -470,6 +524,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pos">ADJ</xsl:with-param>
                 <xsl:with-param name="class">AdjPos</xsl:with-param>
                 <xsl:with-param name="etymology"
@@ -483,6 +539,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -501,6 +559,8 @@
                               select="$paradigm-index"/>
               <xsl:with-param name="form"
                               select="replace($superlative,'^am (.*[aeiouäöü].*)sten$','$1')"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="class">AdjSup-aller</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
@@ -515,6 +575,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -530,6 +592,8 @@
                               select="$paradigm-index"/>
                 <xsl:with-param name="form"
                                 select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">AdjSup</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -545,6 +609,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
               <xsl:with-param name="class">AdjPos</xsl:with-param>
               <xsl:with-param name="etymology"
@@ -560,6 +626,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="form"
                                 select="replace($comparative,'er$','')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="class">AdjComp</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
@@ -586,6 +654,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pos">ADJ</xsl:with-param>
                 <xsl:with-param name="class"
                                 select="$class"/>
@@ -603,17 +673,24 @@
 <xsl:template name="adjective-comp-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="comp-stem"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
-    <xsl:call-template name="word-comp-entry">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-      <xsl:with-param name="comp-stem"
-                      select="$comp-stem"/>
-      <xsl:with-param name="pos">ADJ</xsl:with-param>
-      <xsl:with-param name="etymology"
-                      select="$etymology"/>
-    </xsl:call-template>
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($comp-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-comp-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="comp-stem"
+                        select="$comp-stem"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">ADJ</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
   </xsl:if>
 </xsl:template>
 
@@ -621,6 +698,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="comparative"/>
   <xsl:param name="superlative"/>
   <xsl:param name="pronunciations"/>
@@ -636,6 +714,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">ADV</xsl:with-param>
           <xsl:with-param name="class">Adv</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -650,6 +730,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$comparative"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="class">AdvComp0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -664,6 +746,8 @@
                             select="$paradigm-index"/>
             <xsl:with-param name="form"
                             select="replace($superlative,'^am (.+)sten$','$1')"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="class">AdvSup</xsl:with-param>
             <xsl:with-param name="etymology"
                             select="$etymology"/>
@@ -679,6 +763,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">ADV</xsl:with-param>
           <xsl:with-param name="class">Adv</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -693,6 +779,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($comparative,'er$','')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="class">AdvComp</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -707,6 +795,8 @@
                             select="$paradigm-index"/>
             <xsl:with-param name="form"
                             select="replace($superlative,'^am (.+)sten$','$1')"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="class">AdvSup</xsl:with-param>
             <xsl:with-param name="etymology"
                             select="$etymology"/>
@@ -722,6 +812,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">ADV</xsl:with-param>
           <xsl:with-param name="class">Adv</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -736,6 +828,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -759,6 +852,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">ART</xsl:with-param>
           <xsl:with-param name="class">ArtDef</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -777,6 +872,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">ART</xsl:with-param>
           <xsl:with-param name="class">ArtIndef</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -789,6 +886,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">’n</xsl:with-param>
+          <xsl:with-param name="abbreviation">yes</xsl:with-param>
           <xsl:with-param name="pos">ART</xsl:with-param>
           <xsl:with-param name="class">ArtIndef-n</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -807,6 +905,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">ART</xsl:with-param>
           <xsl:with-param name="class">ArtNeg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -821,6 +921,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -844,6 +945,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">CARD</xsl:with-param>
           <xsl:with-param name="class">Card-ein</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -862,6 +965,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">CARD</xsl:with-param>
           <xsl:with-param name="class">Card-kein</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -878,6 +983,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">CARD</xsl:with-param>
           <xsl:with-param name="class">Card-zwei</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -900,6 +1007,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">CARD</xsl:with-param>
           <xsl:with-param name="class">Card-vier</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -915,6 +1024,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">CARD</xsl:with-param>
           <xsl:with-param name="class">Card-sieben</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -929,6 +1040,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">CARD</xsl:with-param>
           <xsl:with-param name="class">Card0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -942,17 +1055,24 @@
 <xsl:template name="cardinal-comp-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="comp-stem"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
-    <xsl:call-template name="word-comp-entry">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-      <xsl:with-param name="comp-stem"
-                      select="$comp-stem"/>
-      <xsl:with-param name="pos">CARD</xsl:with-param>
-      <xsl:with-param name="etymology"
-                      select="$etymology"/>
-    </xsl:call-template>
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($comp-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-comp-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="comp-stem"
+                        select="$comp-stem"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">CARD</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
   </xsl:if>
 </xsl:template>
 
@@ -960,6 +1080,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -979,6 +1100,8 @@
                       select="$paradigm-index"/>
       <xsl:with-param name="form"
                       select="$stem"/>
+      <xsl:with-param name="abbreviation"
+                      select="$abbreviation"/>
       <xsl:with-param name="pos">ORD</xsl:with-param>
       <xsl:with-param name="class">Ord</xsl:with-param>
       <xsl:with-param name="etymology"
@@ -990,17 +1113,24 @@
 <xsl:template name="ordinal-comp-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="comp-stem"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
-    <xsl:call-template name="word-comp-entry">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-      <xsl:with-param name="comp-stem"
-                      select="$comp-stem"/>
-      <xsl:with-param name="pos">ORD</xsl:with-param>
-      <xsl:with-param name="etymology"
-                      select="$etymology"/>
-    </xsl:call-template>
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($comp-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-comp-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="comp-stem"
+                        select="$comp-stem"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">ORD</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
   </xsl:if>
 </xsl:template>
 
@@ -1008,6 +1138,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="number"/>
   <xsl:param name="genitive-singular"/>
@@ -1074,6 +1205,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class1"/>
@@ -1087,6 +1220,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class2"/>
@@ -1136,6 +1271,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class1"/>
@@ -1149,6 +1286,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class2"/>
@@ -1198,6 +1337,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class1"/>
@@ -1211,6 +1352,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class2"/>
@@ -1260,6 +1403,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class1"/>
@@ -1273,6 +1418,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class2"/>
@@ -1322,6 +1469,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class1"/>
@@ -1335,6 +1484,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class2"/>
@@ -1357,6 +1508,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NMasc/Sg_es</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1369,7 +1522,7 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="form">
+            <xsl:with-param name="form">
             <xsl:choose>
               <xsl:when test="starts-with($nominative-plural,'-')">
                 <xsl:value-of select="concat($lemma,substring-after($nominative-plural,'-'))"/>
@@ -1379,6 +1532,8 @@
               </xsl:otherwise>
             </xsl:choose>
           </xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
           <xsl:with-param name="class">NMasc/Pl_x</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -1396,6 +1551,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">N?/Pl_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1416,6 +1573,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'e$','')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="class">NNeut-Inner</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -1433,6 +1592,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="class">NNeut_s_0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -1451,6 +1612,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">N?/Pl_0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1483,6 +1646,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NN</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class"/>
@@ -1498,17 +1663,24 @@
 <xsl:template name="noun-comp-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="comp-stem"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
-    <xsl:call-template name="word-comp-entry">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-      <xsl:with-param name="comp-stem"
-                      select="$comp-stem"/>
-      <xsl:with-param name="pos">NN</xsl:with-param>
-      <xsl:with-param name="etymology"
-                      select="$etymology"/>
-    </xsl:call-template>
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($comp-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-comp-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="comp-stem"
+                        select="$comp-stem"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
   </xsl:if>
 </xsl:template>
 
@@ -1516,6 +1688,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="number"/>
   <xsl:param name="genitive-singular"/>
@@ -1574,6 +1747,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NPROP</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class1"/>
@@ -1587,6 +1762,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NPROP</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class2"/>
@@ -1621,6 +1798,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="pos">NPROP</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class"/>
@@ -1636,17 +1815,24 @@
 <xsl:template name="name-comp-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="comp-stem"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
-    <xsl:call-template name="word-comp-entry">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-      <xsl:with-param name="comp-stem"
-                      select="$comp-stem"/>
-      <xsl:with-param name="pos">NPROP</xsl:with-param>
-      <xsl:with-param name="etymology"
-                      select="$etymology"/>
-    </xsl:call-template>
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($comp-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-comp-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="comp-stem"
+                        select="$comp-stem"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">NPROP</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
   </xsl:if>
 </xsl:template>
 
@@ -1654,6 +1840,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -1677,6 +1864,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">DEM</xsl:with-param>
           <xsl:with-param name="class">Dem-dies</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1695,6 +1884,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">DEM</xsl:with-param>
           <xsl:with-param name="class">Dem</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1713,6 +1904,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">DEM</xsl:with-param>
           <xsl:with-param name="class">DemDef</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1731,6 +1924,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">DEM</xsl:with-param>
           <xsl:with-param name="class">Dem-solch</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1756,6 +1951,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -1779,6 +1975,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-ein</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1797,6 +1995,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-irgendein</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1815,6 +2015,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-kein</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1833,6 +2035,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-welch</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1851,6 +2055,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-irgendwelch</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1869,6 +2075,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-einig</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1887,6 +2095,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-all</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1906,6 +2116,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-jed</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1924,6 +2136,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-jeglich</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1941,6 +2155,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'e$','')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-beid</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1958,6 +2174,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'e$','')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-manch</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1975,6 +2193,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'e$','')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-mehrer</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -1990,6 +2210,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2005,6 +2227,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef0</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2022,6 +2246,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">Indef-saemtlich</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2037,6 +2263,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IPro-jedermann</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2052,6 +2280,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IPro-man</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2067,6 +2297,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProMasc</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2082,6 +2314,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProMasc</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2098,6 +2332,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProNeut</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2113,6 +2349,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProNeutNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2125,6 +2363,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProNeutAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2137,6 +2377,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProNeutDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2151,6 +2393,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'was$','wes')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProNeutGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2166,6 +2410,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProMascNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2180,6 +2426,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'wer$','wen')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProMascAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2194,6 +2442,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'wer$','wem')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProMascDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2208,6 +2458,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'wer$','wes')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProMascGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2225,6 +2477,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProNeut</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2255,6 +2509,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -2275,6 +2530,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProNeutNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2287,6 +2544,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProNeutAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2299,6 +2558,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProNeutDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2312,6 +2573,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">wes</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProNeutGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2327,6 +2590,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProMascNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2340,6 +2605,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">wen</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProMascAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2353,6 +2620,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">wem</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProMascDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2366,6 +2635,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">wes</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">WProMascGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2384,6 +2655,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">WPRO</xsl:with-param>
           <xsl:with-param name="class">W-welch</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2400,6 +2673,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -2414,6 +2688,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2NomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2427,6 +2703,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">dich</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2440,6 +2718,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">dir</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2453,6 +2733,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">dein</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2GenSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2468,6 +2750,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2NomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2481,6 +2765,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">Dich</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2494,6 +2780,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">Dir</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2507,6 +2795,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">Dein</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2GenSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2522,6 +2812,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProMascNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2535,6 +2827,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">ihn</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProMascAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2548,6 +2842,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">ihm</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProMascDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2561,6 +2857,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">sein</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProMascGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2576,6 +2874,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNeutNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2588,6 +2888,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">’s</xsl:with-param>
+          <xsl:with-param name="abbreviation">yes</xsl:with-param>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNeutNomSg-s</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2600,6 +2901,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNeutAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2612,6 +2915,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">’s</xsl:with-param>
+          <xsl:with-param name="abbreviation">yes</xsl:with-param>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNeutAccSg-s</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2625,6 +2929,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">ihm</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNeutDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2638,6 +2944,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">sein</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNeutGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2653,6 +2961,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro1NomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2666,6 +2976,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">mich</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro1AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2679,6 +2991,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">mir</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro1DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2692,6 +3006,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">mein</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro1GenSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2707,6 +3023,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2NomPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2720,6 +3038,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">euch</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2AccPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2733,6 +3053,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">euch</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2DatPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2746,6 +3068,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">eu</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2GenPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2761,6 +3085,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2NomPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2774,6 +3100,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">Euch</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2AccPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2787,6 +3115,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">Euch</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2DatPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2800,6 +3130,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">Eu</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro2GenPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2815,6 +3147,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProFemNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2827,6 +3161,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendNomPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2839,6 +3175,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProFemAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2851,6 +3189,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendAccPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2864,6 +3204,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">ihr</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProFemDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2877,6 +3219,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">ihnen</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendDatPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2890,6 +3234,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">ihr</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProFemGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2903,6 +3249,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">ihr</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendGenPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2918,6 +3266,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendNomPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2930,6 +3280,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendAccPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2943,6 +3295,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">Ihnen</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendDatPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2956,6 +3310,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">Ihr</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProNoGendGenPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2971,6 +3327,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro1NomPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2984,6 +3342,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">uns</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro1AccPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -2997,6 +3357,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">uns</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro1DatPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3010,6 +3372,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">uns</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PPro1GenPl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3026,6 +3390,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -3040,6 +3405,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PRefl2AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3053,6 +3420,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">dir</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PRefl2DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3068,6 +3437,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PRefl2AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3081,6 +3452,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">Dir</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PRefl2DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3096,6 +3469,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PRefl2Pl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3111,6 +3486,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PRefl2Pl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3126,6 +3503,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PRefl1AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3139,6 +3518,8 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="form">mir</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PRefl1DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3154,6 +3535,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PRefl3</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3169,6 +3552,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PRefl1Pl</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3183,6 +3568,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -3206,6 +3592,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
           <xsl:with-param name="class">Poss</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3225,6 +3613,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
           <xsl:with-param name="class">Poss</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3243,6 +3633,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
           <xsl:with-param name="class">Poss-er</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3262,6 +3654,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'re$','er')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
           <xsl:with-param name="class">Poss-er</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3277,6 +3671,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
           <xsl:with-param name="class">Abk_POSS</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3295,6 +3691,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
           <xsl:with-param name="class">Poss/Wk</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3314,6 +3712,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
           <xsl:with-param name="class">Poss/Wk</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3332,6 +3732,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'rige$','erig')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
           <xsl:with-param name="class">Poss/Wk-er</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3351,6 +3753,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="replace($lemma,'rige$','erig')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
           <xsl:with-param name="class">Poss/Wk-er</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3365,6 +3769,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -3388,6 +3793,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">REL</xsl:with-param>
           <xsl:with-param name="class">Rel</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3406,6 +3813,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="form"
                           select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="pos">REL</xsl:with-param>
           <xsl:with-param name="class">Rel-welch</xsl:with-param>
           <xsl:with-param name="etymology"
@@ -3422,6 +3831,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="present"/>
   <xsl:param name="past"/>
   <xsl:param name="participle"/>
@@ -3524,6 +3934,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="participle"
                                 select="$participle-without-particle"/>
                 <xsl:with-param name="particle"
@@ -3544,6 +3956,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="participle"
                                 select="$participle-without-particle"/>
                 <xsl:with-param name="particle"
@@ -3578,6 +3992,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="participle"
                                 select="$participle-without-particle"/>
                 <xsl:with-param name="particle"
@@ -3608,6 +4024,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3625,6 +4043,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3645,6 +4065,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3662,6 +4084,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3678,6 +4102,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3695,6 +4121,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3712,6 +4140,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3728,6 +4158,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3745,6 +4177,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3762,6 +4196,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3779,6 +4215,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3796,6 +4234,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3813,6 +4253,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3833,6 +4275,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3850,6 +4294,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3867,6 +4313,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3884,6 +4332,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3901,6 +4351,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3918,6 +4370,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3935,6 +4389,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3952,6 +4408,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3969,6 +4427,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -3989,6 +4449,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4006,6 +4468,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4023,6 +4487,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4040,6 +4506,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4057,6 +4525,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4074,6 +4544,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4091,6 +4563,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4108,6 +4582,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4125,6 +4601,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4152,6 +4630,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4169,6 +4649,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4189,6 +4671,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4210,6 +4694,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4227,6 +4713,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4247,6 +4735,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4264,6 +4754,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4285,6 +4777,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4302,6 +4796,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4323,6 +4819,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4340,6 +4838,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4360,6 +4860,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4377,6 +4879,8 @@
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
                               select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
               <xsl:with-param name="participle"
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
@@ -4405,6 +4909,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4425,6 +4931,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4448,6 +4956,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4473,6 +4983,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4493,6 +5005,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4514,6 +5028,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4534,6 +5050,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4559,6 +5077,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4576,6 +5096,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4593,6 +5115,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4613,6 +5137,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4630,6 +5156,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4651,6 +5179,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4668,6 +5198,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4688,6 +5220,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4705,6 +5239,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4722,6 +5258,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4744,6 +5282,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4762,6 +5302,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4782,6 +5324,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4811,6 +5355,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4833,6 +5379,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4860,6 +5408,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4882,6 +5432,8 @@
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
                   <xsl:with-param name="participle"
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
@@ -4906,17 +5458,24 @@
 <xsl:template name="verb-comp-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="comp-stem"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
-    <xsl:call-template name="word-comp-entry">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-      <xsl:with-param name="comp-stem"
-                      select="$comp-stem"/>
-      <xsl:with-param name="pos">V</xsl:with-param>
-      <xsl:with-param name="etymology"
-                      select="$etymology"/>
-    </xsl:call-template>
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($comp-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-comp-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="comp-stem"
+                        select="$comp-stem"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">V</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
   </xsl:if>
 </xsl:template>
 
@@ -4924,6 +5483,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="present"/>
   <xsl:param name="participle"/>
   <xsl:param name="auxiliary"/>
@@ -4971,6 +5531,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="participle"
                           select="$participle-without-particle"/>
           <xsl:with-param name="particle"
@@ -4993,6 +5555,8 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
           <xsl:with-param name="participle"
                           select="$participle-without-particle"/>
           <xsl:with-param name="particle"
@@ -5014,6 +5578,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="position"/>
   <xsl:param name="case"/>
   <xsl:param name="pronunciations"/>
@@ -5052,6 +5617,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="class"
                             select="$class1"/>
             <xsl:with-param name="etymology"
@@ -5064,6 +5631,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="class"
                             select="$class2"/>
             <xsl:with-param name="etymology"
@@ -5092,6 +5661,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="class"
                             select="$class"/>
             <xsl:with-param name="etymology"
@@ -5107,6 +5678,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="adposition"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -5133,6 +5705,8 @@
                             select="$paradigm-index"/>
             <xsl:with-param name="form"
                             select="$lemma"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="class"
                             select="$class"/>
             <xsl:with-param name="etymology"
@@ -5159,6 +5733,8 @@
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
             <xsl:with-param name="class"
                             select="$class"/>
             <xsl:with-param name="etymology"
@@ -5174,6 +5750,7 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
   <xsl:param name="type"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
@@ -5190,20 +5767,20 @@
     </xsl:variable>
     <xsl:if test="string-length($class)&gt;0">
       <xsl:call-template name="other-entry">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-      <xsl:with-param name="lemma-index"
-                      select="$lemma-index"/>
-      <xsl:with-param name="paradigm-index"
-                      select="$paradigm-index"/>
-      <xsl:with-param name="class"
-                      select="$class"/>
-      <xsl:with-param name="etymology"
-                      select="$etymology"/>
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="lemma-index"
+                        select="$lemma-index"/>
+        <xsl:with-param name="paradigm-index"
+                        select="$paradigm-index"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="class"
+                        select="$class"/>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
 </xsl:template>
 </xsl:stylesheet>
-<!-- TODO: -->
-<!-- add support for abbreviations -->

@@ -11,6 +11,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 * do not manipulate letter case via inflection classes
 * remove inflection classes `AdjPos-Up`, `AdjPosAttr-Up`, and `IntjUp`
 * rename inflection class `AdjPos0Attr-Up` to `AdjPos0AttrSubst`
+* exclude abbreviated stems in non-hyphenated compounds
+* exclude abbreviated base stems in hyphenated compounds
 
 2022-12-02:
 
