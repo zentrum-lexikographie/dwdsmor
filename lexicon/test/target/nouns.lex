@@ -10,8 +10,8 @@
 <Stem>Aroma<NN><base><fremd><NNeut_s_s>
 <Stem>Auge<NN><base><nativ><NNeut_s_n>
 <Stem>Auto<NN><base><nativ><NNeut_s_s>
-<Stem>Autor<NN><base><fremd><NMasc_en_en>
-<Stem>Autor<NN><base><fremd><NMasc_s_en>
+<Stem>Autor<PAR1><NN><base><fremd><NMasc_s_en>
+<Stem>Autor<PAR2><NN><base><fremd><NMasc_en_en>
 <Stem>Bach<NN><base><nativ><NMasc_es_$e>
 <Stem>Band<IDX3><NN><base><fremd><NFem_0_s>
 <Stem>Bank<IDX1><NN><base><nativ><NFem_0_$e>
@@ -175,8 +175,8 @@
 <Stem>Trecking<NN><base><fremd><NNeut_s_s>
 <Stem>Trekking<NN><base><fremd><NNeut_0_s>
 <Stem>Trekking<NN><base><fremd><NNeut_s_s>
-<Stem>Überfluss<NN><base><nativ><NMasc/Sg_es>
-<Stem>Überfluß<NN><base><nativ><NMasc-s/Sg>
+<Stem>Überfluss<NN><base><nativ><NMasc_es_$e>
+<Stem>Überfluß<NN><base><nativ><NMasc-s/$sse>
 <Stem>Ufer<NN><base><nativ><NNeut_s_0>
 <Stem>Uhu<NN><base><nativ><NMasc_s_s>
 <Stem>Vater<NN><base><nativ><NMasc_s_$>
