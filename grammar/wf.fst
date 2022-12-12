@@ -1,6 +1,6 @@
 % wf.fst
-% Version 2.1
-% Andreas Nolda 2022-12-06
+% Version 2.2
+% Andreas Nolda 2022-12-12
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -34,11 +34,16 @@ $CompRestrPOS$ = (<Stem> .* <NN>:<> .* $H$) \
                  (<Stem> .* <NN>:<> .*)
 
 $CompRestrAbbr$ = !(((<Stem> .* $H$)* \
-                     (<Stem> <Abbr>:<> .* <NoHyph>:<>) \
+                     (<Stem> <Abbr>:<> .* <NoHyph>:<>) \ % no abbreviated non-final stem
+                     (<Stem> .* $H$)* \                  % without a following hyphen
+                     (<Stem> .*)) | \
+                    ((<Stem> .* $H$)* \
+                     (<Stem> .* <NoHyph>:<>) \   % no abbreviated non-final stem
+                     (<Stem> <Abbr>:<> .* $H$) \ % after a stem without a following hyphen
                      (<Stem> .* $H$)* \
                      (<Stem> .*)) | \
                     ((<Stem> .* $H$)* \
-                     (<Stem> <Abbr>:<> .*)))
+                     (<Stem> <Abbr>:<> .*))) % no abbreviated final stem
 
 $COMPFILTER$ = $CompRestrPOS$ & $CompRestrAbbr$
 

@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2022-12-12:
+
+* exclude abbreviated stems in hyphenated compounds after a stem without a
+  following hyphen
+
 2022-12-05:
 
 * directly generate surface lemmas for compounds

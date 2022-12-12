@@ -31,10 +31,10 @@ $H$ = [<Hyph><NoHyph>]:[\-<>]
 $CompRestrPOS$ = (<Stem> .* <NN>:<> .* $H$) \
                  (<Stem> .* <NN>:<> .*)
 
-$CompRestrAbbr$ = !(((<Stem> <Abbr>:<> .* <NoHyph>:<>) \
-                     (<Stem> .*)) | \
+$CompRestrAbbr$ = !(((<Stem> <Abbr>:<> .* <NoHyph>:<>) \ % no abbreviated non-final stem
+                     (<Stem> .*)) | \                    % without a following hyphen
                     ((<Stem> .* $H$) \
-                     (<Stem> <Abbr>:<> .*)))
+                     (<Stem> <Abbr>:<> .*))) % no abbreviated non-final stem
 
 $COMPFILTER$ = $CompRestrPOS$ & $CompRestrAbbr$
 
