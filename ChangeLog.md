@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-12-13:
+
+* make test for foreign lemmas more restrictive
+
 2022-12-06:
 
 * make processing of articles, cardinals, and pronouns more robust

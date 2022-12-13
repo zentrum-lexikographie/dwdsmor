@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 13.1 -->
-<!-- Andreas Nolda 2022-12-06 -->
+<!-- Version 13.2 -->
+<!-- Andreas Nolda 2022-12-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2162,7 +2162,32 @@
 
 <xsl:template name="get-etymology-value">
   <xsl:choose>
-    <xsl:when test="dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))&gt;0]">fremd</xsl:when>
+    <xsl:when test="dwds:Diachronie/dwds:Etymologie/dwds:erwaehntes_Zeichen[@Sprache]">
+      <xsl:choose>
+        <xsl:when test="dwds:Diachronie/dwds:Etymologie/dwds:erwaehntes_Zeichen[@Sprache='ahd' or
+                                                                                @Sprache='bair' or
+                                                                                @Sprache='berlin' or
+                                                                                @Sprache='dt' or
+                                                                                @Sprache='frühnhd' or
+                                                                                @Sprache='germ' or
+                                                                                @Sprache='mhd' or
+                                                                                @Sprache='mnd' or
+                                                                                @Sprache='nd' or
+                                                                                @Sprache='nhd' or
+                                                                                @Sprache='nordd' or
+                                                                                @Sprache='schweiz' or
+                                                                                @Sprache='schweizerdt']">nativ</xsl:when><!-- ... -->
+        <xsl:otherwise>fremd</xsl:otherwise>
+      </xsl:choose>
+    </xsl:when>
+    <xsl:when test="dwds:Diachronie/dwds:Etymologie[not(*)]">
+      <xsl:choose>
+        <xsl:when test="dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))=0]">nativ</xsl:when>
+        <xsl:when test="dwds:Diachronie/dwds:Etymologie[contains(.,'Deutsch') or
+                                                        contains(.,'deutsch')]">nativ</xsl:when>
+        <xsl:otherwise>fremd</xsl:otherwise>
+      </xsl:choose>
+    </xsl:when>
     <xsl:otherwise>nativ</xsl:otherwise>
   </xsl:choose>
 </xsl:template>

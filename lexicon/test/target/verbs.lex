@@ -356,8 +356,8 @@
 <Stem>scherwenzel<FB>:<>n:<><PAR2><V><base><nativ><VVReg-el/er><haben>
 <Stem>scherwenzel<FB>:<>n:<><PAR2><V><base><nativ><VVReg-el/er><sein>
 <Stem>soll<FB>:<>e:<>n:<><V><base><nativ><VVPP-en><haben>
-<Stem>stenografier<FB>:<>e:<>n:<><PAR1><V><base><fremd><VVReg><haben>
-<Stem>stenographier<FB>:<>e:<>n:<><PAR2><V><base><fremd><VVReg><haben>
+<Stem>stenografier<FB>:<>e:<>n:<><PAR1><V><base><nativ><VVReg><haben>
+<Stem>stenographier<FB>:<>e:<>n:<><PAR2><V><base><nativ><VVReg><haben>
 <Stem>substantiier<FB>:<>e:<>n:<><PAR2><V><base><nativ><VVReg><haben>
 <Stem>substanziier<FB>:<>e:<>n:<><PAR1><V><base><nativ><VVReg><haben>
 <Stem>telegrafier<FB>:<>e:<>n:<><PAR1><V><base><fremd><VVReg><haben>

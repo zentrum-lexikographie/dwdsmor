@@ -108,7 +108,7 @@
 <Stem>Konto<PAR1><NN><base><fremd><NNeut-o/en>
 <Stem>Konto<PAR1><NN><base><fremd><NNeut_s_s>
 <Stem>Konto<PAR2><NN><base><fremd><NNeut-o/i>
-<Stem>Kursus<NN><base><fremd><NMasc-us/e>
+<Stem>Kursus<NN><base><nativ><NMasc-us/e>
 <Stem>Lachen<NN><base><nativ><NNeut/Sg_s>
 <Stem>Leib<NN><base><nativ><NMasc_es_er>
 <Stem>Leute<NN><base><nativ><N?/Pl_0>
@@ -159,8 +159,8 @@
 <Stem>Ski<NN><base><fremd><NMasc_s_er>
 <Stem>Ski<NN><base><fremd><NMasc_s_x>
 <Stem>Smartwatch<NN><base><fremd><NFem_0_es>
-<Stem>Spital<PAR1><NN><base><fremd><NNeut_s_$er>
-<Stem>Spital<PAR2><NN><base><fremd><NMasc_s_$er>
+<Stem>Spital<PAR1><NN><base><nativ><NNeut_s_$er>
+<Stem>Spital<PAR2><NN><base><nativ><NMasc_s_$er>
 <Stem>Staat<IDX1><NN><base><nativ><NMasc_es_en>
 <Stem>Stadion<NN><base><fremd><NNeut-on/en>
 <Stem>Stewardess<NN><base><fremd><NFem_0_en>
