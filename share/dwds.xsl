@@ -58,9 +58,6 @@
   </xsl:variable>
   <!-- ignore idioms and other syntactically complex units -->
   <xsl:for-each select="dwds:Formangabe[dwds:Schreibung[count(tokenize(normalize-space(.)))=1]]">
-    <xsl:variable name="abbreviation">
-      <xsl:call-template name="get-abbreviation-value"/>
-    </xsl:variable>
     <xsl:variable name="basis">
       <xsl:choose>
         <!-- adpositional basis of contracted adposition -->
@@ -172,57 +169,60 @@
                                          [not(@Typ='U_NR' or
                                               @Typ='U_U' or
                                               @Typ='U_Falschschreibung')]">
-      <xsl:variable name="expanded-grammar-specs">
-        <xsl:choose>
-          <!-- expand grammar specifications for old spellings with "ß"/"ss"-alternation
-               unless there are proper grammar specifications for the old spelling -->
-          <xsl:when test="starts-with(@Typ,'U') and
-                          ../dwds:Schreibung[not(@Typ) or
-                                             ends-with(@Typ,'G')][.=n:sz-ss-alternation(current())]">
-            <xsl:variable name="canonical-lemma"
-                          select="../dwds:Schreibung[not(@Typ) or
-                                                     ends-with(@Typ,'G')][1]"/>
-            <xsl:for-each select="$grammar-specs/dwds:Grammatik">
-              <dwds:Grammatik>
-                <xsl:for-each select="*">
-                  <xsl:choose>
-                    <!-- expand grammar specifications with vocalic suffixes
-                         using the canonical lemma in new spelling -->
-                    <xsl:when test="(self::dwds:Genitiv or
-                                     self::dwds:Komparativ or
-                                     self::dwds:Plural or
-                                     self::dwds:Positiv or
-                                     self::dwds:Superlativ) and
-                                    not(starts-with(@Typ,'U')) and
-                                    matches(.,'^-[aeiouäöü]')">
-                      <xsl:element name="{name()}"
-                                   namespace="{namespace-uri()}">
-                        <xsl:value-of select="$canonical-lemma"/>
-                        <xsl:value-of select="substring-after(.,'-')"/>
-                      </xsl:element>
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <xsl:copy-of select="."/>
-                    </xsl:otherwise>
-                  </xsl:choose>
-                </xsl:for-each>
-              </dwds:Grammatik>
-            </xsl:for-each>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:copy-of select="$grammar-specs"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:variable>
       <xsl:variable name="lemma"
                     select="normalize-space(.)"/>
-      <!-- homograph index -->
-      <xsl:variable name="lemma-index"
-                    select="@hidx"/>
-      <!-- spelling type -->
-      <xsl:variable name="spelling-type"
-                    select="@Typ"/>
       <xsl:if test="string-length($lemma)&gt;0">
+        <!-- homograph index -->
+        <xsl:variable name="lemma-index"
+                      select="@hidx"/>
+        <!-- spelling type -->
+        <xsl:variable name="spelling-type"
+                      select="@Typ"/>
+        <xsl:variable name="abbreviation">
+          <xsl:call-template name="get-abbreviation-value"/>
+        </xsl:variable>
+        <xsl:variable name="expanded-grammar-specs">
+          <xsl:choose>
+            <!-- expand grammar specifications for old spellings with "ß"/"ss"-alternation
+                 unless there are proper grammar specifications for the old spelling -->
+            <xsl:when test="starts-with(@Typ,'U') and
+                            ../dwds:Schreibung[not(@Typ) or
+                                               ends-with(@Typ,'G')][.=n:sz-ss-alternation(current())]">
+              <xsl:variable name="canonical-lemma"
+                            select="../dwds:Schreibung[not(@Typ) or
+                                                       ends-with(@Typ,'G')][1]"/>
+              <xsl:for-each select="$grammar-specs/dwds:Grammatik">
+                <dwds:Grammatik>
+                  <xsl:for-each select="*">
+                    <xsl:choose>
+                      <!-- expand grammar specifications with vocalic suffixes
+                           using the canonical lemma in new spelling -->
+                      <xsl:when test="(self::dwds:Genitiv or
+                                       self::dwds:Komparativ or
+                                       self::dwds:Plural or
+                                       self::dwds:Positiv or
+                                       self::dwds:Superlativ) and
+                                      not(starts-with(@Typ,'U')) and
+                                      matches(.,'^-[aeiouäöü]')">
+                        <xsl:element name="{name()}"
+                                     namespace="{namespace-uri()}">
+                          <xsl:value-of select="$canonical-lemma"/>
+                          <xsl:value-of select="substring-after(.,'-')"/>
+                        </xsl:element>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:copy-of select="."/>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:for-each>
+                </dwds:Grammatik>
+              </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:copy-of select="$grammar-specs"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
         <!-- affixes and inflection stems -->
         <xsl:for-each select="$expanded-grammar-specs/dwds:Grammatik">
           <xsl:variable name="pos"
@@ -2011,9 +2011,6 @@
                 <xsl:variable name="pos1"
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
                 <xsl:if test="string-length($pos1)&gt;0">
-                  <xsl:variable name="abbreviation1">
-                    <xsl:call-template name="get-abbreviation-value"/>
-                  </xsl:variable>
                   <!-- ignore idioms and invalid spellings -->
                   <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
                                                        [not(@Typ='U_NR' or
@@ -2022,6 +2019,9 @@
                     <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
                     <xsl:if test="string-length($lemma1)&gt;0">
+                      <xsl:variable name="abbreviation1">
+                        <xsl:call-template name="get-abbreviation-value"/>
+                      </xsl:variable>
                       <xsl:for-each select="$article2">
                         <!-- ignore abbreviations -->
                         <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
@@ -2194,15 +2194,17 @@
 
 <xsl:template name="get-abbreviation-value">
   <xsl:choose>
-    <xsl:when test="@Typ='Abkürzung'">yes</xsl:when>
-    <xsl:when test="../dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
-                                                  [normalize-space(.)='Buchstabe']">yes</xsl:when>
-    <xsl:when test="../dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
-                                                  [normalize-space(.)='Tonbezeichnung']">yes</xsl:when>
-    <xsl:when test="../dwds:Lesart/dwds:Definition[@Typ='Basis']
-                                                  [matches(normalize-space(.),'^der Laut \p{L}$')]">yes</xsl:when>
-    <xsl:when test="../dwds:Lesart/dwds:Definition[@Typ='Basis']
-                                                  [matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]">yes</xsl:when>
+    <xsl:when test="ends-with(normalize-space(.),'.')">yes</xsl:when>
+    <xsl:when test="matches(normalize-space(.),'^\p{Lu}+$')">yes</xsl:when>
+    <xsl:when test="parent::dwds:Formangabe[@Typ='Abkürzung']">yes</xsl:when>
+    <xsl:when test="ancestor::dwds:Artikel/dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
+                                                                      [normalize-space(.)='Buchstabe']">yes</xsl:when>
+    <xsl:when test="ancestor::dwds:Artikel/dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
+                                                                      [normalize-space(.)='Tonbezeichnung']">yes</xsl:when>
+    <xsl:when test="ancestor::dwds:Artikel/dwds:Lesart/dwds:Definition[@Typ='Basis']
+                                                                      [matches(normalize-space(.),'^der Laut \p{L}$')]">yes</xsl:when>
+    <xsl:when test="ancestor::dwds:Artikel/dwds:Lesart/dwds:Definition[@Typ='Basis']
+                                                                      [matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]">yes</xsl:when>
     <xsl:otherwise>no</xsl:otherwise>
   </xsl:choose>
 </xsl:template>

@@ -3,6 +3,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 2022-12-13:
 
 * make test for foreign lemmas more restrictive
+* improve detection of abbreviations
 
 2022-12-06:
 
