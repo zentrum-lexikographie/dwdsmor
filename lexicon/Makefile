@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2022-12-02
+# Andreas Nolda 2022-12-13
 
 SAXON = java -cp /usr/share/java/Saxon-HE.jar net.sf.saxon.Transform
 DIFF  = diff -s -y -Z --suppress-common-lines -W 120
@@ -36,7 +36,7 @@ $(MANIFEST): $(SRCDIRS) $(MANIFESTXSL)
 	$(SAXON) -xsl:$(MANIFESTXSL) -it -o:$@ dwds-dir=$(SRCDIR) aux-dir=$(AUXDIR) exclude-file=$(EXCLUDE)
 
 $(LEX): $(SRCDIRS) $(LEXXSL) $(LEXLIB)
-	$(SAXON) -xsl:$(LEXXSL) -it manifest-file=$(MANIFEST) 2> $(LOG) | sort -u > $@
+	$(SAXON) -xsl:$(LEXXSL) -it manifest-file=$(MANIFEST) 2> $(LOG) | LC_ALL=C sort -u > $@
 
 test: $(TESTOUTPUTS)
 
@@ -44,7 +44,7 @@ $(TESTOUTPUT):
 	mkdir -p $@
 
 $(TESTOUTPUT)/%: $(TESTTARGET)/% $(LEXXSL) $(LEXLIB) $(TESTINPUTS) | $(TESTOUTPUT)
-	$(SAXON) -xsl:$(LEXXSL) -it manifest-file=$(patsubst $(TESTTARGET)/%.lex,$(TESTINPUT)/%.xml,$<) 2> /dev/null | sort -u > $@
+	$(SAXON) -xsl:$(LEXXSL) -it manifest-file=$(patsubst $(TESTTARGET)/%.lex,$(TESTINPUT)/%.xml,$<) 2> /dev/null | LC_ALL=C sort -u > $@
 	@$(DIFF) $< $@ || true
 
 clean: testclean
