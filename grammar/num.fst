@@ -1,6 +1,6 @@
 % num.fst
-% Version 1.1
-% Andreas Nolda 2022-11-14
+% Version 1.2
+% Andreas Nolda 2022-12-12
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -14,7 +14,7 @@ $DIGCARD0$ = $DIGCARD$ | 0
 
 $DIGORD$ = $DIGCARD$ \.
 
-$VULFRAC$ = [½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅐⅛⅜⅝⅞⅑⅒]
+$VULFRAC$ = [#frac#]
 
 $DIGFRAC$ = $DIGCARD0$ \, [0-9]+   | \
             $DIGCARD0$ / $DIGCARD$ | \

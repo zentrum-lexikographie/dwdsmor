@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2022-12-05
+# Andreas Nolda 2022-12-12
 
 FST_COMPILE = fst-compiler-utf8
 FST_COMPACT = fst-compact
@@ -10,8 +10,8 @@ A  = $(addsuffix .a,$(basename $(FST)))
 CA = $(addsuffix .ca,$(basename $(FST)))
 
 INCLUDE_COMMON = symbols.fst map.fst flexion.fst markers.fst phon.fst disj.fst cleanup.fst
-INCLUDE        = $(INCLUDE_COMMON) num.fst wf.fst punct.fst
-INCLUDE_FINITE = $(INCLUDE_COMMON) num-finite.fst wf-finite.fst punct.fst
+INCLUDE        = $(INCLUDE_COMMON) num.fst wf.fst punct.fst cap.fst
+INCLUDE_FINITE = $(INCLUDE_COMMON) num-finite.fst wf-finite.fst punct.fst cap.fst
 INCLUDE_INDEX  = $(INCLUDE_COMMON) wf-base.fst
 
 LEX = dwds.lex

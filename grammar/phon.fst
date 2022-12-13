@@ -1,6 +1,6 @@
 % phon.fst
-% Version 2.0
-% Andreas Nolda 2022-12-05
+% Version 2.1
+% Andreas Nolda 2022-12-12
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -200,7 +200,7 @@ ALPHABET = [#char# #phon-trigger#] \
 
 % gewappn&t&st -> gewappnetst
 
-$R12$ = ((((c[hk])|[bdfgmp])n | [a-zäöüß]t) <INS-E> <=> e) & \
+$R12$ = ((((c[hk])|[bdfgmp])n | [#lowercase#]t) <INS-E> <=> e) & \
         ((<INS-E>:e[dt]) <INS-E> <=> <>)
 
 

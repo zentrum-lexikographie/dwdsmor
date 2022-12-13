@@ -1,6 +1,6 @@
 % dwdsmor.fst
-% Version 3.0
-% Andreas Nolda 2022-12-05
+% Version 3.1
+% Andreas Nolda 2022-12-12
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -44,6 +44,10 @@ $MORPH$ = $DISJ$ || $MORPH$
 #include "punct.fst"
 
 $MORPH$ = $MORPH$ | $PUNCT$
+
+#include "cap.fst"
+
+$MORPH$ = $MORPH$ | <CAP>:<> ($MORPH$ || $CAP$)
 
 #include "cleanup.fst"
 

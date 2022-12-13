@@ -4,6 +4,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 * exclude abbreviated stems in hyphenated compounds after a stem without a
   following hyphen
+* add support for capitalised lowercase words
 
 2022-12-05:
 

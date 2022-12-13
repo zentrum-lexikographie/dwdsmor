@@ -1,25 +1,54 @@
 % symbols.fst
-% Version 3.1
-% Andreas Nolda 2022-12-05
+% Version 4.0
+% Andreas Nolda 2022-12-12
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
 #entry-type# = <Stem><Suffix><Prefix>
 
-#deko-trigger# = <NoPref><Abbr>
+#uppercase# = A-ZÀ-ÖØ-Þẞ % ...
 
-#char# = \ -\~¡-ÿ–‐-‧‰-›⅐-⅞
+#lowercase# = a-zßà-öø-ÿſ % ...
+
+#num# = 0-9
+
+#frac# = ½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅐⅛⅜⅝⅞⅑⅒ % ...
+
+#symbol# = \%&*§°† % ...
+
+#punctcomma# = \,
+
+#punctperiod# = \.\?\!\:;
+
+#punctellip# = … % ...
+
+#punctquote# = \"\'„“‚‘»«›‹ % ...
+
+#punctparen# = \(\)\[\] % ...
+
+#punctdash# = \-– % ...
+
+#punctslash# = / % ...
+
+#punctother# = ’ % ...
+
+#punct# = #punctcomma# #punctperiod# #punctellip# #punctquote# #punctparen# #punctdash# \
+          #punctslash# #punctother#
+
+#char# = #uppercase# #lowercase# #num# #frac# #symbol# #punct#
+
+#orth-trigger# = <OLDORTH>
+
+#ss-trigger# = <SS><SSalt>
 
 #phon-trigger# = <INS-E><FB><WB><CB><^Ax><^Px><^Gen><^Del><^pl>
 
 #surface-trigger# = <~n><d><e><er><n>
 
+#deko-trigger# = <NoPref><Abbr>
+
 #morpheme-boundary# = <\~><\=><#>
-
-#ss-trigger# = <SS><SSalt>
-
-#orth-trigger# = <OLDORTH>
 
 #category# = <ABBR><ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER><POSS> \
              <PPRO><PRO><REL><V><WPRO>
@@ -31,7 +60,8 @@
                    <+PREPART><+PREP><+PROADV><+PTCL><+REL><+SYMBOL><+TRUNC><+V> \
                    <+VPART><+WADV><+WPRO>
 
-#subcat# = <Pers><Refl><Def><Indef><Neg><Coord><Sub><Compar><Adv><ProAdv><Adj><Ant>
+#subcat# = <Pers><Refl><Def><Indef><Neg><Coord><Sub><Compar><Adv><ProAdv><Adj><Ant> \
+           <Comma><Dash><Ellip><Paren><Period><Quote><Slash>
 
 #degree# = <Pos><Comp><Sup>
 
@@ -53,10 +83,12 @@
 
 #tense# = <Pres><Past>
 
+#orthinfo# = <CAP>
+
 #metainfo# = <NonSt><Old>
 
 #feature# = #category# #auxiliary# #part-of-speech# #subcat# #degree# #person# #gender# \
-            #case# #number# #infl# #function# #nonfinite# #mood# #tense# #metainfo# \
+            #case# #number# #infl# #function# #nonfinite# #mood# #tense# #orthinfo# #metainfo# \
             <Lemma>
 
 #stemtype# = <base><comp>

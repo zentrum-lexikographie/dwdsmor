@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-12-05
+# Gregor Middell and Andreas Nolda 2022-12-12
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 6.3
+version = 6.4
 
 BASEDIR = os.path.dirname(__file__)
 LIBDIR  = os.path.join(BASEDIR, "lib")
@@ -37,7 +37,7 @@ class Analysis(tuple):
 
     @cached_property
     def segmented_lemma(self):
-        return re.sub(r"(<IDX[^>]+>)?(<PAR[^>]+>)?<\+[^>]+>.*", "", self.analysis)
+        return re.sub(r"(?:<CAP>)?(.+)(?:<IDX[^>]+>)?(?:<PAR[^>]+>)?<\+[^>]+>.*", r"\1", self.analysis)
 
     @cached_property
     def tags(self):
@@ -73,7 +73,8 @@ class Analysis(tuple):
     _nonfinite_tags    = {"Inf": True, "PPres": True, "PPast": True, "zu": True}
     _mood_tags         = {"Ind": True, "Subj": True, "Imp": True}
     _tense_tags        = {"Pres": True, "Past": True}
-    _metainfo_tags     = {"Old": True, "NonSt": True, "CAP": True}
+    _metainfo_tags     = {"Old": True, "NonSt": True}
+    _orthinfo_tags     = {"CAP": True}
 
     def tag_of_type(self, type_map):
         for tag in self.tags:
@@ -132,6 +133,10 @@ class Analysis(tuple):
     def metainfo(self):
         return self.tag_of_type(Analysis._metainfo_tags)
 
+    @cached_property
+    def orthinfo(self):
+        return self.tag_of_type(Analysis._orthinfo_tags)
+
     def as_dict(self):
         return {"form": self.form,
                 "analysis": self.analysis,
@@ -152,7 +157,8 @@ class Analysis(tuple):
                 "nonfinite": self.nonfinite,
                 "mood": self.mood,
                 "tense": self.tense,
-                "metainfo": self.metainfo}
+                "metainfo": self.metainfo,
+                "orthinfo": self.orthinfo}
 
     def _decode_component_text(text):
         lemma = ""
@@ -264,7 +270,8 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                              "Nonfinite",
                              "Mood",
                              "Tense",
-                             "Metainfo"])
+                             "Metainfo",
+                             "Orthinfo"])
     for word, analysis in zip(words, analyses):
         for a in analysis:
             csv_writer.writerow([term.bold(word),
@@ -286,7 +293,8 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                                  a.nonfinite,
                                  a.mood,
                                  a.tense,
-                                 a.metainfo])
+                                 a.metainfo,
+                                 a.orthinfo])
 
 def output_analyses(transducer, input, output, header=True, force_color=False, output_format="tsv"):
     words = tuple(word.strip() for word in input.readlines() if word.strip())

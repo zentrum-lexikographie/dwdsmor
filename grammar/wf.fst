@@ -1,5 +1,5 @@
 % wf.fst
-% Version 2.2
+% Version 2.3
 % Andreas Nolda 2022-12-12
 
 % based on code from SMORLemma by Rico Sennrich
@@ -13,8 +13,8 @@ ALPHABET = [#deko-trigger# #char# #morpheme-boundary# #lemma-index# #paradigm-in
 $BaseStems$ = $LEX$ || <Stem> .* <base> .*
 $CompStems$ = $LEX$ || <Stem> .* <comp> .*
 
-$C1$ = [a-zäöü]:[A-ZÄÖÜ] [#char#]*
-$C2$ = [A-ZÄÖÜ]:[a-zäöü] [#char#]*
+$C1$ = [#lowercase#]:[#uppercase#] [#char#]*
+$C2$ = [#uppercase#]:[#lowercase#] [#char#]*
 
 $BaseStemsDC$ = $C1$ .* || $BaseStems$ || <Stem> [#deko-trigger#]* $C2$ .* <base> .*
 $CompStemsDC$ = $C1$ .* || $CompStems$ || <Stem> [#deko-trigger#]* $C2$ .* <comp> .*
