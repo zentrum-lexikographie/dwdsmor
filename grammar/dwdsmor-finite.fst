@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 3.1
-% Andreas Nolda 2022-12-12
+% Version 4.0
+% Andreas Nolda 2022-12-20
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -13,11 +13,29 @@ $LEX$ = "dwds.lex"
 
 $LEX$ = $LEX$ | $NUM$
 
+#include "level.fst"
+
+$LEX$ = ( $LEX$ || $BASELEVEL$) | \
+        (^$LEX$ || $COMPLEVEL$)
+
 #include "map.fst"
 
 $LEX$ = $MAP1$ || $LEX$ || $MAP2$
 
-#include "wf-finite.fst"
+#include "stemtype.fst"
+
+$BaseStems$ = $LEX$ || $BASESTEMFILTER$
+$CompStems$ = $LEX$ || $COMPSTEMFILTER$
+
+$BaseStemsDC$ = $DC$ || $BaseStems$ || $BASESTEMDC$
+
+#include "wf.fst"
+
+$BASE$ = $BaseStems$ || $BASEFILTER$
+
+$COMP$ = $CompStems$ ($HYPH$ $BaseStems$ | $NOHYPH$ $BaseStemsDC$) || $COMPFILTER$
+
+$WF$ = $COMP$
 
 $LEX$ = $BASE$ | $WF$
 

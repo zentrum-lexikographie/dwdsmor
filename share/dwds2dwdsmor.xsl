@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 11.1 -->
-<!-- Andreas Nolda 2022-12-05 -->
+<!-- Version 12.0 -->
+<!-- Andreas Nolda 2022-12-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -194,7 +194,7 @@
   </xsl:if>
   <xsl:choose>
     <xsl:when test="string-length($comp-stem)&gt;0">
-      <xsl:value-of select="n:segment($lemma,$comp-stem)"/>
+      <xsl:value-of select="n:pair($lemma,n:segment($lemma,$comp-stem))"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$lemma"/>

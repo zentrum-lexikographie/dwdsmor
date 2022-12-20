@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2022-12-20:
+
+* pair lemma with compounding stem in compounding-stem entries
+
 2022-12-13:
 
 * make test for foreign lemmas more restrictive

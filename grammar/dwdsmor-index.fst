@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 3.0
-% Andreas Nolda 2022-12-05
+% Version 4.0
+% Andreas Nolda 2022-12-20
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -9,11 +9,22 @@
 
 $LEX$ = "dwds.lex"
 
+#include "level.fst"
+
+$LEX$ = ( $LEX$ || $BASELEVEL$) | \
+        (^$LEX$ || $COMPLEVEL$)
+
 #include "map.fst"
 
 $LEX$ = $MAP1$ || $LEX$ || $MAP2$
 
-#include "wf-base.fst"
+#include "stemtype.fst"
+
+$BaseStems$ = $LEX$ || $BASESTEMFILTER$
+
+#include "wf.fst"
+
+$BASE$ = $BaseStems$ || $BASEFILTER$
 
 $LEX$ = $BASE$
 
