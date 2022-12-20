@@ -3,6 +3,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 2022-12-20:
 
 * support compounding-stem entries with pairs of lemma and compounding stem
+* add `dwdsmor-root.fst` for analysing word forms in terms of root lemmas
 
 2022-12-12:
 

@@ -1,5 +1,5 @@
 % wf.fst
-% Version 3.0
+% Version 3.1
 % Andreas Nolda 2022-12-20
 
 #include "symbols.fst"
@@ -29,9 +29,3 @@ $CompRestrAbbr$ = !(((<Stem> .* $H$)* \
                      (<Stem> <Abbr>:<> .*))) % no abbreviated final stem
 
 $COMPFILTER$ = $CompRestrPOS$ & $CompRestrAbbr$
-
-$HB$ = <\=>:<FB>
-$CB$ =  <#>:<>
-
-$HYPH$   = $HB$ \-:<Hyph>   $CB$
-$NOHYPH$ =      <>:<NoHyph> $CB$

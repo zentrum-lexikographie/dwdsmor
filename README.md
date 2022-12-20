@@ -179,12 +179,17 @@ make -C grammar all
 
 The resulting DWDSmor transducers are:
 
-* `grammar/dwdsmor.{a,ca}`: for morphological analysis, with inflection and
-  word-formation components
-* `grammar/dwdsmor-finite.{a,ca}`: for testing purposes, with an inflection
-  component and a finite word-formation component
-* `grammar/dwdsmor-index.{a,ca}`: for paradigm generation, with an inflection
-  component including paradigm indices and homographic lemma indices
+* `grammar/dwdsmor.{a,ca}`: transducer with inflection and word-formation
+  components, for morphological analysis of word forms in terms of lemmas and
+  grammatical categories
+* `grammar/dwdsmor-root.{a,ca}`: transducer with inflection and word-formation
+  components, for lexical analysis of word forms in terms of root lemmas (i.e.,
+  lemmas of ultimate word-formation bases) and grammatical categories
+* `grammar/dwdsmor-finite.{a,ca}`: transducer with an inflection component and a
+  finite word-formation component, for testing purposes
+* `grammar/dwdsmor-index.{a,ca}`: transducer with an inflection component only
+  with DWDS paradigm indices and homographic lemma indices, for paradigm
+  generation
 
 Once built, the DWDSmor transducers should be installed into `lib/`, where the
 Python scripts `dwdsmor.py` and `paradigm.py` expect them by default:

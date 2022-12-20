@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 4.0
-% Andreas Nolda 2022-12-12
+% Version 4.1
+% Andreas Nolda 2022-12-20
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -48,7 +48,7 @@
 
 #deko-trigger# = <NoPref><Abbr>
 
-#morpheme-boundary# = <\~><\=><#>
+#morpheme-boundary# = <\~><\=><#><+>
 
 #category# = <ABBR><ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER><POSS> \
              <PPRO><PRO><REL><V><WPRO>

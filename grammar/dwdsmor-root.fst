@@ -1,5 +1,5 @@
-% dwdsmor.fst
-% Version 4.1
+% dwdsmor-root.fst
+% Version 1.0
 % Andreas Nolda 2022-12-20
 
 % based on code from SMORLemma by Rico Sennrich
@@ -13,11 +13,6 @@ $LEX$ = "dwds.lex"
 
 $LEX$ = $LEX$ | $NUM$
 
-#include "level.fst"
-
-$LEX$ = ( $LEX$ || $BASELEVEL$) | \
-        (^$LEX$ || $COMPLEVEL$)
-
 #include "map.fst"
 
 $LEX$ = $MAP1$ || $LEX$ || $MAP2$
@@ -27,18 +22,17 @@ $LEX$ = $MAP1$ || $LEX$ || $MAP2$
 $BaseStems$ = $LEX$ || $BASESTEMFILTER$
 $CompStems$ = $LEX$ || $COMPSTEMFILTER$
 
-$BaseStemsDC$ = $DC$ || $BaseStems$ || $BASESTEMDC$
-$CompStemsDC$ = $DC$ || $CompStems$ || $COMPSTEMDC$
+$BaseStemsDC$ = $BaseStems$ || $BASESTEMDC$
+$CompStemsDC$ = $CompStems$ || $COMPSTEMDC$
 
 #include "wf.fst"
 
 $BASE$ = $BaseStems$ || $BASEFILTER$
 
-$HB$ = <\=>:<FB>
-$CB$ =  <#>:<>
+$CB$ =  <+>:<>
 
-$HYPH$   = $HB$ \-:<Hyph>   $CB$
-$NOHYPH$ =      <>:<NoHyph> $CB$
+$HYPH$   = <>:<Hyph>   $CB$
+$NOHYPH$ = <>:<NoHyph> $CB$
 
 $COMP$ = $CompStems$ \
          ($HYPH$ $CompStems$ | $NOHYPH$ $CompStemsDC$)* \
