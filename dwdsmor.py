@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-12-12
+# Gregor Middell and Andreas Nolda 2022-12-21
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 6.4
+version = 7.0
 
 BASEDIR = os.path.dirname(__file__)
 LIBDIR  = os.path.join(BASEDIR, "lib")
@@ -29,19 +29,25 @@ class Analysis(tuple):
 
     @cached_property
     def form(self):
-        return "".join(a.form for a in self)
+        form = "".join(a.form for a in self)
+        return form
 
     @cached_property
     def lemma(self):
-        return "".join(a.lemma for a in self)
+        lemma = "".join(a.lemma for a in self)
+        return lemma
 
     @cached_property
     def segmented_lemma(self):
-        return re.sub(r"(?:<CAP>)?(.+)(?:<IDX[^>]+>)?(?:<PAR[^>]+>)?<\+[^>]+>.*", r"\1", self.analysis)
+        analysis = self.analysis
+        analysis = re.sub(r"<COMP>(:?<concat>|<hyph>)", r"", analysis)
+        analysis = re.sub(r"(?:<CAP>)?(.+?)(?:<IDX[^>]+>)?(?:<PAR[^>]+>)?<\+[^>]+>.*", r"\1", analysis)
+        return analysis
 
     @cached_property
     def tags(self):
-        return [tag for a in self for tag in a.tags]
+        tags = [tag for a in self for tag in a.tags]
+        return tags
 
     @cached_property
     def lemma_index(self):
@@ -60,6 +66,18 @@ class Analysis(tuple):
         for tag in self.tags:
             if tag.startswith("+"):
                 return tag[1:]
+
+    @cached_property
+    def process(self):
+        for tag in list(reversed(self.tags)):
+            if tag in ["COMP"]:
+                return tag
+
+    @cached_property
+    def means(self):
+        for tag in list(reversed(self.tags)):
+            if tag in ["concat", "hyph"]:
+                return tag
 
     _subcat_tags       = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True, "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True, "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True}
     _auxiliary_tags    = {"haben": True, "sein": True}
@@ -83,59 +101,73 @@ class Analysis(tuple):
 
     @cached_property
     def subcat(self):
-        return self.tag_of_type(Analysis._subcat_tags)
+        tag = self.tag_of_type(Analysis._subcat_tags)
+        return tag
 
     @cached_property
     def auxiliary(self):
-        return self.tag_of_type(Analysis._auxiliary_tags)
+        tag = self.tag_of_type(Analysis._auxiliary_tags)
+        return tag
 
     @cached_property
     def degree(self):
-        return self.tag_of_type(Analysis._degree_tags)
+        tag = self.tag_of_type(Analysis._degree_tags)
+        return tag
 
     @cached_property
     def person(self):
-        return self.tag_of_type(Analysis._person_tags)
+        tag = self.tag_of_type(Analysis._person_tags)
+        return tag
 
     @cached_property
     def gender(self):
-        return self.tag_of_type(Analysis._gender_tags)
+        tag = self.tag_of_type(Analysis._gender_tags)
+        return tag
 
     @cached_property
     def case(self):
-        return self.tag_of_type(Analysis._case_tags)
+        tag = self.tag_of_type(Analysis._case_tags)
+        return tag
 
     @cached_property
     def number(self):
-        return self.tag_of_type(Analysis._number_tags)
+        tag = self.tag_of_type(Analysis._number_tags)
+        return tag
 
     @cached_property
     def inflection(self):
-        return self.tag_of_type(Analysis._inflection_tags)
+        tag = self.tag_of_type(Analysis._inflection_tags)
+        return tag
 
     @cached_property
     def function(self):
-        return self.tag_of_type(Analysis._function_tags)
+        tag = self.tag_of_type(Analysis._function_tags)
+        return tag
 
     @cached_property
     def nonfinite(self):
-        return self.tag_of_type(Analysis._nonfinite_tags)
+        tag = self.tag_of_type(Analysis._nonfinite_tags)
+        return tag
 
     @cached_property
     def mood(self):
-        return self.tag_of_type(Analysis._mood_tags)
+        tag = self.tag_of_type(Analysis._mood_tags)
+        return tag
 
     @cached_property
     def tense(self):
-        return self.tag_of_type(Analysis._tense_tags)
+        tag = self.tag_of_type(Analysis._tense_tags)
+        return tag
 
     @cached_property
     def metainfo(self):
-        return self.tag_of_type(Analysis._metainfo_tags)
+        tag = self.tag_of_type(Analysis._metainfo_tags)
+        return tag
 
     @cached_property
     def orthinfo(self):
-        return self.tag_of_type(Analysis._orthinfo_tags)
+        tag = self.tag_of_type(Analysis._orthinfo_tags)
+        return tag
 
     def as_dict(self):
         return {"form": self.form,
@@ -144,6 +176,8 @@ class Analysis(tuple):
                 "segmentedlemma": self.segmented_lemma,
                 "lemma_index": self.lemma_index,
                 "paradigm_index": self.paradigm_index,
+                "process": self.process,
+                "means": self.means,
                 "pos": self.pos,
                 "subcat": self.subcat,
                 "auxiliary": self.auxiliary,
@@ -215,6 +249,8 @@ class Analysis(tuple):
                     joined["lemma"] += c["lemma"]
                     joined["form"]  += c["form"]
                     joined["tags"]  += c["tags"]
+                if "+" in c["tags"]:
+                    joined["lemma"] += " + "
                 result.append(joined)
                 buf = []
         if len(buf) > 0:
@@ -257,6 +293,8 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                              term.bright_black_underline("Segmentation"),
                              term.underline("Lemma Index"),
                              term.underline("Paradigm Index"),
+                             term.underline("Process"),
+                             term.underline("Means"),
                              term.underline("POS"),
                              term.underline("Subcategory"),
                              term.underline("Auxiliary"),
@@ -280,6 +318,8 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                                  term.bright_black_underline(a.segmented_lemma),
                                  term.underline(string(a.lemma_index)),
                                  term.underline(string(a.paradigm_index)),
+                                 term.underline(string(a.process)),
+                                 term.underline(string(a.means)),
                                  term.underline(string(a.pos)),
                                  term.underline(string(a.subcat)),
                                  term.underline(string(a.auxiliary)),
