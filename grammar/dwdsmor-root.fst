@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
 % Version 1.0
-% Andreas Nolda 2022-12-20
+% Andreas Nolda 2022-12-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -31,12 +31,15 @@ $BASE$ = $BaseStems$ || $BASEFILTER$
 
 $CB$ =  <+>:<>
 
-$HYPH$   = <>:<Hyph>   $CB$
-$NOHYPH$ = <>:<NoHyph> $CB$
+$HYPHB$   = <>:<Hyph>   $CB$
+$NOMARKB$ = <>:<NoMark> $CB$
+
+$COMP-hyph$   = <COMP>:<>   <hyph>:<>
+$COMP-concat$ = <COMP>:<> <concat>:<>
 
 $COMP$ = $CompStems$ \
-         ($HYPH$ $CompStems$ | $NOHYPH$ $CompStemsDC$)* \
-         ($HYPH$ $BaseStems$ | $NOHYPH$ $BaseStemsDC$) || $COMPFILTER$
+         ($HYPHB$ $CompStems$ $COMP-hyph$ | $NOMARKB$ $CompStemsDC$ $COMP-concat$)* \
+         ($HYPHB$ $BaseStems$ $COMP-hyph$ | $NOMARKB$ $BaseStemsDC$ $COMP-concat$) || $COMPFILTER$
 
 $WF$ = $COMP$
 

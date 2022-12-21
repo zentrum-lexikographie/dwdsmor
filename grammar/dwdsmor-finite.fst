@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 4.1
-% Andreas Nolda 2022-12-20
+% Version 4.2
+% Andreas Nolda 2022-12-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -36,10 +36,10 @@ $BASE$ = $BaseStems$ || $BASEFILTER$
 $HB$ = <\=>:<FB>
 $CB$ =  <#>:<>
 
-$HYPH$   = $HB$ \-:<Hyph>   $CB$
-$NOHYPH$ =      <>:<NoHyph> $CB$
+$HYPHB$   = $HB$ \-:<Hyph>   $CB$
+$NOMARKB$ =      <>:<NoMark> $CB$
 
-$COMP$ = $CompStems$ ($HYPH$ $BaseStems$ | $NOHYPH$ $BaseStemsDC$) || $COMPFILTER$
+$COMP$ = $CompStems$ ($HYPHB$ $BaseStems$ | $NOMARKB$ $BaseStemsDC$) || $COMPFILTER$
 
 $WF$ = $COMP$
 

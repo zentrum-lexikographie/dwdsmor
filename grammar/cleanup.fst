@@ -1,12 +1,12 @@
 % cleanup.fst
-% Version 2.2
-% Andreas Nolda 2022-12-20
+% Version 2.3
+% Andreas Nolda 2022-12-21
 
 % based on code from SMORLemma by Rico Sennrich
 
 #include "symbols.fst"
 
-$CLEANUP1$ = [^<Lemma>]*
+$CLEANUP1$ = [^#dummy#]*
 
 ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# #part-of-speech# #feature#] \
            <>:[#orth-trigger#]

@@ -1,6 +1,6 @@
 % wf.fst
-% Version 3.1
-% Andreas Nolda 2022-12-20
+% Version 3.2
+% Andreas Nolda 2022-12-21
 
 #include "symbols.fst"
 
@@ -10,22 +10,22 @@ ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
 
 $BASEFILTER$ = <Stem> .*
 
-$H$ = [<Hyph><NoHyph>]:[\-<>]
+$MARK$ = [<Hyph><NoMark>]:[\-<>]
 
-$CompRestrPOS$ = (<Stem> .* <NN>:<> .* $H$) \
-                 (<Stem> .* <NN>:<> .* $H$)* \
+$CompRestrPOS$ = (<Stem> .* <NN>:<> .* $MARK$)  \
+                 (<Stem> .* <NN>:<> .* $MARK$)* \
                  (<Stem> .* <NN>:<> .*)
 
-$CompRestrAbbr$ = !(((<Stem> .* $H$)* \
-                     (<Stem> <Abbr>:<> .* <NoHyph>:<>) \ % no abbreviated non-final stem
-                     (<Stem> .* $H$)* \                  % without a following hyphen
-                     (<Stem> .*)) | \
-                    ((<Stem> .* $H$)* \
-                     (<Stem> .* <NoHyph>:<>) \   % no abbreviated non-final stem
-                     (<Stem> <Abbr>:<> .* $H$) \ % after a stem without a following hyphen
-                     (<Stem> .* $H$)* \
-                     (<Stem> .*)) | \
-                    ((<Stem> .* $H$)* \
-                     (<Stem> <Abbr>:<> .*))) % no abbreviated final stem
+$CompRestrAbbr$ = !(((<Stem>           .* $MARK$)*     \
+                     (<Stem> <Abbr>:<> .* <NoMark>:<>) \ % no abbreviated non-final stem
+                     (<Stem>           .* $MARK$)*     \ % without a following hyphen
+                     (<Stem>           .*)) |          \
+                    ((<Stem>           .* $MARK$)*     \
+                     (<Stem>           .* <NoMark>:<>) \ % no abbreviated non-final stem
+                     (<Stem> <Abbr>:<> .* $MARK$)      \ % after a stem without a following hyphen
+                     (<Stem>           .* $MARK$)*     \
+                     (<Stem>           .*)) |          \
+                    ((<Stem>           .* $MARK$)*     \
+                     (<Stem> <Abbr>:<> .*)))             % no abbreviated final stem
 
 $COMPFILTER$ = $CompRestrPOS$ & $CompRestrAbbr$

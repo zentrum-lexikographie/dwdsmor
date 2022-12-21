@@ -184,7 +184,8 @@ The resulting DWDSmor transducers are:
   grammatical categories
 * `grammar/dwdsmor-root.{a,ca}`: transducer with inflection and word-formation
   components, for lexical analysis of word forms in terms of root lemmas (i.e.,
-  lemmas of ultimate word-formation bases) and grammatical categories
+  lemmas of ultimate word-formation bases), word-formation process,
+  word-formation means, and grammatical categories
 * `grammar/dwdsmor-finite.{a,ca}`: transducer with an inflection component and a
   finite word-formation component, for testing purposes
 * `grammar/dwdsmor-index.{a,ca}`: transducer with an inflection component only
