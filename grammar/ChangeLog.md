@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-01-16:
+
+* make `markers.fst` more modular
+
 2022-12-21:
 
 * add features for word-formation process and means to `dwdsmor-root.fst`

@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 1.0
-% Andreas Nolda 2022-12-21
+% Version 1.1
+% Andreas Nolda 2023-01-16
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -56,6 +56,8 @@ $MORPH$ = $MORPH$ || $GE$
 $MORPH$ = $MORPH$ || $ZU$
 
 $MORPH$ = $MORPH$ || $IMP$
+
+$MORPH$ = $MORPH$ || $BREAK$
 
 #include "phon.fst"
 

@@ -1,6 +1,6 @@
 % markers.fst
-% Version 3.0
-% Andreas Nolda 2022-12-05
+% Version 4.0
+% Andreas Nolda 2023-01-16
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -21,11 +21,15 @@ $C$ = $C$ | <zu>:<>
 $ZU$ = $C$* | \
        $C$* <VPART> {<>}:{zu} $C$* <^zz>:<> $C$*
 
-$C$ = [#char# #ss-trigger# #phon-trigger# #ss-trigger# #surface-trigger# \
+$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# \
        <UL>]
 
-$IMP$ = <Stem>:<CB> ($C$* [<Stem><VPART>]:<CB>)* $C$* | \
-        <Stem>:<CB> ($C$* <Stem>:<CB>)* $C$* <^imp>:<> $C$*
+$IMP$ = <Stem> ($C$* [<Stem><VPART>])* $C$* | \
+        <Stem> ($C$* <Stem>)* $C$* <^imp>:<> $C$*
 
-$IMPVPART$ = <Stem>:<CB> ($C$* [<Stem><VPART>]:<CB>)* $C$* | \
-             <Stem>:<CB> ($C$* [<Stem><VPART>]:<CB>)* $C$* <^imp>:<> $C$*
+$IMPVPART$ = <Stem> ($C$* [<Stem><VPART>])* $C$* | \
+             <Stem> ($C$* [<Stem><VPART>])* $C$* <^imp>:<> $C$*
+
+$C$ = [#char# #phon-trigger# #ss-trigger# #surface-trigger# <UL>]
+
+$BREAK$ = ([<Stem><VPART>]:<CB> $C$*)+
