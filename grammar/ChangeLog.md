@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-01-17:
+
+* add support for derivation by means of "un"-prefixation
+
 2023-01-16:
 
 * make `markers.fst` more modular

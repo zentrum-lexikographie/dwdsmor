@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 1.1
-% Andreas Nolda 2023-01-16
+% Version 1.2
+% Andreas Nolda 2023-01-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -22,14 +22,33 @@ $LEX$ = $MAP1$ || $LEX$ || $MAP2$
 $BaseStems$ = $LEX$ || $BASESTEMFILTER$
 $CompStems$ = $LEX$ || $COMPSTEMFILTER$
 
+$BaseStemsLC$ = $BaseStems$ || $BASESTEMLC$
+$CompStemsLC$ = $CompStems$ || $COMPSTEMLC$
+
 $BaseStemsDC$ = $BaseStems$ || $BASESTEMDC$
 $CompStemsDC$ = $CompStems$ || $COMPSTEMDC$
 
 #include "wf.fst"
 
-$BASE$ = $BaseStems$ || $BASEFILTER$
-
 $CB$ =  <+>:<>
+
+$PrefLC-un$ = <>:<Prefix> <>:{un}
+$PrefUC-un$ = <>:<Prefix> <>:{Un}
+
+$DER-un$ = <DER>:<> <pref(un)>:<>
+
+$DerBaseStems$ = $PrefLC-un$ $BaseStemsLC$ $DER-un$ | $PrefUC-un$ $BaseStemsDC$ $DER-un$ || $DERFILTER$
+$DerCompStems$ = $PrefLC-un$ $CompStemsLC$ $DER-un$ | $PrefUC-un$ $CompStemsDC$ $DER-un$ || $DERFILTER$
+
+$DerBaseStemsDC$ = $DerBaseStems$ || $PREFBASESTEMDC$
+$DerCompStemsDC$ = $DerCompStems$ || $PREFCOMPSTEMDC$
+
+$BaseStems$ = $BaseStems$ | $DerBaseStems$
+$CompStems$ = $CompStems$ | $DerCompStems$
+
+$BaseStemsDC$ = $BaseStemsDC$ | $DerBaseStemsDC$
+
+$BASE$ = $BaseStems$ || $BASEFILTER$
 
 $HYPHB$   = <>:<Hyph>   $CB$
 $NOMARKB$ = <>:<NoMark> $CB$
@@ -38,12 +57,10 @@ $COMP-hyph$   = <COMP>:<>   <hyph>:<>
 $COMP-concat$ = <COMP>:<> <concat>:<>
 
 $COMP$ = $CompStems$ \
-         ($HYPHB$ $CompStems$ $COMP-hyph$ | $NOMARKB$ $CompStemsDC$ $COMP-concat$)* \
+         % ($HYPHB$ $CompStems$ $COMP-hyph$ | $NOMARKB$ $CompStemsDC$ $COMP-concat$)* \
          ($HYPHB$ $BaseStems$ $COMP-hyph$ | $NOMARKB$ $BaseStemsDC$ $COMP-concat$) || $COMPFILTER$
 
-$WF$ = $COMP$
-
-$LEX$ = $BASE$ | $WF$
+$LEX$ = $BASE$ | $COMP$
 
 #include "flexion.fst"
 

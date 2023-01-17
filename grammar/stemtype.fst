@@ -1,6 +1,6 @@
 % stemtype.fst
-% Version 1.0
-% Andreas Nolda 2022-12-20
+% Version 1.1
+% Andreas Nolda 2023-01-17
 
 #include "symbols.fst"
 
@@ -10,10 +10,19 @@ ALPHABET = [#deko-trigger# #char# #morpheme-boundary# #lemma-index# #paradigm-in
 $BASESTEMFILTER$ = <Stem> .* <base> .*
 $COMPSTEMFILTER$ = <Stem> .* <comp> .*
 
-$C1$ = [#lowercase#]:[#uppercase#] [#char#]*
-$C2$ = [#uppercase#]:[#lowercase#] [#char#]*
+$C1$ = [#lowercase#]               [#char#]*
+$C2$ = [#lowercase#]:[#uppercase#] [#char#]*
+$C3$ = [#uppercase#]:[#lowercase#] [#char#]*
 
-$DC$ = $C1$ .*
+$LC$    = $C1$ .*
+$LC2UC$ = $C2$ .*
+$UC2LC$ = $C3$ .*
 
-$BASESTEMDC$ = <Stem> [#deko-trigger#]* $C2$ .* <base> .*
-$COMPSTEMDC$ = <Stem> [#deko-trigger#]* $C2$ .* <comp> .*
+$BASESTEMLC$ = <Stem> [#deko-trigger#]* $LC$ <base> .*
+$COMPSTEMLC$ = <Stem> [#deko-trigger#]* $LC$ <comp> .*
+
+$BASESTEMDC$ = <Stem> [#deko-trigger#]* $UC2LC$ <base> .*
+$COMPSTEMDC$ = <Stem> [#deko-trigger#]* $UC2LC$ <comp> .*
+
+$PREFBASESTEMDC$ = <Prefix> $UC2LC$ <Stem> [#deko-trigger#]* .* <base> .*
+$PREFCOMPSTEMDC$ = <Prefix> $UC2LC$ <Stem> [#deko-trigger#]* .* <comp> .*
