@@ -1,6 +1,6 @@
 % wf.fst
-% Version 3.3
-% Andreas Nolda 2023-01-17
+% Version 3.4
+% Andreas Nolda 2023-01-18
 
 #include "symbols.fst"
 
@@ -10,9 +10,14 @@ ALPHABET = [#deko-trigger# #char# #morpheme-boundary# #lemma-index# #paradigm-in
 $DerRestrPOS-un$ = <Prefix> un <Stem> .* <ADJ> .*
 $DerRestrPOS-Un$ = <Prefix> Un <Stem> .* <NN>  .*
 
+$DerRestrAbbr-un$ = !((<Prefix> un <Stem> <Abbr> .*) | \
+                      (<Prefix> Un <Stem> <Abbr> .*))
+
 $DerRestrPOS$ = $DerRestrPOS-un$ | $DerRestrPOS-Un$
 
-$DERFILTER$ = $DerRestrPOS$
+$DerRestrAbbr$ = $DerRestrAbbr-un$
+
+$DERFILTER$ = $DerRestrPOS$ & $DerRestrAbbr$
 
 ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
             #inflection# #auxiliary# <FB><VPART><e><ge>] \

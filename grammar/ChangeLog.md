@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-01-18:
+
+* restrict derivation by means of "un"-prefixation to non-abbreviated bases
+
 2023-01-17:
 
 * add support for derivation by means of "un"-prefixation
