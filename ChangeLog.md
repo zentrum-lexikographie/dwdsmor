@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-01-27:
+
+* adapt lexicon processing to upstream markup of irregular positive forms
+
 2022-12-20:
 
 * pair lemma with compounding stem in compounding-stem entries

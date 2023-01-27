@@ -18,15 +18,4 @@
       </Grammatik>
     </Formangabe>
   </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>hoch</Schreibung>
-      <Grammatik>
-        <Wortklasse>Adjektiv</Wortklasse>
-        <Positiv>hohe</Positiv>
-        <Komparativ>höher</Komparativ>
-        <Superlativ>am höchsten</Superlativ>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
 </DWDS>

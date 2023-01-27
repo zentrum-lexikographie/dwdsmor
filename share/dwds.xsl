@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 13.2 -->
-<!-- Andreas Nolda 2022-12-13 -->
+<!-- Version 13.3 -->
+<!-- Andreas Nolda 2023-01-27 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -75,7 +75,7 @@
                                                    self::dwds:indeklinabel or
                                                    self::dwds:Genitiv[count(tokenize(normalize-space(.)))=1] or
                                                    self::dwds:Plural[count(tokenize(normalize-space(.)))=1] or
-                                                   self::dwds:Positiv[count(tokenize(normalize-space(.)))=1] or
+                                                   self::dwds:Positivvariante[count(tokenize(normalize-space(.)))=1] or
                                                    self::dwds:Komparativ[count(tokenize(normalize-space(.)))=1] or
                                                    self::dwds:Superlativ[tokenize(normalize-space(.))[1]='am']
                                                                         [count(tokenize(normalize-space(.)))=2] or
@@ -200,7 +200,7 @@
                       <xsl:when test="(self::dwds:Genitiv or
                                        self::dwds:Komparativ or
                                        self::dwds:Plural or
-                                       self::dwds:Positiv or
+                                       self::dwds:Positivvariante or
                                        self::dwds:Superlativ) and
                                       not(starts-with(@Typ,'U')) and
                                       matches(.,'^-[aeiouäöü]')">
@@ -441,7 +441,7 @@
                   <xsl:call-template name="get-inflection-value"/>
                 </xsl:with-param>
                 <xsl:with-param name="positive"
-                                select="normalize-space(dwds:Positiv)"/>
+                                select="normalize-space(dwds:Positivvariante)"/>
                 <xsl:with-param name="comparative"
                                 select="normalize-space(dwds:Komparativ)"/>
                 <xsl:with-param name="superlative"
