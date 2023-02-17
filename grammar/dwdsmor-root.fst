@@ -57,7 +57,7 @@ $COMP-hyph$   = <COMP>:<>   <hyph>:<>
 $COMP-concat$ = <COMP>:<> <concat>:<>
 
 $COMP$ = $CompStems$ \
-         % ($HYPHB$ $CompStems$ $COMP-hyph$ | $NOMARKB$ $CompStemsDC$ $COMP-concat$)* \
+         ($HYPHB$ $CompStems$ $COMP-hyph$ | $NOMARKB$ $CompStemsDC$ $COMP-concat$)* \
          ($HYPHB$ $BaseStems$ $COMP-hyph$ | $NOMARKB$ $BaseStemsDC$ $COMP-concat$) || $COMPFILTER$
 
 $LEX$ = $BASE$ | $COMP$
