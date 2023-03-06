@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 12.0 -->
-<!-- Andreas Nolda 2022-12-20 -->
+<!-- Version 12.1 -->
+<!-- Andreas Nolda 2023-03-06 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -313,7 +313,6 @@
     <xsl:text>&lt;Abbr&gt;</xsl:text>
   </xsl:if>
   <xsl:if test="string-length($particle)&gt;0">
-    <xsl:text>&lt;NoPref&gt;</xsl:text>
     <xsl:value-of select="$particle"/>
     <xsl:text>&lt;VPART&gt;</xsl:text>
   </xsl:if>

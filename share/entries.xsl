@@ -1528,7 +1528,7 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-            <xsl:with-param name="form">
+          <xsl:with-param name="form">
             <xsl:choose>
               <xsl:when test="starts-with($nominative-plural,'-')">
                 <xsl:value-of select="concat($lemma,substring-after($nominative-plural,'-'))"/>

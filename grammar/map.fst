@@ -29,6 +29,6 @@ $E$ = e <=> <e> ([lr] [#lemma-index#]? [#paradigm-index#]? \
 
 ALPHABET = [#entry-type# #deko-trigger# #char# #category# #stemtype# #origin# #inflection# #auxiliary# \
             <FB><VPART><e><ge>] \
-           [#morpheme-boundary# #lemma-index# #paradigm-index# <NoPref>]:<>
+           [#morpheme-boundary# #lemma-index# #paradigm-index#]:<>
 
 $MAP2$ = $ANY$ || $E$ || .*

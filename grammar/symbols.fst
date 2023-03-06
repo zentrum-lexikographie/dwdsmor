@@ -46,7 +46,7 @@
 
 #surface-trigger# = <~n><d><e><er><n>
 
-#deko-trigger# = <NoPref><Abbr>
+#deko-trigger# = <Abbr>
 
 #morpheme-boundary# = <\~><\=><#><+>
 
