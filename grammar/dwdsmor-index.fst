@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 4.1
-% Andreas Nolda 2023-01-16
+% Version 4.2
+% Andreas Nolda 2023-03-07
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -28,9 +28,9 @@ $BASE$ = $BaseStems$ || $BASEFILTER$
 
 $LEX$ = $BASE$
 
-#include "flexion.fst"
+#include "infl.fst"
 
-$MORPH$ = $LEX$ $FLEXION$ || $FLEXFILTER$
+$MORPH$ = $LEX$ $INFL$ || $INFLFILTER$
 
 #include "markers.fst"
 

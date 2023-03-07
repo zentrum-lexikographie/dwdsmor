@@ -1,6 +1,6 @@
 % dwdsmor.fst
-% Version 4.4
-% Andreas Nolda 2023-01-17
+% Version 4.5
+% Andreas Nolda 2023-03-07
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -65,9 +65,9 @@ $COMP$ = $CompStems$ \
 
 $LEX$ = $BASE$ | $COMP$
 
-#include "flexion.fst"
+#include "infl.fst"
 
-$MORPH$ = $LEX$ $FLEXION$ || $FLEXFILTER$
+$MORPH$ = $LEX$ $INFL$ || $INFLFILTER$
 
 #include "markers.fst"
 
