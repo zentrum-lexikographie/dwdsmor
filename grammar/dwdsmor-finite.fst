@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 4.5
-% Andreas Nolda 2023-03-07
+% Version 4.6
+% Andreas Nolda 2023-03-10
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -94,6 +94,6 @@ $MORPH$ = $MORPH$ | <CAP>:<> ($MORPH$ || $CAP$)
 
 #include "cleanup.fst"
 
-$MORPH$ = $CLEANUP1$ || $CLEANUP2$ || $CLEANUP3$ || $MORPH$
+$MORPH$ = $CLEANUP1$ || $CLEANUP2$ || $MORPH$
 
 $MORPH$

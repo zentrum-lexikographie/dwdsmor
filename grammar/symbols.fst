@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 4.4
-% Andreas Nolda 2023-03-06
+% Version 4.5
+% Andreas Nolda 2023-03-10
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -91,11 +91,9 @@
 
 #metainfo# = <NonSt><Old>
 
-#dummy# = <Lemma>
-
 #feature# = #wf-process# #wf-means# #category# #auxiliary# #part-of-speech# #subcat# \
             #degree# #person# #gender# #case# #number# #infl# #function# #nonfinite# \
-            #mood# #tense# #orthinfo# #metainfo# #dummy#
+            #mood# #tense# #orthinfo# #metainfo#
 
 #stemtype# = <base><comp>
 

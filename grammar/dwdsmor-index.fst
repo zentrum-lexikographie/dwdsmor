@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 4.2
-% Andreas Nolda 2023-03-07
+% Version 4.3
+% Andreas Nolda 2023-03-10
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -52,6 +52,6 @@ $MORPH$ = $DISJ$ || $MORPH$
 
 #include "cleanup.fst"
 
-$MORPH$ = $CLEANUP1$ || $CLEANUP2$ || $MORPH$
+$MORPH$ = $CLEANUP1$ || $MORPH$
 
 $MORPH$

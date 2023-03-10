@@ -1,6 +1,6 @@
 % infl.fst
-% Version 3.0
-% Andreas Nolda 2023-03-07
+% Version 3.1
+% Andreas Nolda 2023-03-10
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -605,8 +605,7 @@ $AdjPos$ = {<+ADJ><Pos><Pred/Adv>}:{<FB>} | \
            {<+ADJ><Pos>}:{<FB>}           $AdjInflSuff$
 
 % ander-; vorig-
-$AdjPosAttr$ = {<+ADJ><Pos><Lemma>}:{} | \
-               {<+ADJ><Pos>}:{<FB>}    $AdjInflSuff$
+$AdjPosAttr$ = {<+ADJ><Pos>}:{<FB>}    $AdjInflSuff$
 
 % besser, besser-; höher, höher-
 $AdjComp$ = {<+ADJ><Comp><Pred/Adv>}:{er} | \
@@ -621,8 +620,7 @@ $AdjSup$ = {<+ADJ><Sup><Pred/Adv>}:{sten} | \
            {<+ADJ><Sup>}:{st}             $AdjInflSuff$
 
 % allerbesten, allerbest-; allerhöchsten, allerhöchst-
-$AdjSup-aller$ = {<+ADJ><Sup><Lemma>}:{st}      | \
-                 {<+ADJ><Sup><Pred/Adv>}:{sten} | \
+$AdjSup-aller$ = {<+ADJ><Sup><Pred/Adv>}:{sten} | \
                  {<+ADJ><Sup>}:{st}             $AdjInflSuff$
 
 % faul-, fauler-, faulst-
