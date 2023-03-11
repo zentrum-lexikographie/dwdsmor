@@ -1,28 +1,31 @@
 % stemtype.fst
-% Version 1.1
-% Andreas Nolda 2023-01-17
+% Version 2.0
+% Andreas Nolda 2023-03-10
 
 #include "symbols.fst"
 
-ALPHABET = [#deko-trigger# #char# #morpheme-boundary# #lemma-index# #paradigm-index# \
-            #category# #origin# #inflection# #auxiliary# <Stem><FB><VPART><e><ge>]
+ALPHABET = [#entry-type# #char# #surface-trigger# #morpheme-boundary# \
+            #lemma-index# #paradigm-index# #category# #stemtype# #origin# \
+            #inflection# #auxiliary# <Abbr><FB><VPART><ge>]
 
-$BASESTEMFILTER$ = <Stem> .* <base> .*
-$COMPSTEMFILTER$ = <Stem> .* <comp> .*
+$BaseStemFilter$ = <Stem> .* <base> [^#stemtype#]*
+$CompStemFilter$ = <Stem> .* <comp> [^#stemtype#]*
 
-$C1$ = [#lowercase#]               [#char#]*
-$C2$ = [#lowercase#]:[#uppercase#] [#char#]*
-$C3$ = [#uppercase#]:[#lowercase#] [#char#]*
+$LC$    = [#lowercase#]               [#char#]*
+$LC2UC$ = [#lowercase#]:[#uppercase#] [#char#]*
+$UC2LC$ = [#uppercase#]:[#lowercase#] [#char#]*
 
-$LC$    = $C1$ .*
-$LC2UC$ = $C2$ .*
-$UC2LC$ = $C3$ .*
+$BaseStemLC$ = <Stem> <Abbr>? $LC$ .* <base> [^#stemtype#]*
+$CompStemLC$ = <Stem> <Abbr>? $LC$ .* <comp> [^#stemtype#]*
 
-$BASESTEMLC$ = <Stem> [#deko-trigger#]* $LC$ <base> .*
-$COMPSTEMLC$ = <Stem> [#deko-trigger#]* $LC$ <comp> .*
+$BaseStemDCAnalysis$ = <Stem> <Abbr>? $LC2UC$ .* <base> [^#stemtype#]*
+$CompStemDCAnalysis$ = <Stem> <Abbr>? $LC2UC$ .* <comp> [^#stemtype#]*
 
-$BASESTEMDC$ = <Stem> [#deko-trigger#]* $UC2LC$ <base> .*
-$COMPSTEMDC$ = <Stem> [#deko-trigger#]* $UC2LC$ <comp> .*
+$BaseStemDC$ = <Stem> <Abbr>? $UC2LC$ .* <base> [^#stemtype#]*
+$CompStemDC$ = <Stem> <Abbr>? $UC2LC$ .* <comp> [^#stemtype#]*
 
-$PREFBASESTEMDC$ = <Prefix> $UC2LC$ <Stem> [#deko-trigger#]* .* <base> .*
-$PREFCOMPSTEMDC$ = <Prefix> $UC2LC$ <Stem> [#deko-trigger#]* .* <comp> .*
+$PrefBaseStemDCAnalysis$ = <Prefix> $LC2UC$ .* <Stem> <Abbr>? .* <base> [^#stemtype#]*
+$PrefCompStemDCAnalysis$ = <Prefix> $LC2UC$ .* <Stem> <Abbr>? .* <comp> [^#stemtype#]*
+
+$PrefBaseStemDC$ = <Prefix> $UC2LC$ .* <Stem> <Abbr>? .* <base> [^#stemtype#]*
+$PrefCompStemDC$ = <Prefix> $UC2LC$ .* <Stem> <Abbr>? .* <comp> [^#stemtype#]*

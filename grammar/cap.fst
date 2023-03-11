@@ -7,4 +7,7 @@
 
 #include "symbols.fst"
 
+
+% generate capitalised variants
+
 $CAP$ = [#lowercase#]:[#uppercase#] [#char#]*

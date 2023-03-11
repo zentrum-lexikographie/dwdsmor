@@ -5,6 +5,8 @@
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
+% replace disjunctive categories on analysis level
+
 ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# #feature# \
             <VPART><OLDORTH><Old><NonSt>] \
            [<1><3>]:<13> \
@@ -21,4 +23,4 @@ ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# #feature# 
            [<St><Wk>]:<SW> \
            [<Attr><Subst>]:<AS>
 
-$DISJ$ = .*
+$DisjunctiveCategoriesAnalysis$ = .*

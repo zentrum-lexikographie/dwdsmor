@@ -1,5 +1,5 @@
 % symbols.fst
-% Version 4.5
+% Version 4.6
 % Andreas Nolda 2023-03-10
 
 % based on code from SMORLemma by Rico Sennrich
@@ -46,13 +46,13 @@
 
 #surface-trigger# = <~n><d><e><er><n>
 
-#deko-trigger# = <Abbr>
-
-#morpheme-boundary# = <\~><\=><#><+>
+#wf-trigger# = <^none><^hyph>
 
 #wf-process# = <COMP><DER>
 
 #wf-means# = <concat><hyph><pref(un)>
+
+#morpheme-boundary# = <\~><\=><#><+>
 
 #category# = <ABBR><ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER><POSS> \
              <PPRO><PRO><REL><V><WPRO>

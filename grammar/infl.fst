@@ -1974,5 +1974,5 @@ $=INFL$ = [#inflection#]:<>
 
 $=AUX$ = [#auxiliary#]:<>
 
-$INFLFILTER$ = (.* $=INFL$ $=AUX$ $=INFL$ $=AUX$ .*) | \
+$InflFilter$ = (.* $=INFL$ $=AUX$ $=INFL$ $=AUX$ .*) | \
                (.* $=INFL$ $=INFL$ .*)

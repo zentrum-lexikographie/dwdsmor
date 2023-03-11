@@ -1,46 +1,75 @@
 % wf.fst
-% Version 3.4
-% Andreas Nolda 2023-01-18
+% Version 4.0
+% Andreas Nolda 2023-03-10
 
 #include "symbols.fst"
 
-ALPHABET = [#deko-trigger# #char# #morpheme-boundary# #lemma-index# #paradigm-index# \
-            #category# #stemtype# #origin# #inflection# #auxiliary# <FB><VPART><e><ge>]
+ALPHABET = [#entry-type# #char# #surface-trigger# #category# \
+            #stemtype# #origin# #inflection# #auxiliary# \
+            <Abbr><FB><VPART><ge><^hyph><^none>]
 
-$DerRestrPOS-un$ = <Prefix> un <Stem> .* <ADJ> .*
-$DerRestrPOS-Un$ = <Prefix> Un <Stem> .* <NN>  .*
+% context
 
-$DerRestrAbbr-un$ = !((<Prefix> un <Stem> <Abbr> .*) | \
-                      (<Prefix> Un <Stem> <Abbr> .*))
+$C$ = [^#entry-type#]
+
+% compounding triggers
+
+$T$ = [<^hyph><^none>]
+
+
+% derivation restrictions
+
+% restrict pref(un) to adjectival and nominal bases
+$DerRestrPOS-un$ = <Prefix> un <Stem> $C$* <ADJ> $C$*
+$DerRestrPOS-Un$ = <Prefix> Un <Stem> $C$* <NN>  $C$*
+
+% exclude pref(un) for abbreviated bases
+$DerRestrAbbr-un$ = !((<Prefix> un <Stem> <Abbr> $C$*) | \
+                      (<Prefix> Un <Stem> <Abbr> $C$*))
 
 $DerRestrPOS$ = $DerRestrPOS-un$ | $DerRestrPOS-Un$
 
 $DerRestrAbbr$ = $DerRestrAbbr-un$
 
-$DERFILTER$ = $DerRestrPOS$ & $DerRestrAbbr$
+$DerFilter$ = $DerRestrPOS$ & $DerRestrAbbr$
 
-ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
-            #inflection# #auxiliary# <FB><VPART><e><ge>] \
-           [#deko-trigger# #category# #stemtype# #origin#]:<>
 
-$BASEFILTER$ = (<Prefix> .*)? <Stem> .*
+% compounding restrictions
 
-$MARK$ = [<Hyph><NoMark>]:[\-<>]
+% restrict compounding to nominal bases (?)
+$CompRestrPOS$ = ((<Prefix> $C$*)? <Stem> $C$* <NN> $C$* $T$)  \
+                 ((<Prefix> $C$*)? <Stem> $C$* <NN> $C$* $T$)* \
+                 ((<Prefix> $C$*)? <Stem> $C$* <NN> $C$*)
 
-$CompRestrPOS$ = ((<Prefix> .*)? <Stem> .* <NN>:<> .* $MARK$)  \
-                 ((<Prefix> .*)? <Stem> .* <NN>:<> .* $MARK$)* \
-                 ((<Prefix> .*)? <Stem> .* <NN>:<> .*)
+% exclude compounding of abbreviated non-final bases without a following hyphen
+$CompRestrAbbr1$ = !(((<Prefix> $C$*)? <Stem>        $C$* $T$)*  \
+                     ((<Prefix> $C$*)? <Stem> <Abbr> $C$* <^none>) \
+                     ((<Prefix> $C$*)? <Stem>        $C$* $T$)*  \
+                     ((<Prefix> $C$*)? <Stem>        $C$*))
 
-$CompRestrAbbr$ = !((((<Prefix> .*)? <Stem>           .* $MARK$)*     \
-                     ((<Prefix> .*)? <Stem> <Abbr>:<> .* <NoMark>:<>) \ % no abbreviated non-final stem
-                     ((<Prefix> .*)? <Stem>           .* $MARK$)*     \ % without a following hyphen
-                     ((<Prefix> .*)? <Stem>           .*)) |          \
-                    (((<Prefix> .*)? <Stem>           .* $MARK$)*     \
-                     ((<Prefix> .*)? <Stem>           .* <NoMark>:<>) \ % no abbreviated non-final stem
-                     ((<Prefix> .*)? <Stem> <Abbr>:<> .* $MARK$)      \ % after a stem without a following hyphen
-                     ((<Prefix> .*)? <Stem>           .* $MARK$)*     \
-                     ((<Prefix> .*)? <Stem>           .*)) |          \
-                    (((<Prefix> .*)? <Stem>           .* $MARK$)*     \
-                     ((<Prefix> .*)? <Stem> <Abbr>:<> .*)))             % no abbreviated final stem
+% exclude compounding of abbreviated bases without a preceding hyphen
+$CompRestrAbbr2$ = !(((<Prefix> $C$*)? <Stem>        $C$* $T$)*  \
+                     ((<Prefix> $C$*)? <Stem>        $C$* <^none>) \
+                     ((<Prefix> $C$*)? <Stem> <Abbr> $C$* $T$)   \
+                     ((<Prefix> $C$*)? <Stem>        $C$* $T$)*  \
+                     ((<Prefix> $C$*)? <Stem>        $C$*))
 
-$COMPFILTER$ = $CompRestrPOS$ & $CompRestrAbbr$
+% exclude compounding of abbreviated final bases (?)
+$CompRestrAbbr3$ = !(((<Prefix> $C$*)? <Stem>        $C$* $T$)*  \
+                     ((<Prefix> $C$*)? <Stem> <Abbr> $C$*))
+
+$CompRestrAbbr$ = $CompRestrAbbr1$ & $CompRestrAbbr2$ & $CompRestrAbbr3$
+
+
+% replace compounding triggers with appropriate morphological realisations
+
+ALPHABET = [#entry-type# #char# #surface-trigger# #category# \
+            #stemtype# #origin# #inflection# #auxiliary# \
+            <Abbr><FB><VPART><ge>] \
+           <^none>:<> \
+           <^hyph>:\-
+
+$CompTriggers$ = .*
+
+
+$CompFilter$ = $CompRestrPOS$ & $CompRestrAbbr$ || $CompTriggers$

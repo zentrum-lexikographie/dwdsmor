@@ -1,52 +1,72 @@
 % dwdsmor.fst
-% Version 4.6
+% Version 5.0
 % Andreas Nolda 2023-03-10
 
-% based on code from SMORLemma by Rico Sennrich
-% which is in turn based on code from SMOR by Helmut Schmid
-
 #include "symbols.fst"
+#include "num.fst"
+#include "stemtype.fst"
+#include "wf.fst"
+#include "infl.fst"
+#include "markers.fst"
+#include "phon.fst"
+#include "disj.fst"
+#include "punct.fst"
+#include "cap.fst"
+#include "cleanup.fst"
+
+
+% lexicon
 
 $LEX$ = "dwds.lex"
 
-#include "num.fst"
+
+% numbers
 
 $LEX$ = $LEX$ | $NUM$
 
-#include "level.fst"
 
-$LEX$ = ( $LEX$ || $BASELEVEL$) | \
-        (^$LEX$ || $COMPLEVEL$)
+% levels
 
-#include "map.fst"
+% use surface level of compounding stem forms also for their analysis level
+$LEX$ = ( $LEX$ || $BaseStemFilter$) | \
+        (^$LEX$ || $CompStemFilter$)
 
-$LEX$ = $MAP1$ || $LEX$ || $MAP2$
 
-#include "stemtype.fst"
+% cleanup of level-specific symbols
 
-$BaseStems$ = $LEX$ || $BASESTEMFILTER$
-$CompStems$ = $LEX$ || $COMPSTEMFILTER$
+$LEX$ = $CleanupInflAnalysis$ || $LEX$
 
-$BaseStemsLC$ = $BaseStems$ || $BASESTEMLC$
-$CompStemsLC$ = $CompStems$ || $COMPSTEMLC$
+$LEX$ = $LEX$ || $CleanupIndex$
 
-$BaseStemsDC$ = $LC2UC$ || $BaseStems$ || $BASESTEMDC$
-$CompStemsDC$ = $LC2UC$ || $CompStems$ || $COMPSTEMDC$
 
-#include "wf.fst"
+% surface triggers
 
-$CB$ =  <#>:<>
-$DB$ =  <~>:<>
-$HB$ = <\=>:<FB>
+$LEX$ = $LEX$ || $SurfaceTriggers$
 
-$PrefLC-un$ = <>:<Prefix> un $DB$
-$PrefUC-un$ = <>:<Prefix> Un $DB$
 
-$DerBaseStems$ = $PrefLC-un$ $BaseStemsLC$ | $PrefUC-un$ $BaseStemsDC$ || $DERFILTER$
-$DerCompStems$ = $PrefLC-un$ $CompStemsLC$ | $PrefUC-un$ $CompStemsDC$ || $DERFILTER$
+% stem types
 
-$DerBaseStemsDC$ = $LC2UC$ || $DerBaseStems$ || $PREFBASESTEMDC$
-$DerCompStemsDC$ = $LC2UC$ || $DerCompStems$ || $PREFCOMPSTEMDC$
+$BaseStems$ = $LEX$ || $BaseStemFilter$
+$CompStems$ = $LEX$ || $CompStemFilter$
+
+$BaseStemsLC$ = $BaseStems$ || $BaseStemLC$
+$CompStemsLC$ = $CompStems$ || $CompStemLC$
+
+$BaseStemsDC$ = $BaseStemDCAnalysis$ || $BaseStems$ || $BaseStemDC$
+$CompStemsDC$ = $CompStemDCAnalysis$ || $CompStems$ || $CompStemDC$
+
+% word formation
+
+$DerBreak$ =  <~>:<>
+
+$PrefLC-un$ = <Prefix> un $DerBreak$
+$PrefUC-un$ = <Prefix> Un $DerBreak$
+
+$DerBaseStems$ = $PrefLC-un$ $BaseStemsLC$ | $PrefUC-un$ $BaseStemsDC$ || $DerFilter$
+$DerCompStems$ = $PrefLC-un$ $CompStemsLC$ | $PrefUC-un$ $CompStemsDC$ || $DerFilter$
+
+$DerBaseStemsDC$ = $PrefBaseStemDCAnalysis$ || $DerBaseStems$ || $PrefBaseStemDC$
+$DerCompStemsDC$ = $PrefCompStemDCAnalysis$ || $DerCompStems$ || $PrefCompStemDC$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStems$
 $CompStems$ = $CompStems$ | $DerCompStems$
@@ -54,49 +74,76 @@ $CompStems$ = $CompStems$ | $DerCompStems$
 $BaseStemsDC$ = $BaseStemsDC$ | $DerBaseStemsDC$
 $CompStemsDC$ = $CompStemsDC$ | $DerCompStemsDC$
 
-$BASE$ = $BaseStems$ || $BASEFILTER$
+$BASE$ = $BaseStems$
 
-$HYPHB$   = $HB$ \-:<Hyph>   $CB$
-$NOMARKB$ =      <>:<NoMark> $CB$
+$CompBreakNone$ = <#>:<^none>
+$CompBreakHyph$ = {<\=>\-<#>}:{<^hyph>}
 
 $COMP$ = $CompStems$ \
-         ($HYPHB$ $CompStems$ | $NOMARKB$ $CompStemsDC$)* \
-         ($HYPHB$ $BaseStems$ | $NOMARKB$ $BaseStemsDC$) || $COMPFILTER$
+         ($CompBreakHyph$ $CompStems$ | $CompBreakNone$ $CompStemsDC$)* \
+         ($CompBreakHyph$ $BaseStems$ | $CompBreakNone$ $BaseStemsDC$) || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$
 
-#include "infl.fst"
 
-$MORPH$ = $LEX$ $INFL$ || $INFLFILTER$
+% cleanup of word-formation-related symbols
 
-#include "markers.fst"
+$LEX$ = $CleanupWFAnalysis$ || $LEX$
 
-$MORPH$ = $MORPH$ || $GE$
+$LEX$ = $LEX$ || $CleanupWF$
 
-$MORPH$ = $MORPH$ || $ZU$
 
-$MORPH$ = $MORPH$ || $IMP$
+% morpheme-boundary markers on analysis level
 
-$MORPH$ = $MORPH$ || $BREAK$
+$LEX$ = $BoundaryAnalysis$ || $LEX$
 
-#include "phon.fst"
+
+% inflection
+
+$MORPH$ = $LEX$ $INFL$ || $InflFilter$
+
+
+% inflection markers
+
+$MORPH$ = $MORPH$ || $MarkerGe$
+
+$MORPH$ = $MORPH$ || $MarkerZu$
+
+$MORPH$ = $MORPH$ || $MarkerImp$
+
+
+% morpheme-boundary markers
+
+$MORPH$ = $MORPH$ || $Boundary$
+
+
+% (morpho)phonology
 
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 
-#include "disj.fst"
 
-$MORPH$ = $DISJ$ || $MORPH$
+% disjunctive categories
 
-#include "punct.fst"
+$MORPH$ = $DisjunctiveCategoriesAnalysis$ || $MORPH$
+
+
+% punctuation
 
 $MORPH$ = $MORPH$ | $PUNCT$
 
-#include "cap.fst"
+
+% capitalisation
 
 $MORPH$ = $MORPH$ | <CAP>:<> ($MORPH$ || $CAP$)
 
-#include "cleanup.fst"
 
-$MORPH$ = $CLEANUP1$ || $CLEANUP2$ || $MORPH$
+% final cleanup
+
+$MORPH$ = $CleanupOrthAnalysis$ || $MORPH$
+
+$MORPH$ = $CleanupIndexAnalysis$ || $MORPH$
+
+
+% the resulting automaton
 
 $MORPH$

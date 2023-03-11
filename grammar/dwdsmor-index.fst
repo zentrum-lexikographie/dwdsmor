@@ -1,57 +1,88 @@
 % dwdsmor-index.fst
-% Version 4.3
+% Version 5.0
 % Andreas Nolda 2023-03-10
 
-% based on code from SMORLemma by Rico Sennrich
-% which is in turn based on code from SMOR by Helmut Schmid
-
 #include "symbols.fst"
+#include "stemtype.fst"
+#include "infl.fst"
+#include "markers.fst"
+#include "phon.fst"
+#include "disj.fst"
+#include "cleanup.fst"
+
+
+% lexicon
 
 $LEX$ = "dwds.lex"
 
-#include "level.fst"
 
-$LEX$ = ( $LEX$ || $BASELEVEL$) | \
-        (^$LEX$ || $COMPLEVEL$)
+% cleanup of level-specific symbols
 
-#include "map.fst"
+$LEX$ = $CleanupInflAnalysis$ || $LEX$
 
-$LEX$ = $MAP1$ || $LEX$ || $MAP2$
+$LEX$ = $LEX$ || $CleanupIndex$
 
-#include "stemtype.fst"
 
-$BaseStems$ = $LEX$ || $BASESTEMFILTER$
+% surface triggers
 
-#include "wf.fst"
+$LEX$ = $LEX$ || $SurfaceTriggers$
 
-$BASE$ = $BaseStems$ || $BASEFILTER$
+
+% stem types
+
+$BaseStems$ = $LEX$ || $BaseStemFilter$
+
+$BASE$ = $BaseStems$
 
 $LEX$ = $BASE$
 
-#include "infl.fst"
 
-$MORPH$ = $LEX$ $INFL$ || $INFLFILTER$
+% cleanup of word-formation-related symbols
 
-#include "markers.fst"
+$LEX$ = $CleanupWFAnalysis$ || $LEX$
 
-$MORPH$ = $MORPH$ || $GE$
+$LEX$ = $LEX$ || $CleanupWF$
 
-$MORPH$ = $MORPH$ || $ZU$
 
-$MORPH$ = $MORPH$ || $IMPVPART$
+% morpheme-boundary markers on analysis level
 
-$MORPH$ = $MORPH$ || $BREAK$
+$LEX$ = $BoundaryAnalysis$ || $LEX$
 
-#include "phon.fst"
+
+% inflection
+
+$MORPH$ = $LEX$ $INFL$ || $InflFilter$
+
+
+% inflection markers
+
+$MORPH$ = $MORPH$ || $MarkerGe$
+
+$MORPH$ = $MORPH$ || $MarkerZu$
+
+$MORPH$ = $MORPH$ || $MarkerImpVPart$
+
+
+% morpheme-boundary markers
+
+$MORPH$ = $MORPH$ || $Boundary$
+
+
+% (morpho)phonology
 
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 
-#include "disj.fst"
 
-$MORPH$ = $DISJ$ || $MORPH$
+% disjunctive categories
 
-#include "cleanup.fst"
+$MORPH$ = $DisjunctiveCategoriesAnalysis$ || $MORPH$
 
-$MORPH$ = $CLEANUP1$ || $MORPH$
+
+% final cleanup
+
+$MORPH$ = $CleanupOrthAnalysis$ || $MORPH$
+
+
+% the resulting automaton
 
 $MORPH$

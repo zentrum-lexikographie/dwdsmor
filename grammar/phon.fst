@@ -1,6 +1,6 @@
 % phon.fst
 % Version 2.1
-% Andreas Nolda 2022-12-12
+% Andreas Nolda 2023-03-10
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -52,7 +52,7 @@ $R2$ = ((st<FB>) s <=> <> (t:.)) & ((st<FB>s:.) t <=> <>)
 % Schwabe<^Del>$in -> Schwäbin
 % Tochter$         -> Töchter
 
-ALPHABET = [#char# #phon-trigger# #ss-trigger# <UL><e>]
+ALPHABET = [#char# #phon-trigger# #ss-trigger# <e><UL>]
 
 $Cons$ = [bcdfghjklmnpqrstvwxyzß]
 
