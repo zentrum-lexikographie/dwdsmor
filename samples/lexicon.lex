@@ -1,2 +1,2 @@
-<Stem>Mann<NN><base><nativ><NMasc_es_$er>
-<Stem>Frau<NN><base><nativ><NFem_0_en>
+<Stem>Mann<NN><base><native><NMasc_es_$er>
+<Stem>Frau<NN><base><native><NFem_0_en>

@@ -97,7 +97,7 @@
 
 #stemtype# = <base><comp>
 
-#origin# = <nativ><fremd><klassisch>
+#origin# = <native><foreign>
 
 #lemma-index# = <IDX1><IDX2><IDX3><IDX4><IDX5>
 

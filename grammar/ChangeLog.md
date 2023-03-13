@@ -1,12 +1,13 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
-2023-03-10:
+2023-03-13:
 
 * refactorise `dwdsmor.fst`, `dwdsmor-finite.fst`, `dwdsmor-index.fst`,
   `dwdsmor-root.fst`, and `wf.fst`
 * move code from `level.fst` and `map.fst` to `cleanup.fst`, `markers.fst`, and
   `stemtype.fst`
 * remove `level.fst` and `map.fst`
+* rename `<nativ>` and `<fremd>` to `<native>` and `<foreign>`, respectively
 
 2023-03-07:
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 13.3 -->
-<!-- Andreas Nolda 2023-01-27 -->
+<!-- Version 13.4 -->
+<!-- Andreas Nolda 2023-03-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2176,19 +2176,19 @@
                                                                                 @Sprache='nhd' or
                                                                                 @Sprache='nordd' or
                                                                                 @Sprache='schweiz' or
-                                                                                @Sprache='schweizerdt']">nativ</xsl:when><!-- ... -->
-        <xsl:otherwise>fremd</xsl:otherwise>
+                                                                                @Sprache='schweizerdt']">native</xsl:when><!-- ... -->
+        <xsl:otherwise>foreign</xsl:otherwise>
       </xsl:choose>
     </xsl:when>
     <xsl:when test="dwds:Diachronie/dwds:Etymologie[not(*)]">
       <xsl:choose>
-        <xsl:when test="dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))=0]">nativ</xsl:when>
+        <xsl:when test="dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))=0]">native</xsl:when>
         <xsl:when test="dwds:Diachronie/dwds:Etymologie[contains(.,'Deutsch') or
-                                                        contains(.,'deutsch')]">nativ</xsl:when>
-        <xsl:otherwise>fremd</xsl:otherwise>
+                                                        contains(.,'deutsch')]">native</xsl:when>
+        <xsl:otherwise>foreign</xsl:otherwise>
       </xsl:choose>
     </xsl:when>
-    <xsl:otherwise>nativ</xsl:otherwise>
+    <xsl:otherwise>native</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 
