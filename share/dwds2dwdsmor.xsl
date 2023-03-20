@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 12.1 -->
-<!-- Andreas Nolda 2023-03-06 -->
+<!-- Version 13.0 -->
+<!-- Andreas Nolda 2023-03-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -204,6 +204,41 @@
   <xsl:value-of select="$pos"/>
   <xsl:text>&gt;</xsl:text>
   <xsl:text>&lt;comp&gt;</xsl:text>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:value-of select="$etymology"/>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&#xA;</xsl:text>
+</xsl:template>
+
+<!-- lexical entries for derivation stems of words -->
+<xsl:template name="word-der-entry">
+  <xsl:param name="lemma"/>
+  <xsl:param name="der-stem"/>
+  <xsl:param name="der-stem-type"/>
+  <xsl:param name="abbreviation"/>
+  <xsl:param name="pos"/>
+  <xsl:param name="etymology"/>
+  <xsl:text>&lt;Stem&gt;</xsl:text>
+  <xsl:if test="$abbreviation='yes'">
+    <xsl:text>&lt;Abbr&gt;</xsl:text>
+  </xsl:if>
+  <xsl:choose>
+    <xsl:when test="string-length($der-stem)&gt;0">
+      <xsl:value-of select="n:pair($lemma,n:segment($lemma,$der-stem))"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$lemma"/>
+    </xsl:otherwise>
+  </xsl:choose>
+  <xsl:text>&lt;</xsl:text>
+  <xsl:value-of select="$pos"/>
+  <xsl:text>&gt;</xsl:text>
+  <xsl:text>&lt;der&gt;</xsl:text>
+  <xsl:if test="string-length($der-stem-type)&gt;0">
+    <xsl:text>&lt;</xsl:text>
+    <xsl:value-of select="$der-stem-type"/>
+    <xsl:text>&gt;</xsl:text>
+  </xsl:if>
   <xsl:text>&lt;</xsl:text>
   <xsl:value-of select="$etymology"/>
   <xsl:text>&gt;</xsl:text>

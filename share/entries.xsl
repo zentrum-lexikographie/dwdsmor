@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 8.2 -->
-<!-- Andreas Nolda 2022-12-06 -->
+<!-- Version 9.0 -->
+<!-- Andreas Nolda 2023-03-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -694,6 +694,33 @@
   </xsl:if>
 </xsl:template>
 
+<xsl:template name="adjective-der-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="der-stem"/>
+  <xsl:param name="der-stem-type"/>
+  <xsl:param name="abbreviation"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($der-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-der-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="der-stem"
+                        select="$der-stem"/>
+        <xsl:with-param name="der-stem-type"
+                        select="$der-stem-type"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">ADJ</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
 <xsl:template name="adverb-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
@@ -1082,6 +1109,33 @@
   </xsl:if>
 </xsl:template>
 
+<xsl:template name="cardinal-der-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="der-stem"/>
+  <xsl:param name="der-stem-type"/>
+  <xsl:param name="abbreviation"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($der-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-der-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="der-stem"
+                        select="$der-stem"/>
+        <xsl:with-param name="der-stem-type"
+                        select="$der-stem-type"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">CARD</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
 <xsl:template name="ordinal-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
@@ -1130,6 +1184,33 @@
                         select="$lemma"/>
         <xsl:with-param name="comp-stem"
                         select="$comp-stem"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">ORD</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="ordinal-der-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="der-stem"/>
+  <xsl:param name="der-stem-type"/>
+  <xsl:param name="abbreviation"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($der-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-der-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="der-stem"
+                        select="$der-stem"/>
+        <xsl:with-param name="der-stem-type"
+                        select="$der-stem-type"/>
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
         <xsl:with-param name="pos">ORD</xsl:with-param>
@@ -1690,6 +1771,33 @@
   </xsl:if>
 </xsl:template>
 
+<xsl:template name="noun-der-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="der-stem"/>
+  <xsl:param name="der-stem-type"/>
+  <xsl:param name="abbreviation"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($der-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-der-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="der-stem"
+                        select="$der-stem"/>
+        <xsl:with-param name="der-stem-type"
+                        select="$der-stem-type"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
 <xsl:template name="name-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="lemma-index"/>
@@ -1832,6 +1940,33 @@
                         select="$lemma"/>
         <xsl:with-param name="comp-stem"
                         select="$comp-stem"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">NPROP</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="name-der-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="der-stem"/>
+  <xsl:param name="der-stem-type"/>
+  <xsl:param name="abbreviation"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($der-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-der-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="der-stem"
+                        select="$der-stem"/>
+        <xsl:with-param name="der-stem-type"
+                        select="$der-stem-type"/>
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
         <xsl:with-param name="pos">NPROP</xsl:with-param>
@@ -5515,6 +5650,33 @@
                         select="$lemma"/>
         <xsl:with-param name="comp-stem"
                         select="$comp-stem"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">V</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="verb-der-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="der-stem"/>
+  <xsl:param name="der-stem-type"/>
+  <xsl:param name="abbreviation"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($der-stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="word-der-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="der-stem"
+                        select="$der-stem"/>
+        <xsl:with-param name="der-stem-type"
+                        select="$der-stem-type"/>
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
         <xsl:with-param name="pos">V</xsl:with-param>

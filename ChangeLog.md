@@ -1,5 +1,12 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-03-20:
+
+* add support for lexical entries of derivation stems
+* infer lexical entries of derivation stems from links derivation bases in DWDS
+  articles listed in `manifest.xml`
+* mark diminutive derivation-stem type
+
 2023-01-27:
 
 * adapt lexicon processing to upstream markup of irregular positive forms

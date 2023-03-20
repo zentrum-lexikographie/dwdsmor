@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 4.0 -->
-<!-- Andreas Nolda 2022-11-30 -->
+<!-- Version 5.0 -->
+<!-- Andreas Nolda 2023-03-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -270,6 +270,42 @@
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$comp-stem"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<!-- derivation stems -->
+<xsl:template name="der-stem">
+  <xsl:param name="lemma"/>
+  <xsl:param name="lemma1"/>
+  <xsl:param name="lemma2"/><!-- suffix lemma -->
+  <xsl:param name="spelling-type"/>
+  <xsl:if test="matches($lemma,concat('^.*[^-]',$lemma2,'$'),'i')">
+    <xsl:call-template name="set-der-stem-case">
+      <xsl:with-param name="lemma"
+                      select="$lemma1"/>
+      <xsl:with-param name="der-stem"
+                      select="replace($lemma,concat($lemma2,'$'),'','i')"/>
+    </xsl:call-template>
+  </xsl:if>
+</xsl:template>
+
+<!-- adjust case of derivation stem as required -->
+<xsl:template name="set-der-stem-case">
+  <xsl:param name="lemma"/>
+  <xsl:param name="der-stem"/>
+  <xsl:choose>
+    <xsl:when test="matches($lemma,'^\p{Ll}') and
+                    matches($der-stem,'^\p{Lu}')">
+      <xsl:value-of select="lower-case($der-stem)"/>
+    </xsl:when>
+    <xsl:when test="matches($lemma,'^\p{Lu}') and
+                    matches($der-stem,'^\p{Ll}')">
+      <xsl:value-of select="upper-case(substring($der-stem,1,1))"/>
+      <xsl:value-of select="substring($der-stem,2)"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$der-stem"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
