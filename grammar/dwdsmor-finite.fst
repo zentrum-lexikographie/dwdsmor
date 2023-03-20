@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 5.0
-% Andreas Nolda 2023-03-10
+% Version 5.1
+% Andreas Nolda 2023-03-20
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -27,8 +27,10 @@ $LEX$ = $LEX$ | $NUM$
 
 % levels
 
-% use surface level of compounding stem forms also for their analysis level
+% use surface level of derivation stems and compounding stems
+% also for their analysis level
 $LEX$ = ( $LEX$ || $BaseStemFilter$) | \
+        (^$LEX$ || $DerStemFilter$)  | \
         (^$LEX$ || $CompStemFilter$)
 
 
@@ -47,37 +49,59 @@ $LEX$ = $LEX$ || $SurfaceTriggers$
 % stem types
 
 $BaseStems$ = $LEX$ || $BaseStemFilter$
+$DerStems$  = $LEX$ || $DerStemFilter$
 $CompStems$ = $LEX$ || $CompStemFilter$
 
-$BaseStemsLC$ = $BaseStems$ || $BaseStemLC$
-$CompStemsLC$ = $CompStems$ || $CompStemLC$
-
-$BaseStemsDC$ = $BaseStemDCAnalysis$ || $BaseStems$ || $BaseStemDC$
-$CompStemsDC$ = $CompStemDCAnalysis$ || $CompStems$ || $CompStemDC$
+$BaseStemsDC$ = $StemDCAnalysis$ || $BaseStems$ || $StemDC$
+$DerStemsDC$  = $StemDCAnalysis$ || $DerStems$  || $StemDC$
+$CompStemsDC$ = $StemDCAnalysis$ || $CompStems$ || $StemDC$
 
 
 % word formation
 
+% morpheme-boundary markers
+
+$CompBreakNone$ = <#>:<^none>
+$CompBreakHyph$ = {<\=>\-<#>}:{<^hyph>}
+
 $DerBreak$ =  <~>:<>
 
-$PrefLC-un$ = <Prefix> un $DerBreak$
+% affixes
+
+$Pref-un$   = <Prefix> un $DerBreak$
 $PrefUC-un$ = <Prefix> Un $DerBreak$
 
-$DerBaseStems$ = $PrefLC-un$ $BaseStemsLC$ | $PrefUC-un$ $BaseStemsDC$ || $DerFilter$
-$DerCompStems$ = $PrefLC-un$ $CompStemsLC$ | $PrefUC-un$ $CompStemsDC$ || $DerFilter$
+$Suff-chen$ = <~>:<Suffix> chen <NN> <base> <native> <>:<NNeut_s_x>
+$Suff-lein$ = <~>:<Suffix> lein <NN> <base> <native> <>:<NNeut_s_x>
 
-$DerBaseStemsDC$ = $PrefBaseStemDCAnalysis$ || $DerBaseStems$ || $PrefBaseStemDC$
-$DerCompStemsDC$ = $PrefCompStemDCAnalysis$ || $DerCompStems$ || $PrefCompStemDC$
+% derived base stems
+
+$DerStemsDim$  = $DerStems$ || $DerStemDimFilter$
+
+$DerBaseStems$ = $Pref-un$   $BaseStems$   | \
+                 $PrefUC-un$ $BaseStemsDC$ | \
+                 $DerStemsDim$ $Suff-chen$ | \
+                 $DerStemsDim$ $Suff-lein$ || $DerFilter$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStems$
-$CompStems$ = $CompStems$ | $DerCompStems$
+
+$DerBaseStemsDC$ = $StemDCAnalysis$ || $DerBaseStems$ || $StemDC$
 
 $BaseStemsDC$ = $BaseStemsDC$ | $DerBaseStemsDC$
 
 $BASE$ = $BaseStems$
 
-$CompBreakNone$ = <#>:<^none>
-$CompBreakHyph$ = {<\=>\-<#>}:{<^hyph>}
+% derived compounding stems
+
+$DerCompStems$ = $Pref-un$ $CompStems$ | $PrefUC-un$ $CompStemsDC$ || $DerFilter$
+
+$CompStems$ = $CompStems$ | $DerCompStems$
+
+$DerCompStemsDC$ = $StemDCAnalysis$ || $DerCompStems$ || $StemDC$
+
+$CompStemsDC$ = $CompStemsDC$ | $DerCompStemsDC$
+
+% compounds
 
 $COMP$ = $CompStems$ ($CompBreakHyph$ $BaseStems$ | $CompBreakNone$ $BaseStemsDC$) || $CompFilter$
 

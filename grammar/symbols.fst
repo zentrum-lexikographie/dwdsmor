@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 4.6
-% Andreas Nolda 2023-03-10
+% Version 4.7
+% Andreas Nolda 2023-03-20
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -50,7 +50,7 @@
 
 #wf-process# = <COMP><DER>
 
-#wf-means# = <concat><hyph><pref(un)>
+#wf-means# = <concat><hyph><pref(un)><suff(chen)><suff(lein)>
 
 #morpheme-boundary# = <\~><\=><#><+>
 
@@ -95,7 +95,9 @@
             #degree# #person# #gender# #case# #number# #infl# #function# #nonfinite# \
             #mood# #tense# #orthinfo# #metainfo#
 
-#stemtype# = <base><comp>
+#stem-type# = <base><comp><der>
+
+#stem-subtype# = <dim>
 
 #origin# = <native><foreign>
 

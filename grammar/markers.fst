@@ -1,6 +1,6 @@
 % markers.fst
-% Version 5.0
-% Andreas Nolda 2023-03-10
+% Version 5.1
+% Andreas Nolda 2023-03-20
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -8,7 +8,7 @@
 
 % replace verb stem-final schwa with <e>
 
-ALPHABET = [#entry-type# #char# #category# #stemtype# #origin# \
+ALPHABET = [#entry-type# #char# #category# #stem-type# #stem-subtype# #origin# \
             #inflection# #auxiliary# <Abbr><FB><VPART><ge>] \
            e:<e>
 
@@ -63,4 +63,4 @@ $MarkerImpVPart$ = [<Prefix><Stem>] ($C$* [<Prefix><Stem><VPART>])* $C$* | \
 
 $C$ = [#char# #phon-trigger# #ss-trigger# #surface-trigger# <UL>]
 
-$Boundary$ = ([<Prefix><Stem><VPART>]:<CB> $C$*)+
+$Boundary$ = (([<Stem><VPART>]:<CB> | [<Prefix><Suffix>]:<FB>) $C$*)+

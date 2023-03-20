@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-03-15:
+
+* add support for derivation by means of "chen"- and "lein"-suffixation
+
 2023-03-13:
 
 * refactorise `dwdsmor.fst`, `dwdsmor-finite.fst`, `dwdsmor-index.fst`,

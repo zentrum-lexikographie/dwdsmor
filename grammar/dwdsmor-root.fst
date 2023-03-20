@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 2.0
-% Andreas Nolda 2023-03-10
+% Version 2.1
+% Andreas Nolda 2023-03-20
 
 #include "symbols.fst"
 #include "num.fst"
@@ -40,49 +40,70 @@ $LEX$ = $LEX$ || $SurfaceTriggers$
 % stem types
 
 $BaseStems$ = $LEX$ || $BaseStemFilter$
+$DerStems$  = $LEX$ || $DerStemFilter$
 $CompStems$ = $LEX$ || $CompStemFilter$
 
-$BaseStemsLC$ = $BaseStems$ || $BaseStemLC$
-$CompStemsLC$ = $CompStems$ || $CompStemLC$
-
-$BaseStemsDC$ = $BaseStems$ || $BaseStemDC$
-$CompStemsDC$ = $CompStems$ || $CompStemDC$
+$BaseStemsDC$ = $BaseStems$ || $StemDC$
+$DerStemsDC$  = $DerStems$  || $StemDC$
+$CompStemsDC$ = $CompStems$ || $StemDC$
 
 
 % word formation
 
-$DerBreak$ =  <+>:<>
-
-$PrefLC-un$ = <Prefix> {}:{un}
-$PrefUC-un$ = <Prefix> {}:{Un}
-
-$DER-un$ = <DER>:<> <pref(un)>:<>
-
-$DerBaseStems$ = $PrefLC-un$ $BaseStemsLC$ $DER-un$ | $PrefUC-un$ $BaseStemsDC$ $DER-un$ || $DerFilter$
-$DerCompStems$ = $PrefLC-un$ $CompStemsLC$ $DER-un$ | $PrefUC-un$ $CompStemsDC$ $DER-un$ || $DerFilter$
-
-$DerBaseStemsDC$ = $DerBaseStems$ || $PrefBaseStemDC$
-$DerCompStemsDC$ = $DerCompStems$ || $PrefCompStemDC$
-
-$BaseStems$ = $BaseStems$ | $DerBaseStems$
-$CompStems$ = $CompStems$ | $DerCompStems$
-
-$BaseStemsDC$ = $BaseStemsDC$ | $DerBaseStemsDC$
-$CompStemsDC$ = $CompStemsDC$ | $DerCompStemsDC$
-
-$BASE$ = $BaseStems$
+% morpheme-boundary markers
 
 $CompBreakNone$ = <+>:<^none>
 $CompBreakHyph$ = <+>:<^hyph>
 
-$concat$ = <concat>:<>
-$hyph$   = <hyph>:<>
+% affixes
 
-$COMP$ = <COMP>:<>
+$Pref-un$   = <Prefix> {}:{un}
+$PrefUC-un$ = <Prefix> {}:{Un}
+
+$Suff-chen$ = <Suffix> {}:{chen} <NN> <base> <native> <>:<NNeut_s_x>
+$Suff-lein$ = <Suffix> {}:{lein} <NN> <base> <native> <>:<NNeut_s_x>
+
+% processes and means
+
+$Comp-concat$ = <COMP>:<> <concat>:<>
+$Comp-hyph$   = <COMP>:<> <hyph>:<>
+
+$DerPref-un$   = <DER>:<> <pref(un)>:<>
+$DerSuff-chen$ = <DER>:<> <suff(chen)>:<>
+$DerSuff-lein$ = <DER>:<> <suff(lein)>:<>
+
+% derived base stems
+
+$DerStemsDim$  = $DerStems$ || $DerStemDimFilter$
+
+$DerBaseStems$ = $Pref-un$   $BaseStems$   $DerPref-un$   | \
+                 $PrefUC-un$ $BaseStemsDC$ $DerPref-un$   | \
+                 $DerStemsDim$ $Suff-chen$ $DerSuff-chen$ | \
+                 $DerStemsDim$ $Suff-lein$ $DerSuff-lein$ || $DerFilter$
+
+$BaseStems$ = $BaseStems$ | $DerBaseStems$
+
+$DerBaseStemsDC$ = $DerBaseStems$ || $StemDC$
+
+$BaseStemsDC$ = $BaseStemsDC$ | $DerBaseStemsDC$
+
+$BASE$ = $BaseStems$
+
+% derived compounding stems
+
+$DerCompStems$ = $Pref-un$ $CompStems$ $DerPref-un$ | $PrefUC-un$ $CompStemsDC$ $DerPref-un$ || $DerFilter$
+
+$CompStems$ = $CompStems$ | $DerCompStems$
+
+$DerCompStemsDC$ = $DerCompStems$ || $StemDC$
+
+$CompStemsDC$ = $CompStemsDC$ | $DerCompStemsDC$
+
+% compounds
 
 $COMP$ = $CompStems$ \
-         ($CompBreakHyph$ $CompStems$ $COMP$ $hyph$ | $CompBreakNone$ $CompStemsDC$ $COMP$ $concat$)* \
-         ($CompBreakHyph$ $BaseStems$ $COMP$ $hyph$ | $CompBreakNone$ $BaseStemsDC$ $COMP$ $concat$) || $CompFilter$
+         ($CompBreakHyph$ $CompStems$ $Comp-hyph$ | $CompBreakNone$ $CompStemsDC$ $Comp-concat$)* \
+         ($CompBreakHyph$ $BaseStems$ $Comp-hyph$ | $CompBreakNone$ $BaseStemsDC$ $Comp-concat$) || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$
 

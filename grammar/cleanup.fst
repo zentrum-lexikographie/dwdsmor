@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 3.0
-% Andreas Nolda 2023-03-10
+% Version 3.1
+% Andreas Nolda 2023-03-20
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -10,7 +10,7 @@
 % clean up inflection-related symbols on analysis level
 
 ALPHABET = [#entry-type# #char# #lemma-index# #paradigm-index# #category# \
-            #stemtype# #origin# <Abbr><FB><VPART>] \
+            #stem-type# #stem-subtype# #origin# <Abbr><FB><VPART>] \
            <>:[#inflection# #auxiliary# <ge>]
 
 $CleanupInflAnalysis$ = .*
@@ -18,8 +18,8 @@ $CleanupInflAnalysis$ = .*
 
 % clean up lemma and paradigm indices
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #category# #stemtype# \
-            #origin# #inflection# #auxiliary# <Abbr><FB><VPART><ge>] \
+ALPHABET = [#entry-type# #char# #surface-trigger# #category# #stem-type# \
+            #stem-subtype# #origin# #inflection# #auxiliary# <Abbr><FB><VPART><ge>] \
            [#lemma-index# #paradigm-index#]:<>
 
 $CleanupIndex$ = .*
@@ -29,7 +29,7 @@ $CleanupIndex$ = .*
 
 ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
             #wf-process# #wf-means# <FB><VPART>] \
-           <>:[#entry-type# #category# #stemtype# #origin# <Abbr>]
+           <>:[#entry-type# #category# #stem-type# #stem-subtype# #origin# <Abbr>]
 
 $CleanupWFAnalysis$ = .*
 
@@ -38,7 +38,7 @@ $CleanupWFAnalysis$ = .*
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #inflection# #auxiliary# \
             #wf-trigger# <FB><VPART><ge>] \
-           [#category# #stemtype# #origin# <Abbr>]:<>
+           [#category# #stem-type# #stem-subtype# #origin# <Abbr>]:<>
 
 $CleanupWF$ = .*
 
