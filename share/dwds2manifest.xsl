@@ -74,9 +74,7 @@
                 select="n:relative-path(document-uri(/))"/>
   <!-- ignore duplicate lemma-index pairs -->
   <xsl:for-each-group select="dwds:Formangabe/dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
-                                                             [not(@Typ='U_NR' or
-                                                                  @Typ='U_U' or
-                                                                  @Typ='U_Falschschreibung')]"
+                                                             [not(@Typ='U_Falschschreibung')]"
                       group-by="normalize-space(.)">
     <xsl:variable name="lemma"
                   select="normalize-space(.)"/>

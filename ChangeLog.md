@@ -6,6 +6,7 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 * infer lexical entries of derivation stems from links derivation bases in DWDS
   articles listed in `manifest.xml`
 * mark diminutive derivation-stem type
+* remove tests for obsolete values of `Schreibung/@Typ`
 
 2023-01-27:
 

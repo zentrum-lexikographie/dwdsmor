@@ -167,9 +167,7 @@
                   select="distinct-values(dwds:Aussprache[not(@class='invisible')]/@IPA)"/>
     <!-- ignore idioms and invalid spellings -->
     <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
-                                         [not(@Typ='U_NR' or
-                                              @Typ='U_U' or
-                                              @Typ='U_Falschschreibung')]">
+                                         [not(@Typ='U_Falschschreibung')]">
       <xsl:variable name="lemma"
                     select="normalize-space(.)"/>
       <xsl:if test="string-length($lemma)&gt;0">
@@ -186,12 +184,11 @@
           <xsl:choose>
             <!-- expand grammar specifications for old spellings with "ß"/"ss"-alternation
                  unless there are proper grammar specifications for the old spelling -->
-            <xsl:when test="starts-with(@Typ,'U') and
-                            ../dwds:Schreibung[not(@Typ) or
-                                               ends-with(@Typ,'G')][.=n:sz-ss-alternation(current())]">
+            <xsl:when test="@Typ='U' and
+                            ../dwds:Schreibung[not(@Typ)]
+                                              [.=n:sz-ss-alternation(current())]">
               <xsl:variable name="canonical-lemma"
-                            select="../dwds:Schreibung[not(@Typ) or
-                                                       ends-with(@Typ,'G')][1]"/>
+                            select="../dwds:Schreibung[not(@Typ)][1]"/>
               <xsl:for-each select="$grammar-specs/dwds:Grammatik">
                 <dwds:Grammatik>
                   <xsl:for-each select="*">
@@ -203,7 +200,7 @@
                                        self::dwds:Plural or
                                        self::dwds:Positivvariante or
                                        self::dwds:Superlativ) and
-                                      not(starts-with(@Typ,'U')) and
+                                      not(@Typ) and
                                       matches(.,'^-[aeiouäöü]')">
                         <xsl:element name="{name()}"
                                      namespace="{namespace-uri()}">
@@ -2158,9 +2155,7 @@
                 <xsl:if test="string-length($pos1)&gt;0">
                   <!-- ignore idioms and invalid spellings -->
                   <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
-                                                       [not(@Typ='U_NR' or
-                                                            @Typ='U_U' or
-                                                            @Typ='U_Falschschreibung')]">
+                                                       [not(@Typ='U_Falschschreibung')]">
                     <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
                     <xsl:if test="string-length($lemma1)&gt;0">
@@ -2171,9 +2166,7 @@
                         <!-- ignore abbreviations -->
                         <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
-                                                               [not(@Typ='U_NR' or
-                                                                    @Typ='U_U' or
-                                                                    @Typ='U_Falschschreibung')]">
+                                                               [not(@Typ='U_Falschschreibung')]">
                             <xsl:variable name="lemma2"
                                           select="normalize-space(.)"/>
                             <xsl:if test="string-length($lemma2)&gt;0">
@@ -2341,9 +2334,7 @@
                 <xsl:if test="string-length($pos1)&gt;0">
                   <!-- ignore idioms and invalid spellings -->
                   <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
-                                                       [not(@Typ='U_NR' or
-                                                            @Typ='U_U' or
-                                                            @Typ='U_Falschschreibung')]">
+                                                       [not(@Typ='U_Falschschreibung')]">
                     <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
                     <xsl:if test="string-length($lemma1)&gt;0">
@@ -2354,9 +2345,7 @@
                         <!-- ignore abbreviations -->
                         <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
-                                                               [not(@Typ='U_NR' or
-                                                                    @Typ='U_U' or
-                                                                    @Typ='U_Falschschreibung')]">
+                                                               [not(@Typ='U_Falschschreibung')]">
                             <xsl:variable name="lemma2"
                                           select="substring-after(normalize-space(.),'-')"/><!-- suffix lemma -->
                             <xsl:if test="string-length($lemma2)&gt;0">
