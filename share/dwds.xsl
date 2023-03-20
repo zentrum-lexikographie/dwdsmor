@@ -2109,12 +2109,12 @@
                         not(starts-with($basis2,'-') or
                             ends-with($basis2,'-'))">
             <xsl:variable name="index1"
-                          select="string(dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma/@hidx)"/>
+                          select="dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma/@hidx"/>
             <xsl:variable name="index2"
-                          select="string(dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma/@hidx)"/>
+                          select="dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma/@hidx"/>
             <xsl:variable name="file1">
               <xsl:choose>
-                <xsl:when test="string-length($index1)&gt;0">
+                <xsl:when test="not(string(number($index1))='NaN')">
                   <xsl:value-of select="$manifest/source[@lemma=$basis1]
                                                         [@index=$index1][1]/@href"/>
                 </xsl:when>
@@ -2125,7 +2125,7 @@
             </xsl:variable>
             <xsl:variable name="file2">
               <xsl:choose>
-                <xsl:when test="string-length($index2)&gt;0">
+                <xsl:when test="not(string(number($index2))='NaN')">
                   <xsl:value-of select="$manifest/source[@lemma=$basis2]
                                                         [@index=$index2][1]/@href"/>
                 </xsl:when>
@@ -2158,111 +2158,123 @@
                                                        [not(@Typ='U_Falschschreibung')]">
                     <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
+                    <xsl:variable name="spelling-type1"
+                                  select="@Typ"/>
                     <xsl:if test="string-length($lemma1)&gt;0">
-                      <xsl:variable name="abbreviation1">
-                        <xsl:call-template name="get-abbreviation-value"/>
-                      </xsl:variable>
-                      <xsl:for-each select="$article2">
-                        <!-- ignore abbreviations -->
-                        <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
-                          <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
-                                                               [not(@Typ='U_Falschschreibung')]">
-                            <xsl:variable name="lemma2"
-                                          select="normalize-space(.)"/>
-                            <xsl:if test="string-length($lemma2)&gt;0">
-                              <xsl:variable name="comp-stem">
-                                <xsl:call-template name="comp-stem">
-                                  <xsl:with-param name="lemma"
-                                                  select="$lemma"/>
-                                  <xsl:with-param name="lemma1"
-                                                  select="$lemma1"/>
-                                  <xsl:with-param name="lemma2"
-                                                  select="$lemma2"/>
-                                  <xsl:with-param name="spelling-type"
-                                                  select="$spelling-type"/>
-                                </xsl:call-template>
-                              </xsl:variable>
-                              <xsl:if test="string-length($comp-stem)&gt;0">
-                                <xsl:choose>
-                                  <xsl:when test="$pos1='Adjektiv'">
-                                    <xsl:call-template name="adjective-comp-entry-set">
+                      <!-- if $lemma1 is in old spelling, so is $lemma -->
+                      <xsl:if test="not($spelling-type1='U') or
+                                    $spelling-type='U'">
+                        <xsl:variable name="abbreviation1">
+                          <xsl:call-template name="get-abbreviation-value"/>
+                        </xsl:variable>
+                        <xsl:for-each select="$article2">
+                          <!-- ignore abbreviations -->
+                          <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
+                            <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                                                                 [not(@Typ='U_Falschschreibung')]">
+                              <xsl:variable name="lemma2"
+                                            select="normalize-space(.)"/>
+                              <xsl:variable name="spelling-type2"
+                                            select="@Typ"/>
+                              <xsl:if test="string-length($lemma2)&gt;0">
+                                <!-- if $lemma2 is in old spelling, so is $lemma -->
+                                <xsl:if test="not($spelling-type2='U') or
+                                              $spelling-type='U'">
+                                  <xsl:variable name="comp-stem">
+                                    <xsl:call-template name="comp-stem">
                                       <xsl:with-param name="lemma"
+                                                      select="$lemma"/>
+                                      <xsl:with-param name="lemma1"
                                                       select="$lemma1"/>
-                                      <xsl:with-param name="comp-stem"
-                                                      select="$comp-stem"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
+                                      <xsl:with-param name="lemma2"
+                                                      select="$lemma2"/>
+                                      <xsl:with-param name="spelling-type"
+                                                      select="$spelling-type"/>
                                     </xsl:call-template>
-                                  </xsl:when>
-                                  <xsl:when test="$pos1='Substantiv'">
-                                    <xsl:call-template name="noun-comp-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="comp-stem"
-                                                      select="$comp-stem"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <xsl:when test="$pos1='Eigenname'">
-                                    <xsl:call-template name="name-comp-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="comp-stem"
-                                                      select="$comp-stem"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <xsl:when test="$pos1='Kardinalzahl'">
-                                    <xsl:call-template name="cardinal-comp-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="comp-stem"
-                                                      select="$comp-stem"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <xsl:when test="$pos1='Ordinalzahl'">
-                                    <xsl:call-template name="ordinal-comp-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="comp-stem"
-                                                      select="$comp-stem"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <xsl:when test="$pos1='Verb'">
-                                    <xsl:call-template name="verb-comp-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="comp-stem"
-                                                      select="$comp-stem"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <!-- ... -->
-                                </xsl:choose>
+                                  </xsl:variable>
+                                  <xsl:if test="string-length($comp-stem)&gt;0">
+                                    <xsl:choose>
+                                      <xsl:when test="$pos1='Adjektiv'">
+                                        <xsl:call-template name="adjective-comp-entry-set">
+                                          <xsl:with-param name="lemma"
+                                                          select="$lemma1"/>
+                                          <xsl:with-param name="comp-stem"
+                                                          select="$comp-stem"/>
+                                          <xsl:with-param name="abbreviation"
+                                                          select="$abbreviation1"/>
+                                          <xsl:with-param name="etymology"
+                                                          select="$etymology1"/>
+                                        </xsl:call-template>
+                                      </xsl:when>
+                                      <xsl:when test="$pos1='Substantiv'">
+                                        <xsl:call-template name="noun-comp-entry-set">
+                                          <xsl:with-param name="lemma"
+                                                          select="$lemma1"/>
+                                          <xsl:with-param name="comp-stem"
+                                                          select="$comp-stem"/>
+                                          <xsl:with-param name="abbreviation"
+                                                          select="$abbreviation1"/>
+                                          <xsl:with-param name="etymology"
+                                                          select="$etymology1"/>
+                                        </xsl:call-template>
+                                      </xsl:when>
+                                      <xsl:when test="$pos1='Eigenname'">
+                                        <xsl:call-template name="name-comp-entry-set">
+                                          <xsl:with-param name="lemma"
+                                                          select="$lemma1"/>
+                                          <xsl:with-param name="comp-stem"
+                                                          select="$comp-stem"/>
+                                          <xsl:with-param name="abbreviation"
+                                                          select="$abbreviation1"/>
+                                          <xsl:with-param name="etymology"
+                                                          select="$etymology1"/>
+                                        </xsl:call-template>
+                                      </xsl:when>
+                                      <xsl:when test="$pos1='Kardinalzahl'">
+                                        <xsl:call-template name="cardinal-comp-entry-set">
+                                          <xsl:with-param name="lemma"
+                                                          select="$lemma1"/>
+                                          <xsl:with-param name="comp-stem"
+                                                          select="$comp-stem"/>
+                                          <xsl:with-param name="abbreviation"
+                                                          select="$abbreviation1"/>
+                                          <xsl:with-param name="etymology"
+                                                          select="$etymology1"/>
+                                        </xsl:call-template>
+                                      </xsl:when>
+                                      <xsl:when test="$pos1='Ordinalzahl'">
+                                        <xsl:call-template name="ordinal-comp-entry-set">
+                                          <xsl:with-param name="lemma"
+                                                          select="$lemma1"/>
+                                          <xsl:with-param name="comp-stem"
+                                                          select="$comp-stem"/>
+                                          <xsl:with-param name="abbreviation"
+                                                          select="$abbreviation1"/>
+                                          <xsl:with-param name="etymology"
+                                                          select="$etymology1"/>
+                                        </xsl:call-template>
+                                      </xsl:when>
+                                      <xsl:when test="$pos1='Verb'">
+                                        <xsl:call-template name="verb-comp-entry-set">
+                                          <xsl:with-param name="lemma"
+                                                          select="$lemma1"/>
+                                          <xsl:with-param name="comp-stem"
+                                                          select="$comp-stem"/>
+                                          <xsl:with-param name="abbreviation"
+                                                          select="$abbreviation1"/>
+                                          <xsl:with-param name="etymology"
+                                                          select="$etymology1"/>
+                                        </xsl:call-template>
+                                      </xsl:when>
+                                      <!-- ... -->
+                                    </xsl:choose>
+                                  </xsl:if>
+                                </xsl:if>
                               </xsl:if>
-                            </xsl:if>
+                            </xsl:for-each>
                           </xsl:for-each>
                         </xsl:for-each>
-                      </xsl:for-each>
+                      </xsl:if>
                     </xsl:if>
                   </xsl:for-each>
                 </xsl:if>
@@ -2271,7 +2283,7 @@
           </xsl:if>
         </xsl:for-each>
         <!-- derivation stems inferred from links to the derivation bases -->
-        <xsl:for-each select="../../dwds:Verweise[@Typ='Derivation']
+        <xsl:for-each select="../../dwds:Verweise[not(@Typ!='Derivation')]
                                                  [dwds:Verweis[@Typ='Erstglied']]
                                                  [not(dwds:Verweis[@Typ='Binnenglied'])]
                                                  [dwds:Verweis[@Typ='Letztglied']]">
@@ -2288,12 +2300,12 @@
                         starts-with($affix,'-') and
                         not(ends-with($affix,'-'))">
             <xsl:variable name="index1"
-                          select="string(dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma/@hidx)"/>
+                          select="dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma/@hidx"/>
             <xsl:variable name="index2"
-                          select="string(dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma/@hidx)"/>
+                          select="dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma/@hidx"/>
             <xsl:variable name="file1">
               <xsl:choose>
-                <xsl:when test="string-length($index1)&gt;0">
+                <xsl:when test="not(string(number($index1))='NaN')">
                   <xsl:value-of select="$manifest/source[@lemma=$basis]
                                                         [@index=$index1][1]/@href"/>
                 </xsl:when>
@@ -2304,7 +2316,7 @@
             </xsl:variable>
             <xsl:variable name="file2">
               <xsl:choose>
-                <xsl:when test="string-length($index2)&gt;0">
+                <xsl:when test="not(string(number($index2))='NaN')">
                   <xsl:value-of select="$manifest/source[@lemma=$affix]
                                                         [@index=$index2][1]/@href"/>
                 </xsl:when>
@@ -2337,130 +2349,133 @@
                                                        [not(@Typ='U_Falschschreibung')]">
                     <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
+                    <xsl:variable name="spelling-type1"
+                                  select="@Typ"/>
                     <xsl:if test="string-length($lemma1)&gt;0">
-                      <xsl:variable name="abbreviation1">
-                        <xsl:call-template name="get-abbreviation-value"/>
-                      </xsl:variable>
-                      <xsl:for-each select="$article2">
-                        <!-- ignore abbreviations -->
-                        <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
-                          <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
-                                                               [not(@Typ='U_Falschschreibung')]">
-                            <xsl:variable name="lemma2"
-                                          select="substring-after(normalize-space(.),'-')"/><!-- suffix lemma -->
-                            <xsl:if test="string-length($lemma2)&gt;0">
-                              <xsl:variable name="der-stem">
-                                <xsl:call-template name="der-stem">
-                                  <xsl:with-param name="lemma"
-                                                  select="$lemma"/>
-                                  <xsl:with-param name="lemma1"
-                                                  select="$lemma1"/>
-                                  <xsl:with-param name="lemma2"
-                                                  select="$lemma2"/>
-                                  <xsl:with-param name="spelling-type"
-                                                  select="$spelling-type"/>
-                                </xsl:call-template>
-                              </xsl:variable>
-                              <xsl:variable name="der-stem-type">
-                                <xsl:choose>
-                                  <xsl:when test="$lemma2='chen'">dim</xsl:when>
-                                  <xsl:when test="$lemma2='lein'">dim</xsl:when>
-                                  <!-- ... -->
-                                </xsl:choose>
-                              </xsl:variable>
-                              <xsl:if test="string-length($der-stem)&gt;0">
-                                <xsl:choose>
-                                  <xsl:when test="$pos1='Adjektiv'">
-                                    <xsl:call-template name="adjective-der-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="der-stem"
-                                                      select="$der-stem"/>
-                                      <xsl:with-param name="der-stem-type"
-                                                      select="$der-stem-type"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <xsl:when test="$pos1='Substantiv'">
-                                    <xsl:call-template name="noun-der-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="der-stem"
-                                                      select="$der-stem"/>
-                                      <xsl:with-param name="der-stem-type"
-                                                      select="$der-stem-type"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <xsl:when test="$pos1='Eigenname'">
-                                    <xsl:call-template name="name-der-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="der-stem"
-                                                      select="$der-stem"/>
-                                      <xsl:with-param name="der-stem-type"
-                                                      select="$der-stem-type"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <xsl:when test="$pos1='Kardinalzahl'">
-                                    <xsl:call-template name="cardinal-der-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="der-stem"
-                                                      select="$der-stem"/>
-                                      <xsl:with-param name="der-stem-type"
-                                                      select="$der-stem-type"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <xsl:when test="$pos1='Ordinalzahl'">
-                                    <xsl:call-template name="ordinal-der-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="der-stem"
-                                                      select="$der-stem"/>
-                                      <xsl:with-param name="der-stem-type"
-                                                      select="$der-stem-type"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <xsl:when test="$pos1='Verb'">
-                                    <xsl:call-template name="verb-der-entry-set">
-                                      <xsl:with-param name="lemma"
-                                                      select="$lemma1"/>
-                                      <xsl:with-param name="der-stem"
-                                                      select="$der-stem"/>
-                                      <xsl:with-param name="der-stem-type"
-                                                      select="$der-stem-type"/>
-                                      <xsl:with-param name="abbreviation"
-                                                      select="$abbreviation1"/>
-                                      <xsl:with-param name="etymology"
-                                                      select="$etymology1"/>
-                                    </xsl:call-template>
-                                  </xsl:when>
-                                  <!-- ... -->
-                                </xsl:choose>
+                      <!-- $lemma and $lemma1 are both in old spelling or in new spelling -->
+                      <xsl:if test="string($spelling-type1)=string($spelling-type)">
+                        <xsl:variable name="abbreviation1">
+                          <xsl:call-template name="get-abbreviation-value"/>
+                        </xsl:variable>
+                        <xsl:for-each select="$article2">
+                          <!-- ignore abbreviations -->
+                          <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
+                            <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                                                                 [not(@Typ='U_Falschschreibung')]">
+                              <xsl:variable name="lemma2"
+                                            select="substring-after(normalize-space(.),'-')"/><!-- suffix lemma -->
+                              <xsl:if test="string-length($lemma2)&gt;0">
+                                <xsl:variable name="der-stem">
+                                  <xsl:call-template name="der-stem">
+                                    <xsl:with-param name="lemma"
+                                                    select="$lemma"/>
+                                    <xsl:with-param name="lemma1"
+                                                    select="$lemma1"/>
+                                    <xsl:with-param name="lemma2"
+                                                    select="$lemma2"/>
+                                  </xsl:call-template>
+                                </xsl:variable>
+                                <xsl:variable name="der-stem-type">
+                                  <xsl:choose>
+                                    <xsl:when test="$lemma2='chen'">dim</xsl:when>
+                                    <xsl:when test="$lemma2='lein'">dim</xsl:when>
+                                    <!-- ... -->
+                                  </xsl:choose>
+                                </xsl:variable>
+                                <xsl:if test="string-length($der-stem)&gt;0">
+                                  <xsl:choose>
+                                    <xsl:when test="$pos1='Adjektiv'">
+                                      <xsl:call-template name="adjective-der-entry-set">
+                                        <xsl:with-param name="lemma"
+                                                        select="$lemma1"/>
+                                        <xsl:with-param name="der-stem"
+                                                        select="$der-stem"/>
+                                        <xsl:with-param name="der-stem-type"
+                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="abbreviation"
+                                                        select="$abbreviation1"/>
+                                        <xsl:with-param name="etymology"
+                                                        select="$etymology1"/>
+                                      </xsl:call-template>
+                                    </xsl:when>
+                                    <xsl:when test="$pos1='Substantiv'">
+                                      <xsl:call-template name="noun-der-entry-set">
+                                        <xsl:with-param name="lemma"
+                                                        select="$lemma1"/>
+                                        <xsl:with-param name="der-stem"
+                                                        select="$der-stem"/>
+                                        <xsl:with-param name="der-stem-type"
+                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="abbreviation"
+                                                        select="$abbreviation1"/>
+                                        <xsl:with-param name="etymology"
+                                                        select="$etymology1"/>
+                                      </xsl:call-template>
+                                    </xsl:when>
+                                    <xsl:when test="$pos1='Eigenname'">
+                                      <xsl:call-template name="name-der-entry-set">
+                                        <xsl:with-param name="lemma"
+                                                        select="$lemma1"/>
+                                        <xsl:with-param name="der-stem"
+                                                        select="$der-stem"/>
+                                        <xsl:with-param name="der-stem-type"
+                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="abbreviation"
+                                                        select="$abbreviation1"/>
+                                        <xsl:with-param name="etymology"
+                                                        select="$etymology1"/>
+                                      </xsl:call-template>
+                                    </xsl:when>
+                                    <xsl:when test="$pos1='Kardinalzahl'">
+                                      <xsl:call-template name="cardinal-der-entry-set">
+                                        <xsl:with-param name="lemma"
+                                                        select="$lemma1"/>
+                                        <xsl:with-param name="der-stem"
+                                                        select="$der-stem"/>
+                                        <xsl:with-param name="der-stem-type"
+                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="abbreviation"
+                                                        select="$abbreviation1"/>
+                                        <xsl:with-param name="etymology"
+                                                        select="$etymology1"/>
+                                      </xsl:call-template>
+                                    </xsl:when>
+                                    <xsl:when test="$pos1='Ordinalzahl'">
+                                      <xsl:call-template name="ordinal-der-entry-set">
+                                        <xsl:with-param name="lemma"
+                                                        select="$lemma1"/>
+                                        <xsl:with-param name="der-stem"
+                                                        select="$der-stem"/>
+                                        <xsl:with-param name="der-stem-type"
+                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="abbreviation"
+                                                        select="$abbreviation1"/>
+                                        <xsl:with-param name="etymology"
+                                                        select="$etymology1"/>
+                                      </xsl:call-template>
+                                    </xsl:when>
+                                    <xsl:when test="$pos1='Verb'">
+                                      <xsl:call-template name="verb-der-entry-set">
+                                        <xsl:with-param name="lemma"
+                                                        select="$lemma1"/>
+                                        <xsl:with-param name="der-stem"
+                                                        select="$der-stem"/>
+                                        <xsl:with-param name="der-stem-type"
+                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="abbreviation"
+                                                        select="$abbreviation1"/>
+                                        <xsl:with-param name="etymology"
+                                                        select="$etymology1"/>
+                                      </xsl:call-template>
+                                    </xsl:when>
+                                    <!-- ... -->
+                                  </xsl:choose>
+                                </xsl:if>
                               </xsl:if>
-                            </xsl:if>
+                            </xsl:for-each>
                           </xsl:for-each>
                         </xsl:for-each>
-                      </xsl:for-each>
+                      </xsl:if>
                     </xsl:if>
                   </xsl:for-each>
                 </xsl:if>

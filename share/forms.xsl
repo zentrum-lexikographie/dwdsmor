@@ -279,7 +279,6 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma1"/>
   <xsl:param name="lemma2"/><!-- suffix lemma -->
-  <xsl:param name="spelling-type"/>
   <xsl:if test="matches($lemma,concat('^.*[^-]',$lemma2,'$'),'i')">
     <xsl:call-template name="set-der-stem-case">
       <xsl:with-param name="lemma"
