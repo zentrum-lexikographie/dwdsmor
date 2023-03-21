@@ -2378,7 +2378,6 @@
                                 <xsl:variable name="der-stem-type">
                                   <xsl:choose>
                                     <xsl:when test="$lemma2='chen'">dim</xsl:when>
-                                    <xsl:when test="$lemma2='lein'">dim</xsl:when>
                                     <!-- ... -->
                                   </xsl:choose>
                                 </xsl:variable>

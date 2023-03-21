@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-03-21:
+
+* do not infer diminutive derivation stems from "lein"-suffixed lemmas, which
+  may be phonologically reduced
+
 2023-03-20:
 
 * add support for lexical entries of derivation stems

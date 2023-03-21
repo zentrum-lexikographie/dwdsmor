@@ -1,5 +1,5 @@
 % dwdsmor-finite.fst
-% Version 6.0
+% Version 6.1
 % Andreas Nolda 2023-03-21
 
 #include "symbols.fst"
@@ -136,6 +136,10 @@ $MORPH$ = $MORPH$ || $BoundaryTriggers$
 % (morpho)phonology
 
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
+
+$MORPHAnalysis$ = (_$MORPH$) || $PHONAnalysis$
+
+$MORPH$ = (^_$MORPHAnalysis$) || $MORPH$
 
 
 % punctuation

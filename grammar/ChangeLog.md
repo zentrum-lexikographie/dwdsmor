@@ -4,6 +4,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 * eliminate disjunctive categories
 * generate morpheme-boundary markers from morpheme-boundary triggers
+* apply selected phonological rules to analysis level
 
 2023-03-20:
 
