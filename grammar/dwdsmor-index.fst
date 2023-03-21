@@ -1,13 +1,12 @@
 % dwdsmor-index.fst
-% Version 5.0
-% Andreas Nolda 2023-03-10
+% Version 5.1
+% Andreas Nolda 2023-03-21
 
 #include "symbols.fst"
 #include "stemtype.fst"
 #include "infl.fst"
 #include "markers.fst"
 #include "phon.fst"
-#include "disj.fst"
 #include "cleanup.fst"
 
 
@@ -71,11 +70,6 @@ $MORPH$ = $MORPH$ || $Boundary$
 % (morpho)phonology
 
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
-
-
-% disjunctive categories
-
-$MORPH$ = $DisjunctiveCategoriesAnalysis$ || $MORPH$
 
 
 % final cleanup

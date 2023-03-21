@@ -1,6 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
-2023-03-15:
+2023-03-21:
+
+* eliminate disjunctive categories
+
+2023-03-20:
 
 * add support for derivation by means of "chen"- and "lein"-suffixation
 

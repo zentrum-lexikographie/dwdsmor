@@ -1,6 +1,6 @@
 % dwdsmor.fst
-% Version 5.1
-% Andreas Nolda 2023-03-20
+% Version 5.2
+% Andreas Nolda 2023-03-21
 
 #include "symbols.fst"
 #include "num.fst"
@@ -9,7 +9,6 @@
 #include "infl.fst"
 #include "markers.fst"
 #include "phon.fst"
-#include "disj.fst"
 #include "punct.fst"
 #include "cap.fst"
 #include "cleanup.fst"
@@ -144,11 +143,6 @@ $MORPH$ = $MORPH$ || $Boundary$
 % (morpho)phonology
 
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
-
-
-% disjunctive categories
-
-$MORPH$ = $DisjunctiveCategoriesAnalysis$ || $MORPH$
 
 
 % punctuation
