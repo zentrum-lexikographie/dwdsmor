@@ -1,10 +1,10 @@
 % stemtype.fst
-% Version 2.1
-% Andreas Nolda 2023-03-20
+% Version 2.2
+% Andreas Nolda 2023-03-21
 
 #include "symbols.fst"
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #morpheme-boundary# \
+ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# \
             #lemma-index# #paradigm-index# #category# #stem-type# #stem-subtype# \
             #origin# #inflection# #auxiliary# <Abbr><FB><VPART><ge>]
 

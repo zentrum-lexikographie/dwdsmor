@@ -1,6 +1,6 @@
 % phon.fst
-% Version 2.1
-% Andreas Nolda 2023-03-10
+% Version 2.2
+% Andreas Nolda 2023-03-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -13,7 +13,7 @@
 % trink+<er>ei  -> Trinkerei
 % gaukel+<er>ei -> Gaukelei
 
-ALPHABET = [#char# #phon-trigger# #ss-trigger# <e><UL>] \
+ALPHABET = [#char# #phon-trigger# #ss-trigger# #boundary-trigger# <e><UL>] \
            <n>:[nlmrn] \
            <d>:[dfgklnpst] \
            <~n>:[<>n]
@@ -38,7 +38,7 @@ $R1$ = (<n>  <=> n (<CB>? [ac-knoqs-zäöüßAC-KNOQS-ZÄÖÜ])) & \
 % haplology
 % birst+st -> birst
 
-ALPHABET = [#char# #phon-trigger# #ss-trigger# <e><UL>] \
+ALPHABET = [#char# #phon-trigger# #ss-trigger# #boundary-trigger# <e><UL>] \
            [st]:<>
 
 $R2$ = ((st<FB>) s <=> <> (t:.)) & ((st<FB>s:.) t <=> <>)
@@ -52,7 +52,7 @@ $R2$ = ((st<FB>) s <=> <> (t:.)) & ((st<FB>s:.) t <=> <>)
 % Schwabe<^Del>$in -> Schwäbin
 % Tochter$         -> Töchter
 
-ALPHABET = [#char# #phon-trigger# #ss-trigger# <e><UL>]
+ALPHABET = [#char# #phon-trigger# #ss-trigger# #boundary-trigger# <e><UL>]
 
 $Cons$ = [bcdfghjklmnpqrstvwxyzß]
 
@@ -80,24 +80,21 @@ $R3$ = $R3a$ || $R3b$ || $R3c$
 % Fuß+es      -> Fußes
 % Zeugnis~+es -> Zeugnisses
 
-ALPHABET = [#char# #phon-trigger# <SSalt><e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# <SSalt><e>] \
            <SS>:[<><SS>]
-
 
 % Schuß<SS><FB><SS...> -> Schuß<FB><SS...>
 
 $R4a$ = (ß) <SS> <=> <> (<FB> [#ss-trigger#])
 
-$B$ = [<FB><INS-E>]
-
-ALPHABET = [#char# #phon-trigger# <SSalt><e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# <SSalt><e>] \
            ß:s <SS>:[<>s]
 
-$R4b$ = (ß <=> s (<FB>? [#ss-trigger#]:. $B$ [aeiou])) & \
-        ((ß:s <FB>? | s) [#ss-trigger#] <=> s ($B$ [aeiou])) & \
-        ((s) [#ss-trigger#] <=> <> ($B$ ($Cons$ | <WB>)))
+$R4b$ = (ß <=> s (<FB>? [#ss-trigger#]:. <FB> [aeiou])) & \
+        ((ß:s <FB>? | s) [#ss-trigger#] <=> s (<FB> [aeiou])) & \
+        ((s) [#ss-trigger#] <=> <> (<FB> ($Cons$ | <WB>)))
 
-ALPHABET = [#char# #phon-trigger# <e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# <e>] \
            <SSalt>:<>
 
 $R4c$ = (ß <FB>?) <SSalt> <=> <>
@@ -109,10 +106,10 @@ $R4$ = $R4a$ || $R4b$ || $R4c$
 % Bote+e   -> Bote
 % leise$er -> leiser
 
-ALPHABET = [#char# #phon-trigger# <e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# <e>] \
            e:<>
 
-$R5$ = e <=> <> ($B$ e)
+$R5$ = e <=> <> (<FB> e)
 
 
 % optional genitive e-elision
@@ -123,23 +120,23 @@ $R5$ = e <=> <> ($B$ e)
 % Fuß+es      -> Fußes
 % Zeugnis~+es -> Zeugnisses
 
-$R6$ = (([bcdfghjklmnpqrtuvwy] <FB>? $B$) e => <> (s <^Gen>)) | \
-       (([AEae]i <FB>? $B$) e => <> (s <^Gen>))
+$R6$ = (([bcdfghjklmnpqrtuvwy] <FB>? <FB>) e => <> (s <^Gen>)) | \
+       (([AEae]i <FB>? <FB>) e => <> (s <^Gen>))
 
 
 % adjective-"el"/"er" "e"-elision
 % dunkel<^Ax>+e -> dunkle
 % teuer<^Ax>+e  -> teure
 
-$R7$ = e <=> <> ([lr] <^Ax> $B$ e)
+$R7$ = e <=> <> ([lr] <^Ax> <FB> e)
 
 
 % optional pronoun-"er" "e"-elision
 % unser<^Px>+en   -> unsren, unsern
 % unserig<^Px>+en -> unsrigen
 
-$R8$ = (e => <> (r(ig)? <^Px> $B$? e)) | \
-       ((er <^Px> $B$) e => <> ([mns]))
+$R8$ = (e => <> (r(ig)? <^Px> <FB>? e)) | \
+       ((er <^Px> <FB>) e => <> ([mns]))
 
 
 % verb-"el"/"er" "e"-elision
@@ -151,17 +148,17 @@ $R8$ = (e => <> (r(ig)? <^Px> $B$? e)) | \
 % handel<^Vx>+est -> handelst, *handlest, ?handelest
 % rechn+ung       -> Rechnung
 
-ALPHABET = [#char# #phon-trigger# <e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# <e>] \
            e:<>
 
-$R9a$ = (<e>[lr] $B$) e <=> <> (n | s?t)
+$R9a$ = (<e>[lr] <FB>) e <=> <> (n | s?t)
 
-ALPHABET = [#char# #phon-trigger# <e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# <e>] \
            <e>:<>
 
-$R9b$ = <e> => <> ([lr] $B$ [eui])
+$R9b$ = <e> => <> ([lr] <FB> [eui])
 
-$R9c$ = <e> <=> <> (n $B$ [eui])
+$R9c$ = <e> <=> <> (n <FB> [eui])
 
 $R9$ = $R9a$ || $R9b$ || $R9c$
 
@@ -172,11 +169,11 @@ $R9$ = $R9a$ || $R9b$ || $R9c$
 % birs+st -> (du) birst
 % groß$st -> größt
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            <e>:e \
            s:<>
 
-$R10$ = ([xsßz] $B$) s <=> <> (t)
+$R10$ = ([xsßz] [<FB><INS-E>]) s <=> <> (t)
 
 
 % "e"-epenthesis
@@ -186,7 +183,7 @@ $R10$ = ([xsßz] $B$) s <=> <> (t)
 % gelieb&t&st  -> geliebtest
 % gewappn&t&st -> gewappnetst
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            <INS-E>:<>
 
 % gefeiert&ste -> gefeiertste
@@ -195,7 +192,7 @@ ALPHABET = [#char# #phon-trigger#] \
 $R11$ = ([a-df-hj-z]e[rl]t) <INS-E> <=> <> (st)
 
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            <INS-E>:[e<>]
 
 % gewappn&t&st -> gewappnetst
@@ -204,7 +201,7 @@ $R12$ = ((((c[hk])|[bdfgmp])n | [#lowercase#]t) <INS-E> <=> e) & \
         ((<INS-E>:e[dt]) <INS-E> <=> <>)
 
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            <INS-E>:e
 
 $R13$ = ([dt]m? | tw) <INS-E> <=> e
@@ -216,59 +213,57 @@ $R13$ = ([dt]m? | tw) <INS-E> <=> e
 % voll=laufen   -> vollaufen, volllaufen
 % Sperr=rad     -> Sperrad, Sperrrad
 
-$B$ = [<CB><FB>]
-
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            f:[<f><>] \
            <OLDORTH>:<>
 
-$R14a$ = (f f <=> <>  (<OLDORTH>:. $B$ [fF] [aeiouäöü])) & \
-         (f f <=> <x> ($B$ [fF] [aeiouäöü])) & \
+$R14a$ = (f f <=> <>  (<OLDORTH>:. <CB> [fF] [aeiouäöü])) & \
+         (f f <=> <x> (<CB> [fF] [aeiouäöü])) & \
          ((f:<>) <OLDORTH> <=> <>)
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            l:[<l><>] \
            <OLDORTH>:<> \
            <f>:f
 
-$R14b$ = (l l <=> <>  (<OLDORTH>:. $B$ [lL] [aeiouäöü])) & \
-         (l l <=> <x> ($B$ [lL] [aeiouäöü])) & \
+$R14b$ = (l l <=> <>  (<OLDORTH>:. <CB> [lL] [aeiouäöü])) & \
+         (l l <=> <x> (<CB> [lL] [aeiouäöü])) & \
          ((l:<>) <OLDORTH> <=> <>)
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            m:[<m><>] \
            <OLDORTH>:<> \
            <l>:l
 
-$R14c$ = (m m <=> <>  (<OLDORTH>:. $B$ [mM] [aeiouäöü])) & \
-         (m m <=> <x> ($B$ [mM] [aeiouäöü])) & \
+$R14c$ = (m m <=> <>  (<OLDORTH>:. <CB> [mM] [aeiouäöü])) & \
+         (m m <=> <x> (<CB> [mM] [aeiouäöü])) & \
          ((m:<>) <OLDORTH> <=> <>)
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            n:[<n><>] \
            <OLDORTH>:<> \
            <m>:m
 
-$R14d$ = (n n <=> <>  (<OLDORTH>:. $B$ [nN] [aeiouäöü])) & \
-         (n n <=> <x> ($B$ [nN] [aeiouäöü])) & \
+$R14d$ = (n n <=> <>  (<OLDORTH>:. <CB> [nN] [aeiouäöü])) & \
+         (n n <=> <x> (<CB> [nN] [aeiouäöü])) & \
          ((n:<>) <OLDORTH> <=> <>)
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            r:[<r><>] \
            <OLDORTH>:<> \
            <n>:n
 
-$R14e$ = (r r <=> <>  (<OLDORTH>:. $B$ [rR] [aeiouäöü])) & \
-         (r r <=> <x> ($B$ [rR] [aeiouäöü])) & \
+$R14e$ = (r r <=> <>  (<OLDORTH>:. <CB> [rR] [aeiouäöü])) & \
+         (r r <=> <x> (<CB> [rR] [aeiouäöü])) & \
          ((r:<>) <OLDORTH> <=> <>)
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            t:[<t><>] \
            <OLDORTH>:<> \
            <r>:r
 
-$R14f$ = (t t <=> <>  (<OLDORTH>:. $B$ [tT] [aeiouäöü])) & \
-         (t t <=> <x> ($B$ [tT] [aeiouäöü])) & \
+$R14f$ = (t t <=> <>  (<OLDORTH>:. <CB> [tT] [aeiouäöü])) & \
+         (t t <=> <x> (<CB> [tT] [aeiouäöü])) & \
          ((t:<>) <OLDORTH> <=> <>)
 
 $R14$ = ($R14a$ || $R14b$ || $R14c$) || \
@@ -283,7 +278,7 @@ $R14$ = ($R14a$ || $R14b$ || $R14c$) || \
 % Affrikata<^pl>+en -> Affrikaten
 % Konto<^pl>+en     -> Konten
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            [aeiou]:<> \
            <t>:t
 
@@ -291,14 +286,14 @@ ALPHABET = [#char# #phon-trigger#] \
 
 $R15a$ = [aeiou] <=> <> ([mns]:. <^pl>)
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            [amnos]:<>
 
 $R15b$ = [amnos] <=> <> <^pl>
 
 % substitute "e"
 
-ALPHABET = [#char# #phon-trigger#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger#] \
            e:<>
 
 $R15c$ = e <=> <> <^Del>
@@ -308,8 +303,8 @@ $R15$ = $R15a$ || $R15b$ || $R15c$
 
 % marker deletion
 
-ALPHABET = [#char#] \
-           [<INS-E><FB><CB><WB><^Ax><^Px><^Gen><^Del><^pl>]:<>
+ALPHABET = [#char# #boundary-trigger#] \
+           [#phon-trigger#]:<>
 
 $R16$ = .*
 

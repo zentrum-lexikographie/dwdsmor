@@ -1,6 +1,6 @@
 % markers.fst
-% Version 5.1
-% Andreas Nolda 2023-03-20
+% Version 6.0
+% Andreas Nolda 2023-03-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -17,19 +17,16 @@ $SchwaTrigger$ = e <=> <e> ([lr] <V> .* <VVReg-el/er>)
 $SurfaceTriggers$ = $SchwaTrigger$
 
 
-% replace <FB> and <VPART> with <~> and <#>, respectively, on analysis level
+% generate morpheme-boundary triggers from entry types
 
-ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
-            #wf-process# #wf-means#] \
-           <\~>:<FB> \
-           <#>:<VPART>
+$C$ = [#char# #phon-trigger# #ss-trigger# #surface-trigger# #boundary-trigger# <UL>]
 
-$BoundaryAnalysis$ = .*
+$BoundaryTriggers$ = (([<Stem><VPART>]:<CB> | [<Prefix><Suffix>]:<DB>) $C$*)+
 
 
 % process <ge> marker
 
-$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# \
+$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# #boundary-trigger# \
        <UL><VPART><^imp><^zz><zu>]
 
 $MarkerGe$ = $C$* | \
@@ -40,7 +37,7 @@ $MarkerGe$ = $C$* | \
 
 % process <zu> marker
 
-$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# \
+$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# #boundary-trigger# \
        <UL><VPART><^imp>]
 
 $C$ = $C$ | <zu>:<>
@@ -51,7 +48,7 @@ $MarkerZu$ = $C$* | \
 
 % process <^imp> marker
 
-$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# \
+$C$ = [#entry-type# #char# #phon-trigger# #ss-trigger# #surface-trigger# #boundary-trigger# \
        <UL>]
 
 $MarkerImp$ = [<Prefix><Stem>] ($C$* [<Prefix><Stem><VPART>])* $C$* | \
@@ -61,6 +58,20 @@ $MarkerImpVPart$ = [<Prefix><Stem>] ($C$* [<Prefix><Stem><VPART>])* $C$* | \
                    [<Prefix><Stem>] ($C$* [<Prefix><Stem><VPART>])* $C$* <^imp>:<> $C$*
 
 
-$C$ = [#char# #phon-trigger# #ss-trigger# #surface-trigger# <UL>]
+% process morpheme-boundary triggers
 
-$Boundary$ = (([<Stem><VPART>]:<CB> | [<Prefix><Suffix>]:<FB>) $C$*)+
+ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info#] \
+           <#>:[<CB><VPART>] \
+           <\=>:<HB> \
+           <\~>:[<DB><FB>]
+
+$MarkerBoundaryAnalysis$ = .*
+
+ALPHABET = [#char# #lemma-index# #paradigm-index# #wf-process# #wf-means# \
+            #feature# #info#] \
+           <+>:<CB> \
+           <>:<DB> \
+           <#>:<VPART> \
+           <\~>:<FB>
+
+$MarkerBoundaryRootAnalysis$ = .*

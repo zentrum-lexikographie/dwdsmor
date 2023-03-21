@@ -1,5 +1,5 @@
 % dwdsmor-root.fst
-% Version 2.2
+% Version 3.0
 % Andreas Nolda 2023-03-21
 
 #include "symbols.fst"
@@ -49,10 +49,10 @@ $CompStemsDC$ = $CompStems$ || $StemDC$
 
 % word formation
 
-% morpheme-boundary markers
+% morpheme-boundary triggers
 
-$CompBreakNone$ = <+>:<^none>
-$CompBreakHyph$ = <+>:<^hyph>
+$CompBreakNone$ = <CB>:<^none>
+$CompBreakHyph$ = <CB>:<^hyph>
 
 % affixes
 
@@ -114,11 +114,6 @@ $LEX$ = $CleanupWFAnalysis$ || $LEX$
 $LEX$ = $LEX$ || $CleanupWF$
 
 
-% morpheme-boundary markers on analysis level
-
-$LEX$ = $BoundaryAnalysis$ || $LEX$
-
-
 % inflection
 
 $MORPH$ = $LEX$ $INFL$ || $InflFilter$
@@ -133,9 +128,9 @@ $MORPH$ = $MORPH$ || $MarkerZu$
 $MORPH$ = $MORPH$ || $MarkerImp$
 
 
-% morpheme-boundary markers
+% morpheme-boundary triggers generated from entry types
 
-$MORPH$ = $MORPH$ || $Boundary$
+$MORPH$ = $MORPH$ || $BoundaryTriggers$
 
 
 % (morpho)phonology
@@ -148,16 +143,27 @@ $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 $MORPH$ = $MORPH$ | $PUNCT$
 
 
-% capitalisation
+% morpheme-boundary markers
 
-$MORPH$ = $MORPH$ | <CAP>:<> ($MORPH$ || $CAP$)
+$MORPH$ = $MarkerBoundaryRootAnalysis$ || $MORPH$
 
 
-% final cleanup
+% cleanup of orthography-related symbols
 
 $MORPH$ = $CleanupOrthAnalysis$ || $MORPH$
 
+% cleanup of lemma and paradigm indices
+
 $MORPH$ = $CleanupIndexAnalysis$ || $MORPH$
+
+% cleanup of morpheme-boundary triggers
+
+$MORPH$ = $MORPH$ || $CleanupBoundary$
+
+
+% capitalisation
+
+$MORPH$ = $MORPH$ | <CAP>:<> ($MORPH$ || $CAP$)
 
 
 % the resulting automaton

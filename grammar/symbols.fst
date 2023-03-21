@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 4.7
-% Andreas Nolda 2023-03-20
+% Version 5.0
+% Andreas Nolda 2023-03-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -38,21 +38,21 @@
 
 #char# = #uppercase# #lowercase# #num# #frac# #symbol# #punct#
 
-#orth-trigger# = <OLDORTH>
-
 #ss-trigger# = <SS><SSalt>
 
-#phon-trigger# = <INS-E><FB><WB><CB><^Ax><^Px><^Gen><^Del><^pl>
+#phon-trigger# = <INS-E><^Ax><^Px><^Gen><^Del><^pl>
 
 #surface-trigger# = <~n><d><e><er><n>
+
+#boundary-trigger# = <WB><CB><HB><DB><FB>
+
+#morpheme-boundary# = <+><#><\=><\~>
 
 #wf-trigger# = <^none><^hyph>
 
 #wf-process# = <COMP><DER>
 
 #wf-means# = <concat><hyph><pref(un)><suff(chen)><suff(lein)>
-
-#morpheme-boundary# = <\~><\=><#><+>
 
 #category# = <ABBR><ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER><POSS> \
              <PPRO><PRO><REL><V><WPRO>
@@ -87,13 +87,15 @@
 
 #tense# = <Pres><Past>
 
-#orthinfo# = <CAP>
+#feature# = #wf-process# #wf-means# #category# #auxiliary# #part-of-speech# #subcat# \
+            #degree# #person# #gender# #case# #number# #infl# #function# #nonfinite# \
+            #mood# #tense#
+
+#orthinfo# = <CAP><OLDORTH>
 
 #metainfo# = <NonSt><Old>
 
-#feature# = #wf-process# #wf-means# #category# #auxiliary# #part-of-speech# #subcat# \
-            #degree# #person# #gender# #case# #number# #infl# #function# #nonfinite# \
-            #mood# #tense# #orthinfo# #metainfo#
+#info# = #orthinfo# #metainfo#
 
 #stem-type# = <base><comp><der>
 

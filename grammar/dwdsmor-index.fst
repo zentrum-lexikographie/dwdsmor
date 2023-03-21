@@ -1,5 +1,5 @@
 % dwdsmor-index.fst
-% Version 5.1
+% Version 6.0
 % Andreas Nolda 2023-03-21
 
 #include "symbols.fst"
@@ -43,11 +43,6 @@ $LEX$ = $CleanupWFAnalysis$ || $LEX$
 $LEX$ = $LEX$ || $CleanupWF$
 
 
-% morpheme-boundary markers on analysis level
-
-$LEX$ = $BoundaryAnalysis$ || $LEX$
-
-
 % inflection
 
 $MORPH$ = $LEX$ $INFL$ || $InflFilter$
@@ -62,9 +57,9 @@ $MORPH$ = $MORPH$ || $MarkerZu$
 $MORPH$ = $MORPH$ || $MarkerImpVPart$
 
 
-% morpheme-boundary markers
+% morpheme-boundary triggers generated from entry types
 
-$MORPH$ = $MORPH$ || $Boundary$
+$MORPH$ = $MORPH$ || $BoundaryTriggers$
 
 
 % (morpho)phonology
@@ -72,9 +67,18 @@ $MORPH$ = $MORPH$ || $Boundary$
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 
 
-% final cleanup
+% morpheme-boundary markers
+
+$MORPH$ = $MarkerBoundaryAnalysis$ || $MORPH$
+
+
+% cleanup of orthography-related symbols
 
 $MORPH$ = $CleanupOrthAnalysis$ || $MORPH$
+
+% cleanup of morpheme-boundary triggers
+
+$MORPH$ = $MORPH$ || $CleanupBoundary$
 
 
 % the resulting automaton

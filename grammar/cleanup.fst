@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 3.1
-% Andreas Nolda 2023-03-20
+% Version 3.2
+% Andreas Nolda 2023-03-21
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -27,8 +27,8 @@ $CleanupIndex$ = .*
 
 % clean up word-formation-related symbols on analysis level
 
-ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
-            #wf-process# #wf-means# <FB><VPART>] \
+ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #wf-process# #wf-means# <VPART>] \
            <>:[#entry-type# #category# #stem-type# #stem-subtype# #origin# <Abbr>]
 
 $CleanupWFAnalysis$ = .*
@@ -46,16 +46,23 @@ $CleanupWF$ = .*
 % clean up orthography-related symbols on analysis level
 
 ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
-            #wf-process# #wf-means# #part-of-speech# #feature#] \
-           <>:[#orth-trigger#]
+            #wf-process# #wf-means# #feature# #metainfo#] \
+           <>:[#orthinfo#]
 
 $CleanupOrthAnalysis$ = .*
 
 
 % clean up lemma and paradigm indices on analysis level
 
-ALPHABET = [#char# #morpheme-boundary# #wf-process# #wf-means# \
-            #part-of-speech# #feature#] \
+ALPHABET = [#char# #morpheme-boundary# #wf-process# #wf-means# #feature# #info#] \
            <>:[#lemma-index# #paradigm-index#]
 
 $CleanupIndexAnalysis$ = .*
+
+
+% clean up morpheme-boundary triggers
+
+ALPHABET = [#char#] \
+           [#boundary-trigger#]:<>
+
+$CleanupBoundary$ = .*
