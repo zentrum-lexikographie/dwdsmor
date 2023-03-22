@@ -1,6 +1,6 @@
 % phon.fst
 % Version 3.0
-% Andreas Nolda 2023-03-21
+% Andreas Nolda 2023-03-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -14,7 +14,7 @@
 % gaukel+<er>ei -> Gaukelei
 
 ALPHABET = [#char# #phon-trigger# #ss-trigger# #boundary-trigger# \
-            #category# #feature# <e><UL>] \
+            #lemma-index# #paradigm-index# #category# #feature# <e><UL>] \
            <n>:[nlmrn] \
            <d>:[dfgklnpst] \
            <~n>:[<>n]
@@ -40,7 +40,7 @@ $R1$ = (<n>  <=> n (<CB>? [ac-knoqs-zäöüßAC-KNOQS-ZÄÖÜ])) & \
 % birst+st -> birst
 
 ALPHABET = [#char# #phon-trigger# #ss-trigger# #boundary-trigger# \
-            #category# #feature# <e><UL>] \
+            #lemma-index# #paradigm-index# #category# #feature# <e><UL>] \
            [st]:<>
 
 $R2$ = ((st<FB>) s <=> <> (t:.)) & ((st<FB>s:.) t <=> <>)
@@ -55,7 +55,7 @@ $R2$ = ((st<FB>) s <=> <> (t:.)) & ((st<FB>s:.) t <=> <>)
 % Tochter$         -> Töchter
 
 ALPHABET = [#char# #phon-trigger# #ss-trigger# #boundary-trigger# \
-            #category# #feature# <e><UL>]
+            #lemma-index# #paradigm-index# #category# #feature# <e><UL>]
 
 $Cons$ = [bcdfghjklmnpqrstvwxyzß]
 
@@ -83,23 +83,24 @@ $R3$ = $R3a$ || $R3b$ || $R3c$
 % Fuß+es      -> Fußes
 % Zeugnis~+es -> Zeugnisses
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature# \
-            <SSalt><e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature# <SSalt><e>] \
            <SS>:[<><SS>]
 
 % Schuß<SS><FB><SS...> -> Schuß<FB><SS...>
 
 $R4a$ = (ß) <SS> <=> <> (<FB> [#ss-trigger#])
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature# \
-            <SSalt><e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature# <SSalt><e>] \
            ß:s <SS>:[<>s]
 
 $R4b$ = (ß <=> s (<FB>? [#ss-trigger#]:. <FB> [aeiou])) & \
         ((ß:s <FB>? | s) [#ss-trigger#] <=> s (<FB> [aeiou])) & \
         ((s) [#ss-trigger#] <=> <> (<FB> ($Cons$ | <WB>)))
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature# <e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature# <e>] \
            <SSalt>:<>
 
 $R4c$ = (ß <FB>?) <SSalt> <=> <>
@@ -111,7 +112,8 @@ $R4$ = $R4a$ || $R4b$ || $R4c$
 % Bote+e   -> Bote
 % leise$er -> leiser
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature# <e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature# <e>] \
            e:<>
 
 $R5$ = e <=> <> (<FB> e)
@@ -153,12 +155,14 @@ $R8$ = (e => <> (r(ig)? <^Px> <FB>? e)) | \
 % handel<^Vx>+est -> handelst, *handlest, ?handelest
 % rechn+ung       -> Rechnung
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature# <e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature# <e>] \
            e:<>
 
 $R9a$ = (<e>[lr] <FB>) e <=> <> (n | s?t)
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature# <e>] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature# <e>] \
            <e>:<>
 
 $R9b$ = <e> => <> ([lr] <FB> [eui])
@@ -174,7 +178,8 @@ $R9$ = $R9a$ || $R9b$ || $R9c$
 % birs+st -> (du) birst
 % groß$st -> größt
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            <e>:e \
            s:<>
 
@@ -183,12 +188,14 @@ $R10a$ = ([xsßz] [<FB><INS-E>]) s <=> <> (t)
 % "l"-elimination
 % Engel<DB>lein -> Enge<DB>lein
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            l:<>
 
 $R10b$ = (e) l <=> <> (<DB> lein)
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            e:<>
 
 % optional "e"-elision
@@ -211,7 +218,8 @@ $R10$ = $R10a$ || $R10b$ || $R10c$
 % gelieb&t&st  -> geliebtest
 % gewappn&t&st -> gewappnetst
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            <INS-E>:<>
 
 % gefeiert&ste -> gefeiertste
@@ -220,7 +228,8 @@ ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
 $R11$ = ([a-df-hj-z]e[rl]t) <INS-E> <=> <> (st)
 
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            <INS-E>:[e<>]
 
 % gewappn&t&st -> gewappnetst
@@ -229,7 +238,8 @@ $R12$ = ((((c[hk])|[bdfgmp])n | [#lowercase#]t) <INS-E> <=> e) & \
         ((<INS-E>:e[dt]) <INS-E> <=> <>)
 
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            <INS-E>:e
 
 $R13$ = ([dt]m? | tw) <INS-E> <=> e
@@ -241,7 +251,8 @@ $R13$ = ([dt]m? | tw) <INS-E> <=> e
 % voll=laufen   -> vollaufen, volllaufen
 % Sperr=rad     -> Sperrad, Sperrrad
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            f:[<f><>] \
            <OLDORTH>:<>
 
@@ -249,7 +260,8 @@ $R14a$ = (f f <=> <>  (<OLDORTH>:. <CB> [fF] [aeiouäöü])) & \
          (f f <=> <x> (<CB> [fF] [aeiouäöü])) & \
          ((f:<>) <OLDORTH> <=> <>)
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            l:[<l><>] \
            <OLDORTH>:<> \
            <f>:f
@@ -258,7 +270,8 @@ $R14b$ = (l l <=> <>  (<OLDORTH>:. <CB> [lL] [aeiouäöü])) & \
          (l l <=> <x> (<CB> [lL] [aeiouäöü])) & \
          ((l:<>) <OLDORTH> <=> <>)
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            m:[<m><>] \
            <OLDORTH>:<> \
            <l>:l
@@ -267,7 +280,8 @@ $R14c$ = (m m <=> <>  (<OLDORTH>:. <CB> [mM] [aeiouäöü])) & \
          (m m <=> <x> (<CB> [mM] [aeiouäöü])) & \
          ((m:<>) <OLDORTH> <=> <>)
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            n:[<n><>] \
            <OLDORTH>:<> \
            <m>:m
@@ -276,7 +290,8 @@ $R14d$ = (n n <=> <>  (<OLDORTH>:. <CB> [nN] [aeiouäöü])) & \
          (n n <=> <x> (<CB> [nN] [aeiouäöü])) & \
          ((n:<>) <OLDORTH> <=> <>)
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            r:[<r><>] \
            <OLDORTH>:<> \
            <n>:n
@@ -285,7 +300,8 @@ $R14e$ = (r r <=> <>  (<OLDORTH>:. <CB> [rR] [aeiouäöü])) & \
          (r r <=> <x> (<CB> [rR] [aeiouäöü])) & \
          ((r:<>) <OLDORTH> <=> <>)
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            t:[<t><>] \
            <OLDORTH>:<> \
            <r>:r
@@ -306,7 +322,8 @@ $R14$ = ($R14a$ || $R14b$ || $R14c$) || \
 % Affrikata<^pl>+en -> Affrikaten
 % Konto<^pl>+en     -> Konten
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            [aeiou]:<> \
            <t>:t
 
@@ -314,14 +331,16 @@ ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
 
 $R15a$ = [aeiou] <=> <> ([mns]:. <^pl>)
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            [amnos]:<>
 
 $R15b$ = [amnos] <=> <> <^pl>
 
 % substitute "e"
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature#] \
            e:<>
 
 $R15c$ = e <=> <> <^Del>
@@ -331,7 +350,7 @@ $R15$ = $R15a$ || $R15b$ || $R15c$
 
 % marker deletion
 
-ALPHABET = [#char# #boundary-trigger# #category# #feature#] \
+ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# #category# #feature#] \
            [#phon-trigger#]:<>
 
 $R16$ = .*
