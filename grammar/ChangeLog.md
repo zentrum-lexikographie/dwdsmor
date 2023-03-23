@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-03-23:
+
+* use entry types only for word-formation rules
+
 2023-03-21:
 
 * eliminate disjunctive categories

@@ -1,6 +1,6 @@
 % dwdsmor.fst
-% Version 6.1
-% Andreas Nolda 2023-03-21
+% Version 7.0
+% Andreas Nolda 2023-03-23
 
 #include "symbols.fst"
 #include "num.fst"
@@ -60,27 +60,22 @@ $CompStemsDC$ = $StemDCAnalysis$ || $CompStems$ || $StemDC$
 
 % morpheme-boundary triggers
 
-$CompBreakNone$ = <CB>:<^none>
-$CompBreakHyph$ = {<HB>\-<CB>}:{<^hyph>}
-
-$DerBreak$ =  <DB>:<>
-
 % affixes
 
-$Pref-un$   = <Prefix> un $DerBreak$
-$PrefUC-un$ = <Prefix> Un $DerBreak$
+$Pref-un$   = <Prefix> un
+$PrefUC-un$ = <Prefix> Un
 
-$Suff-chen$ = <DB>:<Suffix> chen <NN> <base> <native> <>:<NNeut_s_x>
-$Suff-lein$ = <DB>:<Suffix> lein <NN> <base> <native> <>:<NNeut_s_x>
+$Suff-chen$ = <Suffix> chen <NN> <base> <native> <>:<NNeut_s_x>
+$Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_x>
 
 % derived base stems
 
 $DerStemsDim$  = $DerStems$ || $DerStemDimFilter$
 
-$DerBaseStems$ = $Pref-un$   $BaseStems$   | \
-                 $PrefUC-un$ $BaseStemsDC$ | \
-                 $DerStemsDim$ $Suff-chen$ | \
-                 $DerStemsDim$ $Suff-lein$ || $DerFilter$
+$DerBaseStems$ = $Pref-un$     <DB> $BaseStems$   | \
+                 $PrefUC-un$   <DB> $BaseStemsDC$ | \
+                 $DerStemsDim$ <DB> $Suff-chen$   | \
+                 $DerStemsDim$ <DB> $Suff-lein$ || $DerFilter$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStems$
 
@@ -92,7 +87,8 @@ $BASE$ = $BaseStems$
 
 % derived compounding stems
 
-$DerCompStems$ = $Pref-un$ $CompStems$ | $PrefUC-un$ $CompStemsDC$ || $DerFilter$
+$DerCompStems$ = $Pref-un$   <DB> $CompStems$ | \
+                 $PrefUC-un$ <DB> $CompStemsDC$ || $DerFilter$
 
 $CompStems$ = $CompStems$ | $DerCompStems$
 
@@ -103,8 +99,8 @@ $CompStemsDC$ = $CompStemsDC$ | $DerCompStemsDC$
 % compounds
 
 $COMP$ = $CompStems$ \
-         ($CompBreakHyph$ $CompStems$ | $CompBreakNone$ $CompStemsDC$)* \
-         ($CompBreakHyph$ $BaseStems$ | $CompBreakNone$ $BaseStemsDC$) || $CompFilter$
+         (<HB><CB> $CompStems$ | <CB> $CompStemsDC$)* \
+         (<HB><CB> $BaseStems$ | <CB> $BaseStemsDC$) || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$
 
@@ -130,11 +126,6 @@ $MORPH$ = $MORPH$ || $MarkerZu$
 $MORPH$ = $MORPH$ || $MarkerImp$
 
 
-% morpheme-boundary triggers generated from entry types
-
-$MORPH$ = $MORPH$ || $BoundaryTriggers$
-
-
 % (morpho)phonology
 
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
@@ -153,6 +144,8 @@ $MORPH$ = $MORPH$ | $PUNCT$
 
 $MORPH$ = $MarkerBoundaryAnalysis$ || $MORPH$
 
+$MORPH$ = $MORPH$ || $MarkerBoundary$
+
 
 % cleanup of orthography-related symbols
 
@@ -161,10 +154,6 @@ $MORPH$ = $CleanupOrthAnalysis$ || $MORPH$
 % cleanup of lemma and paradigm indices
 
 $MORPH$ = $CleanupIndexAnalysis$ || $MORPH$
-
-% cleanup of morpheme-boundary triggers
-
-$MORPH$ = $MORPH$ || $CleanupBoundary$
 
 
 % capitalisation

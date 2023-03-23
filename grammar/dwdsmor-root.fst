@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 3.0
-% Andreas Nolda 2023-03-21
+% Version 4.0
+% Andreas Nolda 2023-03-23
 
 #include "symbols.fst"
 #include "num.fst"
@@ -51,9 +51,6 @@ $CompStemsDC$ = $CompStems$ || $StemDC$
 
 % morpheme-boundary triggers
 
-$CompBreakNone$ = <CB>:<^none>
-$CompBreakHyph$ = <CB>:<^hyph>
-
 % affixes
 
 $Pref-un$   = <Prefix> {}:{un}
@@ -75,10 +72,10 @@ $DerSuff-lein$ = <DER>:<> <suff(lein)>:<>
 
 $DerStemsDim$  = $DerStems$ || $DerStemDimFilter$
 
-$DerBaseStems$ = $Pref-un$   $BaseStems$   $DerPref-un$   | \
-                 $PrefUC-un$ $BaseStemsDC$ $DerPref-un$   | \
-                 $DerStemsDim$ $Suff-chen$ $DerSuff-chen$ | \
-                 $DerStemsDim$ $Suff-lein$ $DerSuff-lein$ || $DerFilter$
+$DerBaseStems$ = $Pref-un$     <DB> $BaseStems$   $DerPref-un$ | \
+                 $PrefUC-un$   <DB> $BaseStemsDC$ $DerPref-un$ | \
+                 $DerStemsDim$ <DB> $Suff-chen$ $DerSuff-chen$ | \
+                 $DerStemsDim$ <DB> $Suff-lein$ $DerSuff-lein$ || $DerFilter$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStems$
 
@@ -90,7 +87,8 @@ $BASE$ = $BaseStems$
 
 % derived compounding stems
 
-$DerCompStems$ = $Pref-un$ $CompStems$ $DerPref-un$ | $PrefUC-un$ $CompStemsDC$ $DerPref-un$ || $DerFilter$
+$DerCompStems$ = $Pref-un$   <DB> $CompStems$   $DerPref-un$ | \
+                 $PrefUC-un$ <DB> $CompStemsDC$ $DerPref-un$ || $DerFilter$
 
 $CompStems$ = $CompStems$ | $DerCompStems$
 
@@ -101,8 +99,8 @@ $CompStemsDC$ = $CompStemsDC$ | $DerCompStemsDC$
 % compounds
 
 $COMP$ = $CompStems$ \
-         ($CompBreakHyph$ $CompStems$ $Comp-hyph$ | $CompBreakNone$ $CompStemsDC$ $Comp-concat$)* \
-         ($CompBreakHyph$ $BaseStems$ $Comp-hyph$ | $CompBreakNone$ $BaseStemsDC$ $Comp-concat$) || $CompFilter$
+         (<HB><CB> $CompStems$ $Comp-hyph$ | <CB> $CompStemsDC$ $Comp-concat$)* \
+         (<HB><CB> $BaseStems$ $Comp-hyph$ | <CB> $BaseStemsDC$ $Comp-concat$) || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$
 
@@ -128,11 +126,6 @@ $MORPH$ = $MORPH$ || $MarkerZu$
 $MORPH$ = $MORPH$ || $MarkerImp$
 
 
-% morpheme-boundary triggers generated from entry types
-
-$MORPH$ = $MORPH$ || $BoundaryTriggers$
-
-
 % (morpho)phonology
 
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
@@ -147,6 +140,8 @@ $MORPH$ = $MORPH$ | $PUNCT$
 
 $MORPH$ = $MarkerBoundaryRootAnalysis$ || $MORPH$
 
+$MORPH$ = $MORPH$ || $MarkerBoundary$
+
 
 % cleanup of orthography-related symbols
 
@@ -155,10 +150,6 @@ $MORPH$ = $CleanupOrthAnalysis$ || $MORPH$
 % cleanup of lemma and paradigm indices
 
 $MORPH$ = $CleanupIndexAnalysis$ || $MORPH$
-
-% cleanup of morpheme-boundary triggers
-
-$MORPH$ = $MORPH$ || $CleanupBoundary$
 
 
 % capitalisation

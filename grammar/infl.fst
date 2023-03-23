@@ -1,6 +1,6 @@
 % infl.fst
-% Version 4.0
-% Andreas Nolda 2023-03-21
+% Version 4.1
+% Andreas Nolda 2023-03-23
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -2157,8 +2157,8 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
 
 % inflection filter
 
-ALPHABET = [#entry-type# #char# #ss-trigger# #surface-trigger# \
-            <INS-E><FB><CB><VPART><Ge-Nom><UL><ge><zu> \
+ALPHABET = [#char# #boundary-trigger# #ss-trigger# #surface-trigger# \
+            <INS-E><Ge-Nom><UL><ge><zu> \
             <^Ax><^Px><^imp><^zz><^pp><^pl><^Gen><^Del>]
 
 $=INFL$ = [#inflection#]:<>

@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 3.2
-% Andreas Nolda 2023-03-21
+% Version 4.0
+% Andreas Nolda 2023-03-23
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -10,7 +10,7 @@
 % clean up inflection-related symbols on analysis level
 
 ALPHABET = [#entry-type# #char# #lemma-index# #paradigm-index# #category# \
-            #stem-type# #stem-subtype# #origin# <Abbr><FB><VPART>] \
+            #stem-type# #stem-subtype# #origin# <Abbr><FB><VB>] \
            <>:[#inflection# #auxiliary# <ge>]
 
 $CleanupInflAnalysis$ = .*
@@ -19,7 +19,7 @@ $CleanupInflAnalysis$ = .*
 % clean up lemma and paradigm indices
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #category# #stem-type# \
-            #stem-subtype# #origin# #inflection# #auxiliary# <Abbr><FB><VPART><ge>] \
+            #stem-subtype# #origin# #inflection# #auxiliary# <Abbr><FB><VB><ge>] \
            [#lemma-index# #paradigm-index#]:<>
 
 $CleanupIndex$ = .*
@@ -28,7 +28,7 @@ $CleanupIndex$ = .*
 % clean up word-formation-related symbols on analysis level
 
 ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #wf-process# #wf-means# <VPART>] \
+            #wf-process# #wf-means#] \
            <>:[#entry-type# #category# #stem-type# #stem-subtype# #origin# <Abbr>]
 
 $CleanupWFAnalysis$ = .*
@@ -36,9 +36,8 @@ $CleanupWFAnalysis$ = .*
 
 % clean up word-formation-related symbols
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #inflection# #auxiliary# \
-            #wf-trigger# <FB><VPART><ge>] \
-           [#category# #stem-type# #stem-subtype# #origin# <Abbr>]:<>
+ALPHABET = [#char# #boundary-trigger# #surface-trigger# #inflection# #auxiliary# <ge>] \
+           [#entry-type# #category# #stem-type# #stem-subtype# #origin# <Abbr>]:<>
 
 $CleanupWF$ = .*
 
@@ -58,11 +57,3 @@ ALPHABET = [#char# #morpheme-boundary# #wf-process# #wf-means# #feature# #info#]
            <>:[#lemma-index# #paradigm-index#]
 
 $CleanupIndexAnalysis$ = .*
-
-
-% clean up morpheme-boundary triggers
-
-ALPHABET = [#char#] \
-           [#boundary-trigger#]:<>
-
-$CleanupBoundary$ = .*

@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 6.0
-% Andreas Nolda 2023-03-21
+% Version 7.0
+% Andreas Nolda 2023-03-23
 
 #include "symbols.fst"
 #include "stemtype.fst"
@@ -54,12 +54,7 @@ $MORPH$ = $MORPH$ || $MarkerGe$
 
 $MORPH$ = $MORPH$ || $MarkerZu$
 
-$MORPH$ = $MORPH$ || $MarkerImpVPart$
-
-
-% morpheme-boundary triggers generated from entry types
-
-$MORPH$ = $MORPH$ || $BoundaryTriggers$
+$MORPH$ = $MORPH$ || $MarkerImpVB$
 
 
 % (morpho)phonology
@@ -71,14 +66,12 @@ $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 
 $MORPH$ = $MarkerBoundaryAnalysis$ || $MORPH$
 
+$MORPH$ = $MORPH$ || $MarkerBoundary$
+
 
 % cleanup of orthography-related symbols
 
 $MORPH$ = $CleanupOrthAnalysis$ || $MORPH$
-
-% cleanup of morpheme-boundary triggers
-
-$MORPH$ = $MORPH$ || $CleanupBoundary$
 
 
 % the resulting automaton
