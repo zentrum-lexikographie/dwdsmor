@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-03-23:
+
+* mark boundary between particle and verb with `<VB>`
+
 2023-03-21:
 
 * do not infer diminutive derivation stems from "lein"-suffixed lemmas, which

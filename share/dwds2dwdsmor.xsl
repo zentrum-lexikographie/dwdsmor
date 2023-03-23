@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 13.0 -->
-<!-- Andreas Nolda 2023-03-20 -->
+<!-- Version 13.1 -->
+<!-- Andreas Nolda 2023-03-23 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -349,7 +349,7 @@
   </xsl:if>
   <xsl:if test="string-length($particle)&gt;0">
     <xsl:value-of select="$particle"/>
-    <xsl:text>&lt;VPART&gt;</xsl:text>
+    <xsl:text>&lt;VB&gt;</xsl:text>
   </xsl:if>
   <xsl:call-template name="participle-prefix">
     <xsl:with-param name="lemma"
