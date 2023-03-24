@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 5.1
-% Andreas Nolda 2023-03-23
+% Version 5.2
+% Andreas Nolda 2023-03-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -37,6 +37,8 @@
           #punctslash# #punctother#
 
 #char# = #uppercase# #lowercase# #num# #frac# #symbol# #punct#
+
+#orth-trigger# = <^DC><^UC>
 
 #ss-trigger# = <SS><SSalt>
 

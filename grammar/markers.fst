@@ -1,6 +1,6 @@
 % markers.fst
-% Version 7.0
-% Andreas Nolda 2023-03-23
+% Version 7.1
+% Andreas Nolda 2023-03-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -19,7 +19,7 @@ $SurfaceTriggers$ = $SchwaTrigger$
 
 % process <ge> marker
 
-$C$ = [#char# #phon-trigger# #ss-trigger# #surface-trigger# #boundary-trigger# \
+$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
        <UL><^imp><^zz><zu>]
 
 $MarkerGe$ = $C$* | \
@@ -30,7 +30,7 @@ $MarkerGe$ = $C$* | \
 
 % process <zu> marker
 
-$C$ = [#char# #phon-trigger# #ss-trigger# #surface-trigger# #boundary-trigger# \
+$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
        <UL><^imp>]
 
 $C$ = $C$ | <zu>:<>
@@ -41,7 +41,7 @@ $MarkerZu$ = $C$* | \
 
 % process <^imp> marker
 
-$C$ = [#char# #phon-trigger# #ss-trigger# #surface-trigger# #boundary-trigger# \
+$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
        <UL>]
 
 $C$ = $C$-[<VB>]
@@ -57,7 +57,8 @@ $MarkerImpVB$ = ($C$* <VB>)? $C$* <^imp>:<> $C$* | \
 
 % process morpheme-boundary triggers
 
-ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info#]
+ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info#] \
+           <>:<WB>
 
 $MarkerBoundaryAnalysis$ = (.                   | \
                                  <#>:[<CB><VB>] | \
@@ -66,7 +67,7 @@ $MarkerBoundaryAnalysis$ = (.                   | \
 
 ALPHABET = [#char# #lemma-index# #paradigm-index#  #feature# #info# \
             #wf-process# #wf-means#] \
-           <>:[<HB><DB>]
+           <>:[<WB><HB><DB>]
 
 $MarkerBoundaryRootAnalysis$ = (.         | \
                                  <+>:<CB> | \

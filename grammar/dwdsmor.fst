@@ -1,6 +1,6 @@
 % dwdsmor.fst
-% Version 7.0
-% Andreas Nolda 2023-03-23
+% Version 8.0
+% Andreas Nolda 2023-03-24
 
 #include "symbols.fst"
 #include "num.fst"
@@ -51,56 +51,46 @@ $BaseStems$ = $LEX$ || $BaseStemFilter$
 $DerStems$  = $LEX$ || $DerStemFilter$
 $CompStems$ = $LEX$ || $CompStemFilter$
 
-$BaseStemsDC$ = $StemDCAnalysis$ || $BaseStems$ || $StemDC$
-$DerStemsDC$  = $StemDCAnalysis$ || $DerStems$  || $StemDC$
-$CompStemsDC$ = $StemDCAnalysis$ || $CompStems$ || $StemDC$
-
 
 % word formation
 
-% morpheme-boundary triggers
-
 % affixes
 
-$Pref-un$   = <Prefix> un
-$PrefUC-un$ = <Prefix> Un
+$Pref-un$ = <Prefix> un
 
 $Suff-chen$ = <Suffix> chen <NN> <base> <native> <>:<NNeut_s_x>
 $Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_x>
+
+% means
+
+$DC$ = <^DC>
+$UC$ = <^UC>
 
 % derived base stems
 
 $DerStemsDim$  = $DerStems$ || $DerStemDimFilter$
 
-$DerBaseStems$ = $Pref-un$     <DB> $BaseStems$   | \
-                 $PrefUC-un$   <DB> $BaseStemsDC$ | \
-                 $DerStemsDim$ <DB> $Suff-chen$   | \
-                 $DerStemsDim$ <DB> $Suff-lein$ || $DerFilter$
+$DerBaseStems$ = $UC$ $Pref-un$     <DB> $DC$ $BaseStems$ | \
+                      $Pref-un$     <DB>      $BaseStems$ | \
+                      $DerStemsDim$ <DB>      $Suff-chen$ | \
+                      $DerStemsDim$ <DB>      $Suff-lein$ || $DerFilter$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStems$
-
-$DerBaseStemsDC$ = $StemDCAnalysis$ || $DerBaseStems$ || $StemDC$
-
-$BaseStemsDC$ = $BaseStemsDC$ | $DerBaseStemsDC$
 
 $BASE$ = $BaseStems$
 
 % derived compounding stems
 
-$DerCompStems$ = $Pref-un$   <DB> $CompStems$ | \
-                 $PrefUC-un$ <DB> $CompStemsDC$ || $DerFilter$
+$DerCompStems$ = $UC$ $Pref-un$ <DB> $DC$ $CompStems$ | \
+                      $Pref-un$ <DB>      $CompStems$ || $DerFilter$
 
 $CompStems$ = $CompStems$ | $DerCompStems$
-
-$DerCompStemsDC$ = $StemDCAnalysis$ || $DerCompStems$ || $StemDC$
-
-$CompStemsDC$ = $CompStemsDC$ | $DerCompStemsDC$
 
 % compounds
 
 $COMP$ = $CompStems$ \
-         (<HB><CB> $CompStems$ | <CB> $CompStemsDC$)* \
-         (<HB><CB> $BaseStems$ | <CB> $BaseStemsDC$) || $CompFilter$
+         (<HB><CB> $CompStems$ | <CB> $DC$ $CompStems$)* \
+         (<HB><CB> $BaseStems$ | <CB> $DC$ $BaseStems$) || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$
 
@@ -130,7 +120,7 @@ $MORPH$ = $MORPH$ || $MarkerImp$
 
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 
-$MORPHAnalysis$ = (_$MORPH$) || $PHONAnalysis$
+$MORPHAnalysis$ = <>:<WB> (_$MORPH$) <>:<WB> || $PHONAnalysis$
 
 $MORPH$ = (^_$MORPHAnalysis$) || $MORPH$
 

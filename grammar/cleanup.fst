@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 4.0
-% Andreas Nolda 2023-03-23
+% Version 4.1
+% Andreas Nolda 2023-03-24
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -27,7 +27,7 @@ $CleanupIndex$ = .*
 
 % clean up word-formation-related symbols on analysis level
 
-ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# \
+ALPHABET = [#char# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #wf-process# #wf-means#] \
            <>:[#entry-type# #category# #stem-type# #stem-subtype# #origin# <Abbr>]
 
@@ -36,7 +36,7 @@ $CleanupWFAnalysis$ = .*
 
 % clean up word-formation-related symbols
 
-ALPHABET = [#char# #boundary-trigger# #surface-trigger# #inflection# #auxiliary# <ge>] \
+ALPHABET = [#char# #surface-trigger# #orth-trigger# #boundary-trigger# #inflection# #auxiliary# <ge>] \
            [#entry-type# #category# #stem-type# #stem-subtype# #origin# <Abbr>]:<>
 
 $CleanupWF$ = .*
