@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 5.2
-% Andreas Nolda 2023-03-24
+% Version 5.3
+% Andreas Nolda 2023-03-27
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -109,9 +109,10 @@
 
 #Abk-inflection# = <Abk_POSS>
 
-#Adj-inflection# = <Adj$><Adj$e><Adj+><Adj+(e)><Adj+e><Adj+Lang><Adj-el/er><AdjComp> \
-                   <AdjComp0-mehr><AdjPos0><AdjPos0-viel><AdjPos0Attr><AdjPos0AttrSubst> \
-                   <AdjPos><AdjPosAttr><AdjPosPred><AdjSup><AdjSup-aller><Adj~$e><Adj~+e>
+#Adj-inflection# = <Adj$><Adj$-el/er><Adj$e><Adj+><Adj+(e)><Adj+e><Adj+Lang><Adj-el/er> \
+                   <AdjComp><AdjComp0-mehr><AdjPos0><AdjPos0-viel><AdjPos0Attr> \
+                   <AdjPos0AttrSubst><AdjPos><AdjPosAttr><AdjPosPred><AdjSup><AdjSup-aller> \
+                   <Adj~$e><Adj~+e>
 
 #Adv-inflection# = <Adv><AdvComp><AdvComp0><AdvSup>
 

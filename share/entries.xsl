@@ -215,20 +215,40 @@
           <!-- adjectives with irregular positive forms -->
           <xsl:when test="matches($lemma,'e[lr]$') and
                           $positive=replace($lemma,'e([lr])$','$1e')">
-            <xsl:call-template name="word-entry">
-              <xsl:with-param name="lemma"
-                              select="$lemma"/>
-              <xsl:with-param name="lemma-index"
-                              select="$lemma-index"/>
-              <xsl:with-param name="paradigm-index"
-                              select="$paradigm-index"/>
-              <xsl:with-param name="abbreviation"
-                              select="$abbreviation"/>
-              <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">Adj-el/er</xsl:with-param>
-              <xsl:with-param name="etymology"
-                              select="$etymology"/>
-            </xsl:call-template>
+            <xsl:choose>
+              <xsl:when test="matches($comparative,concat('^',n:umlaut-re($positive),'r$'))">
+                <xsl:call-template name="word-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma"/>
+                  <xsl:with-param name="lemma-index"
+                                  select="$lemma-index"/>
+                  <xsl:with-param name="paradigm-index"
+                                  select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
+                  <xsl:with-param name="pos">ADJ</xsl:with-param>
+                  <xsl:with-param name="class">Adj$-el/er</xsl:with-param>
+                  <xsl:with-param name="etymology"
+                                  select="$etymology"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:call-template name="word-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma"/>
+                  <xsl:with-param name="lemma-index"
+                                  select="$lemma-index"/>
+                  <xsl:with-param name="paradigm-index"
+                                  select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
+                  <xsl:with-param name="pos">ADJ</xsl:with-param>
+                  <xsl:with-param name="class">Adj-el/er</xsl:with-param>
+                  <xsl:with-param name="etymology"
+                                  select="$etymology"/>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:when>
           <xsl:when test="string-length($positive)&gt;0 and
                           not(matches($positive-marker,'^&#x308;?(ß/ss)?-'))">

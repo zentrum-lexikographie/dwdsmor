@@ -1,6 +1,6 @@
 % phon.fst
-% Version 3.3
-% Andreas Nolda 2023-03-24
+% Version 3.4
+% Andreas Nolda 2023-03-25
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -59,7 +59,7 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger#
 
 $Cons$ = [bcdfghjklmnpqrstvwxyzß]
 
-$X$ = $Cons$* <FB>? ([#ss-trigger#] | (e ($Cons$ | <^Del>)))?
+$X$ = $Cons$* <FB>? ([#ss-trigger#] | (e ($Cons$ <^Ax>? | <^Del>)))?
 
 $LC$ = [#char#] | <WB> | <CB>
 

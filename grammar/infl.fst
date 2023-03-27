@@ -1,6 +1,6 @@
 % infl.fst
-% Version 4.2
-% Andreas Nolda 2023-03-24
+% Version 4.3
+% Andreas Nolda 2023-03-27
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -143,19 +143,19 @@ $N_s_x$ = $NSg_s$ | \
 
 % masculine nouns
 
-% Fiskus/--
+% Fiskus/-
 $NMasc/Sg_0$ = {<+NN><Masc>}:{} $NSg_0$
 
-% Abwasch-(e)s/--; Glanz-es/--;
+% Abwasch-(e)s/-; Glanz-es/-;
 $NMasc/Sg_es$ = {<+NN><Masc>}:{} $NSg_es$
 
-% Hagel-s/--; Adel-s/--
+% Hagel-s/-; Adel-s/-
 $NMasc/Sg_s$ = {<+NN><Masc>}:{} $NSg_s$
 
-% --/Kurse
+% -/Kurse
 $NMasc/Pl_0$ = {<+NN><Masc>}:{} $NPl_0$
 
-% --/Bauten
+% -/Bauten
 $NMasc/Pl_x$ = {<+NN><Masc>}:{} $NPl_x$
 
 % Intercity/Intercitys
@@ -224,7 +224,7 @@ $NMasc_en_en$ = {<+NN><Masc>}:{} $N_en_en$
 % Affe-n/Affen; Bauer-n/Bauern
 $NMasc_n_n$ = {<+NN><Masc>}:{} $N_n_n$
 
-% Haß-Hasses/--
+% Haß-Hasses/-
 $NMasc-s/Sg$ = $SS$ {<+NN><Masc>}:{} $NSg_es$
 
 % Nimbus-/Nimbusse
@@ -241,7 +241,7 @@ $NMasc-ns$ = {<+NN><Masc><Nom><Sg>}:{}       | \
              {<+NN><Masc><Acc><Sg>}:{<FB>n}  | \
              {<+NN><Masc><Dat><Sg>}:{<FB>n}  | \
              {<+NN><Masc><Gen><Sg>}:{<FB>ns} | \
-             {<+NN><Masc>}:{n}               $NPl_x$
+             {<+NN><Masc>}:{n} $NPl_x$
 
 % Embryo/Embryonen (masculine)
 $NMasc_0_nen$ =          $NMasc/Sg_0$ | \
@@ -308,16 +308,16 @@ $NMasc-Adj$ = {<+NN><Masc><Nom><Sg><St>}:{r} | \
 
 % neuter nouns
 
-% Abseits-/--
+% Abseits-/-
 $NNeut/Sg_0$ = {<+NN><Neut>}:{} $NSg_0$
 
-% Ausland-(e)s/--
+% Ausland-(e)s/-
 $NNeut/Sg_es$ = {<+NN><Neut>}:{} $NSg_es$
 
-% Abitur-s/--
+% Abitur-s/-
 $NNeut/Sg_s$ = {<+NN><Neut>}:{} $NSg_s$
 
-% --/Fresken
+% -/Fresken
 $NNeut/Pl_x$ = {<+NN><Neut>}:{} $NPl_x$
 
 % College/Colleges
@@ -394,7 +394,7 @@ $NNeut-Inner$ = {<+NN><Neut><Nom><Sg><St>}:{<FB>es} | \
                 {<+NN><Neut><Gen><Sg><Wk>}:{<FB>en} | \
                 {<+NN><Neut><Gen><Sg><Wk>}:{<FB>n}
 
-% Verständnis/--
+% Verständnis/-
 $NNeut/Sg_sses$ = $SS$ $NNeut/Sg_es$
 
 % Zeugnis/Zeugnisse
@@ -486,10 +486,10 @@ $NNeut-Adj/Sg$ = {<+NN><Neut><Nom><Sg><St>}:{s} | \
 
 % feminine nouns
 
-% Matrix/--
+% Matrix/-
 $NFem/Sg_0$ = {<+NN><Fem>}:{} $NSg_0$
 
-% --/Matrizen
+% -/Matrizen
 $NFem/Pl_x$ = {<+NN><Fem>}:{} $NPl_x$
 
 % Mutter/Mütter
@@ -585,7 +585,7 @@ $FamName_s$ = {<+NPROP><NoGend>}:{}  $NSg_s$ | \
 $Name-Fem_0$ = {<+NPROP><Fem>}:{} $NSg_0$
 
 % Felicitas/Felicitas'
-$Name-Fem_apos$ = {<+NPROP><Fem>}:{}           $NSg_0$ | \
+$Name-Fem_apos$ = {<+NPROP><Fem>}:{} $NSg_0$ | \
                   {<+NPROP><Fem><Gen><Sg>}:{’}
 
 $Name-Fem_s$ = {<+NPROP><Fem>}:{} $NSg_s$
@@ -593,7 +593,7 @@ $Name-Fem_s$ = {<+NPROP><Fem>}:{} $NSg_s$
 $Name-Masc_0$ = {<+NPROP><Masc>}:{} $NSg_0$
 
 % Andreas/Andreas'
-$Name-Masc_apos$ = {<+NPROP><Masc>}:{}           $NSg_0$ | \
+$Name-Masc_apos$ = {<+NPROP><Masc>}:{} $NSg_0$ | \
                    {<+NPROP><Masc><Gen><Sg>}:{’}
 
 $Name-Masc_es$ = {<+NPROP><Masc>}:{} $NSg_es$
@@ -603,7 +603,7 @@ $Name-Masc_s$ = {<+NPROP><Masc>}:{} $NSg_s$
 $Name-Neut_0$ = {<+NPROP><Neut>}:{} $NSg_0$
 
 % Paris/Paris'
-$Name-Neut_apos$ = {<+NPROP><Neut>}:{}           $NSg_0$ | \
+$Name-Neut_apos$ = {<+NPROP><Neut>}:{} $NSg_0$ | \
                    {<+NPROP><Neut><Gen><Sg>}:{’}
 
 $Name-Neut_es$ = {<+NPROP><Neut>}:{} $NSg_es$
@@ -669,67 +669,70 @@ $AdjPos0Attr$ = {<+ADJ><Pos><Attr><Invar>}:{}
 % Berliner ('related to Berlin')
 $AdjPos0AttrSubst$ = {<+ADJ><Pos><Attr/Subst><Invar>}:{}
 
-% bloß, bloß-; derartig, derartig-
+% bloß; derartig
 $AdjPos$ = {<+ADJ><Pos><Pred/Adv>}:{<FB>} | \
-           {<+ADJ><Pos>}:{<FB>}           $AdjInflSuff$
+           {<+ADJ><Pos>}:{<FB>} $AdjInflSuff$
 
 % ander-; vorig-
-$AdjPosAttr$ = {<+ADJ><Pos>}:{<FB>}    $AdjInflSuff$
+$AdjPosAttr$ = {<+ADJ><Pos>}:{<FB>} $AdjInflSuff$
 
-% besser, besser-; höher, höher-
+% besser; höher
 $AdjComp$ = {<+ADJ><Comp><Pred/Adv>}:{er} | \
-            {<+ADJ><Comp>}:{er}           $AdjInflSuff$
+            {<+ADJ><Comp>}:{er} $AdjInflSuff$
 
 % mehr; weniger
 $AdjComp0-mehr$ = {<+ADJ><Comp><Pred/Adv>}:{} | \
                   {<+ADJ><Comp><Attr/Subst><Invar>}:{}
 
-% besten, best-; höchsten, höchst-
+% beste; höchste
 $AdjSup$ = {<+ADJ><Sup><Pred/Adv>}:{sten} | \
-           {<+ADJ><Sup>}:{st}             $AdjInflSuff$
+           {<+ADJ><Sup>}:{st} $AdjInflSuff$
 
-% allerbesten, allerbest-; allerhöchsten, allerhöchst-
+% allerbesten; allerhöchsten
 $AdjSup-aller$ = {<+ADJ><Sup><Pred/Adv>}:{sten} | \
-                 {<+ADJ><Sup>}:{st}             $AdjInflSuff$
+                 {<+ADJ><Sup>}:{st} $AdjInflSuff$
 
-% faul-, fauler-, faulst-
+% faul, fauler, faulsten
 $Adj+$ =           $AdjPos$  | \
          {}:{<FB>} $AdjComp$ | \
          {}:{<FB>} $AdjSup$
 
-% bunt, bunter-, buntest-
+% bunt, bunter, buntesten
 $Adj+e$ =            $AdjPos$  | \
           {}:{<FB>}  $AdjComp$ | \
           {}:{<FB>e} $AdjSup$
 
-% frei-, freier, frei(e)st-
+% frei, freier, frei(e)sten
 $Adj+(e)$ =            $AdjPos$  | \
             {}:{<FB>}  $AdjComp$ | \
             {}:{<FB>}  $AdjSup$  | \
             {}:{<FB>e} $AdjSup$
 
-% krass-, krasser-, krassest-; nass-, nasser-, nassest-
+% krass, krasser, krassesten; nass, nasser, nassesten
 $Adj~+e$ = $SS$            $AdjPos$  | \
            $SS$ {}:{<FB>}  $AdjComp$ | \
            $SS$ {}:{<FB>e} $AdjSup$
 
-% warm-, wärmer-, wärmst-
+% warm, wärmer, wärmsten
 $Adj\$$ =           $AdjPos$  | \
           {}:{<UL>} $AdjComp$ | \
           {}:{<UL>} $AdjSup$
 
-% kalt-, kälter-, kältest-
+% kalt, kälter, kältesten
 $Adj\$e$ =            $AdjPos$  | \
            {}:{<UL>}  $AdjComp$ | \
            {}:{<UL>e} $AdjSup$
 
-% nass-, nässer-, nässest-
+% nass, nässer, nässesten
 $Adj~\$e$ = $SS$            $AdjPos$  | \
             $SS$ {}:{<UL>}  $AdjComp$ | \
             $SS$ {}:{<UL>e} $AdjSup$
 
 % dunkel; finster
 $Adj-el/er$ = {}:{<^Ax>} $Adj+$
+
+% dunkel, dünkler, dünkelsten (regional variant)
+$Adj\$-el/er$ = {}:{<^Ax>} $Adj\$$
 
 % deutsch; [das] Deutsch
 $Adj+Lang$ = $Adj+$ | \
@@ -1813,6 +1816,7 @@ $Pref/Sep$ = {<+VPART>}:{}
 
 $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<Adj$>                  $Adj\$$             | \
+         <>:<Adj$-el/er>            $Adj\$-el/er$       | \
          <>:<Adj$e>                 $Adj\$e$            | \
          <>:<Adj+>                  $Adj+$              | \
          <>:<Adj+(e)>               $Adj+(e)$           | \

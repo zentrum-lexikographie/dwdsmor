@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-03-27:
+
+* add support for adjectives with schwa-elision and umlauted comparative and
+  superlative forms
+
 2023-03-23:
 
 * mark boundary between particle and verb with `<VB>`
