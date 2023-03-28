@@ -1,5 +1,12 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-03-28:
+
+* add support for masculine and neuter nouns with unmarked genitive singular and
+  nominative plural forms ending in "-e"
+* add support for neuter nouns with unmarked genitive singular forms and
+  nominative plural forms ending in geminate "s" + "-e"
+
 2023-03-27:
 
 * add support for adjectives with schwa-elision and umlauted comparative and
