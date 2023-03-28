@@ -43,24 +43,30 @@ $NSg_s$ = {<Nom><Sg>}:{<FB>} | \
           {<Dat><Sg>}:{<FB>} | \
           {<Gen><Sg>}:{<FB>s}
 
-$NPl_0$ = {<Nom><Pl>}:{}  | \
-          {<Acc><Pl>}:{}  | \
-          {<Dat><Pl>}:{n} | \
-          {<Gen><Pl>}:{}
-
 $NPl_x$ = {<Nom><Pl>}:{} | \
           {<Acc><Pl>}:{} | \
           {<Dat><Pl>}:{} | \
           {<Gen><Pl>}:{}
 
+$NPl_0$ = {<Nom><Pl>}:{}  | \
+          {<Acc><Pl>}:{}  | \
+          {<Dat><Pl>}:{n} | \
+          {<Gen><Pl>}:{}
+
+$N_0_x$ = $NSg_0$ | \
+          $NPl_x$
+
+$N_0_0$ = $NSg_0$ | \
+          $NPl_0$
+
 $N_0_\$$ =           $NSg_0$ | \
            {}:{<UL>} $NPl_0$
 
-$N_0_\$e$ =            $NSg_0$ | \
-            {}:{<UL>e} $NPl_0$
-
 $N_0_e$ =            $NSg_0$ | \
           {}:{<FB>e} $NPl_0$
+
+$N_0_\$e$ =            $NSg_0$ | \
+            {}:{<UL>e} $NPl_0$
 
 $N_0_en$ =             $NSg_0$ | \
            {}:{<FB>en} $NPl_x$
@@ -77,23 +83,17 @@ $N_0_es$ =             $NSg_0$ | \
 $N_0_s$ =            $NSg_0$ | \
           {}:{<FB>s} $NPl_x$
 
-$N_0_x$ = $NSg_0$ | \
-          $NPl_x$
-
-$N_en_en$ =             $NSg_en$ | \
-            {}:{<FB>en} $NPl_x$
+$N_es_e$ =            $NSg_es$ | \
+           {}:{<FB>e} $NPl_0$
 
 $N_es_\$e$ =            $NSg_es$ | \
              {}:{<UL>e} $NPl_0$
 
-$N_es_\$er$ =             $NSg_es$ | \
-              {}:{<UL>er} $NPl_0$
-
 $N_es_er$ =         $NSg_es$ | \
             {}:{er} $NPl_0$
 
-$N_es_e$ =            $NSg_es$ | \
-           {}:{<FB>e} $NPl_0$
+$N_es_\$er$ =             $NSg_es$ | \
+              {}:{<UL>er} $NPl_0$
 
 $N_es_en$ =             $NSg_es$ | \
             {}:{<FB>en} $NPl_x$
@@ -104,8 +104,11 @@ $N_es_es$ =             $NSg_es$ | \
 $N_es_s$ =            $NSg_es$ | \
            {}:{<FB>s} $NPl_x$
 
-$N_n_n$ =            $NSg_n$ | \
-          {}:{<FB>n} $NPl_x$
+$N_s_x$ = $NSg_s$ | \
+          $NPl_x$
+
+$N_s_\$x$ =           $NSg_s$ | \
+            {}:{<UL>} $NPl_x$
 
 $N_s_0$ = $NSg_s$ | \
           $NPl_0$
@@ -113,17 +116,11 @@ $N_s_0$ = $NSg_s$ | \
 $N_s_\$$ =           $NSg_s$ | \
            {}:{<UL>} $NPl_0$
 
-$N_s_\$x$ =           $NSg_s$ | \
-            {}:{<UL>} $NPl_x$
-
 $N_s_e$ =            $NSg_s$ | \
           {}:{<FB>e} $NPl_0$
 
 $N_s_\$e$ =              $NSg_s$ | \
             {<>}:{<UL>e} $NPl_0$
-
-$N_s_en$ =             $NSg_s$ | \
-           {}:{<FB>en} $NPl_x$
 
 $N_s_er$ =             $NSg_s$ | \
            {}:{<FB>er} $NPl_x$
@@ -131,14 +128,20 @@ $N_s_er$ =             $NSg_s$ | \
 $N_s_\$er$ =               $NSg_s$ | \
              {<>}:{<UL>er} $NPl_0$
 
+$N_s_en$ =             $NSg_s$ | \
+           {}:{<FB>en} $NPl_x$
+
 $N_s_n$ =            $NSg_s$ | \
           {}:{<FB>n} $NPl_x$
 
 $N_s_s$ =            $NSg_s$ | \
           {}:{<FB>s} $NPl_x$
 
-$N_s_x$ = $NSg_s$ | \
-          $NPl_x$
+$N_en_en$ =             $NSg_en$ | \
+            {}:{<FB>en} $NPl_x$
+
+$N_n_n$ =            $NSg_n$ | \
+          {}:{<FB>n} $NPl_x$
 
 
 % masculine nouns
@@ -149,38 +152,57 @@ $NMasc/Sg_0$ = {<+NN><Masc>}:{} $NSg_0$
 % Abwasch, Abwasch(e)s; Glanz, Glanzes
 $NMasc/Sg_es$ = {<+NN><Masc>}:{} $NSg_es$
 
+% Haß, Hasses
+$NMasc-s/Sg$ = $SS$ $NMasc/Sg_es$
+
 % Hagel, Hagels; Adel, Adels
 $NMasc/Sg_s$ = {<+NN><Masc>}:{} $NSg_s$
-
-% Kurse
-$NMasc/Pl_0$ = {<+NN><Masc>}:{} $NPl_0$
 
 % Bauten
 $NMasc/Pl_x$ = {<+NN><Masc>}:{} $NPl_x$
 
-% Intercity, Intercity, Intercitys
-$NMasc_0_s$ = {<+NN><Masc>}:{} $N_0_s$
+% Kurse
+$NMasc/Pl_0$ = {<+NN><Masc>}:{} $NPl_0$
 
 % Revers, Revers, Revers
 $NMasc_0_x$ = {<+NN><Masc>}:{} $N_0_x$
 
+% Dezember, Dezember, Dezember
+$NMasc_0_0$ = {<+NN><Masc>}:{} $N_0_0$
+
 % Kodex, Kodex, Kodexe
 $NMasc_0_e$ = {<+NN><Masc>}:{} $N_0_e$
+
+% Nimbus, Nimbus, Nimbusse
+$NMasc-s0/sse$ = $SS$ $NMasc_0_e$
+
+% Bypass, Bypass, Bypässe
+$NMasc_0_\$e$ = {<+NN><Masc>}:{} $N_0_\$e$
+
+% Embryo, Embryo, Embryonen (masculine)
+$NMasc_0_nen$ =          $NMasc/Sg_0$ | \
+                {}:{nen} $NMasc/Pl_x$
+
+% Intercity, Intercity, Intercitys
+$NMasc_0_s$ = {<+NN><Masc>}:{} $N_0_s$
 
 % Tag, Tag(e)s, Tage; Kodex, Kodexes, Kodexe
 $NMasc_es_e$ = {<+NN><Masc>}:{} $N_es_e$
 
+% Bus, Busses, Busse; Erlass, Erlasses, Erlasse
+$NMasc-s/sse$ = $SS$ $NMasc_es_e$
+
 % Arzt, Arzt(e)s, Ärzte
 $NMasc_es_\$e$ = {<+NN><Masc>}:{} $N_es_\$e$
 
-% Gott, Gott(e)s, Götter
-$NMasc_es_\$er$ = {<+NN><Masc>}:{} $N_es_\$er$
-
-% Tenor, Tenors, Tenöre
-$NMasc_s_\$e$ = {<+NN><Masc>}:{<>} $N_s_\$e$
+% Bass, Basses, Bässe
+$NMasc-s/\$sse$ = $SS$ $NMasc_es_\$e$
 
 % Geist, Geist(e)s, Geister
 $NMasc_es_er$ = {<+NN><Masc>}:{<>} $N_es_er$
+
+% Gott, Gott(e)s, Götter
+$NMasc_es_\$er$ = {<+NN><Masc>}:{} $N_es_\$er$
 
 % Fleck, Fleck(e)s, Flecken
 $NMasc_es_en$ = {<+NN><Masc>}:{} $N_es_en$
@@ -191,23 +213,23 @@ $NMasc_es_es$ = {<+NN><Masc>}:{} $N_es_es$
 % Park, Park(e)s, Parks
 $NMasc_es_s$ = {<+NN><Masc>}:{} $N_es_s$
 
-% Adler, Adlers, Adler; Engel, Engels, Engel
-$NMasc_s_0$ = {<+NN><Masc>}:{} $N_s_0$
-
-% Apfel, Apfels, Äpfel; Vater, Vaters, Väter
-$NMasc_s_\$$ = {<+NN><Masc>}:{} $N_s_\$$
-
 % Wagen, Wagens, Wagen
 $NMasc_s_x$ = {<+NN><Masc>}:{} $N_s_x$
 
 % Garten, Gartens, Gärten
 $NMasc_s_\$x$ = {<+NN><Masc>}:{} $N_s_\$x$
 
+% Engel, Engels, Engel; Dezember, Dezembers, Dezember
+$NMasc_s_0$ = {<+NN><Masc>}:{} $N_s_0$
+
+% Apfel, Apfels, Äpfel; Vater, Vaters, Väter
+$NMasc_s_\$$ = {<+NN><Masc>}:{} $N_s_\$$
+
 % Drilling, Drillings, Drillinge
 $NMasc_s_e$ = {<+NN><Masc>}:{} $N_s_e$
 
-% Zeh, Zehs, Zehen
-$NMasc_s_en$ = {<+NN><Masc>}:{} $N_s_en$
+% Tenor, Tenors, Tenöre
+$NMasc_s_\$e$ = {<+NN><Masc>}:{<>} $N_s_\$e$
 
 % Ski, Skis, Skier
 $NMasc_s_er$ = {<+NN><Masc>}:{} $N_s_er$
@@ -215,8 +237,15 @@ $NMasc_s_er$ = {<+NN><Masc>}:{} $N_s_er$
 % Irrtum, Irrtums, Irrtümer
 $NMasc_s_\$er$ = {<+NN><Masc>}:{} $N_s_\$er$
 
+% Zeh, Zehs, Zehen
+$NMasc_s_en$ = {<+NN><Masc>}:{} $N_s_en$
+
 % Muskel, Muskels, Muskeln; See, Sees, Seen
 $NMasc_s_n$ = {<+NN><Masc>}:{} $N_s_n$
+
+% Embryo, Embryos, Embryonen (masculine)
+$NMasc_s_nen$ =          $NMasc/Sg_s$ | \
+                {}:{nen} $NMasc/Pl_x$
 
 % Chef, Chefs, Chefs; Bankier, Bankiers, Bankiers
 $NMasc_s_s$ = {<+NN><Masc>}:{} $N_s_s$
@@ -227,32 +256,12 @@ $NMasc_en_en$ = {<+NN><Masc>}:{} $N_en_en$
 % Affe, Affen, Affen; Bauer, Bauern, Bauern
 $NMasc_n_n$ = {<+NN><Masc>}:{} $N_n_n$
 
-% Haß, Hasses
-$NMasc-s/Sg$ = $SS$ $NMasc/Sg_es$
-
-% Nimbus, Nimbus, Nimbusse
-$NMasc-s0/sse$ = $SS$ $NMasc_0_e$
-
-% Bus, Busses, Busse; Erlass, Erlasses, Erlasse
-$NMasc-s/sse$ = $SS$ $NMasc_es_e$
-
-% Bass, Basses, Bässe
-$NMasc-s/\$sse$ = $SS$ $NMasc_es_\$e$
-
 % Name, Namens, Namen; Buchstabe, Buchstabens, Buchstaben
 $NMasc-ns$ = {<+NN><Masc><Nom><Sg>}:{}       | \
              {<+NN><Masc><Acc><Sg>}:{<FB>n}  | \
              {<+NN><Masc><Dat><Sg>}:{<FB>n}  | \
              {<+NN><Masc><Gen><Sg>}:{<FB>ns} | \
              {<+NN><Masc>}:{n} $NPl_x$
-
-% Embryo, Embryo, Embryonen (masculine)
-$NMasc_0_nen$ =          $NMasc/Sg_0$ | \
-                {}:{nen} $NMasc/Pl_x$
-
-% Embryo, Embryos, Embryonen (masculine)
-$NMasc_s_nen$ =          $NMasc/Sg_s$ | \
-                {}:{nen} $NMasc/Pl_x$
 
 % Saldo, Saldos, Salden
 $NMasc-o/en$ =              $NMasc/Sg_s$ | \
@@ -317,23 +326,39 @@ $NNeut/Sg_0$ = {<+NN><Neut>}:{} $NSg_0$
 % Ausland, Ausland(e)s
 $NNeut/Sg_es$ = {<+NN><Neut>}:{} $NSg_es$
 
+% Verständnis, Verständnisses
+$NNeut/Sg_sses$ = $SS$ $NNeut/Sg_es$
+
 % Abitur, Abiturs
 $NNeut/Sg_s$ = {<+NN><Neut>}:{} $NSg_s$
 
 % Fresken
 $NNeut/Pl_x$ = {<+NN><Neut>}:{} $NPl_x$
 
-% College, College, Colleges
-$NNeut_0_s$ = {<+NN><Neut>}:{} $N_0_s$
-
 % Relais, Relais, Relais
 $NNeut_0_x$ = {<+NN><Neut>}:{} $N_0_x$
+
+% Gefolge, Gefolge, Gefolge
+$NNeut_0_0$ = {<+NN><Neut>}:{} $N_0_0$
 
 % Bakschisch, Bakschisch, Bakschische
 $NNeut_0_e$ = {<+NN><Neut>}:{} $N_0_e$
 
+% Rhinozeros, Rhinozeros, Rhinozerosse
+$NNeut-s0/sse$ = $SS$ $NNeut_0_e$
+
+% Embryo, Embryo, Embryonen (neuter)
+$NNeut_0_nen$ =          $NNeut/Sg_0$ | \
+                {}:{nen} $NNeut/Pl_x$
+
+% College, College, Colleges
+$NNeut_0_s$ = {<+NN><Neut>}:{} $N_0_s$
+
 % Spiel, Spiel(e)s, Spiele; Bakschisch, Bakschisch(e)s, Bakschische
 $NNeut_es_e$ = {<+NN><Neut>}:{} $N_es_e$
+
+% Zeugnis, Zeugnisses, Zeugnisse; Rhinozeros, Rhinozerosses, Rhinozerosse
+$NNeut-s/sse$ = $SS$ $NNeut_es_e$
 
 % Floß, Floßes, Flöße
 $NNeut_es_\$e$ = {<+NN><Neut>}:{} $N_es_\$e$
@@ -344,6 +369,9 @@ $NNeut_es_er$ = {<+NN><Neut>}:{} $N_es_er$
 % Buch, Buch(e)s, Bücher
 $NNeut_es_\$er$ = {<+NN><Neut>}:{} $N_es_\$er$
 
+% Fass, Fasses, Fässer
+$NNeut-s/\$sser$ = $SS$ $NNeut_es_\$er$
+
 % Bett, Bett(e)s, Betten
 $NNeut_es_en$ = {<+NN><Neut>}:{} $N_es_en$
 
@@ -353,29 +381,26 @@ $NNeut_es_es$ = {<+NN><Neut>}:{} $N_es_es$
 % Tablett, Tablett(e)s, Tabletts
 $NNeut_es_s$ = {<+NN><Neut>}:{} $N_es_s$
 
-% Feuer, Feuers, Feuer; Mittel, Mittels, Mittel
+% Almosen, Almosens, Almosen
+$NNeut_s_x$ = {<+NN><Neut>}:{} $N_s_x$
+
+% Feuer, Feuers, Feuer; Gefolge, Gefolges, Gefolge
 $NNeut_s_0$ = {<+NN><Neut>}:{} $N_s_0$
 
 % Kloster, Klosters, Klöster
 $NNeut_s_\$$ = {<+NN><Neut>}:{} $N_s_\$$
 
-% Almosen, Almosens, Almosen
-$NNeut_s_x$ = {<+NN><Neut>}:{} $N_s_x$
-
 % Dreieck, Dreiecks, Dreiecke
 $NNeut_s_e$ = {<+NN><Neut>}:{} $N_s_e$
-
-% Juwel, Juwels, Juwelen
-$NNeut_s_en$ = {<+NN><Neut>}:{} $N_s_en$
 
 % Spital, Spitals, Spitäler
 $NNeut_s_\$er$ = {<+NN><Neut>}:{} $N_s_\$er$
 
+% Juwel, Juwels, Juwelen
+$NNeut_s_en$ = {<+NN><Neut>}:{} $N_s_en$
+
 % Auge, Auges, Augen
 $NNeut_s_n$ = {<+NN><Neut>}:{} $N_s_n$
-
-% Sofa, Sofas, Sofas; College, Colleges, Colleges
-$NNeut_s_s$ = {<+NN><Neut>}:{} $N_s_s$
 
 % Herz, Herzens, Herzen
 $NNeut-Herz$ = {<+NN><Neut><Nom><Sg>}:{<FB>}    | \
@@ -387,42 +412,16 @@ $NNeut-Herz$ = {<+NN><Neut><Nom><Sg>}:{<FB>}    | \
                {<+NN><Neut><Dat><Pl>}:{<FB>en}  | \
                {<+NN><Neut><Gen><Pl>}:{<FB>en}
 
-% Innere(s)
-$NNeut-Inner$ = {<+NN><Neut><Nom><Sg><St>}:{<FB>es} | \
-                {<+NN><Neut><Acc><Sg><St>}:{<FB>es} | \
-                {<+NN><Neut><Dat><Sg><St>}:{<FB>em} | \
-                {<+NN><Neut><Gen><Sg><St>}:{<FB>en} | \
-                {<+NN><Neut><Gen><Sg><St>}:{<FB>n}  | \
-                {<+NN><Neut><Nom><Sg><Wk>}:{<FB>e}  | \
-                {<+NN><Neut><Acc><Sg><Wk>}:{<FB>e}  | \
-                {<+NN><Neut><Dat><Sg><Wk>}:{<FB>en} | \
-                {<+NN><Neut><Dat><Sg><Wk>}:{<FB>n}  | \
-                {<+NN><Neut><Gen><Sg><Wk>}:{<FB>en} | \
-                {<+NN><Neut><Gen><Sg><Wk>}:{<FB>n}
-
-% Verständnis, Verständnisses
-$NNeut/Sg_sses$ = $SS$ $NNeut/Sg_es$
-
-% Rhinozeros, Rhinozeros, Rhinozerosse
-$NNeut-s0/sse$ = $SS$ $NNeut_0_e$
-
-% Zeugnis, Zeugnisses, Zeugnisse; Rhinozeros, Rhinozerosses, Rhinozerosse
-$NNeut-s/sse$ = $SS$ $NNeut_es_e$
-
-% Fass, Fasses, Fässer
-$NNeut-s/\$sser$ = $SS$ $NNeut_es_\$er$
+% Embryo, Embryos, Embryonen (neuter)
+$NNeut_s_nen$ =          $NNeut/Sg_s$ | \
+                {}:{nen} $NNeut/Pl_x$
 
 % Adverb, Adverbs, Adverbien
 $NNeut_s_ien$ =          $NNeut/Sg_s$ | \
                 {}:{ien} $NNeut/Pl_x$
 
-% Embryo, Embryo, Embryonen (neuter)
-$NNeut_0_nen$ =          $NNeut/Sg_0$ | \
-                {}:{nen} $NNeut/Pl_x$
-
-% Embryo, Embryos, Embryonen (neuter)
-$NNeut_s_nen$ =          $NNeut/Sg_s$ | \
-                {}:{nen} $NNeut/Pl_x$
+% Sofa, Sofas, Sofas; College, Colleges, Colleges
+$NNeut_s_s$ = {<+NN><Neut>}:{} $N_s_s$
 
 % Komma, Kommas, Kommata
 $NNeut-a/ata$ =         $NNeut/Sg_s$ | \
@@ -464,6 +463,29 @@ $NNeut-um/en$ =              $NNeut/Sg_s$ | \
 $NNeut-us0/en$ =              $NNeut/Sg_0$ | \
                  {}:{<^pl>en} $NNeut/Pl_x$
 
+% Innere(s)
+$NNeut-Inner$ = {<+NN><Neut><Nom><Sg><St>}:{<FB>es} | \
+                {<+NN><Neut><Acc><Sg><St>}:{<FB>es} | \
+                {<+NN><Neut><Dat><Sg><St>}:{<FB>em} | \
+                {<+NN><Neut><Gen><Sg><St>}:{<FB>en} | \
+                {<+NN><Neut><Gen><Sg><St>}:{<FB>n}  | \
+                {<+NN><Neut><Nom><Sg><Wk>}:{<FB>e}  | \
+                {<+NN><Neut><Acc><Sg><Wk>}:{<FB>e}  | \
+                {<+NN><Neut><Dat><Sg><Wk>}:{<FB>en} | \
+                {<+NN><Neut><Dat><Sg><Wk>}:{<FB>n}  | \
+                {<+NN><Neut><Gen><Sg><Wk>}:{<FB>en} | \
+                {<+NN><Neut><Gen><Sg><Wk>}:{<FB>n}
+
+% Deutsche(s)
+$NNeut-Adj/Sg$ = {<+NN><Neut><Nom><Sg><St>}:{s} | \
+                 {<+NN><Neut><Acc><Sg><St>}:{s} | \
+                 {<+NN><Neut><Dat><Sg><St>}:{m} | \
+                 {<+NN><Neut><Gen><Sg><St>}:{n} | \
+                 {<+NN><Neut><Nom><Sg><Wk>}:{}  | \
+                 {<+NN><Neut><Acc><Sg><Wk>}:{}  | \
+                 {<+NN><Neut><Dat><Sg><Wk>}:{n} | \
+                 {<+NN><Neut><Gen><Sg><Wk>}:{n}
+
 % Junge(s) ('young animal')
 $NNeut-Adj$ = {<+NN><Neut><Nom><Sg><St>}:{s} | \
               {<+NN><Neut><Acc><Sg><St>}:{s} | \
@@ -482,16 +504,6 @@ $NNeut-Adj$ = {<+NN><Neut><Nom><Sg><St>}:{s} | \
               {<+NN><Neut><Dat><Pl><Wk>}:{n} | \
               {<+NN><Neut><Gen><Pl><Wk>}:{n}
 
-% Deutsche(s)
-$NNeut-Adj/Sg$ = {<+NN><Neut><Nom><Sg><St>}:{s} | \
-                 {<+NN><Neut><Acc><Sg><St>}:{s} | \
-                 {<+NN><Neut><Dat><Sg><St>}:{m} | \
-                 {<+NN><Neut><Gen><Sg><St>}:{n} | \
-                 {<+NN><Neut><Nom><Sg><Wk>}:{}  | \
-                 {<+NN><Neut><Acc><Sg><Wk>}:{}  | \
-                 {<+NN><Neut><Dat><Sg><Wk>}:{n} | \
-                 {<+NN><Neut><Gen><Sg><Wk>}:{n}
-
 
 % feminine nouns
 
@@ -501,17 +513,32 @@ $NFem/Sg_0$ = {<+NN><Fem>}:{} $NSg_0$
 % Matrizen
 $NFem/Pl_x$ = {<+NN><Fem>}:{} $NPl_x$
 
+% Ananas, Ananas, Ananas
+$NFem_0_x$ = {<+NN><Fem>}:{} $N_0_x$
+
+% Randale, Randale, Randale
+$NFem_0_0$ = {<+NN><Fem>}:{} $N_0_0$
+
 % Mutter, Mutter, Mütter
 $NFem_0_\$$ = {<+NN><Fem>}:{} $N_0_\$$
-
-% Wand, Wand, Wände
-$NFem_0_\$e$ = {<+NN><Fem>}:{} $N_0_\$e$
 
 % Drangsal, Drangsal, Drangsale; Retina, Retina, Retinae
 $NFem_0_e$ = {<+NN><Fem>}:{} $N_0_e$
 
+% Kenntnis, Kenntnis, Kenntnisse
+$NFem-s/sse$ = $SS$ $NFem_0_e$
+
+% Wand, Wand, Wände
+$NFem_0_\$e$ = {<+NN><Fem>}:{} $N_0_\$e$
+
+% Nuss, Nuss, Nüsse
+$NFem-s/\$sse$ = $SS$ $NFem_0_\$e$
+
 % Frau, Frau, Frauen; Arbeit, Arbeit, Arbeiten
 $NFem_0_en$ = {<+NN><Fem>}:{} $N_0_en$
+
+% Hostess, Hostess, Hostessen
+$NFem-s/ssen$ = $SS$ $NFem_0_en$
 
 % Werkstatt, Werkstatt, Werkstätten
 $NFem_0_\$en$ = {<+NN><Fem>}:{} $N_0_\$en$
@@ -524,18 +551,6 @@ $NFem_0_es$ = {<+NN><Fem>}:{} $N_0_es$
 
 % Oma, Oma, Omas
 $NFem_0_s$ = {<+NN><Fem>}:{} $N_0_s$
-
-% Ananas, Ananas, Ananas
-$NFem_0_x$ = {<+NN><Fem>}:{} $N_0_x$
-
-% Hostess, Hostess, Hostessen
-$NFem-s/ssen$ = $SS$ $NFem_0_en$
-
-% Kenntnis, Kenntnis, Kenntnisse
-$NFem-s/sse$ = $SS$ $NFem_0_e$
-
-% Nuss, Nuss, Nüsse
-$NFem-s/\$sse$ = $SS$ $NFem_0_\$e$
 
 % Freundin, Freundin, Freundinnen
 $NFem-in$ =          $NFem/Sg_0$ | \
@@ -574,30 +589,14 @@ $NFem-Adj$ = {<+NN><Fem><Nom><Sg><St>}:{}  | \
 
 % pluralia tantum
 
-% Leute
-$N?/Pl_0$ = {<+NN><NoGend>}:{} $NPl_0$
-
 % Kosten
 $N?/Pl_x$ = {<+NN><NoGend>}:{} $NPl_x$
 
+% Leute
+$N?/Pl_0$ = {<+NN><NoGend>}:{} $NPl_0$
+
 
 % proper names
-
-% family names ending in -s, -z
-$FamName_0$ = {<+NPROP><NoGend>}:{}    $NSg_0$ | \
-              {<+NPROP><NoGend>}:{ens} $NPl_x$
-
-% family names
-$FamName_s$ = {<+NPROP><NoGend>}:{}  $NSg_s$ | \
-              {<+NPROP><NoGend>}:{s} $NPl_x$
-
-$Name-Fem_0$ = {<+NPROP><Fem>}:{} $NSg_0$
-
-% Felicitas, Felicitas'
-$Name-Fem_apos$ = {<+NPROP><Fem>}:{} $NSg_0$ | \
-                  {<+NPROP><Fem><Gen><Sg>}:{’}
-
-$Name-Fem_s$ = {<+NPROP><Fem>}:{} $NSg_s$
 
 $Name-Masc_0$ = {<+NPROP><Masc>}:{} $NSg_0$
 
@@ -619,9 +618,25 @@ $Name-Neut_es$ = {<+NPROP><Neut>}:{} $NSg_es$
 
 $Name-Neut_s$ = {<+NPROP><Neut>}:{} $NSg_s$
 
-$Name-Pl_0$ = {<+NPROP><NoGend>}:{} $NPl_0$
+$Name-Fem_0$ = {<+NPROP><Fem>}:{} $NSg_0$
+
+% Felicitas, Felicitas'
+$Name-Fem_apos$ = {<+NPROP><Fem>}:{} $NSg_0$ | \
+                  {<+NPROP><Fem><Gen><Sg>}:{’}
+
+$Name-Fem_s$ = {<+NPROP><Fem>}:{} $NSg_s$
 
 $Name-Pl_x$ = {<+NPROP><NoGend>}:{} $NPl_x$
+
+$Name-Pl_0$ = {<+NPROP><NoGend>}:{} $NPl_0$
+
+% family names ending in -s, -z
+$FamName_0$ = {<+NPROP><NoGend>}:{}    $NSg_0$ | \
+              {<+NPROP><NoGend>}:{ens} $NPl_x$
+
+% family names
+$FamName_s$ = {<+NPROP><NoGend>}:{}  $NSg_s$ | \
+              {<+NPROP><NoGend>}:{s} $NPl_x$
 
 
 % adjectives
@@ -1912,6 +1927,7 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<NFem-s/ssen>           $NFem-s/ssen$       | \
          <>:<NFem/Pl_x>             $NFem/Pl_x$         | \
          <>:<NFem/Sg_0>             $NFem/Sg_0$         | \
+         <>:<NFem_0_0>              $NFem_0_0$          | \
          <>:<NFem_0_$>              $NFem_0_\$$         | \
          <>:<NFem_0_$e>             $NFem_0_\$e$        | \
          <>:<NFem_0_$en>            $NFem_0_\$en$       | \
@@ -1941,7 +1957,9 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<NMasc/Sg_0>            $NMasc/Sg_0$        | \
          <>:<NMasc/Sg_es>           $NMasc/Sg_es$       | \
          <>:<NMasc/Sg_s>            $NMasc/Sg_s$        | \
+         <>:<NMasc_0_0>             $NMasc_0_0$         | \
          <>:<NMasc_0_e>             $NMasc_0_e$         | \
+         <>:<NMasc_0_$e>            $NMasc_0_\$e$       | \
          <>:<NMasc_0_nen>           $NMasc_0_nen$       | \
          <>:<NMasc_0_s>             $NMasc_0_s$         | \
          <>:<NMasc_0_x>             $NMasc_0_x$         | \
@@ -1988,6 +2006,7 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<NNeut/Sg_es>           $NNeut/Sg_es$       | \
          <>:<NNeut/Sg_s>            $NNeut/Sg_s$        | \
          <>:<NNeut/Sg_sses>         $NNeut/Sg_sses$     | \
+         <>:<NNeut_0_0>             $NNeut_0_0$         | \
          <>:<NNeut_0_e>             $NNeut_0_e$         | \
          <>:<NNeut_0_nen>           $NNeut_0_nen$       | \
          <>:<NNeut_0_s>             $NNeut_0_s$         | \

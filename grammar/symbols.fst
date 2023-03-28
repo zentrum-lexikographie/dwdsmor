@@ -120,13 +120,14 @@
 
 #Noun-inflection# = <N?/Pl_0><N?/Pl_x><NFem-Adj><NFem-a/en><NFem-in><NFem-is/en> \
                     <NFem-is/iden><NFem-s/$sse><NFem-s/sse><NFem-s/ssen> \
-                    <NFem/Pl_x><NFem/Sg_0><NFem_0_$><NFem_0_$e><NFem_0_$en> \
-                    <NFem_0_e><NFem_0_en><NFem_0_es><NFem_0_n><NFem_0_s> \
-                    <NFem_0_x><NMasc-Adj><NMasc-as/anten><NMasc-as0/anten> \
-                    <NMasc-ns><NMasc-o/en><NMasc-o/i><NMasc-s/$sse><NMasc-s/Sg> \
-                    <NMasc-s/sse><NMasc-s0/sse><NMasc-us/e><NMasc-us/en> \
-                    <NMasc-us0/en><NMasc-us/i><NMasc-us0/i><NMasc/Pl_0> \
-                    <NMasc/Pl_x><NMasc/Sg_0><NMasc/Sg_es><NMasc/Sg_s><NMasc_0_e> \
+                    <NFem/Pl_x><NFem/Sg_0><NFem_0_0><NFem_0_$><NFem_0_$e> \
+                    <NFem_0_$en><NFem_0_e><NFem_0_en><NFem_0_es><NFem_0_n> \
+                    <NFem_0_s><NFem_0_x><NMasc-Adj><NMasc-as/anten> \
+                    <NMasc-as0/anten><NMasc-ns><NMasc-o/en><NMasc-o/i> \
+                    <NMasc-s/$sse><NMasc-s/Sg><NMasc-s/sse><NMasc-s0/sse> \
+                    <NMasc-us/e><NMasc-us/en><NMasc-us0/en><NMasc-us/i> \
+                    <NMasc-us0/i><NMasc/Pl_0><NMasc/Pl_x><NMasc/Sg_0> \
+                    <NMasc/Sg_es><NMasc/Sg_s><NMasc_0_0><NMasc_0_e><NMasc_0_$e> \
                     <NMasc_0_nen><NMasc_0_s><NMasc_0_x><NMasc_en_en> \
                     <NMasc_es_$e><NMasc_es_$er><NMasc_es_er><NMasc_es_e> \
                     <NMasc_es_en><NMasc_es_es><NMasc_es_s><NMasc_n_n><NMasc_s_$> \
@@ -137,8 +138,8 @@
                     <NNeut-o/en><NNeut-o/i><NNeut-on/a><NNeut-on/en> \
                     <NNeut-s/$sser><NNeut-s/sse><NNeut-s0/sse><NNeut-um/a> \
                     <NNeut-um/en><NNeut-us0/en><NNeut/Pl_x><NNeut/Sg_0> \
-                    <NNeut/Sg_es><NNeut/Sg_s><NNeut/Sg_sses><NNeut_0_e> \
-                    <NNeut_0_nen><NNeut_0_s><NNeut_0_x><NNeut_es_$e> \
+                    <NNeut/Sg_es><NNeut/Sg_s><NNeut/Sg_sses><NNeut_0_0> \
+                    <NNeut_0_e><NNeut_0_nen><NNeut_0_s><NNeut_0_x><NNeut_es_$e> \
                     <NNeut_es_$er><NNeut_es_e><NNeut_es_en><NNeut_es_er> \
                     <NNeut_es_es><NNeut_es_s><NNeut_s_$><NNeut_s_0><NNeut_s_e> \
                     <NNeut_s_en><NNeut_s_$er><NNeut_s_ien><NNeut_s_n> \
