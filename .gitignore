@@ -1,5 +1,5 @@
 # .gitignore
-# Andreas Nolda 2022-12-02
+# Andreas Nolda 2023-03-29
 
 .venv/
 *~
@@ -25,5 +25,7 @@ BUILD
 /lib/
 
 /releases/
+
+/tagh/
 
 /test-reports/
