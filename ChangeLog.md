@@ -2,6 +2,9 @@ This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
 2023-03-29:
 
+* move templates from `dwsd2dwdsmor.xsl` to `entries.xsl`
+* move templates from `dwds.xsl` to `dwsd2dwdsmor.xsl`
+* remove `dwds.xsl`
 * mark suffix-specifc derivation stems
 
 2023-03-28:
