@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 5.0
-% Andreas Nolda 2023-03-24
+% Version 5.1
+% Andreas Nolda 2023-03-29
 
 #include "symbols.fst"
 #include "num.fst"
@@ -66,12 +66,13 @@ $UC$ = <>:<^UC>
 
 % derived base stems
 
-$DerStemsDim$  = $DerStems$ || $DerStemDimFilter$
+$DerStemsChen$ = $DerStems$ || $DerStemChenFilter$
+$DerStemsLein$ = $DerStems$ || $DerStemLeinFilter$
 
-$DerBaseStems$ = $UC$ $Pref-un$     <DB> $DC$ $BaseStems$ $DerPref-un$   | \
-                      $Pref-un$     <DB>      $BaseStems$ $DerPref-un$   | \
-                      $DerStemsDim$ <DB>      $Suff-chen$ $DerSuff-chen$ | \
-                      $DerStemsDim$ <DB>      $Suff-lein$ $DerSuff-lein$ || $DerFilter$
+$DerBaseStems$ = $UC$ $Pref-un$      <DB> $DC$ $BaseStems$ $DerPref-un$   | \
+                      $Pref-un$      <DB>      $BaseStems$ $DerPref-un$   | \
+                      $DerStemsChen$ <DB>      $Suff-chen$ $DerSuff-chen$ | \
+                      $DerStemsLein$ <DB>      $Suff-lein$ $DerSuff-lein$ || $DerFilter$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStems$
 

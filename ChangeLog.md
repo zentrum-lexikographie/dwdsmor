@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-03-29:
+
+* mark suffix-specifc derivation stems
+
 2023-03-28:
 
 * add support for masculine and neuter nouns with unmarked genitive singular

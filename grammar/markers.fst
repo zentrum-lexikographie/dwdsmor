@@ -1,6 +1,6 @@
 % markers.fst
-% Version 7.1
-% Andreas Nolda 2023-03-24
+% Version 7.2
+% Andreas Nolda 2023-03-29
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -8,7 +8,7 @@
 
 % replace verb stem-final schwa with <e>
 
-ALPHABET = [#entry-type# #char# #category# #stem-type# #stem-subtype# #origin# \
+ALPHABET = [#entry-type# #char# #category# #stem-type# #suff# #origin# \
             #inflection# #auxiliary# <Abbr><FB><VB><ge>] \
            e:<e>
 
@@ -19,8 +19,8 @@ $SurfaceTriggers$ = $SchwaTrigger$
 
 % process <ge> marker
 
-$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
-       <UL><^imp><^zz><zu>]
+$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
+       #boundary-trigger# <UL><^imp><^zz><zu>]
 
 $MarkerGe$ = $C$* | \
              $C$* <ge>:<> {<>}:{ge} $C$* <^pp>:<> $C$* | \
@@ -30,8 +30,8 @@ $MarkerGe$ = $C$* | \
 
 % process <zu> marker
 
-$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
-       <UL><^imp>]
+$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
+       #boundary-trigger# <UL><^imp>]
 
 $C$ = $C$ | <zu>:<>
 
@@ -41,8 +41,8 @@ $MarkerZu$ = $C$* | \
 
 % process <^imp> marker
 
-$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
-       <UL>]
+$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
+       #boundary-trigger# <UL>]
 
 $C$ = $C$-[<VB>]
 

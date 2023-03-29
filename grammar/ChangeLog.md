@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-03-29:
+
+* mark suffix-specifc derivation stems
+
 2023-03-28:
 
 * add inflection classes `NMasc_0_0`, `NMasc_0_e`, `NMasc_0_$e`, `NNeut_0_0`,

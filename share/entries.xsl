@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 9.0 -->
-<!-- Andreas Nolda 2023-03-20 -->
+<!-- Version 9.1 -->
+<!-- Andreas Nolda 2023-03-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -717,7 +717,7 @@
 <xsl:template name="adjective-der-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="der-stem"/>
-  <xsl:param name="der-stem-type"/>
+  <xsl:param name="suffs"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -729,8 +729,8 @@
                         select="$lemma"/>
         <xsl:with-param name="der-stem"
                         select="$der-stem"/>
-        <xsl:with-param name="der-stem-type"
-                        select="$der-stem-type"/>
+        <xsl:with-param name="suffs"
+                        select="$suffs"/>
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
         <xsl:with-param name="pos">ADJ</xsl:with-param>
@@ -1132,7 +1132,7 @@
 <xsl:template name="cardinal-der-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="der-stem"/>
-  <xsl:param name="der-stem-type"/>
+  <xsl:param name="suffs"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -1144,8 +1144,8 @@
                         select="$lemma"/>
         <xsl:with-param name="der-stem"
                         select="$der-stem"/>
-        <xsl:with-param name="der-stem-type"
-                        select="$der-stem-type"/>
+        <xsl:with-param name="suffs"
+                        select="$suffs"/>
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
         <xsl:with-param name="pos">CARD</xsl:with-param>
@@ -1217,7 +1217,7 @@
 <xsl:template name="ordinal-der-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="der-stem"/>
-  <xsl:param name="der-stem-type"/>
+  <xsl:param name="suffs"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -1229,8 +1229,8 @@
                         select="$lemma"/>
         <xsl:with-param name="der-stem"
                         select="$der-stem"/>
-        <xsl:with-param name="der-stem-type"
-                        select="$der-stem-type"/>
+        <xsl:with-param name="suffs"
+                        select="$suffs"/>
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
         <xsl:with-param name="pos">ORD</xsl:with-param>
@@ -1794,7 +1794,7 @@
 <xsl:template name="noun-der-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="der-stem"/>
-  <xsl:param name="der-stem-type"/>
+  <xsl:param name="suffs"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -1806,8 +1806,8 @@
                         select="$lemma"/>
         <xsl:with-param name="der-stem"
                         select="$der-stem"/>
-        <xsl:with-param name="der-stem-type"
-                        select="$der-stem-type"/>
+        <xsl:with-param name="suffs"
+                        select="$suffs"/>
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
         <xsl:with-param name="pos">NN</xsl:with-param>
@@ -1973,7 +1973,7 @@
 <xsl:template name="name-der-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="der-stem"/>
-  <xsl:param name="der-stem-type"/>
+  <xsl:param name="suffs"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -1985,8 +1985,8 @@
                         select="$lemma"/>
         <xsl:with-param name="der-stem"
                         select="$der-stem"/>
-        <xsl:with-param name="der-stem-type"
-                        select="$der-stem-type"/>
+        <xsl:with-param name="suffs"
+                        select="$suffs"/>
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
         <xsl:with-param name="pos">NPROP</xsl:with-param>
@@ -5683,7 +5683,7 @@
 <xsl:template name="verb-der-entry-set">
   <xsl:param name="lemma"/>
   <xsl:param name="der-stem"/>
-  <xsl:param name="der-stem-type"/>
+  <xsl:param name="suffs"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -5695,8 +5695,8 @@
                         select="$lemma"/>
         <xsl:with-param name="der-stem"
                         select="$der-stem"/>
-        <xsl:with-param name="der-stem-type"
-                        select="$der-stem-type"/>
+        <xsl:with-param name="suffs"
+                        select="$suffs"/>
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
         <xsl:with-param name="pos">V</xsl:with-param>

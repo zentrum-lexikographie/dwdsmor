@@ -1,15 +1,16 @@
 % stemtype.fst
-% Version 3.0
-% Andreas Nolda 2023-03-24
+% Version 4.0
+% Andreas Nolda 2023-03-29
 
 #include "symbols.fst"
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# \
-            #lemma-index# #paradigm-index# #category# #stem-type# #stem-subtype# \
+            #lemma-index# #paradigm-index# #category# #stem-type# #suff# \
             #origin# #inflection# #auxiliary# <Abbr><ge>]
 
 $BaseStemFilter$ = <Stem> .* <base> [^#stem-type#]*
 $CompStemFilter$ = <Stem> .* <comp> [^#stem-type#]*
 $DerStemFilter$  = <Stem> .* <der>  [^#stem-type#]*
 
-$DerStemDimFilter$  = <Stem> .* <der> <dim> [^#stem-type# #stem-subtype#]*
+$DerStemChenFilter$ = <Stem> .* <der> [#suff#]* <chen> [^#stem-type#]*
+$DerStemLeinFilter$ = <Stem> .* <der> [#suff#]* <lein> [^#stem-type#]*

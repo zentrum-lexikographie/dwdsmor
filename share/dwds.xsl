@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds.xsl -->
-<!-- Version 14.0 -->
-<!-- Andreas Nolda 2023-03-15 -->
+<!-- Version 14.1 -->
+<!-- Andreas Nolda 2023-03-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -57,7 +57,7 @@
     <xsl:call-template name="get-etymology-value"/>
   </xsl:variable>
   <!-- ignore idioms and other syntactically complex units -->
-  <xsl:for-each select="dwds:Formangabe[dwds:Schreibung[count(tokenize(normalize-space(.)))=1]]">
+  <xsl:for-each select="dwds:Formangabe[dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]]">
     <xsl:variable name="adposition">
       <xsl:choose>
         <!-- adpositional basis of contracted adposition -->
@@ -73,23 +73,23 @@
       <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse or
                                                    self::dwds:Genus or
                                                    self::dwds:indeklinabel or
-                                                   self::dwds:Genitiv[count(tokenize(normalize-space(.)))=1] or
-                                                   self::dwds:Plural[count(tokenize(normalize-space(.)))=1] or
-                                                   self::dwds:Positivvariante[count(tokenize(normalize-space(.)))=1] or
-                                                   self::dwds:Komparativ[count(tokenize(normalize-space(.)))=1] or
-                                                   self::dwds:Superlativ[tokenize(normalize-space(.))[1]='am']
-                                                                        [count(tokenize(normalize-space(.)))=2] or
-                                                   self::dwds:Superlativ[not(tokenize(normalize-space(.))[1]='am')]
-                                                                        [count(tokenize(normalize-space(.)))=1] or
-                                                   self::dwds:Praesens[tokenize(normalize-space(.))[2]='sich']
-                                                                      [count(tokenize(normalize-space(.)))&lt;4] or
-                                                   self::dwds:Praesens[not(tokenize(normalize-space(.))[2]='sich')]
-                                                                      [count(tokenize(normalize-space(.)))&lt;3] or
-                                                   self::dwds:Praeteritum[tokenize(normalize-space(.))[2]='sich']
-                                                                         [count(tokenize(normalize-space(.)))&lt;4] or
-                                                   self::dwds:Praeteritum[not(tokenize(normalize-space(.))[2]='sich')]
-                                                                         [count(tokenize(normalize-space(.)))&lt;3] or
-                                                   self::dwds:Partizip_II[count(tokenize(normalize-space(.)))=1] or
+                                                   self::dwds:Genitiv[count(tokenize(normalize-space(.),'&#x20;'))=1] or
+                                                   self::dwds:Plural[count(tokenize(normalize-space(.),'&#x20;'))=1] or
+                                                   self::dwds:Positivvariante[count(tokenize(normalize-space(.),'&#x20;'))=1] or
+                                                   self::dwds:Komparativ[count(tokenize(normalize-space(.),'&#x20;'))=1] or
+                                                   self::dwds:Superlativ[tokenize(normalize-space(.),'&#x20;')[1]='am']
+                                                                        [count(tokenize(normalize-space(.),'&#x20;'))=2] or
+                                                   self::dwds:Superlativ[not(tokenize(normalize-space(.),'&#x20;')[1]='am')]
+                                                                        [count(tokenize(normalize-space(.),'&#x20;'))=1] or
+                                                   self::dwds:Praesens[tokenize(normalize-space(.),'&#x20;')[2]='sich']
+                                                                      [count(tokenize(normalize-space(.),'&#x20;'))&lt;4] or
+                                                   self::dwds:Praesens[not(tokenize(normalize-space(.),'&#x20;')[2]='sich')]
+                                                                      [count(tokenize(normalize-space(.),'&#x20;'))&lt;3] or
+                                                   self::dwds:Praeteritum[tokenize(normalize-space(.),'&#x20;')[2]='sich']
+                                                                         [count(tokenize(normalize-space(.),'&#x20;'))&lt;4] or
+                                                   self::dwds:Praeteritum[not(tokenize(normalize-space(.),'&#x20;')[2]='sich')]
+                                                                         [count(tokenize(normalize-space(.),'&#x20;'))&lt;3] or
+                                                   self::dwds:Partizip_II[count(tokenize(normalize-space(.),'&#x20;'))=1] or
                                                    self::dwds:Auxiliar or
                                                    self::dwds:Funktionspraeferenz or
                                                    self::dwds:Kasuspraeferenz or
@@ -166,7 +166,7 @@
     <xsl:variable name="pronunciations"
                   select="distinct-values(dwds:Aussprache[not(@class='invisible')]/@IPA)"/>
     <!-- ignore idioms and invalid spellings -->
-    <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+    <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                          [not(@Typ='U_Falschschreibung')]">
       <xsl:variable name="lemma"
                     select="normalize-space(.)"/>
@@ -1956,12 +1956,6 @@
         <xsl:for-each select="$word-formation-specs/dwds:Grammatik">
           <xsl:variable name="pos"
                         select="normalize-space(dwds:Wortklasse)"/>
-          <xsl:variable name="der-stem-type">
-            <xsl:choose>
-              <xsl:when test="@Typ='Diminutiv'">dim</xsl:when>
-              <!-- ... -->
-            </xsl:choose>
-          </xsl:variable>
           <xsl:choose>
             <xsl:when test="$pos='Adjektiv' and
                             string-length(normalize-space(dwds:Derivationsstamm))&gt;0">
@@ -1970,8 +1964,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
-                <xsl:with-param name="der-stem-type"
-                                select="$der-stem-type"/>
+                <xsl:with-param name="suffs"
+                                select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
                 <xsl:with-param name="etymology"
@@ -1985,8 +1979,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
-                <xsl:with-param name="der-stem-type"
-                                select="$der-stem-type"/>
+                <xsl:with-param name="suffs"
+                                select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
                 <xsl:with-param name="etymology"
@@ -2000,8 +1994,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
-                <xsl:with-param name="der-stem-type"
-                                select="$der-stem-type"/>
+                <xsl:with-param name="suffs"
+                                select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
                 <xsl:with-param name="etymology"
@@ -2015,8 +2009,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
-                <xsl:with-param name="der-stem-type"
-                                select="$der-stem-type"/>
+                <xsl:with-param name="suffs"
+                                select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
                 <xsl:with-param name="etymology"
@@ -2030,8 +2024,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
-                <xsl:with-param name="der-stem-type"
-                                select="$der-stem-type"/>
+                <xsl:with-param name="suffs"
+                                select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
                 <xsl:with-param name="etymology"
@@ -2045,8 +2039,8 @@
                                 select="$lemma"/>
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
-                <xsl:with-param name="der-stem-type"
-                                select="$der-stem-type"/>
+                <xsl:with-param name="suffs"
+                                select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
                 <xsl:with-param name="etymology"
@@ -2154,7 +2148,7 @@
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
                 <xsl:if test="string-length($pos1)&gt;0">
                   <!-- ignore idioms and invalid spellings -->
-                  <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                  <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                        [not(@Typ='U_Falschschreibung')]">
                     <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
@@ -2170,7 +2164,7 @@
                         <xsl:for-each select="$article2">
                           <!-- ignore abbreviations -->
                           <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
-                            <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                            <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                  [not(@Typ='U_Falschschreibung')]">
                               <xsl:variable name="lemma2"
                                             select="normalize-space(.)"/>
@@ -2345,7 +2339,7 @@
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
                 <xsl:if test="string-length($pos1)&gt;0">
                   <!-- ignore idioms and invalid spellings -->
-                  <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                  <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                        [not(@Typ='U_Falschschreibung')]">
                     <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
@@ -2360,7 +2354,7 @@
                         <xsl:for-each select="$article2">
                           <!-- ignore abbreviations -->
                           <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
-                            <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.)))=1]
+                            <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                  [not(@Typ='U_Falschschreibung')]">
                               <xsl:variable name="lemma2"
                                             select="substring-after(normalize-space(.),'-')"/><!-- suffix lemma -->
@@ -2375,9 +2369,30 @@
                                                     select="$lemma2"/>
                                   </xsl:call-template>
                                 </xsl:variable>
-                                <xsl:variable name="der-stem-type">
+                                <xsl:variable name="suffs">
                                   <xsl:choose>
-                                    <xsl:when test="$lemma2='chen'">dim</xsl:when>
+                                    <!-- "-chen" -->
+                                    <xsl:when test="$lemma2='chen'">
+                                      <xsl:choose>
+                                        <!-- idiosyncratic forms -->
+                                        <xsl:when test="$lemma='Frauchen'">
+                                          <xsl:sequence select="$lemma2"/>
+                                        </xsl:when>
+                                        <xsl:when test="$lemma='Muttchen'">
+                                          <xsl:sequence select="$lemma2"/>
+                                        </xsl:when>
+                                        <!-- ... -->
+                                        <xsl:otherwise>
+                                          <!-- also for "-lein" -->
+                                          <xsl:sequence select="($lemma2,'lein')"/>
+                                        </xsl:otherwise>
+                                      </xsl:choose>
+                                    </xsl:when>
+                                    <!-- "-lein" -->
+                                    <xsl:when test="$lemma2='lein'">
+                                      <!-- idiosyncratic (for possibly reduced) -->
+                                      <xsl:sequence select="$lemma2"/>
+                                    </xsl:when>
                                     <!-- ... -->
                                   </xsl:choose>
                                 </xsl:variable>
@@ -2389,8 +2404,8 @@
                                                         select="$lemma1"/>
                                         <xsl:with-param name="der-stem"
                                                         select="$der-stem"/>
-                                        <xsl:with-param name="der-stem-type"
-                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="suffs"
+                                                        select="$suffs"/>
                                         <xsl:with-param name="abbreviation"
                                                         select="$abbreviation1"/>
                                         <xsl:with-param name="etymology"
@@ -2403,8 +2418,8 @@
                                                         select="$lemma1"/>
                                         <xsl:with-param name="der-stem"
                                                         select="$der-stem"/>
-                                        <xsl:with-param name="der-stem-type"
-                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="suffs"
+                                                        select="$suffs"/>
                                         <xsl:with-param name="abbreviation"
                                                         select="$abbreviation1"/>
                                         <xsl:with-param name="etymology"
@@ -2417,8 +2432,8 @@
                                                         select="$lemma1"/>
                                         <xsl:with-param name="der-stem"
                                                         select="$der-stem"/>
-                                        <xsl:with-param name="der-stem-type"
-                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="suffs"
+                                                        select="$suffs"/>
                                         <xsl:with-param name="abbreviation"
                                                         select="$abbreviation1"/>
                                         <xsl:with-param name="etymology"
@@ -2431,8 +2446,8 @@
                                                         select="$lemma1"/>
                                         <xsl:with-param name="der-stem"
                                                         select="$der-stem"/>
-                                        <xsl:with-param name="der-stem-type"
-                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="suffs"
+                                                        select="$suffs"/>
                                         <xsl:with-param name="abbreviation"
                                                         select="$abbreviation1"/>
                                         <xsl:with-param name="etymology"
@@ -2445,8 +2460,8 @@
                                                         select="$lemma1"/>
                                         <xsl:with-param name="der-stem"
                                                         select="$der-stem"/>
-                                        <xsl:with-param name="der-stem-type"
-                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="suffs"
+                                                        select="$suffs"/>
                                         <xsl:with-param name="abbreviation"
                                                         select="$abbreviation1"/>
                                         <xsl:with-param name="etymology"
@@ -2459,8 +2474,8 @@
                                                         select="$lemma1"/>
                                         <xsl:with-param name="der-stem"
                                                         select="$der-stem"/>
-                                        <xsl:with-param name="der-stem-type"
-                                                        select="$der-stem-type"/>
+                                        <xsl:with-param name="suffs"
+                                                        select="$suffs"/>
                                         <xsl:with-param name="abbreviation"
                                                         select="$abbreviation1"/>
                                         <xsl:with-param name="etymology"

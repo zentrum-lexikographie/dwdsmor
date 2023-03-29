@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 5.4
-% Andreas Nolda 2023-03-28
+% Version 5.5
+% Andreas Nolda 2023-03-29
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -99,7 +99,7 @@
 
 #stem-type# = <base><comp><der>
 
-#stem-subtype# = <dim>
+#suff# = <chen><lein>
 
 #origin# = <native><foreign>
 

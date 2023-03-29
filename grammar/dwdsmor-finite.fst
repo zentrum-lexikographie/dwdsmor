@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 8.0
-% Andreas Nolda 2023-03-24
+% Version 8.1
+% Andreas Nolda 2023-03-29
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -68,12 +68,13 @@ $UC$ = <^UC>
 
 % derived base stems
 
-$DerStemsDim$  = $DerStems$ || $DerStemDimFilter$
+$DerStemsChen$ = $DerStems$ || $DerStemChenFilter$
+$DerStemsLein$ = $DerStems$ || $DerStemLeinFilter$
 
-$DerBaseStems$ = $UC$ $Pref-un$     <DB> $DC$ $BaseStems$ | \
-                      $Pref-un$     <DB>      $BaseStems$ | \
-                      $DerStemsDim$ <DB>      $Suff-chen$ | \
-                      $DerStemsDim$ <DB>      $Suff-lein$ || $DerFilter$
+$DerBaseStems$ = $UC$ $Pref-un$      <DB> $DC$ $BaseStems$ | \
+                      $Pref-un$      <DB>      $BaseStems$ | \
+                      $DerStemsChen$ <DB>      $Suff-chen$ | \
+                      $DerStemsLein$ <DB>      $Suff-lein$ || $DerFilter$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStems$
 

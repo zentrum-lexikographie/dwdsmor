@@ -1,11 +1,11 @@
 % wf.fst
-% Version 6.0
-% Andreas Nolda 2023-03-24
+% Version 6.1
+% Andreas Nolda 2023-03-29
 
 #include "symbols.fst"
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# #boundary-trigger# #category# \
-            #stem-type# #stem-subtype# #origin# #inflection# #auxiliary# <Abbr><ge>]
+            #stem-type# #suff# #origin# #inflection# #auxiliary# <Abbr><ge>]
 
 % context
 

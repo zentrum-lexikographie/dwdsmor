@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 13.1 -->
-<!-- Andreas Nolda 2023-03-23 -->
+<!-- Version 13.2 -->
+<!-- Andreas Nolda 2023-03-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -214,7 +214,7 @@
 <xsl:template name="word-der-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="der-stem"/>
-  <xsl:param name="der-stem-type"/>
+  <xsl:param name="suffs"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="pos"/>
   <xsl:param name="etymology"/>
@@ -234,11 +234,11 @@
   <xsl:value-of select="$pos"/>
   <xsl:text>&gt;</xsl:text>
   <xsl:text>&lt;der&gt;</xsl:text>
-  <xsl:if test="string-length($der-stem-type)&gt;0">
+  <xsl:for-each select="tokenize(normalize-space($suffs),'&#x20;')">
     <xsl:text>&lt;</xsl:text>
-    <xsl:value-of select="$der-stem-type"/>
+    <xsl:value-of select="."/>
     <xsl:text>&gt;</xsl:text>
-  </xsl:if>
+  </xsl:for-each>
   <xsl:text>&lt;</xsl:text>
   <xsl:value-of select="$etymology"/>
   <xsl:text>&gt;</xsl:text>
