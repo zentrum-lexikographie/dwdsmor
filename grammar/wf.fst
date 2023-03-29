@@ -1,5 +1,5 @@
 % wf.fst
-% Version 6.1
+% Version 6.2
 % Andreas Nolda 2023-03-29
 
 #include "symbols.fst"
@@ -21,6 +21,9 @@ $O$ = [#orth-trigger#]
 $DerRestrPOS-un$ =       <Prefix> un <DB>       <Stem> $C$* <ADJ> $C$*
 $DerRestrPOS-Un$ = <^UC> <Prefix> un <DB> <^DC> <Stem> $C$* <NN>  $C$*
 
+% restrict suff(er) to proper-name bases (?)
+$DerRestrPOS-er$ = $O$* <Stem> $C$* <NPROP> $C$* <DB> <Suffix> er $C$*
+
 % restrict suff(chen) and suff(lein) to nominal bases
 $DerRestrPOS-chen$ = $O$* <Stem> $C$* <NN> $C$* <DB> <Suffix> chen $C$*
 $DerRestrPOS-lein$ = $O$* <Stem> $C$* <NN> $C$* <DB> <Suffix> lein $C$*
@@ -28,16 +31,19 @@ $DerRestrPOS-lein$ = $O$* <Stem> $C$* <NN> $C$* <DB> <Suffix> lein $C$*
 % exclude pref(un) for abbreviated bases
 $DerRestrAbbr-un$ = !($O$* <Prefix> un <DB> $O$* <Stem> <Abbr> $C$*)
 
-% exclude suff(chen) and suff(lein) for abbreviated bases (?)
+% exclude suff(er), suff(chen), and suff(lein) for abbreviated bases (?)
+$DerRestrAbbr-er$   = !($O$* <Stem> <Abbr> $C$* <DB> <Suffix> er   $C$*)
 $DerRestrAbbr-chen$ = !($O$* <Stem> <Abbr> $C$* <DB> <Suffix> chen $C$*)
 $DerRestrAbbr-lein$ = !($O$* <Stem> <Abbr> $C$* <DB> <Suffix> lein $C$*)
 
 $DerRestrPOS$ = $DerRestrPOS-un$   | \
                 $DerRestrPOS-Un$   | \
+                $DerRestrPOS-er$   | \
                 $DerRestrPOS-chen$ | \
                 $DerRestrPOS-lein$
 
 $DerRestrAbbr$ = $DerRestrAbbr-un$   & \
+                 $DerRestrAbbr-er$   & \
                  $DerRestrAbbr-chen$ & \
                  $DerRestrAbbr-lein$
 

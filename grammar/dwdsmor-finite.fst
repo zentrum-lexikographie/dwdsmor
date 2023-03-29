@@ -1,5 +1,5 @@
 % dwdsmor-finite.fst
-% Version 8.1
+% Version 8.2
 % Andreas Nolda 2023-03-29
 
 #include "symbols.fst"
@@ -58,6 +58,7 @@ $CompStems$ = $LEX$ || $CompStemFilter$
 
 $Pref-un$ = <Prefix> un
 
+$Suff-er$   = <Suffix> er   <NN> <base> <native> <>:<NMasc_s_0>
 $Suff-chen$ = <Suffix> chen <NN> <base> <native> <>:<NNeut_s_x>
 $Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_x>
 
@@ -68,13 +69,15 @@ $UC$ = <^UC>
 
 % derived base stems
 
-$DerStemsChen$ = $DerStems$ || $DerStemChenFilter$
-$DerStemsLein$ = $DerStems$ || $DerStemLeinFilter$
+$DerStems-er$   = $DerStems$ || $DerStemFilter-er$
+$DerStems-chen$ = $DerStems$ || $DerStemFilter-chen$
+$DerStems-lein$ = $DerStems$ || $DerStemFilter-lein$
 
-$DerBaseStems$ = $UC$ $Pref-un$      <DB> $DC$ $BaseStems$ | \
-                      $Pref-un$      <DB>      $BaseStems$ | \
-                      $DerStemsChen$ <DB>      $Suff-chen$ | \
-                      $DerStemsLein$ <DB>      $Suff-lein$ || $DerFilter$
+$DerBaseStems$ = $UC$ $Pref-un$       <DB> $DC$ $BaseStems$ | \
+                      $Pref-un$       <DB>      $BaseStems$ | \
+                      $DerStems-er$   <DB>      $Suff-er$   | \
+                      $DerStems-chen$ <DB>      $Suff-chen$ | \
+                      $DerStems-lein$ <DB>      $Suff-lein$ || $DerFilter$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStems$
 

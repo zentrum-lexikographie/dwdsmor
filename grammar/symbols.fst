@@ -1,5 +1,5 @@
 % symbols.fst
-% Version 5.5
+% Version 5.6
 % Andreas Nolda 2023-03-29
 
 % based on code from SMORLemma by Rico Sennrich
@@ -52,7 +52,7 @@
 
 #wf-process# = <COMP><DER>
 
-#wf-means# = <concat><hyph><pref(un)><suff(chen)><suff(lein)>
+#wf-means# = <concat><hyph><pref(un)><suff(chen)><suff(er)><suff(lein)>
 
 #category# = <ABBR><ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD> \
              <OTHER><POSS><PPRO><PRO><REL><V><WPRO>
@@ -99,7 +99,7 @@
 
 #stem-type# = <base><comp><der>
 
-#suff# = <chen><lein> % ...
+#suff# = <chen><er><lein> % ...
 
 #origin# = <native><foreign>
 

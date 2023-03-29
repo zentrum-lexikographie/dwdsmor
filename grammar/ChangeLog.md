@@ -3,6 +3,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 2023-03-29:
 
 * mark derivation stems with suffix
+* add support for derivation by means of "er"-suffixation with proper-name bases
 
 2023-03-28:
 

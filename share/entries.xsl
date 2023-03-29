@@ -157,7 +157,7 @@
 
 <xsl:variable name="supported-suffs"
               as="item()*"
-              select="'chen','lein'"/><!-- ... -->
+              select="'chen','er','lein'"/><!-- ... -->
 
 <!-- derivation stems of words -->
 <xsl:template name="word-der-entry">
