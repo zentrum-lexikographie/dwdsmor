@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- dwds2index.xsl -->
+<!-- dwds2manifest.xsl -->
 <!-- Version 1.1 -->
 <!-- Andreas Nolda 2023-03-29 -->
 

@@ -99,7 +99,7 @@
 
 #stem-type# = <base><comp><der>
 
-#suff# = <chen><lein>
+#suff# = <chen><lein> % ...
 
 #origin# = <native><foreign>
 

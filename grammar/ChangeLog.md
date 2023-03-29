@@ -2,7 +2,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2023-03-29:
 
-* mark suffix-specifc derivation stems
+* mark derivation stems with suffix
 
 2023-03-28:
 

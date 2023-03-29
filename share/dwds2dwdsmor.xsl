@@ -1970,6 +1970,7 @@
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
                 <xsl:with-param name="suffs"
+                                as="item()*"
                                 select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
@@ -1985,6 +1986,7 @@
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
                 <xsl:with-param name="suffs"
+                                as="item()*"
                                 select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
@@ -2000,6 +2002,7 @@
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
                 <xsl:with-param name="suffs"
+                                as="item()*"
                                 select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
@@ -2015,6 +2018,7 @@
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
                 <xsl:with-param name="suffs"
+                                as="item()*"
                                 select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
@@ -2030,6 +2034,7 @@
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
                 <xsl:with-param name="suffs"
+                                as="item()*"
                                 select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
@@ -2045,6 +2050,7 @@
                 <xsl:with-param name="der-stem"
                                 select="normalize-space(dwds:Derivationsstamm)"/>
                 <xsl:with-param name="suffs"
+                                as="item()*"
                                 select="@Suffixe"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
@@ -2374,7 +2380,8 @@
                                                     select="$lemma2"/>
                                   </xsl:call-template>
                                 </xsl:variable>
-                                <xsl:variable name="suffs">
+                                <xsl:variable name="suffs"
+                                              as="item()*">
                                   <xsl:choose>
                                     <!-- "-chen" -->
                                     <xsl:when test="$lemma2='chen'">
@@ -2389,16 +2396,14 @@
                                         <!-- ... -->
                                         <xsl:otherwise>
                                           <!-- also used for "-lein" -->
-                                          <xsl:sequence select="($lemma2,'lein')"/>
+                                          <xsl:sequence select="$lemma2,'lein'"/>
                                         </xsl:otherwise>
                                       </xsl:choose>
                                     </xsl:when>
-                                    <!-- "-lein" -->
-                                    <xsl:when test="$lemma2='lein'">
-                                      <!-- idiosyncratic (for possibly reduced) -->
-                                      <xsl:sequence select="$lemma2"/>
-                                    </xsl:when>
                                     <!-- ... -->
+                                    <xsl:otherwise>
+                                      <xsl:sequence select="$lemma2"/>
+                                    </xsl:otherwise>
                                   </xsl:choose>
                                 </xsl:variable>
                                 <xsl:if test="string-length($der-stem)&gt;0">

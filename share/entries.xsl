@@ -155,39 +155,54 @@
   <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
+<xsl:variable name="supported-suffs"
+              as="item()*"
+              select="'chen','lein'"/><!-- ... -->
+
 <!-- derivation stems of words -->
 <xsl:template name="word-der-entry">
   <xsl:param name="lemma"/>
   <xsl:param name="der-stem"/>
-  <xsl:param name="suffs"/>
+  <xsl:param name="suff"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="pos"/>
   <xsl:param name="etymology"/>
-  <xsl:text>&lt;Stem&gt;</xsl:text>
-  <xsl:if test="$abbreviation='yes'">
-    <xsl:text>&lt;Abbr&gt;</xsl:text>
-  </xsl:if>
   <xsl:choose>
-    <xsl:when test="string-length($der-stem)&gt;0">
-      <xsl:value-of select="n:pair($lemma,n:segment($lemma,$der-stem))"/>
+    <xsl:when test="$supported-suffs=$suff">
+      <xsl:text>&lt;Stem&gt;</xsl:text>
+      <xsl:if test="$abbreviation='yes'">
+        <xsl:text>&lt;Abbr&gt;</xsl:text>
+      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="string-length($der-stem)&gt;0">
+          <xsl:value-of select="n:pair($lemma,n:segment($lemma,$der-stem))"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$lemma"/>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:text>&lt;</xsl:text>
+      <xsl:value-of select="$pos"/>
+      <xsl:text>&gt;</xsl:text>
+      <xsl:text>&lt;der&gt;</xsl:text>
+      <xsl:text>&lt;</xsl:text>
+      <xsl:value-of select="$suff"/>
+      <xsl:text>&gt;</xsl:text>
+      <xsl:text>&lt;</xsl:text>
+      <xsl:value-of select="$etymology"/>
+      <xsl:text>&gt;</xsl:text>
+      <xsl:text>&#xA;</xsl:text>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:value-of select="$lemma"/>
+      <xsl:message>
+        <xsl:text>Warning: "</xsl:text>
+        <xsl:value-of select="$lemma"/>
+        <xsl:text>" has derivation stem for UNSUPPORTED suffix "-</xsl:text>
+        <xsl:value-of select="$suff"/>
+        <xsl:text>".</xsl:text>
+      </xsl:message>
     </xsl:otherwise>
   </xsl:choose>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:value-of select="$pos"/>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&lt;der&gt;</xsl:text>
-  <xsl:for-each select="tokenize(normalize-space($suffs),'&#x20;')">
-    <xsl:text>&lt;</xsl:text>
-    <xsl:value-of select="."/>
-    <xsl:text>&gt;</xsl:text>
-  </xsl:for-each>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:value-of select="$etymology"/>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
 <!-- adjectives -->
@@ -1085,19 +1100,21 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches($der-stem,'^\p{L}$') and
                       $abbreviation='no')">
-      <xsl:call-template name="word-der-entry">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-        <xsl:with-param name="der-stem"
-                        select="$der-stem"/>
-        <xsl:with-param name="suffs"
-                        select="$suffs"/>
-        <xsl:with-param name="abbreviation"
-                        select="$abbreviation"/>
-        <xsl:with-param name="pos">ADJ</xsl:with-param>
-        <xsl:with-param name="etymology"
-                        select="$etymology"/>
-      </xsl:call-template>
+      <xsl:for-each select="$suffs">
+        <xsl:call-template name="word-der-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="der-stem"
+                          select="$der-stem"/>
+          <xsl:with-param name="suff"
+                          select="."/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">ADJ</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:for-each>
     </xsl:if>
   </xsl:if>
 </xsl:template>
@@ -1505,19 +1522,21 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches($der-stem,'^\p{L}$') and
                       $abbreviation='no')">
-      <xsl:call-template name="word-der-entry">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-        <xsl:with-param name="der-stem"
-                        select="$der-stem"/>
-        <xsl:with-param name="suffs"
-                        select="$suffs"/>
-        <xsl:with-param name="abbreviation"
-                        select="$abbreviation"/>
-        <xsl:with-param name="pos">CARD</xsl:with-param>
-        <xsl:with-param name="etymology"
-                        select="$etymology"/>
-      </xsl:call-template>
+      <xsl:for-each select="$suffs">
+        <xsl:call-template name="word-der-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="der-stem"
+                          select="$der-stem"/>
+          <xsl:with-param name="suff"
+                          select="."/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">CARD</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:for-each>
     </xsl:if>
   </xsl:if>
 </xsl:template>
@@ -1593,19 +1612,21 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches($der-stem,'^\p{L}$') and
                       $abbreviation='no')">
-      <xsl:call-template name="word-der-entry">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-        <xsl:with-param name="der-stem"
-                        select="$der-stem"/>
-        <xsl:with-param name="suffs"
-                        select="$suffs"/>
-        <xsl:with-param name="abbreviation"
-                        select="$abbreviation"/>
-        <xsl:with-param name="pos">ORD</xsl:with-param>
-        <xsl:with-param name="etymology"
-                        select="$etymology"/>
-      </xsl:call-template>
+      <xsl:for-each select="$suffs">
+        <xsl:call-template name="word-der-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="der-stem"
+                          select="$der-stem"/>
+          <xsl:with-param name="suff"
+                          select="."/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">ORD</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:for-each>
     </xsl:if>
   </xsl:if>
 </xsl:template>
@@ -2173,19 +2194,21 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches($der-stem,'^\p{L}$') and
                       $abbreviation='no')">
-      <xsl:call-template name="word-der-entry">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-        <xsl:with-param name="der-stem"
-                        select="$der-stem"/>
-        <xsl:with-param name="suffs"
-                        select="$suffs"/>
-        <xsl:with-param name="abbreviation"
-                        select="$abbreviation"/>
-        <xsl:with-param name="pos">NN</xsl:with-param>
-        <xsl:with-param name="etymology"
-                        select="$etymology"/>
-      </xsl:call-template>
+      <xsl:for-each select="$suffs">
+        <xsl:call-template name="word-der-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="der-stem"
+                          select="$der-stem"/>
+          <xsl:with-param name="suff"
+                          select="."/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:for-each>
     </xsl:if>
   </xsl:if>
 </xsl:template>
@@ -2355,19 +2378,21 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches($der-stem,'^\p{L}$') and
                       $abbreviation='no')">
-      <xsl:call-template name="word-der-entry">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-        <xsl:with-param name="der-stem"
-                        select="$der-stem"/>
-        <xsl:with-param name="suffs"
-                        select="$suffs"/>
-        <xsl:with-param name="abbreviation"
-                        select="$abbreviation"/>
-        <xsl:with-param name="pos">NPROP</xsl:with-param>
-        <xsl:with-param name="etymology"
-                        select="$etymology"/>
-      </xsl:call-template>
+      <xsl:for-each select="$suffs">
+        <xsl:call-template name="word-der-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="der-stem"
+                          select="$der-stem"/>
+          <xsl:with-param name="suff"
+                          select="."/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NPROP</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:for-each>
     </xsl:if>
   </xsl:if>
 </xsl:template>
@@ -6075,19 +6100,21 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches($der-stem,'^\p{L}$') and
                       $abbreviation='no')">
-      <xsl:call-template name="word-der-entry">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-        <xsl:with-param name="der-stem"
-                        select="$der-stem"/>
-        <xsl:with-param name="suffs"
-                        select="$suffs"/>
-        <xsl:with-param name="abbreviation"
-                        select="$abbreviation"/>
-        <xsl:with-param name="pos">V</xsl:with-param>
-        <xsl:with-param name="etymology"
-                        select="$etymology"/>
-      </xsl:call-template>
+      <xsl:for-each select="$suffs">
+        <xsl:call-template name="word-der-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="der-stem"
+                          select="$der-stem"/>
+          <xsl:with-param name="suff"
+                          select="."/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">V</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:for-each>
     </xsl:if>
   </xsl:if>
 </xsl:template>

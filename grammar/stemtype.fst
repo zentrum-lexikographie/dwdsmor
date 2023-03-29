@@ -12,5 +12,5 @@ $BaseStemFilter$ = <Stem> .* <base> [^#stem-type#]*
 $CompStemFilter$ = <Stem> .* <comp> [^#stem-type#]*
 $DerStemFilter$  = <Stem> .* <der>  [^#stem-type#]*
 
-$DerStemChenFilter$ = <Stem> .* <der> [#suff#]* <chen> [^#stem-type#]*
-$DerStemLeinFilter$ = <Stem> .* <der> [#suff#]* <lein> [^#stem-type#]*
+$DerStemChenFilter$ = <Stem> .* <der> <chen> [^#stem-type#]*
+$DerStemLeinFilter$ = <Stem> .* <der> <lein> [^#stem-type#]*
