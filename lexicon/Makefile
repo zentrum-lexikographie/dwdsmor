@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2022-12-13
+# Andreas Nolda 2023-03-30
 
 SAXON = java -cp /usr/share/java/Saxon-HE.jar net.sf.saxon.Transform
 DIFF  = diff -s -y -Z --suppress-common-lines -W 120
@@ -17,9 +17,13 @@ EXCLUDE  = $(CURDIR)/exclude.xml
 LEX = $(LEXDIR)/dwds.lex
 LOG = $(LEXDIR)/dwds.log
 
-MANIFESTXSL = $(XSLDIR)/dwds2manifest.xsl
-LEXXSL      = $(XSLDIR)/dwds2dwdsmor.xsl
-LEXLIB      = $(filter-out $(XSLDIR)/dwds2%.xsl, $(wildcard $(XSLDIR)/*.xsl))
+MANIFESTXSL   = $(XSLDIR)/dwds2manifest.xsl
+LEXXSL        = $(XSLDIR)/dwds2dwdsmor.xsl
+LIBXSL_COMMON = $(XSLDIR)/files.xsl
+LIBXSL_LEX    = $(XSLDIR)/categories.xsl \
+                $(XSLDIR)/entries.xsl \
+                $(XSLDIR)/forms.xsl \
+                $(XSLDIR)/strings.xsl
 
 TESTINPUT  = $(TESTDIR)/input
 TESTOUTPUT = $(TESTDIR)/output
@@ -32,10 +36,10 @@ all: lexicon
 
 lexicon: $(MANIFEST) $(LEX)
 
-$(MANIFEST): $(SRCDIRS) $(MANIFESTXSL)
+$(MANIFEST): $(SRCDIRS) $(MANIFESTXSL) $(LIBXSL_COMMON)
 	$(SAXON) -xsl:$(MANIFESTXSL) -it -o:$@ dwds-dir=$(SRCDIR) aux-dir=$(AUXDIR) exclude-file=$(EXCLUDE)
 
-$(LEX): $(SRCDIRS) $(LEXXSL) $(LEXLIB)
+$(LEX): $(SRCDIRS) $(LEXXSL) $(LIBXSL_COMMON) $(LIBXSL_LEX)
 	$(SAXON) -xsl:$(LEXXSL) -it manifest-file=$(MANIFEST) 2> $(LOG) | LC_ALL=C sort -u > $@
 
 test: $(TESTOUTPUTS)
