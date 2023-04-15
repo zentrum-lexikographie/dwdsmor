@@ -69,7 +69,7 @@ On a Debian-based distribution, install the following packages:
 apt install python3 default-jdk libsaxonhe-java sfst
 ```
 
-Set up a virtual environment for project builds, i. e. via
+Set up a virtual environment for project builds, i.e. via
 [`pyenv`](https://github.com/pyenv/pyenv):
 
 ```sh

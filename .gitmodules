@@ -1,4 +1,4 @@
 [submodule "wb"]
 	path = lexicon/wb
-	url = ../wb.git
+	url = git@git.zdl.org:zdl/wb.git
 	branch = zdl-lex-server/production
