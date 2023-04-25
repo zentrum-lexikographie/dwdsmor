@@ -52,6 +52,15 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>nach</Schreibung>
+      <Grammatik>
+        <Wortklasse>Präposition</Wortklasse>
+        <Einschraenkung>nachgestellt</Einschraenkung>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>nahe</Schreibung>
       <Grammatik>
         <Wortklasse>Präposition</Wortklasse>
@@ -87,6 +96,15 @@
       <Schreibung>seit</Schreibung>
       <Grammatik>
         <Wortklasse>Präposition</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>über</Schreibung>
+      <Grammatik>
+        <Wortklasse>Präposition</Wortklasse>
+        <Einschraenkung>nachgestellt</Einschraenkung>
       </Grammatik>
     </Formangabe>
   </Artikel>
