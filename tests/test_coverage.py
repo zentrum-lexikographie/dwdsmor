@@ -6,6 +6,7 @@ from collections import namedtuple, defaultdict
 # mapping between divergent STTS and SMOR part-of-speech categories
 TUEBADZ_DWDSMOR_POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
                            "ADJD":    ["ADJ"],
+                           "ADV":     ["ADV", "ADJ"],
                            "APPO":    ["POSTP"],
                            "APPR":    ["PREP"],
                            "APPRART": ["PREPART"],
