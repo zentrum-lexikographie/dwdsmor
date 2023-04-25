@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2023-03-30
+# Andreas Nolda 2023-04-25
 
 SAXON = java -cp /usr/share/java/Saxon-HE.jar net.sf.saxon.Transform
 DIFF  = diff -s -y -Z --suppress-common-lines -W 120
@@ -36,10 +36,10 @@ all: lexicon
 
 lexicon: $(MANIFEST) $(LEX)
 
-$(MANIFEST): $(SRCDIRS) $(MANIFESTXSL) $(LIBXSL_COMMON)
+$(MANIFEST): $(SRCDIRS) $(AUXDIR) $(MANIFESTXSL) $(LIBXSL_COMMON)
 	$(SAXON) -xsl:$(MANIFESTXSL) -it -o:$@ dwds-dir=$(SRCDIR) aux-dir=$(AUXDIR) exclude-file=$(EXCLUDE)
 
-$(LEX): $(SRCDIRS) $(LEXXSL) $(LIBXSL_COMMON) $(LIBXSL_LEX)
+$(LEX): $(SRCDIRS) $(AUXDIR) $(LEXXSL) $(LIBXSL_COMMON) $(LIBXSL_LEX)
 	$(SAXON) -xsl:$(LEXXSL) -it manifest-file=$(MANIFEST) 2> $(LOG) | LC_ALL=C sort -u > $@
 
 test: $(TESTOUTPUTS)
