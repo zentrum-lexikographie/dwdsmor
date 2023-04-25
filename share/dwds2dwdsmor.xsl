@@ -1701,6 +1701,7 @@
                 </xsl:when>
                 <xsl:when test="$lemma='anstatt' or
                                 $lemma='statt' or
+                                $lemma='ohne' or
                                 $lemma='um'">
                   <xsl:call-template name="conjunction-entry-set">
                     <xsl:with-param name="lemma"
