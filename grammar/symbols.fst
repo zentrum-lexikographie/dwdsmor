@@ -1,5 +1,5 @@
 % symbols.fst
-% Version 5.7
+% Version 5.8
 % Andreas Nolda 2023-04-25
 
 % based on code from SMORLemma by Rico Sennrich
@@ -54,18 +54,18 @@
 
 #wf-means# = <concat><hyph><pref(un)><suff(chen)><suff(er)><suff(lein)>
 
-#category# = <ABBR><ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD> \
-             <OTHER><POSS><PPRO><PRO><REL><V><WPRO>
+#category# = <ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER> \
+             <POSS><PPRO><REL><V><WPRO>
 
 #auxiliary# = <haben><sein>
 
-#part-of-speech# = <+ADJ><+ADV><+ART><+CARD><+CHAR><+CIRCP><+DEM><+FRAC><+INDEF> \
-                   <+INTJ><+PUNCT><+CONJ><+NPROP><+NN><+ORD><+POSS><+POSTP> \
-                   <+PPRO><+PREPART><+PREP><+PROADV><+PTCL><+REL><+SYMBOL> \
-                   <+TRUNC><+V><+VPART><+WADV><+WPRO>
+#part-of-speech# = <+ADJ><+ADV><+ART><+CARD><+CIRCP><+CONJ><+DEM><+FRAC><+INDEF> \
+                   <+INTJ><+NPROP><+NN><+ORD><+POSS><+POSTP><+PPRO><+PREP> \
+                   <+PREPART><+PROADV><+PTCL><+PUNCT><+REL><+TRUNC><+V><+VPART> \
+                   <+WADV><+WPRO>
 
 #subcat# = <Pers><Refl><Def><Indef><Neg><Coord><Sub><Compar><Adv><ProAdv><Adj> \
-           <Ant><Comma><Dash><Ellip><Paren><Period><Quote><Slash>
+           <Comma><Dash><Ellip><Paren><Period><Quote><Slash>
 
 #degree# = <Pos><Comp><Sup>
 
@@ -91,7 +91,7 @@
             #subcat# #degree# #person# #gender# #case# #number# #infl# #function# \
             #nonfinite# #mood# #tense#
 
-#orthinfo# = <CAP><OLDORTH>
+#orthinfo# = <OLDORTH>
 
 #metainfo# = <NonSt><Old>
 
@@ -191,7 +191,7 @@
                      <PInd-Invar><Postp><Pref/Adj><Pref/Adv><Pref/N> \
                      <Pref/ProAdv><Pref/Sep><Pref/V><Prep><Prep/Art-m> \
                      <Prep/Art-n><Prep/Art-r><Prep/Art-s><ProAdv><Ptkl-Adj> \
-                     <Ptkl-Ant><Ptkl-Neg><Ptkl-Zu><Trunc><WAdv>
+                     <Ptkl-Neg><Ptkl-Zu><Trunc><WAdv>
 
 #inflection# = #Abk-inflection# #Adj-inflection# #Adv-inflection# \
                #Art-inflection# #Noun-inflection# #Name-inflection# \

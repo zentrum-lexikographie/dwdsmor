@@ -1798,8 +1798,6 @@ $ProAdv$ = {<+PROADV>}:{}
 
 $Ptkl-Adj$ = {<+PTCL><Adj>}:{}
 
-$Ptkl-Ant$ = {<+PTCL><Ant>}:{}
-
 $Ptkl-Neg$ = {<+PTCL><Neg>}:{}
 
 $Ptkl-Zu$ = {<+PTCL><zu>}:{}
@@ -2090,7 +2088,6 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<Prep/Art-s>            $Prep/Art-s$        | \
          <>:<ProAdv>                $ProAdv$            | \
          <>:<Ptkl-Adj>              $Ptkl-Adj$          | \
-         <>:<Ptkl-Ant>              $Ptkl-Ant$          | \
          <>:<Ptkl-Neg>              $Ptkl-Neg$          | \
          <>:<Ptkl-Zu>               $Ptkl-Zu$           | \
          <>:<Rel>                   $Rel$               | \
