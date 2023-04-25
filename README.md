@@ -55,7 +55,7 @@ word formation will be added in future versions.
   paradigm generation.
 
 [Java (JDK) >= v8](https://openjdk.java.net/)
-: The extraction of lexicon entries from XML sources of DWDS articles is
+: The extraction of lexical entries from XML sources of DWDS articles is
   implemented in XSLT 2, for which [Saxon-HE](https://www.saxonica.com/) is used
   as the runtime environment. Saxon requires a Java runtime.
 
