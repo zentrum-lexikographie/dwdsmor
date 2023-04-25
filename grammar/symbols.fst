@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 5.6
-% Andreas Nolda 2023-03-29
+% Version 5.7
+% Andreas Nolda 2023-04-25
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -188,11 +188,10 @@
                     <VVReg><VVRegFin>
 
 #Other-inflection# = <Circp><Intj><Konj-Inf><Konj-Kon><Konj-Sub><Konj-Vgl> \
-                     <PInd-Invar><Postp-Akk><Postp-Dat><Postp-Gen><Pref/Adj> \
-                     <Pref/Adv><Pref/N><Pref/ProAdv><Pref/Sep><Pref/V><Prep-Akk> \
-                     <Prep-DA><Prep-Dat><Prep-GD><Prep-GDA><Prep-Gen> \
-                     <Prep/Art-m><Prep/Art-n><Prep/Art-r><Prep/Art-s><ProAdv> \
-                     <Ptkl-Adj><Ptkl-Ant><Ptkl-Neg><Ptkl-Zu><Trunc><WAdv>
+                     <PInd-Invar><Postp><Pref/Adj><Pref/Adv><Pref/N> \
+                     <Pref/ProAdv><Pref/Sep><Pref/V><Prep><Prep/Art-m> \
+                     <Prep/Art-n><Prep/Art-r><Prep/Art-s><ProAdv><Ptkl-Adj> \
+                     <Ptkl-Ant><Ptkl-Neg><Ptkl-Zu><Trunc><WAdv>
 
 #inflection# = #Abk-inflection# #Adj-inflection# #Adv-inflection# \
                #Art-inflection# #Noun-inflection# #Name-inflection# \

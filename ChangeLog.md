@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-04-25:
+
+* do not mark case government of adpositions
+
 2023-03-29:
 
 * move templates from `dwsd2dwdsmor.xsl` to `entries.xsl`

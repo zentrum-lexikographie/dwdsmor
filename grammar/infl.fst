@@ -1,6 +1,6 @@
 % infl.fst
-% Version 4.4
-% Andreas Nolda 2023-03-28
+% Version 4.5
+% Andreas Nolda 2023-04-25
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1752,37 +1752,24 @@ $VVPP-t+sein$ = $VPP-t$ $sein$
 
 % adpositions
 
-$Postp-Akk$ = {<+POSTP><Acc>}:{}
+% unter
+$Prep$ = {<+PREP>}:{}
 
-$Postp-Dat$ = {<+POSTP><Dat>}:{}
-
-$Postp-Gen$ = {<+POSTP><Gen>}:{}
-
-$Prep-Akk$ = {<+PREP><Acc>}:{}
-
-$Prep-Dat$ = {<+PREP><Dat>}:{}
-
-$Prep-Gen$ = {<+PREP><Gen>}:{}
-
-$Prep-GDA$ = {<+PREP><Acc>}:{} | \
-             {<+PREP><Dat>}:{} | \
-             {<+PREP><Gen>}:{}
-
-$Prep-DA$ = {<+PREP><Acc>}:{} | \
-            {<+PREP><Dat>}:{}
-
-$Prep-GD$ = {<+PREP><Dat>}:{} | \
-            {<+PREP><Gen>}:{}
-
+% unterm
 $Prep/Art-m$ = {<+PREPART><Masc><Dat><Sg>}:{} | \
                {<+PREPART><Neut><Dat><Sg>}:{}
 
-% untern (Tisch)
+% untern
 $Prep/Art-n$ = {<+PREPART><Masc><Acc><Sg>}:{}
 
+% unters
+$Prep/Art-s$ = {<+PREPART><Neut><Acc><Sg>}:{}
+
+% zur
 $Prep/Art-r$ = {<+PREPART><Fem><Dat><Sg>}:{}
 
-$Prep/Art-s$ = {<+PREPART><Neut><Acc><Sg>}:{}
+% zufolge
+$Postp$ = {<+POSTP>}:{}
 
 $Circp$ = {<+CIRCP>}:{}
 
@@ -2048,9 +2035,7 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<Poss-er>               $Poss-er$           | \
          <>:<Poss/Wk>               $Poss/Wk$           | \
          <>:<Poss/Wk-er>            $Poss/Wk-er$        | \
-         <>:<Postp-Akk>             $Postp-Akk$         | \
-         <>:<Postp-Dat>             $Postp-Dat$         | \
-         <>:<Postp-Gen>             $Postp-Gen$         | \
+         <>:<Postp>                 $Postp$             | \
          <>:<PPro1AccPl>            $PPro1AccPl$        | \
          <>:<PPro1AccSg>            $PPro1AccSg$        | \
          <>:<PPro1DatPl>            $PPro1DatPl$        | \
@@ -2092,12 +2077,7 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<PRefl1Pl>              $PRefl1Pl$          | \
          <>:<PRefl2Pl>              $PRefl2Pl$          | \
          <>:<PRefl3>                $PRefl3$            | \
-         <>:<Prep-Akk>              $Prep-Akk$          | \
-         <>:<Prep-Dat>              $Prep-Dat$          | \
-         <>:<Prep-Gen>              $Prep-Gen$          | \
-         <>:<Prep-GDA>              $Prep-GDA$          | \
-         <>:<Prep-GD>               $Prep-GD$           | \
-         <>:<Prep-DA>               $Prep-DA$           | \
+         <>:<Prep>                  $Prep$              | \
          <>:<Pref/Adj>              $Pref/Adj$          | \
          <>:<Pref/Adv>              $Pref/Adv$          | \
          <>:<Pref/N>                $Pref/N$            | \

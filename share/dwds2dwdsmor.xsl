@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 13.2 -->
-<!-- Andreas Nolda 2023-03-29 -->
+<!-- Version 13.3 -->
+<!-- Andreas Nolda 2023-04-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -97,7 +97,6 @@
                                                    self::dwds:Partizip_II[count(tokenize(normalize-space(.),'&#x20;'))=1] or
                                                    self::dwds:Auxiliar or
                                                    self::dwds:Funktionspraeferenz or
-                                                   self::dwds:Kasuspraeferenz or
                                                    self::dwds:Numeruspraeferenz or
                                                    self::dwds:Einschraenkung or
                                                    self::dwds:Kommentar]"
@@ -1325,9 +1324,6 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="position">
                   <xsl:call-template name="get-position-value"/>
-                </xsl:with-param>
-                <xsl:with-param name="case">
-                  <xsl:call-template name="get-case-value"/>
                 </xsl:with-param>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
@@ -2611,14 +2607,6 @@
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'auch nachgestellt')">any</xsl:when>
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nachgestellt')">post</xsl:when>
     <xsl:otherwise>pre</xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<xsl:template name="get-case-value">
-  <xsl:choose>
-    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Akkusativ'">accusative</xsl:when>
-    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Dativ'">dative</xsl:when>
-    <xsl:when test="normalize-space(dwds:Kasuspraeferenz)='mit Genitiv'">genitive</xsl:when>
   </xsl:choose>
 </xsl:template>
 </xsl:stylesheet>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 10.0 -->
-<!-- Andreas Nolda 2023-03-29 -->
+<!-- Version 10.1 -->
+<!-- Andreas Nolda 2023-04-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -6222,7 +6222,6 @@
   <xsl:param name="paradigm-index"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="position"/>
-  <xsl:param name="case"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -6233,8 +6232,6 @@
             <xsl:with-param name="lemma"
                             select="$lemma"/>
             <xsl:with-param name="position">pre</xsl:with-param>
-            <xsl:with-param name="case"
-                            select="$case"/>
             <xsl:with-param name="pronunciations"
                             select="$pronunciations"/>
           </xsl:call-template>
@@ -6244,8 +6241,6 @@
             <xsl:with-param name="lemma"
                             select="$lemma"/>
             <xsl:with-param name="position">post</xsl:with-param>
-            <xsl:with-param name="case"
-                            select="$case"/>
             <xsl:with-param name="pronunciations"
                             select="$pronunciations"/>
           </xsl:call-template>
@@ -6289,8 +6284,6 @@
                             select="$lemma"/>
             <xsl:with-param name="position"
                             select="$position"/>
-            <xsl:with-param name="case"
-                            select="$case"/>
             <xsl:with-param name="pronunciations"
                             select="$pronunciations"/>
           </xsl:call-template>

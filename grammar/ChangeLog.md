@@ -1,5 +1,11 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-04-25:
+
+* replace inflection classes `<Prep-Akk>`, `<Prep-Dat>`, `<Prep-Gen>`,
+  `<Prep-GDA>`, `<Prep-DA>`, `<Prep-GD>`, `<Postp-Akk>`, `<Postp-Dat>`,
+  `<Postp-Gen>` with `<Prep>` and `<Postp>`
+
 2023-03-29:
 
 * mark derivation stems with suffix

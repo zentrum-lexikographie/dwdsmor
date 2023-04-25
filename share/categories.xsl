@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 4.5 -->
-<!-- Andreas Nolda 2023-03-28 -->
+<!-- Version 4.6 -->
+<!-- Andreas Nolda 2023-04-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1106,34 +1106,16 @@
 
 <xsl:variable name="adposition-class-mapping">
   <!-- prepositions: -->
-  <!-- case government: accusative -->
-  <class position="pre"
-         case="accusative">Prep-Akk</class>
-  <!-- case government: dative -->
-  <class position="pre"
-         case="dative">Prep-Dat</class>
-  <!-- case government: genitive -->
-  <class position="pre"
-         case="genitive">Prep-Gen</class>
+  <class position="pre">Prep</class>
   <!-- postpositions: -->
-  <!-- case government: accusative -->
-  <class position="post"
-         case="accusative">Postp-Akk</class>
-  <!-- case government: dative -->
-  <class position="post"
-         case="dative">Postp-Dat</class>
-  <!-- case government: genitive -->
-  <class position="post"
-         case="genitive">Postp-Gen</class>
+  <class position="post">Postp</class>
 </xsl:variable>
 
 <xsl:template name="adposition-class">
   <xsl:param name="lemma"/>
   <xsl:param name="position"/>
-  <xsl:param name="case"/>
   <xsl:param name="pronunciations"/>
-  <xsl:value-of select="$adposition-class-mapping/class[@position=$position]
-                                                       [@case=$case]"/>
+  <xsl:value-of select="$adposition-class-mapping/class[@position=$position]"/>
 </xsl:template>
 
 <xsl:variable name="contracted-adposition-class-mapping">
