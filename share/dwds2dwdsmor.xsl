@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 13.3 -->
+<!-- Version 13.4 -->
 <!-- Andreas Nolda 2023-04-25 -->
 
 <xsl:stylesheet version="2.0"
@@ -469,6 +469,48 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$lemma='so'">
+                  <xsl:call-template name="adverb-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="lemma-index"
+                                    select="$lemma-index"/>
+                    <xsl:with-param name="paradigm-index"
+                                    select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="lemma-index"
+                                    select="$lemma-index"/>
+                    <xsl:with-param name="paradigm-index"
+                                    select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
+                    <xsl:with-param name="class">Intj</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="lemma-index"
+                                    select="$lemma-index"/>
+                    <xsl:with-param name="paradigm-index"
+                                    select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
+                    <xsl:with-param name="class">Konj-Sub</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1757,6 +1799,35 @@
             <!-- particles: -->
             <xsl:when test="$pos='Partikel'">
               <xsl:choose>
+                <xsl:when test="$lemma='ja'">
+                  <xsl:call-template name="other-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="lemma-index"
+                                    select="$lemma-index"/>
+                    <xsl:with-param name="paradigm-index"
+                                    select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
+                    <xsl:with-param name="class">Intj</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="adverb-entry-set">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma"/>
+                    <xsl:with-param name="lemma-index"
+                                    select="$lemma-index"/>
+                    <xsl:with-param name="paradigm-index"
+                                    select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
+                    <xsl:with-param name="pronunciations"
+                                    select="$pronunciations"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:when>
                 <xsl:when test="$lemma='gä' or
                                 $lemma='ge' or
                                 $lemma='gell' or

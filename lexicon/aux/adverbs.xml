@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DWDS xmlns="http://www.dwds.de/ns/1.0">
+  <Artikel>
+    <Formangabe>
+      <Schreibung>offenbar</Schreibung>
+      <Grammatik>
+        <Wortklasse>Adverb</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>so</Schreibung>
+      <Grammatik>
+        <Wortklasse>Adverb</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>wohl</Schreibung>
+      <Grammatik>
+        <Wortklasse>Adverb</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>zunächst</Schreibung>
+      <Grammatik>
+        <Wortklasse>Adverb</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+</DWDS>
