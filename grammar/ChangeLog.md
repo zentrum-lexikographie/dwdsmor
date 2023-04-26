@@ -1,5 +1,13 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-04-26:
+
+* rename inflection classes `<N?/Pl_0>` and `<N?/Pl_x>` to `<NNoGend/Pl_0>` and
+  `<NNoGend/Pl_x>`, respectively
+* rename inflection class `Abk_POSS` to `Abbr_Poss`
+* add inflection classes `<Abbr_NFem>`, `<Abbr_NMasc>`, `<Abbr_NNeut>`, and
+  `<Abbr_NNoGend>`
+
 2023-04-25:
 
 * replace inflection classes `<Prep-Akk>`, `<Prep-Dat>`, `<Prep-Gen>`,

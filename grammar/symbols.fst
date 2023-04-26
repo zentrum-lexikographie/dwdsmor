@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 5.8
-% Andreas Nolda 2023-04-25
+% Version 5.9
+% Andreas Nolda 2023-04-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -61,8 +61,8 @@
 
 #part-of-speech# = <+ADJ><+ADV><+ART><+CARD><+CIRCP><+CONJ><+DEM><+FRAC><+INDEF> \
                    <+INTJ><+NPROP><+NN><+ORD><+POSS><+POSTP><+PPRO><+PREP> \
-                   <+PREPART><+PROADV><+PTCL><+PUNCT><+REL><+TRUNC><+V><+VPART> \
-                   <+WADV><+WPRO>
+                   <+PREPART><+PROADV><+PTCL><+PUNCT><+REL><+V><+VPART><+WADV> \
+                   <+WPRO>
 
 #subcat# = <Pers><Refl><Def><Indef><Neg><Coord><Sub><Compar><Adv><ProAdv><Adj> \
            <Comma><Dash><Ellip><Paren><Period><Quote><Slash>
@@ -107,7 +107,8 @@
 
 #paradigm-index# = <PAR1><PAR2><PAR3><PAR4><PAR5>
 
-#Abk-inflection# = <Abk_POSS>
+#Abbr-inflection# = <Abbr_Adj><Abbr_NFem><Abbr_NMasc><Abbr_NNeut><Abbr_NNoGend> \
+                    <Abbr_Poss>
 
 #Adj-inflection# = <Adj$><Adj$-el/er><Adj$e><Adj+><Adj+(e)><Adj+e><Adj+Lang> \
                    <Adj-el/er><AdjComp><AdjComp0-mehr><AdjPos0><AdjPos0-viel> \
@@ -118,32 +119,32 @@
 
 #Art-inflection# = <ArtDef><ArtIndef><ArtIndef-n><ArtNeg>
 
-#Noun-inflection# = <N?/Pl_0><N?/Pl_x><NFem-Adj><NFem-a/en><NFem-in><NFem-is/en> \
-                    <NFem-is/iden><NFem-s/$sse><NFem-s/sse><NFem-s/ssen> \
-                    <NFem/Pl_x><NFem/Sg_0><NFem_0_0><NFem_0_$><NFem_0_$e> \
-                    <NFem_0_$en><NFem_0_e><NFem_0_en><NFem_0_es><NFem_0_n> \
-                    <NFem_0_s><NFem_0_x><NMasc-Adj><NMasc-as/anten> \
-                    <NMasc-as0/anten><NMasc-ns><NMasc-o/en><NMasc-o/i> \
-                    <NMasc-s/$sse><NMasc-s/Sg><NMasc-s/sse><NMasc-s0/sse> \
-                    <NMasc-us/e><NMasc-us/en><NMasc-us0/en><NMasc-us/i> \
-                    <NMasc-us0/i><NMasc/Pl_0><NMasc/Pl_x><NMasc/Sg_0> \
-                    <NMasc/Sg_es><NMasc/Sg_s><NMasc_0_0><NMasc_0_e><NMasc_0_$e> \
-                    <NMasc_0_nen><NMasc_0_s><NMasc_0_x><NMasc_en_en> \
-                    <NMasc_es_$e><NMasc_es_$er><NMasc_es_er><NMasc_es_e> \
-                    <NMasc_es_en><NMasc_es_es><NMasc_es_s><NMasc_n_n><NMasc_s_$> \
-                    <NMasc_s_$x><NMasc_s_0><NMasc_s_e><NMasc_s_$e><NMasc_s_en> \
-                    <NMasc_s_er><NMasc_s_$er><NMasc_s_n><NMasc_s_nen><NMasc_s_s> \
-                    <NMasc_s_x><NNeut-Adj><NNeut-Adj/Sg><NNeut-Herz> \
-                    <NNeut-Inner><NNeut-a/ata><NNeut-a/en><NNeut-en/ina> \
-                    <NNeut-o/en><NNeut-o/i><NNeut-on/a><NNeut-on/en> \
-                    <NNeut-s/$sser><NNeut-s/sse><NNeut-s0/sse><NNeut-um/a> \
-                    <NNeut-um/en><NNeut-us0/en><NNeut/Pl_x><NNeut/Sg_0> \
-                    <NNeut/Sg_es><NNeut/Sg_s><NNeut/Sg_sses><NNeut_0_0> \
-                    <NNeut_0_e><NNeut_0_nen><NNeut_0_s><NNeut_0_x><NNeut_es_$e> \
-                    <NNeut_es_$er><NNeut_es_e><NNeut_es_en><NNeut_es_er> \
-                    <NNeut_es_es><NNeut_es_s><NNeut_s_$><NNeut_s_0><NNeut_s_e> \
-                    <NNeut_s_en><NNeut_s_$er><NNeut_s_ien><NNeut_s_n> \
-                    <NNeut_s_nen><NNeut_s_s><NNeut_s_x><NTrunc>
+#Noun-inflection# = <NFem-Adj><NFem-a/en><NFem-in><NFem-is/en><NFem-is/iden> \
+                    <NFem-s/$sse><NFem-s/sse><NFem-s/ssen><NFem/Pl_x><NFem/Sg_0> \
+                    <NFem_0_0><NFem_0_$><NFem_0_$e><NFem_0_$en><NFem_0_e> \
+                    <NFem_0_en><NFem_0_es><NFem_0_n><NFem_0_s><NFem_0_x> \
+                    <NMasc-Adj><NMasc-as/anten><NMasc-as0/anten><NMasc-ns> \
+                    <NMasc-o/en><NMasc-o/i><NMasc-s/$sse><NMasc-s/Sg> \
+                    <NMasc-s/sse><NMasc-s0/sse><NMasc-us/e><NMasc-us/en> \
+                    <NMasc-us0/en><NMasc-us/i><NMasc-us0/i><NMasc/Pl_0> \
+                    <NMasc/Pl_x><NMasc/Sg_0><NMasc/Sg_es><NMasc/Sg_s><NMasc_0_0> \
+                    <NMasc_0_e><NMasc_0_$e><NMasc_0_nen><NMasc_0_s><NMasc_0_x> \
+                    <NMasc_en_en><NMasc_es_$e><NMasc_es_$er><NMasc_es_er> \
+                    <NMasc_es_e><NMasc_es_en><NMasc_es_es><NMasc_es_s> \
+                    <NMasc_n_n><NMasc_s_$><NMasc_s_$x><NMasc_s_0><NMasc_s_e> \
+                    <NMasc_s_$e><NMasc_s_en><NMasc_s_er><NMasc_s_$er><NMasc_s_n> \
+                    <NMasc_s_nen><NMasc_s_s><NMasc_s_x><NNeut-Adj><NNeut-Adj/Sg> \
+                    <NNeut-Herz><NNeut-Inner><NNeut-a/ata><NNeut-a/en> \
+                    <NNeut-en/ina><NNeut-o/en><NNeut-o/i><NNeut-on/a> \
+                    <NNeut-on/en><NNeut-s/$sser><NNeut-s/sse><NNeut-s0/sse> \
+                    <NNeut-um/a><NNeut-um/en><NNeut-us0/en><NNeut/Pl_x> \
+                    <NNeut/Sg_0><NNeut/Sg_es><NNeut/Sg_s><NNeut/Sg_sses> \
+                    <NNeut_0_0><NNeut_0_e><NNeut_0_nen><NNeut_0_s><NNeut_0_x> \
+                    <NNeut_es_$e><NNeut_es_$er><NNeut_es_e><NNeut_es_en> \
+                    <NNeut_es_er><NNeut_es_es><NNeut_es_s><NNeut_s_$><NNeut_s_0> \
+                    <NNeut_s_e> <NNeut_s_en><NNeut_s_$er><NNeut_s_ien> \
+                    <NNeut_s_n><NNeut_s_nen><NNeut_s_s><NNeut_s_x><NNoGend/Pl_0> \
+                    <NNoGend/Pl_x>
 
 #Name-inflection# = <Name-Fem_0><Name-Fem_apos><Name-Fem_s><Name-Masc_0> \
                     <Name-Masc_apos><Name-Masc_es><Name-Masc_s><Name-Neut_0> \
@@ -191,9 +192,9 @@
                      <PInd-Invar><Postp><Pref/Adj><Pref/Adv><Pref/N> \
                      <Pref/ProAdv><Pref/Sep><Pref/V><Prep><Prep/Art-m> \
                      <Prep/Art-n><Prep/Art-r><Prep/Art-s><ProAdv><Ptkl-Adj> \
-                     <Ptkl-Neg><Ptkl-Zu><Trunc><WAdv>
+                     <Ptkl-Neg><Ptkl-Zu><WAdv>
 
-#inflection# = #Abk-inflection# #Adj-inflection# #Adv-inflection# \
+#inflection# = #Abbr-inflection# #Adj-inflection# #Adv-inflection# \
                #Art-inflection# #Noun-inflection# #Name-inflection# \
                #Num-inflection# #Pro-inflection# #Verb-inflection# \
                #Other-inflection#

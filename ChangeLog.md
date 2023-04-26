@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-04-26:
+
+* do not inflect abbreviated nouns and adjectives
+
 2023-04-25:
 
 * do not mark case government of adpositions

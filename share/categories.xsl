@@ -663,9 +663,9 @@
          nominative-plural="-(n)">NFem-Adj</class>
   <!-- pluralia tantum: -->
   <!-- dative plural: unmarked -->
-  <class dative-plural="-">N?/Pl_x</class>
+  <class dative-plural="-">NNoGend/Pl_x</class>
   <!-- dative plural: "-n" -->
-  <class dative-plural="-n">N?/Pl_0</class>
+  <class dative-plural="-n">NNoGend/Pl_0</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -1156,15 +1156,6 @@
 </xsl:stylesheet>
 <!-- TODO: -->
 <!-- add support for the following inflection classes:
-* <Abk_ADJ>
-* <Abk_ADV>
-* <Abk_KONJ>
-* <Abk_NE>
-* <Abk_NEFem>
-* <Abk_NFem>
-* <Abk_NMasc>
-* <Abk_NN>
-* <Abk_NNeut>
 * <Adj&>
 * <Adj+(e)>
 * <FamName_0>

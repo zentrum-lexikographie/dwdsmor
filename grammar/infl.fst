@@ -1,6 +1,6 @@
 % infl.fst
-% Version 4.5
-% Andreas Nolda 2023-04-25
+% Version 4.6
+% Andreas Nolda 2023-04-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -590,10 +590,10 @@ $NFem-Adj$ = {<+NN><Fem><Nom><Sg><St>}:{}  | \
 % pluralia tantum
 
 % Kosten
-$N?/Pl_x$ = {<+NN><NoGend>}:{} $NPl_x$
+$NNoGend/Pl_x$ = {<+NN><NoGend>}:{} $NPl_x$
 
 % Leute
-$N?/Pl_0$ = {<+NN><NoGend>}:{} $NPl_0$
+$NNoGend/Pl_0$ = {<+NN><NoGend>}:{} $NPl_0$
 
 
 % proper names
@@ -1776,8 +1776,23 @@ $Circp$ = {<+CIRCP>}:{}
 
 % abbreviations
 
+% Kfm. (= Kaufmann)
+$Abbr_NMasc$ = {<+NN><Masc><Invar>}:{}
+
+% Gr. (= Gros)
+$Abbr_NNeut$ = {<+NN><Neut><Invar>}:{}
+
+% Kffr. (= Kauffrau)
+$Abbr_NFem$ = {<+NN><Fem><Invar>}:{}
+
+% Gebr. (= Gebrüder)
+$Abbr_NNoGend$ = {<+NN><NoGend><Invar>}:{}
+
+% f. (= folgende)
+$Abbr_Adj$ = {<+ADJ><Pos><Invar>}:{}
+
 % Ew. (= Euer)
-$Abk_POSS$ = {<+POSS><Attr><Invar>}:{}
+$Abbr_Poss$ = {<+POSS><Attr><Invar>}:{}
 
 
 % other words
@@ -1804,10 +1819,6 @@ $Ptkl-Zu$ = {<+PTCL><zu>}:{}
 
 $WAdv$ = {<+WADV>}:{}
 
-$Trunc$ = {<+TRUNC>}:{}
-
-$NTrunc$ = {<+TRUNC>}:{}
-
 $Pref/Adv$ = {<+VPART><Adv>}:{}
 
 $Pref/Adj$ = {<+VPART><Adj>}:{}
@@ -1823,7 +1834,12 @@ $Pref/Sep$ = {<+VPART>}:{}
 
 % inflection transducer
 
-$INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
+$INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
+         <>:<Abbr_NFem>             $Abbr_NFem$         | \
+         <>:<Abbr_NMasc>            $Abbr_NMasc$        | \
+         <>:<Abbr_NNeut>            $Abbr_NNeut$        | \
+         <>:<Abbr_NNoGend>          $Abbr_NNoGend$      | \
+         <>:<Abbr_Poss>             $Abbr_Poss$         | \
          <>:<Adj$>                  $Adj\$$             | \
          <>:<Adj$-el/er>            $Adj\$-el/er$       | \
          <>:<Adj$e>                 $Adj\$e$            | \
@@ -1900,8 +1916,6 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<Konj-Kon>              $Konj-Kon$          | \
          <>:<Konj-Sub>              $Konj-Sub$          | \
          <>:<Konj-Vgl>              $Konj-Vgl$          | \
-         <>:<N?/Pl_0>               $N?/Pl_0$           | \
-         <>:<N?/Pl_x>               $N?/Pl_x$           | \
          <>:<NFem-Adj>              $NFem-Adj$          | \
          <>:<NFem-a/en>             $NFem-a/en$         | \
          <>:<NFem-in>               $NFem-in$           | \
@@ -2013,6 +2027,8 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<NNeut_s_nen>           $NNeut_s_nen$       | \
          <>:<NNeut_s_s>             $NNeut_s_s$         | \
          <>:<NNeut_s_x>             $NNeut_s_x$         | \
+         <>:<NNoGend/Pl_0>          $NNoGend/Pl_0$      | \
+         <>:<NNoGend/Pl_x>          $NNoGend/Pl_x$      | \
          <>:<Name-Fem_0>            $Name-Fem_0$        | \
          <>:<Name-Fem_apos>         $Name-Fem_apos$     | \
          <>:<Name-Fem_s>            $Name-Fem_s$        | \
@@ -2026,7 +2042,6 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<Name-Neut_s>           $Name-Neut_s$       | \
          <>:<Name-Pl_0>             $Name-Pl_0$         | \
          <>:<Name-Pl_x>             $Name-Pl_x$         | \
-         <>:<NTrunc>                $NTrunc$            | \
          <>:<Ord>                   $Ord$               | \
          <>:<PInd-Invar>            $PInd-Invar$        | \
          <>:<Poss>                  $Poss$              | \
@@ -2093,7 +2108,6 @@ $INFL$ = <>:<Abk_POSS>              $Abk_POSS$          | \
          <>:<Rel>                   $Rel$               | \
          <>:<Rel-welch>             $Rel-welch$         | \
          <>:<Roman>                 $Roman$             | \
-         <>:<Trunc>                 $Trunc$             | \
          <>:<VAImpPl>               $VAImpPl$           | \
          <>:<VAImpSg>               $VAImpSg$           | \
          <>:<VAPastIndPl>           $VAPastIndPl$       | \

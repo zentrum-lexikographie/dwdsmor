@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 10.1 -->
-<!-- Andreas Nolda 2023-04-25 -->
+<!-- Version 10.2 -->
+<!-- Andreas Nolda 2023-04-26 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -448,6 +448,24 @@
                           select="$abbreviation"/>
           <xsl:with-param name="pos">ADJ</xsl:with-param>
           <xsl:with-param name="class">AdjPosPred</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- abbreviated adjectives -->
+      <xsl:when test="$abbreviation='yes' and
+                      ends-with($lemma,'.')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">ADJ</xsl:with-param>
+          <xsl:with-param name="class">Abbr_Adj</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1993,6 +2011,25 @@
         </xsl:if>
       </xsl:when>
       <!-- masculine nouns -->
+      <!-- abbreviated masculine nouns -->
+      <xsl:when test="$gender='mask.' and
+                      $abbreviation='yes' and
+                      ends-with($lemma,'.')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">Abbr_NMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- genitive singular: "-(e)s"
            nominative plural: "-ten" -->
       <xsl:when test="$gender='mask.' and
@@ -2052,12 +2089,31 @@
             <xsl:with-param name="abbreviation"
                             select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">N?/Pl_0</xsl:with-param>
+          <xsl:with-param name="class">NNoGend/Pl_0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
       <!-- neuter nouns -->
+      <!-- abbreviated neuter nouns -->
+      <xsl:when test="$gender='neutr.' and
+                      $abbreviation='yes' and
+                      ends-with($lemma,'.')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">Abbr_NNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- lemma: "Innere" -->
       <xsl:when test="$lemma='Innere' and
                       $genitive-singular-marker='-n' and
@@ -2098,6 +2154,25 @@
         </xsl:call-template>
       </xsl:when>
       <!-- feminine nouns -->
+      <!-- abbreviated feminine nouns -->
+      <xsl:when test="$gender='fem.' and
+                      $abbreviation='yes' and
+                      ends-with($lemma,'.')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">Abbr_NFem</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- lemma: compound with "Frau"
            nominative plural: compound with "Leute" -->
       <xsl:when test="$gender='fem.' and
@@ -2113,7 +2188,26 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">N?/Pl_0</xsl:with-param>
+          <xsl:with-param name="class">NNoGend/Pl_0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- abbreviated pluralia tantum -->
+      <xsl:when test="$number='plural' and
+                      $abbreviation='yes' and
+                      ends-with($lemma,'.')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">Abbr_NNoGend</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -4177,6 +4271,24 @@
       </xsl:call-template>
     </xsl:variable>
     <xsl:choose>
+      <!-- abbreviated possessive pronouns -->
+      <xsl:when test="$abbreviation='yes' and
+                      ends-with($lemma,'.')">
+        <xsl:call-template name="word-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">POSS</xsl:with-param>
+          <xsl:with-param name="class">Abbr_Poss</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- "meine", "deine", "seine" -->
       <xsl:when test="$gender='fem.' and
                       ends-with($lemma,'eine')">
@@ -4265,23 +4377,6 @@
       </xsl:when>
       <xsl:when test="$lemma='euer' or
                       $lemma='Euer'"/>
-      <!-- "Ew." -->
-      <xsl:when test="$lemma='Ew.'">
-        <xsl:call-template name="word-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="abbreviation"
-                          select="$abbreviation"/>
-          <xsl:with-param name="pos">POSS</xsl:with-param>
-          <xsl:with-param name="class">Abk_POSS</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
       <!-- "meinige", "deinige", "seinige" -->
       <xsl:when test="$gender='fem.' and
                       ends-with($lemma,'einige')">
