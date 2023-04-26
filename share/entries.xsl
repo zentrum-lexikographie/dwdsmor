@@ -889,9 +889,25 @@
                               select="$etymology"/>
             </xsl:call-template>
           </xsl:when>
-          <!-- adjectives with word-internal comparative markers -->
+          <!-- adjectives with word-internal comparative and superlative markers -->
           <xsl:when test="string-length($comparative)&gt;0 and
-                          not(matches($comparative-marker,'^&#x308;?(ß/ss)?-'))">
+                          string-length($superlative)&gt;0 and
+                          not(matches($comparative-marker,'^&#x308;?(ß/ss)?-')) and
+                          not(matches($superlative-marker,'^&#x308;?(ß/ss)?-'))">
+            <xsl:call-template name="word-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjPos</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="$comparative"/>
@@ -906,44 +922,6 @@
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
-            <xsl:if test="string-length($comparative)&gt;0 and
-                          not(matches($superlative-marker,'^&#x308;?(ß/ss)?-'))">
-              <xsl:call-template name="word-entry">
-                <xsl:with-param name="lemma"
-                                select="replace($superlative,'^(am )?(.+)$','$2')"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
-                <xsl:with-param name="abbreviation"
-                                select="$abbreviation"/>
-                <xsl:with-param name="pos">ADJ</xsl:with-param>
-                <xsl:with-param name="class">AdjPos</xsl:with-param>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:if>
-          </xsl:when>
-          <!-- adjectives with word-internal superlative markers -->
-          <xsl:when test="string-length($superlative)&gt;0 and
-                          not(matches($superlative-marker,'^&#x308;?(ß/ss)?-'))">
-            <xsl:if test="string-length($comparative)&gt;0 and
-                          not(matches($comparative-marker,'^&#x308;?(ß/ss)?-'))">
-              <xsl:call-template name="word-entry">
-                <xsl:with-param name="lemma"
-                                select="$comparative"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
-                <xsl:with-param name="abbreviation"
-                                select="$abbreviation"/>
-                <xsl:with-param name="pos">ADJ</xsl:with-param>
-                <xsl:with-param name="class">AdjPos</xsl:with-param>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:if>
             <xsl:call-template name="word-entry">
               <xsl:with-param name="lemma"
                               select="replace($superlative,'^(am )?(.+)$','$2')"/>
