@@ -33,6 +33,15 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>bisschen</Schreibung>
+      <Schreibung Typ="U">bißchen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>dein</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>

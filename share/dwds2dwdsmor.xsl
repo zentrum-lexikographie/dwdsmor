@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 13.4 -->
-<!-- Andreas Nolda 2023-04-25 -->
+<!-- Version 13.5 -->
+<!-- Andreas Nolda 2023-04-27 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -968,6 +968,24 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Indefinitpronomen' and
+                            ($lemma='bisschen' or
+                             $lemma='bißchen')">
+              <xsl:call-template name="indefinite-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Indefinitpronomen' and
                             $lemma='paar'">
               <xsl:call-template name="indefinite-pronoun-entry-set">
                 <xsl:with-param name="lemma"
@@ -1684,8 +1702,8 @@
                                 $lemma='bevor' or
                                 $lemma='da' or
                                 $lemma='damit' or
-                                $lemma='daß' or
                                 $lemma='dass' or
+                                $lemma='daß' or
                                 $lemma='ehe' or
                                 $lemma='eh’' or
                                 $lemma='falls' or
@@ -1705,8 +1723,8 @@
                                 $lemma='seitdem' or
                                 $lemma='sintemalen' or
                                 $lemma='sobald' or
-                                $lemma='sodaß' or
                                 $lemma='sodass' or
+                                $lemma='sodaß' or
                                 $lemma='sofern' or
                                 $lemma='solang' or
                                 $lemma='solange' or
