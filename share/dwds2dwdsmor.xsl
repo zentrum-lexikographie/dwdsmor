@@ -1817,7 +1817,8 @@
             <!-- particles: -->
             <xsl:when test="$pos='Partikel'">
               <xsl:choose>
-                <xsl:when test="$lemma='ja'">
+                <xsl:when test="$lemma='ja' or
+                                $lemma='bitte'">
                   <xsl:call-template name="other-entry">
                     <xsl:with-param name="lemma"
                                     select="$lemma"/>

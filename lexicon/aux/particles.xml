@@ -2,6 +2,14 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
+      <Schreibung>bitte</Schreibung>
+      <Grammatik>
+        <Wortklasse>Partikel</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>ja</Schreibung>
       <Grammatik>
         <Wortklasse>Partikel</Wortklasse>
