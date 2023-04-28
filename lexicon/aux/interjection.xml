@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DWDS xmlns="http://www.dwds.de/ns/1.0">
+  <Artikel>
+    <Formangabe>
+      <Schreibung>hey</Schreibung>
+      <Grammatik>
+        <Wortklasse>Interjektion</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+</DWDS>
