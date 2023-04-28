@@ -494,12 +494,17 @@ TUEBADZ_DWDSMOR_LEMMA_MAP = {"ADJA": {"acht": "achte",
                                      "mir": "mich"},
                              "PTKANT": {"ja_ja_": "jaja",
                                         "nein_": "nee"},
-                             "PWAT": {"welcher": "welche",
+                             "PWAT": {"welch": "welche",
+                                      "welcher": "welche",
                                       "welcher|welche|welches": "welche",
                                       "welches": "welche",
+                                      "wessen": "was",
                                       "wievieler": "wieviele",
                                       "wievieler|wieviele|wievieles": "wieviele",
-                                      "wievieles": "wieviele"}}
+                                      "wievieles": "wieviele"},
+                             "PWS": {"welcher": "welche",
+                                     "welcher|welche|welches": "welche",
+                                     "welches": "welche"}}
 
 def tuebadz_to_dwdsmor_pos_list(pos):
     if pos in TUEBADZ_DWDSMOR_POS_MAP:
