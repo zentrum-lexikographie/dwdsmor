@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 5.9
-% Andreas Nolda 2023-04-26
+% Version 6.0
+% Andreas Nolda 2023-05-03
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -176,23 +176,23 @@
                    <WProMascNomSg><WProNeutAccSg><WProNeutDatSg><WProNeutGenSg> \
                    <WProNeutNomSg>
 
-#Verb-inflection# = <VAImpPl><VAImpSg><VAPastIndPl><VAPastIndSg><VAPastKonj2> \
-                    <VAPres1/3PlInd><VAPres1/3SgKonj><VAPres1SgInd> \
-                    <VAPres2PlInd><VAPres2SgInd><VAPres2SgKonj><VAPres3SgInd> \
-                    <VAPresKonjPl><VAPresKonjSg><VInf+PPres><VInf><VInf-en> \
-                    <VInf-n><VMPast><VMPastKonj><VMPresPl><VMPresSg><VPPast> \
+#Verb-inflection# = <VAImpPl><VAImpSg><VAPastIndPl><VAPastIndSg><VAPastSubj2> \
+                    <VAPres1/3PlInd><VAPres1/3SgSubj><VAPres1SgInd> \
+                    <VAPres2PlInd><VAPres2SgInd><VAPres2SgSubj><VAPres3SgInd> \
+                    <VAPresSubjPl><VAPresSubjSg><VInf+PPres><VInf><VInf-en> \
+                    <VInf-n><VMPast><VMPastSubj><VMPresPl><VMPresSg><VPPast> \
                     <VPPres><VPastIndIrreg><VPastIndReg><VPastIndStr> \
-                    <VPastKonjStr><VPresKonj><VPresPlInd><VVPP-en><VVPP-t> \
-                    <VVPastIndReg><VVPastIndStr><VVPastKonjReg><VVPastKonjStr> \
-                    <VVPastStr><VVPres1+Imp><VVPres1><VVPres2+Imp0><VVPres2+Imp> \
-                    <VVPres2><VVPres2t><VVPres><VVPresPl><VVPresSg><VVReg-el/er> \
-                    <VVReg><VVRegFin>
+                    <VPastSubjStr><VPresSubj><VPresPlInd><VVPP-en><VVPP-t> \
+                    <VVPastIndReg><VVPastIndStr><VVPastSubjOld><VVPastSubjReg> \
+                    <VVPastSubjStr><VVPastStr><VVPres1+Imp><VVPres1> \
+                    <VVPres2+Imp0><VVPres2+Imp><VVPres2><VVPres2t><VVPres> \
+                    <VVPresPl><VVPresSg><VVReg-el/er><VVReg><VVRegFin>
 
-#Other-inflection# = <Circp><Intj><Konj-Inf><Konj-Kon><Konj-Sub><Konj-Vgl> \
+#Other-inflection# = <Circp><Conj-Compar><Conj-Coord><Conj-Inf><Conj-Sub><Intj> \
                      <PInd-Invar><Postp><Pref/Adj><Pref/Adv><Pref/N> \
                      <Pref/ProAdv><Pref/Sep><Pref/V><Prep><Prep/Art-m> \
-                     <Prep/Art-n><Prep/Art-r><Prep/Art-s><ProAdv><Ptkl-Adj> \
-                     <Ptkl-Neg><Ptkl-Zu><WAdv>
+                     <Prep/Art-n><Prep/Art-r><Prep/Art-s><ProAdv><Ptcl-Adj> \
+                     <Ptcl-Neg><Ptcl-zu><WAdv>
 
 #inflection# = #Abbr-inflection# #Adj-inflection# #Adv-inflection# \
                #Art-inflection# #Noun-inflection# #Name-inflection# \

@@ -468,7 +468,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
+                    <xsl:with-param name="class">Ptcl-Adj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -510,7 +510,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="class">Konj-Sub</xsl:with-param>
+                    <xsl:with-param name="class">Conj-Sub</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -539,7 +539,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="class">Ptkl-Neg</xsl:with-param>
+                    <xsl:with-param name="class">Ptcl-Neg</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -568,7 +568,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="class">Konj-Vgl</xsl:with-param>
+                    <xsl:with-param name="class">Conj-Compar</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -597,7 +597,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
+                    <xsl:with-param name="class">Ptcl-Adj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -610,7 +610,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="class">Ptkl-Zu</xsl:with-param>
+                    <xsl:with-param name="class">Ptcl-zu</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1420,7 +1420,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="class">Ptkl-Adj</xsl:with-param>
+                    <xsl:with-param name="class">Ptcl-Adj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>

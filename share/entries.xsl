@@ -4686,7 +4686,7 @@
                                 select="$particle"/>
                 <xsl:with-param name="stem"
                                 select="n:umlaut($past-stem)"/>
-                <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -4907,7 +4907,7 @@
                               select="$particle"/>
               <xsl:with-param name="stem"
                               select="$stem"/>
-              <xsl:with-param name="class">VAPresKonjSg</xsl:with-param>
+              <xsl:with-param name="class">VAPresSubjSg</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -4926,7 +4926,7 @@
                               select="$particle"/>
               <xsl:with-param name="stem"
                               select="concat($stem,'e')"/>
-              <xsl:with-param name="class">VAPres2SgKonj</xsl:with-param>
+              <xsl:with-param name="class">VAPres2SgSubj</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -4945,7 +4945,7 @@
                               select="$particle"/>
               <xsl:with-param name="stem"
                               select="concat($stem,'e')"/>
-              <xsl:with-param name="class">VAPresKonjPl</xsl:with-param>
+              <xsl:with-param name="class">VAPresSubjPl</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -5119,7 +5119,7 @@
                               select="$particle"/>
               <xsl:with-param name="stem"
                               select="$stem"/>
-              <xsl:with-param name="class">VPresKonj</xsl:with-param>
+              <xsl:with-param name="class">VPresSubj</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -5293,7 +5293,7 @@
                               select="$particle"/>
               <xsl:with-param name="stem"
                               select="$stem"/>
-              <xsl:with-param name="class">VPresKonj</xsl:with-param>
+              <xsl:with-param name="class">VPresSubj</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -5686,7 +5686,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="stem"
                                   select="concat(n:umlaut($past-stem),'&lt;FB&gt;')"/>
-                  <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                  <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5713,7 +5713,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
-                  <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                  <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5735,7 +5735,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
-                  <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                  <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5758,7 +5758,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="stem"
                                   select="$stem"/><!-- sic! -->
-                  <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                  <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5780,7 +5780,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="stem"
                                   select="$past-stem"/>
-                  <xsl:with-param name="class">VVPastKonjReg</xsl:with-param>
+                  <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5826,7 +5826,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
-                  <xsl:with-param name="class">VPastKonjStr</xsl:with-param>
+                  <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5845,7 +5845,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
-                  <xsl:with-param name="class">VAPastKonj2</xsl:with-param>
+                  <xsl:with-param name="class">VAPastSubj2</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5886,7 +5886,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="stem"
                                   select="n:umlaut($past-stem)"/>
-                  <xsl:with-param name="class">VPastKonjStr</xsl:with-param>
+                  <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5928,7 +5928,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="stem"
                                   select="n:umlaut(replace($past-stem,'e$',''))"/>
-                  <xsl:with-param name="class">VPastKonjStr</xsl:with-param>
+                  <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5988,7 +5988,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="stem"
                                   select="n:umlaut(replace($past-stem,'a','u'))"/>
-                  <xsl:with-param name="class">VPastKonjStr</xsl:with-param>
+                  <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -6035,7 +6035,35 @@
                                     select="$particle"/>
                     <xsl:with-param name="stem"
                                     select="n:umlaut($past-stem)"/>
-                    <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
+                    <xsl:with-param name="class">VVPastSubjStr</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:if>
+                <!-- past subjunctive with "ü" -->
+                <xsl:if test="ends-with($lemma-without-particle,'heben') or
+                              ends-with($lemma-without-particle,'helfen') or
+                              ends-with($lemma-without-particle,'schwören') or
+                              ends-with($lemma-without-particle,'stehen') or
+                              ends-with($lemma-without-particle,'sterben') or
+                              ends-with($lemma-without-particle,'werben') or
+                              ends-with($lemma-without-particle,'werfen')">
+                  <xsl:call-template name="verb-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma-without-particle"/>
+                    <xsl:with-param name="lemma-index"
+                                    select="$lemma-index"/>
+                    <xsl:with-param name="paradigm-index"
+                                    select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
+                    <xsl:with-param name="participle"
+                                    select="$participle-without-particle"/>
+                    <xsl:with-param name="particle"
+                                    select="$particle"/>
+                    <xsl:with-param name="stem"
+                                    select="n:umlaut(replace($past-stem,'[ao]([^aeiouäöü]*)$','u$1'))"/>
+                    <xsl:with-param name="class">VVPastSubjStr</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -6066,35 +6094,7 @@
                                     select="$particle"/>
                     <xsl:with-param name="stem"
                                     select="n:umlaut(replace($past-stem,'a([^aeiouäöü]*)$','o$1'))"/>
-                    <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                </xsl:if>
-                <!-- archaic past subjunctive with "ü" -->
-                <xsl:if test="ends-with($lemma-without-particle,'heben') or
-                              ends-with($lemma-without-particle,'helfen') or
-                              ends-with($lemma-without-particle,'schwören') or
-                              ends-with($lemma-without-particle,'stehen') or
-                              ends-with($lemma-without-particle,'sterben') or
-                              ends-with($lemma-without-particle,'werben') or
-                              ends-with($lemma-without-particle,'werfen')">
-                  <xsl:call-template name="verb-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma-without-particle"/>
-                    <xsl:with-param name="lemma-index"
-                                    select="$lemma-index"/>
-                    <xsl:with-param name="paradigm-index"
-                                    select="$paradigm-index"/>
-                    <xsl:with-param name="abbreviation"
-                                    select="$abbreviation"/>
-                    <xsl:with-param name="participle"
-                                    select="$participle-without-particle"/>
-                    <xsl:with-param name="particle"
-                                    select="$particle"/>
-                    <xsl:with-param name="stem"
-                                    select="n:umlaut(replace($past-stem,'[ao]([^aeiouäöü]*)$','u$1'))"/>
-                    <xsl:with-param name="class">VVPastKonjStr</xsl:with-param>
+                    <xsl:with-param name="class">VVPastSubjOld</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>

@@ -1,6 +1,6 @@
 % infl.fst
-% Version 4.6
-% Andreas Nolda 2023-04-26
+% Version 4.7
+% Andreas Nolda 2023-05-03
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1492,17 +1492,17 @@ $VAPres1/3PlInd$ = {<+V><1><Pl><Pres><Ind>}:{} | \
 $VAPres2PlInd$ = {<+V><2><Pl><Pres><Ind>}:{}
 
 % sei; habe; werde; tue
-$VAPres1/3SgKonj$ = {<+V><1><Sg><Pres><Subj>}:{<FB>} | \
+$VAPres1/3SgSubj$ = {<+V><1><Sg><Pres><Subj>}:{<FB>} | \
                     {<+V><3><Sg><Pres><Subj>}:{<FB>}
 
 % seist, seiest; habest; werdest; tuest
-$VAPres2SgKonj$ = {<+V><2><Sg><Pres><Subj>}:{<FB>st}
+$VAPres2SgSubj$ = {<+V><2><Sg><Pres><Subj>}:{<FB>st}
 
-$VAPresKonjSg$ = {<+V><1><Sg><Pres><Subj>}:{<FB>}   | \
+$VAPresSubjSg$ = {<+V><1><Sg><Pres><Subj>}:{<FB>}   | \
                  {<+V><2><Sg><Pres><Subj>}:{<FB>st} | \
                  {<+V><3><Sg><Pres><Subj>}:{<FB>}
 
-$VAPresKonjPl$ = {<+V><1><Pl><Pres><Subj>}:{<FB>n} | \
+$VAPresSubjPl$ = {<+V><1><Pl><Pres><Subj>}:{<FB>n} | \
                  {<+V><2><Pl><Pres><Subj>}:{<FB>t} | \
                  {<+V><3><Pl><Pres><Subj>}:{<FB>n}
 
@@ -1516,7 +1516,7 @@ $VAPastIndPl$ = {<+V><1><Pl><Past><Ind>}:{<FB>en}   | \
                 {<+V><2><Pl><Past><Ind>}:{<INS-E>t} | \
                 {<+V><3><Pl><Past><Ind>}:{<FB>en}
 
-$VAPastKonj2$ = {<+V><2><Sg><Past><Subj>}:{<FB>st} | \
+$VAPastSubj2$ = {<+V><2><Sg><Past><Subj>}:{<FB>st} | \
                 {<+V><2><Pl><Past><Subj>}:{<FB>t}
 
 $haben$ = {<haben>}:{}
@@ -1589,7 +1589,7 @@ $VPresPlInd$ = {<+V><1><Pl><Pres><Ind>}:{<FB>en}   | \
 % liebest; wollest; sammelst
 % lieben; wollen; sammeln
 % liebet; wollet; sammelt
-$VPresKonj$ = {<+V><1><Sg><Pres><Subj>}:{<FB>e}   | \
+$VPresSubj$ = {<+V><1><Sg><Pres><Subj>}:{<FB>e}   | \
               {<+V><2><Sg><Pres><Subj>}:{<FB>est} | \
               {<+V><3><Sg><Pres><Subj>}:{<FB>e}   | \
               {<+V><1><Pl><Pres><Subj>}:{<FB>en}  | \
@@ -1622,7 +1622,7 @@ $VPastIndStr$ = {<+V><1><Sg><Past><Ind>}:{<FB>}      | \
                 {<+V><3><Pl><Past><Ind>}:{<FB>en}
 
 % brächte
-$VPastKonjReg$ = {<+V><1><Sg><Past><Subj>}:{<INS-E>te}   | \
+$VPastSubjReg$ = {<+V><1><Sg><Past><Subj>}:{<INS-E>te}   | \
                  {<+V><2><Sg><Past><Subj>}:{<INS-E>test} | \
                  {<+V><3><Sg><Past><Subj>}:{<INS-E>te}   | \
                  {<+V><1><Pl><Past><Subj>}:{<INS-E>ten}  | \
@@ -1630,7 +1630,7 @@ $VPastKonjReg$ = {<+V><1><Sg><Past><Subj>}:{<INS-E>te}   | \
                  {<+V><3><Pl><Past><Subj>}:{<INS-E>ten}
 
 % führe; ritte; fände
-$VPastKonjStr$ = {<+V><1><Sg><Past><Subj>}:{<FB>e}   | \
+$VPastSubjStr$ = {<+V><1><Sg><Past><Subj>}:{<FB>e}   | \
                  {<+V><2><Sg><Past><Subj>}:{<FB>est} | \
                  {<+V><3><Sg><Past><Subj>}:{<FB>e}   | \
                  {<+V><1><Pl><Past><Subj>}:{<FB>en}  | \
@@ -1645,7 +1645,7 @@ $VInflPres2t$ = $VPres2Irreg$ | \
 
 $VInflPres1$ = $VPres1Reg$  | \
                $VPresPlInd$ | \
-               $VPresKonj$  | \
+               $VPresSubj$  | \
                $VImpPl$
 
 $VInflPresReg$ = $VInflPres1$ | \
@@ -1655,14 +1655,14 @@ $VInflPresReg$ = $VInflPres1$ | \
 
 $VInflReg$ =  $VInflPresReg$ | \
               $VPastIndReg$  | \
-              $VPastKonjReg$
+              $VPastSubjReg$
 
 $VModInflSg$ = $VPres1Irreg$ | \
                $VPres2Reg$   | \
                $VPres3Irreg$
 
 $VModInflPl$ = $VPresPlInd$ | \
-               $VPresKonj$
+               $VPresSubj$
 
 $VVPres$ = $VInflPresReg$ | \
            $VInfStem$
@@ -1694,12 +1694,14 @@ $VVPastIndReg$ = $VPastIndReg$
 
 $VVPastIndStr$ = $VPastIndStr$
 
-$VVPastKonjReg$ = $VPastKonjReg$
+$VVPastSubjReg$ = $VPastSubjReg$
 
-$VVPastKonjStr$ = $VPastKonjStr$
+$VVPastSubjStr$ = $VPastSubjStr$
+
+$VVPastSubjOld$ = $VVPastSubjStr$ {<Old>}:{}
 
 $VVPastStr$ = $VVPastIndStr$ | \
-              $VVPastKonjStr$
+              $VVPastSubjStr$
 
 $VVRegFin$ = $VInflReg$
 
@@ -1721,7 +1723,7 @@ $VVReg-el/er+haben$ = $VVReg+haben$
 
 $VVReg-el/er+sein$ = $VVReg+sein$
 
-$VMPastKonj$ = $VPastKonjReg$
+$VMPastSubj$ = $VPastSubjReg$
 
 $VMPresSg$ = $VModInflSg$
 
@@ -1799,23 +1801,23 @@ $Abbr_Poss$ = {<+POSS><Attr><Invar>}:{}
 
 $Intj$ = {<+INTJ>}:{}
 
-$Konj-Inf$ = {<+CONJ><Inf>}:{}
+$Conj-Inf$ = {<+CONJ><Inf>}:{}
 
-$Konj-Kon$ = {<+CONJ><Coord>}:{}
+$Conj-Coord$ = {<+CONJ><Coord>}:{}
 
-$Konj-Sub$ = {<+CONJ><Sub>}:{}
+$Conj-Sub$ = {<+CONJ><Sub>}:{}
 
-$Konj-Vgl$ = {<+CONJ><Compar>}:{}
+$Conj-Compar$ = {<+CONJ><Compar>}:{}
 
 $PInd-Invar$ = {<+INDEF><Invar>}:{}
 
 $ProAdv$ = {<+PROADV>}:{}
 
-$Ptkl-Adj$ = {<+PTCL><Adj>}:{}
+$Ptcl-Adj$ = {<+PTCL><Adj>}:{}
 
-$Ptkl-Neg$ = {<+PTCL><Neg>}:{}
+$Ptcl-Neg$ = {<+PTCL><Neg>}:{}
 
-$Ptkl-Zu$ = {<+PTCL><zu>}:{}
+$Ptcl-zu$ = {<+PTCL><zu>}:{}
 
 $WAdv$ = {<+WADV>}:{}
 
@@ -1876,6 +1878,10 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<Card-vier>             $Card-vier$         | \
          <>:<Card-zwei>             $Card-zwei$         | \
          <>:<Circp>                 $Circp$             | \
+         <>:<Conj-Compar>           $Conj-Compar$       | \
+         <>:<Conj-Coord>            $Conj-Coord$        | \
+         <>:<Conj-Inf>              $Conj-Inf$          | \
+         <>:<Conj-Sub>              $Conj-Sub$          | \
          <>:<Dem>                   $Dem$               | \
          <>:<Dem-dies>              $Dem-dies$          | \
          <>:<Dem-solch>             $Dem-solch$         | \
@@ -1912,10 +1918,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<IProNeutGenSg>         $IProNeutGenSg$     | \
          <>:<IProNeutNomSg>         $IProNeutNomSg$     | \
          <>:<Intj>                  $Intj$              | \
-         <>:<Konj-Inf>              $Konj-Inf$          | \
-         <>:<Konj-Kon>              $Konj-Kon$          | \
-         <>:<Konj-Sub>              $Konj-Sub$          | \
-         <>:<Konj-Vgl>              $Konj-Vgl$          | \
          <>:<NFem-Adj>              $NFem-Adj$          | \
          <>:<NFem-a/en>             $NFem-a/en$         | \
          <>:<NFem-in>               $NFem-in$           | \
@@ -2102,9 +2104,9 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<Prep/Art-r>            $Prep/Art-r$        | \
          <>:<Prep/Art-s>            $Prep/Art-s$        | \
          <>:<ProAdv>                $ProAdv$            | \
-         <>:<Ptkl-Adj>              $Ptkl-Adj$          | \
-         <>:<Ptkl-Neg>              $Ptkl-Neg$          | \
-         <>:<Ptkl-Zu>               $Ptkl-Zu$           | \
+         <>:<Ptcl-Adj>              $Ptcl-Adj$          | \
+         <>:<Ptcl-Neg>              $Ptcl-Neg$          | \
+         <>:<Ptcl-zu>               $Ptcl-zu$           | \
          <>:<Rel>                   $Rel$               | \
          <>:<Rel-welch>             $Rel-welch$         | \
          <>:<Roman>                 $Roman$             | \
@@ -2112,16 +2114,16 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VAImpSg>               $VAImpSg$           | \
          <>:<VAPastIndPl>           $VAPastIndPl$       | \
          <>:<VAPastIndSg>           $VAPastIndSg$       | \
-         <>:<VAPastKonj2>           $VAPastKonj2$       | \
+         <>:<VAPastSubj2>           $VAPastSubj2$       | \
          <>:<VAPres1/3PlInd>        $VAPres1/3PlInd$    | \
-         <>:<VAPres1/3SgKonj>       $VAPres1/3SgKonj$   | \
+         <>:<VAPres1/3SgSubj>       $VAPres1/3SgSubj$   | \
          <>:<VAPres1SgInd>          $VAPres1SgInd$      | \
          <>:<VAPres2PlInd>          $VAPres2PlInd$      | \
          <>:<VAPres2SgInd>          $VAPres2SgInd$      | \
-         <>:<VAPres2SgKonj>         $VAPres2SgKonj$     | \
+         <>:<VAPres2SgSubj>         $VAPres2SgSubj$     | \
          <>:<VAPres3SgInd>          $VAPres3SgInd$      | \
-         <>:<VAPresKonjPl>          $VAPresKonjPl$      | \
-         <>:<VAPresKonjSg>          $VAPresKonjSg$      | \
+         <>:<VAPresSubjPl>          $VAPresSubjPl$      | \
+         <>:<VAPresSubjSg>          $VAPresSubjSg$      | \
          <>:<VInf>                  $VInf$              | \
          <>:<VInf+PPres>            $VInf+PPres$        | \
          <>:<VInf-en>               $VInf-en$           | \
@@ -2129,7 +2131,7 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VMPast>                $VMPast$            | \
          <>:<VMPast><>:<haben>      $VMPast+haben$      | \
          <>:<VMPast><>:<sein>       $VMPast+sein$       | \
-         <>:<VMPastKonj>            $VMPastKonj$        | \
+         <>:<VMPastSubj>            $VMPastSubj$        | \
          <>:<VMPresPl>              $VMPresPl$          | \
          <>:<VMPresSg>              $VMPresSg$          | \
          <>:<VPPast>                $VPPast$            | \
@@ -2139,8 +2141,8 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VPastIndIrreg>         $VPastIndIrreg$     | \
          <>:<VPastIndReg>           $VPastIndReg$       | \
          <>:<VPastIndStr>           $VPastIndStr$       | \
-         <>:<VPastKonjStr>          $VPastKonjStr$      | \
-         <>:<VPresKonj>             $VPresKonj$         | \
+         <>:<VPastSubjStr>          $VPastSubjStr$      | \
+         <>:<VPresSubj>             $VPresSubj$         | \
          <>:<VPresPlInd>            $VPresPlInd$        | \
          <>:<VVPP-en>               $VVPP-en$           | \
          <>:<VVPP-en><>:<haben>     $VVPP-en+haben$     | \
@@ -2150,8 +2152,9 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VVPP-t><>:<sein>       $VVPP-t+sein$       | \
          <>:<VVPastIndReg>          $VVPastIndReg$      | \
          <>:<VVPastIndStr>          $VVPastIndStr$      | \
-         <>:<VVPastKonjReg>         $VVPastKonjReg$     | \
-         <>:<VVPastKonjStr>         $VVPastKonjStr$     | \
+         <>:<VVPastSubjOld>         $VVPastSubjOld$     | \
+         <>:<VVPastSubjReg>         $VVPastSubjReg$     | \
+         <>:<VVPastSubjStr>         $VVPastSubjStr$     | \
          <>:<VVPastStr>             $VVPastStr$         | \
          <>:<VVPres>                $VVPres$            | \
          <>:<VVPres1>               $VVPres1$           | \

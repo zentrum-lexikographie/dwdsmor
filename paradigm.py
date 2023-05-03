@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2022-09-22
+# Andreas Nolda 2023-05-03
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from itertools import product, filterfalse
 
-version = 6.1
+version = 6.2
 
 BASEDIR = os.path.dirname(__file__)
 LIBDIR  = os.path.join(BASEDIR, "lib")
@@ -699,8 +699,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_for
                     else:
                         add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
                     if old_forms:
-                        # no such forms
-                        pass
+                        forms = generate_old_forms(transducer, lemma_index, paradigm_index, seg, pos, categorisation)
+                        add_old_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms)
                     if nonstandard_forms:
                         # no such forms
                         pass

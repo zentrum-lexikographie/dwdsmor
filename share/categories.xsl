@@ -1138,13 +1138,13 @@
 
 <xsl:variable name="conjunction-class-mapping">
   <!-- coordinating conjunctions: -->
-  <class type="coord">Konj-Kon</class>
+  <class type="coord">Conj-Coord</class>
   <!-- subordinating conjunctions -->
-  <class type="subord">Konj-Sub</class>
+  <class type="subord">Conj-Sub</class>
   <!-- infinitive conjunctions -->
-  <class type="inf">Konj-Inf</class>
+  <class type="inf">Conj-Inf</class>
   <!-- comparative conjunctions -->
-  <class type="comp">Konj-Vgl</class>
+  <class type="comp">Conj-Compar</class>
 </xsl:variable>
 
 <xsl:template name="conjunction-class">
@@ -1164,5 +1164,5 @@
 * <NMasc_en_e>
 * <Pref/Sep>
 * <VMPast>
-* <VMPastKonj>
+* <VMPastSubj>
 * <WAdv> -->

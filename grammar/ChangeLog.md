@@ -1,5 +1,20 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-05-03:
+
+* rename inflection classes `<Ptkl-Adj> `, `<Ptkl-Neg>`, and `<Ptkl-Zu>` and
+  `<Ptcl-Adj> `, `<Ptcl-Neg>`, and `<Ptcl-zu>`, respectively
+* rename inflection classes `<Konj-Inf>`, `<Konj-Kon>`, `<Konj-Sub>`, and
+  `<Konj-Vgl>` to `<Conj-Inf>`, `<Conj-Coord>`, `<Conj-Sub>`, and
+  `<Conj-Compar>`, respectively
+* rename inflection classes `<VAPastKonj2>`, `<VAPres1/3SgKonj>`,
+  `<VAPres2SgKonj>`, `<VAPresKonjPl>`, `<VAPresKonjSg>`, `<VMPastKonj>`,
+  `<VPastKonjStr>`, `<VPresKonj>`, `<VVPastKonjReg>`, and `<VVPastKonjStr>` to
+  `<VAPastSubj2>`, `<VAPres1/3SgSubj>`, `<VAPres2SgSubj>`, `<VAPresSubjPl>`,
+  `<VAPresSubjSg>`, `<VMPastSubj>`, `<VPastSubjStr>`, `<VPresSubj>`,
+  `<VVPastSubjReg>`, and `<VVPastSubjStr>`, respectively
+* add inflection class `VVPastSubjOld`
+
 2023-04-26:
 
 * rename inflection classes `<N?/Pl_0>` and `<N?/Pl_x>` to `<NNoGend/Pl_0>` and
