@@ -2,6 +2,30 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
+      <Schreibung>abbauen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>baut ab</Praesens>
+        <Praeteritum>baute ab</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>abgebaut</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ablegen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>legt ab</Praesens>
+        <Praeteritum>legte ab</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>abgelegt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>ablehnen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -9,6 +33,66 @@
         <Praeteritum>lehnte ab</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>abgelehnt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ablösen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>löst ab</Praesens>
+        <Praeteritum>löste ab</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>abgelöst</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>absagen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>sagt ab</Praesens>
+        <Praeteritum>sagte ab</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>abgesagt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>abschaffen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>schafft ab</Praesens>
+        <Praeteritum>schaffte ab</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>abgeschafft</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>abstellen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>stellt ab</Praesens>
+        <Praeteritum>stellte ab</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>abgestellt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>abstimmen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>stimmt ab</Praesens>
+        <Praeteritum>stimmte ab</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>abgestimmt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -26,6 +110,30 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>anführen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>führt an</Praesens>
+        <Praeteritum>führte an</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>angeführt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>anhören</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>hört an</Praesens>
+        <Praeteritum>hörte an</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>angehört</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>ankündigen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -33,6 +141,42 @@
         <Praeteritum>kündigte an</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>angekündigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>anregen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>regt an</Praesens>
+        <Praeteritum>regte an</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>angeregt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>anstellen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>stellt an</Praesens>
+        <Praeteritum>stellte an</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>angestellt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>anzeigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>zeigt an</Praesens>
+        <Praeteritum>zeigte an</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>angezeigt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -50,6 +194,114 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>aufbauen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>baut auf</Praesens>
+        <Praeteritum>baute auf</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>aufgebaut</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>aufführen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>führt auf</Praesens>
+        <Praeteritum>führte auf</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>aufgeführt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>aufklären</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>klärt auf</Praesens>
+        <Praeteritum>klärte auf</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>aufgeklärt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>auflösen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>löst auf</Praesens>
+        <Praeteritum>löste auf</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>aufgelöst</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>aufmachen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>macht auf</Praesens>
+        <Praeteritum>machte auf</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>aufgemacht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>aufstellen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>stellt auf</Praesens>
+        <Praeteritum>stellte auf</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>aufgestellt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>aufteilen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>teilt auf</Praesens>
+        <Praeteritum>teilte auf</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>aufgeteilt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ausbauen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>baut aus</Praesens>
+        <Praeteritum>baute aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgebaut</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ausdehnen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>dehnt aus</Praesens>
+        <Praeteritum>dehnte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgedehnt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>ausdrücken</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -57,6 +309,42 @@
         <Praeteritum>drückte aus</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>ausgedrückt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ausführen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>führt aus</Praesens>
+        <Praeteritum>führte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgeführt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>aushandeln</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>handelt aus</Praesens>
+        <Praeteritum>handelte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgehandelt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>auslegen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>legt aus</Praesens>
+        <Praeteritum>legte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgelegt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -74,6 +362,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>ausräumen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>räumt aus</Praesens>
+        <Praeteritum>räumte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgeräumt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>ausreichen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -86,6 +386,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>aussagen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>sagt aus</Praesens>
+        <Praeteritum>sagte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgesagt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>äußern</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -93,6 +405,102 @@
         <Praeteritum>äußerte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>geäußert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>aussetzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>setzt aus</Praesens>
+        <Praeteritum>setzte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgesetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>austauschen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>tauscht aus</Praesens>
+        <Praeteritum>tauschte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgetauscht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ausüben</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>übt aus</Praesens>
+        <Praeteritum>übte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgeübt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>auswählen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>wählt aus</Praesens>
+        <Praeteritum>wählte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgewählt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>auszahlen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>zahlt aus</Praesens>
+        <Praeteritum>zahlte aus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ausgezahlt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>beabsichtigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>beabsichtigt</Praesens>
+        <Praeteritum>beabsichtigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>beabsichtigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>beantragen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>beantragt</Praesens>
+        <Praeteritum>beantragte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>beantragt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>beauftragen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>beauftragt</Praesens>
+        <Praeteritum>beauftragte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>beauftragt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -117,6 +525,78 @@
         <Praeteritum>bedrohte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>bedroht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>beeindrucken</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>beeindruckt</Praesens>
+        <Praeteritum>beeindruckte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>beeindruckt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>befolgen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>befolgt</Praesens>
+        <Praeteritum>befolgte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>befolgt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>befördern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>befördert</Praesens>
+        <Praeteritum>beförderte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>befördert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>befriedigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>befriedigt</Praesens>
+        <Praeteritum>befriedigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>befriedigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>begeistern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>begeistert</Praesens>
+        <Praeteritum>begeisterte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>begeistert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>begrenzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>begrenzt</Praesens>
+        <Praeteritum>begrenzte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>begrenzt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -153,6 +633,18 @@
         <Praeteritum>beherrschte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>beherrscht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>behindern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>behindert</Praesens>
+        <Praeteritum>behinderte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>behindert</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -215,7 +707,8 @@
         <Partizip_II>benötigt</Partizip_II>
       </Grammatik>
     </Formangabe>
-  </Artikel>  <Artikel>
+  </Artikel>
+  <Artikel>
     <Formangabe>
       <Schreibung>benutzen</Schreibung>
       <Grammatik>
@@ -224,6 +717,18 @@
         <Praeteritum>benutzte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>benutzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>berücksichtigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>berücksichtigt</Praesens>
+        <Praeteritum>berücksichtigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>berücksichtigt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -241,6 +746,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>beruhigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>beruhigt</Praesens>
+        <Praeteritum>beruhigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>beruhigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>berühren</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -248,6 +765,18 @@
         <Praeteritum>berührte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>berührt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung hidx="1">beschaffen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>beschafft</Praesens>
+        <Praeteritum>beschaffte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>beschafft</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -301,6 +830,54 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>besetzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>besetzt</Praesens>
+        <Praeteritum>besetzte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>besetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>besichtigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>besichtigt</Praesens>
+        <Praeteritum>besichtigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>besichtigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>besorgen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>besorgt</Praesens>
+        <Praeteritum>besorgte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>besorgt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>bestrafen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>bestraft</Praesens>
+        <Praeteritum>bestrafte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>bestraft</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>besuchen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -325,6 +902,126 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>betreuen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>betreut</Praesens>
+        <Praeteritum>betreute</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>betreut</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>beurteilen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>beurteilt</Praesens>
+        <Praeteritum>beurteilte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>beurteilt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>bevorzugen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>bevorzugt</Praesens>
+        <Praeteritum>bevorzugte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>bevorzugt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>bewachen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>bewacht</Praesens>
+        <Praeteritum>bewachte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>bewacht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>bewahren</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>bewahrt</Praesens>
+        <Praeteritum>bewahrte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>bewahrt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>bewältigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>bewältigt</Praesens>
+        <Praeteritum>bewältigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>bewältigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>bewilligen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>bewilligt</Praesens>
+        <Praeteritum>bewilligte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>bewilligt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>bewirken</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>bewirkt</Praesens>
+        <Praeteritum>bewirkte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>bewirkt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>bezichtigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>bezichtigt</Praesens>
+        <Praeteritum>bezichtigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>bezichtigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>billigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>billigt</Praesens>
+        <Praeteritum>billigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gebilligt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>brüllen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -332,6 +1029,18 @@
         <Praeteritum>brüllte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>gebrüllt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>buchen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>bucht</Praesens>
+        <Praeteritum>buchte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gebucht</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -356,6 +1065,30 @@
         <Praeteritum>drehte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>gedreht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>drucken</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>druckt</Praesens>
+        <Praeteritum>druckte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gedruckt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>durchführen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>führt durch</Praesens>
+        <Praeteritum>führte durch</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>durchgeführt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -386,6 +1119,30 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>einbauen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>baut ein</Praesens>
+        <Praeteritum>baute ein</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>eingebaut</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>einführen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>führt ein</Praesens>
+        <Praeteritum>führte ein</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>eingeführt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>einigen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -393,6 +1150,30 @@
         <Praeteritum>einigte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>geeinigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>einkaufen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>kauft ein</Praesens>
+        <Praeteritum>kaufte ein</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>eingekauft</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>einliefern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>liefert ein</Praesens>
+        <Praeteritum>lieferte ein</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>eingeliefert</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -410,6 +1191,30 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>einschleusen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>schleust ein</Praesens>
+        <Praeteritum>schleuste ein</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>eingeschleust</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>einschränken</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>schränkt ein</Praesens>
+        <Praeteritum>schränkte ein</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>eingeschränkt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>einsetzen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -417,6 +1222,18 @@
         <Praeteritum>setzte ein</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>eingesetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>einsperren</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>sperrt ein</Praesens>
+        <Praeteritum>sperrte ein</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>eingesperrt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -434,6 +1251,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>einstufen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>stuft ein</Praesens>
+        <Praeteritum>stufte ein</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>eingestuft</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>empören</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -446,6 +1275,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>entführen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>entführt</Praesens>
+        <Praeteritum>entführte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>entführt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>entpuppen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -453,6 +1294,42 @@
         <Praeteritum>entpuppte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>entpuppt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>entschädigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>entschädigt</Praesens>
+        <Praeteritum>entschädigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>entschädigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>enttäuschen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>enttäuscht</Praesens>
+        <Praeteritum>enttäuschte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>enttäuscht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>erahnen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>erahnt</Praesens>
+        <Praeteritum>erahnte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>erahnt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -477,6 +1354,18 @@
         <Praeteritum>erfüllte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>erfüllt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ergänzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>ergänzt</Praesens>
+        <Praeteritum>ergänzte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ergänzt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -518,6 +1407,54 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>erledigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>erledigt</Praesens>
+        <Praeteritum>erledigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>erledigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ernähren</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>ernährt</Praesens>
+        <Praeteritum>ernährte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ernährt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>erneuern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>erneuert</Praesens>
+        <Praeteritum>erneuerte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>erneuert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>erobern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>erobert</Praesens>
+        <Praeteritum>eroberte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>erobert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>erregen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -525,6 +1462,30 @@
         <Praeteritum>erregte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>erregt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ersetzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>ersetzt</Praesens>
+        <Praeteritum>ersetzte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>ersetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ersparen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>erspart</Praesens>
+        <Praeteritum>ersparte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>erspart</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -542,6 +1503,30 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>erwecken</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>erweckt</Praesens>
+        <Praeteritum>erweckte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>erweckt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>erweitern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>erweitert</Praesens>
+        <Praeteritum>erweiterte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>erweitert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>erwischen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -554,6 +1539,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>erzeugen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>erzeugt</Praesens>
+        <Praeteritum>erzeugte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>erzeugt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>erzielen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -561,6 +1558,30 @@
         <Praeteritum>erzielte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>erzielt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>fällen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>fällt</Praesens>
+        <Praeteritum>fällte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gefällt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>filmen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>filmt</Praesens>
+        <Praeteritum>filmte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gefilmt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -590,6 +1611,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>fortsetzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>setzt fort</Praesens>
+        <Praeteritum>setzte fort</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>fortgesetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>fügen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -614,6 +1647,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>gebrauchen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>gebraucht</Praesens>
+        <Praeteritum>gebrauchte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gebraucht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>genügen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -633,6 +1678,18 @@
         <Praeteritum>gewährte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>gewährt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>gewöhnen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>gewöhnt</Praesens>
+        <Praeteritum>gewöhnte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gewöhnt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -674,18 +1731,6 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>herausstellen</Schreibung>
-      <Grammatik>
-        <Wortklasse>Verb</Wortklasse>
-        <Praesens>stellt heraus</Praesens>
-        <Praeteritum>stellte heraus</Praeteritum>
-        <Auxiliar>hat</Auxiliar>
-        <Partizip_II>herausgestellt</Partizip_II>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung hidx="1">herstellen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -710,13 +1755,25 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>hinzufügen</Schreibung>
+      <Schreibung>hindern</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
-        <Praesens>fügt hinzu</Praesens>
-        <Praeteritum>fügte hinzu</Praeteritum>
+        <Praesens>hindert</Praesens>
+        <Praeteritum>hinderte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
-        <Partizip_II>hinzugefügt</Partizip_II>
+        <Partizip_II>gehindert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>hinrichten</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>richtet hin</Praesens>
+        <Praeteritum>richtete hin</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>hingerichtet</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -734,6 +1791,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>kennzeichnen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>kennzeichnet</Praesens>
+        <Praeteritum>kennzeichnete</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gekennzeichnet</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>klappen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -741,6 +1810,30 @@
         <Praeteritum>klappte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>geklappt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>klären</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>klärt</Praesens>
+        <Praeteritum>klärte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>geklärt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>klauen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>klaut</Praesens>
+        <Praeteritum>klaute</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>geklaut</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -807,6 +1900,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>kürzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>kürzt</Praesens>
+        <Praeteritum>kürzte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gekürzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>lächeln</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -826,6 +1931,18 @@
         <Praeteritum>lachte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>gelacht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>lagern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>lagert</Praesens>
+        <Praeteritum>lagerte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gelagert</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -875,6 +1992,18 @@
         <Praeteritum>lehrte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>gelehrt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>lenken</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>lenkt</Praesens>
+        <Praeteritum>lenkte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gelenkt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -988,6 +2117,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>mitmachen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>macht mit</Praesens>
+        <Praeteritum>machte mit</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>mitgemacht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>mitteilen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -1069,6 +2210,18 @@
         <Praeteritum>packte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>gepackt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>plündern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>plündert</Praesens>
+        <Praeteritum>plünderte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>geplündert</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -1158,6 +2311,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>schenken</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>schenkt</Praesens>
+        <Praeteritum>schenkte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>geschenkt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>schildern</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -1201,6 +2366,42 @@
         <Praeteritum>schützte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>geschützt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>schwächen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>schwächt</Praesens>
+        <Praeteritum>schwächte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>geschwächt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>setzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>setzt</Praesens>
+        <Praeteritum>setzte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gesetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>siegen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>siegt</Praesens>
+        <Praeteritum>siegte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gesiegt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -1399,13 +2600,49 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>überlegen</Schreibung>
+      <Schreibung>umsetzen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
-        <Praesens>überlegt</Praesens>
-        <Praeteritum>überlegte</Praeteritum>
+        <Praesens>setzt um</Praesens>
+        <Praeteritum>setzte um</Praeteritum>
         <Auxiliar>hat</Auxiliar>
-        <Partizip_II>überlegt</Partizip_II>
+        <Partizip_II>umgesetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verbessern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verbessert</Praesens>
+        <Praeteritum>verbesserte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verbessert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verbrauchen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verbraucht</Praesens>
+        <Praeteritum>verbrauchte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verbraucht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verdächtigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verdächtigt</Praesens>
+        <Praeteritum>verdächtigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verdächtigt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -1435,6 +2672,54 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>verdoppeln</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verdoppelt</Praesens>
+        <Praeteritum>verdoppelte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verdoppelt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verdrängen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verdrängt</Praesens>
+        <Praeteritum>verdrängte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verdrängt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>vereinbaren</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>vereinbart</Praesens>
+        <Praeteritum>vereinbarte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>vereinbart</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>vereinen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>vereint</Praesens>
+        <Praeteritum>vereinte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>vereint</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>verfügen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -1442,6 +2727,18 @@
         <Praeteritum>verfügte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>verfügt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verführen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verführt</Praesens>
+        <Praeteritum>verführte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verführt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -1495,6 +2792,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>verringern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verringert</Praesens>
+        <Praeteritum>verringerte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verringert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>versagen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -1502,6 +2811,66 @@
         <Praeteritum>versagte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>versagt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verschaffen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verschafft</Praesens>
+        <Praeteritum>verschaffte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verschafft</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verschärfen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verschärft</Praesens>
+        <Praeteritum>verschärfte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verschärft</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verschlechtern</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verschlechtert</Praesens>
+        <Praeteritum>verschlechterte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verschlechtert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verschleppen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verschleppt</Praesens>
+        <Praeteritum>verschleppte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verschleppt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verschonen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verschont</Praesens>
+        <Praeteritum>verschonte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verschont</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -1526,6 +2895,30 @@
         <Praeteritum>versicherte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>versichert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>versorgen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>versorgt</Praesens>
+        <Praeteritum>versorgte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>versorgt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verstärken</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verstärkt</Praesens>
+        <Praeteritum>verstärkte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verstärkt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -1567,6 +2960,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>verwehren</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verwehrt</Praesens>
+        <Praeteritum>verwehrte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verwehrt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>verweigern</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -1574,6 +2979,18 @@
         <Praeteritum>verweigerte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>verweigert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>verwirklichen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>verwirklicht</Praesens>
+        <Praeteritum>verwirklichte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>verwirklicht</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -1610,6 +3027,18 @@
         <Praeteritum>wagte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>gewagt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>wahren</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>wahrt</Praesens>
+        <Praeteritum>wahrte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gewahrt</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -1658,6 +3087,18 @@
         <Praeteritum>weigerte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>geweigert</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>weinen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>weint</Praesens>
+        <Praeteritum>weinte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>geweint</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -1740,6 +3181,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>würdigen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>würdigt</Praesens>
+        <Praeteritum>würdigte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>gewürdigt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>zeichnen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -1776,13 +3229,37 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>zurückkehren</Schreibung>
+      <Schreibung>zulegen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
-        <Praesens>kehrt zurück</Praesens>
-        <Praeteritum>kehrte zurück</Praeteritum>
+        <Praesens>legt zu</Praesens>
+        <Praeteritum>legte zu</Praeteritum>
         <Auxiliar>hat</Auxiliar>
-        <Partizip_II>zurückgekehrt</Partizip_II>
+        <Partizip_II>zugelegt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>zustimmen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>stimmt zu</Praesens>
+        <Praeteritum>stimmte zu</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>zugestimmt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>zutrauen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>traut zu</Praesens>
+        <Praeteritum>traute zu</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>zugetraut</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
