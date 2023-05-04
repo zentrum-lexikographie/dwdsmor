@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 6.0
-% Andreas Nolda 2023-05-03
+% Version 6.1
+% Andreas Nolda 2023-05-04
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -179,14 +179,16 @@
 #Verb-inflection# = <VAImpPl><VAImpSg><VAPastIndPl><VAPastIndSg><VAPastSubj2> \
                     <VAPres1/3PlInd><VAPres1/3SgSubj><VAPres1SgInd> \
                     <VAPres2PlInd><VAPres2SgInd><VAPres2SgSubj><VAPres3SgInd> \
-                    <VAPresSubjPl><VAPresSubjSg><VInf+PPres><VInf><VInf-en> \
-                    <VInf-n><VMPast><VMPastSubj><VMPresPl><VMPresSg><VPPast> \
-                    <VPPres><VPastIndIrreg><VPastIndReg><VPastIndStr> \
-                    <VPastSubjStr><VPresSubj><VPresPlInd><VVPP-en><VVPP-t> \
-                    <VVPastIndReg><VVPastIndStr><VVPastSubjOld><VVPastSubjReg> \
-                    <VVPastSubjStr><VVPastStr><VVPres1+Imp><VVPres1> \
-                    <VVPres2+Imp0><VVPres2+Imp><VVPres2><VVPres2t><VVPres> \
-                    <VVPresPl><VVPresSg><VVReg-el/er><VVReg><VVRegFin>
+                    <VAPresSubjPl><VAPresSubjSg><VInf><VInf+PPres><VInf-en> \
+                    <VInf-n><VMPast><VMPastSubj><VMPresPl><VMPresPl-s><VMPresSg> \
+                    <VMPresSg-s><VPPast><VPPres><VPastIndIrreg><VPastIndReg> \
+                    <VPastIndStr><VPresSubj><VPastSubjStr><VPresPlInd><VVPP-en> \
+                    <VVPP-t><VVPP-t-s><VVPastIndReg><VVPastIndReg-s> \
+                    <VVPastIndStr><VVPastSubjOld><VVPastSubjReg> \
+                    <VVPastSubjReg-s><VVPastSubjStr><VVPastStr><VVPres><VVPres1> \
+                    <VVPres1+Imp><VVPres1-s><VVPres1-s+Imp-s><VVPres2><VVPres2t> \
+                    <VVPres2+Imp><VVPres2+Imp0><VVPres2-s><VVPres2-s+Imp-s> \
+                    <VVPresPl><VVPresSg><VVReg><VVRegFin><VVReg-el/er><VVReg-s>
 
 #Other-inflection# = <Circp><Conj-Compar><Conj-Coord><Conj-Inf><Conj-Sub><Intj> \
                      <PInd-Invar><Postp><Pref/Adj><Pref/Adv><Pref/N> \

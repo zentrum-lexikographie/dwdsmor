@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2023-05-03
+# Andreas Nolda 2023-05-04
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from itertools import product, filterfalse
 
-version = 6.2
+version = 6.3
 
 BASEDIR = os.path.dirname(__file__)
 LIBDIR  = os.path.join(BASEDIR, "lib")
@@ -154,24 +154,29 @@ def add_superlative_forms(formdict, lemma_index, paradigm_index, lexcat, parcat,
         complex_forms = ["am " + form for form in forms]
         add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, complex_forms)
 
-def add_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, participle):
+def add_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, participles):
     if forms:
-        complex_forms = [form + " " + participle for form in forms]
+        complex_forms = [form + " " + participle for form in forms
+                                                 for participle in participles]
         add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, complex_forms)
 
-def add_future_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, infinitive):
+def add_future_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, infinitives):
     if forms:
-        complex_forms = [form + " " + infinitive for form in forms]
+        complex_forms = [form + " " + infinitive for form in forms
+                                                 for infinitive in infinitives]
         add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, complex_forms)
 
-def add_future_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, infinitive, participle):
+def add_future_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, infinitives, participles):
     if forms:
-        complex_forms = [form + " " + participle + " " + infinitive for form in forms]
+        complex_forms = [form + " " + participle + " " + infinitive for form in forms
+                                                                    for participle in participles
+                                                                    for infinitive in infinitives]
         add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, complex_forms)
 
-def add_nonfinite_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, participle):
+def add_nonfinite_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, participles):
     if forms:
-        complex_forms = [participle + " " + form for form in forms]
+        complex_forms = [participle + " " + form for participle in participles
+                                                 for form in forms]
         add_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, complex_forms)
 
 def add_particle_verb_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, particle):
@@ -585,8 +590,7 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_for
                 pass
             parcat = Parcat(nonfinite = "Inf",
                             tense     = "Perf")
-            for participle in past_participle_forms:
-                add_nonfinite_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, [auxiliary], participle)
+            add_nonfinite_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, [auxiliary], past_participle_forms)
             if old_forms:
                 # no such forms
                 pass
@@ -625,69 +629,65 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg, pos, old_for
                                 mood   = mood,
                                 tense  = tense)
                 if tense == "Perf":
-                    for participle in past_participle_forms:
-                        categorisation = [person,
-                                          number,
-                                          "Pres",
-                                          mood]
-                        if auxiliary == "haben":
-                            forms = generate_forms(transducer, LEMMA_INDEX_HABEN, PARADIGM_INDEX_HABEN, SEG_HABEN, pos, categorisation)
-                        elif auxiliary == "sein":
-                            forms = generate_forms(transducer, LEMMA_INDEX_SEIN, PARADIGM_INDEX_SEIN, SEG_SEIN, pos, categorisation)
-                        add_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, participle)
-                        if old_forms:
-                            # no such forms
-                            pass
-                        if nonstandard_forms:
-                            # no such forms
-                            pass
+                    categorisation = [person,
+                                      number,
+                                      "Pres",
+                                      mood]
+                    if auxiliary == "haben":
+                        forms = generate_forms(transducer, LEMMA_INDEX_HABEN, PARADIGM_INDEX_HABEN, SEG_HABEN, pos, categorisation)
+                    elif auxiliary == "sein":
+                        forms = generate_forms(transducer, LEMMA_INDEX_SEIN, PARADIGM_INDEX_SEIN, SEG_SEIN, pos, categorisation)
+                    add_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, past_participle_forms)
+                    if old_forms:
+                        # no such forms
+                        pass
+                    if nonstandard_forms:
+                        # no such forms
+                        pass
                 if tense == "PastPerf":
-                    for participle in past_participle_forms:
-                        categorisation = [person,
-                                          number,
-                                          "Past",
-                                          mood]
-                        if auxiliary == "haben":
-                            forms = generate_forms(transducer, LEMMA_INDEX_HABEN, PARADIGM_INDEX_HABEN, SEG_HABEN, pos, categorisation)
-                        elif auxiliary == "sein":
-                            forms = generate_forms(transducer, LEMMA_INDEX_SEIN, PARADIGM_INDEX_SEIN, SEG_SEIN, pos, categorisation)
-                        add_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, participle)
-                        if old_forms:
-                            # no such forms
-                            pass
-                        if nonstandard_forms:
-                            # no such forms
-                            pass
+                    categorisation = [person,
+                                      number,
+                                      "Past",
+                                      mood]
+                    if auxiliary == "haben":
+                        forms = generate_forms(transducer, LEMMA_INDEX_HABEN, PARADIGM_INDEX_HABEN, SEG_HABEN, pos, categorisation)
+                    elif auxiliary == "sein":
+                        forms = generate_forms(transducer, LEMMA_INDEX_SEIN, PARADIGM_INDEX_SEIN, SEG_SEIN, pos, categorisation)
+                    add_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, past_participle_forms)
+                    if old_forms:
+                        # no such forms
+                        pass
+                    if nonstandard_forms:
+                        # no such forms
+                        pass
                 elif tense == "Fut":
-                    for infinitive in infinitive_forms:
-                        categorisation = [person,
-                                          number,
-                                          "Pres",
-                                          mood]
-                        forms = generate_forms(transducer, LEMMA_INDEX_WERDEN, PARADIGM_INDEX_WERDEN, SEG_WERDEN, pos, categorisation)
-                        add_future_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, infinitive)
+                    categorisation = [person,
+                                      number,
+                                      "Pres",
+                                      mood]
+                    forms = generate_forms(transducer, LEMMA_INDEX_WERDEN, PARADIGM_INDEX_WERDEN, SEG_WERDEN, pos, categorisation)
+                    add_future_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, infinitive_forms)
 
-                        if old_forms:
-                            # no such forms
-                            pass
-                        if nonstandard_forms:
-                            # no such forms
-                            pass
+                    if old_forms:
+                        # no such forms
+                        pass
+                    if nonstandard_forms:
+                        # no such forms
+                        pass
                 elif tense == "FutPerf":
-                    for participle in past_participle_forms:
-                        categorisation = [person,
-                                          number,
-                                          "Pres",
-                                          mood]
-                        forms = generate_forms(transducer, LEMMA_INDEX_WERDEN, PARADIGM_INDEX_WERDEN, SEG_WERDEN, pos, categorisation)
-                        add_future_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, auxiliary, participle)
+                    categorisation = [person,
+                                      number,
+                                      "Pres",
+                                      mood]
+                    forms = generate_forms(transducer, LEMMA_INDEX_WERDEN, PARADIGM_INDEX_WERDEN, SEG_WERDEN, pos, categorisation)
+                    add_future_perfect_forms(formdict, lemma_index, paradigm_index, lexcat, parcat, forms, [auxiliary], past_participle_forms)
 
-                        if old_forms:
-                            # no such forms
-                            pass
-                        if nonstandard_forms:
-                            # no such forms
-                            pass
+                    if old_forms:
+                        # no such forms
+                        pass
+                    if nonstandard_forms:
+                        # no such forms
+                        pass
                 else:
                     categorisation = [person,
                                       number,

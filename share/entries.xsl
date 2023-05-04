@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 10.5 -->
-<!-- Andreas Nolda 2023-05-03 -->
+<!-- Version 10.6 -->
+<!-- Andreas Nolda 2023-05-04 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -4730,6 +4730,30 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:if>
+            <!-- old spellings -->
+            <xsl:if test="matches($stem,'ss$')">
+              <xsl:call-template name="verb-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma-without-particle"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="participle"
+                                select="$participle-without-particle"/>
+                <xsl:with-param name="particle"
+                                select="$particle"/>
+                <xsl:with-param name="stem"
+                                select="n:ss-sz-alternation($stem)"/>
+                <xsl:with-param name="class">VVReg-s</xsl:with-param>
+                <xsl:with-param name="auxiliary"
+                                select="$auxiliary"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
@@ -5383,6 +5407,47 @@
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
+            <!-- old spellings -->
+            <xsl:if test="matches($stem,'ss$')">
+              <xsl:call-template name="verb-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma-without-particle"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="participle"
+                                select="$participle-without-particle"/>
+                <xsl:with-param name="particle"
+                                select="$particle"/>
+                <xsl:with-param name="stem"
+                                select="n:ss-sz-alternation($present-stem)"/>
+                <xsl:with-param name="class">VMPresSg-s</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+              <xsl:call-template name="verb-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma-without-particle"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="participle"
+                                select="$participle-without-particle"/>
+                <xsl:with-param name="particle"
+                                select="$particle"/>
+                <xsl:with-param name="stem"
+                                select="n:ss-sz-alternation($stem)"/>
+                <xsl:with-param name="class">VMPresPl-s</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
           </xsl:when>
           <!-- uniform present stem -->
           <xsl:when test="$stem=$present-stem">
@@ -5406,7 +5471,8 @@
                               select="$etymology"/>
             </xsl:call-template>
           </xsl:when>
-          <!-- present stem for 2nd/3rd person singular with "e"/"i"-alternation with stem-final "t" -->
+          <!-- present stem for 2nd/3rd person singular with "e"/"i"-alternation
+               with stem-final "t" -->
           <xsl:when test="matches($present-stem,'t$') and
                           matches($present-stem,n:e-i-alternation-re($stem))">
             <xsl:call-template name="verb-entry">
@@ -5488,8 +5554,50 @@
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
+            <!-- old spellings -->
+            <xsl:if test="matches($stem,'ss$')">
+              <xsl:call-template name="verb-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma-without-particle"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="participle"
+                                select="$participle-without-particle"/>
+                <xsl:with-param name="particle"
+                                select="$particle"/>
+                <xsl:with-param name="stem"
+                                select="n:ss-sz-alternation($stem)"/>
+                <xsl:with-param name="class">VVPres1-s</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+              <xsl:call-template name="verb-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma-without-particle"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="participle"
+                                select="$participle-without-particle"/>
+                <xsl:with-param name="particle"
+                                select="$particle"/>
+                <xsl:with-param name="stem"
+                                select="n:ss-sz-alternation($present-stem)"/>
+                <xsl:with-param name="class">VVPres2-s+Imp-s</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
           </xsl:when>
-          <!-- present stem for 2nd/3rd person singular with stem-final "d" without "e" epenthesis before "-t" -->
+          <!-- present stem for 2nd/3rd person singular with stem-final "d"
+               without "e" epenthesis before "-t" -->
           <xsl:when test="matches($present-stem,'d$') and
                           $present-without-particle=concat($present-stem,'t')">
             <xsl:call-template name="verb-entry">
@@ -5613,6 +5721,47 @@
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
+            <!-- old spellings -->
+            <xsl:if test="matches($stem,'ss$')">
+              <xsl:call-template name="verb-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma-without-particle"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="participle"
+                                select="$participle-without-particle"/>
+                <xsl:with-param name="particle"
+                                select="$particle"/>
+                <xsl:with-param name="stem"
+                                select="n:ss-sz-alternation($stem)"/>
+                <xsl:with-param name="class">VVPres1-s+Imp-s</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+              <xsl:call-template name="verb-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma-without-particle"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="participle"
+                                select="$participle-without-particle"/>
+                <xsl:with-param name="particle"
+                                select="$particle"/>
+                <xsl:with-param name="stem"
+                                select="n:ss-sz-alternation($present-stem)"/>
+                <xsl:with-param name="class">VVPres2-s</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
         <!-- past -->
@@ -5621,7 +5770,8 @@
           <xsl:when test="matches($past-without-particle,concat('^',$past-stem,'e?te$'))">
             <!-- past indicative -->
             <xsl:choose>
-              <!-- past indicative with stem-final "d" or "t" without "e" epenthesis before "-t" -->
+              <!-- past indicative with stem-final "d" or "t"
+                   without "e" epenthesis before "-t" -->
               <xsl:when test="matches($past-stem,'[dt]$') and
                               $past-without-particle=concat($past-stem,'te')">
                 <xsl:call-template name="verb-entry">
@@ -5665,6 +5815,28 @@
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
+                <!-- old spellings -->
+                <xsl:if test="matches($stem,'ss$')">
+                  <xsl:call-template name="verb-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma-without-particle"/>
+                    <xsl:with-param name="lemma-index"
+                                    select="$lemma-index"/>
+                    <xsl:with-param name="paradigm-index"
+                                    select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
+                    <xsl:with-param name="participle"
+                                    select="$participle-without-particle"/>
+                    <xsl:with-param name="particle"
+                                    select="$particle"/>
+                    <xsl:with-param name="stem"
+                                    select="n:ss-sz-alternation($past-stem)"/>
+                    <xsl:with-param name="class">VVPastIndReg-s</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:if>
               </xsl:otherwise>
             </xsl:choose>
             <!-- past subjunctive -->
@@ -5717,6 +5889,28 @@
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
+                <!-- old spellings -->
+                <xsl:if test="matches($stem,'ss$')">
+                  <xsl:call-template name="verb-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma-without-particle"/>
+                    <xsl:with-param name="lemma-index"
+                                    select="$lemma-index"/>
+                    <xsl:with-param name="paradigm-index"
+                                    select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
+                    <xsl:with-param name="participle"
+                                    select="$participle-without-particle"/>
+                    <xsl:with-param name="particle"
+                                    select="$particle"/>
+                    <xsl:with-param name="stem"
+                                    select="n:umlaut(n:ss-sz-alternation($past-stem))"/>
+                    <xsl:with-param name="class">VVPastSubjReg-s</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:if>
               </xsl:when>
               <!-- past stem ending in "ach" -->
               <xsl:when test="matches($past-stem,'ach$')">
@@ -5784,6 +5978,28 @@
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
+                <!-- old spellings -->
+                <xsl:if test="matches($stem,'ss$')">
+                  <xsl:call-template name="verb-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma-without-particle"/>
+                    <xsl:with-param name="lemma-index"
+                                    select="$lemma-index"/>
+                    <xsl:with-param name="paradigm-index"
+                                    select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
+                    <xsl:with-param name="participle"
+                                    select="$participle-without-particle"/>
+                    <xsl:with-param name="particle"
+                                    select="$particle"/>
+                    <xsl:with-param name="stem"
+                                    select="n:ss-sz-alternation($past-stem)"/>
+                    <xsl:with-param name="class">VVPastSubjReg-s</xsl:with-param>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:if>
               </xsl:otherwise>
             </xsl:choose>
           </xsl:when>
@@ -6130,7 +6346,8 @@
           <!-- weak past participle -->
           <xsl:when test="matches($participle-without-particle,'e?t$')">
             <xsl:choose>
-              <!-- past participle with stem-final "d" or "t" without "e" epenthesis before "-t" -->
+              <!-- weak past participle with stem-final "d" or "t"
+                   without "e" epenthesis before "-t" -->
               <xsl:when test="matches($participle-stem,'[dt]$') and
                               matches($participle-without-particle,concat('^(ge)?',$participle-stem,'t$'))">
                 <xsl:call-template name="verb-entry">
@@ -6178,6 +6395,30 @@
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
+                <!-- old spellings -->
+                <xsl:if test="matches($stem,'ss$')">
+                  <xsl:call-template name="verb-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma-without-particle"/>
+                    <xsl:with-param name="lemma-index"
+                                    select="$lemma-index"/>
+                    <xsl:with-param name="paradigm-index"
+                                    select="$paradigm-index"/>
+                    <xsl:with-param name="abbreviation"
+                                    select="$abbreviation"/>
+                    <xsl:with-param name="participle"
+                                    select="$participle-without-particle"/>
+                    <xsl:with-param name="particle"
+                                    select="$particle"/>
+                    <xsl:with-param name="stem"
+                                    select="n:ss-sz-alternation($participle-stem)"/>
+                    <xsl:with-param name="class">VVPP-t-s</xsl:with-param>
+                    <xsl:with-param name="auxiliary"
+                                    select="$auxiliary"/>
+                    <xsl:with-param name="etymology"
+                                    select="$etymology"/>
+                  </xsl:call-template>
+                </xsl:if>
               </xsl:otherwise>
             </xsl:choose>
           </xsl:when>
@@ -6341,7 +6582,7 @@
                       $participle-marker='ge-t' or
                       $participle-marker='-et' or
                       $participle-marker='ge-et'">
-     <xsl:call-template name="verb-entry">
+        <xsl:call-template name="verb-entry">
           <xsl:with-param name="lemma"
                           select="$lemma-without-particle"/>
           <xsl:with-param name="lemma-index"
@@ -6362,6 +6603,30 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
+        <!-- old spellings -->
+        <xsl:if test="matches($stem,'ss$')">
+          <xsl:call-template name="verb-entry">
+            <xsl:with-param name="lemma"
+                            select="$lemma-without-particle"/>
+            <xsl:with-param name="lemma-index"
+                            select="$lemma-index"/>
+            <xsl:with-param name="paradigm-index"
+                            select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+            <xsl:with-param name="participle"
+                            select="$participle-without-particle"/>
+            <xsl:with-param name="particle"
+                            select="$particle"/>
+            <xsl:with-param name="stem"
+                            select="n:ss-sz-alternation($participle-stem)"/>
+            <xsl:with-param name="class">VVPP-t-s</xsl:with-param>
+            <xsl:with-param name="auxiliary"
+                            select="$auxiliary"/>
+            <xsl:with-param name="etymology"
+                            select="$etymology"/>
+          </xsl:call-template>
+        </xsl:if>
       </xsl:when>
       <!-- strong participles -->
       <xsl:otherwise>

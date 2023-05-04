@@ -1,5 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-05-04:
+
+* add inflection classes `<VVReg-s>`, `<VVPres1-s>`, `<VVPres1-s+Imp-s>`,
+  `<VVPres2-s>`, `<VVPres2-s+Imp-s>`, `<VVPastIndReg-s>`, `<VVPastSubjReg-s>`,
+  `<VVPP-t-s>`, `<VMPresSg-s>`, and `<VMPresPl-s>` for old spellings of verb
+  forms
+
 2023-05-03:
 
 * rename inflection classes `<Ptkl-Adj> `, `<Ptkl-Neg>`, and `<Ptkl-Zu>` and

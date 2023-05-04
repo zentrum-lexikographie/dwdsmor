@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-05-04:
+
+* add support for old spellings of verb forms
+
 2023-05-03:
 
 * add support for verbs with archaic past subjunctive forms
