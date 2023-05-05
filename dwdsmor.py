@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2022-12-21
+# Gregor Middell and Andreas Nolda 2023-05-05
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 7.0
+version = 7.1
 
 BASEDIR = os.path.dirname(__file__)
 LIBDIR  = os.path.join(BASEDIR, "lib")
@@ -40,8 +40,8 @@ class Analysis(tuple):
     @cached_property
     def segmented_lemma(self):
         analysis = self.analysis
-        analysis = re.sub(r"<COMP>(:?<concat>|<hyph>)", r"", analysis)
-        analysis = re.sub(r"(?:<CAP>)?(.+?)(?:<IDX[^>]+>)?(?:<PAR[^>]+>)?<\+[^>]+>.*", r"\1", analysis)
+        analysis = re.sub(r"<COMP>(:?<concat>|<hyph>)", "", analysis)
+        analysis = re.sub(r"(?:<IDX[^>]+>)?(?:<PAR[^>]+>)?<\+[^>]+>.*", "", analysis)
         return analysis
 
     @cached_property
@@ -92,7 +92,7 @@ class Analysis(tuple):
     _mood_tags         = {"Ind": True, "Subj": True, "Imp": True}
     _tense_tags        = {"Pres": True, "Past": True}
     _metainfo_tags     = {"Old": True, "NonSt": True}
-    _orthinfo_tags     = {"CAP": True}
+    _orthinfo_tags     = {"OLDORTH": True, "CAP": True}
 
     def tag_of_type(self, type_map):
         for tag in self.tags:

@@ -65,7 +65,7 @@ $MarkerBoundaryAnalysis$ = (.                   | \
                             {<\=>\-}:{<HB>}     | \
                                 <\~>:[<DB><FB>])*
 
-ALPHABET = [#char# #lemma-index# #paradigm-index#  #feature# #info# \
+ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# \
             #wf-process# #wf-means#] \
            <>:[<WB><HB><DB>]
 

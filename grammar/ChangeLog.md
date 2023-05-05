@@ -1,5 +1,11 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-05-05:
+
+* rename `cap.fst` to `orth.fst`
+* do not clean up `<OLDORTH>`
+* move `<OLDORTH>` and `<CAP>` to the end of the analysis string
+
 2023-05-04:
 
 * add inflection classes `<VVReg-s>`, `<VVPres1-s>`, `<VVPres1-s+Imp-s>`,

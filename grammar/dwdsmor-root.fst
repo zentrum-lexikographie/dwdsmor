@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 5.2
-% Andreas Nolda 2023-03-29
+% Version 5.3
+% Andreas Nolda 2023-05-05
 
 #include "symbols.fst"
 #include "num.fst"
@@ -10,7 +10,7 @@
 #include "markers.fst"
 #include "phon.fst"
 #include "punct.fst"
-#include "cap.fst"
+#include "orth.fst"
 #include "cleanup.fst"
 
 
@@ -137,18 +137,16 @@ $MORPH$ = $MarkerBoundaryRootAnalysis$ || $MORPH$
 $MORPH$ = $MORPH$ || $MarkerBoundary$
 
 
-% cleanup of orthography-related symbols
-
-$MORPH$ = $CleanupOrthAnalysis$ || $MORPH$
-
 % cleanup of lemma and paradigm indices
 
 $MORPH$ = $CleanupIndexAnalysis$ || $MORPH$
 
 
-% capitalisation
+% orthography
 
-$MORPH$ = $MORPH$ | <CAP>:<> ($MORPH$ || $CAP$)
+$MORPH$ = $OrthOldAnalysis$ || $MORPH$
+
+$MORPH$ = $MORPH$ | ($MORPH$ || $OrthCap$) <CAP>:<>
 
 
 % the resulting automaton

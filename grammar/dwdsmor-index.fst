@@ -1,12 +1,13 @@
 % dwdsmor-index.fst
-% Version 7.0
-% Andreas Nolda 2023-03-23
+% Version 7.1
+% Andreas Nolda 2023-05-05
 
 #include "symbols.fst"
 #include "stemtype.fst"
 #include "infl.fst"
 #include "markers.fst"
 #include "phon.fst"
+#include "orth.fst"
 #include "cleanup.fst"
 
 
@@ -69,9 +70,9 @@ $MORPH$ = $MarkerBoundaryAnalysis$ || $MORPH$
 $MORPH$ = $MORPH$ || $MarkerBoundary$
 
 
-% cleanup of orthography-related symbols
+% orthography
 
-$MORPH$ = $CleanupOrthAnalysis$ || $MORPH$
+$MORPH$ = $OrthOldAnalysis$ || $MORPH$
 
 
 % the resulting automaton

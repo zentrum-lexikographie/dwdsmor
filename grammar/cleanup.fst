@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 4.2
-% Andreas Nolda 2023-03-29
+% Version 4.3
+% Andreas Nolda 2023-05-05
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -41,15 +41,6 @@ ALPHABET = [#char# #surface-trigger# #orth-trigger# #boundary-trigger# \
            [#entry-type# #category# #stem-type# #suff# #origin# <Abbr>]:<>
 
 $CleanupWF$ = .*
-
-
-% clean up orthography-related symbols on analysis level
-
-ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
-            #wf-process# #wf-means# #feature# #metainfo#] \
-           <>:[#orthinfo#]
-
-$CleanupOrthAnalysis$ = .*
 
 
 % clean up lemma and paradigm indices on analysis level
