@@ -1094,6 +1094,28 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>durchsetzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>setzt durch</Praesens>
+        <Praeteritum>setzte durch</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>durchgesetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>durchsetzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>durchsetzt</Praesens>
+        <Praeteritum>durchsetzte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>durchsetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>dürfen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -1731,6 +1753,30 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>herausfinden</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>findet heraus</Praesens>
+        <Praeteritum>fand heraus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>herausgefunden</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>herausstellen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>stellt heraus</Praesens>
+        <Praeteritum>stellte heraus</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>herausgestellt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung hidx="1">herstellen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -1774,6 +1820,28 @@
         <Praeteritum>richtete hin</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>hingerichtet</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>hinterlassen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>lässt hinter</Praesens>
+        <Praeteritum>ließ hinter</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>hintergelassen</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>hinterlassen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>hinterlässt</Praesens>
+        <Praeteritum>hinterließ</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>hinterlassen</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -2179,6 +2247,30 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>nachdenken</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>denkt nach</Praesens>
+        <Praeteritum>dachte nach</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>nachgedacht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>nachweisen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>weist nach</Praesens>
+        <Praeteritum>wies nach</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>nachgewiesen</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>nutzen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -2480,6 +2572,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>stattfinden</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>findet statt</Praesens>
+        <Praeteritum>fand statt</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>stattgefunden</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>strahlen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
@@ -2511,6 +2615,18 @@
         <Praeteritum>taugte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>getaugt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>teilnehmen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>nimmt teil</Praesens>
+        <Praeteritum>nahm teil</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>teilgenommen</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -2595,6 +2711,139 @@
         <Praeteritum>übte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>geübt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>übergeben</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>gibt über</Praesens>
+        <Praeteritum>gab über</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>übergegeben</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>übergeben</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>übergibt</Praesens>
+        <Praeteritum>übergab</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>übergeben</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>überlegen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>legt über</Praesens>
+        <Praeteritum>legte über</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>übergelegt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>überlegen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>überlegt</Praesens>
+        <Praeteritum>überlegte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>überlegt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>übernehmen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>nimmt über</Praesens>
+        <Praeteritum>nahm über</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>übergenommen</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>übernehmen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>übernimmt</Praesens>
+        <Praeteritum>übernahm</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>übernommen</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>übersehen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>sieht über</Praesens>
+        <Praeteritum>sah über</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>übergesehen</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>übersehen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>übersieht</Praesens>
+        <Praeteritum>übersah</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>übersehen</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>übersetzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>setzt über</Praesens>
+        <Praeteritum>setzte über</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Auxiliar>ist</Auxiliar>
+        <Partizip_II>übergesetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>übersetzen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>übersetzt</Praesens>
+        <Praeteritum>übersetzte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>übersetzt</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>umfassen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>fasst um</Praesens>
+        <Praeteritum>fasste um</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>umgefasst</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>umfassen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>umfasst</Praesens>
+        <Praeteritum>umfasste</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>umfasst</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -3099,6 +3348,18 @@
         <Praeteritum>weinte</Praeteritum>
         <Auxiliar>hat</Auxiliar>
         <Partizip_II>geweint</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>weitergehen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>geht weiter</Praesens>
+        <Praeteritum>ging weiter</Praeteritum>
+        <Auxiliar>ist</Auxiliar>
+        <Partizip_II>weitergegangen</Partizip_II>
       </Grammatik>
     </Formangabe>
   </Artikel>
