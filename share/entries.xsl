@@ -5367,6 +5367,7 @@
                           $lemma-without-particle='mögen' or
                           $lemma-without-particle='müssen' or
                           $lemma-without-particle='sollen' or
+                          $lemma-without-particle='vermögen' or
                           $lemma-without-particle='wissen' or
                           $lemma-without-particle='wollen'">
             <xsl:call-template name="verb-entry">
@@ -5875,6 +5876,7 @@
                               $lemma-without-particle='können' or
                               $lemma-without-particle='mögen' or
                               $lemma-without-particle='müssen' or
+                              $lemma-without-particle='vermögen' or
                               $lemma-without-particle='wissen'">
                 <xsl:call-template name="verb-entry">
                   <xsl:with-param name="lemma"
