@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 13.5 -->
-<!-- Andreas Nolda 2023-04-27 -->
+<!-- Version 13.6 -->
+<!-- Andreas Nolda 2023-05-08 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2227,12 +2227,16 @@
               </xsl:choose>
             </xsl:variable>
             <xsl:variable name="article1">
-              <xsl:if test="doc-available(n:absolute-path($file1))">
+              <!-- ignore files containing more than one article -->
+              <xsl:if test="doc-available(n:absolute-path($file1)) and
+                            count(doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel)=1">
                 <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:variable name="article2">
-              <xsl:if test="doc-available(n:absolute-path($file2))">
+              <!-- ignore files containing more than one article -->
+              <xsl:if test="doc-available(n:absolute-path($file2)) and
+                            count(doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel)=1">
                 <xsl:copy-of select="doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel/*"/>
               </xsl:if>
             </xsl:variable>
@@ -2418,12 +2422,16 @@
               </xsl:choose>
             </xsl:variable>
             <xsl:variable name="article1">
-              <xsl:if test="doc-available(n:absolute-path($file1))">
+              <!-- ignore files containing more than one article -->
+              <xsl:if test="doc-available(n:absolute-path($file1)) and
+                            count(doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel)=1">
                 <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:variable name="article2">
-              <xsl:if test="doc-available(n:absolute-path($file2))">
+              <!-- ignore files containing more than one article -->
+              <xsl:if test="doc-available(n:absolute-path($file2)) and
+                            count(doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel)=1">
                 <xsl:copy-of select="doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel/*"/>
               </xsl:if>
             </xsl:variable>

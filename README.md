@@ -130,7 +130,7 @@ will be described in more details in the following subsections.
 
 ### Building DWDSmor lexica
 
-For generating a lexicon from XML sources of DWDS articles in `lexicon/wb/`
+For generating a lexicon from XML sources of DWDS articles in `lexicon/wb/` or
 `lexicon/aux/`, run:
 
 
