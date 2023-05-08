@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 6.1
-% Andreas Nolda 2023-05-04
+% Version 6.2
+% Andreas Nolda 2023-05-08
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -184,11 +184,12 @@
                     <VMPresSg-s><VPPast><VPPres><VPastIndIrreg><VPastIndReg> \
                     <VPastIndStr><VPresSubj><VPastSubjStr><VPresPlInd><VVPP-en> \
                     <VVPP-t><VVPP-t-s><VVPastIndReg><VVPastIndReg-s> \
-                    <VVPastIndStr><VVPastSubjOld><VVPastSubjReg> \
-                    <VVPastSubjReg-s><VVPastSubjStr><VVPastStr><VVPres><VVPres1> \
-                    <VVPres1+Imp><VVPres1-s><VVPres1-s+Imp-s><VVPres2><VVPres2t> \
-                    <VVPres2+Imp><VVPres2+Imp0><VVPres2-s><VVPres2-s+Imp-s> \
-                    <VVPresPl><VVPresSg><VVReg><VVRegFin><VVReg-el/er><VVReg-s>
+                    <VVPastIndStr><VVPastIndStr-s><VVPastSubjOld><VVPastSubjReg> \
+                    <VVPastSubjReg-s><VVPastSubjStr><VVPastStr><VVPastStr-s> \
+                    <VVPres><VVPres1><VVPres1+Imp><VVPres1-s><VVPres1-s+Imp-s> \
+                    <VVPres2><VVPres2t><VVPres2+Imp><VVPres2+Imp0><VVPres2-s> \
+                    <VVPres2-s+Imp-s><VVPresPl><VVPresSg><VVReg><VVRegFin> \
+                    <VVReg-el/er><VVReg-s>
 
 #Other-inflection# = <Circp><Conj-Compar><Conj-Coord><Conj-Inf><Conj-Sub><Intj> \
                      <PInd-Invar><Postp><Pref/Adj><Pref/Adv><Pref/N> \

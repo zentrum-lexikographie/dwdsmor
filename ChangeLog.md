@@ -1,5 +1,9 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-05-08:
+
+* add support for more old spellings of verb forms
+
 2023-05-04:
 
 * add support for old spellings of verb forms

@@ -1,6 +1,6 @@
 % infl.fst
-% Version 4.8
-% Andreas Nolda 2023-05-04
+% Version 4.9
+% Andreas Nolda 2023-05-08
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1704,6 +1704,8 @@ $VVPastIndReg-s$ = $SS$ $VVPastIndReg$
 
 $VVPastIndStr$ = $VPastIndStr$
 
+$VVPastIndStr-s$ = $SS$ $VPastIndStr$
+
 $VVPastSubjReg$ = $VPastSubjReg$
 
 $VVPastSubjReg-s$ = $SS$ $VVPastSubjReg$
@@ -1714,6 +1716,8 @@ $VVPastSubjOld$ = $VVPastSubjStr$ {<Old>}:{}
 
 $VVPastStr$ = $VVPastIndStr$ | \
               $VVPastSubjStr$
+
+$VVPastStr-s$ = $SS$ $VVPastStr$
 
 $VVRegFin$ = $VInflReg$
 
@@ -2186,11 +2190,13 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VVPastIndReg>          $VVPastIndReg$      | \
          <>:<VVPastIndReg-s>        $VVPastIndReg-s$    | \
          <>:<VVPastIndStr>          $VVPastIndStr$      | \
+         <>:<VVPastIndStr-s>        $VVPastIndStr-s$    | \
          <>:<VVPastSubjOld>         $VVPastSubjOld$     | \
          <>:<VVPastSubjReg>         $VVPastSubjReg$     | \
          <>:<VVPastSubjReg-s>       $VVPastSubjReg-s$   | \
          <>:<VVPastSubjStr>         $VVPastSubjStr$     | \
          <>:<VVPastStr>             $VVPastStr$         | \
+         <>:<VVPastStr-s>           $VVPastStr-s$       | \
          <>:<VVPres>                $VVPres$            | \
          <>:<VVPres1>               $VVPres1$           | \
          <>:<VVPres1+Imp>           $VVPres1+Imp$       | \

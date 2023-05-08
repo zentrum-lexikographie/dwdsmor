@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-05-08:
+
+* add inflection classes `<VVPastStr-s>` and `<VVPastIndStr-s>` for more old
+  spellings of verb forms
+
 2023-05-05:
 
 * rename `cap.fst` to `orth.fst`
