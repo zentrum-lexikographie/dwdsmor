@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 4.6 -->
-<!-- Andreas Nolda 2023-04-25 -->
+<!-- Version 5.0 -->
+<!-- Andreas Nolda 2023-05-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -21,11 +21,11 @@
   <!-- superlative: "-esten" -->
   <class superlative="-esten">Adj+e</class>
   <!-- superlative: "ß"/"ss"-alternation and "-esten" -->
-  <class superlative="ß/ss-esten">Adj~+e</class>
+  <class superlative="ß/ss-esten">Adj+e~ss</class>
   <!-- superlative: umlaut and "-esten" -->
   <class superlative="&#x308;-esten">Adj$e</class>
   <!-- superlative: "ß"/"ss"-alternation, umlaut, and "-esten" -->
-  <class superlative="&#x308;ß/ss-esten">Adj~$e</class>
+  <class superlative="&#x308;ß/ss-esten">Adj$e~ss</class>
   <!-- ungradable adjectives: -->
   <class>AdjPos</class>
 </xsl:variable>
@@ -69,7 +69,7 @@
   <!-- genitive singular: "ß"/"ss"-alternation and "-es"
        no plural -->
   <class gender="mask."
-         genitive-singular="ß/ss-es">NMasc-s/Sg</class>
+         genitive-singular="ß/ss-es">NMasc/Sg_es~ss</class>
   <!-- genitive singular: "-s"
        no plural -->
   <class gender="mask."
@@ -97,12 +97,12 @@
        nominative plural: geminate "s" + "-e" -->
   <class gender="mask."
          genitive-singular="-"
-         nominative-plural="-se">NMasc-s0/sse</class>
+         nominative-plural="-se">NMasc_0_e~ss</class>
   <!-- genitive singular: unmarked
        nominative plural: "ß"/"ss"-alternation and "-e" -->
   <class gender="mask."
          genitive-singular="-"
-         nominative-plural="ß/ss-e">NMasc-s0/sse</class>
+         nominative-plural="ß/ss-e">NMasc_0_e~ss</class>
   <!-- genitive singular: unmarked
        nominative plural: umlaut and "-e" -->
   <class gender="mask."
@@ -130,12 +130,12 @@
        nominative plural: geminate "s" + "-e" -->
   <class gender="mask."
          genitive-singular="-ses"
-         nominative-plural="-se">NMasc-s/sse</class>
+         nominative-plural="-se">NMasc_es_e~ss</class>
   <!-- genitive singular: "ß"/"ss"-alternation and "-es"
        nominative plural: "ß"/"ss"-alternation and "-e" -->
   <class gender="mask."
          genitive-singular="ß/ss-es"
-         nominative-plural="ß/ss-e">NMasc-s/sse</class>
+         nominative-plural="ß/ss-e">NMasc_es_e~ss</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: umlaut and "-e" -->
   <class gender="mask."
@@ -148,7 +148,7 @@
        nominative plural: "ß"/"ss"-alternation, umlaut, and "-e" -->
   <class gender="mask."
          genitive-singular="ß/ss-es"
-         nominative-plural="&#x308;ß/ss-e">NMasc-s/$sse</class>
+         nominative-plural="&#x308;ß/ss-e">NMasc_es_$e~ss</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-er" -->
   <class gender="mask."
@@ -333,7 +333,7 @@
   <!-- genitive singular: geminate "s" + "-es"
        no plural -->
   <class gender="neutr."
-         genitive-singular="-ses">NNeut/Sg_sses</class>
+         genitive-singular="-ses">NNeut/Sg_es~ss</class>
   <!-- genitive singular: "-s"
        no plural -->
   <class gender="neutr."
@@ -361,7 +361,7 @@
        nominative plural: geminate "s" + "-e" -->
   <class gender="neutr."
          genitive-singular="-"
-         nominative-plural="-se">NNeut-s0/sse</class>
+         nominative-plural="-se">NNeut_0_e~ss</class>
   <!-- genitive singular: unmarked
        nominative plural: "-nen" -->
   <class gender="neutr."
@@ -384,12 +384,12 @@
        nominative plural: geminate "s" + "-e" -->
   <class gender="neutr."
          genitive-singular="-ses"
-         nominative-plural="-se">NNeut-s/sse</class>
+         nominative-plural="-se">NNeut_es_e~ss</class>
   <!-- genitive singular: "ß"/"ss"-alternation and "-es"
        nominative plural: "ß"/"ss"-alternation and "-e" -->
   <class gender="neutr."
          genitive-singular="ß/ss-es"
-         nominative-plural="ß/ss-e">NNeut-s/sse</class>
+         nominative-plural="ß/ss-e">NNeut_es_e~ss</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: umlaut and "-e" -->
   <class gender="neutr."
@@ -418,7 +418,7 @@
        nominative plural: "ß"/"ss"-alternation, umlaut, and "-er" -->
   <class gender="neutr."
          genitive-singular="ß/ss-es"
-         nominative-plural="&#x308;ß/ss-er">NNeut-s/$sser</class>
+         nominative-plural="&#x308;ß/ss-er">NNeut_es_$er~ss</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: "-en" -->
   <class gender="neutr."
@@ -596,7 +596,7 @@
        nominative plural: geminate "s" + "-e" -->
   <class gender="fem."
          genitive-singular="-"
-         nominative-plural="-se">NFem-s/sse</class>
+         nominative-plural="-se">NFem_0_e~ss</class>
   <!-- genitive singular: unmarked
        nominative plural: umlaut and "-e" -->
   <class gender="fem."
@@ -606,7 +606,7 @@
        nominative plural: "ß"/"ss"-alternation, umlaut, and "-e" -->
   <class gender="fem."
          genitive-singular="-"
-         nominative-plural="&#x308;ß/ss-e">NFem-s/$sse</class>
+         nominative-plural="&#x308;ß/ss-e">NFem_0_$e~ss</class>
   <!-- genitive singular: unmarked
        nominative plural: "-en" -->
   <class gender="fem."
@@ -616,7 +616,7 @@
        nominative plural: "ß"/"ss"-alternation and "-en" -->
   <class gender="fem."
          genitive-singular="-"
-         nominative-plural="ß/ss-en">NFem-s/ssen</class>
+         nominative-plural="ß/ss-en">NFem_0_en~ss</class>
   <!-- genitive singular: unmarked
        nominative plural: umlaut and "-en" -->
   <class gender="fem."

@@ -198,7 +198,7 @@
 <!-- participle prefixes -->
 <xsl:template name="participle-prefix">
   <xsl:param name="form"
-             select="normalize-space(dwds:Partizip_II)"/>
+             select="normalize-space(dwds:Partizip_II)"/><!-- default -->
   <xsl:param name="lemma"/>
   <xsl:variable name="participle-stem">
     <xsl:call-template name="participle-stem">

@@ -1,5 +1,22 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-05-10:
+
+* rename inflection classes `Adj~+e`, `Adj~$e`, `NMasc-s/Sg`, `NMasc-s/sse`,
+  `NMasc-s0/sse`, `NMasc-s/$sse`, `NNeut/Sg_sses`, `NNeut-s/sse`,
+  `NNeut-s0/sse`, `NNeut-s/$sser`, `NFem-s/sse`, `NFem-s/$sse`, `NFem-s/ssen`,
+  `VVReg-s`, `VVPres1-s`, `VVPres1-s+Imp-s`, `VVPres2-s`, `VVPres2-s+Imp-s`,
+  `VVPastStr-s`, `VVPastIndStr-s`, `VVPastIndReg-s`, `VVPastSubjReg-s`,
+  `VMPresSg-s`, and `VMPresPl-s` to `Adj+e~ss`, `Adj$e~ss`, `NMasc/Sg_es~ss`,
+  `NMasc_es_e~ss`, `NMasc_0_e~ss`, `NMasc_es_$e~ss`, `NNeut/Sg_es~ss`,
+  `NNeut_es_e~ss`, `NNeut_0_e~ss`, `NNeut_es_$er~ss`, `NFem_0_e~ss`,
+  `NFem_0_$e~ss`, `NFem_0_en~ss`, `VVReg~ss`, `VVPres1~ss`, `VVPres1+Imp~ss`,
+  `VVPres2~ss`, `VVPres2+Imp~ss`, `VVPastStr~ss`, `VVPastIndStr~ss`,
+  `VVPastIndReg~ss`, `VVPastSubjReg~ss`, `VMPresSg~ss`, and `VMPresPl~ss`,
+  respectively
+* add inflection classes `NMasc/Sg_0~ss`, `NNeut/Sg_0~ss`, `NFem/Sg_0~ss`,
+  `AdjPos~ss`, `Adv~ss`, `Conj~ss-Sub`, and `Intj~ss` for old spellings
+
 2023-05-08:
 
 * add inflection classes `<VVPastStr-s>` and `<VVPastIndStr-s>` for more old
