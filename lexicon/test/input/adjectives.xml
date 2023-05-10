@@ -10,8 +10,7 @@
   <source lemma="glatt" href="wb/WDG/gl/glatt-E_g_7638.xml"/>
   <source lemma="groß" href="wb/WDG/gr/gross-E_g_9797.xml"/>
   <source lemma="gut" href="wb/WDG/gu/gut-E_g_10868.xml"/>
-  <source lemma="hoch" href="aux/adjectives.xml"/>
-  <source lemma="hochrangig" href="wb/DWDS/billes-006/hochrangig.xml"/>
+  <source lemma="hoch" href="wb/WDG/ho/hoch-E_h_6185.xml"/>
   <source lemma="jung" href="wb/WDG/ju/jung-E_j_847.xml"/>
   <source lemma="kalt" href="wb/WDG/ka/kalt-E_k_559.xml"/>
   <source lemma="klein" href="wb/WDG/kl/klein-E_k_4865.xml"/>

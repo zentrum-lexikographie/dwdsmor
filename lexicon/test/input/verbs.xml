@@ -36,7 +36,7 @@
   <source lemma="desoxydieren" href="wb/Duden-1999/de/desoxidieren-D99_030146.xml"/>
   <source lemma="doublieren" href="wb/Duden-1999/du/dublieren-D99_033822.xml"/>
   <source lemma="dublieren" href="wb/Duden-1999/du/dublieren-D99_033822.xml"/>
-  <source lemma="dürfen" href="aux/verbs.xml"/>
+  <source lemma="dürfen" href="wb/WDG/du/duerfen-E_d_5421.xml"/>
   <source lemma="encodieren" href="wb/Duden-1999/en/encodieren-D99_040217.xml"/>
   <source lemma="enkodieren" href="wb/Duden-1999/en/encodieren-D99_040217.xml"/>
   <source lemma="erlöschen" href="wb/WDG/er/erloeschen-E_e_5902.xml"/>
@@ -60,7 +60,6 @@
   <source lemma="graphitieren" href="wb/Duden-1999/gr/graphitieren-D99_064237.xml"/>
   <source lemma="haben" href="wb/WDG/ha/haben-E_h_152.xml"/>
   <source lemma="halten" href="wb/WDG/ha/halten-E_h_1009.xml"/>
-  <source lemma="händeln" index="3" href="aux/verbs.xml"/>
   <source lemma="hektografieren" href="wb/WDG/he/hektografieren-E_h_3959.xml"/>
   <source lemma="hektographieren" href="wb/WDG/he/hektografieren-E_h_3959.xml"/>
   <source lemma="herumfragen" href="wb/DWDS/017-D99_DWDS/herumfragen-D99_071586.xml"/>
@@ -72,18 +71,18 @@
   <source lemma="kartografieren" href="wb/DWDS/wahrig-007/kartografieren.xml"/>
   <source lemma="kartographieren" href="wb/DWDS/wahrig-007/kartografieren.xml"/>
   <source lemma="kennen" href="wb/WDG/ke/kennen-E_k_3003.xml"/>
-  <source lemma="können" href="aux/verbs.xml"/>
+  <source lemma="können" href="wb/WDG/ko/koennen-E_k_7486.xml"/>
   <source lemma="kymografieren" href="wb/Duden-1999/ky/kymographieren-D99_095517.xml"/>
   <source lemma="kymographieren" href="wb/Duden-1999/ky/kymographieren-D99_095517.xml"/>
   <source lemma="laden" index="1" href="wb/WDG/la/laden-E_l_217.xml"/>
-  <source lemma="lassen" href="aux/verbs.xml"/>
-  <source lemma="lesen" index="1" href="wb/WDG/le/lesen-E_l_3786.xml"/>
+  <source lemma="lassen" href="wb/WDG/la/lassen-E_l_1299.xml"/>
+  <source lemma="lesen" index="1" href="wb/Neuartikel-003/lesen-1-E_2115897.xml"/>
   <source lemma="lieben" href="wb/WDG/li/lieben-E_l_4371.xml"/>
   <source lemma="lithografieren" href="wb/WDG/li/lithographieren-E_l_5110.xml"/>
   <source lemma="lithographieren" href="wb/WDG/li/lithographieren-E_l_5110.xml"/>
   <source lemma="mahlen" href="wb/WDG/ma/mahlen-E_m_510.xml"/>
-  <source lemma="mögen" href="aux/verbs.xml"/>
-  <source lemma="müssen" href="aux/verbs.xml"/>
+  <source lemma="mögen" href="wb/WDG/mo/moegen-E_m_5616.xml"/>
+  <source lemma="müssen" href="wb/WDG/mu/muessen-E_m_7083.xml"/>
   <source lemma="orgeln" href="wb/Neuartikel/orgeln-E_4656639.xml"/>
   <source lemma="oxidieren" href="wb/WDG/ox/oxidieren-E_o_1844.xml"/>
   <source lemma="oxydieren" href="wb/WDG/ox/oxidieren-E_o_1844.xml"/>
@@ -103,7 +102,7 @@
   <source lemma="sein" index="3" href="wb/WDG/se/sein-E_s_10921.xml"/>
   <source lemma="senden" href="wb/WDG/se/senden-E_s_11514.xml"/>
   <source lemma="shreddern" href="wb/DWDS/wahrig-003/schreddern-E_6927892.xml"/>
-  <source lemma="sollen" href="aux/verbs.xml"/>
+  <source lemma="sollen" href="wb/WDG/so/sollen-E_s_13646.xml"/>
   <source lemma="sprechen" href="wb/WDG/sp/sprechen-E_s_16011.xml"/>
   <source lemma="springen" href="wb/WDG/sp/springen-E_s_16168.xml"/>
   <source lemma="stecken" index="1" href="wb/WDG/st/stecken-E_s_18255.xml"/>
@@ -123,20 +122,18 @@
   <source lemma="umsehen" href="wb/WDG/um/umsehen-E_u_1205.xml"/>
   <source lemma="vacieren" href="wb/Duden-1999/va/vazieren-D99_174427.xml"/>
   <source lemma="vazieren" href="wb/Duden-1999/va/vazieren-D99_174427.xml"/>
-  <source lemma="verhohnepiepeln" href="wb/DWDS/wahrig-006/verhohnepipeln-E_v_1778.xml"/>
-  <source lemma="verhohnepipeln" href="wb/DWDS/wahrig-006/verhohnepipeln-E_v_1778.xml"/>
   <source lemma="verwerten" href="wb/WDG/ve/verwerten-E_v_4060.xml"/>
   <source lemma="videografieren" href="wb/Duden-1999/vi/videographieren-D99_178720.xml"/>
   <source lemma="videographieren" href="wb/Duden-1999/vi/videographieren-D99_178720.xml"/>
   <source lemma="vorbedenken" href="wb/WDG/vo/vorbedenken-E_v_5280.xml"/>
   <source lemma="vorbesprechen" href="wb/Neuartikel-001/vorbesprechen-E_2607581.xml"/>
   <source lemma="wenden" href="wb/WDG/we/wenden-E_w_3542.xml"/>
-  <source lemma="werden" href="aux/verbs.xml"/>
+  <source lemma="werden" href="wb/WDG/we/werden-E_w_3657.xml"/>
   <source lemma="werten" href="wb/WDG/we/werten-E_w_4086.xml"/>
   <source lemma="wiederverwerten" href="wb/Neuartikel/wiederverwerten-E_6029911.xml"/>
   <source lemma="winken" href="wb/Neuartikel/winken-E_7526228.xml"/>
   <source lemma="wissen" href="wb/WDG/wi/wissen-E_w_5504.xml"/>
-  <source lemma="wollen" href="aux/verbs.xml"/>
+  <source lemma="wollen" href="wb/WDG/wo/wollen-E_w_6123.xml"/>
   <source lemma="zerspringen" href="wb/WDG/ze/zerspringen-E_z_1625.xml"/>
   <source lemma="zutzeln" href="wb/Duden-1999/zu/zuzeln-D99_192631.xml"/>
   <source lemma="zuzeln" href="wb/Duden-1999/zu/zuzeln-D99_192631.xml"/>
