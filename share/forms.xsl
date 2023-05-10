@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 5.0 -->
-<!-- Andreas Nolda 2023-03-15 -->
+<!-- Version 5.1 -->
+<!-- Andreas Nolda 2023-05-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -218,7 +218,6 @@
   <xsl:param name="lemma"/>
   <xsl:param name="lemma1"/>
   <xsl:param name="lemma2"/>
-  <xsl:param name="spelling-type"/>
   <xsl:if test="matches($lemma,concat('^.*[^-]-?',$lemma2,'$'),'i')">
     <xsl:choose>
       <!-- hyphenated spellings ("Schiff-Fahrt") -->
@@ -230,18 +229,7 @@
                           select="replace($lemma,concat('-',$lemma2,'$'),'','i')"/>
         </xsl:call-template>
       </xsl:when>
-      <!-- old spellings ("Schiffahrt") -->
-      <xsl:when test="$spelling-type='U' and
-                      matches($lemma1,'([flmnprt])\1$') and
-                      matches(substring($lemma1,string-length($lemma1)),substring($lemma2,1,1),'i')">
-        <xsl:call-template name="set-comp-stem-case">
-          <xsl:with-param name="lemma"
-                          select="$lemma1"/>
-          <xsl:with-param name="comp-stem"
-                          select="replace($lemma,concat(substring($lemma2,2),'$'),'','i')"/>
-        </xsl:call-template>
-      </xsl:when>
-      <!-- new spellings ("Schifffahrt") -->
+      <!-- non-hyphenated spellings ("Schifffahrt") -->
       <xsl:otherwise>
         <xsl:call-template name="set-comp-stem-case">
           <xsl:with-param name="lemma"
