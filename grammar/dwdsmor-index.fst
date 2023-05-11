@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 7.1
-% Andreas Nolda 2023-05-05
+% Version 7.2
+% Andreas Nolda 2023-05-11
 
 #include "symbols.fst"
 #include "stemtype.fst"
@@ -20,7 +20,7 @@ $LEX$ = "dwds.lex"
 
 $LEX$ = $CleanupInflAnalysis$ || $LEX$
 
-$LEX$ = $LEX$ || $CleanupIndex$
+$LEX$ = $LEX$ || $CleanupIndex$ || $CleanupOrth$
 
 
 % surface triggers

@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 8.3
-% Andreas Nolda 2023-05-05
+% Version 8.4
+% Andreas Nolda 2023-05-11
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -37,7 +37,7 @@ $LEX$ = ( $LEX$ || $BaseStemFilter$) | \
 
 $LEX$ = $CleanupInflAnalysis$ || $LEX$
 
-$LEX$ = $LEX$ || $CleanupIndex$
+$LEX$ = $LEX$ || $CleanupIndex$ || $CleanupOrth$
 
 
 % surface triggers

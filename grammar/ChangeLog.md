@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-05-11:
+
+* pass through `<OLDORTH>` symbols from the lexicon
+
 2023-05-10:
 
 * rename inflection classes `Adj~+e`, `Adj~$e`, `NMasc-s/Sg`, `NMasc-s/sse`,
