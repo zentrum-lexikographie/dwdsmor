@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 5.1 -->
-<!-- Andreas Nolda 2023-05-10 -->
+<!-- Version 6.0 -->
+<!-- Andreas Nolda 2023-03-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -49,29 +49,17 @@
     <xsl:when test="starts-with($form,'-')">
       <xsl:value-of select="$form"/>
     </xsl:when>
-    <!-- forms without "ß"/"ss"-alternation nor umlaut nor suffix -->
+    <!-- forms without umlaut nor suffix -->
     <xsl:when test="$form=$lemma">-</xsl:when>
-    <!-- forms with "ß"/"ss"-alternation -->
-    <xsl:when test="matches($form,concat('^',n:sz-ss-alternation($lemma),'$'))">ß/ss-</xsl:when>
     <!-- forms with umlaut -->
     <xsl:when test="matches($form,concat('^',n:umlaut-re($lemma),'$'))">&#x308;-</xsl:when>
-    <!-- forms with "ß"/"ss"-alternation and umlaut -->
-    <xsl:when test="matches($form,concat('^',n:umlaut-re(n:sz-ss-alternation($lemma)),'$'))">&#x308;ß/ss-</xsl:when>
     <!-- forms with suffix -->
     <xsl:when test="matches($form,concat('^',$lemma,'.+$'))">
       <xsl:value-of select="concat('-',replace($form,concat('^',$lemma),''))"/>
     </xsl:when>
-    <!-- forms with "ß"/"ss"-alternation and suffix -->
-    <xsl:when test="matches($form,concat('^',n:sz-ss-alternation($lemma),'.+$'))">
-      <xsl:value-of select="concat('ß/ss-',replace($form,concat('^',n:sz-ss-alternation($lemma)),''))"/>
-    </xsl:when>
     <!-- forms with umlaut and suffix -->
     <xsl:when test="matches($form,concat('^',n:umlaut-re($lemma),'.+$'))">
       <xsl:value-of select="concat('&#x308;-',replace($form,concat('^',n:umlaut-re($lemma)),''))"/>
-    </xsl:when>
-    <!-- forms with "ß"/"ss"-alternation, umlaut, and suffix -->
-    <xsl:when test="matches($form,concat('^',n:umlaut-re(n:sz-ss-alternation($lemma)),'.+$'))">
-      <xsl:value-of select="concat('&#x308;ß/ss-',replace($form,concat('^',n:umlaut-re(n:sz-ss-alternation($lemma))),''))"/>
     </xsl:when>
     <!-- other forms -->
     <xsl:otherwise>
@@ -198,7 +186,7 @@
 <!-- participle prefixes -->
 <xsl:template name="participle-prefix">
   <xsl:param name="form"
-             select="normalize-space(dwds:Partizip_II)"/><!-- default -->
+             select="normalize-space(dwds:Partizip_II)"/>
   <xsl:param name="lemma"/>
   <xsl:variable name="participle-stem">
     <xsl:call-template name="participle-stem">
@@ -229,7 +217,7 @@
                           select="replace($lemma,concat('-',$lemma2,'$'),'','i')"/>
         </xsl:call-template>
       </xsl:when>
-      <!-- non-hyphenated spellings ("Schifffahrt") -->
+      <!-- other spellings -->
       <xsl:otherwise>
         <xsl:call-template name="set-comp-stem-case">
           <xsl:with-param name="lemma"

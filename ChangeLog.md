@@ -1,5 +1,10 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-05-15:
+
+* remove support for generating lexical entries from non-standard spellings in
+  DWDS articles, which lack proper grammatical information for them
+
 2023-05-10:
 
 * use new "ss" spellings as lemmas for old "ß" spellings

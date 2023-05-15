@@ -19,8 +19,6 @@
 <Stem>jung<ADJ><base><native><Adj$>
 <Stem>kalt<ADJ><base><native><Adj$e>
 <Stem>klein<ADJ><base><native><Adj+>
-<Stem>nas:ßs:<><PAR1><ADJ><base><native><Adj+e~ss>
-<Stem>nas:ßs:<><PAR2><ADJ><base><native><Adj$e~ss>
 <Stem>nass<PAR1><ADJ><base><native><Adj+e>
 <Stem>nass<PAR2><ADJ><base><native><Adj$e>
 <Stem>orange<ADJ><base><foreign><AdjPos0>

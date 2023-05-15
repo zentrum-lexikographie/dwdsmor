@@ -66,7 +66,6 @@
 <Stem>Fisch<NN><base><native><NMasc_es_e>
 <Stem>Flaum<NN><base><native><NMasc/Sg_es>
 <Stem>Floß<NN><base><native><NNeut_es_$e>
-<Stem>Flus:ßs:<><NN><base><native><NMasc_es_$e~ss>
 <Stem>Fluss<NN><base><native><NMasc_es_$e>
 <Stem>Fossil<NN><base><foreign><NNeut_s_ien>
 <Stem>Foyer<NN><base><foreign><NNeut_0_s>
@@ -105,7 +104,6 @@
 <Stem>Kissen<NN><base><native><NNeut_s_x>
 <Stem>Klee<NN><base><native><NMasc/Sg_s>
 <Stem>Kloster<NN><base><native><NNeut_s_$>
-<Stem>Kompas:ßs:<><NN><base><foreign><NMasc_es_e~ss>
 <Stem>Kompass<NN><base><foreign><NMasc_es_e>
 <Stem>Konto<PAR1><NN><base><foreign><NNeut-o/en>
 <Stem>Konto<PAR1><NN><base><foreign><NNeut_s_s>
@@ -128,7 +126,6 @@
 <Stem>Namen<PAR2><NN><base><native><NMasc_s_x>
 <Stem>Nerv<NN><base><foreign><NMasc_s_en>
 <Stem>Neutron<NN><base><foreign><NNeut_s_en>
-<Stem>Nus:ßs:<><NN><base><native><NFem_0_$e~ss>
 <Stem>Nuss<NN><base><native><NFem_0_$e>
 <Stem>Oma<NN><base><native><NFem_0_s>
 <Stem>Opa<NN><base><native><NMasc_s_s>
@@ -150,7 +147,6 @@
 <Stem>Schema<NN><base><foreign><NNeut_s_s>
 <Stem>Schi<NN><base><foreign><NMasc_s_er>
 <Stem>Schi<NN><base><foreign><NMasc_s_x>
-<Stem>Schlos:ßs:<><IDX2><NN><base><native><NNeut_es_$er~ss>
 <Stem>Schloss<IDX2><NN><base><native><NNeut_es_$er>
 <Stem>Schmerz<NN><base><native><NMasc_es_en>
 <Stem>See<IDX1><NN><base><native><NMasc_s_n>
@@ -163,7 +159,6 @@
 <Stem>Spital<PAR2><NN><base><native><NMasc_s_$er>
 <Stem>Staat<IDX1><NN><base><native><NMasc_es_en>
 <Stem>Stadion<NN><base><foreign><NNeut-on/en>
-<Stem>Stewardes:ßs:<><NN><base><foreign><NFem_0_en~ss>
 <Stem>Stewardess<NN><base><foreign><NFem_0_en>
 <Stem>Tennismatch<PAR1><NN><base><native><NNeut_es_es>
 <Stem>Tennismatch<PAR1><NN><base><native><NNeut_es_s>
@@ -184,5 +179,4 @@
 <Stem>Zirkus<NN><base><foreign><NMasc_0_e~ss>
 <Stem>Zoo<NN><base><foreign><NMasc_0_s>
 <Stem>Zoo<NN><base><foreign><NMasc_s_s>
-<Stem>Überflus:ßs:<><NN><base><native><NMasc_es_$e~ss>
 <Stem>Überfluss<NN><base><native><NMasc_es_$e>

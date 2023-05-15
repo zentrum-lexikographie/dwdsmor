@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 5.2 -->
-<!-- Andreas Nolda 2023-05-10 -->
+<!-- Version 6.0 -->
+<!-- Andreas Nolda 2023-05-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -180,34 +180,6 @@
           <xsl:sequence select="replace($string,'au([^aeiouäöü]*)$','äu$1')"/>
         </xsl:when>
       </xsl:choose>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:sequence select="$string"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:function>
-
-<!-- return the "ß"/"ss"-alternation variant of $string, if any -->
-<xsl:function name="n:sz-ss-alternation">
-  <xsl:param name="string"/>
-  <xsl:choose>
-    <!-- replace final "ß" with "ss" -->
-    <xsl:when test="matches($string,'ß$')">
-      <xsl:sequence select="replace($string,'ß$','ss')"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:sequence select="$string"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:function>
-
-<!-- return the "ss"/"ß"-alternation variant of $string, if any -->
-<xsl:function name="n:ss-sz-alternation">
-  <xsl:param name="string"/>
-  <xsl:choose>
-    <!-- replace final "ss" with "ß" -->
-    <xsl:when test="matches($string,'ss$')">
-      <xsl:sequence select="replace($string,'ss$','ß')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:sequence select="$string"/>

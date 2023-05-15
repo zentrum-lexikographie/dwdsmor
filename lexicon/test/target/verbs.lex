@@ -71,7 +71,6 @@
 <Stem><ge>la:ud<FB>:<>e:<>n:<><IDX1><PAR1><V><base><native><VVPastIndStr>
 <Stem><ge>la:ud<FB>:<>e:<>n:<><IDX1><PAR2><V><base><native><VVPastIndStr>
 <Stem><ge>la:äd<FB>e:<>n:<><IDX1><PAR1><V><base><native><VVPres2>
-<Stem><ge>la:äs:ßs:<><FB>:<>e:<>n:<><V><base><native><VVPres2~ss>
 <Stem><ge>la:äss<FB>:<>e:<>n:<><V><base><native><VVPres2>
 <Stem><ge>la:üd<FB>:<>e:<>n:<><IDX1><PAR1><V><base><native><VVPastSubjStr>
 <Stem><ge>la:üd<FB>:<>e:<>n:<><IDX1><PAR2><V><base><native><VVPastSubjStr>
@@ -79,7 +78,6 @@
 <Stem><ge>lad<FB>:<>e:<>n:<><IDX1><PAR1><V><base><native><VVPres1+Imp>
 <Stem><ge>lad<FB>:<>e:<>n:<><IDX1><PAR2><V><base><native><VVPP-en><haben>
 <Stem><ge>lad<FB>:<>e:<>n:<><IDX1><PAR2><V><base><native><VVPres>
-<Stem><ge>las:ßs:<><FB>:<>e:<>n:<><V><base><native><VVPres1+Imp~ss>
 <Stem><ge>lass<FB>:<>e:<>n:<><V><base><native><VVPP-en><haben>
 <Stem><ge>lass<FB>:<>e:<>n:<><V><base><native><VVPres1+Imp>
 <Stem><ge>le:as<FB>:<>e:<>n:<><IDX1><V><base><native><VVPastIndStr>
@@ -97,14 +95,9 @@
 <Stem><ge>mö:og:c<FB>:he:<>n:<><V><base><native><VVPastIndReg>
 <Stem><ge>mög:c<FB>:he:<>n:<><V><base><native><VVPastSubjReg>
 <Stem><ge>mög<FB>:<>e:<>n:<><V><base><native><VMPresPl>
-<Stem><ge>mü:us:ßs:<><FB>:<>e:<>n:<><V><base><native><VMPresSg~ss>
-<Stem><ge>mü:us:ßs:<><FB>:<>e:<>n:<><V><base><native><VVPP-t~ss><haben>
-<Stem><ge>mü:us:ßs:<><FB>:<>e:<>n:<><V><base><native><VVPastIndReg~ss>
 <Stem><ge>mü:uss<FB>:<>e:<>n:<><V><base><native><VMPresSg>
 <Stem><ge>mü:uss<FB>:<>e:<>n:<><V><base><native><VVPP-t><haben>
 <Stem><ge>mü:uss<FB>:<>e:<>n:<><V><base><native><VVPastIndReg>
-<Stem><ge>müs:ßs:<><FB>:<>e:<>n:<><V><base><native><VMPresPl~ss>
-<Stem><ge>müs:ßs:<><FB>:<>e:<>n:<><V><base><native><VVPastSubjReg~ss>
 <Stem><ge>müss<FB>:<>e:<>n:<><V><base><native><VMPresPl>
 <Stem><ge>müss<FB>:<>e:<>n:<><V><base><native><VVPastSubjReg>
 <Stem><ge>orgel<FB>:<>n:<><V><base><native><VVReg-el/er><haben>
@@ -219,14 +212,10 @@
 <Stem><ge>wert<FB>:<>e:<>n:<><V><base><native><VVReg><haben>
 <Stem><ge>wi:es:is:ß<FB>:<>e:<>n:<><V><base><native><VMPresSg>
 <Stem><ge>wi:unk<FB>:<>e:<>n:<><V><base><native><VVPP-en><haben>
-<Stem><ge>wi:us:ßs:<><FB>:<>e:<>n:<><V><base><native><VVPP-t~ss><haben>
-<Stem><ge>wi:us:ßs:<><FB>:<>e:<>n:<><V><base><native><VVPastIndReg~ss>
 <Stem><ge>wi:uss<FB>:<>e:<>n:<><V><base><native><VVPP-t><haben>
 <Stem><ge>wi:uss<FB>:<>e:<>n:<><V><base><native><VVPastIndReg>
-<Stem><ge>wi:üs:ßs:<><FB>:<>e:<>n:<><V><base><native><VVPastSubjReg~ss>
 <Stem><ge>wi:üss<FB>:<>e:<>n:<><V><base><native><VVPastSubjReg>
 <Stem><ge>wink<FB>:<>e:<>n:<><V><base><native><VVReg><haben>
-<Stem><ge>wis:ßs:<><FB>:<>e:<>n:<><V><base><native><VMPresPl~ss>
 <Stem><ge>wiss<FB>:<>e:<>n:<><V><base><native><VMPresPl>
 <Stem><ge>wo:ill<FB>:<>e:<>n:<><IDX2><V><base><native><VMPresSg>
 <Stem><ge>woll<FB>:<>e:<>n:<><IDX2><V><base><native><VMPresPl>
@@ -328,9 +317,7 @@
 <Stem>kymographier<FB>:<>e:<>n:<><PAR2><V><base><native><VVReg><haben>
 <Stem>könn<FB>:<>e:<>n:<><V><base><native><VVPP-en><haben>
 <Stem>la:is:es:ß<FB>:<>e:<>n:<><V><base><native><VVPastStr>
-<Stem>la:äs:ßs:<><FB>:<>e:<>n:<><V><base><native><VVPres2~ss>
 <Stem>la:äss<FB>:<>e:<>n:<><V><base><native><VVPres2>
-<Stem>las:ßs:<><FB>:<>e:<>n:<><V><base><native><VVPres1+Imp~ss>
 <Stem>lass<FB>:<>e:<>n:<><V><base><native><VVPP-en><haben>
 <Stem>lass<FB>:<>e:<>n:<><V><base><native><VVPres1+Imp>
 <Stem>lithografier<FB>:<>e:<>n:<><PAR1><V><base><native><VVReg><haben>

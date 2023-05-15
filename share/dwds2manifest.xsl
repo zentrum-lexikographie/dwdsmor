@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2manifest.xsl -->
-<!-- Version 1.1 -->
-<!-- Andreas Nolda 2023-03-29 -->
+<!-- Version 2.0 -->
+<!-- Andreas Nolda 2023-05-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -73,8 +73,9 @@
   <xsl:variable name="file"
                 select="n:relative-path(document-uri(/))"/>
   <!-- ignore duplicate lemma-index pairs -->
+  <!-- ignore idioms and non-standard spellings -->
   <xsl:for-each-group select="dwds:Formangabe/dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
-                                                             [not(@Typ='U_Falschschreibung')]"
+                                                             [not(@Typ)]"
                       group-by="normalize-space(.)">
     <xsl:variable name="lemma"
                   select="normalize-space(.)"/>
