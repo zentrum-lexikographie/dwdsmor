@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 5.3
-% Andreas Nolda 2023-05-05
+% Version 5.4
+% Andreas Nolda 2023-05-16
 
 #include "symbols.fst"
 #include "num.fst"
@@ -145,6 +145,8 @@ $MORPH$ = $CleanupIndexAnalysis$ || $MORPH$
 % orthography
 
 $MORPH$ = $OrthOldAnalysis$ || $MORPH$
+
+$MORPH$ = $MORPH$ | ($MORPH$ || $OrthCH$)  <CH>:<>
 
 $MORPH$ = $MORPH$ | ($MORPH$ || $OrthCap$) <CAP>:<>
 

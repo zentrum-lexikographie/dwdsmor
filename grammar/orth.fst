@@ -1,6 +1,6 @@
 % orth.fst
-% Version 2.1
-% Andreas Nolda 2023-05-11
+% Version 2.2
+% Andreas Nolda 2023-05-16
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -15,6 +15,13 @@ ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
 
 $OrthOldAnalysis$ = .* | \
                     .* <>:<OLDORTH>+ .* <OLDORTH>:<>
+
+
+% generate Swiss variants
+
+$C$ = [#char#]-[ß]
+
+$OrthCH$ = ($C$* ß:{ss})+ $C$*
 
 
 % generate capitalised variants

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-05-05
+# Gregor Middell and Andreas Nolda 2023-05-16
 
 import sys
 import os
@@ -92,7 +92,8 @@ class Analysis(tuple):
     _mood_tags         = {"Ind": True, "Subj": True, "Imp": True}
     _tense_tags        = {"Pres": True, "Past": True}
     _metainfo_tags     = {"Old": True, "NonSt": True}
-    _orthinfo_tags     = {"OLDORTH": True, "CAP": True}
+    _orthinfo_tags     = {"OLDORTH": True, "CH": True}
+    _charinfo_tags     = {"CAP": True}
 
     def tag_of_type(self, type_map):
         for tag in self.tags:
@@ -169,6 +170,11 @@ class Analysis(tuple):
         tag = self.tag_of_type(Analysis._orthinfo_tags)
         return tag
 
+    @cached_property
+    def charinfo(self):
+        tag = self.tag_of_type(Analysis._charinfo_tags)
+        return tag
+
     def as_dict(self):
         return {"form": self.form,
                 "analysis": self.analysis,
@@ -192,7 +198,8 @@ class Analysis(tuple):
                 "mood": self.mood,
                 "tense": self.tense,
                 "metainfo": self.metainfo,
-                "orthinfo": self.orthinfo}
+                "orthinfo": self.orthinfo,
+                "charinfo": self.charinfo}
 
     def _decode_component_text(text):
         lemma = ""
@@ -309,7 +316,8 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                              "Mood",
                              "Tense",
                              "Metainfo",
-                             "Orthinfo"])
+                             "Orthinfo",
+                             "Charinfo"])
     for word, analysis in zip(words, analyses):
         for a in analysis:
             csv_writer.writerow([term.bold(word),
@@ -334,7 +342,8 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                                  a.mood,
                                  a.tense,
                                  a.metainfo,
-                                 a.orthinfo])
+                                 a.orthinfo,
+                                 a.charinfo])
 
 def output_analyses(transducer, input, output, header=True, force_color=False, output_format="tsv"):
     words = tuple(word.strip() for word in input.readlines() if word.strip())
