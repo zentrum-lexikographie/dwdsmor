@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-05-16
+# Gregor Middell and Andreas Nolda 2023-05-17
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 7.1
+version = 7.2
 
 BASEDIR = os.path.dirname(__file__)
 LIBDIR  = os.path.join(BASEDIR, "lib")
@@ -42,6 +42,8 @@ class Analysis(tuple):
         analysis = self.analysis
         analysis = re.sub(r"<COMP>(:?<concat>|<hyph>)", "", analysis)
         analysis = re.sub(r"(?:<IDX[^>]+>)?(?:<PAR[^>]+>)?<\+[^>]+>.*", "", analysis)
+        if analysis == "\:":
+            analysis = ":"
         return analysis
 
     @cached_property
@@ -207,19 +209,23 @@ class Analysis(tuple):
         text_len = len(text)
         ti = 0
         prev = None
-        while ti < text_len:
-            current = text[ti]
-            nti = ti + 1
-            next = text[nti] if nti < text_len else None
-            if current == ":":
-                lemma += prev or ""
-                form  += next or ""
-                ti += 1
-            elif next != ":":
-                lemma += current
-                form  += current
-            ti += 1
-            prev = current
+        if text == "\:":
+            lemma = ":"
+            form = ":"
+        else:
+            while ti < text_len:
+                current = text[ti]
+                nti = ti + 1
+                next = text[nti] if nti < text_len else None
+                if current == ":":
+                    lemma += prev or ""
+                    form  += next or ""
+                    ti += 1
+                elif next != ":":
+                    lemma += current
+                    form  += current
+                    ti += 1
+                    prev = current
         return {"lemma": lemma, "form": form}
 
     def _decode_analysis(analysis):

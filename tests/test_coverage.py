@@ -49,7 +49,10 @@ TUEBADZ_DWDSMOR_POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
                            "VVIMP":   ["V"],
                            "VVINF":   ["V"],
                            "VVIZU":   ["V"],
-                           "VVPP":    ["V"]}
+                           "VVPP":    ["V"],
+                           "$.":      ["PUNCT"],
+                           "$,":      ["PUNCT"],
+                           "$(":      ["PUNCT"]}
 
 # mapping between divergent TüBa-D/Z and DWDSmor lemmas
 TUEBADZ_DWDSMOR_LEMMA_MAP = {"ADJA": {"acht": "achte",
@@ -529,7 +532,7 @@ def lemmatize(transducer, w):
     form, lemma, pos = (w.get("form", ""), w.get("lemma", ""), w.get("pos", ""))
     dwdsmor_lemma = ""
     dwdsmor_pos = ""
-    if not (pos == "FM" or pos == "XY" or pos.startswith("$")):
+    if not (pos == "FM" or pos == "XY"):
         if pos == "PTKVZ" or lemma == "#refl":
             lemma = form
         lemma = lemma.split("%")[0]
@@ -583,7 +586,7 @@ def test_tuebadz_coverage(project_dir, tuebadz, transducer):
                        str(matches[True]),
                        str(matches[False]))
                       for pos, matches in (sorted(stats.items()))
-                      if not (pos == "FM" or pos == "XY" or pos.startswith("$"))))
+                      if not (pos == "FM" or pos == "XY")))
 
 def test_tuebadz_lemmatisation(project_dir, tuebadz, transducer):
     lemmatized = (lemmatize(transducer, w) for s in tuebadz for w in s)
@@ -601,7 +604,7 @@ def test_tuebadz_lemmatisation(project_dir, tuebadz, transducer):
                        w.dwdsmor_pos,
                        w.is_match)
                       for w in lemmatized
-                      if not (w.pos == "FM" or w.pos == "XY" or w.pos.startswith("$"))))
+                      if not (w.pos == "FM" or w.pos == "XY")))
 
 def wb_coverage(transducer, wb_entries):
     for wb_n, wb_entry in enumerate(wb_entries):
