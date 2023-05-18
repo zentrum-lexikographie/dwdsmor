@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-05-17:
+
+* add rule for supporting old "ß" spelling, marked as `<OLDORTH>`
+
 2023-05-16:
 
 * add support for Swiss spelling, marked as `<CH>`

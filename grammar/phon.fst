@@ -1,6 +1,6 @@
 % phon.fst
-% Version 3.4
-% Andreas Nolda 2023-03-25
+% Version 3.5
+% Andreas Nolda 2023-05-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -57,7 +57,7 @@ $R2$ = ((st<FB>) s <=> <> (t:.)) & ((st<FB>s:.) t <=> <>)
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
             #lemma-index# #paradigm-index# #category# #feature# #info# <e><UL>]
 
-$Cons$ = [bcdfghjklmnpqrstvwxyzß]
+$Cons$ = [#consonant#]
 
 $X$ = $Cons$* <FB>? ([#ss-trigger#] | (e ($Cons$ <^Ax>? | <^Del>)))?
 
@@ -205,7 +205,7 @@ $R10c$ = e => <> (<DB> lein)
 % non-optional "e"-elision
 % Enge<DB>lein -> Eng<DB>lein
 
-$R10cAnalysis$ = e <=> <> (<DB> lein)
+$R10cLv2$ = e <=> <> (<DB> lein)
 
 $R10$ = $R10a$ || $R10b$ || $R10c$
 
@@ -394,4 +394,4 @@ $R17$ = .*
 $PHON$ = $R1$  || $R2$  || $R3$  || $R4$  || $R5$  || $R6$  || $R7$  || $R8$  || $R9$ || \
          $R10$ || $R11$ || $R12$ || $R13$ || $R14$ || $R15$ || $R16$ || $R17$
 
-$PHONAnalysis$ = $R10b$ || $R10cAnalysis$ || $R16$
+$PHONLv2$ = $R10b$ || $R10cLv2$ || $R16$

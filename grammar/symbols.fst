@@ -1,15 +1,27 @@
 % symbols.fst
-% Version 6.3
-% Andreas Nolda 2023-05-10
+% Version 6.4
+% Andreas Nolda 2023-05-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
 #entry-type# = <Stem><Suffix><Prefix>
 
-#uppercase# = A-ZÀ-ÖŒØ-Üẞ % ...
+#uppercase-vowel# = AEIOUÀ-ÆÈ-ËÌ-ÏÒ-ÖŒØÙ-Ü % ...
 
-#lowercase# = a-zà-öœø-üß % ...
+#lowercase-vowel# = aeiouà-æè-ëì-ïò-öœøù-ü % ...
+
+#uppercase-consonant# = BCDFGHJKLMNPQRSTVWXYZẞ % ...
+
+#lowercase-consonant# = bcdfghjklmnpqrstvwxyzß % ...
+
+#vowel# = #uppercase-vowel# #lowercase-vowel#
+
+#consonant# = #uppercase-consonant# #lowercase-consonant#
+
+#uppercase# = #uppercase-vowel# #uppercase-consonant#
+
+#lowercase# = #lowercase-vowel# #lowercase-consonant#
 
 #num# = 0-9
 

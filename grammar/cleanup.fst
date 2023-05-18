@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 4.4
-% Andreas Nolda 2023-05-11
+% Version 5.0
+% Andreas Nolda 2023-05-17
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -13,7 +13,7 @@ ALPHABET = [#entry-type# #char# #lemma-index# #paradigm-index# #category# \
             #stem-type# #suff# #origin# #orthinfo# <Abbr><FB><VB>] \
            <>:[#inflection# #auxiliary# <ge>]
 
-$CleanupInflAnalysis$ = .*
+$CleanupInflLv2$ = .*
 
 
 % clean up lemma and paradigm indices
@@ -25,13 +25,23 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #category# #stem-type# \
 $CleanupIndex$ = .*
 
 
-% clean up orthography markers
+% clean up old-orthography markers
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #category# #stem-type# \
             #suff# #origin# #inflection# #auxiliary# <Abbr><FB><VB><ge>] \
            [#orthinfo#]:<>
 
-$CleanupOrth$ = .*
+$CleanupOrthOld$ = .*
+
+
+% clean up old-orthography markers on analysis level
+
+ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #feature# #metainfo#]
+
+% deduplicate and postpone <OLDORTH>
+$CleanupOrthOldLv2$ = .* | \
+                      .* <>:<OLDORTH>+ .* <OLDORTH>:<>
 
 
 % clean up word-formation-related symbols on analysis level
@@ -40,7 +50,7 @@ ALPHABET = [#char# #orth-trigger# #boundary-trigger# #lemma-index# \
             #paradigm-index# #wf-process# #wf-means# #orthinfo#] \
            <>:[#entry-type# #category# #stem-type# #suff# #origin# <Abbr>]
 
-$CleanupWFAnalysis$ = .*
+$CleanupWFLv2$ = .*
 
 
 % clean up word-formation-related symbols
@@ -54,7 +64,7 @@ $CleanupWF$ = .*
 
 % clean up lemma and paradigm indices on analysis level
 
-ALPHABET = [#char# #morpheme-boundary# #wf-process# #wf-means# #feature# #info#] \
+ALPHABET = [#char# #morpheme-boundary# #feature# #info#] \
            <>:[#lemma-index# #paradigm-index#]
 
-$CleanupIndexAnalysis$ = .*
+$CleanupIndexLv2$ = .*

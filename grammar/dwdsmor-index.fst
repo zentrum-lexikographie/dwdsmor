@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 7.2
-% Andreas Nolda 2023-05-11
+% Version 8.0
+% Andreas Nolda 2023-05-17
 
 #include "symbols.fst"
 #include "stemtype.fst"
@@ -18,9 +18,9 @@ $LEX$ = "dwds.lex"
 
 % cleanup of level-specific symbols
 
-$LEX$ = $CleanupInflAnalysis$ || $LEX$
+$LEX$ = $CleanupInflLv2$ || $LEX$
 
-$LEX$ = $LEX$ || $CleanupIndex$ || $CleanupOrth$
+$LEX$ = $LEX$ || $CleanupIndex$ || $CleanupOrthOld$
 
 
 % surface triggers
@@ -39,7 +39,7 @@ $LEX$ = $BASE$
 
 % cleanup of word-formation-related symbols
 
-$LEX$ = $CleanupWFAnalysis$ || $LEX$
+$LEX$ = $CleanupWFLv2$ || $LEX$
 
 $LEX$ = $LEX$ || $CleanupWF$
 
@@ -52,9 +52,7 @@ $MORPH$ = $LEX$ $INFL$ || $InflFilter$
 % inflection markers
 
 $MORPH$ = $MORPH$ || $MarkerGe$
-
 $MORPH$ = $MORPH$ || $MarkerZu$
-
 $MORPH$ = $MORPH$ || $MarkerImpVB$
 
 
@@ -63,16 +61,18 @@ $MORPH$ = $MORPH$ || $MarkerImpVB$
 $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 
 
+% old spelling
+
+$MORPH$ = $MORPH$ | ($MORPH$ || $OrthOld$) <OLDORTH>:<>
+
+$MORPH$ = $CleanupOrthOldLv2$ || $MORPH$
+
+
 % morpheme-boundary markers
 
-$MORPH$ = $MarkerBoundaryAnalysis$ || $MORPH$
+$MORPH$ = $MarkerBoundaryLv2$ || $MORPH$
 
 $MORPH$ = $MORPH$ || $MarkerBoundary$
-
-
-% orthography
-
-$MORPH$ = $OrthOldAnalysis$ || $MORPH$
 
 
 % the resulting automaton
