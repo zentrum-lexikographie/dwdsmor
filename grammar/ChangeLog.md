@@ -4,6 +4,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 * remove unused inflection classes `NMasc/Sg_0~ss`, `NNeut/Sg_0~ss`,
   `NFem/Sg_0~ss`, `AdjPos~ss`, `Adv~ss`, `Conj~ss-Sub`, and `Intj~ss`
+* add word list of special cases to rule for old "ß" spelling
 
 2023-05-17:
 

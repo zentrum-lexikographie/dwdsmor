@@ -1,6 +1,6 @@
 % orth.fst
-% Version 3.0
-% Andreas Nolda 2023-05-17
+% Version 3.1
+% Andreas Nolda 2023-05-19
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -19,9 +19,11 @@ $ConsNoSS$ = $Cons$               | \
              $ConsMinusS$ $Cons$* | \
              $Cons$ $ConsMinusS$ $Cons$*
 
+$SSOld$ = {ss}:ß
+
 $SyllablesSS$ = $Cons$* $Vowel$ ss $Vowel$ $ConsNoSS$?
 
-$SyllableSSOld$ = $Cons$* $Vowel$ {ss}:ß
+$SyllableSSOld$ = $Cons$* $Vowel$ $SSOld$
 
 $SyllableNoSSOld$ = $Cons$* $Vowel$ $Vowel$ $Cons$* | \
                     $Cons$* $Vowel$ $ConsNoSS$? % ...
@@ -41,6 +43,14 @@ $SyllableSSOldInfl$ = $SyllableInflPref$? $SyllableSSOld$ $SyllableSSInflSuff$?
 
 $SyllableNoSSOldInfl$ = $SyllableInflPref$? $SyllableNoSSOld$ $SyllableInflSuff$?
 
+$WordSSOld$ = Exze$SSOld$     | \
+              Kompromi$SSOld$ | \
+              Kongre$SSOld$   | \
+              Proze$SSOld$    | \
+              Stewarde$SSOld$ | \
+              bi$SSOld$chen   | \
+              gewi$SSOld$ % ...
+
 $B$ = [#boundary-trigger#]
 
 $BNoFB$ = $B$-[<FB>]
@@ -50,7 +60,8 @@ $OrthOld$ = (($B$+     $Syllable$)*                   \
              ($B$+     $Syllable$)*                   \
              ($BNoFB$+ $SyllableNoSSOldInfl$)) $B$+ | \
             (($B$+     $Syllable$)*                   \
-             ($BNoFB$+ $SyllableSSOldInfl$)) $B$+
+             ($BNoFB$+ $SyllableSSOldInfl$))   $B$+ | \
+             ($B$+     $WordSSOld$)            $B$+
 
 
 % filter out old spelling variants
