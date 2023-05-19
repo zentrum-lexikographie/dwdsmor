@@ -1,5 +1,5 @@
 % infl.fst
-% Version 5.1
+% Version 5.2
 % Andreas Nolda 2023-05-19
 
 % based on code from SMORLemma by Rico Sennrich
@@ -1552,14 +1552,15 @@ $VInf-en$ =    $VInfStem$
 
 $VInf-n$ =     $VInfStem-n$
 
-% kommt; schaut; arbeitet
-$VImpPl$ = {<+V><Imp><Pl>}:{<INS-E>t<^imp>}
-
-% komm; schau; arbeite
-$VImpSg$ = {<+V><Imp><Sg>}:{<INS-E><^imp>}
+% komm(e); schau(e); arbeit(e); widme
+$VImpSg$ = {<+V><Imp><Sg>}:{<INS-E><^imp>} | \
+           {<+V><Imp><Sg>}:{<FB>e<^imp>}
 
 % flicht
 $VImpSg0$ = {<+V><Imp><Sg>}:{<^imp>}
+
+% kommt; schaut; arbeitet
+$VImpPl$ = {<+V><Imp><Pl>}:{<INS-E>t<^imp>}
 
 % will; bedarf
 $VPres1Irreg$ = {<+V><1><Sg><Pres><Ind>}:{<FB>}
@@ -1686,10 +1687,13 @@ $VVPres2t$ = $VInflPres2t$
 $VVPres2+Imp$ = $VImpSg$ | \
                 $VVPres2$
 
-$VVPres2+Imp~ss$ = $SS$ $VVPres2+Imp$
-
 $VVPres2+Imp0$ = $VImpSg0$ | \
-                 $VVPres2t$
+                 $VVPres2$
+
+$VVPres2+Imp0~ss$ = $SS$ $VVPres2+Imp0$
+
+$VVPres2t+Imp0$ = $VImpSg0$ | \
+                  $VVPres2t$
 
 % bedarf-; weiss-
 $VVPresSg$ = $VModInflSg$
@@ -2169,13 +2173,13 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VMPresPl~ss>           $VMPresPl~ss$       | \
          <>:<VMPresSg>              $VMPresSg$          | \
          <>:<VMPresSg~ss>           $VMPresSg~ss$       | \
+         <>:<VPPast>                $VPPast$            | \
+         <>:<VPPast><>:<haben>      $VPPast+haben$      | \
+         <>:<VPPast><>:<sein>       $VPPast+sein$       | \
          <>:<VPastIndIrreg>         $VPastIndIrreg$     | \
          <>:<VPastIndReg>           $VPastIndReg$       | \
          <>:<VPastIndStr>           $VPastIndStr$       | \
          <>:<VPastSubjStr>          $VPastSubjStr$      | \
-         <>:<VPPast>                $VPPast$            | \
-         <>:<VPPast><>:<haben>      $VPPast+haben$      | \
-         <>:<VPPast><>:<sein>       $VPPast+sein$       | \
          <>:<VPPres>                $VPPres$            | \
          <>:<VPresPlInd>            $VPresPlInd$        | \
          <>:<VPresSubj>             $VPresSubj$         | \
@@ -2198,28 +2202,29 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VVPP-t~ss>             $VVPP-t~ss$         | \
          <>:<VVPP-t~ss><>:<haben>   $VVPP-t+haben~ss$   | \
          <>:<VVPP-t~ss><>:<sein>    $VVPP-t+sein~ss$    | \
-         <>:<VVPres1+Imp>           $VVPres1+Imp$       | \
-         <>:<VVPres1+Imp~ss>        $VVPres1+Imp~ss$    | \
+         <>:<VVPres>                $VVPres$            | \
          <>:<VVPres1>               $VVPres1$           | \
          <>:<VVPres1~ss>            $VVPres1~ss$        | \
-         <>:<VVPres2+Imp>           $VVPres2+Imp$       | \
-         <>:<VVPres2+Imp~ss>        $VVPres2+Imp~ss$    | \
-         <>:<VVPres2+Imp0>          $VVPres2+Imp0$      | \
+         <>:<VVPres1+Imp>           $VVPres1+Imp$       | \
+         <>:<VVPres1+Imp~ss>        $VVPres1+Imp~ss$    | \
          <>:<VVPres2>               $VVPres2$           | \
          <>:<VVPres2~ss>            $VVPres2~ss$        | \
+         <>:<VVPres2+Imp>           $VVPres2+Imp$       | \
+         <>:<VVPres2+Imp0>          $VVPres2+Imp0$      | \
+         <>:<VVPres2+Imp0~ss>       $VVPres2+Imp0~ss$   | \
          <>:<VVPres2t>              $VVPres2t$          | \
-         <>:<VVPres>                $VVPres$            | \
+         <>:<VVPres2t+Imp0>         $VVPres2t+Imp0$     | \
          <>:<VVPresPl>              $VVPresPl$          | \
          <>:<VVPresSg>              $VVPresSg$          | \
-         <>:<VVReg-el/er>           $VVReg-el/er$       | \
-         <>:<VVReg-el/er><>:<haben> $VVReg-el/er+haben$ | \
-         <>:<VVReg-el/er><>:<sein>  $VVReg-el/er+sein$  | \
          <>:<VVReg>                 $VVReg$             | \
          <>:<VVReg><>:<haben>       $VVReg+haben$       | \
          <>:<VVReg><>:<sein>        $VVReg+sein$        | \
          <>:<VVReg~ss>              $VVReg~ss$          | \
          <>:<VVReg~ss><>:<haben>    $VVReg+haben~ss$    | \
          <>:<VVReg~ss><>:<sein>     $VVReg+sein~ss$     | \
+         <>:<VVReg-el/er>           $VVReg-el/er$       | \
+         <>:<VVReg-el/er><>:<haben> $VVReg-el/er+haben$ | \
+         <>:<VVReg-el/er><>:<sein>  $VVReg-el/er+sein$  | \
          <>:<VVRegFin>              $VVRegFin$          | \
          <>:<WAdv>                  $WAdv$              | \
          <>:<W-welch>               $W-welch$           | \

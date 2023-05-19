@@ -147,13 +147,13 @@ $R8$ = (e => <> (r(ig)? <^Px> <FB>? e)) | \
 
 
 % verb-"el"/"er" "e"-elision
-% sicher<^Vx>+en  -> sichern
-% handel<^Vx>+en  -> handeln
-% sicher<^Vx>+e   -> sichre, sichere
-% handel<^Vx>+e   -> handle, ?handele
-% sicher<^Vx>+est -> sicherst, *sichrest, ?sicherest
-% handel<^Vx>+est -> handelst, *handlest, ?handelest
-% rechn+ung       -> Rechnung
+% sicher+en  -> sichern
+% handel+en  -> handeln
+% sicher+e   -> sichre, sichere
+% handel+e   -> handle, ?handele
+% sicher+est -> sicherst, *sichrest, ?sicherest
+% handel+est -> handelst, *handlest, ?handelest
+% rechn+ung  -> Rechnung
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# #category# #feature# #info# <e>] \
            e:<>
@@ -172,10 +172,10 @@ $R9$ = $R9a$ || $R9b$ || $R9c$
 
 
 % "s"-elimination
-% ras&st  -> (du) rast
-% feix&st -> (du) feixt
-% birs+st -> (du) birst
-% groß$st -> größt
+% ras<INS-E>st  -> (du) rast
+% feix<INS-E>st -> (du) feixt
+% birs+st       -> (du) birst
+% groß$st       -> größt
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
@@ -211,18 +211,18 @@ $R10$ = $R10a$ || $R10b$ || $R10c$
 
 
 % "e"-epenthesis
-% regn&t       -> regnet
-% find&st      -> findest
-% bet&st       -> betest
-% gelieb&t&st  -> geliebtest
-% gewappn&t&st -> gewappnetst
+% regn<INS-E>t  -> regnet
+% find<INS-E>st -> findest
+% bet<INS-E>st  -> betest
+% gelieb<INS-E>t<INS-E>st  -> geliebtest
+% gewappn<INS-E>t<INS-E>st -> gewappnetst
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            <INS-E>:<>
 
-% gefeiert&ste -> gefeiertste
-% gefeiert&ste -> gefeiertste
+% gefeiert<INS-E>ste -> gefeiertste
+% gefeiert<INS-E>ste -> gefeiertste
 
 $R11$ = ([a-df-hj-z]e[rl]t) <INS-E> <=> <> (st)
 
@@ -231,9 +231,9 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
             #category# #feature# #info#] \
            <INS-E>:[e<>]
 
-% gewappn&t&st -> gewappnetst
+% gewappn<INS-E>t<INS-E>st -> gewappnetst
 
-$R12$ = ((((c[hk])|[bdfgmp])n | [#lowercase#]t) <INS-E> <=> e) & \
+$R12$ = ((((c[hk])|[bdfgkmp])n | [#lowercase#]t) <INS-E> <=> e) & \
         ((<INS-E>:e[dt]) <INS-E> <=> <>)
 
 

@@ -199,12 +199,12 @@
                     <VPastIndReg><VPastIndStr><VPresSubj><VPastSubjStr> \
                     <VPresPlInd><VVPP-en><VVPP-t><VVPP-t~ss><VVPastIndReg> \
                     <VVPastIndReg~ss><VVPastIndStr><VVPastIndStr~ss> \
-                    <VVPastSubjOld><VVPastSubjReg><VVPastSubjReg~ss> \
-                    <VVPastSubjStr><VVPastStr><VVPastStr~ss><VVPres><VVPres1> \
+                    <VVPastStr><VVPastStr~ss><VVPastSubjOld><VVPastSubjReg> \
+                    <VVPastSubjReg~ss><VVPastSubjStr><VVPres><VVPres1> \
                     <VVPres1~ss><VVPres1+Imp><VVPres1+Imp~ss><VVPres2> \
-                    <VVPres2~ss><VVPres2+Imp><VVPres2+Imp~ss><VVPres2+Imp0> \
-                    <VVPres2t><VVPresPl><VVPresSg><VVReg><VVReg~ss><VVRegFin> \
-                    <VVReg-el/er>
+                    <VVPres2~ss><VVPres2+Imp><VVPres2+Imp0><VVPres2+Imp0~ss> \
+                    <VVPres2t><VVPres2t+Imp0><VVPresPl><VVPresSg><VVReg> \
+                    <VVReg~ss><VVRegFin><VVReg-el/er>
 
 #Other-inflection# = <Circp><Conj-Compar><Conj-Coord><Conj-Inf><Conj-Sub> \
                      <Intj><PInd-Invar><Postp><Pref/Adj><Pref/Adv><Pref/N> \

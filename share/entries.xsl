@@ -5315,6 +5315,47 @@
                               select="$etymology"/>
             </xsl:call-template>
           </xsl:when>
+          <!-- "sehen" -->
+          <xsl:when test="$lemma-without-particle='sehen'">
+            <xsl:call-template name="verb-stem-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma-without-particle"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+              <xsl:with-param name="stem"
+                              select="$stem"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
+              <xsl:with-param name="participle"
+                              select="$participle-without-particle"/>
+              <xsl:with-param name="particle"
+                              select="$particle"/>
+              <xsl:with-param name="class">VVPres1</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+            <xsl:call-template name="verb-stem-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma-without-particle"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+              <xsl:with-param name="stem"
+                              select="$present-stem"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
+              <xsl:with-param name="participle"
+                              select="$participle-without-particle"/>
+              <xsl:with-param name="particle"
+                              select="$particle"/>
+              <xsl:with-param name="class">VVPres2+Imp</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+          </xsl:when>
           <!-- present stem for 2nd/3rd person singular with "e"/"i"-alternation
                with stem-final "t" -->
           <xsl:when test="ends-with($present-stem,'t') and
@@ -5353,7 +5394,7 @@
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
                               select="$particle"/>
-              <xsl:with-param name="class">VVPres2+Imp0</xsl:with-param>
+              <xsl:with-param name="class">VVPres2t+Imp0</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -5394,7 +5435,7 @@
                               select="$participle-without-particle"/>
               <xsl:with-param name="particle"
                               select="$particle"/>
-              <xsl:with-param name="class">VVPres2+Imp</xsl:with-param>
+              <xsl:with-param name="class">VVPres2+Imp0</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
