@@ -2,6 +2,28 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
+      <Schreibung>Glaubwürdigkeit</Schreibung>
+        <Grammatik>
+          <Wortklasse>Substantiv</Wortklasse>
+          <Genus>fem.</Genus>
+          <Genitiv>-</Genitiv>
+          <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+        </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Kreativität</Schreibung>
+        <Grammatik>
+          <Wortklasse>Substantiv</Wortklasse>
+          <Genus>fem.</Genus>
+          <Genitiv>-</Genitiv>
+          <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+        </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>Hundertste</Schreibung>
         <Grammatik>
           <Wortklasse>Substantiv</Wortklasse>
