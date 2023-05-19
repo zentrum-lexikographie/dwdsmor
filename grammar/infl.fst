@@ -1,6 +1,6 @@
 % infl.fst
-% Version 5.0
-% Andreas Nolda 2023-05-10
+% Version 5.1
+% Andreas Nolda 2023-05-19
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -146,11 +146,8 @@ $N_n_n$ =            $NSg_n$ | \
 
 % masculine nouns
 
-% Fiskus, Fiskus; Moto-Cross, Moto-Cross
+% Fiskus, Fiskus
 $NMasc/Sg_0$ = {<+NN><Masc>}:{} $NSg_0$
-
-% Moto-Croß, Moto-Croß
-$NMasc/Sg_0~ss$ = $SS$ $NMasc/Sg_0$
 
 % Abwasch, Abwasch(e)s; Glanz, Glanzes
 $NMasc/Sg_es$ = {<+NN><Masc>}:{} $NSg_es$
@@ -323,11 +320,8 @@ $NMasc-Adj$ = {<+NN><Masc><Nom><Sg><St>}:{r} | \
 
 % neuter nouns
 
-% Abseits, Abseits; Moto-Cross, Moto-Cross
+% Abseits, Abseits
 $NNeut/Sg_0$ = {<+NN><Neut>}:{} $NSg_0$
-
-% Moto-Croß, Moto-Croß
-$NNeut/Sg_0~ss$ = $SS$ $NNeut/Sg_0$
 
 % Ausland, Ausland(e)s
 $NNeut/Sg_es$ = {<+NN><Neut>}:{} $NSg_es$
@@ -513,11 +507,8 @@ $NNeut-Adj$ = {<+NN><Neut><Nom><Sg><St>}:{s} | \
 
 % feminine nouns
 
-% Matrix, Matrix; Fairness, Fairness
+% Matrix, Matrix
 $NFem/Sg_0$ = {<+NN><Fem>}:{} $NSg_0$
-
-% Fairneß, Fairneß
-$NFem/Sg_0~ss$ = $SS$ $NFem/Sg_0$
 
 % Matrizen
 $NFem/Pl_x$ = {<+NN><Fem>}:{} $NPl_x$
@@ -705,9 +696,6 @@ $AdjPos0AttrSubst$ = {<+ADJ><Pos><Attr/Subst><Invar>}:{}
 % derartig; famos; bloß
 $AdjPos$ = {<+ADJ><Pos><Pred/Adv>}:{<FB>} | \
            {<+ADJ><Pos>}:{<FB>} $AdjInflSuff$
-
-% kreideblaß; pitschnaß
-$AdjPos~ss$ = $SS$ $AdjPos$
 
 % ander-; vorig-
 $AdjPosAttr$ = {<+ADJ><Pos>}:{<FB>} $AdjInflSuff$
@@ -1462,11 +1450,8 @@ $Roman$ = {<+CARD><Invar>}:{}
 
 % adverbs
 
-% oft; gern; sehr; barfuß; fürbass
+% oft; gern; sehr
 $Adv$ = {<+ADV>}:{}
-
-% fürbaß
-$Adv~ss$ = $SS$ $Adv$
 
 % mehr
 $AdvComp0$ = {<+ADV><Comp>}:{}
@@ -1842,22 +1827,13 @@ $Abbr_Poss$ = {<+POSS><Attr><Invar>}:{}
 
 % other words
 
-
-% aha; tschüss
 $Intj$ = {<+INTJ>}:{}
-
-% tschüß
-$Intj~ss$ = $SS$ $Intj$
 
 $Conj-Inf$ = {<+CONJ><Inf>}:{}
 
 $Conj-Coord$ = {<+CONJ><Coord>}:{}
 
-% dass
 $Conj-Sub$ = {<+CONJ><Sub>}:{}
-
-% daß
-$Conj-Sub~ss$ = $SS$ $Conj-Sub$
 
 $Conj-Compar$ = {<+CONJ><Compar>}:{}
 
@@ -1911,13 +1887,11 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<AdjPos0Attr>           $AdjPos0Attr$       | \
          <>:<AdjPos0AttrSubst>      $AdjPos0AttrSubst$  | \
          <>:<AdjPos>                $AdjPos$            | \
-         <>:<AdjPos~ss>             $AdjPos~ss$         | \
          <>:<AdjPosAttr>            $AdjPosAttr$        | \
          <>:<AdjPosPred>            $AdjPosPred$        | \
          <>:<AdjSup-aller>          $AdjSup-aller$      | \
          <>:<AdjSup>                $AdjSup$            | \
          <>:<Adv>                   $Adv$               | \
-         <>:<Adv~ss>                $Adv~ss$            | \
          <>:<AdvComp>               $AdvComp$           | \
          <>:<AdvComp0>              $AdvComp0$          | \
          <>:<AdvSup>                $AdvSup$            | \
@@ -1936,7 +1910,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<Conj-Coord>            $Conj-Coord$        | \
          <>:<Conj-Inf>              $Conj-Inf$          | \
          <>:<Conj-Sub>              $Conj-Sub$          | \
-         <>:<Conj-Sub~ss>           $Conj-Sub~ss$       | \
          <>:<Dem>                   $Dem$               | \
          <>:<Dem-dies>              $Dem-dies$          | \
          <>:<Dem-solch>             $Dem-solch$         | \
@@ -1973,7 +1946,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<IProNeutGenSg>         $IProNeutGenSg$     | \
          <>:<IProNeutNomSg>         $IProNeutNomSg$     | \
          <>:<Intj>                  $Intj$              | \
-         <>:<Intj~ss>               $Intj~ss$           | \
          <>:<NFem-a/en>             $NFem-a/en$         | \
          <>:<NFem-Adj>              $NFem-Adj$          | \
          <>:<NFem-in>               $NFem-in$           | \
@@ -1981,7 +1953,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<NFem-is/iden>          $NFem-is/iden$      | \
          <>:<NFem/Pl_x>             $NFem/Pl_x$         | \
          <>:<NFem/Sg_0>             $NFem/Sg_0$         | \
-         <>:<NFem/Sg_0~ss>          $NFem/Sg_0~ss$      | \
          <>:<NFem_0_$>              $NFem_0_\$$         | \
          <>:<NFem_0_$e>             $NFem_0_\$e$        | \
          <>:<NFem_0_$e~ss>          $NFem_0_\$e~ss$     | \
@@ -2009,7 +1980,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<NMasc/Pl_0>            $NMasc/Pl_0$        | \
          <>:<NMasc/Pl_x>            $NMasc/Pl_x$        | \
          <>:<NMasc/Sg_0>            $NMasc/Sg_0$        | \
-         <>:<NMasc/Sg_0~ss>         $NMasc/Sg_0~ss$     | \
          <>:<NMasc/Sg_es>           $NMasc/Sg_es$       | \
          <>:<NMasc/Sg_es~ss>        $NMasc/Sg_es~ss$    | \
          <>:<NMasc/Sg_s>            $NMasc/Sg_s$        | \
@@ -2059,7 +2029,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<NNeut-us0/en>          $NNeut-us0/en$      | \
          <>:<NNeut/Pl_x>            $NNeut/Pl_x$        | \
          <>:<NNeut/Sg_0>            $NNeut/Sg_0$        | \
-         <>:<NNeut/Sg_0~ss>         $NNeut/Sg_0~ss$     | \
          <>:<NNeut/Sg_es>           $NNeut/Sg_es$       | \
          <>:<NNeut/Sg_es~ss>        $NNeut/Sg_es~ss$    | \
          <>:<NNeut/Sg_s>            $NNeut/Sg_s$        | \
