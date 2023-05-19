@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 5.0 -->
-<!-- Andreas Nolda 2023-05-15 -->
+<!-- Version 5.1 -->
+<!-- Andreas Nolda 2023-05-19 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -267,6 +267,11 @@
   <class gender="mask."
          genitive-singular="-"
          nominative-plural="-us/en">NMasc-us0/en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-os" -->
+  <class gender="mask."
+         genitive-singular="-"
+         nominative-plural="-os/en">NMasc-us0/en<!-- sic! --></class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: "-en" substituted for "-us" -->
   <class gender="mask."
@@ -403,6 +408,14 @@
          genitive-singular="-es"
          nominative-plural="-es">NNeut_es_es</class>
   <!-- genitive singular: "-(e)s"
+       nominative plural: "-ien" -->
+  <class gender="neutr."
+         genitive-singular="-(e)s"
+         nominative-plural="-ien">NNeut_es_ien</class>
+  <class gender="neutr."
+         genitive-singular="-es"
+         nominative-plural="-ien">NNeut_es_ien</class>
+  <!-- genitive singular: "-(e)s"
        nominative plural: "-s" -->
   <class gender="neutr."
          genitive-singular="-(e)s"
@@ -521,6 +534,11 @@
   <class gender="neutr."
          genitive-singular="-"
          nominative-plural="-us/en">NNeut-us0/en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-os" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-os/en">NNeut-us0/en<!-- sic! --></class>
   <!-- nominalised adjectives without plural: -->
   <class gender="neutr."
          genitive-singular="-n">NNeut-Adj/Sg</class>
@@ -833,6 +851,14 @@
           <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
                                                          [@genitive-singular=$genitive-singular-marker]
                                                          [@nominative-plural='-us/en']"/>
+        </xsl:when>
+        <!-- nominative plural: "-en" substituted for "-os" -->
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'os') and
+                        $nominative-plural=replace($lemma,'os$','en')">
+          <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-os/en']"/>
         </xsl:when>
         <!-- nominative plural: "-i" substituted for "-us" -->
         <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and

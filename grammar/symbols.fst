@@ -155,9 +155,10 @@
                     <NNeut_0_e~ss><NNeut_0_nen><NNeut_0_s><NNeut_0_x> \
                     <NNeut_es_$e><NNeut_es_$er><NNeut_es_$er~ss><NNeut_es_e> \
                     <NNeut_es_e~ss><NNeut_es_en><NNeut_es_er><NNeut_es_es> \
-                    <NNeut_es_s><NNeut_s_$><NNeut_s_$er><NNeut_s_0><NNeut_s_e> \
-                    <NNeut_s_en><NNeut_s_ien><NNeut_s_n><NNeut_s_nen><NNeut_s_s> \
-                    <NNeut_s_x><NNoGend/Pl_0><NNoGend/Pl_x>
+                    <NNeut_es_ien><NNeut_es_s><NNeut_s_$><NNeut_s_$er> \
+                    <NNeut_s_0><NNeut_s_e><NNeut_s_en><NNeut_s_ien><NNeut_s_n> \
+                    <NNeut_s_nen><NNeut_s_s><NNeut_s_x><NNoGend/Pl_0> \
+                    <NNoGend/Pl_x>
 
 #Name-inflection# = <Name-Fem_0><Name-Fem_apos><Name-Fem_s><Name-Masc_0> \
                     <Name-Masc_apos><Name-Masc_es><Name-Masc_s><Name-Neut_0> \

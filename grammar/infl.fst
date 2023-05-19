@@ -283,7 +283,7 @@ $NMasc-as/anten$ =                 $NMasc/Sg_es~ss$ | \
 $NMasc-us/e$ =             $NMasc/Sg_0$ | \
                {}:{<^pl>e} $NMasc/Pl_0$
 
-% Virus, Virus, Viren
+% Virus, Virus, Viren; Mythos, Mythos, Mythen
 $NMasc-us0/en$ =              $NMasc/Sg_0$ | \
                  {}:{<^pl>en} $NMasc/Pl_x$
 
@@ -416,6 +416,10 @@ $NNeut-Herz$ = {<+NN><Neut><Nom><Sg>}:{<FB>}    | \
 $NNeut_s_nen$ =          $NNeut/Sg_s$ | \
                 {}:{nen} $NNeut/Pl_x$
 
+% Indiz, Indizes, Indizien
+$NNeut_es_ien$ =          $NNeut/Sg_es$ | \
+                 {}:{ien} $NNeut/Pl_x$
+
 % Adverb, Adverbs, Adverbien
 $NNeut_s_ien$ =          $NNeut/Sg_s$ | \
                 {}:{ien} $NNeut/Pl_x$
@@ -459,7 +463,7 @@ $NNeut-um/a$ =             $NNeut/Sg_s$ | \
 $NNeut-um/en$ =              $NNeut/Sg_s$ | \
                 {}:{<^pl>en} $NNeut/Pl_x$
 
-% Virus, Virus, Viren
+% Virus, Virus, Viren; Epos, Epos, Epen
 $NNeut-us0/en$ =              $NNeut/Sg_0$ | \
                  {}:{<^pl>en} $NNeut/Pl_x$
 
@@ -2046,6 +2050,7 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<NNeut_es_en>           $NNeut_es_en$       | \
          <>:<NNeut_es_er>           $NNeut_es_er$       | \
          <>:<NNeut_es_es>           $NNeut_es_es$       | \
+         <>:<NNeut_es_ien>          $NNeut_es_ien$      | \
          <>:<NNeut_es_s>            $NNeut_es_s$        | \
          <>:<NNeut_s_$>             $NNeut_s_\$$        | \
          <>:<NNeut_s_$er>           $NNeut_s_\$er$      | \

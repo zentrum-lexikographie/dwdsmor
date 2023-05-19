@@ -1,5 +1,12 @@
 This file logs the changes of the XSLT stylesheets in share/*.xsl.
 
+2023-05-19:
+
+* add support for neuter nouns with genitive singular forms ending in "-es" or
+  "-s" and nominative plural forms ending in "-ien"
+* add support for masculine or neuter nouns with nominative plural forms ending
+  in "-en" substituted for "-os"
+
 2023-05-15:
 
 * remove support for generating lexical entries from non-standard spellings in
