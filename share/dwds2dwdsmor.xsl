@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.0 -->
-<!-- Andreas Nolda 2023-05-15 -->
+<!-- Version 14.1 -->
+<!-- Andreas Nolda 2023-05-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -381,6 +381,25 @@
               </xsl:call-template>
             </xsl:when> -->
             <!-- adjectives and adjectival participles -->
+            <xsl:when test="($pos='Adjektiv' or
+                             $pos='partizipiales Adjektiv') and
+                            $abbreviation='yes' and
+                            ends-with($lemma,'.')">
+              <xsl:call-template name="adjective-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
             <xsl:when test="$pos='Adjektiv' or
                             $pos='partizipiales Adjektiv'">
               <xsl:call-template name="adjective-entry-set">
@@ -657,6 +676,48 @@
               </xsl:call-template>
             </xsl:when>
             <!-- nouns -->
+            <xsl:when test="$pos='Substantiv' and
+                            $abbreviation='yes' and
+                            ends-with($lemma,'.') and
+                            normalize-space(dwds:Numeruspraeferenz)='nur im Plural'">
+              <xsl:call-template name="noun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="number">plural</xsl:with-param>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Substantiv' and
+                            $abbreviation='yes' and
+                            ends-with($lemma,'.')">
+              <xsl:call-template name="noun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
             <xsl:when test="$pos='Substantiv' and
                              normalize-space(dwds:Numeruspraeferenz)='nur im Singular' and
                              string-length(normalize-space(dwds:Genus))&gt;0 and
@@ -1181,7 +1242,8 @@
             </xsl:when>
             <!-- possessive pronouns -->
             <xsl:when test="$pos='Possessivpronomen' and
-                            $lemma='Ew.'">
+                            $abbreviation='yes' and
+                            ends-with($lemma,'.')">
               <xsl:call-template name="possessive-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -1237,6 +1299,24 @@
               </xsl:call-template>
             </xsl:when>
             <!-- verbs -->
+            <xsl:when test="$pos='Verb' and
+                            $abbreviation='yes' and
+                            ends-with($lemma,'.')">
+              <xsl:call-template name="verb-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
             <xsl:when test="$pos='Verb' and
                             string-length(normalize-space(dwds:Praesens))&gt;0 and
                             string-length(normalize-space(dwds:Praeteritum))&gt;0 and
@@ -1636,6 +1716,7 @@
                                 $lemma='aber' or
                                 $lemma='außer' or
                                 $lemma='beziehungsweise' or
+                                $lemma='bzw.' or
                                 $lemma='denn' or
                                 $lemma='entweder' or
                                 $lemma='geschweige' or

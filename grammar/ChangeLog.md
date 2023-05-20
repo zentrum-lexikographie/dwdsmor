@@ -1,14 +1,13 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
-2023-05-20:
-
-* add initial support for the formation of particle verbs
 
 2023-05-19:
 
+* add initial support for the formation of particle verbs
 * allow for imperative singular forms optionally ending in "-e" in inflection
   classes `VVReg`, `VVRegFin`, `VVPres`, `VVPres1+Imp`, and `VVPres2+Imp`
 * rename inflection class `VVPres2+Imp0` to `VVPres2t+Imp0`
+* add inflection class `Abbr_VImp`
 * add inflection class `VVPres2+Imp0` for strong verbs with uninflected
   imperative singular forms
 * add inflection class `NNeut_es_ien`

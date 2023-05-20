@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>s.</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>vgl.</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
 </DWDS>

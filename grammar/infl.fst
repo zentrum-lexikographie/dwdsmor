@@ -1,6 +1,6 @@
 % infl.fst
-% Version 5.2
-% Andreas Nolda 2023-05-19
+% Version 5.3
+% Andreas Nolda 2023-05-20
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1832,6 +1832,9 @@ $Abbr_Adj$ = {<+ADJ><Pos><Invar>}:{}
 % Ew. (= Euer)
 $Abbr_Poss$ = {<+POSS><Attr><Invar>}:{}
 
+% vgl. (= vergleiche)
+$Abbr_VImp$ = {<+V><Imp><Invar>}:{}
+
 
 % other words
 
@@ -1878,6 +1881,7 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<Abbr_NNeut>            $Abbr_NNeut$        | \
          <>:<Abbr_NNoGend>          $Abbr_NNoGend$      | \
          <>:<Abbr_Poss>             $Abbr_Poss$         | \
+         <>:<Abbr_VImp>             $Abbr_VImp$         | \
          <>:<Adj$-el/er>            $Adj\$-el/er$       | \
          <>:<Adj$>                  $Adj\$$             | \
          <>:<Adj$e>                 $Adj\$e$            | \

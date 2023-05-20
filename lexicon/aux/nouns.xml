@@ -1,36 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung hid="1">Dr.</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
     <Formangabe>
       <Schreibung>Glaubwürdigkeit</Schreibung>
-        <Grammatik>
-          <Wortklasse>Substantiv</Wortklasse>
-          <Genus>fem.</Genus>
-          <Genitiv>-</Genitiv>
-          <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
-        </Grammatik>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
     </Formangabe>
   </Artikel>
   <Artikel>
     <Formangabe>
       <Schreibung>Kreativität</Schreibung>
-        <Grammatik>
-          <Wortklasse>Substantiv</Wortklasse>
-          <Genus>fem.</Genus>
-          <Genitiv>-</Genitiv>
-          <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
-        </Grammatik>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
     </Formangabe>
   </Artikel>
   <Artikel>
     <Formangabe>
       <Schreibung>Hundertste</Schreibung>
-        <Grammatik>
-          <Wortklasse>Substantiv</Wortklasse>
-          <Genus>neutr.</Genus>
-          <Genitiv>-n</Genitiv>
-          <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
-        </Grammatik>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+        <Genitiv>-n</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>Nr.</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>Prof.</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>S.</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>Tel.</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
     </Formangabe>
   </Artikel>
 </DWDS>

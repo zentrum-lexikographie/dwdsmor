@@ -1,5 +1,5 @@
 % symbols.fst
-% Version 6.6
+% Version 6.7
 % Andreas Nolda 2023-05-20
 
 % based on code from SMORLemma by Rico Sennrich
@@ -124,7 +124,7 @@
 #paradigm-index# = <PAR1><PAR2><PAR3><PAR4><PAR5>
 
 #Abbr-inflection# = <Abbr_Adj><Abbr_NFem><Abbr_NMasc><Abbr_NNeut><Abbr_NNoGend> \
-                    <Abbr_Poss>
+                    <Abbr_Poss><Abbr_VImp>
 
 #Adj-inflection# = <Adj$><Adj$-el/er><Adj$e><Adj$e~ss><Adj+><Adj+(e)><Adj+e> \
                    <Adj+e~ss><Adj+Lang><Adj-el/er><AdjComp><AdjComp0-mehr> \
