@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-05-20:
+
+* add initial support for the formation of particle verbs
+
 2023-05-19:
 
 * allow for imperative singular forms optionally ending in "-e" in inflection
