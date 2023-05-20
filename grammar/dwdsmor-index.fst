@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 8.0
-% Andreas Nolda 2023-05-17
+% Version 8.1
+% Andreas Nolda 2023-05-20
 
 #include "symbols.fst"
 #include "stemtype.fst"
@@ -73,6 +73,11 @@ $MORPH$ = $CleanupOrthOldLv2$ || $MORPH$
 $MORPH$ = $MarkerBoundaryLv2$ || $MORPH$
 
 $MORPH$ = $MORPH$ || $MarkerBoundary$
+
+
+% Swiss spelling
+
+$MORPH$ = $MORPH$ | ($NoOrthOldFilterLv2$ || $MORPH$ || $OrthCH$) <CH>:<>
 
 
 % the resulting automaton
