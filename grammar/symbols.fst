@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 6.7
-% Andreas Nolda 2023-05-20
+% Version 6.8
+% Andreas Nolda 2023-05-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -62,13 +62,14 @@
 
 #morpheme-boundary# = <+><#><\=><\~>
 
-#wf-process# = <COMP><DER>
+#wf-process# = <COMP><DER><CONV>
 
-#wf-means# = <concat><hyph><part(ab)><part(an)><part(auf)><part(aus)><part(bei)> \
-             <part(durch)><part(ein)><part(gegen)><part(hinter)><part(los)> \
-             <part(mit)><part(nach)><part(ueber)><part(um)><part(unter)> \
-             <part(vor)><part(weg)><part(zu)><part(zurueck)><part(zwischen)> \
-             <pref(un)><suff(chen)><suff(er)><suff(lein)>
+#wf-means# = <concat><hyph><ident|PPast><ident|PPres><part(ab)><part(an)> \
+             <part(auf)><part(aus)><part(bei)><part(durch)><part(ein)> \
+             <part(gegen)><part(hinter)><part(los)><part(mit)><part(nach)> \
+             <part(ueber)><part(um)><part(unter)><part(vor)><part(weg)> \
+             <part(zu)><part(zurueck)><part(zwischen)><pref(un)><suff(chen)> \
+             <suff(er)><suff(lein)>
 
 #category# = <ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER> \
              <POSS><PPRO><REL><V><WPRO>

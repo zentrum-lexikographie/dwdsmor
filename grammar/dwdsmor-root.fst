@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 6.1
-% Andreas Nolda 2023-05-20
+% Version 7.0
+% Andreas Nolda 2023-05-22
 
 #include "symbols.fst"
 #include "num.fst"
@@ -45,9 +45,7 @@ $CompStems$ = $LEX$ || $CompStemFilter$
 
 % word formation
 
-% affixes
-
-$Pref-un$ = <Prefix> {}:{un}
+% particles
 
 $Part-ab$       = <Prefix> {}:{ab}
 $Part-an$       = <Prefix> {}:{an}
@@ -70,16 +68,18 @@ $Part-zu$       = <Prefix> {}:{zu}
 $Part-zurueck$  = <Prefix> {}:{zurück}
 $Part-zwischen$ = <Prefix> {}:{zwischen}
 
+% affixes
+
+$Pref-un$ = <Prefix> {}:{un}
+
 $Suff-er$   = <Suffix> {}:{er}   <NN> <base> <native> <>:<NMasc_s_0>
 $Suff-chen$ = <Suffix> {}:{chen} <NN> <base> <native> <>:<NNeut_s_x>
 $Suff-lein$ = <Suffix> {}:{lein} <NN> <base> <native> <>:<NNeut_s_x>
 
 % processes and means
 
-$Comp-concat$ = <COMP>:<> <concat>:<>
-$Comp-hyph$   = <COMP>:<> <hyph>:<>
-
-$DerPref-un$ = <DER>:<> <pref(un)>:<>
+$ConvPPres$ = <CONV>:<> <ident|PPres>:<>
+$ConvPPast$ = <CONV>:<> <ident|PPast>:<>
 
 $DerPart-ab$       = <DER>:<> <part(ab)>:<>
 $DerPart-an$       = <DER>:<> <part(an)>:<>
@@ -102,14 +102,79 @@ $DerPart-zu$       = <DER>:<> <part(zu)>:<>
 $DerPart-zurueck$  = <DER>:<> <part(zurueck)>:<>
 $DerPart-zwischen$ = <DER>:<> <part(zwischen)>:<>
 
+$DerPref-un$ = <DER>:<> <pref(un)>:<>
+
 $DerSuff-er$   = <DER>:<> <suff(er)>:<>
 $DerSuff-chen$ = <DER>:<> <suff(chen)>:<>
 $DerSuff-lein$ = <DER>:<> <suff(lein)>:<>
 
+$Comp-concat$ = <COMP>:<> <concat>:<>
+$Comp-hyph$   = <COMP>:<> <hyph>:<>
+
 $DC$ = <>:<^DC>
 $UC$ = <>:<^UC>
 
-% derived base stems
+% derived base stems with particles
+
+$DerBaseStems$ = $Part-ab$       <>:<VB> $BaseStems$ $DerPart-ab$       | \
+                 $Part-an$       <>:<VB> $BaseStems$ $DerPart-an$       | \
+                 $Part-auf$      <>:<VB> $BaseStems$ $DerPart-auf$      | \
+                 $Part-aus$      <>:<VB> $BaseStems$ $DerPart-aus$      | \
+                 $Part-bei$      <>:<VB> $BaseStems$ $DerPart-bei$      | \
+                 $Part-durch$    <>:<VB> $BaseStems$ $DerPart-durch$    | \
+                 $Part-ein$      <>:<VB> $BaseStems$ $DerPart-ein$      | \
+                 $Part-gegen$    <>:<VB> $BaseStems$ $DerPart-gegen$    | \
+                 $Part-hinter$   <>:<VB> $BaseStems$ $DerPart-hinter$   | \
+                 $Part-los$      <>:<VB> $BaseStems$ $DerPart-los$      | \
+                 $Part-mit$      <>:<VB> $BaseStems$ $DerPart-mit$      | \
+                 $Part-nach$     <>:<VB> $BaseStems$ $DerPart-nach$     | \
+                 $Part-ueber$    <>:<VB> $BaseStems$ $DerPart-ueber$    | \
+                 $Part-um$       <>:<VB> $BaseStems$ $DerPart-um$       | \
+                 $Part-unter$    <>:<VB> $BaseStems$ $DerPart-unter$    | \
+                 $Part-vor$      <>:<VB> $BaseStems$ $DerPart-vor$      | \
+                 $Part-weg$      <>:<VB> $BaseStems$ $DerPart-weg$      | \
+                 $Part-zu$       <>:<VB> $BaseStems$ $DerPart-zu$       | \
+                 $Part-zurueck$  <>:<VB> $BaseStems$ $DerPart-zurueck$  | \
+                 $Part-zwischen$ <>:<VB> $BaseStems$ $DerPart-zwischen$ || $DerFilter$
+
+$BaseStems$ = $BaseStems$ | $DerBaseStems$
+
+% converted base stems
+
+$BaseStemsV$ = $BaseStems$ || $BaseStemFilterV$
+
+$BaseStemsV$ = $CleanupWFLv2$ || $BaseStemsV$
+
+$BaseStemsV$ = $BaseStemsV$ || $CleanupWF$
+
+$BaseStemsV$ = $BaseStemsV$ $INFL$ || $InflFilter$
+
+$BaseStemsVPPres$ = $BaseStemFilterVPPresLv2$ || $BaseStemsV$
+$BaseStemsVPPast$ = $BaseStemFilterVPPastLv2$ || $BaseStemsV$
+
+$BaseStemsVPPres$ = $CleanupCatLv2$ || $BaseStemsVPPres$
+$BaseStemsVPPast$ = $CleanupCatLv2$ || $BaseStemsVPPast$
+
+$BaseStemsVPPres$ = $BaseStemsVPPres$ || $MarkerGe$
+$BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerGe$
+$BaseStemsVPPres$ = $BaseStemsVPPres$ || $MarkerZu$
+$BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerZu$
+
+$BaseStemsVPPres$ = <>:<WB> $BaseStemsVPPres$ <>:<WB> || $PHON$
+$BaseStemsVPPast$ = <>:<WB> $BaseStemsVPPast$ <>:<WB> || $PHON$
+
+$BaseStemsVPPres$ = $BaseStemsVPPres$ || $MarkerWB$
+$BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerWB$
+
+$ConvBaseStemsVPPres$ = $BaseStemsVPPres$ <ADJ> <base> <native> <>:<AdjPos> $ConvPPres$
+$ConvBaseStemsVPPast$ = $BaseStemsVPPast$ <ADJ> <base> <native> <>:<AdjPos> $ConvPPast$
+
+$ConvBaseStems$ = $ConvBaseStemsVPPres$ | \
+                  $ConvBaseStemsVPPast$
+
+$BaseStems$ = $BaseStems$ | $ConvBaseStems$
+
+% derived base stems with affixes
 
 $DerStemsSuff-er$   = $DerStems$ || $DerStemFilterSuff-er$
 $DerStemsSuff-chen$ = $DerStems$ || $DerStemFilterSuff-chen$
@@ -117,26 +182,6 @@ $DerStemsSuff-lein$ = $DerStems$ || $DerStemFilterSuff-lein$
 
 $DerBaseStems$ = $UC$ $Pref-un$           <>:<DB> $DC$ $BaseStems$ $DerPref-un$       | \
                       $Pref-un$           <>:<DB>      $BaseStems$ $DerPref-un$       | \
-                      $Part-ab$           <>:<VB>      $BaseStems$ $DerPart-ab$       | \
-                      $Part-an$           <>:<VB>      $BaseStems$ $DerPart-an$       | \
-                      $Part-auf$          <>:<VB>      $BaseStems$ $DerPart-auf$      | \
-                      $Part-aus$          <>:<VB>      $BaseStems$ $DerPart-aus$      | \
-                      $Part-bei$          <>:<VB>      $BaseStems$ $DerPart-bei$      | \
-                      $Part-durch$        <>:<VB>      $BaseStems$ $DerPart-durch$    | \
-                      $Part-ein$          <>:<VB>      $BaseStems$ $DerPart-ein$      | \
-                      $Part-gegen$        <>:<VB>      $BaseStems$ $DerPart-gegen$    | \
-                      $Part-hinter$       <>:<VB>      $BaseStems$ $DerPart-hinter$   | \
-                      $Part-los$          <>:<VB>      $BaseStems$ $DerPart-los$      | \
-                      $Part-mit$          <>:<VB>      $BaseStems$ $DerPart-mit$      | \
-                      $Part-nach$         <>:<VB>      $BaseStems$ $DerPart-nach$     | \
-                      $Part-ueber$        <>:<VB>      $BaseStems$ $DerPart-ueber$    | \
-                      $Part-um$           <>:<VB>      $BaseStems$ $DerPart-um$       | \
-                      $Part-unter$        <>:<VB>      $BaseStems$ $DerPart-unter$    | \
-                      $Part-vor$          <>:<VB>      $BaseStems$ $DerPart-vor$      | \
-                      $Part-weg$          <>:<VB>      $BaseStems$ $DerPart-weg$      | \
-                      $Part-zu$           <>:<VB>      $BaseStems$ $DerPart-zu$       | \
-                      $Part-zurueck$      <>:<VB>      $BaseStems$ $DerPart-zurueck$  | \
-                      $Part-zwischen$     <>:<VB>      $BaseStems$ $DerPart-zwischen$ | \
                       $DerStemsSuff-er$   <>:<DB>      $Suff-er$   $DerSuff-er$       | \
                       $DerStemsSuff-chen$ <>:<DB>      $Suff-chen$ $DerSuff-chen$     | \
                       $DerStemsSuff-lein$ <>:<DB>      $Suff-lein$ $DerSuff-lein$ || $DerFilter$

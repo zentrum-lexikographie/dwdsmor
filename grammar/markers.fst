@@ -1,6 +1,6 @@
 % markers.fst
-% Version 7.3
-% Andreas Nolda 2023-05-17
+% Version 7.4
+% Andreas Nolda 2023-05-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -56,6 +56,10 @@ $MarkerImpVB$ = ($C$* <VB>)? $C$* <^imp>:<> $C$* | \
 
 
 % process morpheme-boundary triggers
+
+ALPHABET = [#char# #boundary-trigger#]
+
+$MarkerWB$ = <WB>:<Stem> .* <WB>:<>
 
 ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info#] \
            <>:<WB>

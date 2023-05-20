@@ -1,5 +1,8 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-05-22:
+
+* add support for conversion of verbal participles
 
 2023-05-19:
 

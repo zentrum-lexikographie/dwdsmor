@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-05-17
+# Gregor Middell and Andreas Nolda 2023-05-22
 
 import sys
 import os
@@ -13,7 +13,7 @@ from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
-version = 7.2
+version = 7.3
 
 BASEDIR = os.path.dirname(__file__)
 LIBDIR  = os.path.join(BASEDIR, "lib")
@@ -71,15 +71,19 @@ class Analysis(tuple):
 
     @cached_property
     def process(self):
+        tags = []
         for tag in list(reversed(self.tags)):
-            if tag in ["COMP"]:
-                return tag
+            if tag in ["COMP", "DER", "CONV"]:
+                tags.append(tag)
+        return "∘".join(tags)
 
     @cached_property
     def means(self):
+        tags = []
         for tag in list(reversed(self.tags)):
-            if tag in ["concat", "hyph"]:
-                return tag
+            if re.split(r"\W", tag)[0] in ["concat", "hyph", "ident", "part", "pref", "suff"]:
+                tags.append(tag)
+        return "∘".join(tags)
 
     _subcat_tags       = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True, "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True, "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True}
     _auxiliary_tags    = {"haben": True, "sein": True}
