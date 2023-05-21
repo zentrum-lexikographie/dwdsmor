@@ -824,26 +824,25 @@ def lemmatize(transducer, w):
     form, lemma, pos = (w.get("form", ""), w.get("lemma", ""), w.get("pos", ""))
     dwdsmor_lemma = ""
     dwdsmor_pos = ""
-    if not (pos == "FM" or pos == "XY"):
-        if pos == "PTKVZ" or lemma == "#refl":
-            lemma = form
-        lemma = lemma.split("%")[0]
-        lemma = lemma.replace("#", "")
-        analyses = tuple(dwdsmor.parse(transducer.analyse(form)))
-        # analyses with matching part-of-speech categories
-        analyses_with_matching_pos = tuple(a for a in analyses
-                                           if a.pos in tuebadz_to_dwdsmor_pos_list(pos))
-        # analyses with matching lemmas of matching part-of-speech categories
-        analyses_with_matching_lemma = tuple(a for a in analyses_with_matching_pos
-                                             if tuebadz_to_dwdsmor_lemma(pos, lemma) == a.lemma)
-        # first consider analyses with matching lemmas of matching part-of-speech categories
-        if len(analyses_with_matching_lemma) > 0:
-            dwdsmor_lemma = analyses_with_matching_lemma[0].lemma
-            dwdsmor_pos   = analyses_with_matching_lemma[0].pos
-        # else consider any lemmas of matching part-of-speech categories
-        elif len(analyses_with_matching_pos) > 0:
-            dwdsmor_lemma = analyses_with_matching_pos[0].lemma
-            dwdsmor_pos   = analyses_with_matching_pos[0].pos
+    if pos == "PTKVZ" or lemma == "#refl":
+        lemma = form
+    lemma = lemma.split("%")[0]
+    lemma = lemma.replace("#", "")
+    analyses = tuple(dwdsmor.parse(transducer.analyse(form)))
+    # analyses with matching part-of-speech categories
+    analyses_with_matching_pos = tuple(a for a in analyses
+                                       if a.pos in tuebadz_to_dwdsmor_pos_list(pos))
+    # analyses with matching lemmas of matching part-of-speech categories
+    analyses_with_matching_lemma = tuple(a for a in analyses_with_matching_pos
+                                         if tuebadz_to_dwdsmor_lemma(pos, lemma) == a.lemma)
+    # first consider analyses with matching lemmas of matching part-of-speech categories
+    if len(analyses_with_matching_lemma) > 0:
+        dwdsmor_lemma = analyses_with_matching_lemma[0].lemma
+        dwdsmor_pos   = analyses_with_matching_lemma[0].pos
+    # else consider any lemmas of matching part-of-speech categories
+    elif len(analyses_with_matching_pos) > 0:
+        dwdsmor_lemma = analyses_with_matching_pos[0].lemma
+        dwdsmor_pos   = analyses_with_matching_pos[0].pos
     if (pos == "VAFIN" or pos == "VMFIN" or pos == "VVFIN" or pos == "VVIMP") and len(dwdsmor_lemma) > 0:
         # TüBa-D/Z lemmas for finite verb forms of particle verbs include the particle
         # while DWDSmor lemmas do not.
@@ -877,8 +876,7 @@ def test_tuebadz_coverage(project_dir, tuebadz, transducer):
                      ((pos,
                        str(matches[True]),
                        str(matches[False]))
-                      for pos, matches in (sorted(stats.items()))
-                      if not (pos == "FM" or pos == "XY")))
+                      for pos, matches in (sorted(stats.items()))))
 
 def test_tuebadz_lemmatisation(project_dir, tuebadz, transducer):
     lemmatized = (lemmatize(transducer, w) for s in tuebadz for w in s)
@@ -895,8 +893,7 @@ def test_tuebadz_lemmatisation(project_dir, tuebadz, transducer):
                        w.dwdsmor_lemma,
                        w.dwdsmor_pos,
                        w.is_match)
-                      for w in lemmatized
-                      if not (w.pos == "FM" or w.pos == "XY")))
+                      for w in lemmatized))
 
 def wb_coverage(transducer, wb_entries):
     for wb_n, wb_entry in enumerate(wb_entries):
