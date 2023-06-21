@@ -292,8 +292,7 @@ optional arguments:
   -I {1,2,3,4,5}, --paradigm-index {1,2,3,4,5}
                         paradigm index
   -j, --json            output JSON object
-  -n, --no-category-names
-                        do not output category names
+  -n, --no-cats         do not output category names
   -N, --no-lemma        do not output lemma, lemma index, paradigm index, and lexical categories
   -o, --old-forms       output also archaic forms
   -p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}, --pos {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}

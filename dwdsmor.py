@@ -1,27 +1,36 @@
 #!/usr/bin/python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-05-22
+# Gregor Middell and Andreas Nolda 2023-06-21
 
 import sys
 import os
 import argparse
 import re
-import sfst_transduce
 import csv
 import json
-from blessings import Terminal
 from collections import namedtuple
 from functools import cached_property
 
+from blessings import Terminal
+
+import sfst_transduce
+
+
 version = 7.3
 
+
 BASEDIR = os.path.dirname(__file__)
-LIBDIR  = os.path.join(BASEDIR, "lib")
+
+LIBDIR = os.path.join(BASEDIR, "lib")
+
 LIBFILE = os.path.join(LIBDIR, "dwdsmor.ca")
+
 
 Component = namedtuple("Component", ["form", "lemma", "tags"])
 
+
 class Analysis(tuple):
+
     def __new__(cls, analysis, components):
         inst = tuple.__new__(cls, components)
         inst.analysis = analysis
@@ -29,16 +38,16 @@ class Analysis(tuple):
 
     @cached_property
     def form(self):
-        form = "".join(a.form for a in self)
+        form = "".join(analysis.form for analysis in self)
         return form
 
     @cached_property
     def lemma(self):
-        lemma = "".join(a.lemma for a in self)
+        lemma = "".join(analysis.lemma for analysis in self)
         return lemma
 
     @cached_property
-    def segmented_lemma(self):
+    def seg(self):
         analysis = self.analysis
         analysis = re.sub(r"<COMP>(:?<concat>|<hyph>)", "", analysis)
         analysis = re.sub(r"(?:<IDX[^>]+>)?(?:<PAR[^>]+>)?<\+[^>]+>.*", "", analysis)
@@ -48,7 +57,7 @@ class Analysis(tuple):
 
     @cached_property
     def tags(self):
-        tags = [tag for a in self for tag in a.tags]
+        tags = [tag for analysis in self for tag in analysis.tags]
         return tags
 
     @cached_property
@@ -85,21 +94,37 @@ class Analysis(tuple):
                 tags.append(tag)
         return "∘".join(tags)
 
-    _subcat_tags       = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True, "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True, "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True}
-    _auxiliary_tags    = {"haben": True, "sein": True}
-    _degree_tags       = {"Pos": True, "Comp": True, "Sup": True}
-    _person_tags       = {"1": True, "2": True, "3": True}
-    _gender_tags       = {"Fem": True, "Neut": True, "Masc": True, "NoGend": True, "Invar": True}
-    _case_tags         = {"Nom": True, "Gen": True, "Dat": True, "Acc": True, "Invar": True}
-    _number_tags       = {"Sg": True, "Pl": True, "Invar": True}
-    _inflection_tags   = {"St": True, "Wk": True, "NoInfl": True, "Invar": True}
-    _function_tags     = {"Attr": True, "Subst": True, "Attr/Subst": True, "Pred/Adv": True}
-    _nonfinite_tags    = {"Inf": True, "PPres": True, "PPast": True, "zu": True}
-    _mood_tags         = {"Ind": True, "Subj": True, "Imp": True}
-    _tense_tags        = {"Pres": True, "Past": True}
-    _metainfo_tags     = {"Old": True, "NonSt": True}
-    _orthinfo_tags     = {"OLDORTH": True, "CH": True}
-    _charinfo_tags     = {"CAP": True}
+    _subcat_tags = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True,
+                    "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True,
+                    "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True}
+
+    _auxiliary_tags = {"haben": True, "sein": True}
+
+    _degree_tags = {"Pos": True, "Comp": True, "Sup": True}
+
+    _person_tags = {"1": True, "2": True, "3": True}
+
+    _gender_tags = {"Fem": True, "Neut": True, "Masc": True, "NoGend": True, "Invar": True}
+
+    _case_tags = {"Nom": True, "Gen": True, "Dat": True, "Acc": True, "Invar": True}
+
+    _number_tags = {"Sg": True, "Pl": True, "Invar": True}
+
+    _inflection_tags = {"St": True, "Wk": True, "NoInfl": True, "Invar": True}
+
+    _function_tags = {"Attr": True, "Subst": True, "Attr/Subst": True, "Pred/Adv": True}
+
+    _nonfinite_tags = {"Inf": True, "PPres": True, "PPast": True, "zu": True}
+
+    _mood_tags = {"Ind": True, "Subj": True, "Imp": True}
+
+    _tense_tags = {"Pres": True, "Past": True}
+
+    _metainfo_tags = {"Old": True, "NonSt": True}
+
+    _orthinfo_tags = {"OLDORTH": True, "CH": True}
+
+    _charinfo_tags = {"CAP": True}
 
     def tag_of_type(self, type_map):
         for tag in self.tags:
@@ -185,7 +210,7 @@ class Analysis(tuple):
         return {"form": self.form,
                 "analysis": self.analysis,
                 "lemma": self.lemma,
-                "segmentedlemma": self.segmented_lemma,
+                "segmentedlemma": self.seg,
                 "lemma_index": self.lemma_index,
                 "paradigm_index": self.paradigm_index,
                 "process": self.process,
@@ -209,33 +234,34 @@ class Analysis(tuple):
 
     def _decode_component_text(text):
         lemma = ""
-        form  = ""
+        form = ""
         text_len = len(text)
         ti = 0
-        prev = None
+        prev_char = None
         if text == "\:":
             lemma = ":"
             form = ":"
         else:
             while ti < text_len:
-                current = text[ti]
+                current_char = text[ti]
                 nti = ti + 1
-                next = text[nti] if nti < text_len else None
-                if current == ":":
-                    lemma += prev or ""
-                    form  += next or ""
+                next_char = text[nti] if nti < text_len else None
+                if current_char == ":":
+                    lemma += prev_char or ""
+                    form += next_char or ""
                     ti += 1
-                elif next != ":":
-                    lemma += current
-                    form  += current
+                elif next_char != ":":
+                    lemma += current_char
+                    form += current_char
                     ti += 1
-                    prev = current
-        return {"lemma": lemma, "form": form}
+                    prev_char = current_char
+        return {"lemma": lemma,
+                "form": form}
 
-    def _decode_analysis(analysis):
-        for a in re.finditer(r"([^<]*)(?:<([^>]*)>)?", analysis):
-            text = a.group(1)
-            tag  = a.group(2) or ""
+    def _decode_analysis(analyses):
+        for analysis in re.finditer(r"([^<]*)(?:<([^>]*)>)?", analyses):
+            text = analysis.group(1)
+            tag = analysis.group(2) or ""
             component = Analysis._decode_component_text(text)
             if tag != "":
                 component["tag"] = tag
@@ -243,30 +269,32 @@ class Analysis(tuple):
 
     def _join_tags(components):
         result = []
-        current = None
-        for c in components:
-            c = c.copy()
-            if current is None or c["form"] != "" or c["lemma"] != "":
-                c["tags"] = []
-                result.append(c)
-                current = c
-            if "tag" in c:
-                current["tags"].append(c["tag"])
-                del c["tag"]
+        current_component = None
+        for component in components:
+            component = component.copy()
+            if current_component is None or component["form"] != "" or component["lemma"] != "":
+                component["tags"] = []
+                result.append(component)
+                current_component = component
+            if "tag" in component:
+                current_component["tags"].append(component["tag"])
+                del component["tag"]
         return result
 
     def _join_untagged(components):
         result = []
         buf = []
-        for c in components:
-            buf.append(c)
-            if len(c["tags"]) > 0:
-                joined = {"lemma": "", "form": "", "tags": []}
-                for c in buf:
-                    joined["lemma"] += c["lemma"]
-                    joined["form"]  += c["form"]
-                    joined["tags"]  += c["tags"]
-                if "+" in c["tags"]:
+        for component in components:
+            buf.append(component)
+            if len(component["tags"]) > 0:
+                joined = {"lemma": "",
+                          "form": "",
+                          "tags": []}
+                for component in buf:
+                    joined["lemma"] += component["lemma"]
+                    joined["form"] += component["form"]
+                    joined["tags"] += component["tags"]
+                if "+" in component["tags"]:
                     joined["lemma"] += " + "
                 result.append(joined)
                 buf = []
@@ -274,35 +302,42 @@ class Analysis(tuple):
             result = result + buf
         return result
 
+
 def parse(analyses):
     component_list = []
     for analysis in analyses:
         components = Analysis._decode_analysis(analysis)
         components = Analysis._join_tags(components)
         components = Analysis._join_untagged(components)
-        if not components in component_list:
+        if components not in component_list:
             component_list.append(components)
-            yield Analysis(analysis, [Component(**c) for c in components])
+            yield Analysis(analysis, [Component(**component) for component in components])
+
 
 def analyse_word(transducer, word):
     return parse(transducer.analyse(word))
 
+
 def analyse_words(transducer, words):
     return tuple(analyse_word(transducer, word) for word in words)
+
 
 def string(value):
     return str(value or "")
 
-def output_json(words, analyses, output):
-    word_analyses = []
-    for word, analysis in zip(words, analyses):
-        word_analyses.append({"word": word,
-                              "analyses": [a.as_dict() for a in analysis]})
-    json.dump(word_analyses, output, ensure_ascii=False)
 
-def output_dsv(words, analyses, output, header=True, force_color=False, delimiter="\t"):
+def output_json(words, analyses_tuple, output_file):
+    word_analyses = []
+    for word, analyses in zip(words, analyses_tuple):
+        word_analyses.append({"word": word,
+                              "analyses": [analysis.as_dict() for analysis in analyses]})
+    json.dump(word_analyses, output_file, ensure_ascii=False)
+
+
+def output_dsv(words, analyses_tuple, output_file,
+               header=True, force_color=False, delimiter="\t"):
     term = Terminal(force_styling=force_color)
-    csv_writer = csv.writer(output, delimiter=delimiter)
+    csv_writer = csv.writer(output_file, delimiter=delimiter)
     if header:
         csv_writer.writerow([term.bold("Wordform"),
                              term.bright_black("Analysis"),
@@ -328,46 +363,50 @@ def output_dsv(words, analyses, output, header=True, force_color=False, delimite
                              "Metainfo",
                              "Orthinfo",
                              "Charinfo"])
-    for word, analysis in zip(words, analyses):
-        for a in analysis:
+    for word, analyses in zip(words, analyses_tuple):
+        for analysis in analyses:
             csv_writer.writerow([term.bold(word),
-                                 term.bright_black(a.analysis),
-                                 term.bold_underline(a.lemma),
-                                 term.bright_black_underline(a.segmented_lemma),
-                                 term.underline(string(a.lemma_index)),
-                                 term.underline(string(a.paradigm_index)),
-                                 term.underline(string(a.process)),
-                                 term.underline(string(a.means)),
-                                 term.underline(string(a.pos)),
-                                 term.underline(string(a.subcat)),
-                                 term.underline(string(a.auxiliary)),
-                                 a.degree,
-                                 a.person,
-                                 a.gender,
-                                 a.case,
-                                 a.number,
-                                 a.inflection,
-                                 a.function,
-                                 a.nonfinite,
-                                 a.mood,
-                                 a.tense,
-                                 a.metainfo,
-                                 a.orthinfo,
-                                 a.charinfo])
+                                 term.bright_black(analysis.analysis),
+                                 term.bold_underline(analysis.lemma),
+                                 term.bright_black_underline(analysis.seg),
+                                 term.underline(string(analysis.lemma_index)),
+                                 term.underline(string(analysis.paradigm_index)),
+                                 term.underline(string(analysis.process)),
+                                 term.underline(string(analysis.means)),
+                                 term.underline(string(analysis.pos)),
+                                 term.underline(string(analysis.subcat)),
+                                 term.underline(string(analysis.auxiliary)),
+                                 analysis.degree,
+                                 analysis.person,
+                                 analysis.gender,
+                                 analysis.case,
+                                 analysis.number,
+                                 analysis.inflection,
+                                 analysis.function,
+                                 analysis.nonfinite,
+                                 analysis.mood,
+                                 analysis.tense,
+                                 analysis.metainfo,
+                                 analysis.orthinfo,
+                                 analysis.charinfo])
 
-def output_analyses(transducer, input, output, header=True, force_color=False, output_format="tsv"):
-    words = tuple(word.strip() for word in input.readlines() if word.strip())
-    analyses = analyse_words(transducer, words)
-    if analyses:
+
+def output_analyses(transducer, input_file, output_file,
+                    header=True, force_color=False, output_format="tsv"):
+    words = tuple(word.strip() for word in input_file.readlines() if word.strip())
+    analyses_tuple = analyse_words(transducer, words)
+    if analyses_tuple:
         if output_format == "json":
-            output_json(words, analyses, output)
+            output_json(words, analyses_tuple, output_file)
         elif output_format == "csv":
-            output_dsv(words, analyses, output, header, force_color, delimiter=",")
+            output_dsv(words, analyses_tuple, output_file,
+                       header, force_color, delimiter=",")
         else:
-            output_dsv(words, analyses, output, header, force_color)
+            output_dsv(words, analyses_tuple, output_file,
+                       header, force_color)
+
 
 def main():
-    e = False
     try:
         parser = argparse.ArgumentParser()
         parser.add_argument("input", nargs="?", type=argparse.FileType("r"), default=sys.stdin,
@@ -383,11 +422,10 @@ def main():
         parser.add_argument("-j", "--json", action="store_true",
                             help="output JSON object")
         parser.add_argument("-t", "--transducer", default=LIBFILE,
-                            help="path to transducer file (default: {0})".format(os.path.relpath(LIBFILE, os.getcwd())))
+                            help=f"path to transducer file (default: {os.path.relpath(LIBFILE, os.getcwd())})")
         parser.add_argument("-v", "--version", action="version",
-                            version="{0} {1}".format(parser.prog, version))
+                            version=f"{parser.prog} {version}")
         args = parser.parse_args()
-        term = Terminal(force_styling=args.force_color)
         transducer = sfst_transduce.CompactTransducer(args.transducer)
         transducer.both_layers = False
         if args.json:
@@ -396,20 +434,12 @@ def main():
             output_format = "csv"
         else:
             output_format = "tsv"
-        output_analyses(transducer, args.input, args.output, args.no_header, args.force_color, output_format)
+        output_analyses(transducer, args.input, args.output,
+                        args.no_header, args.force_color, output_format)
     except KeyboardInterrupt:
         sys.exit(130)
-    # except TypeError:
-    #     print(term.bold_red(args.transducer) + ": No such transducer file.", file=sys.stderr)
-    #     e = True
-    # except RuntimeError:
-    #     print(term.bold_red(args.transducer) + ": No such transducer.", file=sys.stderr)
-    #     e = True
-    if e:
-        exit = 1
-    else:
-        exit = 0
-    return exit
+    return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())

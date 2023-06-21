@@ -1,35 +1,42 @@
 import random
 import xml.etree.ElementTree as ET
-
 from pathlib import Path
+
 from pytest import fixture
 
 import sfst_transduce
 
 
-base_dir = (Path(__file__) /  ".." / "..").resolve()
+base_dir = (Path(__file__) / ".." / "..").resolve()
+
 smor_lemma_dir = base_dir / "lib"
+
 tests_dir = base_dir / "tests"
+
 test_data_dir = base_dir / "test-data"
+
 
 @fixture
 def project_dir():
     return base_dir
 
+
 @fixture
 def transducer():
     return sfst_transduce.CompactTransducer((smor_lemma_dir / "dwdsmor.ca").as_posix())
+
 
 @fixture
 def irregular_nouns():
     with (smor_lemma_dir / "lexicon" / "nouns.irreg.xml").open() as f:
         lexicon_xml = ET.parse(f)
-        return list([{"lemma":  entry.find("Lemma").text,
-                      "stem":   entry.find("Stem").text,
-                      "pos":    entry.find("Pos").text,
-                      "origin": entry.find("Origin").text,
-                      "class":  entry.find("InfClass").text}
-                     for entry in lexicon_xml.iter("BaseStem")])
+        return [{"lemma":  entry.find("Lemma").text,
+                 "stem":   entry.find("Stem").text,
+                 "pos":    entry.find("Pos").text,
+                 "origin": entry.find("Origin").text,
+                 "class":  entry.find("InfClass").text}
+                for entry in lexicon_xml.iter("BaseStem")]
+
 
 @fixture
 def lexicon_sample(irregular_nouns):
@@ -39,7 +46,9 @@ def lexicon_sample(irregular_nouns):
     else:
         return random.sample(irregular_nouns, sample_size)
 
+
 wb_dir = base_dir / "lexicon" / "wb"
+
 
 def extract_wb_entries(wb_xml_file):
     entries = []
@@ -86,6 +95,7 @@ def extract_wb_entries(wb_xml_file):
                                     "written_repr": " ".join((written_repr.text or "").split())})
     return entries
 
+
 @fixture
 def wb_entries():
     if not wb_dir.is_dir():
@@ -93,7 +103,9 @@ def wb_entries():
     return (wb_entry for wb_xml_file in wb_dir.glob("**/*.xml")
             for wb_entry in extract_wb_entries(wb_xml_file))
 
+
 tuebdaz_dataset_file = test_data_dir / "tuebadz" / "tuebadz-11.0-exportXML-v2.xml"
+
 
 def tuebadz_sentences():
     with tuebdaz_dataset_file.open() as f:
@@ -105,6 +117,7 @@ def tuebadz_sentences():
                 sentence = words
                 words = []
                 yield sentence
+
 
 @fixture
 def tuebadz():
