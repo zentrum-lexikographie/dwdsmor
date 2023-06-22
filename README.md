@@ -90,32 +90,10 @@ Then run the DWDSmor setup routine in order to install Python dependencies:
 make setup
 ```
 
-For building DWDSmor lexica, DWDS dictionary sources are required. Import them
-via the configured submodule:
-
-```sh
-git submodule init lexicon/wb
-```
-
-In order to update the dictionary sources to the most recent revision, issue the
-following command:
-
-```sh
-git submodule update --remote lexicon/wb
-```
-
-The option `--remote` pulls the current tip of the working branch and updates
-the head of the submodule. Once you have tested the new version, commit the new
-state of the submodule:
-
-```sh
-git add lexicon/wb
-git commit -m "update dictionary sources"
-```
-
 ## Building DWDSmor lexica and transducers
 
-For building DWDSmor lexica and transducers, simply run:
+For building DWDSmor lexica and transducers, after aquiring DWDS dictionary
+sources, simply run:
 
 ```sh
 make all && make install
