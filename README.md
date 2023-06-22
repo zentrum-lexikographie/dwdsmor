@@ -431,4 +431,4 @@ As the original SMOR and SMORLemma grammars, the DWDSmor grammar is licensed
 under the GNU General Public Licence v2.0. The rest of this project is licensed
 under the GNU Lesser General Public License v3.0.
 
-© 2023 Berlin-Brandenburg Academy of Sciences and Humanities (BBAW).
+Andreas Nolda <andreas.nolda@bbaw.de>
