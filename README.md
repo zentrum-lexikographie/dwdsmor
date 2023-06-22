@@ -2,19 +2,20 @@
 
 _SFST/SMOR/DWDS-based German morphology_
 
-This project provides a component for the morphological analysis of word forms
-and for the generation of paradigms of lexical words in written German. To this
-end we adopt:
+This project provides a component for the lemmatisation and morphological
+analysis of word forms as well as for the generation of paradigms of lexical
+words in written German. To this end we adopt:
 
 1. [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++ library
-   and toolbox for finite-state transducers (FSTs),
-2. [SMORLemma](https://github.com/rsennrich/SMORLemma), a modified version of
-   the Stuttgart Morphology ([SMOR](https://www.cis.lmu.de/~schmid/tools/SMOR/))
-   with an alternative lemmatisation component, and the
-3. [DWDS dictionary](https://www.dwds.de/) replacing
+   and toolbox for finite-state transducers (FSTs) (Schmidt 2006)
+2. [SMORLemma](https://github.com/rsennrich/SMORLemma) (Sennrich and Kunz 2014),
+   a modified version of the Stuttgart Morphology
+   ([SMOR](https://www.cis.lmu.de/~schmid/tools/SMOR/)) (Schmid, Fitschen, and
+   Heid 2004) with an alternative lemmatisation component
+3. the [DWDS dictionary](https://www.dwds.de/) (BBAW n.d.) replacing the
    [IMSLex](https://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/imslex/)
-   as the as the lexical data source for word components and their respective
-   morphological annotations (part-of-speech, inflection class etc.).
+   (Fitschen 2004) as the lexical data source for German words, their grammatical
+   categories, and their morphological properties.
 
 This repository provides source code for building DWDSmor lexica and transducers
 as well as for using DWDSmor transducers for morphological analysis and paradigm
@@ -24,9 +25,8 @@ generation:
   format form XML sources of DWDS articles. Sample inputs and outputs can be
   found in `samples/`.
 * `lexicon/` contains scripts for building DWDSmor lexica by means of the XSLT
-  stylesheets in `share/` and the lexical data in `lexicon/wb/`, which is
-  imported from the [DWDS article repository](https://git.zdl.org/zdl/wb) as a
-  Git submodule.
+  stylesheets in `share/` and the lexical data in `lexicon/wb/`, which is not
+  part of this repository, but is supposed to be imported as a Git submodule.
 * `grammar/` contains an FST grammar based on SMORLemma, providing the
   morphology.
 * `dwdsmor/` and `tests/` implement a Python library and accompanying test suite
@@ -35,8 +35,8 @@ generation:
   analysis and for paradigm generation by means of DWDSmor transducers.
 
 DWDSmor is in active development. In its current stage, DWDSmor supports
-inflection for a large subset of the vocabulary of written German. Support for
-word formation will be added in future versions.
+inflection for a large subset of the vocabulary of written German and a small
+subset of productive word-formation patterns.
 
 ## Prerequisites
 
@@ -180,17 +180,17 @@ make -C grammar all
 The resulting DWDSmor transducers are:
 
 * `grammar/dwdsmor.{a,ca}`: transducer with inflection and word-formation
-  components, for morphological analysis of word forms in terms of lemmas and
-  grammatical categories
+  components, for lemmatisation and morphological analysis of word forms in
+  terms of grammatical categories
+* `grammar/dwdsmor-finite.{a,ca}`: transducer with an inflection component and a
+  finite word-formation component, for testing purposes
 * `grammar/dwdsmor-root.{a,ca}`: transducer with inflection and word-formation
   components, for lexical analysis of word forms in terms of root lemmas (i.e.,
   lemmas of ultimate word-formation bases), word-formation process,
-  word-formation means, and grammatical categories
-* `grammar/dwdsmor-finite.{a,ca}`: transducer with an inflection component and a
-  finite word-formation component, for testing purposes
+  word-formation means, and grammatical categories in term of the
+  Pattern-and-Restriction Theory of word formation (Nolda 2022)
 * `grammar/dwdsmor-index.{a,ca}`: transducer with an inflection component only
-  with DWDS paradigm indices and homographic lemma indices, for paradigm
-  generation
+  with DWDS homographic lemma indices, for paradigm generation
 
 Once built, the DWDSmor transducers should be installed into `lib/`, where the
 Python scripts `dwdsmor.py` and `paradigm.py` expect them by default:
@@ -210,8 +210,8 @@ make test
 
 DWDSmor provides two Python scripts for using the DWDSmor transducers.
 
-`dwdsmor.py` is a Python script for the morphological analysis of word forms in
-written German by means of a DWDSmor transducer:
+`dwdsmor.py` is a Python script for the lemmatisation and morphological analysis
+of word forms in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./dwdsmor.py -h
@@ -232,51 +232,94 @@ optional arguments:
   -v, --version         show program's version number and exit
 ```
 
-By default, `dwdsmor.py` prints a CSV table on standard output:
+By default, `dwdsmor.py` prints a TSV table on standard output:
 
 ```plaintext
-$ echo Kind | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
-Kind	Kind<+NN><Neut><Acc><Sg>	Kind	Kind			NN					Neut	Acc	Sg
-Kind	Kind<+NN><Neut><Dat><Sg>	Kind	Kind			NN					Neut	Dat	Sg
-Kind	Kind<+NN><Neut><Nom><Sg>	Kind	Kind			NN					Neut	Nom	Sg
+$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	Process	Means	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo	Orthinfo	Charinfo
+Ihr	sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old><CAP>	sie	sie					PPRO	Pers			3	NoGend	Gen	Pl						Old		CAP
+Ihr	sie<+PPRO><Pers><3><Fem><Dat><Sg><CAP>	sie	sie					PPRO	Pers			3	Fem	Dat	Sg								CAP
+Ihr	sie<+PPRO><Pers><3><Fem><Gen><Sg><Old><CAP>	sie	sie					PPRO	Pers			3	Fem	Gen	Sg						Old		CAP
+Ihr	Sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old>	Sie	Sie					PPRO	Pers			3	NoGend	Gen	Pl						Old
+Ihr	ihr<+PPRO><Pers><2><Nom><Pl><CAP>	ihr	ihr					PPRO	Pers			2		Nom	Pl								CAP
+Ihr	ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Acc	Sg	NoInfl	Attr						CAP
+Ihr	ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Nom	Sg	NoInfl	Attr						CAP
+Ihr	ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Masc	Nom	Sg	NoInfl	Attr						CAP
+Ihr	Ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Acc	Sg	NoInfl	Attr
+Ihr	Ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Nom	Sg	NoInfl	Attr
+Ihr	Ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Masc	Nom	Sg	NoInfl	Attr
+könnt	könn<~>en<+V><2><Pl><Pres><Ind>	können	könn<~>en					V				2			Pl				Ind	Pres
+euch	ihr<+PPRO><Pers><2><Acc><Pl>	ihr	ihr					PPRO	Pers			2		Acc	Pl
+euch	ihr<+PPRO><Pers><2><Dat><Pl>	ihr	ihr					PPRO	Pers			2		Dat	Pl
+euch	euch<+PPRO><Refl><2><Acc><Pl>	euch	euch					PPRO	Refl			2		Acc	Pl
+euch	euch<+PPRO><Refl><2><Dat><Pl>	euch	euch					PPRO	Refl			2		Dat	Pl
+auf	auf<+ADV>	auf	auf					ADV
+auf	auf<+PREP>	auf	auf					PREP
+den	die<+REL><Subst><Masc><Acc><Sg><St>	die	die					REL					Masc	Acc	Sg	St	Subst
+den	die<+DEM><Subst><Masc><Acc><Sg><St>	die	die					DEM					Masc	Acc	Sg	St	Subst
+den	die<+DEM><Attr><NoGend><Dat><Pl><St>	die	die					DEM					NoGend	Dat	Pl	St	Attr
+den	die<+DEM><Attr><Masc><Acc><Sg><St>	die	die					DEM					Masc	Acc	Sg	St	Attr
+den	die<+ART><Def><Subst><Masc><Acc><Sg><St>	die	die					ART	Def				Masc	Acc	Sg	St	Subst
+den	die<+ART><Def><Attr><NoGend><Dat><Pl><St>	die	die					ART	Def				NoGend	Dat	Pl	St	Attr
+den	die<+ART><Def><Attr><Masc><Acc><Sg><St>	die	die					ART	Def				Masc	Acc	Sg	St	Attr
+Kinderbänken	Kind<~>er<#>bank<+NN><Fem><Dat><Pl>	Kinderbank	Kind<~>er<#>bank					NN					Fem	Dat	Pl
+ausruhen	aus<#>ruh<~>en<+V><3><Pl><Pres><Subj>	ausruhen	aus<#>ruh<~>en					V				3			Pl				Subj	Pres
+ausruhen	aus<#>ruh<~>en<+V><3><Pl><Pres><Ind>	ausruhen	aus<#>ruh<~>en					V				3			Pl				Ind	Pres
+ausruhen	aus<#>ruh<~>en<+V><1><Pl><Pres><Subj>	ausruhen	aus<#>ruh<~>en					V				1			Pl				Subj	Pres
+ausruhen	aus<#>ruh<~>en<+V><1><Pl><Pres><Ind>	ausruhen	aus<#>ruh<~>en					V				1			Pl				Ind	Pres
+ausruhen	aus<#>ruh<~>en<+V><Inf>	ausruhen	aus<#>ruh<~>en					V										Inf
+.	.<+PUNCT><Period>	.	.					PUNCT	Period
 ```
+
+The transducer can be selected as an argument of option `-t`:
 
 ```plaintext
-$ echo kleines | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
-kleines	klein<+ADJ><Pos><Attr/Subst><Neut><Acc><Sg><St>	klein	klein			ADJ			Pos		Neut	Acc	Sg	St	Attr/Subst
-kleines	klein<+ADJ><Pos><Attr/Subst><Neut><Nom><Sg><St>	klein	klein			ADJ			Pos		Neut	Nom	Sg	St	Attr/Subst
+$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -t lib/dwdsmor-root.ca
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	Process	Means	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo	Orthinfo	Charinfo
+Ihr	Ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Acc	Sg	NoInfl	Attr
+Ihr	Ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Nom	Sg	NoInfl	Attr
+Ihr	Ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Masc	Nom	Sg	NoInfl	Attr
+Ihr	ihr<+PPRO><Pers><2><Nom><Pl><CAP>	ihr	ihr					PPRO	Pers			2		Nom	Pl								CAP
+Ihr	ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Acc	Sg	NoInfl	Attr						CAP
+Ihr	ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Nom	Sg	NoInfl	Attr						CAP
+Ihr	ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Masc	Nom	Sg	NoInfl	Attr						CAP
+Ihr	Sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old>	Sie	Sie					PPRO	Pers			3	NoGend	Gen	Pl						Old
+Ihr	sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old><CAP>	sie	sie					PPRO	Pers			3	NoGend	Gen	Pl						Old		CAP
+Ihr	sie<+PPRO><Pers><3><Fem><Dat><Sg><CAP>	sie	sie					PPRO	Pers			3	Fem	Dat	Sg								CAP
+Ihr	sie<+PPRO><Pers><3><Fem><Gen><Sg><Old><CAP>	sie	sie					PPRO	Pers			3	Fem	Gen	Sg						Old		CAP
+könnt	könn<~>en<+V><2><Pl><Pres><Ind>	können	könn<~>en					V				2			Pl				Ind	Pres
+euch	ihr<+PPRO><Pers><2><Acc><Pl>	ihr	ihr					PPRO	Pers			2		Acc	Pl
+euch	ihr<+PPRO><Pers><2><Dat><Pl>	ihr	ihr					PPRO	Pers			2		Dat	Pl
+euch	euch<+PPRO><Refl><2><Acc><Pl>	euch	euch					PPRO	Refl			2		Acc	Pl
+euch	euch<+PPRO><Refl><2><Dat><Pl>	euch	euch					PPRO	Refl			2		Dat	Pl
+auf	auf<+ADV>	auf	auf					ADV
+auf	auf<+PREP>	auf	auf					PREP
+den	die<+REL><Subst><Masc><Acc><Sg><St>	die	die					REL					Masc	Acc	Sg	St	Subst
+den	die<+DEM><Subst><Masc><Acc><Sg><St>	die	die					DEM					Masc	Acc	Sg	St	Subst
+den	die<+DEM><Attr><NoGend><Dat><Pl><St>	die	die					DEM					NoGend	Dat	Pl	St	Attr
+den	die<+DEM><Attr><Masc><Acc><Sg><St>	die	die					DEM					Masc	Acc	Sg	St	Attr
+den	die<+ART><Def><Subst><Masc><Acc><Sg><St>	die	die					ART	Def				Masc	Acc	Sg	St	Subst
+den	die<+ART><Def><Attr><NoGend><Dat><Pl><St>	die	die					ART	Def				NoGend	Dat	Pl	St	Attr
+den	die<+ART><Def><Attr><Masc><Acc><Sg><St>	die	die					ART	Def				Masc	Acc	Sg	St	Attr
+Kinderbänken	Kind<+>Bank<COMP><concat><+NN><Fem><Dat><Pl>	Kind + Bank	Kind<+>Bank			COMP	concat						Fem	Dat	Pl
+ausruhen	ruh<~>en<DER><part(aus)><+V><3><Pl><Pres><Subj>	ruhen	ruh<~>en<DER><part(aus)>			DER	part(aus)	V				3			Pl				Subj	Pres
+ausruhen	ruh<~>en<DER><part(aus)><+V><3><Pl><Pres><Ind>	ruhen	ruh<~>en<DER><part(aus)>			DER	part(aus)	V				3			Pl				Ind	Pres
+ausruhen	ruh<~>en<DER><part(aus)><+V><1><Pl><Pres><Subj>	ruhen	ruh<~>en<DER><part(aus)>			DER	part(aus)	V				1			Pl				Subj	Pres
+ausruhen	ruh<~>en<DER><part(aus)><+V><1><Pl><Pres><Ind>	ruhen	ruh<~>en<DER><part(aus)>			DER	part(aus)	V				1			Pl				Ind	Pres
+ausruhen	ruh<~>en<DER><part(aus)><+V><Inf>	ruhen	ruh<~>en<DER><part(aus)>			DER	part(aus)	V										Inf
+.	.<+PUNCT><Period>	.	.					PUNCT	Period
 ```
 
-```plaintext
-$ echo mein | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
-mein	mein<~>en<+V><Imp><Sg>	meinen	mein<~>en			V							Sg				Imp
-mein	meine<+POSS><Attr><Neut><Acc><Sg><NoInfl>	meine	meine			POSS					Neut	Acc	Sg	NoInfl	Attr
-mein	meine<+POSS><Attr><Neut><Nom><Sg><NoInfl>	meine	meine			POSS					Neut	Nom	Sg	NoInfl	Attr
-mein	meine<+POSS><Attr><Masc><Nom><Sg><NoInfl>	meine	meine			POSS					Masc	Nom	Sg	NoInfl	Attr
-mein	ich<+PPRO><Pers><1><Gen><Sg><Old>	ich	ich			PPRO	Pers			1		Gen	Sg						Old
-```
-
-```plaintext
-$ echo schlafe | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo
-schlafe	schlaf<~>en<+V><3><Sg><Pres><Subj>	schlafen	schlaf<~>en			V				3			Sg				Subj	Pres
-schlafe	schlaf<~>en<+V><1><Sg><Pres><Subj>	schlafen	schlaf<~>en			V				1			Sg				Subj	Pres
-schlafe	schlaf<~>en<+V><1><Sg><Pres><Ind>	schlafen	schlaf<~>en			V				1			Sg				Ind	Pres
-```
-
-An alternative JSON output is available with the option `-j`.
+CSV and JSON outputs are available with options `-c` and `-j`, respectively.
 
 `paradigm.py` is Python script for the generation of paradigms of lexical words
 in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./paradigm.py -h
-usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j] [-n] [-N] [-o]
-                   [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}] [-s]
-                   [-t TRANSDUCER] [-u] [-v] lemma [output]
+usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j] [-n] [-N]
+                   [-o] [-O] [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}]
+                   [-s] [-S] [-t TRANSDUCER] [-u] [-v] lemma [output]
 
 positional arguments:
   lemma                 lemma (determiners: Fem Nom Sg; nominalised adjectives: Wk)
@@ -294,321 +337,120 @@ optional arguments:
   -j, --json            output JSON object
   -n, --no-cats         do not output category names
   -N, --no-lemma        do not output lemma, lemma index, paradigm index, and lexical categories
-  -o, --old-forms       output also archaic forms
+  -o, --old             output also archaic forms
+  -O, --oldorth         output also forms in old spelling
   -p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}, --pos {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}
                         part of speech
-  -s, --nonstandard-forms
-                        output also non-standard forms
+  -s, --nonst           output also non-standard forms
+  -S, --ch              output also forms in Swiss spelling
   -t TRANSDUCER, --transducer TRANSDUCER
                         transducer file (default: lib/dwdsmor-index.a)
   -u, --user-specified  use only user-specified information
   -v, --version         show program's version number and exit
 ```
 
-By default, `paradigm.py` outputs a similar CSV table as `dwdsmor.py`:
+By default, `paradigm.py` outputs a similar TSV table as `dwdsmor.py`:
 
 ```plaintext
-$ ./paradigm.py Kind
+$ ./paradigm.py Bank
 Lemma	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Person	Gender	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Paradigm Forms
-Kind			NN				Neut				Nom	Sg						Kind
-Kind			NN				Neut				Acc	Sg						Kind
-Kind			NN				Neut				Dat	Sg						Kind
-Kind			NN				Neut				Gen	Sg						Kindes, Kinds
-Kind			NN				Neut				Nom	Pl						Kinder
-Kind			NN				Neut				Acc	Pl						Kinder
-Kind			NN				Neut				Dat	Pl						Kindern
-Kind			NN				Neut				Gen	Pl						Kinder
+Bank	1		NN				Fem				Nom	Sg						Bank
+Bank	1		NN				Fem				Acc	Sg						Bank
+Bank	1		NN				Fem				Dat	Sg						Bank
+Bank	1		NN				Fem				Gen	Sg						Bank
+Bank	1		NN				Fem				Nom	Pl						Bänke
+Bank	1		NN				Fem				Acc	Pl						Bänke
+Bank	1		NN				Fem				Dat	Pl						Bänken
+Bank	1		NN				Fem				Gen	Pl						Bänke
+Bank	2		NN				Fem				Nom	Sg						Bank
+Bank	2		NN				Fem				Acc	Sg						Bank
+Bank	2		NN				Fem				Dat	Sg						Bank
+Bank	2		NN				Fem				Gen	Sg						Bank
+Bank	2		NN				Fem				Nom	Pl						Banken
+Bank	2		NN				Fem				Acc	Pl						Banken
+Bank	2		NN				Fem				Dat	Pl						Banken
+Bank	2		NN				Fem				Gen	Pl						Banken
 ```
 
-For a condensed version, the options `-n` and `-N` can be specified:
+For a condensed version, the options `-n` and `-N` can be specified. The DWDS
+homographic lemma index can be selected with option `-i`:
 
 ```plaintext
-$ ./paradigm.py -n -N Kind
+$ ./paradigm.py -n -N -i 1 Bank
 Paradigm Categories	Paradigm Forms
-Nom Sg	Kind
-Acc Sg	Kind
-Dat Sg	Kind
-Gen Sg	Kindes, Kinds
-Nom Pl	Kinder
-Acc Pl	Kinder
-Dat Pl	Kindern
-Gen Pl	Kinder
+Nom Sg	Bank
+Acc Sg	Bank
+Dat Sg	Bank
+Gen Sg	Bank
+Nom Pl	Bänke
+Acc Pl	Bänke
+Dat Pl	Bänken
+Gen Pl	Bänke
 ```
 
+The default transducer for paradigm generation is `dwdsmor-index.a` and
+restricted to inflection only. Paradigms for word-formation products which are
+unavailable in the DWDS can be generated with the transducer `dwdsmor.a`:
 ```plaintext
-$ ./paradigm.py -n -N klein
+$ ./paradigm.py -n -N -t lib/dwdsmor.a Bank
 Paradigm Categories	Paradigm Forms
-Pos Pred/Adv	klein
-Comp Pred/Adv	kleiner
-Sup Pred/Adv	am kleinsten
-Pos Masc Nom Sg St Attr/Subst	kleiner
-Pos Masc Nom Sg Wk Attr/Subst	kleine
-Pos Masc Acc Sg St Attr/Subst	kleinen
-Pos Masc Acc Sg Wk Attr/Subst	kleinen
-Pos Masc Dat Sg St Attr/Subst	kleinem
-Pos Masc Dat Sg Wk Attr/Subst	kleinen
-Pos Masc Gen Sg St Attr/Subst	kleinen
-Pos Masc Gen Sg Wk Attr/Subst	kleinen
-Pos Neut Nom Sg St Attr/Subst	kleines
-Pos Neut Nom Sg Wk Attr/Subst	kleine
-Pos Neut Acc Sg St Attr/Subst	kleines
-Pos Neut Acc Sg Wk Attr/Subst	kleine
-Pos Neut Dat Sg St Attr/Subst	kleinem
-Pos Neut Dat Sg Wk Attr/Subst	kleinen
-Pos Neut Gen Sg St Attr/Subst	kleinen
-Pos Neut Gen Sg Wk Attr/Subst	kleinen
-Pos Fem Nom Sg St Attr/Subst	kleine
-Pos Fem Nom Sg Wk Attr/Subst	kleine
-Pos Fem Acc Sg St Attr/Subst	kleine
-Pos Fem Acc Sg Wk Attr/Subst	kleine
-Pos Fem Dat Sg St Attr/Subst	kleiner
-Pos Fem Dat Sg Wk Attr/Subst	kleinen
-Pos Fem Gen Sg St Attr/Subst	kleiner
-Pos Fem Gen Sg Wk Attr/Subst	kleinen
-Pos NoGend Nom Pl St Attr/Subst	kleine
-Pos NoGend Nom Pl Wk Attr/Subst	kleinen
-Pos NoGend Acc Pl St Attr/Subst	kleine
-Pos NoGend Acc Pl Wk Attr/Subst	kleinen
-Pos NoGend Dat Pl St Attr/Subst	kleinen
-Pos NoGend Dat Pl Wk Attr/Subst	kleinen
-Pos NoGend Gen Pl St Attr/Subst	kleiner
-Pos NoGend Gen Pl Wk Attr/Subst	kleinen
-Comp Masc Nom Sg St Attr/Subst	kleinerer
-Comp Masc Nom Sg Wk Attr/Subst	kleinere
-Comp Masc Acc Sg St Attr/Subst	kleineren
-Comp Masc Acc Sg Wk Attr/Subst	kleineren
-Comp Masc Dat Sg St Attr/Subst	kleinerem
-Comp Masc Dat Sg Wk Attr/Subst	kleineren
-Comp Masc Gen Sg St Attr/Subst	kleineren
-Comp Masc Gen Sg Wk Attr/Subst	kleineren
-Comp Neut Nom Sg St Attr/Subst	kleineres
-Comp Neut Nom Sg Wk Attr/Subst	kleinere
-Comp Neut Acc Sg St Attr/Subst	kleineres
-Comp Neut Acc Sg Wk Attr/Subst	kleinere
-Comp Neut Dat Sg St Attr/Subst	kleinerem
-Comp Neut Dat Sg Wk Attr/Subst	kleineren
-Comp Neut Gen Sg St Attr/Subst	kleineren
-Comp Neut Gen Sg Wk Attr/Subst	kleineren
-Comp Fem Nom Sg St Attr/Subst	kleinere
-Comp Fem Nom Sg Wk Attr/Subst	kleinere
-Comp Fem Acc Sg St Attr/Subst	kleinere
-Comp Fem Acc Sg Wk Attr/Subst	kleinere
-Comp Fem Dat Sg St Attr/Subst	kleinerer
-Comp Fem Dat Sg Wk Attr/Subst	kleineren
-Comp Fem Gen Sg St Attr/Subst	kleinerer
-Comp Fem Gen Sg Wk Attr/Subst	kleineren
-Comp NoGend Nom Pl St Attr/Subst	kleinere
-Comp NoGend Nom Pl Wk Attr/Subst	kleineren
-Comp NoGend Acc Pl St Attr/Subst	kleinere
-Comp NoGend Acc Pl Wk Attr/Subst	kleineren
-Comp NoGend Dat Pl St Attr/Subst	kleineren
-Comp NoGend Dat Pl Wk Attr/Subst	kleineren
-Comp NoGend Gen Pl St Attr/Subst	kleinerer
-Comp NoGend Gen Pl Wk Attr/Subst	kleineren
-Sup Masc Nom Sg St Attr/Subst	kleinster
-Sup Masc Nom Sg Wk Attr/Subst	kleinste
-Sup Masc Acc Sg St Attr/Subst	kleinsten
-Sup Masc Acc Sg Wk Attr/Subst	kleinsten
-Sup Masc Dat Sg St Attr/Subst	kleinstem
-Sup Masc Dat Sg Wk Attr/Subst	kleinsten
-Sup Masc Gen Sg St Attr/Subst	kleinsten
-Sup Masc Gen Sg Wk Attr/Subst	kleinsten
-Sup Neut Nom Sg St Attr/Subst	kleinstes
-Sup Neut Nom Sg Wk Attr/Subst	kleinste
-Sup Neut Acc Sg St Attr/Subst	kleinstes
-Sup Neut Acc Sg Wk Attr/Subst	kleinste
-Sup Neut Dat Sg St Attr/Subst	kleinstem
-Sup Neut Dat Sg Wk Attr/Subst	kleinsten
-Sup Neut Gen Sg St Attr/Subst	kleinsten
-Sup Neut Gen Sg Wk Attr/Subst	kleinsten
-Sup Fem Nom Sg St Attr/Subst	kleinste
-Sup Fem Nom Sg Wk Attr/Subst	kleinste
-Sup Fem Acc Sg St Attr/Subst	kleinste
-Sup Fem Acc Sg Wk Attr/Subst	kleinste
-Sup Fem Dat Sg St Attr/Subst	kleinster
-Sup Fem Dat Sg Wk Attr/Subst	kleinsten
-Sup Fem Gen Sg St Attr/Subst	kleinster
-Sup Fem Gen Sg Wk Attr/Subst	kleinsten
-Sup NoGend Nom Pl St Attr/Subst	kleinste
-Sup NoGend Nom Pl Wk Attr/Subst	kleinsten
-Sup NoGend Acc Pl St Attr/Subst	kleinste
-Sup NoGend Acc Pl Wk Attr/Subst	kleinsten
-Sup NoGend Dat Pl St Attr/Subst	kleinsten
-Sup NoGend Dat Pl Wk Attr/Subst	kleinsten
-Sup NoGend Gen Pl St Attr/Subst	kleinster
-Sup NoGend Gen Pl Wk Attr/Subst	kleinsten
+Nom Sg	Kinderbank
+Acc Sg	Kinderbank
+Dat Sg	Kinderbank
+Gen Sg	Kinderbank
+Nom Pl	Kinderbanken, Kinderbänke
+Acc Pl	Kinderbanken, Kinderbänke
+Dat Pl	Kinderbanken, Kinderbänken
+Gen Pl	Kinderbanken, Kinderbänke
 ```
+Note that this transducer does not know of DWDS homographic lemma indices.
 
-```plaintext
-$ ./paradigm.py -n -N meine
-Paradigm Categories	Paradigm Forms
-Masc Nom Sg NoInfl Attr	mein
-Masc Nom Sg St Subst	meiner
-Masc Nom Sg Wk Subst	meine
-Masc Acc Sg St Attr	meinen
-Masc Acc Sg St Subst	meinen
-Masc Acc Sg Wk Subst	meinen
-Masc Dat Sg St Attr	meinem
-Masc Dat Sg St Subst	meinem
-Masc Dat Sg Wk Subst	meinen
-Masc Gen Sg St Attr	meines
-Masc Gen Sg St Subst	meines
-Masc Gen Sg Wk Subst	meinen
-Neut Nom Sg NoInfl Attr	mein
-Neut Nom Sg St Subst	meines, meins
-Neut Nom Sg Wk Subst	meine
-Neut Acc Sg NoInfl Attr	mein
-Neut Acc Sg St Subst	meines, meins
-Neut Acc Sg Wk Subst	meine
-Neut Dat Sg St Attr	meinem
-Neut Dat Sg St Subst	meinem
-Neut Dat Sg Wk Subst	meinen
-Neut Gen Sg St Attr	meines
-Neut Gen Sg St Subst	meines
-Neut Gen Sg Wk Subst	meinen
-Fem Nom Sg St Attr	meine
-Fem Nom Sg St Subst	meine
-Fem Nom Sg Wk Subst	meine
-Fem Acc Sg St Attr	meine
-Fem Acc Sg St Subst	meine
-Fem Acc Sg Wk Subst	meine
-Fem Dat Sg St Attr	meiner
-Fem Dat Sg St Subst	meiner
-Fem Dat Sg Wk Subst	meinen
-Fem Gen Sg St Attr	meiner
-Fem Gen Sg St Subst	meiner
-Fem Gen Sg Wk Subst	meinen
-NoGend Nom Pl St Attr	meine
-NoGend Nom Pl St Subst	meine
-NoGend Nom Pl Wk Subst	meinen
-NoGend Acc Pl St Attr	meine
-NoGend Acc Pl St Subst	meine
-NoGend Acc Pl Wk Subst	meinen
-NoGend Dat Pl St Attr	meinen
-NoGend Dat Pl St Subst	meinen
-NoGend Dat Pl Wk Subst	meinen
-NoGend Gen Pl St Attr	meiner
-NoGend Gen Pl St Subst	meiner
-NoGend Gen Pl Wk Subst	meinen
-```
-
-```plaintext
-$ ./paradigm.py -n -N schlafen
-Paradigm Categories	Paradigm Forms
-Inf Pres	schlafen
-Inf Perf	geschlafen haben
-Part Pres	schlafend
-Part Perf	geschlafen
-1 Sg Ind Pres	schlafe
-2 Sg Ind Pres	schläfst
-3 Sg Ind Pres	schläft
-1 Pl Ind Pres	schlafen
-2 Pl Ind Pres	schlaft
-3 Pl Ind Pres	schlafen
-1 Sg Subj Pres	schlafe
-2 Sg Subj Pres	schlafest
-3 Sg Subj Pres	schlafe
-1 Pl Subj Pres	schlafen
-2 Pl Subj Pres	schlafet
-3 Pl Subj Pres	schlafen
-1 Sg Ind Perf	habe geschlafen
-2 Sg Ind Perf	hast geschlafen
-3 Sg Ind Perf	hat geschlafen
-1 Pl Ind Perf	haben geschlafen
-2 Pl Ind Perf	habt geschlafen
-3 Pl Ind Perf	haben geschlafen
-1 Sg Subj Perf	habe geschlafen
-2 Sg Subj Perf	habest geschlafen
-3 Sg Subj Perf	habe geschlafen
-1 Pl Subj Perf	haben geschlafen
-2 Pl Subj Perf	habet geschlafen
-3 Pl Subj Perf	haben geschlafen
-1 Sg Ind Past	schlief
-2 Sg Ind Past	schliefst
-3 Sg Ind Past	schlief
-1 Pl Ind Past	schliefen
-2 Pl Ind Past	schlieft
-3 Pl Ind Past	schliefen
-1 Sg Subj Past	schliefe
-2 Sg Subj Past	schliefest
-3 Sg Subj Past	schliefe
-1 Pl Subj Past	schliefen
-2 Pl Subj Past	schliefet
-3 Pl Subj Past	schliefen
-1 Sg Ind PastPerf	hatte geschlafen
-2 Sg Ind PastPerf	hattest geschlafen
-3 Sg Ind PastPerf	hatte geschlafen
-1 Pl Ind PastPerf	hatten geschlafen
-2 Pl Ind PastPerf	hattet geschlafen
-3 Pl Ind PastPerf	hatten geschlafen
-1 Sg Subj PastPerf	hätte geschlafen
-2 Sg Subj PastPerf	hättest geschlafen
-3 Sg Subj PastPerf	hätte geschlafen
-1 Pl Subj PastPerf	hätten geschlafen
-2 Pl Subj PastPerf	hättet geschlafen
-3 Pl Subj PastPerf	hätten geschlafen
-1 Sg Ind Fut	werde schlafen
-2 Sg Ind Fut	wirst schlafen
-3 Sg Ind Fut	wird schlafen
-1 Pl Ind Fut	werden schlafen
-2 Pl Ind Fut	werdet schlafen
-3 Pl Ind Fut	werden schlafen
-1 Sg Subj Fut	werde schlafen
-2 Sg Subj Fut	werdest schlafen
-3 Sg Subj Fut	werde schlafen
-1 Pl Subj Fut	werden schlafen
-2 Pl Subj Fut	werdet schlafen
-3 Pl Subj Fut	werden schlafen
-1 Sg Ind FutPerf	werde geschlafen haben
-2 Sg Ind FutPerf	wirst geschlafen haben
-3 Sg Ind FutPerf	wird geschlafen haben
-1 Pl Ind FutPerf	werden geschlafen haben
-2 Pl Ind FutPerf	werdet geschlafen haben
-3 Pl Ind FutPerf	werden geschlafen haben
-1 Sg Subj FutPerf	werde geschlafen haben
-2 Sg Subj FutPerf	werdest geschlafen haben
-3 Sg Subj FutPerf	werde geschlafen haben
-1 Pl Subj FutPerf	werden geschlafen haben
-2 Pl Subj FutPerf	werdet geschlafen haben
-3 Pl Subj FutPerf	werden geschlafen haben
-Sg Imp	schlaf
-Pl Imp	schlaft
-```
-
-Again, the option `-j` selects an alternative JSON output.
-
+Again, options `-c` and `-j` select alternative CSV and JSON outputs.
 
 ## Contact
 
 Feel free to contact [Andreas Nolda](mailto:andreas.nolda@bbaw.de) for
 questions regarding the lexicon or the grammar and
 [Gregor Middell](mailto:gregor.middell@bbaw.de) for question related
-to the build process or the integration of DWDSmor with your application.
+to the integration of DWDSmor into your corpus-annotation pipeline.
 
 ## Bibliography
 
-* A. Fitschen, “Ein computerlinguistisches Lexikon als komplexes System,” 2004,
-  [pdf](https://www.ims.uni-stuttgart.de/documents/ressourcen/lexika/imslex/fitschendiss.pdf).
-* Helmut Schmid, Arne Fitschen, and Ulrich Heid, “SMOR: A German Computational
-  Morphology Covering Derivation, Composition and Inflection,” in Proceedings of
-  the Fourth International Conference on Language Resources and Evaluation
-  (LREC’04) (Presented at the LREC 2004, Lisbon, Portugal: European Language
-  Resources Association (ELRA), 2004), accessed August 2, 2021,
-  [pdf](http://www.lrec-conf.org/proceedings/lrec2004/pdf/468.pdf).
-* Helmut Schmid, “A Programming Language for Finite State Transducers,” in
-  Finite-State Methods and Natural Language Processing, ed. Anssi Yli-Jyrä,
-  Lauri Karttunen, and Juhani Karhumäki, Lecture Notes in Computer Science
-  (Berlin, Heidelberg: Springer, 2006), 308–309,
-  [pdf](https://www.cis.uni-muenchen.de/~schmid/papers/SFST-PL.pdf).
-* Rico Sennrich and Beat Kunz, “Zmorge: A German Morphological Lexicon Extracted
-  from Wiktionary,” in Proceedings of the Ninth International Conference on
-  Language Resources and Evaluation (LREC’14) (Presented at the LREC 2014,
-  Reykjavik, Iceland: European Language Resources Association (ELRA), 2014),
-  1063–1067, accessed August 2, 2021,
-  [pdf](http://www.lrec-conf.org/proceedings/lrec2014/pdf/116_Paper.pdf).
+* Berlin-Brandenburg Academy of Sciences and Humanities (BBAW) (ed.) (n.d.).
+  DWDS – Digitales Wörterbuch der deutschen Sprache: Das Wortauskunftssystem zur
+  deutschen Sprache in Geschichte und Gegenwart.
+  https://www.dwds.de
+* Fitschen, Arne (2004). Ein computerlinguistisches Lexikon als komplexes
+  System. Ph.D. thesis, Universität Stuttgart.
+  [PDF](http://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/IMSLex/fitschendiss.pdf)
+* Nolda, Andreas (2022). Headedness as an epiphenomenon: Case studies on
+  compounding and blending in German. In *Headedness and/or Grammatical
+  Anarchy?*, ed. by Ulrike Freywald, Horst Simon, and Stefan Müller, Empirically
+  Oriented Theoretical Morphology and Syntax 11, Berlin: Language Science Press,
+  343–376.
+  [PDF](https://zenodo.org/record/7142720/files/336-FreywaldSimonMüller-2022-11.pdf).
+* Schmid, Helmut (2006). A programming language for finite state transducers. In
+  *Finite-State Methods and Natural Language Processing: 5th International
+  Workshop, FSMNLP 2005, Helsinki, Finland, September 1–2, 2005*, ed. by Anssi
+  Yli-Jyrä, Lauri Karttunen, and Juhani Karhumäki, Lecture Notes in Artificial
+  Intelligence 4002, Berlin: Springer, 1263–1266.
+  [PDF](https://www.cis.uni-muenchen.de/~schmid/papers/SFST-PL.pdf).
+* Schmid, Helmut, Arne Fitschen, and Ulrich Heid (2004). SMOR: A German
+  computational morphology covering derivation, composition, and inflection. In
+  LREC 2004: Fourth International Conference on Language Resources and
+  Evaluation, ed. by Maria T. Lino *et al.*, European Language Resources
+  Association, 1263–1266.
+  [PDF](http://www.lrec-conf.org/proceedings/lrec2004/pdf/468.pdf)
+* Sennrich, Rico and Beta Kunz (2014). Zmorge: A German morphological lexicon
+  extracted from Wiktionary. In LREC 2014: Ninth International Conference on
+  Language Resources and Evaluation, ed. by Nicoletta Calzolari *et al.*,
+  European Language Resources Association, 1063–1067.
+  [PDF](http://www.lrec-conf.org/proceedings/lrec2014/pdf/116_Paper.pdf).
 
 ## License
 
-Copyright &copy; 2022 Berlin-Brandenburg Academy of Sciences and Humanities.
+As the original SMOR and SMORLemma grammars, the DWDSmor grammar is licensed
+under the GNU General Public Licence v2.0. The rest of this project is licensed
+under the GNU Lesser General Public License v3.0.
 
-This project is licensed under the GNU Lesser General Public License v3.0.
+© 2023 Berlin-Brandenburg Academy of Sciences and Humanities (BBAW).
