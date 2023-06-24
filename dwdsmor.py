@@ -51,7 +51,7 @@ class Analysis(tuple):
         analysis = self.analysis
         analysis = re.sub(r"<COMP>(:?<concat>|<hyph>)", "", analysis)
         analysis = re.sub(r"(?:<IDX[^>]+>)?(?:<PAR[^>]+>)?<\+[^>]+>.*", "", analysis)
-        if analysis == "\:":
+        if analysis == r"\:":
             analysis = ":"
         return analysis
 
@@ -238,7 +238,7 @@ class Analysis(tuple):
         text_len = len(text)
         ti = 0
         prev_char = None
-        if text == "\:":
+        if text == r"\:":
             lemma = ":"
             form = ":"
         else:
