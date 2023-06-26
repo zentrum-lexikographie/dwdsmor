@@ -1,3 +1,7 @@
+2023-06-26:
+
+* add `dwds2dwds.xsl` for compiling sample DWDS lexica from DWDS sources
+
 2023-05-19:
 
 * add support for common abbrevations

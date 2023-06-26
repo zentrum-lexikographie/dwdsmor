@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.1 -->
-<!-- Andreas Nolda 2023-05-20 -->
+<!-- Version 14.2 -->
+<!-- Andreas Nolda 2023-06-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2251,40 +2251,30 @@
                           select="dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma/@hidx"/>
             <xsl:variable name="index2"
                           select="dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma/@hidx"/>
-            <xsl:variable name="file1">
-              <xsl:choose>
-                <xsl:when test="not(string(number($index1))='NaN')">
-                  <xsl:value-of select="$manifest/source[@lemma=$basis1]
-                                                        [@index=$index1][1]/@href"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="$manifest/source[@lemma=$basis1][1]/@href"/>
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
-            <xsl:variable name="file2">
-              <xsl:choose>
-                <xsl:when test="not(string(number($index2))='NaN')">
-                  <xsl:value-of select="$manifest/source[@lemma=$basis2]
-                                                        [@index=$index2][1]/@href"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="$manifest/source[@lemma=$basis2][1]/@href"/>
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
+            <xsl:variable name="source1"
+                          select="$manifest/source[@lemma=$basis1]
+                                                  [@index=$index1 or
+                                                   not(@index) and string-length($index1)=0][1]"/>
+            <xsl:variable name="source2"
+                          select="$manifest/source[@lemma=$basis2]
+                                                  [@index=$index2 or
+                                                   not(@index) and string-length($index2)=0][1]"/>
+            <xsl:variable name="file1"
+                          select="$source1/@href"/>
+            <xsl:variable name="file2"
+                          select="$source2/@href"/>
+            <xsl:variable name="n1"
+                          select="$source1/@n"/>
+            <xsl:variable name="n2"
+                          select="$source2/@n"/>
             <xsl:variable name="article1">
-              <!-- ignore files containing more than one article -->
-              <xsl:if test="doc-available(n:absolute-path($file1)) and
-                            count(doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel)=1">
-                <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel/*"/>
+              <xsl:if test="doc-available(n:absolute-path($file1))">
+                <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel[position()=$n1]/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:variable name="article2">
-              <!-- ignore files containing more than one article -->
-              <xsl:if test="doc-available(n:absolute-path($file2)) and
-                            count(doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel)=1">
-                <xsl:copy-of select="doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel/*"/>
+              <xsl:if test="doc-available(n:absolute-path($file2))">
+                <xsl:copy-of select="doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel[position()=$n2]/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:for-each select="$article1">
@@ -2417,6 +2407,7 @@
                                                  [dwds:Verweis[@Typ='Erstglied']]
                                                  [not(dwds:Verweis[@Typ='Binnenglied'])]
                                                  [dwds:Verweis[@Typ='Letztglied']]">
+
           <xsl:variable name="basis"
                         select="normalize-space(dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma)"/>
           <xsl:variable name="affix"
@@ -2433,40 +2424,30 @@
                           select="dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma/@hidx"/>
             <xsl:variable name="index2"
                           select="dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma/@hidx"/>
-            <xsl:variable name="file1">
-              <xsl:choose>
-                <xsl:when test="not(string(number($index1))='NaN')">
-                  <xsl:value-of select="$manifest/source[@lemma=$basis]
-                                                        [@index=$index1][1]/@href"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="$manifest/source[@lemma=$basis][1]/@href"/>
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
-            <xsl:variable name="file2">
-              <xsl:choose>
-                <xsl:when test="not(string(number($index2))='NaN')">
-                  <xsl:value-of select="$manifest/source[@lemma=$affix]
-                                                        [@index=$index2][1]/@href"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="$manifest/source[@lemma=$affix][1]/@href"/>
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
+            <xsl:variable name="source1"
+                          select="$manifest/source[@lemma=$basis]
+                                                  [@index=$index1 or
+                                                   not(@index) and string-length($index1)=0][1]"/>
+            <xsl:variable name="source2"
+                          select="$manifest/source[@lemma=$affix]
+                                                  [@index=$index2 or
+                                                   not(@index) and string-length($index2)=0][1]"/>
+            <xsl:variable name="file1"
+                          select="$source1/@href"/>
+            <xsl:variable name="file2"
+                          select="$source2/@href"/>
+            <xsl:variable name="n1"
+                          select="$source1/@n"/>
+            <xsl:variable name="n2"
+                          select="$source2/@n"/>
             <xsl:variable name="article1">
-              <!-- ignore files containing more than one article -->
-              <xsl:if test="doc-available(n:absolute-path($file1)) and
-                            count(doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel)=1">
-                <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel/*"/>
+              <xsl:if test="doc-available(n:absolute-path($file1))">
+                <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel[position()=$n1]/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:variable name="article2">
-              <!-- ignore files containing more than one article -->
-              <xsl:if test="doc-available(n:absolute-path($file2)) and
-                            count(doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel)=1">
-                <xsl:copy-of select="doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel/*"/>
+              <xsl:if test="doc-available(n:absolute-path($file2))">
+                <xsl:copy-of select="doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel[position()=$n2]/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:for-each select="$article1">

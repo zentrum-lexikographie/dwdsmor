@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2manifest.xsl -->
-<!-- Version 2.0 -->
-<!-- Andreas Nolda 2023-05-15 -->
+<!-- Version 2.1 -->
+<!-- Andreas Nolda 2023-06-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -72,6 +72,9 @@
 <xsl:template match="dwds:Artikel">
   <xsl:variable name="file"
                 select="n:relative-path(document-uri(/))"/>
+  <!-- position of article in file -->
+  <xsl:variable name="n"
+                select="position()"/>
   <!-- ignore duplicate lemma-index pairs -->
   <!-- ignore idioms and non-standard spellings -->
   <xsl:for-each-group select="dwds:Formangabe/dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
@@ -90,6 +93,8 @@
           <xsl:attribute name="index"
                          select="$index"/>
         </xsl:if>
+        <xsl:attribute name="n"
+                       select="$n"/>
         <xsl:attribute name="href"
                        select="$file"/>
       </source>
