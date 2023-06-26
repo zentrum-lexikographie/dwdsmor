@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2022-11-30
+# Andreas Nolda 2023-06-26
 
 DATETIME = $(shell date +%FT%T%z)
 DATE     = $(shell echo $(DATETIME) | cut -c 1-4,6-7,9-10)
@@ -7,10 +7,11 @@ DATE     = $(shell echo $(DATETIME) | cut -c 1-4,6-7,9-10)
 CPUS = $(shell nproc)
 JOBS = $(shell expr $(CPUS) \* 3 / 4)
 
-LEXDIR = $(CURDIR)/lexicon
 SRCDIR = $(CURDIR)/grammar
+LEXDIR = $(CURDIR)/lexicon
 
-INSTALLDIR = $(CURDIR)/lib
+DWDSDIR   = $(LEXDIR)/dwds
+SAMPLEDIR = $(LEXDIR)/sample
 
 RDIR    = $(CURDIR)/releases/$(DATE)
 RLIBDIR = $(RDIR)/lib
@@ -26,20 +27,27 @@ RSRCFILES = $(SRCDIR)/Makefile \
             $(wildcard $(SRCDIR)/*.fst) \
             $(wildcard $(SRCDIR)/*.lex)
 
-DISTDIR ?= /opt/dwdsmor
-
-all: lexicon grammar
+all: dwds dwds-install dwdsmor
 	echo $(DATE) > $(CURDIR)/VERSION
 	echo $(DATETIME) > $(CURDIR)/BUILD
 
-lexicon:
-	$(MAKE) -C $(LEXDIR) all
+dwds:
+	$(MAKE) -C $(DWDSDIR) all
 
-grammar:
+dwds-install:
+	$(MAKE) -C $(DWDSDIR) install
+
+sample:
+	$(MAKE) -C $(SAMPLEDIR) all
+
+sample-install:
+	$(MAKE) -C $(SAMPLEDIR) install
+
+dwdsmor:
 	$(MAKE) -j $(JOBS) -C $(SRCDIR) all
 
 install:
-	$(MAKE) -C $(SRCDIR) install INSTALLDIR=$(INSTALLDIR)
+	$(MAKE) -C $(SRCDIR) install
 
 release:
 	mkdir -p $(RLIBDIR) $(RSRCDIR)
@@ -47,9 +55,6 @@ release:
 	cp -a $(RLIBFILES) $(RLIBDIR)
 	cp -a $(RSRCFILES) $(RSRCDIR)
 	ln -s -r -f -n $(RDIR) $(CURDIR)/releases/latest
-
-dist:
-	sudo rsync -r -t -v --exclude=/src/ $(RDIR)/ $(DISTDIR)
 
 clean:
 	$(MAKE) -C $(SRCDIR) clean
@@ -68,4 +73,4 @@ pyenv:
 pyenv-clean:
 	pyenv local --unset && pyenv virtualenv-delete zdl-dwdsmor
 
-.PHONY: all grammar lexicon install release dist test clean setup pyenv pyenv-clean
+.PHONY: all dwds dwds-install sample sample-install dwdsmor install release test clean setup pyenv pyenv-clean

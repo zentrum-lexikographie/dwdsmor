@@ -17,7 +17,7 @@ INCLUDE_INDEX  = $(INCLUDE_COMMON)
 
 LEX = dwds.lex
 
-INSTALLDIR ?= $(abspath $(CURDIR)/../lib)
+INSTALLDIR = $(abspath $(CURDIR)/../lib)
 
 all: $(A) $(CA)
 

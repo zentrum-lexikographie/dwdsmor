@@ -24,19 +24,24 @@ generation:
 * `share/` contains XSLT stylesheets for extracting lexical entries in SMORLemma
   format form XML sources of DWDS articles. Sample inputs and outputs can be
   found in `samples/`.
-* `lexicon/` contains scripts for building DWDSmor lexica by means of the XSLT
-  stylesheets in `share/` and the lexical data in `lexicon/wb/`, which is not
-  part of this repository, but is supposed to be imported as a Git submodule.
-* `grammar/` contains an FST grammar based on SMORLemma, providing the
-  morphology.
-* `dwdsmor/` and `tests/` implement a Python library and accompanying test suite
-  for the DWDSmor transducers.
+* `lexicon/dwds/` contains scripts for building DWDSmor lexica by means of the
+  XSLT stylesheets in `share/` and DWDS sources in `lexicon/dwds/wb/`, which are
+  not part of this repository.
+* `lexicon/sample/` contains scripts for building sample DWDSmor lexica by means
+  of the XSLT stylesheets in `share/` and the sample lexicon in
+  `lexicon/sample/wb/`.
+* `grammar/` contains an FST grammar derived from SMORLemma, providing the
+  morphology for building DWDSmor automata from DWDSmor lexica.
+* `tests/` implements a test suite for the DWDSmor transducers.
 * `dwdsmor.py` and `paradigm.py` are user-level Python scripts for morphological
   analysis and for paradigm generation by means of DWDSmor transducers.
 
-DWDSmor is in active development. In its current stage, DWDSmor supports
-inflection for a large subset of the vocabulary of written German and a small
-subset of productive word-formation patterns.
+DWDSmor is in active development. In its current stage, DWDSmor supports most
+inflection classes and some productive word-formation patterns of written
+German. Note that the sample lexicon in `lexicon/sample/wb/` only covers a
+sketchy subset of the German vocabulary, and so do the DWDSmor automata compiled
+from it.
+
 
 ## Prerequisites
 
@@ -92,67 +97,31 @@ make setup
 
 ## Building DWDSmor lexica and transducers
 
-For building DWDSmor lexica and transducers, after aquiring DWDS dictionary
-sources, simply run:
+For building DWDSmor lexica and transducers, run after aquiring the DWDS
+sources:
 
 ```sh
-make all && make install
+make all
 ```
 
-This will build DWDSmor lexica and transducers and install the
-latter into `lib/`, where the user-level Python scripts `dwdsmor.py` and
-`paradigm.py` expect them by default.
-
-For experts, the individual steps of building DWDSmor lexica and transducers
-will be described in more details in the following subsections.
-
-### Building DWDSmor lexica
-
-For generating a lexicon from XML sources of DWDS articles in `lexicon/wb/` or
-`lexicon/aux/`, run:
-
+Alternatively, you can run:
 
 ```sh
-make lexicon
+make dwds && make dwds-install && make dwdsmor
 ```
 
-The lexicon is saved as `grammar/dwds.lex`. A log file can be found in
-`grammar/dwds.log` which includes XSLT warnings, if any.
-
-Individual input files can be blacklisted in `lexicon/exclude.xml`. In this
-way, individual DWDS articles can be overwritten in the auxiliary input files.
-
-The lexicon will be re-built if XSLT stylesheets in `share/` have changed. In
-order to re-generate the lexicon with unchanged XSLT stylesheets, first call:
+For building DWDSmor lexica and transducers from the sample lexicon in
+`lexicon/sample/wb/`, run:
 
 ```sh
-make -C lexicon clean
+make sample && make sample-install && make dwdsmor
 ```
 
-For regression testing, the `test` make target is provided:
+Then install the built DWDSmor transducers into `lib/`, where the user-level
+Python scripts `dwdsmor.py` and `paradigm.py` expect them by default:
 
 ```sh
-make -s -C lexicon test
-```
-
-This generates small sample lexica from the file lists in `lexicon/test/input/`
-and compares the outputs in `lexicon/test/output/` with pre-generated target
-lexica in `lexicon/test/target/`. Note that filenames in the file lists are
-relative to `lexicon/wb/`.
-
-In order to re-run tests with unchanged lexicon, XSLT stylesheets and file
-lists, first call:
-
-```sh
-make -C lexicon testclean
-```
-
-### Building DWDSmor transducers
-
-The DWDSmor transducers are built by running:
-
-```sh
-make -C grammar all
+make install
 ```
 
 The resulting DWDSmor transducers are:
@@ -169,13 +138,6 @@ The resulting DWDSmor transducers are:
   Pattern-and-Restriction Theory of word formation (Nolda 2022)
 * `grammar/dwdsmor-index.{a,ca}`: transducer with an inflection component only
   with DWDS homographic lemma indices, for paradigm generation
-
-Once built, the DWDSmor transducers should be installed into `lib/`, where the
-Python scripts `dwdsmor.py` and `paradigm.py` expect them by default:
-
-```sh
-make -C grammar install
-```
 
 The DWDSmor transducers can then be examined with the test suite in `tests/` by
 running:
@@ -370,7 +332,7 @@ The default transducer for paradigm generation is `dwdsmor-index.a` and
 restricted to inflection only. Paradigms for word-formation products which are
 unavailable in the DWDS can be generated with the transducer `dwdsmor.a`:
 ```plaintext
-$ ./paradigm.py -n -N -t lib/dwdsmor.a Bank
+$ ./paradigm.py -n -N -t lib/dwdsmor.a Kinderbank
 Paradigm Categories	Paradigm Forms
 Nom Sg	Kinderbank
 Acc Sg	Kinderbank

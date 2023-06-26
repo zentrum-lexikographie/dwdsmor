@@ -2,7 +2,7 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe Typ="Abkürzung">
-      <Schreibung hid="1">Dr.</Schreibung>
+      <Schreibung hidx="1">Dr.</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
