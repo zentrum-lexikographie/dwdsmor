@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # paradigm.py -- generate paradigms
 # Andreas Nolda 2023-06-21
 

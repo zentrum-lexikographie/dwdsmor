@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
 # Gregor Middell and Andreas Nolda 2023-06-21
 
