@@ -51,7 +51,7 @@ from it.
   UNIX-like operating systems such as MacOS should work, too, they are not
   actively supported.
 
-[Python >= v3](https://www.python.org/)
+[Python >= v3.9](https://www.python.org/)
 : DWDSmor targets Python as its primary runtime environment. The DWDSmor
   transducers can be used via SFST's commandline tools, queried in Python
   applications via language-specific
@@ -59,10 +59,12 @@ from it.
   scripts `dwdsmor.py` and `paradigm.py` for morphological analysis and for
   paradigm generation.
 
-[Java (JDK) >= v8](https://openjdk.java.net/)
+[Saxon-HE](https://www.saxonica.com/)
 : The extraction of lexical entries from XML sources of DWDS articles is
-  implemented in XSLT 2, for which [Saxon-HE](https://www.saxonica.com/) is used
-  as the runtime environment. Saxon requires a Java runtime.
+  implemented in XSLT 2, for which Saxon-HE is used as the runtime environment.
+
+[Java (JDK) >= v8](https://openjdk.java.net/)
+:  Saxon requires a Java runtime.
 
 [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/)
 : a C++ library and toolbox for finite-state transducers (FSTs); please take a
