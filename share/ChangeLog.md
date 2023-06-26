@@ -1,5 +1,3 @@
-This file logs the changes of the XSLT stylesheets in share/*.xsl.
-
 2023-05-19:
 
 * add support for common abbrevations
