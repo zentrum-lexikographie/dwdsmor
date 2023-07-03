@@ -1,6 +1,6 @@
 % dwdsmor.fst
-% Version 10.0
-% Andreas Nolda 2023-05-22
+% Version 10.1
+% Andreas Nolda 2023-07-03
 
 #include "symbols.fst"
 #include "num.fst"
@@ -81,6 +81,7 @@ $Part-zwischen$ = <Prefix> zwischen
 
 $Pref-un$ = <Prefix> un
 
+$Suff-e$    = <Suffix> e    <NN> <base> <native> <>:<NMasc_n_n>
 $Suff-er$   = <Suffix> er   <NN> <base> <native> <>:<NMasc_s_0>
 $Suff-chen$ = <Suffix> chen <NN> <base> <native> <>:<NNeut_s_x>
 $Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_x>
@@ -155,12 +156,14 @@ $BaseStems$ = $BaseStems$ | $ConvBaseStems$
 
 % derived base stems with affixes
 
+$DerStemsSuff-e$    = $DerStems$ || $DerStemFilterSuff-e$
 $DerStemsSuff-er$   = $DerStems$ || $DerStemFilterSuff-er$
 $DerStemsSuff-chen$ = $DerStems$ || $DerStemFilterSuff-chen$
 $DerStemsSuff-lein$ = $DerStems$ || $DerStemFilterSuff-lein$
 
 $DerBaseStems$ = $UC$ $Pref-un$           <DB> $DC$ $BaseStems$ | \
                       $Pref-un$           <DB>      $BaseStems$ | \
+                      $DerStemsSuff-e$    <DB>      $Suff-e$    | \
                       $DerStemsSuff-er$   <DB>      $Suff-er$   | \
                       $DerStemsSuff-chen$ <DB>      $Suff-chen$ | \
                       $DerStemsSuff-lein$ <DB>      $Suff-lein$ || $DerFilter$

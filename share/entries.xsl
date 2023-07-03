@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.1 -->
-<!-- Andreas Nolda 2023-05-20 -->
+<!-- Version 11.2 -->
+<!-- Andreas Nolda 2023-07-03 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -157,7 +157,7 @@
 
 <xsl:variable name="supported-suffs"
               as="item()*"
-              select="'chen','er','lein'"/><!-- ... -->
+              select="'chen','e','er','lein'"/><!-- ... -->
 
 <!-- derivation stems -->
 <xsl:template name="der-stem-entry">
@@ -185,7 +185,7 @@
       <xsl:value-of select="$pos"/>
       <xsl:text>&gt;</xsl:text>
       <xsl:text>&lt;der&gt;</xsl:text>
-      <xsl:text>&lt;</xsl:text>
+      <xsl:text>&lt;-</xsl:text>
       <xsl:value-of select="$suff"/>
       <xsl:text>&gt;</xsl:text>
       <xsl:text>&lt;</xsl:text>

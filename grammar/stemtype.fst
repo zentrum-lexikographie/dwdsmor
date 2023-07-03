@@ -1,6 +1,6 @@
 % stemtype.fst
-% Version 4.3
-% Andreas Nolda 2023-05-22
+% Version 4.4
+% Andreas Nolda 2023-07-03
 
 #include "symbols.fst"
 
@@ -12,9 +12,10 @@ $BaseStemFilter$ = <Stem> .* <base> [^#stem-type#]*
 $CompStemFilter$ = <Stem> .* <comp> [^#stem-type#]*
 $DerStemFilter$  = <Stem> .* <der>  [^#stem-type#]*
 
-$DerStemFilterSuff-er$   = <Stem> .* <der> <er>   [^#stem-type#]*
-$DerStemFilterSuff-chen$ = <Stem> .* <der> <chen> [^#stem-type#]*
-$DerStemFilterSuff-lein$ = <Stem> .* <der> <lein> [^#stem-type#]*
+$DerStemFilterSuff-e$    = <Stem> .* <der> <-e>    [^#stem-type#]*
+$DerStemFilterSuff-er$   = <Stem> .* <der> <-er>   [^#stem-type#]*
+$DerStemFilterSuff-chen$ = <Stem> .* <der> <-chen> [^#stem-type#]*
+$DerStemFilterSuff-lein$ = <Stem> .* <der> <-lein> [^#stem-type#]*
 
 $BaseStemFilterV$ = (<Prefix> .*)? <Stem> .* <V> <base> [^#stem-type#]*
 

@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 6.8
-% Andreas Nolda 2023-05-22
+% Version 6.9
+% Andreas Nolda 2023-07-03
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -69,7 +69,7 @@
              <part(gegen)><part(hinter)><part(los)><part(mit)><part(nach)> \
              <part(ueber)><part(um)><part(unter)><part(vor)><part(weg)> \
              <part(zu)><part(zurueck)><part(zwischen)><pref(un)><suff(chen)> \
-             <suff(er)><suff(lein)>
+             <suff(e)><suff(er)><suff(lein)>
 
 #category# = <ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER> \
              <POSS><PPRO><REL><V><WPRO>
@@ -116,7 +116,7 @@
 
 #stem-type# = <base><comp><der>
 
-#suff# = <chen><er><lein> % ...
+#suff# = <-chen><-e><-er><-lein> % ...
 
 #origin# = <native><foreign>
 

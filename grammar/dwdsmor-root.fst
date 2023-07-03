@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 7.0
-% Andreas Nolda 2023-05-22
+% Version 7.1
+% Andreas Nolda 2023-07-03
 
 #include "symbols.fst"
 #include "num.fst"
@@ -72,6 +72,7 @@ $Part-zwischen$ = <Prefix> {}:{zwischen}
 
 $Pref-un$ = <Prefix> {}:{un}
 
+$Suff-e$    = <Suffix> {}:{e}    <NN> <base> <native> <>:<NMasc_n_n>
 $Suff-er$   = <Suffix> {}:{er}   <NN> <base> <native> <>:<NMasc_s_0>
 $Suff-chen$ = <Suffix> {}:{chen} <NN> <base> <native> <>:<NNeut_s_x>
 $Suff-lein$ = <Suffix> {}:{lein} <NN> <base> <native> <>:<NNeut_s_x>
@@ -104,6 +105,7 @@ $DerPart-zwischen$ = <DER>:<> <part(zwischen)>:<>
 
 $DerPref-un$ = <DER>:<> <pref(un)>:<>
 
+$DerSuff-e$    = <DER>:<> <suff(e)>:<>
 $DerSuff-er$   = <DER>:<> <suff(er)>:<>
 $DerSuff-chen$ = <DER>:<> <suff(chen)>:<>
 $DerSuff-lein$ = <DER>:<> <suff(lein)>:<>
@@ -176,12 +178,14 @@ $BaseStems$ = $BaseStems$ | $ConvBaseStems$
 
 % derived base stems with affixes
 
+$DerStemsSuff-e$    = $DerStems$ || $DerStemFilterSuff-e$
 $DerStemsSuff-er$   = $DerStems$ || $DerStemFilterSuff-er$
 $DerStemsSuff-chen$ = $DerStems$ || $DerStemFilterSuff-chen$
 $DerStemsSuff-lein$ = $DerStems$ || $DerStemFilterSuff-lein$
 
 $DerBaseStems$ = $UC$ $Pref-un$           <>:<DB> $DC$ $BaseStems$ $DerPref-un$       | \
                       $Pref-un$           <>:<DB>      $BaseStems$ $DerPref-un$       | \
+                      $DerStemsSuff-e$    <>:<DB>      $Suff-e$    $DerSuff-e$        | \
                       $DerStemsSuff-er$   <>:<DB>      $Suff-er$   $DerSuff-er$       | \
                       $DerStemsSuff-chen$ <>:<DB>      $Suff-chen$ $DerSuff-chen$     | \
                       $DerStemsSuff-lein$ <>:<DB>      $Suff-lein$ $DerSuff-lein$ || $DerFilter$

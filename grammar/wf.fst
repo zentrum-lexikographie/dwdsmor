@@ -1,6 +1,6 @@
 % wf.fst
-% Version 7.0
-% Andreas Nolda 2023-05-20
+% Version 7.1
+% Andreas Nolda 2023-07-03
 
 #include "symbols.fst"
 
@@ -43,6 +43,9 @@ $DerRestrPOSPart-zu$       = <Prefix> zu       <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPart-zurueck$  = <Prefix> zurück   <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPart-zwischen$ = <Prefix> zwischen <VB> <Stem> $C$* <V> $C$*
 
+% restrict suff(e) to proper-name bases (?)
+$DerRestrPOSSuff-e$ = $O$* <Stem> $C$* <NPROP> $C$* <DB> <Suffix> e $C$*
+
 % restrict suff(er) to proper-name bases (?)
 $DerRestrPOSSuff-er$ = $O$* <Stem> $C$* <NPROP> $C$* <DB> <Suffix> er $C$*
 
@@ -53,7 +56,8 @@ $DerRestrPOSSuff-lein$ = $O$* <Stem> $C$* <NN> $C$* <DB> <Suffix> lein $C$*
 % exclude pref(un) for abbreviated bases
 $DerRestrAbbrPref-un$ = !($O$* <Prefix> un <DB> $O$* <Stem> <Abbr> $C$*)
 
-% exclude suff(er), suff(chen), and suff(lein) for abbreviated bases (?)
+% exclude suff(e), suff(er), suff(chen), and suff(lein) for abbreviated bases (?)
+$DerRestrAbbrSuff-e$    = !($O$* <Stem> <Abbr> $C$* <DB> <Suffix> e    $C$*)
 $DerRestrAbbrSuff-er$   = !($O$* <Stem> <Abbr> $C$* <DB> <Suffix> er   $C$*)
 $DerRestrAbbrSuff-chen$ = !($O$* <Stem> <Abbr> $C$* <DB> <Suffix> chen $C$*)
 $DerRestrAbbrSuff-lein$ = !($O$* <Stem> <Abbr> $C$* <DB> <Suffix> lein $C$*)
@@ -80,11 +84,13 @@ $DerRestrPOS$ = $DerRestrPOSPref-un$       | \
                 $DerRestrPOSPart-zu$       | \
                 $DerRestrPOSPart-zurueck$  | \
                 $DerRestrPOSPart-zwischen$ | \
+                $DerRestrPOSSuff-e$        | \
                 $DerRestrPOSSuff-er$       | \
                 $DerRestrPOSSuff-chen$     | \
                 $DerRestrPOSSuff-lein$
 
 $DerRestrAbbr$ = $DerRestrAbbrPref-un$   & \
+                 $DerRestrAbbrSuff-e$    & \
                  $DerRestrAbbrSuff-er$   & \
                  $DerRestrAbbrSuff-chen$ & \
                  $DerRestrAbbrSuff-lein$

@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-07-03:
+
+* add support for derivation by means of "e"-suffixation with proper-name bases
+
 2023-05-22:
 
 * add support for conversion of verbal participles
