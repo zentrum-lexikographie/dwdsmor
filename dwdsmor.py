@@ -9,7 +9,7 @@ import re
 import csv
 import json
 from collections import namedtuple
-from functools import cached_property
+from functools import cached_property, lru_cache
 
 from blessings import Terminal
 
@@ -299,6 +299,7 @@ class Analysis(tuple):
         return result
 
 
+@lru_cache(maxsize=2**19)
 def parse(analyses):
     component_list = []
     for analysis in analyses:
