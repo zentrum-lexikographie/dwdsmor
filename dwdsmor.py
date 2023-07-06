@@ -26,11 +26,12 @@ LIBDIR = os.path.join(BASEDIR, "lib")
 LIBFILE = os.path.join(LIBDIR, "dwdsmor.ca")
 
 
+PROCESSES = {"COMP", "DER", "CONV"}
+
+MEANS = {"concat", "hyph", "ident", "part", "pref", "suff"}
+
+
 Component = namedtuple("Component", ["form", "lemma", "tags"])
-
-PROCESS_SET = {"COMP", "DER", "CONV"}
-MEANS_SET = {"concat", "hyph", "ident", "part", "pref", "suff"}
-
 
 
 class Analysis(tuple):
@@ -84,11 +85,11 @@ class Analysis(tuple):
 
     @cached_property
     def process(self):
-        return "∘".join(t for t in reversed(self.tags) if t in PROCESS_SET)
+        return "∘".join(tag for tag in reversed(self.tags) if tag in PROCESSES)
 
     @cached_property
     def means(self):
-        return "∘".join(t for t in reversed(self.tags) if re.split(r"\W", t)[0] in MEANS_SET)
+        return "∘".join(tag for tag in reversed(self.tags) if re.split(r"\W", tag)[0] in MEANS)
 
     _subcat_tags = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True,
                     "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True,

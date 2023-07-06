@@ -26,6 +26,7 @@ LIBDIR = os.path.join(BASEDIR, "lib")
 
 LIBFILE = os.path.join(LIBDIR, "dwdsmor-index.a")
 
+
 INDICES = [1, 2, 3, 4, 5]
 
 
