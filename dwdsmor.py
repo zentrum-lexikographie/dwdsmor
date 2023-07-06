@@ -88,7 +88,7 @@ class Analysis(tuple):
 
     @cached_property
     def means(self):
-        return "∘".join(t for t in reversed(self.tags) if t in MEANS_SET)
+        return "∘".join(t for t in reversed(self.tags) if re.split(r"\W", t)[0] in MEANS_SET)
 
     _subcat_tags = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True,
                     "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True,
