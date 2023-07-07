@@ -254,6 +254,7 @@ class Analysis(tuple):
         return {"lemma": lemma,
                 "form": form}
 
+    @lru_cache(maxsize=2**19)
     def _decode_analysis(analyses):
         for analysis in re.finditer(r"([^<]*)(?:<([^>]*)>)?", analyses):
             text = analysis.group(1)
@@ -299,7 +300,6 @@ class Analysis(tuple):
         return result
 
 
-@lru_cache(maxsize=2**19)
 def parse(analyses):
     component_list = []
     for analysis in analyses:
