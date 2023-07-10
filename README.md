@@ -99,7 +99,7 @@ make setup
 
 ## Building DWDSmor lexica and transducers
 
-For building DWDSmor lexica and transducers, run after aquiring the DWDS
+For building DWDSmor lexica and transducers, run after acquiring the DWDS
 sources:
 
 ```sh
@@ -147,6 +147,10 @@ running:
 ```sh
 make test
 ```
+
+This presupposes a TüBa-D/Z treebank export at
+`test-data/tuebadz/tuebadz-11.0-exportXML-v2.xml` (not part of this repository).
+
 
 ## Using DWDSmor
 
