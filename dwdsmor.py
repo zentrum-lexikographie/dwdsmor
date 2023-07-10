@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-06-21
+# Gregor Middell and Andreas Nolda 2023-07-10
+# with contributions by Adrien Barbaresi
 
 import sys
 import os
@@ -16,7 +17,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 7.3
+version = 7.4
 
 
 BASEDIR = os.path.dirname(__file__)
@@ -24,6 +25,9 @@ BASEDIR = os.path.dirname(__file__)
 LIBDIR = os.path.join(BASEDIR, "lib")
 
 LIBFILE = os.path.join(LIBDIR, "dwdsmor.ca")
+
+
+CACHE_SIZE = 2**15
 
 
 PROCESSES = {"COMP", "DER", "CONV"}
@@ -255,7 +259,7 @@ class Analysis(tuple):
         return {"lemma": lemma,
                 "form": form}
 
-    @lru_cache(maxsize=2**19)
+    @lru_cache(maxsize=CACHE_SIZE)
     def _decode_analysis(analyses):
         for analysis in re.finditer(r"([^<]*)(?:<([^>]*)>)?", analyses):
             text = analysis.group(1)
