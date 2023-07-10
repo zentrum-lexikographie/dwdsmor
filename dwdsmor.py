@@ -9,7 +9,7 @@ import re
 import csv
 import json
 from collections import namedtuple
-from functools import cached_property
+from functools import cached_property, lru_cache
 
 from blessings import Terminal
 
@@ -255,6 +255,7 @@ class Analysis(tuple):
         return {"lemma": lemma,
                 "form": form}
 
+    @lru_cache(maxsize=2**19)
     def _decode_analysis(analyses):
         for analysis in re.finditer(r"([^<]*)(?:<([^>]*)>)?", analyses):
             text = analysis.group(1)
