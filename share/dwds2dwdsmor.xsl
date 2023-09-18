@@ -1334,8 +1334,8 @@
                 <xsl:with-param name="present">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
-                    <xsl:when test="tokenize(normalize-space(dwds:Praesens))[2]='sich'">
-                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praesens)),2)"/>
+                    <xsl:when test="tokenize(normalize-space(dwds:Praesens),'&#x20;')[2]='sich'">
+                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praesens),'&#x20;'),2)"/>
                     </xsl:when>
                     <xsl:otherwise>
                       <xsl:value-of select="normalize-space(dwds:Praesens)"/>
@@ -1345,8 +1345,8 @@
                 <xsl:with-param name="past">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
-                    <xsl:when test="tokenize(normalize-space(dwds:Praeteritum))[2]='sich'">
-                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praeteritum)),2)"/>
+                    <xsl:when test="tokenize(normalize-space(dwds:Praeteritum),'&#x20;')[2]='sich'">
+                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praeteritum),'&#x20;'),2)"/>
                     </xsl:when>
                     <xsl:otherwise>
                       <xsl:value-of select="normalize-space(dwds:Praeteritum)"/>
@@ -1380,8 +1380,8 @@
                 <xsl:with-param name="present">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
-                    <xsl:when test="tokenize(normalize-space(dwds:Praesens))[2]='sich'">
-                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praesens)),2)"/>
+                    <xsl:when test="tokenize(normalize-space(dwds:Praesens),'&#x20;')[2]='sich'">
+                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praesens),'&#x20;'),2)"/>
                     </xsl:when>
                     <xsl:otherwise>
                       <xsl:value-of select="normalize-space(dwds:Praesens)"/>

@@ -5,7 +5,6 @@
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:dwds="http://www.dwds.de/ns/1.0"
                 xmlns:n="http://andreas.nolda.org/ns/lib">
 
 <!-- inflection classes -->
