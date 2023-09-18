@@ -1,6 +1,7 @@
 # .gitignore
-# Andreas Nolda 2023-06-26
+# Andreas Nolda 2023-09-18
 
+.idea/
 .venv/
 *~
 \#*
