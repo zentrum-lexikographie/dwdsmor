@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-07-10
+# Gregor Middell and Andreas Nolda 2023-09-26
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -17,7 +17,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 7.4
+version = 7.5
 
 
 BASEDIR = os.path.dirname(__file__)
@@ -35,7 +35,7 @@ PROCESSES = {"COMP", "DER", "CONV"}
 MEANS = {"concat", "hyph", "ident", "part", "pref", "suff"}
 
 
-Component = namedtuple("Component", ["form", "lemma", "tags"])
+Component = namedtuple("Component", ["lemma", "tags"])
 
 
 class Analysis(tuple):
@@ -46,11 +46,6 @@ class Analysis(tuple):
         return inst
 
     @cached_property
-    def form(self):
-        form = "".join(analysis.form for analysis in self)
-        return form
-
-    @cached_property
     def lemma(self):
         lemma = "".join(analysis.lemma for analysis in self)
         return lemma
@@ -58,8 +53,13 @@ class Analysis(tuple):
     @cached_property
     def seg(self):
         analysis = self.analysis
-        analysis = re.sub(r"<COMP>(:?<concat>|<hyph>)", "", analysis)
-        analysis = re.sub(r"(?:<IDX[^>]+>)?(?:<PAR[^>]+>)?<\+[^>]+>.*", "", analysis)
+        for process in PROCESSES:
+            analysis = re.sub("<" + process + ">", "", analysis)
+        for means in MEANS:
+            analysis = re.sub("<" + means + r"(?:\([^>]+\))?(?:\|[^>]+)?" + ">", "", analysis)
+        analysis = re.sub(r"(?:<IDX[^>]+>)?", "", analysis)
+        analysis = re.sub(r"(?:<PAR[^>]+>)?", "", analysis)
+        analysis = re.sub(r"<\+[^>]+>.*", "", analysis)
         if analysis == r"\:":
             analysis = ":"
         return analysis
@@ -84,16 +84,18 @@ class Analysis(tuple):
     @cached_property
     def pos(self):
         for tag in self.tags:
-            if tag.startswith("+"):
+            if re.match(r"\+.", tag):
                 return tag[1:]
 
     @cached_property
     def process(self):
-        return "∘".join(tag for tag in reversed(self.tags) if tag in PROCESSES)
+        if [tag for tag in self.tags if tag in PROCESSES]:
+            return "∘".join(tag for tag in reversed(self.tags) if tag in PROCESSES)
 
     @cached_property
     def means(self):
-        return "∘".join(tag for tag in reversed(self.tags) if re.split(r"\W", tag)[0] in MEANS)
+        if [tag for tag in self.tags if re.sub(r"(?:\(.+\))?(?:\|.+)?", "", tag) in MEANS]:
+            return "∘".join(tag for tag in reversed(self.tags) if re.sub(r"(?:\(.+\))?(?:\|.+)?", "", tag) in MEANS)
 
     _subcat_tags = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True,
                     "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True,
@@ -208,8 +210,7 @@ class Analysis(tuple):
         return tag
 
     def as_dict(self):
-        return {"form": self.form,
-                "analysis": self.analysis,
+        return {"analysis": self.analysis,
                 "lemma": self.lemma,
                 "segmentedlemma": self.seg,
                 "lemma_index": self.lemma_index,
@@ -235,13 +236,11 @@ class Analysis(tuple):
 
     def _decode_component_text(text):
         lemma = ""
-        form = ""
         text_len = len(text)
         ti = 0
         prev_char = None
         if text == r"\:":
             lemma = ":"
-            form = ":"
         else:
             while ti < text_len:
                 current_char = text[ti]
@@ -249,15 +248,12 @@ class Analysis(tuple):
                 next_char = text[nti] if nti < text_len else None
                 if current_char == ":":
                     lemma += prev_char or ""
-                    form += next_char or ""
                     ti += 1
                 elif next_char != ":":
                     lemma += current_char
-                    form += current_char
                     ti += 1
                     prev_char = current_char
-        return {"lemma": lemma,
-                "form": form}
+        return {"lemma": lemma}
 
     @lru_cache(maxsize=CACHE_SIZE)
     def _decode_analysis(analyses):
@@ -274,7 +270,7 @@ class Analysis(tuple):
         current_component = None
         for component in components:
             component = component.copy()
-            if current_component is None or component["form"] != "" or component["lemma"] != "":
+            if current_component is None or component["lemma"] != "":
                 component["tags"] = []
                 result.append(component)
                 current_component = component
@@ -290,11 +286,9 @@ class Analysis(tuple):
             buf.append(component)
             if len(component["tags"]) > 0:
                 joined = {"lemma": "",
-                          "form": "",
                           "tags": []}
                 for component in buf:
                     joined["lemma"] += component["lemma"]
-                    joined["form"] += component["form"]
                     joined["tags"] += component["tags"]
                 if "+" in component["tags"]:
                     joined["lemma"] += " + "
