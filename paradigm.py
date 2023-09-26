@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2023-06-21
+# Andreas Nolda 2023-09-26
 
 import sys
 import os
 import argparse
 import csv
 import json
+import yaml
 from collections import namedtuple
 from itertools import filterfalse, product
 
@@ -17,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 7.0
+version = 8.0
 
 
 BASEDIR = os.path.dirname(__file__)
@@ -1329,8 +1330,8 @@ def cat_list(cats):
     return {"categories": list(dict.fromkeys(value for value in cat_dict(cats).values()))}
 
 
-def output_json(lemma, output_file, formdict,
-                no_cats=False, no_lemma=False):
+def create_paradigms(lemma, formdict,
+                     no_cats=False, no_lemma=False):
     paradigms = []
     # remove duplicates while preserving order
     for lemma_index, paradigm_index, lexcat in list(dict.fromkeys((key.lemma_index, key.paradigm_index, key.lexcat)
@@ -1351,7 +1352,21 @@ def output_json(lemma, output_file, formdict,
                               "paradigm": [{**cat_value(key.parcat),
                                             "forms": value}
                                            for key, value in paradigm_subset(formdict, lemma_index, paradigm_index, lexcat)]})
+    return paradigms
+
+
+def output_json(lemma, output_file, formdict,
+                no_cats=False, no_lemma=False):
+    paradigms = create_paradigms(lemma, formdict,
+                                 no_cats, no_lemma)
     json.dump(paradigms, output_file, ensure_ascii=False)
+
+
+def output_yaml(lemma, output_file, formdict,
+                no_cats=False, no_lemma=False):
+    paradigms = create_paradigms(lemma, formdict,
+                                 no_cats, no_lemma)
+    yaml.dump(paradigms, output_file, allow_unicode=True, sort_keys=False, explicit_start=True)
 
 
 def output_dsv(lemma, output_file, formdict,
@@ -1528,6 +1543,9 @@ def output_paradigms(transducer, lemma, output_file, lemma_index=None, paradigm_
         if output_format == "json":
             output_json(lemma, output_file, formdict,
                         no_cats, no_lemma)
+        elif output_format == "yaml":
+            output_yaml(lemma, output_file, formdict,
+                        no_cats, no_lemma)
         elif output_format == "csv":
             output_dsv(lemma, output_file, formdict,
                        no_cats, no_lemma, header, force_color, delimiter=",")
@@ -1609,10 +1627,14 @@ def main():
                             help="use only user-specified information")
         parser.add_argument("-v", "--version", action="version",
                             version=f"{parser.prog} {version}")
+        parser.add_argument("-y", "--yaml", action="store_true",
+                            help="output YAML document")
         args = parser.parse_args()
         transducer = sfst_transduce.Transducer(args.transducer)
         if args.json:
             output_format = "json"
+        elif args.yaml:
+            output_format = "yaml"
         elif args.csv:
             output_format = "csv"
         else:

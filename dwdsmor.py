@@ -9,6 +9,7 @@ import argparse
 import re
 import csv
 import json
+import yaml
 from collections import namedtuple
 from functools import cached_property, lru_cache
 
@@ -17,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 7.5
+version = 8.0
 
 
 BASEDIR = os.path.dirname(__file__)
@@ -322,12 +323,21 @@ def string(value):
     return str(value or "")
 
 
-def output_json(words, analyses_tuple, output_file):
+def create_word_analyses(words, analyses_tuple):
     word_analyses = []
     for word, analyses in zip(words, analyses_tuple):
         word_analyses.append({"word": word,
                               "analyses": [analysis.as_dict() for analysis in analyses]})
+    return word_analyses
+
+def output_json(words, analyses_tuple, output_file):
+    word_analyses = create_word_analyses(words, analyses_tuple)
     json.dump(word_analyses, output_file, ensure_ascii=False)
+
+
+def output_yaml(words, analyses_tuple, output_file):
+    word_analyses = create_word_analyses(words, analyses_tuple)
+    yaml.dump(word_analyses, output_file, allow_unicode=True, sort_keys=False, explicit_start=True)
 
 
 def output_dsv(words, analyses_tuple, output_file,
@@ -394,6 +404,8 @@ def output_analyses(transducer, input_file, output_file,
     if analyses_tuple:
         if output_format == "json":
             output_json(words, analyses_tuple, output_file)
+        elif output_format == "yaml":
+            output_yaml(words, analyses_tuple, output_file)
         elif output_format == "csv":
             output_dsv(words, analyses_tuple, output_file,
                        header, force_color, delimiter=",")
@@ -421,11 +433,15 @@ def main():
                             help=f"path to transducer file (default: {os.path.relpath(LIBFILE, os.getcwd())})")
         parser.add_argument("-v", "--version", action="version",
                             version=f"{parser.prog} {version}")
+        parser.add_argument("-y", "--yaml", action="store_true",
+                            help="output YAML document")
         args = parser.parse_args()
         transducer = sfst_transduce.CompactTransducer(args.transducer)
         transducer.both_layers = False
         if args.json:
             output_format = "json"
+        elif args.yaml:
+            output_format = "yaml"
         elif args.csv:
             output_format = "csv"
         else:

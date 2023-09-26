@@ -161,7 +161,7 @@ of word forms in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./dwdsmor.py -h
-usage: dwdsmor.py [-h] [-c] [-C] [-H] [-j] [-t TRANSDUCER] [-v] [input] [output]
+usage: dwdsmor.py [-h] [-c] [-C] [-H] [-j] [-t TRANSDUCER] [-v] [-y] [input] [output]
 
 positional arguments:
   input                 input file (one word form per line; default: stdin)
@@ -176,6 +176,7 @@ optional arguments:
   -t TRANSDUCER, --transducer TRANSDUCER
                         path to transducer file (default: lib/dwdsmor.ca)
   -v, --version         show program's version number and exit
+  -y, --yaml            output YAML document
 ```
 
 By default, `dwdsmor.py` prints a TSV table on standard output:
@@ -256,7 +257,8 @@ ausruhen	ruh<~>en<DER><part(aus)><+V><Inf>	ruhen	ruh<~>en<DER><part(aus)>			DER	
 .	.<+PUNCT><Period>	.	.					PUNCT	Period
 ```
 
-CSV and JSON outputs are available with options `-c` and `-j`, respectively.
+CSV, JSON, and YAML outputs are available with options `-c`, `-j`, and `-y`
+respectively.
 
 `paradigm.py` is Python script for the generation of paradigms of lexical words
 in written German by means of a DWDSmor transducer:
@@ -265,7 +267,7 @@ in written German by means of a DWDSmor transducer:
 $ ./paradigm.py -h
 usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j] [-n] [-N]
                    [-o] [-O] [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}]
-                   [-s] [-S] [-t TRANSDUCER] [-u] [-v] lemma [output]
+                   [-s] [-S] [-t TRANSDUCER] [-u] [-v] [-y] lemma [output]
 
 positional arguments:
   lemma                 lemma (determiners: Fem Nom Sg; nominalised adjectives: Wk)
@@ -293,6 +295,7 @@ optional arguments:
                         transducer file (default: lib/dwdsmor-index.a)
   -u, --user-specified  use only user-specified information
   -v, --version         show program's version number and exit
+  -y, --yaml            output YAML document
 ```
 
 By default, `paradigm.py` outputs a similar TSV table as `dwdsmor.py`:
@@ -351,7 +354,7 @@ Gen Pl	Kinderbanken, Kinderbänke
 ```
 Note that this transducer does not know of DWDS homographic lemma indices.
 
-Again, options `-c` and `-j` select alternative CSV and JSON outputs.
+Again, options `-c`, `-j`, `-y` select alternative CSV, JSON, and YAML outputs.
 
 ## Contact
 
