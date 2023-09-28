@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2023-09-26
+# Andreas Nolda 2023-09-28
 
 import sys
 import os
@@ -18,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 8.0
+version = 8.1
 
 
 BASEDIR = os.path.dirname(__file__)
@@ -1462,8 +1462,8 @@ def output_dsv(lemma, output_file, formdict,
 
 
 def sort_lemmaspec(lemmaspec):
-    lemma_index = string(lemmaspec.lemma_index)
-    paradigm_index = string(lemmaspec.paradigm_index)
+    lemma_index = lemmaspec.lemma_index
+    paradigm_index = lemmaspec.paradigm_index
     seg = lemmaspec.seg
     pos = POS.index(lemmaspec.pos)
     if lemmaspec.subcat:
@@ -1520,10 +1520,10 @@ def generate_paradigms(transducer, lemma, lemma_index=None, paradigm_index=None,
                             key=sort_lemmaspec)
         if lemma_index in INDICES:
             lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs
-                          if lemmaspec.lemma_index == str(lemma_index)]
+                          if lemmaspec.lemma_index == lemma_index]
         if paradigm_index in INDICES:
             lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs
-                          if lemmaspec.paradigm_index == str(paradigm_index)]
+                          if lemmaspec.paradigm_index == paradigm_index]
         if pos in POS:
             lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs
                           if lemmaspec.pos == pos]
