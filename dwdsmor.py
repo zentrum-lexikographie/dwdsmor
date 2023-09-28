@@ -11,14 +11,14 @@ import csv
 import json
 import yaml
 from collections import namedtuple
-from functools import cached_property, lru_cache
+from functools import cached_property
 
 from blessings import Terminal
 
 import sfst_transduce
 
 
-version = 8.1
+version = 8.2
 
 
 BASEDIR = os.path.dirname(__file__)
@@ -250,7 +250,6 @@ class Analysis(tuple):
                     prev_char = current_char
         return {"lemma": lemma}
 
-    @lru_cache(maxsize=CACHE_SIZE)
     def _decode_analysis(analyses):
         for analysis in re.finditer(r"([^<]*)(?:<([^>]*)>)?", analyses):
             text = analysis.group(1)
