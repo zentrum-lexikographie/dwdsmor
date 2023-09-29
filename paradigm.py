@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2023-09-28
+# Andreas Nolda 2023-09-29
 
 import sys
-import os
 import argparse
 import csv
 import json
 import yaml
+from os import path, getcwd
 from collections import namedtuple
 from itertools import filterfalse, product
 
@@ -21,11 +21,11 @@ from dwdsmor import analyse_word
 version = 8.1
 
 
-BASEDIR = os.path.dirname(__file__)
+BASEDIR = path.dirname(__file__)
 
-LIBDIR = os.path.join(BASEDIR, "lib")
+LIBDIR = path.join(BASEDIR, "lib")
 
-LIBFILE = os.path.join(LIBDIR, "dwdsmor-index.a")
+LIBFILE = path.join(LIBDIR, "dwdsmor-index.a")
 
 
 INDICES = [1, 2, 3, 4, 5]
@@ -1622,7 +1622,7 @@ def main():
         parser.add_argument("-S", "--ch", action="store_true",
                             help="output also forms in Swiss spelling")
         parser.add_argument("-t", "--transducer", default=LIBFILE,
-                            help=f"transducer file (default: {os.path.relpath(LIBFILE, os.getcwd())})")
+                            help=f"transducer file (default: {path.relpath(LIBFILE, getcwd())})")
         parser.add_argument("-u", "--user-specified", action="store_true",
                             help="use only user-specified information")
         parser.add_argument("-v", "--version", action="version",

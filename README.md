@@ -76,15 +76,7 @@ On a Debian-based distribution, install the following packages:
 apt install python3 default-jdk libsaxonhe-java sfst
 ```
 
-Set up a virtual environment for project builds, i.e. via
-[`pyenv`](https://github.com/pyenv/pyenv):
-
-```sh
-$ curl https://pyenv.run | bash
-$ make pyenv
-```
-
-or Python's `venv`:
+Set up a virtual environment for project builds via Python's `venv`:
 
 ```sh
 python3 -m venv .venv
@@ -99,8 +91,7 @@ make setup
 
 ## Building DWDSmor lexica and transducers
 
-For building DWDSmor lexica and transducers, run after acquiring the DWDS
-sources:
+For building DWDSmor lexica and transducers, run:
 
 ```sh
 make all
@@ -112,44 +103,66 @@ Alternatively, you can run:
 make dwds && make dwds-install && make dwdsmor
 ```
 
-For building DWDSmor lexica and transducers from the sample lexicon in
-`lexicon/sample/wb/`, run:
+Note that these commands require DWDS sources in `lexicon/dwds/wb/`, which are
+not part of this repository.
+
+Alternatively, you can build sample DWDSmor lexica and transducers from the
+sample lexicon in `lexicon/sample/wb/` by running:
 
 ```sh
 make sample && make sample-install && make dwdsmor
 ```
 
-Then install the built DWDSmor transducers into `lib/`, where the user-level
-Python scripts `dwdsmor.py` and `paradigm.py` expect them by default:
+After building DWDSmor transducers, install them into `lib/`, where the
+user-level Python scripts `dwdsmor.py` and `paradigm.py` expect them by default:
 
 ```sh
 make install
 ```
 
-The resulting DWDSmor transducers are:
+The installed DWDSmor transducers are:
 
-* `grammar/dwdsmor.{a,ca}`: transducer with inflection and word-formation
+* `lib/dwdsmor.{a,ca}`: transducer with inflection and word-formation
   components, for lemmatisation and morphological analysis of word forms in
   terms of grammatical categories
-* `grammar/dwdsmor-finite.{a,ca}`: transducer with an inflection component and a
+* `lib/dwdsmor-finite.{a,ca}`: transducer with an inflection component and a
   finite word-formation component, for testing purposes
-* `grammar/dwdsmor-root.{a,ca}`: transducer with inflection and word-formation
+* `lib/dwdsmor-root.{a,ca}`: transducer with inflection and word-formation
   components, for lexical analysis of word forms in terms of root lemmas (i.e.,
   lemmas of ultimate word-formation bases), word-formation process,
   word-formation means, and grammatical categories in term of the
   Pattern-and-Restriction Theory of word formation (Nolda 2022)
-* `grammar/dwdsmor-index.{a,ca}`: transducer with an inflection component only
-  with DWDS homographic lemma indices, for paradigm generation
+* `lib/dwdsmor-index.{a,ca}`: transducer with an inflection component only with
+  DWDS homographic lemma indices, for paradigm generation
 
-The DWDSmor transducers can then be examined with the test suite in `tests/` by
-running:
+The DWDSmor transducer `lib/dwdsmor.ca` can be examined with the test suite in
+`tests/` by running:
 
 ```sh
 make test
 ```
 
-This presupposes a TüBa-D/Z treebank export at
-`test-data/tuebadz/tuebadz-11.0-exportXML-v2.xml` (not part of this repository).
+Individual tests can be run by calling `tests/Makefile` with the following
+targets:
+
+```sh
+make -C tests test-dwds
+```
+
+```sh
+make -C tests test-sample
+```
+
+```sh
+make -C tests test-tuebadz
+```
+
+The `test-dwds` target of `tests/Makefile` again requires DWDS sources in
+`lexicon/dwds/wb/` (not part of this repository). The `test-tuebadz` target
+presupposes a TüBa-D/Z treebank export `tuebadz-11.0-exportXML-v2.xml` at
+`test-data/tuebadz/` (likewise not part of this repository).
+
+Test results are saved in `test-reports/`.
 
 
 ## Using DWDSmor

@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2023-07-03
+# Andreas Nolda 2023-09-29
 
 DATETIME = $(shell date +%FT%T%z)
 DATE     = $(shell echo $(DATETIME) | cut -c 1-4,6-7,9-10)
@@ -14,6 +14,8 @@ DWDSDIR   = $(LEXDIR)/dwds
 SAMPLEDIR = $(LEXDIR)/sample
 
 INSTALLDIR = $(CURDIR)/lib
+
+TESTDIR = $(CURDIR)/tests
 
 RDIR    = $(CURDIR)/releases/$(DATE)
 RLIBDIR = $(RDIR)/lib
@@ -51,6 +53,9 @@ dwdsmor:
 install:
 	$(MAKE) -C $(SRCDIR) install
 
+test:
+	$(MAKE) -C $(TESTDIR) all
+
 release:
 	mkdir -p $(RLIBDIR) $(RSRCDIR)
 	cp -a $(RFILES) $(RDIR)
@@ -60,19 +65,12 @@ release:
 
 clean:
 	$(MAKE) -C $(SRCDIR) clean
-	$(MAKE) -C $(LEXDIR) clean
+	$(MAKE) -C $(DWDSDIR) clean
+	$(MAKE) -C $(SAMPLEDIR) clean
+	$(MAKE) -C $(TESTDIR) clean
 
 setup: requirements.txt
 	pip install --upgrade pip
 	pip install -r $<
 
-test:
-	@py.test -vv -s -x tests
-
-pyenv:
-	pyenv local || (pyenv virtualenv zdl-dwdsmor && pyenv local zdl-dwdsmor)
-
-pyenv-clean:
-	pyenv local --unset && pyenv virtualenv-delete zdl-dwdsmor
-
-.PHONY: all dwds dwds-install sample sample-install dwdsmor install release test clean setup pyenv pyenv-clean
+.PHONY: all dwds dwds-install sample sample-install dwdsmor install test release clean setup

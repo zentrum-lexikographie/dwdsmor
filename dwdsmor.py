@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-09-28
+# Gregor Middell and Andreas Nolda 2023-09-29
 # with contributions by Adrien Barbaresi
 
 import sys
-import os
 import argparse
 import re
 import csv
 import json
 import yaml
+from os import path, getcwd
 from collections import namedtuple
 from functools import cached_property
 
@@ -21,11 +21,11 @@ import sfst_transduce
 version = 8.2
 
 
-BASEDIR = os.path.dirname(__file__)
+BASEDIR = path.dirname(__file__)
 
-LIBDIR = os.path.join(BASEDIR, "lib")
+LIBDIR = path.join(BASEDIR, "lib")
 
-LIBFILE = os.path.join(LIBDIR, "dwdsmor.ca")
+LIBFILE = path.join(LIBDIR, "dwdsmor.ca")
 
 
 CACHE_SIZE = 2**15
@@ -423,7 +423,7 @@ def main():
         parser.add_argument("-j", "--json", action="store_true",
                             help="output JSON object")
         parser.add_argument("-t", "--transducer", default=LIBFILE,
-                            help=f"path to transducer file (default: {os.path.relpath(LIBFILE, os.getcwd())})")
+                            help=f"path to transducer file (default: {path.relpath(LIBFILE, getcwd())})")
         parser.add_argument("-v", "--version", action="version",
                             version=f"{parser.prog} {version}")
         parser.add_argument("-y", "--yaml", action="store_true",

@@ -2,7 +2,6 @@
 # Andreas Nolda 2023-06-26
 
 SAXON = java -cp /usr/share/java/Saxon-HE.jar net.sf.saxon.Transform
-DIFF  = diff -s -y -Z --suppress-common-lines -W 120
 
 SRCDIR  = $(CURDIR)/wb
 LEXDIR  = $(CURDIR)
@@ -38,7 +37,7 @@ $(LEX): $(LEXSRC) $(LEXXSL) $(LIBXSL_COMMON) $(LIBXSL_LEX)
 install: lexicon
 	install -m 644 $(LEX) $(INSTALLDIR)
 
-clean: testclean
+clean:
 	$(RM) $(MANIFEST) $(LEX) $(LOG)
 
 .PHONY: all lexicon install clean

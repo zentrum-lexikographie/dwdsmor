@@ -1,8 +1,13 @@
-import os
-import csv
-from collections import defaultdict, namedtuple
+#!/usr/bin/env python3
+# tuebadz.py - TüBa-D/Z test library
+# Gregor Middell and Andreas Nolda 2023-09-29
 
-import dwdsmor
+from collections import namedtuple
+from xml.etree.ElementTree import iterparse
+
+import sfst_transduce
+
+from dwdsmor import analyse_word
 
 
 # mapping between divergent STTS and SMOR part-of-speech categories
@@ -841,124 +846,63 @@ def tuebadz_to_dwdsmor_lemma(pos, lemma):
         return lemma
 
 
-LemmatizedWord = namedtuple("LemmatizedWord", ("form",
-                                               "lemma",
-                                               "pos",
-                                               "dwdsmor_lemma",
-                                               "dwdsmor_pos",
-                                               "is_match"))
+def get_tuebadz_sentences(data_file):
+    with open(data_file) as file:
+        tuebadz_words = []
+        for event, element in iterparse(file, events=("start", "end")):
+            if event == "start" and element.tag == "word":
+                tuebadz_words.append(element.attrib.copy())
+            elif event == "end" and element.tag == "sentence":
+                tuebadz_sentence = tuebadz_words
+                tuebadz_words = []
+                yield tuebadz_sentence
 
 
-def lemmatize(transducer, w):
-    form, lemma, pos = (w.get("form", ""), w.get("lemma", ""), w.get("pos", ""))
-    dwdsmor_lemma = ""
-    dwdsmor_pos = ""
-    if pos == "PTKVZ" or lemma == "#refl":
-        lemma = form
-    lemma = lemma.split("%")[0]
-    lemma = lemma.replace("#", "")
-    analyses = tuple(dwdsmor.parse(transducer.analyse(form)))
+AnalysedWord = namedtuple("AnalysedWord", ["word",
+                                           "tuebadz_lemma", "tuebadz_pos",
+                                           "dwdsmor_lemma", "dwdsmor_pos",
+                                           "lemmas_match"])
+
+
+def analyse_tuebadz_word(transducer, tuebadz_word):
+    word = tuebadz_word.get("form", "")
+    tuebadz_lemma = tuebadz_word.get("lemma", "")
+    tuebadz_pos = tuebadz_word.get("pos", "")
+
+    if tuebadz_pos == "PTKVZ" or tuebadz_lemma == "#refl":
+        tuebadz_lemma = word
+    tuebadz_lemma = tuebadz_lemma.split("%")[0]
+    tuebadz_lemma = tuebadz_lemma.replace("#", "")
+
+    analyses = tuple(analyse_word(transducer, word))
+
     # analyses with matching part-of-speech categories
-    analyses_with_matching_pos = tuple(a for a in analyses
-                                       if a.pos in tuebadz_to_dwdsmor_pos_list(pos))
+    analyses_with_matching_pos = tuple(analysis for analysis in analyses
+                                       if analysis.pos in tuebadz_to_dwdsmor_pos_list(tuebadz_pos))
     # analyses with matching lemmas of matching part-of-speech categories
-    analyses_with_matching_lemma = tuple(a for a in analyses_with_matching_pos
-                                         if tuebadz_to_dwdsmor_lemma(pos, lemma) == a.lemma)
+    analyses_with_matching_lemma = tuple(analysis for analysis in analyses_with_matching_pos
+                                         if tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma) == analysis.lemma)
+
     # first consider analyses with matching lemmas of matching part-of-speech categories
-    if len(analyses_with_matching_lemma) > 0:
+    if analyses_with_matching_lemma:
         dwdsmor_lemma = analyses_with_matching_lemma[0].lemma
         dwdsmor_pos = analyses_with_matching_lemma[0].pos
     # else consider any lemmas of matching part-of-speech categories
-    elif len(analyses_with_matching_pos) > 0:
+    elif analyses_with_matching_pos:
         dwdsmor_lemma = analyses_with_matching_pos[0].lemma
         dwdsmor_pos = analyses_with_matching_pos[0].pos
-    if (pos == "VAFIN" or pos == "VMFIN" or pos == "VVFIN" or pos == "VVIMP") and len(dwdsmor_lemma) > 0:
+    else:
+        dwdsmor_lemma = ""
+        dwdsmor_pos = ""
+
+    if tuebadz_pos in ["VAFIN", "VMFIN", "VVFIN", "VVIMP"] and len(dwdsmor_lemma) > 0:
         # TüBa-D/Z lemmas for finite verb forms of particle verbs include the particle
         # while DWDSmor lemmas do not.
-        is_match = tuebadz_to_dwdsmor_lemma(pos, lemma).endswith(dwdsmor_lemma)
+        lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma).endswith(dwdsmor_lemma)
     else:
-        is_match = tuebadz_to_dwdsmor_lemma(pos, lemma) == dwdsmor_lemma
-    return LemmatizedWord(form,
-                          lemma,
-                          pos,
-                          dwdsmor_lemma,
-                          dwdsmor_pos,
-                          is_match)
+        lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma) == dwdsmor_lemma
 
-
-def write_csv_report(csv_report_file, csv_header, csv_rows):
-    csv_report_file.parent.mkdir(parents=True, exist_ok=True)
-    with csv_report_file.open("w") as report_f:
-        report_writer = csv.writer(report_f, lineterminator=os.linesep)
-        report_writer.writerow(csv_header)
-        for csv_row in csv_rows:
-            report_writer.writerow(csv_row)
-
-
-def test_tuebadz_coverage(project_dir, tuebadz, transducer):
-    lemmatized = (lemmatize(transducer, w) for s in tuebadz for w in s)
-    stats = defaultdict(lambda: defaultdict(int))
-    for w in lemmatized:
-        stats[w.pos][w.is_match] += 1
-    write_csv_report(project_dir / "test-reports" / "tuebadz-coverage.csv",
-                     ("POS",
-                      "Matches",
-                      "Mismatches"),
-                     ((pos,
-                       str(matches[True]),
-                       str(matches[False]))
-                      for pos, matches in (sorted(stats.items()))))
-
-
-def test_tuebadz_lemmatisation(project_dir, tuebadz, transducer):
-    lemmatized = (lemmatize(transducer, w) for s in tuebadz for w in s)
-    write_csv_report(project_dir / "test-reports" / "tuebadz-lemmatisation.csv",
-                     ("Form",
-                      "Lemma",
-                      "POS",
-                      "DWDSmor-Lemma",
-                      "DWDSmor-POS",
-                      "Lemma-Match"),
-                     ((w.form,
-                       w.lemma,
-                       w.pos,
-                       w.dwdsmor_lemma,
-                       w.dwdsmor_pos,
-                       w.is_match)
-                      for w in lemmatized))
-
-
-def wb_coverage(transducer, wb_entries):
-    for wb_n, wb_entry in enumerate(wb_entries):
-        lemma = wb_entry["written_repr"]
-        analyses = dwdsmor.parse(transducer.analyse(lemma))
-        analyzed = False
-        analyzed_lemma = ""
-        analyzed_pos = ""
-        for analysis in analyses:
-            if analysis.lemma == lemma:
-                analyzed = True
-                analyzed_lemma = analysis.lemma or ""
-                analyzed_pos = analysis.pos or ""
-                break
-        yield (wb_entry["file"].as_posix(),
-               wb_entry["article_status"],
-               lemma,
-               wb_entry["pos"],
-               wb_entry["inflection_info"],
-               analyzed_lemma,
-               analyzed_pos,
-               ("1" if analyzed else "0"))
-
-
-def test_wb_coverage(project_dir, transducer, wb_entries):
-    write_csv_report(project_dir / "test-reports" / "wb-coverage.csv",
-                     ("File",
-                      "Article-Status",
-                      "Lemma",
-                      "POS",
-                      "Inflection-Info",
-                      "DWDSmor-Lemma",
-                      "DWDSmor-POS",
-                      "Coverage"),
-                     wb_coverage(transducer, wb_entries))
+    return AnalysedWord(word,
+                        tuebadz_lemma, tuebadz_pos,
+                        dwdsmor_lemma, dwdsmor_pos,
+                        lemmas_match)

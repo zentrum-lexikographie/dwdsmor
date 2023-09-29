@@ -1,4 +1,4 @@
-# Makefile
+# grammar/Makefile
 # Andreas Nolda 2023-05-05
 
 FST_COMPILE = fst-compiler-utf8
