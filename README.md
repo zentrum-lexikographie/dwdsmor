@@ -32,7 +32,7 @@ generation:
   `lexicon/sample/wb/`.
 * `grammar/` contains an FST grammar derived from SMORLemma, providing the
   morphology for building DWDSmor automata from DWDSmor lexica.
-* `tests/` implements a test suite for the DWDSmor transducers.
+* `test/` implements a test suite for the DWDSmor transducers.
 * `dwdsmor.py` and `paradigm.py` are user-level Python scripts for morphological
   analysis and for paradigm generation by means of DWDSmor transducers.
 
@@ -46,10 +46,9 @@ from it.
 ## Prerequisites
 
 [GNU/Linux](https://www.debian.org/)
-: Development, builds and tests of DWDSmor are performed on the current stable
-  distribution of [Debian GNU/Linux](https://debian.org/). While other
-  UNIX-like operating systems such as MacOS should work, too, they are not
-  actively supported.
+: Development, builds and tests of DWDSmor are performed
+  on [Debian GNU/Linux](https://debian.org/). While other UNIX-like operating
+  systems such as MacOS should work, too, they are not actively supported.
 
 [Python >= v3.9](https://www.python.org/)
 : DWDSmor targets Python as its primary runtime environment. The DWDSmor
@@ -136,33 +135,38 @@ The installed DWDSmor transducers are:
   DWDS homographic lemma indices, for paradigm generation
 
 The DWDSmor transducer `lib/dwdsmor.ca` can be examined with the test suite in
-`tests/` by running:
+`test/` by running:
 
 ```sh
 make test
 ```
 
-Individual tests can be run by calling `tests/Makefile` with the following
+Test reports are saved as TSV tables in `test/reports/`.
+
+Individual tests can be run by calling `test/Makefile` with the following
 targets:
 
 ```sh
-make -C tests test-dwds
+make -C test test-dwds-lemmas
 ```
 
 ```sh
-make -C tests test-sample
+make -C test test-sample-lemmas
 ```
 
 ```sh
-make -C tests test-tuebadz
+make -C test test-tuebadz-lemmas
 ```
 
-The `test-dwds` target of `tests/Makefile` again requires DWDS sources in
-`lexicon/dwds/wb/` (not part of this repository). The `test-tuebadz` target
-presupposes a TüBa-D/Z treebank export `tuebadz-11.0-exportXML-v2.xml` at
-`test-data/tuebadz/` (likewise not part of this repository).
+```sh
+make -C test test-tuebadz-coverage
+```
 
-Test results are saved in `test-reports/`.
+The `test-dwds-lemmas` target of `test/Makefile` requires DWDS sources in
+`lexicon/dwds/wb/` (not part of this repository). The `test-tuebadz-lemmas` and
+`test-tuebadz-coverage` targets presuppose a TüBa-D/Z treebank export
+`tuebadz-11.0-exportXML-v2.xml` at `test/data/tuebadz/` (likewise not part of
+this repository).
 
 
 ## Using DWDSmor

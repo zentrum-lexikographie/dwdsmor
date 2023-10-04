@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# test_sample_coverage.py - test DWDSmor coverage against sample lexicon
-# Gregor Middell and Andreas Nolda 2023-09-29
+# test_dwds_lemmas.py - test DWDSmor lemmas against DWDS lexicon
+# Gregor Middell and Andreas Nolda 2023-10-04
 
 import csv
 from os import path, walk, makedirs
@@ -9,7 +9,7 @@ from pytest import fixture
 
 import sfst_transduce
 
-from tests.dwds import get_dwds_entries, analyse_dwds_entry
+from test.dwds import get_dwds_entries, analyse_dwds_entry
 
 
 TESTDIR = path.dirname(__file__)
@@ -18,9 +18,9 @@ BASEDIR = path.dirname(TESTDIR)
 
 LIBDIR = path.join(BASEDIR, "lib")
 
-INPUTDIR = path.join(BASEDIR, "lexicon", "sample", "wb")
+DATADIR = path.join(BASEDIR, "lexicon", "dwds", "wb")
 
-OUTPUTDIR = path.join(BASEDIR, "test-reports")
+REPORTDIR = path.join(TESTDIR, "reports")
 
 
 @fixture
@@ -29,14 +29,18 @@ def transducer():
 
 
 @fixture
-def input_files():
-    xml_files = [path.join(INPUTDIR, "dwds.xml")]
+def data_files():
+    xml_files = []
+    for (dir, _, files) in walk(DATADIR):
+        for file in files:
+            if file.endswith(".xml"):
+                xml_files.append(path.join(dir, file))
     return tuple(xml_files)
 
 
 @fixture
 def output_file():
-    return path.join(OUTPUTDIR, "sample-coverage.tsv")
+    return path.join(REPORTDIR, "dwds-lemmas.tsv")
 
 
 def output_tsv(output_file, analysed_entries):
@@ -54,7 +58,7 @@ def output_tsv(output_file, analysed_entries):
                              "DWDSmor POS",
                              "Lemma Covered"])
         for analysed_entry in analysed_entries:
-            csv_writer.writerow([path.relpath(analysed_entry.file, INPUTDIR),
+            csv_writer.writerow([path.relpath(analysed_entry.file, DATADIR),
                                  analysed_entry.entry,
                                  analysed_entry.dwds_lemma,
                                  analysed_entry.dwds_pos,
@@ -63,9 +67,9 @@ def output_tsv(output_file, analysed_entries):
                                  analysed_entry.lemma_covered])
 
 
-def test_sample_coverage(transducer, input_files, output_file):
-    sample_entries = tuple(get_dwds_entries(input_files))
+def test_dwds_lemmas(transducer, data_files, output_file):
+    dwds_entries = tuple(get_dwds_entries(data_files))
     analysed_entries = tuple(analyse_dwds_entry(transducer, dwds_entry)
-                             for dwds_entry in sample_entries)
+                             for dwds_entry in dwds_entries)
 
     output_tsv(output_file, analysed_entries)

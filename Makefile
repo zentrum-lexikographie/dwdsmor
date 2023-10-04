@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2023-09-29
+# Andreas Nolda 2023-10-04
 
 DATETIME = $(shell date +%FT%T%z)
 DATE     = $(shell echo $(DATETIME) | cut -c 1-4,6-7,9-10)
@@ -15,7 +15,7 @@ SAMPLEDIR = $(LEXDIR)/sample
 
 INSTALLDIR = $(CURDIR)/lib
 
-TESTDIR = $(CURDIR)/tests
+TESTDIR = $(CURDIR)/test
 
 RDIR    = $(CURDIR)/releases/$(DATE)
 RLIBDIR = $(RDIR)/lib

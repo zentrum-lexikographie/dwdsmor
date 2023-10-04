@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# test_tuebadz_lemmatisation.py - test DWDSmor lemmatisation against TüBa-D/Z
-# Gregor Middell and Andreas Nolda 2023-09-29
+# test_tuebadz_lemmas.py - test DWDSmor lemmas against TüBa-D/Z
+# Gregor Middell and Andreas Nolda 2023-10-04
 
 import csv
 from os import path, makedirs
@@ -9,7 +9,7 @@ from pytest import fixture
 
 import sfst_transduce
 
-from tests.tuebadz import get_tuebadz_sentences, analyse_tuebadz_word
+from test.tuebadz import get_tuebadz_sentences, analyse_tuebadz_word
 
 
 TESTDIR = path.dirname(__file__)
@@ -18,9 +18,9 @@ BASEDIR = path.dirname(TESTDIR)
 
 LIBDIR = path.join(BASEDIR, "lib")
 
-INPUTDIR = path.join(BASEDIR, "test-data", "tuebadz")
+DATADIR = path.join(TESTDIR, "data", "tuebadz")
 
-OUTPUTDIR = path.join(BASEDIR, "test-reports")
+REPORTDIR = path.join(TESTDIR, "reports")
 
 
 @fixture
@@ -29,13 +29,13 @@ def transducer():
 
 
 @fixture
-def input_file():
-    return path.join(INPUTDIR, "tuebadz-11.0-exportXML-v2.xml")
+def data_file():
+    return path.join(DATADIR, "tuebadz-11.0-exportXML-v2.xml")
 
 
 @fixture
 def output_file():
-    return path.join(OUTPUTDIR, "tuebadz-lemmatisation.tsv")
+    return path.join(REPORTDIR, "tuebadz-lemmas.tsv")
 
 
 def output_tsv(output_file, analysed_words):
@@ -60,8 +60,8 @@ def output_tsv(output_file, analysed_words):
                                  analysed_word.lemmas_match])
 
 
-def test_tuebadz_lemmatisation(transducer, input_file, output_file):
-    tuebadz_sentences = tuple(get_tuebadz_sentences(input_file))
+def test_tuebadz_lemmas(transducer, data_file, output_file):
+    tuebadz_sentences = tuple(get_tuebadz_sentences(data_file))
     tuebadz_words = tuple(tuebadz_word for tuebadz_sentence in tuebadz_sentences
                           for tuebadz_word in tuebadz_sentence)
     analysed_words = tuple(analyse_tuebadz_word(transducer, tuebadz_word)

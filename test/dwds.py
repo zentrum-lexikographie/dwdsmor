@@ -5,8 +5,6 @@
 from collections import namedtuple
 from xml.etree.ElementTree import parse
 
-import sfst_transduce
-
 from dwdsmor import analyse_word
 
 

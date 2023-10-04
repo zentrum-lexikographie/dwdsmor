@@ -1,16 +1,14 @@
 # .gitignore
-# Andreas Nolda 2023-09-18
+# Andreas Nolda 2023-10-04
 
-.idea/
-.venv/
 *~
 \#*
 
+/.idea/
+/.venv/
+
 __pycache__
 *.egg-info
-
-.dir-locals.el
-.python-version
 
 BUILD
 
@@ -28,6 +26,3 @@ manifest.xml
 /lib/
 
 /releases/
-
-
-/test-reports/
