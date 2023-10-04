@@ -1,10 +1,8 @@
 from pathlib import Path
 
-from setuptools import setup, find_packages
-
+from setuptools import find_packages, setup
 
 version = (Path(__file__) / ".." / "VERSION").resolve().read_text().strip()
-
 
 setup(name="dwdsmor",
       version=version,
@@ -16,7 +14,4 @@ setup(name="dwdsmor",
       python_requires=">=3.9",
       install_requires=["sfst-transduce"],
       extras_require={"cli": ["blessings"],
-                      "test": ["pytest",
-                               "autoflake",
-                               "flake8",
-                               "dvc[ssh]"]})
+                      "test": ["pytest", "syrupy"]})

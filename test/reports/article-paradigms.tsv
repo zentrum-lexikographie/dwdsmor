@@ -1,0 +1,89 @@
+Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
+die	1	2	ART Def	Masc Nom Sg St Attr	der
+die	1	2	ART Def	Masc Nom Sg St Subst	der
+die	1	2	ART Def	Masc Acc Sg St Attr	den
+die	1	2	ART Def	Masc Acc Sg St Subst	den
+die	1	2	ART Def	Masc Dat Sg St Attr	dem
+die	1	2	ART Def	Masc Dat Sg St Subst	dem
+die	1	2	ART Def	Masc Gen Sg St Attr	des
+die	1	2	ART Def	Masc Gen Sg St Subst	dessen
+die	1	2	ART Def	Neut Nom Sg St Attr	das
+die	1	2	ART Def	Neut Nom Sg St Subst	das
+die	1	2	ART Def	Neut Acc Sg St Attr	das
+die	1	2	ART Def	Neut Acc Sg St Subst	das
+die	1	2	ART Def	Neut Dat Sg St Attr	dem
+die	1	2	ART Def	Neut Dat Sg St Subst	dem
+die	1	2	ART Def	Neut Gen Sg St Attr	des
+die	1	2	ART Def	Neut Gen Sg St Subst	dessen
+die	1	2	ART Def	Fem Nom Sg St Attr	die
+die	1	2	ART Def	Fem Nom Sg St Subst	die
+die	1	2	ART Def	Fem Acc Sg St Attr	die
+die	1	2	ART Def	Fem Acc Sg St Subst	die
+die	1	2	ART Def	Fem Dat Sg St Attr	der
+die	1	2	ART Def	Fem Dat Sg St Subst	der
+die	1	2	ART Def	Fem Gen Sg St Attr	der
+die	1	2	ART Def	Fem Gen Sg St Subst	deren, derer
+die	1	2	ART Def	NoGend Nom Pl St Attr	die
+die	1	2	ART Def	NoGend Nom Pl St Subst	die
+die	1	2	ART Def	NoGend Acc Pl St Attr	die
+die	1	2	ART Def	NoGend Acc Pl St Subst	die
+die	1	2	ART Def	NoGend Dat Pl St Attr	den
+die	1	2	ART Def	NoGend Dat Pl St Subst	denen
+die	1	2	ART Def	NoGend Gen Pl St Attr	der
+die	1	2	ART Def	NoGend Gen Pl St Subst	deren, derer
+eine		2	ART Indef	Masc Nom Sg NoInfl Attr	ein, ’n (ugs.)
+eine		2	ART Indef	Masc Nom Sg St Subst	einer
+eine		2	ART Indef	Masc Acc Sg St Attr	einen, ’nen (ugs.)
+eine		2	ART Indef	Masc Acc Sg St Subst	einen
+eine		2	ART Indef	Masc Dat Sg St Attr	einem, ’nem (ugs.)
+eine		2	ART Indef	Masc Dat Sg St Subst	einem
+eine		2	ART Indef	Masc Gen Sg St Attr	eines, ’nes (ugs.)
+eine		2	ART Indef	Masc Gen Sg St Subst	eines
+eine		2	ART Indef	Neut Nom Sg NoInfl Attr	ein, ’n (ugs.)
+eine		2	ART Indef	Neut Nom Sg St Subst	eines, eins
+eine		2	ART Indef	Neut Acc Sg NoInfl Attr	ein, ’n (ugs.)
+eine		2	ART Indef	Neut Acc Sg St Subst	eines, eins
+eine		2	ART Indef	Neut Dat Sg St Attr	einem, ’nem (ugs.)
+eine		2	ART Indef	Neut Dat Sg St Subst	einem
+eine		2	ART Indef	Neut Gen Sg St Attr	eines, ’nes (ugs.)
+eine		2	ART Indef	Neut Gen Sg St Subst	eines
+eine		2	ART Indef	Fem Nom Sg St Attr	eine, ’ne (ugs.)
+eine		2	ART Indef	Fem Nom Sg St Subst	eine
+eine		2	ART Indef	Fem Acc Sg St Attr	eine, ’ne (ugs.)
+eine		2	ART Indef	Fem Acc Sg St Subst	eine
+eine		2	ART Indef	Fem Dat Sg St Attr	einer, ’ner (ugs.)
+eine		2	ART Indef	Fem Dat Sg St Subst	einer
+eine		2	ART Indef	Fem Gen Sg St Attr	einer, ’ner (ugs.)
+eine		2	ART Indef	Fem Gen Sg St Subst	einer
+keine		2	ART Neg	Masc Nom Sg NoInfl Attr	kein
+keine		2	ART Neg	Masc Nom Sg St Subst	keiner
+keine		2	ART Neg	Masc Acc Sg St Attr	keinen
+keine		2	ART Neg	Masc Acc Sg St Subst	keinen
+keine		2	ART Neg	Masc Dat Sg St Attr	keinem
+keine		2	ART Neg	Masc Dat Sg St Subst	keinem
+keine		2	ART Neg	Masc Gen Sg St Attr	keines, keinen (ugs.)
+keine		2	ART Neg	Masc Gen Sg St Subst	keines
+keine		2	ART Neg	Neut Nom Sg NoInfl Attr	kein
+keine		2	ART Neg	Neut Nom Sg St Subst	keines, keins
+keine		2	ART Neg	Neut Acc Sg NoInfl Attr	kein
+keine		2	ART Neg	Neut Acc Sg St Subst	keines, keins
+keine		2	ART Neg	Neut Dat Sg St Attr	keinem
+keine		2	ART Neg	Neut Dat Sg St Subst	keinem
+keine		2	ART Neg	Neut Gen Sg St Attr	keines, keinen (ugs.)
+keine		2	ART Neg	Neut Gen Sg St Subst	keines
+keine		2	ART Neg	Fem Nom Sg St Attr	keine
+keine		2	ART Neg	Fem Nom Sg St Subst	keine
+keine		2	ART Neg	Fem Acc Sg St Attr	keine
+keine		2	ART Neg	Fem Acc Sg St Subst	keine
+keine		2	ART Neg	Fem Dat Sg St Attr	keiner
+keine		2	ART Neg	Fem Dat Sg St Subst	keiner
+keine		2	ART Neg	Fem Gen Sg St Attr	keiner
+keine		2	ART Neg	Fem Gen Sg St Subst	keiner
+keine		2	ART Neg	NoGend Nom Pl St Attr	keine
+keine		2	ART Neg	NoGend Nom Pl St Subst	keine
+keine		2	ART Neg	NoGend Acc Pl St Attr	keine
+keine		2	ART Neg	NoGend Acc Pl St Subst	keine
+keine		2	ART Neg	NoGend Dat Pl St Attr	keinen
+keine		2	ART Neg	NoGend Dat Pl St Subst	keinen
+keine		2	ART Neg	NoGend Gen Pl St Attr	keiner
+keine		2	ART Neg	NoGend Gen Pl St Subst	keiner

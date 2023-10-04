@@ -1,0 +1,75 @@
+Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
+eine		2	CARD	Masc Nom Sg NoInfl Attr	ein
+eine		2	CARD	Masc Nom Sg St Subst	einer
+eine		2	CARD	Masc Nom Sg Wk Attr	eine
+eine		2	CARD	Masc Nom Sg Wk Subst	eine
+eine		2	CARD	Masc Acc Sg St Attr	einen
+eine		2	CARD	Masc Acc Sg St Subst	einen
+eine		2	CARD	Masc Acc Sg Wk Attr	einen
+eine		2	CARD	Masc Acc Sg Wk Subst	einen
+eine		2	CARD	Masc Dat Sg St Attr	einem
+eine		2	CARD	Masc Dat Sg St Subst	einem
+eine		2	CARD	Masc Dat Sg Wk Attr	einen
+eine		2	CARD	Masc Dat Sg Wk Subst	einen
+eine		2	CARD	Masc Gen Sg St Attr	eines
+eine		2	CARD	Masc Gen Sg St Subst	eines
+eine		2	CARD	Masc Gen Sg Wk Attr	einen
+eine		2	CARD	Masc Gen Sg Wk Subst	einen
+eine		2	CARD	Neut Nom Sg NoInfl Attr	ein
+eine		2	CARD	Neut Nom Sg St Subst	eines, eins
+eine		2	CARD	Neut Nom Sg Wk Attr	eine
+eine		2	CARD	Neut Nom Sg Wk Subst	eine
+eine		2	CARD	Neut Acc Sg NoInfl Attr	ein
+eine		2	CARD	Neut Acc Sg St Subst	eines, eins
+eine		2	CARD	Neut Acc Sg Wk Attr	eine
+eine		2	CARD	Neut Acc Sg Wk Subst	eine
+eine		2	CARD	Neut Dat Sg St Attr	einem
+eine		2	CARD	Neut Dat Sg St Subst	einem
+eine		2	CARD	Neut Dat Sg Wk Attr	einen
+eine		2	CARD	Neut Dat Sg Wk Subst	einen
+eine		2	CARD	Neut Gen Sg St Attr	eines
+eine		2	CARD	Neut Gen Sg St Subst	eines
+eine		2	CARD	Neut Gen Sg Wk Attr	einen
+eine		2	CARD	Neut Gen Sg Wk Subst	einen
+eine		2	CARD	Fem Nom Sg St Attr	eine
+eine		2	CARD	Fem Nom Sg St Subst	eine
+eine		2	CARD	Fem Nom Sg Wk Attr	eine
+eine		2	CARD	Fem Nom Sg Wk Subst	eine
+eine		2	CARD	Fem Acc Sg St Attr	eine
+eine		2	CARD	Fem Acc Sg St Subst	eine
+eine		2	CARD	Fem Acc Sg Wk Attr	eine
+eine		2	CARD	Fem Acc Sg Wk Subst	eine
+eine		2	CARD	Fem Dat Sg St Attr	einer
+eine		2	CARD	Fem Dat Sg St Subst	einer
+eine		2	CARD	Fem Dat Sg Wk Attr	einen
+eine		2	CARD	Fem Dat Sg Wk Subst	einen
+eine		2	CARD	Fem Gen Sg St Attr	einer
+eine		2	CARD	Fem Gen Sg St Subst	einer
+eine		2	CARD	Fem Gen Sg Wk Attr	einen
+eine		2	CARD	Fem Gen Sg Wk Subst	einen
+null			CARD	Invar Invar Invar Invar Attr	null
+null			CARD	Invar Invar Invar Invar Subst	null
+sieben	2		CARD	Invar Invar Invar Invar Attr	sieben
+sieben	2		CARD	Invar Invar Invar Invar Subst	sieben
+sieben	2		CARD	NoGend Nom Pl St Subst	siebene (ugs.)
+sieben	2		CARD	NoGend Nom Pl Wk Subst	siebene (ugs.)
+sieben	2		CARD	NoGend Acc Pl St Subst	siebene (ugs.)
+sieben	2		CARD	NoGend Acc Pl Wk Subst	siebene (ugs.)
+vier			CARD	Invar Invar Invar Invar Attr	vier
+vier			CARD	Invar Invar Invar Invar Subst	vier
+vier			CARD	NoGend Nom Pl St Subst	viere (ugs.)
+vier			CARD	NoGend Nom Pl Wk Subst	viere (ugs.)
+vier			CARD	NoGend Acc Pl St Subst	viere (ugs.)
+vier			CARD	NoGend Acc Pl Wk Subst	viere (ugs.)
+vier			CARD	NoGend Dat Pl St Subst	vieren
+vier			CARD	NoGend Dat Pl Wk Subst	vieren
+zwei			CARD	Invar Invar Invar Invar Attr	zwei
+zwei			CARD	Invar Invar Invar Invar Subst	zwei
+zwei			CARD	NoGend Nom Pl St Subst	zweie (ugs.)
+zwei			CARD	NoGend Nom Pl Wk Subst	zweie (ugs.)
+zwei			CARD	NoGend Acc Pl St Subst	zweie (ugs.)
+zwei			CARD	NoGend Acc Pl Wk Subst	zweie (ugs.)
+zwei			CARD	NoGend Dat Pl St Subst	zweien
+zwei			CARD	NoGend Dat Pl Wk Subst	zweien
+zwei			CARD	NoGend Gen Pl St Attr	zweier
+zwei			CARD	NoGend Gen Pl St Subst	zweier

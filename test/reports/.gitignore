@@ -2,3 +2,4 @@
 # Andreas Nolda 2023-10-04
 
 *.tsv
+!*-paradigms.tsv

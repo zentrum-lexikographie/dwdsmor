@@ -162,11 +162,23 @@ make -C test test-tuebadz-lemmas
 make -C test test-tuebadz-coverage
 ```
 
+```sh
+make -C test test-paradigms
+```
+
 The `test-dwds-lemmas` target of `test/Makefile` requires DWDS sources in
 `lexicon/dwds/wb/` (not part of this repository). The `test-tuebadz-lemmas` and
 `test-tuebadz-coverage` targets presuppose a TüBa-D/Z treebank export
 `tuebadz-11.0-exportXML-v2.xml` at `test/data/tuebadz/` (likewise not part of
 this repository).
+
+The `test-paradigms` target of `test/Makefile` saves paradigms of selected
+lemmas as TSV tables in `test/reports/`. They can be used as snapshots for
+regression testing by running:
+
+```sh
+make -C test test-paradigms-regression
+```
 
 
 ## Using DWDSmor
