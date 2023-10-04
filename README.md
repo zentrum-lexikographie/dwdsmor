@@ -134,8 +134,9 @@ The installed DWDSmor transducers are:
 * `lib/dwdsmor-index.{a,ca}`: transducer with an inflection component only with
   DWDS homographic lemma indices, for paradigm generation
 
-The DWDSmor transducer `lib/dwdsmor.ca` can be examined with the test suite in
-`test/` by running:
+The DWDSmor transducer `lib/dwdsmor.ca` for lemmatisation and morphological
+analysis and the DWDSmor transducer `lib/dwdsmor-index.ca` for paradigm
+generation can be examined with the test suite in `test/` by running:
 
 ```sh
 make test
