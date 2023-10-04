@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2023-09-29
+# Andreas Nolda 2023-10-04
 
 import sys
 import argparse
@@ -18,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 8.1
+version = 8.2
 
 
 BASEDIR = path.dirname(__file__)
@@ -1370,8 +1370,10 @@ def output_yaml(lemma, output_file, formdict,
 
 
 def output_dsv(lemma, output_file, formdict,
-               no_cats=False, no_lemma=False, header=True, force_color=False, delimiter="\t"):
-    term = Terminal(force_styling=force_color)
+               no_cats=False, no_lemma=False, header=True, plain=False, force_color=False,
+               delimiter="\t"):
+    kind = "dumb" if plain else None
+    term = Terminal(kind=kind, force_styling=force_color)
     csv_writer = csv.writer(output_file, delimiter=delimiter)
     if header:
         if no_cats and no_lemma:
@@ -1513,7 +1515,7 @@ def generate_paradigms(transducer, lemma, lemma_index=None, paradigm_index=None,
                              if analysis.pos == "ART"
                              else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg,
                                             analysis.pos, None, None, analysis.gender)
-                             if analysis.pos in ["INDEF", "NN", "NPROP", "REL", "WPRO"]
+                             if analysis.pos in ["INDEF", "NN", "NPROP", "REL", "WPRO"] and not analysis.function
                              else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg,
                                             analysis.pos, None, None, None)
                              for analysis in analyses if analysis.lemma == lemma and analysis.pos in POS},
@@ -1535,8 +1537,10 @@ def generate_paradigms(transducer, lemma, lemma_index=None, paradigm_index=None,
 
 def output_paradigms(transducer, lemma, output_file, lemma_index=None, paradigm_index=None,
                      pos=None, user_specified=False, nonst=False, old=False, oldorth=False, ch=False,
-                     no_cats=False, no_lemma=False, header=True, force_color=False, output_format="tsv"):
-    term = Terminal(force_styling=force_color)
+                     no_cats=False, no_lemma=False, header=True, plain=False, force_color=False,
+                     output_format="tsv"):
+    kind = "dumb" if plain else None
+    term = Terminal(kind=kind, force_styling=force_color)
     formdict = generate_paradigms(transducer, lemma, lemma_index, paradigm_index,
                                   pos, user_specified, nonst, old, oldorth, ch)
     if formdict:
@@ -1548,10 +1552,10 @@ def output_paradigms(transducer, lemma, output_file, lemma_index=None, paradigm_
                         no_cats, no_lemma)
         elif output_format == "csv":
             output_dsv(lemma, output_file, formdict,
-                       no_cats, no_lemma, header, force_color, delimiter=",")
+                       no_cats, no_lemma, header, plain, force_color, delimiter=",")
         else:
             output_dsv(lemma, output_file, formdict,
-                       no_cats, no_lemma, header, force_color)
+                       no_cats, no_lemma, header, plain, force_color)
     else:
         if lemma_index and paradigm_index and pos:
             print(term.bold(lemma) + ": "
@@ -1617,6 +1621,8 @@ def main():
                             help="output also forms in old spelling")
         parser.add_argument("-p", "--pos", choices=POS,
                             help="part of speech")
+        parser.add_argument("-P", "--plain", action="store_true",
+                            help="suppress color and formatting")
         parser.add_argument("-s", "--nonst", action="store_true",
                             help="output also non-standard forms")
         parser.add_argument("-S", "--ch", action="store_true",
@@ -1641,7 +1647,8 @@ def main():
             output_format = "tsv"
         output_paradigms(transducer, args.lemma, args.output, args.lemma_index, args.paradigm_index,
                          args.pos, args.user_specified, args.nonst, args.old, args.oldorth, args.ch,
-                         args.no_cats, args.no_lemma, args.no_header, args.force_color, output_format)
+                         args.no_cats, args.no_lemma, args.no_header, args.plain, args.force_color,
+                         output_format)
     except KeyboardInterrupt:
         sys.exit(130)
     return 0

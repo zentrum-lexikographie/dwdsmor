@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-09-29
+# Gregor Middell and Andreas Nolda 2023-10-04
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -18,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 8.2
+version = 8.3
 
 
 BASEDIR = path.dirname(__file__)
@@ -334,8 +334,9 @@ def output_yaml(words, analyses_tuple, output_file):
 
 
 def output_dsv(words, analyses_tuple, output_file,
-               header=True, force_color=False, delimiter="\t"):
-    term = Terminal(force_styling=force_color)
+               header=True, plain=False, force_color=False, delimiter="\t"):
+    kind = "dumb" if plain else None
+    term = Terminal(kind=kind, force_styling=force_color)
     csv_writer = csv.writer(output_file, delimiter=delimiter)
     if header:
         csv_writer.writerow([term.bold("Wordform"),
@@ -391,7 +392,7 @@ def output_dsv(words, analyses_tuple, output_file,
 
 
 def output_analyses(transducer, input_file, output_file,
-                    header=True, force_color=False, output_format="tsv"):
+                    header=True, plain=False, force_color=False, output_format="tsv"):
     words = tuple(word.strip() for word in input_file.readlines() if word.strip())
     analyses_tuple = analyse_words(transducer, words)
     if analyses_tuple:
@@ -401,10 +402,10 @@ def output_analyses(transducer, input_file, output_file,
             output_yaml(words, analyses_tuple, output_file)
         elif output_format == "csv":
             output_dsv(words, analyses_tuple, output_file,
-                       header, force_color, delimiter=",")
+                       header, plain, force_color, delimiter=",")
         else:
             output_dsv(words, analyses_tuple, output_file,
-                       header, force_color)
+                       header, plain, force_color)
 
 
 def main():
@@ -422,6 +423,8 @@ def main():
                             help="suppress table header")
         parser.add_argument("-j", "--json", action="store_true",
                             help="output JSON object")
+        parser.add_argument("-P", "--plain", action="store_true",
+                            help="suppress color and formatting")
         parser.add_argument("-t", "--transducer", default=LIBFILE,
                             help=f"path to transducer file (default: {path.relpath(LIBFILE, getcwd())})")
         parser.add_argument("-v", "--version", action="version",
@@ -440,7 +443,7 @@ def main():
         else:
             output_format = "tsv"
         output_analyses(transducer, args.input, args.output,
-                        args.no_header, args.force_color, output_format)
+                        args.no_header, args.plain, args.force_color, output_format)
     except KeyboardInterrupt:
         sys.exit(130)
     return 0
