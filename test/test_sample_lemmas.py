@@ -45,7 +45,7 @@ def output_tsv(output_file, analysed_entries):
         makedirs(output_dirname, exist_ok=True)
 
     with open(output_file, "w") as file:
-        csv_writer = csv.writer(file, delimiter="\t")
+        csv_writer = csv.writer(file, delimiter="\t", lineterminator="\n")
         csv_writer.writerow(["File",
                              "Entry Number",
                              "DWDS Lemma",

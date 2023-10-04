@@ -337,7 +337,7 @@ def output_dsv(words, analyses_tuple, output_file,
                header=True, plain=False, force_color=False, delimiter="\t"):
     kind = "dumb" if plain else None
     term = Terminal(kind=kind, force_styling=force_color)
-    csv_writer = csv.writer(output_file, delimiter=delimiter)
+    csv_writer = csv.writer(output_file, delimiter=delimiter, lineterminator="\n")
     if header:
         csv_writer.writerow([term.bold("Wordform"),
                              term.bright_black("Analysis"),

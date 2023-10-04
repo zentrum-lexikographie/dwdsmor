@@ -1374,7 +1374,7 @@ def output_dsv(lemma, output_file, formdict,
                delimiter="\t"):
     kind = "dumb" if plain else None
     term = Terminal(kind=kind, force_styling=force_color)
-    csv_writer = csv.writer(output_file, delimiter=delimiter)
+    csv_writer = csv.writer(output_file, delimiter=delimiter, lineterminator="\n")
     if header:
         if no_cats and no_lemma:
             csv_writer.writerow(["Paradigm Categories",
