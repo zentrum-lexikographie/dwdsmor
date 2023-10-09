@@ -49,6 +49,14 @@
     </Formangabe>
   </Artikel>
   <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>&amp;</Schreibung>
+      <Grammatik>
+        <Wortklasse>Konjunktion</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
     <Formangabe>
       <Schreibung>während</Schreibung>
       <Grammatik>

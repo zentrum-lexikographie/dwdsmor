@@ -1549,7 +1549,9 @@
     <xsl:choose>
       <!-- abbreviated nouns -->
       <xsl:when test="$abbreviation='yes' and
-                      ends-with($lemma,'.')">
+                      (ends-with($lemma,'.') or
+                       $lemma='§' or
+                       $lemma='§§')">
         <xsl:choose>
           <!-- abbreviated masculine nouns ("Prof.") -->
           <xsl:when test="$gender='mask.'">

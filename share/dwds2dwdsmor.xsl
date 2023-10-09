@@ -678,7 +678,8 @@
             <!-- nouns -->
             <xsl:when test="$pos='Substantiv' and
                             $abbreviation='yes' and
-                            ends-with($lemma,'.') and
+                            (ends-with($lemma,'.') or
+                             $lemma='§§') and
                             normalize-space(dwds:Numeruspraeferenz)='nur im Plural'">
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
@@ -700,7 +701,8 @@
             </xsl:when>
             <xsl:when test="$pos='Substantiv' and
                             $abbreviation='yes' and
-                            ends-with($lemma,'.')">
+                            (ends-with($lemma,'.') or
+                             $lemma='§')">
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
