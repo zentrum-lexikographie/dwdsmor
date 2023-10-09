@@ -1,83 +1,114 @@
 # tests/Makefile
-# Andreas Nolda 2023-10-04
+# Andreas Nolda 2023-10-09
 
 PYTEST = py.test --no-header
 
-PYTEST_RUN    = $(PYTEST) -v -v
-PYTEST_UPDATE = $(PYTEST) -W ignore --snapshot-update
+PYTEST_RUN    = $(PYTEST) -q
+PYTEST_UPDATE = $(PYTEST) -q -W ignore --snapshot-update
+PYTEST_DIFF   = $(PYTEST) -v -v
 
-TESTDIR   = $(CURDIR)
-REPORTDIR = $(TESTDIR)/reports
+TESTDIR    = $(CURDIR)
+REPORTDIR  = $(TESTDIR)/reports
+INSTALLDIR = $(abspath $(TESTDIR)/../lib)
 
-TESTDWDSLEMMAS      = $(TESTDIR)/test_dwds_lemmas.py
-TESTSAMPLELEMMAS    = $(TESTDIR)/test_sample_lemmas.py
-TESTTUEBADZLEMMAS   = $(TESTDIR)/test_tuebadz_lemmas.py
-TESTTUEBADZCOVERAGE = $(TESTDIR)/test_tuebadz_coverage.py
-TESTPARADIGMS       = $(TESTDIR)/test_paradigms.py
+TEST_DWDS_LEMMA_COVERAGE       = $(TESTDIR)/test_dwds_lemma_coverage.py
+TEST_SAMPLE_LEMMA_COVERAGE     = $(TESTDIR)/test_sample_lemma_coverage.py
+TEST_TUEBADZ_LEMMA_COVERAGE    = $(TESTDIR)/test_tuebadz_lemma_coverage.py
+TEST_DWDS_PARADIGM_COVERAGE    = $(TESTDIR)/test_dwds_paradigm_coverage.py
+TEST_SAMPLE_PARADIGM_COVERAGE  = $(TESTDIR)/test_sample_paradigm_coverage.py
+TEST_GESETZE_ANALYSIS_SNAPSHOT = $(TESTDIR)/test_gesetze_analysis_snapshot.py
+TEST_PARADIGM_SNAPSHOT        = $(TESTDIR)/test_paradigm_snapshot.py
 
-REPORTDWDSLEMMAS      = $(REPORTDIR)/dwds-lemmas.tsv
-REPORTSAMPLELEMMAS    = $(REPORTDIR)/sample-lemmas.tsv
-REPORTTUEBADZLEMMAS   = $(REPORTDIR)/tuebadz-lemmas.tsv
-REPORTTUEBADZCOVERAGE = $(REPORTDIR)/tuebadz-coverage.tsv
-REPORTPARADIGMS       = $(REPORTDIR)/adjective-paradigms.tsv \
-                        $(REPORTDIR)/article-paradigms.tsv \
-                        $(REPORTDIR)/cardinal-paradigms.tsv \
-                        $(REPORTDIR)/demonstrative-pronoun-paradigms.tsv \
-                        $(REPORTDIR)/indefinite-pronoun-paradigms.tsv \
-                        $(REPORTDIR)/interrogative-pronoun-paradigms.tsv \
-                        $(REPORTDIR)/name-paradigms.tsv \
-                        $(REPORTDIR)/noun-paradigms.tsv \
-                        $(REPORTDIR)/ordinal-paradigms.tsv \
-                        $(REPORTDIR)/personal-pronoun-paradigms.tsv \
-                        $(REPORTDIR)/possessive-pronoun-paradigms.tsv \
-                        $(REPORTDIR)/relative-pronoun-paradigms.tsv \
-                        $(REPORTDIR)/verb-paradigms.tsv
+LIB_DWDS_COVERAGE    = $(TESTDIR)/dwds_coverage.py
+LIB_TUEBADZ_COVERAGE = $(TESTDIR)/tuebadz_coverage.py
+LIB_SNAPSHOT         = $(TESTDIR)/snapshot.py
 
-REPORTFILES = $(REPORTDWDSLEMMAS) \
-              $(REPORTSAMPLELEMMAS) \
-              $(REPORTTUEBADZLEMMAS) \
-              $(REPORTTUEBADZCOVERAGE) \
-              $(REPORTPARADIGMS)
+REPORT_DWDS_LEMMA_COVERAGE       = $(REPORTDIR)/dwds-lemma-coverage.tsv
+REPORT_SAMPLE_LEMMA_COVERAGE     = $(REPORTDIR)/sample-lemma-coverage.tsv
+REPORT_TUEBADZ_LEMMA_COVERAGE    = $(REPORTDIR)/tuebadz-lemma-coverage.tsv
+REPORT_DWDS_PARADIGM_COVERAGE    = $(REPORTDIR)/dwds-paradigm-coverage.tsv
+REPORT_SAMPLE_PARADIGM_COVERAGE  = $(REPORTDIR)/sample-paradigm-coverage.tsv
+REPORT_GESETZE_ANALYSIS_SNAPSHOT = $(REPORTDIR)/gesetze-analysis-snapshot.tsv
+REPORT_PARADIGM_SNAPSHOT         = $(REPORTDIR)/adjective-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/article-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/cardinal-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/demonstrative-pronoun-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/indefinite-pronoun-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/interrogative-pronoun-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/name-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/noun-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/ordinal-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/personal-pronoun-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/possessive-pronoun-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/relative-pronoun-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/verb-paradigm-snapshot.tsv
 
-all: test-dwds-lemmas test-sample-lemmas \
-     test-tuebadz-lemmas test-tuebadz-coverage \
-     test-paradigms
+REPORTFILES = $(REPORT_DWDS_LEMMA_COVERAGE) \
+              $(REPORT_SAMPLE_LEMMA_COVERAGE) \
+              $(REPORT_TUEBADZ_LEMMA_COVERAGE) \
+              $(REPORT_DWDS_PARADIGM_COVERAGE) \
+              $(REPORT_SAMPLE_PARADIGM_COVERAGE) \
+              $(REPORT_GESETZE_ANALYSIS_SNAPSHOT) \
+              $(REPORT_PARADIGM_SNAPSHOT)
 
-test-dwds-lemmas: $(REPORTDWDSLEMMAS)
+DWDSMOR_A       = $(INSTALLDIR)/dwdsmor.a
+DWDSMOR_CA      = $(INSTALLDIR)/dwdsmor.ca
+DWDSMOR_INDEX_A = $(INSTALLDIR)/dwdsmor-index.a
 
-test-sample-lemmas: $(REPORTSAMPLELEMMAS)
+test-coverage: test-dwds-lemma-coverage test-sample-lemma-coverage test-tuebadz-lemma-coverage \
+               test-dwds-paradigm-coverage test-sample-paradigm-coverage
 
-test-tuebadz-lemmas: $(REPORTTUEBADZLEMMAS)
+test-snapshot: test-analysis-snapshot test-paradigm-snapshot
 
-test-tuebadz-lemmas: $(REPORTTUEBADZLEMMAS)
+test-regression: test-analysis-regression test-paradigm-regression
 
-test-tuebadz-coverage: $(REPORTTUEBADZCOVERAGE)
+test-dwds-lemma-coverage: $(REPORT_DWDS_LEMMA_COVERAGE)
 
-test-paradigms: $(REPORTPARADIGMS)
+test-sample-lemma-coverage: $(REPORT_SAMPLE_LEMMA_COVERAGE)
 
-test-paradigms-regression:
-	$(PYTEST_RUN) $(TESTPARADIGMS)
+test-tuebadz-lemma-coverage: $(REPORT_TUEBADZ_LEMMA_COVERAGE)
 
-$(REPORTDWDSLEMMAS): $(TESTDWDSLEMMAS)
-	$(PYTEST_RUN) $(TESTDWDSLEMMAS)
+test-dwds-paradigm-coverage: $(REPORT_DWDS_PARADIGM_COVERAGE)
 
-$(REPORTSAMPLELEMMAS): $(TESTSAMPLELEMMAS)
-	$(PYTEST_RUN) $(TESTSAMPLELEMMAS)
+test-sample-paradigm-coverage: $(REPORT_SAMPLE_PARADIGM_COVERAGE)
 
-$(REPORTTUEBADZLEMMAS): $(TESTTUEBADZLEMMAS)
-	$(PYTEST_RUN) $(TESTTUEBADZLEMMAS)
+test-analysis-snapshot: $(REPORT_GESETZE_ANALYSIS_SNAPSHOT)
 
-$(REPORTTUEBADZCOVERAGE): $(TESTTUEBADZCOVERAGE)
-	$(PYTEST_RUN) $(TESTTUEBADZCOVERAGE)
+test-paradigm-snapshot: $(REPORT_PARADIGM_SNAPSHOT)
 
-$(REPORTPARADIGMS) &: $(TESTPARADIGMS)
-	$(PYTEST_UPDATE) $(TESTPARADIGMS)
+test-analysis-regression:
+	$(PYTEST_DIFF) $(TEST_GESETZE_ANALYSIS_SNAPSHOT)
+
+test-paradigm-regression:
+	$(PYTEST_DIFF) $(TEST_PARADIGM_SNAPSHOT)
+
+$(REPORT_DWDS_LEMMA_COVERAGE): $(TEST_DWDS_LEMMA_COVERAGE) $(LIB_DWDS_COVERAGE) $(DWDSMOR_CA)
+	$(PYTEST_RUN) $(TEST_DWDS_LEMMA_COVERAGE)
+
+$(REPORT_SAMPLE_LEMMA_COVERAGE): $(TEST_SAMPLE_LEMMA_COVERAGE) $(LIB_DWDS_COVERAGE) $(DWDSMOR_CA)
+	$(PYTEST_RUN) $(TEST_SAMPLE_LEMMA_COVERAGE)
+
+$(REPORT_TUEBADZ_LEMMA_COVERAGE): $(TEST_TUEBADZ_LEMMA_COVERAGE) $(LIB_TUEBADZ_COVERAGE) $(DWDSMOR_CA)
+	$(PYTEST_RUN) $(TEST_TUEBADZ_LEMMA_COVERAGE)
+
+$(REPORT_DWDS_PARADIGM_COVERAGE): $(TEST_DWDS_PARADIGM_COVERAGE) $(LIB_DWDS_COVERAGE) $(DWDSMOR_INDEX_A)
+	$(PYTEST_RUN) $(TEST_DWDS_PARADIGM_COVERAGE)
+
+$(REPORT_SAMPLE_PARADIGM_COVERAGE): $(TEST_SAMPLE_PARADIGM_COVERAGE) $(LIB_DWDS_COVERAGE) $(DWDSMOR_INDEX_A)
+	$(PYTEST_RUN) $(TEST_SAMPLE_PARADIGM_COVERAGE)
+
+$(REPORT_GESETZE_ANALYSIS_SNAPSHOT): $(TEST_GESETZE_ANALYSIS_SNAPSHOT) $(LIB_SNAPSHOT) $(DWDSMOR_A)
+	$(PYTEST_UPDATE) $(TEST_GESETZE_ANALYSIS_SNAPSHOT)
+
+$(REPORT_PARADIGM_SNAPSHOT) &: $(TEST_PARADIGM_SNAPSHOT) $(LIB_SNAPSHOT) $(DWDSMOR_INDEX_A)
+	$(PYTEST_UPDATE) $(TEST_PARADIGM_SNAPSHOT)
 
 clean:
 	$(RM) $(REPORTFILES)
 
-.PHONY: all \
-        test-dwds-lemmas test-sample-lemmas \
-        test-tuebadz-lemmas test-tuebadz-coverage \
-        test-paradigms test-paradigms-regression \
+.PHONY: test-coverage test-snapshot test-regression \
+        test-dwds-lemma-coverage test-sample-lemma-coverage test-tuebadz-lemma-coverage \
+        test-dwds-paradigm-coverage test-sample-paradigm-coverage \
+        test-analysis-snapshot test-paradigm-snapshot \
+        test-analysis-regression test-paradigm-regression \
         clean

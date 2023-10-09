@@ -1,5 +1,5 @@
 # test/reports/.gitignore
-# Andreas Nolda 2023-10-04
+# Andreas Nolda 2023-10-09
 
 *.tsv
-!*-paradigms.tsv
+!*-snapshot.tsv

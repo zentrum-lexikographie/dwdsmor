@@ -1,5 +1,5 @@
 # Makefile
-# Andreas Nolda 2023-10-04
+# Andreas Nolda 2023-10-09
 
 DATETIME = $(shell date +%FT%T%z)
 DATE     = $(shell echo $(DATETIME) | cut -c 1-4,6-7,9-10)
@@ -53,8 +53,14 @@ dwdsmor:
 install:
 	$(MAKE) -C $(SRCDIR) install
 
-test:
-	$(MAKE) -C $(TESTDIR) all
+test-coverage:
+	$(MAKE) -j $(JOBS) -C $(TESTDIR) test-coverage
+
+test-snapshot:
+	$(MAKE) -C $(TESTDIR) test-snapshot
+
+test-regression:
+	$(MAKE) -C $(TESTDIR) test-regression
 
 release:
 	mkdir -p $(RLIBDIR) $(RSRCDIR)
@@ -73,4 +79,7 @@ setup: requirements.txt
 	pip install --upgrade pip
 	pip install -r $<
 
-.PHONY: all dwds dwds-install sample sample-install dwdsmor install test release clean setup
+.PHONY: all dwds dwds-install sample sample-install dwdsmor install \
+        test-coverage test-snapshot test-regression release \
+        clean \
+        setup

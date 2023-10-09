@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-# test_paradigms.py - test DWDSmor paradigms for regression
-# Andreas Nolda 2023-10-04
+# test_paradigm_snapshot.py
+# test DWDSmor paradigm snapshots for regression
+# Andreas Nolda 2023-10-09
 
 import io
 import csv
@@ -8,12 +9,11 @@ from os import path
 
 from pytest import fixture
 
-from syrupy.extensions.single_file import SingleFileSnapshotExtension, WriteMode
-from syrupy.location import PyTestLocation
-
 import sfst_transduce
 
 from paradigm import output_paradigms
+
+from test.snapshot import tsv_snapshot_test
 
 
 TESTDIR = path.dirname(__file__)
@@ -21,8 +21,6 @@ TESTDIR = path.dirname(__file__)
 BASEDIR = path.dirname(TESTDIR)
 
 LIBDIR = path.join(BASEDIR, "lib")
-
-REPORTDIR = path.join(TESTDIR, "reports")
 
 
 ADJECTIVE_POS = "ADJ"
@@ -287,12 +285,13 @@ def transducer():
 def get_paradigms(transducer, lemmas, pos):
     output = io.StringIO()
     csv_writer = csv.writer(output, delimiter="\t", lineterminator="\n")
-    csv_writer.writerow(["Lemma",
-                         "Lemma Index",
-                         "Paradigm Index",
-                         "Categories",
-                         "Paradigm Categories",
-                         "Paradigm Forms"])
+    header_row = ["Lemma",
+                  "Lemma Index",
+                  "Paradigm Index",
+                  "Categories",
+                  "Paradigm Categories",
+                  "Paradigm Forms"]
+    csv_writer.writerow(header_row)
     for lemma in sorted(set(lemmas)):
         output_paradigms(transducer, lemma, output, pos=pos,
                          nonst=True, old=True, oldorth=True, ch=True,
@@ -300,89 +299,66 @@ def get_paradigms(transducer, lemmas, pos):
     return output.getvalue()
 
 
-class TSVSnapshotExtension(SingleFileSnapshotExtension):
-    _write_mode = WriteMode.TEXT
-    _file_extension = "tsv"
-
-    @classmethod
-    def get_snapshot_name(cls, *, test_location, index):
-        snapshot_name = SingleFileSnapshotExtension.get_snapshot_name(test_location=test_location,
-                                                                      index=index)
-        if snapshot_name.startswith("test_"):
-            snapshot_name = snapshot_name[5:]
-        snapshot_name = snapshot_name.replace("_", "-")
-        return snapshot_name
-
-    @classmethod
-    def dirname(cls, *, test_location):
-        return REPORTDIR
-
-
-@fixture
-def tsv_snapshot_test(snapshot):
-    return snapshot.use_extension(TSVSnapshotExtension)
-
-
-def test_adjective_paradigms(tsv_snapshot_test, transducer):
+def test_adjective_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, ADJECTIVE_LEMMAS, ADJECTIVE_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_article_paradigms(tsv_snapshot_test, transducer):
+def test_article_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, ARTICLE_LEMMAS, ARTICLE_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_cardinal_paradigms(tsv_snapshot_test, transducer):
+def test_cardinal_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, CARDINAL_LEMMAS, CARDINAL_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_demonstrative_pronoun_paradigms(tsv_snapshot_test, transducer):
+def test_demonstrative_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, DEMONSTRATIVE_PRONOUN_LEMMAS, DEMONSTRATIVE_PRONOUN_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_indefinite_pronoun_paradigms(tsv_snapshot_test, transducer):
+def test_indefinite_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, INDEFINITE_PRONOUN_LEMMAS, INDEFINITE_PRONOUN_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_interrogative_pronoun_paradigms(tsv_snapshot_test, transducer):
+def test_interrogative_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, INTERROGATIVE_PRONOUN_LEMMAS, INTERROGATIVE_PRONOUN_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_name_paradigms(tsv_snapshot_test, transducer):
+def test_name_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, NAME_LEMMAS, NAME_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_noun_paradigms(tsv_snapshot_test, transducer):
+def test_noun_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, NOUN_LEMMAS, NOUN_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_ordinal_paradigms(tsv_snapshot_test, transducer):
+def test_ordinal_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, ORDINAL_LEMMAS, ORDINAL_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_possessive_pronoun_paradigms(tsv_snapshot_test, transducer):
+def test_possessive_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, POSSESSIVE_PRONOUN_LEMMAS, POSSESSIVE_PRONOUN_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_personal_pronoun_paradigms(tsv_snapshot_test, transducer):
+def test_personal_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, PERSONAL_PRONOUN_LEMMAS, PERSONAL_PRONOUN_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_relative_pronoun_paradigms(tsv_snapshot_test, transducer):
+def test_relative_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, RELATIVE_PRONOUN_LEMMAS, RELATIVE_PRONOUN_POS)
     assert paradigms == tsv_snapshot_test
 
 
-def test_verb_paradigms(tsv_snapshot_test, transducer):
+def test_verb_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, VERB_LEMMAS, VERB_POS)
     assert paradigms == tsv_snapshot_test

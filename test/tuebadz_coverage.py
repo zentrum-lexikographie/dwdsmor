@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# tuebadz.py - TüBa-D/Z test library
-# Gregor Middell and Andreas Nolda 2023-09-29
+# tuebadz_coverage.py -- TüBa-D/Z library for coverage tests
+# Gregor Middell and Andreas Nolda 2023-10-09
 
 from collections import namedtuple
 from xml.etree.ElementTree import iterparse
@@ -831,17 +831,13 @@ LEMMA_MAP = {"ADJA": {"acht": "achte",
 
 
 def tuebadz_to_dwdsmor_pos_list(pos):
-    if pos in POS_MAP:
-        return POS_MAP[pos]
-    else:
-        return pos
+    dwdsmor_pos_list = POS_MAP[pos] if pos in POS_MAP else []
+    return dwdsmor_pos_list
 
 
 def tuebadz_to_dwdsmor_lemma(pos, lemma):
-    if pos in LEMMA_MAP and lemma in LEMMA_MAP[pos]:
-        return LEMMA_MAP[pos][lemma]
-    else:
-        return lemma
+    dwdsmor_lemma = LEMMA_MAP[pos][lemma] if pos in LEMMA_MAP and lemma in LEMMA_MAP[pos] else lemma
+    return dwdsmor_lemma
 
 
 def get_tuebadz_sentences(data_file):
@@ -857,8 +853,10 @@ def get_tuebadz_sentences(data_file):
 
 
 AnalysedWord = namedtuple("AnalysedWord", ["word",
-                                           "tuebadz_lemma", "tuebadz_pos",
-                                           "dwdsmor_lemma", "dwdsmor_pos",
+                                           "tuebadz_lemma",
+                                           "tuebadz_pos",
+                                           "dwdsmor_lemma",
+                                           "dwdsmor_pos",
                                            "lemmas_match"])
 
 
@@ -901,6 +899,8 @@ def analyse_tuebadz_word(transducer, tuebadz_word):
         lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma) == dwdsmor_lemma
 
     return AnalysedWord(word,
-                        tuebadz_lemma, tuebadz_pos,
-                        dwdsmor_lemma, dwdsmor_pos,
+                        tuebadz_lemma,
+                        tuebadz_pos,
+                        dwdsmor_lemma,
+                        dwdsmor_pos,
                         lemmas_match)

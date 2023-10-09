@@ -134,51 +134,84 @@ The installed DWDSmor transducers are:
 * `lib/dwdsmor-index.{a,ca}`: transducer with an inflection component only with
   DWDS homographic lemma indices, for paradigm generation
 
-The DWDSmor transducer `lib/dwdsmor.ca` for lemmatisation and morphological
-analysis and the DWDSmor transducer `lib/dwdsmor-index.ca` for paradigm
-generation can be examined with the test suite in `test/` by running:
+
+## Testing DWDSmor transducers
+
+The installed DWDSmor transducers can be examined with the test suite in
+`test/`. It provides coverage tests and regression tests.
+
+The coverage tests are run with the following command:
 
 ```sh
-make test
+make test-coverage
 ```
 
-Test reports are saved as TSV tables in `test/reports/`.
+Coverage test reports and statistics are saved as TSV tables in `test/reports/`
+and `test/summaries/`, respectively.
 
-Individual tests can be run by calling `test/Makefile` with the following
-targets:
-
-```sh
-make -C test test-dwds-lemmas
-```
+Individual coverage tests can be run by calling `test/Makefile` as below:
 
 ```sh
-make -C test test-sample-lemmas
-```
-
-```sh
-make -C test test-tuebadz-lemmas
+make -C test test-dwds-lemma-coverage
 ```
 
 ```sh
-make -C test test-tuebadz-coverage
+make -C test test-sample-lemma-coverage
 ```
 
 ```sh
-make -C test test-paradigms
+make -C test test-tuebadz-lemma-coverage
 ```
 
-The `test-dwds-lemmas` target of `test/Makefile` requires DWDS sources in
-`lexicon/dwds/wb/` (not part of this repository). The `test-tuebadz-lemmas` and
-`test-tuebadz-coverage` targets presuppose a TüBa-D/Z treebank export
-`tuebadz-11.0-exportXML-v2.xml` at `test/data/tuebadz/` (likewise not part of
-this repository).
-
-The `test-paradigms` target of `test/Makefile` saves paradigms of selected
-lemmas as TSV tables in `test/reports/`. They can be used as snapshots for
-regression testing by running:
+```sh
+make -C test test-dwds-paradigm-coverage
+```
 
 ```sh
-make -C test test-paradigms-regression
+make -C test test-sample-paradigm-coverage
+```
+
+The `test-dwds-lemma-coverage` and `test-dwds-paradigm-coverage` targets of
+`test/Makefile` require DWDS sources in `lexicon/dwds/wb/` (not part of this
+repository). The `test-tuebadz-lemma-coverage` target presupposes a TüBa-D/Z
+treebank export `tuebadz-11.0-exportXML-v2.xml` at `test/data/tuebadz/`
+(likewise not part of this repository).
+
+Note that runs of the `test-dwds-paradigm-coverage` and
+`test-sample-paradigm-coverage` targets of `test/Makefile` may take a
+considerable amount of time.
+
+Regression tests compare generated test results to saved snapshots in
+`test/reports/`. To create the snapshots, first run:
+
+```sh
+make test-snapshot
+```
+
+Then, in order to test for regressions which may arise from changes of lexicon,
+grammar, or user-level scripts, run:
+
+```sh
+make test-regression
+```
+
+Regression test targets can also be run individually by calling `test/Makefile`
+as follows:
+
+```sh
+make -C test test-analysis-snapshot
+```
+
+```sh
+make -C test test-paradigm-snapshot
+```
+
+```sh
+make -C test test-analysis-regression
+```
+
+```sh
+make -C test test-paradigm-regression
 ```
 
 

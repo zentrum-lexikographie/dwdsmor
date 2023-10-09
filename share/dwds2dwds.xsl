@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwds.xsl -->
-<!-- Version 1.0 -->
-<!-- Andreas Nolda 2023-06-26 -->
+<!-- Version 1.1 -->
+<!-- Andreas Nolda 2023-10-05 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -67,7 +67,14 @@
                                                         [not(@Typ)]]
                                              [Grammatik/Wortklasse]"/>
       <xsl:apply-templates select="Verweise[not(@Typ!='Derivation' and
-                                                @Typ!='Komposition')]"/>
+                                                @Typ!='Komposition' and
+                                                @Typ!='Zusammenrückung')]"/>
+      <xsl:apply-templates select="Lesart[Definition[@Typ='Generalisierung']
+                                                    [normalize-space(.)='Buchstabe' or
+                                                     normalize-space(.)='Tonbezeichnung']] |
+                                   Lesart[Definition[@Typ='Basis']
+                                                    [matches(normalize-space(.),'^der Laut \p{L}$') or
+                                                     matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]]"/>
     </Artikel>
   </xsl:if>
 </xsl:template>
@@ -153,5 +160,22 @@
     <xsl:copy-of select="@hidx"/>
     <xsl:apply-templates/>
   </Ziellemma>
+</xsl:template>
+
+<xsl:template match="Lesart[Definition[@Typ='Generalisierung']
+                                      [normalize-space(.)='Buchstabe']] |
+                     Lesart[Definition[@Typ='Basis']
+                                      [matches(normalize-space(.),'^der Laut \p{L}$') or
+                                       matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]]">
+  <Lesart>
+    <Definition Typ="Generalisierung">Buchstabe</Definition>
+  </Lesart>
+</xsl:template>
+
+<xsl:template match="Lesart[Definition[@Typ='Generalisierung']
+                                      [normalize-space(.)='Tonbezeichnung']]">
+  <Lesart>
+    <Definition Typ="Generalisierung">Tonbezeichnung</Definition>
+  </Lesart>
 </xsl:template>
 </xsl:stylesheet>

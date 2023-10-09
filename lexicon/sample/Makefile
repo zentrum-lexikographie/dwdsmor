@@ -26,7 +26,7 @@ LIBXSL_LEX    = $(XSLDIR)/categories.xsl \
 
 all: lexicon
 
-lexicon: $(MANIFEST) $(LEX)
+lexicon: $(MANIFEST) $(LEX) $(LEXSRC)
 
 $(MANIFEST): $(LEXSRC) $(MANIFESTXSL) $(LIBXSL_COMMON)
 	$(SAXON) -xsl:$(MANIFESTXSL) -it -o:$@ dwds-dir=$(SRCDIR)
