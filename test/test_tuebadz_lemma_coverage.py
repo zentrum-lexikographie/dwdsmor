@@ -54,19 +54,21 @@ def output_report(report_file, analysed_words):
 
     with open(report_file, "w") as file:
         csv_writer = csv.writer(file, delimiter="\t", lineterminator="\n")
+
         header_row = ["Form",
-                      "TüBa-D/Z Lemma",
-                      "TüBa-D/Z POS",
-                      "DWDSmor Lemma",
+                      "Lemma",
+                      "POS",
                       "DWDSmor POS",
-                      "Lemma Matched"]
+                      "DWDSmor Lemma",
+                      "Matched"]
         csv_writer.writerow(header_row)
+
         for analysed_word in analysed_words:
             row = [analysed_word.word,
                    analysed_word.tuebadz_lemma,
                    analysed_word.tuebadz_pos,
-                   analysed_word.dwdsmor_lemma,
                    analysed_word.dwdsmor_pos,
+                   analysed_word.dwdsmor_lemma,
                    analysed_word.lemmas_match]
             csv_writer.writerow(row)
 
@@ -82,20 +84,21 @@ def output_summary(summary_file, analysed_words):
 
     with open(summary_file, "w") as file:
         csv_writer = csv.writer(file, delimiter="\t", lineterminator="\n")
-        header_row = ["TüBa-D/Z POS",
-                      "Lemmas Matched",
-                      "Lemmas Not Matched",
-                      "Coverage"]
+
+        header_row = ["POS",
+                      "Lemmas",
+                      "Matched Lemmas",
+                      "Percentage Matched Lemmas"]
         csv_writer.writerow(header_row)
+
         for tuebadz_pos, matches in sorted(stats.items()):
-            match_count = matches[True]
-            nonmatch_count = matches[False]
-            total = match_count + nonmatch_count
-            coverage = match_count / total
+            lemma_count = sum(matches.values())
+            matched_lemma_count = matches[True]
+            matched_lemma_percentage = matched_lemma_count / lemma_count
             row = [tuebadz_pos,
-                   match_count,
-                   nonmatch_count,
-                   f"{coverage:.2%}"]
+                   lemma_count,
+                   matched_lemma_count,
+                   f"{matched_lemma_percentage:.2%}"]
             csv_writer.writerow(row)
 
 

@@ -61,13 +61,13 @@ def output_report(report_file, entries_with_paradigms):
         csv_writer = csv.writer(file, delimiter="\t", lineterminator="\n")
         header_row = ["File",
                       "Entry Number",
-                      "DWDS Lemma",
-                      "DWDS Lemma Index",
-                      "DWDS Paradigm Index",
-                      "DWDS Grammar",
-                      "DWDS POS",
+                      "Lemma",
+                      "Lemma Index",
+                      "Paradigm Index",
+                      "With Grammar",
+                      "POS",
                       "DWDSmor POS",
-                      "Lemma Covered"]
+                      "Covered"]
         csv_writer.writerow(header_row)
         for analysed_entry in entries_with_paradigms:
             row = [path.relpath(analysed_entry.file, DATADIR),
@@ -87,27 +87,44 @@ def output_summary(summary_file, entries_with_paradigms):
     if not path.exists(output_dirname):
         makedirs(output_dirname, exist_ok=True)
 
-    stats = defaultdict(lambda: defaultdict(int))
+    stats = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
     for analysed_entry in entries_with_paradigms:
-        stats[analysed_entry.dwds_pos][analysed_entry.lemma_covered] += 1
+        stats[analysed_entry.dwds_pos][analysed_entry.dwds_grammar][analysed_entry.lemma_covered] += 1
 
     with open(summary_file, "w") as file:
         csv_writer = csv.writer(file, delimiter="\t", lineterminator="\n")
-        header_row = ["DWDS POS",
-                      "Lemmas Covered",
-                      "Lemmas Not Covered",
-                      "Coverage"]
+
+        header_row = ["POS",
+                      "Lemmas",
+                      "Covered Lemmas",
+                      "Percentage Covered Lemmas",
+                      "Lemmas with Grammar",
+                      "Percentage Lemmas with Grammar",
+                      "Covered Lemmas with Grammar",
+                      "Percentage Covered Lemmas with Grammar"]
         csv_writer.writerow(header_row)
-        for dwds_pos, coverages in sorted(stats.items()):
-            coverage_count = coverages[True]
-            noncoverage_count = coverages[False]
-            total = coverage_count + noncoverage_count
-            coverage = coverage_count / total
-            row = [dwds_pos,
-                   coverage_count,
-                   noncoverage_count,
-                   f"{coverage:.2%}"]
-            csv_writer.writerow(row)
+
+        for dwds_pos, grammar_coverage in sorted(stats.items()):
+            lemma_count = 0
+            covered_lemma_count = 0
+            for dwds_grammar, coverage in sorted(grammar_coverage.items()):
+                grammar_count = sum(coverage.values())
+                lemma_count += grammar_count
+                covered_grammar_count = coverage[True]
+                covered_lemma_count += covered_grammar_count
+                grammar_percentage = grammar_count / lemma_count
+                covered_lemma_percentage = covered_lemma_count / lemma_count
+                covered_grammar_percentage = covered_grammar_count / grammar_count
+                if dwds_grammar == True:
+                    row = [dwds_pos,
+                           lemma_count,
+                           covered_lemma_count,
+                           f"{covered_lemma_percentage:.2%}",
+                           grammar_count,
+                           f"{grammar_percentage:.2%}",
+                           covered_grammar_count,
+                           f"{covered_grammar_percentage:.2%}"]
+                    csv_writer.writerow(row)
 
 
 def test_dwds_paradigm_coverage(transducer, data_files, report_file, summary_file):
