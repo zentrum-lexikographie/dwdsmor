@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2023-10-04
+# Andreas Nolda 2023-10-09
 
 import sys
 import argparse
@@ -18,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 8.2
+version = 8.3
 
 
 BASEDIR = path.dirname(__file__)
@@ -173,17 +173,13 @@ def string(value):
 
 
 def format_lemma_index(lemma_index):
-    if lemma_index:
-        return "<IDX" + string(lemma_index) + ">"
-    else:
-        return ""
+    formatted_lemma_index = "<IDX" + string(lemma_index) + ">" if lemma_index else ""
+    return formatted_lemma_index
 
 
 def format_paradigm_index(paradigm_index):
-    if paradigm_index:
-        return "<PAR" + string(paradigm_index) + ">"
-    else:
-        return ""
+    formatted_paradigm_index = "<PAR" + string(paradigm_index) + ">" if paradigm_index else ""
+    return formatted_paradigm_index
 
 
 def format_pos(pos):
@@ -960,10 +956,7 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
 def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                       pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
-    if PARTICLE_BOUNDARY in seg:
-        particle = seg[:seg.find(PARTICLE_BOUNDARY)]
-    else:
-        particle = ""
+    particle = seg[:seg.find(PARTICLE_BOUNDARY)] if PARTICLE_BOUNDARY in seg else ""
     for auxiliary in AUXILIARIES:
         categorisation = ["PPast",
                           auxiliary]
@@ -1330,28 +1323,33 @@ def cat_list(cats):
     return {"categories": list(dict.fromkeys(value for value in cat_dict(cats).values()))}
 
 
+def create_paradigm(lemma, formdict, lemma_index, paradigm_index, lexcat,
+                    no_cats=False, no_lemma=False):
+    cat_value = cat_list if no_cats else cat_dict
+    paradigm = {"lemma": lemma,
+                "lemma_index": lemma_index,
+                "paradigm_index": paradigm_index,
+                **cat_value(lexcat),
+                "paradigm": [{**cat_value(key.parcat),
+                              "forms": value}
+                             for key, value in paradigm_subset(formdict, lemma_index, paradigm_index, lexcat)]}
+    if no_lemma:
+        for key in ["lemma", "lemma_index", "paradigm_index"]:
+            del paradigm[key]
+        for key in list(cat_value(lexcat)):
+            del paradigm[key]
+    return paradigm
+
+
 def create_paradigms(lemma, formdict,
                      no_cats=False, no_lemma=False):
     paradigms = []
     # remove duplicates while preserving order
     for lemma_index, paradigm_index, lexcat in list(dict.fromkeys((key.lemma_index, key.paradigm_index, key.lexcat)
                                                                   for key in formdict.keys())):
-        if no_cats:
-            cat_value = cat_list
-        else:
-            cat_value = cat_dict
-        if no_lemma:
-            paradigms.append({"paradigm": [{**cat_value(key.parcat),
-                                            "forms": value}
-                                           for key, value in paradigm_subset(formdict, lemma_index, paradigm_index, lexcat)]})
-        else:
-            paradigms.append({"lemma": lemma,
-                              "lemma_index": lemma_index,
-                              "paradigm_index": paradigm_index,
-                              **cat_value(lexcat),
-                              "paradigm": [{**cat_value(key.parcat),
-                                            "forms": value}
-                                           for key, value in paradigm_subset(formdict, lemma_index, paradigm_index, lexcat)]})
+        paradigm = create_paradigm(lemma, formdict, lemma_index, paradigm_index, lexcat,
+                                   no_cats, no_lemma)
+        paradigms.append(paradigm)
     return paradigms
 
 
@@ -1376,110 +1374,105 @@ def output_dsv(lemma, output_file, formdict,
     term = Terminal(kind=kind, force_styling=force_color)
     csv_writer = csv.writer(output_file, delimiter=delimiter, lineterminator="\n")
     if header:
-        if no_cats and no_lemma:
-            csv_writer.writerow(["Paradigm Categories",
-                                 term.bold("Paradigm Forms")])
-        elif no_cats:
-            csv_writer.writerow([term.bold_underline("Lemma"),
-                                 term.underline("Lemma Index"),
-                                 term.underline("Paradigm Index"),
-                                 term.underline("Categories"),
-                                 "Paradigm Categories",
-                                 term.bold("Paradigm Forms")])
-        elif no_lemma:
-            csv_writer.writerow(["Degree",
-                                 "Person",
-                                 "Gender",
-                                 "Case",
-                                 "Number",
-                                 "Inflection",
-                                 "Function",
-                                 "Nonfinite",
-                                 "Mood",
-                                 "Tense",
-                                 term.bold("Paradigm Forms")])
+        if no_cats:
+            header_row = [term.bold_underline("Lemma"),
+                          term.underline("Lemma Index"),
+                          term.underline("Paradigm Index"),
+                          term.underline("Categories"),
+                          "Paradigm Categories",
+                          term.bold("Paradigm Forms")]
+            if no_lemma:
+                for value in [term.bold_underline("Lemma"),
+                              term.underline("Lemma Index"),
+                              term.underline("Paradigm Index"),
+                              term.underline("Categories")]:
+                    header_row.remove(value)
         else:
-            csv_writer.writerow([term.bold_underline("Lemma"),
-                                 term.underline("Lemma Index"),
-                                 term.underline("Paradigm Index"),
-                                 term.underline("POS"),
-                                 term.underline("Subcategory"),
-                                 term.underline("Auxiliary"),
-                                 term.underline("Person"),
-                                 term.underline("Gender"),
-                                 "Degree",
-                                 "Person",
-                                 "Gender",
-                                 "Case",
-                                 "Number",
-                                 "Inflection",
-                                 "Function",
-                                 "Nonfinite",
-                                 "Mood",
-                                 "Tense",
-                                 term.bold("Paradigm Forms")])
+            header_row = [term.bold_underline("Lemma"),
+                          term.underline("Lemma Index"),
+                          term.underline("Paradigm Index"),
+                          term.underline("POS"),
+                          term.underline("Subcategory"),
+                          term.underline("Auxiliary"),
+                          term.underline("Person"),
+                          term.underline("Gender"),
+                          "Degree",
+                          "Person",
+                          "Gender",
+                          "Case",
+                          "Number",
+                          "Inflection",
+                          "Function",
+                          "Nonfinite",
+                          "Mood",
+                          "Tense",
+                          term.bold("Paradigm Forms")]
+            if no_lemma:
+                for value in [term.bold_underline("Lemma"),
+                              term.underline("Lemma Index"),
+                              term.underline("Paradigm Index"),
+                              term.underline("POS"),
+                              term.underline("Subcategory"),
+                              term.underline("Auxiliary"),
+                              term.underline("Person"),
+                              term.underline("Gender")]:
+                    header_row.remove(value)
+        csv_writer.writerow(header_row)
     for formspec in formdict:
-        if no_cats and no_lemma:
-            csv_writer.writerow([" ".join(filter(None, formspec.parcat)),
-                                 term.bold(", ".join(formdict[formspec]))])
-        elif no_cats:
-            csv_writer.writerow([term.bold_underline(lemma),
-                                 term.underline(string(formspec.lemma_index)),
-                                 term.underline(string(formspec.paradigm_index)),
-                                 term.underline(" ".join(filter(None, formspec.lexcat))),
-                                 " ".join(filter(None, formspec.parcat)),
-                                 term.bold(", ".join(formdict[formspec]))])
-        elif no_lemma:
-            csv_writer.writerow([string(formspec.parcat.degree),
-                                 string(formspec.parcat.person),
-                                 string(formspec.parcat.gender),
-                                 string(formspec.parcat.case),
-                                 string(formspec.parcat.number),
-                                 string(formspec.parcat.inflection),
-                                 string(formspec.parcat.function),
-                                 string(formspec.parcat.nonfinite),
-                                 string(formspec.parcat.mood),
-                                 string(formspec.parcat.tense),
-                                 term.bold(", ".join(formdict[formspec]))])
+        if no_cats:
+            row = [term.bold_underline(lemma),
+                   term.underline(string(formspec.lemma_index)),
+                   term.underline(string(formspec.paradigm_index)),
+                   term.underline(" ".join(filter(None, formspec.lexcat))),
+                   " ".join(filter(None, formspec.parcat)),
+                   term.bold(", ".join(formdict[formspec]))]
+            if no_lemma:
+                for value in [term.bold_underline(lemma),
+                              term.underline(string(formspec.lemma_index)),
+                              term.underline(string(formspec.paradigm_index)),
+                              term.underline(" ".join(filter(None, formspec.lexcat)))]:
+                    row.remove(value)
         else:
-            csv_writer.writerow([term.bold_underline(lemma),
-                                 term.underline(string(formspec.lemma_index)),
-                                 term.underline(string(formspec.paradigm_index)),
-                                 term.underline(formspec.lexcat.pos),
-                                 term.underline(string(formspec.lexcat.subcat)),
-                                 term.underline(string(formspec.lexcat.auxiliary)),
-                                 term.underline(string(formspec.lexcat.person)),
-                                 term.underline(string(formspec.lexcat.gender)),
-                                 string(formspec.parcat.degree),
-                                 string(formspec.parcat.person),
-                                 string(formspec.parcat.gender),
-                                 string(formspec.parcat.case),
-                                 string(formspec.parcat.number),
-                                 string(formspec.parcat.inflection),
-                                 string(formspec.parcat.function),
-                                 string(formspec.parcat.nonfinite),
-                                 string(formspec.parcat.mood),
-                                 string(formspec.parcat.tense),
-                                 term.bold(", ".join(formdict[formspec]))])
+            row = [term.bold_underline(lemma),
+                   term.underline(string(formspec.lemma_index)),
+                   term.underline(string(formspec.paradigm_index)),
+                   term.underline(formspec.lexcat.pos),
+                   term.underline(string(formspec.lexcat.subcat)),
+                   term.underline(string(formspec.lexcat.auxiliary)),
+                   term.underline(string(formspec.lexcat.person)),
+                   term.underline(string(formspec.lexcat.gender)),
+                   string(formspec.parcat.degree),
+                   string(formspec.parcat.person),
+                   string(formspec.parcat.gender),
+                   string(formspec.parcat.case),
+                   string(formspec.parcat.number),
+                   string(formspec.parcat.inflection),
+                   string(formspec.parcat.function),
+                   string(formspec.parcat.nonfinite),
+                   string(formspec.parcat.mood),
+                   string(formspec.parcat.tense),
+                   term.bold(", ".join(formdict[formspec]))]
+            if no_lemma:
+                for value in [term.bold_underline(lemma),
+                              term.underline(string(formspec.lemma_index)),
+                              term.underline(string(formspec.paradigm_index)),
+                              term.underline(formspec.lexcat.pos),
+                              term.underline(string(formspec.lexcat.subcat)),
+                              term.underline(string(formspec.lexcat.auxiliary)),
+                              term.underline(string(formspec.lexcat.person)),
+                              term.underline(string(formspec.lexcat.gender))]:
+                    row.remove(value)
+        csv_writer.writerow(row)
 
 
 def sort_lemmaspec(lemmaspec):
-    lemma_index = lemmaspec.lemma_index
-    paradigm_index = lemmaspec.paradigm_index
+    lemma_index = lemmaspec.lemma_index if lemmaspec.lemma_index else 0
+    paradigm_index = lemmaspec.paradigm_index if lemmaspec.paradigm_index else 0
     seg = lemmaspec.seg
     pos = POS.index(lemmaspec.pos)
-    if lemmaspec.subcat:
-        subcat = SUBCATS.index(lemmaspec.subcat)
-    else:
-        subcat = None
-    if lemmaspec.person:
-        person = PERSONS.index(lemmaspec.person)
-    else:
-        person = None
-    if lemmaspec.gender:
-        gender = GENDERS.index(lemmaspec.gender)
-    else:
-        gender = None
+    subcat = SUBCATS.index(lemmaspec.subcat) if lemmaspec.subcat else None
+    person = PERSONS.index(lemmaspec.person) if lemmaspec.person else None
+    gender = GENDERS.index(lemmaspec.gender) if lemmaspec.gender else None
     return (lemma_index, paradigm_index, seg,
             pos, subcat, person, gender)
 
@@ -1628,7 +1621,7 @@ def main():
         parser.add_argument("-S", "--ch", action="store_true",
                             help="output also forms in Swiss spelling")
         parser.add_argument("-t", "--transducer", default=LIBFILE,
-                            help=f"transducer file (default: {path.relpath(LIBFILE, getcwd())})")
+                            help=f"path to transducer file (default: {path.relpath(LIBFILE, getcwd())})")
         parser.add_argument("-u", "--user-specified", action="store_true",
                             help="use only user-specified information")
         parser.add_argument("-v", "--version", action="version",
@@ -1636,7 +1629,9 @@ def main():
         parser.add_argument("-y", "--yaml", action="store_true",
                             help="output YAML document")
         args = parser.parse_args()
+
         transducer = sfst_transduce.Transducer(args.transducer)
+
         if args.json:
             output_format = "json"
         elif args.yaml:

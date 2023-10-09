@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-10-04
+# Gregor Middell and Andreas Nolda 2023-10-09
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -18,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 8.3
+version = 8.4
 
 
 BASEDIR = path.dirname(__file__)
@@ -204,30 +204,35 @@ class Analysis(tuple):
         tag = self.tag_of_type(Analysis._charinfo_tags)
         return tag
 
-    def as_dict(self):
-        return {"analysis": self.analysis,
-                "lemma": self.lemma,
-                "segmentedlemma": self.seg,
-                "lemma_index": self.lemma_index,
-                "paradigm_index": self.paradigm_index,
-                "process": self.process,
-                "means": self.means,
-                "pos": self.pos,
-                "subcat": self.subcat,
-                "auxiliary": self.auxiliary,
-                "degree": self.degree,
-                "person": self.person,
-                "gender": self.gender,
-                "case": self.case,
-                "number": self.number,
-                "inflection": self.inflection,
-                "function": self.function,
-                "nonfinite": self.nonfinite,
-                "mood": self.mood,
-                "tense": self.tense,
-                "metainfo": self.metainfo,
-                "orthinfo": self.orthinfo,
-                "charinfo": self.charinfo}
+    def as_dict(self, no_analysis=False, no_segmentation=False):
+        analysis = {"analysis": self.analysis,
+                    "lemma": self.lemma,
+                    "segmentedlemma": self.seg,
+                    "lemma_index": self.lemma_index,
+                    "paradigm_index": self.paradigm_index,
+                    "process": self.process,
+                    "means": self.means,
+                    "pos": self.pos,
+                    "subcat": self.subcat,
+                    "auxiliary": self.auxiliary,
+                    "degree": self.degree,
+                    "person": self.person,
+                    "gender": self.gender,
+                    "case": self.case,
+                    "number": self.number,
+                    "inflection": self.inflection,
+                    "function": self.function,
+                    "nonfinite": self.nonfinite,
+                    "mood": self.mood,
+                    "tense": self.tense,
+                    "metainfo": self.metainfo,
+                    "orthinfo": self.orthinfo,
+                    "charinfo": self.charinfo}
+        if no_analysis:
+            del analysis["analysis"]
+        if no_segmentation:
+            del analysis["segmentedlemma"]
+        return analysis
 
     def _decode_component_text(text):
         lemma = ""
@@ -316,96 +321,123 @@ def string(value):
     return str(value or "")
 
 
-def create_word_analyses(words, analyses_tuple):
+def remove_duplicate_analyses(analyses):
+    unique_analyses = []
+    for analysis in analyses:
+        if analysis not in unique_analyses:
+            unique_analyses.append(analysis)
+    return unique_analyses
+
+
+def create_word_analyses(words, analyses_tuple,
+                         no_analysis=False, no_segmentation=False):
     word_analyses = []
     for word, analyses in zip(words, analyses_tuple):
+        analyses = [analysis.as_dict(no_analysis, no_segmentation) for analysis in analyses]
+        unique_analyses = remove_duplicate_analyses(analyses)
         word_analyses.append({"word": word,
-                              "analyses": [analysis.as_dict() for analysis in analyses]})
+                              "analyses": unique_analyses})
     return word_analyses
 
-def output_json(words, analyses_tuple, output_file):
-    word_analyses = create_word_analyses(words, analyses_tuple)
+def output_json(words, analyses_tuple, output_file,
+                no_analysis=False, no_segmentation=False):
+    word_analyses = create_word_analyses(words, analyses_tuple,
+                                         no_analysis, no_segmentation)
     json.dump(word_analyses, output_file, ensure_ascii=False)
 
 
-def output_yaml(words, analyses_tuple, output_file):
-    word_analyses = create_word_analyses(words, analyses_tuple)
+def output_yaml(words, analyses_tuple, output_file,
+                no_analysis=False, no_segmentation=False):
+    word_analyses = create_word_analyses(words, analyses_tuple,
+                                         no_analysis, no_segmentation)
     yaml.dump(word_analyses, output_file, allow_unicode=True, sort_keys=False, explicit_start=True)
 
 
+def format_row(analysis, term):
+    keys_of_bright_black_values = ["analysis"]
+    keys_of_bold_underline_values = ["lemma"]
+    keys_of_bright_black_underline_values = ["segmentedlemma"]
+    keys_of_underline_values = ["lemma_index",
+                                "paradigm_index",
+                                "process",
+                                "means",
+                                "pos",
+                                "subcat"
+                                "auxiliary"]
+    formatted_row = [term.bright_black(string(analysis[key])) if key in keys_of_bright_black_values
+                     else term.bold_underline(string(analysis[key])) if key in keys_of_bold_underline_values
+                     else term.bright_black_underline(string(analysis[key])) if key in keys_of_bright_black_underline_values
+                     else term.underline(string(analysis[key])) if key in keys_of_underline_values
+                     else string(analysis[key]) for key in analysis.keys()]
+    return formatted_row
+
+
 def output_dsv(words, analyses_tuple, output_file,
-               header=True, plain=False, force_color=False, delimiter="\t"):
+               no_analysis=False, no_segmentation=False, header=True,
+               plain=False, force_color=False, delimiter="\t"):
     kind = "dumb" if plain else None
     term = Terminal(kind=kind, force_styling=force_color)
     csv_writer = csv.writer(output_file, delimiter=delimiter, lineterminator="\n")
+
     if header:
-        csv_writer.writerow([term.bold("Wordform"),
-                             term.bright_black("Analysis"),
-                             term.bold_underline("Lemma"),
-                             term.bright_black_underline("Segmentation"),
-                             term.underline("Lemma Index"),
-                             term.underline("Paradigm Index"),
-                             term.underline("Process"),
-                             term.underline("Means"),
-                             term.underline("POS"),
-                             term.underline("Subcategory"),
-                             term.underline("Auxiliary"),
-                             "Degree",
-                             "Person",
-                             "Gender",
-                             "Case",
-                             "Number",
-                             "Inflection",
-                             "Function",
-                             "Nonfinite",
-                             "Mood",
-                             "Tense",
-                             "Metainfo",
-                             "Orthinfo",
-                             "Charinfo"])
-    for word, analyses in zip(words, analyses_tuple):
-        for analysis in analyses:
-            csv_writer.writerow([term.bold(word),
-                                 term.bright_black(analysis.analysis),
-                                 term.bold_underline(analysis.lemma),
-                                 term.bright_black_underline(analysis.seg),
-                                 term.underline(string(analysis.lemma_index)),
-                                 term.underline(string(analysis.paradigm_index)),
-                                 term.underline(string(analysis.process)),
-                                 term.underline(string(analysis.means)),
-                                 term.underline(string(analysis.pos)),
-                                 term.underline(string(analysis.subcat)),
-                                 term.underline(string(analysis.auxiliary)),
-                                 analysis.degree,
-                                 analysis.person,
-                                 analysis.gender,
-                                 analysis.case,
-                                 analysis.number,
-                                 analysis.inflection,
-                                 analysis.function,
-                                 analysis.nonfinite,
-                                 analysis.mood,
-                                 analysis.tense,
-                                 analysis.metainfo,
-                                 analysis.orthinfo,
-                                 analysis.charinfo])
+        header_row = [term.bold("Wordform"),
+                      term.bright_black("Analysis"),
+                      term.bold_underline("Lemma"),
+                      term.bright_black_underline("Segmentation"),
+                      term.underline("Lemma Index"),
+                      term.underline("Paradigm Index"),
+                      term.underline("Process"),
+                      term.underline("Means"),
+                      term.underline("POS"),
+                      term.underline("Subcategory"),
+                      term.underline("Auxiliary"),
+                      "Degree",
+                      "Person",
+                      "Gender",
+                      "Case",
+                      "Number",
+                      "Inflection",
+                      "Function",
+                      "Nonfinite",
+                      "Mood",
+                      "Tense",
+                      "Metainfo",
+                      "Orthinfo",
+                      "Charinfo"]
+        if no_analysis:
+            header_row.remove(term.bright_black("Analysis"))
+        if no_segmentation:
+            header_row.remove(term.bright_black_underline("Segmentation"))
+        csv_writer.writerow(header_row)
+
+    word_analyses = create_word_analyses(words, analyses_tuple,
+                                         no_analysis, no_segmentation)
+    for word_analyses_dict in word_analyses:
+        for analysis in word_analyses_dict["analyses"]:
+            row = [term.bold(word_analyses_dict["word"])] + format_row(analysis, term)
+            csv_writer.writerow(row)
 
 
 def output_analyses(transducer, input_file, output_file,
-                    header=True, plain=False, force_color=False, output_format="tsv"):
+                    no_analysis=False, no_segmentation=False, header=True,
+                    plain=False, force_color=False, output_format="tsv"):
     words = tuple(word.strip() for word in input_file.readlines() if word.strip())
     analyses_tuple = analyse_words(transducer, words)
     if analyses_tuple:
         if output_format == "json":
-            output_json(words, analyses_tuple, output_file)
+            output_json(words, analyses_tuple, output_file,
+                        no_analysis, no_segmentation)
         elif output_format == "yaml":
-            output_yaml(words, analyses_tuple, output_file)
+            output_yaml(words, analyses_tuple, output_file,
+                        no_analysis, no_segmentation)
         elif output_format == "csv":
             output_dsv(words, analyses_tuple, output_file,
-                       header, plain, force_color, delimiter=",")
+                       no_analysis, no_segmentation, header,
+                       plain, force_color, delimiter=",")
         else:
             output_dsv(words, analyses_tuple, output_file,
-                       header, plain, force_color)
+                       no_analysis, no_segmentation, header,
+                       plain, force_color)
 
 
 def main():
@@ -423,6 +455,10 @@ def main():
                             help="suppress table header")
         parser.add_argument("-j", "--json", action="store_true",
                             help="output JSON object")
+        parser.add_argument("-n", "--no-analysis", action="store_true",
+                            help="do not output raw analysis")
+        parser.add_argument("-N", "--no-segmentation", action="store_true",
+                            help="do not output segmented lemma")
         parser.add_argument("-P", "--plain", action="store_true",
                             help="suppress color and formatting")
         parser.add_argument("-t", "--transducer", default=LIBFILE,
@@ -432,8 +468,10 @@ def main():
         parser.add_argument("-y", "--yaml", action="store_true",
                             help="output YAML document")
         args = parser.parse_args()
+
         transducer = sfst_transduce.CompactTransducer(args.transducer)
         transducer.both_layers = False
+
         if args.json:
             output_format = "json"
         elif args.yaml:
@@ -443,7 +481,8 @@ def main():
         else:
             output_format = "tsv"
         output_analyses(transducer, args.input, args.output,
-                        args.no_header, args.plain, args.force_color, output_format)
+                        args.no_analysis, args.no_segmentation, args.no_header,
+                        args.plain, args.force_color, output_format)
     except KeyboardInterrupt:
         sys.exit(130)
     return 0
