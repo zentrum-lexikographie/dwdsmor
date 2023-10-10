@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwds_coverage.py -- DWDS library for coverage tests
-# Gregor Middell and Andreas Nolda 2023-10-09
+# Gregor Middell and Andreas Nolda 2023-10-10
 
 from collections import namedtuple
 from xml.etree.ElementTree import parse
@@ -14,6 +14,7 @@ from paradigm import generate_paradigms
 POS_MAP = {"Adjektiv": "ADJ",
            "Adverb": "ADV",
            "bestimmter Artikel": "ART",
+           "Bruchzahl": "FRAC",
            "Demonstrativpronomen": "DEM",
            "Eigenname": "NPROP",
            "Indefinitpronomen": "INDEF",
@@ -27,11 +28,12 @@ POS_MAP = {"Adjektiv": "ADJ",
            "partizipiales Adverb": "ADV",
            "Personalpronomen": "PPRO",
            "Possessivpronomen": "POSS",
-           "Pronominaladverb": "PROADV",
-           "Präposition + Artikel": "PREPART",
            "Präposition": "PREP",
+           "Präposition + Artikel": "PREPART",
+           "Pronominaladverb": "PROADV",
            "Reflexivpronomen": "PPRO",
            "Relativpronomen": "REL",
+           "reziprokes Pronomen": "PPRO",
            "Substantiv": "NN",
            "unbestimmter Artikel": "ART",
            "Verb": "V"}
@@ -81,27 +83,51 @@ def get_dwds_entries(data_files):
                                 else:
                                     dwds_grammar = True
 
+                        # ignore extraneous part-of-speech categories:
+                        if dwds_pos not in POS_MAP.keys():
+                            continue
+
+                        # ignore form specifications of articles, numerals, and attributive pronouns with non-feminine gender
+                        # if there is a feminine form specification with feminine gender
+                        if dwds_pos in ["bestimmter Artikel",
+                                        "Demonstrativpronomen",
+                                        "Indefinitpronomen",
+                                        "Interrogativpronomen",
+                                        "Kardinalzahl",
+                                        "Ordinalzahl",
+                                        "Possessivpronomen",
+                                        "Relativpronomen",
+                                        "unbestimmter Artikel"]:
+                            nonfeminine_formspec = False
+                            if article.findall(f"{ns}Formangabe/{ns}Grammatik/{ns}Genus[.='fem.']"):
+                                if formspec.findtext(f"{ns}Grammatik/{ns}Genus") != "fem.":
+                                    nonfeminine_formspec = True
+                            if nonfeminine_formspec:
+                                continue
+
+                        # ignore form specifications of articles and pronouns with non-nominative case
+                        if dwds_pos in ["bestimmter Artikel",
+                                        "Demonstrativpronomen",
+                                        "Personalpronomen",
+                                        "Relativpronomen"]:  # ...
+                            nonnominative_formspec = False
+                            for case in formspec.findall(f"{ns}Grammatik/{ns}Kasuspraeferenz"):
+                                if not case.get("Frequenz"):
+                                    if case.text in ["im Akkusativ",
+                                                     "im Dativ",
+                                                     "im Genitiv"]:
+                                        nonnominative_formspec = True
+                            if nonnominative_formspec:
+                                continue
+
                         for spelling in formspec.findall(f"{ns}Schreibung"):
                             if not spelling.get("Typ"):
                                 dwds_lemma = spelling.text or ""
                                 # ignore idioms and other syntactically complex units
                                 if " " in dwds_lemma.strip():
                                     continue
-                                # ignore non-feminine lemmas of articles, numerals, and attributive pronouns
-                                # if they also have a feminine lemma
-                                if dwds_pos in ["bestimmter Artikel",
-                                                "Demonstrativpronomen",
-                                                "Indefinitpronomen",
-                                                "Interrogativpronomen",
-                                                "Kardinalzahl",
-                                                "Ordinalzahl",
-                                                "Possessivpronomen",
-                                                "Relativpronomen",
-                                                "unbestimmter Artikel"]:
-                                    if article.findall(f"{ns}Formangabe/{ns}Grammatik/{ns}Genus[.='fem.']"):
-                                        if formspec.findtext(f"{ns}Grammatik/{ns}Genus") != "fem.":
-                                            continue
                                 dwds_lemma_index = int(spelling.get("hidx")) if "hidx" in spelling.keys() else None
+
                                 dwds_entry = {"entry": entry,
                                               "file": data_file,
                                               "dwds_lemma": dwds_lemma,

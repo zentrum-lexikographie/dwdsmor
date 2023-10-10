@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.2 -->
-<!-- Andreas Nolda 2023-06-25 -->
+<!-- Version 14.3 -->
+<!-- Andreas Nolda 2023-10-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -638,7 +638,11 @@
             </xsl:when>
             <!-- articles -->
             <xsl:when test="$pos='bestimmter Artikel' and
-                            string-length(normalize-space(dwds:Genus))&gt;0">
+                            string-length(normalize-space(dwds:Genus))&gt;0 and
+                            not(dwds:Kasuspraeferenz[not(@Frequenz)]
+                                                    [normalize-space(.)='im Akkusativ' or
+                                                     normalize-space(.)='im Dativ' or
+                                                     normalize-space(.)='im Genitiv'])">
               <xsl:call-template name="article-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -890,7 +894,11 @@
             </xsl:when>
             <!-- demonstrative pronouns -->
             <xsl:when test="$pos='Demonstrativpronomen' and
-                            string-length(normalize-space(dwds:Genus))&gt;0">
+                            string-length(normalize-space(dwds:Genus))&gt;0 and
+                            not(dwds:Kasuspraeferenz[not(@Frequenz)]
+                                                    [normalize-space(.)='im Akkusativ' or
+                                                     normalize-space(.)='im Dativ' or
+                                                     normalize-space(.)='im Genitiv'])">
               <xsl:call-template name="demonstrative-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -1193,16 +1201,10 @@
             </xsl:when>
             <!-- irreflexive personal pronouns -->
             <xsl:when test="$pos='Personalpronomen' and
-                            ($lemma='du' or
-                             $lemma='Du' or
-                             $lemma='er' or
-                             $lemma='es' or
-                             $lemma='ich' or
-                             $lemma='ihr' or
-                             $lemma='Ihr' or
-                             $lemma='sie' or
-                             $lemma='Sie' or
-                             $lemma='wir')">
+                            not(dwds:Kasuspraeferenz[not(@Frequenz)]
+                                                    [normalize-space(.)='im Akkusativ' or
+                                                     normalize-space(.)='im Dativ' or
+                                                     normalize-space(.)='im Genitiv'])">
               <xsl:call-template name="personal-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -1282,7 +1284,11 @@
             </xsl:when>
             <!-- relative pronouns -->
             <xsl:when test="$pos='Relativpronomen' and
-                            string-length(normalize-space(dwds:Genus))&gt;0">
+                            string-length(normalize-space(dwds:Genus))&gt;0 and
+                            not(dwds:Kasuspraeferenz[not(@Frequenz)]
+                                                    [normalize-space(.)='im Akkusativ' or
+                                                     normalize-space(.)='im Dativ' or
+                                                     normalize-space(.)='im Genitiv'])">
               <xsl:call-template name="relative-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
