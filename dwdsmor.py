@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-10-09
+# Gregor Middell and Andreas Nolda 2023-10-10
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -18,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 8.4
+version = 8.5
 
 
 BASEDIR = path.dirname(__file__)
@@ -204,7 +204,7 @@ class Analysis(tuple):
         tag = self.tag_of_type(Analysis._charinfo_tags)
         return tag
 
-    def as_dict(self, no_analysis=False, no_segmentation=False):
+    def as_dict(self, no_analysis=False, no_segmentation=False, no_index=False, no_wf=False):
         analysis = {"analysis": self.analysis,
                     "lemma": self.lemma,
                     "segmentedlemma": self.seg,
@@ -232,6 +232,12 @@ class Analysis(tuple):
             del analysis["analysis"]
         if no_segmentation:
             del analysis["segmentedlemma"]
+        if no_index:
+            del analysis["lemma_index"]
+            del analysis["paradigm_index"]
+        if no_wf:
+            del analysis["process"]
+            del analysis["means"]
         return analysis
 
     def _decode_component_text(text):
@@ -330,26 +336,26 @@ def remove_duplicate_analyses(analyses):
 
 
 def create_word_analyses(words, analyses_tuple,
-                         no_analysis=False, no_segmentation=False):
+                         no_analysis=False, no_segmentation=False, no_index=False, no_wf=False):
     word_analyses = []
     for word, analyses in zip(words, analyses_tuple):
-        analyses = [analysis.as_dict(no_analysis, no_segmentation) for analysis in analyses]
+        analyses = [analysis.as_dict(no_analysis, no_segmentation, no_index, no_wf) for analysis in analyses]
         unique_analyses = remove_duplicate_analyses(analyses)
         word_analyses.append({"word": word,
                               "analyses": unique_analyses})
     return word_analyses
 
 def output_json(words, analyses_tuple, output_file,
-                no_analysis=False, no_segmentation=False):
+                no_analysis=False, no_segmentation=False, no_index=False, no_wf=False):
     word_analyses = create_word_analyses(words, analyses_tuple,
-                                         no_analysis, no_segmentation)
+                                         no_analysis, no_segmentation, no_index, no_wf)
     json.dump(word_analyses, output_file, ensure_ascii=False)
 
 
 def output_yaml(words, analyses_tuple, output_file,
-                no_analysis=False, no_segmentation=False):
+                no_analysis=False, no_segmentation=False, no_index=False, no_wf=False):
     word_analyses = create_word_analyses(words, analyses_tuple,
-                                         no_analysis, no_segmentation)
+                                         no_analysis, no_segmentation, no_index, no_wf)
     yaml.dump(word_analyses, output_file, allow_unicode=True, sort_keys=False, explicit_start=True)
 
 
@@ -373,7 +379,7 @@ def format_row(analysis, term):
 
 
 def output_dsv(words, analyses_tuple, output_file,
-               no_analysis=False, no_segmentation=False, header=True,
+               no_analysis=False, no_segmentation=False, no_index=False, no_wf=False, header=True,
                plain=False, force_color=False, delimiter="\t"):
     kind = "dumb" if plain else None
     term = Terminal(kind=kind, force_styling=force_color)
@@ -408,10 +414,16 @@ def output_dsv(words, analyses_tuple, output_file,
             header_row.remove(term.bright_black("Analysis"))
         if no_segmentation:
             header_row.remove(term.bright_black_underline("Segmentation"))
+        if no_index:
+            header_row.remove(term.underline("Lemma Index"))
+            header_row.remove(term.underline("Paradigm Index"))
+        if no_wf:
+            header_row.remove(term.underline("Process"))
+            header_row.remove(term.underline("Means"))
         csv_writer.writerow(header_row)
 
     word_analyses = create_word_analyses(words, analyses_tuple,
-                                         no_analysis, no_segmentation)
+                                         no_analysis, no_segmentation, no_index, no_wf)
     for word_analyses_dict in word_analyses:
         for analysis in word_analyses_dict["analyses"]:
             row = [term.bold(word_analyses_dict["word"])] + format_row(analysis, term)
@@ -419,24 +431,24 @@ def output_dsv(words, analyses_tuple, output_file,
 
 
 def output_analyses(transducer, input_file, output_file,
-                    no_analysis=False, no_segmentation=False, header=True,
+                    no_analysis=False, no_segmentation=False, no_index=False, no_wf=False, header=True,
                     plain=False, force_color=False, output_format="tsv"):
     words = tuple(word.strip() for word in input_file.readlines() if word.strip())
     analyses_tuple = analyse_words(transducer, words)
     if analyses_tuple:
         if output_format == "json":
             output_json(words, analyses_tuple, output_file,
-                        no_analysis, no_segmentation)
+                        no_analysis, no_segmentation, no_index, no_wf)
         elif output_format == "yaml":
             output_yaml(words, analyses_tuple, output_file,
-                        no_analysis, no_segmentation)
+                        no_analysis, no_segmentation, no_index, no_wf)
         elif output_format == "csv":
             output_dsv(words, analyses_tuple, output_file,
-                       no_analysis, no_segmentation, header,
+                       no_analysis, no_segmentation, no_index, no_wf, header,
                        plain, force_color, delimiter=",")
         else:
             output_dsv(words, analyses_tuple, output_file,
-                       no_analysis, no_segmentation, header,
+                       no_analysis, no_segmentation, no_index, no_wf, header,
                        plain, force_color)
 
 
@@ -453,6 +465,8 @@ def main():
                             help="preserve color and formatting when piping output")
         parser.add_argument("-H", "--no-header", action="store_false",
                             help="suppress table header")
+        parser.add_argument("-I", "--no-index", action="store_true",
+                            help="do not output lemma and paradigm index")
         parser.add_argument("-j", "--json", action="store_true",
                             help="output JSON object")
         parser.add_argument("-n", "--no-analysis", action="store_true",
@@ -465,6 +479,8 @@ def main():
                             help=f"path to transducer file (default: {path.relpath(LIBFILE, getcwd())})")
         parser.add_argument("-v", "--version", action="version",
                             version=f"{parser.prog} {version}")
+        parser.add_argument("-W", "--no-wf", action="store_true",
+                            help="do not output word-formation process and means")
         parser.add_argument("-y", "--yaml", action="store_true",
                             help="output YAML document")
         args = parser.parse_args()
@@ -481,7 +497,7 @@ def main():
         else:
             output_format = "tsv"
         output_analyses(transducer, args.input, args.output,
-                        args.no_analysis, args.no_segmentation, args.no_header,
+                        args.no_analysis, args.no_segmentation, args.no_index, args.no_wf, args.no_header,
                         args.plain, args.force_color, output_format)
     except KeyboardInterrupt:
         sys.exit(130)
