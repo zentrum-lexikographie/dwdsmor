@@ -224,7 +224,8 @@ of word forms in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./dwdsmor.py -h
-usage: dwdsmor.py [-h] [-c] [-C] [-H] [-j] [-t TRANSDUCER] [-v] [-y] [input] [output]
+usage: dwdsmor.py [-h] [-c] [-C] [-H] [-I] [-j] [-n] [-N] [-P] [-t TRANSDUCER] [-v] [-W] [-y]
+                  [input] [output]
 
 positional arguments:
   input                 input file (one word form per line; default: stdin)
@@ -235,10 +236,16 @@ optional arguments:
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
   -H, --no-header       suppress table header
+  -I, --no-index        do not output lemma and paradigm index
   -j, --json            output JSON object
+  -n, --no-analysis     do not output raw analysis
+  -N, --no-segmentation
+                        do not output segmented lemma
+  -P, --plain           suppress color and formatting
   -t TRANSDUCER, --transducer TRANSDUCER
                         path to transducer file (default: lib/dwdsmor.ca)
   -v, --version         show program's version number and exit
+  -W, --no-wf           do not output word-formation process and means
   -y, --yaml            output YAML document
 ```
 
@@ -328,9 +335,9 @@ in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./paradigm.py -h
-usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j] [-n] [-N]
-                   [-o] [-O] [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}]
-                   [-s] [-S] [-t TRANSDUCER] [-u] [-v] [-y] lemma [output]
+usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j] [-n] [-N] [-o] [-O]
+                   [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}] [-P] [-s] [-S]
+                   [-t TRANSDUCER] [-u] [-v] [-y] lemma [output]
 
 positional arguments:
   lemma                 lemma (determiners: Fem Nom Sg; nominalised adjectives: Wk)
@@ -352,6 +359,7 @@ optional arguments:
   -O, --oldorth         output also forms in old spelling
   -p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}, --pos {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}
                         part of speech
+  -P, --plain           suppress color and formatting
   -s, --nonst           output also non-standard forms
   -S, --ch              output also forms in Swiss spelling
   -t TRANSDUCER, --transducer TRANSDUCER
