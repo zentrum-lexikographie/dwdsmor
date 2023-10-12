@@ -1,5 +1,5 @@
 % phon.fst
-% Version 3.6
+% Version 4.0
 % Andreas Nolda 2023-10-12
 
 % based on code from SMORLemma by Rico Sennrich
@@ -226,75 +226,6 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
 $R13$ = ([dt]m? | tw) <INS-E> <=> e
 
 
-% consonant reduction in old orthography
-% Schiff=fahrt  -> Schiffahrt, Schifffahrt
-% Schiff=fracht -> Schifffracht
-% voll=laufen   -> vollaufen, volllaufen
-% Sperr=rad     -> Sperrad, Sperrrad
-
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #category# #feature# #info#] \
-           f:[<f><>] \
-           <OLDORTH>:<>
-
-$R14a$ = (f f <=> <>  (<OLDORTH>:. <CB> [fF] [aeiouäöü])) & \
-         (f f <=> <x> (<CB> [fF] [aeiouäöü])) & \
-         ((f:<>) <OLDORTH> <=> <>)
-
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #category# #feature# #info#] \
-           l:[<l><>] \
-           <OLDORTH>:<> \
-           <f>:f
-
-$R14b$ = (l l <=> <>  (<OLDORTH>:. <CB> [lL] [aeiouäöü])) & \
-         (l l <=> <x> (<CB> [lL] [aeiouäöü])) & \
-         ((l:<>) <OLDORTH> <=> <>)
-
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #category# #feature# #info#] \
-           m:[<m><>] \
-           <OLDORTH>:<> \
-           <l>:l
-
-$R14c$ = (m m <=> <>  (<OLDORTH>:. <CB> [mM] [aeiouäöü])) & \
-         (m m <=> <x> (<CB> [mM] [aeiouäöü])) & \
-         ((m:<>) <OLDORTH> <=> <>)
-
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #category# #feature# #info#] \
-           n:[<n><>] \
-           <OLDORTH>:<> \
-           <m>:m
-
-$R14d$ = (n n <=> <>  (<OLDORTH>:. <CB> [nN] [aeiouäöü])) & \
-         (n n <=> <x> (<CB> [nN] [aeiouäöü])) & \
-         ((n:<>) <OLDORTH> <=> <>)
-
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #category# #feature# #info#] \
-           r:[<r><>] \
-           <OLDORTH>:<> \
-           <n>:n
-
-$R14e$ = (r r <=> <>  (<OLDORTH>:. <CB> [rR] [aeiouäöü])) & \
-         (r r <=> <x> (<CB> [rR] [aeiouäöü])) & \
-         ((r:<>) <OLDORTH> <=> <>)
-
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #category# #feature# #info#] \
-           t:[<t><>] \
-           <OLDORTH>:<> \
-           <r>:r
-
-$R14f$ = (t t <=> <>  (<OLDORTH>:. <CB> [tT] [aeiouäöü])) & \
-         (t t <=> <x> (<CB> [tT] [aeiouäöü])) & \
-         ((t:<>) <OLDORTH> <=> <>)
-
-$R14$ = ($R14a$ || $R14b$ || $R14c$) || \
-        ($R14d$ || $R14e$ || $R14f$)
-
-
 % suffix substution for plural forms
 % Virus<^pl>+en     -> Viren
 % Atlas<^pl>+anten  -> Atlanten
@@ -305,18 +236,17 @@ $R14$ = ($R14a$ || $R14b$ || $R14c$) || \
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
-           [aeiou]:<> \
-           <t>:t
+           [aeiou]:<>
 
 % substitute "-as"/"-is"/"-us"/"-um"/"-on"/"-os"/"-en"
 
-$R15a$ = [aeiou] <=> <> ([mns]:. <^pl>)
+$R14a$ = [aeiou] <=> <> ([mns]:. <^pl>)
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            [amnos]:<>
 
-$R15b$ = [amnos] <=> <> <^pl>
+$R14b$ = [amnos] <=> <> <^pl>
 
 % substitute "e"
 
@@ -324,9 +254,9 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
             #category# #feature# #info#] \
            e:<>
 
-$R15c$ = e <=> <> <^Del>
+$R14c$ = e <=> <> <^Del>
 
-$R15$ = $R15a$ || $R15b$ || $R15c$
+$R14$ = $R14a$ || $R14b$ || $R14c$
 
 
 % letter case
@@ -339,7 +269,7 @@ $R15$ = $R15a$ || $R15b$ || $R15c$
 ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#]
 
-$R16a$ = .* ([<WB><CB><DB>] [#orth-trigger#] ([#orth-trigger#]:<>)* .*)*
+$R15a$ = .* ([<WB><CB><DB>] [#orth-trigger#] ([#orth-trigger#]:<>)* .*)*
 
 % downcase
 
@@ -348,7 +278,7 @@ ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-ind
            [#uppercase#]:[#lowercase#] \
            <^DC>:<>
 
-$R16b$ = ([<WB><CB><DB>] <^DC>:<>) [#uppercase#] <=> [#lowercase#]
+$R15b$ = ([<WB><CB><DB>] <^DC>:<>) [#uppercase#] <=> [#lowercase#]
 
 % upcase
 
@@ -357,9 +287,9 @@ ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-ind
            [#lowercase#]:[#uppercase#] \
            <^UC>:<>
 
-$R16c$ = ([<WB><CB><DB>] <^UC>:<>) [#lowercase#] <=> [#uppercase#]
+$R15c$ = ([<WB><CB><DB>] <^UC>:<>) [#lowercase#] <=> [#uppercase#]
 
-$R16$ = $R16a$ || $R16b$ || $R16c$
+$R15$ = $R15a$ || $R15b$ || $R15c$
 
 
 % marker deletion
@@ -368,12 +298,12 @@ ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            [#phon-trigger#]:<>
 
-$R17$ = .*
+$R16$ = .*
 
 
 % composition of rules
 
-$PHON$ = $R1$  || $R2$  || $R3$  || $R4$  || $R5$  || $R6$  || $R7$  || $R8$  || $R9$ || \
-         $R10$ || $R11$ || $R12$ || $R13$ || $R14$ || $R15$ || $R16$ || $R17$
+$PHON$ = $R1$ || $R2$  || $R3$  || $R4$  || $R5$  || $R6$  || $R7$  || $R8$ || \
+         $R9$ || $R10$ || $R11$ || $R12$ || $R13$ || $R14$ || $R15$ || $R16$
 
-$PHONLv2$ = $R10b$ || $R10cLv2$ || $R16$
+$PHONLv2$ = $R10b$ || $R10cLv2$ || $R15$

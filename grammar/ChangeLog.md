@@ -9,6 +9,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
   `<VVPres1+Imp~ss>`, `<VVPres2~ss>`, `<VVPres2+Imp0~ss>`, and `<VVReg~ss>`
 * remove unused trigger symbol `<SSAlt>`
 * simplify phonological rule for "s"/"ss"-alternation (`R4`)
+* remove unused phonological rule for consonant reduction in old orthography
+  (formerly `R14`)
 
 2023-07-03:
 
