@@ -1,5 +1,15 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-10-12:
+
+* remove unused inflection classes `<Adj$e~ss>`, `<Adj+e~ss>`, `<NFem_0_$e~ss>`,
+  `<NFem_0_en~ss>`, `<NMasc/Sg_es~ss>`, `<NMasc_es_$e~ss>`, `<NNeut_es_$er~ss>`,
+  `<VMPresPl~ss>`, `<VMPresSg~ss>`, `<VVPastIndReg~ss>`, `<VVPastIndStr~ss>`,
+  `<VVPastStr~ss>`, `<VVPastSubjReg~ss>`, `<VVPP-t~ss>`, `<VVPres1~ss>`,
+  `<VVPres1+Imp~ss>`, `<VVPres2~ss>`, `<VVPres2+Imp0~ss>`, and `<VVReg~ss>`
+* remove unused trigger symbol `<SSAlt>`
+* simplify phonological rule for "s"/"ss"-alternation (`R4`)
+
 2023-07-03:
 
 * add support for derivation by means of "e"-suffixation with proper-name bases

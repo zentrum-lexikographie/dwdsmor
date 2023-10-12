@@ -1,11 +1,11 @@
 % infl.fst
-% Version 5.3
-% Andreas Nolda 2023-05-20
+% Version 5.4
+% Andreas Nolda 2023-10-12
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
-$SS$ = <OLDORTH>:<SSalt> | <>:<SS>
+$SS$ = <>:<SS>
 
 
 % nouns
@@ -152,9 +152,6 @@ $NMasc/Sg_0$ = {<+NN><Masc>}:{} $NSg_0$
 % Abwasch, Abwasch(e)s; Glanz, Glanzes
 $NMasc/Sg_es$ = {<+NN><Masc>}:{} $NSg_es$
 
-% Haß, Hasses
-$NMasc/Sg_es~ss$ = $SS$ $NMasc/Sg_es$
-
 % Hagel, Hagels; Adel, Adels
 $NMasc/Sg_s$ = {<+NN><Masc>}:{} $NSg_s$
 
@@ -189,14 +186,11 @@ $NMasc_0_s$ = {<+NN><Masc>}:{} $N_0_s$
 % Tag, Tag(e)s, Tage; Kodex, Kodexes, Kodexe
 $NMasc_es_e$ = {<+NN><Masc>}:{} $N_es_e$
 
-% Bus, Busses, Busse; Erlass, Erlasses, Erlasse
+% Bus, Busses, Busse
 $NMasc_es_e~ss$ = $SS$ $NMasc_es_e$
 
 % Arzt, Arzt(e)s, Ärzte
 $NMasc_es_\$e$ = {<+NN><Masc>}:{} $N_es_\$e$
-
-% Bass, Basses, Bässe
-$NMasc_es_\$e~ss$ = $SS$ $NMasc_es_\$e$
 
 % Geist, Geist(e)s, Geister
 $NMasc_es_er$ = {<+NN><Masc>}:{<>} $N_es_er$
@@ -276,7 +270,7 @@ $NMasc-as0/anten$ =                 $NMasc/Sg_0$ | \
                     {}:{<^pl>anten} $NMasc/Pl_x$
 
 % Atlas, Atlasses, Atlanten
-$NMasc-as/anten$ =                 $NMasc/Sg_es~ss$ | \
+$NMasc-as/anten$ =            $SS$ $NMasc/Sg_es$ | \
                    {}:{<^pl>anten} $NMasc/Pl_x$
 
 % Kursus, Kursus, Kurse
@@ -288,7 +282,7 @@ $NMasc-us0/en$ =              $NMasc/Sg_0$ | \
                  {}:{<^pl>en} $NMasc/Pl_x$
 
 % Virus, Virusse, Viren
-$NMasc-us/en$ =              $NMasc/Sg_es~ss$ | \
+$NMasc-us/en$ =         $SS$ $NMasc/Sg_es$ | \
                 {}:{<^pl>en} $NMasc/Pl_x$
 
 % Intimus, Intimus, Intimi
@@ -296,7 +290,7 @@ $NMasc-us0/i$ =            $NMasc/Sg_0$ | \
                {}:{<^pl>i} $NMasc/Pl_x$
 
 % Intimus, Intimusse, Intimi
-$NMasc-us/i$ =             $NMasc/Sg_es~ss$ | \
+$NMasc-us/i$ =        $SS$ $NMasc/Sg_es$ | \
                {}:{<^pl>i} $NMasc/Pl_x$
 
 % Beamte(r); Gefreite(r)
@@ -368,9 +362,6 @@ $NNeut_es_er$ = {<+NN><Neut>}:{} $N_es_er$
 
 % Buch, Buch(e)s, Bücher
 $NNeut_es_\$er$ = {<+NN><Neut>}:{} $N_es_\$er$
-
-% Fass, Fasses, Fässer
-$NNeut_es_\$er~ss$ = $SS$ $NNeut_es_\$er$
 
 % Bett, Bett(e)s, Betten
 $NNeut_es_en$ = {<+NN><Neut>}:{} $N_es_en$
@@ -535,14 +526,8 @@ $NFem_0_e~ss$ = $SS$ $NFem_0_e$
 % Wand, Wand, Wände
 $NFem_0_\$e$ = {<+NN><Fem>}:{} $N_0_\$e$
 
-% Nuss, Nuss, Nüsse
-$NFem_0_\$e~ss$ = $SS$ $NFem_0_\$e$
-
 % Frau, Frau, Frauen; Arbeit, Arbeit, Arbeiten
 $NFem_0_en$ = {<+NN><Fem>}:{} $N_0_en$
-
-% Hostess, Hostess, Hostessen
-$NFem_0_en~ss$ = $SS$ $NFem_0_en$
 
 % Werkstatt, Werkstatt, Werkstätten
 $NFem_0_\$en$ = {<+NN><Fem>}:{} $N_0_\$en$
@@ -730,9 +715,6 @@ $Adj+e$ =            $AdjPos$  | \
           {}:{<FB>}  $AdjComp$ | \
           {}:{<FB>e} $AdjSup$
 
-% naß, nasser, nassesten
-$Adj+e~ss$ = $SS$ $Adj+e$
-
 % frei, freier, frei(e)sten
 $Adj+(e)$ =            $AdjPos$  | \
             {}:{<FB>}  $AdjComp$ | \
@@ -748,9 +730,6 @@ $Adj\$$ =           $AdjPos$  | \
 $Adj\$e$ =            $AdjPos$  | \
            {}:{<UL>}  $AdjComp$ | \
            {}:{<UL>e} $AdjSup$
-
-% naß, nässer, nässesten
-$Adj\$e~ss$ = $SS$ $Adj\$e$
 
 % dunkel; finster
 $Adj-el/er$ = {}:{<^Ax>} $Adj+$
@@ -1671,16 +1650,10 @@ $VVPres$ = $VInflPresReg$ | \
 $VVPres1$ = $VInflPres1$ | \
             $VInfStem$
 
-$VVPres1~ss$ = $SS$ $VVPres1$
-
 $VVPres1+Imp$ = $VImpSg$ | \
                 $VVPres1$
 
-$VVPres1+Imp~ss$ = $SS$ $VVPres1+Imp$
-
 $VVPres2$ = $VInflPres2$
-
-$VVPres2~ss$ = $SS$ $VVPres2$
 
 $VVPres2t$ = $VInflPres2t$
 
@@ -1689,8 +1662,6 @@ $VVPres2+Imp$ = $VImpSg$ | \
 
 $VVPres2+Imp0$ = $VImpSg0$ | \
                  $VVPres2$
-
-$VVPres2+Imp0~ss$ = $SS$ $VVPres2+Imp0$
 
 $VVPres2t+Imp0$ = $VImpSg0$ | \
                   $VVPres2t$
@@ -1704,15 +1675,9 @@ $VVPresPl$ = $VModInflPl$ | \
 
 $VVPastIndReg$ = $VPastIndReg$
 
-$VVPastIndReg~ss$ = $SS$ $VVPastIndReg$
-
 $VVPastIndStr$ = $VPastIndStr$
 
-$VVPastIndStr~ss$ = $SS$ $VPastIndStr$
-
 $VVPastSubjReg$ = $VPastSubjReg$
-
-$VVPastSubjReg~ss$ = $SS$ $VVPastSubjReg$
 
 $VVPastSubjStr$ = $VPastSubjStr$
 
@@ -1721,27 +1686,19 @@ $VVPastSubjOld$ = $VVPastSubjStr$ {<Old>}:{}
 $VVPastStr$ = $VVPastIndStr$ | \
               $VVPastSubjStr$
 
-$VVPastStr~ss$ = $SS$ $VVPastStr$
-
 $VVRegFin$ = $VInflReg$
 
 $VVReg$ = $VInflReg$ | \
           $VPP-t$    | \
           $VInfStem$
 
-$VVReg~ss$ = $SS$ $VVReg$
-
 $VVReg+haben$ = $VInflReg$ | \
                 $VPP-t$ $haben$ | \
                 $VInfStem$
 
-$VVReg+haben~ss$ = $SS$ $VVReg+haben$
-
 $VVReg+sein$ = $VInflReg$ | \
                $VPP-t$ $sein$ | \
                $VInfStem$
-
-$VVReg+sein~ss$ = $SS$ $VVReg+sein$
 
 $VVReg-el/er$ = $VVReg$
 
@@ -1753,12 +1710,8 @@ $VMPastSubj$ = $VPastSubjReg$
 
 $VMPresSg$ = $VModInflSg$
 
-$VMPresSg~ss$ = $SS$ $VMPresSg$
-
 $VMPresPl$ = $VModInflPl$ | \
              $VInfStem$
-
-$VMPresPl~ss$ = $SS$ $VMPresPl$
 
 $VMPast$ = $VPastIndReg$ | \
            $VPP-t$
@@ -1777,15 +1730,9 @@ $VVPP-en+sein$ = $VPP-en$ $sein$
 
 $VVPP-t$ = $VPP-t$
 
-$VVPP-t~ss$ = $SS$ $VPP-t$
-
 $VVPP-t+haben$ = $VPP-t$ $haben$
 
-$VVPP-t+haben~ss$ = $SS$ $VVPP-t+haben$
-
 $VVPP-t+sein$ = $VPP-t$ $sein$
-
-$VVPP-t+sein~ss$ = $SS$ $VVPP-t+sein$
 
 
 % adpositions
@@ -1885,11 +1832,9 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<Adj$-el/er>            $Adj\$-el/er$       | \
          <>:<Adj$>                  $Adj\$$             | \
          <>:<Adj$e>                 $Adj\$e$            | \
-         <>:<Adj$e~ss>              $Adj\$e~ss$         | \
          <>:<Adj+(e)>               $Adj+(e)$           | \
          <>:<Adj+>                  $Adj+$              | \
          <>:<Adj+e>                 $Adj+e$             | \
-         <>:<Adj+e~ss>              $Adj+e~ss$          | \
          <>:<Adj+Lang>              $Adj+Lang$          | \
          <>:<Adj-el/er>             $Adj-el/er$         | \
          <>:<AdjComp0-mehr>         $AdjComp0-mehr$     | \
@@ -1967,13 +1912,11 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<NFem/Sg_0>             $NFem/Sg_0$         | \
          <>:<NFem_0_$>              $NFem_0_\$$         | \
          <>:<NFem_0_$e>             $NFem_0_\$e$        | \
-         <>:<NFem_0_$e~ss>          $NFem_0_\$e~ss$     | \
          <>:<NFem_0_$en>            $NFem_0_\$en$       | \
          <>:<NFem_0_0>              $NFem_0_0$          | \
          <>:<NFem_0_e>              $NFem_0_e$          | \
          <>:<NFem_0_e~ss>           $NFem_0_e~ss$       | \
          <>:<NFem_0_en>             $NFem_0_en$         | \
-         <>:<NFem_0_en~ss>          $NFem_0_en~ss$      | \
          <>:<NFem_0_es>             $NFem_0_es$         | \
          <>:<NFem_0_n>              $NFem_0_n$          | \
          <>:<NFem_0_s>              $NFem_0_s$          | \
@@ -1993,7 +1936,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<NMasc/Pl_x>            $NMasc/Pl_x$        | \
          <>:<NMasc/Sg_0>            $NMasc/Sg_0$        | \
          <>:<NMasc/Sg_es>           $NMasc/Sg_es$       | \
-         <>:<NMasc/Sg_es~ss>        $NMasc/Sg_es~ss$    | \
          <>:<NMasc/Sg_s>            $NMasc/Sg_s$        | \
          <>:<NMasc_0_$e>            $NMasc_0_\$e$       | \
          <>:<NMasc_0_0>             $NMasc_0_0$         | \
@@ -2004,7 +1946,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<NMasc_0_x>             $NMasc_0_x$         | \
          <>:<NMasc_en_en>           $NMasc_en_en$       | \
          <>:<NMasc_es_$e>           $NMasc_es_\$e$      | \
-         <>:<NMasc_es_$e~ss>        $NMasc_es_\$e~ss$   | \
          <>:<NMasc_es_$er>          $NMasc_es_\$er$     | \
          <>:<NMasc_es_e>            $NMasc_es_e$        | \
          <>:<NMasc_es_e~ss>         $NMasc_es_e~ss$     | \
@@ -2052,7 +1993,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<NNeut_0_x>             $NNeut_0_x$         | \
          <>:<NNeut_es_$e>           $NNeut_es_\$e$      | \
          <>:<NNeut_es_$er>          $NNeut_es_\$er$     | \
-         <>:<NNeut_es_$er~ss>       $NNeut_es_\$er~ss$  | \
          <>:<NNeut_es_e>            $NNeut_es_e$        | \
          <>:<NNeut_es_e~ss>         $NNeut_es_e~ss$     | \
          <>:<NNeut_es_en>           $NNeut_es_en$       | \
@@ -2174,9 +2114,7 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VMPast><>:<sein>       $VMPast+sein$       | \
          <>:<VMPastSubj>            $VMPastSubj$        | \
          <>:<VMPresPl>              $VMPresPl$          | \
-         <>:<VMPresPl~ss>           $VMPresPl~ss$       | \
          <>:<VMPresSg>              $VMPresSg$          | \
-         <>:<VMPresSg~ss>           $VMPresSg~ss$       | \
          <>:<VPPast>                $VPPast$            | \
          <>:<VPPast><>:<haben>      $VPPast+haben$      | \
          <>:<VPPast><>:<sein>       $VPPast+sein$       | \
@@ -2188,14 +2126,10 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VPresPlInd>            $VPresPlInd$        | \
          <>:<VPresSubj>             $VPresSubj$         | \
          <>:<VVPastIndReg>          $VVPastIndReg$      | \
-         <>:<VVPastIndReg~ss>       $VVPastIndReg~ss$   | \
          <>:<VVPastIndStr>          $VVPastIndStr$      | \
-         <>:<VVPastIndStr~ss>       $VVPastIndStr~ss$   | \
          <>:<VVPastStr>             $VVPastStr$         | \
-         <>:<VVPastStr~ss>          $VVPastStr~ss$      | \
          <>:<VVPastSubjOld>         $VVPastSubjOld$     | \
          <>:<VVPastSubjReg>         $VVPastSubjReg$     | \
-         <>:<VVPastSubjReg~ss>      $VVPastSubjReg~ss$  | \
          <>:<VVPastSubjStr>         $VVPastSubjStr$     | \
          <>:<VVPP-en>               $VVPP-en$           | \
          <>:<VVPP-en><>:<haben>     $VVPP-en+haben$     | \
@@ -2203,19 +2137,12 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VVPP-t>                $VVPP-t$            | \
          <>:<VVPP-t><>:<haben>      $VVPP-t+haben$      | \
          <>:<VVPP-t><>:<sein>       $VVPP-t+sein$       | \
-         <>:<VVPP-t~ss>             $VVPP-t~ss$         | \
-         <>:<VVPP-t~ss><>:<haben>   $VVPP-t+haben~ss$   | \
-         <>:<VVPP-t~ss><>:<sein>    $VVPP-t+sein~ss$    | \
          <>:<VVPres>                $VVPres$            | \
          <>:<VVPres1>               $VVPres1$           | \
-         <>:<VVPres1~ss>            $VVPres1~ss$        | \
          <>:<VVPres1+Imp>           $VVPres1+Imp$       | \
-         <>:<VVPres1+Imp~ss>        $VVPres1+Imp~ss$    | \
          <>:<VVPres2>               $VVPres2$           | \
-         <>:<VVPres2~ss>            $VVPres2~ss$        | \
          <>:<VVPres2+Imp>           $VVPres2+Imp$       | \
          <>:<VVPres2+Imp0>          $VVPres2+Imp0$      | \
-         <>:<VVPres2+Imp0~ss>       $VVPres2+Imp0~ss$   | \
          <>:<VVPres2t>              $VVPres2t$          | \
          <>:<VVPres2t+Imp0>         $VVPres2t+Imp0$     | \
          <>:<VVPresPl>              $VVPresPl$          | \
@@ -2223,9 +2150,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VVReg>                 $VVReg$             | \
          <>:<VVReg><>:<haben>       $VVReg+haben$       | \
          <>:<VVReg><>:<sein>        $VVReg+sein$        | \
-         <>:<VVReg~ss>              $VVReg~ss$          | \
-         <>:<VVReg~ss><>:<haben>    $VVReg+haben~ss$    | \
-         <>:<VVReg~ss><>:<sein>     $VVReg+sein~ss$     | \
          <>:<VVReg-el/er>           $VVReg-el/er$       | \
          <>:<VVReg-el/er><>:<haben> $VVReg-el/er+haben$ | \
          <>:<VVReg-el/er><>:<sein>  $VVReg-el/er+sein$  | \

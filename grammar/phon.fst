@@ -1,6 +1,6 @@
 % phon.fst
-% Version 3.5
-% Andreas Nolda 2023-05-17
+% Version 3.6
+% Andreas Nolda 2023-10-12
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -78,34 +78,16 @@ $R3c$ = ([AOUaou]:[ÄÖÜäöü]) $X$ <UL>:<FB> ^-> $LC$__$RC$
 $R3$ = $R3a$ || $R3b$ || $R3c$
 
 
-% "ß"/"ss"-alternation
-% Fluß~+es    -> Flusses
-% Fuß+es      -> Fußes
-% Zeugnis~+es -> Zeugnisses
-
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #category# #feature# #info# <SSalt><e>] \
-           <SS>:[<><SS>]
-
-% Schuß<SS><FB><SS...> -> Schuß<FB><SS...>
-
-$R4a$ = (ß) <SS> <=> <> (<FB> [#ss-trigger#])
-
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #category# #feature# #info# <SSalt><e>] \
-           ß:s <SS>:[<>s]
-
-$R4b$ = (ß <=> s (<FB>? [#ss-trigger#]:. <FB> [aeiou])) & \
-        ((ß:s <FB>? | s) [#ss-trigger#] <=> s (<FB> [aeiou])) & \
-        ((s) [#ss-trigger#] <=> <> (<FB> ($Cons$ | <WB>)))
+% "s"/"ss"-alternation
+% Bus~+es     -> Busses
+% Kenntnis~+e -> Kenntnisse
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info# <e>] \
-           <SSalt>:<>
+           <SS>:[<>s]
 
-$R4c$ = (ß <FB>?) <SSalt> <=> <>
-
-$R4$ = $R4a$ || $R4b$ || $R4c$
+$R4$ = ((s) [#ss-trigger#] <=> s  (<FB> [aeiou])) & \
+       ((s) [#ss-trigger#] <=> <> (<FB> ($Cons$ | <WB>)))
 
 
 % "e"-elision after "e"
