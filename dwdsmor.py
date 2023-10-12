@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-10-10
+# Gregor Middell and Andreas Nolda 2023-10-12
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -26,9 +26,6 @@ BASEDIR = path.dirname(__file__)
 LIBDIR = path.join(BASEDIR, "lib")
 
 LIBFILE = path.join(LIBDIR, "dwdsmor.ca")
-
-
-CACHE_SIZE = 2**15
 
 
 PROCESSES = {"COMP", "DER", "CONV"}
