@@ -1,3 +1,7 @@
+2023-10-16:
+
+* remove unused support for affix entries
+
 2023-06-26:
 
 * add `dwds2dwds.xsl` for compiling sample DWDS lexica from DWDS sources

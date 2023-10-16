@@ -1,43 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 6.0 -->
-<!-- Andreas Nolda 2023-03-15 -->
+<!-- Version 6.1 -->
+<!-- Andreas Nolda 2023-10-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:dwds="http://www.dwds.de/ns/1.0"
                 xmlns:n="http://andreas.nolda.org/ns/lib">
-
-<!-- affix forms -->
-<xsl:template name="affix-form">
-  <xsl:param name="lemma"/>
-  <xsl:choose>
-    <!-- suffixes -->
-    <xsl:when test="starts-with($lemma,'-')">
-      <xsl:value-of select="replace($lemma,'-(.+)','$1')"/>
-    </xsl:when>
-    <!-- prefixes -->
-    <xsl:when test="ends-with($lemma,'-')">
-      <xsl:value-of select="replace($lemma,'(.+)-','$1')"/>
-    </xsl:when>
-    <!-- other forms -->
-    <xsl:otherwise>
-      <xsl:value-of select="$lemma"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<!-- affix separability -->
-<xsl:template name="affix-separability">
-  <xsl:param name="type"/>
-  <xsl:param name="separable"/>
-  <xsl:param name="selection"/>
-  <xsl:if test="$type='prefix' and
-                $separable='no' and
-                $selection='V'">
-    <xsl:text>&lt;no-ge&gt;</xsl:text>
-  </xsl:if>
-</xsl:template>
 
 <!-- extract inflection markers from nominal form specification, if any;
      else return the form itself -->

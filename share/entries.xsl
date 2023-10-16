@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.2 -->
-<!-- Andreas Nolda 2023-07-03 -->
+<!-- Version 11.3 -->
+<!-- Andreas Nolda 2023-10-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -12,72 +12,6 @@
 <xsl:include href="forms.xsl"/>
 
 <!-- lexical entries -->
-
-<!-- affixes -->
-<xsl:template name="affix-entry">
-  <xsl:param name="lemma"/>
-  <xsl:param name="lemma-index"/>
-  <xsl:param name="paradigm-index"/>
-  <xsl:param name="abbreviation"/>
-  <xsl:param name="type"/>
-  <xsl:param name="separable"/>
-  <xsl:param name="selection"/>
-  <xsl:param name="etymology"/>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:choose>
-    <xsl:when test="$type='prefix'">
-      <xsl:text>Prefix</xsl:text>
-    </xsl:when>
-    <xsl:when test="$type='suffix'">
-      <xsl:text>Suffix</xsl:text>
-    </xsl:when>
-  </xsl:choose>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:if test="$abbreviation='yes'">
-    <xsl:text>&lt;Abbr&gt;</xsl:text>
-  </xsl:if>
-  <xsl:call-template name="affix-separability">
-    <xsl:with-param name="type"
-                    select="$type"/>
-    <xsl:with-param name="separable"
-                    select="$separable"/>
-    <xsl:with-param name="selection"
-                    select="$selection"/>
-  </xsl:call-template>
-  <xsl:call-template name="affix-form">
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:call-template name="insert-lemma-index">
-    <xsl:with-param name="lemma-index"
-                    select="$lemma-index"/>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:call-template name="insert-paradigm-index">
-    <xsl:with-param name="paradigm-index"
-                    select="$paradigm-index"/>
-    <xsl:with-param name="lemma"
-                    select="$lemma"/>
-  </xsl:call-template>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:choose>
-    <xsl:when test="$type='prefix'">
-      <xsl:text>PREF</xsl:text>
-    </xsl:when>
-    <xsl:when test="$type='suffix'">
-      <xsl:text>SUFF</xsl:text>
-    </xsl:when>
-  </xsl:choose>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:value-of select="$selection"/>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:value-of select="$etymology"/>
-  <xsl:text>&gt;</xsl:text>
-  <xsl:text>&#xA;</xsl:text>
-</xsl:template>
 
 <!-- stems -->
 <xsl:template name="stem-entry">
@@ -268,45 +202,6 @@
 </xsl:template>
 
 <!-- driver templates -->
-
-<!-- affixes -->
-<xsl:template name="affix-entry-set">
-  <xsl:param name="lemma"/>
-  <xsl:param name="lemma-index"/>
-  <xsl:param name="paradigm-index"/>
-  <xsl:param name="abbreviation"/>
-  <xsl:param name="type"/>
-  <xsl:param name="separable"/>
-  <xsl:param name="selection"/>
-  <xsl:param name="pronunciations"/>
-  <xsl:param name="etymology"/>
-  <xsl:if test="string-length($lemma)&gt;0">
-    <xsl:call-template name="affix-entry">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
-      <xsl:with-param name="lemma-index"
-                      select="$lemma-index"/>
-      <xsl:with-param name="paradigm-index"
-                      select="$paradigm-index"/>
-      <xsl:with-param name="abbreviation"
-                      select="$abbreviation"/>
-      <xsl:with-param name="type"
-                      select="$type"/>
-      <xsl:with-param name="separable"
-                      select="$separable"/>
-      <xsl:with-param name="selection">
-        <xsl:choose>
-          <xsl:when test="$selection='adjective'">ADJ</xsl:when>
-          <xsl:when test="$selection='adverb'">ADV</xsl:when>
-          <xsl:when test="$selection='noun'">NN</xsl:when>
-          <xsl:when test="$selection='verb'">V</xsl:when>
-        </xsl:choose>
-      </xsl:with-param>
-      <xsl:with-param name="etymology"
-                      select="$etymology"/>
-    </xsl:call-template>
-  </xsl:if>
-</xsl:template>
 
 <!-- adjectives -->
 <xsl:template name="adjective-entry-set">
