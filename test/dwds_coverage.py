@@ -17,7 +17,7 @@ POS_MAP = {"Adjektiv":               ["ADJ"],
            "Bruchzahl":              ["FRAC"],
            "Demonstrativpronomen":   ["DEM"],
            "Eigenname":              ["NPROP"],
-           "Indefinitpronomen":      ["INDEF"],
+           "Indefinitpronomen":      ["INDEF", "ART"],
            "Interjektion":           ["INTJ"],
            "Interrogativpronomen":   ["WPRO"],
            "Kardinalzahl":           ["CARD"],
@@ -28,7 +28,7 @@ POS_MAP = {"Adjektiv":               ["ADJ"],
            "partizipiales Adverb":   ["ADV"],
            "Personalpronomen":       ["PPRO"],
            "Possessivpronomen":      ["POSS"],
-           "Präposition":            ["PREP"],
+           "Präposition":            ["PREP", "POSTP"],
            "Präposition + Artikel":  ["PREPART", "PTCL"],
            "Pronominaladverb":       ["PROADV"],
            "Reflexivpronomen":       ["PPRO"],
@@ -53,6 +53,7 @@ def get_dwds_entries(data_files):
                         for grammarspec in formspec.findall(f"{ns}Grammatik"):
                             for pos in grammarspec.findall(f"{ns}Wortklasse"):
                                 dwds_pos = pos.text or ""
+                                dwds_pos = dwds_pos.strip()
                                 if dwds_pos == "":
                                     dwds_grammar = False
                                 elif dwds_pos in ["Eigenname", "Substantiv"]:
@@ -123,8 +124,9 @@ def get_dwds_entries(data_files):
                         for spelling in formspec.findall(f"{ns}Schreibung"):
                             if not spelling.get("Typ"):
                                 dwds_lemma = spelling.text or ""
+                                dwds_lemma = dwds_lemma.strip()
                                 # ignore idioms and other syntactically complex units
-                                if " " in dwds_lemma.strip():
+                                if " " in dwds_lemma:
                                     continue
                                 dwds_lemma_index = int(spelling.get("hidx")) if "hidx" in spelling.keys() else None
 
