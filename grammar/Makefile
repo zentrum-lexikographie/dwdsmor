@@ -1,5 +1,5 @@
 # grammar/Makefile
-# Andreas Nolda 2023-05-05
+# Andreas Nolda 2023-10-16
 
 FST_COMPILE = fst-compiler-utf8
 FST_COMPACT = fst-compact
@@ -10,9 +10,9 @@ A  = $(addsuffix .a,$(basename $(FST)))
 CA = $(addsuffix .ca,$(basename $(FST)))
 
 INCLUDE_COMMON = symbols.fst stemtype.fst wf.fst infl.fst markers.fst phon.fst orth.fst cleanup.fst
-INCLUDE        = $(INCLUDE_COMMON) num.fst punct.fst
-INCLUDE_ROOT   = $(INCLUDE_COMMON) num.fst punct.fst
-INCLUDE_FINITE = $(INCLUDE_COMMON) num-finite.fst punct.fst
+INCLUDE        = $(INCLUDE_COMMON) num.fst trunc.fst punct.fst
+INCLUDE_ROOT   = $(INCLUDE_COMMON) num.fst trunc.fst punct.fst
+INCLUDE_FINITE = $(INCLUDE_COMMON) num-finite.fst trunc.fst punct.fst
 INCLUDE_INDEX  = $(INCLUDE_COMMON)
 
 LEX = dwds.lex

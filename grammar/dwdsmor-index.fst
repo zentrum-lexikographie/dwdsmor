@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 8.1
-% Andreas Nolda 2023-05-20
+% Version 8.2
+% Andreas Nolda 2023-10-16
 
 #include "symbols.fst"
 #include "stemtype.fst"
@@ -56,9 +56,14 @@ $MORPH$ = $MORPH$ || $MarkerZu$
 $MORPH$ = $MORPH$ || $MarkerImpVB$
 
 
+% word-boundary markers
+
+$MORPH$ = <>:<WB> $MORPH$ <>:<WB>
+
+
 % (morpho)phonology
 
-$MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
+$MORPH$ = $MORPH$ || $PHON$
 
 
 % old spelling
@@ -66,6 +71,11 @@ $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 $MORPH$ = $MORPH$ | ($MORPH$ || $OrthOld$) <OLDORTH>:<>
 
 $MORPH$ = $CleanupOrthOldLv2$ || $MORPH$
+
+
+% cleanup of word-boundary markers
+
+$MORPH$ = $MORPH$ || $CleanupWB$
 
 
 % morpheme-boundary markers

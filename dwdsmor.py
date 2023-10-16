@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-10-12
+# Gregor Middell and Andreas Nolda 2023-10-16
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -97,7 +97,7 @@ class Analysis(tuple):
 
     _degree_tags = {"Pos": True, "Comp": True, "Sup": True}
 
-    _person_tags = {"1": True, "2": True, "3": True}
+    _person_tags = {"1": True, "2": True, "3": True, "Invar": True}
 
     _gender_tags = {"Fem": True, "Neut": True, "Masc": True, "NoGend": True, "Invar": True}
 
@@ -107,17 +107,19 @@ class Analysis(tuple):
 
     _inflection_tags = {"St": True, "Wk": True, "NoInfl": True, "Invar": True}
 
-    _function_tags = {"Attr": True, "Subst": True, "Attr/Subst": True, "Pred/Adv": True}
+    _function_tags = {"Attr": True, "Subst": True, "Attr/Subst": True, "Pred/Adv": True, "Invar": True}
 
-    _nonfinite_tags = {"Inf": True, "PPres": True, "PPast": True, "zu": True}
+    _nonfinite_tags = {"Inf": True, "PPres": True, "PPast": True, "zu": True, "Invar": True}
 
-    _mood_tags = {"Ind": True, "Subj": True, "Imp": True}
+    _mood_tags = {"Ind": True, "Subj": True, "Imp": True, "Invar": True}
 
-    _tense_tags = {"Pres": True, "Past": True}
+    _tense_tags = {"Pres": True, "Past": True, "Invar": True}
 
     _metainfo_tags = {"Old": True, "NonSt": True}
 
     _orthinfo_tags = {"OLDORTH": True, "CH": True}
+
+    _ellipinfo_tags = {"TRUNC": True}
 
     _charinfo_tags = {"CAP": True}
 
@@ -197,6 +199,11 @@ class Analysis(tuple):
         return tag
 
     @cached_property
+    def ellipinfo(self):
+        tag = self.tag_of_type(Analysis._ellipinfo_tags)
+        return tag
+
+    @cached_property
     def charinfo(self):
         tag = self.tag_of_type(Analysis._charinfo_tags)
         return tag
@@ -224,6 +231,7 @@ class Analysis(tuple):
                     "tense": self.tense,
                     "metainfo": self.metainfo,
                     "orthinfo": self.orthinfo,
+                    "ellipinfo": self.ellipinfo,
                     "charinfo": self.charinfo}
         if no_analysis:
             del analysis["analysis"]
@@ -404,9 +412,10 @@ def output_dsv(words, analyses_tuple, output_file,
                       "Nonfinite",
                       "Mood",
                       "Tense",
-                      "Metainfo",
-                      "Orthinfo",
-                      "Charinfo"]
+                      "Metalinguistic",
+                      "Orthography",
+                      "Ellipsis",
+                      "Characters"]
         if no_analysis:
             header_row.remove(term.bright_black("Analysis"))
         if no_segmentation:

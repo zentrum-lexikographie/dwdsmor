@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 7.1
-% Andreas Nolda 2023-07-03
+% Version 7.2
+% Andreas Nolda 2023-10-16
 
 #include "symbols.fst"
 #include "num.fst"
@@ -9,8 +9,9 @@
 #include "infl.fst"
 #include "markers.fst"
 #include "phon.fst"
-#include "punct.fst"
+#include "trunc.fst"
 #include "orth.fst"
+#include "punct.fst"
 #include "cleanup.fst"
 
 
@@ -249,9 +250,20 @@ $MORPH$ = $MORPH$ || $MarkerZu$
 $MORPH$ = $MORPH$ || $MarkerImp$
 
 
+% word-boundary markers
+
+$MORPH$ = <>:<WB> $MORPH$ <>:<WB>
+
+
 % (morpho)phonology
 
-$MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
+$MORPH$ = $MORPH$ || $PHON$
+
+
+% morpheme truncation
+
+$MORPH$ = $MORPH$ | ($TruncInitialLv2$ || $MORPH$ || $TruncInitial$) <TRUNC>:<> | \
+                    ($TruncFinalLv2$   || $MORPH$ || $TruncFinal$)   <TRUNC>:<>
 
 
 % old spelling
@@ -259,6 +271,11 @@ $MORPH$ = <>:<WB> $MORPH$ <>:<WB> || $PHON$
 $MORPH$ = $MORPH$ | ($MORPH$ || $OrthOld$) <OLDORTH>:<>
 
 $MORPH$ = $CleanupOrthOldLv2$ || $MORPH$
+
+
+% cleanup of word-boundary markers
+
+$MORPH$ = $MORPH$ || $CleanupWB$
 
 
 % morpheme-boundary markers

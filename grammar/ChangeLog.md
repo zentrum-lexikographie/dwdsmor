@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-10-16:
+
+* add initial support for morpheme truncation, marked by `<TRUNC>` in the
+  analysis string
+
 2023-10-12:
 
 * remove unused inflection classes `<Adj$e~ss>`, `<Adj+e~ss>`, `<NFem_0_$e~ss>`,

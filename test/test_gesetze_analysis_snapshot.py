@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_gesetze_analysis_snapshot.py
 # test DWDSmor analysis snapshots against legal texts for regression
-# Andreas Nolda 2023-10-10
+# Andreas Nolda 2023-10-16
 
 import io
 import csv
@@ -55,9 +55,10 @@ def get_analyses(transducer, data_files):
                   "Nonfinite",
                   "Mood",
                   "Tense",
-                  "Metainfo",
-                  "Orthinfo",
-                  "Charinfo"]
+                  "Metalinguistic",
+                  "Orthography",
+                  "Ellipsis",
+                  "Characters"]
     csv_writer.writerow(header_row)
     for data_file in sorted(data_files):
         with open(data_file) as file:

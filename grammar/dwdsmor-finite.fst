@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 10.1
-% Andreas Nolda 2023-07-03
+% Version 10.2
+% Andreas Nolda 2023-10-16
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -9,8 +9,9 @@
 #include "infl.fst"
 #include "markers.fst"
 #include "phon.fst"
-#include "punct.fst"
+#include "trunc.fst"
 #include "orth.fst"
+#include "punct.fst"
 #include "cleanup.fst"
 
 
@@ -225,12 +226,29 @@ $MORPH$ = $MORPH$ || $MarkerZu$
 $MORPH$ = $MORPH$ || $MarkerImp$
 
 
+% word-boundary markers
+
+$MORPH$    = <>:<WB>   $MORPH$  <>:<WB>
+$MORPHLv2$ = <>:<WB> (_$MORPH$) <>:<WB>
+
+
 % (morpho)phonology
 
-$MORPH$    = <>:<WB>   $MORPH$  <>:<WB> || $PHON$
-$MORPHLv2$ = <>:<WB> (_$MORPH$) <>:<WB> || $PHONLv2$
+$MORPH$    = $MORPH$    || $PHON$
+$MORPHLv2$ = $MORPHLv2$ || $PHONLv2$
 
 $MORPH$ = (^_$MORPHLv2$) || $MORPH$
+
+
+% cleanup of word-boundary markers on analysis level
+
+$MORPH$ = $CleanupWBLv2$ || $MORPH$
+
+
+% morpheme truncation
+
+$MORPH$ = $MORPH$ | ($TruncInitialLv2$ || $MORPH$ || $TruncInitial$) <TRUNC>:<> | \
+                    ($TruncFinalLv2$   || $MORPH$ || $TruncFinal$)   <TRUNC>:<>
 
 
 % old spelling
@@ -238,6 +256,11 @@ $MORPH$ = (^_$MORPHLv2$) || $MORPH$
 $MORPH$ = $MORPH$ | ($MORPH$ || $OrthOld$) <OLDORTH>:<>
 
 $MORPH$ = $CleanupOrthOldLv2$ || $MORPH$
+
+
+% cleanup of word-boundary markers
+
+$MORPH$ = $MORPH$ || $CleanupWB$
 
 
 % morpheme-boundary markers

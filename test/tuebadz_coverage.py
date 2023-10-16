@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # tuebadz_coverage.py -- TüBa-D/Z library for coverage tests
-# Gregor Middell and Andreas Nolda 2023-10-09
+# Gregor Middell and Andreas Nolda 2023-10-16
 
 from collections import namedtuple
 from xml.etree.ElementTree import iterparse
@@ -46,7 +46,7 @@ POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
            "PWAT":    ["WPRO"],
            "PWAV":    ["PROADV", "ADV"],
            "PWS":     ["WPRO"],
-           "TRUNC":   [],
+           "TRUNC":   ["NN", "V"],  # ...
            "VAFIN":   ["V"],
            "VAIMP":   ["V"],
            "VAINF":   ["V"],
@@ -897,7 +897,13 @@ def analyse_tuebadz_word(transducer, tuebadz_word):
         dwdsmor_lemma = ""
         dwdsmor_pos = ""
 
-    if tuebadz_pos in ["VAFIN", "VMFIN", "VVFIN", "VVIMP"] and len(dwdsmor_lemma) > 0:
+    if word.startswith("-") and len(dwdsmor_lemma) > 1:
+        # TüBa-D/Z lemmas of truncated words are not truncated while DWDSmor lemmas are.
+        lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma).endswith(dwdsmor_lemma[1:])
+    elif word.endswith("-") and len(dwdsmor_lemma) > 1:
+        # TüBa-D/Z lemmas of truncated words are not truncated while DWDSmor lemmas are.
+        lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma).startswith(dwdsmor_lemma[:-1])
+    elif tuebadz_pos in ["VAFIN", "VMFIN", "VVFIN", "VVIMP"] and len(dwdsmor_lemma) > 0:
         # TüBa-D/Z lemmas for finite verb forms of particle verbs include the particle
         # while DWDSmor lemmas do not.
         lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma).endswith(dwdsmor_lemma)

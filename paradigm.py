@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2023-10-09
+# Andreas Nolda 2023-10-16
 
 import sys
 import argparse
@@ -1508,7 +1508,7 @@ def generate_paradigms(transducer, lemma, lemma_index=None, paradigm_index=None,
                              if analysis.pos == "ART"
                              else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg,
                                             analysis.pos, None, None, analysis.gender)
-                             if analysis.pos in ["INDEF", "NN", "NPROP", "REL", "WPRO"] and not analysis.function
+                             if analysis.pos in ["INDEF", "NN", "NPROP", "REL", "WPRO"] and not analysis.function in FUNCTIONS
                              else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg,
                                             analysis.pos, None, None, None)
                              for analysis in analyses if analysis.lemma == lemma and analysis.pos in POS},

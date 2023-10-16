@@ -88,6 +88,7 @@ Then run the DWDSmor setup routine in order to install Python dependencies:
 make setup
 ```
 
+
 ## Building DWDSmor lexica and transducers
 
 For building DWDSmor lexica and transducers, run:
@@ -253,23 +254,23 @@ By default, `dwdsmor.py` prints a TSV table on standard output:
 
 ```plaintext
 $ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	Process	Means	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo	Orthinfo	Charinfo
-Ihr	sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old><CAP>	sie	sie					PPRO	Pers			3	NoGend	Gen	Pl						Old		CAP
-Ihr	sie<+PPRO><Pers><3><Fem><Dat><Sg><CAP>	sie	sie					PPRO	Pers			3	Fem	Dat	Sg								CAP
-Ihr	sie<+PPRO><Pers><3><Fem><Gen><Sg><Old><CAP>	sie	sie					PPRO	Pers			3	Fem	Gen	Sg						Old		CAP
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	Process	Means	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Orthography	Ellipsis	Characters
 Ihr	Sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old>	Sie	Sie					PPRO	Pers			3	NoGend	Gen	Pl						Old
-Ihr	ihr<+PPRO><Pers><2><Nom><Pl><CAP>	ihr	ihr					PPRO	Pers			2		Nom	Pl								CAP
-Ihr	ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Acc	Sg	NoInfl	Attr						CAP
-Ihr	ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Nom	Sg	NoInfl	Attr						CAP
-Ihr	ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Masc	Nom	Sg	NoInfl	Attr						CAP
+Ihr	sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old><CAP>	sie	sie					PPRO	Pers			3	NoGend	Gen	Pl						Old			CAP
+Ihr	sie<+PPRO><Pers><3><Fem><Dat><Sg><CAP>	sie	sie					PPRO	Pers			3	Fem	Dat	Sg									CAP
+Ihr	sie<+PPRO><Pers><3><Fem><Gen><Sg><Old><CAP>	sie	sie					PPRO	Pers			3	Fem	Gen	Sg						Old			CAP
+Ihr	ihr<+PPRO><Pers><2><Nom><Pl><CAP>	ihr	ihr					PPRO	Pers			2		Nom	Pl									CAP
+Ihr	ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Acc	Sg	NoInfl	Attr							CAP
+Ihr	ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Nom	Sg	NoInfl	Attr							CAP
+Ihr	ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Masc	Nom	Sg	NoInfl	Attr							CAP
 Ihr	Ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Acc	Sg	NoInfl	Attr
 Ihr	Ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Nom	Sg	NoInfl	Attr
 Ihr	Ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Masc	Nom	Sg	NoInfl	Attr
 könnt	könn<~>en<+V><2><Pl><Pres><Ind>	können	könn<~>en					V				2			Pl				Ind	Pres
-euch	ihr<+PPRO><Pers><2><Acc><Pl>	ihr	ihr					PPRO	Pers			2		Acc	Pl
-euch	ihr<+PPRO><Pers><2><Dat><Pl>	ihr	ihr					PPRO	Pers			2		Dat	Pl
 euch	euch<+PPRO><Refl><2><Acc><Pl>	euch	euch					PPRO	Refl			2		Acc	Pl
 euch	euch<+PPRO><Refl><2><Dat><Pl>	euch	euch					PPRO	Refl			2		Dat	Pl
+euch	ihr<+PPRO><Pers><2><Acc><Pl>	ihr	ihr					PPRO	Pers			2		Acc	Pl
+euch	ihr<+PPRO><Pers><2><Dat><Pl>	ihr	ihr					PPRO	Pers			2		Dat	Pl
 auf	auf<+ADV>	auf	auf					ADV
 auf	auf<+PREP>	auf	auf					PREP
 den	die<+REL><Subst><Masc><Acc><Sg><St>	die	die					REL					Masc	Acc	Sg	St	Subst
@@ -292,23 +293,23 @@ The transducer can be selected as an argument of option `-t`:
 
 ```plaintext
 $ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -t lib/dwdsmor-root.ca
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	Process	Means	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metainfo	Orthinfo	Charinfo
+Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	Process	Means	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Orthography	Ellipsis	Characters
+Ihr	sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old><CAP>	sie	sie					PPRO	Pers			3	NoGend	Gen	Pl						Old			CAP
+Ihr	sie<+PPRO><Pers><3><Fem><Dat><Sg><CAP>	sie	sie					PPRO	Pers			3	Fem	Dat	Sg									CAP
+Ihr	sie<+PPRO><Pers><3><Fem><Gen><Sg><Old><CAP>	sie	sie					PPRO	Pers			3	Fem	Gen	Sg						Old			CAP
+Ihr	Sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old>	Sie	Sie					PPRO	Pers			3	NoGend	Gen	Pl						Old
+Ihr	ihr<+PPRO><Pers><2><Nom><Pl><CAP>	ihr	ihr					PPRO	Pers			2		Nom	Pl									CAP
+Ihr	ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Acc	Sg	NoInfl	Attr							CAP
+Ihr	ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Nom	Sg	NoInfl	Attr							CAP
+Ihr	ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Masc	Nom	Sg	NoInfl	Attr							CAP
 Ihr	Ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Acc	Sg	NoInfl	Attr
 Ihr	Ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Nom	Sg	NoInfl	Attr
 Ihr	Ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Masc	Nom	Sg	NoInfl	Attr
-Ihr	ihr<+PPRO><Pers><2><Nom><Pl><CAP>	ihr	ihr					PPRO	Pers			2		Nom	Pl								CAP
-Ihr	ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Acc	Sg	NoInfl	Attr						CAP
-Ihr	ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Nom	Sg	NoInfl	Attr						CAP
-Ihr	ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Masc	Nom	Sg	NoInfl	Attr						CAP
-Ihr	Sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old>	Sie	Sie					PPRO	Pers			3	NoGend	Gen	Pl						Old
-Ihr	sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old><CAP>	sie	sie					PPRO	Pers			3	NoGend	Gen	Pl						Old		CAP
-Ihr	sie<+PPRO><Pers><3><Fem><Dat><Sg><CAP>	sie	sie					PPRO	Pers			3	Fem	Dat	Sg								CAP
-Ihr	sie<+PPRO><Pers><3><Fem><Gen><Sg><Old><CAP>	sie	sie					PPRO	Pers			3	Fem	Gen	Sg						Old		CAP
 könnt	könn<~>en<+V><2><Pl><Pres><Ind>	können	könn<~>en					V				2			Pl				Ind	Pres
-euch	ihr<+PPRO><Pers><2><Acc><Pl>	ihr	ihr					PPRO	Pers			2		Acc	Pl
-euch	ihr<+PPRO><Pers><2><Dat><Pl>	ihr	ihr					PPRO	Pers			2		Dat	Pl
 euch	euch<+PPRO><Refl><2><Acc><Pl>	euch	euch					PPRO	Refl			2		Acc	Pl
 euch	euch<+PPRO><Refl><2><Dat><Pl>	euch	euch					PPRO	Refl			2		Dat	Pl
+euch	ihr<+PPRO><Pers><2><Acc><Pl>	ihr	ihr					PPRO	Pers			2		Acc	Pl
+euch	ihr<+PPRO><Pers><2><Dat><Pl>	ihr	ihr					PPRO	Pers			2		Dat	Pl
 auf	auf<+ADV>	auf	auf					ADV
 auf	auf<+PREP>	auf	auf					PREP
 den	die<+REL><Subst><Masc><Acc><Sg><St>	die	die					REL					Masc	Acc	Sg	St	Subst
@@ -318,12 +319,12 @@ den	die<+DEM><Attr><Masc><Acc><Sg><St>	die	die					DEM					Masc	Acc	Sg	St	Attr
 den	die<+ART><Def><Subst><Masc><Acc><Sg><St>	die	die					ART	Def				Masc	Acc	Sg	St	Subst
 den	die<+ART><Def><Attr><NoGend><Dat><Pl><St>	die	die					ART	Def				NoGend	Dat	Pl	St	Attr
 den	die<+ART><Def><Attr><Masc><Acc><Sg><St>	die	die					ART	Def				Masc	Acc	Sg	St	Attr
-Kinderbänken	Kind<+>Bank<COMP><concat><+NN><Fem><Dat><Pl>	Kind + Bank	Kind<+>Bank			COMP	concat						Fem	Dat	Pl
-ausruhen	ruh<~>en<DER><part(aus)><+V><3><Pl><Pres><Subj>	ruhen	ruh<~>en<DER><part(aus)>			DER	part(aus)	V				3			Pl				Subj	Pres
-ausruhen	ruh<~>en<DER><part(aus)><+V><3><Pl><Pres><Ind>	ruhen	ruh<~>en<DER><part(aus)>			DER	part(aus)	V				3			Pl				Ind	Pres
-ausruhen	ruh<~>en<DER><part(aus)><+V><1><Pl><Pres><Subj>	ruhen	ruh<~>en<DER><part(aus)>			DER	part(aus)	V				1			Pl				Subj	Pres
-ausruhen	ruh<~>en<DER><part(aus)><+V><1><Pl><Pres><Ind>	ruhen	ruh<~>en<DER><part(aus)>			DER	part(aus)	V				1			Pl				Ind	Pres
-ausruhen	ruh<~>en<DER><part(aus)><+V><Inf>	ruhen	ruh<~>en<DER><part(aus)>			DER	part(aus)	V										Inf
+Kinderbänken	Kind<+>Bank<COMP><concat><+NN><Fem><Dat><Pl>	Kind + Bank	Kind<+>Bank			COMP	concat	NN					Fem	Dat	Pl
+ausruhen	ruh<~>en<DER><part(aus)><+V><3><Pl><Pres><Subj>	ruhen	ruh<~>en			DER	part(aus)	V				3			Pl				Subj	Pres
+ausruhen	ruh<~>en<DER><part(aus)><+V><3><Pl><Pres><Ind>	ruhen	ruh<~>en			DER	part(aus)	V				3			Pl				Ind	Pres
+ausruhen	ruh<~>en<DER><part(aus)><+V><1><Pl><Pres><Subj>	ruhen	ruh<~>en			DER	part(aus)	V				1			Pl				Subj	Pres
+ausruhen	ruh<~>en<DER><part(aus)><+V><1><Pl><Pres><Ind>	ruhen	ruh<~>en			DER	part(aus)	V				1			Pl				Ind	Pres
+ausruhen	ruh<~>en<DER><part(aus)><+V><Inf>	ruhen	ruh<~>en			DER	part(aus)	V										Inf
 .	.<+PUNCT><Period>	.	.					PUNCT	Period
 ```
 
@@ -427,12 +428,14 @@ Note that this transducer does not know of DWDS homographic lemma indices.
 
 Again, options `-c`, `-j`, `-y` select alternative CSV, JSON, and YAML outputs.
 
+
 ## Contact
 
 Feel free to contact [Andreas Nolda](mailto:andreas.nolda@bbaw.de) for
 questions regarding the lexicon or the grammar and
 [Gregor Middell](mailto:gregor.middell@bbaw.de) for question related
 to the integration of DWDSmor into your corpus-annotation pipeline.
+
 
 ## Bibliography
 
@@ -466,6 +469,7 @@ to the integration of DWDSmor into your corpus-annotation pipeline.
   Language Resources and Evaluation, ed. by Nicoletta Calzolari *et al.*,
   European Language Resources Association, 1063–1067.
   [PDF](http://www.lrec-conf.org/proceedings/lrec2014/pdf/116_Paper.pdf).
+
 
 ## License
 
