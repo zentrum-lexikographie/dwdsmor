@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.3 -->
-<!-- Andreas Nolda 2023-10-13 -->
+<!-- Version 11.4 -->
+<!-- Andreas Nolda 2023-10-16 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1446,7 +1446,9 @@
       <xsl:when test="$abbreviation='yes' and
                       (ends-with($lemma,'.') or
                        $lemma='§' or
-                       $lemma='§§')">
+                       $lemma='§§' or
+                       $lemma='%' or
+                       $lemma='‰')">
         <xsl:choose>
           <!-- abbreviated masculine nouns ("Prof.") -->
           <xsl:when test="$gender='mask.'">

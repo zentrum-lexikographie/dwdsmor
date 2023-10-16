@@ -98,6 +98,24 @@
   </Artikel>
   <Artikel>
     <Formangabe Typ="Abkürzung">
+      <Schreibung>‰</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>%</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
       <Schreibung>S.</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
