@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwds_coverage.py -- DWDS library for coverage tests
-# Gregor Middell and Andreas Nolda 2023-10-10
+# Gregor Middell and Andreas Nolda 2023-10-16
 
 from collections import namedtuple
 from xml.etree.ElementTree import parse
@@ -11,32 +11,32 @@ from paradigm import generate_paradigms
 
 
 # mapping between DWDS and DWDSSmor part-of-speech categories
-POS_MAP = {"Adjektiv": "ADJ",
-           "Adverb": "ADV",
-           "bestimmter Artikel": "ART",
-           "Bruchzahl": "FRAC",
-           "Demonstrativpronomen": "DEM",
-           "Eigenname": "NPROP",
-           "Indefinitpronomen": "INDEF",
-           "Interjektion": "INTJ",
-           "Interrogativpronomen": "WPRO",
-           "Kardinalzahl": "CARD",
-           "Konjunktion": "CONJ",
-           "Ordinalzahl": "ORD",
-           "Partikel": "PTCL",
-           "partizipiales Adjektiv": "ADJ",
-           "partizipiales Adverb": "ADV",
-           "Personalpronomen": "PPRO",
-           "Possessivpronomen": "POSS",
-           "Präposition": "PREP",
-           "Präposition + Artikel": "PREPART",
-           "Pronominaladverb": "PROADV",
-           "Reflexivpronomen": "PPRO",
-           "Relativpronomen": "REL",
-           "reziprokes Pronomen": "PPRO",
-           "Substantiv": "NN",
-           "unbestimmter Artikel": "ART",
-           "Verb": "V"}
+POS_MAP = {"Adjektiv":               ["ADJ"],
+           "Adverb":                 ["ADV", "PTCL", "INTJ", "CONJ"],
+           "bestimmter Artikel":     ["ART"],
+           "Bruchzahl":              ["FRAC"],
+           "Demonstrativpronomen":   ["DEM"],
+           "Eigenname":              ["NPROP"],
+           "Indefinitpronomen":      ["INDEF"],
+           "Interjektion":           ["INTJ"],
+           "Interrogativpronomen":   ["WPRO"],
+           "Kardinalzahl":           ["CARD"],
+           "Konjunktion":            ["CONJ", "ADV", "INTJ"],
+           "Ordinalzahl":            ["ORD"],
+           "Partikel":               ["PTCL", "ADV", "INTJ"],
+           "partizipiales Adjektiv": ["ADJ"],
+           "partizipiales Adverb":   ["ADV"],
+           "Personalpronomen":       ["PPRO"],
+           "Possessivpronomen":      ["POSS"],
+           "Präposition":            ["PREP"],
+           "Präposition + Artikel":  ["PREPART", "PTCL"],
+           "Pronominaladverb":       ["PROADV"],
+           "Reflexivpronomen":       ["PPRO"],
+           "Relativpronomen":        ["REL"],
+           "reziprokes Pronomen":    ["PPRO"],
+           "Substantiv":             ["NN"],
+           "unbestimmter Artikel":   ["ART"],
+           "Verb":                   ["V"]}
 
 
 def get_dwds_entries(data_files):
@@ -148,9 +148,9 @@ EntryWithAnalysis = namedtuple("EntryWithAnalysis", ["entry",
                                                      "lemma_covered"])
 
 
-def dwds_to_dwdsmor_pos(pos):
-    dwdsmor_pos = POS_MAP[pos] if pos in POS_MAP else ""
-    return dwdsmor_pos
+def dwds_to_dwdsmor_pos_list(pos):
+    dwdsmor_pos_list = POS_MAP[pos] if pos in POS_MAP else ""
+    return dwdsmor_pos_list
 
 
 def analyse_dwds_entry(transducer, dwds_entry):
@@ -162,9 +162,16 @@ def analyse_dwds_entry(transducer, dwds_entry):
 
     analyses = tuple(analyse_word(transducer, dwds_lemma))
 
-    dwdsmor_lemma = analyses[0].lemma if analyses else ""
-    dwdsmor_pos = analyses[0].pos if analyses else ""
-    lemma_covered = len(dwdsmor_lemma) > 0
+    dwdsmor_lemma = ""
+    dwdsmor_pos = ""
+    lemma_covered = False
+    for analysis in analyses:
+        if analysis.pos in dwds_to_dwdsmor_pos_list(dwds_pos):
+            lemma_covered = len(analysis.lemma) > 0
+            if lemma_covered:
+                dwdsmor_lemma = analysis.lemma
+                dwdsmor_pos = analysis.pos
+                break
 
     return EntryWithAnalysis(entry,
                              file,
@@ -195,13 +202,17 @@ def generate_paradigms_for_dwds_entry(transducer, dwds_entry):
     dwds_paradigm_index = dwds_entry["dwds_paradigm_index"]
     dwds_pos = dwds_entry["dwds_pos"]
     dwds_grammar = dwds_entry["dwds_grammar"]
-    dwdsmor_pos = dwds_to_dwdsmor_pos(dwds_pos)
 
-    formdict = generate_paradigms(transducer, dwds_lemma,
-                                  lemma_index=dwds_lemma_index, paradigm_index=dwds_paradigm_index,
-                                  pos=dwds_pos)
-
-    lemma_covered = len(formdict) > 0
+    dwdsmor_pos = ""
+    lemma_covered = False
+    for pos in dwds_to_dwdsmor_pos_list(dwds_pos):
+        formdict = generate_paradigms(transducer, dwds_lemma,
+                                      lemma_index=dwds_lemma_index, paradigm_index=dwds_paradigm_index,
+                                      pos=pos)
+        lemma_covered = len(formdict) > 0
+        if lemma_covered:
+            dwdsmor_pos = pos
+            break
 
     return EntryWithParadigm(entry,
                              file,

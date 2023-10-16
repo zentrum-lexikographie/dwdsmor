@@ -18,7 +18,7 @@ POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
            "APZR":    ["POSTP", "PREP", "ADV"],
            "ART":     ["ART"],
            "CARD":    ["CARD"],
-           "FM":      [],
+           "FM":      ["NN", "ADJ", "PREP"],  # ...
            "ITJ":     ["INTJ"],
            "KOKOM":   ["CONJ"],
            "KON":     ["CONJ"],
@@ -59,7 +59,7 @@ POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
            "VVINF":   ["V"],
            "VVIZU":   ["V"],
            "VVPP":    ["V"],
-           "XY":      ["XY"],
+           "XY":      ["XY", "NN"],
            "$.":      ["PUNCT"],
            "$,":      ["PUNCT"],
            "$(":      ["PUNCT"]}
@@ -878,37 +878,27 @@ def analyse_tuebadz_word(transducer, tuebadz_word):
 
     analyses = tuple(analyse_word(transducer, word))
 
-    # analyses with matching part-of-speech categories
-    analyses_with_matching_pos = tuple(analysis for analysis in analyses
-                                       if analysis.pos in tuebadz_to_dwdsmor_pos_list(tuebadz_pos))
-    # analyses with matching lemmas of matching part-of-speech categories
-    analyses_with_matching_lemma = tuple(analysis for analysis in analyses_with_matching_pos
-                                         if tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma) == analysis.lemma)
-
-    # first consider analyses with matching lemmas of matching part-of-speech categories
-    if analyses_with_matching_lemma:
-        dwdsmor_lemma = analyses_with_matching_lemma[0].lemma
-        dwdsmor_pos = analyses_with_matching_lemma[0].pos
-    # else consider any lemmas of matching part-of-speech categories
-    elif analyses_with_matching_pos:
-        dwdsmor_lemma = analyses_with_matching_pos[0].lemma
-        dwdsmor_pos = analyses_with_matching_pos[0].pos
-    else:
-        dwdsmor_lemma = ""
-        dwdsmor_pos = ""
-
-    if word.startswith("-") and len(dwdsmor_lemma) > 1:
-        # TüBa-D/Z lemmas of truncated words are not truncated while DWDSmor lemmas are.
-        lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma).endswith(dwdsmor_lemma[1:])
-    elif word.endswith("-") and len(dwdsmor_lemma) > 1:
-        # TüBa-D/Z lemmas of truncated words are not truncated while DWDSmor lemmas are.
-        lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma).startswith(dwdsmor_lemma[:-1])
-    elif tuebadz_pos in ["VAFIN", "VMFIN", "VVFIN", "VVIMP"] and len(dwdsmor_lemma) > 0:
-        # TüBa-D/Z lemmas for finite verb forms of particle verbs include the particle
-        # while DWDSmor lemmas do not.
-        lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma).endswith(dwdsmor_lemma)
-    else:
-        lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma) == dwdsmor_lemma
+    dwdsmor_lemma = ""
+    dwdsmor_pos = ""
+    lemmas_match = False
+    for analysis in analyses:
+        if analysis.pos in tuebadz_to_dwdsmor_pos_list(tuebadz_pos):
+            if word.startswith("-") and len(analysis.lemma) > 1:
+                # TüBa-D/Z lemmas of truncated words are not truncated while DWDSmor lemmas are.
+                lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma).endswith(analysis.lemma[1:])
+            elif word.endswith("-") and len(analysis.lemma) > 1:
+                # TüBa-D/Z lemmas of truncated words are not truncated while DWDSmor lemmas are.
+                lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma).startswith(analysis.lemma[:-1])
+            elif tuebadz_pos in ["VAFIN", "VMFIN", "VVFIN", "VVIMP"] and len(analysis.lemma) > 0:
+                # TüBa-D/Z lemmas for finite verb forms of particle verbs include the particle
+                # while DWDSmor lemmas do not.
+                lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma).endswith(analysis.lemma)
+            else:
+                lemmas_match = tuebadz_to_dwdsmor_lemma(tuebadz_pos, tuebadz_lemma) == analysis.lemma
+            if lemmas_match:
+                dwdsmor_lemma = analysis.lemma
+                dwdsmor_pos = analysis.pos
+                break
 
     return AnalysedWord(word,
                         tuebadz_lemma,
