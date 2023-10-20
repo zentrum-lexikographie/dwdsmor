@@ -1,3 +1,7 @@
+2023-10-20:
+
+* add support for reciprocal pronoun "einander"
+
 2023-10-16:
 
 * remove unused support for affix entries

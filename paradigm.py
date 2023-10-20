@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2023-10-16
+# Andreas Nolda 2023-10-20
 
 import sys
 import argparse
@@ -18,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 9.0
+version = 9.1
 
 
 BASEDIR = path.dirname(__file__)
@@ -34,7 +34,7 @@ INDICES = [1, 2, 3, 4, 5]
 POS = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP",
        "ORD", "POSS", "PPRO", "REL", "V", "WPRO"]
 
-SUBCATS = ["Def", "Indef", "Neg", "Pers", "Refl"]
+SUBCATS = ["Def", "Indef", "Neg", "Pers", "Refl", "Rec"]
 
 DEGREES = ["Pos", "Comp", "Sup"]
 

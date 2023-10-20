@@ -5,6 +5,12 @@ du			PPRO Pers 2	Nom Sg	du
 du			PPRO Pers 2	Acc Sg	dich
 du			PPRO Pers 2	Dat Sg	dir
 du			PPRO Pers 2	Gen Sg	deiner, dein (va.)
+einander			PPRO Rec 1	Acc Pl	einander
+einander			PPRO Rec 1	Dat Pl	einander
+einander			PPRO Rec 2	Acc Pl	einander
+einander			PPRO Rec 2	Dat Pl	einander
+einander			PPRO Rec 3	Acc Pl	einander
+einander			PPRO Rec 3	Dat Pl	einander
 er			PPRO Pers 3 Masc	Nom Sg	er
 er			PPRO Pers 3 Masc	Acc Sg	ihn
 er			PPRO Pers 3 Masc	Dat Sg	ihm

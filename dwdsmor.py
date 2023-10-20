@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-10-19
+# Gregor Middell and Andreas Nolda 2023-10-20
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -18,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 9.0
+version = 9.1
 
 
 BASEDIR = path.dirname(__file__)
@@ -89,7 +89,7 @@ class Analysis(tuple):
         if [tag for tag in self.tags if re.sub(r"(?:\(.+\))?(?:\|.+)?", "", tag) in MEANS]:
             return "∘".join(tag for tag in reversed(self.tags) if re.sub(r"(?:\(.+\))?(?:\|.+)?", "", tag) in MEANS)
 
-    _subcat_tags = {"Pers": True, "Refl": True, "Def": True, "Indef": True, "Neg": True,
+    _subcat_tags = {"Pers": True, "Refl": True, "Rec": True, "Def": True, "Indef": True, "Neg": True,
                     "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True,
                     "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True}
 

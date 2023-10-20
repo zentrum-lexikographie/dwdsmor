@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 6.10
-% Andreas Nolda 2023-10-12
+% Version 6.11
+% Andreas Nolda 2023-10-19
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -81,8 +81,8 @@
                    <+PREPART><+PROADV><+PTCL><+PUNCT><+REL><+V><+VPART><+WADV> \
                    <+WPRO>
 
-#subcat# = <Pers><Refl><Def><Indef><Neg><Coord><Sub><Compar><Adv><ProAdv><Adj> \
-           <Comma><Dash><Ellip><Paren><Period><Quote><Slash>
+#subcat# = <Pers><Refl><Rec><Def><Indef><Neg><Coord><Sub><Compar><Adv><ProAdv> \
+           <Adj><Comma><Dash><Ellip><Paren><Period><Quote><Slash>
 
 #degree# = <Pos><Comp><Sup>
 
@@ -186,11 +186,11 @@
                    <PProNeutAccSg><PProNeutAccSg-s><PProNeutDatSg> \
                    <PProNeutGenSg><PProNeutNomSg><PProNeutNomSg-s> \
                    <PProNoGendAccPl><PProNoGendDatPl><PProNoGendGenPl> \
-                   <PProNoGendNomPl><PRefl1AccSg><PRefl1DatSg><PRefl2AccSg> \
-                   <PRefl2DatSg><PRefl1Pl><PRefl2Pl><PRefl3><Rel><Rel-welch> \
-                   <W-welch><WProMascAccSg><WProMascDatSg><WProMascGenSg> \
-                   <WProMascNomSg><WProNeutAccSg><WProNeutDatSg><WProNeutGenSg> \
-                   <WProNeutNomSg>
+                   <PProNoGendNomPl><PRecPl><PRefl1AccSg><PRefl1DatSg> \
+                   <PRefl2AccSg><PRefl2DatSg><PRefl1Pl><PRefl2Pl><PRefl3><Rel> \
+                   <Rel-welch><W-welch><WProMascAccSg><WProMascDatSg> \
+                   <WProMascGenSg><WProMascNomSg><WProNeutAccSg><WProNeutDatSg> \
+                   <WProNeutGenSg><WProNeutNomSg>
 
 #Verb-inflection# = <VAImpPl><VAImpSg><VAPastIndPl><VAPastIndSg><VAPastSubj2> \
                     <VAPres1/3PlInd><VAPres1/3SgSubj><VAPres1SgInd> \

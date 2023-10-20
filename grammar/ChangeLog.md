@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-10-20:
+
+* add inflection class `PRecPl` for reciprocal pronoun "einander"
+
 2023-10-16:
 
 * add initial support for morpheme truncation, marked by `<TRUNC>` in the
@@ -7,11 +11,11 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2023-10-12:
 
-* remove unused inflection classes `<Adj$e~ss>`, `<Adj+e~ss>`, `<NFem_0_$e~ss>`,
-  `<NFem_0_en~ss>`, `<NMasc/Sg_es~ss>`, `<NMasc_es_$e~ss>`, `<NNeut_es_$er~ss>`,
-  `<VMPresPl~ss>`, `<VMPresSg~ss>`, `<VVPastIndReg~ss>`, `<VVPastIndStr~ss>`,
-  `<VVPastStr~ss>`, `<VVPastSubjReg~ss>`, `<VVPP-t~ss>`, `<VVPres1~ss>`,
-  `<VVPres1+Imp~ss>`, `<VVPres2~ss>`, `<VVPres2+Imp0~ss>`, and `<VVReg~ss>`
+* remove unused inflection classes `Adj$e~ss`, `Adj+e~ss`, `NFem_0_$e~ss`,
+  `NFem_0_en~ss`, `NMasc/Sg_es~ss`, `NMasc_es_$e~ss`, `NNeut_es_$er~ss`,
+  `VMPresPl~ss`, `VMPresSg~ss`, `VVPastIndReg~ss`, `VVPastIndStr~ss`,
+  `VVPastStr~ss`, `VVPastSubjReg~ss`, `VVPP-t~ss`, `VVPres1~ss`,
+  `VVPres1+Imp~ss`, `VVPres2~ss`, `VVPres2+Imp0~ss`, and `VVReg~ss`
 * remove unused trigger symbol `<SSAlt>`
 * simplify phonological rule for "s"/"ss"-alternation (`R4`)
 * remove unused phonological rule for consonant reduction in old orthography
@@ -70,7 +74,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2023-05-08:
 
-* add inflection classes `<VVPastStr-s>` and `<VVPastIndStr-s>` for more old
+* add inflection classes `VVPastStr-s` and `VVPastIndStr-s` for more old
   spellings of verb forms
 
 2023-05-05:
@@ -81,39 +85,37 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2023-05-04:
 
-* add inflection classes `<VVReg-s>`, `<VVPres1-s>`, `<VVPres1-s+Imp-s>`,
-  `<VVPres2-s>`, `<VVPres2-s+Imp-s>`, `<VVPastIndReg-s>`, `<VVPastSubjReg-s>`,
-  `<VVPP-t-s>`, `<VMPresSg-s>`, and `<VMPresPl-s>` for old spellings of verb
+* add inflection classes `VVReg-s`, `VVPres1-s`, `VVPres1-s+Imp-s`, `VVPres2-s`,
+  `VVPres2-s+Imp-s`, `VVPastIndReg-s`, `VVPastSubjReg-s`, `VVPP-t-s`,
+  `VMPresSg-s`, and `VMPresPl-s` for old spellings of verb
   forms
 
 2023-05-03:
 
-* rename inflection classes `<Ptkl-Adj> `, `<Ptkl-Neg>`, and `<Ptkl-Zu>` and
-  `<Ptcl-Adj> `, `<Ptcl-Neg>`, and `<Ptcl-zu>`, respectively
-* rename inflection classes `<Konj-Inf>`, `<Konj-Kon>`, `<Konj-Sub>`, and
-  `<Konj-Vgl>` to `<Conj-Inf>`, `<Conj-Coord>`, `<Conj-Sub>`, and
-  `<Conj-Compar>`, respectively
-* rename inflection classes `<VAPastKonj2>`, `<VAPres1/3SgKonj>`,
-  `<VAPres2SgKonj>`, `<VAPresKonjPl>`, `<VAPresKonjSg>`, `<VMPastKonj>`,
-  `<VPastKonjStr>`, `<VPresKonj>`, `<VVPastKonjReg>`, and `<VVPastKonjStr>` to
-  `<VAPastSubj2>`, `<VAPres1/3SgSubj>`, `<VAPres2SgSubj>`, `<VAPresSubjPl>`,
-  `<VAPresSubjSg>`, `<VMPastSubj>`, `<VPastSubjStr>`, `<VPresSubj>`,
-  `<VVPastSubjReg>`, and `<VVPastSubjStr>`, respectively
+* rename inflection classes `Ptkl-Adj `, `Ptkl-Neg`, and `Ptkl-Zu` and `Ptcl-Adj
+  `, `Ptcl-Neg`, and `Ptcl-zu`, respectively
+* rename inflection classes `Konj-Inf`, `Konj-Kon`, `Konj-Sub`, and `Konj-Vgl`
+  to `Conj-Inf`, `Conj-Coord`, `Conj-Sub`, and `Conj-Compar`, respectively
+* rename inflection classes `VAPastKonj2`, `VAPres1/3SgKonj`, `VAPres2SgKonj`,
+  `VAPresKonjPl`, `VAPresKonjSg`, `VMPastKonj`, `VPastKonjStr`, `VPresKonj`,
+  `VVPastKonjReg`, and `VVPastKonjStr` to `VAPastSubj2`, `VAPres1/3SgSubj`,
+  `VAPres2SgSubj`, `VAPresSubjPl`, `VAPresSubjSg`, `VMPastSubj`, `VPastSubjStr`,
+  `VPresSubj`, `VVPastSubjReg`, and `VVPastSubjStr`, respectively
 * add inflection class `VVPastSubjOld`
 
 2023-04-26:
 
-* rename inflection classes `<N?/Pl_0>` and `<N?/Pl_x>` to `<NNoGend/Pl_0>` and
-  `<NNoGend/Pl_x>`, respectively
+* rename inflection classes `N?/Pl_0` and `N?/Pl_x` to `NNoGend/Pl_0` and
+  `NNoGend/Pl_x`, respectively
 * rename inflection class `Abk_POSS` to `Abbr_Poss`
-* add inflection classes `<Abbr_NFem>`, `<Abbr_NMasc>`, `<Abbr_NNeut>`, and
-  `<Abbr_NNoGend>`
+* add inflection classes `Abbr_NFem`, `Abbr_NMasc`, `Abbr_NNeut`, and
+  `Abbr_NNoGend`
 
 2023-04-25:
 
-* replace inflection classes `<Prep-Akk>`, `<Prep-Dat>`, `<Prep-Gen>`,
-  `<Prep-GDA>`, `<Prep-DA>`, `<Prep-GD>`, `<Postp-Akk>`, `<Postp-Dat>`,
-  `<Postp-Gen>` with `<Prep>` and `<Postp>`
+* replace inflection classes `Prep-Akk`, `Prep-Dat`, `Prep-Gen`, `Prep-GDA`,
+  `Prep-DA`, `Prep-GD`, `Postp-Akk`, `Postp-Dat`, `Postp-Gen` with `Prep` and
+  `Postp`
 
 2023-03-29:
 

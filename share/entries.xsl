@@ -4081,6 +4081,34 @@
   </xsl:if>
 </xsl:template>
 
+<!-- reciprocal pronouns -->
+<xsl:template name="reciprocal-pronoun-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="lemma-index"/>
+  <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
+  <xsl:param name="pronunciations"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:if test="$lemma='einander'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="lemma-index"
+                        select="$lemma-index"/>
+        <xsl:with-param name="paradigm-index"
+                        select="$paradigm-index"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">PPRO</xsl:with-param>
+        <xsl:with-param name="class">PRecPl</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
 <!-- possessive pronouns -->
 <xsl:template name="possessive-pronoun-entry-set">
   <xsl:param name="lemma"/>

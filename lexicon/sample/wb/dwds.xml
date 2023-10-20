@@ -1328,6 +1328,18 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Rat</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-(e)s</Genitiv>
+            <Plural>Räte</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise/>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung hidx="1">Agent</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -1904,6 +1916,22 @@
             <Plural>-er</Plural>
          </Grammatik>
       </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Hintern</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-s</Genitiv>
+            <Plural>-</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise>
+         <Verweis Typ="formal_verwandt">
+            <Ziellemma>hinten</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -4526,6 +4554,17 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Fonds</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Paradoxon</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -4535,6 +4574,36 @@
          </Grammatik>
       </Formangabe>
       <Verweise/>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>zivil</Schreibung>
+         <Grammatik>
+            <Wortklasse>Adjektiv</Wortklasse>
+            <Komparativ>ziviler</Komparativ>
+            <Superlativ>am zivilsten</Superlativ>
+            <Funktionspraeferenz Frequenz="häufig">attributiv</Funktionspraeferenz>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Zivilist</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-en</Genitiv>
+            <Plural>-en</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>zivil</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-ist</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -4592,6 +4661,26 @@
             <Plural>-s</Plural>
          </Grammatik>
       </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Luftwaffe</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-n</Plural>
+            <Numeruspraeferenz>meist im Singular</Numeruspraeferenz>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Luft</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>Waffe</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -14276,7 +14365,6 @@
             <Plural>-n</Plural>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -14346,17 +14434,6 @@
             <Ziellemma hidx="1">folgen</Ziellemma>
          </Verweis>
       </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Fonds</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-</Plural>
-         </Grammatik>
-      </Formangabe>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -43431,6 +43508,19 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>einander</Schreibung>
+         <Grammatik>
+            <Wortklasse>reziprokes Pronomen</Wortklasse>
+         </Grammatik>
+      </Formangabe>
+      <Verweise>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>ander</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Einkauf</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -45617,7 +45707,6 @@
             <Partizip_II>gesammelt</Partizip_II>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -51550,18 +51639,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Hintern</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-s</Genitiv>
-            <Plural>-</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise/>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>hinten</Schreibung>
          <Grammatik>
             <Wortklasse>Adverb</Wortklasse>
@@ -53155,25 +53232,6 @@
          </Verweis>
          <Verweis Typ="Letztglied">
             <Ziellemma>Brücke</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Luftwaffe</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-n</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Luft</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>Waffe</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -62632,7 +62690,14 @@
             <Wortklasse>Adjektiv</Wortklasse>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
+      <Verweise>
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Sprache</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-lich</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -78794,7 +78859,7 @@
       </Formangabe>
       <Verweise Typ="Komposition">
          <Verweis Typ="Erstglied">
-            <Ziellemma hidx="1">Schonung</Ziellemma>
+            <Ziellemma>Schonung</Ziellemma>
          </Verweis>
          <Verweis Typ="Letztglied">
             <Ziellemma>-los</Ziellemma>
@@ -87319,18 +87384,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung hidx="2">Deutsche</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genus>mask.</Genus>
-            <Genitiv>-n</Genitiv>
-            <Plural>-(n)</Plural>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>deutsch</Schreibung>
          <Grammatik>
             <Wortklasse>Adjektiv</Wortklasse>
@@ -87929,34 +87982,6 @@
             <Genus>fem.</Genus>
             <Genitiv>-</Genitiv>
             <Plural>-n</Plural>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Zivilist</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-en</Genitiv>
-            <Plural>-en</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Derivation">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>zivil</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>-ist</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>zivil</Schreibung>
-         <Grammatik>
-            <Wortklasse>Adjektiv</Wortklasse>
-            <Funktionspraeferenz Frequenz="häufig">attributiv</Funktionspraeferenz>
          </Grammatik>
       </Formangabe>
    </Artikel>
@@ -99279,6 +99304,18 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung hidx="2">Deutsche</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genus>mask.</Genus>
+            <Genitiv>-n</Genitiv>
+            <Plural>-(n)</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Party</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -100692,18 +100729,6 @@
             <Plural>-s</Plural>
          </Grammatik>
       </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Rat</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-(e)s</Genitiv>
-            <Plural>Räte</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -118742,6 +118767,24 @@
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
             <Genus>mask.</Genus>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Abkürzung">
+         <Schreibung>‰</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>neutr.</Genus>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Abkürzung">
+         <Schreibung>%</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>neutr.</Genus>
          </Grammatik>
       </Formangabe>
    </Artikel>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.5 -->
-<!-- Andreas Nolda 2023-10-16 -->
+<!-- Version 14.6 -->
+<!-- Andreas Nolda 2023-10-19 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1038,6 +1038,23 @@
                              $lemma='sich' or
                              $lemma='uns')">
               <xsl:call-template name="reflexive-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- reciprocal personal pronouns -->
+            <xsl:when test="$pos='reziprokes Pronomen'">
+              <xsl:call-template name="reciprocal-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
                 <xsl:with-param name="lemma-index"

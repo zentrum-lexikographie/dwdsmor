@@ -1301,6 +1301,14 @@ $PRefl3$ = {<+PPRO><Refl><3>}:{<FB>} $PProAccSgSuff$ | \
            {<+PPRO><Refl><3>}:{<FB>} $PProAccPlSuff$ | \
            {<+PPRO><Refl><3>}:{<FB>} $PProDatPlSuff$
 
+% einander
+$PRecPl$ = {<+PPRO><Rec><1>}:{<FB>} $PProAccPlSuff$ | \
+           {<+PPRO><Rec><1>}:{<FB>} $PProDatPlSuff$ | \
+           {<+PPRO><Rec><2>}:{<FB>} $PProDatPlSuff$ | \
+           {<+PPRO><Rec><2>}:{<FB>} $PProAccPlSuff$ | \
+           {<+PPRO><Rec><3>}:{<FB>} $PProAccPlSuff$ | \
+           {<+PPRO><Rec><3>}:{<FB>} $PProDatPlSuff$ % cf. Duden-Grammatik (2016: § 366)
+
 % wer (interrogative pronoun)
 $WProMascNomSg$ = {<+WPRO><Masc>}:{<FB>} $WProNomSgSuff$
 
@@ -2066,6 +2074,7 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<PProNoGendDatPl>       $PProNoGendDatPl$   | \
          <>:<PProNoGendGenPl>       $PProNoGendGenPl$   | \
          <>:<PProNoGendNomPl>       $PProNoGendNomPl$   | \
+         <>:<PRecPl>                $PRecPl$            | \
          <>:<PRefl1AccSg>           $PRefl1AccSg$       | \
          <>:<PRefl1DatSg>           $PRefl1DatSg$       | \
          <>:<PRefl2AccSg>           $PRefl2AccSg$       | \

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2023-10-09
+# Andreas Nolda 2023-10-20
 
 import io
 import csv
@@ -219,20 +219,21 @@ POSSESSIVE_PRONOUN_LEMMAS = ["meine",    # Poss
 
 PERSONAL_PRONOUN_POS = "PPRO"
 
-PERSONAL_PRONOUN_LEMMAS = ["ich",   # PPro1NomSg, PPro1AccSg, PPro1DatSg, PPro1GenSg
-                           "du",    # PPro2NomSg, PPro2AccSg, PPro2DatSg, PPro2GenSg
-                           "er",    # PProMascNomSg, PProMascAccSg, PProMascDatSg, PProMascGenSg
-                           "es",    # PProNeutNomSg, PProNeutAccSg, PProNeutDatSg, PProNeutGenSg, PProNeutNomSg-s, PProNeutAccSg-s
+PERSONAL_PRONOUN_LEMMAS = ["ich",       # PPro1NomSg, PPro1AccSg, PPro1DatSg, PPro1GenSg
+                           "du",        # PPro2NomSg, PPro2AccSg, PPro2DatSg, PPro2GenSg
+                           "er",        # PProMascNomSg, PProMascAccSg, PProMascDatSg, PProMascGenSg
+                           "es",        # PProNeutNomSg, PProNeutAccSg, PProNeutDatSg, PProNeutGenSg, PProNeutNomSg-s, PProNeutAccSg-s
 
-                           "wir",   # PPro1NomPl, PPro1AccPl, PPro1DatPl, PPro1GenPl
-                           "ihr",   # PPro2NomPl, PPro2AccPl, PPro2DatPl, PPro2GenPl
-                           "sie",   # PProFemNomSg, PProFemAccSg, PProFemDatSg, PProFemGenSg, PProNoGendNomPl ...
+                           "wir",       # PPro1NomPl, PPro1AccPl, PPro1DatPl, PPro1GenPl
+                           "ihr",       # PPro2NomPl, PPro2AccPl, PPro2DatPl, PPro2GenPl
+                           "sie",       # PProFemNomSg, PProFemAccSg, PProFemDatSg, PProFemGenSg, PProNoGendNomPl ...
 
-                           "mich",  # PRefl1AccSg, PRefl1DatSg
-                           "dich",  # PRefl2AccSg, PRefl2DatSg
-                           "uns",   # PRefl1Pl
-                           "euch",  # PRefl2Pl
-                           "sich"]  # PRefl3
+                           "mich",      # PRefl1AccSg, PRefl1DatSg
+                           "dich",      # PRefl2AccSg, PRefl2DatSg
+                           "uns",       # PRefl1Pl
+                           "euch",      # PRefl2Pl
+                           "sich",      # PRefl3
+                           "einander"]  # PRecPl
 
 
 RELATIVE_PRONOUN_POS = "REL"
