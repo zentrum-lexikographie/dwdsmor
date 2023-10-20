@@ -225,8 +225,8 @@ of word forms in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./dwdsmor.py -h
-usage: dwdsmor.py [-h] [-c] [-C] [-H] [-I] [-j] [-n] [-N] [-P] [-t TRANSDUCER] [-v] [-W] [-y]
-                  [input] [output]
+usage: dwdsmor.py [-h] [-c] [-C] [-E] [-H] [-I] [-j] [-n] [-N] [-P] [-t TRANSDUCER] [-v] [-W]
+                  [-y] [input] [output]
 
 positional arguments:
   input                 input file (one word form per line; default: stdin)
@@ -236,6 +236,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
+  -E, --no-empty        do not output empty columns or values
   -H, --no-header       suppress table header
   -I, --no-index        do not output lemma and paradigm index
   -j, --json            output JSON object
@@ -253,79 +254,81 @@ optional arguments:
 By default, `dwdsmor.py` prints a TSV table on standard output:
 
 ```plaintext
-$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	Process	Means	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Orthography	Ellipsis	Characters
-Ihr	Sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old>	Sie	Sie					PPRO	Pers			3	NoGend	Gen	Pl						Old
-Ihr	sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old><CAP>	sie	sie					PPRO	Pers			3	NoGend	Gen	Pl						Old			CAP
-Ihr	sie<+PPRO><Pers><3><Fem><Dat><Sg><CAP>	sie	sie					PPRO	Pers			3	Fem	Dat	Sg									CAP
-Ihr	sie<+PPRO><Pers><3><Fem><Gen><Sg><Old><CAP>	sie	sie					PPRO	Pers			3	Fem	Gen	Sg						Old			CAP
-Ihr	ihr<+PPRO><Pers><2><Nom><Pl><CAP>	ihr	ihr					PPRO	Pers			2		Nom	Pl									CAP
-Ihr	ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Acc	Sg	NoInfl	Attr							CAP
-Ihr	ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Nom	Sg	NoInfl	Attr							CAP
-Ihr	ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Masc	Nom	Sg	NoInfl	Attr							CAP
-Ihr	Ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Acc	Sg	NoInfl	Attr
-Ihr	Ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Nom	Sg	NoInfl	Attr
-Ihr	Ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Masc	Nom	Sg	NoInfl	Attr
-könnt	könn<~>en<+V><2><Pl><Pres><Ind>	können	könn<~>en					V				2			Pl				Ind	Pres
-euch	euch<+PPRO><Refl><2><Acc><Pl>	euch	euch					PPRO	Refl			2		Acc	Pl
-euch	euch<+PPRO><Refl><2><Dat><Pl>	euch	euch					PPRO	Refl			2		Dat	Pl
-euch	ihr<+PPRO><Pers><2><Acc><Pl>	ihr	ihr					PPRO	Pers			2		Acc	Pl
-euch	ihr<+PPRO><Pers><2><Dat><Pl>	ihr	ihr					PPRO	Pers			2		Dat	Pl
-auf	auf<+ADV>	auf	auf					ADV
-auf	auf<+PREP>	auf	auf					PREP
-den	die<+REL><Subst><Masc><Acc><Sg><St>	die	die					REL					Masc	Acc	Sg	St	Subst
-den	die<+DEM><Subst><Masc><Acc><Sg><St>	die	die					DEM					Masc	Acc	Sg	St	Subst
-den	die<+DEM><Attr><NoGend><Dat><Pl><St>	die	die					DEM					NoGend	Dat	Pl	St	Attr
-den	die<+DEM><Attr><Masc><Acc><Sg><St>	die	die					DEM					Masc	Acc	Sg	St	Attr
-den	die<+ART><Def><Subst><Masc><Acc><Sg><St>	die	die					ART	Def				Masc	Acc	Sg	St	Subst
-den	die<+ART><Def><Attr><NoGend><Dat><Pl><St>	die	die					ART	Def				NoGend	Dat	Pl	St	Attr
-den	die<+ART><Def><Attr><Masc><Acc><Sg><St>	die	die					ART	Def				Masc	Acc	Sg	St	Attr
-Kinderbänken	Kind<~>er<#>bank<+NN><Fem><Dat><Pl>	Kinderbank	Kind<~>er<#>bank					NN					Fem	Dat	Pl
-ausruhen	aus<#>ruh<~>en<+V><3><Pl><Pres><Subj>	ausruhen	aus<#>ruh<~>en					V				3			Pl				Subj	Pres
-ausruhen	aus<#>ruh<~>en<+V><3><Pl><Pres><Ind>	ausruhen	aus<#>ruh<~>en					V				3			Pl				Ind	Pres
-ausruhen	aus<#>ruh<~>en<+V><1><Pl><Pres><Subj>	ausruhen	aus<#>ruh<~>en					V				1			Pl				Subj	Pres
-ausruhen	aus<#>ruh<~>en<+V><1><Pl><Pres><Ind>	ausruhen	aus<#>ruh<~>en					V				1			Pl				Ind	Pres
-ausruhen	aus<#>ruh<~>en<+V><Inf>	ausruhen	aus<#>ruh<~>en					V										Inf
-.	.<+PUNCT><Period>	.	.					PUNCT	Period
+$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -E -n
+Wordform	Lemma	Segmentation	POS	Subcategory	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Characters
+Ihr	Sie	Sie	PPRO	Pers	3	NoGend	Gen	Pl						Old
+Ihr	sie	sie	PPRO	Pers	3	NoGend	Gen	Pl						Old	CAP
+Ihr	sie	sie	PPRO	Pers	3	Fem	Dat	Sg							CAP
+Ihr	sie	sie	PPRO	Pers	3	Fem	Gen	Sg						Old	CAP
+Ihr	ihr	ihr	PPRO	Pers	2		Nom	Pl							CAP
+Ihr	ihre	ihre	POSS			Neut	Acc	Sg	NoInfl	Attr					CAP
+Ihr	ihre	ihre	POSS			Neut	Nom	Sg	NoInfl	Attr					CAP
+Ihr	ihre	ihre	POSS			Masc	Nom	Sg	NoInfl	Attr					CAP
+Ihr	Ihre	Ihre	POSS			Neut	Acc	Sg	NoInfl	Attr
+Ihr	Ihre	Ihre	POSS			Neut	Nom	Sg	NoInfl	Attr
+Ihr	Ihre	Ihre	POSS			Masc	Nom	Sg	NoInfl	Attr
+könnt	können	könn<~>en	V		2			Pl				Ind	Pres
+euch	euch	euch	PPRO	Refl	2		Acc	Pl
+euch	euch	euch	PPRO	Refl	2		Dat	Pl
+euch	ihr	ihr	PPRO	Pers	2		Acc	Pl
+euch	ihr	ihr	PPRO	Pers	2		Dat	Pl
+auf	auf	auf	ADV
+auf	auf	auf	PREP
+den	die	die	REL			Masc	Acc	Sg	St	Subst
+den	die	die	DEM			Masc	Acc	Sg	St	Subst
+den	die	die	DEM			NoGend	Dat	Pl	St	Attr
+den	die	die	DEM			Masc	Acc	Sg	St	Attr
+den	die	die	ART	Def		Masc	Acc	Sg	St	Subst
+den	die	die	ART	Def		NoGend	Dat	Pl	St	Attr
+den	die	die	ART	Def		Masc	Acc	Sg	St	Attr
+Kinderbänken	Kinderbank	Kind<~>er<#>bank	NN			Fem	Dat	Pl
+ausruhen	ausruhen	aus<#>ruh<~>en	V		3			Pl				Subj	Pres
+ausruhen	ausruhen	aus<#>ruh<~>en	V		3			Pl				Ind	Pres
+ausruhen	ausruhen	aus<#>ruh<~>en	V		1			Pl				Subj	Pres
+ausruhen	ausruhen	aus<#>ruh<~>en	V		1			Pl				Ind	Pres
+ausruhen	ausruhen	aus<#>ruh<~>en	V								Inf
+.	.	.	PUNCT	Period
+
 ```
 
 The transducer can be selected as an argument of option `-t`:
 
 ```plaintext
-$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -t lib/dwdsmor-root.ca
-Wordform	Analysis	Lemma	Segmentation	Lemma Index	Paradigm Index	Process	Means	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Orthography	Ellipsis	Characters
-Ihr	sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old><CAP>	sie	sie					PPRO	Pers			3	NoGend	Gen	Pl						Old			CAP
-Ihr	sie<+PPRO><Pers><3><Fem><Dat><Sg><CAP>	sie	sie					PPRO	Pers			3	Fem	Dat	Sg									CAP
-Ihr	sie<+PPRO><Pers><3><Fem><Gen><Sg><Old><CAP>	sie	sie					PPRO	Pers			3	Fem	Gen	Sg						Old			CAP
-Ihr	Sie<+PPRO><Pers><3><NoGend><Gen><Pl><Old>	Sie	Sie					PPRO	Pers			3	NoGend	Gen	Pl						Old
-Ihr	ihr<+PPRO><Pers><2><Nom><Pl><CAP>	ihr	ihr					PPRO	Pers			2		Nom	Pl									CAP
-Ihr	ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Acc	Sg	NoInfl	Attr							CAP
-Ihr	ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Neut	Nom	Sg	NoInfl	Attr							CAP
-Ihr	ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl><CAP>	ihre	ihre					POSS					Masc	Nom	Sg	NoInfl	Attr							CAP
-Ihr	Ihre<+POSS><Attr><Neut><Acc><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Acc	Sg	NoInfl	Attr
-Ihr	Ihre<+POSS><Attr><Neut><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Neut	Nom	Sg	NoInfl	Attr
-Ihr	Ihre<+POSS><Attr><Masc><Nom><Sg><NoInfl>	Ihre	Ihre					POSS					Masc	Nom	Sg	NoInfl	Attr
-könnt	könn<~>en<+V><2><Pl><Pres><Ind>	können	könn<~>en					V				2			Pl				Ind	Pres
-euch	euch<+PPRO><Refl><2><Acc><Pl>	euch	euch					PPRO	Refl			2		Acc	Pl
-euch	euch<+PPRO><Refl><2><Dat><Pl>	euch	euch					PPRO	Refl			2		Dat	Pl
-euch	ihr<+PPRO><Pers><2><Acc><Pl>	ihr	ihr					PPRO	Pers			2		Acc	Pl
-euch	ihr<+PPRO><Pers><2><Dat><Pl>	ihr	ihr					PPRO	Pers			2		Dat	Pl
-auf	auf<+ADV>	auf	auf					ADV
-auf	auf<+PREP>	auf	auf					PREP
-den	die<+REL><Subst><Masc><Acc><Sg><St>	die	die					REL					Masc	Acc	Sg	St	Subst
-den	die<+DEM><Subst><Masc><Acc><Sg><St>	die	die					DEM					Masc	Acc	Sg	St	Subst
-den	die<+DEM><Attr><NoGend><Dat><Pl><St>	die	die					DEM					NoGend	Dat	Pl	St	Attr
-den	die<+DEM><Attr><Masc><Acc><Sg><St>	die	die					DEM					Masc	Acc	Sg	St	Attr
-den	die<+ART><Def><Subst><Masc><Acc><Sg><St>	die	die					ART	Def				Masc	Acc	Sg	St	Subst
-den	die<+ART><Def><Attr><NoGend><Dat><Pl><St>	die	die					ART	Def				NoGend	Dat	Pl	St	Attr
-den	die<+ART><Def><Attr><Masc><Acc><Sg><St>	die	die					ART	Def				Masc	Acc	Sg	St	Attr
-Kinderbänken	Kind<+>Bank<COMP><concat><+NN><Fem><Dat><Pl>	Kind + Bank	Kind<+>Bank			COMP	concat	NN					Fem	Dat	Pl
-ausruhen	ruh<~>en<DER><part(aus)><+V><3><Pl><Pres><Subj>	ruhen	ruh<~>en			DER	part(aus)	V				3			Pl				Subj	Pres
-ausruhen	ruh<~>en<DER><part(aus)><+V><3><Pl><Pres><Ind>	ruhen	ruh<~>en			DER	part(aus)	V				3			Pl				Ind	Pres
-ausruhen	ruh<~>en<DER><part(aus)><+V><1><Pl><Pres><Subj>	ruhen	ruh<~>en			DER	part(aus)	V				1			Pl				Subj	Pres
-ausruhen	ruh<~>en<DER><part(aus)><+V><1><Pl><Pres><Ind>	ruhen	ruh<~>en			DER	part(aus)	V				1			Pl				Ind	Pres
-ausruhen	ruh<~>en<DER><part(aus)><+V><Inf>	ruhen	ruh<~>en			DER	part(aus)	V										Inf
-.	.<+PUNCT><Period>	.	.					PUNCT	Period
+$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -E -n -t lib/dwdsmor-root.ca
+Wordform	Lemma	Segmentation	Process	Means	POS	Subcategory	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Characters
+Ihr	sie	sie			PPRO	Pers	3	NoGend	Gen	Pl						Old	CAP
+Ihr	sie	sie			PPRO	Pers	3	Fem	Dat	Sg							CAP
+Ihr	sie	sie			PPRO	Pers	3	Fem	Gen	Sg						Old	CAP
+Ihr	Sie	Sie			PPRO	Pers	3	NoGend	Gen	Pl						Old
+Ihr	ihr	ihr			PPRO	Pers	2		Nom	Pl							CAP
+Ihr	ihre	ihre			POSS			Neut	Acc	Sg	NoInfl	Attr					CAP
+Ihr	ihre	ihre			POSS			Neut	Nom	Sg	NoInfl	Attr					CAP
+Ihr	ihre	ihre			POSS			Masc	Nom	Sg	NoInfl	Attr					CAP
+Ihr	Ihre	Ihre			POSS			Neut	Acc	Sg	NoInfl	Attr
+Ihr	Ihre	Ihre			POSS			Neut	Nom	Sg	NoInfl	Attr
+Ihr	Ihre	Ihre			POSS			Masc	Nom	Sg	NoInfl	Attr
+könnt	können	könn<~>en			V		2			Pl				Ind	Pres
+euch	euch	euch			PPRO	Refl	2		Acc	Pl
+euch	euch	euch			PPRO	Refl	2		Dat	Pl
+euch	ihr	ihr			PPRO	Pers	2		Acc	Pl
+euch	ihr	ihr			PPRO	Pers	2		Dat	Pl
+auf	auf	auf			ADV
+auf	auf	auf			PREP
+den	die	die			REL			Masc	Acc	Sg	St	Subst
+den	die	die			DEM			Masc	Acc	Sg	St	Subst
+den	die	die			DEM			NoGend	Dat	Pl	St	Attr
+den	die	die			DEM			Masc	Acc	Sg	St	Attr
+den	die	die			ART	Def		Masc	Acc	Sg	St	Subst
+den	die	die			ART	Def		NoGend	Dat	Pl	St	Attr
+den	die	die			ART	Def		Masc	Acc	Sg	St	Attr
+Kinderbänken	Kind + Bank	Kind<+>Bank	COMP	concat	NN			Fem	Dat	Pl
+ausruhen	ruhen	ruh<~>en	DER	part(aus)	V		3			Pl				Subj	Pres
+ausruhen	ruhen	ruh<~>en	DER	part(aus)	V		3			Pl				Ind	Pres
+ausruhen	ruhen	ruh<~>en	DER	part(aus)	V		1			Pl				Subj	Pres
+ausruhen	ruhen	ruh<~>en	DER	part(aus)	V		1			Pl				Ind	Pres
+ausruhen	ruhen	ruh<~>en	DER	part(aus)	V								Inf
+.	.	.			PUNCT	Period
+
 ```
 
 CSV, JSON, and YAML outputs are available with options `-c`, `-j`, and `-y`
@@ -336,9 +339,9 @@ in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./paradigm.py -h
-usage: paradigm.py [-h] [-c] [-C] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j] [-n] [-N] [-o] [-O]
-                   [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}] [-P] [-s] [-S]
-                   [-t TRANSDUCER] [-u] [-v] [-y] lemma [output]
+usage: paradigm.py [-h] [-c] [-C] [-E] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j] [-n] [-N]
+                   [-o] [-O] [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}] [-P]
+                   [-s] [-S] [-t TRANSDUCER] [-u] [-v] [-y] lemma [output]
 
 positional arguments:
   lemma                 lemma (determiners: Fem Nom Sg; nominalised adjectives: Wk)
@@ -348,6 +351,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
+  -E, --no-empty        do not output empty columns or values
   -H, --no-header       suppress table header
   -i {1,2,3,4,5}, --lemma-index {1,2,3,4,5}
                         homographic lemma index
@@ -373,24 +377,24 @@ optional arguments:
 By default, `paradigm.py` outputs a similar TSV table as `dwdsmor.py`:
 
 ```plaintext
-$ ./paradigm.py Bank
-Lemma	Lemma Index	Paradigm Index	POS	Subcategory	Auxiliary	Person	Gender	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Paradigm Forms
-Bank	1		NN				Fem				Nom	Sg						Bank
-Bank	1		NN				Fem				Acc	Sg						Bank
-Bank	1		NN				Fem				Dat	Sg						Bank
-Bank	1		NN				Fem				Gen	Sg						Bank
-Bank	1		NN				Fem				Nom	Pl						Bänke
-Bank	1		NN				Fem				Acc	Pl						Bänke
-Bank	1		NN				Fem				Dat	Pl						Bänken
-Bank	1		NN				Fem				Gen	Pl						Bänke
-Bank	2		NN				Fem				Nom	Sg						Bank
-Bank	2		NN				Fem				Acc	Sg						Bank
-Bank	2		NN				Fem				Dat	Sg						Bank
-Bank	2		NN				Fem				Gen	Sg						Bank
-Bank	2		NN				Fem				Nom	Pl						Banken
-Bank	2		NN				Fem				Acc	Pl						Banken
-Bank	2		NN				Fem				Dat	Pl						Banken
-Bank	2		NN				Fem				Gen	Pl						Banken
+$ ./paradigm.py -E Bank
+Lemma	Lemma Index	POS	Gender	Case	Number	Paradigm Forms
+Bank	1	NN	Fem	Nom	Sg	Bank
+Bank	1	NN	Fem	Acc	Sg	Bank
+Bank	1	NN	Fem	Dat	Sg	Bank
+Bank	1	NN	Fem	Gen	Sg	Bank
+Bank	1	NN	Fem	Nom	Pl	Bänke
+Bank	1	NN	Fem	Acc	Pl	Bänke
+Bank	1	NN	Fem	Dat	Pl	Bänken
+Bank	1	NN	Fem	Gen	Pl	Bänke
+Bank	2	NN	Fem	Nom	Sg	Bank
+Bank	2	NN	Fem	Acc	Sg	Bank
+Bank	2	NN	Fem	Dat	Sg	Bank
+Bank	2	NN	Fem	Gen	Sg	Bank
+Bank	2	NN	Fem	Nom	Pl	Banken
+Bank	2	NN	Fem	Acc	Pl	Banken
+Bank	2	NN	Fem	Dat	Pl	Banken
+Bank	2	NN	Fem	Gen	Pl	Banken
 ```
 
 For a condensed version, the options `-n` and `-N` can be specified. The DWDS

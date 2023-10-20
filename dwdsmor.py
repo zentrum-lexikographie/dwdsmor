@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-10-16
+# Gregor Middell and Andreas Nolda 2023-10-19
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -18,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 8.5
+version = 9.0
 
 
 BASEDIR = path.dirname(__file__)
@@ -28,9 +28,9 @@ LIBDIR = path.join(BASEDIR, "lib")
 LIBFILE = path.join(LIBDIR, "dwdsmor.ca")
 
 
-PROCESSES = {"COMP", "DER", "CONV"}
+PROCESSES = ["COMP", "DER", "CONV"]
 
-MEANS = {"concat", "hyph", "ident", "part", "pref", "suff"}
+MEANS = ["concat", "hyph", "ident", "part", "pref", "suff"]
 
 
 Component = namedtuple("Component", ["lemma", "tags"])
@@ -208,10 +208,11 @@ class Analysis(tuple):
         tag = self.tag_of_type(Analysis._charinfo_tags)
         return tag
 
-    def as_dict(self, no_analysis=False, no_segmentation=False, no_index=False, no_wf=False):
+    def as_dict(self, no_analysis=False, no_segmentation=False,
+                no_index=False, no_wf=False, no_empty=False):
         analysis = {"analysis": self.analysis,
                     "lemma": self.lemma,
-                    "segmentedlemma": self.seg,
+                    "seg": self.seg,
                     "lemma_index": self.lemma_index,
                     "paradigm_index": self.paradigm_index,
                     "process": self.process,
@@ -236,13 +237,17 @@ class Analysis(tuple):
         if no_analysis:
             del analysis["analysis"]
         if no_segmentation:
-            del analysis["segmentedlemma"]
+            del analysis["seg"]
         if no_index:
             del analysis["lemma_index"]
             del analysis["paradigm_index"]
         if no_wf:
             del analysis["process"]
             del analysis["means"]
+        if no_empty:
+            for key, value in list(analysis.items()):
+                if not value:
+                    del analysis[key]
         return analysis
 
     def _decode_component_text(text):
@@ -328,10 +333,6 @@ def analyse_words(transducer, words):
     return tuple(analyse_word(transducer, word) for word in words)
 
 
-def string(value):
-    return str(value or "")
-
-
 def remove_duplicate_analyses(analyses):
     unique_analyses = []
     for analysis in analyses:
@@ -341,121 +342,162 @@ def remove_duplicate_analyses(analyses):
 
 
 def create_word_analyses(words, analyses_tuple,
-                         no_analysis=False, no_segmentation=False, no_index=False, no_wf=False):
+                         no_analysis=False, no_segmentation=False,
+                         no_index=False, no_wf=False, no_empty=False):
     word_analyses = []
     for word, analyses in zip(words, analyses_tuple):
-        analyses = [analysis.as_dict(no_analysis, no_segmentation, no_index, no_wf) for analysis in analyses]
+        analyses = [analysis.as_dict(no_analysis, no_segmentation,
+                                     no_index, no_wf, no_empty) for analysis in analyses]
         unique_analyses = remove_duplicate_analyses(analyses)
         word_analyses.append({"word": word,
                               "analyses": unique_analyses})
     return word_analyses
 
 def output_json(words, analyses_tuple, output_file,
-                no_analysis=False, no_segmentation=False, no_index=False, no_wf=False):
+                no_analysis=False, no_segmentation=False,
+                no_index=False, no_wf=False, no_empty=False):
     word_analyses = create_word_analyses(words, analyses_tuple,
-                                         no_analysis, no_segmentation, no_index, no_wf)
+                                         no_analysis, no_segmentation,
+                                         no_index, no_wf, no_empty)
     json.dump(word_analyses, output_file, ensure_ascii=False)
 
 
 def output_yaml(words, analyses_tuple, output_file,
-                no_analysis=False, no_segmentation=False, no_index=False, no_wf=False):
+                no_analysis=False, no_segmentation=False,
+                no_index=False, no_wf=False, no_empty=False):
     word_analyses = create_word_analyses(words, analyses_tuple,
-                                         no_analysis, no_segmentation, no_index, no_wf)
+                                         no_analysis, no_segmentation,
+                                         no_index, no_wf, no_empty)
     yaml.dump(word_analyses, output_file, allow_unicode=True, sort_keys=False, explicit_start=True)
 
 
-def format_row(analysis, term):
-    keys_of_bright_black_values = ["analysis"]
-    keys_of_bold_underline_values = ["lemma"]
-    keys_of_bright_black_underline_values = ["segmentedlemma"]
-    keys_of_underline_values = ["lemma_index",
-                                "paradigm_index",
-                                "process",
-                                "means",
-                                "pos",
-                                "subcat"
-                                "auxiliary"]
-    formatted_row = [term.bright_black(string(analysis[key])) if key in keys_of_bright_black_values
-                     else term.bold_underline(string(analysis[key])) if key in keys_of_bold_underline_values
-                     else term.bright_black_underline(string(analysis[key])) if key in keys_of_bright_black_underline_values
-                     else term.underline(string(analysis[key])) if key in keys_of_underline_values
-                     else string(analysis[key]) for key in analysis.keys()]
-    return formatted_row
+def get_label_of_key(key, key_labels):
+    return key_labels[key]
+
+
+def get_value_of_key(key, analysis):
+    return str(analysis.get(key, "") or "")
 
 
 def output_dsv(words, analyses_tuple, output_file,
-               no_analysis=False, no_segmentation=False, no_index=False, no_wf=False, header=True,
-               plain=False, force_color=False, delimiter="\t"):
+               no_analysis=False, no_segmentation=False,
+               no_index=False, no_wf=False, no_empty=False,
+               header=True, plain=False, force_color=False, delimiter="\t"):
     kind = "dumb" if plain else None
     term = Terminal(kind=kind, force_styling=force_color)
+    plain = lambda string: string
     csv_writer = csv.writer(output_file, delimiter=delimiter, lineterminator="\n")
 
+    word_analyses = create_word_analyses(words, analyses_tuple,
+                                         no_analysis, no_segmentation,
+                                         no_index, no_wf, no_empty)
+
+    key_format = {"analysis": term.bright_black,
+                  "lemma": term.bold_underline,
+                  "seg": term.bright_black_underline,
+                  "lemma_index": term.underline,
+                  "paradigm_index": term.underline,
+                  "process": term.underline,
+                  "means": term.underline,
+                  "pos": term.underline,
+                  "subcat": term.underline,
+                  "auxiliary": term.underline,
+                  "degree": plain,
+                  "person": plain,
+                  "gender": plain,
+                  "case": plain,
+                  "number": plain,
+                  "inflection": plain,
+                  "function": plain,
+                  "nonfinite": plain,
+                  "mood": plain,
+                  "tense": plain,
+                  "metainfo": plain,
+                  "orthinfo": plain,
+                  "ellipinfo": plain,
+                  "charinfo": plain}
+    key_labels = {"analysis": "Analysis",
+                  "lemma": "Lemma",
+                  "seg": "Segmentation",
+                  "lemma_index": "Lemma Index",
+                  "paradigm_index": "Paradigm Index",
+                  "process": "Process",
+                  "means": "Means",
+                  "pos": "POS",
+                  "subcat": "Subcategory",
+                  "auxiliary": "Auxiliary",
+                  "degree": "Degree",
+                  "person": "Person",
+                  "gender": "Gender",
+                  "case": "Case",
+                  "number": "Number",
+                  "inflection": "Inflection",
+                  "function": "Function",
+                  "nonfinite": "Nonfinite",
+                  "mood": "Mood",
+                  "tense": "Tense",
+                  "metainfo": "Metalinguistic",
+                  "orthinfo": "Orthography",
+                  "ellipinfo": "Ellipsis",
+                  "charinfo": "Characters"}
+
+    if no_analysis:
+        del key_labels["analysis"]
+    if no_segmentation:
+        del key_labels["seg"]
+    if no_index:
+        del key_labels["lemma_index"]
+        del key_labels["paradigm_index"]
+    if no_wf:
+        del key_labels["process"]
+        del key_labels["means"]
+
+    keys = key_labels.keys()
+
+    if no_empty:
+        keys_with_values = {key for word_analyses_dict in word_analyses
+                               for analysis in word_analyses_dict["analyses"]
+                               for key, value in analysis.items() if value}
+        keys = [key for key in keys if key in keys_with_values]
+
     if header:
-        header_row = [term.bold("Wordform"),
-                      term.bright_black("Analysis"),
-                      term.bold_underline("Lemma"),
-                      term.bright_black_underline("Segmentation"),
-                      term.underline("Lemma Index"),
-                      term.underline("Paradigm Index"),
-                      term.underline("Process"),
-                      term.underline("Means"),
-                      term.underline("POS"),
-                      term.underline("Subcategory"),
-                      term.underline("Auxiliary"),
-                      "Degree",
-                      "Person",
-                      "Gender",
-                      "Case",
-                      "Number",
-                      "Inflection",
-                      "Function",
-                      "Nonfinite",
-                      "Mood",
-                      "Tense",
-                      "Metalinguistic",
-                      "Orthography",
-                      "Ellipsis",
-                      "Characters"]
-        if no_analysis:
-            header_row.remove(term.bright_black("Analysis"))
-        if no_segmentation:
-            header_row.remove(term.bright_black_underline("Segmentation"))
-        if no_index:
-            header_row.remove(term.underline("Lemma Index"))
-            header_row.remove(term.underline("Paradigm Index"))
-        if no_wf:
-            header_row.remove(term.underline("Process"))
-            header_row.remove(term.underline("Means"))
+        header_row = [term.bold("Wordform")]
+        header_row += [key_format[key](get_label_of_key(key, key_labels)) for key in keys]
         csv_writer.writerow(header_row)
 
-    word_analyses = create_word_analyses(words, analyses_tuple,
-                                         no_analysis, no_segmentation, no_index, no_wf)
     for word_analyses_dict in word_analyses:
         for analysis in word_analyses_dict["analyses"]:
-            row = [term.bold(word_analyses_dict["word"])] + format_row(analysis, term)
+            row = [term.bold(word_analyses_dict["word"])]
+            row += [key_format[key](get_value_of_key(key, analysis)) for key in keys]
             csv_writer.writerow(row)
 
 
 def output_analyses(transducer, input_file, output_file,
-                    no_analysis=False, no_segmentation=False, no_index=False, no_wf=False, header=True,
-                    plain=False, force_color=False, output_format="tsv"):
+                    no_analysis=False, no_segmentation=False,
+                    no_index=False, no_wf=False, no_empty=False,
+                    header=True, plain=False, force_color=False,
+                    output_format="tsv"):
     words = tuple(word.strip() for word in input_file.readlines() if word.strip())
     analyses_tuple = analyse_words(transducer, words)
     if analyses_tuple:
         if output_format == "json":
             output_json(words, analyses_tuple, output_file,
-                        no_analysis, no_segmentation, no_index, no_wf)
+                        no_analysis, no_segmentation,
+                        no_index, no_wf, no_empty)
         elif output_format == "yaml":
             output_yaml(words, analyses_tuple, output_file,
-                        no_analysis, no_segmentation, no_index, no_wf)
+                        no_analysis, no_segmentation,
+                        no_index, no_wf, no_empty)
         elif output_format == "csv":
             output_dsv(words, analyses_tuple, output_file,
-                       no_analysis, no_segmentation, no_index, no_wf, header,
-                       plain, force_color, delimiter=",")
+                       no_analysis, no_segmentation,
+                       no_index, no_wf, no_empty,
+                       header, plain, force_color, delimiter=",")
         else:
             output_dsv(words, analyses_tuple, output_file,
-                       no_analysis, no_segmentation, no_index, no_wf, header,
-                       plain, force_color)
+                       no_analysis, no_segmentation,
+                       no_index, no_wf, no_empty,
+                       header, plain, force_color)
 
 
 def main():
@@ -469,6 +511,8 @@ def main():
                             help="output CSV table")
         parser.add_argument("-C", "--force-color", action="store_true",
                             help="preserve color and formatting when piping output")
+        parser.add_argument("-E", "--no-empty", action="store_true",
+                            help="do not output empty columns or values")
         parser.add_argument("-H", "--no-header", action="store_false",
                             help="suppress table header")
         parser.add_argument("-I", "--no-index", action="store_true",
@@ -503,8 +547,10 @@ def main():
         else:
             output_format = "tsv"
         output_analyses(transducer, args.input, args.output,
-                        args.no_analysis, args.no_segmentation, args.no_index, args.no_wf, args.no_header,
-                        args.plain, args.force_color, output_format)
+                        args.no_analysis, args.no_segmentation,
+                        args.no_index, args.no_wf, args.no_empty,
+                        args.no_header, args.plain, args.force_color,
+                        output_format)
     except KeyboardInterrupt:
         sys.exit(130)
     return 0

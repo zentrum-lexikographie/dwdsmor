@@ -59,6 +59,7 @@ def output_report(report_file, entries_with_paradigms):
 
     with open(report_file, "w") as file:
         csv_writer = csv.writer(file, delimiter="\t", lineterminator="\n")
+
         header_row = ["File",
                       "Entry Number",
                       "Lemma",
@@ -69,6 +70,7 @@ def output_report(report_file, entries_with_paradigms):
                       "DWDSmor POS",
                       "Covered"]
         csv_writer.writerow(header_row)
+
         for analysed_entry in entries_with_paradigms:
             row = [path.relpath(analysed_entry.file, DATADIR),
                    analysed_entry.entry,

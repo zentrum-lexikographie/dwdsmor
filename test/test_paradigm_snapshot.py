@@ -285,6 +285,7 @@ def transducer():
 def get_paradigms(transducer, lemmas, pos):
     output = io.StringIO()
     csv_writer = csv.writer(output, delimiter="\t", lineterminator="\n")
+
     header_row = ["Lemma",
                   "Lemma Index",
                   "Paradigm Index",
@@ -292,6 +293,7 @@ def get_paradigms(transducer, lemmas, pos):
                   "Paradigm Categories",
                   "Paradigm Forms"]
     csv_writer.writerow(header_row)
+
     for lemma in sorted(set(lemmas)):
         output_paradigms(transducer, lemma, output, pos=pos,
                          nonst=True, old=True, oldorth=True, ch=True,

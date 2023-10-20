@@ -40,6 +40,7 @@ def data_files():
 def get_analyses(transducer, data_files):
     output = io.StringIO()
     csv_writer = csv.writer(output, delimiter="\t", lineterminator="\n")
+
     header_row = ["Wordform",
                   "Lemma",
                   "POS",
@@ -60,6 +61,7 @@ def get_analyses(transducer, data_files):
                   "Ellipsis",
                   "Characters"]
     csv_writer.writerow(header_row)
+
     for data_file in sorted(data_files):
         with open(data_file) as file:
             output_analyses(transducer, file, output,
