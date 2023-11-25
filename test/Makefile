@@ -1,5 +1,5 @@
 # tests/Makefile
-# Andreas Nolda 2023-10-09
+# Andreas Nolda 2023-11-24
 
 PYTEST = py.test --no-header
 
@@ -9,6 +9,7 @@ PYTEST_DIFF   = $(PYTEST) -v -v
 
 TESTDIR    = $(CURDIR)
 REPORTDIR  = $(TESTDIR)/reports
+SUMMARYDIR = $(TESTDIR)/summaries
 INSTALLDIR = $(abspath $(TESTDIR)/../lib)
 
 TEST_DWDS_LEMMA_COVERAGE       = $(TESTDIR)/test_dwds_lemma_coverage.py
@@ -43,13 +44,26 @@ REPORT_PARADIGM_SNAPSHOT         = $(REPORTDIR)/adjective-paradigm-snapshot.tsv 
                                    $(REPORTDIR)/relative-pronoun-paradigm-snapshot.tsv \
                                    $(REPORTDIR)/verb-paradigm-snapshot.tsv
 
-REPORTFILES = $(REPORT_DWDS_LEMMA_COVERAGE) \
-              $(REPORT_SAMPLE_LEMMA_COVERAGE) \
-              $(REPORT_TUEBADZ_LEMMA_COVERAGE) \
-              $(REPORT_DWDS_PARADIGM_COVERAGE) \
-              $(REPORT_SAMPLE_PARADIGM_COVERAGE) \
-              $(REPORT_GESETZE_ANALYSIS_SNAPSHOT) \
-              $(REPORT_PARADIGM_SNAPSHOT)
+REPORTFILES_COVERAGE = $(REPORT_DWDS_LEMMA_COVERAGE) \
+                       $(REPORT_SAMPLE_LEMMA_COVERAGE) \
+                       $(REPORT_TUEBADZ_LEMMA_COVERAGE) \
+                       $(REPORT_DWDS_PARADIGM_COVERAGE) \
+                       $(REPORT_SAMPLE_PARADIGM_COVERAGE)
+
+REPORTFILES_SNAPSHOT = $(REPORT_GESETZE_ANALYSIS_SNAPSHOT) \
+                       $(REPORT_PARADIGM_SNAPSHOT)
+
+SUMMARY_DWDS_LEMMA_COVERAGE      = $(SUMMARYDIR)/dwds-lemma-coverage.tsv
+SUMMARY_SAMPLE_LEMMA_COVERAGE    = $(SUMMARYDIR)/sample-lemma-coverage.tsv
+SUMMARY_TUEBADZ_LEMMA_COVERAGE   = $(SUMMARYDIR)/tuebadz-lemma-coverage.tsv
+SUMMARY_DWDS_PARADIGM_COVERAGE   = $(SUMMARYDIR)/dwds-paradigm-coverage.tsv
+SUMMARY_SAMPLE_PARADIGM_COVERAGE = $(SUMMARYDIR)/sample-paradigm-coverage.tsv
+
+SUMMARYFILES_COVERAGE = $(SUMMARY_DWDS_LEMMA_COVERAGE) \
+                        $(SUMMARY_SAMPLE_LEMMA_COVERAGE) \
+                        $(SUMMARY_TUEBADZ_LEMMA_COVERAGE) \
+                        $(SUMMARY_DWDS_PARADIGM_COVERAGE) \
+                        $(SUMMARY_SAMPLE_PARADIGM_COVERAGE)
 
 DWDSMOR_A       = $(INSTALLDIR)/dwdsmor.a
 DWDSMOR_CA      = $(INSTALLDIR)/dwdsmor.ca
@@ -104,11 +118,14 @@ $(REPORT_PARADIGM_SNAPSHOT) &: $(TEST_PARADIGM_SNAPSHOT) $(LIB_SNAPSHOT) $(DWDSM
 	$(PYTEST_UPDATE) $(TEST_PARADIGM_SNAPSHOT)
 
 clean:
-	$(RM) $(REPORTFILES)
+	$(RM) $(REPORTFILES_COVERAGE) $(SUMMARYFILES_COVERAGE)
+
+distclean: clean
+	$(RM) $(REPORTFILES_SNAPSHOT)
 
 .PHONY: test-coverage test-snapshot test-regression \
         test-dwds-lemma-coverage test-sample-lemma-coverage test-tuebadz-lemma-coverage \
         test-dwds-paradigm-coverage test-sample-paradigm-coverage \
         test-analysis-snapshot test-paradigm-snapshot \
         test-analysis-regression test-paradigm-regression \
-        clean
+        clean distclean
