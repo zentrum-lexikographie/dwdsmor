@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2023-10-20
+# Andreas Nolda 2023-11-24
 
 import io
 import csv
@@ -85,6 +85,8 @@ INDEFINITE_PRONOUN_LEMMAS = ["welche",        # Indef-welch
                              "jemand",        # IPro-Masc
                              "jedermann",     # IPro-jedermann
                              "man",           # IPro-man
+                             "unsereiner",    # IPro-unsereiner
+                             "unsereins",     # IPro-unsereins
                              "wer",           # IProMascNomSg, IProMascAccSg, IProMascDatSg, IProMascGenSg
                              "was"]           # IProNeutNomSg, IProNeutAccSg, IProNeutDatSg, IProNeutGenSg
 

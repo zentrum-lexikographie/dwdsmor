@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-11-24:
+
+* add inflection classes `IPro-unsereiner` and `IPro-unsereins` for indefinite
+  pronouns "unsereiner" and "unsereins"
+
 2023-10-20:
 
 * add inflection class `PRecPl` for reciprocal pronoun "einander"

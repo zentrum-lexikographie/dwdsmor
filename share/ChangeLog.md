@@ -1,3 +1,7 @@
+2023-11-24:
+
+* add support for indefinite pronouns "unsereiner" and "unsereins"
+
 2023-10-20:
 
 * add support for reciprocal pronoun "einander"

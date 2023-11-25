@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.4 -->
-<!-- Andreas Nolda 2023-10-16 -->
+<!-- Version 11.5 -->
+<!-- Andreas Nolda 2023-11-24 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2800,6 +2800,42 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- "unsereiner" -->
+      <xsl:when test="$lemma='unsereiner'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'er$','')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IPro-unsereiner</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "unsereins" -->
+      <xsl:when test="$lemma='unsereins'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IPro-unsereins</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- "jemand", "irgendjemand" -->
       <xsl:when test="ends-with($lemma,'jemand')">
         <xsl:call-template name="stem-entry">
@@ -3008,12 +3044,8 @@
   <!-- "männiglich" -->
   <!-- "meinesgleichen", "deinesgleichen", "seinesgleichen",
        "ihresgleichen", "unsersgleichen", "euresgleichen" -->
-  <!-- "unsereiner" -->
-  <!-- "unsereins" -->
   <!-- "mensch" -->
   <!-- "soundsovielte" -->
-  <!-- "unsereiner" -->
-  <!-- "unsereins" -->
   <!-- "zigtausend" -->
 </xsl:template>
 

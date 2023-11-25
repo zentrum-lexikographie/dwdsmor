@@ -1,6 +1,6 @@
 % infl.fst
-% Version 5.4
-% Andreas Nolda 2023-10-12
+% Version 5.5
+% Andreas Nolda 2023-11-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1036,6 +1036,10 @@ $IProSuff-jedermann$ = {<Nom><Sg>}:{} | \
 
 $IProSuff-man$ = {<Nom><Sg>}:{}
 
+$IProSuff-unsereiner$ = {<Nom><Sg>}:{er} | \ % cf. Duden-Grammatik (2016: § 433)
+                        {<Acc><Sg>}:{en} | \
+                        {<Dat><Sg>}:{em}
+
 $PProNomSgSuff$ = {<Nom><Sg>}:{}
 
 $PProAccSgSuff$ = {<Acc><Sg>}:{}
@@ -1172,6 +1176,12 @@ $IPro-jedermann$ = {<+INDEF><Masc>}:{<FB>} $IProSuff-jedermann$
 
 % man
 $IPro-man$ = {<+INDEF><Masc>}:{<FB>} $IProSuff-man$
+
+% unsereiner
+$IPro-unsereiner$ = {<+INDEF><Masc>}:{<FB>} $IProSuff-unsereiner$
+
+% unsereins
+$IPro-unsereins$ = {<+INDEF><Masc>}:{<FB>} $IProSuff0$
 
 % ich
 $PPro1NomSg$ = {<+PPRO><Pers><1>}:{<FB>} $PProNomSgSuff$
@@ -1900,6 +1910,8 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<Indef-welch>           $Indef-welch$       | \
          <>:<IPro-jedermann>        $IPro-jedermann$    | \
          <>:<IPro-man>              $IPro-man$          | \
+         <>:<IPro-unsereiner>       $IPro-unsereiner$   | \
+         <>:<IPro-unsereins>        $IPro-unsereins$    | \
          <>:<IProMasc>              $IProMasc$          | \
          <>:<IProMascAccSg>         $IProMascAccSg$     | \
          <>:<IProMascDatSg>         $IProMascDatSg$     | \
