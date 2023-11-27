@@ -62,6 +62,7 @@ DEMONSTRATIVE_PRONOUN_POS = "DEM"
 DEMONSTRATIVE_PRONOUN_LEMMAS = ["die",     # DemDef
                                 "diese",   # Dem-dies
                                 "solche",  # Dem-solch
+                                "alldem",  # Dem-alldem
                                 "jene"]    # Dem
 
 

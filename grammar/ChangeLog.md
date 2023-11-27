@@ -3,6 +3,9 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 2023-11-27:
 
 * add inflection class `Frac` for fractions
+* add inflection class `Dem-alldem` for demonstrative pronouns "alldem" and
+  "alledem"
+
 
 2023-11-24:
 

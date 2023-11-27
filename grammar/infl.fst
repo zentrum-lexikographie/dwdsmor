@@ -833,6 +833,8 @@ $DemSuff-solch$ = $DemSuff-solch/St$ | \
                   $DemSuff-solch/Wk$ | \ % cf. Duden-Grammatik (2016: § 432)
                   {<Attr><Invar>}:{}
 
+$DemSuff-alldem$ = {<Subst><Neut><Dat><Sg><St>}:{em}
+
 $WSuff-welch$ = $DemSuff-solch/St$ | \
                 {<Attr><Invar>}:{}
 
@@ -1092,6 +1094,9 @@ $Dem-dies$ = {<+DEM>}:{<FB>} $DemSuff-dies$
 
 % solcher, solche, solches, solch
 $Dem-solch$ = {<+DEM>}:{<FB>} $DemSuff-solch$
+
+% alldem, alledem
+$Dem-alldem$ = {<+DEM>}:{<FB>} $DemSuff-alldem$
 
 % jener, jene, jenes
 $Dem$ = {<+DEM>}:{<FB>} $DemSuff$
@@ -1889,6 +1894,7 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<Conj-Inf>              $Conj-Inf$          | \
          <>:<Conj-Sub>              $Conj-Sub$          | \
          <>:<Dem>                   $Dem$               | \
+         <>:<Dem-alldem>            $Dem-alldem$        | \
          <>:<Dem-dies>              $Dem-dies$          | \
          <>:<Dem-solch>             $Dem-solch$         | \
          <>:<DemDef>                $DemDef$            | \

@@ -170,27 +170,28 @@
 #Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier> \
                    <Card-zwei><DigCard><DigFrac><DigOrd><Frac><Ord><Roman>
 
-#Pro-inflection# = <Dem><Dem-dies><Dem-solch><DemDef><Indef0><Indef-all> \
-                   <Indef-beid><Indef-ein><Indef-einig><Indef-irgendein> \
-                   <Indef-irgendwelch><Indef-jed><Indef-jeglich><Indef-kein> \
-                   <Indef-manch><Indef-mehrer><Indef-saemtlich><Indef-welch> \
-                   <IPro-jedermann><IPro-man><IPro-unsereiner><IPro-unsereins> \
-                   <IProMasc><IProMascAccSg><IProMascDatSg><IProMascGenSg> \
-                   <IProMascNomSg><IProNeut><IProNeutAccSg><IProNeutDatSg> \
-                   <IProNeutGenSg><IProNeutNomSg><Poss><Poss-er><Poss/Wk> \
-                   <Poss/Wk-er><PPro1AccPl><PPro1AccSg><PPro1DatPl><PPro1DatSg> \
-                   <PPro1GenPl><PPro1GenSg><PPro1NomPl><PPro1NomSg><PPro2AccPl> \
-                   <PPro2AccSg><PPro2DatPl><PPro2DatSg><PPro2GenPl><PPro2GenSg> \
-                   <PPro2NomPl><PPro2NomSg><PProFemAccSg><PProFemDatSg> \
-                   <PProFemGenSg><PProFemNomSg><PProMascAccSg><PProMascDatSg> \
-                   <PProMascGenSg><PProMascNomSg><PProNeutAccSg> \
-                   <PProNeutAccSg-s><PProNeutDatSg><PProNeutGenSg> \
-                   <PProNeutNomSg><PProNeutNomSg-s><PProNoGendAccPl> \
-                   <PProNoGendDatPl><PProNoGendGenPl><PProNoGendNomPl><PRecPl> \
-                   <PRefl1AccSg><PRefl1DatSg><PRefl2AccSg><PRefl2DatSg> \
-                   <PRefl1Pl><PRefl2Pl><PRefl3><Rel><Rel-welch><W-welch> \
-                   <WProMascAccSg><WProMascDatSg><WProMascGenSg><WProMascNomSg> \
-                   <WProNeutAccSg><WProNeutDatSg><WProNeutGenSg><WProNeutNomSg>
+#Pro-inflection# = <Dem><Dem-alldem><Dem-dies><Dem-solch><DemDef><Indef0> \
+                   <Indef-all><Indef-beid><Indef-ein><Indef-einig> \
+                   <Indef-irgendein><Indef-irgendwelch><Indef-jed> \
+                   <Indef-jeglich><Indef-kein><Indef-manch><Indef-mehrer> \
+                   <Indef-saemtlich><Indef-welch><IPro-jedermann><IPro-man> \
+                   <IPro-unsereiner><IPro-unsereins><IProMasc><IProMascAccSg> \
+                   <IProMascDatSg><IProMascGenSg><IProMascNomSg><IProNeut> \
+                   <IProNeutAccSg><IProNeutDatSg><IProNeutGenSg><IProNeutNomSg> \
+                   <Poss><Poss-er><Poss/Wk><Poss/Wk-er><PPro1AccPl><PPro1AccSg> \
+                   <PPro1DatPl><PPro1DatSg><PPro1GenPl><PPro1GenSg><PPro1NomPl> \
+                   <PPro1NomSg><PPro2AccPl><PPro2AccSg><PPro2DatPl><PPro2DatSg> \
+                   <PPro2GenPl><PPro2GenSg><PPro2NomPl><PPro2NomSg> \
+                   <PProFemAccSg><PProFemDatSg><PProFemGenSg><PProFemNomSg> \
+                   <PProMascAccSg><PProMascDatSg><PProMascGenSg><PProMascNomSg> \
+                   <PProNeutAccSg><PProNeutAccSg-s><PProNeutDatSg> \
+                   <PProNeutGenSg><PProNeutNomSg><PProNeutNomSg-s> \
+                   <PProNoGendAccPl><PProNoGendDatPl><PProNoGendGenPl> \
+                   <PProNoGendNomPl><PRecPl><PRefl1AccSg><PRefl1DatSg> \
+                   <PRefl2AccSg><PRefl2DatSg><PRefl1Pl><PRefl2Pl><PRefl3><Rel> \
+                   <Rel-welch><W-welch><WProMascAccSg><WProMascDatSg> \
+                   <WProMascGenSg><WProMascNomSg><WProNeutAccSg><WProNeutDatSg> \
+                   <WProNeutGenSg><WProNeutNomSg>
 
 #Verb-inflection# = <VAImpPl><VAImpSg><VAPastIndPl><VAPastIndSg><VAPastSubj2> \
                     <VAPres1/3PlInd><VAPres1/3SgSubj><VAPres1SgInd> \

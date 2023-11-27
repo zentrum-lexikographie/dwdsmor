@@ -2412,6 +2412,27 @@
       </xsl:when>
       <xsl:when test="ends-with($lemma,'der')"/>
       <xsl:when test="ends-with($lemma,'das')"/>
+      <!-- "alldem", "alledem" -->
+      <xsl:when test="$gender='neutr.' and
+                      ($lemma='alldem' or
+                       $lemma='alledem')">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'em$','')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">Dem-alldem</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- "solche", "ebensolche" -->
       <xsl:when test="$gender='fem.' and
                       ends-with($lemma,'solche')">
@@ -2446,7 +2467,6 @@
   <!-- "deretwegen", "derethalben" -->
   <!-- "sone", "son" -->
   <!-- "dergleichen", "derlei" -->
-  <!-- "alldem" -->
 </xsl:template>
 
 <!-- indefinite pronouns -->

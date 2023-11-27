@@ -1,6 +1,7 @@
 2023-11-27:
 
 * add support for fractions
+* add support for demonstrative pronouns "alldem" and "alledem"
 
 2023-11-24:
 

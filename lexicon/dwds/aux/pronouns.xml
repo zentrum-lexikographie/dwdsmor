@@ -2,6 +2,20 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
+      <Schreibung>alldem</Schreibung>
+      <Grammatik>
+        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>alledem</Schreibung>
+      <Grammatik>
+        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
       <Schreibung>aller</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
