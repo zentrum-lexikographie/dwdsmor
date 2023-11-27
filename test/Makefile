@@ -1,5 +1,5 @@
 # tests/Makefile
-# Andreas Nolda 2023-11-24
+# Andreas Nolda 2023-11-27
 
 PYTEST = py.test --no-header
 
@@ -34,6 +34,7 @@ REPORT_PARADIGM_SNAPSHOT         = $(REPORTDIR)/adjective-paradigm-snapshot.tsv 
                                    $(REPORTDIR)/article-paradigm-snapshot.tsv \
                                    $(REPORTDIR)/cardinal-paradigm-snapshot.tsv \
                                    $(REPORTDIR)/demonstrative-pronoun-paradigm-snapshot.tsv \
+                                   $(REPORTDIR)/fraction-paradigm-snapshot.tsv \
                                    $(REPORTDIR)/indefinite-pronoun-paradigm-snapshot.tsv \
                                    $(REPORTDIR)/interrogative-pronoun-paradigm-snapshot.tsv \
                                    $(REPORTDIR)/name-paradigm-snapshot.tsv \

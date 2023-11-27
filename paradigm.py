@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2023-10-20
+# Andreas Nolda 2023-11-27
 
 import sys
 import argparse
@@ -18,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 9.1
+version = 9.2
 
 
 BASEDIR = path.dirname(__file__)
@@ -31,8 +31,8 @@ LIBFILE = path.join(LIBDIR, "dwdsmor-index.a")
 INDICES = [1, 2, 3, 4, 5]
 
 
-POS = ["ADJ", "ART", "CARD", "DEM", "INDEF", "NN", "NPROP",
-       "ORD", "POSS", "PPRO", "REL", "V", "WPRO"]
+POS = ["ADJ", "ART", "CARD", "DEM", "FRAC", "INDEF", "NN",
+       "NPROP", "ORD", "POSS", "PPRO", "REL", "V", "WPRO"]
 
 SUBCATS = ["Def", "Indef", "Neg", "Pers", "Refl", "Rec"]
 
@@ -710,6 +710,43 @@ def get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg,
     return formdict
 
 
+def get_fraction_formdict(transducer, lemma_index, paradigm_index, seg,
+                          pos, nonst=False, old=False, oldorth=False, ch=False):
+    formdict = {}
+    lexcat = Lexcat(pos = pos)
+    # forms inflected for function, but uninflected for gender, case, number,
+    # and inflectional strength
+    categorisations = product(["Invar"], ["Invar"], ["Invar"], ["Invar"], FUNCTIONS)
+    categorisations = filter_categorisations(categorisations, pos)
+    for gender, number, case, inflection, function in categorisations:
+        parcat = Parcat(function = function,
+                        gender = gender,
+                        case = case,
+                        number = number,
+                        inflection = inflection)
+        categorisation = [function,
+                          "Invar"]
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+                               pos, categorisation)
+        add_forms(formdict, lemma_index, paradigm_index,
+                  lexcat, parcat, forms)
+        if nonst:
+            # no such forms
+            pass
+        if old:
+            # no such forms
+            pass
+        if oldorth:
+            # no such forms
+            pass
+        if ch:
+            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                              pos, categorisation, CH)
+            add_special_forms(formdict, lemma_index, paradigm_index,
+                              lexcat, parcat, ch_forms, TAG_CH)
+    return formdict
+
+
 def get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
                                     pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
@@ -1283,10 +1320,14 @@ def get_formdict(transducer, lemma_index, paradigm_index, seg,
     elif pos == "CARD":
         formdict = get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg,
                                          pos, nonst, old, oldorth, ch)
-    # cardinals
+    # ordinals
     elif pos == "ORD":
         formdict = get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg,
                                         pos, nonst, old, oldorth, ch)
+    # fractions
+    elif pos == "FRAC":
+        formdict = get_fraction_formdict(transducer, lemma_index, paradigm_index, seg,
+                                         pos, nonst, old, oldorth, ch)
     # demonstrative and possessive pronouns
     elif pos in ["DEM", "POSS"]:
         formdict = get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,

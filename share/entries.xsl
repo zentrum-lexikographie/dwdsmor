@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.5 -->
-<!-- Andreas Nolda 2023-11-24 -->
+<!-- Version 11.6 -->
+<!-- Andreas Nolda 2023-11-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1344,7 +1344,6 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="abbreviation"/>
-  <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -1367,6 +1366,32 @@
                       select="$abbreviation"/>
       <xsl:with-param name="pos">ORD</xsl:with-param>
       <xsl:with-param name="class">Ord</xsl:with-param>
+      <xsl:with-param name="etymology"
+                      select="$etymology"/>
+    </xsl:call-template>
+  </xsl:if>
+</xsl:template>
+
+<!-- fractions -->
+<xsl:template name="fraction-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="lemma-index"/>
+  <xsl:param name="paradigm-index"/>
+  <xsl:param name="abbreviation"/>
+  <xsl:param name="pronunciations"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:call-template name="stem-entry">
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+      <xsl:with-param name="lemma-index"
+                      select="$lemma-index"/>
+      <xsl:with-param name="paradigm-index"
+                      select="$paradigm-index"/>
+      <xsl:with-param name="abbreviation"
+                      select="$abbreviation"/>
+      <xsl:with-param name="pos">FRAC</xsl:with-param>
+      <xsl:with-param name="class">Frac</xsl:with-param>
       <xsl:with-param name="etymology"
                       select="$etymology"/>
     </xsl:call-template>
@@ -1424,6 +1449,31 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:for-each>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
+<!-- compounding stems of fractions -->
+<xsl:template name="fraction-comp-entry-set">
+  <xsl:param name="lemma"/>
+  <xsl:param name="stem"/>
+  <xsl:param name="abbreviation"/>
+  <xsl:param name="etymology"/>
+  <xsl:if test="string-length($lemma)&gt;0">
+    <!-- ignore single letters unless they are marked as abbreviations -->
+    <xsl:if test="not(matches($stem,'^\p{L}$') and
+                      $abbreviation='no')">
+      <xsl:call-template name="comp-stem-entry">
+        <xsl:with-param name="lemma"
+                        select="$lemma"/>
+        <xsl:with-param name="stem"
+                        select="$stem"/>
+        <xsl:with-param name="abbreviation"
+                        select="$abbreviation"/>
+        <xsl:with-param name="pos">FRAC</xsl:with-param>
+        <xsl:with-param name="etymology"
+                        select="$etymology"/>
+      </xsl:call-template>
     </xsl:if>
   </xsl:if>
 </xsl:template>
@@ -3222,7 +3272,6 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="abbreviation"/>
-  <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -3940,7 +3989,6 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="abbreviation"/>
-  <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">

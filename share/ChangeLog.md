@@ -1,3 +1,7 @@
+2023-11-27:
+
+* add support for fractions
+
 2023-11-24:
 
 * add support for indefinite pronouns "unsereiner" and "unsereins"

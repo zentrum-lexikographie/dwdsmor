@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # tuebadz_coverage.py -- TüBa-D/Z library for coverage tests
-# Gregor Middell and Andreas Nolda 2023-10-16
+# Gregor Middell and Andreas Nolda 2023-11-27
 
 from collections import namedtuple
 from xml.etree.ElementTree import iterparse
@@ -9,7 +9,7 @@ from dwdsmor import analyse_word
 
 
 # mapping between divergent STTS and SMOR part-of-speech categories
-POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
+POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD", "FRAC"],
            "ADJD":    ["ADJ"],
            "ADV":     ["ADV", "ADJ"],
            "APPO":    ["POSTP"],
@@ -17,7 +17,7 @@ POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD"],
            "APPRART": ["PREPART"],
            "APZR":    ["POSTP", "PREP", "ADV"],
            "ART":     ["ART"],
-           "CARD":    ["CARD"],
+           "CARD":    ["CARD", "FRAC"],
            "FM":      ["NN", "ADJ", "PREP"],  # ...
            "ITJ":     ["INTJ"],
            "KOKOM":   ["CONJ"],

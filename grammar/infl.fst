@@ -1,6 +1,6 @@
 % infl.fst
-% Version 5.5
-% Andreas Nolda 2023-11-24
+% Version 5.6
+% Andreas Nolda 2023-11-27
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1436,6 +1436,9 @@ $Card0$ = <+CARD>:<> $CardSuff0$
 % erst-
 $Ord$ = {<+ORD>}:{<FB>} $AdjInflSuff$
 
+% eineinhalb, anderthalb, drittel
+$Frac$ = <+FRAC>:<> $CardSuff0$
+
 % 1
 $DigCard$ = {<+CARD><Invar>}:{}
 
@@ -1894,6 +1897,7 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<DigOrd>                $DigOrd$            | \
          <>:<FamName_0>             $FamName_0$         | \
          <>:<FamName_s>             $FamName_s$         | \
+         <>:<Frac>                  $Frac$              | \
          <>:<Indef0>                $Indef0$            | \
          <>:<Indef-all>             $Indef-all$         | \
          <>:<Indef-beid>            $Indef-beid$        | \

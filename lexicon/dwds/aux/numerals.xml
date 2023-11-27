@@ -2,6 +2,33 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
+      <Schreibung>achtel</Schreibung>
+      <Grammatik>
+        <Wortklasse>Bruchzahl</Wortklasse>
+      </Grammatik>
+      <Diasystematik/>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>drittel</Schreibung>
+      <Grammatik>
+        <Wortklasse>Bruchzahl</Wortklasse>
+      </Grammatik>
+      <Diasystematik/>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>elftel</Schreibung>
+      <Grammatik>
+        <Wortklasse>Bruchzahl</Wortklasse>
+      </Grammatik>
+      <Diasystematik/>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung hidx="1">ein</Schreibung>
       <Grammatik>
         <Wortklasse>Kardinalzahl</Wortklasse>

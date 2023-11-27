@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 6.12
-% Andreas Nolda 2023-11-24
+% Version 6.13
+% Andreas Nolda 2023-11-27
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -168,7 +168,7 @@
                     <Name-Pl_x><FamName_0><FamName_s>
 
 #Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier> \
-                   <Card-zwei><DigCard><DigFrac><DigOrd><Ord><Roman>
+                   <Card-zwei><DigCard><DigFrac><DigOrd><Frac><Ord><Roman>
 
 #Pro-inflection# = <Dem><Dem-dies><Dem-solch><DemDef><Indef0><Indef-all> \
                    <Indef-beid><Indef-ein><Indef-einig><Indef-irgendein> \

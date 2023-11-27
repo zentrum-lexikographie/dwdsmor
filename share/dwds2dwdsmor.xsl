@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.7 -->
-<!-- Andreas Nolda 2023-11-24 -->
+<!-- Version 14.8 -->
+<!-- Andreas Nolda 2023-11-27 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -686,6 +686,23 @@
             <!-- ordinals -->
             <xsl:when test="$pos='Ordinalzahl'">
               <xsl:call-template name="ordinal-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <!-- fractions -->
+            <xsl:when test="$pos='Bruchzahl'">
+              <xsl:call-template name="fraction-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
                 <xsl:with-param name="lemma-index"
@@ -1890,6 +1907,19 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
+            <xsl:when test="$pos='Bruchzahl' and
+                            string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
+              <xsl:call-template name="fraction-comp-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="stem"
+                                select="normalize-space(dwds:Kompositionsstamm)"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
             <xsl:when test="$pos='Verb' and
                             string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
               <xsl:call-template name="verb-comp-entry-set">
@@ -1909,6 +1939,7 @@
                             $pos='Eigenname' or
                             $pos='Kardinalzahl' or
                             $pos='Ordinalzahl' or
+                            $pos='Bruchzahl' or
                             $pos='Verb'">
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
@@ -2217,6 +2248,18 @@
                                   </xsl:when>
                                   <xsl:when test="$pos1='Ordinalzahl'">
                                     <xsl:call-template name="ordinal-comp-entry-set">
+                                      <xsl:with-param name="lemma"
+                                                      select="$lemma1"/>
+                                      <xsl:with-param name="stem"
+                                                      select="$comp-stem"/>
+                                      <xsl:with-param name="abbreviation"
+                                                      select="$abbreviation1"/>
+                                      <xsl:with-param name="etymology"
+                                                      select="$etymology1"/>
+                                    </xsl:call-template>
+                                  </xsl:when>
+                                  <xsl:when test="$pos1='Bruchzahl'">
+                                    <xsl:call-template name="fraction-comp-entry-set">
                                       <xsl:with-param name="lemma"
                                                       select="$lemma1"/>
                                       <xsl:with-param name="stem"

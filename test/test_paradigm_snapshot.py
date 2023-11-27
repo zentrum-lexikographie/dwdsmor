@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2023-11-24
+# Andreas Nolda 2023-11-27
 
 import io
 import csv
@@ -63,6 +63,11 @@ DEMONSTRATIVE_PRONOUN_LEMMAS = ["die",     # DemDef
                                 "diese",   # Dem-dies
                                 "solche",  # Dem-solch
                                 "jene"]    # Dem
+
+
+FRACTION_POS = "FRAC"
+
+FRACTION_LEMMAS = ["anderthalb"]  # Frac
 
 
 INDEFINITE_PRONOUN_POS = "INDEF"
@@ -321,6 +326,11 @@ def test_cardinal_paradigm_snapshot(tsv_snapshot_test, transducer):
 
 def test_demonstrative_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
     paradigms = get_paradigms(transducer, DEMONSTRATIVE_PRONOUN_LEMMAS, DEMONSTRATIVE_PRONOUN_POS)
+    assert paradigms == tsv_snapshot_test
+
+
+def test_fraction_paradigm_snapshot(tsv_snapshot_test, transducer):
+    paradigms = get_paradigms(transducer, FRACTION_LEMMAS, FRACTION_POS)
     assert paradigms == tsv_snapshot_test
 
 
