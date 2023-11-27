@@ -175,7 +175,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Floß",         # NNeut_es_$e
                "Lied",         # NNeut_es_er
                "Buch",         # NNeut_es_$er
-               "Bett",         # NNeut_es_en
+               "Ohr",          # NNeut_es_en
                "Zeichen",      # NNeut_s_x
                "Examen",       # NNeut_s_x, NNeut-en/ina
                "Feuer",        # NNeut_s_0

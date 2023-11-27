@@ -91,14 +91,6 @@ Bau			NN Masc	Nom Pl	Baue, Bauten
 Bau			NN Masc	Acc Pl	Baue, Bauten
 Bau			NN Masc	Dat Pl	Bauen, Bauten
 Bau			NN Masc	Gen Pl	Baue, Bauten
-Bett			NN Neut	Nom Sg	Bett
-Bett			NN Neut	Acc Sg	Bett
-Bett			NN Neut	Dat Sg	Bett, Bette (va.)
-Bett			NN Neut	Gen Sg	Bettes, Betts
-Bett			NN Neut	Nom Pl	Betten
-Bett			NN Neut	Acc Pl	Betten
-Bett			NN Neut	Dat Pl	Betten
-Bett			NN Neut	Gen Pl	Betten
 Block			NN Masc	Nom Sg	Block
 Block			NN Masc	Acc Sg	Block
 Block			NN Masc	Dat Sg	Block, Blocke (va.)
@@ -591,6 +583,14 @@ Nichts			NN Neut	Nom Pl	Nichtse
 Nichts			NN Neut	Acc Pl	Nichtse
 Nichts			NN Neut	Dat Pl	Nichtsen
 Nichts			NN Neut	Gen Pl	Nichtse
+Ohr			NN Neut	Nom Sg	Ohr
+Ohr			NN Neut	Acc Sg	Ohr
+Ohr			NN Neut	Dat Sg	Ohr, Ohre (va.)
+Ohr			NN Neut	Gen Sg	Ohres, Ohrs
+Ohr			NN Neut	Nom Pl	Ohren
+Ohr			NN Neut	Acc Pl	Ohren
+Ohr			NN Neut	Dat Pl	Ohren
+Ohr			NN Neut	Gen Pl	Ohren
 Oma			NN Fem	Nom Sg	Oma
 Oma			NN Fem	Acc Sg	Oma
 Oma			NN Fem	Dat Sg	Oma

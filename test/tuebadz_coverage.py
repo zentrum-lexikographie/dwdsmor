@@ -11,7 +11,7 @@ from dwdsmor import analyse_word
 # mapping between divergent STTS and SMOR part-of-speech categories
 POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD", "FRAC"],
            "ADJD":    ["ADJ"],
-           "ADV":     ["ADV", "ADJ"],
+           "ADV":     ["ADV", "PROADV", "ADJ"],
            "APPO":    ["POSTP"],
            "APPR":    ["PREP"],
            "APPRART": ["PREPART"],
@@ -19,7 +19,7 @@ POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD", "FRAC"],
            "ART":     ["ART"],
            "CARD":    ["CARD", "FRAC"],
            "FM":      ["NN", "ADJ", "PREP"],  # ...
-           "ITJ":     ["INTJ"],
+           "ITJ":     ["INTJ", "ADV"],
            "KOKOM":   ["CONJ"],
            "KON":     ["CONJ"],
            "KOUI":    ["CONJ"],
@@ -295,6 +295,9 @@ LEMMA_MAP = {"ADJA": {"acht": "achte",
                       "07": "7",
                       "08": "8",
                       "09": "9"},
+
+             "ITJ": {"hm_": "hmm",
+                     "tschüß": "tschüss"},
 
              "KOUS": {"daß": "dass"},
 

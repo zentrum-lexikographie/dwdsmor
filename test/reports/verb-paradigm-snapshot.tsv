@@ -233,6 +233,84 @@ backen	1	2	V haben	2 Pl Subj FutPerf	werdet gebacken haben
 backen	1	2	V haben	3 Pl Subj FutPerf	werden gebacken haben
 backen	1	2	V haben	Sg Imp	back, backe
 backen	1	2	V haben	Pl Imp	backt
+backen	2		V sein	Inf Pres	backen
+backen	2		V sein	Inf Perf	gebacken sein, gebackt sein
+backen	2		V sein	Part Pres	backend
+backen	2		V sein	Part Perf	gebacken, gebackt
+backen	2		V sein	1 Sg Ind Pres	backe
+backen	2		V sein	2 Sg Ind Pres	backst, bäckst
+backen	2		V sein	3 Sg Ind Pres	backt, bäckt
+backen	2		V sein	1 Pl Ind Pres	backen
+backen	2		V sein	2 Pl Ind Pres	backt
+backen	2		V sein	3 Pl Ind Pres	backen
+backen	2		V sein	1 Sg Subj Pres	backe
+backen	2		V sein	2 Sg Subj Pres	backest
+backen	2		V sein	3 Sg Subj Pres	backe
+backen	2		V sein	1 Pl Subj Pres	backen
+backen	2		V sein	2 Pl Subj Pres	backet
+backen	2		V sein	3 Pl Subj Pres	backen
+backen	2		V sein	1 Sg Ind Perf	bin gebacken, bin gebackt
+backen	2		V sein	2 Sg Ind Perf	bist gebacken, bist gebackt
+backen	2		V sein	3 Sg Ind Perf	ist gebacken, ist gebackt
+backen	2		V sein	1 Pl Ind Perf	sind gebacken, sind gebackt
+backen	2		V sein	2 Pl Ind Perf	seid gebacken, seid gebackt
+backen	2		V sein	3 Pl Ind Perf	sind gebacken, sind gebackt
+backen	2		V sein	1 Sg Subj Perf	sei gebacken, sei gebackt
+backen	2		V sein	2 Sg Subj Perf	seiest gebacken, seiest gebackt, seist gebacken, seist gebackt
+backen	2		V sein	3 Sg Subj Perf	sei gebacken, sei gebackt
+backen	2		V sein	1 Pl Subj Perf	seien gebacken, seien gebackt
+backen	2		V sein	2 Pl Subj Perf	seiet gebacken, seiet gebackt
+backen	2		V sein	3 Pl Subj Perf	seien gebacken, seien gebackt
+backen	2		V sein	1 Sg Ind Past	backte
+backen	2		V sein	2 Sg Ind Past	backtest
+backen	2		V sein	3 Sg Ind Past	backte
+backen	2		V sein	1 Pl Ind Past	backten
+backen	2		V sein	2 Pl Ind Past	backtet
+backen	2		V sein	3 Pl Ind Past	backten
+backen	2		V sein	1 Sg Subj Past	backte
+backen	2		V sein	2 Sg Subj Past	backtest
+backen	2		V sein	3 Sg Subj Past	backte
+backen	2		V sein	1 Pl Subj Past	backten
+backen	2		V sein	2 Pl Subj Past	backtet
+backen	2		V sein	3 Pl Subj Past	backten
+backen	2		V sein	1 Sg Ind PastPerf	war gebacken, war gebackt
+backen	2		V sein	2 Sg Ind PastPerf	warst gebacken, warst gebackt
+backen	2		V sein	3 Sg Ind PastPerf	war gebacken, war gebackt
+backen	2		V sein	1 Pl Ind PastPerf	waren gebacken, waren gebackt
+backen	2		V sein	2 Pl Ind PastPerf	wart gebacken, wart gebackt
+backen	2		V sein	3 Pl Ind PastPerf	waren gebacken, waren gebackt
+backen	2		V sein	1 Sg Subj PastPerf	wäre gebacken, wäre gebackt
+backen	2		V sein	2 Sg Subj PastPerf	wärest gebacken, wärest gebackt, wärst gebacken, wärst gebackt
+backen	2		V sein	3 Sg Subj PastPerf	wäre gebacken, wäre gebackt
+backen	2		V sein	1 Pl Subj PastPerf	wären gebacken, wären gebackt
+backen	2		V sein	2 Pl Subj PastPerf	wäret gebacken, wäret gebackt, wärt gebacken, wärt gebackt
+backen	2		V sein	3 Pl Subj PastPerf	wären gebacken, wären gebackt
+backen	2		V sein	1 Sg Ind Fut	werde backen
+backen	2		V sein	2 Sg Ind Fut	wirst backen
+backen	2		V sein	3 Sg Ind Fut	wird backen
+backen	2		V sein	1 Pl Ind Fut	werden backen
+backen	2		V sein	2 Pl Ind Fut	werdet backen
+backen	2		V sein	3 Pl Ind Fut	werden backen
+backen	2		V sein	1 Sg Subj Fut	werde backen
+backen	2		V sein	2 Sg Subj Fut	werdest backen
+backen	2		V sein	3 Sg Subj Fut	werde backen
+backen	2		V sein	1 Pl Subj Fut	werden backen
+backen	2		V sein	2 Pl Subj Fut	werdet backen
+backen	2		V sein	3 Pl Subj Fut	werden backen
+backen	2		V sein	1 Sg Ind FutPerf	werde gebacken sein, werde gebackt sein
+backen	2		V sein	2 Sg Ind FutPerf	wirst gebacken sein, wirst gebackt sein
+backen	2		V sein	3 Sg Ind FutPerf	wird gebacken sein, wird gebackt sein
+backen	2		V sein	1 Pl Ind FutPerf	werden gebacken sein, werden gebackt sein
+backen	2		V sein	2 Pl Ind FutPerf	werdet gebacken sein, werdet gebackt sein
+backen	2		V sein	3 Pl Ind FutPerf	werden gebacken sein, werden gebackt sein
+backen	2		V sein	1 Sg Subj FutPerf	werde gebacken sein, werde gebackt sein
+backen	2		V sein	2 Sg Subj FutPerf	werdest gebacken sein, werdest gebackt sein
+backen	2		V sein	3 Sg Subj FutPerf	werde gebacken sein, werde gebackt sein
+backen	2		V sein	1 Pl Subj FutPerf	werden gebacken sein, werden gebackt sein
+backen	2		V sein	2 Pl Subj FutPerf	werdet gebacken sein, werdet gebackt sein
+backen	2		V sein	3 Pl Subj FutPerf	werden gebacken sein, werden gebackt sein
+backen	2		V sein	Sg Imp	back, backe
+backen	2		V sein	Pl Imp	backt
 brauchen			V haben	Inf Pres	brauchen
 brauchen			V haben	Inf Perf	gebraucht haben
 brauchen			V haben	Part Pres	brauchend

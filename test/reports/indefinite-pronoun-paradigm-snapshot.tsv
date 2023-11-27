@@ -1,39 +1,39 @@
 Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
-alle	2	2	INDEF	Invar Invar Invar Invar Attr	all
-alle	2	2	INDEF	Masc Nom Sg St Attr	aller
-alle	2	2	INDEF	Masc Nom Sg St Subst	aller
-alle	2	2	INDEF	Masc Acc Sg St Attr	allen
-alle	2	2	INDEF	Masc Acc Sg St Subst	allen
-alle	2	2	INDEF	Masc Dat Sg St Attr	allem
-alle	2	2	INDEF	Masc Dat Sg St Subst	allem
-alle	2	2	INDEF	Masc Dat Sg Wk Subst	allen (ugs.)
-alle	2	2	INDEF	Masc Gen Sg St Attr	alles, allen (ugs.)
-alle	2	2	INDEF	Masc Gen Sg St Subst	alles
-alle	2	2	INDEF	Neut Nom Sg St Attr	alles
-alle	2	2	INDEF	Neut Nom Sg St Subst	alles
-alle	2	2	INDEF	Neut Acc Sg St Attr	alles
-alle	2	2	INDEF	Neut Acc Sg St Subst	alles
-alle	2	2	INDEF	Neut Dat Sg St Attr	allem
-alle	2	2	INDEF	Neut Dat Sg St Subst	allem
-alle	2	2	INDEF	Neut Dat Sg Wk Subst	allen (ugs.)
-alle	2	2	INDEF	Neut Gen Sg St Attr	alles, allen (ugs.)
-alle	2	2	INDEF	Neut Gen Sg St Subst	alles
-alle	2	2	INDEF	Fem Nom Sg St Attr	alle
-alle	2	2	INDEF	Fem Nom Sg St Subst	alle
-alle	2	2	INDEF	Fem Acc Sg St Attr	alle
-alle	2	2	INDEF	Fem Acc Sg St Subst	alle
-alle	2	2	INDEF	Fem Dat Sg St Attr	aller
-alle	2	2	INDEF	Fem Dat Sg St Subst	aller
-alle	2	2	INDEF	Fem Gen Sg St Attr	aller
-alle	2	2	INDEF	Fem Gen Sg St Subst	aller
-alle	2	2	INDEF	NoGend Nom Pl St Attr	alle
-alle	2	2	INDEF	NoGend Nom Pl St Subst	alle
-alle	2	2	INDEF	NoGend Acc Pl St Attr	alle
-alle	2	2	INDEF	NoGend Acc Pl St Subst	alle
-alle	2	2	INDEF	NoGend Dat Pl St Attr	allen
-alle	2	2	INDEF	NoGend Dat Pl St Subst	allen
-alle	2	2	INDEF	NoGend Gen Pl St Attr	aller
-alle	2	2	INDEF	NoGend Gen Pl St Subst	aller
+alle	2	4	INDEF	Invar Invar Invar Invar Attr	all
+alle	2	4	INDEF	Masc Nom Sg St Attr	aller
+alle	2	4	INDEF	Masc Nom Sg St Subst	aller
+alle	2	4	INDEF	Masc Acc Sg St Attr	allen
+alle	2	4	INDEF	Masc Acc Sg St Subst	allen
+alle	2	4	INDEF	Masc Dat Sg St Attr	allem
+alle	2	4	INDEF	Masc Dat Sg St Subst	allem
+alle	2	4	INDEF	Masc Dat Sg Wk Subst	allen (ugs.)
+alle	2	4	INDEF	Masc Gen Sg St Attr	alles, allen (ugs.)
+alle	2	4	INDEF	Masc Gen Sg St Subst	alles
+alle	2	4	INDEF	Neut Nom Sg St Attr	alles
+alle	2	4	INDEF	Neut Nom Sg St Subst	alles
+alle	2	4	INDEF	Neut Acc Sg St Attr	alles
+alle	2	4	INDEF	Neut Acc Sg St Subst	alles
+alle	2	4	INDEF	Neut Dat Sg St Attr	allem
+alle	2	4	INDEF	Neut Dat Sg St Subst	allem
+alle	2	4	INDEF	Neut Dat Sg Wk Subst	allen (ugs.)
+alle	2	4	INDEF	Neut Gen Sg St Attr	alles, allen (ugs.)
+alle	2	4	INDEF	Neut Gen Sg St Subst	alles
+alle	2	4	INDEF	Fem Nom Sg St Attr	alle
+alle	2	4	INDEF	Fem Nom Sg St Subst	alle
+alle	2	4	INDEF	Fem Acc Sg St Attr	alle
+alle	2	4	INDEF	Fem Acc Sg St Subst	alle
+alle	2	4	INDEF	Fem Dat Sg St Attr	aller
+alle	2	4	INDEF	Fem Dat Sg St Subst	aller
+alle	2	4	INDEF	Fem Gen Sg St Attr	aller
+alle	2	4	INDEF	Fem Gen Sg St Subst	aller
+alle	2	4	INDEF	NoGend Nom Pl St Attr	alle
+alle	2	4	INDEF	NoGend Nom Pl St Subst	alle
+alle	2	4	INDEF	NoGend Acc Pl St Attr	alle
+alle	2	4	INDEF	NoGend Acc Pl St Subst	alle
+alle	2	4	INDEF	NoGend Dat Pl St Attr	allen
+alle	2	4	INDEF	NoGend Dat Pl St Subst	allen
+alle	2	4	INDEF	NoGend Gen Pl St Attr	aller
+alle	2	4	INDEF	NoGend Gen Pl St Subst	aller
 beide			INDEF	Neut Nom Sg St Subst	beides
 beide			INDEF	Neut Nom Sg Wk Subst	beide
 beide			INDEF	Neut Acc Sg St Subst	beides

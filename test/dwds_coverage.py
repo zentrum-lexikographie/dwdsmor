@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwds_coverage.py -- DWDS library for coverage tests
-# Gregor Middell and Andreas Nolda 2023-10-16
+# Gregor Middell and Andreas Nolda 2023-11-27
 
 from collections import namedtuple
 from xml.etree.ElementTree import parse
@@ -15,7 +15,7 @@ POS_MAP = {"Adjektiv":               ["ADJ"],
            "Adverb":                 ["ADV", "PTCL", "INTJ", "CONJ"],
            "bestimmter Artikel":     ["ART"],
            "Bruchzahl":              ["FRAC"],
-           "Demonstrativpronomen":   ["DEM"],
+           "Demonstrativpronomen":   ["DEM", "PROADV"],
            "Eigenname":              ["NPROP"],
            "Indefinitpronomen":      ["INDEF", "ART"],
            "Interjektion":           ["INTJ"],

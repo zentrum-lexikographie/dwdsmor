@@ -38,6 +38,18 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>forschen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Verb</Wortklasse>
+        <Praesens>forscht</Praesens>
+        <Praeteritum>forschte</Praeteritum>
+        <Auxiliar>hat</Auxiliar>
+        <Partizip_II>geforscht</Partizip_II>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>schleppen</Schreibung>
       <Grammatik>
         <Wortklasse>Verb</Wortklasse>
