@@ -2464,7 +2464,6 @@
   <!-- "selbige" -->
   <!-- "selben" -->
   <!-- "selber", "selbst", "höchstselbst" -->
-  <!-- "deretwegen", "derethalben" -->
   <!-- "sone", "son" -->
   <!-- "dergleichen", "derlei" -->
 </xsl:template>
@@ -4481,8 +4480,6 @@
       <xsl:when test="$lemma='welches'"/>
     </xsl:choose>
   </xsl:if>
-  <!-- TODO: -->
-  <!-- "derethalben", "deretwegen" -->
 </xsl:template>
 
 <!-- verbs -->
