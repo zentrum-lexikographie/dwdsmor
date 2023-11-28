@@ -1,3 +1,7 @@
+2023-11-28:
+
+* detect abbreviations also via DWDS word-formation links
+
 2023-11-27:
 
 * add support for fractions

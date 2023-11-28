@@ -131,7 +131,7 @@
       <xsl:message>
         <xsl:text>Warning: "</xsl:text>
         <xsl:value-of select="$lemma"/>
-        <xsl:text>" has derivation stem for UNSUPPORTED suffix "-</xsl:text>
+        <xsl:text>" has derivation stem for unsupported suffix "-</xsl:text>
         <xsl:value-of select="$suff"/>
         <xsl:text>".</xsl:text>
       </xsl:message>
@@ -6646,7 +6646,7 @@
         <xsl:message>
           <xsl:text>Warning: "</xsl:text>
           <xsl:value-of select="$lemma"/>
-          <xsl:text>" has UNSUPPORTED lemma index </xsl:text>
+          <xsl:text>" has unsupported lemma index </xsl:text>
           <xsl:value-of select="$lemma-index"/>
           <xsl:text>.</xsl:text>
         </xsl:message>
@@ -6672,7 +6672,7 @@
         <xsl:message>
           <xsl:text>Warning: "</xsl:text>
           <xsl:value-of select="$lemma"/>
-          <xsl:text>" has UNSUPPORTED paradigm index </xsl:text>
+          <xsl:text>" has unsupported paradigm index </xsl:text>
           <xsl:value-of select="$paradigm-index"/>
           <xsl:text>.</xsl:text>
         </xsl:message>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.8 -->
-<!-- Andreas Nolda 2023-11-27 -->
+<!-- Version 14.9 -->
+<!-- Andreas Nolda 2023-11-28 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2571,17 +2571,26 @@
 
 <xsl:template name="get-abbreviation-value">
   <xsl:choose>
+    <!-- abbreviations with final period -->
     <xsl:when test="ends-with(normalize-space(.),'.')">yes</xsl:when>
+    <!-- acronyms in capital letters -->
     <xsl:when test="matches(normalize-space(.),'^\p{Lu}+$')">yes</xsl:when>
+    <!-- spellings marked as abbreviation -->
     <xsl:when test="parent::dwds:Formangabe[@Typ='Abkürzung']">yes</xsl:when>
-    <xsl:when test="ancestor::dwds:Artikel/dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
-                                                                      [normalize-space(.)='Buchstabe']">yes</xsl:when>
-    <xsl:when test="ancestor::dwds:Artikel/dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
-                                                                      [normalize-space(.)='Tonbezeichnung']">yes</xsl:when>
-    <xsl:when test="ancestor::dwds:Artikel/dwds:Lesart/dwds:Definition[@Typ='Basis']
-                                                                      [matches(normalize-space(.),'^der Laut \p{L}$')]">yes</xsl:when>
-    <xsl:when test="ancestor::dwds:Artikel/dwds:Lesart/dwds:Definition[@Typ='Basis']
-                                                                      [matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]">yes</xsl:when>
+    <!-- further acronyms and other discontinuous clippings -->
+    <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Verweise[@Typ='Kurzwortbildung']
+                                                                            [not(dwds:Verweis/dwds:Ziellemma[matches(normalize-space(.),normalize-space(current()),'i')])]">yes</xsl:when>
+    <!-- letter names -->
+    <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
+                                                                                          [normalize-space(.)='Buchstabe']">yes</xsl:when>
+    <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Lesart/dwds:Definition[@Typ='Basis']
+                                                                                          [matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]">yes</xsl:when>
+    <!-- sound names -->
+    <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Lesart/dwds:Definition[@Typ='Basis']
+                                                                                          [matches(normalize-space(.),'^der Laut \p{L}$')]">yes</xsl:when>
+    <!-- note names -->
+    <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
+                                                                                          [normalize-space(.)='Tonbezeichnung']">yes</xsl:when>
     <xsl:otherwise>no</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
