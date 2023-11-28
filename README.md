@@ -225,8 +225,8 @@ of word forms in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./dwdsmor.py -h
-usage: dwdsmor.py [-h] [-c] [-C] [-E] [-H] [-I] [-j] [-n] [-N] [-P] [-t TRANSDUCER] [-v] [-W]
-                  [-y] [input] [output]
+usage: dwdsmor.py [-h] [-c] [-C] [-E] [-H] [-I] [-j] [-m] [-n] [-N] [-P] [-t TRANSDUCER]
+                  [-v] [-W] [-y] [input] [output]
 
 positional arguments:
   input                 input file (one word form per line; default: stdin)
@@ -240,6 +240,7 @@ optional arguments:
   -H, --no-header       suppress table header
   -I, --no-index        do not output lemma and paradigm index
   -j, --json            output JSON object
+  -m, --minimal         prefer analyses with minimal number of stem boundaries
   -n, --no-analysis     do not output raw analysis
   -N, --no-segmentation
                         do not output segmented lemma
