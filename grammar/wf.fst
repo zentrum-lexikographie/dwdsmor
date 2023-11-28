@@ -1,6 +1,6 @@
 % wf.fst
-% Version 7.1
-% Andreas Nolda 2023-07-03
+% Version 7.2
+% Andreas Nolda 2023-11-28
 
 #include "symbols.fst"
 
@@ -100,10 +100,10 @@ $DerFilter$ = $DerRestrPOS$ & $DerRestrAbbr$
 
 % compounding restrictions
 
-% restrict compounding to nominal bases (?)
-$CompRestrPOS$ = (($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* <NN> $C$* <HB>? <CB>)  \
-                 (($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* <NN> $C$* <HB>? <CB>)* \
-                 (($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* <NN> $C$*)
+% provisionally restrict compounding to nominal bases
+$CompRestrPOS$ = (($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$* <HB>? <CB>)  \
+                 (($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$* <HB>? <CB>)* \
+                 (($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*)
 
 % exclude compounding of abbreviated non-final bases without a following hyphen
 $CompRestrAbbr1$ = !((($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem>        $C$* (<DB> <Suffix> $C$*)* <HB>? <CB>)* \
