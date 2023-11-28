@@ -10,7 +10,7 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# #boundary-trigg
 % context
 
 $C$ = .
-$C$ = $C$-[#entry-type# <CB><DB>]
+$C$ = $C$-[#entry-type# <CB><HB><DB>]
 
 $O$ = [#orth-trigger#]
 
