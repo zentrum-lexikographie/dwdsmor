@@ -3,6 +3,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 2023-11-28:
 
 * allow for proper nouns as compounding bases
+* allow for abbreviated final bases in hyphenated compounds
 
 2023-11-27:
 
