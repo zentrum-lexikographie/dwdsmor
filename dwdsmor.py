@@ -333,21 +333,21 @@ def analyse_words(transducer, words):
     return tuple(analyse_word(transducer, word) for word in words)
 
 
+def remove_nonminimal_analyses(analyses):
+    minimal_analyses = []
+    minimum = min([analysis["seg"].count("<#>") for analysis in analyses])
+    for analysis in analyses:
+        if analysis["seg"].count("<#>") == minimum:
+            minimal_analyses.append(analysis)
+    return minimal_analyses
+
+
 def remove_duplicate_analyses(analyses):
     unique_analyses = []
     for analysis in analyses:
         if analysis not in unique_analyses:
             unique_analyses.append(analysis)
     return unique_analyses
-
-
-def remove_nonminimal_analyses(analyses):
-    minimal_analyses = []
-    minimum = min([analysis["analysis"].count("<#>") for analysis in analyses])
-    for analysis in analyses:
-        if analysis["analysis"].count("<#>") == minimum:
-            minimal_analyses.append(analysis)
-    return minimal_analyses
 
 
 def create_word_analyses(words, analyses_tuple,
@@ -357,9 +357,9 @@ def create_word_analyses(words, analyses_tuple,
     for word, analyses in zip(words, analyses_tuple):
         analyses = [analysis.as_dict(no_analysis, no_segmentation,
                                      no_index, no_wf, no_empty) for analysis in analyses]
-        analyses = remove_duplicate_analyses(analyses)
-        if minimal:
+        if minimal and not no_segmentation:
             analyses = remove_nonminimal_analyses(analyses)
+        analyses = remove_duplicate_analyses(analyses)
         word_analyses.append({"word": word,
                               "analyses": analyses})
     return word_analyses
@@ -550,6 +550,10 @@ def main():
 
         transducer = sfst_transduce.CompactTransducer(args.transducer)
         transducer.both_layers = False
+
+        if args.minimal and args.no_segmentation:
+            print("Warning: --minimal has no effect when used with --no-segmentation",
+                  file=sys.stderr)
 
         if args.json:
             output_format = "json"
