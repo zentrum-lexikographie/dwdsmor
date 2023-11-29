@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.9 -->
-<!-- Andreas Nolda 2023-11-28 -->
+<!-- Version 14.10 -->
+<!-- Andreas Nolda 2023-11-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -250,7 +250,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">Ptcl-Adj</xsl:with-param>
+                    <xsl:with-param name="class">PtclAdj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -294,7 +294,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">Conj-Sub</xsl:with-param>
+                    <xsl:with-param name="class">ConjSub</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -324,7 +324,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">Ptcl-Neg</xsl:with-param>
+                    <xsl:with-param name="class">PtclNeg</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -354,7 +354,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">Conj-Compar</xsl:with-param>
+                    <xsl:with-param name="class">ConjCompar</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -384,7 +384,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">Ptcl-Adj</xsl:with-param>
+                    <xsl:with-param name="class">PtclAdj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1333,7 +1333,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">Ptcl-Adj</xsl:with-param>
+                    <xsl:with-param name="class">PtclAdj</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>

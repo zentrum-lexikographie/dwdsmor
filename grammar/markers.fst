@@ -1,6 +1,6 @@
 % markers.fst
 % Version 7.5
-% Andreas Nolda 2023-10-16
+% Andreas Nolda 2023-11-29
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -12,7 +12,7 @@ ALPHABET = [#entry-type# #char# #category# #stem-type# #suff# #origin# \
             #inflection# #auxiliary# <Abbr><FB><VB><ge>] \
            e:<e>
 
-$SchwaTrigger$ = e <=> <e> ([lr] <V> .* <VVReg-el/er>)
+$SchwaTrigger$ = e <=> <e> ([lr] <V> .* <VVReg-el-er>)
 
 $SurfaceTriggers$ = $SchwaTrigger$
 

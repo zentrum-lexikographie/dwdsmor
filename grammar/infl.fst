@@ -1,5 +1,5 @@
 % infl.fst
-% Version 5.6
+% Version 5.7
 % Andreas Nolda 2023-11-29
 
 % based on code from SMORLemma by Rico Sennrich
@@ -587,45 +587,45 @@ $NNoGend/Pl_0$ = {<+NN><NoGend>}:{} $NPl_0$
 
 % proper names
 
-$Name-Masc_0$ = {<+NPROP><Masc>}:{} $NSg_0$
+$NameMasc_0$ = {<+NPROP><Masc>}:{} $NSg_0$
 
 % Andreas, Andreas'
-$Name-Masc_apos$ = {<+NPROP><Masc>}:{} $NSg_0$ | \
-                   {<+NPROP><Masc><Gen><Sg>}:{’}
+$NameMasc_apos$ = {<+NPROP><Masc>}:{} $NSg_0$ | \
+                  {<+NPROP><Masc><Gen><Sg>}:{’}
 
-$Name-Masc_es$ = {<+NPROP><Masc>}:{} $NSg_es$
+$NameMasc_es$ = {<+NPROP><Masc>}:{} $NSg_es$
 
-$Name-Masc_s$ = {<+NPROP><Masc>}:{} $NSg_s$
+$NameMasc_s$ = {<+NPROP><Masc>}:{} $NSg_s$
 
-$Name-Neut_0$ = {<+NPROP><Neut>}:{} $NSg_0$
+$NameNeut_0$ = {<+NPROP><Neut>}:{} $NSg_0$
 
 % Paris, Paris'
-$Name-Neut_apos$ = {<+NPROP><Neut>}:{} $NSg_0$ | \
-                   {<+NPROP><Neut><Gen><Sg>}:{’}
+$NameNeut_apos$ = {<+NPROP><Neut>}:{} $NSg_0$ | \
+                  {<+NPROP><Neut><Gen><Sg>}:{’}
 
-$Name-Neut_es$ = {<+NPROP><Neut>}:{} $NSg_es$
+$NameNeut_es$ = {<+NPROP><Neut>}:{} $NSg_es$
 
-$Name-Neut_s$ = {<+NPROP><Neut>}:{} $NSg_s$
+$NameNeut_s$ = {<+NPROP><Neut>}:{} $NSg_s$
 
-$Name-Fem_0$ = {<+NPROP><Fem>}:{} $NSg_0$
+$NameFem_0$ = {<+NPROP><Fem>}:{} $NSg_0$
 
 % Felicitas, Felicitas'
-$Name-Fem_apos$ = {<+NPROP><Fem>}:{} $NSg_0$ | \
-                  {<+NPROP><Fem><Gen><Sg>}:{’}
+$NameFem_apos$ = {<+NPROP><Fem>}:{} $NSg_0$ | \
+                 {<+NPROP><Fem><Gen><Sg>}:{’}
 
-$Name-Fem_s$ = {<+NPROP><Fem>}:{} $NSg_s$
+$NameFem_s$ = {<+NPROP><Fem>}:{} $NSg_s$
 
-$Name-Pl_x$ = {<+NPROP><NoGend>}:{} $NPl_x$
+$NameNoGend/Pl_x$ = {<+NPROP><NoGend>}:{} $NPl_x$
 
-$Name-Pl_0$ = {<+NPROP><NoGend>}:{} $NPl_0$
+$NameNoGend/Pl_0$ = {<+NPROP><NoGend>}:{} $NPl_0$
 
 % family names ending in -s, -z
-$FamName_0$ = {<+NPROP><NoGend>}:{}    $NSg_0$ | \
-              {<+NPROP><NoGend>}:{ens} $NPl_x$
+$Name-Fam_0$ = {<+NPROP><NoGend>}:{}    $NSg_0$ | \
+               {<+NPROP><NoGend>}:{ens} $NPl_x$
 
 % family names
-$FamName_s$ = {<+NPROP><NoGend>}:{}  $NSg_s$ | \
-              {<+NPROP><NoGend>}:{s} $NPl_x$
+$Name-Fam_s$ = {<+NPROP><NoGend>}:{}  $NSg_s$ | \
+               {<+NPROP><NoGend>}:{s} $NPl_x$
 
 
 % adjectives
@@ -704,39 +704,39 @@ $AdjSup-aller$ = {<+ADJ><Sup><Pred/Adv>}:{sten} | \
                  {<+ADJ><Sup>}:{st} $AdjInflSuff$
 
 % faul, fauler, faulsten
-$Adj+$ =           $AdjPos$  | \
-         {}:{<FB>} $AdjComp$ | \
-         {}:{<FB>} $AdjSup$
+$Adj_0$ =           $AdjPos$  | \
+          {}:{<FB>} $AdjComp$ | \
+          {}:{<FB>} $AdjSup$
 
 % bunt, bunter, buntesten
-$Adj+e$ =            $AdjPos$  | \
+$Adj_e$ =            $AdjPos$  | \
           {}:{<FB>}  $AdjComp$ | \
           {}:{<FB>e} $AdjSup$
 
 % frei, freier, frei(e)sten
-$Adj+(e)$ =            $AdjPos$  | \
+$Adj_(e)$ =            $AdjPos$  | \
             {}:{<FB>}  $AdjComp$ | \
             {}:{<FB>}  $AdjSup$  | \
             {}:{<FB>e} $AdjSup$
 
 % warm, wärmer, wärmsten
-$Adj\$$ =           $AdjPos$  | \
-          {}:{<UL>} $AdjComp$ | \
-          {}:{<UL>} $AdjSup$
+$Adj_\$$ =           $AdjPos$  | \
+           {}:{<UL>} $AdjComp$ | \
+           {}:{<UL>} $AdjSup$
 
 % kalt, kälter, kältesten
-$Adj\$e$ =            $AdjPos$  | \
-           {}:{<UL>}  $AdjComp$ | \
-           {}:{<UL>e} $AdjSup$
+$Adj_\$e$ =            $AdjPos$  | \
+            {}:{<UL>}  $AdjComp$ | \
+            {}:{<UL>e} $AdjSup$
 
 % dunkel; finster
-$Adj-el/er$ = {}:{<^Ax>} $Adj+$
+$Adj-el-er_0$ = {}:{<^Ax>} $Adj_0$
 
 % dunkel, dünkler, dünkelsten (regional variant)
-$Adj\$-el/er$ = {}:{<^Ax>} $Adj\$$
+$Adj-el-er_\$$ = {}:{<^Ax>} $Adj_\$$
 
 % deutsch; [das] Deutsch
-$Adj+Lang$ = $Adj+$ | \
+$Adj-Lang$ = $Adj_0$ | \
              $NNeut/Sg_s$
 
 
@@ -1488,15 +1488,15 @@ $VAPres2SgInd$ = {<+V><2><Sg><Pres><Ind>}:{}
 $VAPres3SgInd$ = {<+V><3><Sg><Pres><Ind>}:{}
 
 % sind; haben; werden; tun
-$VAPres1/3PlInd$ = {<+V><1><Pl><Pres><Ind>}:{} | \
-                   {<+V><3><Pl><Pres><Ind>}:{}
+$VAPres13PlInd$ = {<+V><1><Pl><Pres><Ind>}:{} | \
+                  {<+V><3><Pl><Pres><Ind>}:{}
 
 % seid; habt; werdet; tut
 $VAPres2PlInd$ = {<+V><2><Pl><Pres><Ind>}:{}
 
 % sei; habe; werde; tue
-$VAPres1/3SgSubj$ = {<+V><1><Sg><Pres><Subj>}:{<FB>} | \
-                    {<+V><3><Sg><Pres><Subj>}:{<FB>}
+$VAPres13SgSubj$ = {<+V><1><Sg><Pres><Subj>}:{<FB>} | \
+                   {<+V><3><Sg><Pres><Subj>}:{<FB>}
 
 % seist, seiest; habest; werdest; tuest
 $VAPres2SgSubj$ = {<+V><2><Sg><Pres><Subj>}:{<FB>st}
@@ -1542,10 +1542,10 @@ $VPP-t$ =  {}:{<INS-E>t} $VPPast$
 $VInf$ = {<+V><Inf>}:{} | \
          {<+V><Inf><zu>}:{<^zz>}
 
-$VInf+PPres$ =        $VInf$ | \
+$VInf_PPres$ =        $VInf$ | \
                {}:{d} $VPPres$
 
-$VInfStem$ = {}:{<FB>en} $VInf+PPres$
+$VInfStem$ = {}:{<FB>en} $VInf_PPres$
 
 % sein, seiend; tun, tuend
 $VInfStem-n$ = {}:{<FB>n}   $VInf$ | \
@@ -1674,20 +1674,20 @@ $VVPres$ = $VInflPresReg$ | \
 $VVPres1$ = $VInflPres1$ | \
             $VInfStem$
 
-$VVPres1+Imp$ = $VImpSg$ | \
+$VVPres1_Imp$ = $VImpSg$ | \
                 $VVPres1$
 
 $VVPres2$ = $VInflPres2$
 
 $VVPres2t$ = $VInflPres2t$
 
-$VVPres2+Imp$ = $VImpSg$ | \
+$VVPres2_Imp$ = $VImpSg$ | \
                 $VVPres2$
 
-$VVPres2+Imp0$ = $VImpSg0$ | \
+$VVPres2_Imp0$ = $VImpSg0$ | \
                  $VVPres2$
 
-$VVPres2t+Imp0$ = $VImpSg0$ | \
+$VVPres2t_Imp0$ = $VImpSg0$ | \
                   $VVPres2t$
 
 % bedarf-; weiss-
@@ -1724,11 +1724,11 @@ $VVReg+sein$ = $VInflReg$ | \
                $VPP-t$ $sein$ | \
                $VInfStem$
 
-$VVReg-el/er$ = $VVReg$
+$VVReg-el-er$ = $VVReg$
 
-$VVReg-el/er+haben$ = $VVReg+haben$
+$VVReg-el-er+haben$ = $VVReg+haben$
 
-$VVReg-el/er+sein$ = $VVReg+sein$
+$VVReg-el-er+sein$ = $VVReg+sein$
 
 $VMPastSubj$ = $VPastSubjReg$
 
@@ -1765,17 +1765,17 @@ $VVPP-t+sein$ = $VPP-t$ $sein$
 $Prep$ = {<+PREP>}:{}
 
 % unterm
-$Prep/Art-m$ = {<+PREPART><Masc><Dat><Sg>}:{} | \
+$Prep+Art-m$ = {<+PREPART><Masc><Dat><Sg>}:{} | \
                {<+PREPART><Neut><Dat><Sg>}:{}
 
 % untern
-$Prep/Art-n$ = {<+PREPART><Masc><Acc><Sg>}:{}
+$Prep+Art-n$ = {<+PREPART><Masc><Acc><Sg>}:{}
 
 % unters
-$Prep/Art-s$ = {<+PREPART><Neut><Acc><Sg>}:{}
+$Prep+Art-s$ = {<+PREPART><Neut><Acc><Sg>}:{}
 
 % zur
-$Prep/Art-r$ = {<+PREPART><Fem><Dat><Sg>}:{}
+$Prep+Art-r$ = {<+PREPART><Fem><Dat><Sg>}:{}
 
 % zufolge
 $Postp$ = {<+POSTP>}:{}
@@ -1783,49 +1783,25 @@ $Postp$ = {<+POSTP>}:{}
 $Circp$ = {<+CIRCP>}:{}
 
 
-% abbreviations
-
-% Kfm. (= Kaufmann)
-$Abbr_NMasc$ = {<+NN><Masc><Invar>}:{}
-
-% Gr. (= Gros)
-$Abbr_NNeut$ = {<+NN><Neut><Invar>}:{}
-
-% Kffr. (= Kauffrau)
-$Abbr_NFem$ = {<+NN><Fem><Invar>}:{}
-
-% Gebr. (= Gebrüder)
-$Abbr_NNoGend$ = {<+NN><NoGend><Invar>}:{}
-
-% f. (= folgende)
-$Abbr_Adj$ = {<+ADJ><Pos><Invar>}:{}
-
-% Ew. (= Euer)
-$Abbr_Poss$ = {<+POSS><Attr><Invar>}:{}
-
-% vgl. (= vergleiche)
-$Abbr_VImp$ = {<+V><Imp><Invar>}:{}
-
-
 % other words
 
 $Intj$ = {<+INTJ>}:{}
 
-$Conj-Inf$ = {<+CONJ><Inf>}:{}
+$ConjInf$ = {<+CONJ><Inf>}:{}
 
-$Conj-Coord$ = {<+CONJ><Coord>}:{}
+$ConjCoord$ = {<+CONJ><Coord>}:{}
 
-$Conj-Sub$ = {<+CONJ><Sub>}:{}
+$ConjSub$ = {<+CONJ><Sub>}:{}
 
-$Conj-Compar$ = {<+CONJ><Compar>}:{}
+$ConjCompar$ = {<+CONJ><Compar>}:{}
 
-$PInd-Invar$ = {<+INDEF><Invar>}:{}
+$PIndInvar$ = {<+INDEF><Invar>}:{}
 
 $ProAdv$ = {<+PROADV>}:{}
 
-$Ptcl-Adj$ = {<+PTCL><Adj>}:{}
+$PtclAdj$ = {<+PTCL><Adj>}:{}
 
-$Ptcl-Neg$ = {<+PTCL><Neg>}:{}
+$PtclNeg$ = {<+PTCL><Neg>}:{}
 
 $Ptcl-zu$ = {<+PTCL><zu>}:{}
 
@@ -1841,37 +1817,61 @@ $Pref/N$ = {<+VPART><NN>}:{}
 
 $Pref/V$ = {<+VPART><V>}:{}
 
-$Pref/Sep$ = {<+VPART>}:{}
+$VPart$ = {<+VPART>}:{}
+
+
+% abbreviations
+
+% Kfm. (= Kaufmann)
+$AbbrNMasc$ = {<+NN><Masc><Invar>}:{}
+
+% Gr. (= Gros)
+$AbbrNNeut$ = {<+NN><Neut><Invar>}:{}
+
+% Kffr. (= Kauffrau)
+$AbbrNFem$ = {<+NN><Fem><Invar>}:{}
+
+% Gebr. (= Gebrüder)
+$AbbrNNoGend$ = {<+NN><NoGend><Invar>}:{}
+
+% f. (= folgende)
+$AbbrAdj$ = {<+ADJ><Pos><Invar>}:{}
+
+% Ew. (= Euer)
+$AbbrPoss$ = {<+POSS><Attr><Invar>}:{}
+
+% vgl. (= vergleiche)
+$AbbrVImp$ = {<+V><Imp><Invar>}:{}
 
 
 % inflection transducer
 
-$INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
-         <>:<Abbr_NFem>             $Abbr_NFem$         | \
-         <>:<Abbr_NMasc>            $Abbr_NMasc$        | \
-         <>:<Abbr_NNeut>            $Abbr_NNeut$        | \
-         <>:<Abbr_NNoGend>          $Abbr_NNoGend$      | \
-         <>:<Abbr_Poss>             $Abbr_Poss$         | \
-         <>:<Abbr_VImp>             $Abbr_VImp$         | \
-         <>:<Adj$-el/er>            $Adj\$-el/er$       | \
-         <>:<Adj$>                  $Adj\$$             | \
-         <>:<Adj$e>                 $Adj\$e$            | \
-         <>:<Adj+(e)>               $Adj+(e)$           | \
-         <>:<Adj+>                  $Adj+$              | \
-         <>:<Adj+e>                 $Adj+e$             | \
-         <>:<Adj+Lang>              $Adj+Lang$          | \
-         <>:<Adj-el/er>             $Adj-el/er$         | \
-         <>:<AdjComp0-mehr>         $AdjComp0-mehr$     | \
+$INFL$ = <>:<AbbrAdj>               $AbbrAdj$           | \
+         <>:<AbbrNFem>              $AbbrNFem$          | \
+         <>:<AbbrNMasc>             $AbbrNMasc$         | \
+         <>:<AbbrNNeut>             $AbbrNNeut$         | \
+         <>:<AbbrNNoGend>           $AbbrNNoGend$       | \
+         <>:<AbbrPoss>              $AbbrPoss$          | \
+         <>:<AbbrVImp>              $AbbrVImp$          | \
+         <>:<Adj-el-er_$>           $Adj-el-er_\$$      | \
+         <>:<Adj-el-er_0>           $Adj-el-er_0$       | \
+         <>:<Adj-Lang>              $Adj-Lang$          | \
+         <>:<Adj_$>                 $Adj_\$$            | \
+         <>:<Adj_$e>                $Adj_\$e$           | \
+         <>:<Adj_(e)>               $Adj_(e)$           | \
+         <>:<Adj_0>                 $Adj_0$             | \
+         <>:<Adj_e>                 $Adj_e$             | \
          <>:<AdjComp>               $AdjComp$           | \
-         <>:<AdjPos0-viel>          $AdjPos0-viel$      | \
+         <>:<AdjComp0-mehr>         $AdjComp0-mehr$     | \
+         <>:<AdjPos>                $AdjPos$            | \
          <>:<AdjPos0>               $AdjPos0$           | \
+         <>:<AdjPos0-viel>          $AdjPos0-viel$      | \
          <>:<AdjPos0Attr>           $AdjPos0Attr$       | \
          <>:<AdjPos0AttrSubst>      $AdjPos0AttrSubst$  | \
-         <>:<AdjPos>                $AdjPos$            | \
          <>:<AdjPosAttr>            $AdjPosAttr$        | \
          <>:<AdjPosPred>            $AdjPosPred$        | \
-         <>:<AdjSup-aller>          $AdjSup-aller$      | \
          <>:<AdjSup>                $AdjSup$            | \
+         <>:<AdjSup-aller>          $AdjSup-aller$      | \
          <>:<Adv>                   $Adv$               | \
          <>:<AdvComp>               $AdvComp$           | \
          <>:<AdvComp0>              $AdvComp0$          | \
@@ -1887,10 +1887,10 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<Card-vier>             $Card-vier$         | \
          <>:<Card-zwei>             $Card-zwei$         | \
          <>:<Circp>                 $Circp$             | \
-         <>:<Conj-Compar>           $Conj-Compar$       | \
-         <>:<Conj-Coord>            $Conj-Coord$        | \
-         <>:<Conj-Inf>              $Conj-Inf$          | \
-         <>:<Conj-Sub>              $Conj-Sub$          | \
+         <>:<ConjCompar>            $ConjCompar$        | \
+         <>:<ConjCoord>             $ConjCoord$         | \
+         <>:<ConjInf>               $ConjInf$           | \
+         <>:<ConjSub>               $ConjSub$           | \
          <>:<Dem>                   $Dem$               | \
          <>:<Dem-alldem>            $Dem-alldem$        | \
          <>:<Dem-dies>              $Dem-dies$          | \
@@ -1899,8 +1899,6 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<DigCard>               $DigCard$           | \
          <>:<DigFrac>               $DigFrac$           | \
          <>:<DigOrd>                $DigOrd$            | \
-         <>:<FamName_0>             $FamName_0$         | \
-         <>:<FamName_s>             $FamName_s$         | \
          <>:<Frac>                  $Frac$              | \
          <>:<Indef0>                $Indef0$            | \
          <>:<Indef-all>             $Indef-all$         | \
@@ -1931,6 +1929,21 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<IProNeutGenSg>         $IProNeutGenSg$     | \
          <>:<IProNeutNomSg>         $IProNeutNomSg$     | \
          <>:<Intj>                  $Intj$              | \
+         <>:<Name-Fam_0>            $Name-Fam_0$        | \
+         <>:<Name-Fam_s>            $Name-Fam_s$        | \
+         <>:<NameFem_0>             $NameFem_0$         | \
+         <>:<NameFem_apos>          $NameFem_apos$      | \
+         <>:<NameFem_s>             $NameFem_s$         | \
+         <>:<NameMasc_0>            $NameMasc_0$        | \
+         <>:<NameMasc_apos>         $NameMasc_apos$     | \
+         <>:<NameMasc_es>           $NameMasc_es$       | \
+         <>:<NameMasc_s>            $NameMasc_s$        | \
+         <>:<NameNeut_0>            $NameNeut_0$        | \
+         <>:<NameNeut_apos>         $NameNeut_apos$     | \
+         <>:<NameNeut_es>           $NameNeut_es$       | \
+         <>:<NameNeut_s>            $NameNeut_s$        | \
+         <>:<NameNoGend/Pl_0>       $NameNoGend/Pl_0$   | \
+         <>:<NameNoGend/Pl_x>       $NameNoGend/Pl_x$   | \
          <>:<NFem-a/en>             $NFem-a/en$         | \
          <>:<NFem-Adj>              $NFem-Adj$          | \
          <>:<NFem-in>               $NFem-in$           | \
@@ -2040,21 +2053,8 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<NNeut_s_x>             $NNeut_s_x$         | \
          <>:<NNoGend/Pl_0>          $NNoGend/Pl_0$      | \
          <>:<NNoGend/Pl_x>          $NNoGend/Pl_x$      | \
-         <>:<Name-Fem_0>            $Name-Fem_0$        | \
-         <>:<Name-Fem_apos>         $Name-Fem_apos$     | \
-         <>:<Name-Fem_s>            $Name-Fem_s$        | \
-         <>:<Name-Masc_0>           $Name-Masc_0$       | \
-         <>:<Name-Masc_apos>        $Name-Masc_apos$    | \
-         <>:<Name-Masc_es>          $Name-Masc_es$      | \
-         <>:<Name-Masc_s>           $Name-Masc_s$       | \
-         <>:<Name-Neut_0>           $Name-Neut_0$       | \
-         <>:<Name-Neut_apos>        $Name-Neut_apos$    | \
-         <>:<Name-Neut_es>          $Name-Neut_es$      | \
-         <>:<Name-Neut_s>           $Name-Neut_s$       | \
-         <>:<Name-Pl_0>             $Name-Pl_0$         | \
-         <>:<Name-Pl_x>             $Name-Pl_x$         | \
          <>:<Ord>                   $Ord$               | \
-         <>:<PInd-Invar>            $PInd-Invar$        | \
+         <>:<PIndInvar>             $PIndInvar$         | \
          <>:<Poss>                  $Poss$              | \
          <>:<Poss-er>               $Poss-er$           | \
          <>:<Poss/Wk>               $Poss/Wk$           | \
@@ -2107,15 +2107,14 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<Pref/Adv>              $Pref/Adv$          | \
          <>:<Pref/N>                $Pref/N$            | \
          <>:<Pref/ProAdv>           $Pref/ProAdv$       | \
-         <>:<Pref/Sep>              $Pref/Sep$          | \
          <>:<Pref/V>                $Pref/V$            | \
-         <>:<Prep/Art-m>            $Prep/Art-m$        | \
-         <>:<Prep/Art-n>            $Prep/Art-n$        | \
-         <>:<Prep/Art-r>            $Prep/Art-r$        | \
-         <>:<Prep/Art-s>            $Prep/Art-s$        | \
+         <>:<Prep+Art-m>            $Prep+Art-m$        | \
+         <>:<Prep+Art-n>            $Prep+Art-n$        | \
+         <>:<Prep+Art-r>            $Prep+Art-r$        | \
+         <>:<Prep+Art-s>            $Prep+Art-s$        | \
          <>:<ProAdv>                $ProAdv$            | \
-         <>:<Ptcl-Adj>              $Ptcl-Adj$          | \
-         <>:<Ptcl-Neg>              $Ptcl-Neg$          | \
+         <>:<PtclAdj>               $PtclAdj$           | \
+         <>:<PtclNeg>               $PtclNeg$           | \
          <>:<Ptcl-zu>               $Ptcl-zu$           | \
          <>:<Rel>                   $Rel$               | \
          <>:<Rel-welch>             $Rel-welch$         | \
@@ -2125,8 +2124,8 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VAPastIndPl>           $VAPastIndPl$       | \
          <>:<VAPastIndSg>           $VAPastIndSg$       | \
          <>:<VAPastSubj2>           $VAPastSubj2$       | \
-         <>:<VAPres1/3PlInd>        $VAPres1/3PlInd$    | \
-         <>:<VAPres1/3SgSubj>       $VAPres1/3SgSubj$   | \
+         <>:<VAPres13PlInd>         $VAPres13PlInd$     | \
+         <>:<VAPres13SgSubj>        $VAPres13SgSubj$    | \
          <>:<VAPres1SgInd>          $VAPres1SgInd$      | \
          <>:<VAPres2PlInd>          $VAPres2PlInd$      | \
          <>:<VAPres2SgInd>          $VAPres2SgInd$      | \
@@ -2134,7 +2133,7 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VAPres3SgInd>          $VAPres3SgInd$      | \
          <>:<VAPresSubjPl>          $VAPresSubjPl$      | \
          <>:<VAPresSubjSg>          $VAPresSubjSg$      | \
-         <>:<VInf+PPres>            $VInf+PPres$        | \
+         <>:<VInf_PPres>            $VInf_PPres$        | \
          <>:<VInf-en>               $VInf-en$           | \
          <>:<VInf-n>                $VInf-n$            | \
          <>:<VInf>                  $VInf$              | \
@@ -2144,6 +2143,7 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VMPastSubj>            $VMPastSubj$        | \
          <>:<VMPresPl>              $VMPresPl$          | \
          <>:<VMPresSg>              $VMPresSg$          | \
+         <>:<VPart>                 $VPart$             | \
          <>:<VPPast>                $VPPast$            | \
          <>:<VPPast><>:<haben>      $VPPast+haben$      | \
          <>:<VPPast><>:<sein>       $VPPast+sein$       | \
@@ -2168,20 +2168,20 @@ $INFL$ = <>:<Abbr_Adj>              $Abbr_Adj$          | \
          <>:<VVPP-t><>:<sein>       $VVPP-t+sein$       | \
          <>:<VVPres>                $VVPres$            | \
          <>:<VVPres1>               $VVPres1$           | \
-         <>:<VVPres1+Imp>           $VVPres1+Imp$       | \
+         <>:<VVPres1_Imp>           $VVPres1_Imp$       | \
          <>:<VVPres2>               $VVPres2$           | \
-         <>:<VVPres2+Imp>           $VVPres2+Imp$       | \
-         <>:<VVPres2+Imp0>          $VVPres2+Imp0$      | \
+         <>:<VVPres2_Imp>           $VVPres2_Imp$       | \
+         <>:<VVPres2_Imp0>          $VVPres2_Imp0$      | \
          <>:<VVPres2t>              $VVPres2t$          | \
-         <>:<VVPres2t+Imp0>         $VVPres2t+Imp0$     | \
+         <>:<VVPres2t_Imp0>         $VVPres2t_Imp0$     | \
          <>:<VVPresPl>              $VVPresPl$          | \
          <>:<VVPresSg>              $VVPresSg$          | \
          <>:<VVReg>                 $VVReg$             | \
          <>:<VVReg><>:<haben>       $VVReg+haben$       | \
          <>:<VVReg><>:<sein>        $VVReg+sein$        | \
-         <>:<VVReg-el/er>           $VVReg-el/er$       | \
-         <>:<VVReg-el/er><>:<haben> $VVReg-el/er+haben$ | \
-         <>:<VVReg-el/er><>:<sein>  $VVReg-el/er+sein$  | \
+         <>:<VVReg-el-er>           $VVReg-el-er$       | \
+         <>:<VVReg-el-er><>:<haben> $VVReg-el-er+haben$ | \
+         <>:<VVReg-el-er><>:<sein>  $VVReg-el-er+sein$  | \
          <>:<VVRegFin>              $VVRegFin$          | \
          <>:<WAdv>                  $WAdv$              | \
          <>:<W-welch>               $W-welch$           | \

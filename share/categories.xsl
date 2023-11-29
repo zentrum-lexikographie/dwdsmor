@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 5.1 -->
-<!-- Andreas Nolda 2023-05-19 -->
+<!-- Version 5.2 -->
+<!-- Andreas Nolda 2023-11-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -12,15 +12,15 @@
 <xsl:variable name="adjective-class-mapping">
   <!-- gradable adjectives: -->
   <!-- superlative: "-sten" or "-ten" -->
-  <class superlative="-sten">Adj+</class>
-  <class superlative="-ten">Adj+</class>
+  <class superlative="-sten">Adj_0</class>
+  <class superlative="-ten">Adj_0</class>
   <!-- superlative: umlaut and "-sten" or  "-ten" -->
-  <class superlative="&#x308;-sten">Adj$</class>
-  <class superlative="&#x308;-ten">Adj$</class>
+  <class superlative="&#x308;-sten">Adj_$</class>
+  <class superlative="&#x308;-ten">Adj_$</class>
   <!-- superlative: "-esten" -->
-  <class superlative="-esten">Adj+e</class>
+  <class superlative="-esten">Adj_e</class>
   <!-- superlative: umlaut and "-esten" -->
-  <class superlative="&#x308;-esten">Adj$e</class>
+  <class superlative="&#x308;-esten">Adj_$e</class>
   <!-- ungradable adjectives: -->
   <class>AdjPos</class>
 </xsl:variable>
@@ -883,58 +883,58 @@
   <!-- genitive singular: unmarked
        no plural -->
   <class gender="mask."
-         genitive-singular="-">Name-Masc_0</class>
+         genitive-singular="-">NameMasc_0</class>
   <!-- genitive singular: "-(’)"
        no plural -->
   <class gender="mask."
-         genitive-singular="-(’)">Name-Masc_apos</class>
+         genitive-singular="-(’)">NameMasc_apos</class>
   <!-- genitive singular: "-(e)s"
        no plural -->
   <class gender="mask."
-         genitive-singular="-(e)s">Name-Masc_es</class>
+         genitive-singular="-(e)s">NameMasc_es</class>
   <class gender="mask."
-         genitive-singular="-es">Name-Masc_es</class>
+         genitive-singular="-es">NameMasc_es</class>
   <!-- genitive singular: "-s"
        no plural -->
   <class gender="mask."
-         genitive-singular="-s">Name-Masc_s</class>
+         genitive-singular="-s">NameMasc_s</class>
   <!-- neuter proper names: -->
   <!-- genitive singular: unmarked
        no plural -->
   <class gender="neutr."
-         genitive-singular="-">Name-Neut_0</class>
+         genitive-singular="-">NameNeut_0</class>
   <!-- genitive singular: "-(’)"
        no plural -->
   <class gender="neut."
-         genitive-singular="-(’)">Name-Neut_apos</class>
+         genitive-singular="-(’)">NameNeut_apos</class>
   <!-- genitive singular: "-(e)s"
        no plural -->
   <class gender="neutr."
-         genitive-singular="-(e)s">Name-Neut_es</class>
+         genitive-singular="-(e)s">NameNeut_es</class>
   <class gender="neutr."
-         genitive-singular="-es">Name-Neut_es</class>
+         genitive-singular="-es">NameNeut_es</class>
   <!-- genitive singular: "-s"
        no plural -->
   <class gender="neutr."
-         genitive-singular="-s">Name-Neut_s</class>
+         genitive-singular="-s">NameNeut_s</class>
   <!-- feminine proper names: -->
   <!-- genitive singular: unmarked
        no plural -->
   <class gender="fem."
-         genitive-singular="-">Name-Fem_0</class>
+         genitive-singular="-">NameFem_0</class>
   <!-- genitive singular: "-(’)"
        no plural -->
   <class gender="fem."
-         genitive-singular="-(’)">Name-Fem_apos</class>
+         genitive-singular="-(’)">NameFem_apos</class>
   <!-- genitive singular: "-s"
        no plural -->
   <class gender="fem."
-         genitive-singular="-s">Name-Fem_s</class>
+         genitive-singular="-s">NameFem_s</class>
   <!-- plural proper names: -->
   <!-- dative plural: unmarked -->
-  <class dative-plural="-">Name-Pl_x</class>
+  <class dative-plural="-">NameNoGend/Pl_x</class>
   <!-- dative plural: "-n" -->
-  <class dative-plural="-n">Name-Pl_0</class>
+  <class dative-plural="-n">NameNoGend/Pl_0</class>
   <!-- TODO: more class mappings -->
   <!-- ... -->
 </xsl:variable>
@@ -1015,25 +1015,25 @@
        past participle: "ge-" + "-t" -->
   <class infinitive="-n"
          past="-te"
-         participle="ge-t">VVReg-el/er</class>
+         participle="ge-t">VVReg-el-er</class>
   <!-- infinitive: "-n"
        past 3rd person singular: "-te"
        past participle: "-t" -->
   <class infinitive="-n"
          past="-te"
-         participle="-t">VVReg-el/er</class>
+         participle="-t">VVReg-el-er</class>
   <!-- infinitive: "-n"
        past 3rd person singular: "-ete"
        past participle: "ge-" + "-et" -->
   <class infinitive="-n"
          past="-ete"
-         participle="ge-et">VVReg-el/er</class>
+         participle="ge-et">VVReg-el-er</class>
   <!-- infinitive: "-n"
        past 3rd person singular: "-ete"
        past participle: "-et" -->
   <class infinitive="-n"
          past="-ete"
-         participle="-et">VVReg-el/er</class>
+         participle="-et">VVReg-el-er</class>
   <!-- weak verbs with irregular past stem: -->
   <!-- cf. dwds.xsl -->
   <!-- weak verbs with strong participle: -->
@@ -1102,13 +1102,13 @@
 
 <xsl:variable name="contracted-adposition-class-mapping">
   <!-- clitic article: "(de)m" -->
-  <class clitic="m">Prep/Art-m</class>
+  <class clitic="m">Prep+Art-m</class>
   <!-- clitic article: "(de)n" -->
-  <class clitic="n">Prep/Art-n</class>
+  <class clitic="n">Prep+Art-n</class>
   <!-- clitic article: "(de)r" -->
-  <class clitic="r">Prep/Art-r</class>
+  <class clitic="r">Prep+Art-r</class>
   <!-- clitic article: "(da)s" -->
-  <class clitic="s">Prep/Art-s</class>
+  <class clitic="s">Prep+Art-s</class>
 </xsl:variable>
 
 <xsl:template name="contracted-adposition-class">
@@ -1120,13 +1120,13 @@
 
 <xsl:variable name="conjunction-class-mapping">
   <!-- coordinating conjunctions: -->
-  <class type="coord">Conj-Coord</class>
+  <class type="coord">ConjCoord</class>
   <!-- subordinating conjunctions -->
-  <class type="subord">Conj-Sub</class>
+  <class type="subord">ConjSub</class>
   <!-- infinitive conjunctions -->
-  <class type="inf">Conj-Inf</class>
+  <class type="inf">ConjInf</class>
   <!-- comparative conjunctions -->
-  <class type="comp">Conj-Compar</class>
+  <class type="comp">ConjCompar</class>
 </xsl:variable>
 
 <xsl:template name="conjunction-class">
@@ -1138,13 +1138,12 @@
 </xsl:stylesheet>
 <!-- TODO: -->
 <!-- add support for the following inflection classes:
-* <Adj&>
-* <Adj+(e)>
+* <Adj_(e)>
 * <FamName_0>
 * <FamName_s>
 * <NFem_s_s>
 * <NMasc_en_e>
-* <Pref/Sep>
+* <VPart>
 * <VMPast>
 * <VMPastSubj>
 * <WAdv> -->

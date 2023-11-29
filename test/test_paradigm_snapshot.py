@@ -29,13 +29,13 @@ ADJECTIVE_LEMMAS = ["lila",      # AdjPos0
                     "pleite",    # AdjPosPred
                     "Berliner",  # AdjPos0AttrSubst
                     "derartig",  # AdjPos
-                    "hell",      # Adj+
-                    "bunt",      # Adj+e
-                    "neu",       # Adj+, Adj+e
-                    "warm",      # Adj$
-                    "kalt",      # Adj$e
-                    "teuer",     # Adj-el/er
-                    "dunkel",    # Adj-el/er, Adj$-el/er
+                    "hell",      # Adj_0
+                    "bunt",      # Adj_e
+                    "neu",       # Adj_0, Adj_e
+                    "warm",      # Adj_$
+                    "kalt",      # Adj_$e
+                    "teuer",     # Adj-el-er_0
+                    "dunkel",    # Adj-el-er_0, Adj-el-er_$
                     "gut",       # AdjPos, AdjComp, AdjSup
                     "viel",      # AdjPos, AdjPos0-viel, AdjComp0-mehr, AdjSup
                     "hoch"]      # AdjPosPred, AdjPosAttr, AdjComp, AdjSup
@@ -87,8 +87,8 @@ INDEFINITE_PRONOUN_LEMMAS = ["welche",        # Indef-welch
                              "eine",          # Indef-ein
                              "irgendeine",    # Indef-irgendein
                              "keine",         # Indef-kein
-                             "etwas",         # IPro-Neut
-                             "jemand",        # IPro-Masc
+                             "etwas",         # IProNeut
+                             "jemand",        # IProMasc
                              "jedermann",     # IPro-jedermann
                              "man",           # IPro-man
                              "unsereiner",    # IPro-unsereiner
@@ -106,15 +106,15 @@ INTERROGATIVE_PRONOUN_LEMMAS = ["wer",     # WProMascNomSg, WProMascAccSg, WProM
 
 NAME_POS = "NPROP"
 
-NAME_LEMMAS = ["Atlantik",   # Name-Masc_0, Name-Masc_s
-               "Andreas",    # Name-Masc_apos
-               "Rhein",      # Name-Masc_es
-               "Opa",        # Name-Masc_s
-               "Berlin",     # Name-Neut_s
-               "Ostsee",     # Name-Fem_0
-               "Felicitas",  # Name-Fem_apos
-               "Oma",        # Name-Fem_s
-               "Alpen"]      # Name-Pl_x
+NAME_LEMMAS = ["Atlantik",   # NameMasc_0, NameMasc_s
+               "Andreas",    # NameMasc_apos
+               "Rhein",      # NameMasc_es
+               "Opa",        # NameMasc_s
+               "Berlin",     # NameNeut_s
+               "Ostsee",     # NameFem_0
+               "Felicitas",  # NameFem_apos
+               "Oma",        # NameFem_s
+               "Alpen"]      # NameNoGend/Pl_x
 
 
 NOUN_POS = "NN"
@@ -208,8 +208,8 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Freundin",     # NFem-in
                "Firma",        # NFem-a/en
                "Basis",        # NFem-is/en
-               "Kosten",       # NoGend/Pl_x
-               "Leute"]        # NoGend/Pl_0
+               "Kosten",       # NNoGend/Pl_x
+               "Leute"]        # NNoGend/Pl_0
 
 
 ORDINAL_POS = "ORD"
@@ -255,35 +255,35 @@ VERB_POS = "V"
 VERB_LEMMAS = ["sagen",        # VVReg
                "versagen",     # VVReg
                "absagen",      # VVReg
-               "klettern",     # VVReg-el/er
-               "verwechseln",  # VVReg-el/er
+               "klettern",     # VVReg-el-er
+               "verwechseln",  # VVReg-el-er
                "winken",       # VVReg, VVPP-en
                "brauchen",     # VVReg, VVPastSubjReg
-               "fassen",       # VVReg, VVPres1+Imp, VVPres2, VVPastIndReg, VVPastSubjReg, VVPP-t
-               "fragen",       # VVReg, VVPres1+Imp, VVPres2, VVPastIndStr, VVPastSubjStr, VVPP-t
-               "schrecken",    # VVReg, VVPres1, VVPres2+Imp0, VVPastIndStr, VVPastSubjStr, VVPP-t
+               "fassen",       # VVReg, VVPres1_Imp, VVPres2, VVPastIndReg, VVPastSubjReg, VVPP-t
+               "fragen",       # VVReg, VVPres1_Imp, VVPres2, VVPastIndStr, VVPastSubjStr, VVPP-t
+               "schrecken",    # VVReg, VVPres1, VVPres2_Imp0, VVPastIndStr, VVPastSubjStr, VVPP-t
                "rennen",       # VVPres, VVPastIndReg, VVPastSubjReg, VVPP-t
                "mahlen",       # VVPres, VVPastIndReg, VVPastSubjReg, VVPP-en
                "gehen",        # VVPres, VVPastStr, VVPP-en
                "kommen",       # VVPres, VVPastIndStr, VVPastSubjStr, VVPP-en
                "gewinnen",     # VVPres, VVPastIndStr, VVPastSubjStr, VVPastSubjOld, VVPP-en
-               "backen",       # VVPres, VVPres1+Imp, VVPres2, VVPastIndReg, VVPastIndStr, VVPastSubjReg, VVPastSubjStr, VVPP-en
-               "sehen",        # VVPres1, VVPres2+Imp, VVPastIndStr, VVPastSubjStr, VVPP-en
-               "geben",        # VVPres1, VVPres2+Imp0, VVPastIndStr, VVPastSubjStr, VVPP-en
-               "empfehlen",    # VVPres1, VVPres2+Imp0, VVPastIndStr, VVPastSubjStr, VVPastSubjOld, VVPP-en
-               "treten",       # VVPres1, VVPres2t+Imp0, VVPastIndStr, VVPastSubjStr, VVPP-en
-               "gelten",       # VVPres1, VVPres2t+Imp0, VVPastIndStr, VVPastSubjStr, VVPastSubjOld, VVPP-en
-               "laufen",       # VVPres1+Imp, VVPres2, VVPastStr, VVPP-en
-               "haben" ,       # VVPres1+Imp, VVPres2, VVPastIndReg, VVPastSubjReg, VVPP-t
-               "fahren",       # VVPres1+Imp, VVPres2, VVPastIndStr, VVPastSubjStr, VVPP-en
-               "verhalten",    # VVPres1+Imp, VVPres2t, VVPastStr, VVPP-en
+               "backen",       # VVPres, VVPres1_Imp, VVPres2, VVPastIndReg, VVPastIndStr, VVPastSubjReg, VVPastSubjStr, VVPP-en
+               "sehen",        # VVPres1, VVPres2_Imp, VVPastIndStr, VVPastSubjStr, VVPP-en
+               "geben",        # VVPres1, VVPres2_Imp0, VVPastIndStr, VVPastSubjStr, VVPP-en
+               "empfehlen",    # VVPres1, VVPres2_Imp0, VVPastIndStr, VVPastSubjStr, VVPastSubjOld, VVPP-en
+               "treten",       # VVPres1, VVPres2t_Imp0, VVPastIndStr, VVPastSubjStr, VVPP-en
+               "gelten",       # VVPres1, VVPres2t_Imp0, VVPastIndStr, VVPastSubjStr, VVPastSubjOld, VVPP-en
+               "laufen",       # VVPres1_Imp, VVPres2, VVPastStr, VVPP-en
+               "haben" ,       # VVPres1_Imp, VVPres2, VVPastIndReg, VVPastSubjReg, VVPP-t
+               "fahren",       # VVPres1_Imp, VVPres2, VVPastIndStr, VVPastSubjStr, VVPP-en
+               "verhalten",    # VVPres1_Imp, VVPres2t, VVPastStr, VVPP-en
                "wissen",       # VMPresSg, VMPresPl, VVPastIndReg, VVPastSubjReg, VVPP-t
                "können",       # VMPresSg, VMPresPl, VVPastIndReg, VVPastSubjReg, VVPP-t, VVPP-en
-               "werden",       # VInf-en, VAPres1SgInd, VAPres2SgInd, VAPres3SgInd, VAPres1/3PlInd, VAPres2PlInd, VPresSubj,
+               "werden",       # VInf-en, VAPres1SgInd, VAPres2SgInd, VAPres3SgInd, VAPres13PlInd, VAPres2PlInd, VPresSubj,
                                # VAPastIndSg, VAPastIndPl, VPastIndIrreg, VPastSubjStr, VAImpSg, VAImpPl, VVPP-en
-               "tun",          # VInf-n, VAPres1SgInd, VAPres2SgInd, VAPres3SgInd, VAPres1/3PlInd, VAPres2PlInd, VPresSubj,
+               "tun",          # VInf-n, VAPres1SgInd, VAPres2SgInd, VAPres3SgInd, VAPres13PlInd, VAPres2PlInd, VPresSubj,
                                # VPastIndStr, VPastSubjStr, VAImpSg, VAImpPl, VPPast
-               "sein"]         # VInf-n, VAPres1SgInd, VAPres2SgInd, VAPres3SgInd, VAPres1/3PlInd, VAPres2PlInd, VAPresSubjSg,
+               "sein"]         # VInf-n, VAPres1SgInd, VAPres2SgInd, VAPres3SgInd, VAPres13PlInd, VAPres2PlInd, VAPresSubjSg,
                                # VAPres2SgSubj, VAPresSubjPl, VPastIndStr, VPastSubjStr, VAPastSubj2, VAImpSg, VAImpPl, VVPP-en
 
 @fixture

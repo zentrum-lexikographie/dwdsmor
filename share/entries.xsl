@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.6 -->
-<!-- Andreas Nolda 2023-11-25 -->
+<!-- Version 11.7 -->
+<!-- Andreas Nolda 2023-11-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -231,7 +231,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">ADJ</xsl:with-param>
-          <xsl:with-param name="class">Abbr_Adj</xsl:with-param>
+          <xsl:with-param name="class">AbbrAdj</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -404,7 +404,7 @@
                   <xsl:with-param name="abbreviation"
                                   select="$abbreviation"/>
                   <xsl:with-param name="pos">ADJ</xsl:with-param>
-                  <xsl:with-param name="class">Adj$-el/er</xsl:with-param>
+                  <xsl:with-param name="class">Adj-el-er_$</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -420,7 +420,7 @@
                   <xsl:with-param name="abbreviation"
                                   select="$abbreviation"/>
                   <xsl:with-param name="pos">ADJ</xsl:with-param>
-                  <xsl:with-param name="class">Adj-el/er</xsl:with-param>
+                  <xsl:with-param name="class">Adj-el-er_0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -575,7 +575,7 @@
               <xsl:with-param name="abbreviation"
                               select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">Adj-el/er</xsl:with-param>
+              <xsl:with-param name="class">Adj-el-er_0</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -1512,7 +1512,7 @@
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
               <xsl:with-param name="pos">NN</xsl:with-param>
-              <xsl:with-param name="class">Abbr_NMasc</xsl:with-param>
+              <xsl:with-param name="class">AbbrNMasc</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -1529,7 +1529,7 @@
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
               <xsl:with-param name="pos">NN</xsl:with-param>
-              <xsl:with-param name="class">Abbr_NNeut</xsl:with-param>
+              <xsl:with-param name="class">AbbrNNeut</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -1546,7 +1546,7 @@
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
               <xsl:with-param name="pos">NN</xsl:with-param>
-              <xsl:with-param name="class">Abbr_NFem</xsl:with-param>
+              <xsl:with-param name="class">AbbrNFem</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -1563,7 +1563,7 @@
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
               <xsl:with-param name="pos">NN</xsl:with-param>
-              <xsl:with-param name="class">Abbr_NNoGend</xsl:with-param>
+              <xsl:with-param name="class">AbbrNNoGend</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
@@ -4238,7 +4238,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
-          <xsl:with-param name="class">Abbr_Poss</xsl:with-param>
+          <xsl:with-param name="class">AbbrPoss</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -4509,7 +4509,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">V</xsl:with-param>
-          <xsl:with-param name="class">Abbr_VImp</xsl:with-param>
+          <xsl:with-param name="class">AbbrVImp</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -4708,7 +4708,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
+                  <xsl:with-param name="class">VVPres1_Imp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -4823,7 +4823,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">VAPres1/3PlInd</xsl:with-param>
+                  <xsl:with-param name="class">VAPres13PlInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5035,7 +5035,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">VAPres1/3PlInd</xsl:with-param>
+                  <xsl:with-param name="class">VAPres13PlInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5209,7 +5209,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">VAPres1/3PlInd</xsl:with-param>
+                  <xsl:with-param name="class">VAPres13PlInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5375,7 +5375,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">VVPres2+Imp</xsl:with-param>
+                  <xsl:with-param name="class">VVPres2_Imp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5396,7 +5396,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">Abbr_VImp</xsl:with-param>
+                  <xsl:with-param name="class">AbbrVImp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5461,7 +5461,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">VVPres2t+Imp0</xsl:with-param>
+                  <xsl:with-param name="class">VVPres2t_Imp0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5502,7 +5502,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">VVPres2+Imp0</xsl:with-param>
+                  <xsl:with-param name="class">VVPres2_Imp0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5526,7 +5526,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
+                  <xsl:with-param name="class">VVPres1_Imp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5568,7 +5568,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
+                  <xsl:with-param name="class">VVPres1_Imp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -5609,7 +5609,7 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
-                  <xsl:with-param name="class">VVPres1+Imp</xsl:with-param>
+                  <xsl:with-param name="class">VVPres1_Imp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>

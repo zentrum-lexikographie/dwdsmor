@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 6.13
-% Andreas Nolda 2023-11-27
+% Version 6.14
+% Andreas Nolda 2023-11-29
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -124,11 +124,11 @@
 
 #paradigm-index# = <PAR1><PAR2><PAR3><PAR4><PAR5>
 
-#Abbr-inflection# = <Abbr_Adj><Abbr_NFem><Abbr_NMasc><Abbr_NNeut><Abbr_NNoGend> \
-                    <Abbr_Poss><Abbr_VImp>
+#Abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNNoGend> \
+                    <AbbrPoss><AbbrVImp>
 
-#Adj-inflection# = <Adj$><Adj$-el/er><Adj$e><Adj+><Adj+(e)><Adj+e><Adj+Lang> \
-                   <Adj-el/er><AdjComp><AdjComp0-mehr><AdjPos><AdjPos0> \
+#Adj-inflection# = <Adj-el-er_$><Adj-el-er_0><Adj-Lang><Adj_$><Adj_$e><Adj_(e)> \
+                   <Adj_0><Adj_e><AdjComp><AdjComp0-mehr><AdjPos><AdjPos0> \
                    <AdjPos0-viel><AdjPos0Attr><AdjPos0AttrSubst><AdjPosAttr> \
                    <AdjPosPred><AdjSup><AdjSup-aller>
 
@@ -162,10 +162,10 @@
                     <NNeut_s_ien><NNeut_s_n><NNeut_s_nen><NNeut_s_s><NNeut_s_x> \
                     <NNoGend/Pl_0><NNoGend/Pl_x>
 
-#Name-inflection# = <Name-Fem_0><Name-Fem_apos><Name-Fem_s><Name-Masc_0> \
-                    <Name-Masc_apos><Name-Masc_es><Name-Masc_s><Name-Neut_0> \
-                    <Name-Neut_apos><Name-Neut_es><Name-Neut_s><Name-Pl_0> \
-                    <Name-Pl_x><FamName_0><FamName_s>
+#Name-inflection# = <Name-Fam_0><Name-Fam_s><NameFem_0><NameFem_apos><NameFem_s> \
+                    <NameMasc_0><NameMasc_apos><NameMasc_es><NameMasc_s> \
+                    <NameNeut_0><NameNeut_apos><NameNeut_es><NameNeut_s> \
+                    <NameNoGend/Pl_0><NameNoGend/Pl_x>
 
 #Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier> \
                    <Card-zwei><DigCard><DigFrac><DigOrd><Frac><Ord><Roman>
@@ -194,22 +194,22 @@
                    <WProNeutGenSg><WProNeutNomSg>
 
 #Verb-inflection# = <VAImpPl><VAImpSg><VAPastIndPl><VAPastIndSg><VAPastSubj2> \
-                    <VAPres1/3PlInd><VAPres1/3SgSubj><VAPres1SgInd> \
-                    <VAPres2PlInd><VAPres2SgInd><VAPres2SgSubj><VAPres3SgInd> \
-                    <VAPresSubjPl><VAPresSubjSg><VInf><VInf+PPres><VInf-en> \
-                    <VInf-n><VMPast><VMPastSubj><VMPresPl><VMPresSg><VPPast> \
-                    <VPPres><VPastIndIrreg><VPastIndReg><VPastIndStr><VPresSubj> \
+                    <VAPres13PlInd><VAPres13SgSubj><VAPres1SgInd><VAPres2PlInd> \
+                    <VAPres2SgInd><VAPres2SgSubj><VAPres3SgInd><VAPresSubjPl> \
+                    <VAPresSubjSg><VInf><VInf_PPres><VInf-en><VInf-n><VMPast> \
+                    <VMPastSubj><VMPresPl><VMPresSg><VPPast><VPPres> \
+                    <VPastIndIrreg><VPastIndReg><VPastIndStr><VPresSubj> \
                     <VPastSubjStr><VPresPlInd><VVPP-en><VVPP-t><VVPastIndReg> \
                     <VVPastIndStr><VVPastStr><VVPastSubjOld><VVPastSubjReg> \
-                    <VVPastSubjStr><VVPres><VVPres1><VVPres1+Imp><VVPres2> \
-                    <VVPres2+Imp><VVPres2+Imp0><VVPres2t><VVPres2t+Imp0> \
-                    <VVPresPl><VVPresSg><VVReg><VVRegFin><VVReg-el/er>
+                    <VVPastSubjStr><VVPres><VVPres1><VVPres1_Imp><VVPres2> \
+                    <VVPres2_Imp><VVPres2_Imp0><VVPres2t><VVPres2t_Imp0> \
+                    <VVPresPl><VVPresSg><VVReg><VVRegFin><VVReg-el-er>
 
-#Other-inflection# = <Circp><Conj-Compar><Conj-Coord><Conj-Inf><Conj-Sub> \
-                     <Intj><PInd-Invar><Postp><Pref/Adj><Pref/Adv><Pref/N> \
-                     <Pref/ProAdv><Pref/Sep><Pref/V><Prep><Prep/Art-m> \
-                     <Prep/Art-n><Prep/Art-r><Prep/Art-s><ProAdv><Ptcl-Adj> \
-                     <Ptcl-Neg><Ptcl-zu><WAdv>
+#Other-inflection# = <Circp><ConjCompar><ConjCoord><ConjInf><ConjSub> \
+                     <Intj><PIndInvar><Postp><Pref/Adj><Pref/Adv><Pref/N> \
+                     <Pref/ProAdv><Pref/V><Prep><Prep+Art-m><Prep+Art-n> \
+                     <Prep+Art-r><Prep+Art-s><ProAdv><PtclAdj><PtclNeg><Ptcl-zu> \
+                     <VPart><WAdv>
 
 #inflection# = #Abbr-inflection# #Adj-inflection# #Adv-inflection# \
                #Art-inflection# #Noun-inflection# #Name-inflection# \

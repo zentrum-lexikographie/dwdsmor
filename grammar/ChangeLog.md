@@ -1,5 +1,34 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-11-29:
+
+* rename inflection classes `Name-Masc_0`, `Name-Masc_apos`, `Name-Masc_es`,
+  `Name-Masc_s`, `Name-Neut_0`, `Name-Neut_apos`, `Name-Neut_es`, `Name-Neut_s`,
+  `Name-Fem_0`, `Name-Fem_apos`, `Name-Fem_s`, `Name-Pl_x`, `Name-Pl_0`,
+  `FamName_0`, and `FamName_s` to `NameMasc_0`, `NameMasc_apos`, `NameMasc_es`,
+  `NameMasc_s`, `NameNeut_0`, `NameNeut_apos`, `NameNeut_es`, `NameNeut_s`,
+  `NameFem_0`, `NameFem_apos`, `NameFem_s`, `NameNoGend/Pl_x`,
+  `NameNoGend/Pl_0`, `Name-Fam_0`, and `Name-Fam_s`, respectively
+* rename inflection classes `Adj+`, `Adj+e`, `Adj+(e)`, `Adj$`, `Adj$e`,
+  `Adj-el/er`, `Adj$-el/er`, and `Adj+Lang` to `Adj_0`, `Adj_e`, `Adj_(e)`,
+  `Adj_$`, `Adj_$e`, `Adj-el-er_0`, `Adj_$-el-er`, and `Adj-Lang`, respectively
+* rename inflection classes `VAPres1/3PlInd`, `$VAPres1/3SgSubj$`, `VInf+PPres`,
+  `VVPres1+Imp`, `VVPres2+Imp`, `VVPres2+Imp0`, `VVPres2t+Imp0`, and
+  `VVReg-el/er` to `VAPres13PlInd`, `$VAPres13SgSubj$`, `VInf_PPres`,
+  `VVPres1_Imp`, `VVPres2_Imp`, `VVPres2_Imp0`, `VVPres2t_Imp0`, and
+  `VVReg-el-er`, respectively
+* rename inflection classes `Conj-Inf`, `Conj-Coord`, `Conj-Sub`, `Conj-Compar`,
+  `PInd-Invar`, `Ptcl-Adj`, `Ptcl-Neg`, and `Pref/Sep` to `ConjInf`,
+  `ConjCoord`, `ConjSub`, `ConjCompar`, `PIndInvar`, `PtclAdj`, `PtclNeg`, and
+  `VPart`, respectively
+* rename inflection classes `Prep/Art-m`, `Prep/Art-n`, `Prep/Art-s`, and
+  `Prep/Art-r` to `Prep+Art-m`, `Prep+Art-n`, `Prep+Art-s`, and `Prep+Art-r`,
+  respectively
+* rename inflection classes `Abbr_NMasc`, `Abbr_NNeut`, `Abbr_NFem`,
+  `Abbr_NNoGend`, `Abbr_Adj`, `Abbr_Poss`, and `Abbr_VImp` to `AbbrNMasc`,
+  `AbbrNNeut`, `AbbrNFem`, `AbbrNNoGend`, `AbbrAdj`, `AbbrPoss`, and `AbbrVImp`,
+  respectively
+
 2023-11-28:
 
 * allow for proper nouns as compounding bases
