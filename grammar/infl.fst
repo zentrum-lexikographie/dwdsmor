@@ -1,6 +1,6 @@
 % infl.fst
 % Version 5.6
-% Andreas Nolda 2023-11-27
+% Andreas Nolda 2023-11-29
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -630,40 +630,38 @@ $FamName_s$ = {<+NPROP><NoGend>}:{}  $NSg_s$ | \
 
 % adjectives
 
-$TMP$ = {<Attr/Subst><Masc><Nom><Sg><St>}:{er}   | \
-        {<Attr/Subst><Masc><Acc><Sg><St>}:{en}   | \
-        {<Attr/Subst><Masc><Dat><Sg><St>}:{em}   | \
-        {<Attr/Subst><Masc><Gen><Sg><St>}:{en}   | \
-        {<Attr/Subst><Neut><Nom><Sg><St>}:{es}   | \
-        {<Attr/Subst><Neut><Acc><Sg><St>}:{es}   | \
-        {<Attr/Subst><Neut><Dat><Sg><St>}:{em}   | \
-        {<Attr/Subst><Neut><Gen><Sg><St>}:{en}   | \
-        {<Attr/Subst><Fem><Nom><Sg><St>}:{e}     | \
-        {<Attr/Subst><Fem><Acc><Sg><St>}:{e}     | \
-        {<Attr/Subst><Fem><Dat><Sg><St>}:{er}    | \
-        {<Attr/Subst><Fem><Gen><Sg><St>}:{er}    | \
-        {<Attr/Subst><NoGend><Nom><Pl><St>}:{e}  | \
-        {<Attr/Subst><NoGend><Acc><Pl><St>}:{e}  | \
-        {<Attr/Subst><NoGend><Dat><Pl><St>}:{en} | \
-        {<Attr/Subst><NoGend><Gen><Pl><St>}:{er} | \
-        {<Attr/Subst><Masc><Nom><Sg><Wk>}:{e}    | \
-        {<Attr/Subst><Masc><Acc><Sg><Wk>}:{en}   | \
-        {<Attr/Subst><Masc><Dat><Sg><Wk>}:{en}   | \
-        {<Attr/Subst><Masc><Gen><Sg><Wk>}:{en}   | \
-        {<Attr/Subst><Neut><Nom><Sg><Wk>}:{e}    | \
-        {<Attr/Subst><Neut><Acc><Sg><Wk>}:{e}    | \
-        {<Attr/Subst><Neut><Dat><Sg><Wk>}:{en}   | \
-        {<Attr/Subst><Neut><Gen><Sg><Wk>}:{en}   | \
-        {<Attr/Subst><Fem><Nom><Sg><Wk>}:{e}     | \
-        {<Attr/Subst><Fem><Acc><Sg><Wk>}:{e}     | \
-        {<Attr/Subst><Fem><Dat><Sg><Wk>}:{en}    | \
-        {<Attr/Subst><Fem><Gen><Sg><Wk>}:{en}    | \
-        {<Attr/Subst><NoGend><Nom><Pl><Wk>}:{en} | \
-        {<Attr/Subst><NoGend><Dat><Pl><Wk>}:{en} | \
-        {<Attr/Subst><NoGend><Acc><Pl><Wk>}:{en} | \
-        {<Attr/Subst><NoGend><Gen><Pl><Wk>}:{en}
-
-$AdjInflSuff$ = $TMP$
+$AdjInflSuff$ = {<Attr/Subst><Masc><Nom><Sg><St>}:{er}   | \
+                {<Attr/Subst><Masc><Acc><Sg><St>}:{en}   | \
+                {<Attr/Subst><Masc><Dat><Sg><St>}:{em}   | \
+                {<Attr/Subst><Masc><Gen><Sg><St>}:{en}   | \
+                {<Attr/Subst><Neut><Nom><Sg><St>}:{es}   | \
+                {<Attr/Subst><Neut><Acc><Sg><St>}:{es}   | \
+                {<Attr/Subst><Neut><Dat><Sg><St>}:{em}   | \
+                {<Attr/Subst><Neut><Gen><Sg><St>}:{en}   | \
+                {<Attr/Subst><Fem><Nom><Sg><St>}:{e}     | \
+                {<Attr/Subst><Fem><Acc><Sg><St>}:{e}     | \
+                {<Attr/Subst><Fem><Dat><Sg><St>}:{er}    | \
+                {<Attr/Subst><Fem><Gen><Sg><St>}:{er}    | \
+                {<Attr/Subst><NoGend><Nom><Pl><St>}:{e}  | \
+                {<Attr/Subst><NoGend><Acc><Pl><St>}:{e}  | \
+                {<Attr/Subst><NoGend><Dat><Pl><St>}:{en} | \
+                {<Attr/Subst><NoGend><Gen><Pl><St>}:{er} | \
+                {<Attr/Subst><Masc><Nom><Sg><Wk>}:{e}    | \
+                {<Attr/Subst><Masc><Acc><Sg><Wk>}:{en}   | \
+                {<Attr/Subst><Masc><Dat><Sg><Wk>}:{en}   | \
+                {<Attr/Subst><Masc><Gen><Sg><Wk>}:{en}   | \
+                {<Attr/Subst><Neut><Nom><Sg><Wk>}:{e}    | \
+                {<Attr/Subst><Neut><Acc><Sg><Wk>}:{e}    | \
+                {<Attr/Subst><Neut><Dat><Sg><Wk>}:{en}   | \
+                {<Attr/Subst><Neut><Gen><Sg><Wk>}:{en}   | \
+                {<Attr/Subst><Fem><Nom><Sg><Wk>}:{e}     | \
+                {<Attr/Subst><Fem><Acc><Sg><Wk>}:{e}     | \
+                {<Attr/Subst><Fem><Dat><Sg><Wk>}:{en}    | \
+                {<Attr/Subst><Fem><Gen><Sg><Wk>}:{en}    | \
+                {<Attr/Subst><NoGend><Nom><Pl><Wk>}:{en} | \
+                {<Attr/Subst><NoGend><Acc><Pl><Wk>}:{en} | \
+                {<Attr/Subst><NoGend><Dat><Pl><Wk>}:{en} | \
+                {<Attr/Subst><NoGend><Gen><Pl><Wk>}:{en}
 
 % lila; klasse
 $AdjPos0$ = {<+ADJ><Pos><Pred/Adv>}:{} | \
@@ -788,8 +786,8 @@ $RelSuff$ = $ArtDefSubstSuff$
 $DemDefSuff$ = $ArtDefSuff$
 
 $DemSuff$ = {[<Attr><Subst>]<Masc><Nom><Sg><St>}:{er}   | \
-            {[<Attr><Subst>]<Masc><Dat><Sg><St>}:{em}   | \
             {[<Attr><Subst>]<Masc><Acc><Sg><St>}:{en}   | \
+            {[<Attr><Subst>]<Masc><Dat><Sg><St>}:{em}   | \
             {[<Attr><Subst>]<Masc><Gen><Sg><St>}:{es}   | \
             {<Attr><Masc><Gen><Sg><St><NonSt>}:{en}     | \ % cf. Duden-Grammatik (2016: § 356, 379)
             {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{es}   | \

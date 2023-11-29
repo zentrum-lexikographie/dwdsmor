@@ -1,6 +1,6 @@
 % dwdsmor.fst
 % Version 10.2
-% Andreas Nolda 2023-10-16
+% Andreas Nolda 2023-11-29
 
 #include "symbols.fst"
 #include "num.fst"
@@ -138,8 +138,11 @@ $BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerGe$
 $BaseStemsVPPres$ = $BaseStemsVPPres$ || $MarkerZu$
 $BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerZu$
 
-$BaseStemsVPPres$ = <>:<WB> $BaseStemsVPPres$ <>:<WB> || $PHON$
-$BaseStemsVPPast$ = <>:<WB> $BaseStemsVPPast$ <>:<WB> || $PHON$
+$BaseStemsVPPres$ = <>:<WB> $BaseStemsVPPres$ <>:<WB>
+$BaseStemsVPPast$ = <>:<WB> $BaseStemsVPPast$ <>:<WB>
+
+$BaseStemsVPPres$ = $BaseStemsVPPres$ || $PHON$
+$BaseStemsVPPast$ = $BaseStemsVPPast$ || $PHON$
 
 $BaseStemsVPPres$ = $BaseStemsVPPres$ || $MarkerWB$
 $BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerWB$
