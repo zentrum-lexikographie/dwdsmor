@@ -713,12 +713,6 @@ $Adj_e$ =            $AdjPos$  | \
           {}:{<FB>}  $AdjComp$ | \
           {}:{<FB>e} $AdjSup$
 
-% frei, freier, frei(e)sten
-$Adj_(e)$ =            $AdjPos$  | \
-            {}:{<FB>}  $AdjComp$ | \
-            {}:{<FB>}  $AdjSup$  | \
-            {}:{<FB>e} $AdjSup$
-
 % warm, wärmer, wärmsten
 $Adj_\$$ =           $AdjPos$  | \
            {}:{<UL>} $AdjComp$ | \
@@ -1807,16 +1801,6 @@ $Ptcl-zu$ = {<+PTCL><zu>}:{}
 
 $WAdv$ = {<+WADV>}:{}
 
-$Pref/Adv$ = {<+VPART><Adv>}:{}
-
-$Pref/Adj$ = {<+VPART><Adj>}:{}
-
-$Pref/ProAdv$ = {<+VPART><ProAdv>}:{}
-
-$Pref/N$ = {<+VPART><NN>}:{}
-
-$Pref/V$ = {<+VPART><V>}:{}
-
 $VPart$ = {<+VPART>}:{}
 
 
@@ -1858,7 +1842,6 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$           | \
          <>:<Adj-Lang>              $Adj-Lang$          | \
          <>:<Adj_$>                 $Adj_\$$            | \
          <>:<Adj_$e>                $Adj_\$e$           | \
-         <>:<Adj_(e)>               $Adj_(e)$           | \
          <>:<Adj_0>                 $Adj_0$             | \
          <>:<Adj_e>                 $Adj_e$             | \
          <>:<AdjComp>               $AdjComp$           | \
@@ -2103,11 +2086,6 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$           | \
          <>:<PRefl2Pl>              $PRefl2Pl$          | \
          <>:<PRefl3>                $PRefl3$            | \
          <>:<Prep>                  $Prep$              | \
-         <>:<Pref/Adj>              $Pref/Adj$          | \
-         <>:<Pref/Adv>              $Pref/Adv$          | \
-         <>:<Pref/N>                $Pref/N$            | \
-         <>:<Pref/ProAdv>           $Pref/ProAdv$       | \
-         <>:<Pref/V>                $Pref/V$            | \
          <>:<Prep+Art-m>            $Prep+Art-m$        | \
          <>:<Prep+Art-n>            $Prep+Art-n$        | \
          <>:<Prep+Art-r>            $Prep+Art-r$        | \

@@ -9,9 +9,9 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
   `NameMasc_s`, `NameNeut_0`, `NameNeut_apos`, `NameNeut_es`, `NameNeut_s`,
   `NameFem_0`, `NameFem_apos`, `NameFem_s`, `NameNoGend/Pl_x`,
   `NameNoGend/Pl_0`, `Name-Fam_0`, and `Name-Fam_s`, respectively
-* rename inflection classes `Adj+`, `Adj+e`, `Adj+(e)`, `Adj$`, `Adj$e`,
-  `Adj-el/er`, `Adj$-el/er`, and `Adj+Lang` to `Adj_0`, `Adj_e`, `Adj_(e)`,
-  `Adj_$`, `Adj_$e`, `Adj-el-er_0`, `Adj_$-el-er`, and `Adj-Lang`, respectively
+* rename inflection classes `Adj+`, `Adj+e`, `Adj$`, `Adj$e`, `Adj-el/er`,
+  `Adj$-el/er`, and `Adj+Lang` to `Adj_0`, `Adj_e`, `Adj_$`, `Adj_$e`,
+  `Adj-el-er_0`, `Adj-el-er_$`, and `Adj-Lang`, respectively
 * rename inflection classes `VAPres1/3PlInd`, `$VAPres1/3SgSubj$`, `VInf+PPres`,
   `VVPres1+Imp`, `VVPres2+Imp`, `VVPres2+Imp0`, `VVPres2t+Imp0`, and
   `VVReg-el/er` to `VAPres13PlInd`, `$VAPres13SgSubj$`, `VInf_PPres`,
@@ -28,6 +28,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
   `Abbr_NNoGend`, `Abbr_Adj`, `Abbr_Poss`, and `Abbr_VImp` to `AbbrNMasc`,
   `AbbrNNeut`, `AbbrNFem`, `AbbrNNoGend`, `AbbrAdj`, `AbbrPoss`, and `AbbrVImp`,
   respectively
+* remove unused inflection classes `Adj+(e)`, `Pref/Adj`, `Pref/Adv`, `Pref/N`,
+  `Pref/ProAdv`, and `Pref/V`
 
 2023-11-28:
 

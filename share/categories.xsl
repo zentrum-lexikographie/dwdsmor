@@ -1138,7 +1138,6 @@
 </xsl:stylesheet>
 <!-- TODO: -->
 <!-- add support for the following inflection classes:
-* <Adj_(e)>
 * <FamName_0>
 * <FamName_s>
 * <NFem_s_s>

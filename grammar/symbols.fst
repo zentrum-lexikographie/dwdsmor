@@ -127,8 +127,8 @@
 #Abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNNoGend> \
                     <AbbrPoss><AbbrVImp>
 
-#Adj-inflection# = <Adj-el-er_$><Adj-el-er_0><Adj-Lang><Adj_$><Adj_$e><Adj_(e)> \
-                   <Adj_0><Adj_e><AdjComp><AdjComp0-mehr><AdjPos><AdjPos0> \
+#Adj-inflection# = <Adj-el-er_$><Adj-el-er_0><Adj-Lang><Adj_$><Adj_$e><Adj_0> \
+                   <Adj_e><AdjComp><AdjComp0-mehr><AdjPos><AdjPos0> \
                    <AdjPos0-viel><AdjPos0Attr><AdjPos0AttrSubst><AdjPosAttr> \
                    <AdjPosPred><AdjSup><AdjSup-aller>
 
@@ -206,8 +206,7 @@
                     <VVPresPl><VVPresSg><VVReg><VVRegFin><VVReg-el-er>
 
 #Other-inflection# = <Circp><ConjCompar><ConjCoord><ConjInf><ConjSub> \
-                     <Intj><PIndInvar><Postp><Pref/Adj><Pref/Adv><Pref/N> \
-                     <Pref/ProAdv><Pref/V><Prep><Prep+Art-m><Prep+Art-n> \
+                     <Intj><PIndInvar><Postp><Prep><Prep+Art-m><Prep+Art-n> \
                      <Prep+Art-r><Prep+Art-s><ProAdv><PtclAdj><PtclNeg><Ptcl-zu> \
                      <VPart><WAdv>
 
