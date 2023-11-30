@@ -1391,7 +1391,7 @@
       <xsl:with-param name="abbreviation"
                       select="$abbreviation"/>
       <xsl:with-param name="pos">FRAC</xsl:with-param>
-      <xsl:with-param name="class">Frac</xsl:with-param>
+      <xsl:with-param name="class">Frac0</xsl:with-param>
       <xsl:with-param name="etymology"
                       select="$etymology"/>
     </xsl:call-template>
@@ -2412,27 +2412,6 @@
       </xsl:when>
       <xsl:when test="ends-with($lemma,'der')"/>
       <xsl:when test="ends-with($lemma,'das')"/>
-      <!-- "alldem", "alledem" -->
-      <xsl:when test="$gender='neutr.' and
-                      ($lemma='alldem' or
-                       $lemma='alledem')">
-        <xsl:call-template name="stem-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="stem"
-                          select="replace($lemma,'em$','')"/>
-          <xsl:with-param name="abbreviation"
-                          select="$abbreviation"/>
-          <xsl:with-param name="pos">DEM</xsl:with-param>
-          <xsl:with-param name="class">Dem-alldem</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
       <!-- "solche", "ebensolche" -->
       <xsl:when test="$gender='fem.' and
                       ends-with($lemma,'solche')">
@@ -2455,17 +2434,452 @@
       </xsl:when>
       <xsl:when test="ends-with($lemma,'solcher')"/>
       <xsl:when test="ends-with($lemma,'solches')"/>
+      <!-- "diejenige" -->
+      <xsl:when test="$gender='fem.' and
+                      $lemma='diejenige'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','der$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-der+DemMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','den$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-den+DemMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','dem$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-dem+DemMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','des$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-des+DemMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','das$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-das+DemNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','dem$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-dem+DemNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','des$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-des+DemNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','die$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-die+DemFem</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','der$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-der+DemFem</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','die$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-die+DemNoGend</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','den$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-den+DemNoGend</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^die(jenig)e$','der$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-der+DemNoGend</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$lemma='derjenige'"/>
+      <xsl:when test="$lemma='dasjenige'"/>
+      <!-- "dieselbe", "dieselbige" "ebendieselbe", "höchstdieselbe" -->
+      <xsl:when test="$gender='fem.' and
+                      (ends-with($lemma,'dieselbe') or
+                       $lemma='dieselbige')">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','der$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-der+DemMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','den$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-den+DemMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','dem$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-dem+DemMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','des$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-des+DemMasc</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','das$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-das+DemNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','dem$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-dem+DemNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','des$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-des+DemNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','die$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-die+DemFem</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','der$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-der+DemFem</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','die$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-die+DemNoGend</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','den$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-den+DemNoGend</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'die(selb(ig)?)e$','der$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">ArtDef-der+DemNoGend</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="ends-with($lemma,'derselbe') or
+                      $lemma='derselbige'"/>
+      <xsl:when test="ends-with($lemma,'dasselbe') or
+                      $lemma='dasselbige'"/>
+      <!-- "alldem", "alledem" -->
+      <xsl:when test="$lemma='alldem' or
+                      $lemma='alledem'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'em$','')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">Dem-alldem</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "dergleichen", "derlei" -->
+      <xsl:when test="$lemma='dergleichen' or
+                      $lemma='derlei'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">DEM</xsl:with-param>
+          <xsl:with-param name="class">Dem0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
-  <!-- "derjenige" -->
-  <!-- "derselbe", "ebenderselbe", "höchstderselbe" -->
-  <!-- "dieselbige" -->
   <!-- "selbige" -->
   <!-- "selben" -->
   <!-- "selber", "selbst", "höchstselbst" -->
   <!-- "sone", "son" -->
-  <!-- "dergleichen", "derlei" -->
 </xsl:template>
 
 <!-- indefinite pronouns -->
@@ -2765,57 +3179,6 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
-      <!-- "genug" -->
-      <xsl:when test="$lemma='genug'">
-        <xsl:call-template name="stem-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="abbreviation"
-                          select="$abbreviation"/>
-          <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">Indef0</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
-      <!-- "bisschen" -->
-      <xsl:when test="$lemma='bisschen'">
-        <xsl:call-template name="stem-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="abbreviation"
-                          select="$abbreviation"/>
-          <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">Indef0</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
-      <!-- "paar" -->
-      <xsl:when test="$lemma='paar'">
-        <xsl:call-template name="stem-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="abbreviation"
-                          select="$abbreviation"/>
-          <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">Indef0</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
       <!-- "sämtliche" -->
       <xsl:when test="$lemma='sämtliche'">
         <xsl:call-template name="stem-entry">
@@ -3098,6 +3461,57 @@
                           select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IProNeut</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "bisschen" -->
+      <xsl:when test="$lemma='bisschen'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "paar" -->
+      <xsl:when test="$lemma='paar'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "genug" -->
+      <xsl:when test="$lemma='genug'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>

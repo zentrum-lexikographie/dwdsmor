@@ -1,5 +1,16 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2023-11-30:
+
+* add inflection class `Dem0` for demonstrative pronouns "dergleichen" and
+  "derlei"
+* add inflection classes `ArtDef-das+DemNeut`, `ArtDef-dem+DemMasc`,
+  `ArtDef-dem+DemNeut`, `ArtDef-den+DemMasc`, `ArtDef-den+DemNoGend`,
+  `ArtDef-der+DemFem`, `ArtDef-der+DemMasc`, `ArtDef-der+DemNoGend`,
+  `ArtDef-des+DemMasc`, `ArtDef-des+DemNeut`, `ArtDef-die+DemFem`, and
+  `ArtDef-die+DemNoGend` for demonstrative pronouns "diejenige" and "dieselbe"
+* rename inflection class `Frac` to `Frac0`
+
 2023-11-29:
 
 * rename inflection classes `Name-Masc_0`, `Name-Masc_apos`, `Name-Masc_es`,

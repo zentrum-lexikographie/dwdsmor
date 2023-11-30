@@ -1,6 +1,6 @@
 % infl.fst
 % Version 5.7
-% Andreas Nolda 2023-11-29
+% Andreas Nolda 2023-11-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -827,6 +827,36 @@ $DemSuff-solch$ = $DemSuff-solch/St$ | \
 
 $DemSuff-alldem$ = {<Subst><Neut><Dat><Sg><St>}:{em}
 
+$DemSuff0$ = {[<Attr><Subst>]<Invar>}:{}
+
+$ArtDef-der+DemMascSuff$ = {<Nom><Sg><Wk>}:{e}
+
+$ArtDef-den+DemMascSuff$ = {<Acc><Sg><Wk>}:{en}
+
+$ArtDef-dem+DemMascSuff$ = {<Dat><Sg><Wk>}:{en}
+
+$ArtDef-des+DemMascSuff$ = {<Gen><Sg><Wk>}:{en}
+
+$ArtDef-das+DemNeutSuff$ = {<Nom><Sg><Wk>}:{e} | \
+                           {<Acc><Sg><Wk>}:{e}
+
+$ArtDef-dem+DemNeutSuff$ = {<Dat><Sg><Wk>}:{en}
+
+$ArtDef-des+DemNeutSuff$ = {<Gen><Sg><Wk>}:{en}
+
+$ArtDef-die+DemFemSuff$ = {<Nom><Sg><Wk>}:{e} | \
+                          {<Acc><Sg><Wk>}:{e}
+
+$ArtDef-der+DemFemSuff$ = {<Dat><Sg><Wk>}:{en} | \
+                          {<Gen><Sg><Wk>}:{en}
+
+$ArtDef-die+DemNoGendSuff$ = {<Nom><Pl><Wk>}:{en} | \
+                             {<Acc><Pl><Wk>}:{en}
+
+$ArtDef-den+DemNoGendSuff$ = {<Dat><Pl><Wk>}:{en}
+
+$ArtDef-der+DemNoGendSuff$ = {<Gen><Pl><Wk>}:{en}
+
 $WSuff-welch$ = $DemSuff-solch/St$ | \
                 {<Attr><Invar>}:{}
 
@@ -1092,6 +1122,45 @@ $Dem-alldem$ = {<+DEM>}:{<FB>} $DemSuff-alldem$
 
 % jener, jene, jenes
 $Dem$ = {<+DEM>}:{<FB>} $DemSuff$
+
+% derlei
+$Dem0$ = {<+DEM>}:{<FB>} $DemSuff0$
+
+% derjenige; derselbe
+$ArtDef-der+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{<FB>} $ArtDef-der+DemMascSuff$
+
+% denjenigen; denselben (masculine)
+$ArtDef-den+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{<FB>} $ArtDef-den+DemMascSuff$
+
+% demjenigen; demselben (masculine)
+$ArtDef-dem+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{<FB>} $ArtDef-dem+DemMascSuff$
+
+% desjenigen; desselben (masculine)
+$ArtDef-des+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{<FB>} $ArtDef-des+DemMascSuff$
+
+% dasjenige; dasselbe
+$ArtDef-das+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{<FB>} $ArtDef-das+DemNeutSuff$
+
+% demjenigen; demselben (neuter)
+$ArtDef-dem+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{<FB>} $ArtDef-dem+DemNeutSuff$
+
+% desjenigen; desselben (neuter)
+$ArtDef-des+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{<FB>} $ArtDef-des+DemNeutSuff$
+
+% diejenige; dieselbe
+$ArtDef-die+DemFem$ = {<+DEM>[<Attr><Subst>]<Fem>}:{<FB>} $ArtDef-die+DemFemSuff$
+
+% derjenigen; derselben (feminine)
+$ArtDef-der+DemFem$ = {<+DEM>[<Attr><Subst>]<Fem>}:{<FB>} $ArtDef-der+DemFemSuff$
+
+% diejenigen; dieselben
+$ArtDef-die+DemNoGend$ = {<+DEM>[<Attr><Subst>]<NoGend>}:{<FB>} $ArtDef-die+DemNoGendSuff$
+
+% denjenigen; denselben (plural)
+$ArtDef-den+DemNoGend$ = {<+DEM>[<Attr><Subst>]<NoGend>}:{<FB>} $ArtDef-den+DemNoGendSuff$
+
+% derjenigen; derselben (plural)
+$ArtDef-der+DemNoGend$ = {<+DEM>[<Attr><Subst>]<NoGend>}:{<FB>} $ArtDef-der+DemNoGendSuff$
 
 % welcher, welche, welches, welch (interrogative pronoun)
 $W-welch$ = {<+WPRO>}:{<FB>} $WSuff-welch$
@@ -1433,8 +1502,8 @@ $Card0$ = <+CARD>:<> $CardSuff0$
 % erst-
 $Ord$ = {<+ORD>}:{<FB>} $AdjInflSuff$
 
-% eineinhalb, anderthalb, drittel
-$Frac$ = <+FRAC>:<> $CardSuff0$
+% eineinhalb; anderthalb; drittel
+$Frac0$ = <+FRAC>:<> $CardSuff0$
 
 % 1
 $DigCard$ = {<+CARD><Invar>}:{}
@@ -1830,346 +1899,359 @@ $AbbrVImp$ = {<+V><Imp><Invar>}:{}
 
 % inflection transducer
 
-$INFL$ = <>:<AbbrAdj>               $AbbrAdj$           | \
-         <>:<AbbrNFem>              $AbbrNFem$          | \
-         <>:<AbbrNMasc>             $AbbrNMasc$         | \
-         <>:<AbbrNNeut>             $AbbrNNeut$         | \
-         <>:<AbbrNNoGend>           $AbbrNNoGend$       | \
-         <>:<AbbrPoss>              $AbbrPoss$          | \
-         <>:<AbbrVImp>              $AbbrVImp$          | \
-         <>:<Adj-el-er_$>           $Adj-el-er_\$$      | \
-         <>:<Adj-el-er_0>           $Adj-el-er_0$       | \
-         <>:<Adj-Lang>              $Adj-Lang$          | \
-         <>:<Adj_$>                 $Adj_\$$            | \
-         <>:<Adj_$e>                $Adj_\$e$           | \
-         <>:<Adj_0>                 $Adj_0$             | \
-         <>:<Adj_e>                 $Adj_e$             | \
-         <>:<AdjComp>               $AdjComp$           | \
-         <>:<AdjComp0-mehr>         $AdjComp0-mehr$     | \
-         <>:<AdjPos>                $AdjPos$            | \
-         <>:<AdjPos0>               $AdjPos0$           | \
-         <>:<AdjPos0-viel>          $AdjPos0-viel$      | \
-         <>:<AdjPos0Attr>           $AdjPos0Attr$       | \
-         <>:<AdjPos0AttrSubst>      $AdjPos0AttrSubst$  | \
-         <>:<AdjPosAttr>            $AdjPosAttr$        | \
-         <>:<AdjPosPred>            $AdjPosPred$        | \
-         <>:<AdjSup>                $AdjSup$            | \
-         <>:<AdjSup-aller>          $AdjSup-aller$      | \
-         <>:<Adv>                   $Adv$               | \
-         <>:<AdvComp>               $AdvComp$           | \
-         <>:<AdvComp0>              $AdvComp0$          | \
-         <>:<AdvSup>                $AdvSup$            | \
-         <>:<ArtDef>                $ArtDef$            | \
-         <>:<ArtIndef>              $ArtIndef$          | \
-         <>:<ArtIndef-n>            $ArtIndef-n$        | \
-         <>:<ArtNeg>                $ArtNeg$            | \
-         <>:<Card0>                 $Card0$             | \
-         <>:<Card-ein>              $Card-ein$          | \
-         <>:<Card-kein>             $Card-kein$         | \
-         <>:<Card-sieben>           $Card-sieben$       | \
-         <>:<Card-vier>             $Card-vier$         | \
-         <>:<Card-zwei>             $Card-zwei$         | \
-         <>:<Circp>                 $Circp$             | \
-         <>:<ConjCompar>            $ConjCompar$        | \
-         <>:<ConjCoord>             $ConjCoord$         | \
-         <>:<ConjInf>               $ConjInf$           | \
-         <>:<ConjSub>               $ConjSub$           | \
-         <>:<Dem>                   $Dem$               | \
-         <>:<Dem-alldem>            $Dem-alldem$        | \
-         <>:<Dem-dies>              $Dem-dies$          | \
-         <>:<Dem-solch>             $Dem-solch$         | \
-         <>:<DemDef>                $DemDef$            | \
-         <>:<DigCard>               $DigCard$           | \
-         <>:<DigFrac>               $DigFrac$           | \
-         <>:<DigOrd>                $DigOrd$            | \
-         <>:<Frac>                  $Frac$              | \
-         <>:<Indef0>                $Indef0$            | \
-         <>:<Indef-all>             $Indef-all$         | \
-         <>:<Indef-beid>            $Indef-beid$        | \
-         <>:<Indef-ein>             $Indef-ein$         | \
-         <>:<Indef-einig>           $Indef-einig$       | \
-         <>:<Indef-irgendein>       $Indef-irgendein$   | \
-         <>:<Indef-irgendwelch>     $Indef-irgendwelch$ | \
-         <>:<Indef-jed>             $Indef-jed$         | \
-         <>:<Indef-jeglich>         $Indef-jeglich$     | \
-         <>:<Indef-kein>            $Indef-kein$        | \
-         <>:<Indef-manch>           $Indef-manch$       | \
-         <>:<Indef-mehrer>          $Indef-mehrer$      | \
-         <>:<Indef-saemtlich>       $Indef-saemtlich$   | \
-         <>:<Indef-welch>           $Indef-welch$       | \
-         <>:<IPro-jedermann>        $IPro-jedermann$    | \
-         <>:<IPro-man>              $IPro-man$          | \
-         <>:<IPro-unsereiner>       $IPro-unsereiner$   | \
-         <>:<IPro-unsereins>        $IPro-unsereins$    | \
-         <>:<IProMasc>              $IProMasc$          | \
-         <>:<IProMascAccSg>         $IProMascAccSg$     | \
-         <>:<IProMascDatSg>         $IProMascDatSg$     | \
-         <>:<IProMascGenSg>         $IProMascGenSg$     | \
-         <>:<IProMascNomSg>         $IProMascNomSg$     | \
-         <>:<IProNeut>              $IProNeut$          | \
-         <>:<IProNeutAccSg>         $IProNeutAccSg$     | \
-         <>:<IProNeutDatSg>         $IProNeutDatSg$     | \
-         <>:<IProNeutGenSg>         $IProNeutGenSg$     | \
-         <>:<IProNeutNomSg>         $IProNeutNomSg$     | \
-         <>:<Intj>                  $Intj$              | \
-         <>:<Name-Fam_0>            $Name-Fam_0$        | \
-         <>:<Name-Fam_s>            $Name-Fam_s$        | \
-         <>:<NameFem_0>             $NameFem_0$         | \
-         <>:<NameFem_apos>          $NameFem_apos$      | \
-         <>:<NameFem_s>             $NameFem_s$         | \
-         <>:<NameMasc_0>            $NameMasc_0$        | \
-         <>:<NameMasc_apos>         $NameMasc_apos$     | \
-         <>:<NameMasc_es>           $NameMasc_es$       | \
-         <>:<NameMasc_s>            $NameMasc_s$        | \
-         <>:<NameNeut_0>            $NameNeut_0$        | \
-         <>:<NameNeut_apos>         $NameNeut_apos$     | \
-         <>:<NameNeut_es>           $NameNeut_es$       | \
-         <>:<NameNeut_s>            $NameNeut_s$        | \
-         <>:<NameNoGend/Pl_0>       $NameNoGend/Pl_0$   | \
-         <>:<NameNoGend/Pl_x>       $NameNoGend/Pl_x$   | \
-         <>:<NFem-a/en>             $NFem-a/en$         | \
-         <>:<NFem-Adj>              $NFem-Adj$          | \
-         <>:<NFem-in>               $NFem-in$           | \
-         <>:<NFem-is/en>            $NFem-is/en$        | \
-         <>:<NFem-is/iden>          $NFem-is/iden$      | \
-         <>:<NFem/Pl_x>             $NFem/Pl_x$         | \
-         <>:<NFem/Sg_0>             $NFem/Sg_0$         | \
-         <>:<NFem_0_$>              $NFem_0_\$$         | \
-         <>:<NFem_0_$e>             $NFem_0_\$e$        | \
-         <>:<NFem_0_$en>            $NFem_0_\$en$       | \
-         <>:<NFem_0_0>              $NFem_0_0$          | \
-         <>:<NFem_0_e>              $NFem_0_e$          | \
-         <>:<NFem_0_e~ss>           $NFem_0_e~ss$       | \
-         <>:<NFem_0_en>             $NFem_0_en$         | \
-         <>:<NFem_0_es>             $NFem_0_es$         | \
-         <>:<NFem_0_n>              $NFem_0_n$          | \
-         <>:<NFem_0_s>              $NFem_0_s$          | \
-         <>:<NFem_0_x>              $NFem_0_x$          | \
-         <>:<NMasc-Adj>             $NMasc-Adj$         | \
-         <>:<NMasc-as/anten>        $NMasc-as/anten$    | \
-         <>:<NMasc-as0/anten>       $NMasc-as0/anten$   | \
-         <>:<NMasc-ns>              $NMasc-ns$          | \
-         <>:<NMasc-o/en>            $NMasc-o/en$        | \
-         <>:<NMasc-o/i>             $NMasc-o/i$         | \
-         <>:<NMasc-us/e>            $NMasc-us/e$        | \
-         <>:<NMasc-us/en>           $NMasc-us/en$       | \
-         <>:<NMasc-us/i>            $NMasc-us/i$        | \
-         <>:<NMasc-us0/en>          $NMasc-us0/en$      | \
-         <>:<NMasc-us0/i>           $NMasc-us0/i$       | \
-         <>:<NMasc/Pl_0>            $NMasc/Pl_0$        | \
-         <>:<NMasc/Pl_x>            $NMasc/Pl_x$        | \
-         <>:<NMasc/Sg_0>            $NMasc/Sg_0$        | \
-         <>:<NMasc/Sg_es>           $NMasc/Sg_es$       | \
-         <>:<NMasc/Sg_s>            $NMasc/Sg_s$        | \
-         <>:<NMasc_0_$e>            $NMasc_0_\$e$       | \
-         <>:<NMasc_0_0>             $NMasc_0_0$         | \
-         <>:<NMasc_0_e>             $NMasc_0_e$         | \
-         <>:<NMasc_0_e~ss>          $NMasc_0_e~ss$      | \
-         <>:<NMasc_0_nen>           $NMasc_0_nen$       | \
-         <>:<NMasc_0_s>             $NMasc_0_s$         | \
-         <>:<NMasc_0_x>             $NMasc_0_x$         | \
-         <>:<NMasc_en_en>           $NMasc_en_en$       | \
-         <>:<NMasc_es_$e>           $NMasc_es_\$e$      | \
-         <>:<NMasc_es_$er>          $NMasc_es_\$er$     | \
-         <>:<NMasc_es_e>            $NMasc_es_e$        | \
-         <>:<NMasc_es_e~ss>         $NMasc_es_e~ss$     | \
-         <>:<NMasc_es_en>           $NMasc_es_en$       | \
-         <>:<NMasc_es_er>           $NMasc_es_er$       | \
-         <>:<NMasc_es_es>           $NMasc_es_es$       | \
-         <>:<NMasc_es_s>            $NMasc_es_s$        | \
-         <>:<NMasc_n_n>             $NMasc_n_n$         | \
-         <>:<NMasc_s_$>             $NMasc_s_\$$        | \
-         <>:<NMasc_s_$e>            $NMasc_s_\$e$       | \
-         <>:<NMasc_s_$er>           $NMasc_s_\$er$      | \
-         <>:<NMasc_s_$x>            $NMasc_s_\$x$       | \
-         <>:<NMasc_s_0>             $NMasc_s_0$         | \
-         <>:<NMasc_s_e>             $NMasc_s_e$         | \
-         <>:<NMasc_s_en>            $NMasc_s_en$        | \
-         <>:<NMasc_s_er>            $NMasc_s_er$        | \
-         <>:<NMasc_s_n>             $NMasc_s_n$         | \
-         <>:<NMasc_s_nen>           $NMasc_s_nen$       | \
-         <>:<NMasc_s_s>             $NMasc_s_s$         | \
-         <>:<NMasc_s_x>             $NMasc_s_x$         | \
-         <>:<NNeut-a/ata>           $NNeut-a/ata$       | \
-         <>:<NNeut-a/en>            $NNeut-a/en$        | \
-         <>:<NNeut-Adj/Sg>          $NNeut-Adj/Sg$      | \
-         <>:<NNeut-Adj>             $NNeut-Adj$         | \
-         <>:<NNeut-en/ina>          $NNeut-en/ina$      | \
-         <>:<NNeut-Herz>            $NNeut-Herz$        | \
-         <>:<NNeut-Inner>           $NNeut-Inner$       | \
-         <>:<NNeut-o/en>            $NNeut-o/en$        | \
-         <>:<NNeut-o/i>             $NNeut-o/i$         | \
-         <>:<NNeut-on/a>            $NNeut-on/a$        | \
-         <>:<NNeut-on/en>           $NNeut-on/en$       | \
-         <>:<NNeut-um/a>            $NNeut-um/a$        | \
-         <>:<NNeut-um/en>           $NNeut-um/en$       | \
-         <>:<NNeut-us0/en>          $NNeut-us0/en$      | \
-         <>:<NNeut/Pl_x>            $NNeut/Pl_x$        | \
-         <>:<NNeut/Sg_0>            $NNeut/Sg_0$        | \
-         <>:<NNeut/Sg_es>           $NNeut/Sg_es$       | \
-         <>:<NNeut/Sg_es~ss>        $NNeut/Sg_es~ss$    | \
-         <>:<NNeut/Sg_s>            $NNeut/Sg_s$        | \
-         <>:<NNeut_0_0>             $NNeut_0_0$         | \
-         <>:<NNeut_0_e>             $NNeut_0_e$         | \
-         <>:<NNeut_0_e~ss>          $NNeut_0_e~ss$      | \
-         <>:<NNeut_0_nen>           $NNeut_0_nen$       | \
-         <>:<NNeut_0_s>             $NNeut_0_s$         | \
-         <>:<NNeut_0_x>             $NNeut_0_x$         | \
-         <>:<NNeut_es_$e>           $NNeut_es_\$e$      | \
-         <>:<NNeut_es_$er>          $NNeut_es_\$er$     | \
-         <>:<NNeut_es_e>            $NNeut_es_e$        | \
-         <>:<NNeut_es_e~ss>         $NNeut_es_e~ss$     | \
-         <>:<NNeut_es_en>           $NNeut_es_en$       | \
-         <>:<NNeut_es_er>           $NNeut_es_er$       | \
-         <>:<NNeut_es_es>           $NNeut_es_es$       | \
-         <>:<NNeut_es_ien>          $NNeut_es_ien$      | \
-         <>:<NNeut_es_s>            $NNeut_es_s$        | \
-         <>:<NNeut_s_$>             $NNeut_s_\$$        | \
-         <>:<NNeut_s_$er>           $NNeut_s_\$er$      | \
-         <>:<NNeut_s_0>             $NNeut_s_0$         | \
-         <>:<NNeut_s_e>             $NNeut_s_e$         | \
-         <>:<NNeut_s_en>            $NNeut_s_en$        | \
-         <>:<NNeut_s_ien>           $NNeut_s_ien$       | \
-         <>:<NNeut_s_n>             $NNeut_s_n$         | \
-         <>:<NNeut_s_nen>           $NNeut_s_nen$       | \
-         <>:<NNeut_s_s>             $NNeut_s_s$         | \
-         <>:<NNeut_s_x>             $NNeut_s_x$         | \
-         <>:<NNoGend/Pl_0>          $NNoGend/Pl_0$      | \
-         <>:<NNoGend/Pl_x>          $NNoGend/Pl_x$      | \
-         <>:<Ord>                   $Ord$               | \
-         <>:<PIndInvar>             $PIndInvar$         | \
-         <>:<Poss>                  $Poss$              | \
-         <>:<Poss-er>               $Poss-er$           | \
-         <>:<Poss/Wk>               $Poss/Wk$           | \
-         <>:<Poss/Wk-er>            $Poss/Wk-er$        | \
-         <>:<Postp>                 $Postp$             | \
-         <>:<PPro1AccPl>            $PPro1AccPl$        | \
-         <>:<PPro1AccSg>            $PPro1AccSg$        | \
-         <>:<PPro1DatPl>            $PPro1DatPl$        | \
-         <>:<PPro1DatSg>            $PPro1DatSg$        | \
-         <>:<PPro1GenPl>            $PPro1GenPl$        | \
-         <>:<PPro1GenSg>            $PPro1GenSg$        | \
-         <>:<PPro1NomPl>            $PPro1NomPl$        | \
-         <>:<PPro1NomSg>            $PPro1NomSg$        | \
-         <>:<PPro2AccPl>            $PPro2AccPl$        | \
-         <>:<PPro2AccSg>            $PPro2AccSg$        | \
-         <>:<PPro2DatPl>            $PPro2DatPl$        | \
-         <>:<PPro2DatSg>            $PPro2DatSg$        | \
-         <>:<PPro2GenPl>            $PPro2GenPl$        | \
-         <>:<PPro2GenSg>            $PPro2GenSg$        | \
-         <>:<PPro2NomPl>            $PPro2NomPl$        | \
-         <>:<PPro2NomSg>            $PPro2NomSg$        | \
-         <>:<PProFemAccSg>          $PProFemAccSg$      | \
-         <>:<PProFemDatSg>          $PProFemDatSg$      | \
-         <>:<PProFemGenSg>          $PProFemGenSg$      | \
-         <>:<PProFemNomSg>          $PProFemNomSg$      | \
-         <>:<PProMascAccSg>         $PProMascAccSg$     | \
-         <>:<PProMascDatSg>         $PProMascDatSg$     | \
-         <>:<PProMascGenSg>         $PProMascGenSg$     | \
-         <>:<PProMascNomSg>         $PProMascNomSg$     | \
-         <>:<PProNeutAccSg>         $PProNeutAccSg$     | \
-         <>:<PProNeutAccSg-s>       $PProNeutAccSg-s$   | \
-         <>:<PProNeutDatSg>         $PProNeutDatSg$     | \
-         <>:<PProNeutGenSg>         $PProNeutGenSg$     | \
-         <>:<PProNeutNomSg>         $PProNeutNomSg$     | \
-         <>:<PProNeutNomSg-s>       $PProNeutNomSg-s$   | \
-         <>:<PProNoGendAccPl>       $PProNoGendAccPl$   | \
-         <>:<PProNoGendDatPl>       $PProNoGendDatPl$   | \
-         <>:<PProNoGendGenPl>       $PProNoGendGenPl$   | \
-         <>:<PProNoGendNomPl>       $PProNoGendNomPl$   | \
-         <>:<PRecPl>                $PRecPl$            | \
-         <>:<PRefl1AccSg>           $PRefl1AccSg$       | \
-         <>:<PRefl1DatSg>           $PRefl1DatSg$       | \
-         <>:<PRefl2AccSg>           $PRefl2AccSg$       | \
-         <>:<PRefl2DatSg>           $PRefl2DatSg$       | \
-         <>:<PRefl1Pl>              $PRefl1Pl$          | \
-         <>:<PRefl2Pl>              $PRefl2Pl$          | \
-         <>:<PRefl3>                $PRefl3$            | \
-         <>:<Prep>                  $Prep$              | \
-         <>:<Prep+Art-m>            $Prep+Art-m$        | \
-         <>:<Prep+Art-n>            $Prep+Art-n$        | \
-         <>:<Prep+Art-r>            $Prep+Art-r$        | \
-         <>:<Prep+Art-s>            $Prep+Art-s$        | \
-         <>:<ProAdv>                $ProAdv$            | \
-         <>:<PtclAdj>               $PtclAdj$           | \
-         <>:<PtclNeg>               $PtclNeg$           | \
-         <>:<Ptcl-zu>               $Ptcl-zu$           | \
-         <>:<Rel>                   $Rel$               | \
-         <>:<Rel-welch>             $Rel-welch$         | \
-         <>:<Roman>                 $Roman$             | \
-         <>:<VAImpPl>               $VAImpPl$           | \
-         <>:<VAImpSg>               $VAImpSg$           | \
-         <>:<VAPastIndPl>           $VAPastIndPl$       | \
-         <>:<VAPastIndSg>           $VAPastIndSg$       | \
-         <>:<VAPastSubj2>           $VAPastSubj2$       | \
-         <>:<VAPres13PlInd>         $VAPres13PlInd$     | \
-         <>:<VAPres13SgSubj>        $VAPres13SgSubj$    | \
-         <>:<VAPres1SgInd>          $VAPres1SgInd$      | \
-         <>:<VAPres2PlInd>          $VAPres2PlInd$      | \
-         <>:<VAPres2SgInd>          $VAPres2SgInd$      | \
-         <>:<VAPres2SgSubj>         $VAPres2SgSubj$     | \
-         <>:<VAPres3SgInd>          $VAPres3SgInd$      | \
-         <>:<VAPresSubjPl>          $VAPresSubjPl$      | \
-         <>:<VAPresSubjSg>          $VAPresSubjSg$      | \
-         <>:<VInf_PPres>            $VInf_PPres$        | \
-         <>:<VInf-en>               $VInf-en$           | \
-         <>:<VInf-n>                $VInf-n$            | \
-         <>:<VInf>                  $VInf$              | \
-         <>:<VMPast>                $VMPast$            | \
-         <>:<VMPast><>:<haben>      $VMPast+haben$      | \
-         <>:<VMPast><>:<sein>       $VMPast+sein$       | \
-         <>:<VMPastSubj>            $VMPastSubj$        | \
-         <>:<VMPresPl>              $VMPresPl$          | \
-         <>:<VMPresSg>              $VMPresSg$          | \
-         <>:<VPart>                 $VPart$             | \
-         <>:<VPPast>                $VPPast$            | \
-         <>:<VPPast><>:<haben>      $VPPast+haben$      | \
-         <>:<VPPast><>:<sein>       $VPPast+sein$       | \
-         <>:<VPastIndIrreg>         $VPastIndIrreg$     | \
-         <>:<VPastIndReg>           $VPastIndReg$       | \
-         <>:<VPastIndStr>           $VPastIndStr$       | \
-         <>:<VPastSubjStr>          $VPastSubjStr$      | \
-         <>:<VPPres>                $VPPres$            | \
-         <>:<VPresPlInd>            $VPresPlInd$        | \
-         <>:<VPresSubj>             $VPresSubj$         | \
-         <>:<VVPastIndReg>          $VVPastIndReg$      | \
-         <>:<VVPastIndStr>          $VVPastIndStr$      | \
-         <>:<VVPastStr>             $VVPastStr$         | \
-         <>:<VVPastSubjOld>         $VVPastSubjOld$     | \
-         <>:<VVPastSubjReg>         $VVPastSubjReg$     | \
-         <>:<VVPastSubjStr>         $VVPastSubjStr$     | \
-         <>:<VVPP-en>               $VVPP-en$           | \
-         <>:<VVPP-en><>:<haben>     $VVPP-en+haben$     | \
-         <>:<VVPP-en><>:<sein>      $VVPP-en+sein$      | \
-         <>:<VVPP-t>                $VVPP-t$            | \
-         <>:<VVPP-t><>:<haben>      $VVPP-t+haben$      | \
-         <>:<VVPP-t><>:<sein>       $VVPP-t+sein$       | \
-         <>:<VVPres>                $VVPres$            | \
-         <>:<VVPres1>               $VVPres1$           | \
-         <>:<VVPres1_Imp>           $VVPres1_Imp$       | \
-         <>:<VVPres2>               $VVPres2$           | \
-         <>:<VVPres2_Imp>           $VVPres2_Imp$       | \
-         <>:<VVPres2_Imp0>          $VVPres2_Imp0$      | \
-         <>:<VVPres2t>              $VVPres2t$          | \
-         <>:<VVPres2t_Imp0>         $VVPres2t_Imp0$     | \
-         <>:<VVPresPl>              $VVPresPl$          | \
-         <>:<VVPresSg>              $VVPresSg$          | \
-         <>:<VVReg>                 $VVReg$             | \
-         <>:<VVReg><>:<haben>       $VVReg+haben$       | \
-         <>:<VVReg><>:<sein>        $VVReg+sein$        | \
-         <>:<VVReg-el-er>           $VVReg-el-er$       | \
-         <>:<VVReg-el-er><>:<haben> $VVReg-el-er+haben$ | \
-         <>:<VVReg-el-er><>:<sein>  $VVReg-el-er+sein$  | \
-         <>:<VVRegFin>              $VVRegFin$          | \
-         <>:<WAdv>                  $WAdv$              | \
-         <>:<W-welch>               $W-welch$           | \
-         <>:<WProMascAccSg>         $WProMascAccSg$     | \
-         <>:<WProMascDatSg>         $WProMascDatSg$     | \
-         <>:<WProMascGenSg>         $WProMascGenSg$     | \
-         <>:<WProMascNomSg>         $WProMascNomSg$     | \
-         <>:<WProNeutAccSg>         $WProNeutAccSg$     | \
-         <>:<WProNeutDatSg>         $WProNeutDatSg$     | \
-         <>:<WProNeutGenSg>         $WProNeutGenSg$     | \
+$INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
+         <>:<AbbrNFem>              $AbbrNFem$             | \
+         <>:<AbbrNMasc>             $AbbrNMasc$            | \
+         <>:<AbbrNNeut>             $AbbrNNeut$            | \
+         <>:<AbbrNNoGend>           $AbbrNNoGend$          | \
+         <>:<AbbrPoss>              $AbbrPoss$             | \
+         <>:<AbbrVImp>              $AbbrVImp$             | \
+         <>:<Adj-el-er_$>           $Adj-el-er_\$$         | \
+         <>:<Adj-el-er_0>           $Adj-el-er_0$          | \
+         <>:<Adj-Lang>              $Adj-Lang$             | \
+         <>:<Adj_$>                 $Adj_\$$               | \
+         <>:<Adj_$e>                $Adj_\$e$              | \
+         <>:<Adj_0>                 $Adj_0$                | \
+         <>:<Adj_e>                 $Adj_e$                | \
+         <>:<AdjComp>               $AdjComp$              | \
+         <>:<AdjComp0-mehr>         $AdjComp0-mehr$        | \
+         <>:<AdjPos>                $AdjPos$               | \
+         <>:<AdjPos0>               $AdjPos0$              | \
+         <>:<AdjPos0-viel>          $AdjPos0-viel$         | \
+         <>:<AdjPos0Attr>           $AdjPos0Attr$          | \
+         <>:<AdjPos0AttrSubst>      $AdjPos0AttrSubst$     | \
+         <>:<AdjPosAttr>            $AdjPosAttr$           | \
+         <>:<AdjPosPred>            $AdjPosPred$           | \
+         <>:<AdjSup>                $AdjSup$               | \
+         <>:<AdjSup-aller>          $AdjSup-aller$         | \
+         <>:<Adv>                   $Adv$                  | \
+         <>:<AdvComp>               $AdvComp$              | \
+         <>:<AdvComp0>              $AdvComp0$             | \
+         <>:<AdvSup>                $AdvSup$               | \
+         <>:<ArtDef>                $ArtDef$               | \
+         <>:<ArtDef-das+DemNeut>    $ArtDef-das+DemNeut$   | \
+         <>:<ArtDef-dem+DemMasc>    $ArtDef-dem+DemMasc$   | \
+         <>:<ArtDef-dem+DemNeut>    $ArtDef-dem+DemNeut$   | \
+         <>:<ArtDef-den+DemMasc>    $ArtDef-den+DemMasc$   | \
+         <>:<ArtDef-den+DemNoGend>  $ArtDef-den+DemNoGend$ | \
+         <>:<ArtDef-der+DemFem>     $ArtDef-der+DemFem$    | \
+         <>:<ArtDef-der+DemMasc>    $ArtDef-der+DemMasc$   | \
+         <>:<ArtDef-der+DemNoGend>  $ArtDef-der+DemNoGend$ | \
+         <>:<ArtDef-des+DemMasc>    $ArtDef-des+DemMasc$   | \
+         <>:<ArtDef-des+DemNeut>    $ArtDef-des+DemNeut$   | \
+         <>:<ArtDef-die+DemFem>     $ArtDef-die+DemFem$    | \
+         <>:<ArtDef-die+DemNoGend>  $ArtDef-die+DemNoGend$ | \
+         <>:<ArtIndef>              $ArtIndef$             | \
+         <>:<ArtIndef-n>            $ArtIndef-n$           | \
+         <>:<ArtNeg>                $ArtNeg$               | \
+         <>:<Card0>                 $Card0$                | \
+         <>:<Card-ein>              $Card-ein$             | \
+         <>:<Card-kein>             $Card-kein$            | \
+         <>:<Card-sieben>           $Card-sieben$          | \
+         <>:<Card-vier>             $Card-vier$            | \
+         <>:<Card-zwei>             $Card-zwei$            | \
+         <>:<Circp>                 $Circp$                | \
+         <>:<ConjCompar>            $ConjCompar$           | \
+         <>:<ConjCoord>             $ConjCoord$            | \
+         <>:<ConjInf>               $ConjInf$              | \
+         <>:<ConjSub>               $ConjSub$              | \
+         <>:<Dem>                   $Dem$                  | \
+         <>:<Dem0>                  $Dem0$                 | \
+         <>:<Dem-alldem>            $Dem-alldem$           | \
+         <>:<Dem-dies>              $Dem-dies$             | \
+         <>:<Dem-solch>             $Dem-solch$            | \
+         <>:<DemDef>                $DemDef$               | \
+         <>:<DigCard>               $DigCard$              | \
+         <>:<DigFrac>               $DigFrac$              | \
+         <>:<DigOrd>                $DigOrd$               | \
+         <>:<Frac0>                 $Frac0$                | \
+         <>:<Indef0>                $Indef0$               | \
+         <>:<Indef-all>             $Indef-all$            | \
+         <>:<Indef-beid>            $Indef-beid$           | \
+         <>:<Indef-ein>             $Indef-ein$            | \
+         <>:<Indef-einig>           $Indef-einig$          | \
+         <>:<Indef-irgendein>       $Indef-irgendein$      | \
+         <>:<Indef-irgendwelch>     $Indef-irgendwelch$    | \
+         <>:<Indef-jed>             $Indef-jed$            | \
+         <>:<Indef-jeglich>         $Indef-jeglich$        | \
+         <>:<Indef-kein>            $Indef-kein$           | \
+         <>:<Indef-manch>           $Indef-manch$          | \
+         <>:<Indef-mehrer>          $Indef-mehrer$         | \
+         <>:<Indef-saemtlich>       $Indef-saemtlich$      | \
+         <>:<Indef-welch>           $Indef-welch$          | \
+         <>:<IPro-jedermann>        $IPro-jedermann$       | \
+         <>:<IPro-man>              $IPro-man$             | \
+         <>:<IPro-unsereiner>       $IPro-unsereiner$      | \
+         <>:<IPro-unsereins>        $IPro-unsereins$       | \
+         <>:<IProMasc>              $IProMasc$             | \
+         <>:<IProMascAccSg>         $IProMascAccSg$        | \
+         <>:<IProMascDatSg>         $IProMascDatSg$        | \
+         <>:<IProMascGenSg>         $IProMascGenSg$        | \
+         <>:<IProMascNomSg>         $IProMascNomSg$        | \
+         <>:<IProNeut>              $IProNeut$             | \
+         <>:<IProNeutAccSg>         $IProNeutAccSg$        | \
+         <>:<IProNeutDatSg>         $IProNeutDatSg$        | \
+         <>:<IProNeutGenSg>         $IProNeutGenSg$        | \
+         <>:<IProNeutNomSg>         $IProNeutNomSg$        | \
+         <>:<Intj>                  $Intj$                 | \
+         <>:<Name-Fam_0>            $Name-Fam_0$           | \
+         <>:<Name-Fam_s>            $Name-Fam_s$           | \
+         <>:<NameFem_0>             $NameFem_0$            | \
+         <>:<NameFem_apos>          $NameFem_apos$         | \
+         <>:<NameFem_s>             $NameFem_s$            | \
+         <>:<NameMasc_0>            $NameMasc_0$           | \
+         <>:<NameMasc_apos>         $NameMasc_apos$        | \
+         <>:<NameMasc_es>           $NameMasc_es$          | \
+         <>:<NameMasc_s>            $NameMasc_s$           | \
+         <>:<NameNeut_0>            $NameNeut_0$           | \
+         <>:<NameNeut_apos>         $NameNeut_apos$        | \
+         <>:<NameNeut_es>           $NameNeut_es$          | \
+         <>:<NameNeut_s>            $NameNeut_s$           | \
+         <>:<NameNoGend/Pl_0>       $NameNoGend/Pl_0$      | \
+         <>:<NameNoGend/Pl_x>       $NameNoGend/Pl_x$      | \
+         <>:<NFem-a/en>             $NFem-a/en$            | \
+         <>:<NFem-Adj>              $NFem-Adj$             | \
+         <>:<NFem-in>               $NFem-in$              | \
+         <>:<NFem-is/en>            $NFem-is/en$           | \
+         <>:<NFem-is/iden>          $NFem-is/iden$         | \
+         <>:<NFem/Pl_x>             $NFem/Pl_x$            | \
+         <>:<NFem/Sg_0>             $NFem/Sg_0$            | \
+         <>:<NFem_0_$>              $NFem_0_\$$            | \
+         <>:<NFem_0_$e>             $NFem_0_\$e$           | \
+         <>:<NFem_0_$en>            $NFem_0_\$en$          | \
+         <>:<NFem_0_0>              $NFem_0_0$             | \
+         <>:<NFem_0_e>              $NFem_0_e$             | \
+         <>:<NFem_0_e~ss>           $NFem_0_e~ss$          | \
+         <>:<NFem_0_en>             $NFem_0_en$            | \
+         <>:<NFem_0_es>             $NFem_0_es$            | \
+         <>:<NFem_0_n>              $NFem_0_n$             | \
+         <>:<NFem_0_s>              $NFem_0_s$             | \
+         <>:<NFem_0_x>              $NFem_0_x$             | \
+         <>:<NMasc-Adj>             $NMasc-Adj$            | \
+         <>:<NMasc-as/anten>        $NMasc-as/anten$       | \
+         <>:<NMasc-as0/anten>       $NMasc-as0/anten$      | \
+         <>:<NMasc-ns>              $NMasc-ns$             | \
+         <>:<NMasc-o/en>            $NMasc-o/en$           | \
+         <>:<NMasc-o/i>             $NMasc-o/i$            | \
+         <>:<NMasc-us/e>            $NMasc-us/e$           | \
+         <>:<NMasc-us/en>           $NMasc-us/en$          | \
+         <>:<NMasc-us/i>            $NMasc-us/i$           | \
+         <>:<NMasc-us0/en>          $NMasc-us0/en$         | \
+         <>:<NMasc-us0/i>           $NMasc-us0/i$          | \
+         <>:<NMasc/Pl_0>            $NMasc/Pl_0$           | \
+         <>:<NMasc/Pl_x>            $NMasc/Pl_x$           | \
+         <>:<NMasc/Sg_0>            $NMasc/Sg_0$           | \
+         <>:<NMasc/Sg_es>           $NMasc/Sg_es$          | \
+         <>:<NMasc/Sg_s>            $NMasc/Sg_s$           | \
+         <>:<NMasc_0_$e>            $NMasc_0_\$e$          | \
+         <>:<NMasc_0_0>             $NMasc_0_0$            | \
+         <>:<NMasc_0_e>             $NMasc_0_e$            | \
+         <>:<NMasc_0_e~ss>          $NMasc_0_e~ss$         | \
+         <>:<NMasc_0_nen>           $NMasc_0_nen$          | \
+         <>:<NMasc_0_s>             $NMasc_0_s$            | \
+         <>:<NMasc_0_x>             $NMasc_0_x$            | \
+         <>:<NMasc_en_en>           $NMasc_en_en$          | \
+         <>:<NMasc_es_$e>           $NMasc_es_\$e$         | \
+         <>:<NMasc_es_$er>          $NMasc_es_\$er$        | \
+         <>:<NMasc_es_e>            $NMasc_es_e$           | \
+         <>:<NMasc_es_e~ss>         $NMasc_es_e~ss$        | \
+         <>:<NMasc_es_en>           $NMasc_es_en$          | \
+         <>:<NMasc_es_er>           $NMasc_es_er$          | \
+         <>:<NMasc_es_es>           $NMasc_es_es$          | \
+         <>:<NMasc_es_s>            $NMasc_es_s$           | \
+         <>:<NMasc_n_n>             $NMasc_n_n$            | \
+         <>:<NMasc_s_$>             $NMasc_s_\$$           | \
+         <>:<NMasc_s_$e>            $NMasc_s_\$e$          | \
+         <>:<NMasc_s_$er>           $NMasc_s_\$er$         | \
+         <>:<NMasc_s_$x>            $NMasc_s_\$x$          | \
+         <>:<NMasc_s_0>             $NMasc_s_0$            | \
+         <>:<NMasc_s_e>             $NMasc_s_e$            | \
+         <>:<NMasc_s_en>            $NMasc_s_en$           | \
+         <>:<NMasc_s_er>            $NMasc_s_er$           | \
+         <>:<NMasc_s_n>             $NMasc_s_n$            | \
+         <>:<NMasc_s_nen>           $NMasc_s_nen$          | \
+         <>:<NMasc_s_s>             $NMasc_s_s$            | \
+         <>:<NMasc_s_x>             $NMasc_s_x$            | \
+         <>:<NNeut-a/ata>           $NNeut-a/ata$          | \
+         <>:<NNeut-a/en>            $NNeut-a/en$           | \
+         <>:<NNeut-Adj/Sg>          $NNeut-Adj/Sg$         | \
+         <>:<NNeut-Adj>             $NNeut-Adj$            | \
+         <>:<NNeut-en/ina>          $NNeut-en/ina$         | \
+         <>:<NNeut-Herz>            $NNeut-Herz$           | \
+         <>:<NNeut-Inner>           $NNeut-Inner$          | \
+         <>:<NNeut-o/en>            $NNeut-o/en$           | \
+         <>:<NNeut-o/i>             $NNeut-o/i$            | \
+         <>:<NNeut-on/a>            $NNeut-on/a$           | \
+         <>:<NNeut-on/en>           $NNeut-on/en$          | \
+         <>:<NNeut-um/a>            $NNeut-um/a$           | \
+         <>:<NNeut-um/en>           $NNeut-um/en$          | \
+         <>:<NNeut-us0/en>          $NNeut-us0/en$         | \
+         <>:<NNeut/Pl_x>            $NNeut/Pl_x$           | \
+         <>:<NNeut/Sg_0>            $NNeut/Sg_0$           | \
+         <>:<NNeut/Sg_es>           $NNeut/Sg_es$          | \
+         <>:<NNeut/Sg_es~ss>        $NNeut/Sg_es~ss$       | \
+         <>:<NNeut/Sg_s>            $NNeut/Sg_s$           | \
+         <>:<NNeut_0_0>             $NNeut_0_0$            | \
+         <>:<NNeut_0_e>             $NNeut_0_e$            | \
+         <>:<NNeut_0_e~ss>          $NNeut_0_e~ss$         | \
+         <>:<NNeut_0_nen>           $NNeut_0_nen$          | \
+         <>:<NNeut_0_s>             $NNeut_0_s$            | \
+         <>:<NNeut_0_x>             $NNeut_0_x$            | \
+         <>:<NNeut_es_$e>           $NNeut_es_\$e$         | \
+         <>:<NNeut_es_$er>          $NNeut_es_\$er$        | \
+         <>:<NNeut_es_e>            $NNeut_es_e$           | \
+         <>:<NNeut_es_e~ss>         $NNeut_es_e~ss$        | \
+         <>:<NNeut_es_en>           $NNeut_es_en$          | \
+         <>:<NNeut_es_er>           $NNeut_es_er$          | \
+         <>:<NNeut_es_es>           $NNeut_es_es$          | \
+         <>:<NNeut_es_ien>          $NNeut_es_ien$         | \
+         <>:<NNeut_es_s>            $NNeut_es_s$           | \
+         <>:<NNeut_s_$>             $NNeut_s_\$$           | \
+         <>:<NNeut_s_$er>           $NNeut_s_\$er$         | \
+         <>:<NNeut_s_0>             $NNeut_s_0$            | \
+         <>:<NNeut_s_e>             $NNeut_s_e$            | \
+         <>:<NNeut_s_en>            $NNeut_s_en$           | \
+         <>:<NNeut_s_ien>           $NNeut_s_ien$          | \
+         <>:<NNeut_s_n>             $NNeut_s_n$            | \
+         <>:<NNeut_s_nen>           $NNeut_s_nen$          | \
+         <>:<NNeut_s_s>             $NNeut_s_s$            | \
+         <>:<NNeut_s_x>             $NNeut_s_x$            | \
+         <>:<NNoGend/Pl_0>          $NNoGend/Pl_0$         | \
+         <>:<NNoGend/Pl_x>          $NNoGend/Pl_x$         | \
+         <>:<Ord>                   $Ord$                  | \
+         <>:<PIndInvar>             $PIndInvar$            | \
+         <>:<Poss>                  $Poss$                 | \
+         <>:<Poss-er>               $Poss-er$              | \
+         <>:<Poss/Wk>               $Poss/Wk$              | \
+         <>:<Poss/Wk-er>            $Poss/Wk-er$           | \
+         <>:<Postp>                 $Postp$                | \
+         <>:<PPro1AccPl>            $PPro1AccPl$           | \
+         <>:<PPro1AccSg>            $PPro1AccSg$           | \
+         <>:<PPro1DatPl>            $PPro1DatPl$           | \
+         <>:<PPro1DatSg>            $PPro1DatSg$           | \
+         <>:<PPro1GenPl>            $PPro1GenPl$           | \
+         <>:<PPro1GenSg>            $PPro1GenSg$           | \
+         <>:<PPro1NomPl>            $PPro1NomPl$           | \
+         <>:<PPro1NomSg>            $PPro1NomSg$           | \
+         <>:<PPro2AccPl>            $PPro2AccPl$           | \
+         <>:<PPro2AccSg>            $PPro2AccSg$           | \
+         <>:<PPro2DatPl>            $PPro2DatPl$           | \
+         <>:<PPro2DatSg>            $PPro2DatSg$           | \
+         <>:<PPro2GenPl>            $PPro2GenPl$           | \
+         <>:<PPro2GenSg>            $PPro2GenSg$           | \
+         <>:<PPro2NomPl>            $PPro2NomPl$           | \
+         <>:<PPro2NomSg>            $PPro2NomSg$           | \
+         <>:<PProFemAccSg>          $PProFemAccSg$         | \
+         <>:<PProFemDatSg>          $PProFemDatSg$         | \
+         <>:<PProFemGenSg>          $PProFemGenSg$         | \
+         <>:<PProFemNomSg>          $PProFemNomSg$         | \
+         <>:<PProMascAccSg>         $PProMascAccSg$        | \
+         <>:<PProMascDatSg>         $PProMascDatSg$        | \
+         <>:<PProMascGenSg>         $PProMascGenSg$        | \
+         <>:<PProMascNomSg>         $PProMascNomSg$        | \
+         <>:<PProNeutAccSg>         $PProNeutAccSg$        | \
+         <>:<PProNeutAccSg-s>       $PProNeutAccSg-s$      | \
+         <>:<PProNeutDatSg>         $PProNeutDatSg$        | \
+         <>:<PProNeutGenSg>         $PProNeutGenSg$        | \
+         <>:<PProNeutNomSg>         $PProNeutNomSg$        | \
+         <>:<PProNeutNomSg-s>       $PProNeutNomSg-s$      | \
+         <>:<PProNoGendAccPl>       $PProNoGendAccPl$      | \
+         <>:<PProNoGendDatPl>       $PProNoGendDatPl$      | \
+         <>:<PProNoGendGenPl>       $PProNoGendGenPl$      | \
+         <>:<PProNoGendNomPl>       $PProNoGendNomPl$      | \
+         <>:<PRecPl>                $PRecPl$               | \
+         <>:<PRefl1AccSg>           $PRefl1AccSg$          | \
+         <>:<PRefl1DatSg>           $PRefl1DatSg$          | \
+         <>:<PRefl2AccSg>           $PRefl2AccSg$          | \
+         <>:<PRefl2DatSg>           $PRefl2DatSg$          | \
+         <>:<PRefl1Pl>              $PRefl1Pl$             | \
+         <>:<PRefl2Pl>              $PRefl2Pl$             | \
+         <>:<PRefl3>                $PRefl3$               | \
+         <>:<Prep>                  $Prep$                 | \
+         <>:<Prep+Art-m>            $Prep+Art-m$           | \
+         <>:<Prep+Art-n>            $Prep+Art-n$           | \
+         <>:<Prep+Art-r>            $Prep+Art-r$           | \
+         <>:<Prep+Art-s>            $Prep+Art-s$           | \
+         <>:<ProAdv>                $ProAdv$               | \
+         <>:<PtclAdj>               $PtclAdj$              | \
+         <>:<PtclNeg>               $PtclNeg$              | \
+         <>:<Ptcl-zu>               $Ptcl-zu$              | \
+         <>:<Rel>                   $Rel$                  | \
+         <>:<Rel-welch>             $Rel-welch$            | \
+         <>:<Roman>                 $Roman$                | \
+         <>:<VAImpPl>               $VAImpPl$              | \
+         <>:<VAImpSg>               $VAImpSg$              | \
+         <>:<VAPastIndPl>           $VAPastIndPl$          | \
+         <>:<VAPastIndSg>           $VAPastIndSg$          | \
+         <>:<VAPastSubj2>           $VAPastSubj2$          | \
+         <>:<VAPres13PlInd>         $VAPres13PlInd$        | \
+         <>:<VAPres13SgSubj>        $VAPres13SgSubj$       | \
+         <>:<VAPres1SgInd>          $VAPres1SgInd$         | \
+         <>:<VAPres2PlInd>          $VAPres2PlInd$         | \
+         <>:<VAPres2SgInd>          $VAPres2SgInd$         | \
+         <>:<VAPres2SgSubj>         $VAPres2SgSubj$        | \
+         <>:<VAPres3SgInd>          $VAPres3SgInd$         | \
+         <>:<VAPresSubjPl>          $VAPresSubjPl$         | \
+         <>:<VAPresSubjSg>          $VAPresSubjSg$         | \
+         <>:<VInf_PPres>            $VInf_PPres$           | \
+         <>:<VInf-en>               $VInf-en$              | \
+         <>:<VInf-n>                $VInf-n$               | \
+         <>:<VInf>                  $VInf$                 | \
+         <>:<VMPast>                $VMPast$               | \
+         <>:<VMPast><>:<haben>      $VMPast+haben$         | \
+         <>:<VMPast><>:<sein>       $VMPast+sein$          | \
+         <>:<VMPastSubj>            $VMPastSubj$           | \
+         <>:<VMPresPl>              $VMPresPl$             | \
+         <>:<VMPresSg>              $VMPresSg$             | \
+         <>:<VPart>                 $VPart$                | \
+         <>:<VPPast>                $VPPast$               | \
+         <>:<VPPast><>:<haben>      $VPPast+haben$         | \
+         <>:<VPPast><>:<sein>       $VPPast+sein$          | \
+         <>:<VPastIndIrreg>         $VPastIndIrreg$        | \
+         <>:<VPastIndReg>           $VPastIndReg$          | \
+         <>:<VPastIndStr>           $VPastIndStr$          | \
+         <>:<VPastSubjStr>          $VPastSubjStr$         | \
+         <>:<VPPres>                $VPPres$               | \
+         <>:<VPresPlInd>            $VPresPlInd$           | \
+         <>:<VPresSubj>             $VPresSubj$            | \
+         <>:<VVPastIndReg>          $VVPastIndReg$         | \
+         <>:<VVPastIndStr>          $VVPastIndStr$         | \
+         <>:<VVPastStr>             $VVPastStr$            | \
+         <>:<VVPastSubjOld>         $VVPastSubjOld$        | \
+         <>:<VVPastSubjReg>         $VVPastSubjReg$        | \
+         <>:<VVPastSubjStr>         $VVPastSubjStr$        | \
+         <>:<VVPP-en>               $VVPP-en$              | \
+         <>:<VVPP-en><>:<haben>     $VVPP-en+haben$        | \
+         <>:<VVPP-en><>:<sein>      $VVPP-en+sein$         | \
+         <>:<VVPP-t>                $VVPP-t$               | \
+         <>:<VVPP-t><>:<haben>      $VVPP-t+haben$         | \
+         <>:<VVPP-t><>:<sein>       $VVPP-t+sein$          | \
+         <>:<VVPres>                $VVPres$               | \
+         <>:<VVPres1>               $VVPres1$              | \
+         <>:<VVPres1_Imp>           $VVPres1_Imp$          | \
+         <>:<VVPres2>               $VVPres2$              | \
+         <>:<VVPres2_Imp>           $VVPres2_Imp$          | \
+         <>:<VVPres2_Imp0>          $VVPres2_Imp0$         | \
+         <>:<VVPres2t>              $VVPres2t$             | \
+         <>:<VVPres2t_Imp0>         $VVPres2t_Imp0$        | \
+         <>:<VVPresPl>              $VVPresPl$             | \
+         <>:<VVPresSg>              $VVPresSg$             | \
+         <>:<VVReg>                 $VVReg$                | \
+         <>:<VVReg><>:<haben>       $VVReg+haben$          | \
+         <>:<VVReg><>:<sein>        $VVReg+sein$           | \
+         <>:<VVReg-el-er>           $VVReg-el-er$          | \
+         <>:<VVReg-el-er><>:<haben> $VVReg-el-er+haben$    | \
+         <>:<VVReg-el-er><>:<sein>  $VVReg-el-er+sein$     | \
+         <>:<VVRegFin>              $VVRegFin$             | \
+         <>:<WAdv>                  $WAdv$                 | \
+         <>:<W-welch>               $W-welch$              | \
+         <>:<WProMascAccSg>         $WProMascAccSg$        | \
+         <>:<WProMascDatSg>         $WProMascDatSg$        | \
+         <>:<WProMascGenSg>         $WProMascGenSg$        | \
+         <>:<WProMascNomSg>         $WProMascNomSg$        | \
+         <>:<WProNeutAccSg>         $WProNeutAccSg$        | \
+         <>:<WProNeutDatSg>         $WProNeutDatSg$        | \
+         <>:<WProNeutGenSg>         $WProNeutGenSg$        | \
          <>:<WProNeutNomSg>         $WProNeutNomSg$
 
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # tuebadz_coverage.py -- TüBa-D/Z library for coverage tests
-# Gregor Middell and Andreas Nolda 2023-11-27
+# Gregor Middell and Andreas Nolda 2023-11-30
 
 from collections import namedtuple
 from xml.etree.ElementTree import iterparse
@@ -28,7 +28,7 @@ POS_MAP = {"ADJA":    ["ADJ", "INDEF", "CARD", "ORD", "FRAC"],
            "NN":      ["NN", "NPROP", "ADJ"],
            "PDAT":    ["DEM"],
            "PDS":     ["DEM"],
-           "PIAT":    ["INDEF", "ADJ", "ART"],
+           "PIAT":    ["INDEF", "DEM", "ADJ", "ART"],
            "PIDAT":   ["INDEF", "DEM", "ADJ"],
            "PIS":     ["INDEF", "DEM", "ADJ"],
            "PPER":    ["PPRO"],
@@ -654,13 +654,16 @@ LEMMA_MAP = {"ADJA": {"acht": "achte",
                     "Zweiter|Zweite|Zweites": "Zweite"},
 
              "PDAT": {"alles": "alle",
-                      "dasjenige": "diejenige",
                       "das": "die",
+                      "dasjenige": "diejenige",
+                      "dasselbe": "dieselbe",
                       "der": "die",
                       "der|die|das": "die",
                       "deren": "die",
                       "derjenige": "diejenige",
                       "derjenige|diejenige|dasjenige": "diejenige",
+                      "derselbe": "dieselbe",
+                      "derselbe|dieselbe|dasselbe": "dieselbe",
                       "dessen": "die",
                       "dessen|deren": "die",
                       "dieser": "diese",
@@ -670,12 +673,15 @@ LEMMA_MAP = {"ADJA": {"acht": "achte",
                       "jener|jene|jenes": "jene",
                       "jenes": "jene"},
 
-             "PDS": {"dasjenige": "diejenige",
-                     "derjenige": "diejenige",
-                     "das": "die",
+             "PDS": {"das": "die",
+                     "dasjenige": "diejenige",
+                     "dasselbe": "dieselbe",
                      "der": "die",
                      "der|die|das": "die",
+                     "derjenige": "diejenige",
                      "derjenige|diejenige|dasjenige": "diejenige",
+                     "derselbe": "dieselbe",
+                     "derselbe|dieselbe|dasselbe": "dieselbe",
                      "dieser": "diese",
                      "dieser|diese|dieses": "diese",
                      "dieses": "diese",

@@ -2,20 +2,6 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
-      <Schreibung>alldem</Schreibung>
-      <Grammatik>
-        <Wortklasse>Demonstrativpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>alledem</Schreibung>
-      <Grammatik>
-        <Wortklasse>Demonstrativpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
       <Schreibung>aller</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
@@ -51,6 +37,7 @@
       <Schreibung Typ="U">bißchen</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
+        <indeklinabel/>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -125,6 +112,15 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>dergleichen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <indeklinabel/>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>dich</Schreibung>
       <Grammatik>
         <Wortklasse>Reflexivpronomen</Wortklasse>
@@ -138,13 +134,21 @@
         <Wortklasse>Reflexivpronomen</Wortklasse>
       </Grammatik>
     </Formangabe>
-  </Artikel>
-  <!-- currently Red-2 -->
+  </Artikel>  <!-- currently Red-2 -->
   <Artikel>
     <Formangabe>
       <Schreibung>du</Schreibung>
       <Grammatik>
         <Wortklasse>Personalpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>ebbes</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <indeklinabel/>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -242,6 +246,15 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>etwas</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <indeklinabel/>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>euch</Schreibung>
       <Grammatik>
         <Wortklasse>Reflexivpronomen</Wortklasse>
@@ -330,6 +343,7 @@
       <Schreibung>genug</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
+        <indeklinabel/>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -450,6 +464,15 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>irgendetwas</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <indeklinabel/>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>irgendwelcher</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
@@ -553,6 +576,15 @@
       <Schreibung>mich</Schreibung>
       <Grammatik>
         <Wortklasse>Reflexivpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>paar</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <indeklinabel/>
       </Grammatik>
     </Formangabe>
   </Artikel>

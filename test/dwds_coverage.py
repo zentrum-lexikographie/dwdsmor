@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwds_coverage.py -- DWDS library for coverage tests
-# Gregor Middell and Andreas Nolda 2023-11-27
+# Gregor Middell and Andreas Nolda 2023-11-30
 
 from collections import namedtuple
 from xml.etree.ElementTree import parse
@@ -70,6 +70,8 @@ def get_dwds_entries(data_files):
                                                   "Relativpronomen",
                                                   "unbestimmter Artikel"]:
                                     if grammarspec.findall(f"{ns}Genus"):
+                                        dwds_grammar = True
+                                    elif grammarspec.findall(f"{ns}indeklinabel"):
                                         dwds_grammar = True
                                     else:
                                         dwds_grammar = False

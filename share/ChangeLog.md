@@ -1,3 +1,8 @@
+2023-11-30:
+
+* add support for demonstrative pronouns "dergleichen" and "derlei"
+* add support for demonstrative pronouns "diejenige" and "dieselbe"
+
 2023-11-28:
 
 * detect abbreviations also via DWDS word-formation links

@@ -1,5 +1,7 @@
 Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
-alldem		1	DEM	Neut Dat Sg St Subst	alldem
+alldem		2	DEM	Neut Dat Sg St Subst	alldem
+dergleichen			DEM	Invar Invar Invar Invar Attr	dergleichen
+dergleichen			DEM	Invar Invar Invar Invar Subst	dergleichen
 die	2	2	DEM	Masc Nom Sg St Attr	der
 die	2	2	DEM	Masc Nom Sg St Subst	der
 die	2	2	DEM	Masc Acc Sg St Attr	den
@@ -32,6 +34,38 @@ die	2	2	DEM	NoGend Dat Pl St Attr	den
 die	2	2	DEM	NoGend Dat Pl St Subst	denen
 die	2	2	DEM	NoGend Gen Pl St Attr	der
 die	2	2	DEM	NoGend Gen Pl St Subst	deren, derer
+diejenige		2	DEM	Masc Nom Sg Wk Attr	derjenige
+diejenige		2	DEM	Masc Nom Sg Wk Subst	derjenige
+diejenige		2	DEM	Masc Acc Sg Wk Attr	denjenigen
+diejenige		2	DEM	Masc Acc Sg Wk Subst	denjenigen
+diejenige		2	DEM	Masc Dat Sg Wk Attr	demjenigen
+diejenige		2	DEM	Masc Dat Sg Wk Subst	demjenigen
+diejenige		2	DEM	Masc Gen Sg Wk Attr	desjenigen
+diejenige		2	DEM	Masc Gen Sg Wk Subst	desjenigen
+diejenige		2	DEM	Neut Nom Sg Wk Attr	dasjenige
+diejenige		2	DEM	Neut Nom Sg Wk Subst	dasjenige
+diejenige		2	DEM	Neut Acc Sg Wk Attr	dasjenige
+diejenige		2	DEM	Neut Acc Sg Wk Subst	dasjenige
+diejenige		2	DEM	Neut Dat Sg Wk Attr	demjenigen
+diejenige		2	DEM	Neut Dat Sg Wk Subst	demjenigen
+diejenige		2	DEM	Neut Gen Sg Wk Attr	desjenigen
+diejenige		2	DEM	Neut Gen Sg Wk Subst	desjenigen
+diejenige		2	DEM	Fem Nom Sg Wk Attr	diejenige
+diejenige		2	DEM	Fem Nom Sg Wk Subst	diejenige
+diejenige		2	DEM	Fem Acc Sg Wk Attr	diejenige
+diejenige		2	DEM	Fem Acc Sg Wk Subst	diejenige
+diejenige		2	DEM	Fem Dat Sg Wk Attr	derjenigen
+diejenige		2	DEM	Fem Dat Sg Wk Subst	derjenigen
+diejenige		2	DEM	Fem Gen Sg Wk Attr	derjenigen
+diejenige		2	DEM	Fem Gen Sg Wk Subst	derjenigen
+diejenige		2	DEM	NoGend Nom Pl Wk Attr	diejenigen
+diejenige		2	DEM	NoGend Nom Pl Wk Subst	diejenigen
+diejenige		2	DEM	NoGend Acc Pl Wk Attr	diejenigen
+diejenige		2	DEM	NoGend Acc Pl Wk Subst	diejenigen
+diejenige		2	DEM	NoGend Dat Pl Wk Attr	denjenigen
+diejenige		2	DEM	NoGend Dat Pl Wk Subst	denjenigen
+diejenige		2	DEM	NoGend Gen Pl Wk Attr	derjenigen
+diejenige		2	DEM	NoGend Gen Pl Wk Subst	derjenigen
 diese		2	DEM	Masc Nom Sg St Attr	dieser
 diese		2	DEM	Masc Nom Sg St Subst	dieser
 diese		2	DEM	Masc Acc Sg St Attr	diesen

@@ -1,6 +1,6 @@
 % symbols.fst
 % Version 6.14
-% Andreas Nolda 2023-11-29
+% Andreas Nolda 2023-11-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -168,11 +168,15 @@
                     <NameNoGend/Pl_0><NameNoGend/Pl_x>
 
 #Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier> \
-                   <Card-zwei><DigCard><DigFrac><DigOrd><Frac><Ord><Roman>
+                   <Card-zwei><DigCard><DigFrac><DigOrd><Frac0><Ord><Roman>
 
-#Pro-inflection# = <Dem><Dem-alldem><Dem-dies><Dem-solch><DemDef><Indef0> \
-                   <Indef-all><Indef-beid><Indef-ein><Indef-einig> \
-                   <Indef-irgendein><Indef-irgendwelch><Indef-jed> \
+#Pro-inflection# = <ArtDef-das+DemNeut><ArtDef-dem+DemMasc><ArtDef-dem+DemNeut> \
+                   <ArtDef-den+DemMasc><ArtDef-den+DemNoGend><ArtDef-der+DemFem> \
+                   <ArtDef-der+DemMasc><ArtDef-der+DemNoGend> \
+                   <ArtDef-des+DemMasc><ArtDef-des+DemNeut><ArtDef-die+DemFem> \
+                   <ArtDef-die+DemNoGend><Dem><Dem0><Dem-alldem><Dem-dies> \
+                   <Dem-solch><DemDef><Indef0><Indef-all><Indef-beid><Indef-ein> \
+                   <Indef-einig><Indef-irgendein><Indef-irgendwelch><Indef-jed> \
                    <Indef-jeglich><Indef-kein><Indef-manch><Indef-mehrer> \
                    <Indef-saemtlich><Indef-welch><IPro-jedermann><IPro-man> \
                    <IPro-unsereiner><IPro-unsereins><IProMasc><IProMascAccSg> \

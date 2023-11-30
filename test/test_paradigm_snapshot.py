@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2023-11-27
+# Andreas Nolda 2023-11-30
 
 import io
 import csv
@@ -59,16 +59,18 @@ CARDINAL_LEMMAS = ["eine",    # Card-ein
 
 DEMONSTRATIVE_PRONOUN_POS = "DEM"
 
-DEMONSTRATIVE_PRONOUN_LEMMAS = ["die",     # DemDef
-                                "diese",   # Dem-dies
-                                "solche",  # Dem-solch
-                                "alldem",  # Dem-alldem
-                                "jene"]    # Dem
+DEMONSTRATIVE_PRONOUN_LEMMAS = ["die",          # DemDef
+                                "diese",        # Dem-dies
+                                "solche",       # Dem-solch
+                                "alldem",       # Dem-alldem
+                                "jene",         # Dem
+                                "dergleichen",  # Dem0
+                                "diejenige"]    # ArtDef-der+DemMasc, ArtDef-den+DemMasc ...
 
 
 FRACTION_POS = "FRAC"
 
-FRACTION_LEMMAS = ["anderthalb"]  # Frac
+FRACTION_LEMMAS = ["anderthalb"]  # Frac0
 
 
 INDEFINITE_PRONOUN_POS = "INDEF"
