@@ -259,9 +259,6 @@ Feststellungen	Feststellung	NN					Fem	Nom	Pl
 Feststellungen	Feststellung	NN					Fem	Gen	Pl									
 Feststellungen	Feststellung	NN					Fem	Dat	Pl									
 Feststellungen	Feststellung	NN					Fem	Acc	Pl									
-Feststellungen	Feststellungen	NN					Neut	Nom	Sg									
-Feststellungen	Feststellungen	NN					Neut	Dat	Sg									
-Feststellungen	Feststellungen	NN					Neut	Acc	Sg									
 der	die	ART	Def				Masc	Nom	Sg	St	Attr							
 der	die	ART	Def				Fem	Gen	Sg	St	Attr							
 der	die	ART	Def				Fem	Dat	Sg	St	Attr							
@@ -413,9 +410,6 @@ S.	s.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
 )	)	PUNCT	Paren															
 ,	,	PUNCT	Comma															
 zuletzt	zuletzt	ADV																
-zuletzt	zuletzen	V				2			Sg				Ind	Pres				
-zuletzt	zuletzen	V				2			Pl				Ind	Pres				
-zuletzt	zuletzen	V				3			Sg				Ind	Pres				
 geändert	ändern	V		haben								PPast						
 geändert	geändert	ADJ			Pos						Pred/Adv							
 durch	durch	ADV																

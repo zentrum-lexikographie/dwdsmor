@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_gesetze_analysis_snapshot.py
 # test DWDSmor analysis snapshots against legal texts for regression
-# Andreas Nolda 2023-10-16
+# Andreas Nolda 2024-01-18
 
 import io
 import csv
@@ -65,7 +65,8 @@ def get_analyses(transducer, data_files):
     for data_file in sorted(data_files):
         with open(data_file) as file:
             output_analyses(transducer, file, output,
-                            no_analysis=True, no_segmentation=True, no_index=True, no_wf=True,
+                            no_analysis=True, no_segmentation=True,
+                            no_index=True, no_wf=True, minimal=True,
                             header=False, plain=True)
     return output.getvalue()
 
