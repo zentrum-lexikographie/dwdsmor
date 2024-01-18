@@ -320,7 +320,7 @@ def analyse_words(transducer, words):
 
 def remove_nonminimal_analyses(analyses):
     minimal_analyses = []
-    minimum = min([analysis["seg"].count("<#>") for analysis in analyses])
+    minimum = min([analysis["seg"].count("<#>") for analysis in analyses], default=-1)
     for analysis in analyses:
         if analysis["seg"].count("<#>") == minimum:
             minimal_analyses.append(analysis)
