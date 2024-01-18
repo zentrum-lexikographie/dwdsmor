@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2023-11-28
+# Gregor Middell and Andreas Nolda 2024-01-18
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -18,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 9.2
+version = 9.3
 
 
 BASEDIR = path.dirname(__file__)
@@ -208,8 +208,7 @@ class Analysis(tuple):
         tag = self.tag_of_type(Analysis._charinfo_tags)
         return tag
 
-    def as_dict(self, no_analysis=False, no_segmentation=False,
-                no_index=False, no_wf=False, no_empty=False):
+    def as_dict(self):
         analysis = {"analysis": self.analysis,
                     "lemma": self.lemma,
                     "seg": self.seg,
@@ -234,20 +233,6 @@ class Analysis(tuple):
                     "orthinfo": self.orthinfo,
                     "ellipinfo": self.ellipinfo,
                     "charinfo": self.charinfo}
-        if no_analysis:
-            del analysis["analysis"]
-        if no_segmentation:
-            del analysis["seg"]
-        if no_index:
-            del analysis["lemma_index"]
-            del analysis["paradigm_index"]
-        if no_wf:
-            del analysis["process"]
-            del analysis["means"]
-        if no_empty:
-            for key, value in list(analysis.items()):
-                if not value:
-                    del analysis[key]
         return analysis
 
     def _decode_component_text(text):
@@ -355,14 +340,33 @@ def create_word_analyses(words, analyses_tuple,
                          no_index=False, no_wf=False, no_empty=False, minimal=False):
     word_analyses = []
     for word, analyses in zip(words, analyses_tuple):
-        analyses = [analysis.as_dict(no_analysis, no_segmentation,
-                                     no_index, no_wf, no_empty) for analysis in analyses]
-        if minimal and not no_segmentation:
+        analyses = [analysis.as_dict() for analysis in analyses]
+
+        if minimal:
             analyses = remove_nonminimal_analyses(analyses)
+
+        for analysis in analyses:
+            if no_analysis:
+                del analysis["analysis"]
+            if no_segmentation:
+                del analysis["seg"]
+            if no_index:
+                del analysis["lemma_index"]
+                del analysis["paradigm_index"]
+            if no_wf:
+                del analysis["process"]
+                del analysis["means"]
+            if no_empty:
+                for key, value in list(analysis.items()):
+                    if not value:
+                        del analysis[key]
+
         analyses = remove_duplicate_analyses(analyses)
+
         word_analyses.append({"word": word,
                               "analyses": analyses})
     return word_analyses
+
 
 def output_json(words, analyses_tuple, output_file,
                 no_analysis=False, no_segmentation=False,
@@ -467,8 +471,8 @@ def output_dsv(words, analyses_tuple, output_file,
 
     if no_empty:
         keys_with_values = {key for word_analyses_dict in word_analyses
-                               for analysis in word_analyses_dict["analyses"]
-                               for key, value in analysis.items() if value}
+                                for analysis in word_analyses_dict["analyses"]
+                                for key, value in analysis.items() if value}
         keys = [key for key in keys if key in keys_with_values]
 
     if header:
@@ -550,10 +554,6 @@ def main():
 
         transducer = sfst_transduce.CompactTransducer(args.transducer)
         transducer.both_layers = False
-
-        if args.minimal and args.no_segmentation:
-            print("Warning: --minimal has no effect when used with --no-segmentation",
-                  file=sys.stderr)
 
         if args.json:
             output_format = "json"
