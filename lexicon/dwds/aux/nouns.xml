@@ -70,7 +70,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Abkürzung">
+    <Formangabe Typ="Zeichen">
       <Schreibung>§</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -79,7 +79,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Abkürzung">
+    <Formangabe Typ="Zeichen">
       <Schreibung>§§</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -97,7 +97,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Abkürzung">
+    <Formangabe Typ="Zeichen">
       <Schreibung>‰</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -106,7 +106,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Abkürzung">
+    <Formangabe Typ="Zeichen">
       <Schreibung>%</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>

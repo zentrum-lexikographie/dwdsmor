@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.10 -->
-<!-- Andreas Nolda 2023-11-29 -->
+<!-- Version 14.11 -->
+<!-- Andreas Nolda 2024-01-24 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1301,7 +1301,7 @@
                                     select="$etymology"/>
                   </xsl:call-template>
                 </xsl:otherwise>
-                </xsl:choose>
+              </xsl:choose>
             </xsl:when>
             <!-- conjunctions -->
             <xsl:when test="$pos='Konjunktion'">
@@ -2108,8 +2108,9 @@
               <xsl:variable name="etymology1">
                 <xsl:call-template name="get-etymology-value"/>
               </xsl:variable>
-              <!-- ignore abbreviations -->
-              <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
+              <!-- ignore symbols and abbreviations -->
+              <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung' or
+                                                        @Typ='Zeichen')]">
                 <xsl:variable name="pos1"
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
                 <xsl:if test="string-length($pos1)&gt;0">
@@ -2123,8 +2124,9 @@
                         <xsl:call-template name="get-abbreviation-value"/>
                       </xsl:variable>
                       <xsl:for-each select="$article2">
-                        <!-- ignore abbreviations -->
-                        <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
+                        <!-- ignore symbols and abbreviations -->
+                        <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung' or
+                                                                  @Typ='Zeichen')]">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                [not(@Typ)]">
@@ -2293,8 +2295,9 @@
               <xsl:variable name="etymology1">
                 <xsl:call-template name="get-etymology-value"/>
               </xsl:variable>
-              <!-- ignore abbreviations -->
-              <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
+              <!-- ignore symbols and abbreviations -->
+              <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung' or
+                                                        @Typ='Zeichen')]">
                 <xsl:variable name="pos1"
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
                 <xsl:if test="string-length($pos1)&gt;0">
@@ -2308,8 +2311,9 @@
                         <xsl:call-template name="get-abbreviation-value"/>
                       </xsl:variable>
                       <xsl:for-each select="$article2">
-                        <!-- ignore abbreviations -->
-                        <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung')]">
+                        <!-- ignore symbols abbreviations -->
+                        <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung' or
+                                                                  @Typ='Zeichen')]">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                [not(@Typ)]">
@@ -2520,6 +2524,8 @@
     <xsl:when test="ends-with(normalize-space(.),'.')">yes</xsl:when>
     <!-- acronyms in capital letters -->
     <xsl:when test="matches(normalize-space(.),'^\p{Lu}+$')">yes</xsl:when>
+    <!-- symbols -->
+    <xsl:when test="parent::dwds:Formangabe[@Typ='Zeichen']">yes</xsl:when>
     <!-- spellings marked as abbreviation -->
     <xsl:when test="parent::dwds:Formangabe[@Typ='Abkürzung']">yes</xsl:when>
     <!-- further acronyms and other discontinuous clippings -->

@@ -1,3 +1,7 @@
+2024-01-26:
+
+* add support for `<Formangabe Typ="Zeichen">`
+
 2023-11-30:
 
 * add support for demonstrative pronouns "dergleichen" and "derlei"
