@@ -48,6 +48,15 @@
     </Formangabe>
   </Artikel>
   <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>g</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
     <Formangabe>
       <Schreibung>Hundertste</Schreibung>
       <Grammatik>
@@ -59,6 +68,24 @@
     </Formangabe>
   </Artikel>
   <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>kg</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>km</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
     <Formangabe>
       <Schreibung>Kreativität</Schreibung>
       <Grammatik>
@@ -66,6 +93,51 @@
         <Genus>fem.</Genus>
         <Genitiv>-</Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>l</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>m</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>ml</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>mm</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>min</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -142,8 +214,26 @@
     </Formangabe>
   </Artikel>
   <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>s</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
     <Formangabe Typ="Zeichen">
       <Schreibung>″</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>h</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>fem.</Genus>
@@ -156,6 +246,15 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Abkürzung">
+      <Schreibung>cm</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
       </Grammatik>
     </Formangabe>
   </Artikel>

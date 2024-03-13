@@ -1495,6 +1495,7 @@
       <!-- abbreviated nouns -->
       <xsl:when test="$abbreviation='yes' and
                       (ends-with($lemma,'.') or
+                       matches($lemma,'^[a-z]+$') or
                        $lemma='§' or
                        $lemma='§§' or
                        $lemma='%' or

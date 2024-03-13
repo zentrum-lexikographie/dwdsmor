@@ -1,6 +1,7 @@
 2024-03-13:
 
 * add support for more symbols and punctuation marks
+* add support for common unit symbols
 
 2024-01-26:
 
