@@ -39,13 +39,11 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe>
-      <Schreibung>Kreativität</Schreibung>
+    <Formangabe Typ="Zeichen">
+      <Schreibung>°</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
-        <Genus>fem.</Genus>
-        <Genitiv>-</Genitiv>
-        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+        <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -57,6 +55,26 @@
         <Genus>neutr.</Genus>
         <Genitiv>-n</Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Kreativität</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Zeichen">
+      <Schreibung>′</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -117,6 +135,15 @@
   <Artikel>
     <Formangabe Typ="Abkürzung">
       <Schreibung>S.</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Zeichen">
+      <Schreibung>″</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>fem.</Genus>

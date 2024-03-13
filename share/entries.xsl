@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.7 -->
-<!-- Andreas Nolda 2023-11-29 -->
+<!-- Version 11.8 -->
+<!-- Andreas Nolda 2024-03-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1498,9 +1498,12 @@
                        $lemma='§' or
                        $lemma='§§' or
                        $lemma='%' or
-                       $lemma='‰')">
+                       $lemma='‰' or
+                       $lemma='°' or
+                       $lemma='′' or
+                       $lemma='″')">
         <xsl:choose>
-          <!-- abbreviated masculine nouns ("Prof.") -->
+          <!-- abbreviated masculine nouns ("Prof.", "§") -->
           <xsl:when test="$gender='mask.'">
             <xsl:call-template name="stem-entry">
               <xsl:with-param name="lemma"
@@ -1517,7 +1520,7 @@
                               select="$etymology"/>
             </xsl:call-template>
           </xsl:when>
-          <!-- abbreviated neuter nouns ("Tel.") -->
+          <!-- abbreviated neuter nouns ("Tel.", "°") -->
           <xsl:when test="$gender='neutr.'">
             <xsl:call-template name="stem-entry">
               <xsl:with-param name="lemma"
@@ -1534,7 +1537,7 @@
                               select="$etymology"/>
             </xsl:call-template>
           </xsl:when>
-          <!-- abbreviated feminine nouns ("Nr.") -->
+          <!-- abbreviated feminine nouns ("Nr.", "′") -->
           <xsl:when test="$gender='fem.'">
             <xsl:call-template name="stem-entry">
               <xsl:with-param name="lemma"
@@ -1551,7 +1554,7 @@
                               select="$etymology"/>
             </xsl:call-template>
           </xsl:when>
-          <!-- abbreviated pluralia tantum ("Gebr.") -->
+          <!-- abbreviated pluralia tantum ("Gebr.", "§§") -->
           <xsl:when test="$number='plural'">
             <xsl:call-template name="stem-entry">
               <xsl:with-param name="lemma"

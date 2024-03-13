@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.11 -->
-<!-- Andreas Nolda 2024-01-24 -->
+<!-- Version 14.12 -->
+<!-- Andreas Nolda 2024-03-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -514,7 +514,10 @@
                             (ends-with($lemma,'.') or
                              $lemma='§' or
                              $lemma='%' or
-                             $lemma='‰')">
+                             $lemma='‰' or
+                             $lemma='°' or
+                             $lemma='′' or
+                             $lemma='″')">
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>

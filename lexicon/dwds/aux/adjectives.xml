@@ -18,4 +18,20 @@
       </Grammatik>
     </Formangabe>
   </Artikel>
+  <Artikel>
+    <Formangabe Typ="Zeichen">
+      <Schreibung>*</Schreibung>
+      <Grammatik>
+        <Wortklasse>partizipiales Adjektiv</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Zeichen">
+      <Schreibung>†</Schreibung>
+      <Grammatik>
+        <Wortklasse>partizipiales Adjektiv</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
 </DWDS>

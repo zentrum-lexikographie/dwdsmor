@@ -1,3 +1,7 @@
+2024-03-13:
+
+* add support for more symbols and punctuation marks
+
 2024-01-26:
 
 * add support for `<Formangabe Typ="Zeichen">`

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2024-01-18
+# Gregor Middell and Andreas Nolda 2024-03-13
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -91,7 +91,7 @@ class Analysis(tuple):
 
     _subcat_tags = {"Pers": True, "Refl": True, "Rec": True, "Def": True, "Indef": True, "Neg": True,
                     "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True,
-                    "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True}
+                    "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True, "Other": True}
 
     _auxiliary_tags = {"haben": True, "sein": True}
 

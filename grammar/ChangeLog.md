@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-03-13:
+
+* add support for more symbols and punctuation marks
+
 2023-11-30:
 
 * add inflection class `Dem0` for demonstrative pronouns "dergleichen" and
