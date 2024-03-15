@@ -49,7 +49,7 @@
   </Artikel>
   <Artikel>
     <Formangabe Typ="Abkürzung">
-      <Schreibung>g</Schreibung>
+      <Schreibung hidx="2">g</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>neutr.</Genus>
@@ -98,7 +98,7 @@
   </Artikel>
   <Artikel>
     <Formangabe Typ="Abkürzung">
-      <Schreibung>l</Schreibung>
+      <Schreibung hidx="2">l</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
@@ -107,7 +107,7 @@
   </Artikel>
   <Artikel>
     <Formangabe Typ="Abkürzung">
-      <Schreibung>m</Schreibung>
+      <Schreibung hidx="2">m</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
@@ -179,7 +179,7 @@
   </Artikel>
   <Artikel>
     <Formangabe Typ="Abkürzung">
-      <Schreibung>Prof.</Schreibung>
+      <Schreibung hidx="1">Prof.</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
@@ -215,7 +215,7 @@
   </Artikel>
   <Artikel>
     <Formangabe Typ="Abkürzung">
-      <Schreibung>s</Schreibung>
+      <Schreibung hidx="2">s</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>fem.</Genus>
@@ -233,7 +233,7 @@
   </Artikel>
   <Artikel>
     <Formangabe Typ="Abkürzung">
-      <Schreibung>h</Schreibung>
+      <Schreibung hidx="2">h</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>fem.</Genus>

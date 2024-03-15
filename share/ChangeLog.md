@@ -1,3 +1,7 @@
+2024-03-15:
+
+* improve processing of abbreviations
+
 2024-03-13:
 
 * add support for more symbols and punctuation marks

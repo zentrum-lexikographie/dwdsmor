@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.12 -->
-<!-- Andreas Nolda 2024-03-13 -->
+<!-- Version 14.13 -->
+<!-- Andreas Nolda 2024-03-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -181,31 +181,12 @@
         <xsl:variable name="abbreviation">
           <xsl:call-template name="get-abbreviation-value"/>
         </xsl:variable>
-        <!--inflection stems -->
+        <!-- inflection stems -->
         <xsl:for-each select="$grammar-specs/dwds:Grammatik">
           <xsl:variable name="pos"
                         select="normalize-space(dwds:Wortklasse)"/>
           <xsl:choose>
             <!-- adjectives and adjectival participles -->
-            <xsl:when test="($pos='Adjektiv' or
-                             $pos='partizipiales Adjektiv') and
-                            $abbreviation='yes' and
-                            ends-with($lemma,'.')">
-              <xsl:call-template name="adjective-entry-set">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
-                <xsl:with-param name="abbreviation"
-                                select="$abbreviation"/>
-                <xsl:with-param name="pronunciations"
-                                select="$pronunciations"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:when>
             <xsl:when test="$pos='Adjektiv' or
                             $pos='partizipiales Adjektiv'">
               <xsl:call-template name="adjective-entry-set">
@@ -487,59 +468,10 @@
             </xsl:when>
             <!-- nouns -->
             <xsl:when test="$pos='Substantiv' and
-                            $abbreviation='yes' and
-                            (ends-with($lemma,'.') or
-                             $lemma='§§') and
-                            normalize-space(dwds:Numeruspraeferenz)='nur im Plural'">
-              <xsl:call-template name="noun-entry-set">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
-                <xsl:with-param name="abbreviation"
-                                select="$abbreviation"/>
-                <xsl:with-param name="gender"
-                                select="normalize-space(dwds:Genus)"/>
-                <xsl:with-param name="number">plural</xsl:with-param>
-                <xsl:with-param name="pronunciations"
-                                select="$pronunciations"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$pos='Substantiv' and
-                            $abbreviation='yes' and
-                            (ends-with($lemma,'.') or
-                             matches($lemma,'^[a-z]+$') or
-                             $lemma='§' or
-                             $lemma='%' or
-                             $lemma='‰' or
-                             $lemma='°' or
-                             $lemma='′' or
-                             $lemma='″')">
-              <xsl:call-template name="noun-entry-set">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
-                <xsl:with-param name="abbreviation"
-                                select="$abbreviation"/>
-                <xsl:with-param name="gender"
-                                select="normalize-space(dwds:Genus)"/>
-                <xsl:with-param name="pronunciations"
-                                select="$pronunciations"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$pos='Substantiv' and
-                             normalize-space(dwds:Numeruspraeferenz)='nur im Singular' and
-                             string-length(normalize-space(dwds:Genus))&gt;0 and
-                             string-length(normalize-space(dwds:Genitiv))&gt;0">
+                            normalize-space(dwds:Numeruspraeferenz)='nur im Singular' and
+                            string-length(normalize-space(dwds:Genus))&gt;0 and
+                            (string-length(normalize-space(dwds:Genitiv))&gt;0 or
+                             $abbreviation='yes')">
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -571,8 +503,6 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
-                <xsl:with-param name="nominative-plural"
-                                select="normalize-space(dwds:Plural)"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
@@ -582,8 +512,9 @@
             </xsl:when>
             <xsl:when test="$pos='Substantiv' and
                             string-length(normalize-space(dwds:Genus))&gt;0 and
-                            string-length(normalize-space(dwds:Genitiv))&gt;0 and
-                            string-length(normalize-space(dwds:Plural))&gt;0">
+                            ((string-length(normalize-space(dwds:Genitiv))&gt;0 and
+                              string-length(normalize-space(dwds:Plural))&gt;0) or
+                             $abbreviation='yes')">
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -599,7 +530,6 @@
                                 select="normalize-space(dwds:Genitiv)"/>
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
-                <xsl:with-param name="number">any</xsl:with-param>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -609,8 +539,9 @@
             <!-- proper names -->
             <xsl:when test="$pos='Eigenname' and
                             normalize-space(dwds:Numeruspraeferenz)='nur im Singular' and
-                            string-length(normalize-space(dwds:Genus))&gt;0 and
-                            string-length(normalize-space(dwds:Genitiv))&gt;0">
+                            ((string-length(normalize-space(dwds:Genus))&gt;0 and
+                              string-length(normalize-space(dwds:Genitiv))&gt;0) or
+                             $abbreviation='yes')">
               <xsl:call-template name="name-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -642,8 +573,6 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
-                <xsl:with-param name="nominative-plural"
-                                select="normalize-space(dwds:Plural)"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
@@ -723,7 +652,8 @@
             </xsl:when>
             <!-- demonstrative pronouns -->
             <xsl:when test="$pos='Demonstrativpronomen' and
-                            string-length(normalize-space(dwds:Genus))&gt;0 and
+                            (string-length(normalize-space(dwds:Genus))&gt;0 or
+                             dwds:indeklinabel) and
                             not(dwds:Kasuspraeferenz[not(@Frequenz)]
                                                     [normalize-space(.)='im Akkusativ' or
                                                      normalize-space(.)='im Dativ' or
@@ -739,23 +669,6 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
-                <xsl:with-param name="pronunciations"
-                                select="$pronunciations"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$pos='Demonstrativpronomen' and
-                            dwds:indeklinabel">
-              <xsl:call-template name="demonstrative-pronoun-entry-set">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
-                <xsl:with-param name="abbreviation"
-                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -918,7 +831,8 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Indefinitpronomen' and
-                            string-length(normalize-space(dwds:Genus))&gt;0">
+                            (string-length(normalize-space(dwds:Genus))&gt;0 or
+                             dwds:indeklinabel)">
               <xsl:call-template name="indefinite-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -936,6 +850,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
+            <!-- interrogative pronouns -->
             <xsl:when test="$pos='Interrogativpronomen' and
                             ($lemma='wer' or
                              $lemma='was')">
@@ -954,7 +869,6 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <!-- interrogative pronouns -->
             <xsl:when test="$pos='Interrogativpronomen' and
                             string-length(normalize-space(dwds:Genus))&gt;0">
               <xsl:call-template name="interrogative-pronoun-entry-set">
@@ -968,23 +882,6 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
-                <xsl:with-param name="pronunciations"
-                                select="$pronunciations"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$pos='Indefinitpronomen' and
-                            dwds:indeklinabel">
-              <xsl:call-template name="indefinite-pronoun-entry-set">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
-                <xsl:with-param name="abbreviation"
-                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -1055,25 +952,8 @@
             </xsl:when>
             <!-- possessive pronouns -->
             <xsl:when test="$pos='Possessivpronomen' and
-                            $abbreviation='yes' and
-                            ends-with($lemma,'.')">
-              <xsl:call-template name="possessive-pronoun-entry-set">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
-                <xsl:with-param name="abbreviation"
-                                select="$abbreviation"/>
-                <xsl:with-param name="pronunciations"
-                                select="$pronunciations"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$pos='Possessivpronomen' and
-                            string-length(normalize-space(dwds:Genus))&gt;0">
+                            (string-length(normalize-space(dwds:Genus))&gt;0 or
+                             $abbreviation='yes')">
               <xsl:call-template name="possessive-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -1117,28 +997,11 @@
             </xsl:when>
             <!-- verbs -->
             <xsl:when test="$pos='Verb' and
-                            $abbreviation='yes' and
-                            ends-with($lemma,'.')">
-              <xsl:call-template name="verb-entry-set">
-                <xsl:with-param name="lemma"
-                                select="$lemma"/>
-                <xsl:with-param name="lemma-index"
-                                select="$lemma-index"/>
-                <xsl:with-param name="paradigm-index"
-                                select="$paradigm-index"/>
-                <xsl:with-param name="abbreviation"
-                                select="$abbreviation"/>
-                <xsl:with-param name="pronunciations"
-                                select="$pronunciations"/>
-                <xsl:with-param name="etymology"
-                                select="$etymology"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$pos='Verb' and
-                            string-length(normalize-space(dwds:Praesens))&gt;0 and
-                            string-length(normalize-space(dwds:Praeteritum))&gt;0 and
-                            string-length(normalize-space(dwds:Partizip_II))&gt;0 and
-                            string-length(normalize-space(dwds:Auxiliar))&gt;0">
+                            ((string-length(normalize-space(dwds:Praesens))&gt;0 and
+                              string-length(normalize-space(dwds:Praeteritum))&gt;0 and
+                              string-length(normalize-space(dwds:Partizip_II))&gt;0 and
+                              string-length(normalize-space(dwds:Auxiliar))&gt;0) or
+                             $abbreviation='yes')">
               <xsl:call-template name="verb-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -2526,15 +2389,17 @@
   <xsl:choose>
     <!-- abbreviations with final period -->
     <xsl:when test="ends-with(normalize-space(.),'.')">yes</xsl:when>
-    <!-- acronyms in capital letters -->
-    <xsl:when test="matches(normalize-space(.),'^\p{Lu}+$')">yes</xsl:when>
+    <!-- acronyms in uppercase letters with optional numbers and lowercase letters -->
+    <xsl:when test="matches(normalize-space(.),'^\p{N}*\p{Lu}([\p{L}\p{N}]*\p{Lu})*\p{N}*$')">yes</xsl:when>
+    <!-- acronyms consisting of an uppercase consonant letter
+         followed by lowercase consonant letters -->
+    <xsl:when test="matches(normalize-space(.),'^[\p{Lu}-[AEIOUÄÖÜ]][\p{Ll}-[aeiouäöü]]+$')">yes</xsl:when>
     <!-- symbols -->
+    <xsl:when test="matches(normalize-space(.),'^\p{Po}+$')">yes</xsl:when>
+    <!-- spellings marked as symbols -->
     <xsl:when test="parent::dwds:Formangabe[@Typ='Zeichen']">yes</xsl:when>
     <!-- spellings marked as abbreviation -->
     <xsl:when test="parent::dwds:Formangabe[@Typ='Abkürzung']">yes</xsl:when>
-    <!-- further acronyms and other discontinuous clippings -->
-    <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Verweise[@Typ='Kurzwortbildung']
-                                                                            [not(dwds:Verweis/dwds:Ziellemma[matches(normalize-space(.),normalize-space(current()),'i')])]">yes</xsl:when>
     <!-- letter names -->
     <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
                                                                                           [normalize-space(.)='Buchstabe']">yes</xsl:when>
