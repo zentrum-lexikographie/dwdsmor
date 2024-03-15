@@ -1,6 +1,6 @@
 % trunc.fst
-% Version 1.0
-% Andreas Nolda 2023-10-16
+% Version 1.1
+% Andreas Nolda 2024-03-15
 
 #include "symbols.fst"
 
@@ -11,14 +11,14 @@ ALPHABET = [#feature# #info#]
 
 $C$ =    [#char# #lemma-index# #paradigm-index# #boundary-trigger# \
           #wf-process# #wf-means#]
-$T$ = <>:[#char# #lemma-index# #paradigm-index# <HB><FB>]
+$T$ = <>:[#char# #lemma-index# #paradigm-index# <HB><SB>]
 
 $TruncInitialLv2-CB$ = $T$* \-:<> <CB> $C$* .*
 
 $TruncInitialLv2$ = $TruncInitialLv2-CB$
 
 $C$ = [#char# #boundary-trigger#]
-$T$ = [#char# <HB><FB>]:<>
+$T$ = [#char# <HB><SB>]:<>
 
 $TruncInitial-CB$ = <WB> $T$* <>:\- <CB> $C$* <WB>
 
@@ -33,7 +33,7 @@ ALPHABET = [#wf-process# #wf-means# #part-of-speech#] \
 
 $C$ =    [#char# #lemma-index# #paradigm-index# #boundary-trigger# \
           #wf-process# #wf-means#]
-$T$ = <>:[#char# #lemma-index# #paradigm-index# <FB>]
+$T$ = <>:[#char# #lemma-index# #paradigm-index# <PB><SB>]
 
 $TruncFinalLv2-CB$ = $C$* [^<HB>] <CB> \-:<> $T$* .* <Invar>:<>
 
@@ -46,7 +46,7 @@ $TruncFinalLv2$ = $TruncFinalLv2-CB$ | \
                   $TruncFinalLv2-VB$
 
 $C$ = [#char# #boundary-trigger#]
-$T$ = [#char# <FB>]:<>
+$T$ = [#char# <PB><SB>]:<>
 
 $TruncFinal-CB$ = <WB> $C$* [^<HB>] <CB> <>:\- $T$* <WB>
 

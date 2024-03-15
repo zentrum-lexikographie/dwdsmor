@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2023-11-30
+# Andreas Nolda 2024-03-15
 
 import io
 import csv
@@ -257,6 +257,7 @@ VERB_POS = "V"
 VERB_LEMMAS = ["sagen",        # VVReg
                "versagen",     # VVReg
                "absagen",      # VVReg
+               "enden",        # VVReg
                "klettern",     # VVReg-el-er
                "verwechseln",  # VVReg-el-er
                "winken",       # VVReg, VVPP-en

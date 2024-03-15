@@ -1,6 +1,6 @@
 % orth.fst
-% Version 3.1
-% Andreas Nolda 2023-05-19
+% Version 3.2
+% Andreas Nolda 2024-03-15
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -32,11 +32,11 @@ $Syllable$ = $SyllableNoSSOld$ | \
              $SyllablesSS$ | \
              $SyllableSSOld$
 
-$SyllableInflPref$ = ge <FB>
+$SyllableInflPref$ = ge <PB>
 
 $SyllableSSInflSuff$ = t (e[mnrst]?)?
 
-$SyllableInflSuff$ = <FB> $Vowel$? $Cons$* | \
+$SyllableInflSuff$ = <SB> $Vowel$? $Cons$* | \
                      $SyllableSSInflSuff$
 
 $SyllableSSOldInfl$ = $SyllableInflPref$? $SyllableSSOld$ $SyllableSSInflSuff$?
@@ -53,7 +53,7 @@ $WordSSOld$ = Exze$SSOld$     | \
 
 $B$ = [#boundary-trigger#]
 
-$BNoFB$ = $B$-[<FB>]
+$BNoFB$ = $B$-[<SB>]
 
 $OrthOld$ = (($B$+     $Syllable$)*                   \
              ($B$+     $SyllableSSOld$)               \

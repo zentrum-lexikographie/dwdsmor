@@ -1,6 +1,6 @@
 % phon.fst
-% Version 4.0
-% Andreas Nolda 2023-10-12
+% Version 4.1
+% Andreas Nolda 2024-03-15
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -43,7 +43,7 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger#
             #lemma-index# #paradigm-index# #category# #feature# #info# <e><UL>] \
            [st]:<>
 
-$R2$ = ((st<FB>) s <=> <> (t:.)) & ((st<FB>s:.) t <=> <>)
+$R2$ = ((st<SB>) s <=> <> (t:.)) & ((st<SB>s:.) t <=> <>)
 
 
 % umlaut
@@ -59,21 +59,21 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger#
 
 $Cons$ = [#consonant#]
 
-$X$ = $Cons$* <FB>? ([#ss-trigger#] | (e ($Cons$ <^Ax>? | <^Del>)))?
+$X$ = $Cons$* <SB>? ([#ss-trigger#] | (e ($Cons$ <^Ax>? | <^Del>)))?
 
 $LC$ = [#char#] | <WB> | <CB>
 
 $RC$ = [#char#] | <WB>
 
 $R3a$ = ({Au}:{Äu} | \
-         {au}:{äu}) $X$ <UL>:<FB> ^-> $LC$__$RC$
+         {au}:{äu}) $X$ <UL>:<SB> ^-> $LC$__$RC$
 
 $R3b$ = ({Aa}:Ä | \
          {aa}:ä | \
          {Oo}:Ö | \
-         {oo}:ö) $X$ <UL>:<FB> ^-> $LC$__$RC$
+         {oo}:ö) $X$ <UL>:<SB> ^-> $LC$__$RC$
 
-$R3c$ = ([AOUaou]:[ÄÖÜäöü]) $X$ <UL>:<FB> ^-> $LC$__$RC$
+$R3c$ = ([AOUaou]:[ÄÖÜäöü]) $X$ <UL>:<SB> ^-> $LC$__$RC$
 
 $R3$ = $R3a$ || $R3b$ || $R3c$
 
@@ -86,8 +86,8 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
             #category# #feature# #info# <e>] \
            <SS>:[<>s]
 
-$R4$ = ((s) [#ss-trigger#] <=> s  (<FB> [aeiou])) & \
-       ((s) [#ss-trigger#] <=> <> (<FB> ($Cons$ | <WB>)))
+$R4$ = ((s) [#ss-trigger#] <=> s  (<SB> [aeiou])) & \
+       ((s) [#ss-trigger#] <=> <> (<SB> ($Cons$ | <WB>)))
 
 
 % "e"-elision after "e"
@@ -98,7 +98,7 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
             #category# #feature# #info# <e>] \
            e:<>
 
-$R5$ = e <=> <> (<FB> e)
+$R5$ = e <=> <> (<SB> e)
 
 
 % optional genitive "e"-elision
@@ -109,23 +109,23 @@ $R5$ = e <=> <> (<FB> e)
 % Fuß+es      -> Fußes
 % Zeugnis~+es -> Zeugnisses
 
-$R6$ = (([bcdfghjklmnpqrtuvwy] <FB>? <FB>) e => <> (s <^Gen>)) | \
-       (([AEae]i <FB>? <FB>) e => <> (s <^Gen>))
+$R6$ = (([bcdfghjklmnpqrtuvwy] <SB>? <SB>) e => <> (s <^Gen>)) | \
+       (([AEae]i <SB>? <SB>) e => <> (s <^Gen>))
 
 
 % adjective-"el"/"er" "e"-elision
 % dunkel<^Ax>+e -> dunkle
 % teuer<^Ax>+e  -> teure
 
-$R7$ = e <=> <> ([lr] <^Ax> <FB> e)
+$R7$ = e <=> <> ([lr] <^Ax> <SB> e)
 
 
 % optional pronoun-"er" "e"-elision
 % unser<^Px>+en   -> unsren, unsern
 % unserig<^Px>+en -> unsrigen
 
-$R8$ = (e => <> (r(ig)? <^Px> <FB>? e)) | \
-       ((er <^Px> <FB>) e => <> ([mns]))
+$R8$ = (e => <> (r(ig)? <^Px> <SB>? e)) | \
+       ((er <^Px> <SB>) e => <> ([mns]))
 
 
 % verb-"el"/"er" "e"-elision
@@ -140,15 +140,15 @@ $R8$ = (e => <> (r(ig)? <^Px> <FB>? e)) | \
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# #category# #feature# #info# <e>] \
            e:<>
 
-$R9a$ = (<e>[lr] <FB>) e <=> <> (n | s?t)
+$R9a$ = (<e>[lr] <SB>) e <=> <> (n | s?t)
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info# <e>] \
            <e>:<>
 
-$R9b$ = <e> => <> ([lr] <FB> [eui])
+$R9b$ = <e> => <> ([lr] <SB> [eui])
 
-$R9c$ = <e> <=> <> (n <FB> [eui])
+$R9c$ = <e> <=> <> (n <SB> [eui])
 
 $R9$ = $R9a$ || $R9b$ || $R9c$
 
@@ -164,7 +164,7 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
            <e>:e \
            s:<>
 
-$R10a$ = ([xsßz] [<FB><INS-E>]) s <=> <> (t)
+$R10a$ = ([xsßz] [<SB><INS-E>]) s <=> <> (t)
 
 % "l"-elimination
 % Engel<DB>lein -> Enge<DB>lein

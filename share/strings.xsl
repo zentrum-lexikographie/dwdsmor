@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 6.0 -->
-<!-- Andreas Nolda 2023-05-15 -->
+<!-- Version 6.1 -->
+<!-- Andreas Nolda 2024-03-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -270,7 +270,7 @@
         <xsl:when test="starts-with($string2,$string1)">
           <xsl:value-of select="$string1"/>
           <xsl:if test="string-length($string1)&lt;string-length($string2)">
-            <xsl:text>&lt;FB&gt;</xsl:text>
+            <xsl:text>&lt;SB&gt;</xsl:text>
           </xsl:if>
           <xsl:value-of select="substring-after($string2,$string1)"/>
         </xsl:when>

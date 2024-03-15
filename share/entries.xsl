@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.9 -->
+<!-- Version 11.10 -->
 <!-- Andreas Nolda 2024-03-15 -->
 
 <xsl:stylesheet version="2.0"
@@ -152,7 +152,7 @@
   <xsl:param name="auxiliary"/>
   <xsl:param name="etymology"/>
   <xsl:variable name="segmented-lemma"
-                select="replace($lemma,'(e?n)$','&lt;FB&gt;$1')"/>
+                select="replace($lemma,'(e?n)$','&lt;SB&gt;$1')"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
   <xsl:if test="$abbreviation='yes'">
     <xsl:text>&lt;Abbr&gt;</xsl:text>
@@ -6153,7 +6153,7 @@
                   <xsl:with-param name="paradigm-index"
                                   select="$paradigm-index"/>
                   <xsl:with-param name="stem"
-                                  select="concat($present-stem,'&lt;FB&gt;')"/>
+                                  select="concat($present-stem,'&lt;SB&gt;')"/>
                   <xsl:with-param name="abbreviation"
                                   select="$abbreviation"/>
                   <xsl:with-param name="participle"
@@ -6267,7 +6267,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="concat($past-stem,'&lt;FB&gt;')"/>
+                                      select="concat($past-stem,'&lt;SB&gt;')"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -6314,7 +6314,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="concat(n:umlaut($past-stem),'&lt;FB&gt;')"/>
+                                      select="concat(n:umlaut($past-stem),'&lt;SB&gt;')"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -6778,7 +6778,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="concat($participle-stem,'&lt;FB&gt;')"/>
+                                      select="concat($participle-stem,'&lt;SB&gt;')"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"

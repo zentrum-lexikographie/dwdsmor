@@ -467,6 +467,84 @@ empfehlen			V haben	2 Pl Subj FutPerf	werdet empfohlen haben
 empfehlen			V haben	3 Pl Subj FutPerf	werden empfohlen haben
 empfehlen			V haben	Sg Imp	empfiehl
 empfehlen			V haben	Pl Imp	empfehlt
+enden			V haben	Inf Pres	enden
+enden			V haben	Inf Perf	geendet haben
+enden			V haben	Part Pres	endend
+enden			V haben	Part Perf	geendet
+enden			V haben	1 Sg Ind Pres	ende
+enden			V haben	2 Sg Ind Pres	endest
+enden			V haben	3 Sg Ind Pres	endet
+enden			V haben	1 Pl Ind Pres	enden
+enden			V haben	2 Pl Ind Pres	endet
+enden			V haben	3 Pl Ind Pres	enden
+enden			V haben	1 Sg Subj Pres	ende
+enden			V haben	2 Sg Subj Pres	endest
+enden			V haben	3 Sg Subj Pres	ende
+enden			V haben	1 Pl Subj Pres	enden
+enden			V haben	2 Pl Subj Pres	endet
+enden			V haben	3 Pl Subj Pres	enden
+enden			V haben	1 Sg Ind Perf	habe geendet
+enden			V haben	2 Sg Ind Perf	hast geendet
+enden			V haben	3 Sg Ind Perf	hat geendet
+enden			V haben	1 Pl Ind Perf	haben geendet
+enden			V haben	2 Pl Ind Perf	habt geendet
+enden			V haben	3 Pl Ind Perf	haben geendet
+enden			V haben	1 Sg Subj Perf	habe geendet
+enden			V haben	2 Sg Subj Perf	habest geendet
+enden			V haben	3 Sg Subj Perf	habe geendet
+enden			V haben	1 Pl Subj Perf	haben geendet
+enden			V haben	2 Pl Subj Perf	habet geendet
+enden			V haben	3 Pl Subj Perf	haben geendet
+enden			V haben	1 Sg Ind Past	endete
+enden			V haben	2 Sg Ind Past	endetest
+enden			V haben	3 Sg Ind Past	endete
+enden			V haben	1 Pl Ind Past	endeten
+enden			V haben	2 Pl Ind Past	endetet
+enden			V haben	3 Pl Ind Past	endeten
+enden			V haben	1 Sg Subj Past	endete
+enden			V haben	2 Sg Subj Past	endetest
+enden			V haben	3 Sg Subj Past	endete
+enden			V haben	1 Pl Subj Past	endeten
+enden			V haben	2 Pl Subj Past	endetet
+enden			V haben	3 Pl Subj Past	endeten
+enden			V haben	1 Sg Ind PastPerf	hatte geendet
+enden			V haben	2 Sg Ind PastPerf	hattest geendet
+enden			V haben	3 Sg Ind PastPerf	hatte geendet
+enden			V haben	1 Pl Ind PastPerf	hatten geendet
+enden			V haben	2 Pl Ind PastPerf	hattet geendet
+enden			V haben	3 Pl Ind PastPerf	hatten geendet
+enden			V haben	1 Sg Subj PastPerf	hätte geendet
+enden			V haben	2 Sg Subj PastPerf	hättest geendet
+enden			V haben	3 Sg Subj PastPerf	hätte geendet
+enden			V haben	1 Pl Subj PastPerf	hätten geendet
+enden			V haben	2 Pl Subj PastPerf	hättet geendet
+enden			V haben	3 Pl Subj PastPerf	hätten geendet
+enden			V haben	1 Sg Ind Fut	werde enden
+enden			V haben	2 Sg Ind Fut	wirst enden
+enden			V haben	3 Sg Ind Fut	wird enden
+enden			V haben	1 Pl Ind Fut	werden enden
+enden			V haben	2 Pl Ind Fut	werdet enden
+enden			V haben	3 Pl Ind Fut	werden enden
+enden			V haben	1 Sg Subj Fut	werde enden
+enden			V haben	2 Sg Subj Fut	werdest enden
+enden			V haben	3 Sg Subj Fut	werde enden
+enden			V haben	1 Pl Subj Fut	werden enden
+enden			V haben	2 Pl Subj Fut	werdet enden
+enden			V haben	3 Pl Subj Fut	werden enden
+enden			V haben	1 Sg Ind FutPerf	werde geendet haben
+enden			V haben	2 Sg Ind FutPerf	wirst geendet haben
+enden			V haben	3 Sg Ind FutPerf	wird geendet haben
+enden			V haben	1 Pl Ind FutPerf	werden geendet haben
+enden			V haben	2 Pl Ind FutPerf	werdet geendet haben
+enden			V haben	3 Pl Ind FutPerf	werden geendet haben
+enden			V haben	1 Sg Subj FutPerf	werde geendet haben
+enden			V haben	2 Sg Subj FutPerf	werdest geendet haben
+enden			V haben	3 Sg Subj FutPerf	werde geendet haben
+enden			V haben	1 Pl Subj FutPerf	werden geendet haben
+enden			V haben	2 Pl Subj FutPerf	werdet geendet haben
+enden			V haben	3 Pl Subj FutPerf	werden geendet haben
+enden			V haben	Sg Imp	ende
+enden			V haben	Pl Imp	endet
 fahren			V haben	Inf Pres	fahren
 fahren			V haben	Inf Perf	gefahren haben
 fahren			V haben	Part Pres	fahrend

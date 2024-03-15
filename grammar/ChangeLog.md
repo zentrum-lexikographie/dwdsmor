@@ -1,5 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-03-15:
+
+* replace `<FB>` (inflection boundary) by `<PB>` (inflection boundary after
+  prefix) and/or `<SB>` (inflection boundary before suffix)
+* restrict phonological rule `R5` ("e"-elision before "e") to `e<SB>e` instead
+  of `e<FB>e`, which erroneously also triggered "e"-elision in "ge" prefixes
+
 2024-03-13:
 
 * add support for more symbols and punctuation marks

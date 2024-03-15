@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 5.2
-% Andreas Nolda 2023-10-16
+% Version 5.3
+% Andreas Nolda 2024-03-15
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -10,7 +10,7 @@
 % clean up inflection-related symbols on analysis level
 
 ALPHABET = [#entry-type# #char# #lemma-index# #paradigm-index# #category# \
-            #stem-type# #suff# #origin# #orthinfo# <Abbr><FB><VB>] \
+            #stem-type# #suff# #origin# #orthinfo# <Abbr><SB><VB>] \
            <>:[#inflection# #auxiliary# <ge>]
 
 $CleanupInflLv2$ = .*
@@ -19,7 +19,7 @@ $CleanupInflLv2$ = .*
 % clean up lemma and paradigm indices
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #category# #stem-type# \
-            #suff# #origin# #inflection# #auxiliary# #orthinfo# <Abbr><FB><VB><ge>] \
+            #suff# #origin# #inflection# #auxiliary# #orthinfo# <Abbr><SB><VB><ge>] \
            [#lemma-index# #paradigm-index#]:<>
 
 $CleanupIndex$ = .*
@@ -28,7 +28,7 @@ $CleanupIndex$ = .*
 % clean up old-orthography markers
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #category# #stem-type# \
-            #suff# #origin# #inflection# #auxiliary# <Abbr><FB><VB><ge>] \
+            #suff# #origin# #inflection# #auxiliary# <Abbr><SB><VB><ge>] \
            [#orthinfo#]:<>
 
 $CleanupOrthOld$ = .*
@@ -36,7 +36,7 @@ $CleanupOrthOld$ = .*
 
 % clean up word boundaries
 
-ALPHABET = [#char# <CB><VB><HB><DB><FB>] \
+ALPHABET = [#char# <CB><VB><HB><DB><PB><SB>] \
            <WB>:<>
 
 $CleanupWB$ = .*
@@ -45,7 +45,7 @@ $CleanupWB$ = .*
 % clean up word boundaries on analysis level
 
 ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# \
-            <CB><VB><HB><DB><FB>] \
+            <CB><VB><HB><DB><PB><SB>] \
            <>:<WB>
 
 $CleanupWBLv2$ = .*

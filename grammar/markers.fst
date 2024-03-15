@@ -1,6 +1,6 @@
 % markers.fst
-% Version 7.5
-% Andreas Nolda 2023-11-29
+% Version 7.6
+% Andreas Nolda 2024-03-15
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -9,7 +9,7 @@
 % replace verb stem-final schwa with <e>
 
 ALPHABET = [#entry-type# #char# #category# #stem-type# #suff# #origin# \
-            #inflection# #auxiliary# <Abbr><FB><VB><ge>] \
+            #inflection# #auxiliary# <Abbr><SB><VB><ge>] \
            e:<e>
 
 $SchwaTrigger$ = e <=> <e> ([lr] <V> .* <VVReg-el-er>)
@@ -23,7 +23,7 @@ $C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
        #boundary-trigger# <UL><^imp><^zz><zu>]
 
 $MarkerGe$ = $C$* | \
-             $C$* <ge>:<> {<>}:{ge<FB>} $C$* <^pp>:<> $C$* | \
+             $C$* <ge>:<> {<>}:{ge<PB>} $C$* <^pp>:<> $C$* | \
              $C$* <ge>:<> $C$* | \
              $C$* $C$* <^pp>:<> $C$*
 
@@ -36,7 +36,7 @@ $C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
 $C$ = $C$ | <zu>:<>
 
 $MarkerZu$ = $C$* | \
-             $C$* <VB> {<>}:{zu<FB>} $C$* <^zz>:<> $C$*
+             $C$* <VB> {<>}:{zu<PB>} $C$* <^zz>:<> $C$*
 
 
 % process <^imp> marker
@@ -66,7 +66,7 @@ ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# <TRUNC>]
 $MarkerBoundaryLv2$ = (.                   | \
                             <#>:[<CB><VB>] | \
                        {<\=>\-}:{<HB>}     | \
-                           <\~>:[<DB><FB>])*
+                           <\~>:[<DB><PB><SB>])*
 
 ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# <TRUNC>] \
            <>:[<HB><DB>]
@@ -74,10 +74,10 @@ ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# <TRUNC>] \
 $MarkerBoundaryRootLv2$ = (.         | \
                             <+>:<CB> | \
                             <#>:<VB> | \
-                           <\~>:<FB>)*
+                           <\~>:[<PB><SB>])*
 
 ALPHABET = [#char#] \
-           [<CB><VB><DB><FB>]:<>
+           [<CB><VB><DB><PB><SB>]:<>
 
 $MarkerBoundary$ = (. | \
                     <HB>:\-)*
