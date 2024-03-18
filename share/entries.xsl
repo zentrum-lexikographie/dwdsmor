@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.10 -->
-<!-- Andreas Nolda 2024-03-15 -->
+<!-- Version 11.11 -->
+<!-- Andreas Nolda 2024-03-18 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -3719,11 +3719,29 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- "allerlei", "beiderlei" -->
+      <xsl:when test="$lemma='allerlei' or
+                      $lemma='beiderlei'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">Indef0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
     </xsl:choose>
   </xsl:if>
   <!-- TODO: -->
   <!-- "aberhundert", "Aberhundert" -->
-  <!-- "allerlei", "jederlei", "einerlei" -->
+  <!-- "jederlei", "einerlei" -->
   <!-- "allesamt" -->
   <!-- "ebensoviel", "genausoviel", "geradesoviel", "gradesoviel", "soviel" -->
   <!-- "ebensowenig", "genausowenig", "sowenig", "blutwenig", "zuwenig" -->

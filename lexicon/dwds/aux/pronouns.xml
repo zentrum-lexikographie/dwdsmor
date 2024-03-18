@@ -25,9 +25,27 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>allerlei</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <indeklinabel/>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>beide</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>beiderlei</Schreibung>
+      <Grammatik>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <indeklinabel/>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -134,7 +152,7 @@
         <Wortklasse>Reflexivpronomen</Wortklasse>
       </Grammatik>
     </Formangabe>
-  </Artikel>  <!-- currently Red-2 -->
+  </Artikel><!-- currently Red-2 -->
   <Artikel>
     <Formangabe>
       <Schreibung>du</Schreibung>
