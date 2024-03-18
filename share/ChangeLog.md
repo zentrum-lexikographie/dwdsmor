@@ -1,3 +1,7 @@
+2024-03-18:
+
+* ignore DWDS elements with `@class="invisible"`
+
 2024-03-15:
 
 * improve processing of abbreviations

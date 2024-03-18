@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.13 -->
-<!-- Andreas Nolda 2024-03-15 -->
+<!-- Version 14.14 -->
+<!-- Andreas Nolda 2024-03-18 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -62,12 +62,14 @@
     <xsl:call-template name="get-etymology-value"/>
   </xsl:variable>
   <!-- ignore idioms and other syntactically complex units -->
-  <xsl:for-each select="dwds:Formangabe[dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]]">
+  <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
+                                       [dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]]">
     <xsl:variable name="adposition">
       <xsl:choose>
         <!-- adpositional basis of contracted adposition -->
-        <xsl:when test="normalize-space(dwds:Grammatik/dwds:Wortklasse)='Präposition + Artikel'">
-          <xsl:value-of select="normalize-space(../dwds:Verweise[@Typ='Zusammenrückung']/dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma)"/>
+        <xsl:when test="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])='Präposition + Artikel'">
+          <xsl:value-of select="normalize-space(../dwds:Verweise[@Typ='Zusammenrückung']/dwds:Verweis[not(@class='invisible')]
+                                                                                                     [@Typ='Erstglied']/dwds:Ziellemma)"/>
         </xsl:when>
         <!-- TODO: more adposition values -->
       </xsl:choose>
@@ -75,7 +77,7 @@
     <xsl:variable name="flat-grammar-specs">
       <!-- ignore idioms and other syntactically complex units
            except for reflexive verbs and phrasal verbs -->
-      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse or
+      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse[not(@class='invisible')] or
                                                    self::dwds:Genus or
                                                    self::dwds:indeklinabel or
                                                    self::dwds:Genitiv[count(tokenize(normalize-space(.),'&#x20;'))=1] or
@@ -97,9 +99,8 @@
                                                    self::dwds:Partizip_II[count(tokenize(normalize-space(.),'&#x20;'))=1] or
                                                    self::dwds:Auxiliar or
                                                    self::dwds:Funktionspraeferenz or
-                                                   self::dwds:Numeruspraeferenz or
-                                                   self::dwds:Einschraenkung or
-                                                   self::dwds:Kommentar]"
+                                                   self::dwds:Numeruspraeferenz[not(@class='invisible')] or
+                                                   self::dwds:Einschraenkung]"
                           group-by="name()">
         <xsl:element name="{name()}">
           <xsl:copy-of select="current-group()"/>
@@ -109,7 +110,7 @@
     <xsl:variable name="flat-word-formation-specs">
       <!-- ignore idioms and other syntactically complex units
            except for reflexive verbs and phrasal verbs -->
-      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse or
+      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse[not(@class='invisible')] or
                                                    self::dwds:Derivationsstamm or
                                                    self::dwds:Kompositionsstamm]"
                           group-by="name()">
@@ -162,8 +163,8 @@
     <!-- sequence number of <Formangabe> -->
     <xsl:variable name="paradigm-index">
       <!-- empty in cases where there is a single <Formangabe> -->
-      <xsl:if test="count(../dwds:Formangabe)>1">
-        <xsl:number/>
+      <xsl:if test="count(../dwds:Formangabe[not(@class='invisible')])>1">
+        <xsl:number count="dwds:Formangabe[not(@class='invisible')]"/>
       </xsl:if>
     </xsl:variable>
     <!-- sequence of phonetic transcriptions (if any) -->
@@ -184,7 +185,7 @@
         <!-- inflection stems -->
         <xsl:for-each select="$grammar-specs/dwds:Grammatik">
           <xsl:variable name="pos"
-                        select="normalize-space(dwds:Wortklasse)"/>
+                        select="normalize-space(dwds:Wortklasse[not(@class='invisible')])"/>
           <xsl:choose>
             <!-- adjectives and adjectival participles -->
             <xsl:when test="$pos='Adjektiv' or
@@ -468,7 +469,7 @@
             </xsl:when>
             <!-- nouns -->
             <xsl:when test="$pos='Substantiv' and
-                            normalize-space(dwds:Numeruspraeferenz)='nur im Singular' and
+                            normalize-space(dwds:Numeruspraeferenz[not(@class='invisible')])='nur im Singular' and
                             string-length(normalize-space(dwds:Genus))&gt;0 and
                             (string-length(normalize-space(dwds:Genitiv))&gt;0 or
                              $abbreviation='yes')">
@@ -493,7 +494,7 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Substantiv' and
-                            normalize-space(dwds:Numeruspraeferenz)='nur im Plural'">
+                            normalize-space(dwds:Numeruspraeferenz[not(@class='invisible')])='nur im Plural'">
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -538,7 +539,7 @@
             </xsl:when>
             <!-- proper names -->
             <xsl:when test="$pos='Eigenname' and
-                            normalize-space(dwds:Numeruspraeferenz)='nur im Singular' and
+                            normalize-space(dwds:Numeruspraeferenz[not(@class='invisible')])='nur im Singular' and
                             ((string-length(normalize-space(dwds:Genus))&gt;0 and
                               string-length(normalize-space(dwds:Genitiv))&gt;0) or
                              $abbreviation='yes')">
@@ -563,7 +564,7 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Eigenname' and
-                            normalize-space(dwds:Numeruspraeferenz)='nur im Plural'">
+                            normalize-space(dwds:Numeruspraeferenz[not(@class='invisible')])='nur im Plural'">
               <xsl:call-template name="name-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -1652,7 +1653,7 @@
         <!-- compounding stems directly encoded in DWDS sources -->
         <xsl:for-each select="$word-formation-specs/dwds:Grammatik">
           <xsl:variable name="pos"
-                        select="normalize-space(dwds:Wortklasse)"/>
+                        select="normalize-space(dwds:Wortklasse[not(@class='invisible')])"/>
           <xsl:choose>
             <xsl:when test="$pos='Adjektiv' and
                             string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
@@ -1763,7 +1764,7 @@
                 <xsl:text>".</xsl:text>
               </xsl:message>
             </xsl:when>
-            <xsl:when test="string-length(normalize-space(dwds:Wortklasse))&gt;0">
+            <xsl:when test="string-length(normalize-space(dwds:Wortklasse[not(@class='invisible')]))&gt;0">
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
                 <xsl:value-of select="$lemma"/>
@@ -1788,7 +1789,7 @@
         <!-- derivation stems directly encoded in DWDS sources -->
         <xsl:for-each select="$word-formation-specs/dwds:Grammatik">
           <xsl:variable name="pos"
-                        select="normalize-space(dwds:Wortklasse)"/>
+                        select="normalize-space(dwds:Wortklasse[not(@class='invisible')])"/>
           <xsl:choose>
             <xsl:when test="$pos='Adjektiv' and
                             string-length(normalize-space(dwds:Derivationsstamm))&gt;0">
@@ -1903,7 +1904,7 @@
                 <xsl:text>".</xsl:text>
               </xsl:message>
             </xsl:when>
-            <xsl:when test="string-length(normalize-space(dwds:Wortklasse))&gt;0">
+            <xsl:when test="string-length(normalize-space(dwds:Wortklasse[not(@class='invisible')]))&gt;0">
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
                 <xsl:value-of select="$lemma"/>
@@ -1927,13 +1928,18 @@
         </xsl:for-each>
         <!-- compounding stems inferred from links to the compound bases -->
         <xsl:for-each select="../../dwds:Verweise[not(@Typ!='Komposition')]
-                                                 [dwds:Verweis[@Typ='Erstglied']]
-                                                 [not(dwds:Verweis[@Typ='Binnenglied'])]
-                                                 [dwds:Verweis[@Typ='Letztglied']]">
+                                                 [dwds:Verweis[not(@class='invisible')]
+                                                              [@Typ='Erstglied']]
+                                                 [not(dwds:Verweis[not(@class='invisible')]
+                                                                  [@Typ='Binnenglied'])]
+                                                 [dwds:Verweis[not(@class='invisible')]
+                                                              [@Typ='Letztglied']]">
           <xsl:variable name="basis1"
-                        select="normalize-space(dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma)"/>
+                        select="normalize-space(dwds:Verweis[not(@class='invisible')]
+                                                            [@Typ='Erstglied']/dwds:Ziellemma)"/>
           <xsl:variable name="basis2"
-                        select="normalize-space(dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma)"/>
+                        select="normalize-space(dwds:Verweis[not(@class='invisible')]
+                                                            [@Typ='Letztglied']/dwds:Ziellemma)"/>
           <!-- ignore affixes -->
           <xsl:if test="not(starts-with($lemma,'-') or
                             ends-with($lemma,'-')) and
@@ -1942,9 +1948,11 @@
                         not(starts-with($basis2,'-') or
                             ends-with($basis2,'-'))">
             <xsl:variable name="index1"
-                          select="dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma/@hidx"/>
+                          select="dwds:Verweis[not(@class='invisible')]
+                                              [@Typ='Erstglied']/dwds:Ziellemma/@hidx"/>
             <xsl:variable name="index2"
-                          select="dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma/@hidx"/>
+                          select="dwds:Verweis[not(@class='invisible')]
+                                              [@Typ='Letztglied']/dwds:Ziellemma/@hidx"/>
             <xsl:variable name="source1"
                           select="$manifest/source[@lemma=$basis1]
                                                   [@index=$index1 or
@@ -1976,10 +1984,11 @@
                 <xsl:call-template name="get-etymology-value"/>
               </xsl:variable>
               <!-- ignore symbols and abbreviations -->
-              <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung' or
+              <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
+                                                   [not(@Typ='Abkürzung' or
                                                         @Typ='Zeichen')]">
                 <xsl:variable name="pos1"
-                              select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
+                              select="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])"/>
                 <xsl:if test="string-length($pos1)&gt;0">
                   <!-- ignore idioms and non-standard spellings -->
                   <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
@@ -1992,7 +2001,8 @@
                       </xsl:variable>
                       <xsl:for-each select="$article2">
                         <!-- ignore symbols and abbreviations -->
-                        <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung' or
+                        <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
+                                                             [not(@Typ='Abkürzung' or
                                                                   @Typ='Zeichen')]">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
@@ -2112,14 +2122,19 @@
         </xsl:for-each>
         <!-- derivation stems inferred from links to the derivation bases -->
         <xsl:for-each select="../../dwds:Verweise[not(@Typ!='Derivation')]
-                                                 [dwds:Verweis[@Typ='Erstglied']]
-                                                 [not(dwds:Verweis[@Typ='Binnenglied'])]
-                                                 [dwds:Verweis[@Typ='Letztglied']]">
+                                                 [dwds:Verweis[not(@class='invisible')]
+                                                              [@Typ='Erstglied']]
+                                                 [not(dwds:Verweis[not(@class='invisible')]
+                                                                  [@Typ='Binnenglied'])]
+                                                 [dwds:Verweis[not(@class='invisible')]
+                                                              [@Typ='Letztglied']]">
 
           <xsl:variable name="basis"
-                        select="normalize-space(dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma)"/>
+                        select="normalize-space(dwds:Verweis[not(@class='invisible')]
+                                                            [@Typ='Erstglied']/dwds:Ziellemma)"/>
           <xsl:variable name="affix"
-                        select="normalize-space(dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma)"/><!-- suffix -->
+                        select="normalize-space(dwds:Verweis[not(@class='invisible')]
+                                                            [@Typ='Letztglied']/dwds:Ziellemma)"/><!-- suffix -->
           <!-- ignore affixes as $lemma and $basis,
                and ensure that $affix is a suffix -->
           <xsl:if test="not(starts-with($lemma,'-') or
@@ -2129,9 +2144,11 @@
                         starts-with($affix,'-') and
                         not(ends-with($affix,'-'))">
             <xsl:variable name="index1"
-                          select="dwds:Verweis[@Typ='Erstglied']/dwds:Ziellemma/@hidx"/>
+                          select="dwds:Verweis[not(@class='invisible')]
+                                              [@Typ='Erstglied']/dwds:Ziellemma/@hidx"/>
             <xsl:variable name="index2"
-                          select="dwds:Verweis[@Typ='Letztglied']/dwds:Ziellemma/@hidx"/>
+                          select="dwds:Verweis[not(@class='invisible')]
+                                              [@Typ='Letztglied']/dwds:Ziellemma/@hidx"/>
             <xsl:variable name="source1"
                           select="$manifest/source[@lemma=$basis]
                                                   [@index=$index1 or
@@ -2163,10 +2180,11 @@
                 <xsl:call-template name="get-etymology-value"/>
               </xsl:variable>
               <!-- ignore symbols and abbreviations -->
-              <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung' or
+              <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
+                                                   [not(@Typ='Abkürzung' or
                                                         @Typ='Zeichen')]">
                 <xsl:variable name="pos1"
-                              select="normalize-space(dwds:Grammatik/dwds:Wortklasse)"/>
+                              select="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])"/>
                 <xsl:if test="string-length($pos1)&gt;0">
                   <!-- ignore idioms and non-standard spellings -->
                   <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
@@ -2179,7 +2197,8 @@
                       </xsl:variable>
                       <xsl:for-each select="$article2">
                         <!-- ignore symbols abbreviations -->
-                        <xsl:for-each select="dwds:Formangabe[not(@Typ='Abkürzung' or
+                        <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
+                                                             [not(@Typ='Abkürzung' or
                                                                   @Typ='Zeichen')]">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
@@ -2355,29 +2374,32 @@
 
 <xsl:template name="get-etymology-value">
   <xsl:choose>
-    <xsl:when test="dwds:Diachronie/dwds:Etymologie/dwds:erwaehntes_Zeichen[@Sprache]">
+    <xsl:when test="dwds:Diachronie[not(@class='invisible')]/dwds:Etymologie[not(@class='invisible')]/dwds:erwaehntes_Zeichen[@Sprache]">
       <xsl:choose>
-        <xsl:when test="dwds:Diachronie/dwds:Etymologie/dwds:erwaehntes_Zeichen[@Sprache='ahd' or
-                                                                                @Sprache='bair' or
-                                                                                @Sprache='berlin' or
-                                                                                @Sprache='dt' or
-                                                                                @Sprache='frühnhd' or
-                                                                                @Sprache='germ' or
-                                                                                @Sprache='mhd' or
-                                                                                @Sprache='mnd' or
-                                                                                @Sprache='nd' or
-                                                                                @Sprache='nhd' or
-                                                                                @Sprache='nordd' or
-                                                                                @Sprache='schweiz' or
-                                                                                @Sprache='schweizerdt']">native</xsl:when><!-- ... -->
+        <xsl:when test="dwds:Diachronie[not(@class='invisible')]/dwds:Etymologie[not(@class='invisible')]/dwds:erwaehntes_Zeichen[@Sprache='ahd' or
+                                                                                                                                  @Sprache='bair' or
+                                                                                                                                  @Sprache='berlin' or
+                                                                                                                                  @Sprache='dt' or
+                                                                                                                                  @Sprache='frühnhd' or
+                                                                                                                                  @Sprache='germ' or
+                                                                                                                                  @Sprache='mhd' or
+                                                                                                                                  @Sprache='mnd' or
+                                                                                                                                  @Sprache='nd' or
+                                                                                                                                  @Sprache='nhd' or
+                                                                                                                                  @Sprache='nordd' or
+                                                                                                                                  @Sprache='schweiz' or
+                                                                                                                                  @Sprache='schweizerdt']">native</xsl:when><!-- ... -->
         <xsl:otherwise>foreign</xsl:otherwise>
       </xsl:choose>
     </xsl:when>
-    <xsl:when test="dwds:Diachronie/dwds:Etymologie[not(*)]">
+    <xsl:when test="dwds:Diachronie[not(@class='invisible')]/dwds:Etymologie[not(@class='invisible')]
+                                                                            [not(*)]">
       <xsl:choose>
-        <xsl:when test="dwds:Diachronie/dwds:Etymologie[string-length(normalize-space(.))=0]">native</xsl:when>
-        <xsl:when test="dwds:Diachronie/dwds:Etymologie[contains(.,'Deutsch') or
-                                                        contains(.,'deutsch')]">native</xsl:when>
+        <xsl:when test="dwds:Diachronie[not(@class='invisible')]/dwds:Etymologie[not(@class='invisible')]
+                                                                                [string-length(normalize-space(.))=0]">native</xsl:when>
+        <xsl:when test="dwds:Diachronie[not(@class='invisible')]/dwds:Etymologie[not(@class='invisible')]
+                                                                                [contains(.,'Deutsch') or
+                                                                                 contains(.,'deutsch')]">native</xsl:when>
         <xsl:otherwise>foreign</xsl:otherwise>
       </xsl:choose>
     </xsl:when>
@@ -2397,20 +2419,22 @@
     <!-- symbols -->
     <xsl:when test="matches(normalize-space(.),'^\p{Po}+$')">yes</xsl:when>
     <!-- spellings marked as symbols -->
-    <xsl:when test="parent::dwds:Formangabe[@Typ='Zeichen']">yes</xsl:when>
+    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]
+                                           [@Typ='Zeichen']">yes</xsl:when>
     <!-- spellings marked as abbreviation -->
-    <xsl:when test="parent::dwds:Formangabe[@Typ='Abkürzung']">yes</xsl:when>
+    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]
+                                           [@Typ='Abkürzung']">yes</xsl:when>
     <!-- letter names -->
-    <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
-                                                                                          [normalize-space(.)='Buchstabe']">yes</xsl:when>
-    <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Lesart/dwds:Definition[@Typ='Basis']
-                                                                                          [matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]">yes</xsl:when>
+    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Generalisierung']
+                                                                                                                                            [normalize-space(.)='Buchstabe']">yes</xsl:when>
+    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Basis']
+                                                                                                                                            [matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]">yes</xsl:when>
     <!-- sound names -->
-    <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Lesart/dwds:Definition[@Typ='Basis']
-                                                                                          [matches(normalize-space(.),'^der Laut \p{L}$')]">yes</xsl:when>
+    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Basis']
+                                                                                                                                            [matches(normalize-space(.),'^der Laut \p{L}$')]">yes</xsl:when>
     <!-- note names -->
-    <xsl:when test="parent::dwds:Formangabe/following-sibling::dwds:Lesart/dwds:Definition[@Typ='Generalisierung']
-                                                                                          [normalize-space(.)='Tonbezeichnung']">yes</xsl:when>
+    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Generalisierung']
+                                                                                                                                            [normalize-space(.)='Tonbezeichnung']">yes</xsl:when>
     <xsl:otherwise>no</xsl:otherwise>
   </xsl:choose>
 </xsl:template>

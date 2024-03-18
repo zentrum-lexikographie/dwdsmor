@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2manifest.xsl -->
-<!-- Version 2.1 -->
-<!-- Andreas Nolda 2023-06-25 -->
+<!-- Version 2.2 -->
+<!-- Andreas Nolda 2024-03-18 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -77,8 +77,8 @@
                 select="position()"/>
   <!-- ignore duplicate lemma-index pairs -->
   <!-- ignore idioms and non-standard spellings -->
-  <xsl:for-each-group select="dwds:Formangabe/dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
-                                                             [not(@Typ)]"
+  <xsl:for-each-group select="dwds:Formangabe[not(@class='invisible')]/dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
+                                                                                      [not(@Typ)]"
                       group-by="normalize-space(.)">
     <xsl:variable name="lemma"
                   select="normalize-space(.)"/>

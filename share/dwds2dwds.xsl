@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwds.xsl -->
-<!-- Version 1.1 -->
-<!-- Andreas Nolda 2023-10-05 -->
+<!-- Version 1.2 -->
+<!-- Andreas Nolda 2024-03-18 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -59,20 +59,24 @@
   <!-- ignore idioms and other syntactically complex units -->
   <!-- ignore non-standard spellings -->
   <!-- ignore form specifications without part of speech -->
-  <xsl:if test="Formangabe[Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
+  <xsl:if test="Formangabe[not(@class='invisible')]
+                          [Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                      [not(@Typ)]]
-                          [Grammatik/Wortklasse]">
+                          [Grammatik/Wortklasse[not(@class='invisible')]]">
     <Artikel>
-      <xsl:apply-templates select="Formangabe[Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
+      <xsl:apply-templates select="Formangabe[not(@class='invisible')]
+                                             [Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                         [not(@Typ)]]
                                              [Grammatik/Wortklasse]"/>
       <xsl:apply-templates select="Verweise[not(@Typ!='Derivation' and
                                                 @Typ!='Komposition' and
                                                 @Typ!='Zusammenrückung')]"/>
-      <xsl:apply-templates select="Lesart[Definition[@Typ='Generalisierung']
+      <xsl:apply-templates select="Lesart[not(@class='invisible')]
+                                         [Definition[@Typ='Generalisierung']
                                                     [normalize-space(.)='Buchstabe' or
                                                      normalize-space(.)='Tonbezeichnung']] |
-                                   Lesart[Definition[@Typ='Basis']
+                                   Lesart[not(@class='invisible')]
+                                         [Definition[@Typ='Basis']
                                                     [matches(normalize-space(.),'^der Laut \p{L}$') or
                                                      matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]]"/>
     </Artikel>
@@ -104,14 +108,14 @@
                                  Genus |
                                  indeklinabel |
                                  Komparativ |
-                                 Numeruspraeferenz |
+                                 Numeruspraeferenz[not(@class='invisible')] |
                                  Partizip_II |
                                  Plural |
                                  Positivvariante |
                                  Praesens |
                                  Praeteritum |
                                  Superlativ |
-                                 Wortklasse"/>
+                                 Wortklasse[not(@class='invisible')]"/>
   </Grammatik>
 </xsl:template>
 
@@ -121,14 +125,14 @@
                      Genus |
                      indeklinabel |
                      Komparativ |
-                     Numeruspraeferenz |
+                     Numeruspraeferenz[not(@class='invisible')] |
                      Partizip_II |
                      Plural |
                      Positivvariante |
                      Praesens |
                      Praeteritum |
                      Superlativ |
-                     Wortklasse">
+                     Wortklasse[not(@class='invisible')]">
   <xsl:element name="{name()}">
     <xsl:apply-templates/>
   </xsl:element>
@@ -144,7 +148,7 @@
 <xsl:template match="Verweise">
   <Verweise>
     <xsl:copy-of select="@Typ"/>
-    <xsl:apply-templates select="Verweis"/>
+    <xsl:apply-templates select="Verweis[not(@class='invisible')]"/>
   </Verweise>
 </xsl:template>
 
