@@ -11,6 +11,24 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>achtzehnte</Schreibung>
+      <Grammatik>
+        <Wortklasse>Ordinalzahl</Wortklasse>
+      </Grammatik>
+      <Diasystematik/>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>dreizehnte</Schreibung>
+      <Grammatik>
+        <Wortklasse>Ordinalzahl</Wortklasse>
+      </Grammatik>
+      <Diasystematik/>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>drittel</Schreibung>
       <Grammatik>
         <Wortklasse>Bruchzahl</Wortklasse>
@@ -50,6 +68,15 @@
       </Grammatik>
     </Formangabe>
   </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>hundertste</Schreibung>
+      <Grammatik>
+        <Wortklasse>Ordinalzahl</Wortklasse>
+      </Grammatik>
+      <Diasystematik/>
+    </Formangabe>
+  </Artikel>
   <!-- <Artikel>
     <Formangabe>
       <Schreibung>kein</Schreibung>
@@ -75,7 +102,25 @@
   </Artikel> -->
   <Artikel>
     <Formangabe>
-      <Schreibung>hundertste</Schreibung>
+      <Schreibung>neunzehnte</Schreibung>
+      <Grammatik>
+        <Wortklasse>Ordinalzahl</Wortklasse>
+      </Grammatik>
+      <Diasystematik/>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>sechzehnte</Schreibung>
+      <Grammatik>
+        <Wortklasse>Ordinalzahl</Wortklasse>
+      </Grammatik>
+      <Diasystematik/>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>siebzehnte</Schreibung>
       <Grammatik>
         <Wortklasse>Ordinalzahl</Wortklasse>
       </Grammatik>
