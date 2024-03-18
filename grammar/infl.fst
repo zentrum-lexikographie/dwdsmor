@@ -1,6 +1,6 @@
 % infl.fst
-% Version 5.8
-% Andreas Nolda 2024-03-15
+% Version 5.9
+% Andreas Nolda 2024-03-18
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1840,10 +1840,8 @@ $Prep+Art-s$ = {<+PREPART><Neut><Acc><Sg>}:{}
 % zur
 $Prep+Art-r$ = {<+PREPART><Fem><Dat><Sg>}:{}
 
-% zufolge
+% zufolge, willen
 $Postp$ = {<+POSTP>}:{}
-
-$Circp$ = {<+CIRCP>}:{}
 
 
 % other words
@@ -1950,7 +1948,6 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<Card-sieben>           $Card-sieben$          | \
          <>:<Card-vier>             $Card-vier$            | \
          <>:<Card-zwei>             $Card-zwei$            | \
-         <>:<Circp>                 $Circp$                | \
          <>:<ConjCompar>            $ConjCompar$           | \
          <>:<ConjCoord>             $ConjCoord$            | \
          <>:<ConjInf>               $ConjInf$              | \

@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-03-18:
+
+* remove unused inflection class `Circp` (using `Postp` instead)
+
 2024-03-15:
 
 * replace `<FB>` (inflection boundary) by `<PB>` (inflection boundary after

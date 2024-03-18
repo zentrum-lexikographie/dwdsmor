@@ -133,4 +133,13 @@
       </Grammatik>
     </Formangabe>
   </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>willen</Schreibung>
+      <Grammatik>
+        <Wortklasse>Präposition</Wortklasse>
+        <Einschraenkung>nachgestellt</Einschraenkung>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
 </DWDS>

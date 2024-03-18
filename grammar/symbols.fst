@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 6.16
-% Andreas Nolda 2024-03-15
+% Version 6.17
+% Andreas Nolda 2024-03-16
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -76,10 +76,9 @@
 
 #auxiliary# = <haben><sein>
 
-#part-of-speech# = <+ADJ><+ADV><+ART><+CARD><+CIRCP><+CONJ><+DEM><+FRAC><+INDEF> \
-                   <+INTJ><+NPROP><+NN><+ORD><+POSS><+POSTP><+PPRO><+PREP> \
-                   <+PREPART><+PROADV><+PTCL><+PUNCT><+REL><+V><+VPART><+WADV> \
-                   <+WPRO>
+#part-of-speech# = <+ADJ><+ADV><+ART><+CARD><+CONJ><+DEM><+FRAC><+INDEF><+INTJ> \
+                   <+NPROP><+NN><+ORD><+POSS><+POSTP><+PPRO><+PREP><+PREPART> \
+                   <+PROADV><+PTCL><+PUNCT><+REL><+V><+VPART><+WADV><+WPRO>
 
 #subcat# = <Pers><Refl><Rec><Def><Indef><Neg><Coord><Sub><Compar><Adv><ProAdv> \
            <Adj><Comma><Dash><Ellip><Paren><Period><Quote><Slash>
@@ -209,10 +208,10 @@
                     <VVPres2_Imp><VVPres2_Imp0><VVPres2t><VVPres2t_Imp0> \
                     <VVPresPl><VVPresSg><VVReg><VVRegFin><VVReg-el-er>
 
-#Other-inflection# = <Circp><ConjCompar><ConjCoord><ConjInf><ConjSub> \
-                     <Intj><PIndInvar><Postp><Prep><Prep+Art-m><Prep+Art-n> \
-                     <Prep+Art-r><Prep+Art-s><ProAdv><PtclAdj><PtclNeg><Ptcl-zu> \
-                     <VPart><WAdv>
+#Other-inflection# = <ConjCompar><ConjCoord><ConjInf><ConjSub><Intj><PIndInvar> \
+                     <Postp><Prep><Prep+Art-m><Prep+Art-n><Prep+Art-r> \
+                     <Prep+Art-s><ProAdv><PtclAdj><PtclNeg><Ptcl-zu><VPart> \
+                     <WAdv>
 
 #inflection# = #Abbr-inflection# #Adj-inflection# #Adv-inflection# \
                #Art-inflection# #Noun-inflection# #Name-inflection# \
