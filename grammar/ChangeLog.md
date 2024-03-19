@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-03-19:
+
+* make rule for old "ß" spelling more general
+
 2024-03-18:
 
 * remove unused inflection class `Circp` (using `Postp` instead)

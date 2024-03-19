@@ -1,6 +1,6 @@
 % orth.fst
-% Version 3.3
-% Andreas Nolda 2024-03-18
+% Version 4.0
+% Andreas Nolda 2024-03-19
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -21,16 +21,16 @@ $ConsNoSS$ = $Cons$               | \
 
 $SSOld$ = {ss}:ß
 
-$SyllablesSS$ = $Cons$* $Vowel$ ss $Vowel$ $ConsNoSS$?
+$SyllablesSS$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ ss $Vowel$ $ConsNoSS$?
 
-$SyllableSSOld$ = $Cons$* $Vowel$ $SSOld$
+$SyllablesSSOld$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $SSOld$
 
-$SyllableNoSSOld$ = $Cons$* $Vowel$ $Vowel$ $Cons$* | \
-                    $Cons$* $Vowel$ $ConsNoSS$? % ...
+$SyllablesNoSSOld$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $Vowel$ $Cons$* | \
+                     $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $ConsNoSS$? % ...
 
-$Syllable$ = $SyllableNoSSOld$ | \
-             $SyllablesSS$ | \
-             $SyllableSSOld$
+$Syllables$ = $SyllablesNoSSOld$ | \
+              $SyllablesSS$ | \
+              $SyllablesSSOld$
 
 $SyllableInflPref$ = ge <PB>
 
@@ -39,29 +39,25 @@ $SyllableSSInflSuff$ = t (e[mnrst]?)?
 $SyllableInflSuff$ = <SB> $Vowel$? $Cons$* | \
                      $SyllableSSInflSuff$
 
-$SyllableSSOldInfl$ = $SyllableInflPref$? $SyllableSSOld$ $SyllableSSInflSuff$?
+$SyllablesSSOldInfl$ = $SyllableInflPref$? $SyllablesSSOld$ $SyllableSSInflSuff$?
 
-$SyllableNoSSOldInfl$ = $SyllableInflPref$? $SyllableNoSSOld$ $SyllableInflSuff$?
+$SyllablesNoSSOldInfl$ = $SyllableInflPref$? $SyllablesNoSSOld$ $SyllableInflSuff$?
 
-$WordSSOld$ = Exze$SSOld$     | \
-              Kompromi$SSOld$ | \
-              Kongre$SSOld$   | \
-              Proze$SSOld$    | \
-              Stewarde$SSOld$ | \
-              bi$SSOld$chen   | \
-              gewi$SSOld$ % ...
+$WordSSOld$ = anlä$SSOld$lich | \
+              bi$SSOld$chen
+              % ...
 
-$B$ = [#boundary-trigger#]
+$B$ = [#boundary-trigger# \-]
 
 $BNoFB$ = $B$-[<SB>]
 
-$OrthOld$ = (($B$+     $Syllable$)*                   \
-             ($B$+     $SyllableSSOld$)               \
-             ($B$+     $Syllable$)*                   \
-             ($BNoFB$+ $SyllableNoSSOldInfl$)) $B$+ | \
-            (($B$+     $Syllable$)*                   \
-             ($BNoFB$+ $SyllableSSOldInfl$))   $B$+ | \
-             ($B$+     $WordSSOld$)            $B$+
+$OrthOld$ = (($B$+     $Syllables$)*                   \
+             ($B$+     $SyllablesSSOld$)               \
+             ($B$+     $Syllables$)*                   \
+             ($BNoFB$+ $SyllablesNoSSOldInfl$)) $B$+ | \
+            (($B$+     $Syllables$)*                   \
+             ($BNoFB$+ $SyllablesSSOldInfl$))   $B$+ | \
+            ($B$+      $WordSSOld$) $B$+
 
 
 % filter out old spelling variants
