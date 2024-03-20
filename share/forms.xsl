@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 6.1 -->
-<!-- Andreas Nolda 2023-10-13 -->
+<!-- Version 6.2 -->
+<!-- Andreas Nolda 2024-03-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -73,7 +73,16 @@
 <!-- base stems of verbs -->
 <xsl:template name="verb-stem">
   <xsl:param name="lemma"/>
-  <xsl:value-of select="replace($lemma,'e?n$','')"/>
+  <xsl:choose>
+    <!-- lemmas ending in consonant + "ien" -->
+    <xsl:when test="matches($lemma,'[^aeiouäöü]ien$')">
+      <xsl:value-of select="replace($lemma,'n$','')"/>
+    </xsl:when>
+    <!-- other lemmas -->
+    <xsl:otherwise>
+      <xsl:value-of select="replace($lemma,'e?n$','')"/>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <!-- present stems -->
@@ -81,7 +90,11 @@
   <xsl:param name="form"/>
   <xsl:param name="lemma"/>
   <xsl:choose>
-    <!-- forms with stem-final "tt" -->
+    <!-- forms ending in consonant + "iet" -->
+    <xsl:when test="matches($form,'[^aeiouäöü]iet$')">
+      <xsl:value-of select="replace($form,'t$','')"/>
+    </xsl:when>
+    <!-- forms ending in "tt" -->
     <xsl:when test="matches($form,'tt$')">
       <xsl:value-of select="$form"/>
     </xsl:when>
@@ -111,7 +124,11 @@
 <xsl:template name="past-stem">
   <xsl:param name="form"/>
   <xsl:choose>
-    <!-- weak forms -->
+    <!-- weak forms ending in consonant + "iete" -->
+    <xsl:when test="matches($form,'[^aeiouäöü]iete$')">
+      <xsl:value-of select="replace($form,'te$','')"/>
+    </xsl:when>
+    <!-- other weak forms -->
     <xsl:when test="matches($form,'^.+?e?te$')">
       <xsl:value-of select="replace($form,'e?te$','')"/>
     </xsl:when>
@@ -127,12 +144,21 @@
   <xsl:param name="form"/>
   <xsl:param name="lemma"/>
   <xsl:choose>
-    <!-- weak forms with "ge-" prefix -->
+    <!-- weak forms with "ge-" prefix ending in consonant + "iet" -->
+    <xsl:when test="matches($form,'^ge.*[^aeiouäöü]iet$') and
+                    not(matches($form,concat('^',substring($lemma,1,3))))">
+      <xsl:value-of select="replace($form,'^ge(.+)t$','$1')"/>
+    </xsl:when>
+    <!-- weak forms without "ge-" prefix ending in consonant + "iet" -->
+    <xsl:when test="matches($form,'^.*[^aeiouäöü]iet$')">
+      <xsl:value-of select="replace($form,'t$','')"/>
+    </xsl:when>
+    <!-- other weak forms with "ge-" prefix -->
     <xsl:when test="matches($form,'^ge.+?e?t$') and
                     not(matches($form,concat('^',substring($lemma,1,3))))">
       <xsl:value-of select="replace($form,'^ge(.+?)e?t$','$1')"/>
     </xsl:when>
-    <!-- weak forms without "ge-" prefix -->
+    <!-- other weak forms without "ge-" prefix -->
     <xsl:when test="matches($form,'^.+?e?t$')">
       <xsl:value-of select="replace($form,'e?t$','')"/>
     </xsl:when>

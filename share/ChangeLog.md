@@ -1,3 +1,7 @@
+2024-03-20:
+
+* add support for "knien" and related verbs
+
 2024-03-18:
 
 * ignore DWDS elements with `@class="invisible"`

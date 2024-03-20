@@ -1775,6 +1775,7 @@ $VVPastStr$ = $VVPastIndStr$ | \
 
 $VVRegFin$ = $VInflReg$
 
+% lieben; spielen
 $VVReg$ = $VInflReg$ | \
           $VPP-t$    | \
           $VInfStem$
@@ -1787,6 +1788,7 @@ $VVReg+sein$ = $VInflReg$ | \
                $VPP-t$ $sein$ | \
                $VInfStem$
 
+% angeln; rudern (cf. $SchwaTrigger$ in markers.fst)
 $VVReg-el-er$ = $VVReg$
 
 $VVReg-el-er+haben$ = $VVReg+haben$
