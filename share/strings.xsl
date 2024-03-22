@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 6.1 -->
-<!-- Andreas Nolda 2024-03-15 -->
+<!-- Version 7.0 -->
+<!-- Andreas Nolda 2024-03-21 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -9,33 +9,36 @@
                 xmlns:n="http://andreas.nolda.org/ns/lib"
                 exclude-result-prefixes="xs">
 
-<!-- return true if $string has a final schwa-syllable
-     which can be suffixed with dative plural "-n" -->
-<!-- $string has such a final schwa-syllable iff
-     $string ends in schwa plus optional "r" and/or "l" or
-     $string ends in syllabic "l". -->
+<!-- return true if $pronunciations have a final schwa-syllable -->
 <xsl:function name="n:has-final-schwa-syllable" as="xs:boolean">
+  <xsl:param name="pronunciations"/>
+  <xsl:choose>
+    <!-- all $pronunciations end in /ə/ plus optional /l/, /n/, /r/, /rl/, or /rn/ -->
+    <xsl:when test="every $p in $pronunciations satisfies matches($p,'(ə|ɐ|əɐ&#x32F;)[ln]?$')">
+      <!-- $pronunciations have a final schwa-syllable -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- all $pronunciations end in syllabic /l/ or /n/ -->
+    <xsl:when test="every $p in $pronunciations satisfies matches($p,'[^aeɛiɪoɔuʊøœyʏəɐ&#x32F;&#x2D0;][ln]&#x329;?$')">
+      <!-- $pronunciations have a final schwa-syllable -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <!-- $pronunciations do not have a final schwa-syllable -->
+      <xsl:sequence select="false()"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
+
+<!-- return true if $string is a noun with a final schwa-syllable,
+     which can be suffixed with reduced dative plural "-n" -->
+<xsl:function name="n:is-noun-with-final-schwa-syllable" as="xs:boolean">
   <xsl:param name="string"/>
   <xsl:param name="pronunciations"/>
   <xsl:choose>
     <!-- use $pronunciations if non-empty -->
     <xsl:when test="count($pronunciations)&gt;0">
-      <xsl:choose>
-        <!-- every $p in $pronunciations ends in schwa plus optional "r" and/or "l" -->
-        <xsl:when test="every $p in $pronunciations satisfies matches($p,'(ə|ɐ|əɐ&#x32F;)l?$')">
-          <!-- $string has a final schwa-syllable -->
-          <xsl:sequence select="true()"/>
-        </xsl:when>
-        <!-- every $p in $pronunciations ends in syllabic "l" -->
-        <xsl:when test="every $p in $pronunciations satisfies matches($p,'[^aeɛiɪoɔuʊøœyʏəɐ&#x32F;&#x2D0;]l&#x329;?$')">
-          <!-- $string has a final schwa-syllable -->
-          <xsl:sequence select="true()"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <!-- $string does not have a final schwa-syllable -->
-          <xsl:sequence select="false()"/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:value-of select="n:has-final-schwa-syllable($pronunciations)"/>
     </xsl:when>
     <!-- else fall back to $string -->
     <xsl:otherwise>
@@ -60,13 +63,176 @@
           <!-- $string does not have a final schwa-syllable -->
           <xsl:sequence select="false()"/>
         </xsl:when>
-        <!-- $string ends in schwa plus optional "r" and/or "l" -->
+        <!-- $string ends in "e" plus optional "r" and/or "l" -->
         <xsl:when test="matches($string,'[AEIOUÄÖÜaeiouäöüy][^aeiouäöü]*e(r|l|rl)?$')">
           <!-- $string has a final schwa-syllable -->
           <xsl:sequence select="true()"/>
         </xsl:when>
         <!-- $string ends in syllabic "l" -->
         <xsl:when test="matches($string,'[AEIOUÄÖÜaeiouäöüy][^aeiouäöü]+l$')">
+          <!-- $string has a final schwa-syllable -->
+          <xsl:sequence select="true()"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
+
+<!-- return true if $string is an adjective with a final schwa-syllable,
+     which can be reduced when suffixed with "-e", "-em", "-en", "-er", or "-es"
+     or suffixed with reduced "-m" or "-n" -->
+<xsl:function name="n:is-adjective-with-final-schwa-syllable" as="xs:boolean">
+  <xsl:param name="string"/>
+  <xsl:param name="pronunciations"/>
+  <xsl:choose>
+    <!-- use $pronunciations if non-empty -->
+    <xsl:when test="count($pronunciations)&gt;0">
+      <xsl:value-of select="n:has-final-schwa-syllable($pronunciations)"/>
+    </xsl:when>
+    <!-- else fall back to $string -->
+    <xsl:otherwise>
+      <xsl:choose>
+        <!-- $string ends in "ee" plus optional "l", "n", or "r" -->
+        <xsl:when test="matches($string,'ee[lnr]$')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "ie" plus optional "l", "n", or "r" -->
+        <xsl:when test="matches($string,'ie[lnr]$')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "fidel" -->
+        <xsl:when test="ends-with($string,'fidel')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "llel" -->
+        <xsl:when test="ends-with($string,'llel')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "eagen" -->
+        <xsl:when test="ends-with($string,'eagen')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "llagen" -->
+        <xsl:when test="ends-with($string,'llagen')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "eigen" -->
+        <xsl:when test="ends-with($string,'eigen')">
+          <!-- $string has a final schwa-syllable -->
+          <xsl:sequence select="true()"/>
+        </xsl:when>
+        <!-- $string ends in "igen" -->
+        <xsl:when test="ends-with($string,'igen')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "erlogen" or "verlogen" -->
+        <xsl:when test="matches($string,'v?erlogen$')">
+          <!-- $string has a final schwa-syllable -->
+          <xsl:sequence select="true()"/>
+        </xsl:when>
+        <!-- $string ends in "erwogen" or "gewogen" -->
+        <xsl:when test="matches($string,'(er|ge)wogen$')">
+          <!-- $string has a final schwa-syllable -->
+          <xsl:sequence select="true()"/>
+        </xsl:when>
+        <!-- $string ends in "bezogen", "erzogen", "gezogen", or "umzogen" -->
+        <xsl:when test="matches($string,'(be|er|ge|um)zogen$')">
+          <!-- $string has a final schwa-syllable -->
+          <xsl:sequence select="true()"/>
+        </xsl:when>
+        <!-- $string ends in "ogen" -->
+        <xsl:when test="ends-with($string,'ogen')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "llergen" -->
+        <xsl:when test="ends-with($string,'llergen')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "sgen" -->
+        <xsl:when test="ends-with($string,'sgen')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "ygen" -->
+        <xsl:when test="ends-with($string,'ygen')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "seren" -->
+        <xsl:when test="ends-with($string,'seren')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "phren" -->
+        <xsl:when test="ends-with($string,'phren')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "thren" -->
+        <xsl:when test="ends-with($string,'thren')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "then" -->
+        <xsl:when test="ends-with($string,'then')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "amer" -->
+        <xsl:when test="ends-with($string,'amer')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "emer" -->
+        <xsl:when test="ends-with($string,'emer')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "imer" -->
+        <xsl:when test="ends-with($string,'imer')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "omer" -->
+        <xsl:when test="ends-with($string,'omer')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "ymer" -->
+        <xsl:when test="ends-with($string,'ymer')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "pher" -->
+        <xsl:when test="ends-with($string,'pher')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "quer" -->
+        <xsl:when test="ends-with($string,'quer')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "schwer" -->
+        <xsl:when test="ends-with($string,'schwer')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
+        <!-- $string ends in "e" plus optional "l", "n", or "r" -->
+        <xsl:when test="matches($string,'e[lnr]?$')">
           <!-- $string has a final schwa-syllable -->
           <xsl:sequence select="true()"/>
         </xsl:when>

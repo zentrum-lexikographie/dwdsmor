@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 6.17
-% Andreas Nolda 2024-03-16
+% Version 6.18
+% Andreas Nolda 2024-03-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -126,10 +126,11 @@
 #Abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNNoGend> \
                     <AbbrPoss><AbbrVImp>
 
-#Adj-inflection# = <Adj-el-er_$><Adj-el-er_0><Adj-Lang><Adj_$><Adj_$e><Adj_0> \
-                   <Adj_e><AdjComp><AdjComp0-mehr><AdjPos><AdjPos0> \
-                   <AdjPos0-viel><AdjPos0Attr><AdjPos0AttrSubst><AdjPosAttr> \
-                   <AdjPosPred><AdjSup><AdjSup-aller>
+#Adj-inflection# = <Adj-el_$><Adj-el_0><Adj-en_0><Adj-er_0><Adj-Lang><Adj_$> \
+                   <Adj_$e><Adj_0><Adj_e><AdjComp><AdjComp0-mehr><AdjPos> \
+                   <AdjPos0><AdjPos0-viel><AdjPos0Attr><AdjPos0AttrSubst> \
+                   <AdjPosAttr><AdjPosAttr-er><AdjPosPred><AdjSup><AdjSup-aller> \
+                   <AdjSupAttr>
 
 #Adv-inflection# = <Adv><AdvComp><AdvComp0><AdvSup>
 

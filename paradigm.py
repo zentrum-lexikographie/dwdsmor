@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2023-11-27
+# Andreas Nolda 2024-03-21
 
 import sys
 import argparse
@@ -18,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 9.2
+version = 9.3
 
 
 BASEDIR = path.dirname(__file__)
@@ -510,16 +510,16 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
             if old:
                 # no such forms
                 pass
-        if oldorth:
-            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                   pos, categorisation, OLDORTH)
-            add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, oldorth_forms, TAG_OLDORTH)
-        if ch:
-            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                              pos, categorisation, CH)
-            add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, ch_forms, TAG_CH)
+            if oldorth:
+                oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                       pos, categorisation, OLDORTH)
+                add_special_forms(formdict, lemma_index, paradigm_index,
+                                  lexcat, parcat, oldorth_forms, TAG_OLDORTH)
+            if ch:
+                ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                  pos, categorisation, CH)
+                add_special_forms(formdict, lemma_index, paradigm_index,
+                                  lexcat, parcat, ch_forms, TAG_CH)
 
         # forms inflected for degree, gender, case, number, and inflectional strength
         categorisations = product(GENDERS, NUMBERS, CASES, INFLECTIONS, FUNCTIONS)
@@ -545,8 +545,10 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
                 # no such forms
                 pass
             if old:
-                # no such forms
-                pass
+                old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                   pos, categorisation, OLD)
+                add_special_forms(formdict, lemma_index, paradigm_index,
+                                  lexcat, parcat, old_forms, TAG_OLD)
             if oldorth:
                 oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
                                                        pos, categorisation, OLDORTH)
@@ -1304,6 +1306,7 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
 
 def get_formdict(transducer, lemma_index, paradigm_index, seg,
                  pos, subcat, person, gender, nonst=False, old=False, oldorth=False, ch=False):
+    formdict = {}
     # nouns
     if pos in ["NN", "NPROP"]:
         formdict = get_noun_formdict(transducer, lemma_index, paradigm_index, seg,

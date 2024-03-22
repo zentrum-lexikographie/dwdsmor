@@ -1,6 +1,6 @@
 % phon.fst
-% Version 4.1
-% Andreas Nolda 2024-03-15
+% Version 4.2
+% Andreas Nolda 2024-03-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -114,10 +114,11 @@ $R6$ = (([bcdfghjklmnpqrtuvwy] <SB>? <SB>) e => <> (s <^Gen>)) | \
 
 
 % adjective-"el"/"er" "e"-elision
-% dunkel<^Ax>+e -> dunkle
-% teuer<^Ax>+e  -> teure
+% dunkel<^Ax>+e  -> dunkle
+% teuer<^Ax>+e   -> teure
+% trocken<^Ax>+e -> trockne
 
-$R7$ = e <=> <> ([lr] <^Ax> <SB> e)
+$R7$ = e <=> <> ([lnr] <^Ax> <SB> e)
 
 
 % optional pronoun-"er" "e"-elision

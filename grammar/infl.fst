@@ -1,6 +1,6 @@
 % infl.fst
-% Version 5.9
-% Andreas Nolda 2024-03-18
+% Version 5.10
+% Andreas Nolda 2024-03-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -663,6 +663,25 @@ $AdjInflSuff$ = {<Attr/Subst><Masc><Nom><Sg><St>}:{er}   | \
                 {<Attr/Subst><NoGend><Dat><Pl><Wk>}:{en} | \
                 {<Attr/Subst><NoGend><Gen><Pl><Wk>}:{en}
 
+$AdjInflSuff-n$ = {<Attr/Subst><Masc><Acc><Sg><St>}:{n}   | \
+                  {<Attr/Subst><Masc><Gen><Sg><St>}:{n}   | \
+                  {<Attr/Subst><Neut><Gen><Sg><St>}:{n}   | \
+                  {<Attr/Subst><NoGend><Dat><Pl><St>}:{n} | \
+                  {<Attr/Subst><Masc><Acc><Sg><Wk>}:{n}   | \
+                  {<Attr/Subst><Masc><Dat><Sg><Wk>}:{n}   | \
+                  {<Attr/Subst><Masc><Gen><Sg><Wk>}:{n}   | \
+                  {<Attr/Subst><Neut><Dat><Sg><Wk>}:{n}   | \
+                  {<Attr/Subst><Neut><Gen><Sg><Wk>}:{n}   | \
+                  {<Attr/Subst><Fem><Dat><Sg><Wk>}:{n}    | \
+                  {<Attr/Subst><Fem><Gen><Sg><Wk>}:{n}    | \
+                  {<Attr/Subst><NoGend><Nom><Pl><Wk>}:{n} | \
+                  {<Attr/Subst><NoGend><Acc><Pl><Wk>}:{n} | \
+                  {<Attr/Subst><NoGend><Dat><Pl><Wk>}:{n} | \
+                  {<Attr/Subst><NoGend><Gen><Pl><Wk>}:{n}
+
+$AdjInflSuff-m$ = {<Attr/Subst><Masc><Dat><Sg><St>}:{m} | \
+                  {<Attr/Subst><Neut><Dat><Sg><St>}:{m}
+
 % lila; klasse
 $AdjPos0$ = {<+ADJ><Pos><Pred/Adv>}:{} | \
             {<+ADJ><Pos><Attr><Invar>}:{}
@@ -671,7 +690,7 @@ $AdjPos0$ = {<+ADJ><Pos><Pred/Adv>}:{} | \
 $AdjPos0-viel$ = {<+ADJ><Pos><Pred/Adv>}:{} | \
                  {<+ADJ><Pos><Attr/Subst><Invar>}:{}
 
-% innen; feil
+% innen; hoch
 $AdjPosPred$ = {<+ADJ><Pos><Pred/Adv>}:{}
 
 % zig
@@ -684,24 +703,33 @@ $AdjPos0AttrSubst$ = {<+ADJ><Pos><Attr/Subst><Invar>}:{}
 $AdjPos$ = {<+ADJ><Pos><Pred/Adv>}:{<SB>} | \
            {<+ADJ><Pos>}:{<SB>} $AdjInflSuff$
 
-% ander-; vorig-
+% vorig-; hoh-
 $AdjPosAttr$ = {<+ADJ><Pos>}:{<SB>} $AdjInflSuff$
 
+% ander-; ober-
+$AdjPosAttr-er$ = $AdjPosAttr$                         | \
+                  {}:{<^Ax>} $AdjPosAttr$              | \
+                  {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-n$ | \
+                  {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-m$
+
 % besser; höher
-$AdjComp$ = {<+ADJ><Comp><Pred/Adv>}:{er} | \
+$AdjComp$ = {<+ADJ><Comp><Pred/Adv>}:{er}       | \
             {<+ADJ><Comp>}:{er} $AdjInflSuff$
 
 % mehr; weniger
 $AdjComp0-mehr$ = {<+ADJ><Comp><Pred/Adv>}:{} | \
                   {<+ADJ><Comp><Attr/Subst><Invar>}:{}
 
-% beste; höchste
+% besten; höchsten
 $AdjSup$ = {<+ADJ><Sup><Pred/Adv>}:{sten} | \
            {<+ADJ><Sup>}:{st} $AdjInflSuff$
 
 % allerbesten; allerhöchsten
 $AdjSup-aller$ = {<+ADJ><Sup><Pred/Adv>}:{sten} | \
                  {<+ADJ><Sup>}:{st} $AdjInflSuff$
+
+% obersten
+$AdjSupAttr$ = {<+ADJ><Sup>}:{st} $AdjInflSuff$
 
 % faul, fauler, faulsten
 $Adj_0$ =           $AdjPos$  | \
@@ -723,11 +751,25 @@ $Adj_\$e$ =            $AdjPos$  | \
             {}:{<UL>}  $AdjComp$ | \
             {}:{<UL>e} $AdjSup$
 
-% dunkel; finster
-$Adj-el-er_0$ = {}:{<^Ax>} $Adj_0$
+% dunkel, dunkler, dunkelsten
+$Adj-el_0$ = {}:{<^Ax>} $Adj_0$                              | \
+             {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
+             {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
 
 % dunkel, dünkler, dünkelsten (regional variant)
-$Adj-el-er_\$$ = {}:{<^Ax>} $Adj_\$$
+$Adj-el_\$$ = {}:{<^Ax>} $Adj_\$$                             | \
+              {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
+              {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
+
+% finster, finst(e)rer, finstersten
+$Adj-er_0$ = $Adj_0$                                         | \
+             {}:{<^Ax>} $Adj_0$                              | \
+             {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
+             {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
+
+% trocken, trock(e)ner, trockensten
+$Adj-en_0$ = $Adj_0$ | \
+             {}:{<^Ax>} $Adj_0$
 
 % deutsch; [das] Deutsch
 $Adj-Lang$ = $Adj_0$ | \
@@ -1906,8 +1948,10 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<AbbrNNoGend>           $AbbrNNoGend$          | \
          <>:<AbbrPoss>              $AbbrPoss$             | \
          <>:<AbbrVImp>              $AbbrVImp$             | \
-         <>:<Adj-el-er_$>           $Adj-el-er_\$$         | \
-         <>:<Adj-el-er_0>           $Adj-el-er_0$          | \
+         <>:<Adj-el_$>              $Adj-el_\$$            | \
+         <>:<Adj-el_0>              $Adj-el_0$             | \
+         <>:<Adj-en_0>              $Adj-en_0$             | \
+         <>:<Adj-er_0>              $Adj-er_0$             | \
          <>:<Adj-Lang>              $Adj-Lang$             | \
          <>:<Adj_$>                 $Adj_\$$               | \
          <>:<Adj_$e>                $Adj_\$e$              | \
@@ -1921,9 +1965,11 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<AdjPos0Attr>           $AdjPos0Attr$          | \
          <>:<AdjPos0AttrSubst>      $AdjPos0AttrSubst$     | \
          <>:<AdjPosAttr>            $AdjPosAttr$           | \
+         <>:<AdjPosAttr-er>         $AdjPosAttr-er$        | \
          <>:<AdjPosPred>            $AdjPosPred$           | \
          <>:<AdjSup>                $AdjSup$               | \
          <>:<AdjSup-aller>          $AdjSup-aller$         | \
+         <>:<AdjSupAttr>            $AdjSupAttr$           | \
          <>:<Adv>                   $Adv$                  | \
          <>:<AdvComp>               $AdvComp$              | \
          <>:<AdvComp0>              $AdvComp0$             | \

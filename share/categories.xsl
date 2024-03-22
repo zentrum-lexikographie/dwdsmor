@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 5.2 -->
-<!-- Andreas Nolda 2023-11-29 -->
+<!-- Version 5.3 -->
+<!-- Andreas Nolda 2024-03-21 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -657,7 +657,8 @@
       <xsl:choose>
         <!-- nominative plural: with final schwa-syllable
              dative plural: "-n" -->
-        <xsl:when test="n:has-final-schwa-syllable($lemma, $pronunciations)">
+        <xsl:when test="not(ends-with($lemma,'n')) and
+                        n:is-noun-with-final-schwa-syllable($lemma, $pronunciations)">
           <xsl:value-of select="$noun-class-mapping/class[not(@gender)]
                                                          [not(@genitive-singular)]
                                                          [not(@nominative-plural)]
@@ -710,7 +711,8 @@
              dative plural: "-n" -->
         <xsl:when test="$genitive-singular-marker='-s' and
                         ends-with($nominative-plural-marker,'-') and
-                        n:has-final-schwa-syllable($lemma, $pronunciations)">
+                        not(ends-with($lemma,'n')) and
+                        n:is-noun-with-final-schwa-syllable($lemma, $pronunciations)">
           <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
                                                          [@genitive-singular=$genitive-singular-marker]
                                                          [@nominative-plural=$nominative-plural-marker]
@@ -731,7 +733,8 @@
              dative plural: "-n" -->
         <xsl:when test="$genitive-singular-marker='-' and
                         ends-with($nominative-plural-marker,'-') and
-                        n:has-final-schwa-syllable($lemma, $pronunciations)">
+                        not(ends-with($lemma,'n')) and
+                        n:is-noun-with-final-schwa-syllable($lemma, $pronunciations)">
           <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
                                                          [@genitive-singular=$genitive-singular-marker]
                                                          [@nominative-plural=$nominative-plural-marker]
@@ -952,7 +955,8 @@
       <xsl:choose>
         <!-- nominative plural: with final schwa-syllable
              dative plural: "-n" -->
-        <xsl:when test="n:has-final-schwa-syllable($lemma, $pronunciations)">
+        <xsl:when test="not(ends-with($lemma,'n')) and
+                        n:is-noun-with-final-schwa-syllable($lemma, $pronunciations)">
           <xsl:value-of select="$name-class-mapping/class[not(@gender)]
                                                          [not(@genitive-singular)]
                                                          [not(@nominative-plural)]

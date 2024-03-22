@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 10.2
-% Andreas Nolda 2023-11-29
+% Version 10.3
+% Andreas Nolda 2024-03-22
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -150,8 +150,12 @@ $BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerWB$
 $BaseStemsVPPres$ = ^$BaseStemsVPPres$
 $BaseStemsVPPast$ = ^$BaseStemsVPPast$
 
-$ConvBaseStemsVPPres$ = $BaseStemsVPPres$ <ADJ> <base> <native> <>:<AdjPos>
-$ConvBaseStemsVPPast$ = $BaseStemsVPPast$ <ADJ> <base> <native> <>:<AdjPos>
+$BaseStemsVPPast-t$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-t$
+$BaseStemsVPPast-n$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-n$
+
+$ConvBaseStemsVPPres$ = $BaseStemsVPPres$   <ADJ> <base> <native> <>:<Adj_0>
+$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<Adj_0> | \
+                        $BaseStemsVPPast-n$ <ADJ> <base> <native> <>:<Adj-en_0>
 
 $ConvBaseStems$ = $ConvBaseStemsVPPres$ | \
                   $ConvBaseStemsVPPast$

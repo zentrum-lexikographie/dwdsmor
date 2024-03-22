@@ -1,5 +1,16 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-03-22:
+
+* also generate comparative and superlative forms for converted participles
+
+2024-03-21:
+
+* rename inflection class `Adj-el-er_$` to `Adj-el_$`
+* replace inflection class `Adj-el-er_0` with inflection classes `Adj-el_0` and
+  `Adj-er_0`
+* add inflection classes `Adj-en_0`, `AdjPosAttr-er`, and `AdjSupAttr`
+
 2024-03-19:
 
 * make rule for old "ß" spelling more general

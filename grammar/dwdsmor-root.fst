@@ -172,8 +172,12 @@ $BaseStemsVPPast$ = $BaseStemsVPPast$ || $PHON$
 $BaseStemsVPPres$ = $BaseStemsVPPres$ || $MarkerWB$
 $BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerWB$
 
-$ConvBaseStemsVPPres$ = $BaseStemsVPPres$ <ADJ> <base> <native> <>:<AdjPos> $ConvPPres$
-$ConvBaseStemsVPPast$ = $BaseStemsVPPast$ <ADJ> <base> <native> <>:<AdjPos> $ConvPPast$
+$BaseStemsVPPast-t$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-t$
+$BaseStemsVPPast-n$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-n$
+
+$ConvBaseStemsVPPres$ = $BaseStemsVPPres$   <ADJ> <base> <native> <>:<Adj_0> $ConvPPres$
+$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<Adj_0> $ConvPPast$ | \
+                        $BaseStemsVPPast-n$ <ADJ> <base> <native> <>:<Adj-en_0> $ConvPPast$
 
 $ConvBaseStems$ = $ConvBaseStemsVPPres$ | \
                   $ConvBaseStemsVPPast$

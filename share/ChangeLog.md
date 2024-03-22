@@ -1,3 +1,7 @@
+2024-03-21:
+
+* improve support for adjectives with schwa-elision
+
 2024-03-20:
 
 * add support for "knien" and related verbs

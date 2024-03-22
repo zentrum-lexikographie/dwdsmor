@@ -1,6 +1,6 @@
 % stemtype.fst
-% Version 4.4
-% Andreas Nolda 2023-07-03
+% Version 4.5
+% Andreas Nolda 2024-03-22
 
 #include "symbols.fst"
 
@@ -19,7 +19,12 @@ $DerStemFilterSuff-lein$ = <Stem> .* <der> <-lein> [^#stem-type#]*
 
 $BaseStemFilterV$ = (<Prefix> .*)? <Stem> .* <V> <base> [^#stem-type#]*
 
+ALPHABET = [#char# #boundary-trigger#]
+
+$BaseStemFilterVPPast-t$ = <Stem> .* t
+$BaseStemFilterVPPast-n$ = <Stem> .* n
+
 ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# #feature#]
 
-$BaseStemFilterVPPastLv2$ = .* <+V> <PPast> .*
 $BaseStemFilterVPPresLv2$ = .* <+V> <PPres> .*
+$BaseStemFilterVPPastLv2$ = .* <+V> <PPast> .*
