@@ -24,7 +24,40 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>Mama</Schreibung>
+      <Grammatik>
+        <Wortklasse>Eigenname</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-s</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Mami</Schreibung>
+      <Grammatik>
+        <Wortklasse>Eigenname</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-s</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung hidx="1">Mutter</Schreibung>
+      <Grammatik>
+        <Wortklasse>Eigenname</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-s</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Mutti</Schreibung>
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>
@@ -46,6 +79,17 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>Omi</Schreibung>
+      <Grammatik>
+        <Wortklasse>Eigenname</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-s</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>Opa</Schreibung>
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
@@ -57,7 +101,51 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>Opi</Schreibung>
+      <Grammatik>
+        <Wortklasse>Eigenname</Wortklasse>
+        <Genus>mask.</Genus>
+        <Genitiv>-s</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Papa</Schreibung>
+      <Grammatik>
+        <Wortklasse>Eigenname</Wortklasse>
+        <Genus>mask.</Genus>
+        <Genitiv>-s</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Papi</Schreibung>
+      <Grammatik>
+        <Wortklasse>Eigenname</Wortklasse>
+        <Genus>mask.</Genus>
+        <Genitiv>-s</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>Vater</Schreibung>
+      <Grammatik>
+        <Wortklasse>Eigenname</Wortklasse>
+        <Genus>mask.</Genus>
+        <Genitiv>-s</Genitiv>
+        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Vati</Schreibung>
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>mask.</Genus>
