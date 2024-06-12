@@ -1,3 +1,7 @@
+2024-01-26:
+
+* add support for `<Formangabe Typ="Symbol">` (replaces `<Formangabe Typ="Zeichen">`)
+
 2024-03-21:
 
 * improve support for adjectives with schwa-elision

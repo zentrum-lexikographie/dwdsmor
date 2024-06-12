@@ -19,7 +19,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Zeichen">
+    <Formangabe Typ="Symbol">
       <Schreibung>*</Schreibung>
       <Grammatik>
         <Wortklasse>partizipiales Adjektiv</Wortklasse>
@@ -27,7 +27,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Zeichen">
+    <Formangabe Typ="Symbol">
       <Schreibung>†</Schreibung>
       <Grammatik>
         <Wortklasse>partizipiales Adjektiv</Wortklasse>

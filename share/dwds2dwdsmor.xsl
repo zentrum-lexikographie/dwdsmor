@@ -1986,7 +1986,7 @@
               <!-- ignore symbols and abbreviations -->
               <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
                                                    [not(@Typ='Abkürzung' or
-                                                        @Typ='Zeichen')]">
+                                                        @Typ='Symbol')]">
                 <xsl:variable name="pos1"
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])"/>
                 <xsl:if test="string-length($pos1)&gt;0">
@@ -2003,7 +2003,7 @@
                         <!-- ignore symbols and abbreviations -->
                         <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
                                                              [not(@Typ='Abkürzung' or
-                                                                  @Typ='Zeichen')]">
+                                                                  @Typ='Symbol')]">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                [not(@Typ)]">
@@ -2182,7 +2182,7 @@
               <!-- ignore symbols and abbreviations -->
               <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
                                                    [not(@Typ='Abkürzung' or
-                                                        @Typ='Zeichen')]">
+                                                        @Typ='Symbol')]">
                 <xsl:variable name="pos1"
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])"/>
                 <xsl:if test="string-length($pos1)&gt;0">
@@ -2199,7 +2199,7 @@
                         <!-- ignore symbols abbreviations -->
                         <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
                                                              [not(@Typ='Abkürzung' or
-                                                                  @Typ='Zeichen')]">
+                                                                  @Typ='Symbol')]">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                [not(@Typ)]">
@@ -2420,7 +2420,7 @@
     <xsl:when test="matches(normalize-space(.),'^\p{Po}+$')">yes</xsl:when>
     <!-- spellings marked as symbols -->
     <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]
-                                           [@Typ='Zeichen']">yes</xsl:when>
+                                           [@Typ='Symbol']">yes</xsl:when>
     <!-- spellings marked as abbreviation -->
     <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]
                                            [@Typ='Abkürzung']">yes</xsl:when>

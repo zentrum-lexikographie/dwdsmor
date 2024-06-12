@@ -39,7 +39,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Zeichen">
+    <Formangabe Typ="Symbol">
       <Schreibung>°</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -142,7 +142,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Zeichen">
+    <Formangabe Typ="Symbol">
       <Schreibung>′</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -160,7 +160,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Zeichen">
+    <Formangabe Typ="Symbol">
       <Schreibung>§</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -169,7 +169,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Zeichen">
+    <Formangabe Typ="Symbol">
       <Schreibung>§§</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -187,7 +187,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Zeichen">
+    <Formangabe Typ="Symbol">
       <Schreibung>‰</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -196,7 +196,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Zeichen">
+    <Formangabe Typ="Symbol">
       <Schreibung>%</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -223,7 +223,7 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Zeichen">
+    <Formangabe Typ="Symbol">
       <Schreibung>″</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
