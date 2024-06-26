@@ -1,6 +1,6 @@
 % infl.fst
-% Version 5.10
-% Andreas Nolda 2024-03-21
+% Version 6.0
+% Andreas Nolda 2024-06-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -183,6 +183,22 @@ $NMasc_0_nen$ =          $NMasc/Sg_0$ | \
 % Intercity, Intercity, Intercitys
 $NMasc_0_s$ = {<+NN><Masc>}:{} $N_0_s$
 
+% Atlas, Atlas, Atlanten
+$NMasc_0_as/anten$ =                 $NMasc/Sg_0$ | \
+                     {}:{<^pl>anten} $NMasc/Pl_x$
+
+% Kursus, Kursus, Kurse
+$NMasc_0_us/e$ =             $NMasc/Sg_0$ | \
+                 {}:{<^pl>e} $NMasc/Pl_0$
+
+% Virus, Virus, Viren; Mythos, Mythos, Mythen
+$NMasc_0_us/en$ =              $NMasc/Sg_0$ | \
+                  {}:{<^pl>en} $NMasc/Pl_x$
+
+% Intimus, Intimus, Intimi
+$NMasc_0_us/i$ =            $NMasc/Sg_0$ | \
+                 {}:{<^pl>i} $NMasc/Pl_x$
+
 % Tag, Tag(e)s, Tage; Kodex, Kodexes, Kodexe
 $NMasc_es_e$ = {<+NN><Masc>}:{} $N_es_e$
 
@@ -206,6 +222,18 @@ $NMasc_es_es$ = {<+NN><Masc>}:{} $N_es_es$
 
 % Park, Park(e)s, Parks
 $NMasc_es_s$ = {<+NN><Masc>}:{} $N_es_s$
+
+% Atlas, Atlasses, Atlanten
+$NMasc_es_as/anten~ss$ =            $SS$ $NMasc/Sg_es$ | \
+                         {}:{<^pl>anten} $NMasc/Pl_x$
+
+% Virus, Virusses, Viren
+$NMasc_es_us/en~ss$ =         $SS$ $NMasc/Sg_es$ | \
+                      {}:{<^pl>en} $NMasc/Pl_x$
+
+% Intimus, Intimusse, Intimi
+$NMasc_es_us/i~ss$ =        $SS$ $NMasc/Sg_es$ | \
+                     {}:{<^pl>i} $NMasc/Pl_x$
 
 % Wagen, Wagens, Wagen
 $NMasc_s_x$ = {<+NN><Masc>}:{} $N_s_x$
@@ -244,6 +272,14 @@ $NMasc_s_nen$ =          $NMasc/Sg_s$ | \
 % Chef, Chefs, Chefs; Bankier, Bankiers, Bankiers
 $NMasc_s_s$ = {<+NN><Masc>}:{} $N_s_s$
 
+% Saldo, Saldos, Salden
+$NMasc_s_o/en$ =              $NMasc/Sg_s$ | \
+                 {}:{<^pl>en} $NMasc/Pl_x$
+
+% Saldo, Saldos, Saldi
+$NMasc_s_o/i$ =             $NMasc/Sg_s$ | \
+                {}:{<^pl>i} $NMasc/Pl_x$
+
 % Fels, Felsen, Felsen; Mensch, Menschen, Menschen
 $NMasc_en_en$ = {<+NN><Masc>}:{} $N_en_en$
 
@@ -251,47 +287,11 @@ $NMasc_en_en$ = {<+NN><Masc>}:{} $N_en_en$
 $NMasc_n_n$ = {<+NN><Masc>}:{} $N_n_n$
 
 % Name, Namens, Namen; Buchstabe, Buchstabens, Buchstaben
-$NMasc-ns$ = {<+NN><Masc><Nom><Sg>}:{}       | \
+$NMasc-Name$ = {<+NN><Masc><Nom><Sg>}:{}       | \
              {<+NN><Masc><Acc><Sg>}:{<SB>n}  | \
              {<+NN><Masc><Dat><Sg>}:{<SB>n}  | \
              {<+NN><Masc><Gen><Sg>}:{<SB>ns} | \
              {<+NN><Masc>}:{n} $NPl_x$
-
-% Saldo, Saldos, Salden
-$NMasc-o/en$ =              $NMasc/Sg_s$ | \
-               {}:{<^pl>en} $NMasc/Pl_x$
-
-% Saldo, Saldos, Saldi
-$NMasc-o/i$ =             $NMasc/Sg_s$ | \
-              {}:{<^pl>i} $NMasc/Pl_x$
-
-% Atlas, Atlas, Atlanten
-$NMasc-as0/anten$ =                 $NMasc/Sg_0$ | \
-                    {}:{<^pl>anten} $NMasc/Pl_x$
-
-% Atlas, Atlasses, Atlanten
-$NMasc-as/anten$ =            $SS$ $NMasc/Sg_es$ | \
-                   {}:{<^pl>anten} $NMasc/Pl_x$
-
-% Kursus, Kursus, Kurse
-$NMasc-us/e$ =             $NMasc/Sg_0$ | \
-               {}:{<^pl>e} $NMasc/Pl_0$
-
-% Virus, Virus, Viren; Mythos, Mythos, Mythen
-$NMasc-us0/en$ =              $NMasc/Sg_0$ | \
-                 {}:{<^pl>en} $NMasc/Pl_x$
-
-% Virus, Virusse, Viren
-$NMasc-us/en$ =         $SS$ $NMasc/Sg_es$ | \
-                {}:{<^pl>en} $NMasc/Pl_x$
-
-% Intimus, Intimus, Intimi
-$NMasc-us0/i$ =            $NMasc/Sg_0$ | \
-               {}:{<^pl>i} $NMasc/Pl_x$
-
-% Intimus, Intimusse, Intimi
-$NMasc-us/i$ =        $SS$ $NMasc/Sg_es$ | \
-               {}:{<^pl>i} $NMasc/Pl_x$
 
 % Beamte(r); Gefreite(r)
 $NMasc-Adj$ = {<+NN><Masc><Nom><Sg><St>}:{r} | \
@@ -348,6 +348,10 @@ $NNeut_0_nen$ =          $NNeut/Sg_0$ | \
 % College, College, Colleges
 $NNeut_0_s$ = {<+NN><Neut>}:{} $N_0_s$
 
+% Virus, Virus, Viren; Epos, Epos, Epen
+$NNeut_0_us/en$ =              $NNeut/Sg_0$ | \
+                  {}:{<^pl>en} $NNeut/Pl_x$
+
 % Spiel, Spiel(e)s, Spiele; Bakschisch, Bakschisch(e)s, Bakschische
 $NNeut_es_e$ = {<+NN><Neut>}:{} $N_es_e$
 
@@ -372,6 +376,10 @@ $NNeut_es_es$ = {<+NN><Neut>}:{} $N_es_es$
 % Tablett, Tablett(e)s, Tabletts
 $NNeut_es_s$ = {<+NN><Neut>}:{} $N_es_s$
 
+% Indiz, Indizes, Indizien
+$NNeut_es_ien$ =          $NNeut/Sg_es$ | \
+                 {}:{ien} $NNeut/Pl_x$
+
 % Almosen, Almosens, Almosen
 $NNeut_s_x$ = {<+NN><Neut>}:{} $N_s_x$
 
@@ -393,23 +401,9 @@ $NNeut_s_en$ = {<+NN><Neut>}:{} $N_s_en$
 % Auge, Auges, Augen
 $NNeut_s_n$ = {<+NN><Neut>}:{} $N_s_n$
 
-% Herz, Herzens, Herzen
-$NNeut-Herz$ = {<+NN><Neut><Nom><Sg>}:{<SB>}    | \
-               {<+NN><Neut><Acc><Sg>}:{<SB>}    | \
-               {<+NN><Neut><Dat><Sg>}:{<SB>en}  | \
-               {<+NN><Neut><Gen><Sg>}:{<SB>ens} | \
-               {<+NN><Neut><Nom><Pl>}:{<SB>en}  | \
-               {<+NN><Neut><Acc><Pl>}:{<SB>en}  | \
-               {<+NN><Neut><Dat><Pl>}:{<SB>en}  | \
-               {<+NN><Neut><Gen><Pl>}:{<SB>en}
-
 % Embryo, Embryos, Embryonen (neuter)
 $NNeut_s_nen$ =          $NNeut/Sg_s$ | \
                 {}:{nen} $NNeut/Pl_x$
-
-% Indiz, Indizes, Indizien
-$NNeut_es_ien$ =          $NNeut/Sg_es$ | \
-                 {}:{ien} $NNeut/Pl_x$
 
 % Adverb, Adverbs, Adverbien
 $NNeut_s_ien$ =          $NNeut/Sg_s$ | \
@@ -419,44 +413,50 @@ $NNeut_s_ien$ =          $NNeut/Sg_s$ | \
 $NNeut_s_s$ = {<+NN><Neut>}:{} $N_s_s$
 
 % Komma, Kommas, Kommata
-$NNeut-a/ata$ =         $NNeut/Sg_s$ | \
-                {}:{ta} $NNeut/Pl_x$
+$NNeut_s_a/ata$ =         $NNeut/Sg_s$ | \
+                  {}:{ta} $NNeut/Pl_x$
 
 % Dogma, Dogmas, Dogmen
-$NNeut-a/en$ =              $NNeut/Sg_s$ | \
-               {}:{<^pl>en} $NNeut/Pl_x$
+$NNeut_s_a/en$ =              $NNeut/Sg_s$ | \
+                 {}:{<^pl>en} $NNeut/Pl_x$
 
 % Examen, Examens, Examina
-$NNeut-en/ina$ =               $NNeut/Sg_s$ | \
-                 {}:{<^pl>ina} $NNeut/Pl_x$
+$NNeut_s_en/ina$ =               $NNeut/Sg_s$ | \
+                   {}:{<^pl>ina} $NNeut/Pl_x$
 
 % Konto, Kontos, Konten
-$NNeut-o/en$ =              $NNeut/Sg_s$ | \
-               {}:{<^pl>en} $NNeut/Pl_x$
+$NNeut_s_o/en$ =              $NNeut/Sg_s$ | \
+                 {}:{<^pl>en} $NNeut/Pl_x$
 
 % Cello, Cellos, Celli
-$NNeut-o/i$ =             $NNeut/Sg_s$ | \
-              {}:{<^pl>i} $NNeut/Pl_x$
+$NNeut_s_o/i$ =             $NNeut/Sg_s$ | \
+                {}:{<^pl>i} $NNeut/Pl_x$
 
 % Oxymoron, Oxymorons, Oxymora
-$NNeut-on/a$ =             $NNeut/Sg_s$ | \
-               {}:{<^pl>a} $NNeut/Pl_x$
+$NNeut_s_on/a$ =             $NNeut/Sg_s$ | \
+                 {}:{<^pl>a} $NNeut/Pl_x$
 
 % Stadion, Stadions, Stadien
-$NNeut-on/en$ =              $NNeut/Sg_s$ | \
-                {}:{<^pl>en} $NNeut/Pl_x$
+$NNeut_s_on/en$ =              $NNeut/Sg_s$ | \
+                  {}:{<^pl>en} $NNeut/Pl_x$
 
 % Aktivum, Aktivums, Aktiva
-$NNeut-um/a$ =             $NNeut/Sg_s$ | \
-               {}:{<^pl>a} $NNeut/Pl_x$
+$NNeut_s_um/a$ =             $NNeut/Sg_s$ | \
+                 {}:{<^pl>a} $NNeut/Pl_x$
 
 % Museum, Museums, Museen
-$NNeut-um/en$ =              $NNeut/Sg_s$ | \
-                {}:{<^pl>en} $NNeut/Pl_x$
+$NNeut_s_um/en$ =              $NNeut/Sg_s$ | \
+                  {}:{<^pl>en} $NNeut/Pl_x$
 
-% Virus, Virus, Viren; Epos, Epos, Epen
-$NNeut-us0/en$ =              $NNeut/Sg_0$ | \
-                 {}:{<^pl>en} $NNeut/Pl_x$
+% Herz, Herzens, Herzen
+$NNeut-Herz$ = {<+NN><Neut><Nom><Sg>}:{<SB>}    | \
+               {<+NN><Neut><Acc><Sg>}:{<SB>}    | \
+               {<+NN><Neut><Dat><Sg>}:{<SB>en}  | \
+               {<+NN><Neut><Gen><Sg>}:{<SB>ens} | \
+               {<+NN><Neut><Nom><Pl>}:{<SB>en}  | \
+               {<+NN><Neut><Acc><Pl>}:{<SB>en}  | \
+               {<+NN><Neut><Dat><Pl>}:{<SB>en}  | \
+               {<+NN><Neut><Gen><Pl>}:{<SB>en}
 
 % Innere(s)
 $NNeut-Inner$ = {<+NN><Neut><Nom><Sg><St>}:{<SB>es} | \
@@ -541,21 +541,21 @@ $NFem_0_es$ = {<+NN><Fem>}:{} $N_0_es$
 % Oma, Oma, Omas
 $NFem_0_s$ = {<+NN><Fem>}:{} $N_0_s$
 
+% Algebra, Algebra, Algebren; Firma, Firma, Firmen
+$NFem_0_a/en$ =              $NFem/Sg_0$ | \
+                {}:{<^pl>en} $NFem/Pl_x$
+
+% Basis, Basis, Basen
+$NFem_0_is/en$ =              $NFem/Sg_0$ | \
+                 {}:{<^pl>en} $NFem/Pl_x$
+
+% Neuritis, Neuritis, Neuritiden
+$NFem_0_is/iden$ =                $NFem/Sg_0$ | \
+                   {}:{<^pl>iden} $NFem/Pl_x$
+
 % Freundin, Freundin, Freundinnen
 $NFem-in$ =          $NFem/Sg_0$ | \
             {}:{nen} $NFem/Pl_x$
-
-% Algebra, Algebra, Algebren; Firma, Firma, Firmen
-$NFem-a/en$ =              $NFem/Sg_0$ | \
-              {}:{<^pl>en} $NFem/Pl_x$
-
-% Basis, Basis, Basen
-$NFem-is/en$ =              $NFem/Sg_0$ | \
-               {}:{<^pl>en} $NFem/Pl_x$
-
-% Neuritis, Neuritis, Neuritiden
-$NFem-is/iden$ =                $NFem/Sg_0$ | \
-                 {}:{<^pl>iden} $NFem/Pl_x$
 
 % Frauenbeauftragte; Illustrierte
 $NFem-Adj$ = {<+NN><Fem><Nom><Sg><St>}:{}  | \
@@ -2054,35 +2054,26 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NameNeut_s>            $NameNeut_s$           | \
          <>:<NameNoGend/Pl_0>       $NameNoGend/Pl_0$      | \
          <>:<NameNoGend/Pl_x>       $NameNoGend/Pl_x$      | \
-         <>:<NFem-a/en>             $NFem-a/en$            | \
          <>:<NFem-Adj>              $NFem-Adj$             | \
          <>:<NFem-in>               $NFem-in$              | \
-         <>:<NFem-is/en>            $NFem-is/en$           | \
-         <>:<NFem-is/iden>          $NFem-is/iden$         | \
          <>:<NFem/Pl_x>             $NFem/Pl_x$            | \
          <>:<NFem/Sg_0>             $NFem/Sg_0$            | \
          <>:<NFem_0_$>              $NFem_0_\$$            | \
          <>:<NFem_0_$e>             $NFem_0_\$e$           | \
          <>:<NFem_0_$en>            $NFem_0_\$en$          | \
          <>:<NFem_0_0>              $NFem_0_0$             | \
+         <>:<NFem_0_a/en>           $NFem_0_a/en$          | \
          <>:<NFem_0_e>              $NFem_0_e$             | \
          <>:<NFem_0_e~ss>           $NFem_0_e~ss$          | \
          <>:<NFem_0_en>             $NFem_0_en$            | \
          <>:<NFem_0_es>             $NFem_0_es$            | \
+         <>:<NFem_0_is/en>          $NFem_0_is/en$         | \
+         <>:<NFem_0_is/iden>        $NFem_0_is/iden$       | \
          <>:<NFem_0_n>              $NFem_0_n$             | \
          <>:<NFem_0_s>              $NFem_0_s$             | \
          <>:<NFem_0_x>              $NFem_0_x$             | \
          <>:<NMasc-Adj>             $NMasc-Adj$            | \
-         <>:<NMasc-as/anten>        $NMasc-as/anten$       | \
-         <>:<NMasc-as0/anten>       $NMasc-as0/anten$      | \
-         <>:<NMasc-ns>              $NMasc-ns$             | \
-         <>:<NMasc-o/en>            $NMasc-o/en$           | \
-         <>:<NMasc-o/i>             $NMasc-o/i$            | \
-         <>:<NMasc-us/e>            $NMasc-us/e$           | \
-         <>:<NMasc-us/en>           $NMasc-us/en$          | \
-         <>:<NMasc-us/i>            $NMasc-us/i$           | \
-         <>:<NMasc-us0/en>          $NMasc-us0/en$         | \
-         <>:<NMasc-us0/i>           $NMasc-us0/i$          | \
+         <>:<NMasc-Name>            $NMasc-Name$           | \
          <>:<NMasc/Pl_0>            $NMasc/Pl_0$           | \
          <>:<NMasc/Pl_x>            $NMasc/Pl_x$           | \
          <>:<NMasc/Sg_0>            $NMasc/Sg_0$           | \
@@ -2090,20 +2081,27 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc/Sg_s>            $NMasc/Sg_s$           | \
          <>:<NMasc_0_$e>            $NMasc_0_\$e$          | \
          <>:<NMasc_0_0>             $NMasc_0_0$            | \
+         <>:<NMasc_0_as/anten>      $NMasc_0_as/anten$     | \
          <>:<NMasc_0_e>             $NMasc_0_e$            | \
          <>:<NMasc_0_e~ss>          $NMasc_0_e~ss$         | \
          <>:<NMasc_0_nen>           $NMasc_0_nen$          | \
          <>:<NMasc_0_s>             $NMasc_0_s$            | \
+         <>:<NMasc_0_us/e>          $NMasc_0_us/e$         | \
+         <>:<NMasc_0_us/en>         $NMasc_0_us/en$        | \
+         <>:<NMasc_0_us/i>          $NMasc_0_us/i$         | \
          <>:<NMasc_0_x>             $NMasc_0_x$            | \
          <>:<NMasc_en_en>           $NMasc_en_en$          | \
          <>:<NMasc_es_$e>           $NMasc_es_\$e$         | \
          <>:<NMasc_es_$er>          $NMasc_es_\$er$        | \
+         <>:<NMasc_es_as/anten~ss>  $NMasc_es_as/anten~ss$ | \
          <>:<NMasc_es_e>            $NMasc_es_e$           | \
          <>:<NMasc_es_e~ss>         $NMasc_es_e~ss$        | \
          <>:<NMasc_es_en>           $NMasc_es_en$          | \
          <>:<NMasc_es_er>           $NMasc_es_er$          | \
          <>:<NMasc_es_es>           $NMasc_es_es$          | \
          <>:<NMasc_es_s>            $NMasc_es_s$           | \
+         <>:<NMasc_es_us/en~ss>     $NMasc_es_us/en~ss$    | \
+         <>:<NMasc_es_us/i~ss>      $NMasc_es_us/i~ss$     | \
          <>:<NMasc_n_n>             $NMasc_n_n$            | \
          <>:<NMasc_s_$>             $NMasc_s_\$$           | \
          <>:<NMasc_s_$e>            $NMasc_s_\$e$          | \
@@ -2115,22 +2113,14 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_s_er>            $NMasc_s_er$           | \
          <>:<NMasc_s_n>             $NMasc_s_n$            | \
          <>:<NMasc_s_nen>           $NMasc_s_nen$          | \
+         <>:<NMasc_s_o/en>          $NMasc_s_o/en$         | \
+         <>:<NMasc_s_o/i>           $NMasc_s_o/i$          | \
          <>:<NMasc_s_s>             $NMasc_s_s$            | \
          <>:<NMasc_s_x>             $NMasc_s_x$            | \
-         <>:<NNeut-a/ata>           $NNeut-a/ata$          | \
-         <>:<NNeut-a/en>            $NNeut-a/en$           | \
-         <>:<NNeut-Adj/Sg>          $NNeut-Adj/Sg$         | \
          <>:<NNeut-Adj>             $NNeut-Adj$            | \
-         <>:<NNeut-en/ina>          $NNeut-en/ina$         | \
+         <>:<NNeut-Adj/Sg>          $NNeut-Adj/Sg$         | \
          <>:<NNeut-Herz>            $NNeut-Herz$           | \
          <>:<NNeut-Inner>           $NNeut-Inner$          | \
-         <>:<NNeut-o/en>            $NNeut-o/en$           | \
-         <>:<NNeut-o/i>             $NNeut-o/i$            | \
-         <>:<NNeut-on/a>            $NNeut-on/a$           | \
-         <>:<NNeut-on/en>           $NNeut-on/en$          | \
-         <>:<NNeut-um/a>            $NNeut-um/a$           | \
-         <>:<NNeut-um/en>           $NNeut-um/en$          | \
-         <>:<NNeut-us0/en>          $NNeut-us0/en$         | \
          <>:<NNeut/Pl_x>            $NNeut/Pl_x$           | \
          <>:<NNeut/Sg_0>            $NNeut/Sg_0$           | \
          <>:<NNeut/Sg_es>           $NNeut/Sg_es$          | \
@@ -2141,6 +2131,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut_0_e~ss>          $NNeut_0_e~ss$         | \
          <>:<NNeut_0_nen>           $NNeut_0_nen$          | \
          <>:<NNeut_0_s>             $NNeut_0_s$            | \
+         <>:<NNeut_0_us/en>         $NNeut_0_us/en$        | \
          <>:<NNeut_0_x>             $NNeut_0_x$            | \
          <>:<NNeut_es_$e>           $NNeut_es_\$e$         | \
          <>:<NNeut_es_$er>          $NNeut_es_\$er$        | \
@@ -2154,12 +2145,21 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut_s_$>             $NNeut_s_\$$           | \
          <>:<NNeut_s_$er>           $NNeut_s_\$er$         | \
          <>:<NNeut_s_0>             $NNeut_s_0$            | \
+         <>:<NNeut_s_a/ata>         $NNeut_s_a/ata$        | \
+         <>:<NNeut_s_a/en>          $NNeut_s_a/en$         | \
          <>:<NNeut_s_e>             $NNeut_s_e$            | \
          <>:<NNeut_s_en>            $NNeut_s_en$           | \
+         <>:<NNeut_s_en/ina>        $NNeut_s_en/ina$       | \
          <>:<NNeut_s_ien>           $NNeut_s_ien$          | \
          <>:<NNeut_s_n>             $NNeut_s_n$            | \
          <>:<NNeut_s_nen>           $NNeut_s_nen$          | \
+         <>:<NNeut_s_o/en>          $NNeut_s_o/en$         | \
+         <>:<NNeut_s_o/i>           $NNeut_s_o/i$          | \
+         <>:<NNeut_s_on/a>          $NNeut_s_on/a$         | \
+         <>:<NNeut_s_on/en>         $NNeut_s_on/en$        | \
          <>:<NNeut_s_s>             $NNeut_s_s$            | \
+         <>:<NNeut_s_um/a>          $NNeut_s_um/a$         | \
+         <>:<NNeut_s_um/en>         $NNeut_s_um/en$        | \
          <>:<NNeut_s_x>             $NNeut_s_x$            | \
          <>:<NNoGend/Pl_0>          $NNoGend/Pl_0$         | \
          <>:<NNoGend/Pl_x>          $NNoGend/Pl_x$         | \

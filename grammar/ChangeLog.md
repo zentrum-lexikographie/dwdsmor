@@ -1,5 +1,20 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-06-26:
+
+* rename inflection classes `NMasc-ns`, `NMasc-as/anten`, `NMasc-as0/anten`,
+  `NMasc-o/en`, `NMasc-o/i`, `NMasc-us/e`, `NMasc-us/en`, `NMasc-us/i`,
+  `NMasc-us0/en`, `NMasc-us0/en`, `NMasc-us0/i`, `NNeut-a/ata`, `NNeut-a/en`,
+  `NNeut-en/ina`, `NNeut-o/en`, `NNeut-o/i`, `NNeut-on/a`, `NNeut-on/en`,
+  `NNeut-um/a`, `NNeut-um/en`, `NNeut-us0/en`, `NNeut-us0/en`, `NFem-a/en`,
+  `NFem-is/en`, and `NFem-is/iden` to `NMasc-Name`, `NMasc_es_as/anten~ss`,
+  `NMasc_0_as/anten`, `NMasc_s_o/en`, `NMasc_s_o/i`, `NMasc_0_us/e`,
+  `NMasc_es_us/en~ss`, `NMasc_es_us/i~ss`, `NMasc_0_us/en`, `NMasc_0_us/en`,
+  `NMasc_0_us/i`, `NNeut_s_a/ata`, `NNeut_s_a/en`, `NNeut_s_en/ina`,
+  `NNeut_s_o/en`, `NNeut_s_o/i`, `NNeut_s_on/a`, `NNeut_s_on/en`,
+  `NNeut_s_um/a`, `NNeut_s_um/en`, `NNeut_0_us/en`, `NNeut_0_us/en`,
+  `NFem_0_a/en`, `NFem_0_is/en`, `NFem_0_is/iden`, respectively
+
 2024-03-22:
 
 * also generate comparative and superlative forms for converted participles
