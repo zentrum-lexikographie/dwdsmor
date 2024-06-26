@@ -101,6 +101,7 @@ Ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							CAP
+Ein	einen	V							Sg				Imp					CAP
 Ein	ein	ADV																CAP
 schwerwiegender	schwerwiegend	ADJ			Pos		Masc	Nom	Sg	St	Attr/Subst							
 schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Gen	Sg	St	Attr/Subst							
@@ -349,6 +350,10 @@ eine	eine	INDEF					Fem	Acc	Sg	St	Subst
 eine	eine	INDEF					Fem	Acc	Sg	Wk	Subst							
 eine	eine	INDEF					Neut	Nom	Sg	Wk	Subst							
 eine	eine	INDEF					Neut	Acc	Sg	Wk	Subst							
+eine	einen	V				1			Sg				Ind	Pres				
+eine	einen	V				1			Sg				Subj	Pres				
+eine	einen	V				3			Sg				Subj	Pres				
+eine	einen	V							Sg				Imp					
 Ordnungswidrigkeit	Ordnungswidrigkeit	NN					Fem	Nom	Sg									
 Ordnungswidrigkeit	Ordnungswidrigkeit	NN					Fem	Gen	Sg									
 Ordnungswidrigkeit	Ordnungswidrigkeit	NN					Fem	Dat	Sg									
@@ -515,6 +520,10 @@ eine	eine	INDEF					Fem	Acc	Sg	St	Subst
 eine	eine	INDEF					Fem	Acc	Sg	Wk	Subst							
 eine	eine	INDEF					Neut	Nom	Sg	Wk	Subst							
 eine	eine	INDEF					Neut	Acc	Sg	Wk	Subst							
+eine	einen	V				1			Sg				Ind	Pres				
+eine	einen	V				1			Sg				Subj	Pres				
+eine	einen	V				3			Sg				Subj	Pres				
+eine	einen	V							Sg				Imp					
 Geldbuße	Geldbuße	NN					Fem	Nom	Sg									
 Geldbuße	Geldbuße	NN					Fem	Gen	Sg									
 Geldbuße	Geldbuße	NN					Fem	Dat	Sg									
@@ -557,6 +566,10 @@ eine	eine	INDEF					Fem	Acc	Sg	St	Subst
 eine	eine	INDEF					Fem	Acc	Sg	Wk	Subst							
 eine	eine	INDEF					Neut	Nom	Sg	Wk	Subst							
 eine	eine	INDEF					Neut	Acc	Sg	Wk	Subst							
+eine	einen	V				1			Sg				Ind	Pres				
+eine	einen	V				1			Sg				Subj	Pres				
+eine	einen	V				3			Sg				Subj	Pres				
+eine	einen	V							Sg				Imp					
 Straftat	Straftat	NN					Fem	Nom	Sg									
 Straftat	Straftat	NN					Fem	Gen	Sg									
 Straftat	Straftat	NN					Fem	Dat	Sg									
@@ -630,6 +643,7 @@ ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr
 ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							
 ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							
 ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							
+ein	einen	V							Sg				Imp					
 ein	ein	ADV																
 Kraftfahrzeug	Kraftfahrzeug	NN					Neut	Nom	Sg									
 Kraftfahrzeug	Kraftfahrzeug	NN					Neut	Dat	Sg									
@@ -689,6 +703,7 @@ Ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							CAP
+Ein	einen	V							Sg				Imp					CAP
 Ein	ein	ADV																CAP
 schwerwiegender	schwerwiegend	ADJ			Pos		Masc	Nom	Sg	St	Attr/Subst							
 schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Gen	Sg	St	Attr/Subst							
@@ -746,6 +761,7 @@ ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr
 ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							
 ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							
 ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							
+ein	einen	V							Sg				Imp					
 ein	ein	ADV																
 Unfallbeteiligter	Unfallbeteiligte	NN					Masc	Nom	Sg	St								
 Unfallbeteiligter	Unfallbeteiligte	NN					Masc	Gen	Pl	St								
