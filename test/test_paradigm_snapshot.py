@@ -134,6 +134,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Globus",       # NMasc_0_e~ss, NMasc_es_e~ss, NMasc_0_us/en, NMasc_es_us/en~ss
                "Embryo",       # NMasc_0_nen, NMasc_0_s, NMasc_s_nen, NMasc_s_s, NNeut_0_nen ...
                "Intercity",    # NMasc_0_s
+               "Carabiniere",  # NMasc_0_e/i, NMasc_s_e/i
                "Virus",        # NMasc_0_us/en, NNeut_0_us/en
                "Rhythmus",     # NMasc_0_us/en~ss
                "Modus",        # NMasc_0_us/i
@@ -172,6 +173,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Zuhause",      # NNeut_0_0
                "Nichts",       # NNeut_0_e
                "Foyer",        # NNeut_0_s
+               "Ricercare",    # NNeut_0_e/i, NNeut_s_e/i
                "Spiel",        # NNeut_es_e
                "Tablett",      # NNeut_es_e, NNeut_es_s
                "Zeugnis",      # NNeut_es_e~ss
@@ -207,6 +209,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Frau",         # NFem_0_en
                "Werkstatt",    # NFem_0_$en
                "Hilfe",        # NFem_0_n
+               "Minestrone",   # NFem_0_n, NFem_0_e/i
                "Oma",          # NFem_0_s
                "Firma",        # NFem_0_a/en
                "Basis",        # NFem_0_is/en

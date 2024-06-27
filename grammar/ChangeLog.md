@@ -14,6 +14,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
   `NNeut_s_o/en`, `NNeut_s_o/i`, `NNeut_s_on/a`, `NNeut_s_on/en`,
   `NNeut_s_um/a`, `NNeut_s_um/en`, `NNeut_0_us/en`, `NNeut_0_us/en`,
   `NFem_0_a/en`, `NFem_0_is/en`, `NFem_0_is/iden`, respectively
+* add inflection classes `<NMasc_0_e/i>`, `<NMasc_s_e/i>`, `<NNeut_0_e/i>`,
+  `<NNeut_s_e/i>`, and `<NFem_0_e/i>`
 
 2024-03-22:
 

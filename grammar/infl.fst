@@ -1,5 +1,5 @@
 % infl.fst
-% Version 6.0
+% Version 6.1
 % Andreas Nolda 2024-06-26
 
 % based on code from SMORLemma by Rico Sennrich
@@ -187,6 +187,10 @@ $NMasc_0_s$ = {<+NN><Masc>}:{} $N_0_s$
 $NMasc_0_as/anten$ =                 $NMasc/Sg_0$ | \
                      {}:{<^pl>anten} $NMasc/Pl_x$
 
+% Carabiniere, Carabiniere, Carabinieri
+$NMasc_0_e/i$ =             $NMasc/Sg_0$ | \
+                {}:{<^pl>i} $NMasc/Pl_x$
+
 % Kursus, Kursus, Kurse
 $NMasc_0_us/e$ =             $NMasc/Sg_0$ | \
                  {}:{<^pl>e} $NMasc/Pl_0$
@@ -272,6 +276,10 @@ $NMasc_s_nen$ =          $NMasc/Sg_s$ | \
 % Chef, Chefs, Chefs; Bankier, Bankiers, Bankiers
 $NMasc_s_s$ = {<+NN><Masc>}:{} $N_s_s$
 
+% Carabiniere, Carabinieres, Carabinieri
+$NMasc_s_e/i$ =             $NMasc/Sg_s$ | \
+                {}:{<^pl>i} $NMasc/Pl_x$
+
 % Saldo, Saldos, Salden
 $NMasc_s_o/en$ =              $NMasc/Sg_s$ | \
                  {}:{<^pl>en} $NMasc/Pl_x$
@@ -348,6 +356,10 @@ $NNeut_0_nen$ =          $NNeut/Sg_0$ | \
 % College, College, Colleges
 $NNeut_0_s$ = {<+NN><Neut>}:{} $N_0_s$
 
+% Ricercare, Ricercare, Ricercari
+$NNeut_0_e/i$ =             $NNeut/Sg_0$ | \
+                {}:{<^pl>i} $NNeut/Pl_x$
+
 % Virus, Virus, Viren; Epos, Epos, Epen
 $NNeut_0_us/en$ =              $NNeut/Sg_0$ | \
                   {}:{<^pl>en} $NNeut/Pl_x$
@@ -419,6 +431,10 @@ $NNeut_s_a/ata$ =         $NNeut/Sg_s$ | \
 % Dogma, Dogmas, Dogmen
 $NNeut_s_a/en$ =              $NNeut/Sg_s$ | \
                  {}:{<^pl>en} $NNeut/Pl_x$
+
+% Ricercare, Ricercares, Ricercari
+$NNeut_s_e/i$ =             $NNeut/Sg_s$ | \
+                {}:{<^pl>i} $NNeut/Pl_x$
 
 % Examen, Examens, Examina
 $NNeut_s_en/ina$ =               $NNeut/Sg_s$ | \
@@ -544,6 +560,10 @@ $NFem_0_s$ = {<+NN><Fem>}:{} $N_0_s$
 % Algebra, Algebra, Algebren; Firma, Firma, Firmen
 $NFem_0_a/en$ =              $NFem/Sg_0$ | \
                 {}:{<^pl>en} $NFem/Pl_x$
+
+% Minestrone, Minestrone, Minestroni
+$NFem_0_e/i$ =             $NFem/Sg_0$ | \
+               {}:{<^pl>i} $NFem/Pl_x$
 
 % Basis, Basis, Basen
 $NFem_0_is/en$ =              $NFem/Sg_0$ | \
@@ -2065,6 +2085,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NFem_0_a/en>           $NFem_0_a/en$          | \
          <>:<NFem_0_e>              $NFem_0_e$             | \
          <>:<NFem_0_e~ss>           $NFem_0_e~ss$          | \
+         <>:<NFem_0_e/i>            $NFem_0_e/i$           | \
          <>:<NFem_0_en>             $NFem_0_en$            | \
          <>:<NFem_0_es>             $NFem_0_es$            | \
          <>:<NFem_0_is/en>          $NFem_0_is/en$         | \
@@ -2084,6 +2105,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_0_as/anten>      $NMasc_0_as/anten$     | \
          <>:<NMasc_0_e>             $NMasc_0_e$            | \
          <>:<NMasc_0_e~ss>          $NMasc_0_e~ss$         | \
+         <>:<NMasc_0_e/i>           $NMasc_0_e/i$          | \
          <>:<NMasc_0_nen>           $NMasc_0_nen$          | \
          <>:<NMasc_0_s>             $NMasc_0_s$            | \
          <>:<NMasc_0_us/e>          $NMasc_0_us/e$         | \
@@ -2109,6 +2131,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_s_$x>            $NMasc_s_\$x$          | \
          <>:<NMasc_s_0>             $NMasc_s_0$            | \
          <>:<NMasc_s_e>             $NMasc_s_e$            | \
+         <>:<NMasc_s_e/i>           $NMasc_s_e/i$          | \
          <>:<NMasc_s_en>            $NMasc_s_en$           | \
          <>:<NMasc_s_er>            $NMasc_s_er$           | \
          <>:<NMasc_s_n>             $NMasc_s_n$            | \
@@ -2129,6 +2152,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut_0_0>             $NNeut_0_0$            | \
          <>:<NNeut_0_e>             $NNeut_0_e$            | \
          <>:<NNeut_0_e~ss>          $NNeut_0_e~ss$         | \
+         <>:<NNeut_0_e/i>           $NNeut_0_e/i$          | \
          <>:<NNeut_0_nen>           $NNeut_0_nen$          | \
          <>:<NNeut_0_s>             $NNeut_0_s$            | \
          <>:<NNeut_0_us/en>         $NNeut_0_us/en$        | \
@@ -2148,6 +2172,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut_s_a/ata>         $NNeut_s_a/ata$        | \
          <>:<NNeut_s_a/en>          $NNeut_s_a/en$         | \
          <>:<NNeut_s_e>             $NNeut_s_e$            | \
+         <>:<NNeut_s_e/i>           $NNeut_s_e/i$          | \
          <>:<NNeut_s_en>            $NNeut_s_en$           | \
          <>:<NNeut_s_en/ina>        $NNeut_s_en/ina$       | \
          <>:<NNeut_s_ien>           $NNeut_s_ien$          | \

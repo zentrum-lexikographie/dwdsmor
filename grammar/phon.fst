@@ -1,6 +1,6 @@
 % phon.fst
-% Version 4.2
-% Andreas Nolda 2024-03-21
+% Version 4.3
+% Andreas Nolda 2024-06-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -245,9 +245,9 @@ $R14a$ = [aeiou] <=> <> ([mns]:. <^pl>)
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
-           [amnos]:<>
+           [aemnos]:<>
 
-$R14b$ = [amnos] <=> <> <^pl>
+$R14b$ = [aemnos] <=> <> <^pl>
 
 % substitute "e"
 

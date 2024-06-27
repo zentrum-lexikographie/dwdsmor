@@ -1,3 +1,10 @@
+2024-06-26:
+
+* add support for masculine, neuter, and feminine nouns with unmarked genitive
+  singular forms and nominative plural forms ending in "-i" substituted for "-e"
+* add support for masculine and neuter nouns with genitive singular forms ending
+  in "-s" and nominative plural forms ending in "-i" substituted for "-e"
+
 2024-01-26:
 
 * add support for `<Formangabe Typ="Symbol">` (replaces `<Formangabe Typ="Zeichen">`)

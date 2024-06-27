@@ -123,6 +123,14 @@ Bus			NN Masc	Nom Pl	Busse
 Bus			NN Masc	Acc Pl	Busse
 Bus			NN Masc	Dat Pl	Bussen
 Bus			NN Masc	Gen Pl	Busse
+Carabiniere			NN Masc	Nom Sg	Carabiniere
+Carabiniere			NN Masc	Acc Sg	Carabiniere
+Carabiniere			NN Masc	Dat Sg	Carabiniere
+Carabiniere			NN Masc	Gen Sg	Carabiniere, Carabinieres
+Carabiniere			NN Masc	Nom Pl	Carabinieri
+Carabiniere			NN Masc	Acc Pl	Carabinieri
+Carabiniere			NN Masc	Dat Pl	Carabinieri
+Carabiniere			NN Masc	Gen Pl	Carabinieri
 Cello		1	NN Neut	Nom Sg	Cello
 Cello		1	NN Neut	Acc Sg	Cello
 Cello		1	NN Neut	Dat Sg	Cello
@@ -551,6 +559,14 @@ Milch			NN Fem	Nom Pl	Milche, Milchen
 Milch			NN Fem	Acc Pl	Milche, Milchen
 Milch			NN Fem	Dat Pl	Milchen
 Milch			NN Fem	Gen Pl	Milche, Milchen
+Minestrone			NN Fem	Nom Sg	Minestrone
+Minestrone			NN Fem	Acc Sg	Minestrone
+Minestrone			NN Fem	Dat Sg	Minestrone
+Minestrone			NN Fem	Gen Sg	Minestrone
+Minestrone			NN Fem	Nom Pl	Minestronen, Minestroni
+Minestrone			NN Fem	Acc Pl	Minestronen, Minestroni
+Minestrone			NN Fem	Dat Pl	Minestronen, Minestroni
+Minestrone			NN Fem	Gen Pl	Minestronen, Minestroni
 Modus			NN Masc	Nom Sg	Modus
 Modus			NN Masc	Acc Sg	Modus
 Modus			NN Masc	Dat Sg	Modus
@@ -655,6 +671,14 @@ Rhythmus			NN Masc	Nom Pl	Rhythmen
 Rhythmus			NN Masc	Acc Pl	Rhythmen
 Rhythmus			NN Masc	Dat Pl	Rhythmen
 Rhythmus			NN Masc	Gen Pl	Rhythmen
+Ricercare			NN Neut	Nom Sg	Ricercare
+Ricercare			NN Neut	Acc Sg	Ricercare
+Ricercare			NN Neut	Dat Sg	Ricercare
+Ricercare			NN Neut	Gen Sg	Ricercare, Ricercares
+Ricercare			NN Neut	Nom Pl	Ricercari
+Ricercare			NN Neut	Acc Pl	Ricercari
+Ricercare			NN Neut	Dat Pl	Ricercari
+Ricercare			NN Neut	Gen Pl	Ricercari
 Risiko		1	NN Neut	Nom Sg	Risiko
 Risiko		1	NN Neut	Acc Sg	Risiko
 Risiko		1	NN Neut	Dat Sg	Risiko
