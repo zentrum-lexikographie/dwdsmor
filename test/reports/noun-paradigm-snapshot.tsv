@@ -371,6 +371,14 @@ Hilfe			NN Fem	Nom Pl	Hilfen
 Hilfe			NN Fem	Acc Pl	Hilfen
 Hilfe			NN Fem	Dat Pl	Hilfen
 Hilfe			NN Fem	Gen Pl	Hilfen
+Index			NN Masc	Nom Sg	Index
+Index			NN Masc	Acc Sg	Index
+Index			NN Masc	Dat Sg	Index, Indexe (va.)
+Index			NN Masc	Gen Sg	Index, Indexes
+Index			NN Masc	Nom Pl	Indexe, Indizes
+Index			NN Masc	Acc Pl	Indexe, Indizes
+Index			NN Masc	Dat Pl	Indexen, Indizes
+Index			NN Masc	Gen Pl	Indexe, Indizes
 Indiz			NN Neut	Nom Sg	Indiz
 Indiz			NN Neut	Acc Sg	Indiz
 Indiz			NN Neut	Dat Sg	Indiz, Indize (va.)

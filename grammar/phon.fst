@@ -1,6 +1,6 @@
 % phon.fst
-% Version 4.3
-% Andreas Nolda 2024-06-26
+% Version 4.4
+% Andreas Nolda 2024-06-27
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -228,26 +228,32 @@ $R13$ = ([dt]m? | tw) <INS-E> <=> e
 
 
 % suffix substution for plural forms
-% Virus<^pl>+en     -> Viren
-% Atlas<^pl>+anten  -> Atlanten
-% Museum<^pl>+en    -> Museen
-% Examen<^pl>+ina   -> Examina
-% Affrikata<^pl>+en -> Affrikaten
-% Konto<^pl>+en     -> Konten
+% Dogma<^pl>+en      -> Dogmen
+% Carabiniere<^pl>+i -> Carabinieri
+% Konto<^pl>+en      -> Konten
+% Museum<^pl>+en     -> Museen
+% Examen<^pl>+ina    -> Examina
+% Stadion<^pl>+en    -> Stadien
+% Atlas<^pl>+anten   -> Atlanten
+% Basis<^pl>+en      -> Basen
+% Virus<^pl>+en      -> Viren
+% Index<^pl>+izes    -> Indizes
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            [aeiou]:<>
 
-% substitute "-as"/"-is"/"-us"/"-um"/"-on"/"-os"/"-en"
+% remove pre-final letter in "-um"/"-en"/"-on"/"-as"/"-is"/"-us"/"-ex"
 
-$R14a$ = [aeiou] <=> <> ([mns]:. <^pl>)
+$R14a$ = [aeiou] <=> <> ([mnsx]:. <^pl>)
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
-           [aemnos]:<>
+           [aeomnsx]:<>
 
-$R14b$ = [aemnos] <=> <> <^pl>
+% remove final letter in "-a"/"-e"/"-o"/"-um"/"-en"/"-on"/"-as"/"-is"/"-us"/"-ex"
+
+$R14b$ = [aeomnsx] <=> <> <^pl>
 
 % substitute "e"
 

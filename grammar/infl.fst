@@ -197,6 +197,10 @@ $NMasc_0_as/anten$ =                 $NMasc/Sg_0$ | \
 $NMasc_0_e/i$ =             $NMasc/Sg_0$ | \
                 {}:{<^pl>i} $NMasc/Pl_x$
 
+% Index, Index, Indizes
+$NMasc_0_ex/izes$ =                $NMasc/Sg_0$ | \
+                    {}:{<^pl>izes} $NMasc/Pl_x$
+
 % Espresso, Espresso, Espressi
 $NMasc_0_o/i$ =             $NMasc/Sg_0$ | \
                 {}:{<^pl>i} $NMasc/Pl_x$
@@ -240,6 +244,10 @@ $NMasc_es_s$ = {<+NN><Masc>}:{} $N_es_s$
 % Atlas, Atlasses, Atlanten
 $NMasc_es_as/anten~ss$ =            $SS$ $NMasc/Sg_es$ | \
                          {}:{<^pl>anten} $NMasc/Pl_x$
+
+% Index, Indexes, Indizes
+$NMasc_es_ex/izes$ =                $NMasc/Sg_es$ | \
+                     {}:{<^pl>izes} $NMasc/Pl_x$
 
 % Virus, Virusses, Viren
 $NMasc_es_us/en~ss$ =         $SS$ $NMasc/Sg_es$ | \
@@ -2128,6 +2136,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_0_e/i>           $NMasc_0_e/i$          | \
          <>:<NMasc_0_en>            $NMasc_0_en$           | \
          <>:<NMasc_0_es>            $NMasc_0_es$           | \
+         <>:<NMasc_0_ex/izes>       $NMasc_0_ex/izes$      | \
          <>:<NMasc_0_nen>           $NMasc_0_nen$          | \
          <>:<NMasc_0_o/i>           $NMasc_0_o/i$          | \
          <>:<NMasc_0_s>             $NMasc_0_s$            | \
@@ -2145,6 +2154,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_es_er>           $NMasc_es_er$          | \
          <>:<NMasc_es_es>           $NMasc_es_es$          | \
          <>:<NMasc_es_s>            $NMasc_es_s$           | \
+         <>:<NMasc_es_ex/izes>      $NMasc_es_ex/izes$     | \
          <>:<NMasc_es_us/en~ss>     $NMasc_es_us/en~ss$    | \
          <>:<NMasc_es_us/i~ss>      $NMasc_es_us/i~ss$     | \
          <>:<NMasc_n_n>             $NMasc_n_n$            | \

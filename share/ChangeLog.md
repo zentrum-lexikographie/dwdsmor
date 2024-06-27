@@ -4,6 +4,9 @@
   forms and nominative plural forms ending in "-en" or "-es"
 * add support for masculine and neuter nouns with unmarked genitive singular
   forms and nominative plural forms ending in "-i" substituted for "-o"
+* add support for masculine nouns with genitive singular forms ending in "-es"
+  or unmarked genitive singular forms and nominative plural forms ending in
+  "-izes" substituted for "-ex" or "-ix"
 
 2024-06-26:
 

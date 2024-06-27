@@ -129,6 +129,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Blues",        # NMasc_0_x
                "Dezember",     # NMasc_0_0, NMasc_s_0
                "Januar",       # NMasc_0_e, NMasc_s_e
+               "Index",        # NMasc_0_e, NMasc_0_ex/izes, NMasc_es_e, NMasc_es_ex/izes
                "Obelisk",      # NMasc_0_e, NMasc_0_en, NMasc_s_e, NMasc_s_en, NMasc_en_en
                "Sandwich",     # NMasc_0_e, NMasc_0_es, NMasc_0_s, NMasc_es_e, NMasc_es_es, NMasc_es_s, NNeut_0_e, NNeut_0_es, NNeut_0_s, NNeut_es_e, NNeut_es_es, NNeut_es_s
                "Zirkus",       # NMasc_0_e~ss
