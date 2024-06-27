@@ -1,6 +1,6 @@
 % infl.fst
-% Version 6.1
-% Andreas Nolda 2024-06-26
+% Version 6.2
+% Andreas Nolda 2024-06-27
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -176,6 +176,12 @@ $NMasc_0_e~ss$ = $SS$ $NMasc_0_e$
 % Bypass, Bypass, Bypässe
 $NMasc_0_\$e$ = {<+NN><Masc>}:{} $N_0_\$e$
 
+% Obelisk, Obelisk, Obelisken
+$NMasc_0_en$ = {<+NN><Masc>}:{} $N_0_en$
+
+% Sandwich, Sandwich, Sandwiches (masculine)
+$NMasc_0_es$ = {<+NN><Masc>}:{} $N_0_es$
+
 % Embryo, Embryo, Embryonen (masculine)
 $NMasc_0_nen$ =          $NMasc/Sg_0$ | \
                 {}:{nen} $NMasc/Pl_x$
@@ -189,6 +195,10 @@ $NMasc_0_as/anten$ =                 $NMasc/Sg_0$ | \
 
 % Carabiniere, Carabiniere, Carabinieri
 $NMasc_0_e/i$ =             $NMasc/Sg_0$ | \
+                {}:{<^pl>i} $NMasc/Pl_x$
+
+% Espresso, Espresso, Espressi
+$NMasc_0_o/i$ =             $NMasc/Sg_0$ | \
                 {}:{<^pl>i} $NMasc/Pl_x$
 
 % Kursus, Kursus, Kurse
@@ -284,7 +294,7 @@ $NMasc_s_e/i$ =             $NMasc/Sg_s$ | \
 $NMasc_s_o/en$ =              $NMasc/Sg_s$ | \
                  {}:{<^pl>en} $NMasc/Pl_x$
 
-% Saldo, Saldos, Saldi
+% Espresso, Espressos, Espressi
 $NMasc_s_o/i$ =             $NMasc/Sg_s$ | \
                 {}:{<^pl>i} $NMasc/Pl_x$
 
@@ -349,6 +359,12 @@ $NNeut_0_e$ = {<+NN><Neut>}:{} $N_0_e$
 % Rhinozeros, Rhinozeros, Rhinozerosse
 $NNeut_0_e~ss$ = $SS$ $NNeut_0_e$
 
+% Remis, Remis, Remisen
+$NNeut_0_en$ = {<+NN><Neut>}:{} $N_0_en$
+
+% Sandwich, Sandwich, Sandwiches (neuter)
+$NNeut_0_es$ = {<+NN><Neut>}:{} $N_0_es$
+
 % Embryo, Embryo, Embryonen (neuter)
 $NNeut_0_nen$ =          $NNeut/Sg_0$ | \
                 {}:{nen} $NNeut/Pl_x$
@@ -358,6 +374,10 @@ $NNeut_0_s$ = {<+NN><Neut>}:{} $N_0_s$
 
 % Ricercare, Ricercare, Ricercari
 $NNeut_0_e/i$ =             $NNeut/Sg_0$ | \
+                {}:{<^pl>i} $NNeut/Pl_x$
+
+% Intermezzo, Intermezzo, Intermezzi
+$NNeut_0_o/i$ =             $NNeut/Sg_0$ | \
                 {}:{<^pl>i} $NNeut/Pl_x$
 
 % Virus, Virus, Viren; Epos, Epos, Epen
@@ -444,7 +464,7 @@ $NNeut_s_en/ina$ =               $NNeut/Sg_s$ | \
 $NNeut_s_o/en$ =              $NNeut/Sg_s$ | \
                  {}:{<^pl>en} $NNeut/Pl_x$
 
-% Cello, Cellos, Celli
+% Intermezzo, Intermezzos, Intermezzi
 $NNeut_s_o/i$ =             $NNeut/Sg_s$ | \
                 {}:{<^pl>i} $NNeut/Pl_x$
 
@@ -2106,7 +2126,10 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_0_e>             $NMasc_0_e$            | \
          <>:<NMasc_0_e~ss>          $NMasc_0_e~ss$         | \
          <>:<NMasc_0_e/i>           $NMasc_0_e/i$          | \
+         <>:<NMasc_0_en>            $NMasc_0_en$           | \
+         <>:<NMasc_0_es>            $NMasc_0_es$           | \
          <>:<NMasc_0_nen>           $NMasc_0_nen$          | \
+         <>:<NMasc_0_o/i>           $NMasc_0_o/i$          | \
          <>:<NMasc_0_s>             $NMasc_0_s$            | \
          <>:<NMasc_0_us/e>          $NMasc_0_us/e$         | \
          <>:<NMasc_0_us/en>         $NMasc_0_us/en$        | \
@@ -2153,7 +2176,10 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut_0_e>             $NNeut_0_e$            | \
          <>:<NNeut_0_e~ss>          $NNeut_0_e~ss$         | \
          <>:<NNeut_0_e/i>           $NNeut_0_e/i$          | \
+         <>:<NNeut_0_en>            $NNeut_0_en$           | \
+         <>:<NNeut_0_es>            $NNeut_0_es$           | \
          <>:<NNeut_0_nen>           $NNeut_0_nen$          | \
+         <>:<NNeut_0_o/i>           $NNeut_0_o/i$          | \
          <>:<NNeut_0_s>             $NNeut_0_s$            | \
          <>:<NNeut_0_us/en>         $NNeut_0_us/en$        | \
          <>:<NNeut_0_x>             $NNeut_0_x$            | \

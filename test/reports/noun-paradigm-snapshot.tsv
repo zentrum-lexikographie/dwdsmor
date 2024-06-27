@@ -131,22 +131,6 @@ Carabiniere			NN Masc	Nom Pl	Carabinieri
 Carabiniere			NN Masc	Acc Pl	Carabinieri
 Carabiniere			NN Masc	Dat Pl	Carabinieri
 Carabiniere			NN Masc	Gen Pl	Carabinieri
-Cello		1	NN Neut	Nom Sg	Cello
-Cello		1	NN Neut	Acc Sg	Cello
-Cello		1	NN Neut	Dat Sg	Cello
-Cello		1	NN Neut	Gen Sg	Cellos
-Cello		1	NN Neut	Nom Pl	Celli
-Cello		1	NN Neut	Acc Pl	Celli
-Cello		1	NN Neut	Dat Pl	Celli
-Cello		1	NN Neut	Gen Pl	Celli
-Cello		2	NN Neut	Nom Sg	Cello
-Cello		2	NN Neut	Acc Sg	Cello
-Cello		2	NN Neut	Dat Sg	Cello
-Cello		2	NN Neut	Gen Sg	Cellos
-Cello		2	NN Neut	Nom Pl	Cellos
-Cello		2	NN Neut	Acc Pl	Cellos
-Cello		2	NN Neut	Dat Pl	Cellos
-Cello		2	NN Neut	Gen Pl	Cellos
 Crash			NN Masc	Nom Sg	Crash
 Crash			NN Masc	Acc Sg	Crash
 Crash			NN Masc	Dat Sg	Crash, Crashe (va.)
@@ -259,6 +243,22 @@ Engel			NN Masc	Nom Pl	Engel
 Engel			NN Masc	Acc Pl	Engel
 Engel			NN Masc	Dat Pl	Engeln
 Engel			NN Masc	Gen Pl	Engel
+Espresso	1		NN Masc	Nom Sg	Espresso
+Espresso	1		NN Masc	Acc Sg	Espresso
+Espresso	1		NN Masc	Dat Sg	Espresso
+Espresso	1		NN Masc	Gen Sg	Espresso, Espressos
+Espresso	1		NN Masc	Nom Pl	Espressi, Espressos
+Espresso	1		NN Masc	Acc Pl	Espressi, Espressos
+Espresso	1		NN Masc	Dat Pl	Espressi, Espressos
+Espresso	1		NN Masc	Gen Pl	Espressi, Espressos
+Espresso	2		NN Neut	Nom Sg	Espresso
+Espresso	2		NN Neut	Acc Sg	Espresso
+Espresso	2		NN Neut	Dat Sg	Espresso
+Espresso	2		NN Neut	Gen Sg	Espresso, Espressos
+Espresso	2		NN Neut	Nom Pl	Espresso, Espressos
+Espresso	2		NN Neut	Acc Pl	Espresso, Espressos
+Espresso	2		NN Neut	Dat Pl	Espresso, Espressos
+Espresso	2		NN Neut	Gen Pl	Espresso, Espressos
 Examen			NN Neut	Nom Sg	Examen
 Examen			NN Neut	Acc Sg	Examen
 Examen			NN Neut	Dat Sg	Examen
@@ -395,6 +395,14 @@ Intercity			NN Masc	Nom Pl	Intercitys
 Intercity			NN Masc	Acc Pl	Intercitys
 Intercity			NN Masc	Dat Pl	Intercitys
 Intercity			NN Masc	Gen Pl	Intercitys
+Intermezzo			NN Neut	Nom Sg	Intermezzo
+Intermezzo			NN Neut	Acc Sg	Intermezzo
+Intermezzo			NN Neut	Dat Sg	Intermezzo
+Intermezzo			NN Neut	Gen Sg	Intermezzo, Intermezzos
+Intermezzo			NN Neut	Nom Pl	Intermezzi, Intermezzos
+Intermezzo			NN Neut	Acc Pl	Intermezzi, Intermezzos
+Intermezzo			NN Neut	Dat Pl	Intermezzi, Intermezzos
+Intermezzo			NN Neut	Gen Pl	Intermezzi, Intermezzos
 Internet			NN Neut	Nom Sg	Internet
 Internet			NN Neut	Acc Sg	Internet
 Internet			NN Neut	Dat Sg	Internet
@@ -599,6 +607,14 @@ Nichts			NN Neut	Nom Pl	Nichtse
 Nichts			NN Neut	Acc Pl	Nichtse
 Nichts			NN Neut	Dat Pl	Nichtsen
 Nichts			NN Neut	Gen Pl	Nichtse
+Obelisk			NN Masc	Nom Sg	Obelisk
+Obelisk			NN Masc	Acc Sg	Obelisk, Obelisken, Obelisk (ugs.)
+Obelisk			NN Masc	Dat Sg	Obelisk, Obelisken, Obelisk (ugs.)
+Obelisk			NN Masc	Gen Sg	Obelisk, Obelisken, Obelisks
+Obelisk			NN Masc	Nom Pl	Obeliske, Obelisken
+Obelisk			NN Masc	Acc Pl	Obeliske, Obelisken
+Obelisk			NN Masc	Dat Pl	Obelisken
+Obelisk			NN Masc	Gen Pl	Obeliske, Obelisken
 Ohr			NN Neut	Nom Sg	Ohr
 Ohr			NN Neut	Acc Sg	Ohr
 Ohr			NN Neut	Dat Sg	Ohr, Ohre (va.)
@@ -663,6 +679,14 @@ Prototyp		3	NN Masc	Nom Pl	Prototypen
 Prototyp		3	NN Masc	Acc Pl	Prototypen
 Prototyp		3	NN Masc	Dat Pl	Prototypen
 Prototyp		3	NN Masc	Gen Pl	Prototypen
+Remis			NN Neut	Nom Sg	Remis
+Remis			NN Neut	Acc Sg	Remis
+Remis			NN Neut	Dat Sg	Remis
+Remis			NN Neut	Gen Sg	Remis
+Remis			NN Neut	Nom Pl	Remis, Remisen
+Remis			NN Neut	Acc Pl	Remis, Remisen
+Remis			NN Neut	Dat Pl	Remis, Remisen
+Remis			NN Neut	Gen Pl	Remis, Remisen
 Rhythmus			NN Masc	Nom Sg	Rhythmus
 Rhythmus			NN Masc	Acc Sg	Rhythmus
 Rhythmus			NN Masc	Dat Sg	Rhythmus
@@ -691,6 +715,22 @@ Ruhe			NN Fem	Nom Sg	Ruhe
 Ruhe			NN Fem	Acc Sg	Ruhe
 Ruhe			NN Fem	Dat Sg	Ruhe
 Ruhe			NN Fem	Gen Sg	Ruhe
+Sandwich			NN Masc	Nom Sg	Sandwich
+Sandwich			NN Masc	Acc Sg	Sandwich
+Sandwich			NN Masc	Dat Sg	Sandwich, Sandwiche (va.)
+Sandwich			NN Masc	Gen Sg	Sandwich, Sandwiches, Sandwichs
+Sandwich			NN Masc	Nom Pl	Sandwiche, Sandwiches, Sandwichs
+Sandwich			NN Masc	Acc Pl	Sandwiche, Sandwiches, Sandwichs
+Sandwich			NN Masc	Dat Pl	Sandwichen, Sandwiches, Sandwichs
+Sandwich			NN Masc	Gen Pl	Sandwiche, Sandwiches, Sandwichs
+Sandwich			NN Neut	Nom Sg	Sandwich
+Sandwich			NN Neut	Acc Sg	Sandwich
+Sandwich			NN Neut	Dat Sg	Sandwich, Sandwiche (va.)
+Sandwich			NN Neut	Gen Sg	Sandwich, Sandwiches, Sandwichs
+Sandwich			NN Neut	Nom Pl	Sandwiche, Sandwiches, Sandwichs
+Sandwich			NN Neut	Acc Pl	Sandwiche, Sandwiches, Sandwichs
+Sandwich			NN Neut	Dat Pl	Sandwichen, Sandwiches, Sandwichs
+Sandwich			NN Neut	Gen Pl	Sandwiche, Sandwiches, Sandwichs
 Schmerz			NN Masc	Nom Sg	Schmerz
 Schmerz			NN Masc	Acc Sg	Schmerz
 Schmerz			NN Masc	Dat Sg	Schmerz, Schmerze (va.)

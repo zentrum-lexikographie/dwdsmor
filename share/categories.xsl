@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 6.0 -->
-<!-- Andreas Nolda 2024-06-26 -->
+<!-- Version 6.1 -->
+<!-- Andreas Nolda 2024-06-27 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -95,6 +95,16 @@
          genitive-singular="-"
          nominative-plural="&#x308;-e">NMasc_0_$e</class>
   <!-- genitive singular: unmarked
+       nominative plural: "-en" -->
+  <class gender="mask."
+         genitive-singular="-"
+         nominative-plural="-en">NMasc_0_en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-es" -->
+  <class gender="mask."
+         genitive-singular="-"
+         nominative-plural="-es">NMasc_0_es</class>
+  <!-- genitive singular: unmarked
        nominative plural: "-nen" -->
   <class gender="mask."
          genitive-singular="-"
@@ -114,6 +124,11 @@
   <class gender="mask."
          genitive-singular="-"
          nominative-plural="-e/i">NMasc_0_e/i</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-i" substituted for "-o" -->
+  <class gender="mask."
+         genitive-singular="-"
+         nominative-plural="-o/i">NMasc_0_o/i</class>
   <!-- genitive singular: unmarked
        nominative plural: "-e" substituted for "-us" -->
   <class gender="mask."
@@ -354,6 +369,16 @@
          genitive-singular="-"
          nominative-plural="-se">NNeut_0_e~ss</class>
   <!-- genitive singular: unmarked
+       nominative plural: "-en" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-en">NNeut_0_en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-es" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-es">NNeut_0_es</class>
+  <!-- genitive singular: unmarked
        nominative plural: "-nen" -->
   <class gender="neutr."
          genitive-singular="-"
@@ -368,6 +393,11 @@
   <class gender="neutr."
          genitive-singular="-"
          nominative-plural="-e/i">NNeut_0_e/i</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-i" substituted for "-o" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-o/i">NNeut_0_o/i</class>
   <!-- genitive singular: unmarked
        nominative plural: "-en" substituted for "-us" -->
   <class gender="neutr."

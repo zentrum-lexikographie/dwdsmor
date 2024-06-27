@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-06-26
+# Andreas Nolda 2024-06-27
 
 import io
 import csv
@@ -129,12 +129,15 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Blues",        # NMasc_0_x
                "Dezember",     # NMasc_0_0, NMasc_s_0
                "Januar",       # NMasc_0_e, NMasc_s_e
+               "Obelisk",      # NMasc_0_e, NMasc_0_en, NMasc_s_e, NMasc_s_en, NMasc_en_en
+               "Sandwich",     # NMasc_0_e, NMasc_0_es, NMasc_0_s, NMasc_es_e, NMasc_es_es, NMasc_es_s, NNeut_0_e, NNeut_0_es, NNeut_0_s, NNeut_es_e, NNeut_es_es, NNeut_es_s
                "Zirkus",       # NMasc_0_e~ss
                "Atlas",        # NMasc_0_e~ss, NMasc_es_e~ss, NMasc_0_as/anten, NMasc_s_as/anten
                "Globus",       # NMasc_0_e~ss, NMasc_es_e~ss, NMasc_0_us/en, NMasc_es_us/en~ss
                "Embryo",       # NMasc_0_nen, NMasc_0_s, NMasc_s_nen, NMasc_s_s, NNeut_0_nen ...
                "Intercity",    # NMasc_0_s
                "Carabiniere",  # NMasc_0_e/i, NMasc_s_e/i
+               "Espresso",     # NMasc_0_o/i, NMasc_0_s, NMasc_s_o/i, NMasc_s_s, NNeut_0_s, NNeut_s_x
                "Virus",        # NMasc_0_us/en, NNeut_0_us/en
                "Rhythmus",     # NMasc_0_us/en~ss
                "Modus",        # NMasc_0_us/i
@@ -170,10 +173,12 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Verständnis",  # NNeut/Sg_es~ss
                "Internet",     # NNeut/Sg_s
                "Ostern",       # NNeut_0_x
+               "Remis",        # NNeut_0_x, NNeut_0_en
                "Zuhause",      # NNeut_0_0
                "Nichts",       # NNeut_0_e
                "Foyer",        # NNeut_0_s
                "Ricercare",    # NNeut_0_e/i, NNeut_s_e/i
+               "Intermezzo",   # NNeut_0_o/i, NNeut_0_s, NNeut_s_o/i, NNeut_s_s
                "Spiel",        # NNeut_es_e
                "Tablett",      # NNeut_es_e, NNeut_es_s
                "Zeugnis",      # NNeut_es_e~ss
@@ -192,7 +197,6 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Sofa",         # NNeut_s_s
                "Komma",        # NNeut_s_s, NNeut_s_a/ata
                "Risiko",       # NNeut_s_s, NNeut_s_o/en
-               "Cello",        # NNeut_s_s, NNeut_s_o/i
                "Dogma",        # NNeut_s_a/en
                "Paradoxon",    # NNeut_s_on/a
                "Stadion",      # NNeut_s_on/en

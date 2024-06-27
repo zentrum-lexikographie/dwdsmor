@@ -1,3 +1,10 @@
+2024-06-27:
+
+* add support for masculine and neuter nouns with unmarked genitive singular
+  forms and nominative plural forms ending in "-en" or "-es"
+* add support for masculine and neuter nouns with unmarked genitive singular
+  forms and nominative plural forms ending in "-i" substituted for "-o"
+
 2024-06-26:
 
 * add support for masculine, neuter, and feminine nouns with unmarked genitive
