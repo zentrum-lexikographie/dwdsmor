@@ -1,6 +1,6 @@
 % infl.fst
-% Version 6.2
-% Andreas Nolda 2024-06-27
+% Version 6.3
+% Andreas Nolda 2024-07-01
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -42,6 +42,18 @@ $NSg_s$ = {<Nom><Sg>}:{<SB>} | \
           {<Acc><Sg>}:{<SB>} | \
           {<Dat><Sg>}:{<SB>} | \
           {<Gen><Sg>}:{<SB>s}
+
+% Name, Namens; Buchstabe, Buchstabens
+$NSg_ns$ = {<Nom><Sg>}:{<SB>}  | \
+           {<Acc><Sg>}:{<SB>n} | \
+           {<Dat><Sg>}:{<SB>n} | \
+           {<Gen><Sg>}:{<SB>ns}
+
+% Herz, Herzens
+$NSg_ens$ = {<Nom><Sg>}:{<SB>}   | \
+            {<Acc><Sg>}:{<SB>}   | \
+            {<Dat><Sg>}:{<SB>en} | \
+            {<Gen><Sg>}:{<SB>ens}
 
 $NPl_x$ = {<Nom><Pl>}:{} | \
           {<Acc><Pl>}:{} | \
@@ -154,6 +166,9 @@ $NMasc/Sg_es$ = {<+NN><Masc>}:{} $NSg_es$
 
 % Hagel, Hagels; Adel, Adels
 $NMasc/Sg_s$ = {<+NN><Masc>}:{} $NSg_s$
+
+% Unglaube, Unglaubens
+$NMasc/Sg_ns$ = {<+NN><Masc>}:{} $NSg_ns$
 
 % Bauten
 $NMasc/Pl_x$ = {<+NN><Masc>}:{} $NPl_x$
@@ -313,11 +328,8 @@ $NMasc_en_en$ = {<+NN><Masc>}:{} $N_en_en$
 $NMasc_n_n$ = {<+NN><Masc>}:{} $N_n_n$
 
 % Name, Namens, Namen; Buchstabe, Buchstabens, Buchstaben
-$NMasc-Name$ = {<+NN><Masc><Nom><Sg>}:{}       | \
-             {<+NN><Masc><Acc><Sg>}:{<SB>n}  | \
-             {<+NN><Masc><Dat><Sg>}:{<SB>n}  | \
-             {<+NN><Masc><Gen><Sg>}:{<SB>ns} | \
-             {<+NN><Masc>}:{n} $NPl_x$
+$NMasc_ns_n$ =        $NMasc/Sg_ns$ | \
+               {}:{n} $NMasc/Pl_x$
 
 % Beamte(r); Gefreite(r)
 $NMasc-Adj$ = {<+NN><Masc><Nom><Sg><St>}:{r} | \
@@ -493,14 +505,8 @@ $NNeut_s_um/en$ =              $NNeut/Sg_s$ | \
                   {}:{<^pl>en} $NNeut/Pl_x$
 
 % Herz, Herzens, Herzen
-$NNeut-Herz$ = {<+NN><Neut><Nom><Sg>}:{<SB>}    | \
-               {<+NN><Neut><Acc><Sg>}:{<SB>}    | \
-               {<+NN><Neut><Dat><Sg>}:{<SB>en}  | \
-               {<+NN><Neut><Gen><Sg>}:{<SB>ens} | \
-               {<+NN><Neut><Nom><Pl>}:{<SB>en}  | \
-               {<+NN><Neut><Acc><Pl>}:{<SB>en}  | \
-               {<+NN><Neut><Dat><Pl>}:{<SB>en}  | \
-               {<+NN><Neut><Gen><Pl>}:{<SB>en}
+$NNeut_ens_en$ = {<+NN><Neut>}:{}   $NSg_ens$ | \
+                 {<+NN><Neut>}:{en} $NPl_x$
 
 % Innere(s)
 $NNeut-Inner$ = {<+NN><Neut><Nom><Sg><St>}:{<SB>es} | \
@@ -2122,11 +2128,11 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NFem_0_s>              $NFem_0_s$             | \
          <>:<NFem_0_x>              $NFem_0_x$             | \
          <>:<NMasc-Adj>             $NMasc-Adj$            | \
-         <>:<NMasc-Name>            $NMasc-Name$           | \
          <>:<NMasc/Pl_0>            $NMasc/Pl_0$           | \
          <>:<NMasc/Pl_x>            $NMasc/Pl_x$           | \
          <>:<NMasc/Sg_0>            $NMasc/Sg_0$           | \
          <>:<NMasc/Sg_es>           $NMasc/Sg_es$          | \
+         <>:<NMasc/Sg_ns>           $NMasc/Sg_ns$          | \
          <>:<NMasc/Sg_s>            $NMasc/Sg_s$           | \
          <>:<NMasc_0_$e>            $NMasc_0_\$e$          | \
          <>:<NMasc_0_0>             $NMasc_0_0$            | \
@@ -2158,6 +2164,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_es_us/en~ss>     $NMasc_es_us/en~ss$    | \
          <>:<NMasc_es_us/i~ss>      $NMasc_es_us/i~ss$     | \
          <>:<NMasc_n_n>             $NMasc_n_n$            | \
+         <>:<NMasc_ns_n>            $NMasc_ns_n$           | \
          <>:<NMasc_s_$>             $NMasc_s_\$$           | \
          <>:<NMasc_s_$e>            $NMasc_s_\$e$          | \
          <>:<NMasc_s_$er>           $NMasc_s_\$er$         | \
@@ -2175,7 +2182,6 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_s_x>             $NMasc_s_x$            | \
          <>:<NNeut-Adj>             $NNeut-Adj$            | \
          <>:<NNeut-Adj/Sg>          $NNeut-Adj/Sg$         | \
-         <>:<NNeut-Herz>            $NNeut-Herz$           | \
          <>:<NNeut-Inner>           $NNeut-Inner$          | \
          <>:<NNeut/Pl_x>            $NNeut/Pl_x$           | \
          <>:<NNeut/Sg_0>            $NNeut/Sg_0$           | \
@@ -2193,6 +2199,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut_0_s>             $NNeut_0_s$            | \
          <>:<NNeut_0_us/en>         $NNeut_0_us/en$        | \
          <>:<NNeut_0_x>             $NNeut_0_x$            | \
+         <>:<NNeut_ens_en>          $NNeut_ens_en$         | \
          <>:<NNeut_es_$e>           $NNeut_es_\$e$         | \
          <>:<NNeut_es_$er>          $NNeut_es_\$er$        | \
          <>:<NNeut_es_e>            $NNeut_es_e$           | \

@@ -827,6 +827,10 @@ Unfall			NN Masc	Nom Pl	Unfälle
 Unfall			NN Masc	Acc Pl	Unfälle
 Unfall			NN Masc	Dat Pl	Unfällen
 Unfall			NN Masc	Gen Pl	Unfälle
+Unglaube		1	NN Masc	Nom Sg	Unglaube
+Unglaube		1	NN Masc	Acc Sg	Unglauben
+Unglaube		1	NN Masc	Dat Sg	Unglauben
+Unglaube		1	NN Masc	Gen Sg	Unglaubens
 Verständnis			NN Neut	Nom Sg	Verständnis
 Verständnis			NN Neut	Acc Sg	Verständnis
 Verständnis			NN Neut	Dat Sg	Verständnis, Verständnisse (va.)

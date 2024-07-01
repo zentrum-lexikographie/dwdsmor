@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 6.1 -->
-<!-- Andreas Nolda 2024-06-27 -->
+<!-- Version 6.2 -->
+<!-- Andreas Nolda 2024-07-01 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -65,6 +65,10 @@
        no plural -->
   <class gender="mask."
          genitive-singular="-s">NMasc/Sg_s</class>
+  <!-- genitive singular: "-ns"
+       no plural -->
+  <class gender="mask."
+         genitive-singular="-ns">NMasc/Sg_ns</class>
   <!-- genitive singular: unmarked
        nominative plural: unmarked
        dative plural: unmarked -->
@@ -336,11 +340,11 @@
   <class gender="mask."
          genitive-singular="-n"
          nominative-plural="-n">NMasc_n_n</class>
-  <!-- genitive singular: "-ens"
-       nominative plural: "en" -->
+  <!-- genitive singular: "-ns"
+       nominative plural: "-n" -->
   <class gender="mask."
          genitive-singular="-ns"
-         nominative-plural="-n">NMasc-Name</class>
+         nominative-plural="-n">NMasc_ns_n</class>
   <!-- nominalised adjectives: -->
   <class gender="mask."
          genitive-singular="-n"
@@ -607,7 +611,7 @@
        nominative plural: "-en" -->
   <class gender="neutr."
          genitive-singular="-ens"
-         nominative-plural="-en">NNeut-Herz</class>
+         nominative-plural="-en">NNeut_ens_en</class>
   <!-- nominalised adjectives without plural: -->
   <class gender="neutr."
          genitive-singular="-n">NNeut-Adj/Sg</class>
