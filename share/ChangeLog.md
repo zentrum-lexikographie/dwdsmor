@@ -1,3 +1,18 @@
+2024-07-02:
+
+* add support for masculine nous with genitive singular forms ending in "-es"
+  or unmarked genitive singular forms and nominative plural forms ending in
+  "-een" substituted for "-us"
+* add support for masculine nous with genitive singular forms ending in "-s"
+  or unmarked genitive singular forms and nominative plural forms ending in
+  "-es"
+* add support for masculine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-ier" substituted for "-us"
+* add support for neuter nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-era" or "-ora" substituted for "-us"
+* add support for neuter nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-zien" substituted for "-s"
+
 2024-06-27:
 
 * add support for masculine and neuter nouns with unmarked genitive singular

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-07-01
+# Andreas Nolda 2024-07-02
 
 import io
 import csv
@@ -136,6 +136,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Zirkus",       # NMasc_0_e~ss
                "Atlas",        # NMasc_0_e~ss, NMasc_es_e~ss, NMasc_0_as/anten, NMasc_s_as/anten
                "Globus",       # NMasc_0_e~ss, NMasc_es_e~ss, NMasc_0_us/en, NMasc_es_us/en~ss
+               "Kaktus",       # NMasc_0_e~ss, NMasc_es_e~ss, NMasc_0_us/een, NMasc_es_us/een~ss
                "Embryo",       # NMasc_0_nen, NMasc_0_s, NMasc_s_nen, NMasc_s_s, NNeut_0_nen ...
                "Intercity",    # NMasc_0_s
                "Carabiniere",  # NMasc_0_e/i, NMasc_s_e/i
@@ -143,6 +144,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Virus",        # NMasc_0_us/en, NNeut_0_us/en
                "Rhythmus",     # NMasc_0_us/en~ss
                "Modus",        # NMasc_0_us/i
+               "Dinosaurus",   # NMasc_0_us/ier
                "Freund",       # NMasc_es_e
                "Bus",          # NMasc_es_e~ss
                "Arzt",         # NMasc_es_$e
@@ -165,6 +167,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Prototyp",     # NMasc_s_en, NMasc_en_en, NNeut_s_en
                "Muskel",       # NMasc_s_n
                "Opa",          # NMasc_s_s
+               "Kanon",        # NMasc_s_s, NMasc_s_es
                "Dirigent",     # NMasc_en_en
                "Affe",         # NMasc_n_n
                "Junge",        # NMasc_n_n, NMasc-Adj, NNeut-Adj, NFem-Adj
@@ -181,6 +184,9 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Foyer",        # NNeut_0_s
                "Ricercare",    # NNeut_0_e/i, NNeut_s_e/i
                "Intermezzo",   # NNeut_0_o/i, NNeut_0_s, NNeut_s_o/i, NNeut_s_s
+               "Reagens",      # NNeut_0_s/zien
+               "Genus",        # NNeut_0_us/era
+               "Tempus",       # NNeut_0_us/ora
                "Spiel",        # NNeut_es_e
                "Tablett",      # NNeut_es_e, NNeut_es_s
                "Zeugnis",      # NNeut_es_e~ss

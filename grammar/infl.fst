@@ -1,6 +1,6 @@
 % infl.fst
-% Version 6.3
-% Andreas Nolda 2024-07-01
+% Version 6.4
+% Andreas Nolda 2024-07-02
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -194,7 +194,7 @@ $NMasc_0_\$e$ = {<+NN><Masc>}:{} $N_0_\$e$
 % Obelisk, Obelisk, Obelisken
 $NMasc_0_en$ = {<+NN><Masc>}:{} $N_0_en$
 
-% Sandwich, Sandwich, Sandwiches (masculine)
+% Kanon, Kanon, Kanones; Sandwich, Sandwich, Sandwiches (masculine)
 $NMasc_0_es$ = {<+NN><Masc>}:{} $N_0_es$
 
 % Embryo, Embryo, Embryonen (masculine)
@@ -228,9 +228,17 @@ $NMasc_0_us/e$ =             $NMasc/Sg_0$ | \
 $NMasc_0_us/en$ =              $NMasc/Sg_0$ | \
                   {}:{<^pl>en} $NMasc/Pl_x$
 
+% Kaktus, Kaktus, Kakteen
+$NMasc_0_us/een$ =               $NMasc/Sg_0$ | \
+                   {}:{<^pl>een} $NMasc/Pl_x$
+
 % Intimus, Intimus, Intimi
-$NMasc_0_us/i$ =            $NMasc/Sg_0$ | \
+$NMasc_0_us/i$ =             $NMasc/Sg_0$ | \
                  {}:{<^pl>i} $NMasc/Pl_x$
+
+% Dinosaurus, Dinosaurus, Dinosaurier
+$NMasc_0_us/ier$ =               $NMasc/Sg_0$ | \
+                   {}:{<^pl>ier} $NMasc/Pl_0$
 
 % Tag, Tag(e)s, Tage; Kodex, Kodexes, Kodexe
 $NMasc_es_e$ = {<+NN><Masc>}:{} $N_es_e$
@@ -268,6 +276,10 @@ $NMasc_es_ex/izes$ =                $NMasc/Sg_es$ | \
 $NMasc_es_us/en~ss$ =         $SS$ $NMasc/Sg_es$ | \
                       {}:{<^pl>en} $NMasc/Pl_x$
 
+% Kaktus, Kaktusses, Kakteen
+$NMasc_es_us/een~ss$ =          $SS$ $NMasc/Sg_es$ | \
+                       {}:{<^pl>een} $NMasc/Pl_x$
+
 % Intimus, Intimusse, Intimi
 $NMasc_es_us/i~ss$ =        $SS$ $NMasc/Sg_es$ | \
                      {}:{<^pl>i} $NMasc/Pl_x$
@@ -298,6 +310,10 @@ $NMasc_s_\$er$ = {<+NN><Masc>}:{} $N_s_\$er$
 
 % Zeh, Zehs, Zehen
 $NMasc_s_en$ = {<+NN><Masc>}:{} $N_s_en$
+
+% Kanon, Kanons, Kanones
+$NMasc_s_es$ =         $NMasc/Sg_s$ | \
+               {}:{es} $NMasc/Pl_x$
 
 % Muskel, Muskels, Muskeln; See, Sees, Seen
 $NMasc_s_n$ = {<+NN><Masc>}:{} $N_s_n$
@@ -400,9 +416,21 @@ $NNeut_0_e/i$ =             $NNeut/Sg_0$ | \
 $NNeut_0_o/i$ =             $NNeut/Sg_0$ | \
                 {}:{<^pl>i} $NNeut/Pl_x$
 
+% Reagens, Reagens, Reagenzien
+$NNeut_0_s/zien$ =                $NNeut/Sg_0$ | \
+                   {}:{<^pl>zien} $NNeut/Pl_x$
+
 % Virus, Virus, Viren; Epos, Epos, Epen
 $NNeut_0_us/en$ =              $NNeut/Sg_0$ | \
                   {}:{<^pl>en} $NNeut/Pl_x$
+
+% Genus, Genus, Genera
+$NNeut_0_us/era$ =               $NNeut/Sg_0$ | \
+                   {}:{<^pl>era} $NNeut/Pl_x$
+
+% Tempus, Tempus, Tempora
+$NNeut_0_us/ora$ =               $NNeut/Sg_0$ | \
+                   {}:{<^pl>ora} $NNeut/Pl_x$
 
 % Spiel, Spiel(e)s, Spiele; Bakschisch, Bakschisch(e)s, Bakschische
 $NNeut_es_e$ = {<+NN><Neut>}:{} $N_es_e$
@@ -2147,8 +2175,10 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_0_o/i>           $NMasc_0_o/i$          | \
          <>:<NMasc_0_s>             $NMasc_0_s$            | \
          <>:<NMasc_0_us/e>          $NMasc_0_us/e$         | \
+         <>:<NMasc_0_us/een>        $NMasc_0_us/een$       | \
          <>:<NMasc_0_us/en>         $NMasc_0_us/en$        | \
          <>:<NMasc_0_us/i>          $NMasc_0_us/i$         | \
+         <>:<NMasc_0_us/ier>        $NMasc_0_us/ier$       | \
          <>:<NMasc_0_x>             $NMasc_0_x$            | \
          <>:<NMasc_en_en>           $NMasc_en_en$          | \
          <>:<NMasc_es_$e>           $NMasc_es_\$e$         | \
@@ -2161,6 +2191,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_es_es>           $NMasc_es_es$          | \
          <>:<NMasc_es_s>            $NMasc_es_s$           | \
          <>:<NMasc_es_ex/izes>      $NMasc_es_ex/izes$     | \
+         <>:<NMasc_es_us/een~ss>    $NMasc_es_us/een~ss$   | \
          <>:<NMasc_es_us/en~ss>     $NMasc_es_us/en~ss$    | \
          <>:<NMasc_es_us/i~ss>      $NMasc_es_us/i~ss$     | \
          <>:<NMasc_n_n>             $NMasc_n_n$            | \
@@ -2174,6 +2205,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_s_e/i>           $NMasc_s_e/i$          | \
          <>:<NMasc_s_en>            $NMasc_s_en$           | \
          <>:<NMasc_s_er>            $NMasc_s_er$           | \
+         <>:<NMasc_s_es>            $NMasc_s_es$          | \
          <>:<NMasc_s_n>             $NMasc_s_n$            | \
          <>:<NMasc_s_nen>           $NMasc_s_nen$          | \
          <>:<NMasc_s_o/en>          $NMasc_s_o/en$         | \
@@ -2197,7 +2229,10 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut_0_nen>           $NNeut_0_nen$          | \
          <>:<NNeut_0_o/i>           $NNeut_0_o/i$          | \
          <>:<NNeut_0_s>             $NNeut_0_s$            | \
+         <>:<NNeut_0_s/zien>        $NNeut_0_s/zien$       | \
          <>:<NNeut_0_us/en>         $NNeut_0_us/en$        | \
+         <>:<NNeut_0_us/era>        $NNeut_0_us/era$       | \
+         <>:<NNeut_0_us/ora>        $NNeut_0_us/ora$       | \
          <>:<NNeut_0_x>             $NNeut_0_x$            | \
          <>:<NNeut_ens_en>          $NNeut_ens_en$         | \
          <>:<NNeut_es_$e>           $NNeut_es_\$e$         | \

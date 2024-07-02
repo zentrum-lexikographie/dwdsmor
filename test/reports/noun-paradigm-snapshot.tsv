@@ -195,6 +195,14 @@ Dezember			NN Masc	Nom Pl	Dezember
 Dezember			NN Masc	Acc Pl	Dezember
 Dezember			NN Masc	Dat Pl	Dezembern
 Dezember			NN Masc	Gen Pl	Dezember
+Dinosaurus			NN Masc	Nom Sg	Dinosaurus
+Dinosaurus			NN Masc	Acc Sg	Dinosaurus
+Dinosaurus			NN Masc	Dat Sg	Dinosaurus
+Dinosaurus			NN Masc	Gen Sg	Dinosaurus
+Dinosaurus			NN Masc	Nom Pl	Dinosaurier
+Dinosaurus			NN Masc	Acc Pl	Dinosaurier
+Dinosaurus			NN Masc	Dat Pl	Dinosauriern
+Dinosaurus			NN Masc	Gen Pl	Dinosaurier
 Direktor			NN Masc	Nom Sg	Direktor
 Direktor			NN Masc	Acc Sg	Direktor
 Direktor			NN Masc	Dat Sg	Direktor
@@ -339,6 +347,14 @@ Gedanke			NN Masc	Nom Pl	Gedanken
 Gedanke			NN Masc	Acc Pl	Gedanken
 Gedanke			NN Masc	Dat Pl	Gedanken
 Gedanke			NN Masc	Gen Pl	Gedanken
+Genus			NN Neut	Nom Sg	Genus
+Genus			NN Neut	Acc Sg	Genus
+Genus			NN Neut	Dat Sg	Genus
+Genus			NN Neut	Gen Sg	Genus
+Genus			NN Neut	Nom Pl	Genera
+Genus			NN Neut	Acc Pl	Genera
+Genus			NN Neut	Dat Pl	Genera
+Genus			NN Neut	Gen Pl	Genera
 Globus			NN Masc	Nom Sg	Globus
 Globus			NN Masc	Acc Sg	Globus
 Globus			NN Masc	Dat Sg	Globus, Globusse (va.)
@@ -499,6 +515,30 @@ Junge	3		NN Fem	Dat Pl St	Jungen
 Junge	3		NN Fem	Dat Pl Wk	Jungen
 Junge	3		NN Fem	Gen Pl St	Junger
 Junge	3		NN Fem	Gen Pl Wk	Jungen
+Kaktus		1	NN Masc	Nom Sg	Kaktus
+Kaktus		1	NN Masc	Acc Sg	Kaktus
+Kaktus		1	NN Masc	Dat Sg	Kaktus, Kaktusse (va.)
+Kaktus		1	NN Masc	Gen Sg	Kaktus, Kaktusses
+Kaktus		1	NN Masc	Nom Pl	Kakteen
+Kaktus		1	NN Masc	Acc Pl	Kakteen
+Kaktus		1	NN Masc	Dat Pl	Kakteen
+Kaktus		1	NN Masc	Gen Pl	Kakteen
+Kaktus		2	NN Masc	Nom Sg	Kaktus
+Kaktus		2	NN Masc	Acc Sg	Kaktus
+Kaktus		2	NN Masc	Dat Sg	Kaktus, Kaktusse (va.)
+Kaktus		2	NN Masc	Gen Sg	Kaktus, Kaktusses
+Kaktus		2	NN Masc	Nom Pl	Kaktusse
+Kaktus		2	NN Masc	Acc Pl	Kaktusse
+Kaktus		2	NN Masc	Dat Pl	Kaktussen
+Kaktus		2	NN Masc	Gen Pl	Kaktusse
+Kanon			NN Masc	Nom Sg	Kanon
+Kanon			NN Masc	Acc Sg	Kanon
+Kanon			NN Masc	Dat Sg	Kanon
+Kanon			NN Masc	Gen Sg	Kanons
+Kanon			NN Masc	Nom Pl	Kanones, Kanons
+Kanon			NN Masc	Acc Pl	Kanones, Kanons
+Kanon			NN Masc	Dat Pl	Kanones, Kanons
+Kanon			NN Masc	Gen Pl	Kanones, Kanons
 Kenntnis			NN Fem	Nom Sg	Kenntnis
 Kenntnis			NN Fem	Acc Sg	Kenntnis
 Kenntnis			NN Fem	Dat Sg	Kenntnis
@@ -795,6 +835,14 @@ Tablett			NN Neut	Nom Pl	Tablette, Tabletts
 Tablett			NN Neut	Acc Pl	Tablette, Tabletts
 Tablett			NN Neut	Dat Pl	Tabletten, Tabletts
 Tablett			NN Neut	Gen Pl	Tablette, Tabletts
+Tempus			NN Neut	Nom Sg	Tempus
+Tempus			NN Neut	Acc Sg	Tempus
+Tempus			NN Neut	Dat Sg	Tempus
+Tempus			NN Neut	Gen Sg	Tempus
+Tempus			NN Neut	Nom Pl	Tempora
+Tempus			NN Neut	Acc Pl	Tempora
+Tempus			NN Neut	Dat Pl	Tempora
+Tempus			NN Neut	Gen Pl	Tempora
 Tennismatch		1	NN Neut	Nom Sg	Tennismatch
 Tennismatch		1	NN Neut	Acc Sg	Tennismatch
 Tennismatch		1	NN Neut	Dat Sg	Tennismatch, Tennismatche (va.)
