@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 7.0 -->
-<!-- Andreas Nolda 2024-03-21 -->
+<!-- Version 7.1 -->
+<!-- Andreas Nolda 2024-07-03 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -21,6 +21,18 @@
     <!-- all $pronunciations end in syllabic /l/ or /n/ -->
     <xsl:when test="every $p in $pronunciations satisfies matches($p,'[^aeɛiɪoɔuʊøœyʏəɐ&#x32F;&#x2D0;][ln]&#x329;?$')">
       <!-- $pronunciations have a final schwa-syllable -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- all $pronunciations end in /ʒiːm/ -->
+    <xsl:when test="every $p in $pronunciations satisfies ends-with($p,'ʒi&#x2D0;m')">
+      <!-- $pronunciations have a (latent) final schwa-syllable
+           (unpronounced in the nominative singular) -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- all $pronunciations end in /viːs/ -->
+    <xsl:when test="every $p in $pronunciations satisfies ends-with($p,'vi&#x2D0;s')">
+      <!-- $pronunciations have a (latent) final schwa-syllable
+           (unpronounced in the nominative singular) -->
       <xsl:sequence select="true()"/>
     </xsl:when>
     <xsl:otherwise>
