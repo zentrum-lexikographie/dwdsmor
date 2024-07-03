@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 6.3 -->
-<!-- Andreas Nolda 2024-07-02 -->
+<!-- Version 6.4 -->
+<!-- Andreas Nolda 2024-07-03 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -764,11 +764,20 @@
   <xsl:param name="number"/>
   <xsl:param name="genitive-singular"/>
   <xsl:param name="nominative-plural"/>
+  <xsl:param name="diminutive"/>
   <xsl:param name="pronunciations"/>
   <xsl:choose>
     <!-- pluralia tantum -->
     <xsl:when test="$number='plural'">
       <xsl:choose>
+        <!-- "lein"-diminuitive:
+             dative plural: unmarked -->
+        <xsl:when test="$diminutive='lein'">
+          <xsl:value-of select="$noun-class-mapping/class[not(@gender)]
+                                                         [not(@genitive-singular)]
+                                                         [not(@nominative-plural)]
+                                                         [@dative-plural='-']"/>
+        </xsl:when>
         <!-- nominative plural: with final schwa-syllable
              dative plural: "-n" -->
         <xsl:when test="not(ends-with($lemma,'n')) and
@@ -820,6 +829,18 @@
         </xsl:call-template>
       </xsl:variable>
       <xsl:choose>
+        <!-- "lein"-diminuitive:
+             genitive singular: "-s"
+             nominative plural: unmarked
+             dative plural: unmarked -->
+        <xsl:when test="$genitive-singular-marker='-s' and
+                        $nominative-plural-marker='-' and
+                        $diminutive='lein'">
+          <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural=$nominative-plural-marker]
+                                                         [@dative-plural='-']"/>
+        </xsl:when>
         <!-- genitive singular: "-s"
              nominative plural: umlaut or unmarked, with final schwa-syllable
              dative plural: "-n" -->
@@ -1126,11 +1147,20 @@
   <xsl:param name="number"/>
   <xsl:param name="genitive-singular"/>
   <xsl:param name="nominative-plural"/>
+  <xsl:param name="diminutive"/>
   <xsl:param name="pronunciations"/>
   <xsl:choose>
     <!-- plural proper names -->
     <xsl:when test="$number='plural'">
       <xsl:choose>
+        <!-- "lein"-diminuitive:
+             dative plural: unmarked -->
+        <xsl:when test="$diminutive='lein'">
+          <xsl:value-of select="$name-class-mapping/class[not(@gender)]
+                                                         [not(@genitive-singular)]
+                                                         [not(@nominative-plural)]
+                                                         [@dative-plural='-']"/>
+        </xsl:when>
         <!-- nominative plural: with final schwa-syllable
              dative plural: "-n" -->
         <xsl:when test="not(ends-with($lemma,'n')) and

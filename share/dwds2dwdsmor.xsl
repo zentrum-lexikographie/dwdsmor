@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.14 -->
-<!-- Andreas Nolda 2024-03-18 -->
+<!-- Version 14.15 -->
+<!-- Andreas Nolda 2024-07-03 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -64,6 +64,20 @@
   <!-- ignore idioms and other syntactically complex units -->
   <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
                                        [dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]]">
+    <xsl:variable name="diminutive">
+      <xsl:if test="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])='Substantiv'">
+        <xsl:choose>
+          <!-- normalised diminutive suffix -->
+          <xsl:when test="../dwds:Verweise[@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
+                                                                          [@Typ='Letztglied']/dwds:Ziellemma[normalize-space(.)='-chen']">chen</xsl:when>
+          <xsl:when test="../dwds:Verweise[@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
+                                                                          [@Typ='Letztglied']/dwds:Ziellemma[normalize-space(.)='-lein' or
+                                                                                                             normalize-space(.)='-le' or
+                                                                                                             normalize-space(.)='-li']">lein</xsl:when>
+        </xsl:choose>
+        <!-- TODO: more diminutive values -->
+      </xsl:if>
+    </xsl:variable>
     <xsl:variable name="adposition">
       <xsl:choose>
         <!-- adpositional basis of contracted adposition -->
@@ -487,6 +501,8 @@
                 <xsl:with-param name="genitive-singular"
                                 select="normalize-space(dwds:Genitiv)"/>
                 <xsl:with-param name="number">singular</xsl:with-param>
+                <xsl:with-param name="diminutive"
+                                select="$diminutive"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -505,6 +521,8 @@
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
+                <xsl:with-param name="diminutive"
+                                select="$diminutive"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -531,6 +549,8 @@
                                 select="normalize-space(dwds:Genitiv)"/>
                 <xsl:with-param name="nominative-plural"
                                 select="normalize-space(dwds:Plural)"/>
+                <xsl:with-param name="diminutive"
+                                select="$diminutive"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -557,6 +577,8 @@
                 <xsl:with-param name="genitive-singular"
                                 select="normalize-space(dwds:Genitiv)"/>
                 <xsl:with-param name="number">singular</xsl:with-param>
+                <xsl:with-param name="diminutive"
+                                select="$diminutive"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -575,6 +597,8 @@
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
+                <xsl:with-param name="diminutive"
+                                select="$diminutive"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"

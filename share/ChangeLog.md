@@ -1,3 +1,9 @@
+2024-07-03:
+
+* add support for neuter nouns with genitive singular forms ending in "-s" and
+  nominative plural forms ending in "-n" or unmarked nominative plural forms
+* restrict inflection classes with dative plural "-n" to non-diminutive nouns
+
 2024-07-02:
 
 * add support for masculine nous with genitive singular forms ending in "-es"
