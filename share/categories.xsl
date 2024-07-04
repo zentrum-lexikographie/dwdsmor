@@ -830,10 +830,11 @@
       </xsl:variable>
       <xsl:choose>
         <!-- "lein"-diminuitive:
-             genitive singular: "-s"
+             genitive singular: "-s" or unmarked
              nominative plural: unmarked
              dative plural: unmarked -->
-        <xsl:when test="$genitive-singular-marker='-s' and
+        <xsl:when test="($genitive-singular-marker='-s' or
+                         $genitive-singular-marker='-') and
                         $nominative-plural-marker='-' and
                         $diminutive='lein'">
           <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
@@ -841,7 +842,8 @@
                                                          [@nominative-plural=$nominative-plural-marker]
                                                          [@dative-plural='-']"/>
         </xsl:when>
-        <xsl:when test="$genitive-singular-marker='-s' and
+        <xsl:when test="($genitive-singular-marker='-s' or
+                         $genitive-singular-marker='-') and
                         $nominative-plural-marker='-' and
                         $diminutive='l' and
                         matches($lemma,'l[aei]$')">

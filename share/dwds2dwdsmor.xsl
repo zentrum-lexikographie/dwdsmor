@@ -76,8 +76,8 @@
                                                                                                              normalize-space(.)='-li']">lein</xsl:when>
           <xsl:when test="../dwds:Verweise[@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
                                                                           [@Typ='Letztglied']/dwds:Ziellemma[normalize-space(.)='-l']">l</xsl:when>
+          <!-- TODO: more diminutive values -->
         </xsl:choose>
-        <!-- TODO: more diminutive values -->
       </xsl:if>
     </xsl:variable>
     <xsl:variable name="adposition">
