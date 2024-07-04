@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 6.4 -->
-<!-- Andreas Nolda 2024-07-03 -->
+<!-- Version 6.5 -->
+<!-- Andreas Nolda 2024-07-04 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -841,6 +841,15 @@
                                                          [@nominative-plural=$nominative-plural-marker]
                                                          [@dative-plural='-']"/>
         </xsl:when>
+        <xsl:when test="$genitive-singular-marker='-s' and
+                        $nominative-plural-marker='-' and
+                        $diminutive='l' and
+                        matches($lemma,'l[aei]$')">
+          <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural=$nominative-plural-marker]
+                                                         [@dative-plural='-']"/>
+        </xsl:when>
         <!-- genitive singular: "-s"
              nominative plural: umlaut or unmarked, with final schwa-syllable
              dative plural: "-n" -->
@@ -1156,6 +1165,13 @@
         <!-- "lein"-diminuitive:
              dative plural: unmarked -->
         <xsl:when test="$diminutive='lein'">
+          <xsl:value-of select="$name-class-mapping/class[not(@gender)]
+                                                         [not(@genitive-singular)]
+                                                         [not(@nominative-plural)]
+                                                         [@dative-plural='-']"/>
+        </xsl:when>
+        <xsl:when test="$diminutive='l' and
+                        matches($lemma,'l[aei]$')">
           <xsl:value-of select="$name-class-mapping/class[not(@gender)]
                                                          [not(@genitive-singular)]
                                                          [not(@nominative-plural)]
