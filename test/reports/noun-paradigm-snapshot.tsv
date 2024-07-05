@@ -531,14 +531,22 @@ Kaktus		2	NN Masc	Nom Pl	Kaktusse
 Kaktus		2	NN Masc	Acc Pl	Kaktusse
 Kaktus		2	NN Masc	Dat Pl	Kaktussen
 Kaktus		2	NN Masc	Gen Pl	Kaktusse
-Kanon			NN Masc	Nom Sg	Kanon
-Kanon			NN Masc	Acc Sg	Kanon
-Kanon			NN Masc	Dat Sg	Kanon
-Kanon			NN Masc	Gen Sg	Kanons
-Kanon			NN Masc	Nom Pl	Kanones, Kanons
-Kanon			NN Masc	Acc Pl	Kanones, Kanons
-Kanon			NN Masc	Dat Pl	Kanones, Kanons
-Kanon			NN Masc	Gen Pl	Kanones, Kanons
+Kanon		1	NN Masc	Nom Sg	Kanon
+Kanon		1	NN Masc	Acc Sg	Kanon
+Kanon		1	NN Masc	Dat Sg	Kanon
+Kanon		1	NN Masc	Gen Sg	Kanons
+Kanon		1	NN Masc	Nom Pl	Kanons
+Kanon		1	NN Masc	Acc Pl	Kanons
+Kanon		1	NN Masc	Dat Pl	Kanons
+Kanon		1	NN Masc	Gen Pl	Kanons
+Kanon		2	NN Masc	Nom Sg	Kanon
+Kanon		2	NN Masc	Acc Sg	Kanon
+Kanon		2	NN Masc	Dat Sg	Kanon
+Kanon		2	NN Masc	Gen Sg	Kanon, Kanons
+Kanon		2	NN Masc	Nom Pl	Kanones
+Kanon		2	NN Masc	Acc Pl	Kanones
+Kanon		2	NN Masc	Dat Pl	Kanones
+Kanon		2	NN Masc	Gen Pl	Kanones
 Kenntnis			NN Fem	Nom Sg	Kenntnis
 Kenntnis			NN Fem	Acc Sg	Kenntnis
 Kenntnis			NN Fem	Dat Sg	Kenntnis
@@ -727,6 +735,14 @@ Prototyp		3	NN Masc	Nom Pl	Prototypen
 Prototyp		3	NN Masc	Acc Pl	Prototypen
 Prototyp		3	NN Masc	Dat Pl	Prototypen
 Prototyp		3	NN Masc	Gen Pl	Prototypen
+Reagens			NN Neut	Nom Sg	Reagens
+Reagens			NN Neut	Acc Sg	Reagens
+Reagens			NN Neut	Dat Sg	Reagens
+Reagens			NN Neut	Gen Sg	Reagens
+Reagens			NN Neut	Nom Pl	Reagenzien
+Reagens			NN Neut	Acc Pl	Reagenzien
+Reagens			NN Neut	Dat Pl	Reagenzien
+Reagens			NN Neut	Gen Pl	Reagenzien
 Remis			NN Neut	Nom Sg	Remis
 Remis			NN Neut	Acc Sg	Remis
 Remis			NN Neut	Dat Sg	Remis
