@@ -13,5 +13,5 @@ setup(name="dwdsmor",
       packages=find_packages(exclude=["tests"]),
       python_requires=">=3.9",
       install_requires=["sfst-transduce"],
-      extras_require={"cli": ["blessings"],
+      extras_require={"cli": ["blessings", "PyYAML"],
                       "test": ["pytest", "PyYAML", "syrupy"]})
