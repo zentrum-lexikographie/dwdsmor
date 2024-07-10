@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 7.1 -->
-<!-- Andreas Nolda 2024-07-03 -->
+<!-- Version 7.2 -->
+<!-- Andreas Nolda 2024-07-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -24,13 +24,13 @@
       <xsl:sequence select="true()"/>
     </xsl:when>
     <!-- all $pronunciations end in /ʒiːm/ -->
-    <xsl:when test="every $p in $pronunciations satisfies ends-with($p,'ʒi&#x2D0;m')">
+    <xsl:when test="every $p in $pronunciations satisfies matches($p,'[aeɛiɪoɔuʊøœyʏ].*ʒi&#x2D0;m$')">
       <!-- $pronunciations have a (latent) final schwa-syllable
            (unpronounced in the nominative singular) -->
       <xsl:sequence select="true()"/>
     </xsl:when>
     <!-- all $pronunciations end in /viːs/ -->
-    <xsl:when test="every $p in $pronunciations satisfies ends-with($p,'vi&#x2D0;s')">
+    <xsl:when test="every $p in $pronunciations satisfies matches($p,'[aeɛiɪoɔuʊøœyʏ].*vi&#x2D0;s$')">
       <!-- $pronunciations have a (latent) final schwa-syllable
            (unpronounced in the nominative singular) -->
       <xsl:sequence select="true()"/>
@@ -244,7 +244,7 @@
           <xsl:sequence select="false()"/>
         </xsl:when>
         <!-- $string ends in "e" plus optional "l", "n", or "r" -->
-        <xsl:when test="matches($string,'e[lnr]?$')">
+        <xsl:when test="matches($string,'[aeiouäöüy][^aeiouäöü]*e[lnr]?$')">
           <!-- $string has a final schwa-syllable -->
           <xsl:sequence select="true()"/>
         </xsl:when>

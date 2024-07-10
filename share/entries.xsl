@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.15 -->
-<!-- Andreas Nolda 2024-07-03 -->
+<!-- Version 11.16 -->
+<!-- Andreas Nolda 2024-07-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -647,23 +647,6 @@
             </xsl:if>
           </xsl:when>
           <!-- adjectives with irregular comparative forms -->
-          <xsl:when test="matches($lemma,'e[lr]$') and
-                          $comparative=replace($lemma,'e([lr])$','$1er')">
-            <xsl:call-template name="stem-entry">
-              <xsl:with-param name="lemma"
-                              select="$lemma"/>
-              <xsl:with-param name="lemma-index"
-                              select="$lemma-index"/>
-              <xsl:with-param name="paradigm-index"
-                              select="$paradigm-index"/>
-              <xsl:with-param name="abbreviation"
-                              select="$abbreviation"/>
-              <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">Adj-el-er_0</xsl:with-param>
-              <xsl:with-param name="etymology"
-                              select="$etymology"/>
-            </xsl:call-template>
-          </xsl:when>
           <xsl:when test="ends-with($comparative,'er') and
                           not(matches($comparative-marker,'^&#x308;?-'))">
             <xsl:call-template name="stem-entry">
