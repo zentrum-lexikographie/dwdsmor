@@ -1,4 +1,322 @@
 Wordform	Lemma	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Orthography	Ellipsis	Characters
+(	(	PUNCT	Paren															
+1	1	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+)	)	PUNCT	Paren															
+Für	für	ADV																CAP
+Für	für	PREP																CAP
+individuell	individuell	ADJ			Pos						Pred/Adv							
+zurechenbare	zurechenbar	ADJ			Pos		Masc	Nom	Sg	Wk	Attr/Subst							
+zurechenbare	zurechenbar	ADJ			Pos		Fem	Nom	Sg	St	Attr/Subst							
+zurechenbare	zurechenbar	ADJ			Pos		Fem	Nom	Sg	Wk	Attr/Subst							
+zurechenbare	zurechenbar	ADJ			Pos		Fem	Acc	Sg	St	Attr/Subst							
+zurechenbare	zurechenbar	ADJ			Pos		Fem	Acc	Sg	Wk	Attr/Subst							
+zurechenbare	zurechenbar	ADJ			Pos		Neut	Nom	Sg	Wk	Attr/Subst							
+zurechenbare	zurechenbar	ADJ			Pos		Neut	Acc	Sg	Wk	Attr/Subst							
+zurechenbare	zurechenbar	ADJ			Pos		NoGend	Nom	Pl	St	Attr/Subst							
+zurechenbare	zurechenbar	ADJ			Pos		NoGend	Acc	Pl	St	Attr/Subst							
+öffentliche	öffentlich	ADJ			Pos		Masc	Nom	Sg	Wk	Attr/Subst							
+öffentliche	öffentlich	ADJ			Pos		Fem	Nom	Sg	St	Attr/Subst							
+öffentliche	öffentlich	ADJ			Pos		Fem	Nom	Sg	Wk	Attr/Subst							
+öffentliche	öffentlich	ADJ			Pos		Fem	Acc	Sg	St	Attr/Subst							
+öffentliche	öffentlich	ADJ			Pos		Fem	Acc	Sg	Wk	Attr/Subst							
+öffentliche	öffentlich	ADJ			Pos		Neut	Nom	Sg	Wk	Attr/Subst							
+öffentliche	öffentlich	ADJ			Pos		Neut	Acc	Sg	Wk	Attr/Subst							
+öffentliche	öffentlich	ADJ			Pos		NoGend	Nom	Pl	St	Attr/Subst							
+öffentliche	öffentlich	ADJ			Pos		NoGend	Acc	Pl	St	Attr/Subst							
+Leistungen	Leistung	NN					Fem	Nom	Pl									
+Leistungen	Leistung	NN					Fem	Gen	Pl									
+Leistungen	Leistung	NN					Fem	Dat	Pl									
+Leistungen	Leistung	NN					Fem	Acc	Pl									
+des	des	NN					Neut	Nom	Sg									
+des	des	NN					Neut	Nom	Pl									
+des	des	NN					Neut	Gen	Sg									
+des	des	NN					Neut	Gen	Pl									
+des	des	NN					Neut	Dat	Sg									
+des	des	NN					Neut	Dat	Pl									
+des	des	NN					Neut	Acc	Sg									
+des	des	NN					Neut	Acc	Pl									
+des	die	ART	Def				Masc	Gen	Sg	St	Attr							
+des	die	ART	Def				Neut	Gen	Sg	St	Attr							
+des	die	DEM					Masc	Gen	Sg	St	Attr							
+des	die	DEM					Neut	Gen	Sg	St	Attr							
+Eisenbahn-Bundesamtes	Eisenbahn-Bundesamt	NN					Neut	Gen	Sg									
+nach	nach	ADV																
+nach	nach	POSTP																
+nach	nach	PREP																
+dem	die	ART	Def				Masc	Dat	Sg	St	Attr							
+dem	die	ART	Def				Neut	Dat	Sg	St	Attr							
+dem	die	ART	Def				Masc	Dat	Sg	St	Subst							
+dem	die	ART	Def				Neut	Dat	Sg	St	Subst							
+dem	die	DEM					Masc	Dat	Sg	St	Attr							
+dem	die	DEM					Neut	Dat	Sg	St	Attr							
+dem	die	DEM					Masc	Dat	Sg	St	Subst							
+dem	die	DEM					Neut	Dat	Sg	St	Subst							
+dem	die	REL					Masc	Dat	Sg	St	Subst							
+dem	die	REL					Neut	Dat	Sg	St	Subst							
+EU-Fahrgastrechte-Kraftomnibus-Gesetz	EU-Fahrgastrechte-Kraftomnibus-Gesetz	NN					Neut	Nom	Sg									
+EU-Fahrgastrechte-Kraftomnibus-Gesetz	EU-Fahrgastrechte-Kraftomnibus-Gesetz	NN					Neut	Dat	Sg									
+EU-Fahrgastrechte-Kraftomnibus-Gesetz	EU-Fahrgastrechte-Kraftomnibus-Gesetz	NN					Neut	Acc	Sg									
+werden	werden	V				1			Pl				Ind	Pres				
+werden	werden	V				1			Pl				Subj	Pres				
+werden	werden	V				3			Pl				Ind	Pres				
+werden	werden	V				3			Pl				Subj	Pres				
+werden	werden	V										Inf						
+die	die	ART	Def				Fem	Nom	Sg	St	Attr							
+die	die	ART	Def				Fem	Acc	Sg	St	Attr							
+die	die	ART	Def				NoGend	Nom	Pl	St	Attr							
+die	die	ART	Def				NoGend	Acc	Pl	St	Attr							
+die	die	ART	Def				Fem	Nom	Sg	St	Subst							
+die	die	ART	Def				Fem	Acc	Sg	St	Subst							
+die	die	ART	Def				NoGend	Nom	Pl	St	Subst							
+die	die	ART	Def				NoGend	Acc	Pl	St	Subst							
+die	die	DEM					Fem	Nom	Sg	St	Attr							
+die	die	DEM					Fem	Acc	Sg	St	Attr							
+die	die	DEM					NoGend	Nom	Pl	St	Attr							
+die	die	DEM					NoGend	Acc	Pl	St	Attr							
+die	die	DEM					Fem	Nom	Sg	St	Subst							
+die	die	DEM					Fem	Acc	Sg	St	Subst							
+die	die	DEM					NoGend	Nom	Pl	St	Subst							
+die	die	DEM					NoGend	Acc	Pl	St	Subst							
+die	die	REL					Fem	Nom	Sg	St	Subst							
+die	die	REL					Fem	Acc	Sg	St	Subst							
+die	die	REL					NoGend	Nom	Pl	St	Subst							
+die	die	REL					NoGend	Acc	Pl	St	Subst							
+im	in	PREPART					Masc	Dat	Sg									
+im	in	PREPART					Neut	Dat	Sg									
+Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Nom	Sg									
+Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Dat	Sg									
+Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Acc	Sg									
+bestimmten	bestimmt	ADJ			Pos		Masc	Gen	Sg	St	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		Masc	Gen	Sg	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		Masc	Dat	Sg	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		Masc	Acc	Sg	St	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		Masc	Acc	Sg	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		Fem	Gen	Sg	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		Fem	Dat	Sg	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		Neut	Gen	Sg	St	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		Neut	Gen	Sg	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		Neut	Dat	Sg	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		NoGend	Nom	Pl	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		NoGend	Gen	Pl	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		NoGend	Dat	Pl	St	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		NoGend	Dat	Pl	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		NoGend	Acc	Pl	Wk	Attr/Subst							
+bestimmten	bestimmen	V				1			Pl				Ind	Past				
+bestimmten	bestimmen	V				1			Pl				Subj	Past				
+bestimmten	bestimmen	V				3			Pl				Ind	Past				
+bestimmten	bestimmen	V				3			Pl				Subj	Past				
+Gebühren	Gebühr	NN					Fem	Nom	Pl									
+Gebühren	Gebühr	NN					Fem	Gen	Pl									
+Gebühren	Gebühr	NN					Fem	Dat	Pl									
+Gebühren	Gebühr	NN					Fem	Acc	Pl									
+Gebühren	gebühren	V				1			Pl				Ind	Pres				CAP
+Gebühren	gebühren	V				1			Pl				Subj	Pres				CAP
+Gebühren	gebühren	V				3			Pl				Ind	Pres				CAP
+Gebühren	gebühren	V				3			Pl				Subj	Pres				CAP
+Gebühren	gebühren	V										Inf						CAP
+erhoben	erheben	V				1			Pl				Ind	Past				
+erhoben	erheben	V				3			Pl				Ind	Past				
+erhoben	erheben	V		haben								PPast						
+erhoben	erhoben	ADJ			Pos						Pred/Adv							
+.	.	PUNCT	Period															
+(	(	PUNCT	Paren															
+2	2	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+)	)	PUNCT	Paren															
+Die	die	ART	Def				Fem	Nom	Sg	St	Attr							CAP
+Die	die	ART	Def				Fem	Acc	Sg	St	Attr							CAP
+Die	die	ART	Def				NoGend	Nom	Pl	St	Attr							CAP
+Die	die	ART	Def				NoGend	Acc	Pl	St	Attr							CAP
+Die	die	ART	Def				Fem	Nom	Sg	St	Subst							CAP
+Die	die	ART	Def				Fem	Acc	Sg	St	Subst							CAP
+Die	die	ART	Def				NoGend	Nom	Pl	St	Subst							CAP
+Die	die	ART	Def				NoGend	Acc	Pl	St	Subst							CAP
+Die	die	DEM					Fem	Nom	Sg	St	Attr							CAP
+Die	die	DEM					Fem	Acc	Sg	St	Attr							CAP
+Die	die	DEM					NoGend	Nom	Pl	St	Attr							CAP
+Die	die	DEM					NoGend	Acc	Pl	St	Attr							CAP
+Die	die	DEM					Fem	Nom	Sg	St	Subst							CAP
+Die	die	DEM					Fem	Acc	Sg	St	Subst							CAP
+Die	die	DEM					NoGend	Nom	Pl	St	Subst							CAP
+Die	die	DEM					NoGend	Acc	Pl	St	Subst							CAP
+Die	die	REL					Fem	Nom	Sg	St	Subst							CAP
+Die	die	REL					Fem	Acc	Sg	St	Subst							CAP
+Die	die	REL					NoGend	Nom	Pl	St	Subst							CAP
+Die	die	REL					NoGend	Acc	Pl	St	Subst							CAP
+im	in	PREPART					Masc	Dat	Sg									
+im	in	PREPART					Neut	Dat	Sg									
+Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Nom	Sg									
+Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Dat	Sg									
+Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Acc	Sg									
+aufgeführten	aufgeführt	ADJ			Pos		Masc	Gen	Sg	St	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		Masc	Gen	Sg	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		Masc	Dat	Sg	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		Masc	Acc	Sg	St	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		Masc	Acc	Sg	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		Fem	Gen	Sg	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		Fem	Dat	Sg	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		Neut	Gen	Sg	St	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		Neut	Gen	Sg	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		Neut	Dat	Sg	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		NoGend	Nom	Pl	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		NoGend	Gen	Pl	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		NoGend	Dat	Pl	St	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		NoGend	Dat	Pl	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		NoGend	Acc	Pl	Wk	Attr/Subst							
+Gebühren	Gebühr	NN					Fem	Nom	Pl									
+Gebühren	Gebühr	NN					Fem	Gen	Pl									
+Gebühren	Gebühr	NN					Fem	Dat	Pl									
+Gebühren	Gebühr	NN					Fem	Acc	Pl									
+Gebühren	gebühren	V				1			Pl				Ind	Pres				CAP
+Gebühren	gebühren	V				1			Pl				Subj	Pres				CAP
+Gebühren	gebühren	V				3			Pl				Ind	Pres				CAP
+Gebühren	gebühren	V				3			Pl				Subj	Pres				CAP
+Gebühren	gebühren	V										Inf						CAP
+umfassen	umfassen	V				1			Pl				Ind	Pres				
+umfassen	umfassen	V				1			Pl				Subj	Pres				
+umfassen	umfassen	V				3			Pl				Ind	Pres				
+umfassen	umfassen	V				3			Pl				Subj	Pres				
+umfassen	umfassen	V										Inf						
+jeweils	jeweils	ADV																
+auch	auch	ADV																
+auch	auch	CONJ	Coord															
+auch	auch	CONJ	Sub															
+die	die	ART	Def				Fem	Nom	Sg	St	Attr							
+die	die	ART	Def				Fem	Acc	Sg	St	Attr							
+die	die	ART	Def				NoGend	Nom	Pl	St	Attr							
+die	die	ART	Def				NoGend	Acc	Pl	St	Attr							
+die	die	ART	Def				Fem	Nom	Sg	St	Subst							
+die	die	ART	Def				Fem	Acc	Sg	St	Subst							
+die	die	ART	Def				NoGend	Nom	Pl	St	Subst							
+die	die	ART	Def				NoGend	Acc	Pl	St	Subst							
+die	die	DEM					Fem	Nom	Sg	St	Attr							
+die	die	DEM					Fem	Acc	Sg	St	Attr							
+die	die	DEM					NoGend	Nom	Pl	St	Attr							
+die	die	DEM					NoGend	Acc	Pl	St	Attr							
+die	die	DEM					Fem	Nom	Sg	St	Subst							
+die	die	DEM					Fem	Acc	Sg	St	Subst							
+die	die	DEM					NoGend	Nom	Pl	St	Subst							
+die	die	DEM					NoGend	Acc	Pl	St	Subst							
+die	die	REL					Fem	Nom	Sg	St	Subst							
+die	die	REL					Fem	Acc	Sg	St	Subst							
+die	die	REL					NoGend	Nom	Pl	St	Subst							
+die	die	REL					NoGend	Acc	Pl	St	Subst							
+Kosten	Kosten	NN					NoGend	Nom	Pl									
+Kosten	Kosten	NN					NoGend	Gen	Pl									
+Kosten	Kosten	NN					NoGend	Dat	Pl									
+Kosten	Kosten	NN					NoGend	Acc	Pl									
+Kosten	kosten	V				1			Pl				Ind	Pres				CAP
+Kosten	kosten	V				1			Pl				Subj	Pres				CAP
+Kosten	kosten	V				3			Pl				Ind	Pres				CAP
+Kosten	kosten	V				3			Pl				Subj	Pres				CAP
+Kosten	kosten	V										Inf						CAP
+Kosten	kosen	V				1			Pl				Ind	Past				CAP
+Kosten	kosen	V				1			Pl				Subj	Past				CAP
+Kosten	kosen	V				3			Pl				Ind	Past				CAP
+Kosten	kosen	V				3			Pl				Subj	Past				CAP
+für	für	ADV																
+für	für	PREP																
+die	die	ART	Def				Fem	Nom	Sg	St	Attr							
+die	die	ART	Def				Fem	Acc	Sg	St	Attr							
+die	die	ART	Def				NoGend	Nom	Pl	St	Attr							
+die	die	ART	Def				NoGend	Acc	Pl	St	Attr							
+die	die	ART	Def				Fem	Nom	Sg	St	Subst							
+die	die	ART	Def				Fem	Acc	Sg	St	Subst							
+die	die	ART	Def				NoGend	Nom	Pl	St	Subst							
+die	die	ART	Def				NoGend	Acc	Pl	St	Subst							
+die	die	DEM					Fem	Nom	Sg	St	Attr							
+die	die	DEM					Fem	Acc	Sg	St	Attr							
+die	die	DEM					NoGend	Nom	Pl	St	Attr							
+die	die	DEM					NoGend	Acc	Pl	St	Attr							
+die	die	DEM					Fem	Nom	Sg	St	Subst							
+die	die	DEM					Fem	Acc	Sg	St	Subst							
+die	die	DEM					NoGend	Nom	Pl	St	Subst							
+die	die	DEM					NoGend	Acc	Pl	St	Subst							
+die	die	REL					Fem	Nom	Sg	St	Subst							
+die	die	REL					Fem	Acc	Sg	St	Subst							
+die	die	REL					NoGend	Nom	Pl	St	Subst							
+die	die	REL					NoGend	Acc	Pl	St	Subst							
+Festsetzung	Festsetzung	NN					Fem	Nom	Sg									
+Festsetzung	Festsetzung	NN					Fem	Gen	Sg									
+Festsetzung	Festsetzung	NN					Fem	Dat	Sg									
+Festsetzung	Festsetzung	NN					Fem	Acc	Sg									
+der	die	ART	Def				Masc	Nom	Sg	St	Attr							
+der	die	ART	Def				Fem	Gen	Sg	St	Attr							
+der	die	ART	Def				Fem	Dat	Sg	St	Attr							
+der	die	ART	Def				NoGend	Gen	Pl	St	Attr							
+der	die	ART	Def				Masc	Nom	Sg	St	Subst							
+der	die	ART	Def				Fem	Dat	Sg	St	Subst							
+der	die	DEM					Masc	Nom	Sg	St	Attr							
+der	die	DEM					Fem	Gen	Sg	St	Attr							
+der	die	DEM					Fem	Dat	Sg	St	Attr							
+der	die	DEM					NoGend	Gen	Pl	St	Attr							
+der	die	DEM					Masc	Nom	Sg	St	Subst							
+der	die	DEM					Fem	Dat	Sg	St	Subst							
+der	die	REL					Masc	Nom	Sg	St	Subst							
+der	die	REL					Fem	Dat	Sg	St	Subst							
+Gebühren	Gebühr	NN					Fem	Nom	Pl									
+Gebühren	Gebühr	NN					Fem	Gen	Pl									
+Gebühren	Gebühr	NN					Fem	Dat	Pl									
+Gebühren	Gebühr	NN					Fem	Acc	Pl									
+Gebühren	gebühren	V				1			Pl				Ind	Pres				CAP
+Gebühren	gebühren	V				1			Pl				Subj	Pres				CAP
+Gebühren	gebühren	V				3			Pl				Ind	Pres				CAP
+Gebühren	gebühren	V				3			Pl				Subj	Pres				CAP
+Gebühren	gebühren	V										Inf						CAP
+.	.	PUNCT	Period															
+Auslagen	Auslage	NN					Fem	Nom	Pl									
+Auslagen	Auslage	NN					Fem	Gen	Pl									
+Auslagen	Auslage	NN					Fem	Dat	Pl									
+Auslagen	Auslage	NN					Fem	Acc	Pl									
+werden	werden	V				1			Pl				Ind	Pres				
+werden	werden	V				1			Pl				Subj	Pres				
+werden	werden	V				3			Pl				Ind	Pres				
+werden	werden	V				3			Pl				Subj	Pres				
+werden	werden	V										Inf						
+nach	nach	ADV																
+nach	nach	POSTP																
+nach	nach	PREP																
+Maßgabe	Maßgabe	NN					Fem	Nom	Sg									
+Maßgabe	Maßgabe	NN					Fem	Gen	Sg									
+Maßgabe	Maßgabe	NN					Fem	Dat	Sg									
+Maßgabe	Maßgabe	NN					Fem	Acc	Sg									
+des	des	NN					Neut	Nom	Sg									
+des	des	NN					Neut	Nom	Pl									
+des	des	NN					Neut	Gen	Sg									
+des	des	NN					Neut	Gen	Pl									
+des	des	NN					Neut	Dat	Sg									
+des	des	NN					Neut	Dat	Pl									
+des	des	NN					Neut	Acc	Sg									
+des	des	NN					Neut	Acc	Pl									
+des	die	ART	Def				Masc	Gen	Sg	St	Attr							
+des	die	ART	Def				Neut	Gen	Sg	St	Attr							
+des	die	DEM					Masc	Gen	Sg	St	Attr							
+des	die	DEM					Neut	Gen	Sg	St	Attr							
+§	§	NN				Invar	Masc	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+12	12	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+Absatz	Absatz	NN					Masc	Nom	Sg									
+Absatz	Absatz	NN					Masc	Dat	Sg									
+Absatz	Absatz	NN					Masc	Acc	Sg									
+1	1	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+des	des	NN					Neut	Nom	Sg									
+des	des	NN					Neut	Nom	Pl									
+des	des	NN					Neut	Gen	Sg									
+des	des	NN					Neut	Gen	Pl									
+des	des	NN					Neut	Dat	Sg									
+des	des	NN					Neut	Dat	Pl									
+des	des	NN					Neut	Acc	Sg									
+des	des	NN					Neut	Acc	Pl									
+des	die	ART	Def				Masc	Gen	Sg	St	Attr							
+des	die	ART	Def				Neut	Gen	Sg	St	Attr							
+des	die	DEM					Masc	Gen	Sg	St	Attr							
+des	die	DEM					Neut	Gen	Sg	St	Attr							
+Bundesgebührengesetzes	Bundesgebührengesetz	NN					Neut	Gen	Sg									
+gesondert	gesondert	ADJ			Pos						Pred/Adv							
+gesondert	sondern	V		haben								PPast						
+erhoben	erheben	V				1			Pl				Ind	Past				
+erhoben	erheben	V				3			Pl				Ind	Past				
+erhoben	erheben	V		haben								PPast						
+erhoben	erhoben	ADJ			Pos						Pred/Adv							
+.	.	PUNCT	Period															
 Verordnung	Verordnung	NN					Fem	Nom	Sg									
 Verordnung	Verordnung	NN					Fem	Gen	Sg									
 Verordnung	Verordnung	NN					Fem	Dat	Sg									
