@@ -512,7 +512,7 @@
           </xsl:when>
           <!-- adjectives with irregular positive forms -->
           <xsl:when test="string-length($positive)&gt;0 and
-                          not(matches($positive-marker,'^&#x308;?-'))">
+                          not(matches($positive-marker,'^&#x308;?-e$'))">
             <xsl:call-template name="stem-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
