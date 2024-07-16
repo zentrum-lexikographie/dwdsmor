@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 6.5 -->
-<!-- Andreas Nolda 2024-07-04 -->
+<!-- Version 6.6 -->
+<!-- Andreas Nolda 2024-07-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -234,6 +234,14 @@
   <class gender="mask."
          genitive-singular="-es"
          nominative-plural="-s">NMasc_es_s</class>
+  <!-- genitive singular: "-(e)s"
+       nominative plural: "-ten" -->
+  <class gender="mask."
+         genitive-singular="-(e)s"
+         nominative-plural="-ten">NMasc_es_ten</class>
+  <class gender="mask."
+         genitive-singular="-es"
+         nominative-plural="-ten">NMasc_es_ten</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: "-anten" substituted for "-as" -->
   <class gender="mask."
@@ -741,6 +749,11 @@
          genitive-singular="-"
          nominative-plural="-is/iden">NFem_0_is/iden</class>
   <!-- genitive singular: unmarked
+       nominative plural: "-izen" substituted for "-ix" -->
+  <class gender="fem."
+         genitive-singular="-"
+         nominative-plural="-ix/izen">NFem_0_ix/izen</class>
+  <!-- genitive singular: unmarked
        nominative plural: geminate "n" + "-en" -->
   <class gender="fem."
          genitive-singular="-"
@@ -943,6 +956,14 @@
           <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
                                                          [@genitive-singular=$genitive-singular-marker]
                                                          [@nominative-plural='-is/iden']"/>
+        </xsl:when>
+        <!-- nominative plural: "-izen" substituted for "-ix" -->
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'ix') and
+                        $nominative-plural=replace($lemma,'ix$','izen')">
+          <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-ix/izen']"/>
         </xsl:when>
         <!-- nominative plural: "-izes" substituted for "-ex" -->
         <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and

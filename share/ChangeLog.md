@@ -1,3 +1,8 @@
+2024-07-15:
+
+* add support for feminine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-izen" substituted for "-ix"
+
 2024-07-03:
 
 * add support for neuter nouns with genitive singular forms ending in "-s" and

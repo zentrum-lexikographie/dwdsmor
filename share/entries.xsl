@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.16 -->
-<!-- Andreas Nolda 2024-07-10 -->
+<!-- Version 11.17 -->
+<!-- Andreas Nolda 2024-07-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2041,51 +2041,6 @@
         </xsl:choose>
       </xsl:when>
       <!-- masculine nouns -->
-      <!-- genitive singular: "-(e)s"
-           nominative plural: "-ten" -->
-      <xsl:when test="$gender='mask.' and
-                      ($genitive-singular-marker='-(e)s' or
-                       $genitive-singular-marker='-es') and
-                      $nominative-plural-marker='-ten'">
-        <xsl:call-template name="stem-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-            <xsl:with-param name="abbreviation"
-                            select="$abbreviation"/>
-          <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NMasc/Sg_es</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-        <xsl:call-template name="stem-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="stem">
-            <xsl:choose>
-              <xsl:when test="starts-with($nominative-plural,'-')">
-                <xsl:value-of select="concat($lemma,substring-after($nominative-plural,'-'))"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="$nominative-plural"/>
-              </xsl:otherwise>
-            </xsl:choose>
-          </xsl:with-param>
-          <xsl:with-param name="abbreviation"
-                            select="$abbreviation"/>
-          <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NMasc/Pl_x</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
       <!-- lemma: compound with "Mann"
            nominative plural: compound with "Leute" -->
       <xsl:when test="$gender='mask.' and

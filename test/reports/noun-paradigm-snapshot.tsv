@@ -607,6 +607,14 @@ Material			NN Neut	Nom Pl	Materialien
 Material			NN Neut	Acc Pl	Materialien
 Material			NN Neut	Dat Pl	Materialien
 Material			NN Neut	Gen Pl	Materialien
+Matrix			NN Fem	Nom Sg	Matrix
+Matrix			NN Fem	Acc Sg	Matrix
+Matrix			NN Fem	Dat Sg	Matrix
+Matrix			NN Fem	Gen Sg	Matrix
+Matrix			NN Fem	Nom Pl	Matrizen
+Matrix			NN Fem	Acc Pl	Matrizen
+Matrix			NN Fem	Dat Pl	Matrizen
+Matrix			NN Fem	Gen Pl	Matrizen
 Maximum			NN Neut	Nom Sg	Maximum
 Maximum			NN Neut	Acc Sg	Maximum
 Maximum			NN Neut	Dat Sg	Maximum

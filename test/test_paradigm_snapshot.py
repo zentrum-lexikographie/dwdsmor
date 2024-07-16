@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-07-02
+# Andreas Nolda 2024-07-15
 
 import io
 import csv
@@ -125,7 +125,6 @@ NOUN_POS = "NN"
 NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Kitsch",       # NMasc/Sg_es
                "Adel",         # NMasc/Sg_s
-               "Bau",          # NMasc/Sg_es, NMasc/Pl_x
                "Unglaube",     # NMasc/Sg_ns
                "Blues",        # NMasc_0_x
                "Dezember",     # NMasc_0_0, NMasc_s_0
@@ -154,6 +153,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Schmerz",      # NMasc_es_en
                "Crash",        # NMasc_es_es, NMasc_es_s
                "Tennismatch",  # NMasc_es_es, NMasc_es_s, NNeut_es_es ...
+               "Bau",          # NMasc_es_ten, NMasc_es_e
                "Daumen",       # NMasc_s_x
                "Ski",          # NMasc_s_x, NMasc_s_er
                "Garten",       # NMasc_s_$x
@@ -225,6 +225,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Oma",          # NFem_0_s
                "Firma",        # NFem_0_a/en
                "Basis",        # NFem_0_is/en
+               "Matrix",       # NFem_0_ix/izen
                "Freundin",     # NFem-in
                "Kosten",       # NNoGend/Pl_x
                "Leute"]        # NNoGend/Pl_0
