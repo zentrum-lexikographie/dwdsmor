@@ -1,19 +1,19 @@
 % symbols.fst
-% Version 6.24
-% Andreas Nolda 2024-07-15
+% Version 7.0
+% Andreas Nolda 2024-07-16
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
 #entry-type# = <Stem><Suffix><Prefix>
 
-#uppercase-vowel# = AEIOUÀ-ÆÈ-ËÌ-ÏÒ-ÖŒØÙ-Ü % ...
+#uppercase-vowel# = AEIOUÀ-ÆĀĂĄÈ-ËĒĔĖĘĚÌ-ÏĨĪĬĮİĲÒ-ÖŒØŌŎŐŒÙ-ÜŨŪŬŮŰŲYÝ % ...
 
-#lowercase-vowel# = aeiouà-æè-ëì-ïò-öœøù-ü % ...
+#lowercase-vowel# = aeiouà-æāăąè-ëēĕėęěì-ïĩīĭįıĳò-öœøōŏőœù-üũūŭůűųyý % ...
 
-#uppercase-consonant# = BCDFGHJKLMNPQRSTVWXYZẞ % ...
+#uppercase-consonant# = BCDFGHJKLMNPQRSTVWXZẞÇĆĈĊČÐĎĐĜĞĠĢĤĦĴĶĹĻĽĿŁÑŃŅŊŔŖŘŚŜŞŠÞŢŤŦŴŶŹŻŽ % ...
 
-#lowercase-consonant# = bcdfghjklmnpqrstvwxyzß % ...
+#lowercase-consonant# = bcdfghjklmnpqrstvwxzßçćĉċčðďđĝğġģĥħĵķĺļľŀłñńņŋŕŗřśŝşšþţťŧŵŷźżž % ...
 
 #vowel# = #uppercase-vowel# #lowercase-vowel#
 
@@ -23,11 +23,17 @@
 
 #lowercase# = #lowercase-vowel# #lowercase-consonant#
 
+#greek# = αβγδεζηθικλμνξοπρςστυφχψω
+
 #num# = 0-9
+
+#sup# = ⁰¹²³⁴⁵⁶⁷⁸⁹
+
+#sub# = ₀₁₂₃₄₅₆₇₈₉
 
 #frac# = ½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅐⅛⅜⅝⅞⅑⅒ % ...
 
-#symbol# = §\%‰°′″*†& % ...
+#symbol# = §\%‰°′″*†&\+−×÷ % ...
 
 #punctcomma# = \,
 
@@ -48,7 +54,8 @@
 #punct# = #punctcomma# #punctperiod# #punctellip# #punctquote# #punctparen# \
           #punctdash# #punctslash# #punctother#
 
-#char# = #uppercase# #lowercase# #num# #frac# #symbol# #punct#
+#char# = #uppercase# #lowercase# #greek# #num# #sup# #sub# #frac# #symbol# \
+         #punct#
 
 #orth-trigger# = <^DC><^UC>
 

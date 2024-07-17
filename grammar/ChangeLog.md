@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-07-16:
+
+* add support for more characters
+* classify "y" as vowel
+
 2024-07-15:
 
 * remove unused inflection classes `NMasc/Pl_0`, `NMasc/Pl_x`, `NNeut/Pl_x`, and
