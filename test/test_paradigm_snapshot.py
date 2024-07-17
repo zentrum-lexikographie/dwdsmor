@@ -172,6 +172,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Affe",         # NMasc_n_n
                "Junge",        # NMasc_n_n, NMasc-Adj, NNeut-Adj, NFem-Adj
                "Gedanke",      # NMasc_ns_n
+               "Schade",       # NMasc_ns_$n
                "Deutsche",     # NMasc-Adj, NNeut-Adj/Sg, NFem-Adj
                "Abseits",      # NNeut/Sg_0
                "Ausland",      # NNeut/Sg_es

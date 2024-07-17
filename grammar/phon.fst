@@ -1,6 +1,6 @@
 % phon.fst
-% Version 4.4
-% Andreas Nolda 2024-06-27
+% Version 4.5
+% Andreas Nolda 2024-07-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -47,19 +47,19 @@ $R2$ = ((st<SB>) s <=> <> (t:.)) & ((st<SB>s:.) t <=> <>)
 
 
 % umlaut
-% Apfel$           -> Äpfel
-% alter$e          -> ältere
-% Saal$e           -> Säle
-% Koog$e           -> Köge
-% Schwabe<^Del>$in -> Schwäbin
-% Tochter$         -> Töchter
+% Apfel<UL>          -> Äpfel<SB>
+% alter<UL>e         -> älter<SB>e
+% Saal<UL>e          -> Säl<SB>e
+% Koog<UL>e          -> Kög<SB>e
+% Schade<^Del><UL>en -> Schäde<^Del><SB>en
+% Tochter<UL>        -> Töchter<SB>
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
             #lemma-index# #paradigm-index# #category# #feature# #info# <e><UL>]
 
 $Cons$ = [#consonant#]
 
-$X$ = $Cons$* <SB>? ([#ss-trigger#] | (e ($Cons$ <^Ax>? | <^Del>)))?
+$X$ = $Cons$* <SB>? ([#ss-trigger#] | (e ($Cons$ <^Ax>? | <^Del>)?))?
 
 $LC$ = [#char#] | <WB> | <CB>
 
@@ -255,7 +255,7 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
 
 $R14b$ = [aeomnsx] <=> <> <^pl>
 
-% substitute "e"
+% remove "e" marked by <^Del>
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \

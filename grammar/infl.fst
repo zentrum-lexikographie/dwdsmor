@@ -1,6 +1,6 @@
 % infl.fst
-% Version 6.5
-% Andreas Nolda 2024-07-15
+% Version 6.6
+% Andreas Nolda 2024-07-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -291,7 +291,7 @@ $NMasc_s_\$x$ = {<+NN><Masc>}:{} $N_s_\$x$
 % Engel, Engels, Engel; Dezember, Dezembers, Dezember
 $NMasc_s_0$ = {<+NN><Masc>}:{} $N_s_0$
 
-% Apfel, Apfels, Äpfel; Vater, Vaters, Väter
+% Apfel, Apfels, Äpfel; Vater, Vaters, Väter; Schaden, Schadens, Schäden
 $NMasc_s_\$$ = {<+NN><Masc>}:{} $N_s_\$$
 
 % Drilling, Drillings, Drillinge
@@ -344,6 +344,10 @@ $NMasc_n_n$ = {<+NN><Masc>}:{} $N_n_n$
 % Name, Namens, Namen; Buchstabe, Buchstabens, Buchstaben
 $NMasc_ns_n$ = {<+NN><Masc>}:{}  $NSg_ns$ | \
                {<+NN><Masc>}:{n} $NPl_x$
+
+% Schade, Schadens, Schäden
+$NMasc_ns_\$n$ = {<+NN><Masc>}:{}      $NSg_ns$ | \
+                 {<+NN><Masc>}:{<UL>n} $NPl_x$
 
 % Beamte(r); Gefreite(r)
 $NMasc-Adj$ = {<+NN><Masc><Nom><Sg><St>}:{r} | \
@@ -2191,6 +2195,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_es_us/i~ss>      $NMasc_es_us/i~ss$     | \
          <>:<NMasc_n_n>             $NMasc_n_n$            | \
          <>:<NMasc_ns_n>            $NMasc_ns_n$           | \
+         <>:<NMasc_ns_$n>           $NMasc_ns_\$n$         | \
          <>:<NMasc_s_$>             $NMasc_s_\$$           | \
          <>:<NMasc_s_$e>            $NMasc_s_\$e$          | \
          <>:<NMasc_s_$er>           $NMasc_s_\$er$         | \

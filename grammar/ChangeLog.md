@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-07-17:
+
+* add inflection class `NMasc_ns_$n`
+
 2024-07-16:
 
 * add support for more characters

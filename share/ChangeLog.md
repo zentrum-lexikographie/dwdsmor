@@ -1,3 +1,8 @@
+2024-07-17:
+
+* add support for masculine nouns with genitive singular forms ending in "-ns"
+  and umlauted nominative plural forms ending in "-n"
+
 2024-07-15:
 
 * add support for feminine nouns with unmarked genitive singular forms and

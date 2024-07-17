@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 6.6 -->
-<!-- Andreas Nolda 2024-07-15 -->
+<!-- Version 6.7 -->
+<!-- Andreas Nolda 2024-07-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -373,6 +373,11 @@
   <class gender="mask."
          genitive-singular="-ns"
          nominative-plural="-n">NMasc_ns_n</class>
+  <!-- genitive singular: "-ns"
+       nominative plural: umlaut and "-n" -->
+  <class gender="mask."
+         genitive-singular="-ns"
+         nominative-plural="&#x308;-n">NMasc_ns_$n</class>
   <!-- nominalised adjectives: -->
   <class gender="mask."
          genitive-singular="-n"

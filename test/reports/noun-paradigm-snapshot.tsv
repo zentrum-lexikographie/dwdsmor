@@ -803,6 +803,14 @@ Sandwich			NN Neut	Nom Pl	Sandwiche, Sandwiches, Sandwichs
 Sandwich			NN Neut	Acc Pl	Sandwiche, Sandwiches, Sandwichs
 Sandwich			NN Neut	Dat Pl	Sandwichen, Sandwiches, Sandwichs
 Sandwich			NN Neut	Gen Pl	Sandwiche, Sandwiches, Sandwichs
+Schade		2	NN Masc	Nom Sg	Schade
+Schade		2	NN Masc	Acc Sg	Schaden
+Schade		2	NN Masc	Dat Sg	Schaden
+Schade		2	NN Masc	Gen Sg	Schadens
+Schade		2	NN Masc	Nom Pl	Schäden
+Schade		2	NN Masc	Acc Pl	Schäden
+Schade		2	NN Masc	Dat Pl	Schäden
+Schade		2	NN Masc	Gen Pl	Schäden
 Schmerz			NN Masc	Nom Sg	Schmerz
 Schmerz			NN Masc	Acc Sg	Schmerz
 Schmerz			NN Masc	Dat Sg	Schmerz, Schmerze (va.)
