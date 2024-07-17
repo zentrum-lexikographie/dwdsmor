@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.17 -->
-<!-- Andreas Nolda 2024-07-15 -->
+<!-- Version 11.18 -->
+<!-- Andreas Nolda 2024-07-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -4092,6 +4092,7 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="abbreviation"/>
+  <xsl:param name="gender"/>
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
@@ -4221,7 +4222,8 @@
         </xsl:call-template>
       </xsl:when>
       <!-- "er" -->
-      <xsl:when test="$lemma='er'">
+      <xsl:when test="$gender='mask.' and
+                      $lemma='er'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
@@ -4283,7 +4285,8 @@
         </xsl:call-template>
       </xsl:when>
       <!-- "es", "'s" -->
-      <xsl:when test="$lemma='es'">
+      <xsl:when test="$gender='neutr.' and
+                      $lemma='es'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
@@ -4555,8 +4558,9 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
-      <!-- "sie" -->
-      <xsl:when test="$lemma='sie'">
+      <!-- "sie" (singular) -->
+      <xsl:when test="$gender='fem.' and
+                      $lemma='sie'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
@@ -4581,35 +4585,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
-          <xsl:with-param name="class">PProNoGendNomPl</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-        <xsl:call-template name="stem-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="abbreviation"
-                          select="$abbreviation"/>
-          <xsl:with-param name="pos">PPRO</xsl:with-param>
           <xsl:with-param name="class">PProFemAccSg</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-        <xsl:call-template name="stem-entry">
-          <xsl:with-param name="lemma"
-                          select="$lemma"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="abbreviation"
-                          select="$abbreviation"/>
-          <xsl:with-param name="pos">PPRO</xsl:with-param>
-          <xsl:with-param name="class">PProNoGendAccPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -4635,11 +4611,28 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="stem">ihnen</xsl:with-param>
+          <xsl:with-param name="stem">ihr</xsl:with-param>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
-          <xsl:with-param name="class">PProNoGendDatPl</xsl:with-param>
+          <xsl:with-param name="class">PProFemGenSg</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "sie" (plural) -->
+      <xsl:when test="$lemma='sie'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PProNoGendNomPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -4650,11 +4643,25 @@
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
-          <xsl:with-param name="stem">ihr</xsl:with-param>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
-          <xsl:with-param name="class">PProFemGenSg</xsl:with-param>
+          <xsl:with-param name="class">PProNoGendAccPl</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem">ihnen</xsl:with-param>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="class">PProNoGendDatPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>

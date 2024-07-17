@@ -654,6 +654,23 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung hidx="1">sie</Schreibung>
+      <Grammatik>
+        <Wortklasse>Personalpronomen</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung hidx="2">sie</Schreibung>
+      <Grammatik>
+        <Wortklasse>Personalpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>solcher</Schreibung>
       <Grammatik>
         <Wortklasse>Demonstrativpronomen</Wortklasse>

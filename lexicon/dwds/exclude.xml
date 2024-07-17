@@ -2,13 +2,12 @@
 <exclude>
   <source href="wb/DWDS/billes-006/hochrangig.xml"/>
   <source href="wb/DWDS/billes-008/hochklassig.xml"/>
-  <source href="wb/Neuartikel-003/nahegelegen-E_444869.xml"/>
   <source href="wb/Neuartikel/derethalben-1-E_4628633.xml"/>
   <source href="wb/Neuartikel/derethalben-2-E_2090554.xml"/>
   <source href="wb/Neuartikel/deretwegen-1-E_6579411.xml"/>
   <source href="wb/Neuartikel/deretwegen-2-E_1962795.xml"/>
-  <source href="wb/Neuartikel/handeln-3-E_9547227.xml"/>
   <source href="wb/WDG/al/alle-E_a_3261.xml"/>
   <source href="wb/WDG/bi/bisschen-E_b_9682.xml"/>
   <source href="wb/WDG/hu/Hundertste-E_h_8128.xml"/>
+  <source href="wb/WDG/si/sie-E_s_12242.xml"/>
 </exclude>

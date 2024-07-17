@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.16 -->
-<!-- Andreas Nolda 2024-07-04 -->
+<!-- Version 14.17 -->
+<!-- Andreas Nolda 2024-07-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -930,6 +930,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
+                <xsl:with-param name="gender"
+                                select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
