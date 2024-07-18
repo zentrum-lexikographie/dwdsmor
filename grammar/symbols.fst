@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 7.1
-% Andreas Nolda 2024-07-17
+% Version 7.2
+% Andreas Nolda 2024-07-18
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -63,7 +63,7 @@
 
 #phon-trigger# = <INS-E><^Ax><^Px><^Gen><^Del><^pl>
 
-#surface-trigger# = <~n><d><e><er><n>
+#surface-trigger# = <e><n>
 
 #boundary-trigger# = <WB><CB><VB><HB><DB><PB><SB>
 

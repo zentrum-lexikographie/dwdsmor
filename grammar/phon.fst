@@ -1,58 +1,20 @@
 % phon.fst
-% Version 4.5
-% Andreas Nolda 2024-07-17
+% Version 4.6
+% Andreas Nolda 2024-07-18
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
 #include "symbols.fst"
 
-% allomorphs
-% i<n>loyal     -> illoyal
-% i<n>materiell -> immateriell
-% trink+<er>ei  -> Trinkerei
-% gaukel+<er>ei -> Gaukelei
-
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
-            #lemma-index# #paradigm-index# #category# #feature# #info# <e><UL>] \
-           <n>:[nlmrn] \
-           <d>:[dfgklnpst] \
-           <~n>:[<>n]
-
-$R1$ = (<n>  <=> n (<CB>? [ac-knoqs-zäöüßAC-KNOQS-ZÄÖÜ])) & \
-       (<n>  <=> l (<CB>? [Ll])) & \
-       (<n>  <=> m (<CB>? [BbMmPp])) & \
-       (<n>  <=> [rn] (<CB>? [Rr])) & \
-       (<d>  <=> d (<CB>? [a-ehijmoqru-xäöüßA-EHIJMOQRU-XÄÖÜ])) & \
-       (<d>  <=> f (<CB>? [Ff])) & \
-       (<d>  <=> g (<CB>? [Gg])) & \
-       (<d>  <=> k (<CB>? [Kk])) & \
-       (<d>  <=> l (<CB>? [Ll])) & \
-       (<d>  <=> n (<CB>? [Nn])) & \
-       (<d>  <=> p (<CB>? [Pp])) & \
-       (<d>  <=> s (<CB>? [Ss])) & \
-       (<d>  <=> t (<CB>? [Tt])) & \
-       (<~n> <=> <> (<CB>? [bcdfghjklmnpqrstvwxyz])) & \
-       (<~n> <=> n (<CB>? [AEIOUÄÖÜaeiouäöü]))
-
-
-% haplology
-% birst+st -> birst
-
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
-            #lemma-index# #paradigm-index# #category# #feature# #info# <e><UL>] \
-           [st]:<>
-
-$R2$ = ((st<SB>) s <=> <> (t:.)) & ((st<SB>s:.) t <=> <>)
-
 
 % umlaut
-% Apfel<UL>          -> Äpfel<SB>
-% alter<UL>e         -> älter<SB>e
-% Saal<UL>e          -> Säl<SB>e
-% Koog<UL>e          -> Kög<SB>e
-% Schade<^Del><UL>en -> Schäde<^Del><SB>en
-% Tochter<UL>        -> Töchter<SB>
+% Apfel<UL>           -> Äpfel<SB>
+% alter<UL>e          -> älter<SB>e
+% Saal<UL>e           -> Säl<SB>e
+% Koog<UL>e           -> Kög<SB>e
+% Tochter<UL>         -> Töchter<SB>
+% Schwabe<^Del><UL>in -> Schwäbe<^Del><SB>in
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
             #lemma-index# #paradigm-index# #category# #feature# #info# <e><UL>]
@@ -65,179 +27,175 @@ $LC$ = [#char#] | <WB> | <CB>
 
 $RC$ = [#char#] | <WB>
 
-$R3a$ = ({Au}:{Äu} | \
-         {au}:{äu}) $X$ <UL>:<SB> ^-> $LC$__$RC$
+$PhonUmlaut1$ = ({Au}:{Äu} | \
+                 {au}:{äu}) $X$ <UL>:<SB> ^-> $LC$__$RC$
 
-$R3b$ = ({Aa}:Ä | \
-         {aa}:ä | \
-         {Oo}:Ö | \
-         {oo}:ö) $X$ <UL>:<SB> ^-> $LC$__$RC$
+$PhonUmlaut2$ = ({Aa}:Ä | \
+                 {aa}:ä | \
+                 {Oo}:Ö | \
+                 {oo}:ö) $X$ <UL>:<SB> ^-> $LC$__$RC$
 
-$R3c$ = ([AOUaou]:[ÄÖÜäöü]) $X$ <UL>:<SB> ^-> $LC$__$RC$
+$PhonUmlaut3$ = ([AOUaou]:[ÄÖÜäöü]) $X$ <UL>:<SB> ^-> $LC$__$RC$
 
-$R3$ = $R3a$ || $R3b$ || $R3c$
+$PhonUmlaut$ = $PhonUmlaut1$ || \
+               $PhonUmlaut2$ || \
+               $PhonUmlaut3$
 
 
-% "s"/"ss"-alternation
-% Bus~+es     -> Busses
-% Kenntnis~+e -> Kenntnisse
+% stem-final "s"-duplication
+% Bus<SS><SB>es     -> Buss<SB>es
+% Kenntnis<SS><SB>e -> Kenntniss<SB>e
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info# <e>] \
            <SS>:[<>s]
 
-$R4$ = ((s) [#ss-trigger#] <=> s  (<SB> [aeiou])) & \
-       ((s) [#ss-trigger#] <=> <> (<SB> ($Cons$ | <WB>)))
+$PhonSDuplication$ = ((s) [#ss-trigger#] <=> s  (<SB> [aeiou])) & \
+                     ((s) [#ss-trigger#] <=> <> (<SB> ($Cons$ | <WB>)))
 
 
-% "e"-elision after "e"
-% Bote+e   -> Bote
-% leise$er -> leiser
+% deletion of "st"-suffixes
+% birst<SB>st -> birst<SB>
+
+ALPHABET = [#char# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
+            #lemma-index# #paradigm-index# #category# #feature# #info# <e><UL>] \
+           [st]:<>
+
+$PhonStDeletion$ = ((st<SB>) s <=> <> (t:.)) & ((st<SB>s:.) t <=> <>)
+
+
+% "e"-elision
+
+% stem-final "e"-elision
+% Bote<SB>e   -> Bot<SB>e
+% leise<SB>er -> leis<SB>er
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info# <e>] \
            e:<>
 
-$R5$ = e <=> <> (<SB> e)
+$PhonEElision1$ = e <=> <> (<SB> e)
 
+% optional "e"-elision in genitive suffixes
+% Tisch<SB>es<^Gen> -> Tisch<SB>es<^Gen>, Tisch<SB>s<^Gen>
+% Ei<SB>es<^Gen>    -> Ei<SB>es<^Gen>, Ei<SB>s<^Gen>
 
-% optional genitive "e"-elision
-% Tisch+es    -> Tisches, Tischs
-% Ei+es       -> Eies, Eis
-% Haus+es     -> Hauses
-% Fluß~+es    -> Flusses
-% Fuß+es      -> Fußes
-% Zeugnis~+es -> Zeugnisses
+$PhonEElision2$ = (([bcdfghjklmnpqrtuvwy] <SB>? <SB>) e => <> (s <^Gen>)) | \
+                  (([AEae]i <SB>? <SB>) e => <> (s <^Gen>))
 
-$R6$ = (([bcdfghjklmnpqrtuvwy] <SB>? <SB>) e => <> (s <^Gen>)) | \
-       (([AEae]i <SB>? <SB>) e => <> (s <^Gen>))
+% optional "e"-elision in pronoun stems ending in "er"
+% unser<^Px><SB>en   -> unsr<^Px><SB>en, unser<^Px><SB>n
+% unserig<^Px><SB>en -> unsrig<^Px><SB>en
 
+$PhonEElision3$ = (e => <> (r(ig)? <^Px> <SB>? e)) | \
+                  ((er <^Px> <SB>) e => <> ([mns]))
 
-% adjective-"el"/"er" "e"-elision
-% dunkel<^Ax>+e  -> dunkle
-% teuer<^Ax>+e   -> teure
-% trocken<^Ax>+e -> trockne
+% "e"-elision in adjective stems ending in "el"/"er"
+% dunkel<^Ax><SB>e  -> dunkl<^Ax><SB>e
+% trocken<^Ax><SB>e -> trockn<^Ax><SB>e
+% teuer<^Ax><SB>e   -> teur<^Ax><SB>e
 
-$R7$ = e <=> <> ([lnr] <^Ax> <SB> e)
+$PhonEElision4$ = e <=> <> ([lnr] <^Ax> <SB> e)
 
-
-% optional pronoun-"er" "e"-elision
-% unser<^Px>+en   -> unsren, unsern
-% unserig<^Px>+en -> unsrigen
-
-$R8$ = (e => <> (r(ig)? <^Px> <SB>? e)) | \
-       ((er <^Px> <SB>) e => <> ([mns]))
-
-
-% verb-"el"/"er" "e"-elision
-% sicher+en  -> sichern
-% handel+en  -> handeln
-% sicher+e   -> sichre, sichere
-% handel+e   -> handle, ?handele
-% sicher+est -> sicherst, *sichrest, ?sicherest
-% handel+est -> handelst, *handlest, ?handelest
-% rechn+ung  -> Rechnung
+% "e"-elision in verb stems ending in "el"/"er"
+% hand<e>l<SB>en  -> hand<e>l<SB>n
+% hand<e>l<SB>est -> hand<e>l<SB>st
+% hand<e>l<SB>e   -> hand<e>l<SB>e, handl<SB>e
+% sich<e>r<SB>en  -> sich<e>r<SB>n
+% sich<e>r<SB>est -> sich<e>r<SB>st
+% sich<e>r<SB>e   -> sich<e>r<SB>e, sichr<SB>e
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# #category# #feature# #info# <e>] \
            e:<>
 
-$R9a$ = (<e>[lr] <SB>) e <=> <> (n | s?t)
+$PhonEElision5$ = (<e>[lr] <SB>) e <=> <> (n | s?t)
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info# <e>] \
            <e>:<>
 
-$R9b$ = <e> => <> ([lr] <SB> [eui])
+$PhonEElision6$ = <e> => <> ([lr] <SB> [eui])
 
-$R9c$ = <e> <=> <> (n <SB> [eui])
+$PhonEElision7$ = <e> <=> <> (n <SB> [eui])
 
-$R9$ = $R9a$ || $R9b$ || $R9c$
+$PhonEElision$ = $PhonEElision1$ || \
+                 $PhonEElision2$ || \
+                 $PhonEElision3$ || \
+                 $PhonEElision4$ || \
+                 $PhonEElision5$ || \
+                 $PhonEElision6$ || \
+                 $PhonEElision7$
 
 
-% "s"-elimination
-% ras<INS-E>st  -> (du) rast
-% feix<INS-E>st -> (du) feixt
-% birs+st       -> (du) birst
-% groß$st       -> größt
+% "s"-deletion in "st"-suffixes
+% ras<INS-E>st  -> ras<INS-E>t
+% feix<INS-E>st -> feix<INS-E>t
+% birs<SB>st    -> birs<SB>t
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            <e>:e \
            s:<>
 
-$R10a$ = ([xsßz] [<SB><INS-E>]) s <=> <> (t)
+$PhonSDeletion$ = ([xsßz] [<SB><INS-E>]) s <=> <> (t)
 
-% "l"-elimination
-% Engel<DB>lein -> Enge<DB>lein
 
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #category# #feature# #info#] \
-           l:<>
-
-$R10b$ = (e) l <=> <> (<DB> lein)
+% deletion of stem-final "e" marked by <^Del>
+% Schwäbe<^Del><UL>in -> Schwäb<^Del><SB>in
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            e:<>
 
-% optional "e"-elision
-% Enge<DB>lein -> Eng<DB>lein
-
-$R10c$ = e => <> (<DB> lein)
-
-% non-optional "e"-elision
-% Enge<DB>lein -> Eng<DB>lein
-
-$R10cLv2$ = e <=> <> (<DB> lein)
-
-$R10$ = $R10a$ || $R10b$ || $R10c$
+$PhonEDeletion$ = e <=> <> <^Del>
 
 
 % "e"-epenthesis
-% regn<INS-E>t  -> regnet
-% find<INS-E>st -> findest
-% bet<INS-E>st  -> betest
+% regn<INS-E>t             -> regnet
+% find<INS-E>st            -> findest
+% bet<INS-E>st             -> betest
 % gelieb<INS-E>t<INS-E>st  -> geliebtest
 % gewappn<INS-E>t<INS-E>st -> gewappnetst
+% gefeiert<INS-E>ste       -> gefeiertste
+% gefeiert<INS-E>ste       -> gefeiertste
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            <INS-E>:<>
 
-% gefeiert<INS-E>ste -> gefeiertste
-% gefeiert<INS-E>ste -> gefeiertste
-
-$R11$ = ([a-df-hj-z]e[rl]t) <INS-E> <=> <> (st)
+$PhonEEpenthesis1$ = ([a-df-hj-z]e[rl]t) <INS-E> <=> <> (st)
 
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            <INS-E>:[e<>]
 
-% gewappn<INS-E>t<INS-E>st -> gewappnetst
-
-$R12$ = ((((c[hk])|[bdfgkmp])n | [#lowercase#]t) <INS-E> <=> e) & \
-        ((<INS-E>:e[dt]) <INS-E> <=> <>)
+$PhonEEpenthesis2$ = ((((c[hk])|[bdfgkmp])n | [#lowercase#]t) <INS-E> <=> e) & \
+                     ((<INS-E>:e[dt]) <INS-E> <=> <>)
 
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            <INS-E>:e
 
-$R13$ = ([dt]m? | tw) <INS-E> <=> e
+$PhonEEpenthesis3$ = ([dt]m? | tw) <INS-E> <=> e
+
+$PhonEEpenthesis$ = $PhonEEpenthesis1$ || \
+                    $PhonEEpenthesis2$ || \
+                    $PhonEEpenthesis3$
 
 
 % suffix substution for plural forms
-% Dogma<^pl>+en      -> Dogmen
-% Carabiniere<^pl>+i -> Carabinieri
-% Konto<^pl>+en      -> Konten
-% Museum<^pl>+en     -> Museen
-% Examen<^pl>+ina    -> Examina
-% Stadion<^pl>+en    -> Stadien
-% Atlas<^pl>+anten   -> Atlanten
-% Basis<^pl>+en      -> Basen
-% Virus<^pl>+en      -> Viren
-% Index<^pl>+izes    -> Indizes
+% Dogma<^pl><SB>en      -> Dogm<SB>en
+% Carabiniere<^pl><SB>i -> Carabinier<SB>i
+% Konto<^pl><SB>en      -> Kont<SB>en
+% Museum<^pl><SB>en     -> Muse<SB>en
+% Examen<^pl><SB>ina    -> Exam<SB>ina
+% Stadion<^pl><SB>en    -> Stadi<SB>en
+% Atlas<^pl><SB>anten   -> Atl<SB>anten
+% Basis<^pl><SB>en      -> Bas<SB>en
+% Virus<^pl><SB>en      -> Vir<SB>en
+% Index<^pl><SB>izes    -> Ind<SB>izes
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
@@ -245,7 +203,7 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
 
 % remove pre-final letter in "-um"/"-en"/"-on"/"-as"/"-is"/"-us"/"-ex"
 
-$R14a$ = [aeiou] <=> <> ([mnsx]:. <^pl>)
+$PhonSuffSubstitution1$ = [aeiou] <=> <> ([mnsx]:. <^pl>)
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
@@ -253,50 +211,93 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
 
 % remove final letter in "-a"/"-e"/"-o"/"-um"/"-en"/"-on"/"-as"/"-is"/"-us"/"-ex"
 
-$R14b$ = [aeomnsx] <=> <> <^pl>
+$PhonSuffSubstitution2$ = [aeomnsx] <=> <> <^pl>
 
-% remove "e" marked by <^Del>
+$PhonSuffSubstitution$ = $PhonSuffSubstitution1$ || \
+                         $PhonSuffSubstitution2$
+
+
+% allomorphy of "in"-prefixes
+% i<n><DB>loyal     -> il<DB>loyal
+% i<n><DB>materiell -> im<DB>materiell
+% i<n><DB>real      -> ir<DB>real
+
+ALPHABET = [#char# #phon-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
+            #lemma-index# #paradigm-index# #category# #feature# #info# <e><UL>] \
+           <n>:[nlmrn]
+
+$PhonPref-in$ = (<n>  <=> n    (<DB> [ac-knoqs-zäöüßAC-KNOQS-ZÄÖÜ])) & \
+                (<n>  <=> l    (<DB> [Ll])) & \
+                (<n>  <=> m    (<DB> [BbMmPp])) & \
+                (<n>  <=> [rn] (<DB> [Rr]))
+
+
+% segment deletion before "lein"-suffixes
+
+% "l"-deletion before "lein"-suffixes
+% Engel<DB>lein -> Enge<DB>lein
+
+ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature# #info#] \
+           l:<>
+
+$PhonSuff-lein1$ = (e) l <=> <> (<DB> lein)
+
+% optional "e"-elision before "lein"-suffixes
+% Enge<DB>lein -> Eng<DB>lein
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            e:<>
 
-$R14c$ = e <=> <> <^Del>
+$PhonSuff-lein2$ = e => <> (<DB> lein)
 
-$R14$ = $R14a$ || $R14b$ || $R14c$
+% "e"-elision before "lein"-suffixes
+% Enge<DB>lein -> Eng<DB>lein
+
+$PhonSuff-lein2Lv2$ = e <=> <> (<DB> lein)
+
+$PhonSuff-lein$ = $PhonSuff-lein1$ || \
+                  $PhonSuff-lein2$
+
+$PhonSuff-leinLv2$ = $PhonSuff-lein1$ || \
+                     $PhonSuff-lein2Lv2$
 
 
 % letter case
-% <WB><^UC>un<DB><^DC>Wetter<WB>                -> <WB>Un<DB>wetter<WB>
-% <WB>Sommer<CB><^DC>Wetter<WB>                 -> <WB>Sommer<CB>wetter<WB>
-% <WB>Sommer<CB><^DC><^UC>un<DB><^DC>Wetter<WB> -> <WB>Sommer<CB>un<DB>wetter<WB>
 
 % remove spurious orthography triggers
+% <WB>Sommer<CB><^DC><^UC>un<DB><^DC>Wetter<WB> -> <WB>Sommer<CB><^DC>un<DB><^DC>Wetter<WB>
 
 ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#]
 
-$R15a$ = .* ([<WB><CB><DB>] [#orth-trigger#] ([#orth-trigger#]:<>)* .*)*
+$PhonCase1$ = .* ([<WB><CB><DB>] [#orth-trigger#] ([#orth-trigger#]:<>)* .*)*
 
 % downcase
+% <WB>Sommer<CB><^DC>Wetter<WB>            -> <WB>Sommer<CB>wetter<WB>
+% <WB>Sommer<CB><^DC>un<DB><^DC>Wetter<WB> -> <WB>Sommer<CB>un<DB>wetter<WB>
 
 ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info# <^UC>] \
            [#uppercase#]:[#lowercase#] \
            <^DC>:<>
 
-$R15b$ = ([<WB><CB><DB>] <^DC>:<>) [#uppercase#] <=> [#lowercase#]
+$PhonCase2$ = ([<WB><CB><DB>] <^DC>:<>) [#uppercase#] <=> [#lowercase#]
 
 % upcase
+% <WB><^UC>un<DB><^DC>Wetter<WB>                -> <WB>Un<DB>wetter<WB>
 
 ALPHABET = [#char# #phon-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info# <^DC>] \
            [#lowercase#]:[#uppercase#] \
            <^UC>:<>
 
-$R15c$ = ([<WB><CB><DB>] <^UC>:<>) [#lowercase#] <=> [#uppercase#]
+$PhonCase3$ = ([<WB><CB><DB>] <^UC>:<>) [#lowercase#] <=> [#uppercase#]
 
-$R15$ = $R15a$ || $R15b$ || $R15c$
+$PhonCase$ = $PhonCase1$ || \
+             $PhonCase2$ || \
+             $PhonCase3$
 
 
 % marker deletion
@@ -305,12 +306,21 @@ ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
            [#phon-trigger#]:<>
 
-$R16$ = .*
+$PhonMarker$ = .*
 
 
-% composition of rules
+$PHON$ = $PhonUmlaut$           || \
+         $PhonSDuplication$     || \
+         $PhonStDeletion$       || \
+         $PhonEElision$         || \
+         $PhonSDeletion$        || \
+         $PhonEDeletion$        || \
+         $PhonEEpenthesis$      || \
+         $PhonSuffSubstitution$ || \
+         $PhonPref-in$          || \
+         $PhonSuff-lein$        || \
+         $PhonCase$             || \
+         $PhonMarker$
 
-$PHON$ = $R1$ || $R2$  || $R3$  || $R4$  || $R5$  || $R6$  || $R7$  || $R8$ || \
-         $R9$ || $R10$ || $R11$ || $R12$ || $R13$ || $R14$ || $R15$ || $R16$
-
-$PHONLv2$ = $R10b$ || $R10cLv2$ || $R15$
+$PHONLv2$ = $PhonSuff-leinLv2$ || \
+            $PhonCase$

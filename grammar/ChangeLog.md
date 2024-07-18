@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-07-18:
+
+* rename and reorder phonological rules
+
 2024-07-17:
 
 * add inflection class `NMasc_ns_$n`
