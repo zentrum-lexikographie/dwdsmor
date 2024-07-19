@@ -1,6 +1,14 @@
 2024-07-19:
 
 * add support for "Vieh" with suppletive nominative plural form "Viecher"
+* add support for masculine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-yngen" substituted for "-ynx"
+* add support for feminine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-angen" substituted for "-anx"
+* add support for feminine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-eges" substituted for "-ex"
+* add support for feminine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-izes" substituted for "-ix"
 
 2024-07-17:
 

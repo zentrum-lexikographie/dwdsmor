@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-07-15
+# Andreas Nolda 2024-07-19
 
 import io
 import csv
@@ -144,6 +144,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Rhythmus",     # NMasc_0_us/en~ss
                "Modus",        # NMasc_0_us/i
                "Dinosaurus",   # NMasc_0_us/ier
+               "Larynx",       # NMasc_0_ynx/yngen
                "Freund",       # NMasc_es_e
                "Bus",          # NMasc_es_e~ss
                "Arzt",         # NMasc_es_$e
@@ -183,9 +184,10 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Zuhause",      # NNeut_0_0
                "Nichts",       # NNeut_0_e
                "Foyer",        # NNeut_0_s
+               "Stimulans",    # NNeut_0_ans/anzien
                "Ricercare",    # NNeut_0_e/i, NNeut_s_e/i
+               "Reagens",      # NNeut_0_ens/enzien
                "Intermezzo",   # NNeut_0_o/i, NNeut_0_s, NNeut_s_o/i, NNeut_s_s
-               "Reagens",      # NNeut_0_s/zien
                "Genus",        # NNeut_0_us/era
                "Tempus",       # NNeut_0_us/ora
                "Spiel",        # NNeut_es_e
@@ -225,8 +227,11 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Minestrone",   # NFem_0_n, NFem_0_e/i
                "Oma",          # NFem_0_s
                "Firma",        # NFem_0_a/en
+               "Phalanx",      # NFem_0_anx/angen
+               "Lex",          # NFem_0_ex/eges
                "Basis",        # NFem_0_is/en
                "Matrix",       # NFem_0_ix/izen
+               "Radix",        # NFem_0_ix/izes
                "Freundin",     # NFem-in
                "Kosten",       # NNoGend/Pl_x
                "Leute"]        # NNoGend/Pl_0

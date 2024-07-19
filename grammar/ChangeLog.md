@@ -3,6 +3,9 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 2024-07-19:
 
 * add inflection class `NNeut/Pl_0`
+* add inflection classes `NMasc_0_ynx/yngen`, `NNeut_0_ans/anzien`,
+  `NFem_0_anx/angen`, `NFem_0_ex/eges`, and `NFem_0_ix/izes`
+* rename inflection class `NNeut_0_s/zien` to `NNeut_0_ens/enzien`
 
 2024-07-18:
 

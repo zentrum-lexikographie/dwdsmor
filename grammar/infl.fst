@@ -234,6 +234,10 @@ $NMasc_0_us/i$ = {<+NN><Masc>}:{}       $NSg_0$ | \
 $NMasc_0_us/ier$ = {<+NN><Masc>}:{}         $NSg_0$ | \
                    {<+NN><Masc>}:{<^pl>ier} $NPl_0$
 
+% Larynx, Larynx, Laryngen
+$NMasc_0_ynx/yngen$ = {<+NN><Masc>}:{}           $NSg_0$ | \
+                      {<+NN><Masc>}:{<^pl>yngen} $NPl_x$
+
 % Tag, Tag(e)s, Tage; Kodex, Kodexes, Kodexe
 $NMasc_es_e$ = {<+NN><Masc>}:{} $N_es_e$
 
@@ -410,17 +414,21 @@ $NNeut_0_nen$ = {<+NN><Neut>}:{}    $NSg_0$ | \
 % College, College, Colleges
 $NNeut_0_s$ = {<+NN><Neut>}:{} $N_0_s$
 
+% Stimulans, Stimulans, Stimulanzien
+$NNeut_0_ans/anzien$ = {<+NN><Neut>}:{}            $NSg_0$ | \
+                       {<+NN><Neut>}:{<^pl>anzien} $NPl_x$
+
 % Ricercare, Ricercare, Ricercari
 $NNeut_0_e/i$ = {<+NN><Neut>}:{}       $NSg_0$ | \
                 {<+NN><Neut>}:{<^pl>i} $NPl_x$
 
+% Reagens, Reagens, Reagenzien
+$NNeut_0_ens/enzien$ = {<+NN><Neut>}:{}            $NSg_0$ | \
+                       {<+NN><Neut>}:{<^pl>enzien} $NPl_x$
+
 % Intermezzo, Intermezzo, Intermezzi
 $NNeut_0_o/i$ = {<+NN><Neut>}:{}       $NSg_0$ | \
                 {<+NN><Neut>}:{<^pl>i} $NPl_x$
-
-% Reagens, Reagens, Reagenzien
-$NNeut_0_s/zien$ = {<+NN><Neut>}:{}          $NSg_0$ | \
-                   {<+NN><Neut>}:{<^pl>zien} $NPl_x$
 
 % Virus, Virus, Viren; Epos, Epos, Epen
 $NNeut_0_us/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
@@ -622,9 +630,17 @@ $NFem_0_s$ = {<+NN><Fem>}:{} $N_0_s$
 $NFem_0_a/en$ = {<+NN><Fem>}:{}        $NSg_0$ | \
                 {<+NN><Fem>}:{<^pl>en} $NPl_x$
 
+% Phalanx, Phalanx, Phalangen
+$NFem_0_anx/angen$ = {<+NN><Fem>}:{}           $NSg_0$ | \
+                     {<+NN><Fem>}:{<^pl>angen} $NPl_x$
+
 % Minestrone, Minestrone, Minestroni
 $NFem_0_e/i$ = {<+NN><Fem>}:{}       $NSg_0$ | \
                {<+NN><Fem>}:{<^pl>i} $NPl_x$
+
+% Lex, Lex, Leges
+$NFem_0_ex/eges$ = {<+NN><Fem>}:{}          $NSg_0$ | \
+                   {<+NN><Fem>}:{<^pl>eges} $NPl_x$
 
 % Basis, Basis, Basen
 $NFem_0_is/en$ = {<+NN><Fem>}:{}        $NSg_0$ | \
@@ -637,6 +653,10 @@ $NFem_0_is/iden$ = {<+NN><Fem>}:{}          $NSg_0$ | \
 % Matrix, Matrix, Matrizen
 $NFem_0_ix/izen$ = {<+NN><Fem>}:{}          $NSg_0$ | \
                    {<+NN><Fem>}:{<^pl>izen} $NPl_x$
+
+% Radix, Radix, Radizes
+$NFem_0_ix/izes$ = {<+NN><Fem>}:{}          $NSg_0$ | \
+                   {<+NN><Fem>}:{<^pl>izes} $NPl_x$
 
 % Freundin, Freundin, Freundinnen
 $NFem-in$ = {<+NN><Fem>}:{}    $NSg_0$ | \
@@ -2149,12 +2169,15 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NFem_0_a/en>           $NFem_0_a/en$          | \
          <>:<NFem_0_e>              $NFem_0_e$             | \
          <>:<NFem_0_e~ss>           $NFem_0_e~ss$          | \
+         <>:<NFem_0_anx/angen>      $NFem_0_anx/angen$     | \
          <>:<NFem_0_e/i>            $NFem_0_e/i$           | \
          <>:<NFem_0_en>             $NFem_0_en$            | \
          <>:<NFem_0_es>             $NFem_0_es$            | \
+         <>:<NFem_0_ex/eges>        $NFem_0_ex/eges$       | \
          <>:<NFem_0_is/en>          $NFem_0_is/en$         | \
          <>:<NFem_0_is/iden>        $NFem_0_is/iden$       | \
          <>:<NFem_0_ix/izen>        $NFem_0_ix/izen$       | \
+         <>:<NFem_0_ix/izes>        $NFem_0_ix/izes$       | \
          <>:<NFem_0_n>              $NFem_0_n$             | \
          <>:<NFem_0_s>              $NFem_0_s$             | \
          <>:<NFem_0_x>              $NFem_0_x$             | \
@@ -2180,6 +2203,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_0_us/en>         $NMasc_0_us/en$        | \
          <>:<NMasc_0_us/i>          $NMasc_0_us/i$         | \
          <>:<NMasc_0_us/ier>        $NMasc_0_us/ier$       | \
+         <>:<NMasc_0_ynx/yngen>     $NMasc_0_ynx/yngen$    | \
          <>:<NMasc_0_x>             $NMasc_0_x$            | \
          <>:<NMasc_en_en>           $NMasc_en_en$          | \
          <>:<NMasc_es_$e>           $NMasc_es_\$e$         | \
@@ -2224,15 +2248,16 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut/Sg_es~ss>        $NNeut/Sg_es~ss$       | \
          <>:<NNeut/Sg_s>            $NNeut/Sg_s$           | \
          <>:<NNeut_0_0>             $NNeut_0_0$            | \
+         <>:<NNeut_0_ans/anzien>    $NNeut_0_ans/anzien$   | \
          <>:<NNeut_0_e>             $NNeut_0_e$            | \
          <>:<NNeut_0_e~ss>          $NNeut_0_e~ss$         | \
          <>:<NNeut_0_e/i>           $NNeut_0_e/i$          | \
          <>:<NNeut_0_en>            $NNeut_0_en$           | \
+         <>:<NNeut_0_ens/enzien>    $NNeut_0_ens/enzien$   | \
          <>:<NNeut_0_es>            $NNeut_0_es$           | \
          <>:<NNeut_0_nen>           $NNeut_0_nen$          | \
          <>:<NNeut_0_o/i>           $NNeut_0_o/i$          | \
          <>:<NNeut_0_s>             $NNeut_0_s$            | \
-         <>:<NNeut_0_s/zien>        $NNeut_0_s/zien$       | \
          <>:<NNeut_0_us/en>         $NNeut_0_us/en$        | \
          <>:<NNeut_0_us/era>        $NNeut_0_us/era$       | \
          <>:<NNeut_0_us/ora>        $NNeut_0_us/ora$       | \

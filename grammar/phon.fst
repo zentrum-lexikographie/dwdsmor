@@ -1,6 +1,6 @@
 % phon.fst
-% Version 4.6
-% Andreas Nolda 2024-07-18
+% Version 5.1
+% Andreas Nolda 2024-07-19
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -147,7 +147,7 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
             #category# #feature# #info#] \
            e:<>
 
-$PhonEDeletion$ = e <=> <> <^Del>
+$PhonEDeletion$ = e <=> <> (<^Del>)
 
 
 % "e"-epenthesis
@@ -186,35 +186,40 @@ $PhonEEpenthesis$ = $PhonEEpenthesis1$ || \
 
 
 % suffix substution for plural forms
-% Dogma<^pl><SB>en      -> Dogm<SB>en
-% Carabiniere<^pl><SB>i -> Carabinier<SB>i
-% Konto<^pl><SB>en      -> Kont<SB>en
-% Museum<^pl><SB>en     -> Muse<SB>en
-% Examen<^pl><SB>ina    -> Exam<SB>ina
-% Stadion<^pl><SB>en    -> Stadi<SB>en
-% Atlas<^pl><SB>anten   -> Atl<SB>anten
-% Basis<^pl><SB>en      -> Bas<SB>en
-% Virus<^pl><SB>en      -> Vir<SB>en
-% Index<^pl><SB>izes    -> Ind<SB>izes
+% Dogma<^pl><SB>en         -> Dogm<SB>en
+% Museum<^pl><SB>en        -> Muse<SB>en
+% Stimulans<^pl><SB>anzien -> Stimul<SB>anzien
+
+% remove final consonant in "-ans"/"-ens"/"-anx"/"-ynx"
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
-           [aeiou]:<>
+           [sx]:<>
 
-% remove pre-final letter in "-um"/"-en"/"-on"/"-as"/"-is"/"-us"/"-ex"
+$PhonSuffSubstitution1$ = ([aeiouy]n) [sx] <=> <> (<^pl>)
 
-$PhonSuffSubstitution1$ = [aeiou] <=> <> ([mnsx]:. <^pl>)
+% remove consonant in "-um"/"-en"/"-on"/"-as"/"-is"/"-os"/"-us"/"-ex"/"-ix"
+% remove pre-final consonant in "-ans"/"-ens"/"-anx"/"-ynx"
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
-           [aeomnsx]:<>
+           [mnsx]:<>
 
-% remove final letter in "-a"/"-e"/"-o"/"-um"/"-en"/"-on"/"-as"/"-is"/"-us"/"-ex"
+$PhonSuffSubstitution2$ = ([aeiouy]) [mnsx] <=> <> (<^pl>)
 
-$PhonSuffSubstitution2$ = [aeomnsx] <=> <> <^pl>
+ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature# #info#] \
+           [aeiouy]:<>
+
+% remove vowel in "-a"/"-e"/"-o"
+% remove vowel in "-um"/"-en"/"-on"/"-as"/"-is"/"-os"/"-us"/"-ex"/"-ix"
+% remove vowel in "-ans"/"-ens"/"-anx"/"-ynx"
+
+$PhonSuffSubstitution3$ = [aeiouy] <=> <> (<^pl>)
 
 $PhonSuffSubstitution$ = $PhonSuffSubstitution1$ || \
-                         $PhonSuffSubstitution2$
+                         $PhonSuffSubstitution2$ || \
+                         $PhonSuffSubstitution3$
 
 
 % allomorphy of "in"-prefixes

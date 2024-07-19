@@ -579,6 +579,14 @@ Kosten			NN NoGend	Nom Pl	Kosten
 Kosten			NN NoGend	Acc Pl	Kosten
 Kosten			NN NoGend	Dat Pl	Kosten
 Kosten			NN NoGend	Gen Pl	Kosten
+Larynx			NN Masc	Nom Sg	Larynx
+Larynx			NN Masc	Acc Sg	Larynx
+Larynx			NN Masc	Dat Sg	Larynx
+Larynx			NN Masc	Gen Sg	Larynx
+Larynx			NN Masc	Nom Pl	Laryngen
+Larynx			NN Masc	Acc Pl	Laryngen
+Larynx			NN Masc	Dat Pl	Laryngen
+Larynx			NN Masc	Gen Pl	Laryngen
 Leib			NN Masc	Nom Sg	Leib
 Leib			NN Masc	Acc Sg	Leib
 Leib			NN Masc	Dat Sg	Leib, Leibe (va.)
@@ -591,6 +599,14 @@ Leute			NN NoGend	Nom Pl	Leute
 Leute			NN NoGend	Acc Pl	Leute
 Leute			NN NoGend	Dat Pl	Leuten
 Leute			NN NoGend	Gen Pl	Leute
+Lex			NN Fem	Nom Sg	Lex
+Lex			NN Fem	Acc Sg	Lex
+Lex			NN Fem	Dat Sg	Lex
+Lex			NN Fem	Gen Sg	Lex
+Lex			NN Fem	Nom Pl	Leges
+Lex			NN Fem	Acc Pl	Leges
+Lex			NN Fem	Dat Pl	Leges
+Lex			NN Fem	Gen Pl	Leges
 Lied			NN Neut	Nom Sg	Lied
 Lied			NN Neut	Acc Sg	Lied
 Lied			NN Neut	Dat Sg	Lied, Liede (va.)
@@ -719,6 +735,14 @@ Paradoxon			NN Neut	Nom Pl	Paradoxa
 Paradoxon			NN Neut	Acc Pl	Paradoxa
 Paradoxon			NN Neut	Dat Pl	Paradoxa
 Paradoxon			NN Neut	Gen Pl	Paradoxa
+Phalanx			NN Fem	Nom Sg	Phalanx
+Phalanx			NN Fem	Acc Sg	Phalanx
+Phalanx			NN Fem	Dat Sg	Phalanx
+Phalanx			NN Fem	Gen Sg	Phalanx
+Phalanx			NN Fem	Nom Pl	Phalangen
+Phalanx			NN Fem	Acc Pl	Phalangen
+Phalanx			NN Fem	Dat Pl	Phalangen
+Phalanx			NN Fem	Gen Pl	Phalangen
 Prototyp		1	NN Masc	Nom Sg	Prototyp
 Prototyp		1	NN Masc	Acc Sg	Prototyp
 Prototyp		1	NN Masc	Dat Sg	Prototyp
@@ -743,6 +767,14 @@ Prototyp		3	NN Masc	Nom Pl	Prototypen
 Prototyp		3	NN Masc	Acc Pl	Prototypen
 Prototyp		3	NN Masc	Dat Pl	Prototypen
 Prototyp		3	NN Masc	Gen Pl	Prototypen
+Radix			NN Fem	Nom Sg	Radix
+Radix			NN Fem	Acc Sg	Radix
+Radix			NN Fem	Dat Sg	Radix
+Radix			NN Fem	Gen Sg	Radix
+Radix			NN Fem	Nom Pl	Radizes
+Radix			NN Fem	Acc Pl	Radizes
+Radix			NN Fem	Dat Pl	Radizes
+Radix			NN Fem	Gen Pl	Radizes
 Reagens			NN Neut	Nom Sg	Reagens
 Reagens			NN Neut	Acc Sg	Reagens
 Reagens			NN Neut	Dat Sg	Reagens
@@ -859,6 +891,14 @@ Stadion			NN Neut	Nom Pl	Stadien
 Stadion			NN Neut	Acc Pl	Stadien
 Stadion			NN Neut	Dat Pl	Stadien
 Stadion			NN Neut	Gen Pl	Stadien
+Stimulans			NN Neut	Nom Sg	Stimulans
+Stimulans			NN Neut	Acc Sg	Stimulans
+Stimulans			NN Neut	Dat Sg	Stimulans
+Stimulans			NN Neut	Gen Sg	Stimulans
+Stimulans			NN Neut	Nom Pl	Stimulanzien
+Stimulans			NN Neut	Acc Pl	Stimulanzien
+Stimulans			NN Neut	Dat Pl	Stimulanzien
+Stimulans			NN Neut	Gen Pl	Stimulanzien
 Tablett			NN Neut	Nom Sg	Tablett
 Tablett			NN Neut	Acc Sg	Tablett
 Tablett			NN Neut	Dat Sg	Tablett, Tablette (va.)
