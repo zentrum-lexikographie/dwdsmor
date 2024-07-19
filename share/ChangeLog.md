@@ -1,3 +1,7 @@
+2024-07-19:
+
+* add support for "Vieh" with suppletive nominative plural form "Viecher"
+
 2024-07-17:
 
 * add support for masculine nouns with genitive singular forms ending in "-ns"

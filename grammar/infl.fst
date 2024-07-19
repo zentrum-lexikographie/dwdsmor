@@ -1,6 +1,6 @@
 % infl.fst
-% Version 6.6
-% Andreas Nolda 2024-07-17
+% Version 6.7
+% Andreas Nolda 2024-07-19
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -381,6 +381,9 @@ $NNeut/Sg_es~ss$ = $SS$ {<+NN><Neut>}:{} $NSg_es$
 
 % Abitur, Abiturs
 $NNeut/Sg_s$ = {<+NN><Neut>}:{} $NSg_s$
+
+% Viecher (suppletive plural)
+$NNeut/Pl_0$ = {<+NN><Neut>}:{} $NPl_0$
 
 % Relais, Relais, Relais
 $NNeut_0_x$ = {<+NN><Neut>}:{} $N_0_x$
@@ -2215,6 +2218,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut-Adj>             $NNeut-Adj$            | \
          <>:<NNeut-Adj/Sg>          $NNeut-Adj/Sg$         | \
          <>:<NNeut-Inner>           $NNeut-Inner$          | \
+         <>:<NNeut/Pl_0>            $NNeut/Pl_0$           | \
          <>:<NNeut/Sg_0>            $NNeut/Sg_0$           | \
          <>:<NNeut/Sg_es>           $NNeut/Sg_es$          | \
          <>:<NNeut/Sg_es~ss>        $NNeut/Sg_es~ss$       | \
