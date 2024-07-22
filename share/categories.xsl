@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 6.8 -->
-<!-- Andreas Nolda 2024-07-19 -->
+<!-- Version 6.9 -->
+<!-- Andreas Nolda 2024-07-22 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -138,6 +138,11 @@
   <class gender="mask."
          genitive-singular="-"
          nominative-plural="-ix/izes">NMasc_0_ex/izes<!-- sic! --></class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-o" -->
+  <class gender="mask."
+         genitive-singular="-"
+         nominative-plural="-o/en">NMasc_0_o/en</class>
   <!-- genitive singular: unmarked
        nominative plural: "-i" substituted for "-o" -->
   <class gender="mask."
@@ -451,6 +456,16 @@
          genitive-singular="-"
          nominative-plural="-s">NNeut_0_s</class>
   <!-- genitive singular: unmarked
+       nominative plural: "-ata" substituted for "-a" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-ta">NNeut_0_a/ata</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-a" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-a/en">NNeut_0_a/en</class>
+  <!-- genitive singular: unmarked
        nominative plural: "-anzien" substituted for "-ans" -->
   <class gender="neutr."
          genitive-singular="-"
@@ -461,15 +476,45 @@
          genitive-singular="-"
          nominative-plural="-e/i">NNeut_0_e/i</class>
   <!-- genitive singular: unmarked
+       nominative plural: "-ina" substituted for "-en" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-en/ina">NNeut_0_en/ina</class>
+  <!-- genitive singular: unmarked
        nominative plural: "-enzien" substituted for "-ens" -->
   <class gender="neutr."
          genitive-singular="-"
          nominative-plural="-ens/enzien">NNeut_0_ens/enzien</class>
   <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-o" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-o/en">NNeut_0_o/en</class>
+  <!-- genitive singular: unmarked
        nominative plural: "-i" substituted for "-o" -->
   <class gender="neutr."
          genitive-singular="-"
          nominative-plural="-o/i">NNeut_0_o/i</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-a" substituted for "-on" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-on/a">NNeut_0_on/a</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-on" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-on/en">NNeut_0_on/en</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-a" substituted for "-um" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-um/a">NNeut_0_um/a</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-um" -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-um/en">NNeut_0_um/en</class>
   <!-- genitive singular: unmarked
        nominative plural: "-en" substituted for "-us" -->
   <class gender="neutr."

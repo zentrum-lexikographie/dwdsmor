@@ -1,6 +1,6 @@
 % infl.fst
-% Version 6.7
-% Andreas Nolda 2024-07-19
+% Version 6.8
+% Andreas Nolda 2024-07-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -210,6 +210,10 @@ $NMasc_0_e/i$ = {<+NN><Masc>}:{}       $NSg_0$ | \
 $NMasc_0_ex/izes$ = {<+NN><Masc>}:{}          $NSg_0$ | \
                     {<+NN><Masc>}:{<^pl>izes} $NPl_x$
 
+% Saldo, Saldo, Salden
+$NMasc_0_o/en$ = {<+NN><Masc>}:{}        $NSg_0$ | \
+                 {<+NN><Masc>}:{<^pl>en} $NPl_x$
+
 % Espresso, Espresso, Espressi
 $NMasc_0_o/i$ = {<+NN><Masc>}:{}       $NSg_0$ | \
                 {<+NN><Masc>}:{<^pl>i} $NPl_x$
@@ -414,6 +418,14 @@ $NNeut_0_nen$ = {<+NN><Neut>}:{}    $NSg_0$ | \
 % College, College, Colleges
 $NNeut_0_s$ = {<+NN><Neut>}:{} $N_0_s$
 
+% Komma, Komma, Kommata
+$NNeut_0_a/ata$ = {<+NN><Neut>}:{}   $NSg_0$ | \
+                  {<+NN><Neut>}:{ta} $NPl_x$
+
+% Dogma, Dogma, Dogmen
+$NNeut_0_a/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
+                 {<+NN><Neut>}:{<^pl>en} $NPl_x$
+
 % Stimulans, Stimulans, Stimulanzien
 $NNeut_0_ans/anzien$ = {<+NN><Neut>}:{}            $NSg_0$ | \
                        {<+NN><Neut>}:{<^pl>anzien} $NPl_x$
@@ -422,13 +434,37 @@ $NNeut_0_ans/anzien$ = {<+NN><Neut>}:{}            $NSg_0$ | \
 $NNeut_0_e/i$ = {<+NN><Neut>}:{}       $NSg_0$ | \
                 {<+NN><Neut>}:{<^pl>i} $NPl_x$
 
+% Examen, Examen, Examina
+$NNeut_0_en/ina$ = {<+NN><Neut>}:{}         $NSg_0$ | \
+                   {<+NN><Neut>}:{<^pl>ina} $NPl_x$
+
 % Reagens, Reagens, Reagenzien
 $NNeut_0_ens/enzien$ = {<+NN><Neut>}:{}            $NSg_0$ | \
                        {<+NN><Neut>}:{<^pl>enzien} $NPl_x$
 
+% Konto, Konto, Konten
+$NNeut_0_o/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
+                 {<+NN><Neut>}:{<^pl>en} $NPl_x$
+
 % Intermezzo, Intermezzo, Intermezzi
 $NNeut_0_o/i$ = {<+NN><Neut>}:{}       $NSg_0$ | \
                 {<+NN><Neut>}:{<^pl>i} $NPl_x$
+
+% Oxymoron, Oxymoron, Oxymora
+$NNeut_0_on/a$ = {<+NN><Neut>}:{}       $NSg_0$ | \
+                 {<+NN><Neut>}:{<^pl>a} $NPl_x$
+
+% Stadion, Stadion, Stadien
+$NNeut_0_on/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
+                  {<+NN><Neut>}:{<^pl>en} $NPl_x$
+
+% Aktivum, Aktivum, Aktiva
+$NNeut_0_um/a$ = {<+NN><Neut>}:{}       $NSg_0$ | \
+                 {<+NN><Neut>}:{<^pl>a} $NPl_x$
+
+% Museum, Museum, Museen
+$NNeut_0_um/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
+                  {<+NN><Neut>}:{<^pl>en} $NPl_x$
 
 % Virus, Virus, Viren; Epos, Epos, Epen
 $NNeut_0_us/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
@@ -2196,6 +2232,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_0_es>            $NMasc_0_es$           | \
          <>:<NMasc_0_ex/izes>       $NMasc_0_ex/izes$      | \
          <>:<NMasc_0_nen>           $NMasc_0_nen$          | \
+         <>:<NMasc_0_o/en>          $NMasc_0_o/en$         | \
          <>:<NMasc_0_o/i>           $NMasc_0_o/i$          | \
          <>:<NMasc_0_s>             $NMasc_0_s$            | \
          <>:<NMasc_0_us/e>          $NMasc_0_us/e$         | \
@@ -2248,16 +2285,24 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut/Sg_es~ss>        $NNeut/Sg_es~ss$       | \
          <>:<NNeut/Sg_s>            $NNeut/Sg_s$           | \
          <>:<NNeut_0_0>             $NNeut_0_0$            | \
+         <>:<NNeut_0_a/ata>         $NNeut_0_a/ata$        | \
+         <>:<NNeut_0_a/en>          $NNeut_0_a/en$         | \
          <>:<NNeut_0_ans/anzien>    $NNeut_0_ans/anzien$   | \
          <>:<NNeut_0_e>             $NNeut_0_e$            | \
          <>:<NNeut_0_e~ss>          $NNeut_0_e~ss$         | \
          <>:<NNeut_0_e/i>           $NNeut_0_e/i$          | \
          <>:<NNeut_0_en>            $NNeut_0_en$           | \
+         <>:<NNeut_0_en/ina>        $NNeut_0_en/ina$       | \
          <>:<NNeut_0_ens/enzien>    $NNeut_0_ens/enzien$   | \
          <>:<NNeut_0_es>            $NNeut_0_es$           | \
          <>:<NNeut_0_nen>           $NNeut_0_nen$          | \
+         <>:<NNeut_0_o/en>          $NNeut_0_o/en$         | \
          <>:<NNeut_0_o/i>           $NNeut_0_o/i$          | \
+         <>:<NNeut_0_on/a>          $NNeut_0_on/a$         | \
+         <>:<NNeut_0_on/en>         $NNeut_0_on/en$        | \
          <>:<NNeut_0_s>             $NNeut_0_s$            | \
+         <>:<NNeut_0_um/a>          $NNeut_0_um/a$         | \
+         <>:<NNeut_0_um/en>         $NNeut_0_um/en$        | \
          <>:<NNeut_0_us/en>         $NNeut_0_us/en$        | \
          <>:<NNeut_0_us/era>        $NNeut_0_us/era$       | \
          <>:<NNeut_0_us/ora>        $NNeut_0_us/ora$       | \

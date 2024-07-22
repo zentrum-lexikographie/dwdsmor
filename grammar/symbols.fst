@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 7.3
-% Andreas Nolda 2024-07-19
+% Version 7.4
+% Andreas Nolda 2024-07-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -151,23 +151,25 @@
                     <NFem_0_x><NMasc-Adj><NMasc/Sg_0><NMasc/Sg_es><NMasc/Sg_ns> \
                     <NMasc/Sg_s><NMasc_0_$e><NMasc_0_0><NMasc_0_as/anten> \
                     <NMasc_0_e><NMasc_0_e~ss><NMasc_0_e/i><NMasc_0_en> \
-                    <NMasc_0_es><NMasc_0_ex/izes><NMasc_0_nen><NMasc_0_o/i> \
-                    <NMasc_0_s><NMasc_0_us/e><NMasc_0_us/een><NMasc_0_us/en> \
-                    <NMasc_0_us/i><NMasc_0_us/ier><NMasc_0_ynx/yngen><NMasc_0_x> \
-                    <NMasc_en_en><NMasc_es_$e><NMasc_es_$er> \
-                    <NMasc_es_as/anten~ss><NMasc_es_e><NMasc_es_e~ss> \
-                    <NMasc_es_en><NMasc_es_er><NMasc_es_es><NMasc_es_ex/izes> \
-                    <NMasc_es_s><NMasc_es_ten><NMasc_es_us/een~ss> \
-                    <NMasc_es_us/en~ss><NMasc_es_us/i~ss><NMasc_n_n><NMasc_ns_n> \
-                    <NMasc_ns_$n><NMasc_s_$><NMasc_s_$e><NMasc_s_$er> \
-                    <NMasc_s_$x><NMasc_s_0><NMasc_s_e><NMasc_s_e/i><NMasc_s_en> \
-                    <NMasc_s_er><NMasc_s_es><NMasc_s_n><NMasc_s_nen> \
+                    <NMasc_0_es><NMasc_0_ex/izes><NMasc_0_nen><NMasc_0_o/en> \
+                    <NMasc_0_o/i><NMasc_0_s><NMasc_0_us/e><NMasc_0_us/een> \
+                    <NMasc_0_us/en><NMasc_0_us/i><NMasc_0_us/ier> \
+                    <NMasc_0_ynx/yngen><NMasc_0_x><NMasc_en_en><NMasc_es_$e> \
+                    <NMasc_es_$er><NMasc_es_as/anten~ss><NMasc_es_e> \
+                    <NMasc_es_e~ss><NMasc_es_en><NMasc_es_er><NMasc_es_es> \
+                    <NMasc_es_ex/izes><NMasc_es_s><NMasc_es_ten> \
+                    <NMasc_es_us/een~ss><NMasc_es_us/en~ss><NMasc_es_us/i~ss> \
+                    <NMasc_n_n><NMasc_ns_n><NMasc_ns_$n><NMasc_s_$><NMasc_s_$e> \
+                    <NMasc_s_$er><NMasc_s_$x><NMasc_s_0><NMasc_s_e><NMasc_s_e/i> \
+                    <NMasc_s_en><NMasc_s_er><NMasc_s_es><NMasc_s_n><NMasc_s_nen> \
                     <NMasc_s_o/en><NMasc_s_o/i><NMasc_s_s><NMasc_s_x><NNeut-Adj> \
                     <NNeut-Adj/Sg><NNeut-Inner><NNeut/Pl_0><NNeut/Sg_0> \
                     <NNeut/Sg_es><NNeut/Sg_es~ss><NNeut/Sg_s><NNeut_0_0> \
-                    <NNeut_0_ans/anzien><NNeut_0_e><NNeut_0_e~ss><NNeut_0_e/i> \
-                    <NNeut_0_en><NNeut_0_ens/enzien><NNeut_0_es><NNeut_0_nen> \
-                    <NNeut_0_o/i><NNeut_0_s><NNeut_0_us/en><NNeut_0_us/era> \
+                    <NNeut_0_a/ata><NNeut_0_a/en><NNeut_0_ans/anzien><NNeut_0_e> \
+                    <NNeut_0_e~ss><NNeut_0_e/i><NNeut_0_en><NNeut_0_en/ina> \
+                    <NNeut_0_ens/enzien><NNeut_0_es><NNeut_0_nen><NNeut_0_o/en> \
+                    <NNeut_0_o/i><NNeut_0_on/a><NNeut_0_on/en><NNeut_0_s> \
+                    <NNeut_0_um/a><NNeut_0_um/en><NNeut_0_us/en><NNeut_0_us/era> \
                     <NNeut_0_us/ora><NNeut_0_x><NNeut_ens_en><NNeut_es_$e> \
                     <NNeut_es_$er><NNeut_es_e><NNeut_es_e~ss><NNeut_es_en> \
                     <NNeut_es_er><NNeut_es_es><NNeut_es_ien><NNeut_es_s> \

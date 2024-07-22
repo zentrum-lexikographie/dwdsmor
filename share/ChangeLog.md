@@ -1,3 +1,14 @@
+2024-07-22:
+
+* add support for masculine or neuter nouns with unmarked genitive singular
+  forms and nominative plural forms ending in "-en" substituted for "-o"
+* add support for neuter nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-en" or "-a" substituted for "-um"
+* add support for neuter nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-en" or "-ata" substituted for "-a"
+* add support for neuter nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-ina" substituted for "-en"
+
 2024-07-19:
 
 * add support for "Vieh" with suppletive nominative plural form "Viecher"
