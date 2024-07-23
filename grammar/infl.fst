@@ -1,6 +1,6 @@
 % infl.fst
-% Version 6.8
-% Andreas Nolda 2024-07-22
+% Version 6.9
+% Andreas Nolda 2024-07-23
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -169,6 +169,9 @@ $NMasc/Sg_s$ = {<+NN><Masc>}:{} $NSg_s$
 
 % Unglaube, Unglaubens
 $NMasc/Sg_ns$ = {<+NN><Masc>}:{} $NSg_ns$
+
+% Gentlemen (suppletive plural)
+$NMasc/Pl_x$ = {<+NN><Masc>}:{} $NPl_x$
 
 % Revers, Revers, Revers
 $NMasc_0_x$ = {<+NN><Masc>}:{} $N_0_x$
@@ -628,6 +631,9 @@ $NNeut-Adj$ = {<+NN><Neut><Nom><Sg><St>}:{s} | \
 
 % Wut, Wut
 $NFem/Sg_0$ = {<+NN><Fem>}:{} $NSg_0$
+
+% Anchorwomen (suppletive plural)
+$NFem/Pl_x$ = {<+NN><Fem>}:{} $NPl_x$
 
 % Ananas, Ananas, Ananas
 $NFem_0_x$ = {<+NN><Fem>}:{} $N_0_x$
@@ -2197,6 +2203,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NameNoGend/Pl_x>       $NameNoGend/Pl_x$      | \
          <>:<NFem-Adj>              $NFem-Adj$             | \
          <>:<NFem-in>               $NFem-in$              | \
+         <>:<NFem/Pl_x>             $NFem/Pl_x$            | \
          <>:<NFem/Sg_0>             $NFem/Sg_0$            | \
          <>:<NFem_0_$>              $NFem_0_\$$            | \
          <>:<NFem_0_$e>             $NFem_0_\$e$           | \
@@ -2218,6 +2225,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NFem_0_s>              $NFem_0_s$             | \
          <>:<NFem_0_x>              $NFem_0_x$             | \
          <>:<NMasc-Adj>             $NMasc-Adj$            | \
+         <>:<NMasc/Pl_x>            $NMasc/Pl_x$           | \
          <>:<NMasc/Sg_0>            $NMasc/Sg_0$           | \
          <>:<NMasc/Sg_es>           $NMasc/Sg_es$          | \
          <>:<NMasc/Sg_ns>           $NMasc/Sg_ns$          | \

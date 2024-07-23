@@ -1,3 +1,7 @@
+2024-07-23:
+
+* add support for borrowed compounds with "man" and "woman"
+
 2024-07-22:
 
 * add support for masculine or neuter nouns with unmarked genitive singular

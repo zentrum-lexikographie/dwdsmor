@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.18 -->
-<!-- Andreas Nolda 2024-07-17 -->
+<!-- Version 11.19 -->
+<!-- Andreas Nolda 2024-07-23 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2061,6 +2061,60 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- lemma: borrowed compound with "man"
+           nominative plural: borrowed compound with "men" -->
+      <xsl:when test="$gender='mask.' and
+                      ends-with($lemma,'man') and
+                      ends-with($nominative-plural,'men')">
+        <xsl:variable name="class">
+          <xsl:call-template name="noun-class">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+            <xsl:with-param name="gender"
+                            select="$gender"/>
+            <xsl:with-param name="number">singular</xsl:with-param>
+            <xsl:with-param name="genitive-singular"
+                            select="$genitive-singular"/>
+            <xsl:with-param name="diminutive"
+                            select="$diminutive"/>
+            <xsl:with-param name="pronunciations"
+                            select="$pronunciations"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="string-length($class)&gt;0">
+          <xsl:call-template name="stem-entry">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+            <xsl:with-param name="lemma-index"
+                            select="$lemma-index"/>
+            <xsl:with-param name="paradigm-index"
+                            select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+            <xsl:with-param name="pos">NN</xsl:with-param>
+            <xsl:with-param name="class"
+                            select="$class"/>
+            <xsl:with-param name="etymology"
+                            select="$etymology"/>
+          </xsl:call-template>
+        </xsl:if>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="$nominative-plural"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NMasc/Pl_x</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- neuter nouns -->
       <!-- lemma: "Innere" -->
       <xsl:when test="$gender='neutr.' and
@@ -2178,6 +2232,60 @@
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NNoGend/Pl_0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- lemma: borrowed compound with "woman"
+           nominative plural: borrowed compound with "women" -->
+      <xsl:when test="$gender='fem.' and
+                      ends-with($lemma,'woman') and
+                      ends-with($nominative-plural,'women')">
+        <xsl:variable name="class">
+          <xsl:call-template name="noun-class">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+            <xsl:with-param name="gender"
+                            select="$gender"/>
+            <xsl:with-param name="number">singular</xsl:with-param>
+            <xsl:with-param name="genitive-singular"
+                            select="$genitive-singular"/>
+            <xsl:with-param name="diminutive"
+                            select="$diminutive"/>
+            <xsl:with-param name="pronunciations"
+                            select="$pronunciations"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="string-length($class)&gt;0">
+          <xsl:call-template name="stem-entry">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+            <xsl:with-param name="lemma-index"
+                            select="$lemma-index"/>
+            <xsl:with-param name="paradigm-index"
+                            select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+            <xsl:with-param name="pos">NN</xsl:with-param>
+            <xsl:with-param name="class"
+                            select="$class"/>
+            <xsl:with-param name="etymology"
+                            select="$etymology"/>
+          </xsl:call-template>
+        </xsl:if>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="$nominative-plural"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NFem/Pl_x</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
