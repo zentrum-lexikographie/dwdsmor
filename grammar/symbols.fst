@@ -164,9 +164,9 @@
                     <NMasc_s_$x><NMasc_s_0><NMasc_s_e><NMasc_s_e/i><NMasc_s_en> \
                     <NMasc_s_er><NMasc_s_es><NMasc_s_n><NMasc_s_nen> \
                     <NMasc_s_o/en><NMasc_s_o/i><NMasc_s_s><NMasc_s_x><NNeut-Adj> \
-                    <NNeut-Adj/Sg><NNeut-Inner><NNeut/Pl_0><NNeut/Sg_0> \
-                    <NNeut/Sg_es><NNeut/Sg_es~ss><NNeut/Sg_s><NNeut_0_0> \
-                    <NNeut_0_a/ata><NNeut_0_a/en><NNeut_0_ans/anzien> \
+                    <NNeut-Adj/Sg><NNeut-Inner><NNeut/Pl_0><NNeut/Pl_x> \
+                    <NNeut/Sg_0><NNeut/Sg_es><NNeut/Sg_es~ss><NNeut/Sg_s> \
+                    <NNeut_0_0><NNeut_0_a/ata><NNeut_0_a/en><NNeut_0_ans/anzien> \
                     <NNeut_0_ans/antien><NNeut_0_e><NNeut_0_e~ss><NNeut_0_e/i> \
                     <NNeut_0_en><NNeut_0_en/ina><NNeut_0_ens/enzien><NNeut_0_es> \
                     <NNeut_0_nen><NNeut_0_o/en><NNeut_0_o/i><NNeut_0_on/a> \

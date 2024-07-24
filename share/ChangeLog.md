@@ -9,6 +9,7 @@
   nominative plural forms ending in "-antien" substituted for "-ans"
 * add support for neuter nouns with genitive singular forms ending in "-s" and
   nominative plural forms ending in "-a"
+* add support for borrowed compounds of "singulare" or "plurale" with "tantum"
 
 2024-07-23:
 

@@ -775,6 +775,14 @@ Phalanx			NN Fem	Nom Pl	Phalangen
 Phalanx			NN Fem	Acc Pl	Phalangen
 Phalanx			NN Fem	Dat Pl	Phalangen
 Phalanx			NN Fem	Gen Pl	Phalangen
+Pluraletantum			NN Neut	Nom Sg	Pluraletantum
+Pluraletantum			NN Neut	Acc Sg	Pluraletantum
+Pluraletantum			NN Neut	Dat Sg	Pluraletantum
+Pluraletantum			NN Neut	Gen Sg	Pluraletantums
+Pluraletantum			NN Neut	Nom Pl	Pluraliatantum
+Pluraletantum			NN Neut	Acc Pl	Pluraliatantum
+Pluraletantum			NN Neut	Dat Pl	Pluraliatantum
+Pluraletantum			NN Neut	Gen Pl	Pluraliatantum
 Prototyp		1	NN Masc	Nom Sg	Prototyp
 Prototyp		1	NN Masc	Acc Sg	Prototyp
 Prototyp		1	NN Masc	Dat Sg	Prototyp

@@ -1835,6 +1835,49 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- lemma: borrowed compound of "singulare" or "plurale" with "tantum"
+           nominative plural: borrowed compound of "singularia" or "pluralia" with "tantum" -->
+      <xsl:when test="$gender='neutr.' and
+                      ends-with($lemma,'etantum') and
+                      $nominative-plural=replace($lemma,'etantum$','iatantum')">
+        <xsl:call-template name="noun-entry-set">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="gender"
+                          select="$gender"/>
+          <xsl:with-param name="number">singular</xsl:with-param>
+          <xsl:with-param name="genitive-singular"
+                          select="$genitive-singular"/>
+          <xsl:with-param name="diminutive"
+                          select="$diminutive"/>
+          <xsl:with-param name="pronunciations"
+                          select="$pronunciations"/>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="$nominative-plural"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NNeut/Pl_x</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- nouns with extra-paradigmatic plural -->
       <!-- lemma: compound with "Mann"
            nominative plural: compound with "Leute" -->

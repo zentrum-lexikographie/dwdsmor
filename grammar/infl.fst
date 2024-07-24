@@ -401,6 +401,9 @@ $NNeut/Sg_es~ss$ = $SS$ {<+NN><Neut>}:{} $NSg_es$
 % Abitur, Abiturs
 $NNeut/Sg_s$ = {<+NN><Neut>}:{} $NSg_s$
 
+% Pluraliatantum (suppletive plural)
+$NNeut/Pl_x$ = {<+NN><Neut>}:{} $NPl_x$
+
 % Viecher (suppletive plural)
 $NNeut/Pl_0$ = {<+NN><Neut>}:{} $NPl_0$
 
@@ -2306,6 +2309,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut-Adj/Sg>          $NNeut-Adj/Sg$         | \
          <>:<NNeut-Inner>           $NNeut-Inner$          | \
          <>:<NNeut/Pl_0>            $NNeut/Pl_0$           | \
+         <>:<NNeut/Pl_x>            $NNeut/Pl_x$           | \
          <>:<NNeut/Sg_0>            $NNeut/Sg_0$           | \
          <>:<NNeut/Sg_es>           $NNeut/Sg_es$          | \
          <>:<NNeut/Sg_es~ss>        $NNeut/Sg_es~ss$       | \
