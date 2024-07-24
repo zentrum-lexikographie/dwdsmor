@@ -19,7 +19,7 @@ $ConsNoSS$ = $Cons$               | \
              $ConsMinusS$ $Cons$* | \
              $Cons$ $ConsMinusS$ $Cons$*
 
-$SSOld$ = {ss}:ß
+$SSOld$ = {ss}:{ß}
 
 $SyllablesSS$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ ss $Vowel$ $ConsNoSS$?
 
@@ -72,7 +72,7 @@ $NoOrthOldFilterLv2$ = .*
 
 $C$ = [#char#]-[ß]
 
-$OrthCH$ = ($C$* ß:{ss})+ $C$*
+$OrthCH$ = ($C$* {ß}:{ss})+ $C$*
 
 
 % generate capitalised variants

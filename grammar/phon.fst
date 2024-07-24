@@ -30,10 +30,10 @@ $RC$ = [#char#] | <WB>
 $PhonUmlaut1$ = ({Au}:{Äu} | \
                  {au}:{äu}) $X$ <UL>:<SB> ^-> $LC$__$RC$
 
-$PhonUmlaut2$ = ({Aa}:Ä | \
-                 {aa}:ä | \
-                 {Oo}:Ö | \
-                 {oo}:ö) $X$ <UL>:<SB> ^-> $LC$__$RC$
+$PhonUmlaut2$ = ({Aa}:{Ä} | \
+                 {aa}:{ä} | \
+                 {Oo}:{Ö} | \
+                 {oo}:{ö}) $X$ <UL>:<SB> ^-> $LC$__$RC$
 
 $PhonUmlaut3$ = ([AOUaou]:[ÄÖÜäöü]) $X$ <UL>:<SB> ^-> $LC$__$RC$
 
