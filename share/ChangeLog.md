@@ -1,5 +1,6 @@
 2024-07-24:
 
+* fix regexes in n:umlaut() and n:umlaut-re()
 * add support for masculine nouns with unmarked genitive singular forms and
   nominative plural forms ending in "-oen", "-oden", or  "-oi" substituted for
   "-os"

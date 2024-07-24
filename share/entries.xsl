@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 11.19 -->
-<!-- Andreas Nolda 2024-07-23 -->
+<!-- Version 11.20 -->
+<!-- Andreas Nolda 2024-07-24 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -6997,7 +6997,7 @@
                   </xsl:when>
                   <!-- umlautable strong past stem -->
                   <!-- Caveat: "e" is considered as a full vowel. -->
-                  <xsl:when test="matches($past-stem,'([aou]|aa|oo|au)[^aeiouäöü]*$')">
+                  <xsl:when test="matches($past-stem,'(au|aa|oo|[aou])[^aeiouäöü]*$')">
                     <!-- past indicative -->
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
