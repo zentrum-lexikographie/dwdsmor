@@ -1,3 +1,13 @@
+2024-07-24:
+
+* add support for masculine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-oen", "-oden", or  "-oi" substituted for
+  "-os"
+* add support for neuter nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-antien" substituted for "-ans"
+* add support for neuter nouns with genitive singular forms ending in "-s" and
+  nominative plural forms ending in "-a"
+
 2024-07-23:
 
 * add support for borrowed compounds with "man" and "woman"
@@ -18,6 +28,8 @@
 * add support for "Vieh" with suppletive nominative plural form "Viecher"
 * add support for masculine nouns with unmarked genitive singular forms and
   nominative plural forms ending in "-yngen" substituted for "-ynx"
+* add support for neuter nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-anzien" substituted for "-ans"
 * add support for feminine nouns with unmarked genitive singular forms and
   nominative plural forms ending in "-angen" substituted for "-anx"
 * add support for feminine nouns with unmarked genitive singular forms and

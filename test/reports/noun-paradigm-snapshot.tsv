@@ -155,6 +155,14 @@ Daumen			NN Masc	Nom Pl	Daumen
 Daumen			NN Masc	Acc Pl	Daumen
 Daumen			NN Masc	Dat Pl	Daumen
 Daumen			NN Masc	Gen Pl	Daumen
+Determinans			NN Neut	Nom Sg	Determinans
+Determinans			NN Neut	Acc Sg	Determinans
+Determinans			NN Neut	Dat Sg	Determinans
+Determinans			NN Neut	Gen Sg	Determinans
+Determinans			NN Neut	Nom Pl	Determinantien
+Determinans			NN Neut	Acc Pl	Determinantien
+Determinans			NN Neut	Dat Pl	Determinantien
+Determinans			NN Neut	Gen Pl	Determinantien
 Deutsche	1	2	NN Neut	Nom Sg St	Deutsches
 Deutsche	1	2	NN Neut	Nom Sg Wk	Deutsche
 Deutsche	1	2	NN Neut	Acc Sg St	Deutsches
@@ -387,6 +395,14 @@ Gott			NN Masc	Nom Pl	Götter
 Gott			NN Masc	Acc Pl	Götter
 Gott			NN Masc	Dat Pl	Göttern
 Gott			NN Masc	Gen Pl	Götter
+Heros			NN Masc	Nom Sg	Heros
+Heros			NN Masc	Acc Sg	Heros
+Heros			NN Masc	Dat Sg	Heros
+Heros			NN Masc	Gen Sg	Heros
+Heros			NN Masc	Nom Pl	Heroen
+Heros			NN Masc	Acc Pl	Heroen
+Heros			NN Masc	Dat Pl	Heroen
+Heros			NN Masc	Gen Pl	Heroen
 Herz			NN Neut	Nom Sg	Herz
 Herz			NN Neut	Acc Sg	Herz
 Herz			NN Neut	Dat Sg	Herzen
@@ -595,6 +611,14 @@ Kosten			NN NoGend	Nom Pl	Kosten
 Kosten			NN NoGend	Acc Pl	Kosten
 Kosten			NN NoGend	Dat Pl	Kosten
 Kosten			NN NoGend	Gen Pl	Kosten
+Kustos			NN Masc	Nom Sg	Kustos
+Kustos			NN Masc	Acc Sg	Kustos
+Kustos			NN Masc	Dat Sg	Kustos
+Kustos			NN Masc	Gen Sg	Kustos
+Kustos			NN Masc	Nom Pl	Kustoden
+Kustos			NN Masc	Acc Pl	Kustoden
+Kustos			NN Masc	Dat Pl	Kustoden
+Kustos			NN Masc	Gen Pl	Kustoden
 Larynx			NN Masc	Nom Sg	Larynx
 Larynx			NN Masc	Acc Sg	Larynx
 Larynx			NN Masc	Dat Sg	Larynx
@@ -799,6 +823,14 @@ Reagens			NN Neut	Nom Pl	Reagenzien
 Reagens			NN Neut	Acc Pl	Reagenzien
 Reagens			NN Neut	Dat Pl	Reagenzien
 Reagens			NN Neut	Gen Pl	Reagenzien
+Reflexiv			NN Neut	Nom Sg	Reflexiv
+Reflexiv			NN Neut	Acc Sg	Reflexiv
+Reflexiv			NN Neut	Dat Sg	Reflexiv
+Reflexiv			NN Neut	Gen Sg	Reflexivs
+Reflexiv			NN Neut	Nom Pl	Reflexiva
+Reflexiv			NN Neut	Acc Pl	Reflexiva
+Reflexiv			NN Neut	Dat Pl	Reflexiva
+Reflexiv			NN Neut	Gen Pl	Reflexiva
 Remis			NN Neut	Nom Sg	Remis
 Remis			NN Neut	Acc Sg	Remis
 Remis			NN Neut	Dat Sg	Remis
@@ -955,6 +987,14 @@ Tochter			NN Fem	Nom Pl	Töchter
 Tochter			NN Fem	Acc Pl	Töchter
 Tochter			NN Fem	Dat Pl	Töchtern
 Tochter			NN Fem	Gen Pl	Töchter
+Topos			NN Masc	Nom Sg	Topos
+Topos			NN Masc	Acc Sg	Topos
+Topos			NN Masc	Dat Sg	Topos
+Topos			NN Masc	Gen Sg	Topos
+Topos			NN Masc	Nom Pl	Topoi
+Topos			NN Masc	Acc Pl	Topoi
+Topos			NN Masc	Dat Pl	Topoi
+Topos			NN Masc	Gen Pl	Topoi
 Unfall			NN Masc	Nom Sg	Unfall
 Unfall			NN Masc	Acc Sg	Unfall
 Unfall			NN Masc	Dat Sg	Unfall

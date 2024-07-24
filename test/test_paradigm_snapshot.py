@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-07-23
+# Andreas Nolda 2024-07-24
 
 import io
 import csv
@@ -141,6 +141,9 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Intercity",    # NMasc_0_s
                "Carabiniere",  # NMasc_0_e/i, NMasc_s_e/i
                "Espresso",     # NMasc_0_o/i, NMasc_0_s, NMasc_s_o/i, NMasc_s_s, NNeut_0_s, NNeut_s_x
+               "Heros",        # NMasc_0_os/oen
+               "Kustos",       # NMasc_0_os/oden
+               "Topos",        # NMasc_0_os/oi
                "Virus",        # NMasc_0_us/en, NNeut_0_us/en
                "Rhythmus",     # NMasc_0_us/en~ss
                "Modus",        # NMasc_0_us/i
@@ -186,6 +189,7 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Zuhause",      # NNeut_0_0
                "Nichts",       # NNeut_0_e
                "Foyer",        # NNeut_0_s
+               "Determinans",  # NNeut_0_ans/antien
                "Stimulans",    # NNeut_0_ans/anzien
                "Ricercare",    # NNeut_0_e/i, NNeut_s_e/i
                "Reagens",      # NNeut_0_ens/enzien
@@ -199,13 +203,14 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Lied",         # NNeut_es_er
                "Buch",         # NNeut_es_$er
                "Ohr",          # NNeut_es_en
+               "Indiz",        # NNeut_es_ien
                "Zeichen",      # NNeut_s_x
                "Examen",       # NNeut_s_x, NNeut_s_en/ina
                "Feuer",        # NNeut_s_0
                "Kloster",      # NNeut_s_$
+               "Reflexiv",     # NNeut_s_a
                "Signal",       # NNeut_s_e
                "Auge",         # NNeut_s_n
-               "Indiz",        # NNeut_es_ien
                "Material",     # NNeut_s_ien
                "Sofa",         # NNeut_s_s
                "Komma",        # NNeut_s_s, NNeut_s_a/ata

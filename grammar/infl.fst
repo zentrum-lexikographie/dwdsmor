@@ -1,6 +1,6 @@
 % infl.fst
-% Version 6.9
-% Andreas Nolda 2024-07-23
+% Version 6.10
+% Andreas Nolda 2024-07-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -221,6 +221,18 @@ $NMasc_0_o/en$ = {<+NN><Masc>}:{}        $NSg_0$ | \
 $NMasc_0_o/i$ = {<+NN><Masc>}:{}       $NSg_0$ | \
                 {<+NN><Masc>}:{<^pl>i} $NPl_x$
 
+% Heros, Heros, Heroen
+$NMasc_0_os/oen$ = {<+NN><Masc>}:{}         $NSg_0$ | \
+                   {<+NN><Masc>}:{<^pl>oen} $NPl_x$
+
+% Kustos, Kustos, Kustoden
+$NMasc_0_os/oden$ = {<+NN><Masc>}:{}          $NSg_0$ | \
+                    {<+NN><Masc>}:{<^pl>oden} $NPl_x$
+
+% Topos, Topos, Topoi
+$NMasc_0_os/oi$ = {<+NN><Masc>}:{}        $NSg_0$ | \
+                  {<+NN><Masc>}:{<^pl>oi} $NPl_x$
+
 % Kursus, Kursus, Kurse
 $NMasc_0_us/e$ = {<+NN><Masc>}:{}       $NSg_0$ | \
                  {<+NN><Masc>}:{<^pl>e} $NPl_0$
@@ -429,6 +441,10 @@ $NNeut_0_a/ata$ = {<+NN><Neut>}:{}   $NSg_0$ | \
 $NNeut_0_a/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
                  {<+NN><Neut>}:{<^pl>en} $NPl_x$
 
+% Determinans, Determinans, Determinantien
+$NNeut_0_ans/antien$ = {<+NN><Neut>}:{}            $NSg_0$ | \
+                       {<+NN><Neut>}:{<^pl>antien} $NPl_x$
+
 % Stimulans, Stimulans, Stimulanzien
 $NNeut_0_ans/anzien$ = {<+NN><Neut>}:{}            $NSg_0$ | \
                        {<+NN><Neut>}:{<^pl>anzien} $NPl_x$
@@ -517,6 +533,10 @@ $NNeut_s_0$ = {<+NN><Neut>}:{} $N_s_0$
 
 % Kloster, Klosters, Klöster
 $NNeut_s_\$$ = {<+NN><Neut>}:{} $N_s_\$$
+
+% Reflexiv, Reflexivs, Reflexiva
+$NNeut_s_a$ = {<+NN><Neut>}:{}  $NSg_s$ | \
+              {<+NN><Neut>}:{a} $NPl_x$
 
 % Dreieck, Dreiecks, Dreiecke
 $NNeut_s_e$ = {<+NN><Neut>}:{} $N_s_e$
@@ -2242,6 +2262,9 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_0_nen>           $NMasc_0_nen$          | \
          <>:<NMasc_0_o/en>          $NMasc_0_o/en$         | \
          <>:<NMasc_0_o/i>           $NMasc_0_o/i$          | \
+         <>:<NMasc_0_os/oden>       $NMasc_0_os/oden$      | \
+         <>:<NMasc_0_os/oen>        $NMasc_0_os/oen$       | \
+         <>:<NMasc_0_os/oi>         $NMasc_0_os/oi$        | \
          <>:<NMasc_0_s>             $NMasc_0_s$            | \
          <>:<NMasc_0_us/e>          $NMasc_0_us/e$         | \
          <>:<NMasc_0_us/een>        $NMasc_0_us/een$       | \
@@ -2295,6 +2318,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut_0_0>             $NNeut_0_0$            | \
          <>:<NNeut_0_a/ata>         $NNeut_0_a/ata$        | \
          <>:<NNeut_0_a/en>          $NNeut_0_a/en$         | \
+         <>:<NNeut_0_ans/antien>    $NNeut_0_ans/antien$   | \
          <>:<NNeut_0_ans/anzien>    $NNeut_0_ans/anzien$   | \
          <>:<NNeut_0_e>             $NNeut_0_e$            | \
          <>:<NNeut_0_e~ss>          $NNeut_0_e~ss$         | \
@@ -2328,6 +2352,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NNeut_s_$>             $NNeut_s_\$$           | \
          <>:<NNeut_s_$er>           $NNeut_s_\$er$         | \
          <>:<NNeut_s_0>             $NNeut_s_0$            | \
+         <>:<NNeut_s_a>             $NNeut_s_a$            | \
          <>:<NNeut_s_a/ata>         $NNeut_s_a/ata$        | \
          <>:<NNeut_s_a/en>          $NNeut_s_a/en$         | \
          <>:<NNeut_s_e>             $NNeut_s_e$            | \
