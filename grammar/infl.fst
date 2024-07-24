@@ -1,5 +1,5 @@
 % infl.fst
-% Version 6.10
+% Version 6.11
 % Andreas Nolda 2024-07-24
 
 % based on code from SMORLemma by Rico Sennrich
@@ -170,7 +170,7 @@ $NMasc/Sg_s$ = {<+NN><Masc>}:{} $NSg_s$
 % Unglaube, Unglaubens
 $NMasc/Sg_ns$ = {<+NN><Masc>}:{} $NSg_ns$
 
-% Gentlemen (suppletive plural)
+% Bauten (suppletive plural)
 $NMasc/Pl_x$ = {<+NN><Masc>}:{} $NPl_x$
 
 % Revers, Revers, Revers
@@ -280,10 +280,6 @@ $NMasc_es_es$ = {<+NN><Masc>}:{} $N_es_es$
 
 % Park, Park(e)s, Parks
 $NMasc_es_s$ = {<+NN><Masc>}:{} $N_es_s$
-
-% Bau, Bau(e)s, Bauten
-$NMasc_es_ten$ = {<+NN><Masc>}:{}    $NSg_es$ | \
-                 {<+NN><Masc>}:{ten} $NPl_x$
 
 % Atlas, Atlasses, Atlanten
 $NMasc_es_as/anten~ss$ = $SS$ {<+NN><Masc>}:{}           $NSg_es$ | \
@@ -2283,7 +2279,6 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_es_er>           $NMasc_es_er$          | \
          <>:<NMasc_es_es>           $NMasc_es_es$          | \
          <>:<NMasc_es_s>            $NMasc_es_s$           | \
-         <>:<NMasc_es_ten>          $NMasc_es_ten$         | \
          <>:<NMasc_es_ex/izes>      $NMasc_es_ex/izes$     | \
          <>:<NMasc_es_us/een~ss>    $NMasc_es_us/een~ss$   | \
          <>:<NMasc_es_us/en~ss>     $NMasc_es_us/en~ss$    | \

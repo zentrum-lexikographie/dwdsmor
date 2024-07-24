@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 6.10 -->
+<!-- Version 6.11 -->
 <!-- Andreas Nolda 2024-07-24 -->
 
 <xsl:stylesheet version="2.0"
@@ -259,14 +259,6 @@
   <class gender="mask."
          genitive-singular="-es"
          nominative-plural="-s">NMasc_es_s</class>
-  <!-- genitive singular: "-(e)s"
-       nominative plural: "-ten" -->
-  <class gender="mask."
-         genitive-singular="-(e)s"
-         nominative-plural="-ten">NMasc_es_ten</class>
-  <class gender="mask."
-         genitive-singular="-es"
-         nominative-plural="-ten">NMasc_es_ten</class>
   <!-- genitive singular: geminate "s" + "-es"
        nominative plural: "-anten" substituted for "-as" -->
   <class gender="mask."

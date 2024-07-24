@@ -124,9 +124,9 @@ NOUN_POS = "NN"
 
 NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Kitsch",       # NMasc/Sg_es
+               "Bau",          # NMasc/Sg_es, NMasc/Pl_x, NMasc_es_e
                "Adel",         # NMasc/Sg_s
                "Unglaube",     # NMasc/Sg_ns
-               "Gentleman",    # NMasc/Sg_s, NMasc/Pl_x
                "Blues",        # NMasc_0_x
                "Dezember",     # NMasc_0_0, NMasc_s_0
                "Januar",       # NMasc_0_e, NMasc_s_e
@@ -158,7 +158,6 @@ NOUN_LEMMAS = ["Jazz",         # NMasc/Sg_0
                "Schmerz",      # NMasc_es_en
                "Crash",        # NMasc_es_es, NMasc_es_s
                "Tennismatch",  # NMasc_es_es, NMasc_es_s, NNeut_es_es ...
-               "Bau",          # NMasc_es_ten, NMasc_es_e
                "Daumen",       # NMasc_s_x
                "Ski",          # NMasc_s_x, NMasc_s_er
                "Garten",       # NMasc_s_$x

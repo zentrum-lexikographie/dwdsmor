@@ -4,6 +4,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 * add inflection classes `NMasc_0_os/oen`, `NMasc_0_os/oden`, `NMasc_0_os/oi`,
   `NNeut_0_ans/antien`, and `NNeut_s_a`
+* remove inflection class `NMasc_es_ten`
 
 2024-07-23:
 

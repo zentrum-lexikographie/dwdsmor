@@ -500,9 +500,9 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="number">singular</xsl:with-param>
                 <xsl:with-param name="genitive-singular"
                                 select="normalize-space(dwds:Genitiv)"/>
-                <xsl:with-param name="number">singular</xsl:with-param>
                 <xsl:with-param name="diminutive"
                                 select="$diminutive"/>
                 <xsl:with-param name="pronunciations"
@@ -576,9 +576,9 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="number">singular</xsl:with-param>
                 <xsl:with-param name="genitive-singular"
                                 select="normalize-space(dwds:Genitiv)"/>
-                <xsl:with-param name="number">singular</xsl:with-param>
                 <xsl:with-param name="diminutive"
                                 select="$diminutive"/>
                 <xsl:with-param name="pronunciations"

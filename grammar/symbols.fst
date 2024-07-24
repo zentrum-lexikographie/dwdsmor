@@ -1,5 +1,5 @@
 % symbols.fst
-% Version 7.6
+% Version 7.7
 % Andreas Nolda 2024-07-24
 
 % based on code from SMORLemma by Rico Sennrich
@@ -158,11 +158,11 @@
                     <NMasc_0_ynx/yngen><NMasc_0_x><NMasc_en_en><NMasc_es_$e> \
                     <NMasc_es_$er><NMasc_es_as/anten~ss><NMasc_es_e> \
                     <NMasc_es_e~ss><NMasc_es_en><NMasc_es_er><NMasc_es_es> \
-                    <NMasc_es_ex/izes><NMasc_es_s><NMasc_es_ten> \
-                    <NMasc_es_us/een~ss><NMasc_es_us/en~ss><NMasc_es_us/i~ss> \
-                    <NMasc_n_n><NMasc_ns_n><NMasc_ns_$n><NMasc_s_$><NMasc_s_$e> \
-                    <NMasc_s_$er><NMasc_s_$x><NMasc_s_0><NMasc_s_e><NMasc_s_e/i> \
-                    <NMasc_s_en><NMasc_s_er><NMasc_s_es><NMasc_s_n><NMasc_s_nen> \
+                    <NMasc_es_ex/izes><NMasc_es_s><NMasc_es_us/een~ss> \
+                    <NMasc_es_us/en~ss><NMasc_es_us/i~ss><NMasc_n_n><NMasc_ns_n> \
+                    <NMasc_ns_$n><NMasc_s_$><NMasc_s_$e><NMasc_s_$er> \
+                    <NMasc_s_$x><NMasc_s_0><NMasc_s_e><NMasc_s_e/i><NMasc_s_en> \
+                    <NMasc_s_er><NMasc_s_es><NMasc_s_n><NMasc_s_nen> \
                     <NMasc_s_o/en><NMasc_s_o/i><NMasc_s_s><NMasc_s_x><NNeut-Adj> \
                     <NNeut-Adj/Sg><NNeut-Inner><NNeut/Pl_0><NNeut/Sg_0> \
                     <NNeut/Sg_es><NNeut/Sg_es~ss><NNeut/Sg_s><NNeut_0_0> \
