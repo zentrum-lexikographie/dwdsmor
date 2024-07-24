@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 12.0 -->
+<!-- Version 12.1 -->
 <!-- Andreas Nolda 2024-07-24 -->
 
 <xsl:stylesheet version="2.0"
@@ -6079,8 +6079,10 @@
                                   select="$etymology"/>
                 </xsl:call-template>
               </xsl:when>
-              <!-- "tun" -->
-              <xsl:when test="$lemma-without-particle='tun'">
+              <!-- "tun" and related verbs -->
+              <xsl:when test="$lemma-without-particle='tun' or
+                              $lemma-without-particle='betun' or
+                              $lemma-without-particle='vertun'">
                 <xsl:call-template name="verb-stem-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
@@ -7008,8 +7010,10 @@
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- "tun" -->
-                  <xsl:when test="$lemma-without-particle='tun'">
+                  <!-- "tun" and related verbs -->
+                  <xsl:when test="$lemma-without-particle='tun' or
+                                  $lemma-without-particle='betun' or
+                                  $lemma-without-particle='vertun'">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -7343,8 +7347,10 @@
               <!-- strong past participle -->
               <xsl:otherwise>
                 <xsl:choose>
-                  <!-- "tun" -->
-                  <xsl:when test="$lemma-without-particle='tun'">
+                  <!-- "tun" and related verbs -->
+                  <xsl:when test="$lemma-without-particle='tun' or
+                                  $lemma-without-particle='betun' or
+                                  $lemma-without-particle='vertun'">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>

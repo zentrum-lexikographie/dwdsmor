@@ -2,6 +2,7 @@
 
 * fix regexes in n:umlaut() and n:umlaut-re()
 * refactor processing of nouns with suppletive plural forms
+* add support for irregular verbs "vertun" and "betun"
 * add support for masculine nouns with unmarked genitive singular forms and
   nominative plural forms ending in "-oen", "-oden", or  "-oi" substituted for
   "-os"
