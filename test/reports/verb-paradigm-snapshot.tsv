@@ -1120,7 +1120,7 @@ gelten			V haben	1 Pl Subj Perf	haben gegolten
 gelten			V haben	2 Pl Subj Perf	habet gegolten
 gelten			V haben	3 Pl Subj Perf	haben gegolten
 gelten			V haben	1 Sg Ind Past	galt
-gelten			V haben	2 Sg Ind Past	galtest
+gelten			V haben	2 Sg Ind Past	galtest, galtst
 gelten			V haben	3 Sg Ind Past	galt
 gelten			V haben	1 Pl Ind Past	galten
 gelten			V haben	2 Pl Ind Past	galtet
@@ -2600,7 +2600,7 @@ treten			V haben	1 Pl Subj Perf	haben getreten
 treten			V haben	2 Pl Subj Perf	habet getreten
 treten			V haben	3 Pl Subj Perf	haben getreten
 treten			V haben	1 Sg Ind Past	trat
-treten			V haben	2 Sg Ind Past	tratest
+treten			V haben	2 Sg Ind Past	tratest, tratst
 treten			V haben	3 Sg Ind Past	trat
 treten			V haben	1 Pl Ind Past	traten
 treten			V haben	2 Pl Ind Past	tratet
@@ -2678,7 +2678,7 @@ treten			V sein	1 Pl Subj Perf	seien getreten
 treten			V sein	2 Pl Subj Perf	seiet getreten
 treten			V sein	3 Pl Subj Perf	seien getreten
 treten			V sein	1 Sg Ind Past	trat
-treten			V sein	2 Sg Ind Past	tratest
+treten			V sein	2 Sg Ind Past	tratest, tratst
 treten			V sein	3 Sg Ind Past	trat
 treten			V sein	1 Pl Ind Past	traten
 treten			V sein	2 Pl Ind Past	tratet
@@ -2756,7 +2756,7 @@ tun			V haben	1 Pl Subj Perf	haben getan
 tun			V haben	2 Pl Subj Perf	habet getan
 tun			V haben	3 Pl Subj Perf	haben getan
 tun			V haben	1 Sg Ind Past	tat
-tun			V haben	2 Sg Ind Past	tatest
+tun			V haben	2 Sg Ind Past	tatest, tatst
 tun			V haben	3 Sg Ind Past	tat
 tun			V haben	1 Pl Ind Past	taten
 tun			V haben	2 Pl Ind Past	tatet
@@ -2834,7 +2834,7 @@ verhalten	1		V haben	1 Pl Subj Perf	haben verhalten
 verhalten	1		V haben	2 Pl Subj Perf	habet verhalten
 verhalten	1		V haben	3 Pl Subj Perf	haben verhalten
 verhalten	1		V haben	1 Sg Ind Past	verhielt
-verhalten	1		V haben	2 Sg Ind Past	verhieltest
+verhalten	1		V haben	2 Sg Ind Past	verhieltest, verhieltst
 verhalten	1		V haben	3 Sg Ind Past	verhielt
 verhalten	1		V haben	1 Pl Ind Past	verhielten
 verhalten	1		V haben	2 Pl Ind Past	verhieltet

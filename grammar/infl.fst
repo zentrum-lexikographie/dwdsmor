@@ -1,6 +1,6 @@
 % infl.fst
-% Version 6.11
-% Andreas Nolda 2024-07-24
+% Version 6.12
+% Andreas Nolda 2024-07-25
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1888,9 +1888,10 @@ $VPastIndIrreg$ = {<+V><1><Sg><Past><Ind>}:{<SB>e}   | \
                   {<+V><3><Pl><Past><Ind>}:{<SB>en}
 
 % fuhr; ritt; fand
-% fuhrst; rittest; fandest
+% fuhrst; ritt(e)st; fand(e)st
 $VPastIndStr$ = {<+V><1><Sg><Past><Ind>}:{<SB>}      | \
                 {<+V><2><Sg><Past><Ind>}:{<INS-E>st} | \
+                {<+V><2><Sg><Past><Ind>}:{<SB>st}    | \ % cf. Duden-Grammatik (2016: § 642)
                 {<+V><3><Sg><Past><Ind>}:{<SB>}      | \
                 {<+V><1><Pl><Past><Ind>}:{<SB>en}    | \
                 {<+V><2><Pl><Past><Ind>}:{<INS-E>t}  | \

@@ -3,6 +3,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 2024-07-25:
 
 * add support for verbs mit double particles
+* add alternate 2 Sg Ind Past suffix to `VPastIndStr` inflection class
 
 2024-07-24:
 
