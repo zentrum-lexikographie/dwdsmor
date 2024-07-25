@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2024-03-21
+# Andreas Nolda 2024-07-25
 
 import sys
 import argparse
@@ -18,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 9.3
+version = 10.0
 
 
 BASEDIR = path.dirname(__file__)
@@ -342,10 +342,28 @@ def add_particle_verb_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, complex_forms)
 
 
+def add_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                   lexcat, parcat, forms, particle, particle_2):
+    if forms:
+        complex_forms = [form[len(particle_2 + particle):] + " " + particle_2 + " " + particle
+                         for form in forms]
+        add_forms(formdict, lemma_index, paradigm_index,
+                  lexcat, parcat, complex_forms)
+
+
 def add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                     lexcat, parcat, forms, particle, tag):
     if forms:
         complex_forms = [form[len(particle):] + " " + particle + " (" + tag + ")"
+                         for form in forms]
+        add_additional_forms(formdict, lemma_index, paradigm_index,
+                             lexcat, parcat, complex_forms)
+
+
+def add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                           lexcat, parcat, forms, particle, particle_2, tag):
+    if forms:
+        complex_forms = [form[len(particle_2 + particle):] + " " + particle_2 + " " + particle + " (" + tag + ")"
                          for form in forms]
         add_additional_forms(formdict, lemma_index, paradigm_index,
                              lexcat, parcat, complex_forms)
@@ -360,10 +378,28 @@ def add_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, complex_forms)
 
 
+def add_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                       lexcat, parcat, forms, particle, particle_2):
+    if forms:
+        complex_forms = [form[len(particle_2 + particle):] + " " + particle_2 + " " + particle
+                         for form in forms]
+        add_forms(formdict, lemma_index, paradigm_index,
+                  lexcat, parcat, complex_forms)
+
+
 def add_special_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                         lexcat, parcat, forms, particle, tag):
     if forms:
         complex_forms = [form[len(particle):] + " " + particle + " (" + tag + ")"
+                         for form in forms]
+        add_additional_forms(formdict, lemma_index, paradigm_index,
+                             lexcat, parcat, complex_forms)
+
+
+def add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                               lexcat, parcat, forms, particle, particle_2, tag):
+    if forms:
+        complex_forms = [form[len(particle_2 + particle):] + " " + particle_2 + " " + particle + " (" + tag + ")"
                          for form in forms]
         add_additional_forms(formdict, lemma_index, paradigm_index,
                              lexcat, parcat, complex_forms)
@@ -995,7 +1031,10 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
 def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                       pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
-    particle = seg[:seg.find(PARTICLE_BOUNDARY)] if PARTICLE_BOUNDARY in seg else ""
+    seg_list = seg.split(PARTICLE_BOUNDARY)
+    seg_count = seg.count(PARTICLE_BOUNDARY)
+    particle = seg_list[1] if seg_count == 2 else seg_list[0] if seg_count == 1 else ""
+    particle_2 = seg_list[0] if seg_count == 2 else ""
     for auxiliary in AUXILIARIES:
         categorisation = ["PPast",
                           auxiliary]
@@ -1202,7 +1241,31 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                                       number,
                                       tense,
                                       mood]
-                    if particle:
+                    if particle and particle_2:
+                        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+                                               pos, categorisation)
+                        add_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                                       lexcat, parcat, forms, particle, particle_2)
+                        if nonst:
+                            # no such forms
+                            pass
+                        if old:
+                            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                               pos, categorisation, OLD)
+                            add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                                                   lexcat, parcat, old_forms, particle, particle_2, TAG_OLD)
+                        if oldorth:
+                            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                                   pos, categorisation, OLDORTH)
+                            add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                                                   lexcat, parcat, oldorth_forms, particle, particle_2, TAG_OLDORTH)
+                        if ch:
+                            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                              pos, categorisation, CH)
+                            add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                                                   lexcat, parcat, ch_forms, particle, particle_2, TAG_CH)
+
+                    elif particle:
                         forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
                                                pos, categorisation)
                         add_particle_verb_forms(formdict, lemma_index, paradigm_index,
@@ -1256,7 +1319,31 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                                 mood = "Imp")
                 categorisation = ["Imp",
                                   number]
-                if particle:
+                if particle and particle_2:
+                    forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+                                           pos, categorisation)
+                    add_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                                       lexcat, parcat, forms, particle, particle_2)
+                    if nonst:
+                        # no such forms
+                        pass
+                    if old:
+                        old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                           pos, categorisation, OLD)
+                        add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                                                   lexcat, parcat, old_forms, particle, particle_2, TAG_OLD)
+                    if oldorth:
+                        oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                               pos, categorisation, OLDORTH)
+                        add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                                                   lexcat, parcat, oldorth_forms, particle, particle_2, TAG_OLDORTH)
+                    if ch:
+                        ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                          pos, categorisation, CH)
+                        add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                                                   lexcat, parcat, ch_forms, particle, particle_2, TAG_CH)
+
+                elif particle:
                     forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
                                            pos, categorisation)
                     add_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,

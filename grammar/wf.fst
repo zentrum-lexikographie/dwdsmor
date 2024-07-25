@@ -1,6 +1,6 @@
 % wf.fst
-% Version 7.3
-% Andreas Nolda 2023-11-28
+% Version 7.4
+% Andreas Nolda 2024-07-25
 
 #include "symbols.fst"
 
@@ -10,7 +10,7 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# #boundary-trigg
 % context
 
 $C$ = .
-$C$ = $C$-[#entry-type# <CB><HB><DB>]
+$C$ = $C$-[#entry-type# <CB><VB><HB><DB>]
 
 $O$ = [#orth-trigger#]
 
@@ -18,8 +18,11 @@ $O$ = [#orth-trigger#]
 % derivation restrictions
 
 % restrict pref(un) to adjectival and nominal bases
-$DerRestrPOSPref-un$ =       <Prefix> un <DB>       <Stem> $C$* <ADJ> $C$*
-$DerRestrPOSPref-Un$ = <^UC> <Prefix> un <DB> <^DC> <Stem> $C$* <NN>  $C$*
+$DerRestrPOSPref-un$ =       <Prefix> un <DB>       <Stem> ($C$* <VB>)? $C$* <ADJ> $C$*
+$DerRestrPOSPref-Un$ = <^UC> <Prefix> un <DB> <^DC> <Stem> ($C$* <VB>)? $C$* <NN>  $C$*
+
+% restrict part(...) to verbal bases
+$DerRestrPOSPart-mit$      = <Prefix> mit      <VB> <Stem> ($C$* <VB>)? $C$* <V> $C$*
 
 % restrict part(...) to verbal bases without particle
 $DerRestrPOSPart-ab$       = <Prefix> ab       <VB> <Stem> $C$* <V> $C$*
@@ -32,7 +35,6 @@ $DerRestrPOSPart-ein$      = <Prefix> ein      <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPart-gegen$    = <Prefix> gegen    <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPart-hinter$   = <Prefix> hinter   <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPart-los$      = <Prefix> los      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-mit$      = <Prefix> mit      <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPart-nach$     = <Prefix> nach     <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPart-ueber$    = <Prefix> über     <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPart-um$       = <Prefix> um       <VB> <Stem> $C$* <V> $C$*
@@ -54,7 +56,7 @@ $DerRestrPOSSuff-chen$ = $O$* <Stem> $C$* <NN> $C$* <DB> <Suffix> chen $C$*
 $DerRestrPOSSuff-lein$ = $O$* <Stem> $C$* <NN> $C$* <DB> <Suffix> lein $C$*
 
 % exclude pref(un) for abbreviated bases
-$DerRestrAbbrPref-un$ = !($O$* <Prefix> un <DB> $O$* <Stem> <Abbr> $C$*)
+$DerRestrAbbrPref-un$ = !($O$* <Prefix> un <DB> $O$* <Stem> <Abbr> ($C$* <VB>)? $C$*)
 
 % exclude suff(e), suff(er), suff(chen), and suff(lein) for abbreviated bases (?)
 $DerRestrAbbrSuff-e$    = !($O$* <Stem> <Abbr> $C$* <DB> <Suffix> e    $C$*)

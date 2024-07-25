@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 12.1 -->
-<!-- Andreas Nolda 2024-07-24 -->
+<!-- Version 13.0 -->
+<!-- Andreas Nolda 2024-07-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -148,6 +148,7 @@
   <xsl:param name="abbreviation"/>
   <xsl:param name="participle"/>
   <xsl:param name="particle"/>
+  <xsl:param name="particle2"/>
   <xsl:param name="class"/>
   <xsl:param name="auxiliary"/>
   <xsl:param name="etymology"/>
@@ -168,6 +169,10 @@
     <xsl:text>&lt;Abbr&gt;</xsl:text>
   </xsl:if>
   <xsl:if test="string-length($particle)&gt;0">
+    <xsl:if test="string-length($particle2)&gt;0">
+      <xsl:value-of select="$particle2"/>
+      <xsl:text>&lt;VB&gt;</xsl:text>
+    </xsl:if>
     <xsl:value-of select="$particle"/>
     <xsl:text>&lt;VB&gt;</xsl:text>
   </xsl:if>
@@ -5643,16 +5648,26 @@
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:variable name="particle"
-                      select="substring-after($present,' ')"/>
+        <xsl:variable name="particle">
+          <xsl:choose>
+            <xsl:when test="count(tokenize($present,'&#x20;'))=3">
+              <xsl:value-of select="substring-after(substring-after($present,' '),' ')"/>
+            </xsl:when>
+            <xsl:when test="count(tokenize($present,'&#x20;'))&lt;3">
+              <xsl:value-of select="substring-after($present,' ')"/>
+            </xsl:when>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="particle2"
+                      select="substring-before(substring-after($present,' '),' ')"/>
         <xsl:variable name="lemma-without-particle"
-                      select="replace($lemma,concat('^',$particle,'(.+)$'),'$1')"/>
+                      select="replace($lemma,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
         <xsl:variable name="present-without-particle"
-                      select="replace($present,concat('^(.+?)( ',$particle,')?$'),'$1')"/>
+                      select="replace($present,concat('^(.+?)(( ',$particle2,')? ',$particle,')?$'),'$1')"/>
         <xsl:variable name="past-without-particle"
-                      select="replace($past,concat('^(.+?)( ',$particle,')?$'),'$1')"/>
+                      select="replace($past,concat('^(.+?)(( ',$particle2,')? ',$particle,')?$'),'$1')"/>
         <xsl:variable name="participle-without-particle"
-                      select="replace($participle,concat('^',$particle,'(.+)$'),'$1')"/>
+                      select="replace($participle,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
         <xsl:variable name="stem">
           <xsl:call-template name="verb-stem">
             <xsl:with-param name="lemma"
@@ -5733,6 +5748,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVReg</xsl:with-param>
                   <xsl:with-param name="auxiliary"
                                   select="$auxiliary"/>
@@ -5754,6 +5771,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -5776,6 +5795,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVReg</xsl:with-param>
                   <xsl:with-param name="auxiliary"
                                   select="$auxiliary"/>
@@ -5813,6 +5834,8 @@
                                     select="$participle-without-particle"/>
                     <xsl:with-param name="particle"
                                     select="$particle"/>
+                    <xsl:with-param name="particle2"
+                                    select="$particle2"/>
                     <xsl:with-param name="class"
                                     select="$class"/>
                     <xsl:with-param name="auxiliary"
@@ -5845,6 +5868,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres1_Imp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -5864,6 +5889,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres2</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -5886,6 +5913,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VInf-n</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -5904,6 +5933,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres1SgInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -5923,6 +5954,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres2SgInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -5942,6 +5975,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres3SgInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -5960,6 +5995,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres13PlInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -5979,6 +6016,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres2PlInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -5998,6 +6037,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPresSubjSg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6017,6 +6058,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres2SgSubj</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6036,6 +6079,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPresSubjPl</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6055,6 +6100,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAImpSg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6074,6 +6121,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAImpPl</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6098,6 +6147,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VInf-n</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6117,6 +6168,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres1SgInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6136,6 +6189,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres2SgInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6155,6 +6210,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres3SgInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6174,6 +6231,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres13PlInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6193,6 +6252,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres2PlInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6212,6 +6273,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VPresSubj</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6231,6 +6294,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAImpSg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6250,6 +6315,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAImpPl</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6272,6 +6339,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VInf-en</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6291,6 +6360,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres1SgInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6310,6 +6381,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres2SgInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6329,6 +6402,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres3SgInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6348,6 +6423,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres13PlInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6367,6 +6444,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAPres2PlInd</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6386,6 +6465,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VPresSubj</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6405,6 +6486,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAImpSg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6424,6 +6507,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VAImpPl</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6454,6 +6539,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VMPresSg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6473,6 +6560,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VMPresPl</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6495,6 +6584,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres1</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6514,6 +6605,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres2_Imp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6535,6 +6628,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">AbbrVImp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6557,6 +6652,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6581,6 +6678,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres1</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6600,6 +6699,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres2t_Imp0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6622,6 +6723,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres1</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6641,6 +6744,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres2_Imp0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6665,6 +6770,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres1_Imp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6684,6 +6791,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres2</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6707,6 +6816,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres1_Imp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6726,6 +6837,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres2t</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6748,6 +6861,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres1_Imp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6767,6 +6882,8 @@
                                   select="$participle-without-particle"/>
                   <xsl:with-param name="particle"
                                   select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
                   <xsl:with-param name="class">VVPres2</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6798,6 +6915,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -6820,6 +6939,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPastIndReg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -6845,6 +6966,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -6873,6 +6996,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -6895,6 +7020,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -6918,6 +7045,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -6940,6 +7069,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPastSubjReg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -6967,6 +7098,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VPastIndStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -6986,6 +7119,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7005,6 +7140,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VAPastSubj2</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7029,6 +7166,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VPastIndStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7048,6 +7187,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7071,6 +7212,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VPastIndIrreg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7090,6 +7233,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7112,6 +7257,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VAPastIndSg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7131,6 +7278,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VAPastIndPl</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7150,6 +7299,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7174,6 +7325,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPastIndStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7197,6 +7350,8 @@
                                         select="$participle-without-particle"/>
                         <xsl:with-param name="particle"
                                         select="$particle"/>
+                        <xsl:with-param name="particle2"
+                                        select="$particle2"/>
                         <xsl:with-param name="class">VVPastSubjStr</xsl:with-param>
                         <xsl:with-param name="etymology"
                                         select="$etymology"/>
@@ -7225,6 +7380,8 @@
                                         select="$participle-without-particle"/>
                         <xsl:with-param name="particle"
                                         select="$particle"/>
+                        <xsl:with-param name="particle2"
+                                        select="$particle2"/>
                         <xsl:with-param name="class">VVPastSubjStr</xsl:with-param>
                         <xsl:with-param name="etymology"
                                         select="$etymology"/>
@@ -7256,6 +7413,8 @@
                                         select="$participle-without-particle"/>
                         <xsl:with-param name="particle"
                                         select="$particle"/>
+                        <xsl:with-param name="particle2"
+                                        select="$particle2"/>
                         <xsl:with-param name="class">VVPastSubjOld</xsl:with-param>
                         <xsl:with-param name="etymology"
                                         select="$etymology"/>
@@ -7279,6 +7438,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPastStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -7311,6 +7472,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPP-t</xsl:with-param>
                       <xsl:with-param name="auxiliary"
                                       select="$auxiliary"/>
@@ -7335,6 +7498,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPP-t</xsl:with-param>
                       <xsl:with-param name="auxiliary"
                                       select="$auxiliary"/>
@@ -7366,6 +7531,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VPPast</xsl:with-param>
                       <xsl:with-param name="auxiliary"
                                       select="$auxiliary"/>
@@ -7390,6 +7557,8 @@
                                       select="$participle-without-particle"/>
                       <xsl:with-param name="particle"
                                       select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
                       <xsl:with-param name="class">VVPP-en</xsl:with-param>
                       <xsl:with-param name="auxiliary"
                                       select="$auxiliary"/>
@@ -7474,12 +7643,22 @@
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
-    <xsl:variable name="particle"
-                  select="substring-after($present,' ')"/>
+    <xsl:variable name="particle">
+      <xsl:choose>
+        <xsl:when test="count(tokenize($present,'&#x20;'))=3">
+          <xsl:value-of select="substring-after(substring-after($present,' '),' ')"/>
+        </xsl:when>
+        <xsl:when test="count(tokenize($present,'&#x20;'))&lt;3">
+          <xsl:value-of select="substring-after($present,' ')"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="particle2"
+                  select="substring-before(substring-after($present,' '),' ')"/>
     <xsl:variable name="lemma-without-particle"
-                  select="replace($lemma,concat('^',$particle,'(.+)$'),'$1')"/>
+                  select="replace($lemma,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
     <xsl:variable name="participle-without-particle"
-                  select="replace($participle,concat('^',$particle,'(.+)$'),'$1')"/>
+                  select="replace($participle,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
     <xsl:variable name="stem">
       <xsl:call-template name="verb-stem">
         <xsl:with-param name="lemma"
@@ -7523,6 +7702,8 @@
                           select="$participle-without-particle"/>
           <xsl:with-param name="particle"
                           select="$particle"/>
+          <xsl:with-param name="particle2"
+                          select="$particle2"/>
           <xsl:with-param name="class">VVPP-t</xsl:with-param>
           <xsl:with-param name="auxiliary"
                           select="$auxiliary"/>
@@ -7547,6 +7728,8 @@
                           select="$participle-without-particle"/>
           <xsl:with-param name="particle"
                           select="$particle"/>
+          <xsl:with-param name="particle2"
+                          select="$particle2"/>
           <xsl:with-param name="class">VVPP-en</xsl:with-param>
           <xsl:with-param name="auxiliary"
                           select="$auxiliary"/>

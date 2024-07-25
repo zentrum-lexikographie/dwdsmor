@@ -1,3 +1,7 @@
+2024-07-25:
+
+* add support for verbs with double particles
+
 2024-07-24:
 
 * fix regexes in n:umlaut() and n:umlaut-re()

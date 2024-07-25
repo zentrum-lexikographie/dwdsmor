@@ -1,6 +1,6 @@
 % markers.fst
-% Version 7.6
-% Andreas Nolda 2024-03-15
+% Version 8.0
+% Andreas Nolda 2024-07-25
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -24,8 +24,8 @@ $C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
 
 $MarkerGe$ = $C$* | \
              $C$* <ge>:<> {<>}:{ge<PB>} $C$* <^pp>:<> $C$* | \
-             $C$* <ge>:<> $C$* | \
-             $C$* $C$* <^pp>:<> $C$*
+             $C$* <ge>:<>               $C$* | \
+             $C$*                       $C$* <^pp>:<> $C$*
 
 
 % process <zu> marker
@@ -33,10 +33,10 @@ $MarkerGe$ = $C$* | \
 $C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
        #boundary-trigger# <UL><^imp>]
 
-$C$ = $C$ | <zu>:<>
+$C$ = $C$-[<VB>] | <zu>:<>
 
-$MarkerZu$ = $C$* | \
-             $C$* <VB> {<>}:{zu<PB>} $C$* <^zz>:<> $C$*
+$MarkerZu$ = (($C$* <VB>)? $C$* <VB>)?             $C$* | \
+              ($C$* <VB>)? $C$* <VB> {<>}:{zu<PB>} $C$* <^zz>:<> $C$*
 
 
 % process <^imp> marker
@@ -47,12 +47,12 @@ $C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
 $C$ = $C$-[<VB>]
 
 % exclude imperative forms of particle verbs, which do not occur as a single token
-$MarkerImp$ =              $C$* <^imp>:<> $C$* | \
-              ($C$* <VB>)? $C$*
+$MarkerImp$ =                           $C$* <^imp>:<> $C$* | \
+              (($C$* <VB>)? $C$* <VB>)? $C$*
 
 % include imperative forms of particle verbs for paradigm generation
-$MarkerImpVB$ = ($C$* <VB>)? $C$* <^imp>:<> $C$* | \
-                ($C$* <VB>)?                $C$*
+$MarkerImpVB$ = (($C$* <VB>)? $C$* <VB>)? $C$* <^imp>:<> $C$* | \
+                (($C$* <VB>)? $C$* <VB>)?                $C$*
 
 
 % process morpheme-boundary triggers

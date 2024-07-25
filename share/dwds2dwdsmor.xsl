@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.17 -->
-<!-- Andreas Nolda 2024-07-17 -->
+<!-- Version 14.18 -->
+<!-- Andreas Nolda 2024-07-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -105,13 +105,13 @@
                                                    self::dwds:Superlativ[not(tokenize(normalize-space(.),'&#x20;')[1]='am')]
                                                                         [count(tokenize(normalize-space(.),'&#x20;'))=1] or
                                                    self::dwds:Praesens[tokenize(normalize-space(.),'&#x20;')[2]='sich']
-                                                                      [count(tokenize(normalize-space(.),'&#x20;'))&lt;4] or
+                                                                      [count(tokenize(normalize-space(.),'&#x20;'))&lt;5] or
                                                    self::dwds:Praesens[not(tokenize(normalize-space(.),'&#x20;')[2]='sich')]
-                                                                      [count(tokenize(normalize-space(.),'&#x20;'))&lt;3] or
+                                                                      [count(tokenize(normalize-space(.),'&#x20;'))&lt;4] or
                                                    self::dwds:Praeteritum[tokenize(normalize-space(.),'&#x20;')[2]='sich']
-                                                                         [count(tokenize(normalize-space(.),'&#x20;'))&lt;4] or
+                                                                         [count(tokenize(normalize-space(.),'&#x20;'))&lt;5] or
                                                    self::dwds:Praeteritum[not(tokenize(normalize-space(.),'&#x20;')[2]='sich')]
-                                                                         [count(tokenize(normalize-space(.),'&#x20;'))&lt;3] or
+                                                                         [count(tokenize(normalize-space(.),'&#x20;'))&lt;4] or
                                                    self::dwds:Partizip_II[count(tokenize(normalize-space(.),'&#x20;'))=1] or
                                                    self::dwds:Auxiliar or
                                                    self::dwds:Funktionspraeferenz or
