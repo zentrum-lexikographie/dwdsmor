@@ -1,3 +1,7 @@
+2024-07-26:
+
+* specify stem for nominalised adjectives (without final "e")
+
 2024-07-25:
 
 * add support for verbs with double particles

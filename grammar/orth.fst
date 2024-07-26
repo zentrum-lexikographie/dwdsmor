@@ -1,6 +1,6 @@
 % orth.fst
-% Version 4.0
-% Andreas Nolda 2024-03-19
+% Version 5.0
+% Andreas Nolda 2024-07-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -29,14 +29,19 @@ $SyllablesNoSSOld$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $Vowel$ $Cons$* | \
                      $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $ConsNoSS$? % ...
 
 $Syllables$ = $SyllablesNoSSOld$ | \
-              $SyllablesSS$ | \
+              $SyllablesSS$      | \
               $SyllablesSSOld$
 
 $SyllableInflPref$ = ge <PB>
 
-$SyllableSSInflSuff$ = t (e[mnrst]?)?
+$SyllableSSInflSuffAdj$ = <SB>? t (<SB> e(r | st))? (<SB> e[mnrs]?)?
+$SyllableSSInflSuffV$   = <SB>  t      (e(n | s?t)?)?
 
-$SyllableInflSuff$ = <SB> $Vowel$? $Cons$* | \
+$SyllableSSInflSuff$ = $SyllableSSInflSuffAdj$ | \
+                       $SyllableSSInflSuffV$
+
+$SyllableInflSuff$ = <SB> $Vowel$ (<SB>? $Cons$+ (<SB> $Cons$+)*)? | \
+                     <SB>                $Cons$+ (<SB> $Cons$+)*   | \
                      $SyllableSSInflSuff$
 
 $SyllablesSSOldInfl$ = $SyllableInflPref$? $SyllablesSSOld$ $SyllableSSInflSuff$?
@@ -49,14 +54,14 @@ $WordSSOld$ = anlä$SSOld$lich | \
 
 $B$ = [#boundary-trigger# \-]
 
-$BNoFB$ = $B$-[<SB>]
+$BNoSB$ = $B$-[<SB>]
 
 $OrthOld$ = (($B$+     $Syllables$)*                   \
              ($B$+     $SyllablesSSOld$)               \
              ($B$+     $Syllables$)*                   \
-             ($BNoFB$+ $SyllablesNoSSOldInfl$)) $B$+ | \
+             ($BNoSB$+ $SyllablesNoSSOldInfl$)) $B$+ | \
             (($B$+     $Syllables$)*                   \
-             ($BNoFB$+ $SyllablesSSOldInfl$))   $B$+ | \
+             ($BNoSB$+ $SyllablesSSOldInfl$))   $B$+ | \
             ($B$+      $WordSSOld$) $B$+
 
 

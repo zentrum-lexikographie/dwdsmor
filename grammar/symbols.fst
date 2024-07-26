@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 7.7
-% Andreas Nolda 2024-07-24
+% Version 8.0
+% Andreas Nolda 2024-07-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -57,13 +57,14 @@
 #char# = #uppercase# #lowercase# #greek# #num# #sup# #sub# #frac# #symbol# \
          #punct#
 
-#orth-trigger# = <^DC><^UC>
-
-#ss-trigger# = <SS>
-
-#phon-trigger# = <INS-E><^Ax><^Px><^Gen><^Del><^pl>
-
 #surface-trigger# = <e><n>
+
+#orth-trigger# = <dc><uc>
+
+#phon-trigger# = <dbl(s)><del(e)><del(e)|ADJ><del(e)|Gen><del(e)|PRO> \
+                 <del(VC)|Pl><ins(e)><uml>
+
+#morph-trigger# = <ins(ge)><ins(zu)><rm|Imp>
 
 #boundary-trigger# = <WB><CB><VB><HB><DB><PB><SB>
 
@@ -218,16 +219,15 @@
                    <WProNeutGenSg><WProNeutNomSg>
 
 #Verb-inflection# = <VAImpPl><VAImpSg><VAPastIndPl><VAPastIndSg><VAPastSubj2> \
-                    <VAPres13PlInd><VAPres13SgSubj><VAPres1SgInd><VAPres2PlInd> \
-                    <VAPres2SgInd><VAPres2SgSubj><VAPres3SgInd><VAPresSubjPl> \
-                    <VAPresSubjSg><VInf><VInf_PPres><VInf-en><VInf-n><VMPast> \
-                    <VMPastSubj><VMPresPl><VMPresSg><VPPast><VPPres> \
-                    <VPastIndIrreg><VPastIndReg><VPastIndStr><VPresSubj> \
-                    <VPastSubjStr><VPresPlInd><VVPP-en><VVPP-t><VVPastIndReg> \
-                    <VVPastIndStr><VVPastStr><VVPastSubjOld><VVPastSubjReg> \
-                    <VVPastSubjStr><VVPres><VVPres1><VVPres1_Imp><VVPres2> \
-                    <VVPres2_Imp><VVPres2_Imp0><VVPres2t><VVPres2t_Imp0> \
-                    <VVPresPl><VVPresSg><VVReg><VVRegFin><VVReg-el-er>
+                    <VAPres13PlInd><VAPres1SgInd><VAPres2PlInd><VAPres2SgInd> \
+                    <VAPres2SgSubj><VAPres3SgInd><VAPresSubjPl><VAPresSubjSg> \
+                    <VInf><VInf-en><VInf-n><VMPast><VMPastSubj><VMPresPl> \
+                    <VMPresSg><VPPast><VPPres><VPastIndIrreg><VPastIndReg> \
+                    <VPastIndStr><VPresSubj><VPastSubjStr><VVPP-en><VVPP-t> \
+                    <VVPastIndReg><VVPastIndStr><VVPastStr><VVPastSubjOld> \
+                    <VVPastSubjReg><VVPastSubjStr><VVPres><VVPres1><VVPres1_Imp> \
+                    <VVPres2><VVPres2_Imp><VVPres2_Imp0><VVPres2t> \
+                    <VVPres2t_Imp0><VVReg><VVReg-el-er>
 
 #Other-inflection# = <ConjCompar><ConjCoord><ConjInf><ConjSub><Intj><PIndInvar> \
                      <Postp><Prep><Prep+Art-m><Prep+Art-n><Prep+Art-r> \

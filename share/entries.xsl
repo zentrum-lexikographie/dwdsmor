@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 13.0 -->
-<!-- Andreas Nolda 2024-07-25 -->
+<!-- Version 14.0 -->
+<!-- Andreas Nolda 2024-07-26 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2306,6 +2306,8 @@
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
                                 select="$paradigm-index"/>
+                <xsl:with-param name="stem"
+                                select="replace($lemma,'e$','')"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
                 <xsl:with-param name="pos">NN</xsl:with-param>

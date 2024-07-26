@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 7.2
-% Andreas Nolda 2023-11-29
+% Version 7.3
+% Andreas Nolda 2024-07-26
 
 #include "symbols.fst"
 #include "num.fst"
@@ -114,8 +114,8 @@ $DerSuff-lein$ = <DER>:<> <suff(lein)>:<>
 $Comp-concat$ = <COMP>:<> <concat>:<>
 $Comp-hyph$   = <COMP>:<> <hyph>:<>
 
-$DC$ = <>:<^DC>
-$UC$ = <>:<^UC>
+$DC$ = <>:<dc>
+$UC$ = <>:<uc>
 
 % derived base stems with particles
 
@@ -175,8 +175,8 @@ $BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerWB$
 $BaseStemsVPPast-t$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-t$
 $BaseStemsVPPast-n$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-n$
 
-$ConvBaseStemsVPPres$ = $BaseStemsVPPres$   <ADJ> <base> <native> <>:<Adj_0> $ConvPPres$
-$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<Adj_0> $ConvPPast$ | \
+$ConvBaseStemsVPPres$ = $BaseStemsVPPres$   <ADJ> <base> <native> <>:<Adj_0>    $ConvPPres$
+$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<Adj_e>    $ConvPPast$ | \
                         $BaseStemsVPPast-n$ <ADJ> <base> <native> <>:<Adj-en_0> $ConvPPast$
 
 $ConvBaseStems$ = $ConvBaseStemsVPPres$ | \

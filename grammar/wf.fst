@@ -1,6 +1,6 @@
 % wf.fst
-% Version 7.4
-% Andreas Nolda 2024-07-25
+% Version 7.5
+% Andreas Nolda 2024-07-26
 
 #include "symbols.fst"
 
@@ -18,8 +18,8 @@ $O$ = [#orth-trigger#]
 % derivation restrictions
 
 % restrict pref(un) to adjectival and nominal bases
-$DerRestrPOSPref-un$ =       <Prefix> un <DB>       <Stem> ($C$* <VB>)? $C$* <ADJ> $C$*
-$DerRestrPOSPref-Un$ = <^UC> <Prefix> un <DB> <^DC> <Stem> ($C$* <VB>)? $C$* <NN>  $C$*
+$DerRestrPOSPref-un$ =      <Prefix> un <DB>      <Stem> ($C$* <VB>)? $C$* <ADJ> $C$*
+$DerRestrPOSPref-Un$ = <uc> <Prefix> un <DB> <dc> <Stem> ($C$* <VB>)? $C$* <NN>  $C$*
 
 % restrict part(...) to verbal bases
 $DerRestrPOSPart-mit$      = <Prefix> mit      <VB> <Stem> ($C$* <VB>)? $C$* <V> $C$*

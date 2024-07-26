@@ -1,608 +1,566 @@
 % infl.fst
-% Version 6.12
-% Andreas Nolda 2024-07-25
+% Version 7.0
+% Andreas Nolda 2024-07-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
-$SS$ = <>:<SS>
+$SS$ = <>:<dbl(s)>
 
 
 % nouns
 
 % Frau; Mythos; Chaos
-$NSg_0$ = {<Nom><Sg>}:{<SB>} | \
-          {<Acc><Sg>}:{<SB>} | \
-          {<Dat><Sg>}:{<SB>} | \
-          {<Gen><Sg>}:{<SB>}
+$NSgSuff_0$ = {<Nom><Sg>}:{} | \
+              {<Acc><Sg>}:{} | \
+              {<Dat><Sg>}:{} | \
+              {<Gen><Sg>}:{}
 
 % Mensch, Menschen
-$NSg_en$ = {<Nom><Sg>}:{<SB>}        | \
-           {<Acc><Sg>}:{<SB>en}      | \
-           {<Acc><Sg><NonSt>}:{<SB>} | \
-           {<Dat><Sg>}:{<SB>en}      | \
-           {<Dat><Sg><NonSt>}:{<SB>} | \ % cf. Duden-Grammatik (2016: § 333)
-           {<Gen><Sg>}:{<SB>en}
+$NSgSuff_en$ = {<Nom><Sg>}:{}        | \
+               {<Acc><Sg>}:{<SB>en}  | \
+               {<Acc><Sg><NonSt>}:{} | \
+               {<Dat><Sg>}:{<SB>en}  | \
+               {<Dat><Sg><NonSt>}:{} | \ % cf. Duden-Grammatik (2016: § 333)
+               {<Gen><Sg>}:{<SB>en}
 
 % Nachbar, Nachbarn
-$NSg_n$ = {<Nom><Sg>}:{<SB>}  | \
-          {<Acc><Sg>}:{<SB>n} | \
-          {<Dat><Sg>}:{<SB>n} | \
-          {<Gen><Sg>}:{<SB>n}
+$NSgSuff_n$ = {<Nom><Sg>}:{}      | \
+              {<Acc><Sg>}:{<SB>n} | \
+              {<Dat><Sg>}:{<SB>n} | \
+              {<Gen><Sg>}:{<SB>n}
 
 % Haus, Hauses; Geist, Geist(e)s
-$NSg_es$ = {<Nom><Sg>}:{<SB>}       | \
-           {<Acc><Sg>}:{<SB>}       | \
-           {<Dat><Sg>}:{<SB>}       | \
-           {<Dat><Sg><Old>}:{<SB>e} | \ % cf. Duden-Grammatik (2016: § 317)
-           {<Gen><Sg>}:{<SB>es<^Gen>}
+$NSgSuff_es$ = {<Nom><Sg>}:{}           | \
+               {<Acc><Sg>}:{}           | \
+               {<Dat><Sg>}:{}           | \
+               {<Dat><Sg><Old>}:{<SB>e} | \ % cf. Duden-Grammatik (2016: § 317)
+               {<Gen><Sg>}:{<SB>es<del(e)|Gen>}
 
 % Opa, Opas; Klima, Klimas
-$NSg_s$ = {<Nom><Sg>}:{<SB>} | \
-          {<Acc><Sg>}:{<SB>} | \
-          {<Dat><Sg>}:{<SB>} | \
-          {<Gen><Sg>}:{<SB>s}
+$NSgSuff_s$ = {<Nom><Sg>}:{} | \
+              {<Acc><Sg>}:{} | \
+              {<Dat><Sg>}:{} | \
+              {<Gen><Sg>}:{<SB>s}
 
 % Name, Namens; Buchstabe, Buchstabens
-$NSg_ns$ = {<Nom><Sg>}:{<SB>}  | \
-           {<Acc><Sg>}:{<SB>n} | \
-           {<Dat><Sg>}:{<SB>n} | \
-           {<Gen><Sg>}:{<SB>ns}
+$NSgSuff_ns$ = {<Nom><Sg>}:{}      | \
+               {<Acc><Sg>}:{<SB>n} | \
+               {<Dat><Sg>}:{<SB>n} | \
+               {<Gen><Sg>}:{<SB>ns}
 
 % Herz, Herzens
-$NSg_ens$ = {<Nom><Sg>}:{<SB>}   | \
-            {<Acc><Sg>}:{<SB>}   | \
-            {<Dat><Sg>}:{<SB>en} | \
-            {<Gen><Sg>}:{<SB>ens}
+$NSgSuff_ens$ = {<Nom><Sg>}:{}       | \
+                {<Acc><Sg>}:{}       | \
+                {<Dat><Sg>}:{<SB>en} | \
+                {<Gen><Sg>}:{<SB>ens}
 
-$NPl_x$ = {<Nom><Pl>}:{} | \
-          {<Acc><Pl>}:{} | \
-          {<Dat><Pl>}:{} | \
-          {<Gen><Pl>}:{}
+$NPlSuff_x$ = {<Nom><Pl>}:{} | \
+              {<Acc><Pl>}:{} | \
+              {<Dat><Pl>}:{} | \
+              {<Gen><Pl>}:{}
 
-$NPl_0$ = {<Nom><Pl>}:{}  | \
-          {<Acc><Pl>}:{}  | \
-          {<Dat><Pl>}:{n} | \
-          {<Gen><Pl>}:{}
-
-$N_0_x$ = $NSg_0$ | \
-          $NPl_x$
-
-$N_0_0$ = $NSg_0$ | \
-          $NPl_0$
-
-$N_0_\$$ =           $NSg_0$ | \
-           {}:{<UL>} $NPl_0$
-
-$N_0_e$ =            $NSg_0$ | \
-          {}:{<SB>e} $NPl_0$
-
-$N_0_\$e$ =            $NSg_0$ | \
-            {}:{<UL>e} $NPl_0$
-
-$N_0_en$ =             $NSg_0$ | \
-           {}:{<SB>en} $NPl_x$
-
-$N_0_\$en$ =             $NSg_0$ | \
-             {}:{<UL>en} $NPl_x$
-
-$N_0_n$ =            $NSg_0$ | \
-          {}:{<SB>n} $NPl_x$
-
-$N_0_es$ =             $NSg_0$ | \
-           {}:{<SB>es} $NPl_x$
-
-$N_0_s$ =            $NSg_0$ | \
-          {}:{<SB>s} $NPl_x$
-
-$N_es_e$ =            $NSg_es$ | \
-           {}:{<SB>e} $NPl_0$
-
-$N_es_\$e$ =            $NSg_es$ | \
-             {}:{<UL>e} $NPl_0$
-
-$N_es_er$ =         $NSg_es$ | \
-            {}:{er} $NPl_0$
-
-$N_es_\$er$ =             $NSg_es$ | \
-              {}:{<UL>er} $NPl_0$
-
-$N_es_en$ =             $NSg_es$ | \
-            {}:{<SB>en} $NPl_x$
-
-$N_es_es$ =             $NSg_es$ | \
-            {}:{<SB>es} $NPl_x$
-
-$N_es_s$ =            $NSg_es$ | \
-           {}:{<SB>s} $NPl_x$
-
-$N_s_x$ = $NSg_s$ | \
-          $NPl_x$
-
-$N_s_\$x$ =           $NSg_s$ | \
-            {}:{<UL>} $NPl_x$
-
-$N_s_0$ = $NSg_s$ | \
-          $NPl_0$
-
-$N_s_\$$ =           $NSg_s$ | \
-           {}:{<UL>} $NPl_0$
-
-$N_s_e$ =            $NSg_s$ | \
-          {}:{<SB>e} $NPl_0$
-
-$N_s_\$e$ =              $NSg_s$ | \
-            {<>}:{<UL>e} $NPl_0$
-
-$N_s_er$ =             $NSg_s$ | \
-           {}:{<SB>er} $NPl_x$
-
-$N_s_\$er$ =               $NSg_s$ | \
-             {<>}:{<UL>er} $NPl_0$
-
-$N_s_en$ =             $NSg_s$ | \
-           {}:{<SB>en} $NPl_x$
-
-$N_s_n$ =            $NSg_s$ | \
-          {}:{<SB>n} $NPl_x$
-
-$N_s_s$ =            $NSg_s$ | \
-          {}:{<SB>s} $NPl_x$
-
-$N_en_en$ =             $NSg_en$ | \
-            {}:{<SB>en} $NPl_x$
-
-$N_n_n$ =            $NSg_n$ | \
-          {}:{<SB>n} $NPl_x$
+$NPlSuff_0$ = {<Nom><Pl>}:{}      | \
+              {<Acc><Pl>}:{}      | \
+              {<Dat><Pl>}:{<SB>n} | \
+              {<Gen><Pl>}:{}
 
 
 % masculine nouns
 
 % Fiskus, Fiskus
-$NMasc/Sg_0$ = {<+NN><Masc>}:{} $NSg_0$
+$NMasc/Sg_0$ = {<+NN><Masc>}:{} $NSgSuff_0$
 
 % Abwasch, Abwasch(e)s; Glanz, Glanzes
-$NMasc/Sg_es$ = {<+NN><Masc>}:{} $NSg_es$
+$NMasc/Sg_es$ = {<+NN><Masc>}:{} $NSgSuff_es$
 
 % Hagel, Hagels; Adel, Adels
-$NMasc/Sg_s$ = {<+NN><Masc>}:{} $NSg_s$
+$NMasc/Sg_s$ = {<+NN><Masc>}:{} $NSgSuff_s$
 
 % Unglaube, Unglaubens
-$NMasc/Sg_ns$ = {<+NN><Masc>}:{} $NSg_ns$
+$NMasc/Sg_ns$ = {<+NN><Masc>}:{} $NSgSuff_ns$
 
 % Bauten (suppletive plural)
-$NMasc/Pl_x$ = {<+NN><Masc>}:{} $NPl_x$
+$NMasc/Pl_x$ = {<+NN><Masc>}:{} $NPlSuff_x$
 
 % Revers, Revers, Revers
-$NMasc_0_x$ = {<+NN><Masc>}:{} $N_0_x$
+$NMasc_0_x$ = {<+NN><Masc>}:{} $NSgSuff_0$ | \
+              {<+NN><Masc>}:{} $NPlSuff_x$
 
 % Dezember, Dezember, Dezember
-$NMasc_0_0$ = {<+NN><Masc>}:{} $N_0_0$
+$NMasc_0_0$ = {<+NN><Masc>}:{} $NSgSuff_0$ | \
+              {<+NN><Masc>}:{} $NPlSuff_0$
 
 % Kodex, Kodex, Kodexe
-$NMasc_0_e$ = {<+NN><Masc>}:{} $N_0_e$
+$NMasc_0_e$ = {<+NN><Masc>}:{}      $NSgSuff_0$ | \
+              {<+NN><Masc>}:{<SB>e} $NPlSuff_0$
 
 % Nimbus, Nimbus, Nimbusse
 $NMasc_0_e~ss$ = $SS$ $NMasc_0_e$
 
 % Bypass, Bypass, Bypässe
-$NMasc_0_\$e$ = {<+NN><Masc>}:{} $N_0_\$e$
+$NMasc_0_\$e$ = {<+NN><Masc>}:{}           $NSgSuff_0$ | \
+                {<+NN><Masc>}:{<uml><SB>e} $NPlSuff_0$
 
 % Obelisk, Obelisk, Obelisken
-$NMasc_0_en$ = {<+NN><Masc>}:{} $N_0_en$
+$NMasc_0_en$ = {<+NN><Masc>}:{}       $NSgSuff_0$ | \
+               {<+NN><Masc>}:{<SB>en} $NPlSuff_x$
 
 % Kanon, Kanon, Kanones; Sandwich, Sandwich, Sandwiches (masculine)
-$NMasc_0_es$ = {<+NN><Masc>}:{} $N_0_es$
+$NMasc_0_es$ = {<+NN><Masc>}:{}       $NSgSuff_0$ | \
+               {<+NN><Masc>}:{<SB>es} $NPlSuff_x$
 
 % Embryo, Embryo, Embryonen (masculine)
-$NMasc_0_nen$ = {<+NN><Masc>}:{}    $NSg_0$ | \
-                {<+NN><Masc>}:{nen} $NPl_x$
+$NMasc_0_nen$ = {<+NN><Masc>}:{}        $NSgSuff_0$ | \
+                {<+NN><Masc>}:{n<SB>en} $NPlSuff_x$
 
 % Intercity, Intercity, Intercitys
-$NMasc_0_s$ = {<+NN><Masc>}:{} $N_0_s$
+$NMasc_0_s$ = {<+NN><Masc>}:{}      $NSgSuff_0$ | \
+              {<+NN><Masc>}:{<SB>s} $NPlSuff_x$
 
 % Atlas, Atlas, Atlanten
-$NMasc_0_as/anten$ = {<+NN><Masc>}:{}           $NSg_0$ | \
-                     {<+NN><Masc>}:{<^pl>anten} $NPl_x$
+$NMasc_0_as/anten$ = {<+NN><Masc>}:{}                      $NSgSuff_0$ | \
+                     {<+NN><Masc>}:{<del(VC)|Pl>ant<SB>en} $NPlSuff_x$
 
 % Carabiniere, Carabiniere, Carabinieri
-$NMasc_0_e/i$ = {<+NN><Masc>}:{}       $NSg_0$ | \
-                {<+NN><Masc>}:{<^pl>i} $NPl_x$
+$NMasc_0_e/i$ = {<+NN><Masc>}:{}                  $NSgSuff_0$ | \
+                {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Index, Index, Indizes
-$NMasc_0_ex/izes$ = {<+NN><Masc>}:{}          $NSg_0$ | \
-                    {<+NN><Masc>}:{<^pl>izes} $NPl_x$
+$NMasc_0_ex/izes$ = {<+NN><Masc>}:{}                     $NSgSuff_0$ | \
+                    {<+NN><Masc>}:{<del(VC)|Pl>iz<SB>es} $NPlSuff_x$
 
 % Saldo, Saldo, Salden
-$NMasc_0_o/en$ = {<+NN><Masc>}:{}        $NSg_0$ | \
-                 {<+NN><Masc>}:{<^pl>en} $NPl_x$
+$NMasc_0_o/en$ = {<+NN><Masc>}:{}                   $NSgSuff_0$ | \
+                 {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Espresso, Espresso, Espressi
-$NMasc_0_o/i$ = {<+NN><Masc>}:{}       $NSg_0$ | \
-                {<+NN><Masc>}:{<^pl>i} $NPl_x$
+$NMasc_0_o/i$ = {<+NN><Masc>}:{}                  $NSgSuff_0$ | \
+                {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Heros, Heros, Heroen
-$NMasc_0_os/oen$ = {<+NN><Masc>}:{}         $NSg_0$ | \
-                   {<+NN><Masc>}:{<^pl>oen} $NPl_x$
+$NMasc_0_os/oen$ = {<+NN><Masc>}:{}                    $NSgSuff_0$ | \
+                   {<+NN><Masc>}:{<del(VC)|Pl>o<SB>en} $NPlSuff_x$
 
 % Kustos, Kustos, Kustoden
-$NMasc_0_os/oden$ = {<+NN><Masc>}:{}          $NSg_0$ | \
-                    {<+NN><Masc>}:{<^pl>oden} $NPl_x$
+$NMasc_0_os/oden$ = {<+NN><Masc>}:{}                     $NSgSuff_0$ | \
+                    {<+NN><Masc>}:{<del(VC)|Pl>od<SB>en} $NPlSuff_x$
 
 % Topos, Topos, Topoi
-$NMasc_0_os/oi$ = {<+NN><Masc>}:{}        $NSg_0$ | \
-                  {<+NN><Masc>}:{<^pl>oi} $NPl_x$
+$NMasc_0_os/oi$ = {<+NN><Masc>}:{}                   $NSgSuff_0$ | \
+                  {<+NN><Masc>}:{<del(VC)|Pl>o<SB>i} $NPlSuff_x$
 
 % Kursus, Kursus, Kurse
-$NMasc_0_us/e$ = {<+NN><Masc>}:{}       $NSg_0$ | \
-                 {<+NN><Masc>}:{<^pl>e} $NPl_0$
+$NMasc_0_us/e$ = {<+NN><Masc>}:{}                  $NSgSuff_0$ | \
+                 {<+NN><Masc>}:{<del(VC)|Pl><SB>e} $NPlSuff_0$
 
 % Virus, Virus, Viren; Mythos, Mythos, Mythen
-$NMasc_0_us/en$ = {<+NN><Masc>}:{}        $NSg_0$ | \
-                  {<+NN><Masc>}:{<^pl>en} $NPl_x$
+$NMasc_0_us/en$ = {<+NN><Masc>}:{}                   $NSgSuff_0$ | \
+                  {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Kaktus, Kaktus, Kakteen
-$NMasc_0_us/een$ = {<+NN><Masc>}:{}         $NSg_0$ | \
-                   {<+NN><Masc>}:{<^pl>een} $NPl_x$
+$NMasc_0_us/een$ = {<+NN><Masc>}:{}                    $NSgSuff_0$ | \
+                   {<+NN><Masc>}:{<del(VC)|Pl>e<SB>en} $NPlSuff_x$
 
 % Intimus, Intimus, Intimi
-$NMasc_0_us/i$ = {<+NN><Masc>}:{}       $NSg_0$ | \
-                 {<+NN><Masc>}:{<^pl>i} $NPl_x$
+$NMasc_0_us/i$ = {<+NN><Masc>}:{}                  $NSgSuff_0$ | \
+                 {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Dinosaurus, Dinosaurus, Dinosaurier
-$NMasc_0_us/ier$ = {<+NN><Masc>}:{}         $NSg_0$ | \
-                   {<+NN><Masc>}:{<^pl>ier} $NPl_0$
+$NMasc_0_us/ier$ = {<+NN><Masc>}:{}                    $NSgSuff_0$ | \
+                   {<+NN><Masc>}:{<del(VC)|Pl>i<SB>er} $NPlSuff_0$
 
 % Larynx, Larynx, Laryngen
-$NMasc_0_ynx/yngen$ = {<+NN><Masc>}:{}           $NSg_0$ | \
-                      {<+NN><Masc>}:{<^pl>yngen} $NPl_x$
+$NMasc_0_ynx/yngen$ = {<+NN><Masc>}:{}                      $NSgSuff_0$ | \
+                      {<+NN><Masc>}:{<del(VC)|Pl>yng<SB>en} $NPlSuff_x$
 
 % Tag, Tag(e)s, Tage; Kodex, Kodexes, Kodexe
-$NMasc_es_e$ = {<+NN><Masc>}:{} $N_es_e$
+$NMasc_es_e$ = {<+NN><Masc>}:{}      $NSgSuff_es$ | \
+               {<+NN><Masc>}:{<SB>e} $NPlSuff_0$
 
 % Bus, Busses, Busse
 $NMasc_es_e~ss$ = $SS$ $NMasc_es_e$
 
 % Arzt, Arzt(e)s, Ärzte
-$NMasc_es_\$e$ = {<+NN><Masc>}:{} $N_es_\$e$
+$NMasc_es_\$e$ = {<+NN><Masc>}:{}           $NSgSuff_es$ | \
+                 {<+NN><Masc>}:{<uml><SB>e} $NPlSuff_0$
 
 % Geist, Geist(e)s, Geister
-$NMasc_es_er$ = {<+NN><Masc>}:{<>} $N_es_er$
+$NMasc_es_er$ = {<+NN><Masc>}:{}       $NSgSuff_es$ | \
+                {<+NN><Masc>}:{<SB>er} $NPlSuff_0$
 
 % Gott, Gott(e)s, Götter
-$NMasc_es_\$er$ = {<+NN><Masc>}:{} $N_es_\$er$
+$NMasc_es_\$er$ = {<+NN><Masc>}:{}            $NSgSuff_es$ | \
+                  {<+NN><Masc>}:{<uml><SB>er} $NPlSuff_0$
 
 % Fleck, Fleck(e)s, Flecken
-$NMasc_es_en$ = {<+NN><Masc>}:{} $N_es_en$
+$NMasc_es_en$ = {<+NN><Masc>}:{}       $NSgSuff_es$ | \
+                {<+NN><Masc>}:{<SB>en} $NPlSuff_x$
 
 % Bugfix, Bugfix(e)s, Bugfixes
-$NMasc_es_es$ = {<+NN><Masc>}:{} $N_es_es$
+$NMasc_es_es$ = {<+NN><Masc>}:{}       $NSgSuff_es$ | \
+                {<+NN><Masc>}:{<SB>es} $NPlSuff_x$
 
 % Park, Park(e)s, Parks
-$NMasc_es_s$ = {<+NN><Masc>}:{} $N_es_s$
+$NMasc_es_s$ = {<+NN><Masc>}:{}      $NSgSuff_es$ | \
+               {<+NN><Masc>}:{<SB>s} $NPlSuff_x$
 
 % Atlas, Atlasses, Atlanten
-$NMasc_es_as/anten~ss$ = $SS$ {<+NN><Masc>}:{}           $NSg_es$ | \
-                              {<+NN><Masc>}:{<^pl>anten} $NPl_x$
+$NMasc_es_as/anten~ss$ = $SS$ {<+NN><Masc>}:{}                      $NSgSuff_es$ | \
+                              {<+NN><Masc>}:{<del(VC)|Pl>ant<SB>en} $NPlSuff_x$
 
 % Index, Indexes, Indizes
-$NMasc_es_ex/izes$ = {<+NN><Masc>}:{}          $NSg_es$ | \
-                     {<+NN><Masc>}:{<^pl>izes} $NPl_x$
+$NMasc_es_ex/izes$ = {<+NN><Masc>}:{}                     $NSgSuff_es$ | \
+                     {<+NN><Masc>}:{<del(VC)|Pl>iz<SB>es} $NPlSuff_x$
 
 % Virus, Virusses, Viren
-$NMasc_es_us/en~ss$ = $SS$ {<+NN><Masc>}:{}        $NSg_es$ | \
-                           {<+NN><Masc>}:{<^pl>en} $NPl_x$
+$NMasc_es_us/en~ss$ = $SS$ {<+NN><Masc>}:{}                   $NSgSuff_es$ | \
+                           {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Kaktus, Kaktusses, Kakteen
-$NMasc_es_us/een~ss$ = $SS$ {<+NN><Masc>}:{}         $NSg_es$ | \
-                            {<+NN><Masc>}:{<^pl>een} $NPl_x$
+$NMasc_es_us/een~ss$ = $SS$ {<+NN><Masc>}:{}                    $NSgSuff_es$ | \
+                            {<+NN><Masc>}:{<del(VC)|Pl>e<SB>en} $NPlSuff_x$
 
 % Intimus, Intimusse, Intimi
-$NMasc_es_us/i~ss$ = $SS$ {<+NN><Masc>}:{}       $NSg_es$ | \
-                          {<+NN><Masc>}:{<^pl>i} $NPl_x$
+$NMasc_es_us/i~ss$ = $SS$ {<+NN><Masc>}:{}                  $NSgSuff_es$ | \
+                          {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Wagen, Wagens, Wagen
-$NMasc_s_x$ = {<+NN><Masc>}:{} $N_s_x$
+$NMasc_s_x$ = {<+NN><Masc>}:{} $NSgSuff_s$ | \
+              {<+NN><Masc>}:{} $NPlSuff_x$
 
 % Garten, Gartens, Gärten
-$NMasc_s_\$x$ = {<+NN><Masc>}:{} $N_s_\$x$
+$NMasc_s_\$x$ = {<+NN><Masc>}:{}      $NSgSuff_s$ | \
+                {<+NN><Masc>}:{<uml>} $NPlSuff_x$
 
 % Engel, Engels, Engel; Dezember, Dezembers, Dezember
-$NMasc_s_0$ = {<+NN><Masc>}:{} $N_s_0$
+$NMasc_s_0$ = {<+NN><Masc>}:{} $NSgSuff_s$ | \
+              {<+NN><Masc>}:{} $NPlSuff_0$
 
 % Apfel, Apfels, Äpfel; Vater, Vaters, Väter; Schaden, Schadens, Schäden
-$NMasc_s_\$$ = {<+NN><Masc>}:{} $N_s_\$$
+$NMasc_s_\$$ = {<+NN><Masc>}:{}      $NSgSuff_s$ | \
+               {<+NN><Masc>}:{<uml>} $NPlSuff_0$
 
 % Drilling, Drillings, Drillinge
-$NMasc_s_e$ = {<+NN><Masc>}:{} $N_s_e$
+$NMasc_s_e$ = {<+NN><Masc>}:{}      $NSgSuff_s$ | \
+              {<+NN><Masc>}:{<SB>e} $NPlSuff_0$
 
 % Tenor, Tenors, Tenöre
-$NMasc_s_\$e$ = {<+NN><Masc>}:{<>} $N_s_\$e$
+$NMasc_s_\$e$ = {<+NN><Masc>}:{}           $NSgSuff_s$ | \
+                {<+NN><Masc>}:{<uml><SB>e} $NPlSuff_0$
 
 % Ski, Skis, Skier
-$NMasc_s_er$ = {<+NN><Masc>}:{} $N_s_er$
+$NMasc_s_er$ = {<+NN><Masc>}:{}       $NSgSuff_s$ | \
+               {<+NN><Masc>}:{<SB>er} $NPlSuff_x$
 
 % Irrtum, Irrtums, Irrtümer
-$NMasc_s_\$er$ = {<+NN><Masc>}:{} $N_s_\$er$
+$NMasc_s_\$er$ = {<+NN><Masc>}:{}            $NSgSuff_s$ | \
+                 {<+NN><Masc>}:{<uml><SB>er} $NPlSuff_0$
 
 % Zeh, Zehs, Zehen
-$NMasc_s_en$ = {<+NN><Masc>}:{} $N_s_en$
+$NMasc_s_en$ = {<+NN><Masc>}:{}       $NSgSuff_s$ | \
+               {<+NN><Masc>}:{<SB>en} $NPlSuff_x$
 
 % Kanon, Kanons, Kanones
-$NMasc_s_es$ = {<+NN><Masc>}:{}   $NSg_s$ | \
-               {<+NN><Masc>}:{es} $NPl_x$
+$NMasc_s_es$ = {<+NN><Masc>}:{}       $NSgSuff_s$ | \
+               {<+NN><Masc>}:{<SB>es} $NPlSuff_x$
 
 % Muskel, Muskels, Muskeln; See, Sees, Seen
-$NMasc_s_n$ = {<+NN><Masc>}:{} $N_s_n$
+$NMasc_s_n$ = {<+NN><Masc>}:{}      $NSgSuff_s$ | \
+              {<+NN><Masc>}:{<SB>n} $NPlSuff_x$
 
 % Embryo, Embryos, Embryonen (masculine)
-$NMasc_s_nen$ = {<+NN><Masc>}:{}    $NSg_s$ | \
-                {<+NN><Masc>}:{nen} $NPl_x$
+$NMasc_s_nen$ = {<+NN><Masc>}:{}        $NSgSuff_s$ | \
+                {<+NN><Masc>}:{n<SB>en} $NPlSuff_x$
 
 % Chef, Chefs, Chefs; Bankier, Bankiers, Bankiers
-$NMasc_s_s$ = {<+NN><Masc>}:{} $N_s_s$
+$NMasc_s_s$ = {<+NN><Masc>}:{}      $NSgSuff_s$ | \
+              {<+NN><Masc>}:{<SB>s} $NPlSuff_x$
 
 % Carabiniere, Carabinieres, Carabinieri
-$NMasc_s_e/i$ = {<+NN><Masc>}:{}       $NSg_s$ | \
-                {<+NN><Masc>}:{<^pl>i} $NPl_x$
+$NMasc_s_e/i$ = {<+NN><Masc>}:{}                  $NSgSuff_s$ | \
+                {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Saldo, Saldos, Salden
-$NMasc_s_o/en$ = {<+NN><Masc>}:{}        $NSg_s$ | \
-                 {<+NN><Masc>}:{<^pl>en} $NPl_x$
+$NMasc_s_o/en$ = {<+NN><Masc>}:{}                   $NSgSuff_s$ | \
+                 {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Espresso, Espressos, Espressi
-$NMasc_s_o/i$ = {<+NN><Masc>}:{}       $NSg_s$ | \
-                {<+NN><Masc>}:{<^pl>i} $NPl_x$
+$NMasc_s_o/i$ = {<+NN><Masc>}:{}                  $NSgSuff_s$ | \
+                {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Fels, Felsen, Felsen; Mensch, Menschen, Menschen
-$NMasc_en_en$ = {<+NN><Masc>}:{} $N_en_en$
+$NMasc_en_en$ = {<+NN><Masc>}:{}       $NSgSuff_en$ | \
+                {<+NN><Masc>}:{<SB>en} $NPlSuff_x$
 
 % Affe, Affen, Affen; Bauer, Bauern, Bauern
-$NMasc_n_n$ = {<+NN><Masc>}:{} $N_n_n$
+$NMasc_n_n$ = {<+NN><Masc>}:{}      $NSgSuff_n$ | \
+              {<+NN><Masc>}:{<SB>n} $NPlSuff_x$
 
 % Name, Namens, Namen; Buchstabe, Buchstabens, Buchstaben
-$NMasc_ns_n$ = {<+NN><Masc>}:{}  $NSg_ns$ | \
-               {<+NN><Masc>}:{n} $NPl_x$
+$NMasc_ns_n$ = {<+NN><Masc>}:{}      $NSgSuff_ns$ | \
+               {<+NN><Masc>}:{<SB>n} $NPlSuff_x$
 
 % Schade, Schadens, Schäden
-$NMasc_ns_\$n$ = {<+NN><Masc>}:{}      $NSg_ns$ | \
-                 {<+NN><Masc>}:{<UL>n} $NPl_x$
+$NMasc_ns_\$n$ = {<+NN><Masc>}:{}           $NSgSuff_ns$ | \
+                 {<+NN><Masc>}:{<uml><SB>n} $NPlSuff_x$
 
 % Beamte(r); Gefreite(r)
-$NMasc-Adj$ = {<+NN><Masc><Nom><Sg><St>}:{r} | \
-              {<+NN><Masc><Acc><Sg><St>}:{n} | \
-              {<+NN><Masc><Dat><Sg><St>}:{m} | \
-              {<+NN><Masc><Gen><Sg><St>}:{n} | \
-              {<+NN><Masc><Nom><Pl><St>}:{}  | \
-              {<+NN><Masc><Acc><Pl><St>}:{}  | \
-              {<+NN><Masc><Dat><Pl><St>}:{n} | \
-              {<+NN><Masc><Gen><Pl><St>}:{r} | \
-              {<+NN><Masc><Nom><Sg><Wk>}:{}  | \
-              {<+NN><Masc><Acc><Sg><Wk>}:{n} | \
-              {<+NN><Masc><Dat><Sg><Wk>}:{n} | \
-              {<+NN><Masc><Gen><Sg><Wk>}:{n} | \
-              {<+NN><Masc><Nom><Pl><Wk>}:{n} | \
-              {<+NN><Masc><Acc><Pl><Wk>}:{n} | \
-              {<+NN><Masc><Dat><Pl><Wk>}:{n} | \
-              {<+NN><Masc><Gen><Pl><Wk>}:{n}
+$NMasc-Adj$ = {<+NN><Masc><Nom><Sg><St>}:{<SB>er} | \
+              {<+NN><Masc><Acc><Sg><St>}:{<SB>en} | \
+              {<+NN><Masc><Dat><Sg><St>}:{<SB>em} | \
+              {<+NN><Masc><Gen><Sg><St>}:{<SB>en} | \
+              {<+NN><Masc><Nom><Pl><St>}:{<SB>e}  | \
+              {<+NN><Masc><Acc><Pl><St>}:{<SB>e}  | \
+              {<+NN><Masc><Dat><Pl><St>}:{<SB>en} | \
+              {<+NN><Masc><Gen><Pl><St>}:{<SB>er} | \
+              {<+NN><Masc><Nom><Sg><Wk>}:{<SB>e}  | \
+              {<+NN><Masc><Acc><Sg><Wk>}:{<SB>en} | \
+              {<+NN><Masc><Dat><Sg><Wk>}:{<SB>en} | \
+              {<+NN><Masc><Gen><Sg><Wk>}:{<SB>en} | \
+              {<+NN><Masc><Nom><Pl><Wk>}:{<SB>en} | \
+              {<+NN><Masc><Acc><Pl><Wk>}:{<SB>en} | \
+              {<+NN><Masc><Dat><Pl><Wk>}:{<SB>en} | \
+              {<+NN><Masc><Gen><Pl><Wk>}:{<SB>en}
 
 
 % neuter nouns
 
 % Abseits, Abseits
-$NNeut/Sg_0$ = {<+NN><Neut>}:{} $NSg_0$
+$NNeut/Sg_0$ = {<+NN><Neut>}:{} $NSgSuff_0$
 
 % Ausland, Ausland(e)s
-$NNeut/Sg_es$ = {<+NN><Neut>}:{} $NSg_es$
+$NNeut/Sg_es$ = {<+NN><Neut>}:{} $NSgSuff_es$
 
 % Verständnis, Verständnisses
-$NNeut/Sg_es~ss$ = $SS$ {<+NN><Neut>}:{} $NSg_es$
+$NNeut/Sg_es~ss$ = $SS$ {<+NN><Neut>}:{} $NSgSuff_es$
 
 % Abitur, Abiturs
-$NNeut/Sg_s$ = {<+NN><Neut>}:{} $NSg_s$
+$NNeut/Sg_s$ = {<+NN><Neut>}:{} $NSgSuff_s$
 
 % Pluraliatantum (suppletive plural)
-$NNeut/Pl_x$ = {<+NN><Neut>}:{} $NPl_x$
+$NNeut/Pl_x$ = {<+NN><Neut>}:{} $NPlSuff_x$
 
 % Viecher (suppletive plural)
-$NNeut/Pl_0$ = {<+NN><Neut>}:{} $NPl_0$
+$NNeut/Pl_0$ = {<+NN><Neut>}:{} $NPlSuff_0$
 
 % Relais, Relais, Relais
-$NNeut_0_x$ = {<+NN><Neut>}:{} $N_0_x$
+$NNeut_0_x$ = {<+NN><Neut>}:{} $NSgSuff_0$ | \
+              {<+NN><Neut>}:{} $NPlSuff_x$
 
 % Gefolge, Gefolge, Gefolge
-$NNeut_0_0$ = {<+NN><Neut>}:{} $N_0_0$
+$NNeut_0_0$ = {<+NN><Neut>}:{} $NSgSuff_0$ | \
+              {<+NN><Neut>}:{} $NPlSuff_0$
 
 % Bakschisch, Bakschisch, Bakschische
-$NNeut_0_e$ = {<+NN><Neut>}:{} $N_0_e$
+$NNeut_0_e$ = {<+NN><Neut>}:{}      $NSgSuff_0$ | \
+              {<+NN><Neut>}:{<SB>e} $NPlSuff_0$
 
 % Rhinozeros, Rhinozeros, Rhinozerosse
 $NNeut_0_e~ss$ = $SS$ $NNeut_0_e$
 
 % Remis, Remis, Remisen
-$NNeut_0_en$ = {<+NN><Neut>}:{} $N_0_en$
+$NNeut_0_en$ = {<+NN><Neut>}:{}       $NSgSuff_0$ | \
+               {<+NN><Neut>}:{<SB>en} $NPlSuff_x$
 
 % Sandwich, Sandwich, Sandwiches (neuter)
-$NNeut_0_es$ = {<+NN><Neut>}:{} $N_0_es$
+$NNeut_0_es$ = {<+NN><Neut>}:{}       $NSgSuff_0$ | \
+               {<+NN><Neut>}:{<SB>es} $NPlSuff_x$
 
 % Embryo, Embryo, Embryonen (neuter)
-$NNeut_0_nen$ = {<+NN><Neut>}:{}    $NSg_0$ | \
-                {<+NN><Neut>}:{nen} $NPl_x$
+$NNeut_0_nen$ = {<+NN><Neut>}:{}        $NSgSuff_0$ | \
+                {<+NN><Neut>}:{n<SB>en} $NPlSuff_x$
 
 % College, College, Colleges
-$NNeut_0_s$ = {<+NN><Neut>}:{} $N_0_s$
+$NNeut_0_s$ = {<+NN><Neut>}:{}      $NSgSuff_0$ | \
+              {<+NN><Neut>}:{<SB>s} $NPlSuff_x$
 
 % Komma, Komma, Kommata
-$NNeut_0_a/ata$ = {<+NN><Neut>}:{}   $NSg_0$ | \
-                  {<+NN><Neut>}:{ta} $NPl_x$
+$NNeut_0_a/ata$ = {<+NN><Neut>}:{}       $NSgSuff_0$ | \
+                  {<+NN><Neut>}:{t<SB>a} $NPlSuff_x$
 
 % Dogma, Dogma, Dogmen
-$NNeut_0_a/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
-                 {<+NN><Neut>}:{<^pl>en} $NPl_x$
+$NNeut_0_a/en$ = {<+NN><Neut>}:{}                   $NSgSuff_0$ | \
+                 {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Determinans, Determinans, Determinantien
-$NNeut_0_ans/antien$ = {<+NN><Neut>}:{}            $NSg_0$ | \
-                       {<+NN><Neut>}:{<^pl>antien} $NPl_x$
+$NNeut_0_ans/antien$ = {<+NN><Neut>}:{}                       $NSgSuff_0$ | \
+                       {<+NN><Neut>}:{<del(VC)|Pl>anti<SB>en} $NPlSuff_x$
 
 % Stimulans, Stimulans, Stimulanzien
-$NNeut_0_ans/anzien$ = {<+NN><Neut>}:{}            $NSg_0$ | \
-                       {<+NN><Neut>}:{<^pl>anzien} $NPl_x$
+$NNeut_0_ans/anzien$ = {<+NN><Neut>}:{}                       $NSgSuff_0$ | \
+                       {<+NN><Neut>}:{<del(VC)|Pl>anzi<SB>en} $NPlSuff_x$
 
 % Ricercare, Ricercare, Ricercari
-$NNeut_0_e/i$ = {<+NN><Neut>}:{}       $NSg_0$ | \
-                {<+NN><Neut>}:{<^pl>i} $NPl_x$
+$NNeut_0_e/i$ = {<+NN><Neut>}:{}                  $NSgSuff_0$ | \
+                {<+NN><Neut>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Examen, Examen, Examina
-$NNeut_0_en/ina$ = {<+NN><Neut>}:{}         $NSg_0$ | \
-                   {<+NN><Neut>}:{<^pl>ina} $NPl_x$
+$NNeut_0_en/ina$ = {<+NN><Neut>}:{}                    $NSgSuff_0$ | \
+                   {<+NN><Neut>}:{<del(VC)|Pl>in<SB>a} $NPlSuff_x$
 
 % Reagens, Reagens, Reagenzien
-$NNeut_0_ens/enzien$ = {<+NN><Neut>}:{}            $NSg_0$ | \
-                       {<+NN><Neut>}:{<^pl>enzien} $NPl_x$
+$NNeut_0_ens/enzien$ = {<+NN><Neut>}:{}                       $NSgSuff_0$ | \
+                       {<+NN><Neut>}:{<del(VC)|Pl>enzi<SB>en} $NPlSuff_x$
 
 % Konto, Konto, Konten
-$NNeut_0_o/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
-                 {<+NN><Neut>}:{<^pl>en} $NPl_x$
+$NNeut_0_o/en$ = {<+NN><Neut>}:{}                   $NSgSuff_0$ | \
+                 {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Intermezzo, Intermezzo, Intermezzi
-$NNeut_0_o/i$ = {<+NN><Neut>}:{}       $NSg_0$ | \
-                {<+NN><Neut>}:{<^pl>i} $NPl_x$
+$NNeut_0_o/i$ = {<+NN><Neut>}:{}                  $NSgSuff_0$ | \
+                {<+NN><Neut>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Oxymoron, Oxymoron, Oxymora
-$NNeut_0_on/a$ = {<+NN><Neut>}:{}       $NSg_0$ | \
-                 {<+NN><Neut>}:{<^pl>a} $NPl_x$
+$NNeut_0_on/a$ = {<+NN><Neut>}:{}                  $NSgSuff_0$ | \
+                 {<+NN><Neut>}:{<del(VC)|Pl><SB>a} $NPlSuff_x$
 
 % Stadion, Stadion, Stadien
-$NNeut_0_on/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
-                  {<+NN><Neut>}:{<^pl>en} $NPl_x$
+$NNeut_0_on/en$ = {<+NN><Neut>}:{}                   $NSgSuff_0$ | \
+                  {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Aktivum, Aktivum, Aktiva
-$NNeut_0_um/a$ = {<+NN><Neut>}:{}       $NSg_0$ | \
-                 {<+NN><Neut>}:{<^pl>a} $NPl_x$
+$NNeut_0_um/a$ = {<+NN><Neut>}:{}                  $NSgSuff_0$ | \
+                 {<+NN><Neut>}:{<del(VC)|Pl><SB>a} $NPlSuff_x$
 
 % Museum, Museum, Museen
-$NNeut_0_um/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
-                  {<+NN><Neut>}:{<^pl>en} $NPl_x$
+$NNeut_0_um/en$ = {<+NN><Neut>}:{}                   $NSgSuff_0$ | \
+                  {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Virus, Virus, Viren; Epos, Epos, Epen
-$NNeut_0_us/en$ = {<+NN><Neut>}:{}        $NSg_0$ | \
-                  {<+NN><Neut>}:{<^pl>en} $NPl_x$
+$NNeut_0_us/en$ = {<+NN><Neut>}:{}                   $NSgSuff_0$ | \
+                  {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Genus, Genus, Genera
-$NNeut_0_us/era$ = {<+NN><Neut>}:{}         $NSg_0$ | \
-                   {<+NN><Neut>}:{<^pl>era} $NPl_x$
+$NNeut_0_us/era$ = {<+NN><Neut>}:{}                    $NSgSuff_0$ | \
+                   {<+NN><Neut>}:{<del(VC)|Pl>er<SB>a} $NPlSuff_x$
 
 % Tempus, Tempus, Tempora
-$NNeut_0_us/ora$ = {<+NN><Neut>}:{}         $NSg_0$ | \
-                   {<+NN><Neut>}:{<^pl>ora} $NPl_x$
+$NNeut_0_us/ora$ = {<+NN><Neut>}:{}                    $NSgSuff_0$ | \
+                   {<+NN><Neut>}:{<del(VC)|Pl>or<SB>a} $NPlSuff_x$
 
 % Spiel, Spiel(e)s, Spiele; Bakschisch, Bakschisch(e)s, Bakschische
-$NNeut_es_e$ = {<+NN><Neut>}:{} $N_es_e$
+$NNeut_es_e$ = {<+NN><Neut>}:{}      $NSgSuff_es$ | \
+               {<+NN><Neut>}:{<SB>e} $NPlSuff_0$
 
 % Zeugnis, Zeugnisses, Zeugnisse; Rhinozeros, Rhinozerosses, Rhinozerosse
 $NNeut_es_e~ss$ = $SS$ $NNeut_es_e$
 
 % Floß, Floßes, Flöße
-$NNeut_es_\$e$ = {<+NN><Neut>}:{} $N_es_\$e$
+$NNeut_es_\$e$ = {<+NN><Neut>}:{}           $NSgSuff_es$ | \
+                 {<+NN><Neut>}:{<uml><SB>e} $NPlSuff_0$
 
 % Schild, Schild(e)s, Schilder
-$NNeut_es_er$ = {<+NN><Neut>}:{} $N_es_er$
+$NNeut_es_er$ = {<+NN><Neut>}:{}       $NSgSuff_es$ | \
+                {<+NN><Neut>}:{<SB>er} $NPlSuff_0$
 
 % Buch, Buch(e)s, Bücher
-$NNeut_es_\$er$ = {<+NN><Neut>}:{} $N_es_\$er$
+$NNeut_es_\$er$ = {<+NN><Neut>}:{}            $NSgSuff_es$ | \
+                  {<+NN><Neut>}:{<uml><SB>er} $NPlSuff_0$
 
 % Bett, Bett(e)s, Betten
-$NNeut_es_en$ = {<+NN><Neut>}:{} $N_es_en$
+$NNeut_es_en$ = {<+NN><Neut>}:{}       $NSgSuff_es$ | \
+                {<+NN><Neut>}:{<SB>en} $NPlSuff_x$
 
 % Match, Match(e)s, Matches
-$NNeut_es_es$ = {<+NN><Neut>}:{} $N_es_es$
+$NNeut_es_es$ = {<+NN><Neut>}:{}       $NSgSuff_es$ | \
+                {<+NN><Neut>}:{<SB>es} $NPlSuff_x$
 
 % Tablett, Tablett(e)s, Tabletts
-$NNeut_es_s$ = {<+NN><Neut>}:{} $N_es_s$
+$NNeut_es_s$ = {<+NN><Neut>}:{}      $NSgSuff_es$ | \
+               {<+NN><Neut>}:{<SB>s} $NPlSuff_x$
 
 % Indiz, Indizes, Indizien
-$NNeut_es_ien$ = {<+NN><Neut>}:{}    $NSg_es$ | \
-                 {<+NN><Neut>}:{ien} $NPl_x$
+$NNeut_es_ien$ = {<+NN><Neut>}:{}        $NSgSuff_es$ | \
+                 {<+NN><Neut>}:{i<SB>en} $NPlSuff_x$
 
 % Almosen, Almosens, Almosen
-$NNeut_s_x$ = {<+NN><Neut>}:{} $N_s_x$
+$NNeut_s_x$ = {<+NN><Neut>}:{} $NSgSuff_s$ | \
+              {<+NN><Neut>}:{} $NPlSuff_x$
 
 % Feuer, Feuers, Feuer; Gefolge, Gefolges, Gefolge
-$NNeut_s_0$ = {<+NN><Neut>}:{} $N_s_0$
+$NNeut_s_0$ = {<+NN><Neut>}:{} $NSgSuff_s$ | \
+              {<+NN><Neut>}:{} $NPlSuff_0$
 
 % Kloster, Klosters, Klöster
-$NNeut_s_\$$ = {<+NN><Neut>}:{} $N_s_\$$
+$NNeut_s_\$$ = {<+NN><Neut>}:{}      $NSgSuff_s$ | \
+               {<+NN><Neut>}:{<uml>} $NPlSuff_0$
 
 % Reflexiv, Reflexivs, Reflexiva
-$NNeut_s_a$ = {<+NN><Neut>}:{}  $NSg_s$ | \
-              {<+NN><Neut>}:{a} $NPl_x$
+$NNeut_s_a$ = {<+NN><Neut>}:{}      $NSgSuff_s$ | \
+              {<+NN><Neut>}:{<SB>a} $NPlSuff_x$
 
 % Dreieck, Dreiecks, Dreiecke
-$NNeut_s_e$ = {<+NN><Neut>}:{} $N_s_e$
+$NNeut_s_e$ = {<+NN><Neut>}:{}      $NSgSuff_s$ | \
+              {<+NN><Neut>}:{<SB>e} $NPlSuff_0$
 
 % Spital, Spitals, Spitäler
-$NNeut_s_\$er$ = {<+NN><Neut>}:{} $N_s_\$er$
+$NNeut_s_\$er$ = {<+NN><Neut>}:{}            $NSgSuff_s$ | \
+                 {<+NN><Neut>}:{<uml><SB>er} $NPlSuff_0$
 
 % Juwel, Juwels, Juwelen
-$NNeut_s_en$ = {<+NN><Neut>}:{} $N_s_en$
+$NNeut_s_en$ = {<+NN><Neut>}:{}       $NSgSuff_s$ | \
+               {<+NN><Neut>}:{<SB>en} $NPlSuff_x$
 
 % Auge, Auges, Augen
-$NNeut_s_n$ = {<+NN><Neut>}:{} $N_s_n$
+$NNeut_s_n$ = {<+NN><Neut>}:{}      $NSgSuff_s$ | \
+              {<+NN><Neut>}:{<SB>n} $NPlSuff_x$
 
 % Embryo, Embryos, Embryonen (neuter)
-$NNeut_s_nen$ = {<+NN><Neut>}:{}    $NSg_s$ | \
-                {<+NN><Neut>}:{nen} $NPl_x$
+$NNeut_s_nen$ = {<+NN><Neut>}:{}        $NSgSuff_s$ | \
+                {<+NN><Neut>}:{n<SB>en} $NPlSuff_x$
 
 % Adverb, Adverbs, Adverbien
-$NNeut_s_ien$ = {<+NN><Neut>}:{}    $NSg_s$ | \
-                {<+NN><Neut>}:{ien} $NPl_x$
+$NNeut_s_ien$ = {<+NN><Neut>}:{}        $NSgSuff_s$ | \
+                {<+NN><Neut>}:{i<SB>en} $NPlSuff_x$
 
 % Sofa, Sofas, Sofas; College, Colleges, Colleges
-$NNeut_s_s$ = {<+NN><Neut>}:{} $N_s_s$
+$NNeut_s_s$ = {<+NN><Neut>}:{}      $NSgSuff_s$ | \
+              {<+NN><Neut>}:{<SB>s} $NPlSuff_x$
 
 % Komma, Kommas, Kommata
-$NNeut_s_a/ata$ = {<+NN><Neut>}:{}   $NSg_s$ | \
-                  {<+NN><Neut>}:{ta} $NPl_x$
+$NNeut_s_a/ata$ = {<+NN><Neut>}:{}       $NSgSuff_s$ | \
+                  {<+NN><Neut>}:{t<SB>a} $NPlSuff_x$
 
 % Dogma, Dogmas, Dogmen
-$NNeut_s_a/en$ = {<+NN><Neut>}:{}        $NSg_s$ | \
-                 {<+NN><Neut>}:{<^pl>en} $NPl_x$
+$NNeut_s_a/en$ = {<+NN><Neut>}:{}                   $NSgSuff_s$ | \
+                 {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Ricercare, Ricercares, Ricercari
-$NNeut_s_e/i$ = {<+NN><Neut>}:{}       $NSg_s$ | \
-                {<+NN><Neut>}:{<^pl>i} $NPl_x$
+$NNeut_s_e/i$ = {<+NN><Neut>}:{}                  $NSgSuff_s$ | \
+                {<+NN><Neut>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Examen, Examens, Examina
-$NNeut_s_en/ina$ = {<+NN><Neut>}:{}         $NSg_s$ | \
-                   {<+NN><Neut>}:{<^pl>ina} $NPl_x$
+$NNeut_s_en/ina$ = {<+NN><Neut>}:{}                    $NSgSuff_s$ | \
+                   {<+NN><Neut>}:{<del(VC)|Pl>in<SB>a} $NPlSuff_x$
 
 % Konto, Kontos, Konten
-$NNeut_s_o/en$ = {<+NN><Neut>}:{}        $NSg_s$ | \
-                 {<+NN><Neut>}:{<^pl>en} $NPl_x$
+$NNeut_s_o/en$ = {<+NN><Neut>}:{}                   $NSgSuff_s$ | \
+                 {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Intermezzo, Intermezzos, Intermezzi
-$NNeut_s_o/i$ = {<+NN><Neut>}:{}       $NSg_s$ | \
-                {<+NN><Neut>}:{<^pl>i} $NPl_x$
+$NNeut_s_o/i$ = {<+NN><Neut>}:{}                  $NSgSuff_s$ | \
+                {<+NN><Neut>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Oxymoron, Oxymorons, Oxymora
-$NNeut_s_on/a$ = {<+NN><Neut>}:{}       $NSg_s$ | \
-                 {<+NN><Neut>}:{<^pl>a} $NPl_x$
+$NNeut_s_on/a$ = {<+NN><Neut>}:{}                  $NSgSuff_s$ | \
+                 {<+NN><Neut>}:{<del(VC)|Pl><SB>a} $NPlSuff_x$
 
 % Stadion, Stadions, Stadien
-$NNeut_s_on/en$ = {<+NN><Neut>}:{}        $NSg_s$ | \
-                  {<+NN><Neut>}:{<^pl>en} $NPl_x$
+$NNeut_s_on/en$ = {<+NN><Neut>}:{}                   $NSgSuff_s$ | \
+                  {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Aktivum, Aktivums, Aktiva
-$NNeut_s_um/a$ = {<+NN><Neut>}:{}       $NSg_s$ | \
-                 {<+NN><Neut>}:{<^pl>a} $NPl_x$
+$NNeut_s_um/a$ = {<+NN><Neut>}:{}                  $NSgSuff_s$ | \
+                 {<+NN><Neut>}:{<del(VC)|Pl><SB>a} $NPlSuff_x$
 
 % Museum, Museums, Museen
-$NNeut_s_um/en$ = {<+NN><Neut>}:{}        $NSg_s$ | \
-                  {<+NN><Neut>}:{<^pl>en} $NPl_x$
+$NNeut_s_um/en$ = {<+NN><Neut>}:{}                   $NSgSuff_s$ | \
+                  {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Herz, Herzens, Herzen
-$NNeut_ens_en$ = {<+NN><Neut>}:{}   $NSg_ens$ | \
-                 {<+NN><Neut>}:{en} $NPl_x$
+$NNeut_ens_en$ = {<+NN><Neut>}:{}       $NSgSuff_ens$ | \
+                 {<+NN><Neut>}:{<SB>en} $NPlSuff_x$
 
 % Innere(s)
 $NNeut-Inner$ = {<+NN><Neut><Nom><Sg><St>}:{<SB>es} | \
@@ -618,235 +576,245 @@ $NNeut-Inner$ = {<+NN><Neut><Nom><Sg><St>}:{<SB>es} | \
                 {<+NN><Neut><Gen><Sg><Wk>}:{<SB>n}
 
 % Deutsche(s)
-$NNeut-Adj/Sg$ = {<+NN><Neut><Nom><Sg><St>}:{s} | \
-                 {<+NN><Neut><Acc><Sg><St>}:{s} | \
-                 {<+NN><Neut><Dat><Sg><St>}:{m} | \
-                 {<+NN><Neut><Gen><Sg><St>}:{n} | \
-                 {<+NN><Neut><Nom><Sg><Wk>}:{}  | \
-                 {<+NN><Neut><Acc><Sg><Wk>}:{}  | \
-                 {<+NN><Neut><Dat><Sg><Wk>}:{n} | \
-                 {<+NN><Neut><Gen><Sg><Wk>}:{n}
+$NNeut-Adj/Sg$ = {<+NN><Neut><Nom><Sg><St>}:{<SB>es} | \
+                 {<+NN><Neut><Acc><Sg><St>}:{<SB>es} | \
+                 {<+NN><Neut><Dat><Sg><St>}:{<SB>em} | \
+                 {<+NN><Neut><Gen><Sg><St>}:{<SB>en} | \
+                 {<+NN><Neut><Nom><Sg><Wk>}:{<SB>e}  | \
+                 {<+NN><Neut><Acc><Sg><Wk>}:{<SB>e}  | \
+                 {<+NN><Neut><Dat><Sg><Wk>}:{<SB>en} | \
+                 {<+NN><Neut><Gen><Sg><Wk>}:{<SB>en}
 
 % Junge(s) ('young animal')
-$NNeut-Adj$ = {<+NN><Neut><Nom><Sg><St>}:{s} | \
-              {<+NN><Neut><Acc><Sg><St>}:{s} | \
-              {<+NN><Neut><Dat><Sg><St>}:{m} | \
-              {<+NN><Neut><Gen><Sg><St>}:{n} | \
-              {<+NN><Neut><Nom><Pl><St>}:{}  | \
-              {<+NN><Neut><Acc><Pl><St>}:{}  | \
-              {<+NN><Neut><Dat><Pl><St>}:{n} | \
-              {<+NN><Neut><Gen><Pl><St>}:{r} | \
-              {<+NN><Neut><Nom><Sg><Wk>}:{}  | \
-              {<+NN><Neut><Acc><Sg><Wk>}:{}  | \
-              {<+NN><Neut><Dat><Sg><Wk>}:{n} | \
-              {<+NN><Neut><Gen><Sg><Wk>}:{n} | \
-              {<+NN><Neut><Nom><Pl><Wk>}:{n} | \
-              {<+NN><Neut><Acc><Pl><Wk>}:{n} | \
-              {<+NN><Neut><Dat><Pl><Wk>}:{n} | \
-              {<+NN><Neut><Gen><Pl><Wk>}:{n}
+$NNeut-Adj$ = {<+NN><Neut><Nom><Sg><St>}:{<SB>es} | \
+              {<+NN><Neut><Acc><Sg><St>}:{<SB>es} | \
+              {<+NN><Neut><Dat><Sg><St>}:{<SB>em} | \
+              {<+NN><Neut><Gen><Sg><St>}:{<SB>en} | \
+              {<+NN><Neut><Nom><Pl><St>}:{<SB>e}  | \
+              {<+NN><Neut><Acc><Pl><St>}:{<SB>e}  | \
+              {<+NN><Neut><Dat><Pl><St>}:{<SB>en} | \
+              {<+NN><Neut><Gen><Pl><St>}:{<SB>er} | \
+              {<+NN><Neut><Nom><Sg><Wk>}:{<SB>e}  | \
+              {<+NN><Neut><Acc><Sg><Wk>}:{<SB>e}  | \
+              {<+NN><Neut><Dat><Sg><Wk>}:{<SB>en} | \
+              {<+NN><Neut><Gen><Sg><Wk>}:{<SB>en} | \
+              {<+NN><Neut><Nom><Pl><Wk>}:{<SB>en} | \
+              {<+NN><Neut><Acc><Pl><Wk>}:{<SB>en} | \
+              {<+NN><Neut><Dat><Pl><Wk>}:{<SB>en} | \
+              {<+NN><Neut><Gen><Pl><Wk>}:{<SB>en}
 
 
 % feminine nouns
 
 % Wut, Wut
-$NFem/Sg_0$ = {<+NN><Fem>}:{} $NSg_0$
+$NFem/Sg_0$ = {<+NN><Fem>}:{} $NSgSuff_0$
 
 % Anchorwomen (suppletive plural)
-$NFem/Pl_x$ = {<+NN><Fem>}:{} $NPl_x$
+$NFem/Pl_x$ = {<+NN><Fem>}:{} $NPlSuff_x$
 
 % Ananas, Ananas, Ananas
-$NFem_0_x$ = {<+NN><Fem>}:{} $N_0_x$
+$NFem_0_x$ = {<+NN><Fem>}:{} $NSgSuff_0$ | \
+             {<+NN><Fem>}:{} $NPlSuff_x$
 
 % Randale, Randale, Randale
-$NFem_0_0$ = {<+NN><Fem>}:{} $N_0_0$
+$NFem_0_0$ = {<+NN><Fem>}:{} $NSgSuff_0$ | \
+             {<+NN><Fem>}:{} $NPlSuff_0$
 
 % Mutter, Mutter, Mütter
-$NFem_0_\$$ = {<+NN><Fem>}:{} $N_0_\$$
+$NFem_0_\$$ = {<+NN><Fem>}:{}      $NSgSuff_0$ | \
+              {<+NN><Fem>}:{<uml>} $NPlSuff_0$
 
 % Drangsal, Drangsal, Drangsale; Retina, Retina, Retinae
-$NFem_0_e$ = {<+NN><Fem>}:{} $N_0_e$
+$NFem_0_e$ = {<+NN><Fem>}:{}      $NSgSuff_0$ | \
+             {<+NN><Fem>}:{<SB>e} $NPlSuff_0$
 
 % Kenntnis, Kenntnis, Kenntnisse
 $NFem_0_e~ss$ = $SS$ $NFem_0_e$
 
 % Wand, Wand, Wände
-$NFem_0_\$e$ = {<+NN><Fem>}:{} $N_0_\$e$
+$NFem_0_\$e$ = {<+NN><Fem>}:{}           $NSgSuff_0$ | \
+               {<+NN><Fem>}:{<uml><SB>e} $NPlSuff_0$
 
 % Frau, Frau, Frauen; Arbeit, Arbeit, Arbeiten
-$NFem_0_en$ = {<+NN><Fem>}:{} $N_0_en$
+$NFem_0_en$ = {<+NN><Fem>}:{}       $NSgSuff_0$ | \
+              {<+NN><Fem>}:{<SB>en} $NPlSuff_x$
 
 % Werkstatt, Werkstatt, Werkstätten
-$NFem_0_\$en$ = {<+NN><Fem>}:{} $N_0_\$en$
+$NFem_0_\$en$ = {<+NN><Fem>}:{}            $NSgSuff_0$ | \
+                {<+NN><Fem>}:{<uml><SB>en} $NPlSuff_x$
 
 % Hilfe, Hilfe, Hilfen; Tafel, Tafel, Tafeln
-$NFem_0_n$ = {<+NN><Fem>}:{} $N_0_n$
+$NFem_0_n$ = {<+NN><Fem>}:{}      $NSgSuff_0$ | \
+             {<+NN><Fem>}:{<SB>n} $NPlSuff_x$
 
 % Smartwatch, Smartwatch, Smartwatches
-$NFem_0_es$ = {<+NN><Fem>}:{} $N_0_es$
+$NFem_0_es$ = {<+NN><Fem>}:{}       $NSgSuff_0$ | \
+              {<+NN><Fem>}:{<SB>es} $NPlSuff_x$
 
 % Oma, Oma, Omas
-$NFem_0_s$ = {<+NN><Fem>}:{} $N_0_s$
+$NFem_0_s$ = {<+NN><Fem>}:{}      $NSgSuff_0$ | \
+             {<+NN><Fem>}:{<SB>s} $NPlSuff_x$
 
 % Algebra, Algebra, Algebren; Firma, Firma, Firmen
-$NFem_0_a/en$ = {<+NN><Fem>}:{}        $NSg_0$ | \
-                {<+NN><Fem>}:{<^pl>en} $NPl_x$
+$NFem_0_a/en$ = {<+NN><Fem>}:{}                   $NSgSuff_0$ | \
+                {<+NN><Fem>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Phalanx, Phalanx, Phalangen
-$NFem_0_anx/angen$ = {<+NN><Fem>}:{}           $NSg_0$ | \
-                     {<+NN><Fem>}:{<^pl>angen} $NPl_x$
+$NFem_0_anx/angen$ = {<+NN><Fem>}:{}                      $NSgSuff_0$ | \
+                     {<+NN><Fem>}:{<del(VC)|Pl>ang<SB>en} $NPlSuff_x$
 
 % Minestrone, Minestrone, Minestroni
-$NFem_0_e/i$ = {<+NN><Fem>}:{}       $NSg_0$ | \
-               {<+NN><Fem>}:{<^pl>i} $NPl_x$
+$NFem_0_e/i$ = {<+NN><Fem>}:{}                  $NSgSuff_0$ | \
+               {<+NN><Fem>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
 % Lex, Lex, Leges
-$NFem_0_ex/eges$ = {<+NN><Fem>}:{}          $NSg_0$ | \
-                   {<+NN><Fem>}:{<^pl>eges} $NPl_x$
+$NFem_0_ex/eges$ = {<+NN><Fem>}:{}                     $NSgSuff_0$ | \
+                   {<+NN><Fem>}:{<del(VC)|Pl>eg<SB>es} $NPlSuff_x$
 
 % Basis, Basis, Basen
-$NFem_0_is/en$ = {<+NN><Fem>}:{}        $NSg_0$ | \
-                 {<+NN><Fem>}:{<^pl>en} $NPl_x$
+$NFem_0_is/en$ = {<+NN><Fem>}:{}                   $NSgSuff_0$ | \
+                 {<+NN><Fem>}:{<del(VC)|Pl><SB>en} $NPlSuff_x$
 
 % Neuritis, Neuritis, Neuritiden
-$NFem_0_is/iden$ = {<+NN><Fem>}:{}          $NSg_0$ | \
-                   {<+NN><Fem>}:{<^pl>iden} $NPl_x$
+$NFem_0_is/iden$ = {<+NN><Fem>}:{}                     $NSgSuff_0$ | \
+                   {<+NN><Fem>}:{<del(VC)|Pl>id<SB>en} $NPlSuff_x$
 
 % Matrix, Matrix, Matrizen
-$NFem_0_ix/izen$ = {<+NN><Fem>}:{}          $NSg_0$ | \
-                   {<+NN><Fem>}:{<^pl>izen} $NPl_x$
+$NFem_0_ix/izen$ = {<+NN><Fem>}:{}                     $NSgSuff_0$ | \
+                   {<+NN><Fem>}:{<del(VC)|Pl>iz<SB>en} $NPlSuff_x$
 
 % Radix, Radix, Radizes
-$NFem_0_ix/izes$ = {<+NN><Fem>}:{}          $NSg_0$ | \
-                   {<+NN><Fem>}:{<^pl>izes} $NPl_x$
+$NFem_0_ix/izes$ = {<+NN><Fem>}:{}                     $NSgSuff_0$ | \
+                   {<+NN><Fem>}:{<del(VC)|Pl>iz<SB>es} $NPlSuff_x$
 
 % Freundin, Freundin, Freundinnen
-$NFem-in$ = {<+NN><Fem>}:{}    $NSg_0$ | \
-            {<+NN><Fem>}:{nen} $NPl_x$
+$NFem-in$ = {<+NN><Fem>}:{}        $NSgSuff_0$ | \
+            {<+NN><Fem>}:{n<SB>en} $NPlSuff_x$
 
 % Frauenbeauftragte; Illustrierte
-$NFem-Adj$ = {<+NN><Fem><Nom><Sg><St>}:{}  | \
-             {<+NN><Fem><Acc><Sg><St>}:{}  | \
-             {<+NN><Fem><Dat><Sg><St>}:{r} | \
-             {<+NN><Fem><Gen><Sg><St>}:{r} | \
-             {<+NN><Fem><Nom><Pl><St>}:{}  | \
-             {<+NN><Fem><Acc><Pl><St>}:{}  | \
-             {<+NN><Fem><Dat><Pl><St>}:{n} | \
-             {<+NN><Fem><Gen><Pl><St>}:{r} | \
-             {<+NN><Fem><Nom><Sg><Wk>}:{}  | \
-             {<+NN><Fem><Acc><Sg><Wk>}:{}  | \
-             {<+NN><Fem><Dat><Sg><Wk>}:{n} | \
-             {<+NN><Fem><Gen><Sg><Wk>}:{n} | \
-             {<+NN><Fem><Nom><Pl><Wk>}:{n} | \
-             {<+NN><Fem><Acc><Pl><Wk>}:{n} | \
-             {<+NN><Fem><Dat><Pl><Wk>}:{n} | \
-             {<+NN><Fem><Gen><Pl><Wk>}:{n}
+$NFem-Adj$ = {<+NN><Fem><Nom><Sg><St>}:{<SB>e}  | \
+             {<+NN><Fem><Acc><Sg><St>}:{<SB>e}  | \
+             {<+NN><Fem><Dat><Sg><St>}:{<SB>er} | \
+             {<+NN><Fem><Gen><Sg><St>}:{<SB>er} | \
+             {<+NN><Fem><Nom><Pl><St>}:{<SB>e}  | \
+             {<+NN><Fem><Acc><Pl><St>}:{<SB>e}  | \
+             {<+NN><Fem><Dat><Pl><St>}:{<SB>en} | \
+             {<+NN><Fem><Gen><Pl><St>}:{<SB>er} | \
+             {<+NN><Fem><Nom><Sg><Wk>}:{<SB>e}  | \
+             {<+NN><Fem><Acc><Sg><Wk>}:{<SB>e}  | \
+             {<+NN><Fem><Dat><Sg><Wk>}:{<SB>en} | \
+             {<+NN><Fem><Gen><Sg><Wk>}:{<SB>en} | \
+             {<+NN><Fem><Nom><Pl><Wk>}:{<SB>en} | \
+             {<+NN><Fem><Acc><Pl><Wk>}:{<SB>en} | \
+             {<+NN><Fem><Dat><Pl><Wk>}:{<SB>en} | \
+             {<+NN><Fem><Gen><Pl><Wk>}:{<SB>en}
 
 
 % pluralia tantum
 
 % Kosten
-$NNoGend/Pl_x$ = {<+NN><NoGend>}:{} $NPl_x$
+$NNoGend/Pl_x$ = {<+NN><NoGend>}:{} $NPlSuff_x$
 
 % Leute
-$NNoGend/Pl_0$ = {<+NN><NoGend>}:{} $NPl_0$
+$NNoGend/Pl_0$ = {<+NN><NoGend>}:{} $NPlSuff_0$
 
 
 % proper names
 
-$NameMasc_0$ = {<+NPROP><Masc>}:{} $NSg_0$
+$NameMasc_0$ = {<+NPROP><Masc>}:{} $NSgSuff_0$
 
 % Andreas, Andreas'
-$NameMasc_apos$ = {<+NPROP><Masc>}:{} $NSg_0$ | \
-                  {<+NPROP><Masc><Gen><Sg>}:{’}
+$NameMasc_apos$ = {<+NPROP><Masc>}:{} $NSgSuff_0$ | \
+                  {<+NPROP><Masc><Gen><Sg>}:{<SB>’}
 
-$NameMasc_es$ = {<+NPROP><Masc>}:{} $NSg_es$
+$NameMasc_es$ = {<+NPROP><Masc>}:{} $NSgSuff_es$
 
-$NameMasc_s$ = {<+NPROP><Masc>}:{} $NSg_s$
+$NameMasc_s$ = {<+NPROP><Masc>}:{} $NSgSuff_s$
 
-$NameNeut_0$ = {<+NPROP><Neut>}:{} $NSg_0$
+$NameNeut_0$ = {<+NPROP><Neut>}:{} $NSgSuff_0$
 
 % Paris, Paris'
-$NameNeut_apos$ = {<+NPROP><Neut>}:{} $NSg_0$ | \
-                  {<+NPROP><Neut><Gen><Sg>}:{’}
+$NameNeut_apos$ = {<+NPROP><Neut>}:{} $NSgSuff_0$ | \
+                  {<+NPROP><Neut><Gen><Sg>}:{<SB>’}
 
-$NameNeut_es$ = {<+NPROP><Neut>}:{} $NSg_es$
+$NameNeut_es$ = {<+NPROP><Neut>}:{} $NSgSuff_es$
 
-$NameNeut_s$ = {<+NPROP><Neut>}:{} $NSg_s$
+$NameNeut_s$ = {<+NPROP><Neut>}:{} $NSgSuff_s$
 
-$NameFem_0$ = {<+NPROP><Fem>}:{} $NSg_0$
+$NameFem_0$ = {<+NPROP><Fem>}:{} $NSgSuff_0$
 
 % Felicitas, Felicitas'
-$NameFem_apos$ = {<+NPROP><Fem>}:{} $NSg_0$ | \
-                 {<+NPROP><Fem><Gen><Sg>}:{’}
+$NameFem_apos$ = {<+NPROP><Fem>}:{} $NSgSuff_0$ | \
+                 {<+NPROP><Fem><Gen><Sg>}:{<SB>’}
 
-$NameFem_s$ = {<+NPROP><Fem>}:{} $NSg_s$
+$NameFem_s$ = {<+NPROP><Fem>}:{} $NSgSuff_s$
 
-$NameNoGend/Pl_x$ = {<+NPROP><NoGend>}:{} $NPl_x$
+$NameNoGend/Pl_x$ = {<+NPROP><NoGend>}:{} $NPlSuff_x$
 
-$NameNoGend/Pl_0$ = {<+NPROP><NoGend>}:{} $NPl_0$
+$NameNoGend/Pl_0$ = {<+NPROP><NoGend>}:{} $NPlSuff_0$
 
 % family names ending in -s, -z
-$Name-Fam_0$ = {<+NPROP><NoGend>}:{}    $NSg_0$ | \
-               {<+NPROP><NoGend>}:{ens} $NPl_x$
+$Name-Fam_0$ = {<+NPROP><NoGend>}:{}        $NSgSuff_0$ | \
+               {<+NPROP><NoGend>}:{en<SB>s} $NPlSuff_x$
 
 % family names
-$Name-Fam_s$ = {<+NPROP><NoGend>}:{}  $NSg_s$ | \
-               {<+NPROP><NoGend>}:{s} $NPl_x$
+$Name-Fam_s$ = {<+NPROP><NoGend>}:{}      $NSgSuff_s$ | \
+               {<+NPROP><NoGend>}:{<SB>s} $NPlSuff_x$
 
 
 % adjectives
 
-$AdjInflSuff$ = {<Attr/Subst><Masc><Nom><Sg><St>}:{er}   | \
-                {<Attr/Subst><Masc><Acc><Sg><St>}:{en}   | \
-                {<Attr/Subst><Masc><Dat><Sg><St>}:{em}   | \
-                {<Attr/Subst><Masc><Gen><Sg><St>}:{en}   | \
-                {<Attr/Subst><Neut><Nom><Sg><St>}:{es}   | \
-                {<Attr/Subst><Neut><Acc><Sg><St>}:{es}   | \
-                {<Attr/Subst><Neut><Dat><Sg><St>}:{em}   | \
-                {<Attr/Subst><Neut><Gen><Sg><St>}:{en}   | \
-                {<Attr/Subst><Fem><Nom><Sg><St>}:{e}     | \
-                {<Attr/Subst><Fem><Acc><Sg><St>}:{e}     | \
-                {<Attr/Subst><Fem><Dat><Sg><St>}:{er}    | \
-                {<Attr/Subst><Fem><Gen><Sg><St>}:{er}    | \
-                {<Attr/Subst><NoGend><Nom><Pl><St>}:{e}  | \
-                {<Attr/Subst><NoGend><Acc><Pl><St>}:{e}  | \
-                {<Attr/Subst><NoGend><Dat><Pl><St>}:{en} | \
-                {<Attr/Subst><NoGend><Gen><Pl><St>}:{er} | \
-                {<Attr/Subst><Masc><Nom><Sg><Wk>}:{e}    | \
-                {<Attr/Subst><Masc><Acc><Sg><Wk>}:{en}   | \
-                {<Attr/Subst><Masc><Dat><Sg><Wk>}:{en}   | \
-                {<Attr/Subst><Masc><Gen><Sg><Wk>}:{en}   | \
-                {<Attr/Subst><Neut><Nom><Sg><Wk>}:{e}    | \
-                {<Attr/Subst><Neut><Acc><Sg><Wk>}:{e}    | \
-                {<Attr/Subst><Neut><Dat><Sg><Wk>}:{en}   | \
-                {<Attr/Subst><Neut><Gen><Sg><Wk>}:{en}   | \
-                {<Attr/Subst><Fem><Nom><Sg><Wk>}:{e}     | \
-                {<Attr/Subst><Fem><Acc><Sg><Wk>}:{e}     | \
-                {<Attr/Subst><Fem><Dat><Sg><Wk>}:{en}    | \
-                {<Attr/Subst><Fem><Gen><Sg><Wk>}:{en}    | \
-                {<Attr/Subst><NoGend><Nom><Pl><Wk>}:{en} | \
-                {<Attr/Subst><NoGend><Acc><Pl><Wk>}:{en} | \
-                {<Attr/Subst><NoGend><Dat><Pl><Wk>}:{en} | \
-                {<Attr/Subst><NoGend><Gen><Pl><Wk>}:{en}
+$AdjInflSuff$ = {<Attr/Subst><Masc><Nom><Sg><St>}:{<SB>er}   | \
+                {<Attr/Subst><Masc><Acc><Sg><St>}:{<SB>en}   | \
+                {<Attr/Subst><Masc><Dat><Sg><St>}:{<SB>em}   | \
+                {<Attr/Subst><Masc><Gen><Sg><St>}:{<SB>en}   | \
+                {<Attr/Subst><Neut><Nom><Sg><St>}:{<SB>es}   | \
+                {<Attr/Subst><Neut><Acc><Sg><St>}:{<SB>es}   | \
+                {<Attr/Subst><Neut><Dat><Sg><St>}:{<SB>em}   | \
+                {<Attr/Subst><Neut><Gen><Sg><St>}:{<SB>en}   | \
+                {<Attr/Subst><Fem><Nom><Sg><St>}:{<SB>e}     | \
+                {<Attr/Subst><Fem><Acc><Sg><St>}:{<SB>e}     | \
+                {<Attr/Subst><Fem><Dat><Sg><St>}:{<SB>er}    | \
+                {<Attr/Subst><Fem><Gen><Sg><St>}:{<SB>er}    | \
+                {<Attr/Subst><NoGend><Nom><Pl><St>}:{<SB>e}  | \
+                {<Attr/Subst><NoGend><Acc><Pl><St>}:{<SB>e}  | \
+                {<Attr/Subst><NoGend><Dat><Pl><St>}:{<SB>en} | \
+                {<Attr/Subst><NoGend><Gen><Pl><St>}:{<SB>er} | \
+                {<Attr/Subst><Masc><Nom><Sg><Wk>}:{<SB>e}    | \
+                {<Attr/Subst><Masc><Acc><Sg><Wk>}:{<SB>en}   | \
+                {<Attr/Subst><Masc><Dat><Sg><Wk>}:{<SB>en}   | \
+                {<Attr/Subst><Masc><Gen><Sg><Wk>}:{<SB>en}   | \
+                {<Attr/Subst><Neut><Nom><Sg><Wk>}:{<SB>e}    | \
+                {<Attr/Subst><Neut><Acc><Sg><Wk>}:{<SB>e}    | \
+                {<Attr/Subst><Neut><Dat><Sg><Wk>}:{<SB>en}   | \
+                {<Attr/Subst><Neut><Gen><Sg><Wk>}:{<SB>en}   | \
+                {<Attr/Subst><Fem><Nom><Sg><Wk>}:{<SB>e}     | \
+                {<Attr/Subst><Fem><Acc><Sg><Wk>}:{<SB>e}     | \
+                {<Attr/Subst><Fem><Dat><Sg><Wk>}:{<SB>en}    | \
+                {<Attr/Subst><Fem><Gen><Sg><Wk>}:{<SB>en}    | \
+                {<Attr/Subst><NoGend><Nom><Pl><Wk>}:{<SB>en} | \
+                {<Attr/Subst><NoGend><Acc><Pl><Wk>}:{<SB>en} | \
+                {<Attr/Subst><NoGend><Dat><Pl><Wk>}:{<SB>en} | \
+                {<Attr/Subst><NoGend><Gen><Pl><Wk>}:{<SB>en}
 
-$AdjInflSuff-n$ = {<Attr/Subst><Masc><Acc><Sg><St>}:{n}   | \
-                  {<Attr/Subst><Masc><Gen><Sg><St>}:{n}   | \
-                  {<Attr/Subst><Neut><Gen><Sg><St>}:{n}   | \
-                  {<Attr/Subst><NoGend><Dat><Pl><St>}:{n} | \
-                  {<Attr/Subst><Masc><Acc><Sg><Wk>}:{n}   | \
-                  {<Attr/Subst><Masc><Dat><Sg><Wk>}:{n}   | \
-                  {<Attr/Subst><Masc><Gen><Sg><Wk>}:{n}   | \
-                  {<Attr/Subst><Neut><Dat><Sg><Wk>}:{n}   | \
-                  {<Attr/Subst><Neut><Gen><Sg><Wk>}:{n}   | \
-                  {<Attr/Subst><Fem><Dat><Sg><Wk>}:{n}    | \
-                  {<Attr/Subst><Fem><Gen><Sg><Wk>}:{n}    | \
-                  {<Attr/Subst><NoGend><Nom><Pl><Wk>}:{n} | \
-                  {<Attr/Subst><NoGend><Acc><Pl><Wk>}:{n} | \
-                  {<Attr/Subst><NoGend><Dat><Pl><Wk>}:{n} | \
-                  {<Attr/Subst><NoGend><Gen><Pl><Wk>}:{n}
+$AdjInflSuff-n$ = {<Attr/Subst><Masc><Acc><Sg><St>}:{<SB>n}   | \
+                  {<Attr/Subst><Masc><Gen><Sg><St>}:{<SB>n}   | \
+                  {<Attr/Subst><Neut><Gen><Sg><St>}:{<SB>n}   | \
+                  {<Attr/Subst><NoGend><Dat><Pl><St>}:{<SB>n} | \
+                  {<Attr/Subst><Masc><Acc><Sg><Wk>}:{<SB>n}   | \
+                  {<Attr/Subst><Masc><Dat><Sg><Wk>}:{<SB>n}   | \
+                  {<Attr/Subst><Masc><Gen><Sg><Wk>}:{<SB>n}   | \
+                  {<Attr/Subst><Neut><Dat><Sg><Wk>}:{<SB>n}   | \
+                  {<Attr/Subst><Neut><Gen><Sg><Wk>}:{<SB>n}   | \
+                  {<Attr/Subst><Fem><Dat><Sg><Wk>}:{<SB>n}    | \
+                  {<Attr/Subst><Fem><Gen><Sg><Wk>}:{<SB>n}    | \
+                  {<Attr/Subst><NoGend><Nom><Pl><Wk>}:{<SB>n} | \
+                  {<Attr/Subst><NoGend><Acc><Pl><Wk>}:{<SB>n} | \
+                  {<Attr/Subst><NoGend><Dat><Pl><Wk>}:{<SB>n} | \
+                  {<Attr/Subst><NoGend><Gen><Pl><Wk>}:{<SB>n}
 
-$AdjInflSuff-m$ = {<Attr/Subst><Masc><Dat><Sg><St>}:{m} | \
-                  {<Attr/Subst><Neut><Dat><Sg><St>}:{m}
+$AdjInflSuff-m$ = {<Attr/Subst><Masc><Dat><Sg><St>}:{<SB>m} | \
+                  {<Attr/Subst><Neut><Dat><Sg><St>}:{<SB>m}
 
 % lila; klasse
 $AdjPos0$ = {<+ADJ><Pos><Pred/Adv>}:{} | \
@@ -866,76 +834,88 @@ $AdjPos0Attr$ = {<+ADJ><Pos><Attr><Invar>}:{}
 $AdjPos0AttrSubst$ = {<+ADJ><Pos><Attr/Subst><Invar>}:{}
 
 % derartig; famos; bloß
-$AdjPos$ = {<+ADJ><Pos><Pred/Adv>}:{<SB>} | \
-           {<+ADJ><Pos>}:{<SB>} $AdjInflSuff$
+$AdjPos$ = {<+ADJ><Pos><Pred/Adv>}:{} | \
+           {<+ADJ><Pos>}:{} $AdjInflSuff$
 
 % vorig-; hoh-
-$AdjPosAttr$ = {<+ADJ><Pos>}:{<SB>} $AdjInflSuff$
+$AdjPosAttr$ = {<+ADJ><Pos>}:{} $AdjInflSuff$
 
 % ander-; ober-
-$AdjPosAttr-er$ = $AdjPosAttr$                         | \
-                  {}:{<^Ax>} $AdjPosAttr$              | \
-                  {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-n$ | \
-                  {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-m$
+$AdjPosAttr-er$ = {<+ADJ><Pos>}:{} $AdjInflSuff$             | \
+                  {<+ADJ><Pos>}:{<del(e)|ADJ>} $AdjInflSuff$ | \
+                  {<+ADJ><Pos>}:{} $AdjInflSuff-n$           | \
+                  {<+ADJ><Pos>}:{} $AdjInflSuff-m$
 
 % besser; höher
-$AdjComp$ = {<+ADJ><Comp><Pred/Adv>}:{er}       | \
-            {<+ADJ><Comp>}:{er} $AdjInflSuff$
+$AdjComp$ = {<+ADJ><Comp><Pred/Adv>}:{<SB>er} | \
+            {<+ADJ><Comp>}:{<SB>er} $AdjInflSuff$
 
 % mehr; weniger
 $AdjComp0-mehr$ = {<+ADJ><Comp><Pred/Adv>}:{} | \
                   {<+ADJ><Comp><Attr/Subst><Invar>}:{}
 
 % besten; höchsten
-$AdjSup$ = {<+ADJ><Sup><Pred/Adv>}:{sten} | \
-           {<+ADJ><Sup>}:{st} $AdjInflSuff$
+$AdjSup$ = {<+ADJ><Sup><Pred/Adv>}:{<SB>st<SB>en} | \
+           {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
 
 % allerbesten; allerhöchsten
-$AdjSup-aller$ = {<+ADJ><Sup><Pred/Adv>}:{sten} | \
-                 {<+ADJ><Sup>}:{st} $AdjInflSuff$
+$AdjSup-aller$ = {<+ADJ><Sup><Pred/Adv>}:{<SB>st<SB>en} | \
+                 {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
 
 % obersten
-$AdjSupAttr$ = {<+ADJ><Sup>}:{st} $AdjInflSuff$
+$AdjSupAttr$ = {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
 
 % faul, fauler, faulsten
-$Adj_0$ =           $AdjPos$  | \
-          {}:{<SB>} $AdjComp$ | \
-          {}:{<SB>} $AdjSup$
+$Adj_0$ = {<+ADJ><Pos><Pred/Adv>}:{}             | \
+          {<+ADJ><Pos>}:{} $AdjInflSuff$         | \
+          {<+ADJ><Comp><Pred/Adv>}:{<SB>er}      | \
+          {<+ADJ><Comp>}:{<SB>er} $AdjInflSuff$  | \
+          {<+ADJ><Sup><Pred/Adv>}:{<SB>st<SB>en} | \
+          {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
 
 % bunt, bunter, buntesten
-$Adj_e$ =            $AdjPos$  | \
-          {}:{<SB>}  $AdjComp$ | \
-          {}:{<SB>e} $AdjSup$
+$Adj_e$ = {<+ADJ><Pos><Pred/Adv>}:{}              | \
+          {<+ADJ><Pos>}:{} $AdjInflSuff$          | \
+          {<+ADJ><Comp><Pred/Adv>}:{<SB>er}       | \
+          {<+ADJ><Comp>}:{<SB>er} $AdjInflSuff$   | \
+          {<+ADJ><Sup><Pred/Adv>}:{<SB>est<SB>en} | \
+          {<+ADJ><Sup>}:{<SB>est} $AdjInflSuff$
 
 % warm, wärmer, wärmsten
-$Adj_\$$ =           $AdjPos$  | \
-           {}:{<UL>} $AdjComp$ | \
-           {}:{<UL>} $AdjSup$
+$Adj_\$$ = {<+ADJ><Pos><Pred/Adv>}:{}                  | \
+           {<+ADJ><Pos>}:{} $AdjInflSuff$              | \
+           {<+ADJ><Comp><Pred/Adv>}:{<uml><SB>er}      | \
+           {<+ADJ><Comp>}:{<uml><SB>er} $AdjInflSuff$  | \
+           {<+ADJ><Sup><Pred/Adv>}:{<uml><SB>st<SB>en} | \
+           {<+ADJ><Sup>}:{<uml><SB>st} $AdjInflSuff$
 
 % kalt, kälter, kältesten
-$Adj_\$e$ =            $AdjPos$  | \
-            {}:{<UL>}  $AdjComp$ | \
-            {}:{<UL>e} $AdjSup$
+$Adj_\$e$ = {<+ADJ><Pos><Pred/Adv>}:{}                   | \
+            {<+ADJ><Pos>}:{} $AdjInflSuff$               | \
+            {<+ADJ><Comp><Pred/Adv>}:{<uml><SB>er}       | \
+            {<+ADJ><Comp>}:{<uml><SB>er} $AdjInflSuff$   | \
+            {<+ADJ><Sup><Pred/Adv>}:{<uml><SB>est<SB>en} | \
+            {<+ADJ><Sup>}:{<uml><SB>est} $AdjInflSuff$
 
 % dunkel, dunkler, dunkelsten
-$Adj-el_0$ = {}:{<^Ax>} $Adj_0$                              | \
-             {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
-             {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
+$Adj-el_0$ = {}:{<del(e)|ADJ>} $Adj_0$                   | \
+             {<+ADJ><Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
+             {<+ADJ><Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
 
 % dunkel, dünkler, dünkelsten (regional variant)
-$Adj-el_\$$ = {}:{<^Ax>} $Adj_\$$                             | \
-              {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
-              {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
+$Adj-el_\$$ = {}:{<del(e)|ADJ>} $Adj_\$$                 | \
+              {<+ADJ><Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
+              {<+ADJ><Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
 
 % finster, finst(e)rer, finstersten
-$Adj-er_0$ = $Adj_0$                                         | \
-             {}:{<^Ax>} $Adj_0$                              | \
-             {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
-             {<+ADJ><Pos>}:{<SB>} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
+$Adj-er_0$ = $Adj_0$                                     | \
+             {}:{<del(e)|ADJ>} $Adj_0$                   | \
+             {<+ADJ><Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
+             {<+ADJ><Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
 
 % trocken, trock(e)ner, trockensten
 $Adj-en_0$ = $Adj_0$ | \
-             {}:{<^Ax>} $Adj_0$
+             {}:{<del(e)|ADJ>} $Adj_0$
 
 % deutsch; [das] Deutsch
 $Adj-Lang$ = $Adj_0$ | \
@@ -944,41 +924,41 @@ $Adj-Lang$ = $Adj_0$ | \
 
 % articles and pronouns
 
-$ArtDefAttrSuff$ = {<Attr><Masc><Nom><Sg><St>}:{er}   | \
-                   {<Attr><Masc><Acc><Sg><St>}:{en}   | \
-                   {<Attr><Masc><Dat><Sg><St>}:{em}   | \
-                   {<Attr><Masc><Gen><Sg><St>}:{es}   | \
-                   {<Attr><Neut><Nom><Sg><St>}:{as}   | \
-                   {<Attr><Neut><Acc><Sg><St>}:{as}   | \
-                   {<Attr><Neut><Dat><Sg><St>}:{em}   | \
-                   {<Attr><Neut><Gen><Sg><St>}:{es}   | \
-                   {<Attr><Fem><Nom><Sg><St>}:{ie}    | \
-                   {<Attr><Fem><Acc><Sg><St>}:{ie}    | \
-                   {<Attr><Fem><Dat><Sg><St>}:{er}    | \
-                   {<Attr><Fem><Gen><Sg><St>}:{er}    | \
-                   {<Attr><NoGend><Nom><Pl><St>}:{ie} | \
-                   {<Attr><NoGend><Acc><Pl><St>}:{ie} | \
-                   {<Attr><NoGend><Dat><Pl><St>}:{en} | \
-                   {<Attr><NoGend><Gen><Pl><St>}:{er}
+$ArtDefAttrSuff$ = {<Attr><Masc><Nom><Sg><St>}:{<SB>er}   | \
+                   {<Attr><Masc><Acc><Sg><St>}:{<SB>en}   | \
+                   {<Attr><Masc><Dat><Sg><St>}:{<SB>em}   | \
+                   {<Attr><Masc><Gen><Sg><St>}:{<SB>es}   | \
+                   {<Attr><Neut><Nom><Sg><St>}:{<SB>as}   | \
+                   {<Attr><Neut><Acc><Sg><St>}:{<SB>as}   | \
+                   {<Attr><Neut><Dat><Sg><St>}:{<SB>em}   | \
+                   {<Attr><Neut><Gen><Sg><St>}:{<SB>es}   | \
+                   {<Attr><Fem><Nom><Sg><St>}:{<SB>ie}    | \
+                   {<Attr><Fem><Acc><Sg><St>}:{<SB>ie}    | \
+                   {<Attr><Fem><Dat><Sg><St>}:{<SB>er}    | \
+                   {<Attr><Fem><Gen><Sg><St>}:{<SB>er}    | \
+                   {<Attr><NoGend><Nom><Pl><St>}:{<SB>ie} | \
+                   {<Attr><NoGend><Acc><Pl><St>}:{<SB>ie} | \
+                   {<Attr><NoGend><Dat><Pl><St>}:{<SB>en} | \
+                   {<Attr><NoGend><Gen><Pl><St>}:{<SB>er}
 
-$ArtDefSubstSuff$ = {<Subst><Masc><Nom><Sg><St>}:{er}     | \
-                    {<Subst><Masc><Acc><Sg><St>}:{en}     | \
-                    {<Subst><Masc><Dat><Sg><St>}:{em}     | \
-                    {<Subst><Masc><Gen><Sg><St>}:{essen}  | \
-                    {<Subst><Neut><Nom><Sg><St>}:{as}     | \
-                    {<Subst><Neut><Acc><Sg><St>}:{as}     | \
-                    {<Subst><Neut><Dat><Sg><St>}:{em}     | \
-                    {<Subst><Neut><Gen><Sg><St>}:{essen}  | \
-                    {<Subst><Fem><Nom><Sg><St>}:{ie}      | \
-                    {<Subst><Fem><Acc><Sg><St>}:{ie}      | \
-                    {<Subst><Fem><Dat><Sg><St>}:{er}      | \
-                    {<Subst><Fem><Gen><Sg><St>}:{erer}    | \
-                    {<Subst><Fem><Gen><Sg><St>}:{eren}    | \
-                    {<Subst><NoGend><Nom><Pl><St>}:{ie}   | \
-                    {<Subst><NoGend><Acc><Pl><St>}:{ie}   | \
-                    {<Subst><NoGend><Dat><Pl><St>}:{enen} | \
-                    {<Subst><NoGend><Gen><Pl><St>}:{erer} | \
-                    {<Subst><NoGend><Gen><Pl><St>}:{eren}
+$ArtDefSubstSuff$ = {<Subst><Masc><Nom><Sg><St>}:{<SB>er}     | \
+                    {<Subst><Masc><Acc><Sg><St>}:{<SB>en}     | \
+                    {<Subst><Masc><Dat><Sg><St>}:{<SB>em}     | \
+                    {<Subst><Masc><Gen><Sg><St>}:{<SB>essen}  | \
+                    {<Subst><Neut><Nom><Sg><St>}:{<SB>as}     | \
+                    {<Subst><Neut><Acc><Sg><St>}:{<SB>as}     | \
+                    {<Subst><Neut><Dat><Sg><St>}:{<SB>em}     | \
+                    {<Subst><Neut><Gen><Sg><St>}:{<SB>essen}  | \
+                    {<Subst><Fem><Nom><Sg><St>}:{<SB>ie}      | \
+                    {<Subst><Fem><Acc><Sg><St>}:{<SB>ie}      | \
+                    {<Subst><Fem><Dat><Sg><St>}:{<SB>er}      | \
+                    {<Subst><Fem><Gen><Sg><St>}:{<SB>erer}    | \
+                    {<Subst><Fem><Gen><Sg><St>}:{<SB>eren}    | \
+                    {<Subst><NoGend><Nom><Pl><St>}:{<SB>ie}   | \
+                    {<Subst><NoGend><Acc><Pl><St>}:{<SB>ie}   | \
+                    {<Subst><NoGend><Dat><Pl><St>}:{<SB>enen} | \
+                    {<Subst><NoGend><Gen><Pl><St>}:{<SB>erer} | \
+                    {<Subst><NoGend><Gen><Pl><St>}:{<SB>eren}
 
 $ArtDefSuff$ = $ArtDefAttrSuff$ | \
                $ArtDefSubstSuff$
@@ -987,24 +967,24 @@ $RelSuff$ = $ArtDefSubstSuff$
 
 $DemDefSuff$ = $ArtDefSuff$
 
-$DemSuff$ = {[<Attr><Subst>]<Masc><Nom><Sg><St>}:{er}   | \
-            {[<Attr><Subst>]<Masc><Acc><Sg><St>}:{en}   | \
-            {[<Attr><Subst>]<Masc><Dat><Sg><St>}:{em}   | \
-            {[<Attr><Subst>]<Masc><Gen><Sg><St>}:{es}   | \
-            {<Attr><Masc><Gen><Sg><St><NonSt>}:{en}     | \ % cf. Duden-Grammatik (2016: § 356, 379)
-            {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{es}   | \
-            {[<Attr><Subst>]<Neut><Acc><Sg><St>}:{es}   | \
-            {[<Attr><Subst>]<Neut><Dat><Sg><St>}:{em}   | \
-            {[<Attr><Subst>]<Neut><Gen><Sg><St>}:{es}   | \
-            {<Attr><Neut><Gen><Sg><St><NonSt>}:{en}     | \ % cf. Duden-Grammatik (2016: § 356, 379)
-            {[<Attr><Subst>]<Fem><Nom><Sg><St>}:{e}     | \
-            {[<Attr><Subst>]<Fem><Acc><Sg><St>}:{e}     | \
-            {[<Attr><Subst>]<Fem><Dat><Sg><St>}:{er}    | \
-            {[<Attr><Subst>]<Fem><Gen><Sg><St>}:{er}    | \
-            {[<Attr><Subst>]<NoGend><Nom><Pl><St>}:{e}  | \
-            {[<Attr><Subst>]<NoGend><Acc><Pl><St>}:{e}  | \
-            {[<Attr><Subst>]<NoGend><Dat><Pl><St>}:{en} | \
-            {[<Attr><Subst>]<NoGend><Gen><Pl><St>}:{er}
+$DemSuff$ = {[<Attr><Subst>]<Masc><Nom><Sg><St>}:{<SB>er}   | \
+            {[<Attr><Subst>]<Masc><Acc><Sg><St>}:{<SB>en}   | \
+            {[<Attr><Subst>]<Masc><Dat><Sg><St>}:{<SB>em}   | \
+            {[<Attr><Subst>]<Masc><Gen><Sg><St>}:{<SB>es}   | \
+            {<Attr><Masc><Gen><Sg><St><NonSt>}:{<SB>en}     | \ % cf. Duden-Grammatik (2016: § 356, 379)
+            {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{<SB>es}   | \
+            {[<Attr><Subst>]<Neut><Acc><Sg><St>}:{<SB>es}   | \
+            {[<Attr><Subst>]<Neut><Dat><Sg><St>}:{<SB>em}   | \
+            {[<Attr><Subst>]<Neut><Gen><Sg><St>}:{<SB>es}   | \
+            {<Attr><Neut><Gen><Sg><St><NonSt>}:{<SB>en}     | \ % cf. Duden-Grammatik (2016: § 356, 379)
+            {[<Attr><Subst>]<Fem><Nom><Sg><St>}:{<SB>e}     | \
+            {[<Attr><Subst>]<Fem><Acc><Sg><St>}:{<SB>e}     | \
+            {[<Attr><Subst>]<Fem><Dat><Sg><St>}:{<SB>er}    | \
+            {[<Attr><Subst>]<Fem><Gen><Sg><St>}:{<SB>er}    | \
+            {[<Attr><Subst>]<NoGend><Nom><Pl><St>}:{<SB>e}  | \
+            {[<Attr><Subst>]<NoGend><Acc><Pl><St>}:{<SB>e}  | \
+            {[<Attr><Subst>]<NoGend><Dat><Pl><St>}:{<SB>en} | \
+            {[<Attr><Subst>]<NoGend><Gen><Pl><St>}:{<SB>er}
 
 $DemSuff-dies$ = $DemSuff$ | \
                  {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{} | \
@@ -1012,115 +992,115 @@ $DemSuff-dies$ = $DemSuff$ | \
 
 $DemSuff-solch/St$ = $DemSuff$
 
-$DemSuff-solch/Wk$ = {[<Attr><Subst>]<Masc><Nom><Sg><Wk>}:{e}    | \
-                     {[<Attr><Subst>]<Masc><Acc><Sg><Wk>}:{en}   | \
-                     {[<Attr><Subst>]<Masc><Dat><Sg><Wk>}:{en}   | \
-                     {[<Attr><Subst>]<Masc><Gen><Sg><Wk>}:{en}   | \
-                     {[<Attr><Subst>]<Neut><Nom><Sg><Wk>}:{e}    | \
-                     {[<Attr><Subst>]<Neut><Acc><Sg><Wk>}:{e}    | \
-                     {[<Attr><Subst>]<Neut><Dat><Sg><Wk>}:{en}   | \
-                     {[<Attr><Subst>]<Neut><Gen><Sg><Wk>}:{en}   | \
-                     {[<Attr><Subst>]<Fem><Nom><Sg><Wk>}:{e}     | \
-                     {[<Attr><Subst>]<Fem><Acc><Sg><Wk>}:{e}     | \
-                     {[<Attr><Subst>]<Fem><Dat><Sg><Wk>}:{en}    | \
-                     {[<Attr><Subst>]<Fem><Gen><Sg><Wk>}:{en}    | \
-                     {[<Attr><Subst>]<NoGend><Nom><Pl><Wk>}:{en} | \
-                     {[<Attr><Subst>]<NoGend><Acc><Pl><Wk>}:{en} | \
-                     {[<Attr><Subst>]<NoGend><Dat><Pl><Wk>}:{en} | \
-                     {[<Attr><Subst>]<NoGend><Gen><Pl><Wk>}:{en}
+$DemSuff-solch/Wk$ = {[<Attr><Subst>]<Masc><Nom><Sg><Wk>}:{<SB>e}    | \
+                     {[<Attr><Subst>]<Masc><Acc><Sg><Wk>}:{<SB>en}   | \
+                     {[<Attr><Subst>]<Masc><Dat><Sg><Wk>}:{<SB>en}   | \
+                     {[<Attr><Subst>]<Masc><Gen><Sg><Wk>}:{<SB>en}   | \
+                     {[<Attr><Subst>]<Neut><Nom><Sg><Wk>}:{<SB>e}    | \
+                     {[<Attr><Subst>]<Neut><Acc><Sg><Wk>}:{<SB>e}    | \
+                     {[<Attr><Subst>]<Neut><Dat><Sg><Wk>}:{<SB>en}   | \
+                     {[<Attr><Subst>]<Neut><Gen><Sg><Wk>}:{<SB>en}   | \
+                     {[<Attr><Subst>]<Fem><Nom><Sg><Wk>}:{<SB>e}     | \
+                     {[<Attr><Subst>]<Fem><Acc><Sg><Wk>}:{<SB>e}     | \
+                     {[<Attr><Subst>]<Fem><Dat><Sg><Wk>}:{<SB>en}    | \
+                     {[<Attr><Subst>]<Fem><Gen><Sg><Wk>}:{<SB>en}    | \
+                     {[<Attr><Subst>]<NoGend><Nom><Pl><Wk>}:{<SB>en} | \
+                     {[<Attr><Subst>]<NoGend><Acc><Pl><Wk>}:{<SB>en} | \
+                     {[<Attr><Subst>]<NoGend><Dat><Pl><Wk>}:{<SB>en} | \
+                     {[<Attr><Subst>]<NoGend><Gen><Pl><Wk>}:{<SB>en}
 
 $DemSuff-solch$ = $DemSuff-solch/St$ | \
                   $DemSuff-solch/Wk$ | \ % cf. Duden-Grammatik (2016: § 432)
                   {<Attr><Invar>}:{}
 
-$DemSuff-alldem$ = {<Subst><Neut><Dat><Sg><St>}:{em}
+$DemSuff-alldem$ = {<Subst><Neut><Dat><Sg><St>}:{<SB>em}
 
 $DemSuff0$ = {[<Attr><Subst>]<Invar>}:{}
 
-$ArtDef-der+DemMascSuff$ = {<Nom><Sg><Wk>}:{e}
+$ArtDef-der+DemMascSuff$ = {<Nom><Sg><Wk>}:{<SB>e}
 
-$ArtDef-den+DemMascSuff$ = {<Acc><Sg><Wk>}:{en}
+$ArtDef-den+DemMascSuff$ = {<Acc><Sg><Wk>}:{<SB>en}
 
-$ArtDef-dem+DemMascSuff$ = {<Dat><Sg><Wk>}:{en}
+$ArtDef-dem+DemMascSuff$ = {<Dat><Sg><Wk>}:{<SB>en}
 
-$ArtDef-des+DemMascSuff$ = {<Gen><Sg><Wk>}:{en}
+$ArtDef-des+DemMascSuff$ = {<Gen><Sg><Wk>}:{<SB>en}
 
-$ArtDef-das+DemNeutSuff$ = {<Nom><Sg><Wk>}:{e} | \
-                           {<Acc><Sg><Wk>}:{e}
+$ArtDef-das+DemNeutSuff$ = {<Nom><Sg><Wk>}:{<SB>e} | \
+                           {<Acc><Sg><Wk>}:{<SB>e}
 
-$ArtDef-dem+DemNeutSuff$ = {<Dat><Sg><Wk>}:{en}
+$ArtDef-dem+DemNeutSuff$ = {<Dat><Sg><Wk>}:{<SB>en}
 
-$ArtDef-des+DemNeutSuff$ = {<Gen><Sg><Wk>}:{en}
+$ArtDef-des+DemNeutSuff$ = {<Gen><Sg><Wk>}:{<SB>en}
 
-$ArtDef-die+DemFemSuff$ = {<Nom><Sg><Wk>}:{e} | \
-                          {<Acc><Sg><Wk>}:{e}
+$ArtDef-die+DemFemSuff$ = {<Nom><Sg><Wk>}:{<SB>e} | \
+                          {<Acc><Sg><Wk>}:{<SB>e}
 
-$ArtDef-der+DemFemSuff$ = {<Dat><Sg><Wk>}:{en} | \
-                          {<Gen><Sg><Wk>}:{en}
+$ArtDef-der+DemFemSuff$ = {<Dat><Sg><Wk>}:{<SB>en} | \
+                          {<Gen><Sg><Wk>}:{<SB>en}
 
-$ArtDef-die+DemNoGendSuff$ = {<Nom><Pl><Wk>}:{en} | \
-                             {<Acc><Pl><Wk>}:{en}
+$ArtDef-die+DemNoGendSuff$ = {<Nom><Pl><Wk>}:{<SB>en} | \
+                             {<Acc><Pl><Wk>}:{<SB>en}
 
-$ArtDef-den+DemNoGendSuff$ = {<Dat><Pl><Wk>}:{en}
+$ArtDef-den+DemNoGendSuff$ = {<Dat><Pl><Wk>}:{<SB>en}
 
-$ArtDef-der+DemNoGendSuff$ = {<Gen><Pl><Wk>}:{en}
+$ArtDef-der+DemNoGendSuff$ = {<Gen><Pl><Wk>}:{<SB>en}
 
 $WSuff-welch$ = $DemSuff-solch/St$ | \
                 {<Attr><Invar>}:{}
 
 $RelSuff-welch$ = $WSuff-welch$ % cf. Duden-Grammatik (2016: § 403)
 
-$IndefSuff-welch$ = {<Subst><Masc><Nom><Sg><St>}:{er}   | \
-                    {<Subst><Masc><Acc><Sg><St>}:{en}   | \
-                    {<Subst><Masc><Dat><Sg><St>}:{em}   | \
-                    {<Subst><Masc><Gen><Sg><St>}:{es}   | \
-                    {<Subst><Neut><Nom><Sg><St>}:{es}   | \
-                    {<Subst><Neut><Acc><Sg><St>}:{es}   | \
-                    {<Subst><Neut><Dat><Sg><St>}:{em}   | \
-                    {<Subst><Neut><Gen><Sg><St>}:{es}   | \
-                    {<Subst><Fem><Nom><Sg><St>}:{e}     | \
-                    {<Subst><Fem><Acc><Sg><St>}:{e}     | \
-                    {<Subst><Fem><Dat><Sg><St>}:{er}    | \
-                    {<Subst><Fem><Gen><Sg><St>}:{er}    | \
-                    {<Subst><NoGend><Nom><Pl><St>}:{e}  | \
-                    {<Subst><NoGend><Acc><Pl><St>}:{e}  | \
-                    {<Subst><NoGend><Dat><Pl><St>}:{en} | \
-                    {<Subst><NoGend><Gen><Pl><St>}:{er}
+$IndefSuff-welch$ = {<Subst><Masc><Nom><Sg><St>}:{<SB>er}   | \
+                    {<Subst><Masc><Acc><Sg><St>}:{<SB>en}   | \
+                    {<Subst><Masc><Dat><Sg><St>}:{<SB>em}   | \
+                    {<Subst><Masc><Gen><Sg><St>}:{<SB>es}   | \
+                    {<Subst><Neut><Nom><Sg><St>}:{<SB>es}   | \
+                    {<Subst><Neut><Acc><Sg><St>}:{<SB>es}   | \
+                    {<Subst><Neut><Dat><Sg><St>}:{<SB>em}   | \
+                    {<Subst><Neut><Gen><Sg><St>}:{<SB>es}   | \
+                    {<Subst><Fem><Nom><Sg><St>}:{<SB>e}     | \
+                    {<Subst><Fem><Acc><Sg><St>}:{<SB>e}     | \
+                    {<Subst><Fem><Dat><Sg><St>}:{<SB>er}    | \
+                    {<Subst><Fem><Gen><Sg><St>}:{<SB>er}    | \
+                    {<Subst><NoGend><Nom><Pl><St>}:{<SB>e}  | \
+                    {<Subst><NoGend><Acc><Pl><St>}:{<SB>e}  | \
+                    {<Subst><NoGend><Dat><Pl><St>}:{<SB>en} | \
+                    {<Subst><NoGend><Gen><Pl><St>}:{<SB>er}
 
 $IndefSuff-irgendwelch$ = $DemSuff-solch/St$
 
-$IndefSuff-all$ = $DemSuff-solch/St$                       | \
-                  {<Subst><Masc><Dat><Sg><Wk><NonSt>}:{en} | \ % cf. Duden-Grammatik (2016: § 411)
-                  {<Subst><Neut><Dat><Sg><Wk><NonSt>}:{en} | \ % cf. Duden-Grammatik (2016: § 411)
+$IndefSuff-all$ = $DemSuff-solch/St$                           | \
+                  {<Subst><Masc><Dat><Sg><Wk><NonSt>}:{<SB>en} | \ % cf. Duden-Grammatik (2016: § 411)
+                  {<Subst><Neut><Dat><Sg><Wk><NonSt>}:{<SB>en} | \ % cf. Duden-Grammatik (2016: § 411)
                   {<Attr><Invar>}:{}
 
-$IndefSuff-jed/St$ = {[<Attr><Subst>]<Masc><Nom><Sg><St>}:{er} | \
-                     {[<Attr><Subst>]<Masc><Acc><Sg><St>}:{en} | \
-                     {[<Attr><Subst>]<Masc><Dat><Sg><St>}:{em} | \
-                     {[<Attr><Subst>]<Masc><Gen><Sg><St>}:{es} | \
-                     {<Attr><Masc><Gen><Sg><St><NonSt>}:{en}   | \ % cf. Duden-Grammatik (2016: § 356, 422)
-                     {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{es} | \
-                     {[<Attr><Subst>]<Neut><Acc><Sg><St>}:{es} | \
-                     {[<Attr><Subst>]<Neut><Dat><Sg><St>}:{em} | \
-                     {[<Attr><Subst>]<Neut><Gen><Sg><St>}:{es} | \
-                     {<Attr><Neut><Gen><Sg><St><NonSt>}:{en}   | \ % cf. Duden-Grammatik (2016: § 356, 422)
-                     {[<Attr><Subst>]<Fem><Nom><Sg><St>}:{e}   | \
-                     {[<Attr><Subst>]<Fem><Acc><Sg><St>}:{e}   | \
-                     {[<Attr><Subst>]<Fem><Dat><Sg><St>}:{er}  | \
-                     {[<Attr><Subst>]<Fem><Gen><Sg><St>}:{er}
+$IndefSuff-jed/St$ = {[<Attr><Subst>]<Masc><Nom><Sg><St>}:{<SB>er} | \
+                     {[<Attr><Subst>]<Masc><Acc><Sg><St>}:{<SB>en} | \
+                     {[<Attr><Subst>]<Masc><Dat><Sg><St>}:{<SB>em} | \
+                     {[<Attr><Subst>]<Masc><Gen><Sg><St>}:{<SB>es} | \
+                     {<Attr><Masc><Gen><Sg><St><NonSt>}:{<SB>en}   | \ % cf. Duden-Grammatik (2016: § 356, 422)
+                     {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{<SB>es} | \
+                     {[<Attr><Subst>]<Neut><Acc><Sg><St>}:{<SB>es} | \
+                     {[<Attr><Subst>]<Neut><Dat><Sg><St>}:{<SB>em} | \
+                     {[<Attr><Subst>]<Neut><Gen><Sg><St>}:{<SB>es} | \
+                     {<Attr><Neut><Gen><Sg><St><NonSt>}:{<SB>en}   | \ % cf. Duden-Grammatik (2016: § 356, 422)
+                     {[<Attr><Subst>]<Fem><Nom><Sg><St>}:{<SB>e}   | \
+                     {[<Attr><Subst>]<Fem><Acc><Sg><St>}:{<SB>e}   | \
+                     {[<Attr><Subst>]<Fem><Dat><Sg><St>}:{<SB>er}  | \
+                     {[<Attr><Subst>]<Fem><Gen><Sg><St>}:{<SB>er}
 
-$IndefSuff-jed/Wk$ = {[<Attr><Subst>]<Masc><Nom><Sg><Wk>}:{e}  | \
-                     {[<Attr><Subst>]<Masc><Acc><Sg><Wk>}:{en} | \
-                     {[<Attr><Subst>]<Masc><Dat><Sg><Wk>}:{en} | \
-                     {[<Attr><Subst>]<Masc><Gen><Sg><Wk>}:{en} | \
-                     {[<Attr><Subst>]<Neut><Nom><Sg><Wk>}:{e}  | \
-                     {[<Attr><Subst>]<Neut><Acc><Sg><Wk>}:{e}  | \
-                     {[<Attr><Subst>]<Neut><Dat><Sg><Wk>}:{en} | \
-                     {[<Attr><Subst>]<Neut><Gen><Sg><Wk>}:{en} | \
-                     {[<Attr><Subst>]<Fem><Nom><Sg><Wk>}:{e}   | \
-                     {[<Attr><Subst>]<Fem><Acc><Sg><Wk>}:{e}   | \
-                     {[<Attr><Subst>]<Fem><Dat><Sg><Wk>}:{en}  | \
-                     {[<Attr><Subst>]<Fem><Gen><Sg><Wk>}:{en}
+$IndefSuff-jed/Wk$ = {[<Attr><Subst>]<Masc><Nom><Sg><Wk>}:{<SB>e}  | \
+                     {[<Attr><Subst>]<Masc><Acc><Sg><Wk>}:{<SB>en} | \
+                     {[<Attr><Subst>]<Masc><Dat><Sg><Wk>}:{<SB>en} | \
+                     {[<Attr><Subst>]<Masc><Gen><Sg><Wk>}:{<SB>en} | \
+                     {[<Attr><Subst>]<Neut><Nom><Sg><Wk>}:{<SB>e}  | \
+                     {[<Attr><Subst>]<Neut><Acc><Sg><Wk>}:{<SB>e}  | \
+                     {[<Attr><Subst>]<Neut><Dat><Sg><Wk>}:{<SB>en} | \
+                     {[<Attr><Subst>]<Neut><Gen><Sg><Wk>}:{<SB>en} | \
+                     {[<Attr><Subst>]<Fem><Nom><Sg><Wk>}:{<SB>e}   | \
+                     {[<Attr><Subst>]<Fem><Acc><Sg><Wk>}:{<SB>e}   | \
+                     {[<Attr><Subst>]<Fem><Dat><Sg><Wk>}:{<SB>en}  | \
+                     {[<Attr><Subst>]<Fem><Gen><Sg><Wk>}:{<SB>en}
 
 $IndefSuff-jed$ = $IndefSuff-jed/St$ | \
                   $IndefSuff-jed/Wk$
@@ -1132,98 +1112,98 @@ $IndefSuff-saemtlich$ = $DemSuff-solch/St$ | \
                         $DemSuff-solch/Wk$ | \
                         {<Subst><Invar>}:{}
 
-$IndefSuff-beid$ = {<Subst><Neut><Nom><Sg><St>}:{es}           | \
-                   {<Subst><Neut><Acc><Sg><St>}:{es}           | \
-                   {<Subst><Neut><Dat><Sg><St>}:{em}           | \
-                   {<Subst><Neut><Gen><Sg><St>}:{es}           | \
-                   {[<Attr><Subst>]<NoGend><Nom><Pl><St>}:{e}  | \
-                   {[<Attr><Subst>]<NoGend><Acc><Pl><St>}:{e}  | \
-                   {[<Attr><Subst>]<NoGend><Dat><Pl><St>}:{en} | \
-                   {[<Attr><Subst>]<NoGend><Gen><Pl><St>}:{er} | \
-                   {<Subst><Neut><Nom><Sg><Wk>}:{e}            | \
-                   {<Subst><Neut><Acc><Sg><Wk>}:{e}            | \
-                   {<Subst><Neut><Dat><Sg><Wk>}:{en}           | \
-                   {<Subst><Neut><Gen><Sg><Wk>}:{en}           | \
-                   {[<Attr><Subst>]<NoGend><Nom><Pl><Wk>}:{en} | \
-                   {[<Attr><Subst>]<NoGend><Acc><Pl><Wk>}:{en} | \
-                   {[<Attr><Subst>]<NoGend><Dat><Pl><Wk>}:{en} | \
-                   {[<Attr><Subst>]<NoGend><Gen><Pl><Wk>}:{en}
+$IndefSuff-beid$ = {<Subst><Neut><Nom><Sg><St>}:{<SB>es}           | \
+                   {<Subst><Neut><Acc><Sg><St>}:{<SB>es}           | \
+                   {<Subst><Neut><Dat><Sg><St>}:{<SB>em}           | \
+                   {<Subst><Neut><Gen><Sg><St>}:{<SB>es}           | \
+                   {[<Attr><Subst>]<NoGend><Nom><Pl><St>}:{<SB>e}  | \
+                   {[<Attr><Subst>]<NoGend><Acc><Pl><St>}:{<SB>e}  | \
+                   {[<Attr><Subst>]<NoGend><Dat><Pl><St>}:{<SB>en} | \
+                   {[<Attr><Subst>]<NoGend><Gen><Pl><St>}:{<SB>er} | \
+                   {<Subst><Neut><Nom><Sg><Wk>}:{<SB>e}            | \
+                   {<Subst><Neut><Acc><Sg><Wk>}:{<SB>e}            | \
+                   {<Subst><Neut><Dat><Sg><Wk>}:{<SB>en}           | \
+                   {<Subst><Neut><Gen><Sg><Wk>}:{<SB>en}           | \
+                   {[<Attr><Subst>]<NoGend><Nom><Pl><Wk>}:{<SB>en} | \
+                   {[<Attr><Subst>]<NoGend><Acc><Pl><Wk>}:{<SB>en} | \
+                   {[<Attr><Subst>]<NoGend><Dat><Pl><Wk>}:{<SB>en} | \
+                   {[<Attr><Subst>]<NoGend><Gen><Pl><Wk>}:{<SB>en}
 
 $IndefSuff-einig$ = $DemSuff$
 
 $IndefSuff-manch$ = $WSuff-welch$
 
-$IndefSuff-mehrer$ = {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{es}   | \
-                     {[<Attr><Subst>]<Neut><Acc><Sg><St>}:{es}   | \
-                     {[<Attr><Subst>]<NoGend><Nom><Pl><St>}:{e}  | \
-                     {[<Attr><Subst>]<NoGend><Acc><Pl><St>}:{e}  | \
-                     {[<Attr><Subst>]<NoGend><Dat><Pl><St>}:{en} | \
-                     {[<Attr><Subst>]<NoGend><Gen><Pl><St>}:{er}
+$IndefSuff-mehrer$ = {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{<SB>es}   | \
+                     {[<Attr><Subst>]<Neut><Acc><Sg><St>}:{<SB>es}   | \
+                     {[<Attr><Subst>]<NoGend><Nom><Pl><St>}:{<SB>e}  | \
+                     {[<Attr><Subst>]<NoGend><Acc><Pl><St>}:{<SB>e}  | \
+                     {[<Attr><Subst>]<NoGend><Dat><Pl><St>}:{<SB>en} | \
+                     {[<Attr><Subst>]<NoGend><Gen><Pl><St>}:{<SB>er}
 
 $IndefSuff0$ = {[<Attr><Subst>]<Invar>}:{}
 
-$ArtIndefAttrSuff$ = {<Attr><Masc><Nom><Sg><NoInfl>}:{} | \
-                     {<Attr><Masc><Acc><Sg><St>}:{en}   | \
-                     {<Attr><Masc><Dat><Sg><St>}:{em}   | \
-                     {<Attr><Masc><Gen><Sg><St>}:{es}   | \
-                     {<Attr><Neut><Nom><Sg><NoInfl>}:{} | \
-                     {<Attr><Neut><Acc><Sg><NoInfl>}:{} | \
-                     {<Attr><Neut><Dat><Sg><St>}:{em}   | \
-                     {<Attr><Neut><Gen><Sg><St>}:{es}   | \
-                     {<Attr><Fem><Nom><Sg><St>}:{e}     | \
-                     {<Attr><Fem><Acc><Sg><St>}:{e}     | \
-                     {<Attr><Fem><Dat><Sg><St>}:{er}    | \
-                     {<Attr><Fem><Gen><Sg><St>}:{er}
+$ArtIndefAttrSuff$ = {<Attr><Masc><Nom><Sg><NoInfl>}:{}     | \
+                     {<Attr><Masc><Acc><Sg><St>}:{<SB>en}   | \
+                     {<Attr><Masc><Dat><Sg><St>}:{<SB>em}   | \
+                     {<Attr><Masc><Gen><Sg><St>}:{<SB>es}   | \
+                     {<Attr><Neut><Nom><Sg><NoInfl>}:{}     | \
+                     {<Attr><Neut><Acc><Sg><NoInfl>}:{}     | \
+                     {<Attr><Neut><Dat><Sg><St>}:{<SB>em}   | \
+                     {<Attr><Neut><Gen><Sg><St>}:{<SB>es}   | \
+                     {<Attr><Fem><Nom><Sg><St>}:{<SB>e}     | \
+                     {<Attr><Fem><Acc><Sg><St>}:{<SB>e}     | \
+                     {<Attr><Fem><Dat><Sg><St>}:{<SB>er}    | \
+                     {<Attr><Fem><Gen><Sg><St>}:{<SB>er}
 
-$ArtIndefSubstSuff$ = {<Subst><Masc><Nom><Sg><St>}:{er} | \
-                      {<Subst><Masc><Acc><Sg><St>}:{en} | \
-                      {<Subst><Masc><Dat><Sg><St>}:{em} | \
-                      {<Subst><Masc><Gen><Sg><St>}:{es} | \
-                      {<Subst><Neut><Nom><Sg><St>}:{es} | \
-                      {<Subst><Neut><Nom><Sg><St>}:{s}  | \
-                      {<Subst><Neut><Acc><Sg><St>}:{es} | \
-                      {<Subst><Neut><Acc><Sg><St>}:{s}  | \
-                      {<Subst><Neut><Dat><Sg><St>}:{em} | \
-                      {<Subst><Neut><Gen><Sg><St>}:{es} | \
-                      {<Subst><Fem><Nom><Sg><St>}:{e}   | \
-                      {<Subst><Fem><Acc><Sg><St>}:{e}   | \
-                      {<Subst><Fem><Dat><Sg><St>}:{er}  | \
-                      {<Subst><Fem><Gen><Sg><St>}:{er}
+$ArtIndefSubstSuff$ = {<Subst><Masc><Nom><Sg><St>}:{<SB>er} | \
+                      {<Subst><Masc><Acc><Sg><St>}:{<SB>en} | \
+                      {<Subst><Masc><Dat><Sg><St>}:{<SB>em} | \
+                      {<Subst><Masc><Gen><Sg><St>}:{<SB>es} | \
+                      {<Subst><Neut><Nom><Sg><St>}:{<SB>es} | \
+                      {<Subst><Neut><Nom><Sg><St>}:{<SB>s}  | \
+                      {<Subst><Neut><Acc><Sg><St>}:{<SB>es} | \
+                      {<Subst><Neut><Acc><Sg><St>}:{<SB>s}  | \
+                      {<Subst><Neut><Dat><Sg><St>}:{<SB>em} | \
+                      {<Subst><Neut><Gen><Sg><St>}:{<SB>es} | \
+                      {<Subst><Fem><Nom><Sg><St>}:{<SB>e}   | \
+                      {<Subst><Fem><Acc><Sg><St>}:{<SB>e}   | \
+                      {<Subst><Fem><Dat><Sg><St>}:{<SB>er}  | \
+                      {<Subst><Fem><Gen><Sg><St>}:{<SB>er}
 
 $ArtIndefSuff$ = $ArtIndefAttrSuff$ | \
                  $ArtIndefSubstSuff$
 
 $IndefSuff-ein/St$ = $ArtIndefSubstSuff$
 
-$IndefSuff-ein/Wk$ = {<Subst><Masc><Nom><Sg><Wk>}:{e}  | \
-                     {<Subst><Masc><Acc><Sg><Wk>}:{en} | \
-                     {<Subst><Masc><Dat><Sg><Wk>}:{en} | \
-                     {<Subst><Masc><Gen><Sg><Wk>}:{en} | \
-                     {<Subst><Neut><Nom><Sg><Wk>}:{e}  | \
-                     {<Subst><Neut><Acc><Sg><Wk>}:{e}  | \
-                     {<Subst><Neut><Dat><Sg><Wk>}:{en} | \
-                     {<Subst><Neut><Gen><Sg><Wk>}:{en} | \
-                     {<Subst><Fem><Nom><Sg><Wk>}:{e}   | \
-                     {<Subst><Fem><Acc><Sg><Wk>}:{e}   | \
-                     {<Subst><Fem><Dat><Sg><Wk>}:{en}  | \
-                     {<Subst><Fem><Gen><Sg><Wk>}:{en}
+$IndefSuff-ein/Wk$ = {<Subst><Masc><Nom><Sg><Wk>}:{<SB>e}  | \
+                     {<Subst><Masc><Acc><Sg><Wk>}:{<SB>en} | \
+                     {<Subst><Masc><Dat><Sg><Wk>}:{<SB>en} | \
+                     {<Subst><Masc><Gen><Sg><Wk>}:{<SB>en} | \
+                     {<Subst><Neut><Nom><Sg><Wk>}:{<SB>e}  | \
+                     {<Subst><Neut><Acc><Sg><Wk>}:{<SB>e}  | \
+                     {<Subst><Neut><Dat><Sg><Wk>}:{<SB>en} | \
+                     {<Subst><Neut><Gen><Sg><Wk>}:{<SB>en} | \
+                     {<Subst><Fem><Nom><Sg><Wk>}:{<SB>e}   | \
+                     {<Subst><Fem><Acc><Sg><Wk>}:{<SB>e}   | \
+                     {<Subst><Fem><Dat><Sg><Wk>}:{<SB>en}  | \
+                     {<Subst><Fem><Gen><Sg><Wk>}:{<SB>en}
 
 $IndefSuff-ein$ = $IndefSuff-ein/St$ | \
                   $IndefSuff-ein/Wk$
 
-$ArtNegAttrSuff$ = $ArtIndefAttrSuff$                      | \
-                   {<Attr><Masc><Gen><Sg><St><NonSt>}:{en} | \ % cf. Duden-Grammatik (2016: § 356, 425)
-                   {<Attr><Neut><Gen><Sg><St><NonSt>}:{en} | \ % cf. Duden-Grammatik (2016: § 356, 425)
-                   {<Attr><NoGend><Nom><Pl><St>}:{e}       | \
-                   {<Attr><NoGend><Acc><Pl><St>}:{e}       | \
-                   {<Attr><NoGend><Dat><Pl><St>}:{en}      | \
-                   {<Attr><NoGend><Gen><Pl><St>}:{er}
+$ArtNegAttrSuff$ = $ArtIndefAttrSuff$                          | \
+                   {<Attr><Masc><Gen><Sg><St><NonSt>}:{<SB>en} | \ % cf. Duden-Grammatik (2016: § 356, 425)
+                   {<Attr><Neut><Gen><Sg><St><NonSt>}:{<SB>en} | \ % cf. Duden-Grammatik (2016: § 356, 425)
+                   {<Attr><NoGend><Nom><Pl><St>}:{<SB>e}       | \
+                   {<Attr><NoGend><Acc><Pl><St>}:{<SB>e}       | \
+                   {<Attr><NoGend><Dat><Pl><St>}:{<SB>en}      | \
+                   {<Attr><NoGend><Gen><Pl><St>}:{<SB>er}
 
-$ArtNegSubstSuff$ = $ArtIndefSubstSuff$                 | \
-                    {<Subst><NoGend><Nom><Pl><St>}:{e}  | \
-                    {<Subst><NoGend><Acc><Pl><St>}:{e}  | \
-                    {<Subst><NoGend><Dat><Pl><St>}:{en} | \
-                    {<Subst><NoGend><Gen><Pl><St>}:{er}
+$ArtNegSubstSuff$ = $ArtIndefSubstSuff$                     | \
+                    {<Subst><NoGend><Nom><Pl><St>}:{<SB>e}  | \
+                    {<Subst><NoGend><Acc><Pl><St>}:{<SB>e}  | \
+                    {<Subst><NoGend><Dat><Pl><St>}:{<SB>en} | \
+                    {<Subst><NoGend><Gen><Pl><St>}:{<SB>er}
 
 $ArtNegSuff$ =  $ArtNegAttrSuff$ | \
                 $ArtNegSubstSuff$
@@ -1232,45 +1212,45 @@ $IndefSuff-kein$ = $ArtNegSubstSuff$
 
 $PossSuff/St$ = $ArtNegSuff$
 
-$PossSuff/Wk$ = {<Subst><Masc><Nom><Sg><Wk>}:{e}    | \
-                {<Subst><Masc><Acc><Sg><Wk>}:{en}   | \
-                {<Subst><Masc><Dat><Sg><Wk>}:{en}   | \
-                {<Subst><Masc><Gen><Sg><Wk>}:{en}   | \
-                {<Subst><Neut><Nom><Sg><Wk>}:{e}    | \
-                {<Subst><Neut><Acc><Sg><Wk>}:{e}    | \
-                {<Subst><Neut><Dat><Sg><Wk>}:{en}   | \
-                {<Subst><Neut><Gen><Sg><Wk>}:{en}   | \
-                {<Subst><Fem><Nom><Sg><Wk>}:{e}     | \
-                {<Subst><Fem><Acc><Sg><Wk>}:{e}     | \
-                {<Subst><Fem><Dat><Sg><Wk>}:{en}    | \
-                {<Subst><Fem><Gen><Sg><Wk>}:{en}    | \
-                {<Subst><NoGend><Nom><Pl><Wk>}:{en} | \
-                {<Subst><NoGend><Acc><Pl><Wk>}:{en} | \
-                {<Subst><NoGend><Dat><Pl><Wk>}:{en} | \
-                {<Subst><NoGend><Gen><Pl><Wk>}:{en}
+$PossSuff/Wk$ = {<Subst><Masc><Nom><Sg><Wk>}:{<SB>e}    | \
+                {<Subst><Masc><Acc><Sg><Wk>}:{<SB>en}   | \
+                {<Subst><Masc><Dat><Sg><Wk>}:{<SB>en}   | \
+                {<Subst><Masc><Gen><Sg><Wk>}:{<SB>en}   | \
+                {<Subst><Neut><Nom><Sg><Wk>}:{<SB>e}    | \
+                {<Subst><Neut><Acc><Sg><Wk>}:{<SB>e}    | \
+                {<Subst><Neut><Dat><Sg><Wk>}:{<SB>en}   | \
+                {<Subst><Neut><Gen><Sg><Wk>}:{<SB>en}   | \
+                {<Subst><Fem><Nom><Sg><Wk>}:{<SB>e}     | \
+                {<Subst><Fem><Acc><Sg><Wk>}:{<SB>e}     | \
+                {<Subst><Fem><Dat><Sg><Wk>}:{<SB>en}    | \
+                {<Subst><Fem><Gen><Sg><Wk>}:{<SB>en}    | \
+                {<Subst><NoGend><Nom><Pl><Wk>}:{<SB>en} | \
+                {<Subst><NoGend><Acc><Pl><Wk>}:{<SB>en} | \
+                {<Subst><NoGend><Dat><Pl><Wk>}:{<SB>en} | \
+                {<Subst><NoGend><Gen><Pl><Wk>}:{<SB>en}
 
 $PossSuff$ = $PossSuff/St$ | \
              $PossSuff/Wk$
 
 $IProSuff0$ = {<Invar>}:{}
 
-$IProSuff$ = {<Nom><Sg>}:{}   | \
-             {<Acc><Sg>}:{en} | \
-             {<Acc><Sg>}:{}   | \
-             {<Dat><Sg>}:{em} | \
-             {<Dat><Sg>}:{}   | \
-             {<Gen><Sg>}:{es}
+$IProSuff$ = {<Nom><Sg>}:{}       | \
+             {<Acc><Sg>}:{<SB>en} | \
+             {<Acc><Sg>}:{}       | \
+             {<Dat><Sg>}:{<SB>em} | \
+             {<Dat><Sg>}:{}       | \
+             {<Gen><Sg>}:{<SB>es}
 
 $IProSuff-jedermann$ = {<Nom><Sg>}:{} | \
                        {<Acc><Sg>}:{} | \
                        {<Dat><Sg>}:{} | \
-                       {<Gen><Sg>}:{s}
+                       {<Gen><Sg>}:{<SB>s}
 
 $IProSuff-man$ = {<Nom><Sg>}:{}
 
-$IProSuff-unsereiner$ = {<Nom><Sg>}:{er} | \ % cf. Duden-Grammatik (2016: § 433)
-                        {<Acc><Sg>}:{en} | \
-                        {<Dat><Sg>}:{em}
+$IProSuff-unsereiner$ = {<Nom><Sg>}:{<SB>er} | \ % cf. Duden-Grammatik (2016: § 433)
+                        {<Acc><Sg>}:{<SB>en} | \
+                        {<Dat><Sg>}:{<SB>em}
 
 $PProNomSgSuff$ = {<Nom><Sg>}:{}
 
@@ -1278,7 +1258,7 @@ $PProAccSgSuff$ = {<Acc><Sg>}:{}
 
 $PProDatSgSuff$ = {<Dat><Sg>}:{}
 
-$PProGenSgSuff$ = {<Gen><Sg>}:{er} | \
+$PProGenSgSuff$ = {<Gen><Sg>}:{<SB>er} | \
                   {<Gen><Sg><Old>}:{} % cf. Duden-Grammatik (2016: § 363)
 
 $PProNomPlSuff$ = {<Nom><Pl>}:{}
@@ -1287,11 +1267,11 @@ $PProAccPlSuff$ = {<Acc><Pl>}:{}
 
 $PProDatPlSuff$ = {<Dat><Pl>}:{}
 
-$PProGenPlSuff$ = {<Gen><Pl>}:{er} | \
+$PProGenPlSuff$ = {<Gen><Pl>}:{<SB>er} | \
                   {<Gen><Pl><Old>}:{} % cf. Duden-Grammatik (2016: § 363)
 
-$PProGenPlSuff-er$ = {<Gen><Pl>}:{er} | \
-                     {<Gen><Pl><NonSt>}:{er<^Px><SB>er} % cf. Duden-Grammatik (2016: § 363)
+$PProGenPlSuff-er$ = {<Gen><Pl>}:{<SB>er} | \
+                     {<Gen><Pl><NonSt>}:{<SB>er<del(e)|PRO><SB>er} % cf. Duden-Grammatik (2016: § 363)
 
 $WProNomSgSuff$ = $PProNomSgSuff$
 
@@ -1299,7 +1279,7 @@ $WProAccSgSuff$ = $PProAccSgSuff$
 
 $WProDatSgSuff$ = $PProDatSgSuff$
 
-$WProGenSgSuff$ = {<Gen><Sg>}:{sen} | \
+$WProGenSgSuff$ = {<Gen><Sg>}:{<SB>sen} | \
                   {<Gen><Sg><Old>}:{} % cf. Duden-Grammatik (2016: § 404)
 
 $IProNomSgSuff$ = $WProNomSgSuff$
@@ -1308,338 +1288,338 @@ $IProAccSgSuff$ = $WProAccSgSuff$
 
 $IProDatSgSuff$ = $WProDatSgSuff$
 
-$IProGenSgSuff$ = {<Gen><Sg>}:{sen}
+$IProGenSgSuff$ = {<Gen><Sg>}:{<SB>sen}
 
 % der, die, das (article)
-$ArtDef$ = {<+ART><Def>}:{<SB>} $ArtDefSuff$
+$ArtDef$ = {<+ART><Def>}:{} $ArtDefSuff$
 
 % der, die, das (relative pronoun)
-$Rel$ = {<+REL>}:{<SB>} $RelSuff$
+$Rel$ = {<+REL>}:{} $RelSuff$
 
 % der, die, das (demonstrative pronoun)
-$DemDef$ = {<+DEM>}:{<SB>} $DemDefSuff$
+$DemDef$ = {<+DEM>}:{} $DemDefSuff$
 
 % dieser, diese, dieses/dies
-$Dem-dies$ = {<+DEM>}:{<SB>} $DemSuff-dies$
+$Dem-dies$ = {<+DEM>}:{} $DemSuff-dies$
 
 % solcher, solche, solches, solch
-$Dem-solch$ = {<+DEM>}:{<SB>} $DemSuff-solch$
+$Dem-solch$ = {<+DEM>}:{} $DemSuff-solch$
 
 % alldem, alledem
-$Dem-alldem$ = {<+DEM>}:{<SB>} $DemSuff-alldem$
+$Dem-alldem$ = {<+DEM>}:{} $DemSuff-alldem$
 
 % jener, jene, jenes
-$Dem$ = {<+DEM>}:{<SB>} $DemSuff$
+$Dem$ = {<+DEM>}:{} $DemSuff$
 
 % derlei
-$Dem0$ = {<+DEM>}:{<SB>} $DemSuff0$
+$Dem0$ = {<+DEM>}:{} $DemSuff0$
 
 % derjenige; derselbe
-$ArtDef-der+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{<SB>} $ArtDef-der+DemMascSuff$
+$ArtDef-der+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{} $ArtDef-der+DemMascSuff$
 
 % denjenigen; denselben (masculine)
-$ArtDef-den+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{<SB>} $ArtDef-den+DemMascSuff$
+$ArtDef-den+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{} $ArtDef-den+DemMascSuff$
 
 % demjenigen; demselben (masculine)
-$ArtDef-dem+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{<SB>} $ArtDef-dem+DemMascSuff$
+$ArtDef-dem+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{} $ArtDef-dem+DemMascSuff$
 
 % desjenigen; desselben (masculine)
-$ArtDef-des+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{<SB>} $ArtDef-des+DemMascSuff$
+$ArtDef-des+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{} $ArtDef-des+DemMascSuff$
 
 % dasjenige; dasselbe
-$ArtDef-das+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{<SB>} $ArtDef-das+DemNeutSuff$
+$ArtDef-das+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{} $ArtDef-das+DemNeutSuff$
 
 % demjenigen; demselben (neuter)
-$ArtDef-dem+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{<SB>} $ArtDef-dem+DemNeutSuff$
+$ArtDef-dem+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{} $ArtDef-dem+DemNeutSuff$
 
 % desjenigen; desselben (neuter)
-$ArtDef-des+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{<SB>} $ArtDef-des+DemNeutSuff$
+$ArtDef-des+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{} $ArtDef-des+DemNeutSuff$
 
 % diejenige; dieselbe
-$ArtDef-die+DemFem$ = {<+DEM>[<Attr><Subst>]<Fem>}:{<SB>} $ArtDef-die+DemFemSuff$
+$ArtDef-die+DemFem$ = {<+DEM>[<Attr><Subst>]<Fem>}:{} $ArtDef-die+DemFemSuff$
 
 % derjenigen; derselben (feminine)
-$ArtDef-der+DemFem$ = {<+DEM>[<Attr><Subst>]<Fem>}:{<SB>} $ArtDef-der+DemFemSuff$
+$ArtDef-der+DemFem$ = {<+DEM>[<Attr><Subst>]<Fem>}:{} $ArtDef-der+DemFemSuff$
 
 % diejenigen; dieselben
-$ArtDef-die+DemNoGend$ = {<+DEM>[<Attr><Subst>]<NoGend>}:{<SB>} $ArtDef-die+DemNoGendSuff$
+$ArtDef-die+DemNoGend$ = {<+DEM>[<Attr><Subst>]<NoGend>}:{} $ArtDef-die+DemNoGendSuff$
 
 % denjenigen; denselben (plural)
-$ArtDef-den+DemNoGend$ = {<+DEM>[<Attr><Subst>]<NoGend>}:{<SB>} $ArtDef-den+DemNoGendSuff$
+$ArtDef-den+DemNoGend$ = {<+DEM>[<Attr><Subst>]<NoGend>}:{} $ArtDef-den+DemNoGendSuff$
 
 % derjenigen; derselben (plural)
-$ArtDef-der+DemNoGend$ = {<+DEM>[<Attr><Subst>]<NoGend>}:{<SB>} $ArtDef-der+DemNoGendSuff$
+$ArtDef-der+DemNoGend$ = {<+DEM>[<Attr><Subst>]<NoGend>}:{} $ArtDef-der+DemNoGendSuff$
 
 % welcher, welche, welches, welch (interrogative pronoun)
-$W-welch$ = {<+WPRO>}:{<SB>} $WSuff-welch$
+$W-welch$ = {<+WPRO>}:{} $WSuff-welch$
 
 % welcher, welche, welches, welch (relative pronoun)
-$Rel-welch$ = {<+REL>}:{<SB>} $RelSuff-welch$
+$Rel-welch$ = {<+REL>}:{} $RelSuff-welch$
 
 % welcher, welche, welches (indefinite pronoun)
-$Indef-welch$ = {<+INDEF>}:{<SB>} $IndefSuff-welch$
+$Indef-welch$ = {<+INDEF>}:{} $IndefSuff-welch$
 
 % irgendwelcher, irgendwelche, irgendwelches (indefinite pronoun)
-$Indef-irgendwelch$ = {<+INDEF>}:{<SB>} $IndefSuff-irgendwelch$
+$Indef-irgendwelch$ = {<+INDEF>}:{} $IndefSuff-irgendwelch$
 
 % aller, alle, alles
-$Indef-all$ = {<+INDEF>}:{<SB>} $IndefSuff-all$
+$Indef-all$ = {<+INDEF>}:{} $IndefSuff-all$
 
 % jeder, jede, jedes
-$Indef-jed$ = {<+INDEF>}:{<SB>} $IndefSuff-jed$
+$Indef-jed$ = {<+INDEF>}:{} $IndefSuff-jed$
 
 % jeglicher, jegliche, jegliches
-$Indef-jeglich$ = {<+INDEF>}:{<SB>} $IndefSuff-jeglich$
+$Indef-jeglich$ = {<+INDEF>}:{} $IndefSuff-jeglich$
 
 % sämtlicher, sämtliche, sämtliches
-$Indef-saemtlich$ = {<+INDEF>}:{<SB>} $IndefSuff-saemtlich$
+$Indef-saemtlich$ = {<+INDEF>}:{} $IndefSuff-saemtlich$
 
 % beide, beides
-$Indef-beid$ = {<+INDEF>}:{<SB>} $IndefSuff-beid$
+$Indef-beid$ = {<+INDEF>}:{} $IndefSuff-beid$
 
 % einiger, einige, einiges
-$Indef-einig$ = {<+INDEF>}:{<SB>} $IndefSuff-einig$
+$Indef-einig$ = {<+INDEF>}:{} $IndefSuff-einig$
 
 % mancher, manche, manches, manch
-$Indef-manch$ = {<+INDEF>}:{<SB>} $IndefSuff-manch$
+$Indef-manch$ = {<+INDEF>}:{} $IndefSuff-manch$
 
 % mehrere, mehreres
-$Indef-mehrer$ = {<+INDEF>}:{<SB>} $IndefSuff-mehrer$
+$Indef-mehrer$ = {<+INDEF>}:{} $IndefSuff-mehrer$
 
 % genug
-$Indef0$ = {<+INDEF>}:{<SB>} $IndefSuff0$
+$Indef0$ = {<+INDEF>}:{} $IndefSuff0$
 
 % ein, eine (article)
-$ArtIndef$ = {<+ART><Indef>}:{<SB>} $ArtIndefSuff$
+$ArtIndef$ = {<+ART><Indef>}:{} $ArtIndefSuff$
 
 % 'n, 'ne (clitic article)
-$ArtIndef-n$ = {<+ART><Indef>}:{<SB>} $ArtIndefAttrSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 448)
+$ArtIndef-n$ = {<+ART><Indef>}:{} $ArtIndefAttrSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 448)
 
 % einer, eine, eines (indefinite pronoun)
-$Indef-ein$ = {<+INDEF>}:{<SB>} $IndefSuff-ein$
+$Indef-ein$ = {<+INDEF>}:{} $IndefSuff-ein$
 
 % irgendein, irgendeine
-$Indef-irgendein$ = {<+INDEF>}:{<SB>} $ArtIndefSuff$
+$Indef-irgendein$ = {<+INDEF>}:{} $ArtIndefSuff$
 
 % kein, keine (article)
-$ArtNeg$ = {<+ART><Neg>}:{<SB>} $ArtNegSuff$
+$ArtNeg$ = {<+ART><Neg>}:{} $ArtNegSuff$
 
 % keiner, keine, keines (indefinite pronoun)
-$Indef-kein$ = {<+INDEF>}:{<SB>} $IndefSuff-kein$
+$Indef-kein$ = {<+INDEF>}:{} $IndefSuff-kein$
 
 % mein, meine
-$Poss$ = {<+POSS>}:{<SB>} $PossSuff$
+$Poss$ = {<+POSS>}:{} $PossSuff$
 
 % unser, unsere/unsre
-$Poss-er$ = {<+POSS>}:{<^Px><SB>} $PossSuff$
+$Poss-er$ = {<+POSS>}:{<del(e)|PRO>} $PossSuff$
 
 % (die) meinigen/Meinigen
-$Poss/Wk$ = {<+POSS>}:{<SB>} $PossSuff/Wk$
+$Poss/Wk$ = {<+POSS>}:{} $PossSuff/Wk$
 
 % unserige/unsrige
-$Poss/Wk-er$ = {<+POSS>}:{<^Px><SB>} $PossSuff/Wk$
+$Poss/Wk-er$ = {<+POSS>}:{<del(e)|PRO>} $PossSuff/Wk$
 
 % etwas
-$IProNeut$ = {<+INDEF><Neut>}:{<SB>} $IProSuff0$
+$IProNeut$ = {<+INDEF><Neut>}:{} $IProSuff0$
 
 % jemand
-$IProMasc$ = {<+INDEF><Masc>}:{<SB>} $IProSuff$
+$IProMasc$ = {<+INDEF><Masc>}:{} $IProSuff$
 
 % jedermann
-$IPro-jedermann$ = {<+INDEF><Masc>}:{<SB>} $IProSuff-jedermann$
+$IPro-jedermann$ = {<+INDEF><Masc>}:{} $IProSuff-jedermann$
 
 % man
-$IPro-man$ = {<+INDEF><Masc>}:{<SB>} $IProSuff-man$
+$IPro-man$ = {<+INDEF><Masc>}:{} $IProSuff-man$
 
 % unsereiner
-$IPro-unsereiner$ = {<+INDEF><Masc>}:{<SB>} $IProSuff-unsereiner$
+$IPro-unsereiner$ = {<+INDEF><Masc>}:{} $IProSuff-unsereiner$
 
 % unsereins
-$IPro-unsereins$ = {<+INDEF><Masc>}:{<SB>} $IProSuff0$
+$IPro-unsereins$ = {<+INDEF><Masc>}:{} $IProSuff0$
 
 % ich
-$PPro1NomSg$ = {<+PPRO><Pers><1>}:{<SB>} $PProNomSgSuff$
+$PPro1NomSg$ = {<+PPRO><Pers><1>}:{} $PProNomSgSuff$
 
 % mich (irreflexive)
-$PPro1AccSg$ = {<+PPRO><Pers><1>}:{<SB>} $PProAccSgSuff$
+$PPro1AccSg$ = {<+PPRO><Pers><1>}:{} $PProAccSgSuff$
 
 % mir (irreflexive)
-$PPro1DatSg$ = {<+PPRO><Pers><1>}:{<SB>} $PProDatSgSuff$
+$PPro1DatSg$ = {<+PPRO><Pers><1>}:{} $PProDatSgSuff$
 
 % meiner, mein
-$PPro1GenSg$ = {<+PPRO><Pers><1>}:{<SB>} $PProGenSgSuff$
+$PPro1GenSg$ = {<+PPRO><Pers><1>}:{} $PProGenSgSuff$
 
 % du
-$PPro2NomSg$ = {<+PPRO><Pers><2>}:{<SB>} $PProNomSgSuff$
+$PPro2NomSg$ = {<+PPRO><Pers><2>}:{} $PProNomSgSuff$
 
 % dich (irreflexive)
-$PPro2AccSg$ = {<+PPRO><Pers><2>}:{<SB>} $PProAccSgSuff$
+$PPro2AccSg$ = {<+PPRO><Pers><2>}:{} $PProAccSgSuff$
 
 % dir (irreflexive)
-$PPro2DatSg$ = {<+PPRO><Pers><2>}:{<SB>} $PProDatSgSuff$
+$PPro2DatSg$ = {<+PPRO><Pers><2>}:{} $PProDatSgSuff$
 
 % deiner, dein
-$PPro2GenSg$ = {<+PPRO><Pers><2>}:{<SB>} $PProGenSgSuff$
+$PPro2GenSg$ = {<+PPRO><Pers><2>}:{} $PProGenSgSuff$
 
 % sie (singular)
-$PProFemNomSg$ = {<+PPRO><Pers><3><Fem>}:{<SB>} $PProNomSgSuff$
+$PProFemNomSg$ = {<+PPRO><Pers><3><Fem>}:{} $PProNomSgSuff$
 
 % sie (singular)
-$PProFemAccSg$ = {<+PPRO><Pers><3><Fem>}:{<SB>} $PProAccSgSuff$
+$PProFemAccSg$ = {<+PPRO><Pers><3><Fem>}:{} $PProAccSgSuff$
 
 % ihr
-$PProFemDatSg$ = {<+PPRO><Pers><3><Fem>}:{<SB>} $PProDatSgSuff$
+$PProFemDatSg$ = {<+PPRO><Pers><3><Fem>}:{} $PProDatSgSuff$
 
 % ihrer, ihr
-$PProFemGenSg$ = {<+PPRO><Pers><3><Fem>}:{<SB>} $PProGenSgSuff$
+$PProFemGenSg$ = {<+PPRO><Pers><3><Fem>}:{} $PProGenSgSuff$
 
 % er
-$PProMascNomSg$ = {<+PPRO><Pers><3><Masc>}:{<SB>} $PProNomSgSuff$
+$PProMascNomSg$ = {<+PPRO><Pers><3><Masc>}:{} $PProNomSgSuff$
 
 % ihn
-$PProMascAccSg$ = {<+PPRO><Pers><3><Masc>}:{<SB>} $PProAccSgSuff$
+$PProMascAccSg$ = {<+PPRO><Pers><3><Masc>}:{} $PProAccSgSuff$
 
 % ihm
-$PProMascDatSg$ = {<+PPRO><Pers><3><Masc>}:{<SB>} $PProDatSgSuff$
+$PProMascDatSg$ = {<+PPRO><Pers><3><Masc>}:{} $PProDatSgSuff$
 
 % seiner, sein
-$PProMascGenSg$ = {<+PPRO><Pers><3><Masc>}:{<SB>} $PProGenSgSuff$
+$PProMascGenSg$ = {<+PPRO><Pers><3><Masc>}:{} $PProGenSgSuff$
 
 % es
-$PProNeutNomSg$ = {<+PPRO><Pers><3><Neut>}:{<SB>} $PProNomSgSuff$
+$PProNeutNomSg$ = {<+PPRO><Pers><3><Neut>}:{} $PProNomSgSuff$
 
 % 's (clitic pronoun)
 $PProNeutNomSg-s$ = $PProNeutNomSg$ {<NonSt>}:{}
 
 % es
-$PProNeutAccSg$ = {<+PPRO><Pers><3><Neut>}:{<SB>} $PProAccSgSuff$
+$PProNeutAccSg$ = {<+PPRO><Pers><3><Neut>}:{} $PProAccSgSuff$
 
 % 's (clitic pronoun)
 $PProNeutAccSg-s$ = $PProNeutAccSg$ {<NonSt>}:{}
 
 % ihm
-$PProNeutDatSg$ = {<+PPRO><Pers><3><Neut>}:{<SB>} $PProDatSgSuff$
+$PProNeutDatSg$ = {<+PPRO><Pers><3><Neut>}:{} $PProDatSgSuff$
 
 % seiner
-$PProNeutGenSg$ = {<+PPRO><Pers><3><Neut>}:{<SB>} $PProGenSgSuff$
+$PProNeutGenSg$ = {<+PPRO><Pers><3><Neut>}:{} $PProGenSgSuff$
 
 % wir
-$PPro1NomPl$ = {<+PPRO><Pers><1>}:{<SB>} $PProNomPlSuff$
+$PPro1NomPl$ = {<+PPRO><Pers><1>}:{} $PProNomPlSuff$
 
 % uns (irreflexive)
-$PPro1AccPl$ = {<+PPRO><Pers><1>}:{<SB>} $PProAccPlSuff$
+$PPro1AccPl$ = {<+PPRO><Pers><1>}:{} $PProAccPlSuff$
 
 % uns (irreflexive)
-$PPro1DatPl$ = {<+PPRO><Pers><1>}:{<SB>} $PProDatPlSuff$
+$PPro1DatPl$ = {<+PPRO><Pers><1>}:{} $PProDatPlSuff$
 
 % unser, unserer/unsrer
-$PPro1GenPl$ = {<+PPRO><Pers><1>}:{<SB>} $PProGenPlSuff-er$
+$PPro1GenPl$ = {<+PPRO><Pers><1>}:{} $PProGenPlSuff-er$
 
 % ihr
-$PPro2NomPl$ = {<+PPRO><Pers><2>}:{<SB>} $PProNomPlSuff$
+$PPro2NomPl$ = {<+PPRO><Pers><2>}:{} $PProNomPlSuff$
 
 % euch (irreflexive)
-$PPro2AccPl$ = {<+PPRO><Pers><2>}:{<SB>} $PProAccPlSuff$
+$PPro2AccPl$ = {<+PPRO><Pers><2>}:{} $PProAccPlSuff$
 
 % euch (irreflexive)
-$PPro2DatPl$ = {<+PPRO><Pers><2>}:{<SB>} $PProDatPlSuff$
+$PPro2DatPl$ = {<+PPRO><Pers><2>}:{} $PProDatPlSuff$
 
 % euer, eurer
-$PPro2GenPl$ = {<+PPRO><Pers><2>}:{<SB>} $PProGenPlSuff-er$
+$PPro2GenPl$ = {<+PPRO><Pers><2>}:{} $PProGenPlSuff-er$
 
 % sie (plural)
-$PProNoGendNomPl$ = {<+PPRO><Pers><3><NoGend>}:{<SB>} $PProNomPlSuff$
+$PProNoGendNomPl$ = {<+PPRO><Pers><3><NoGend>}:{} $PProNomPlSuff$
 
 % sie (plural)
-$PProNoGendAccPl$ = {<+PPRO><Pers><3><NoGend>}:{<SB>} $PProAccPlSuff$
+$PProNoGendAccPl$ = {<+PPRO><Pers><3><NoGend>}:{} $PProAccPlSuff$
 
 % ihr
-$PProNoGendDatPl$ = {<+PPRO><Pers><3><NoGend>}:{<SB>} $PProDatPlSuff$
+$PProNoGendDatPl$ = {<+PPRO><Pers><3><NoGend>}:{} $PProDatPlSuff$
 
 % ihrer, ihr
-$PProNoGendGenPl$ = {<+PPRO><Pers><3><NoGend>}:{<SB>} $PProGenPlSuff$
+$PProNoGendGenPl$ = {<+PPRO><Pers><3><NoGend>}:{} $PProGenPlSuff$
 
 % mich (reflexive)
-$PRefl1AccSg$ = {<+PPRO><Refl><1>}:{<SB>} $PProAccSgSuff$
+$PRefl1AccSg$ = {<+PPRO><Refl><1>}:{} $PProAccSgSuff$
 
 % mir (reflexive)
-$PRefl1DatSg$ = {<+PPRO><Refl><1>}:{<SB>} $PProDatSgSuff$
+$PRefl1DatSg$ = {<+PPRO><Refl><1>}:{} $PProDatSgSuff$
 
 % dich (reflexive)
-$PRefl2AccSg$ = {<+PPRO><Refl><2>}:{<SB>} $PProAccSgSuff$
+$PRefl2AccSg$ = {<+PPRO><Refl><2>}:{} $PProAccSgSuff$
 
 % dir (reflexive)
-$PRefl2DatSg$ = {<+PPRO><Refl><2>}:{<SB>} $PProDatSgSuff$
+$PRefl2DatSg$ = {<+PPRO><Refl><2>}:{} $PProDatSgSuff$
 
 % uns (reflexive)
-$PRefl1Pl$ = {<+PPRO><Refl><1>}:{<SB>} $PProAccPlSuff$ | \
-             {<+PPRO><Refl><1>}:{<SB>} $PProDatPlSuff$
+$PRefl1Pl$ = {<+PPRO><Refl><1>}:{} $PProAccPlSuff$ | \
+             {<+PPRO><Refl><1>}:{} $PProDatPlSuff$
 
 % euch (reflexive)
-$PRefl2Pl$ = {<+PPRO><Refl><2>}:{<SB>} $PProAccPlSuff$ | \
-             {<+PPRO><Refl><2>}:{<SB>} $PProDatPlSuff$
+$PRefl2Pl$ = {<+PPRO><Refl><2>}:{} $PProAccPlSuff$ | \
+             {<+PPRO><Refl><2>}:{} $PProDatPlSuff$
 
 % sich
-$PRefl3$ = {<+PPRO><Refl><3>}:{<SB>} $PProAccSgSuff$ | \
-           {<+PPRO><Refl><3>}:{<SB>} $PProDatSgSuff$ | \
-           {<+PPRO><Refl><3>}:{<SB>} $PProAccPlSuff$ | \
-           {<+PPRO><Refl><3>}:{<SB>} $PProDatPlSuff$
+$PRefl3$ = {<+PPRO><Refl><3>}:{} $PProAccSgSuff$ | \
+           {<+PPRO><Refl><3>}:{} $PProDatSgSuff$ | \
+           {<+PPRO><Refl><3>}:{} $PProAccPlSuff$ | \
+           {<+PPRO><Refl><3>}:{} $PProDatPlSuff$
 
 % einander
-$PRecPl$ = {<+PPRO><Rec><1>}:{<SB>} $PProAccPlSuff$ | \
-           {<+PPRO><Rec><1>}:{<SB>} $PProDatPlSuff$ | \
-           {<+PPRO><Rec><2>}:{<SB>} $PProDatPlSuff$ | \
-           {<+PPRO><Rec><2>}:{<SB>} $PProAccPlSuff$ | \
-           {<+PPRO><Rec><3>}:{<SB>} $PProAccPlSuff$ | \
-           {<+PPRO><Rec><3>}:{<SB>} $PProDatPlSuff$ % cf. Duden-Grammatik (2016: § 366)
+$PRecPl$ = {<+PPRO><Rec><1>}:{} $PProAccPlSuff$ | \
+           {<+PPRO><Rec><1>}:{} $PProDatPlSuff$ | \
+           {<+PPRO><Rec><2>}:{} $PProDatPlSuff$ | \
+           {<+PPRO><Rec><2>}:{} $PProAccPlSuff$ | \
+           {<+PPRO><Rec><3>}:{} $PProAccPlSuff$ | \
+           {<+PPRO><Rec><3>}:{} $PProDatPlSuff$ % cf. Duden-Grammatik (2016: § 366)
 
 % wer (interrogative pronoun)
-$WProMascNomSg$ = {<+WPRO><Masc>}:{<SB>} $WProNomSgSuff$
+$WProMascNomSg$ = {<+WPRO><Masc>}:{} $WProNomSgSuff$
 
 % wen (interrogative pronoun)
-$WProMascAccSg$ = {<+WPRO><Masc>}:{<SB>} $WProAccSgSuff$
+$WProMascAccSg$ = {<+WPRO><Masc>}:{} $WProAccSgSuff$
 
 % wem (interrogative pronoun)
-$WProMascDatSg$ = {<+WPRO><Masc>}:{<SB>} $WProDatSgSuff$
+$WProMascDatSg$ = {<+WPRO><Masc>}:{} $WProDatSgSuff$
 
 % wessen, wes (interrogative pronoun)
-$WProMascGenSg$ = {<+WPRO><Masc>}:{<SB>} $WProGenSgSuff$
+$WProMascGenSg$ = {<+WPRO><Masc>}:{} $WProGenSgSuff$
 
 % was (interrogative pronoun)
-$WProNeutNomSg$ = {<+WPRO><Neut>}:{<SB>} $WProNomSgSuff$
+$WProNeutNomSg$ = {<+WPRO><Neut>}:{} $WProNomSgSuff$
 
 % was (interrogative pronoun)
-$WProNeutAccSg$ = {<+WPRO><Neut>}:{<SB>} $WProAccSgSuff$
+$WProNeutAccSg$ = {<+WPRO><Neut>}:{} $WProAccSgSuff$
 
 % was (interrogative pronoun)
-$WProNeutDatSg$ = {<+WPRO><Neut>}:{<SB>} $WProDatSgSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 404)
+$WProNeutDatSg$ = {<+WPRO><Neut>}:{} $WProDatSgSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 404)
 
 % wessen, wes (interrogative pronoun)
-$WProNeutGenSg$ = {<+WPRO><Neut>}:{<SB>} $WProGenSgSuff$
+$WProNeutGenSg$ = {<+WPRO><Neut>}:{} $WProGenSgSuff$
 
 % wer (indefinite pronoun)
-$IProMascNomSg$ = {<+INDEF><Masc>}:{<SB>} $IProNomSgSuff$
+$IProMascNomSg$ = {<+INDEF><Masc>}:{} $IProNomSgSuff$
 
 % wen (indefinite pronoun)
-$IProMascAccSg$ = {<+INDEF><Masc>}:{<SB>} $IProAccSgSuff$
+$IProMascAccSg$ = {<+INDEF><Masc>}:{} $IProAccSgSuff$
 
 % wem (indefinite pronoun)
-$IProMascDatSg$ = {<+INDEF><Masc>}:{<SB>} $IProDatSgSuff$
+$IProMascDatSg$ = {<+INDEF><Masc>}:{} $IProDatSgSuff$
 
 % wessen (indefinite pronoun)
-$IProMascGenSg$ = {<+INDEF><Masc>}:{<SB>} $IProGenSgSuff$
+$IProMascGenSg$ = {<+INDEF><Masc>}:{} $IProGenSgSuff$
 
 % was (indefinite pronoun)
-$IProNeutNomSg$ = {<+INDEF><Neut>}:{<SB>} $IProNomSgSuff$
+$IProNeutNomSg$ = {<+INDEF><Neut>}:{} $IProNomSgSuff$
 
 % was (indefinite pronoun)
-$IProNeutAccSg$ = {<+INDEF><Neut>}:{<SB>} $IProAccSgSuff$
+$IProNeutAccSg$ = {<+INDEF><Neut>}:{} $IProAccSgSuff$
 
 % was (indefinite pronoun)
-$IProNeutDatSg$ = {<+INDEF><Neut>}:{<SB>} $IProDatSgSuff$ {<NonSt>}:{}
+$IProNeutDatSg$ = {<+INDEF><Neut>}:{} $IProDatSgSuff$ {<NonSt>}:{}
 
 % wessen (indefinite pronoun)
-$IProNeutGenSg$ = {<+INDEF><Neut>}:{<SB>} $IProGenSgSuff$
+$IProNeutGenSg$ = {<+INDEF><Neut>}:{} $IProGenSgSuff$
 
 
 % numerals
@@ -1648,67 +1628,67 @@ $CardSuff0$ = {[<Attr><Subst>]<Invar>}:{}
 
 $CardSuff-ein/St$ = $ArtIndefSuff$
 
-$CardSuff-ein/Wk$ = {[<Attr><Subst>]<Masc><Nom><Sg><Wk>}:{e}  | \
-                    {[<Attr><Subst>]<Masc><Acc><Sg><Wk>}:{en} | \
-                    {[<Attr><Subst>]<Masc><Dat><Sg><Wk>}:{en} | \
-                    {[<Attr><Subst>]<Masc><Gen><Sg><Wk>}:{en} | \
-                    {[<Attr><Subst>]<Neut><Nom><Sg><Wk>}:{e}  | \
-                    {[<Attr><Subst>]<Neut><Acc><Sg><Wk>}:{e}  | \
-                    {[<Attr><Subst>]<Neut><Dat><Sg><Wk>}:{en} | \
-                    {[<Attr><Subst>]<Neut><Gen><Sg><Wk>}:{en} | \
-                    {[<Attr><Subst>]<Fem><Nom><Sg><Wk>}:{e}   | \
-                    {[<Attr><Subst>]<Fem><Acc><Sg><Wk>}:{e}   | \
-                    {[<Attr><Subst>]<Fem><Dat><Sg><Wk>}:{en}  | \
-                    {[<Attr><Subst>]<Fem><Gen><Sg><Wk>}:{en}
+$CardSuff-ein/Wk$ = {[<Attr><Subst>]<Masc><Nom><Sg><Wk>}:{<SB>e}  | \
+                    {[<Attr><Subst>]<Masc><Acc><Sg><Wk>}:{<SB>en} | \
+                    {[<Attr><Subst>]<Masc><Dat><Sg><Wk>}:{<SB>en} | \
+                    {[<Attr><Subst>]<Masc><Gen><Sg><Wk>}:{<SB>en} | \
+                    {[<Attr><Subst>]<Neut><Nom><Sg><Wk>}:{<SB>e}  | \
+                    {[<Attr><Subst>]<Neut><Acc><Sg><Wk>}:{<SB>e}  | \
+                    {[<Attr><Subst>]<Neut><Dat><Sg><Wk>}:{<SB>en} | \
+                    {[<Attr><Subst>]<Neut><Gen><Sg><Wk>}:{<SB>en} | \
+                    {[<Attr><Subst>]<Fem><Nom><Sg><Wk>}:{<SB>e}   | \
+                    {[<Attr><Subst>]<Fem><Acc><Sg><Wk>}:{<SB>e}   | \
+                    {[<Attr><Subst>]<Fem><Dat><Sg><Wk>}:{<SB>en}  | \
+                    {[<Attr><Subst>]<Fem><Gen><Sg><Wk>}:{<SB>en}
 
 $CardSuff-ein$ = $CardSuff-ein/St$ | \
                  $CardSuff-ein/Wk$
 
 $CardSuff-kein$ = $ArtNegSuff$
 
-$CardSuff-zwei$ = $CardSuff0$                                 | \
-                  {<Subst><NoGend><Nom><Pl><St><NonSt>}:{e}   | \ % cf. Duden-Grammatik (2016: § 511)
-                  {<Subst><NoGend><Acc><Pl><St><NonSt>}:{e}   | \ % cf. Duden-Grammatik (2016: § 511)
-                  {<Subst><NoGend><Dat><Pl><St>}:{en}         | \ % cf. Duden-Grammatik (2016: § 511)
-                  {[<Attr><Subst>]<NoGend><Gen><Pl><St>}:{er} | \   % cf. Duden-Grammatik (2016: § 511)
-                  {<Subst><NoGend><Nom><Pl><Wk><NonSt>}:{e}   | \ % cf. Duden-Grammatik (2016: § 511)
-                  {<Subst><NoGend><Acc><Pl><Wk><NonSt>}:{e}   | \ % cf. Duden-Grammatik (2016: § 511)
-                  {<Subst><NoGend><Dat><Pl><Wk>}:{en}             % cf. Duden-Grammatik (2016: § 511)
+$CardSuff-zwei$ = $CardSuff0$                                     | \
+                  {<Subst><NoGend><Nom><Pl><St><NonSt>}:{<SB>e}   | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Acc><Pl><St><NonSt>}:{<SB>e}   | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Dat><Pl><St>}:{<SB>en}         | \ % cf. Duden-Grammatik (2016: § 511)
+                  {[<Attr><Subst>]<NoGend><Gen><Pl><St>}:{<SB>er} | \   % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Nom><Pl><Wk><NonSt>}:{<SB>e}   | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Acc><Pl><Wk><NonSt>}:{<SB>e}   | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Dat><Pl><Wk>}:{<SB>en}             % cf. Duden-Grammatik (2016: § 511)
 
-$CardSuff-vier$ = $CardSuff0$                               | \
-                  {<Subst><NoGend><Nom><Pl><St><NonSt>}:{e} | \ % cf. Duden-Grammatik (2016: § 511)
-                  {<Subst><NoGend><Acc><Pl><St><NonSt>}:{e} | \ % cf. Duden-Grammatik (2016: § 511)
-                  {<Subst><NoGend><Dat><Pl><St>}:{en}       | \ % cf. Duden-Grammatik (2016: § 511)
-                  {<Subst><NoGend><Nom><Pl><Wk><NonSt>}:{e} | \ % cf. Duden-Grammatik (2016: § 511)
-                  {<Subst><NoGend><Acc><Pl><Wk><NonSt>}:{e} | \ % cf. Duden-Grammatik (2016: § 511)
-                  {<Subst><NoGend><Dat><Pl><Wk>}:{en}           % cf. Duden-Grammatik (2016: § 511)
+$CardSuff-vier$ = $CardSuff0$                                   | \
+                  {<Subst><NoGend><Nom><Pl><St><NonSt>}:{<SB>e} | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Acc><Pl><St><NonSt>}:{<SB>e} | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Dat><Pl><St>}:{<SB>en}       | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Nom><Pl><Wk><NonSt>}:{<SB>e} | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Acc><Pl><Wk><NonSt>}:{<SB>e} | \ % cf. Duden-Grammatik (2016: § 511)
+                  {<Subst><NoGend><Dat><Pl><Wk>}:{<SB>en}           % cf. Duden-Grammatik (2016: § 511)
 
-$CardSuff-sieben$ = $CardSuff0$                               | \
-                    {<Subst><NoGend><Nom><Pl><St><NonSt>}:{e} | \ % cf. Duden-Grammatik (2016: § 511)
-                    {<Subst><NoGend><Acc><Pl><St><NonSt>}:{e} | \ % cf. Duden-Grammatik (2016: § 511)
-                    {<Subst><NoGend><Nom><Pl><Wk><NonSt>}:{e} | \ % cf. Duden-Grammatik (2016: § 511)
-                    {<Subst><NoGend><Acc><Pl><Wk><NonSt>}:{e}     % cf. Duden-Grammatik (2016: § 511)
+$CardSuff-sieben$ = $CardSuff0$                                   | \
+                    {<Subst><NoGend><Nom><Pl><St><NonSt>}:{<SB>e} | \ % cf. Duden-Grammatik (2016: § 511)
+                    {<Subst><NoGend><Acc><Pl><St><NonSt>}:{<SB>e} | \ % cf. Duden-Grammatik (2016: § 511)
+                    {<Subst><NoGend><Nom><Pl><Wk><NonSt>}:{<SB>e} | \ % cf. Duden-Grammatik (2016: § 511)
+                    {<Subst><NoGend><Acc><Pl><Wk><NonSt>}:{<SB>e}     % cf. Duden-Grammatik (2016: § 511)
 
 % ein, eine (cardinal)
-$Card-ein$ = {<+CARD>}:{<SB>} $CardSuff-ein$
+$Card-ein$ = {<+CARD>}:{} $CardSuff-ein$
 
 % kein, keine (cardinal)
-$Card-kein$ = {<+CARD>}:{<SB>} $CardSuff-kein$
+$Card-kein$ = {<+CARD>}:{} $CardSuff-kein$
 
 % zwei, zweien, zweier; drei, dreien, dreier
-$Card-zwei$ = {<+CARD>}:{<SB>} $CardSuff-zwei$
+$Card-zwei$ = {<+CARD>}:{} $CardSuff-zwei$
 
 % vier, vieren; zwölf, zwölfen
-$Card-vier$ = {<+CARD>}:{<SB>} $CardSuff-vier$
+$Card-vier$ = {<+CARD>}:{} $CardSuff-vier$
 
 % sieben
-$Card-sieben$ = {<+CARD>}:{<SB>} $CardSuff-sieben$
+$Card-sieben$ = {<+CARD>}:{} $CardSuff-sieben$
 
 % null; zwo; dreizehn; zwanzig; hundert
 $Card0$ = <+CARD>:<> $CardSuff0$
 
 % erst-
-$Ord$ = {<+ORD>}:{<SB>} $AdjInflSuff$
+$Ord$ = {<+ORD>}:{} $AdjInflSuff$
 
 % eineinhalb; anderthalb; drittel
 $Frac0$ = <+FRAC>:<> $CardSuff0$
@@ -1735,19 +1715,19 @@ $Adv$ = {<+ADV>}:{}
 $AdvComp0$ = {<+ADV><Comp>}:{}
 
 % öfter; lieber
-$AdvComp$ = {<+ADV><Comp>}:{er}
+$AdvComp$ = {<+ADV><Comp>}:{<SB>er}
 
 % öftesten; liebsten; meisten
-$AdvSup$ = {<+ADV><Sup>}:{sten}
+$AdvSup$ = {<+ADV><Sup>}:{<SB>sten}
 
 
 % verbs
 
 % sei; hab(e); werde; tu
-$VAImpSg$ = {<+V><Imp><Sg>}:{<^imp>}
+$VAImpSg$ = {<+V><Imp><Sg>}:{<SB><rm|Imp>}
 
 % seid; habt; werdet; tut
-$VAImpPl$ = {<+V><Imp><Pl>}:{<^imp>}
+$VAImpPl$ = {<+V><Imp><Pl>}:{<SB><rm|Imp>}
 
 % bin; habe; werde; tue
 $VAPres1SgInd$ = {<+V><1><Sg><Pres><Ind>}:{}
@@ -1765,29 +1745,25 @@ $VAPres13PlInd$ = {<+V><1><Pl><Pres><Ind>}:{} | \
 % seid; habt; werdet; tut
 $VAPres2PlInd$ = {<+V><2><Pl><Pres><Ind>}:{}
 
-% sei; habe; werde; tue
-$VAPres13SgSubj$ = {<+V><1><Sg><Pres><Subj>}:{<SB>} | \
-                   {<+V><3><Sg><Pres><Subj>}:{<SB>}
-
 % seist, seiest; habest; werdest; tuest
 $VAPres2SgSubj$ = {<+V><2><Sg><Pres><Subj>}:{<SB>st}
 
-$VAPresSubjSg$ = {<+V><1><Sg><Pres><Subj>}:{<SB>}   | \
+$VAPresSubjSg$ = {<+V><1><Sg><Pres><Subj>}:{}       | \
                  {<+V><2><Sg><Pres><Subj>}:{<SB>st} | \
-                 {<+V><3><Sg><Pres><Subj>}:{<SB>}
+                 {<+V><3><Sg><Pres><Subj>}:{}
 
 $VAPresSubjPl$ = {<+V><1><Pl><Pres><Subj>}:{<SB>n} | \
                  {<+V><2><Pl><Pres><Subj>}:{<SB>t} | \
                  {<+V><3><Pl><Pres><Subj>}:{<SB>n}
 
 % ward, wardst
-$VAPastIndSg$ = {<+V><1><Sg><Past><Ind>}:{<SB>}   | \
+$VAPastIndSg$ = {<+V><1><Sg><Past><Ind>}:{}       | \
                 {<+V><2><Sg><Past><Ind>}:{<SB>st} | \
-                {<+V><3><Sg><Past><Ind>}:{<SB>}
+                {<+V><3><Sg><Past><Ind>}:{}
 
 % wurden, wurdet
-$VAPastIndPl$ = {<+V><1><Pl><Past><Ind>}:{<SB>en}   | \
-                {<+V><2><Pl><Past><Ind>}:{<INS-E>t} | \
+$VAPastIndPl$ = {<+V><1><Pl><Past><Ind>}:{<SB>en}        | \
+                {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>t} | \
                 {<+V><3><Pl><Past><Ind>}:{<SB>en}
 
 $VAPastSubj2$ = {<+V><2><Sg><Past><Subj>}:{<SB>st} | \
@@ -1798,9 +1774,9 @@ $haben$ = {<haben>}:{}
 $sein$ = {<sein>}:{}
 
 $VPPres$ = {<+V><PPres>}:{} | \
-           {<+V><PPres><zu>}:{<^zz>}
+           {<+V><PPres><zu>}:{<ins(zu)>}
 
-$VPPast$ = {<+V><PPast>}:{<^pp>}
+$VPPast$ = {<+V><PPast>}:{<ins(ge)>}
 
 $VPPast+haben$ = $VPPast$ $haben$
 
@@ -1808,36 +1784,34 @@ $VPPast+sein$ = $VPPast$ $sein$
 
 $VPP-en$ = {}:{<SB>en} $VPPast$
 
-$VPP-t$ =  {}:{<INS-E>t} $VPPast$
+$VPP-t$ =  {}:{<SB><ins(e)>t} $VPPast$
 
 $VInf$ = {<+V><Inf>}:{} | \
-         {<+V><Inf><zu>}:{<^zz>}
+         {<+V><Inf><zu>}:{<ins(zu)>}
 
-$VInf_PPres$ =        $VInf$ | \
-               {}:{d} $VPPres$
-
-$VInfStem$ = {}:{<SB>en} $VInf_PPres$
+$VInfStem$ = {}:{<SB>en}  $VInf$ | \
+             {}:{<SB>end} $VPPres$
 
 % sein, seiend; tun, tuend
 $VInfStem-n$ = {}:{<SB>n}   $VInf$ | \
                {}:{<SB>end} $VPPres$
 
-$VInf-en$ =    $VInfStem$
+$VInf-en$ = $VInfStem$
 
-$VInf-n$ =     $VInfStem-n$
+$VInf-n$ = $VInfStem-n$
 
 % komm(e); schau(e); arbeit(e); widme
-$VImpSg$ = {<+V><Imp><Sg>}:{<INS-E><^imp>} | \
-           {<+V><Imp><Sg>}:{<SB>e<^imp>}
+$VImpSg$ = {<+V><Imp><Sg>}:{<SB><ins(e)><rm|Imp>} | \
+           {<+V><Imp><Sg>}:{<SB>e<rm|Imp>}
 
 % flicht
-$VImpSg0$ = {<+V><Imp><Sg>}:{<^imp>}
+$VImpSg0$ = {<+V><Imp><Sg>}:{<SB><rm|Imp>}
 
 % kommt; schaut; arbeitet
-$VImpPl$ = {<+V><Imp><Pl>}:{<INS-E>t<^imp>}
+$VImpPl$ = {<+V><Imp><Pl>}:{<SB><ins(e)>t<rm|Imp>}
 
 % will; bedarf
-$VPres1Irreg$ = {<+V><1><Sg><Pres><Ind>}:{<SB>}
+$VPres1Irreg$ = {<+V><1><Sg><Pres><Ind>}:{}
 
 % liebe; rate; sammle
 $VPres1Reg$ = {<+V><1><Sg><Pres><Ind>}:{<SB>e}
@@ -1846,18 +1820,18 @@ $VPres1Reg$ = {<+V><1><Sg><Pres><Ind>}:{<SB>e}
 $VPres2Irreg$ = {<+V><2><Sg><Pres><Ind>}:{<SB>st}
 
 % liebst; bietest; sammelst
-$VPres2Reg$ = {<+V><2><Sg><Pres><Ind>}:{<INS-E>st}
+$VPres2Reg$ = {<+V><2><Sg><Pres><Ind>}:{<SB><ins(e)>st}
 
 % rät; will
-$VPres3Irreg$ = {<+V><3><Sg><Pres><Ind>}:{<SB>}
+$VPres3Irreg$ = {<+V><3><Sg><Pres><Ind>}:{}
 
 % liebt; hilft; sammelt
-$VPres3Reg$ = {<+V><3><Sg><Pres><Ind>}:{<INS-E>t}
+$VPres3Reg$ = {<+V><3><Sg><Pres><Ind>}:{<SB><ins(e)>t}
 
 % lieben; wollen; sammeln
 % liebt; bietet; sammelt
-$VPresPlInd$ = {<+V><1><Pl><Pres><Ind>}:{<SB>en}   | \
-               {<+V><2><Pl><Pres><Ind>}:{<INS-E>t} | \
+$VPresPlInd$ = {<+V><1><Pl><Pres><Ind>}:{<SB>en}        | \
+               {<+V><2><Pl><Pres><Ind>}:{<SB><ins(e)>t} | \
                {<+V><3><Pl><Pres><Ind>}:{<SB>en}
 
 % liebe; wolle; sammle
@@ -1872,12 +1846,12 @@ $VPresSubj$ = {<+V><1><Sg><Pres><Subj>}:{<SB>e}   | \
               {<+V><3><Pl><Pres><Subj>}:{<SB>en}
 
 % brachte
-$VPastIndReg$ = {<+V><1><Sg><Past><Ind>}:{<INS-E>te}   | \
-                {<+V><2><Sg><Past><Ind>}:{<INS-E>test} | \
-                {<+V><3><Sg><Past><Ind>}:{<INS-E>te}   | \
-                {<+V><1><Pl><Past><Ind>}:{<INS-E>ten}  | \
-                {<+V><2><Pl><Past><Ind>}:{<INS-E>tet}  | \
-                {<+V><3><Pl><Past><Ind>}:{<INS-E>ten}
+$VPastIndReg$ = {<+V><1><Sg><Past><Ind>}:{<SB><ins(e)>te}   | \
+                {<+V><2><Sg><Past><Ind>}:{<SB><ins(e)>test} | \
+                {<+V><3><Sg><Past><Ind>}:{<SB><ins(e)>te}   | \
+                {<+V><1><Pl><Past><Ind>}:{<SB><ins(e)>ten}  | \
+                {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>tet}  | \
+                {<+V><3><Pl><Past><Ind>}:{<SB><ins(e)>ten}
 
 % wurde
 $VPastIndIrreg$ = {<+V><1><Sg><Past><Ind>}:{<SB>e}   | \
@@ -1889,21 +1863,21 @@ $VPastIndIrreg$ = {<+V><1><Sg><Past><Ind>}:{<SB>e}   | \
 
 % fuhr; ritt; fand
 % fuhrst; ritt(e)st; fand(e)st
-$VPastIndStr$ = {<+V><1><Sg><Past><Ind>}:{<SB>}      | \
-                {<+V><2><Sg><Past><Ind>}:{<INS-E>st} | \
-                {<+V><2><Sg><Past><Ind>}:{<SB>st}    | \ % cf. Duden-Grammatik (2016: § 642)
-                {<+V><3><Sg><Past><Ind>}:{<SB>}      | \
-                {<+V><1><Pl><Past><Ind>}:{<SB>en}    | \
-                {<+V><2><Pl><Past><Ind>}:{<INS-E>t}  | \
+$VPastIndStr$ = {<+V><1><Sg><Past><Ind>}:{}               | \
+                {<+V><2><Sg><Past><Ind>}:{<SB><ins(e)>st} | \
+                {<+V><2><Sg><Past><Ind>}:{<SB>st}         | \ % cf. Duden-Grammatik (2016: § 642)
+                {<+V><3><Sg><Past><Ind>}:{}               | \
+                {<+V><1><Pl><Past><Ind>}:{<SB>en}         | \
+                {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>t}  | \
                 {<+V><3><Pl><Past><Ind>}:{<SB>en}
 
 % brächte
-$VPastSubjReg$ = {<+V><1><Sg><Past><Subj>}:{<INS-E>te}   | \
-                 {<+V><2><Sg><Past><Subj>}:{<INS-E>test} | \
-                 {<+V><3><Sg><Past><Subj>}:{<INS-E>te}   | \
-                 {<+V><1><Pl><Past><Subj>}:{<INS-E>ten}  | \
-                 {<+V><2><Pl><Past><Subj>}:{<INS-E>tet}  | \
-                 {<+V><3><Pl><Past><Subj>}:{<INS-E>ten}
+$VPastSubjReg$ = {<+V><1><Sg><Past><Subj>}:{<SB><ins(e)>te}   | \
+                 {<+V><2><Sg><Past><Subj>}:{<SB><ins(e)>test} | \
+                 {<+V><3><Sg><Past><Subj>}:{<SB><ins(e)>te}   | \
+                 {<+V><1><Pl><Past><Subj>}:{<SB><ins(e)>ten}  | \
+                 {<+V><2><Pl><Past><Subj>}:{<SB><ins(e)>tet}  | \
+                 {<+V><3><Pl><Past><Subj>}:{<SB><ins(e)>ten}
 
 % führe; ritte; fände
 $VPastSubjStr$ = {<+V><1><Sg><Past><Subj>}:{<SB>e}   | \
@@ -1962,13 +1936,6 @@ $VVPres2_Imp0$ = $VImpSg0$ | \
 $VVPres2t_Imp0$ = $VImpSg0$ | \
                   $VVPres2t$
 
-% bedarf-; weiss-
-$VVPresSg$ = $VModInflSg$
-
-% bedürf-; wiss-
-$VVPresPl$ = $VModInflPl$ | \
-             $VInfStem$
-
 $VVPastIndReg$ = $VPastIndReg$
 
 $VVPastIndStr$ = $VPastIndStr$
@@ -1982,18 +1949,16 @@ $VVPastSubjOld$ = $VVPastSubjStr$ {<Old>}:{}
 $VVPastStr$ = $VVPastIndStr$ | \
               $VVPastSubjStr$
 
-$VVRegFin$ = $VInflReg$
-
 % lieben; spielen
 $VVReg$ = $VInflReg$ | \
           $VPP-t$    | \
           $VInfStem$
 
-$VVReg+haben$ = $VInflReg$ | \
+$VVReg+haben$ = $VInflReg$      | \
                 $VPP-t$ $haben$ | \
                 $VInfStem$
 
-$VVReg+sein$ = $VInflReg$ | \
+$VVReg+sein$ = $VInflReg$     | \
                $VPP-t$ $sein$ | \
                $VInfStem$
 
@@ -2299,7 +2264,7 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<NMasc_s_e/i>           $NMasc_s_e/i$          | \
          <>:<NMasc_s_en>            $NMasc_s_en$           | \
          <>:<NMasc_s_er>            $NMasc_s_er$           | \
-         <>:<NMasc_s_es>            $NMasc_s_es$          | \
+         <>:<NMasc_s_es>            $NMasc_s_es$           | \
          <>:<NMasc_s_n>             $NMasc_s_n$            | \
          <>:<NMasc_s_nen>           $NMasc_s_nen$          | \
          <>:<NMasc_s_o/en>          $NMasc_s_o/en$         | \
@@ -2439,7 +2404,6 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<VAPastIndSg>           $VAPastIndSg$          | \
          <>:<VAPastSubj2>           $VAPastSubj2$          | \
          <>:<VAPres13PlInd>         $VAPres13PlInd$        | \
-         <>:<VAPres13SgSubj>        $VAPres13SgSubj$       | \
          <>:<VAPres1SgInd>          $VAPres1SgInd$         | \
          <>:<VAPres2PlInd>          $VAPres2PlInd$         | \
          <>:<VAPres2SgInd>          $VAPres2SgInd$         | \
@@ -2447,7 +2411,6 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<VAPres3SgInd>          $VAPres3SgInd$         | \
          <>:<VAPresSubjPl>          $VAPresSubjPl$         | \
          <>:<VAPresSubjSg>          $VAPresSubjSg$         | \
-         <>:<VInf_PPres>            $VInf_PPres$           | \
          <>:<VInf-en>               $VInf-en$              | \
          <>:<VInf-n>                $VInf-n$               | \
          <>:<VInf>                  $VInf$                 | \
@@ -2466,7 +2429,6 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<VPastIndStr>           $VPastIndStr$          | \
          <>:<VPastSubjStr>          $VPastSubjStr$         | \
          <>:<VPPres>                $VPPres$               | \
-         <>:<VPresPlInd>            $VPresPlInd$           | \
          <>:<VPresSubj>             $VPresSubj$            | \
          <>:<VVPastIndReg>          $VVPastIndReg$         | \
          <>:<VVPastIndStr>          $VVPastIndStr$         | \
@@ -2488,15 +2450,12 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<VVPres2_Imp0>          $VVPres2_Imp0$         | \
          <>:<VVPres2t>              $VVPres2t$             | \
          <>:<VVPres2t_Imp0>         $VVPres2t_Imp0$        | \
-         <>:<VVPresPl>              $VVPresPl$             | \
-         <>:<VVPresSg>              $VVPresSg$             | \
          <>:<VVReg>                 $VVReg$                | \
          <>:<VVReg><>:<haben>       $VVReg+haben$          | \
          <>:<VVReg><>:<sein>        $VVReg+sein$           | \
          <>:<VVReg-el-er>           $VVReg-el-er$          | \
          <>:<VVReg-el-er><>:<haben> $VVReg-el-er+haben$    | \
          <>:<VVReg-el-er><>:<sein>  $VVReg-el-er+sein$     | \
-         <>:<VVRegFin>              $VVRegFin$             | \
          <>:<WAdv>                  $WAdv$                 | \
          <>:<W-welch>               $W-welch$              | \
          <>:<WProMascAccSg>         $WProMascAccSg$        | \
@@ -2511,9 +2470,8 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
 
 % inflection filter
 
-ALPHABET = [#char# #surface-trigger# #orth-trigger# #ss-trigger# #boundary-trigger# \
-            <INS-E><Ge-Nom><UL><ge><zu> \
-            <^Ax><^Px><^imp><^zz><^pp><^pl><^Gen><^Del>]
+ALPHABET = [#char# #surface-trigger# #orth-trigger# #phon-trigger# \
+            #morph-trigger# #boundary-trigger# <ge><zu>]
 
 $=INFL$ = [#inflection#]:<>
 

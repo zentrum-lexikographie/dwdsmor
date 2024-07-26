@@ -1,5 +1,19 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-07-26:
+
+* refactor processing of stem boundaries and morphophonological triggers
+* rename phonological triggers `UL`, `INS-E`, `^Del`, `^Ax`, `^Px`, `^Gen`, and
+  `^pl` to `uml`, `ins(e)`, `del(e)` , `del(e)|ADJ`, `del(e)|PRO`, `del(e)|Gen`,
+  and `del(VC)|Pl`, respectively
+* rename morphological triggers `^pp`, `^zz`, and `^imp` to `ins(ge)`,
+  `ins(zu)`, and `rm|Imp`, respectively
+* change inflection classes `NMasc-Adj`, `NNeut-Adj`, `NNeut-Adj/Sg`, `NFem-Adj`
+  as to apply to the adjectival stem of nominalised adjectives (without final "e")
+* remove unused inflection classes `VAPres13SgSubj`, `VInf_PPres`, `VVPresPl`,
+  `VVPresSg`, and `VVRegFin`
+* improve rule for old "ß" spelling
+
 2024-07-25:
 
 * add support for verbs mit double particles

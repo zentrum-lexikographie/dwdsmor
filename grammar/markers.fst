@@ -1,6 +1,6 @@
 % markers.fst
-% Version 8.0
-% Andreas Nolda 2024-07-25
+% Version 8.1
+% Andreas Nolda 2024-07-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -17,42 +17,41 @@ $SchwaTrigger$ = e <=> <e> ([lr] <V> .* <VVReg-el-er>)
 $SurfaceTriggers$ = $SchwaTrigger$
 
 
-% process <ge> marker
+% process <ins(ge)> marker
 
-$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
-       #boundary-trigger# <UL><^imp><^zz><zu>]
+$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #boundary-trigger# \
+       <rm|Imp><ins(zu)><zu>]
 
 $MarkerGe$ = $C$* | \
-             $C$* <ge>:<> {<>}:{ge<PB>} $C$* <^pp>:<> $C$* | \
-             $C$* <ge>:<>               $C$* | \
-             $C$*                       $C$* <^pp>:<> $C$*
+             $C$* <ge>:<> {<>}:{ge<PB>} $C$* <ins(ge)>:<> $C$* | \
+             $C$* <ge>:<>               $C$*                   | \
+             $C$*                       $C$* <ins(ge)>:<> $C$*
 
 
-% process <zu> marker
+% process <ins(zu)> marker
 
-$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
-       #boundary-trigger# <UL><^imp>]
+$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #boundary-trigger# \
+       <rm|Imp>]
 
 $C$ = $C$-[<VB>] | <zu>:<>
 
 $MarkerZu$ = (($C$* <VB>)? $C$* <VB>)?             $C$* | \
-              ($C$* <VB>)? $C$* <VB> {<>}:{zu<PB>} $C$* <^zz>:<> $C$*
+              ($C$* <VB>)? $C$* <VB> {<>}:{zu<PB>} $C$* <ins(zu)>:<> $C$*
 
 
-% process <^imp> marker
+% process <rm|Imp> marker
 
-$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #ss-trigger# \
-       #boundary-trigger# <UL>]
+$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #boundary-trigger#]
 
 $C$ = $C$-[<VB>]
 
 % exclude imperative forms of particle verbs, which do not occur as a single token
-$MarkerImp$ =                           $C$* <^imp>:<> $C$* | \
+$MarkerImp$ =                           $C$* <rm|Imp>:<> $C$* | \
               (($C$* <VB>)? $C$* <VB>)? $C$*
 
 % include imperative forms of particle verbs for paradigm generation
-$MarkerImpVB$ = (($C$* <VB>)? $C$* <VB>)? $C$* <^imp>:<> $C$* | \
-                (($C$* <VB>)? $C$* <VB>)?                $C$*
+$MarkerImpVB$ = (($C$* <VB>)? $C$* <VB>)? $C$* <rm|Imp>:<> $C$* | \
+                (($C$* <VB>)? $C$* <VB>)?                  $C$*
 
 
 % process morpheme-boundary triggers

@@ -1,6 +1,6 @@
 % dwdsmor.fst
-% Version 10.3
-% Andreas Nolda 2024-03-22
+% Version 10.4
+% Andreas Nolda 2024-07-26
 
 #include "symbols.fst"
 #include "num.fst"
@@ -89,8 +89,8 @@ $Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_x>
 
 % means
 
-$DC$ = <^DC>
-$UC$ = <^UC>
+$DC$ = <dc>
+$UC$ = <uc>
 
 % derived base stems with particles
 
@@ -154,7 +154,7 @@ $BaseStemsVPPast-t$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-t$
 $BaseStemsVPPast-n$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-n$
 
 $ConvBaseStemsVPPres$ = $BaseStemsVPPres$   <ADJ> <base> <native> <>:<Adj_0>
-$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<Adj_0> | \
+$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<Adj_e> | \
                         $BaseStemsVPPast-n$ <ADJ> <base> <native> <>:<Adj-en_0>
 
 $ConvBaseStems$ = $ConvBaseStemsVPPres$ | \
