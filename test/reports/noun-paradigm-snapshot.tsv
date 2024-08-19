@@ -131,14 +131,14 @@ Bus			NN Masc	Nom Pl	Busse
 Bus			NN Masc	Acc Pl	Busse
 Bus			NN Masc	Dat Pl	Bussen
 Bus			NN Masc	Gen Pl	Busse
-Carabiniere			NN Masc	Nom Sg	Carabiniere
-Carabiniere			NN Masc	Acc Sg	Carabiniere
-Carabiniere			NN Masc	Dat Sg	Carabiniere
-Carabiniere			NN Masc	Gen Sg	Carabiniere, Carabinieres
-Carabiniere			NN Masc	Nom Pl	Carabinieri
-Carabiniere			NN Masc	Acc Pl	Carabinieri
-Carabiniere			NN Masc	Dat Pl	Carabinieri
-Carabiniere			NN Masc	Gen Pl	Carabinieri
+Carabiniere		1	NN Masc	Nom Sg	Carabiniere
+Carabiniere		1	NN Masc	Acc Sg	Carabiniere
+Carabiniere		1	NN Masc	Dat Sg	Carabiniere
+Carabiniere		1	NN Masc	Gen Sg	Carabiniere, Carabinieres
+Carabiniere		1	NN Masc	Nom Pl	Carabinieri
+Carabiniere		1	NN Masc	Acc Pl	Carabinieri
+Carabiniere		1	NN Masc	Dat Pl	Carabinieri
+Carabiniere		1	NN Masc	Gen Pl	Carabinieri
 Crash			NN Masc	Nom Sg	Crash
 Crash			NN Masc	Acc Sg	Crash
 Crash			NN Masc	Dat Sg	Crash, Crashe (va.)
