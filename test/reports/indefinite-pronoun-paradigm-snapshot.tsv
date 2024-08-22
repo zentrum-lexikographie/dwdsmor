@@ -421,10 +421,10 @@ unsereiner			INDEF Masc	Nom Sg	unsereiner
 unsereiner			INDEF Masc	Acc Sg	unsereinen
 unsereiner			INDEF Masc	Dat Sg	unsereinem
 unsereins			INDEF Masc	Invar Invar	unsereins
-was	3		INDEF Neut	Nom Sg	was
-was	3		INDEF Neut	Acc Sg	was
-was	3		INDEF Neut	Dat Sg	was (ugs.)
-was	3		INDEF Neut	Gen Sg	wessen
+was	2		INDEF Neut	Nom Sg	was
+was	2		INDEF Neut	Acc Sg	was
+was	2		INDEF Neut	Dat Sg	was (ugs.)
+was	2		INDEF Neut	Gen Sg	wessen
 welche	3	2	INDEF	Masc Nom Sg St Subst	welcher
 welche	3	2	INDEF	Masc Acc Sg St Subst	welchen
 welche	3	2	INDEF	Masc Dat Sg St Subst	welchem
@@ -441,7 +441,7 @@ welche	3	2	INDEF	NoGend Nom Pl St Subst	welche
 welche	3	2	INDEF	NoGend Acc Pl St Subst	welche
 welche	3	2	INDEF	NoGend Dat Pl St Subst	welchen
 welche	3	2	INDEF	NoGend Gen Pl St Subst	welcher
-wer	3		INDEF Masc	Nom Sg	wer
-wer	3		INDEF Masc	Acc Sg	wen
-wer	3		INDEF Masc	Dat Sg	wem
-wer	3		INDEF Masc	Gen Sg	wessen
+wer	2		INDEF Masc	Nom Sg	wer
+wer	2		INDEF Masc	Acc Sg	wen
+wer	2		INDEF Masc	Dat Sg	wem
+wer	2		INDEF Masc	Gen Sg	wessen

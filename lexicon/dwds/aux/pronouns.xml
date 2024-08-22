@@ -733,7 +733,7 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung hidx="2">was</Schreibung>
+      <Schreibung hidx="3">was</Schreibung>
       <Grammatik>
         <Wortklasse>Relativpronomen</Wortklasse>
       </Grammatik>
@@ -751,7 +751,7 @@
     <Formangabe>
       <Schreibung hidx="2">wer</Schreibung>
       <Grammatik>
-        <Wortklasse>Relativpronomen</Wortklasse>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -759,7 +759,7 @@
     <Formangabe>
       <Schreibung hidx="3">wer</Schreibung>
       <Grammatik>
-        <Wortklasse>Indefinitpronomen</Wortklasse>
+        <Wortklasse>Relativpronomen</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
