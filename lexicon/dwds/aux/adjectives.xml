@@ -2,15 +2,6 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
-      <Schreibung hidx="1">alle</Schreibung>
-      <Grammatik>
-        <Wortklasse>Adjektiv</Wortklasse>
-        <Funktionspraeferenz Frequenz="nur">prädikativ</Funktionspraeferenz>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>ander</Schreibung>
       <Grammatik>
         <Wortklasse>Adjektiv</Wortklasse>
