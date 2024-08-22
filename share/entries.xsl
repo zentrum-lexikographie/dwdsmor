@@ -3913,8 +3913,42 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
-      <!-- "man" -->
-      <xsl:when test="$lemma='man'">
+      <!-- "jedefrau" -->
+      <xsl:when test="$lemma='jedefrau'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IPro-jedefrau</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="replace($lemma,'^jede(frau)$','jeder$1')"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IPro-jederfrau</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "man", "mensch" -->
+      <xsl:when test="$lemma='man' or
+                      $lemma='mensch'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
                           select="$lemma"/>
@@ -3926,6 +3960,23 @@
                           select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
           <xsl:with-param name="class">IPro-man</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- "frau" -->
+      <xsl:when test="$lemma='frau'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IPro-frau</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -4243,7 +4294,6 @@
   <!-- "männiglich" -->
   <!-- "meinesgleichen", "deinesgleichen", "seinesgleichen",
        "ihresgleichen", "unsersgleichen", "euresgleichen" -->
-  <!-- "mensch" -->
   <!-- "soundsovielte" -->
   <!-- "zigtausend" -->
 </xsl:template>

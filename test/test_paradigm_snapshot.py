@@ -93,7 +93,9 @@ INDEFINITE_PRONOUN_LEMMAS = ["welche",        # Indef-welch
                              "etwas",         # IProNeut
                              "jemand",        # IProMasc
                              "jedermann",     # IPro-jedermann
+                             "jedefrau",      # IPro-jedefrau
                              "man",           # IPro-man
+                             "frau",          # IPro-frau
                              "unsereiner",    # IPro-unsereiner
                              "unsereins",     # IPro-unsereins
                              "wer",           # IProMascNomSg, IProMascAccSg, IProMascDatSg, IProMascGenSg

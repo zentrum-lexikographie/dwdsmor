@@ -115,6 +115,7 @@ einige		2	INDEF	NoGend Dat Pl St Subst	einigen
 einige		2	INDEF	NoGend Gen Pl St Attr	einiger
 einige		2	INDEF	NoGend Gen Pl St Subst	einiger
 etwas			INDEF Neut	Invar Invar	etwas
+frau			INDEF Fem	Nom Sg	frau
 genug			INDEF	Invar Invar Invar Invar Attr	genug
 genug			INDEF	Invar Invar Invar Invar Subst	genug
 irgendeine		2	INDEF	Masc Nom Sg NoInfl Attr	irgendein
@@ -221,6 +222,10 @@ jede		2	INDEF	Fem Gen Sg St Attr	jeder
 jede		2	INDEF	Fem Gen Sg St Subst	jeder
 jede		2	INDEF	Fem Gen Sg Wk Attr	jeden
 jede		2	INDEF	Fem Gen Sg Wk Subst	jeden
+jedefrau			INDEF Fem	Nom Sg	jedefrau
+jedefrau			INDEF Fem	Acc Sg	jedefrau
+jedefrau			INDEF Fem	Dat Sg	jederfrau
+jedefrau			INDEF Fem	Gen Sg	jederfrau
 jedermann			INDEF Masc	Nom Sg	jedermann
 jedermann			INDEF Masc	Acc Sg	jedermann
 jedermann			INDEF Masc	Dat Sg	jedermann

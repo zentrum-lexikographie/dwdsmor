@@ -2,9 +2,9 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2024-08-22:
 
-* add inflection class `RProMascAccSg`, `RProMascDatSg`, `RProMascGenSg`,
-  `RProMascNomSg`, `RProNeutAccSg`, `RProNeutDatSg`, `RProNeutGenSg`, and
-  `RProNeutNomSg`
+* add inflection classes `IPro-frau`, `IPro-jedefrau`, `IPro-jederfrau`,
+  `RProMascAccSg`, `RProMascDatSg`, `RProMascGenSg`, `RProMascNomSg`,
+  `RProNeutAccSg`, `RProNeutDatSg`, `RProNeutGenSg`, and `RProNeutNomSg`
 
 2024-07-26:
 

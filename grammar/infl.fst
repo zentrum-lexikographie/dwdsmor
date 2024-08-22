@@ -1246,6 +1246,12 @@ $IProSuff-jedermann$ = {<Nom><Sg>}:{} | \
                        {<Dat><Sg>}:{} | \
                        {<Gen><Sg>}:{<SB>s}
 
+$IProSuff-jedefrau$ = {<Nom><Sg>}:{} | \
+                      {<Acc><Sg>}:{}
+
+$IProSuff-jederfrau$ = {<Dat><Sg>}:{} | \
+                       {<Gen><Sg>}:{}
+
 $IProSuff-man$ = {<Nom><Sg>}:{}
 
 $IProSuff-unsereiner$ = {<Nom><Sg>}:{<SB>er} | \ % cf. Duden-Grammatik (2016: § 433)
@@ -1436,8 +1442,17 @@ $IProMasc$ = {<+INDEF><Masc>}:{} $IProSuff$
 % jedermann
 $IPro-jedermann$ = {<+INDEF><Masc>}:{} $IProSuff-jedermann$
 
+% jedefrau
+$IPro-jedefrau$ = {<+INDEF><Fem>}:{} $IProSuff-jedefrau$
+
+% jederfrau
+$IPro-jederfrau$ = {<+INDEF><Fem>}:{} $IProSuff-jederfrau$
+
 % man
 $IPro-man$ = {<+INDEF><Masc>}:{} $IProSuff-man$
+
+% frau
+$IPro-frau$ = {<+INDEF><Fem>}:{} $IProSuff-man$
 
 % unsereiner
 $IPro-unsereiner$ = {<+INDEF><Masc>}:{} $IProSuff-unsereiner$
@@ -2188,6 +2203,9 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<Indef-mehrer>          $Indef-mehrer$         | \
          <>:<Indef-saemtlich>       $Indef-saemtlich$      | \
          <>:<Indef-welch>           $Indef-welch$          | \
+         <>:<IPro-frau>             $IPro-frau$            | \
+         <>:<IPro-jedefrau>         $IPro-jedefrau$        | \
+         <>:<IPro-jederfrau>        $IPro-jederfrau$       | \
          <>:<IPro-jedermann>        $IPro-jedermann$       | \
          <>:<IPro-man>              $IPro-man$             | \
          <>:<IPro-unsereiner>       $IPro-unsereiner$      | \

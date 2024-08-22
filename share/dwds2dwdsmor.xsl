@@ -721,7 +721,8 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Indefinitpronomen' and
-                            $lemma='jedermann'">
+                            ($lemma='jedermann' or
+                             $lemma='jedefrau')">
               <xsl:call-template name="indefinite-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -772,7 +773,9 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$pos='Indefinitpronomen' and
-                            $lemma='man'">
+                            ($lemma='man' or
+                             $lemma='frau' or
+                             $lemma='mensch')">
               <xsl:call-template name="indefinite-pronoun-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>

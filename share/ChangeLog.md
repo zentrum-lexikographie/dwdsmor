@@ -1,6 +1,6 @@
 2024-08-22:
 
-* add support for more relative pronouns
+* add support for more indefinite and relative pronouns
 
 2024-07-26:
 
