@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-07-24
+# Andreas Nolda 2024-08-22
 
 import io
 import csv
@@ -280,6 +280,8 @@ PERSONAL_PRONOUN_LEMMAS = ["ich",       # PPro1NomSg, PPro1AccSg, PPro1DatSg, PP
 RELATIVE_PRONOUN_POS = "REL"
 
 RELATIVE_PRONOUN_LEMMAS = ["die",     # Rel
+                           "wer",     # RProMascNomSg, RProMascAccSg, RProMascDatSg, RProMascGenSg, RProNeutNomSg ...
+                           "was",     # RProMascNomSg, RProMascAccSg, RProMascDatSg, RProMascGenSg, RProNeutNomSg ...
                            "welche"]  # Rel-welch
 
 

@@ -15,6 +15,10 @@ die	3	2	REL	NoGend Nom Pl St Subst	die
 die	3	2	REL	NoGend Acc Pl St Subst	die
 die	3	2	REL	NoGend Dat Pl St Subst	denen
 die	3	2	REL	NoGend Gen Pl St Subst	deren, derer
+was	2		REL Neut	Nom Sg	was
+was	2		REL Neut	Acc Sg	was
+was	2		REL Neut	Dat Sg	was (ugs.)
+was	2		REL Neut	Gen Sg	wessen
 welche	2	2	REL	Invar Invar Invar Invar Attr	welch
 welche	2	2	REL	Masc Nom Sg St Attr	welcher
 welche	2	2	REL	Masc Nom Sg St Subst	welcher
@@ -48,3 +52,7 @@ welche	2	2	REL	NoGend Dat Pl St Attr	welchen
 welche	2	2	REL	NoGend Dat Pl St Subst	welchen
 welche	2	2	REL	NoGend Gen Pl St Attr	welcher
 welche	2	2	REL	NoGend Gen Pl St Subst	welcher
+wer	2		REL Masc	Nom Sg	wer
+wer	2		REL Masc	Acc Sg	wen
+wer	2		REL Masc	Dat Sg	wem
+wer	2		REL Masc	Gen Sg	wessen

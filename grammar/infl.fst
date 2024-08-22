@@ -1,6 +1,6 @@
 % infl.fst
-% Version 7.0
-% Andreas Nolda 2024-07-26
+% Version 7.1
+% Andreas Nolda 2024-08-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1282,6 +1282,14 @@ $WProDatSgSuff$ = $PProDatSgSuff$
 $WProGenSgSuff$ = {<Gen><Sg>}:{<SB>sen} | \
                   {<Gen><Sg><Old>}:{} % cf. Duden-Grammatik (2016: § 404)
 
+$RProNomSgSuff$ = $WProNomSgSuff$
+
+$RProAccSgSuff$ = $WProAccSgSuff$
+
+$RProDatSgSuff$ = $WProDatSgSuff$
+
+$RProGenSgSuff$ = {<Gen><Sg>}:{<SB>sen}
+
 $IProNomSgSuff$ = $WProNomSgSuff$
 
 $IProAccSgSuff$ = $WProAccSgSuff$
@@ -1596,6 +1604,30 @@ $WProNeutDatSg$ = {<+WPRO><Neut>}:{} $WProDatSgSuff$ {<NonSt>}:{} % cf. Duden-Gr
 
 % wessen, wes (interrogative pronoun)
 $WProNeutGenSg$ = {<+WPRO><Neut>}:{} $WProGenSgSuff$
+
+% wer (relative pronoun)
+$RProMascNomSg$ = {<+REL><Masc>}:{} $RProNomSgSuff$
+
+% wen (relative pronoun)
+$RProMascAccSg$ = {<+REL><Masc>}:{} $RProAccSgSuff$
+
+% wem (relative pronoun)
+$RProMascDatSg$ = {<+REL><Masc>}:{} $RProDatSgSuff$
+
+% wessen (relative pronoun)
+$RProMascGenSg$ = {<+REL><Masc>}:{} $RProGenSgSuff$
+
+% was (relative pronoun)
+$RProNeutNomSg$ = {<+REL><Neut>}:{} $RProNomSgSuff$
+
+% was (relative pronoun)
+$RProNeutAccSg$ = {<+REL><Neut>}:{} $RProAccSgSuff$
+
+% was (relative pronoun)
+$RProNeutDatSg$ = {<+REL><Neut>}:{} $RProDatSgSuff$ {<NonSt>}:{}
+
+% wessen (relative pronoun)
+$RProNeutGenSg$ = {<+REL><Neut>}:{} $RProGenSgSuff$
 
 % wer (indefinite pronoun)
 $IProMascNomSg$ = {<+INDEF><Masc>}:{} $IProNomSgSuff$
@@ -2397,6 +2429,14 @@ $INFL$ = <>:<AbbrAdj>               $AbbrAdj$              | \
          <>:<Ptcl-zu>               $Ptcl-zu$              | \
          <>:<Rel>                   $Rel$                  | \
          <>:<Rel-welch>             $Rel-welch$            | \
+         <>:<RProMascAccSg>         $RProMascAccSg$        | \
+         <>:<RProMascDatSg>         $RProMascDatSg$        | \
+         <>:<RProMascGenSg>         $RProMascGenSg$        | \
+         <>:<RProMascNomSg>         $RProMascNomSg$        | \
+         <>:<RProNeutAccSg>         $RProNeutAccSg$        | \
+         <>:<RProNeutDatSg>         $RProNeutDatSg$        | \
+         <>:<RProNeutGenSg>         $RProNeutGenSg$        | \
+         <>:<RProNeutNomSg>         $RProNeutNomSg$        | \
          <>:<Roman>                 $Roman$                | \
          <>:<VAImpPl>               $VAImpPl$              | \
          <>:<VAImpSg>               $VAImpSg$              | \

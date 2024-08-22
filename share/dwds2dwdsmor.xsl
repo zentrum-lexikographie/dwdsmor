@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.18 -->
-<!-- Andreas Nolda 2024-07-25 -->
+<!-- Version 14.19 -->
+<!-- Andreas Nolda 2024-08-22 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1018,6 +1018,24 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
+                <xsl:with-param name="pronunciations"
+                                select="$pronunciations"/>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$pos='Relativpronomen' and
+                            ($lemma='wer' or
+                             $lemma='was')">
+              <xsl:call-template name="relative-pronoun-entry-set">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"

@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 8.0
-% Andreas Nolda 2024-07-26
+% Version 8.1
+% Andreas Nolda 2024-08-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -214,7 +214,9 @@
                    <PProNoGendAccPl><PProNoGendDatPl><PProNoGendGenPl> \
                    <PProNoGendNomPl><PRecPl><PRefl1AccSg><PRefl1DatSg> \
                    <PRefl2AccSg><PRefl2DatSg><PRefl1Pl><PRefl2Pl><PRefl3><Rel> \
-                   <Rel-welch><W-welch><WProMascAccSg><WProMascDatSg> \
+                   <Rel-welch><RProMascAccSg><RProMascDatSg><RProMascGenSg> \
+                   <RProMascNomSg><RProNeutAccSg><RProNeutDatSg><RProNeutGenSg> \
+                   <RProNeutNomSg><W-welch><WProMascAccSg><WProMascDatSg> \
                    <WProMascGenSg><WProMascNomSg><WProNeutAccSg><WProNeutDatSg> \
                    <WProNeutGenSg><WProNeutNomSg>
 

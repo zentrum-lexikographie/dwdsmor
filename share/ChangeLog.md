@@ -1,3 +1,7 @@
+2024-08-22:
+
+* add support for more relative pronouns
+
 2024-07-26:
 
 * specify stem for nominalised adjectives (without final "e")
