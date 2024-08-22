@@ -19,6 +19,24 @@
     </Formangabe>
   </Artikel>
   <Artikel>
+    <Formangabe>
+      <Schreibung>selb</Schreibung>
+      <Grammatik>
+        <Wortklasse>Adjektiv</Wortklasse>
+        <Funktionspraeferenz Frequenz="nur">attributiv</Funktionspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>selbig</Schreibung>
+      <Grammatik>
+        <Wortklasse>Adjektiv</Wortklasse>
+        <Funktionspraeferenz Frequenz="nur">attributiv</Funktionspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
     <Formangabe Typ="Symbol">
       <Schreibung>*</Schreibung>
       <Grammatik>
