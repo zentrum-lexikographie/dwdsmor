@@ -1,6 +1,6 @@
 % infl.fst
-% Version 7.1
-% Andreas Nolda 2024-08-22
+% Version 7.2
+% Andreas Nolda 2024-08-29
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1893,12 +1893,12 @@ $VPresSubj$ = {<+V><1><Sg><Pres><Subj>}:{<SB>e}   | \
               {<+V><3><Pl><Pres><Subj>}:{<SB>en}
 
 % brachte
-$VPastIndReg$ = {<+V><1><Sg><Past><Ind>}:{<SB><ins(e)>te}   | \
-                {<+V><2><Sg><Past><Ind>}:{<SB><ins(e)>test} | \
-                {<+V><3><Sg><Past><Ind>}:{<SB><ins(e)>te}   | \
-                {<+V><1><Pl><Past><Ind>}:{<SB><ins(e)>ten}  | \
-                {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>tet}  | \
-                {<+V><3><Pl><Past><Ind>}:{<SB><ins(e)>ten}
+$VPastIndReg$ = {<+V><1><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>e}   | \
+                {<+V><2><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>est} | \
+                {<+V><3><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>e}   | \
+                {<+V><1><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>en}  | \
+                {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>et}  | \
+                {<+V><3><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>en}
 
 % wurde
 $VPastIndIrreg$ = {<+V><1><Sg><Past><Ind>}:{<SB>e}   | \
@@ -1919,12 +1919,12 @@ $VPastIndStr$ = {<+V><1><Sg><Past><Ind>}:{}               | \
                 {<+V><3><Pl><Past><Ind>}:{<SB>en}
 
 % brächte
-$VPastSubjReg$ = {<+V><1><Sg><Past><Subj>}:{<SB><ins(e)>te}   | \
-                 {<+V><2><Sg><Past><Subj>}:{<SB><ins(e)>test} | \
-                 {<+V><3><Sg><Past><Subj>}:{<SB><ins(e)>te}   | \
-                 {<+V><1><Pl><Past><Subj>}:{<SB><ins(e)>ten}  | \
-                 {<+V><2><Pl><Past><Subj>}:{<SB><ins(e)>tet}  | \
-                 {<+V><3><Pl><Past><Subj>}:{<SB><ins(e)>ten}
+$VPastSubjReg$ = {<+V><1><Sg><Past><Subj>}:{<SB><ins(e)>t<SB>e}   | \
+                 {<+V><2><Sg><Past><Subj>}:{<SB><ins(e)>t<SB>est} | \
+                 {<+V><3><Sg><Past><Subj>}:{<SB><ins(e)>t<SB>e}   | \
+                 {<+V><1><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>en}  | \
+                 {<+V><2><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>et}  | \
+                 {<+V><3><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>en}
 
 % führe; ritte; fände
 $VPastSubjStr$ = {<+V><1><Sg><Past><Subj>}:{<SB>e}   | \

@@ -1,6 +1,6 @@
 % orth.fst
-% Version 5.0
-% Andreas Nolda 2024-07-26
+% Version 5.1
+% Andreas Nolda 2024-08-29
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -34,8 +34,8 @@ $Syllables$ = $SyllablesNoSSOld$ | \
 
 $SyllableInflPref$ = ge <PB>
 
-$SyllableSSInflSuffAdj$ = <SB>? t (<SB> e(r | st))? (<SB> e[mnrs]?)?
-$SyllableSSInflSuffV$   = <SB>  t      (e(n | s?t)?)?
+$SyllableSSInflSuffAdj$ = <SB>? t (<SB>  e(r | st))? (<SB> e[mnrs]?)?
+$SyllableSSInflSuffV$   = <SB>  t  <SB> (e(n | s?t)?)?
 
 $SyllableSSInflSuff$ = $SyllableSSInflSuffAdj$ | \
                        $SyllableSSInflSuffV$
