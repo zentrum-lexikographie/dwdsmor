@@ -289,40 +289,24 @@ RELATIVE_PRONOUN_LEMMAS = ["die",     # Rel
 
 VERB_POS = "V"
 
-VERB_LEMMAS = ["sagen",        # VVReg
-               "versagen",     # VVReg
-               "absagen",      # VVReg
-               "enden",        # VVReg
-               "klettern",     # VVReg-el-er
-               "verwechseln",  # VVReg-el-er
-               "winken",       # VVReg, VVPP-en
-               "brauchen",     # VVReg, VVPastSubjReg
-               "fassen",       # VVReg, VVPres1_Imp, VVPres2, VVPastIndReg, VVPastSubjReg, VVPP-t
-               "fragen",       # VVReg, VVPres1_Imp, VVPres2, VVPastIndStr, VVPastSubjStr, VVPP-t
-               "schrecken",    # VVReg, VVPres1, VVPres2_Imp0, VVPastIndStr, VVPastSubjStr, VVPP-t
-               "rennen",       # VVPres, VVPastIndReg, VVPastSubjReg, VVPP-t
-               "mahlen",       # VVPres, VVPastIndReg, VVPastSubjReg, VVPP-en
-               "gehen",        # VVPres, VVPastStr, VVPP-en
-               "kommen",       # VVPres, VVPastIndStr, VVPastSubjStr, VVPP-en
-               "gewinnen",     # VVPres, VVPastIndStr, VVPastSubjStr, VVPastSubjOld, VVPP-en
-               "backen",       # VVPres, VVPres1_Imp, VVPres2, VVPastIndReg, VVPastIndStr, VVPastSubjReg, VVPastSubjStr, VVPP-en
-               "sehen",        # VVPres1, VVPres2_Imp, VVPastIndStr, VVPastSubjStr, VVPP-en
-               "geben",        # VVPres1, VVPres2_Imp0, VVPastIndStr, VVPastSubjStr, VVPP-en
-               "empfehlen",    # VVPres1, VVPres2_Imp0, VVPastIndStr, VVPastSubjStr, VVPastSubjOld, VVPP-en
-               "treten",       # VVPres1, VVPres2t_Imp0, VVPastIndStr, VVPastSubjStr, VVPP-en
-               "gelten",       # VVPres1, VVPres2t_Imp0, VVPastIndStr, VVPastSubjStr, VVPastSubjOld, VVPP-en
-               "laufen",       # VVPres1_Imp, VVPres2, VVPastStr, VVPP-en
-               "haben" ,       # VVPres1_Imp, VVPres2, VVPastIndReg, VVPastSubjReg, VVPP-t
-               "fahren",       # VVPres1_Imp, VVPres2, VVPastIndStr, VVPastSubjStr, VVPP-en
-               "verhalten",    # VVPres1_Imp, VVPres2t, VVPastStr, VVPP-en
-               "wissen",       # VMPresSg, VMPresPl, VVPastIndReg, VVPastSubjReg, VVPP-t
-               "können",       # VMPresSg, VMPresPl, VVPastIndReg, VVPastSubjReg, VVPP-t, VVPP-en
-               "werden",       # VInf-en, VAPres1SgInd, VAPres2SgInd, VAPres3SgInd, VAPres13PlInd, VAPres2PlInd, VPresSubj,
-                               # VAPastIndSg, VAPastIndPl, VPastIndIrreg, VPastSubjStr, VAImpSg, VAImpPl, VVPP-en
-               "tun",          # VInf-n, VAPres1SgInd, VAPres2SgInd, VAPres3SgInd, VAPres13PlInd, VAPres2PlInd, VPresSubj,
-                               # VPastIndStr, VPastSubjStr, VAImpSg, VAImpPl, VPPast
-               "sein"]         # VInf-n, VAPres1SgInd, VAPres2SgInd, VAPres3SgInd, VAPres13PlInd, VAPres2PlInd, VAPresSubjSg,
-                               # VAPres2SgSubj, VAPresSubjPl, VPastIndStr, VPastSubjStr, VAPastSubj2, VAImpSg, VAImpPl, VVPP-en
+VERB_LEMMAS = ["spielen",    # VWeak
+               "segeln",     # VWeak-el-er
+               "senden",     # VWeak, VInf, VPPres, VPPast-senden, VPres, VPastInd-haben, VPastSubjWeak, VImp
+               "denken",     # VInf, VPPres, VPPastWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp
+               "haben",      # VInf, VPPres, VPPastWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-haben, VPastSubj-haben, VImp
+               "wissen",     # VInf, VPPres, VPPastWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak
+               "können",     # VInf, VPPres, VPPastWeak, VPPastStr, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak
+               "gehen",      # VInf, VPPres, VPPastStr, VPres, VPastStr, VImp
+               "schwimmen",  # VInf, VPPres, VPPastStr, VPres, VPastIndStr, VPastSubjStr, VPastSubjOld, VImp
+               "laden",      # VInf, VPPres, VPPastStr, VPres, VPresInd23Sg-laden, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImp
+               "laufen",     # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastStr, VImp
+               "halten",     # VInf, VPPres, VPPastStr, VPresInd23Sg-t, VPresNonInd23Sg, VPastStr, VImp
+               "sehen",      # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImpSg, VImpPl
+               "tun",        # VInf-tun, VPPres, VPPast-tun, VPres-tun, VPastIndStr, VPastSubjStr, VImpSg0, VImpPl,
+               "werden",     # VInf, VPPres, VPPastStr, VPresInd2Sg-werden, VPresInd3Sg-werden, VPresNonInd23Sg, VPastInd-werden,
+                             # VPastIndSg-ward, VPastIndPl-werden, VPastSubjStr, VImp
+               "sein"]       # VInf-tun, VPPres, VPPastStr, VPresInd1Sg-sein, VPresInd2Sg-sein, VPresInd3Sg-sein, VPresInd13Pl-sein,
+                             # VPresInd2Pl-sein, VPresSubj-sein, VPastIndStr, VPastSubjStr, VPastSubj2-sein, VImpSg0, VImpPl-sein
 
 @fixture
 def transducer():

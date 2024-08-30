@@ -1,5 +1,28 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-08-29:
+
+* add inflection classes `VPPast-senden`, `VPres-tun`, `VPresInd23Sg-laden`,
+  `VPresInd2Sg-werden`, `VPresInd3Sg-werden`, `VPastInd-haben`,
+  `VPastSubj-haben`, `VImp`, `VImpSg`, `VImpSg0`, and `VImpPl`
+* rename inflection classes `VInf-en`, `VInf-n`, `VVPP-t`, `VVPP-en`, `VPPast`,
+  `VVReg`, `VVReg-el-er`, `VAPresSubjSg`, `VVPres`, `VVPres1`, `VVPres2`,
+  `VVPres2t`, `VMPresSg`, `VMPresPl`, `VVPastStr`, `VVPastIndReg`,
+  `VVPastIndStr`, `VPastIndIrreg`, `VVPastSubjReg`, `VVPastSubjStr`,
+  `VVPastSubjOld`, `VAPres1SgInd`, `VAPres2SgInd`, `VAPres3SgInd`,
+  `VAPres13PlInd`, `VAPres2PlInd`, `VAPres2SgSubj`, `VAPastIndSg`,
+  `VAPastIndPl`, `VAPastSubj2`, and `VAImpPl` to `VInf`, `VInf_n`, `VPPastWeak`,
+  `VPPastStr`, `VPPast-tun`, `VWeak`, `VWeak-el-er`, `VPresSubj-sein`, `VPres`,
+  `VPresNonInd23Sg`, `VPresInd23Sg`, `VPresInd23Sg-t`, `VModPresIndSg`,
+  `VModPresNonIndSg`, `VPastStr`, `VPastIndWeak`, `VPastIndStr`,
+  `VPastInd-werd`, `VPastSubjWeak`, `VPastSubjStr`, `VPastSubjOld`,
+  `VPresInd1Sg-sein`, `VPresInd2Sg-sein`, `VPresInd3Sg-sein`,
+  `VPresInd13Pl-sein`, `VPresInd2Pl-sein`, `VAPresSubj2Sg`, `VPastIndSg-ward`,
+  `VPastIndPl-werden`, `VPastSubj2-sein`, and `VImpPl-sein`, respectively
+* remove inflection classes `VInf`, `VVPres1_Imp`, `VVPres2_Imp`,
+  `VVPres2_Imp0`, `VVPres2t_Imp0`, `VPresSubj`, `VAPresSubj2Sg`,
+  `VAPresSubjPl>`, `VPastIndReg`, `VMPast`, `VMPastSubj`, and `VAImpSg`
+
 2024-08-22:
 
 * add inflection classes `IPro-frau`, `IPro-jedefrau`, `IPro-jederfrau`,

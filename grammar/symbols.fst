@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 8.1
-% Andreas Nolda 2024-08-22
+% Version 8.2
+% Andreas Nolda 2024-08-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -220,16 +220,17 @@
                    <WProMascAccSg><WProMascDatSg><WProMascGenSg><WProMascNomSg> \
                    <WProNeutAccSg><WProNeutDatSg><WProNeutGenSg><WProNeutNomSg>
 
-#Verb-inflection# = <VAImpPl><VAImpSg><VAPastIndPl><VAPastIndSg><VAPastSubj2> \
-                    <VAPres13PlInd><VAPres1SgInd><VAPres2PlInd><VAPres2SgInd> \
-                    <VAPres2SgSubj><VAPres3SgInd><VAPresSubjPl><VAPresSubjSg> \
-                    <VInf><VInf-en><VInf-n><VMPast><VMPastSubj><VMPresPl> \
-                    <VMPresSg><VPPast><VPPres><VPastIndIrreg><VPastIndReg> \
-                    <VPastIndStr><VPresSubj><VPastSubjStr><VVPP-en><VVPP-t> \
-                    <VVPastIndReg><VVPastIndStr><VVPastStr><VVPastSubjOld> \
-                    <VVPastSubjReg><VVPastSubjStr><VVPres><VVPres1><VVPres1_Imp> \
-                    <VVPres2><VVPres2_Imp><VVPres2_Imp0><VVPres2t> \
-                    <VVPres2t_Imp0><VVReg><VVReg-el-er>
+#Verb-inflection# = <VImp><VImpPl><VImpPl-sein><VImpSg><VImpSg0><VInf> \
+                    <VInf-tun><VModPresIndSg><VModPresNonIndSg><VPastInd-haben> \
+                    <VPastInd-werden><VPastIndPl-werden><VPastIndSg-ward> \
+                    <VPastIndStr><VPastIndWeak><VPastStr><VPastSubj-haben> \
+                    <VPastSubj2-sein><VPastSubjOld><VPastSubjStr><VPastSubjWeak> \
+                    <VPPast-senden><VPPast-tun><VPPastStr><VPPastWeak><VPPres> \
+                    <VPres><VPres-tun><VPresInd13Pl-sein><VPresInd1Sg-sein> \
+                    <VPresInd23Sg><VPresInd23Sg-t><VPresInd23Sg-laden> \
+                    <VPresInd2Pl-sein><VPresInd2Sg-sein><VPresInd2Sg-werden> \
+                    <VPresInd3Sg-sein><VPresInd3Sg-werden><VPresNonInd23Sg> \
+                    <VPresSubj-sein><VWeak><VWeak-el-er>
 
 #Other-inflection# = <ConjCompar><ConjCoord><ConjInf><ConjSub><Intj><PIndInvar> \
                      <Postp><Prep><Prep+Art-m><Prep+Art-n><Prep+Art-r> \

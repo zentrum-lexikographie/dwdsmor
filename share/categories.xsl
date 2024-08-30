@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 6.11 -->
-<!-- Andreas Nolda 2024-07-24 -->
+<!-- Version 6.12 -->
+<!-- Andreas Nolda 2024-08-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -859,8 +859,6 @@
   <class dative-plural="-">NNoGend/Pl_x</class>
   <!-- dative plural: "-n" -->
   <class dative-plural="-n">NNoGend/Pl_0</class>
-  <!-- TODO: more class mappings -->
-  <!-- ... -->
 </xsl:variable>
 
 <xsl:template name="noun-class">
@@ -1325,8 +1323,6 @@
   <class dative-plural="-">NameNoGend/Pl_x</class>
   <!-- dative plural: "-n" -->
   <class dative-plural="-n">NameNoGend/Pl_0</class>
-  <!-- TODO: more class mappings -->
-  <!-- ... -->
 </xsl:variable>
 
 <xsl:template name="name-class">
@@ -1398,57 +1394,55 @@
        past participle: "ge-" + "-t" -->
   <class infinitive="-en"
          past="-te"
-         participle="ge-t">VVReg</class>
+         participle="ge-t">VWeak</class>
   <!-- infinitive: "-en"
        past 3rd person singular: "-te"
        past participle: "-t" -->
   <class infinitive="-en"
          past="-te"
-         participle="-t">VVReg</class>
+         participle="-t">VWeak</class>
   <!-- infinitive: "-en"
        past 3rd person singular: "-ete"
        past participle: "ge-" + "-et" -->
   <class infinitive="-en"
          past="-ete"
-         participle="ge-et">VVReg</class>
+         participle="ge-et">VWeak</class>
   <!-- infinitive: "-en"
        past 3rd person singular: "-ete"
        past participle: "-et" -->
   <class infinitive="-en"
          past="-ete"
-         participle="-et">VVReg</class>
+         participle="-et">VWeak</class>
   <!-- infinitive: "-n"
        past 3rd person singular: "-te"
        past participle: "ge-" + "-t" -->
   <class infinitive="-n"
          past="-te"
-         participle="ge-t">VVReg-el-er</class>
+         participle="ge-t">VWeak-el-er</class>
   <!-- infinitive: "-n"
        past 3rd person singular: "-te"
        past participle: "-t" -->
   <class infinitive="-n"
          past="-te"
-         participle="-t">VVReg-el-er</class>
+         participle="-t">VWeak-el-er</class>
   <!-- infinitive: "-n"
        past 3rd person singular: "-ete"
        past participle: "ge-" + "-et" -->
   <class infinitive="-n"
          past="-ete"
-         participle="ge-et">VVReg-el-er</class>
+         participle="ge-et">VWeak-el-er</class>
   <!-- infinitive: "-n"
        past 3rd person singular: "-ete"
        past participle: "-et" -->
   <class infinitive="-n"
          past="-ete"
-         participle="-et">VVReg-el-er</class>
+         participle="-et">VWeak-el-er</class>
   <!-- weak verbs with irregular past stem: -->
-  <!-- cf. dwds.xsl -->
+  <!-- cf. entries.xsl -->
   <!-- weak verbs with strong participle: -->
-  <!-- cf. dwds.xsl -->
+  <!-- cf. entries.xsl -->
   <!-- strong verbs: -->
-  <!-- cf. dwds.xsl -->
-  <!-- TODO: more class mappings -->
-  <!-- ... -->
+  <!-- cf. entries.xsl -->
 </xsl:variable>
 
 <xsl:template name="verb-class">
@@ -1543,13 +1537,3 @@
   <xsl:value-of select="$conjunction-class-mapping/class[@type=$type]"/>
 </xsl:template>
 </xsl:stylesheet>
-<!-- TODO: -->
-<!-- add support for the following inflection classes:
-* <FamName_0>
-* <FamName_s>
-* <NFem_s_s>
-* <NMasc_en_e>
-* <VPart>
-* <VMPast>
-* <VMPastSubj>
-* <WAdv> -->
