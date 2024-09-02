@@ -125,6 +125,8 @@ The installed DWDSmor transducers are:
 * `lib/dwdsmor.{a,ca}`: transducer with inflection and word-formation
   components, for lemmatisation and morphological analysis of word forms in
   terms of grammatical categories
+* `lib/dwdsmor-morph.{a,ca}`: transducer with inflection and word-formation
+  components, for the generation of morphologically segmented word forms
 * `lib/dwdsmor-finite.{a,ca}`: transducer with an inflection component and a
   finite word-formation component, for testing purposes
 * `lib/dwdsmor-root.{a,ca}`: transducer with inflection and word-formation

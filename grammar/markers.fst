@@ -1,6 +1,6 @@
 % markers.fst
-% Version 8.2
-% Andreas Nolda 2024-08-30
+% Version 8.3
+% Andreas Nolda 2024-09-02
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -80,3 +80,10 @@ ALPHABET = [#char#] \
 
 $MarkerBoundary$ = (. | \
                     <HB>:\-)*
+
+ALPHABET = [#char#]
+
+$MarkerBoundaryMorph$ = (.                       | \
+                             [<CB><VB>]:<#>      | \
+                                 {<HB>}:{<\=>\-} | \
+                         [<DB><PB><SB>]:<\~>)*
