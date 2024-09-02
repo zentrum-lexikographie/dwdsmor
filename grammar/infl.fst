@@ -1780,7 +1780,7 @@ $VInfSuff_n$ = {<+V><Inf>}:{<SB>n} | \
 $VInf$ = $VInfSuff_en$
 
 % tun
-$VInf-tun$ = $VInfSuff_n$
+$VInf_n$ = $VInfSuff_n$
 
 $VPPresSuff$ = {<+V><PPres>}:{<SB>end} | \
                {<+V><PPres><zu>}:{<ins(zu)><SB>end}
@@ -1814,19 +1814,19 @@ $VPPastStr+haben$ = $VPPastSuff_en$ $haben$
 
 $VPPastStr+sein$ = $VPPastSuff_en$ $sein$
 
-% gesandt
-$VPPast-senden$ = $VPPastSuff_t$
+% gesandt; gewandt
+$VPPast-d_t$ = $VPPastSuff_t$
 
-$VPPast-senden+haben$ = $VPPastSuff_t$ $haben$
+$VPPast-d_t+haben$ = $VPPastSuff_t$ $haben$
 
-$VPPast-senden+sein$ = $VPPastSuff_t$ $sein$
+$VPPast-d_t+sein$ = $VPPastSuff_t$ $sein$
 
 % getan
-$VPPast-tun$ = $VPPastSuff_n$
+$VPPast_n$ = $VPPastSuff_n$
 
-$VPPast-tun+haben$ = $VPPastSuff_n$ $haben$
+$VPPast_n+haben$ = $VPPastSuff_n$ $haben$
 
-$VPPast-tun+sein$ = $VPPastSuff_n$ $sein$
+$VPPast_n+sein$ = $VPPastSuff_n$ $sein$
 
 $VPresInd1SgSuff_0$ = {<+V><1><Sg><Pres><Ind>}:{}
 
@@ -1840,7 +1840,7 @@ $VPresInd3SgSuff_0$ = {<+V><3><Sg><Pres><Ind>}:{}
 
 $VPresInd3SgSuff_et$ = {<+V><3><Sg><Pres><Ind>}:{<SB><ins(e)>t}
 
-$VPresInd3SgSuff-laden$ = {<+V><3><Sg><Pres><Ind>}:{<SB>t}
+$VPresInd3SgSuff_t$ = {<+V><3><Sg><Pres><Ind>}:{<SB>t}
 
 $VPresIndPlSuff$ = {<+V><1><Pl><Pres><Ind>}:{<SB>en}        | \
                    {<+V><2><Pl><Pres><Ind>}:{<SB><ins(e)>t} | \
@@ -1885,13 +1885,13 @@ $VPres$ = $VPresInd1SgSuff_e$   | \
 $VPresInd23Sg$ = $VPresInd2SgSuff_st$ | \
                  $VPresInd3SgSuff_et$
 
-% hälst, hält
-$VPresInd23Sg-t$ = $VPresInd2SgSuff_st$ | \
-                   $VPresInd3SgSuff_0$
+% hältst, hält
+$VPresInd23Sg-t_0$ = $VPresInd2SgSuff_st$ | \
+                     $VPresInd3SgSuff_0$
 
-% lädst, läd
-$VPresInd23Sg-laden$ = $VPresInd2SgSuff_st$ | \
-                       $VPresInd3SgSuff-laden$
+% lädst, lädt
+$VPresInd23Sg-d_t$ = $VPresInd2SgSuff_st$ | \
+                     $VPresInd3SgSuff_t$
 
 % sehe, sehen, seht, sehen
 % laufe, laufen, lauft, laufen
@@ -1944,12 +1944,19 @@ $VModPresIndSg$ = $VPresInd1SgSuff_0$   | \
 $VModPresNonIndSg$ = $VPresIndPlSuff$ | \
                      $VPresSubjSuff$
 
-$VPastIndWeakSuff$ = {<+V><1><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>e}   | \
-                     {<+V><2><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>est} | \
-                     {<+V><3><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>e}   | \
-                     {<+V><1><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>en}  | \
-                     {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>et}  | \
-                     {<+V><3><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>en}
+$VPastIndWeakSuff_et$ = {<+V><1><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>e}   | \
+                        {<+V><2><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>est} | \
+                        {<+V><3><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>e}   | \
+                        {<+V><1><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>en}  | \
+                        {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>et}  | \
+                        {<+V><3><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>en}
+
+$VPastIndWeakSuff_t$ = {<+V><1><Sg><Past><Ind>}:{<SB>t<SB>e}   | \
+                       {<+V><2><Sg><Past><Ind>}:{<SB>t<SB>est} | \
+                       {<+V><3><Sg><Past><Ind>}:{<SB>t<SB>e}   | \
+                       {<+V><1><Pl><Past><Ind>}:{<SB>t<SB>en}  | \
+                       {<+V><2><Pl><Past><Ind>}:{<SB>t<SB>et}  | \
+                       {<+V><3><Pl><Past><Ind>}:{<SB>t<SB>en}
 
 $VPastIndStrSuff$ = {<+V><1><Sg><Past><Ind>}:{}               | \
                     {<+V><2><Sg><Past><Ind>}:{<SB><ins(e)>st} | \
@@ -1958,13 +1965,6 @@ $VPastIndStrSuff$ = {<+V><1><Sg><Past><Ind>}:{}               | \
                     {<+V><1><Pl><Past><Ind>}:{<SB>en}         | \
                     {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>t}  | \
                     {<+V><3><Pl><Past><Ind>}:{<SB>en}
-
-$VPastIndSuff-haben$ = {<+V><1><Sg><Past><Ind>}:{<SB>t<SB>e}   | \
-                       {<+V><2><Sg><Past><Ind>}:{<SB>t<SB>est} | \
-                       {<+V><3><Sg><Past><Ind>}:{<SB>t<SB>e}   | \
-                       {<+V><1><Pl><Past><Ind>}:{<SB>t<SB>en}  | \
-                       {<+V><2><Pl><Past><Ind>}:{<SB>t<SB>et}  | \
-                       {<+V><3><Pl><Past><Ind>}:{<SB>t<SB>en}
 
 $VPastIndSgSuff-werden$ = {<+V><1><Sg><Past><Ind>}:{<SB>e}   | \
                           {<+V><2><Sg><Past><Ind>}:{<SB>est} | \
@@ -1985,6 +1985,13 @@ $VPastSubjWeakSuff$ = {<+V><1><Sg><Past><Subj>}:{<SB><ins(e)>t<SB>e}   | \
                       {<+V><2><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>et}  | \
                       {<+V><3><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>en}
 
+$VPastSubjWeakSuff_t$ = {<+V><1><Sg><Past><Subj>}:{<SB>t<SB>e}   | \
+                        {<+V><2><Sg><Past><Subj>}:{<SB>t<SB>est} | \
+                        {<+V><3><Sg><Past><Subj>}:{<SB>t<SB>e}   | \
+                        {<+V><1><Pl><Past><Subj>}:{<SB>t<SB>en}  | \
+                        {<+V><2><Pl><Past><Subj>}:{<SB>t<SB>et}  | \
+                        {<+V><3><Pl><Past><Subj>}:{<SB>t<SB>en}
+
 $VPastSubjStrSuff$ = {<+V><1><Sg><Past><Subj>}:{<SB>e}   | \
                      {<+V><2><Sg><Past><Subj>}:{<SB>est} | \
                      {<+V><3><Sg><Past><Subj>}:{<SB>e}   | \
@@ -1992,29 +1999,23 @@ $VPastSubjStrSuff$ = {<+V><1><Sg><Past><Subj>}:{<SB>e}   | \
                      {<+V><2><Pl><Past><Subj>}:{<SB>et}  | \
                      {<+V><3><Pl><Past><Subj>}:{<SB>en}
 
-$VPastSubjSuff-haben$ = {<+V><1><Sg><Past><Subj>}:{<SB>t<SB>e}   | \
-                        {<+V><2><Sg><Past><Subj>}:{<SB>t<SB>est} | \
-                        {<+V><3><Sg><Past><Subj>}:{<SB>t<SB>e}   | \
-                        {<+V><1><Pl><Past><Subj>}:{<SB>t<SB>en}  | \
-                        {<+V><2><Pl><Past><Subj>}:{<SB>t<SB>et}  | \
-                        {<+V><3><Pl><Past><Subj>}:{<SB>t<SB>en}
-
 $VPastSubj2Suff-sein$ = {<+V><2><Sg><Past><Subj>}:{<SB>st} | \
                         {<+V><2><Pl><Past><Subj>}:{<SB>t}
 
-$VPastWeak$ = $VPastIndWeakSuff$ | \
+$VPastWeak$ = $VPastIndWeakSuff_et$ | \
               $VPastSubjWeakSuff$
 
 % dachte, dachtest, dachte, dachten, dachtet, dachten
 % konnte, konntest, konnte, konnten, konntet, konnten
 % wusste, wusstest, wusste, wussten, wusstet, wussten
-$VPastIndWeak$ = $VPastIndWeakSuff$
+$VPastIndWeak$ = $VPastIndWeakSuff_et$
 
 % sah, sahst, sah, sahen, saht, sahen
 $VPastIndStr$ = $VPastIndStrSuff$
 
 % hatte, hattest, hatte, hatten, hattet, hatten
-$VPastInd-haben$ = $VPastIndSuff-haben$
+% sandte, sandtest, sandte, sandten, sandtet, sandten
+$VPastInd-d-t_t$ = $VPastIndWeakSuff_t$
 
 % wurde, wurdest, wurde, wurden, wurdet, wurden
 $VPastInd-werden$ = $VPastIndSgSuff-werden$ | \
@@ -2040,7 +2041,7 @@ $VPastSubjStr$ = $VPastSubjStrSuff$
 $VPastSubjOld$ = $VPastSubjStr$ {<Old>}:{}
 
 % hätte, hättest, hätte, hätten, hättet, hätten
-$VPastSubj-haben$ = $VPastSubjSuff-haben$
+$VPastSubj-haben$ = $VPastSubjWeakSuff_t$
 
 % wärst, wärt
 $VPastSubj2-sein$ = $VPastSubj2Suff-sein$
@@ -2524,11 +2525,11 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VImpSg>                  $VImpSg$               | \
          <>:<VImpSg0>                 $VImpSg0$              | \
          <>:<VInf>                    $VInf$                 | \
-         <>:<VInf-tun>                $VInf-tun$             | \
+         <>:<VInf_n>                  $VInf_n$               | \
          <>:<VModPresIndSg>           $VModPresIndSg$        | \
          <>:<VModPresNonIndSg>        $VModPresNonIndSg$     | \
          <>:<VPart>                   $VPart$                | \
-         <>:<VPastInd-haben>          $VPastInd-haben$       | \
+         <>:<VPastInd-d-t_t>          $VPastInd-d-t_t$       | \
          <>:<VPastInd-werden>         $VPastInd-werden$      | \
          <>:<VPastIndPl-werden>       $VPastIndPl-werden$    | \
          <>:<VPastIndSg-ward>         $VPastIndSg-ward$      | \
@@ -2540,12 +2541,12 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPastSubjOld>            $VPastSubjOld$         | \
          <>:<VPastSubjStr>            $VPastSubjStr$         | \
          <>:<VPastSubjWeak>           $VPastSubjWeak$        | \
-         <>:<VPPast-senden>           $VPPast-senden$        | \
-         <>:<VPPast-senden><>:<haben> $VPPast-senden+haben$  | \
-         <>:<VPPast-senden><>:<sein>  $VPPast-senden+sein$   | \
-         <>:<VPPast-tun>              $VPPast-tun$           | \
-         <>:<VPPast-tun><>:<haben>    $VPPast-tun+haben$     | \
-         <>:<VPPast-tun><>:<sein>     $VPPast-tun+sein$      | \
+         <>:<VPPast-d_t>              $VPPast-d_t$           | \
+         <>:<VPPast-d_t><>:<haben>    $VPPast-d_t+haben$     | \
+         <>:<VPPast-d_t><>:<sein>     $VPPast-d_t+sein$      | \
+         <>:<VPPast_n>                $VPPast_n$             | \
+         <>:<VPPast_n><>:<haben>      $VPPast_n+haben$       | \
+         <>:<VPPast_n><>:<sein>       $VPPast_n+sein$        | \
          <>:<VPPastStr>               $VPPastStr$            | \
          <>:<VPPastStr><>:<haben>     $VPPastStr+haben$      | \
          <>:<VPPastStr><>:<sein>      $VPPastStr+sein$       | \
@@ -2558,8 +2559,8 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPresInd13Pl-sein>       $VPresInd13Pl-sein$    | \
          <>:<VPresInd1Sg-sein>        $VPresInd1Sg-sein$     | \
          <>:<VPresInd23Sg>            $VPresInd23Sg$         | \
-         <>:<VPresInd23Sg-laden>      $VPresInd23Sg-laden$   | \
-         <>:<VPresInd23Sg-t>          $VPresInd23Sg-t$       | \
+         <>:<VPresInd23Sg-d_t>        $VPresInd23Sg-d_t$     | \
+         <>:<VPresInd23Sg-t_0>        $VPresInd23Sg-t_0$     | \
          <>:<VPresInd2Pl-sein>        $VPresInd2Pl-sein$     | \
          <>:<VPresInd2Sg-sein>        $VPresInd2Sg-sein$     | \
          <>:<VPresInd2Sg-werden>      $VPresInd2Sg-werden$   | \

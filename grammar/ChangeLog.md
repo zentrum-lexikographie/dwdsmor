@@ -1,5 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-09-02:
+
+* rename inflection classes `VInf-tun`, `VPPast-senden`, `VPPast-tun`,
+  `VPresInd23Sg-t`, `VPresInd23Sg-laden`, and `VPastInd-haben` to `VInf_n`,
+  `VPPast-d_t`, `VPPast_n`, `VPresInd23Sg-t_0`, `VPresInd23Sg-d_t`, and
+  `VPastInd-d-t_t`, respectively
+
 2024-08-29:
 
 * add inflection classes `VPPast-senden`, `VPres-tun`, `VPresInd23Sg-laden`,

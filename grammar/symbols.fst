@@ -220,14 +220,14 @@
                    <WProMascAccSg><WProMascDatSg><WProMascGenSg><WProMascNomSg> \
                    <WProNeutAccSg><WProNeutDatSg><WProNeutGenSg><WProNeutNomSg>
 
-#Verb-inflection# = <VImp><VImpPl><VImpPl-sein><VImpSg><VImpSg0><VInf> \
-                    <VInf-tun><VModPresIndSg><VModPresNonIndSg><VPastInd-haben> \
+#Verb-inflection# = <VImp><VImpPl><VImpPl-sein><VImpSg><VImpSg0><VInf><VInf_n> \
+                    <VModPresIndSg><VModPresNonIndSg><VPastInd-d-t_t> \
                     <VPastInd-werden><VPastIndPl-werden><VPastIndSg-ward> \
                     <VPastIndStr><VPastIndWeak><VPastStr><VPastSubj-haben> \
                     <VPastSubj2-sein><VPastSubjOld><VPastSubjStr><VPastSubjWeak> \
-                    <VPPast-senden><VPPast-tun><VPPastStr><VPPastWeak><VPPres> \
-                    <VPres><VPres-tun><VPresInd13Pl-sein><VPresInd1Sg-sein> \
-                    <VPresInd23Sg><VPresInd23Sg-t><VPresInd23Sg-laden> \
+                    <VPPast-d_t><VPPast_n><VPPastStr><VPPastWeak><VPPres><VPres> \
+                    <VPres-tun><VPresInd13Pl-sein><VPresInd1Sg-sein> \
+                    <VPresInd23Sg><VPresInd23Sg-d_t><VPresInd23Sg-t_0> \
                     <VPresInd2Pl-sein><VPresInd2Sg-sein><VPresInd2Sg-werden> \
                     <VPresInd3Sg-sein><VPresInd3Sg-werden><VPresNonInd23Sg> \
                     <VPresSubj-sein><VWeak><VWeak-el-er>
