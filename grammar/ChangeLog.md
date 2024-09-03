@@ -5,6 +5,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 * remove `<SB>` boundary together with "st"-suffixes
 * remove dangling `<SB>` boundaries in suffixless imperative forms
 * add inflection classes `VPres-d-t` and `VPresNonInd23Sg-d-t`
+* weaken phonological rule for "e"-elision in verb stems ending in "el"
 
 2024-09-02:
 

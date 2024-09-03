@@ -1,5 +1,5 @@
 % phon.fst
-% Version 6.1
+% Version 6.2
 % Andreas Nolda 2024-09-03
 
 % based on code from SMORLemma by Rico Sennrich
@@ -97,24 +97,31 @@ $PhonEElision4$ = e <=> <> ([lnr] <del(e)|ADJ> <SB> e)
 
 % "e"-elision in verb stems ending in "el"/"er"
 % hand<e>l<SB>en  -> hand<e>l<SB>n
-% hand<e>l<SB>est -> hand<e>l<SB>st
+% hand<e>l<SB>est -> hand<e>l<SB>st, handl<SB>est
 % hand<e>l<SB>e   -> hand<e>l<SB>e, handl<SB>e
 % sich<e>r<SB>en  -> sich<e>r<SB>n
 % sich<e>r<SB>est -> sich<e>r<SB>st
 % sich<e>r<SB>e   -> sich<e>r<SB>e, sichr<SB>e
 
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# #category# #feature# #info# <e>] \
+ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature# #info# <e>] \
            e:<>
 
-$PhonEElision5$ = (<e>[lr] <SB>) e <=> <> (n | s?t)
+$PhonEElision5$ = (<e>[lr] <SB>) e <=> <> (n)
+
+$PhonEElision6$ = (<e>r <SB>) e <=> <> (s?t)
+
+$PhonEElision7$ = (<e>l <SB>) e => <> (s?t)
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info# <e>] \
            <e>:<>
 
-$PhonEElision6$ = <e> => <> ([lr] <SB> [eui])
+$PhonEElision8$ = <e> <=> <> (n <SB> [eui])
 
-$PhonEElision7$ = <e> <=> <> (n <SB> [eui])
+$PhonEElision9$ = <e> => <> ([lr] <SB> [eui])
+
+$PhonEElision10$ = <e> <=> <> (l <SB> es?t)
 
 $PhonEElision$ = $PhonEElision1$ || \
                  $PhonEElision2$ || \
@@ -122,7 +129,10 @@ $PhonEElision$ = $PhonEElision1$ || \
                  $PhonEElision4$ || \
                  $PhonEElision5$ || \
                  $PhonEElision6$ || \
-                 $PhonEElision7$
+                 $PhonEElision7$ || \
+                 $PhonEElision8$ || \
+                 $PhonEElision9$ || \
+                 $PhonEElision10$
 
 
 % "s"-deletion in "st"-suffixes

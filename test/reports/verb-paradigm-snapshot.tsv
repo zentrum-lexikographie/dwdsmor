@@ -1100,10 +1100,10 @@ segeln			V haben	1 Pl Ind Pres	segeln
 segeln			V haben	2 Pl Ind Pres	segelt
 segeln			V haben	3 Pl Ind Pres	segeln
 segeln			V haben	1 Sg Subj Pres	segele, segle
-segeln			V haben	2 Sg Subj Pres	segelst
+segeln			V haben	2 Sg Subj Pres	segelst, seglest
 segeln			V haben	3 Sg Subj Pres	segele, segle
 segeln			V haben	1 Pl Subj Pres	segeln
-segeln			V haben	2 Pl Subj Pres	segelt
+segeln			V haben	2 Pl Subj Pres	segelt, seglet
 segeln			V haben	3 Pl Subj Pres	segeln
 segeln			V haben	1 Sg Ind Perf	habe gesegelt
 segeln			V haben	2 Sg Ind Perf	hast gesegelt
@@ -1178,10 +1178,10 @@ segeln			V sein	1 Pl Ind Pres	segeln
 segeln			V sein	2 Pl Ind Pres	segelt
 segeln			V sein	3 Pl Ind Pres	segeln
 segeln			V sein	1 Sg Subj Pres	segele, segle
-segeln			V sein	2 Sg Subj Pres	segelst
+segeln			V sein	2 Sg Subj Pres	segelst, seglest
 segeln			V sein	3 Sg Subj Pres	segele, segle
 segeln			V sein	1 Pl Subj Pres	segeln
-segeln			V sein	2 Pl Subj Pres	segelt
+segeln			V sein	2 Pl Subj Pres	segelt, seglet
 segeln			V sein	3 Pl Subj Pres	segeln
 segeln			V sein	1 Sg Ind Perf	bin gesegelt
 segeln			V sein	2 Sg Ind Perf	bist gesegelt
