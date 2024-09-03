@@ -1,6 +1,6 @@
 % phon.fst
-% Version 6.0
-% Andreas Nolda 2024-07-26
+% Version 6.1
+% Andreas Nolda 2024-09-03
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -51,13 +51,15 @@ $PhonSDuplication$ = ((s) <dbl(s)> <=> s  (<SB> [aeiou])) & \
 
 
 % deletion of "st"-suffixes
-% birst<SB>st -> birst<SB>
+% birst<SB>st -> birst
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# \
             #lemma-index# #paradigm-index# #category# #feature# #info# <e>] \
-           [st]:<>
+           [<SB>st]:<>
 
-$PhonStDeletion$ = ((st<SB>) s <=> <> (t:.)) & ((st<SB>s:.) t <=> <>)
+$PhonStDeletion$ = ((st) <SB>           <=> <> (s:. t:.)) & \
+                   ((st  <SB>:.) s      <=> <>     (t:.)) & \
+                   ((st  <SB>:.  s:.) t <=> <>)
 
 
 % "e"-elision
