@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 6.12 -->
-<!-- Andreas Nolda 2024-08-29 -->
+<!-- Version 6.13 -->
+<!-- Andreas Nolda 2024-09-03 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1406,13 +1406,13 @@
        past participle: "ge-" + "-et" -->
   <class infinitive="-en"
          past="-ete"
-         participle="ge-et">VWeak</class>
+         participle="ge-et">VWeak-d-t</class>
   <!-- infinitive: "-en"
        past 3rd person singular: "-ete"
        past participle: "-et" -->
   <class infinitive="-en"
          past="-ete"
-         participle="-et">VWeak</class>
+         participle="-et">VWeak-d-t</class>
   <!-- infinitive: "-n"
        past 3rd person singular: "-te"
        past participle: "ge-" + "-t" -->
@@ -1425,18 +1425,6 @@
   <class infinitive="-n"
          past="-te"
          participle="-t">VWeak-el-er</class>
-  <!-- infinitive: "-n"
-       past 3rd person singular: "-ete"
-       past participle: "ge-" + "-et" -->
-  <class infinitive="-n"
-         past="-ete"
-         participle="ge-et">VWeak-el-er</class>
-  <!-- infinitive: "-n"
-       past 3rd person singular: "-ete"
-       past participle: "-et" -->
-  <class infinitive="-n"
-         past="-ete"
-         participle="-et">VWeak-el-er</class>
   <!-- weak verbs with irregular past stem: -->
   <!-- cf. entries.xsl -->
   <!-- weak verbs with strong participle: -->

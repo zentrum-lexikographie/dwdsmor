@@ -2053,18 +2053,20 @@ $VPastStr$ = $VPastIndStr$ | \
 
 $VImpSgSuff_0$ = {<+V><Imp><Sg>}:{<rm|Imp>}
 
-$VImpSgSuff_e$ = {<+V><Imp><Sg>}:{<SB><ins(e)><rm|Imp>} | \
-                 {<+V><Imp><Sg>}:{<SB>e<rm|Imp>}
+$VImpSgSuff_e$ = {<+V><Imp><Sg>}:{<SB>e<rm|Imp>}
 
 $VImpPlSuff_t$ = {<+V><Imp><Pl>}:{<SB><ins(e)>t<rm|Imp>}
 
 $VImpPlSuff-sein$ = {<+V><Imp><Pl>}:{<rm|Imp>}
 
 % sieh(e)
-$VImpSg$ = $VImpSgSuff_e$
+$VImpSg$ = $VImpSgSuff_0$ | \
+           $VImpSgSuff_e$
 
 % tu; sei
 $VImpSg0$ = $VImpSgSuff_0$
+
+$VImpSg-d-t$ = $VImpSgSuff_e$
 
 % seht; tut
 $VImpPl$ = $VImpPlSuff_t$
@@ -2074,9 +2076,12 @@ $VImpPl-sein$ = $VImpPlSuff-sein$
 
 % geh(e), geht
 % hab(e), habt
-% werde, werdet
 $VImp$ = $VImpSg$ | \
          $VImpPl$
+
+% werde, werdet
+$VImp-d-t$ = $VImpSg-d-t$ | \
+             $VImpPl$
 
 % lieben; spielen
 $VWeak$ = $VInf$       | \
@@ -2099,6 +2104,28 @@ $VWeak+sein$ = $VInf$            | \
                $VPres$           | \
                $VPastWeak$       | \
                $VImp$
+
+% arbeiten; reden
+$VWeak-d-t$ = $VInf$       | \
+              $VPPres$     | \
+              $VPPastWeak$ | \
+              $VPres$      | \
+              $VPastWeak$  | \
+              $VImp-d-t$
+
+$VWeak-d-t+haben$ = $VInf$             | \
+                    $VPPres$           | \
+                    $VPPastWeak+haben$ | \
+                    $VPres$            | \
+                    $VPastWeak$        | \
+                    $VImp-d-t$
+
+$VWeak-d-t+sein$ = $VInf$            | \
+                   $VPPres$          | \
+                   $VPPastWeak+sein$ | \
+                   $VPres$           | \
+                   $VPastWeak$       | \
+                   $VImp-d-t$
 
 % segeln; rudern (cf. $SchwaTrigger$ in markers.fst)
 $VWeak-el-er$ = $VWeak$
@@ -2520,6 +2547,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<RProNeutNomSg>           $RProNeutNomSg$        | \
          <>:<Roman>                   $Roman$                | \
          <>:<VImp>                    $VImp$                 | \
+         <>:<VImp-d-t>                $VImp-d-t$             | \
          <>:<VImpPl>                  $VImpPl$               | \
          <>:<VImpPl-sein>             $VImpPl-sein$          | \
          <>:<VImpSg>                  $VImpSg$               | \
@@ -2574,6 +2602,9 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VWeak-el-er>             $VWeak-el-er$          | \
          <>:<VWeak-el-er><>:<haben>   $VWeak-el-er+haben$    | \
          <>:<VWeak-el-er><>:<sein>    $VWeak-el-er+sein$     | \
+         <>:<VWeak-d-t>               $VWeak-d-t$            | \
+         <>:<VWeak-d-t><>:<haben>     $VWeak-d-t+haben$      | \
+         <>:<VWeak-d-t><>:<sein>      $VWeak-d-t+sein$       | \
          <>:<WAdv>                    $WAdv$                 | \
          <>:<W-welch>                 $W-welch$              | \
          <>:<WProMascAccSg>           $WProMascAccSg$        | \
