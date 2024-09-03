@@ -419,6 +419,7 @@ Ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							CAP
+Ein	einen	V				1			Sg				Ind	Pres	NonSt			CAP
 Ein	einen	V							Sg				Imp					CAP
 Ein	ein	ADV																CAP
 schwerwiegender	schwerwiegend	ADJ			Pos		Masc	Nom	Sg	St	Attr/Subst							
@@ -961,6 +962,7 @@ ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr
 ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							
 ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							
 ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							
+ein	einen	V				1			Sg				Ind	Pres	NonSt			
 ein	einen	V							Sg				Imp					
 ein	ein	ADV																
 Kraftfahrzeug	Kraftfahrzeug	NN					Neut	Nom	Sg									
@@ -1021,6 +1023,7 @@ Ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							CAP
 Ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							CAP
+Ein	einen	V				1			Sg				Ind	Pres	NonSt			CAP
 Ein	einen	V							Sg				Imp					CAP
 Ein	ein	ADV																CAP
 schwerwiegender	schwerwiegend	ADJ			Pos		Masc	Nom	Sg	St	Attr/Subst							
@@ -1079,6 +1082,7 @@ ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr
 ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							
 ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							
 ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							
+ein	einen	V				1			Sg				Ind	Pres	NonSt			
 ein	einen	V							Sg				Imp					
 ein	ein	ADV																
 Unfallbeteiligter	Unfallbeteiligte	NN					Masc	Nom	Sg	St								

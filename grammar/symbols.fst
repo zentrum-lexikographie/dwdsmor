@@ -226,11 +226,12 @@
                     <VPastIndStr><VPastIndWeak><VPastStr><VPastSubj-haben> \
                     <VPastSubj2-sein><VPastSubjOld><VPastSubjStr><VPastSubjWeak> \
                     <VPPast-d_t><VPPast_n><VPPastStr><VPPastWeak><VPPres><VPres> \
-                    <VPres-tun><VPresInd13Pl-sein><VPresInd1Sg-sein> \
+                    <VPres-d-t><VPres-tun><VPresInd13Pl-sein><VPresInd1Sg-sein> \
                     <VPresInd23Sg><VPresInd23Sg-d_t><VPresInd23Sg-t_0> \
                     <VPresInd2Pl-sein><VPresInd2Sg-sein><VPresInd2Sg-werden> \
                     <VPresInd3Sg-sein><VPresInd3Sg-werden><VPresNonInd23Sg> \
-                    <VPresSubj-sein><VWeak><VWeak-d-t><VWeak-el-er>
+                    <VPresNonInd23Sg-d-t><VPresSubj-sein><VWeak><VWeak-d-t> \
+                    <VWeak-el-er>
 
 #Other-inflection# = <ConjCompar><ConjCoord><ConjInf><ConjSub><Intj><PIndInvar> \
                      <Postp><Prep><Prep+Art-m><Prep+Art-n><Prep+Art-r> \

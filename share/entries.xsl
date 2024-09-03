@@ -6537,7 +6537,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                  <xsl:with-param name="class">VPresNonInd23Sg-d-t</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -6873,7 +6873,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="class">VPres</xsl:with-param>
+                  <xsl:with-param name="class">VPres-d-t</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -6962,7 +6962,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="class">VPres</xsl:with-param>
+                  <xsl:with-param name="class">VPres-d-t</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -7159,7 +7159,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                  <xsl:with-param name="class">VPresNonInd23Sg-d-t</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -7206,7 +7206,7 @@
                                   select="$etymology"/>
                 </xsl:call-template>
               </xsl:when>
-              <!-- present stem for 2nd/3rd person singular with "e"/"i"-alternation -->
+              <!-- other present stem for 2nd/3rd person singular with "e"/"i"-alternation -->
               <xsl:when test="matches($present-stem,n:e-i-alternation-re($stem))">
                 <xsl:call-template name="verb-stem-entry">
                   <xsl:with-param name="lemma"
@@ -7528,7 +7528,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                  <xsl:with-param name="class">VPresNonInd23Sg-d-t</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>

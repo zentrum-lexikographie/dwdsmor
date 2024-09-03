@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2024-07-25
+# Andreas Nolda 2024-09-03
 
 import sys
 import argparse
@@ -18,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 10.0
+version = 10.1
 
 
 BASEDIR = path.dirname(__file__)
@@ -1247,8 +1247,10 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                         add_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                                        lexcat, parcat, forms, particle, particle_2)
                         if nonst:
-                            # no such forms
-                            pass
+                            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                               pos, categorisation, NONST)
+                            add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                                                   lexcat, parcat, nonst_forms, particle, particle_2, TAG_NONST)
                         if old:
                             old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
                                                                pos, categorisation, OLD)
@@ -1271,8 +1273,10 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                         add_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                                 lexcat, parcat, forms, particle)
                         if nonst:
-                            # no such forms
-                            pass
+                            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                               pos, categorisation, NONST)
+                            add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
+                                                            lexcat, parcat, nonst_forms, particle, TAG_NONST)
                         if old:
                             old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
                                                                pos, categorisation, OLD)
@@ -1295,8 +1299,10 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                         add_forms(formdict, lemma_index, paradigm_index,
                                   lexcat, parcat, forms)
                         if nonst:
-                            # no such forms
-                            pass
+                            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+                                                               pos, categorisation, NONST)
+                            add_special_forms(formdict, lemma_index, paradigm_index,
+                                              lexcat, parcat, nonst_forms, TAG_NONST)
                         if old:
                             old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
                                                                pos, categorisation, OLD)

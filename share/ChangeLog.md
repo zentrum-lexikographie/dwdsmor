@@ -1,3 +1,8 @@
+2024-09-03:
+
+* add support for unsuffixed non-standard indicative present-tense verb forms in
+  the first person singular
+
 2024-08-22:
 
 * add support for more indefinite and relative pronouns

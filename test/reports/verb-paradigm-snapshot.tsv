@@ -81,7 +81,7 @@ denken			V haben	Inf Pres	denken
 denken			V haben	Inf Perf	gedacht haben
 denken			V haben	Part Pres	denkend
 denken			V haben	Part Perf	gedacht
-denken			V haben	1 Sg Ind Pres	denke
+denken			V haben	1 Sg Ind Pres	denke, denk (ugs.)
 denken			V haben	2 Sg Ind Pres	denkst
 denken			V haben	3 Sg Ind Pres	denkt
 denken			V haben	1 Pl Ind Pres	denken
@@ -159,7 +159,7 @@ gehen			V sein	Inf Pres	gehen
 gehen			V sein	Inf Perf	gegangen sein
 gehen			V sein	Part Pres	gehend
 gehen			V sein	Part Perf	gegangen
-gehen			V sein	1 Sg Ind Pres	gehe
+gehen			V sein	1 Sg Ind Pres	gehe, geh (ugs.)
 gehen			V sein	2 Sg Ind Pres	gehst
 gehen			V sein	3 Sg Ind Pres	geht
 gehen			V sein	1 Pl Ind Pres	gehen
@@ -237,7 +237,7 @@ haben			V haben	Inf Pres	haben
 haben			V haben	Inf Perf	gehabt haben
 haben			V haben	Part Pres	habend
 haben			V haben	Part Perf	gehabt
-haben			V haben	1 Sg Ind Pres	habe
+haben			V haben	1 Sg Ind Pres	habe, hab (ugs.)
 haben			V haben	2 Sg Ind Pres	hast
 haben			V haben	3 Sg Ind Pres	hat
 haben			V haben	1 Pl Ind Pres	haben
@@ -469,7 +469,7 @@ laden	1	1	V haben	Inf Pres	laden
 laden	1	1	V haben	Inf Perf	geladen haben
 laden	1	1	V haben	Part Pres	ladend
 laden	1	1	V haben	Part Perf	geladen
-laden	1	1	V haben	1 Sg Ind Pres	lade
+laden	1	1	V haben	1 Sg Ind Pres	lade, lad (ugs.)
 laden	1	1	V haben	2 Sg Ind Pres	lädst
 laden	1	1	V haben	3 Sg Ind Pres	lädt
 laden	1	1	V haben	1 Pl Ind Pres	laden
@@ -625,7 +625,7 @@ laden	2	1	V haben	Inf Pres	laden
 laden	2	1	V haben	Inf Perf	geladen haben
 laden	2	1	V haben	Part Pres	ladend
 laden	2	1	V haben	Part Perf	geladen
-laden	2	1	V haben	1 Sg Ind Pres	lade
+laden	2	1	V haben	1 Sg Ind Pres	lade, lad (ugs.)
 laden	2	1	V haben	2 Sg Ind Pres	lädst
 laden	2	1	V haben	3 Sg Ind Pres	lädt
 laden	2	1	V haben	1 Pl Ind Pres	laden
@@ -781,7 +781,7 @@ laufen			V haben	Inf Pres	laufen
 laufen			V haben	Inf Perf	gelaufen haben
 laufen			V haben	Part Pres	laufend
 laufen			V haben	Part Perf	gelaufen
-laufen			V haben	1 Sg Ind Pres	laufe
+laufen			V haben	1 Sg Ind Pres	laufe, lauf (ugs.)
 laufen			V haben	2 Sg Ind Pres	läufst
 laufen			V haben	3 Sg Ind Pres	läuft
 laufen			V haben	1 Pl Ind Pres	laufen
@@ -859,7 +859,7 @@ laufen			V sein	Inf Pres	laufen
 laufen			V sein	Inf Perf	gelaufen sein
 laufen			V sein	Part Pres	laufend
 laufen			V sein	Part Perf	gelaufen
-laufen			V sein	1 Sg Ind Pres	laufe
+laufen			V sein	1 Sg Ind Pres	laufe, lauf (ugs.)
 laufen			V sein	2 Sg Ind Pres	läufst
 laufen			V sein	3 Sg Ind Pres	läuft
 laufen			V sein	1 Pl Ind Pres	laufen
@@ -937,7 +937,7 @@ schwimmen			V haben	Inf Pres	schwimmen
 schwimmen			V haben	Inf Perf	geschwommen haben
 schwimmen			V haben	Part Pres	schwimmend
 schwimmen			V haben	Part Perf	geschwommen
-schwimmen			V haben	1 Sg Ind Pres	schwimme
+schwimmen			V haben	1 Sg Ind Pres	schwimme, schwimm (ugs.)
 schwimmen			V haben	2 Sg Ind Pres	schwimmst
 schwimmen			V haben	3 Sg Ind Pres	schwimmt
 schwimmen			V haben	1 Pl Ind Pres	schwimmen
@@ -1015,7 +1015,7 @@ schwimmen			V sein	Inf Pres	schwimmen
 schwimmen			V sein	Inf Perf	geschwommen sein
 schwimmen			V sein	Part Pres	schwimmend
 schwimmen			V sein	Part Perf	geschwommen
-schwimmen			V sein	1 Sg Ind Pres	schwimme
+schwimmen			V sein	1 Sg Ind Pres	schwimme, schwimm (ugs.)
 schwimmen			V sein	2 Sg Ind Pres	schwimmst
 schwimmen			V sein	3 Sg Ind Pres	schwimmt
 schwimmen			V sein	1 Pl Ind Pres	schwimmen
@@ -1093,7 +1093,7 @@ segeln			V haben	Inf Pres	segeln
 segeln			V haben	Inf Perf	gesegelt haben
 segeln			V haben	Part Pres	segelnd
 segeln			V haben	Part Perf	gesegelt
-segeln			V haben	1 Sg Ind Pres	segele, segle
+segeln			V haben	1 Sg Ind Pres	segele, segle, segel (ugs.)
 segeln			V haben	2 Sg Ind Pres	segelst
 segeln			V haben	3 Sg Ind Pres	segelt
 segeln			V haben	1 Pl Ind Pres	segeln
@@ -1171,7 +1171,7 @@ segeln			V sein	Inf Pres	segeln
 segeln			V sein	Inf Perf	gesegelt sein
 segeln			V sein	Part Pres	segelnd
 segeln			V sein	Part Perf	gesegelt
-segeln			V sein	1 Sg Ind Pres	segele, segle
+segeln			V sein	1 Sg Ind Pres	segele, segle, segel (ugs.)
 segeln			V sein	2 Sg Ind Pres	segelst
 segeln			V sein	3 Sg Ind Pres	segelt
 segeln			V sein	1 Pl Ind Pres	segeln
@@ -1249,7 +1249,7 @@ sehen			V haben	Inf Pres	sehen
 sehen			V haben	Inf Perf	gesehen haben
 sehen			V haben	Part Pres	sehend
 sehen			V haben	Part Perf	gesehen
-sehen			V haben	1 Sg Ind Pres	sehe
+sehen			V haben	1 Sg Ind Pres	sehe, seh (ugs.)
 sehen			V haben	2 Sg Ind Pres	siehst
 sehen			V haben	3 Sg Ind Pres	sieht
 sehen			V haben	1 Pl Ind Pres	sehen
@@ -1561,7 +1561,7 @@ spielen			V haben	Inf Pres	spielen
 spielen			V haben	Inf Perf	gespielt haben
 spielen			V haben	Part Pres	spielend
 spielen			V haben	Part Perf	gespielt
-spielen			V haben	1 Sg Ind Pres	spiele
+spielen			V haben	1 Sg Ind Pres	spiele, spiel (ugs.)
 spielen			V haben	2 Sg Ind Pres	spielst
 spielen			V haben	3 Sg Ind Pres	spielt
 spielen			V haben	1 Pl Ind Pres	spielen
@@ -1639,7 +1639,7 @@ tun			V haben	Inf Pres	tun
 tun			V haben	Inf Perf	getan haben
 tun			V haben	Part Pres	tuend
 tun			V haben	Part Perf	getan
-tun			V haben	1 Sg Ind Pres	tue
+tun			V haben	1 Sg Ind Pres	tue, tu (ugs.)
 tun			V haben	2 Sg Ind Pres	tust
 tun			V haben	3 Sg Ind Pres	tut
 tun			V haben	1 Pl Ind Pres	tun

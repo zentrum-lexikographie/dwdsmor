@@ -1,6 +1,6 @@
 % infl.fst
-% Version 8.0
-% Andreas Nolda 2024-08-30
+% Version 8.1
+% Andreas Nolda 2024-09-03
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1830,6 +1830,8 @@ $VPPast_n+sein$ = $VPPastSuff_n$ $sein$
 
 $VPresInd1SgSuff_0$ = {<+V><1><Sg><Pres><Ind>}:{}
 
+$VPresInd1SgNonStSuff_0$ = {<+V><1><Sg><Pres><Ind><NonSt>}:{}
+
 $VPresInd1SgSuff_e$ = {<+V><1><Sg><Pres><Ind>}:{<SB>e}
 
 $VPresInd2SgSuff_st$ = {<+V><2><Sg><Pres><Ind>}:{<SB>st}
@@ -1870,14 +1872,21 @@ $VPresSubjSuff-sein$ = {<+V><1><Sg><Pres><Subj>}:{}        | \
                        {<+V><2><Pl><Pres><Subj>}:{<SB>et}  | \
                        {<+V><3><Pl><Pres><Subj>}:{<SB>en}
 
-% gehe, gehst, geht, gehen, geht, gehen
-% denke, denkst, denkt, denken, denkt, denken
-% sende, sendest, sendet, senden, sendet, senden
-$VPres$ = $VPresInd1SgSuff_e$   | \
-          $VPresInd2SgSuff_est$ | \
-          $VPresInd3SgSuff_et$  | \
-          $VPresIndPlSuff$      | \
+% geh(e), gehst, geht, gehen, geht, gehen
+% denk(e), denkst, denkt, denken, denkt, denken
+$VPres$ = $VPresInd1SgSuff_e$      | \
+          $VPresInd1SgNonStSuff_0$ | \
+          $VPresInd2SgSuff_est$    | \
+          $VPresInd3SgSuff_et$     | \
+          $VPresIndPlSuff$         | \
           $VPresSubjSuff$
+
+% sende, sendest, sendet, senden, sendet, senden
+$VPres-d-t$ = $VPresInd1SgSuff_e$   | \
+              $VPresInd2SgSuff_est$ | \
+              $VPresInd3SgSuff_et$  | \
+              $VPresIndPlSuff$      | \
+              $VPresSubjSuff$
 
 % siehst, sieht
 % läufst, läuft
@@ -1893,20 +1902,26 @@ $VPresInd23Sg-t_0$ = $VPresInd2SgSuff_st$ | \
 $VPresInd23Sg-d_t$ = $VPresInd2SgSuff_st$ | \
                      $VPresInd3SgSuff_t$
 
-% sehe, sehen, seht, sehen
-% laufe, laufen, lauft, laufen
-% habe, haben, habt, haben
-% halte, halten, haltet, halten
-% lade, laden, ladet, laden
-$VPresNonInd23Sg$ = $VPresInd1SgSuff_e$ | \
-                    $VPresIndPlSuff$    | \
+% seh(e), sehen, seht, sehen
+% lauf(e), laufen, lauft, laufen
+% hab(e), haben, habt, haben
+% lad(e), laden, ladet, laden
+$VPresNonInd23Sg$ = $VPresInd1SgSuff_e$      | \
+                    $VPresInd1SgNonStSuff_0$ | \
+                    $VPresIndPlSuff$         | \
                     $VPresSubjSuff$
 
-% tue, tust, tut, tun, tut, tun
-$VPres-tun$ = $VPresInd1SgSuff_e$   | \
-              $VPresInd2SgSuff_est$ | \
-              $VPresInd3SgSuff_et$  | \
-              $VPresIndPlSuff-tun$  | \
+% halte, halten, haltet, halten
+$VPresNonInd23Sg-d-t$ = $VPresInd1SgSuff_e$ | \
+                        $VPresIndPlSuff$    | \
+                        $VPresSubjSuff$
+
+% tu(e), tust, tut, tun, tut, tun
+$VPres-tun$ = $VPresInd1SgSuff_e$      | \
+              $VPresInd1SgNonStSuff_0$ | \
+              $VPresInd2SgSuff_est$    | \
+              $VPresInd3SgSuff_et$     | \
+              $VPresIndPlSuff-tun$     | \
               $VPresSubjSuff$
 
 % wirst
@@ -2109,21 +2124,21 @@ $VWeak+sein$ = $VInf$            | \
 $VWeak-d-t$ = $VInf$       | \
               $VPPres$     | \
               $VPPastWeak$ | \
-              $VPres$      | \
+              $VPres-d-t$  | \
               $VPastWeak$  | \
               $VImp-d-t$
 
 $VWeak-d-t+haben$ = $VInf$             | \
                     $VPPres$           | \
                     $VPPastWeak+haben$ | \
-                    $VPres$            | \
+                    $VPres-d-t$        | \
                     $VPastWeak$        | \
                     $VImp-d-t$
 
 $VWeak-d-t+sein$ = $VInf$            | \
                    $VPPres$          | \
                    $VPPastWeak+sein$ | \
-                   $VPres$           | \
+                   $VPres-d-t$       | \
                    $VPastWeak$       | \
                    $VImp-d-t$
 
@@ -2583,6 +2598,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPPastWeak><>:<sein>     $VPPastWeak+sein$      | \
          <>:<VPPres>                  $VPPres$               | \
          <>:<VPres>                   $VPres$                | \
+         <>:<VPres-d-t>               $VPres-d-t$            | \
          <>:<VPres-tun>               $VPres-tun$            | \
          <>:<VPresInd13Pl-sein>       $VPresInd13Pl-sein$    | \
          <>:<VPresInd1Sg-sein>        $VPresInd1Sg-sein$     | \
@@ -2595,6 +2611,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPresInd3Sg-sein>        $VPresInd3Sg-sein$     | \
          <>:<VPresInd3Sg-werden>      $VPresInd3Sg-werden$   | \
          <>:<VPresNonInd23Sg>         $VPresNonInd23Sg$      | \
+         <>:<VPresNonInd23Sg-d-t>     $VPresNonInd23Sg-d-t$  | \
          <>:<VPresSubj-sein>          $VPresSubj-sein$       | \
          <>:<VWeak>                   $VWeak$                | \
          <>:<VWeak><>:<haben>         $VWeak+haben$          | \

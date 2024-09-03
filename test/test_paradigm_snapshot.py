@@ -292,19 +292,19 @@ VERB_POS = "V"
 VERB_LEMMAS = ["spielen",    # VWeak
                "segeln",     # VWeak-el-er
                "arbeiten",   # VWeak-d-t
-               "senden",     # VWeak-d-t, VInf, VPPres, VPPast-d_t, VPres, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t
+               "senden",     # VWeak-d-t, VInf, VPPres, VPPast-d_t, VPres-d-t, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t
                "denken",     # VInf, VPPres, VPPastWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp
                "haben",      # VInf, VPPres, VPPastWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-d-t_t, VPastSubj-haben, VImp
                "wissen",     # VInf, VPPres, VPPastWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak
                "können",     # VInf, VPPres, VPPastWeak, VPPastStr, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak
                "gehen",      # VInf, VPPres, VPPastStr, VPres, VPastStr, VImp
                "schwimmen",  # VInf, VPPres, VPPastStr, VPres, VPastIndStr, VPastSubjStr, VPastSubjOld, VImp
-               "laden",      # VInf, VPPres, VPPastStr, VPres, VPresInd23Sg-d_t, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImp, VImp-d-t
+               "laden",      # VInf, VPPres, VPPastStr, VPres-d-t, VPresInd23Sg-d_t, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImp, VImp-d-t
                "laufen",     # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastStr, VImp
-               "halten",     # VInf, VPPres, VPPastStr, VPresInd23Sg-t_0, VPresNonInd23Sg, VPastStr, VImp-d-t
+               "halten",     # VInf, VPPres, VPPastStr, VPresInd23Sg-t_0, VPresNonInd23Sg-d-t, VPastStr, VImp-d-t
                "sehen",      # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImpSg, VImpPl
                "tun",        # VInf_n, VPPres, VPPast_n, VPres-tun, VPastIndStr, VPastSubjStr, VImpSg0, VImpPl,
-               "werden",     # VInf, VPPres, VPPastStr, VPresInd2Sg-werden, VPresInd3Sg-werden, VPresNonInd23Sg, VPastInd-werden,
+               "werden",     # VInf, VPPres, VPPastStr, VPresInd2Sg-werden, VPresInd3Sg-werden, VPresNonInd23Sg-d-t, VPastInd-werden,
                              # VPastIndSg-ward, VPastIndPl-werden, VPastSubjStr, VImp-d-t
                "sein"]       # VInf_n, VPPres, VPPastStr, VPresInd1Sg-sein, VPresInd2Sg-sein, VPresInd3Sg-sein, VPresInd13Pl-sein,
                              # VPresInd2Pl-sein, VPresSubj-sein, VPastIndStr, VPastSubjStr, VPastSubj2-sein, VImpSg0, VImpPl-sein
