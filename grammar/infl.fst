@@ -1,6 +1,6 @@
 % infl.fst
-% Version 8.1
-% Andreas Nolda 2024-09-03
+% Version 8.2
+% Andreas Nolda 2024-09-04
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1830,7 +1830,7 @@ $VPPast_n+sein$ = $VPPastSuff_n$ $sein$
 
 $VPresInd1SgSuff_0$ = {<+V><1><Sg><Pres><Ind>}:{}
 
-$VPresInd1SgNonStSuff_0$ = {<+V><1><Sg><Pres><Ind><NonSt>}:{}
+$VPresInd1SgNonStSuff_0$ = {<+V><1><Sg><Pres><Ind><NonSt>}:{} % cf. Duden-Grammatik (2016: § 622)
 
 $VPresInd1SgSuff_e$ = {<+V><1><Sg><Pres><Ind>}:{<SB>e}
 
@@ -1985,9 +1985,9 @@ $VPastIndSgSuff-werden$ = {<+V><1><Sg><Past><Ind>}:{<SB>e}   | \
                           {<+V><2><Sg><Past><Ind>}:{<SB>est} | \
                           {<+V><3><Sg><Past><Ind>}:{<SB>e}
 
-$VPastIndSgSuff-ward$ = {<+V><1><Sg><Past><Ind>}:{}       | \
-                        {<+V><2><Sg><Past><Ind>}:{<SB>st} | \
-                        {<+V><3><Sg><Past><Ind>}:{}
+$VPastIndSgSuff-ward$ = {<+V><1><Sg><Past><Ind><Old>}:{}       | \
+                        {<+V><2><Sg><Past><Ind><Old>}:{<SB>st} | \
+                        {<+V><3><Sg><Past><Ind><Old>}:{}
 
 $VPastIndPlSuff-werden$ = {<+V><1><Pl><Past><Ind>}:{<SB>en}  | \
                           {<+V><2><Pl><Past><Ind>}:{<SB>et}  | \

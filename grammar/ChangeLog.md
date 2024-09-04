@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-09-04:
+
+* mark forms of inflection class `VPastIndSg-ward` as `<Old>`
+
 2024-09-03:
 
 * remove `<SB>` boundary together with "st"-suffixes
