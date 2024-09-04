@@ -2099,6 +2099,8 @@ $VImp$ = $VImpSg$ | \
 $VImp-d-t$ = $VImpSg-d-t$ | \
              $VImpPl$
 
+$VImp-el-er$ = $VImp-d-t$
+
 % kopfrechne, kopfrechnet
 $VImp-m-n$ = $VImpSg-m-n$ | \
              $VImpPl$
@@ -2170,11 +2172,26 @@ $VWeak-m-n+sein$ = $VInf$            | \
                    $VImp-m-n$
 
 % segeln; rudern (cf. $SchwaTrigger$ in markers.fst)
-$VWeak-el-er$ = $VWeak$
+$VWeak-el-er$ = $VInf$       | \
+                $VPPres$     | \
+                $VPPastWeak$ | \
+                $VPres$      | \
+                $VPastWeak$  | \
+                $VImp-el-er$
 
-$VWeak-el-er+haben$ = $VWeak+haben$
+$VWeak-el-er+haben$ = $VInf$             | \
+                      $VPPres$           | \
+                      $VPPastWeak+haben$ | \
+                      $VPres$            | \
+                      $VPastWeak$        | \
+                      $VImp-el-er$
 
-$VWeak-el-er+sein$ = $VWeak+sein$
+$VWeak-el-er+sein$ = $VInf$            | \
+                     $VPPres$          | \
+                     $VPPastWeak+sein$ | \
+                     $VPres$           | \
+                     $VPastWeak$       | \
+                     $VImp-el-er$
 
 
 % adpositions

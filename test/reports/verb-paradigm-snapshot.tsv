@@ -1243,7 +1243,7 @@ segeln			V haben	3 Sg Subj FutPerf	werde gesegelt haben
 segeln			V haben	1 Pl Subj FutPerf	werden gesegelt haben
 segeln			V haben	2 Pl Subj FutPerf	werdet gesegelt haben
 segeln			V haben	3 Pl Subj FutPerf	werden gesegelt haben
-segeln			V haben	Sg Imp	segel, segele, segle
+segeln			V haben	Sg Imp	segele, segle, segel (ugs.)
 segeln			V haben	Pl Imp	segelt
 segeln			V sein	Inf Pres	segeln
 segeln			V sein	Inf Perf	gesegelt sein
@@ -1321,7 +1321,7 @@ segeln			V sein	3 Sg Subj FutPerf	werde gesegelt sein
 segeln			V sein	1 Pl Subj FutPerf	werden gesegelt sein
 segeln			V sein	2 Pl Subj FutPerf	werdet gesegelt sein
 segeln			V sein	3 Pl Subj FutPerf	werden gesegelt sein
-segeln			V sein	Sg Imp	segel, segele, segle
+segeln			V sein	Sg Imp	segele, segle, segel (ugs.)
 segeln			V sein	Pl Imp	segelt
 sehen			V haben	Inf Pres	sehen
 sehen			V haben	Inf Perf	gesehen haben
