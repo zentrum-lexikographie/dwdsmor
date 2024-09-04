@@ -467,6 +467,162 @@ halten			V haben	2 Pl Subj FutPerf	werdet gehalten haben
 halten			V haben	3 Pl Subj FutPerf	werden gehalten haben
 halten			V haben	Sg Imp	halte, halt (ugs.)
 halten			V haben	Pl Imp	haltet
+heißen	1		V haben	Inf Pres	heißen, heissen (CH)
+heißen	1		V haben	Inf Perf	geheißen haben, geheissen haben (CH)
+heißen	1		V haben	Part Pres	heißend, heissend (CH)
+heißen	1		V haben	Part Perf	geheißen, geheissen (CH)
+heißen	1		V haben	1 Sg Ind Pres	heiße, heiß (ugs.), heisse (CH)
+heißen	1		V haben	2 Sg Ind Pres	heißt, heißest (va.), heisst (CH)
+heißen	1		V haben	3 Sg Ind Pres	heißt, heisst (CH)
+heißen	1		V haben	1 Pl Ind Pres	heißen, heissen (CH)
+heißen	1		V haben	2 Pl Ind Pres	heißt, heisst (CH)
+heißen	1		V haben	3 Pl Ind Pres	heißen, heissen (CH)
+heißen	1		V haben	1 Sg Subj Pres	heiße, heisse (CH)
+heißen	1		V haben	2 Sg Subj Pres	heißest, heissest (CH)
+heißen	1		V haben	3 Sg Subj Pres	heiße, heisse (CH)
+heißen	1		V haben	1 Pl Subj Pres	heißen, heissen (CH)
+heißen	1		V haben	2 Pl Subj Pres	heißet, heisset (CH)
+heißen	1		V haben	3 Pl Subj Pres	heißen, heissen (CH)
+heißen	1		V haben	1 Sg Ind Perf	habe geheißen, habe geheissen (CH)
+heißen	1		V haben	2 Sg Ind Perf	hast geheißen, hast geheissen (CH)
+heißen	1		V haben	3 Sg Ind Perf	hat geheißen, hat geheissen (CH)
+heißen	1		V haben	1 Pl Ind Perf	haben geheißen, haben geheissen (CH)
+heißen	1		V haben	2 Pl Ind Perf	habt geheißen, habt geheissen (CH)
+heißen	1		V haben	3 Pl Ind Perf	haben geheißen, haben geheissen (CH)
+heißen	1		V haben	1 Sg Subj Perf	habe geheißen, habe geheissen (CH)
+heißen	1		V haben	2 Sg Subj Perf	habest geheißen, habest geheissen (CH)
+heißen	1		V haben	3 Sg Subj Perf	habe geheißen, habe geheissen (CH)
+heißen	1		V haben	1 Pl Subj Perf	haben geheißen, haben geheissen (CH)
+heißen	1		V haben	2 Pl Subj Perf	habet geheißen, habet geheissen (CH)
+heißen	1		V haben	3 Pl Subj Perf	haben geheißen, haben geheissen (CH)
+heißen	1		V haben	1 Sg Ind Past	hieß, hiess (CH)
+heißen	1		V haben	2 Sg Ind Past	hießest, hießt, hiessest (CH), hiesst (CH)
+heißen	1		V haben	3 Sg Ind Past	hieß, hiess (CH)
+heißen	1		V haben	1 Pl Ind Past	hießen, hiessen (CH)
+heißen	1		V haben	2 Pl Ind Past	hießt, hießet (va.), hiesst (CH)
+heißen	1		V haben	3 Pl Ind Past	hießen, hiessen (CH)
+heißen	1		V haben	1 Sg Subj Past	hieße, hiesse (CH)
+heißen	1		V haben	2 Sg Subj Past	hießest, hiessest (CH)
+heißen	1		V haben	3 Sg Subj Past	hieße, hiesse (CH)
+heißen	1		V haben	1 Pl Subj Past	hießen, hiessen (CH)
+heißen	1		V haben	2 Pl Subj Past	hießet, hiesset (CH)
+heißen	1		V haben	3 Pl Subj Past	hießen, hiessen (CH)
+heißen	1		V haben	1 Sg Ind PastPerf	hatte geheißen, hatte geheissen (CH)
+heißen	1		V haben	2 Sg Ind PastPerf	hattest geheißen, hattest geheissen (CH)
+heißen	1		V haben	3 Sg Ind PastPerf	hatte geheißen, hatte geheissen (CH)
+heißen	1		V haben	1 Pl Ind PastPerf	hatten geheißen, hatten geheissen (CH)
+heißen	1		V haben	2 Pl Ind PastPerf	hattet geheißen, hattet geheissen (CH)
+heißen	1		V haben	3 Pl Ind PastPerf	hatten geheißen, hatten geheissen (CH)
+heißen	1		V haben	1 Sg Subj PastPerf	hätte geheißen, hätte geheissen (CH)
+heißen	1		V haben	2 Sg Subj PastPerf	hättest geheißen, hättest geheissen (CH)
+heißen	1		V haben	3 Sg Subj PastPerf	hätte geheißen, hätte geheissen (CH)
+heißen	1		V haben	1 Pl Subj PastPerf	hätten geheißen, hätten geheissen (CH)
+heißen	1		V haben	2 Pl Subj PastPerf	hättet geheißen, hättet geheissen (CH)
+heißen	1		V haben	3 Pl Subj PastPerf	hätten geheißen, hätten geheissen (CH)
+heißen	1		V haben	1 Sg Ind Fut	werde heißen, werde heissen (CH)
+heißen	1		V haben	2 Sg Ind Fut	wirst heißen, wirst heissen (CH)
+heißen	1		V haben	3 Sg Ind Fut	wird heißen, wird heissen (CH)
+heißen	1		V haben	1 Pl Ind Fut	werden heißen, werden heissen (CH)
+heißen	1		V haben	2 Pl Ind Fut	werdet heißen, werdet heissen (CH)
+heißen	1		V haben	3 Pl Ind Fut	werden heißen, werden heissen (CH)
+heißen	1		V haben	1 Sg Subj Fut	werde heißen, werde heissen (CH)
+heißen	1		V haben	2 Sg Subj Fut	werdest heißen, werdest heissen (CH)
+heißen	1		V haben	3 Sg Subj Fut	werde heißen, werde heissen (CH)
+heißen	1		V haben	1 Pl Subj Fut	werden heißen, werden heissen (CH)
+heißen	1		V haben	2 Pl Subj Fut	werdet heißen, werdet heissen (CH)
+heißen	1		V haben	3 Pl Subj Fut	werden heißen, werden heissen (CH)
+heißen	1		V haben	1 Sg Ind FutPerf	werde geheißen haben, werde geheissen haben (CH)
+heißen	1		V haben	2 Sg Ind FutPerf	wirst geheißen haben, wirst geheissen haben (CH)
+heißen	1		V haben	3 Sg Ind FutPerf	wird geheißen haben, wird geheissen haben (CH)
+heißen	1		V haben	1 Pl Ind FutPerf	werden geheißen haben, werden geheissen haben (CH)
+heißen	1		V haben	2 Pl Ind FutPerf	werdet geheißen haben, werdet geheissen haben (CH)
+heißen	1		V haben	3 Pl Ind FutPerf	werden geheißen haben, werden geheissen haben (CH)
+heißen	1		V haben	1 Sg Subj FutPerf	werde geheißen haben, werde geheissen haben (CH)
+heißen	1		V haben	2 Sg Subj FutPerf	werdest geheißen haben, werdest geheissen haben (CH)
+heißen	1		V haben	3 Sg Subj FutPerf	werde geheißen haben, werde geheissen haben (CH)
+heißen	1		V haben	1 Pl Subj FutPerf	werden geheißen haben, werden geheissen haben (CH)
+heißen	1		V haben	2 Pl Subj FutPerf	werdet geheißen haben, werdet geheissen haben (CH)
+heißen	1		V haben	3 Pl Subj FutPerf	werden geheißen haben, werden geheissen haben (CH)
+heißen	1		V haben	Sg Imp	heiß, heiße, heiss (CH), heisse (CH)
+heißen	1		V haben	Pl Imp	heißt, heisst (CH)
+heißen	2		V haben	Inf Pres	heißen, heissen (CH)
+heißen	2		V haben	Inf Perf	geheißt haben, geheisst haben (CH)
+heißen	2		V haben	Part Pres	heißend, heissend (CH)
+heißen	2		V haben	Part Perf	geheißt, geheisst (CH)
+heißen	2		V haben	1 Sg Ind Pres	heiße, heiß (ugs.), heisse (CH)
+heißen	2		V haben	2 Sg Ind Pres	heißt, heißest (va.), heisst (CH)
+heißen	2		V haben	3 Sg Ind Pres	heißt, heisst (CH)
+heißen	2		V haben	1 Pl Ind Pres	heißen, heissen (CH)
+heißen	2		V haben	2 Pl Ind Pres	heißt, heisst (CH)
+heißen	2		V haben	3 Pl Ind Pres	heißen, heissen (CH)
+heißen	2		V haben	1 Sg Subj Pres	heiße, heisse (CH)
+heißen	2		V haben	2 Sg Subj Pres	heißest, heissest (CH)
+heißen	2		V haben	3 Sg Subj Pres	heiße, heisse (CH)
+heißen	2		V haben	1 Pl Subj Pres	heißen, heissen (CH)
+heißen	2		V haben	2 Pl Subj Pres	heißet, heisset (CH)
+heißen	2		V haben	3 Pl Subj Pres	heißen, heissen (CH)
+heißen	2		V haben	1 Sg Ind Perf	habe geheißt, habe geheisst (CH)
+heißen	2		V haben	2 Sg Ind Perf	hast geheißt, hast geheisst (CH)
+heißen	2		V haben	3 Sg Ind Perf	hat geheißt, hat geheisst (CH)
+heißen	2		V haben	1 Pl Ind Perf	haben geheißt, haben geheisst (CH)
+heißen	2		V haben	2 Pl Ind Perf	habt geheißt, habt geheisst (CH)
+heißen	2		V haben	3 Pl Ind Perf	haben geheißt, haben geheisst (CH)
+heißen	2		V haben	1 Sg Subj Perf	habe geheißt, habe geheisst (CH)
+heißen	2		V haben	2 Sg Subj Perf	habest geheißt, habest geheisst (CH)
+heißen	2		V haben	3 Sg Subj Perf	habe geheißt, habe geheisst (CH)
+heißen	2		V haben	1 Pl Subj Perf	haben geheißt, haben geheisst (CH)
+heißen	2		V haben	2 Pl Subj Perf	habet geheißt, habet geheisst (CH)
+heißen	2		V haben	3 Pl Subj Perf	haben geheißt, haben geheisst (CH)
+heißen	2		V haben	1 Sg Ind Past	heißte, heisste (CH)
+heißen	2		V haben	2 Sg Ind Past	heißtest, heisstest (CH)
+heißen	2		V haben	3 Sg Ind Past	heißte, heisste (CH)
+heißen	2		V haben	1 Pl Ind Past	heißten, heissten (CH)
+heißen	2		V haben	2 Pl Ind Past	heißtet, heisstet (CH)
+heißen	2		V haben	3 Pl Ind Past	heißten, heissten (CH)
+heißen	2		V haben	1 Sg Subj Past	heißte, heisste (CH)
+heißen	2		V haben	2 Sg Subj Past	heißtest, heisstest (CH)
+heißen	2		V haben	3 Sg Subj Past	heißte, heisste (CH)
+heißen	2		V haben	1 Pl Subj Past	heißten, heissten (CH)
+heißen	2		V haben	2 Pl Subj Past	heißtet, heisstet (CH)
+heißen	2		V haben	3 Pl Subj Past	heißten, heissten (CH)
+heißen	2		V haben	1 Sg Ind PastPerf	hatte geheißt, hatte geheisst (CH)
+heißen	2		V haben	2 Sg Ind PastPerf	hattest geheißt, hattest geheisst (CH)
+heißen	2		V haben	3 Sg Ind PastPerf	hatte geheißt, hatte geheisst (CH)
+heißen	2		V haben	1 Pl Ind PastPerf	hatten geheißt, hatten geheisst (CH)
+heißen	2		V haben	2 Pl Ind PastPerf	hattet geheißt, hattet geheisst (CH)
+heißen	2		V haben	3 Pl Ind PastPerf	hatten geheißt, hatten geheisst (CH)
+heißen	2		V haben	1 Sg Subj PastPerf	hätte geheißt, hätte geheisst (CH)
+heißen	2		V haben	2 Sg Subj PastPerf	hättest geheißt, hättest geheisst (CH)
+heißen	2		V haben	3 Sg Subj PastPerf	hätte geheißt, hätte geheisst (CH)
+heißen	2		V haben	1 Pl Subj PastPerf	hätten geheißt, hätten geheisst (CH)
+heißen	2		V haben	2 Pl Subj PastPerf	hättet geheißt, hättet geheisst (CH)
+heißen	2		V haben	3 Pl Subj PastPerf	hätten geheißt, hätten geheisst (CH)
+heißen	2		V haben	1 Sg Ind Fut	werde heißen, werde heissen (CH)
+heißen	2		V haben	2 Sg Ind Fut	wirst heißen, wirst heissen (CH)
+heißen	2		V haben	3 Sg Ind Fut	wird heißen, wird heissen (CH)
+heißen	2		V haben	1 Pl Ind Fut	werden heißen, werden heissen (CH)
+heißen	2		V haben	2 Pl Ind Fut	werdet heißen, werdet heissen (CH)
+heißen	2		V haben	3 Pl Ind Fut	werden heißen, werden heissen (CH)
+heißen	2		V haben	1 Sg Subj Fut	werde heißen, werde heissen (CH)
+heißen	2		V haben	2 Sg Subj Fut	werdest heißen, werdest heissen (CH)
+heißen	2		V haben	3 Sg Subj Fut	werde heißen, werde heissen (CH)
+heißen	2		V haben	1 Pl Subj Fut	werden heißen, werden heissen (CH)
+heißen	2		V haben	2 Pl Subj Fut	werdet heißen, werdet heissen (CH)
+heißen	2		V haben	3 Pl Subj Fut	werden heißen, werden heissen (CH)
+heißen	2		V haben	1 Sg Ind FutPerf	werde geheißt haben, werde geheisst haben (CH)
+heißen	2		V haben	2 Sg Ind FutPerf	wirst geheißt haben, wirst geheisst haben (CH)
+heißen	2		V haben	3 Sg Ind FutPerf	wird geheißt haben, wird geheisst haben (CH)
+heißen	2		V haben	1 Pl Ind FutPerf	werden geheißt haben, werden geheisst haben (CH)
+heißen	2		V haben	2 Pl Ind FutPerf	werdet geheißt haben, werdet geheisst haben (CH)
+heißen	2		V haben	3 Pl Ind FutPerf	werden geheißt haben, werden geheisst haben (CH)
+heißen	2		V haben	1 Sg Subj FutPerf	werde geheißt haben, werde geheisst haben (CH)
+heißen	2		V haben	2 Sg Subj FutPerf	werdest geheißt haben, werdest geheisst haben (CH)
+heißen	2		V haben	3 Sg Subj FutPerf	werde geheißt haben, werde geheisst haben (CH)
+heißen	2		V haben	1 Pl Subj FutPerf	werden geheißt haben, werden geheisst haben (CH)
+heißen	2		V haben	2 Pl Subj FutPerf	werdet geheißt haben, werdet geheisst haben (CH)
+heißen	2		V haben	3 Pl Subj FutPerf	werden geheißt haben, werden geheisst haben (CH)
+heißen	2		V haben	Sg Imp	heiß, heiße, heiss (CH), heisse (CH)
+heißen	2		V haben	Pl Imp	heißt, heisst (CH)
 können			V haben	Inf Pres	können
 können			V haben	Inf Perf	gekonnt haben, können haben
 können			V haben	Part Pres	könnend
@@ -543,6 +699,84 @@ können			V haben	3 Sg Subj FutPerf	werde gekonnt haben, werde können haben
 können			V haben	1 Pl Subj FutPerf	werden gekonnt haben, werden können haben
 können			V haben	2 Pl Subj FutPerf	werdet gekonnt haben, werdet können haben
 können			V haben	3 Pl Subj FutPerf	werden gekonnt haben, werden können haben
+küssen			V haben	Inf Pres	küssen
+küssen			V haben	Inf Perf	geküsst haben, geküßt haben (ung.)
+küssen			V haben	Part Pres	küssend
+küssen			V haben	Part Perf	geküsst, geküßt (ung.)
+küssen			V haben	1 Sg Ind Pres	küsse, küss (ugs.)
+küssen			V haben	2 Sg Ind Pres	küsst, küssest (va.), küßt (ung.)
+küssen			V haben	3 Sg Ind Pres	küsst, küßt (ung.)
+küssen			V haben	1 Pl Ind Pres	küssen
+küssen			V haben	2 Pl Ind Pres	küsst, küßt (ung.)
+küssen			V haben	3 Pl Ind Pres	küssen
+küssen			V haben	1 Sg Subj Pres	küsse
+küssen			V haben	2 Sg Subj Pres	küssest
+küssen			V haben	3 Sg Subj Pres	küsse
+küssen			V haben	1 Pl Subj Pres	küssen
+küssen			V haben	2 Pl Subj Pres	küsset
+küssen			V haben	3 Pl Subj Pres	küssen
+küssen			V haben	1 Sg Ind Perf	habe geküsst, habe geküßt (ung.)
+küssen			V haben	2 Sg Ind Perf	hast geküsst, hast geküßt (ung.)
+küssen			V haben	3 Sg Ind Perf	hat geküsst, hat geküßt (ung.)
+küssen			V haben	1 Pl Ind Perf	haben geküsst, haben geküßt (ung.)
+küssen			V haben	2 Pl Ind Perf	habt geküsst, habt geküßt (ung.)
+küssen			V haben	3 Pl Ind Perf	haben geküsst, haben geküßt (ung.)
+küssen			V haben	1 Sg Subj Perf	habe geküsst, habe geküßt (ung.)
+küssen			V haben	2 Sg Subj Perf	habest geküsst, habest geküßt (ung.)
+küssen			V haben	3 Sg Subj Perf	habe geküsst, habe geküßt (ung.)
+küssen			V haben	1 Pl Subj Perf	haben geküsst, haben geküßt (ung.)
+küssen			V haben	2 Pl Subj Perf	habet geküsst, habet geküßt (ung.)
+küssen			V haben	3 Pl Subj Perf	haben geküsst, haben geküßt (ung.)
+küssen			V haben	1 Sg Ind Past	küsste, küßte (ung.)
+küssen			V haben	2 Sg Ind Past	küsstest, küßtest (ung.)
+küssen			V haben	3 Sg Ind Past	küsste, küßte (ung.)
+küssen			V haben	1 Pl Ind Past	küssten, küßten (ung.)
+küssen			V haben	2 Pl Ind Past	küsstet, küßtet (ung.)
+küssen			V haben	3 Pl Ind Past	küssten, küßten (ung.)
+küssen			V haben	1 Sg Subj Past	küsste, küßte (ung.)
+küssen			V haben	2 Sg Subj Past	küsstest, küßtest (ung.)
+küssen			V haben	3 Sg Subj Past	küsste, küßte (ung.)
+küssen			V haben	1 Pl Subj Past	küssten, küßten (ung.)
+küssen			V haben	2 Pl Subj Past	küsstet, küßtet (ung.)
+küssen			V haben	3 Pl Subj Past	küssten, küßten (ung.)
+küssen			V haben	1 Sg Ind PastPerf	hatte geküsst, hatte geküßt (ung.)
+küssen			V haben	2 Sg Ind PastPerf	hattest geküsst, hattest geküßt (ung.)
+küssen			V haben	3 Sg Ind PastPerf	hatte geküsst, hatte geküßt (ung.)
+küssen			V haben	1 Pl Ind PastPerf	hatten geküsst, hatten geküßt (ung.)
+küssen			V haben	2 Pl Ind PastPerf	hattet geküsst, hattet geküßt (ung.)
+küssen			V haben	3 Pl Ind PastPerf	hatten geküsst, hatten geküßt (ung.)
+küssen			V haben	1 Sg Subj PastPerf	hätte geküsst, hätte geküßt (ung.)
+küssen			V haben	2 Sg Subj PastPerf	hättest geküsst, hättest geküßt (ung.)
+küssen			V haben	3 Sg Subj PastPerf	hätte geküsst, hätte geküßt (ung.)
+küssen			V haben	1 Pl Subj PastPerf	hätten geküsst, hätten geküßt (ung.)
+küssen			V haben	2 Pl Subj PastPerf	hättet geküsst, hättet geküßt (ung.)
+küssen			V haben	3 Pl Subj PastPerf	hätten geküsst, hätten geküßt (ung.)
+küssen			V haben	1 Sg Ind Fut	werde küssen
+küssen			V haben	2 Sg Ind Fut	wirst küssen
+küssen			V haben	3 Sg Ind Fut	wird küssen
+küssen			V haben	1 Pl Ind Fut	werden küssen
+küssen			V haben	2 Pl Ind Fut	werdet küssen
+küssen			V haben	3 Pl Ind Fut	werden küssen
+küssen			V haben	1 Sg Subj Fut	werde küssen
+küssen			V haben	2 Sg Subj Fut	werdest küssen
+küssen			V haben	3 Sg Subj Fut	werde küssen
+küssen			V haben	1 Pl Subj Fut	werden küssen
+küssen			V haben	2 Pl Subj Fut	werdet küssen
+küssen			V haben	3 Pl Subj Fut	werden küssen
+küssen			V haben	1 Sg Ind FutPerf	werde geküsst haben, werde geküßt haben (ung.)
+küssen			V haben	2 Sg Ind FutPerf	wirst geküsst haben, wirst geküßt haben (ung.)
+küssen			V haben	3 Sg Ind FutPerf	wird geküsst haben, wird geküßt haben (ung.)
+küssen			V haben	1 Pl Ind FutPerf	werden geküsst haben, werden geküßt haben (ung.)
+küssen			V haben	2 Pl Ind FutPerf	werdet geküsst haben, werdet geküßt haben (ung.)
+küssen			V haben	3 Pl Ind FutPerf	werden geküsst haben, werden geküßt haben (ung.)
+küssen			V haben	1 Sg Subj FutPerf	werde geküsst haben, werde geküßt haben (ung.)
+küssen			V haben	2 Sg Subj FutPerf	werdest geküsst haben, werdest geküßt haben (ung.)
+küssen			V haben	3 Sg Subj FutPerf	werde geküsst haben, werde geküßt haben (ung.)
+küssen			V haben	1 Pl Subj FutPerf	werden geküsst haben, werden geküßt haben (ung.)
+küssen			V haben	2 Pl Subj FutPerf	werdet geküsst haben, werdet geküßt haben (ung.)
+küssen			V haben	3 Pl Subj FutPerf	werden geküsst haben, werden geküßt haben (ung.)
+küssen			V haben	Sg Imp	küss, küsse, küß (ung.)
+küssen			V haben	Pl Imp	küsst, küßt (ung.)
 laden	1	1	V haben	Inf Pres	laden
 laden	1	1	V haben	Inf Perf	geladen haben
 laden	1	1	V haben	Part Pres	ladend
@@ -1011,6 +1245,162 @@ laufen			V sein	2 Pl Subj FutPerf	werdet gelaufen sein
 laufen			V sein	3 Pl Subj FutPerf	werden gelaufen sein
 laufen			V sein	Sg Imp	lauf, laufe
 laufen			V sein	Pl Imp	lauft
+lesen	1		V haben	Inf Pres	lesen
+lesen	1		V haben	Inf Perf	gelesen haben
+lesen	1		V haben	Part Pres	lesend
+lesen	1		V haben	Part Perf	gelesen
+lesen	1		V haben	1 Sg Ind Pres	lese, les (ugs.)
+lesen	1		V haben	2 Sg Ind Pres	liest
+lesen	1		V haben	3 Sg Ind Pres	liest
+lesen	1		V haben	1 Pl Ind Pres	lesen
+lesen	1		V haben	2 Pl Ind Pres	lest
+lesen	1		V haben	3 Pl Ind Pres	lesen
+lesen	1		V haben	1 Sg Subj Pres	lese
+lesen	1		V haben	2 Sg Subj Pres	lesest
+lesen	1		V haben	3 Sg Subj Pres	lese
+lesen	1		V haben	1 Pl Subj Pres	lesen
+lesen	1		V haben	2 Pl Subj Pres	leset
+lesen	1		V haben	3 Pl Subj Pres	lesen
+lesen	1		V haben	1 Sg Ind Perf	habe gelesen
+lesen	1		V haben	2 Sg Ind Perf	hast gelesen
+lesen	1		V haben	3 Sg Ind Perf	hat gelesen
+lesen	1		V haben	1 Pl Ind Perf	haben gelesen
+lesen	1		V haben	2 Pl Ind Perf	habt gelesen
+lesen	1		V haben	3 Pl Ind Perf	haben gelesen
+lesen	1		V haben	1 Sg Subj Perf	habe gelesen
+lesen	1		V haben	2 Sg Subj Perf	habest gelesen
+lesen	1		V haben	3 Sg Subj Perf	habe gelesen
+lesen	1		V haben	1 Pl Subj Perf	haben gelesen
+lesen	1		V haben	2 Pl Subj Perf	habet gelesen
+lesen	1		V haben	3 Pl Subj Perf	haben gelesen
+lesen	1		V haben	1 Sg Ind Past	las
+lesen	1		V haben	2 Sg Ind Past	lasest, last
+lesen	1		V haben	3 Sg Ind Past	las
+lesen	1		V haben	1 Pl Ind Past	lasen
+lesen	1		V haben	2 Pl Ind Past	last, laset (va.)
+lesen	1		V haben	3 Pl Ind Past	lasen
+lesen	1		V haben	1 Sg Subj Past	läse
+lesen	1		V haben	2 Sg Subj Past	läsest
+lesen	1		V haben	3 Sg Subj Past	läse
+lesen	1		V haben	1 Pl Subj Past	läsen
+lesen	1		V haben	2 Pl Subj Past	läset
+lesen	1		V haben	3 Pl Subj Past	läsen
+lesen	1		V haben	1 Sg Ind PastPerf	hatte gelesen
+lesen	1		V haben	2 Sg Ind PastPerf	hattest gelesen
+lesen	1		V haben	3 Sg Ind PastPerf	hatte gelesen
+lesen	1		V haben	1 Pl Ind PastPerf	hatten gelesen
+lesen	1		V haben	2 Pl Ind PastPerf	hattet gelesen
+lesen	1		V haben	3 Pl Ind PastPerf	hatten gelesen
+lesen	1		V haben	1 Sg Subj PastPerf	hätte gelesen
+lesen	1		V haben	2 Sg Subj PastPerf	hättest gelesen
+lesen	1		V haben	3 Sg Subj PastPerf	hätte gelesen
+lesen	1		V haben	1 Pl Subj PastPerf	hätten gelesen
+lesen	1		V haben	2 Pl Subj PastPerf	hättet gelesen
+lesen	1		V haben	3 Pl Subj PastPerf	hätten gelesen
+lesen	1		V haben	1 Sg Ind Fut	werde lesen
+lesen	1		V haben	2 Sg Ind Fut	wirst lesen
+lesen	1		V haben	3 Sg Ind Fut	wird lesen
+lesen	1		V haben	1 Pl Ind Fut	werden lesen
+lesen	1		V haben	2 Pl Ind Fut	werdet lesen
+lesen	1		V haben	3 Pl Ind Fut	werden lesen
+lesen	1		V haben	1 Sg Subj Fut	werde lesen
+lesen	1		V haben	2 Sg Subj Fut	werdest lesen
+lesen	1		V haben	3 Sg Subj Fut	werde lesen
+lesen	1		V haben	1 Pl Subj Fut	werden lesen
+lesen	1		V haben	2 Pl Subj Fut	werdet lesen
+lesen	1		V haben	3 Pl Subj Fut	werden lesen
+lesen	1		V haben	1 Sg Ind FutPerf	werde gelesen haben
+lesen	1		V haben	2 Sg Ind FutPerf	wirst gelesen haben
+lesen	1		V haben	3 Sg Ind FutPerf	wird gelesen haben
+lesen	1		V haben	1 Pl Ind FutPerf	werden gelesen haben
+lesen	1		V haben	2 Pl Ind FutPerf	werdet gelesen haben
+lesen	1		V haben	3 Pl Ind FutPerf	werden gelesen haben
+lesen	1		V haben	1 Sg Subj FutPerf	werde gelesen haben
+lesen	1		V haben	2 Sg Subj FutPerf	werdest gelesen haben
+lesen	1		V haben	3 Sg Subj FutPerf	werde gelesen haben
+lesen	1		V haben	1 Pl Subj FutPerf	werden gelesen haben
+lesen	1		V haben	2 Pl Subj FutPerf	werdet gelesen haben
+lesen	1		V haben	3 Pl Subj FutPerf	werden gelesen haben
+lesen	1		V haben	Sg Imp	lies
+lesen	1		V haben	Pl Imp	lest
+lesen	2		V haben	Inf Pres	lesen
+lesen	2		V haben	Inf Perf	gelesen haben
+lesen	2		V haben	Part Pres	lesend
+lesen	2		V haben	Part Perf	gelesen
+lesen	2		V haben	1 Sg Ind Pres	lese, les (ugs.)
+lesen	2		V haben	2 Sg Ind Pres	liest
+lesen	2		V haben	3 Sg Ind Pres	liest
+lesen	2		V haben	1 Pl Ind Pres	lesen
+lesen	2		V haben	2 Pl Ind Pres	lest
+lesen	2		V haben	3 Pl Ind Pres	lesen
+lesen	2		V haben	1 Sg Subj Pres	lese
+lesen	2		V haben	2 Sg Subj Pres	lesest
+lesen	2		V haben	3 Sg Subj Pres	lese
+lesen	2		V haben	1 Pl Subj Pres	lesen
+lesen	2		V haben	2 Pl Subj Pres	leset
+lesen	2		V haben	3 Pl Subj Pres	lesen
+lesen	2		V haben	1 Sg Ind Perf	habe gelesen
+lesen	2		V haben	2 Sg Ind Perf	hast gelesen
+lesen	2		V haben	3 Sg Ind Perf	hat gelesen
+lesen	2		V haben	1 Pl Ind Perf	haben gelesen
+lesen	2		V haben	2 Pl Ind Perf	habt gelesen
+lesen	2		V haben	3 Pl Ind Perf	haben gelesen
+lesen	2		V haben	1 Sg Subj Perf	habe gelesen
+lesen	2		V haben	2 Sg Subj Perf	habest gelesen
+lesen	2		V haben	3 Sg Subj Perf	habe gelesen
+lesen	2		V haben	1 Pl Subj Perf	haben gelesen
+lesen	2		V haben	2 Pl Subj Perf	habet gelesen
+lesen	2		V haben	3 Pl Subj Perf	haben gelesen
+lesen	2		V haben	1 Sg Ind Past	las
+lesen	2		V haben	2 Sg Ind Past	lasest, last
+lesen	2		V haben	3 Sg Ind Past	las
+lesen	2		V haben	1 Pl Ind Past	lasen
+lesen	2		V haben	2 Pl Ind Past	last, laset (va.)
+lesen	2		V haben	3 Pl Ind Past	lasen
+lesen	2		V haben	1 Sg Subj Past	läse
+lesen	2		V haben	2 Sg Subj Past	läsest
+lesen	2		V haben	3 Sg Subj Past	läse
+lesen	2		V haben	1 Pl Subj Past	läsen
+lesen	2		V haben	2 Pl Subj Past	läset
+lesen	2		V haben	3 Pl Subj Past	läsen
+lesen	2		V haben	1 Sg Ind PastPerf	hatte gelesen
+lesen	2		V haben	2 Sg Ind PastPerf	hattest gelesen
+lesen	2		V haben	3 Sg Ind PastPerf	hatte gelesen
+lesen	2		V haben	1 Pl Ind PastPerf	hatten gelesen
+lesen	2		V haben	2 Pl Ind PastPerf	hattet gelesen
+lesen	2		V haben	3 Pl Ind PastPerf	hatten gelesen
+lesen	2		V haben	1 Sg Subj PastPerf	hätte gelesen
+lesen	2		V haben	2 Sg Subj PastPerf	hättest gelesen
+lesen	2		V haben	3 Sg Subj PastPerf	hätte gelesen
+lesen	2		V haben	1 Pl Subj PastPerf	hätten gelesen
+lesen	2		V haben	2 Pl Subj PastPerf	hättet gelesen
+lesen	2		V haben	3 Pl Subj PastPerf	hätten gelesen
+lesen	2		V haben	1 Sg Ind Fut	werde lesen
+lesen	2		V haben	2 Sg Ind Fut	wirst lesen
+lesen	2		V haben	3 Sg Ind Fut	wird lesen
+lesen	2		V haben	1 Pl Ind Fut	werden lesen
+lesen	2		V haben	2 Pl Ind Fut	werdet lesen
+lesen	2		V haben	3 Pl Ind Fut	werden lesen
+lesen	2		V haben	1 Sg Subj Fut	werde lesen
+lesen	2		V haben	2 Sg Subj Fut	werdest lesen
+lesen	2		V haben	3 Sg Subj Fut	werde lesen
+lesen	2		V haben	1 Pl Subj Fut	werden lesen
+lesen	2		V haben	2 Pl Subj Fut	werdet lesen
+lesen	2		V haben	3 Pl Subj Fut	werden lesen
+lesen	2		V haben	1 Sg Ind FutPerf	werde gelesen haben
+lesen	2		V haben	2 Sg Ind FutPerf	wirst gelesen haben
+lesen	2		V haben	3 Sg Ind FutPerf	wird gelesen haben
+lesen	2		V haben	1 Pl Ind FutPerf	werden gelesen haben
+lesen	2		V haben	2 Pl Ind FutPerf	werdet gelesen haben
+lesen	2		V haben	3 Pl Ind FutPerf	werden gelesen haben
+lesen	2		V haben	1 Sg Subj FutPerf	werde gelesen haben
+lesen	2		V haben	2 Sg Subj FutPerf	werdest gelesen haben
+lesen	2		V haben	3 Sg Subj FutPerf	werde gelesen haben
+lesen	2		V haben	1 Pl Subj FutPerf	werden gelesen haben
+lesen	2		V haben	2 Pl Subj FutPerf	werdet gelesen haben
+lesen	2		V haben	3 Pl Subj FutPerf	werden gelesen haben
+lesen	2		V haben	Sg Imp	lies
+lesen	2		V haben	Pl Imp	lest
 schwimmen			V haben	Inf Pres	schwimmen
 schwimmen			V haben	Inf Perf	geschwommen haben
 schwimmen			V haben	Part Pres	schwimmend

@@ -1838,6 +1838,9 @@ $VPresInd2SgSuff_st$ = {<+V><2><Sg><Pres><Ind>}:{<SB>st}
 
 $VPresInd2SgSuff_est$ = {<+V><2><Sg><Pres><Ind>}:{<SB><ins(e)>st}
 
+$VPresInd2SgSuff-s_est$ = {<+V><2><Sg><Pres><Ind>}:{<SB>st} | \
+                          {<+V><2><Sg><Pres><Ind><Old>}:{<SB>est} % cf. Duden-Grammatik (2016: § 643)
+
 $VPresInd3SgSuff_0$ = {<+V><3><Sg><Pres><Ind>}:{}
 
 $VPresInd3SgSuff_et$ = {<+V><3><Sg><Pres><Ind>}:{<SB><ins(e)>t}
@@ -1848,9 +1851,9 @@ $VPresIndPlSuff$ = {<+V><1><Pl><Pres><Ind>}:{<SB>en}        | \
                    {<+V><2><Pl><Pres><Ind>}:{<SB><ins(e)>t} | \
                    {<+V><3><Pl><Pres><Ind>}:{<SB>en}
 
-$VPresIndPlSuff-tun$ = {<+V><1><Pl><Pres><Ind>}:{<SB><ins(e)>n} | \
-                       {<+V><2><Pl><Pres><Ind>}:{<SB><ins(e)>t} | \
-                       {<+V><3><Pl><Pres><Ind>}:{<SB><ins(e)>n}
+$VPresIndPlSuff-tun$ = {<+V><1><Pl><Pres><Ind>}:{<SB>n} | \
+                       {<+V><2><Pl><Pres><Ind>}:{<SB>t} | \
+                       {<+V><3><Pl><Pres><Ind>}:{<SB>n}
 
 $VPresInd13PlSuff-sein$ = {<+V><1><Pl><Pres><Ind>}:{} | \
                           {<+V><3><Pl><Pres><Ind>}:{}
@@ -1887,6 +1890,14 @@ $VPres-m-n$ = $VPresInd1SgSuff_e$   | \
               $VPresInd3SgSuff_et$  | \
               $VPresIndPlSuff$      | \
               $VPresSubjSuff$
+
+% heiße, heiß(es)t, heißt, heißen, heißt, heißen
+$VPres-s$ = $VPresInd1SgSuff_e$      | \
+            $VPresInd1SgNonStSuff_0$ | \
+            $VPresInd2SgSuff-s_est$  | \
+            $VPresInd3SgSuff_et$     | \
+            $VPresIndPlSuff$         | \
+            $VPresSubjSuff$
 
 % siehst, sieht
 % läufst, läuft
@@ -1977,6 +1988,15 @@ $VPastIndStrSuff$ = {<+V><1><Sg><Past><Ind>}:{}               | \
                     {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>t}  | \
                     {<+V><3><Pl><Past><Ind>}:{<SB>en}
 
+$VPastIndStrSuff-s$ = {<+V><1><Sg><Past><Ind>}:{}              | \
+                      {<+V><2><Sg><Past><Ind>}:{<SB>st}        | \ % cf. Duden-Grammatik (2016: § 642)
+                      {<+V><2><Sg><Past><Ind>}:{<SB>est}       | \ % cf. Duden-Grammatik (2016: § 643)
+                      {<+V><3><Sg><Past><Ind>}:{}              | \
+                      {<+V><1><Pl><Past><Ind>}:{<SB>en}        | \
+                      {<+V><2><Pl><Past><Ind>}:{<SB>t}         | \
+                      {<+V><2><Pl><Past><Ind><Old>}:{<SB>et}   | \ % cf. Duden-Grammatik (2016: § 643)
+                      {<+V><3><Pl><Past><Ind>}:{<SB>en}
+
 $VPastIndSgSuff-werden$ = {<+V><1><Sg><Past><Ind>}:{<SB>e}   | \
                           {<+V><2><Sg><Past><Ind>}:{<SB>est} | \
                           {<+V><3><Sg><Past><Ind>}:{<SB>e}
@@ -2021,12 +2041,16 @@ $VPastWeak$ = $VPastIndWeakSuff_et$ | \
 % wusste, wusstest, wusste, wussten, wusstet, wussten
 $VPastIndWeak$ = $VPastIndWeakSuff_et$
 
-% sah, sahst, sah, sahen, saht, sahen
-$VPastIndStr$ = $VPastIndStrSuff$
-
 % hatte, hattest, hatte, hatten, hattet, hatten
 % sandte, sandtest, sandte, sandten, sandtet, sandten
 $VPastInd-d-t_t$ = $VPastIndWeakSuff_t$
+
+% sah, sahst, sah, sahen, saht, sahen
+% fand, fand(e)st, fand, fanden, fandet, fanden
+$VPastIndStr$ = $VPastIndStrSuff$
+
+% las, las(es)t, las, lasen, last, lasen
+$VPastIndStr-s$ = $VPastIndStrSuff-s$
 
 % wurde, wurdest, wurde, wurden, wurdet, wurden
 $VPastInd-werden$ = $VPastIndSgSuff-werden$ | \
@@ -2061,6 +2085,10 @@ $VPastSubj2-sein$ = $VPastSubj2Suff-sein$
 % lief, liefst, lief, liefen, lieft, liefen
 $VPastStr$ = $VPastIndStr$ | \
              $VPastSubjStr$
+
+% hieß, hieß(es)t, hieß, hießen, hießt, hießen
+$VPastStr-s$ = $VPastIndStr-s$ | \
+               $VPastSubjStr$
 
 $VImpSgSuff_0$ = {<+V><Imp><Sg>}:{<rm|Imp>}
 
@@ -2170,6 +2198,28 @@ $VWeak-m-n+sein$ = $VInf$            | \
                    $VPres-m-n$       | \
                    $VPastWeak$       | \
                    $VImp-m-n$
+
+% küssen
+$VWeak-s$ = $VInf$       | \
+            $VPPres$     | \
+            $VPPastWeak$ | \
+            $VPres-s$    | \
+            $VPastWeak$  | \
+            $VImp$
+
+$VWeak-s+haben$ = $VInf$             | \
+                  $VPPres$           | \
+                  $VPPastWeak+haben$ | \
+                  $VPres-s$          | \
+                  $VPastWeak$        | \
+                  $VImp$
+
+$VWeak-s+sein$ = $VInf$            | \
+                 $VPPres$          | \
+                 $VPPastWeak+sein$ | \
+                 $VPres-s$         | \
+                 $VPastWeak$       | \
+                 $VImp$
 
 % segeln; rudern (cf. $SchwaTrigger$ in markers.fst)
 $VWeak-el-er$ = $VInf$       | \
@@ -2622,8 +2672,10 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPastIndPl-werden>       $VPastIndPl-werden$    | \
          <>:<VPastIndSg-ward>         $VPastIndSg-ward$      | \
          <>:<VPastIndStr>             $VPastIndStr$          | \
+         <>:<VPastIndStr-s>           $VPastIndStr-s$        | \
          <>:<VPastIndWeak>            $VPastIndWeak$         | \
          <>:<VPastStr>                $VPastStr$             | \
+         <>:<VPastStr-s>              $VPastStr-s$           | \
          <>:<VPastSubj-haben>         $VPastSubj-haben$      | \
          <>:<VPastSubj2-sein>         $VPastSubj2-sein$      | \
          <>:<VPastSubjOld>            $VPastSubjOld$         | \
@@ -2644,6 +2696,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPPres>                  $VPPres$               | \
          <>:<VPres>                   $VPres$                | \
          <>:<VPres-m-n>               $VPres-m-n$            | \
+         <>:<VPres-s>                 $VPres-s$              | \
          <>:<VPres-tun>               $VPres-tun$            | \
          <>:<VPresInd13Pl-sein>       $VPresInd13Pl-sein$    | \
          <>:<VPresInd1Sg-sein>        $VPresInd1Sg-sein$     | \
@@ -2669,6 +2722,9 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VWeak-m-n>               $VWeak-m-n$            | \
          <>:<VWeak-m-n><>:<haben>     $VWeak-m-n+haben$      | \
          <>:<VWeak-m-n><>:<sein>      $VWeak-m-n+sein$       | \
+         <>:<VWeak-s>                 $VWeak-s$              | \
+         <>:<VWeak-s><>:<haben>       $VWeak-s+haben$        | \
+         <>:<VWeak-s><>:<sein>        $VWeak-s+sein$         | \
          <>:<WAdv>                    $WAdv$                 | \
          <>:<W-welch>                 $W-welch$              | \
          <>:<WProMascAccSg>           $WProMascAccSg$        | \

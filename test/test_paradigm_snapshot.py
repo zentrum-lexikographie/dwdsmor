@@ -293,6 +293,8 @@ VERB_LEMMAS = ["spielen",    # VWeak
                "segeln",     # VWeak-el-er
                "arbeiten",   # VWeak-d-t
                "atmen",      # VWeak-m-n
+               "küssen",     # VWeak-s
+               "heißen",     # VWeak-s, VInf, VPPres, VPPastStr, VPres-s, VPastStr-s, VImp
                "senden",     # VWeak-d-t, VInf, VPPres, VPPast-d_t, VPres, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t
                "denken",     # VInf, VPPres, VPPastWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp
                "haben",      # VInf, VPPres, VPPastWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-d-t_t, VPastSubj-haben, VImp
@@ -304,6 +306,7 @@ VERB_LEMMAS = ["spielen",    # VWeak
                "laufen",     # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastStr, VImp
                "halten",     # VInf, VPPres, VPPastStr, VPresInd23Sg-t_0, VPresNonInd23Sg, VPastStr, VImp-d-t
                "sehen",      # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImpSg, VImpPl
+               "lesen",      # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr-s, VPastSubjStr, VImpSg0, VImpPl
                "tun",        # VInf_n, VPPres, VPPast_n, VPres-tun, VPastIndStr, VPastSubjStr, VImpSg0, VImpPl
                "werden",     # VInf, VPPres, VPPastStr, VPresInd2Sg-werden, VPresInd3Sg-werden, VPresNonInd23Sg, VPastInd-werden,
                              # VPastIndSg-ward, VPastIndPl-werden, VPastSubjStr, VImp-d-t

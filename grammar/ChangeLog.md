@@ -3,7 +3,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 2024-09-04:
 
 * mark forms of inflection class `VPastIndSg-ward` as `<Old>`
-* add inflection classes `VWeak-m-n` and `VImp-m-n`
+* add inflection classes `VWeak-m-n`, `VWeak-s`, `VPres-s`, `VPastStr-s`,
+  `VPastIndStr-s`, and `VImp-m-n`
 * rename inflection class `VPres-d-t` to `VPres-m-n`
 * remove inflection class `VPresNonInd23Sg-d-t`
 

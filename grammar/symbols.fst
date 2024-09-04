@@ -223,15 +223,16 @@
 #Verb-inflection# = <VImp><VImp-d-t><VImp-m-n><VImpPl><VImpPl-sein><VImpSg> \
                     <VImpSg0><VInf><VInf_n><VModPresIndSg><VModPresNonIndSg> \
                     <VPastInd-d-t_t><VPastInd-werden><VPastIndPl-werden> \
-                    <VPastIndSg-ward><VPastIndStr><VPastIndWeak><VPastStr> \
-                    <VPastSubj-haben><VPastSubj2-sein><VPastSubjOld> \
-                    <VPastSubjStr><VPastSubjWeak><VPPast-d_t><VPPast_n> \
-                    <VPPastStr><VPPastWeak><VPPres><VPres><VPres-m-n><VPres-tun> \
-                    <VPresInd13Pl-sein><VPresInd1Sg-sein><VPresInd23Sg> \
-                    <VPresInd23Sg-d_t><VPresInd23Sg-t_0><VPresInd2Pl-sein> \
-                    <VPresInd2Sg-sein><VPresInd2Sg-werden><VPresInd3Sg-sein> \
-                    <VPresInd3Sg-werden><VPresNonInd23Sg><VPresSubj-sein><VWeak> \
-                    <VWeak-d-t><VWeak-el-er><VWeak-m-n>
+                    <VPastIndSg-ward><VPastIndStr><VPastIndStr-s><VPastIndWeak> \
+                    <VPastStr><VPastStr-s><VPastSubj-haben><VPastSubj2-sein> \
+                    <VPastSubjOld><VPastSubjStr><VPastSubjWeak><VPPast-d_t> \
+                    <VPPast_n><VPPastStr><VPPastWeak><VPPres><VPres><VPres-m-n> \
+                    <VPres-s><VPres-tun><VPresInd13Pl-sein><VPresInd1Sg-sein> \
+                    <VPresInd23Sg><VPresInd23Sg-d_t><VPresInd23Sg-t_0> \
+                    <VPresInd2Pl-sein><VPresInd2Sg-sein><VPresInd2Sg-werden> \
+                    <VPresInd3Sg-sein><VPresInd3Sg-werden><VPresNonInd23Sg> \
+                    <VPresSubj-sein><VWeak><VWeak-d-t><VWeak-el-er><VWeak-m-n> \
+                    <VWeak-s>
 
 #Other-inflection# = <ConjCompar><ConjCoord><ConjInf><ConjSub><Intj><PIndInvar> \
                      <Postp><Prep><Prep+Art-m><Prep+Art-n><Prep+Art-r> \
