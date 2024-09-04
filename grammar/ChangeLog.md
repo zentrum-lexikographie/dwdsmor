@@ -3,6 +3,9 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 2024-09-04:
 
 * mark forms of inflection class `VPastIndSg-ward` as `<Old>`
+* add inflection classes `VWeak-m-n` and `VImp-m-n`
+* rename inflection class `VPres-d-t` to `VPres-m-n`
+* remove inflection class `VPresNonInd23Sg-d-t`
 
 2024-09-03:
 
@@ -141,8 +144,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
   `NNeut_s_o/en`, `NNeut_s_o/i`, `NNeut_s_on/a`, `NNeut_s_on/en`,
   `NNeut_s_um/a`, `NNeut_s_um/en`, `NNeut_0_us/en`, `NNeut_0_us/en`,
   `NFem_0_a/en`, `NFem_0_is/en`, `NFem_0_is/iden`, respectively
-* add inflection classes `<NMasc_0_e/i>`, `<NMasc_s_e/i>`, `<NNeut_0_e/i>`,
-  `<NNeut_s_e/i>`, and `<NFem_0_e/i>`
+* add inflection classes `NMasc_0_e/i`, `NMasc_s_e/i`, `NNeut_0_e/i`,
+  `NNeut_s_e/i`, and `NFem_0_e/i`
 
 2024-03-22:
 

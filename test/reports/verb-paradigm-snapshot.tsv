@@ -3,7 +3,7 @@ arbeiten			V haben	Inf Pres	arbeiten
 arbeiten			V haben	Inf Perf	gearbeitet haben
 arbeiten			V haben	Part Pres	arbeitend
 arbeiten			V haben	Part Perf	gearbeitet
-arbeiten			V haben	1 Sg Ind Pres	arbeite
+arbeiten			V haben	1 Sg Ind Pres	arbeite, arbeit (ugs.)
 arbeiten			V haben	2 Sg Ind Pres	arbeitest
 arbeiten			V haben	3 Sg Ind Pres	arbeitet
 arbeiten			V haben	1 Pl Ind Pres	arbeiten
@@ -75,8 +75,86 @@ arbeiten			V haben	3 Sg Subj FutPerf	werde gearbeitet haben
 arbeiten			V haben	1 Pl Subj FutPerf	werden gearbeitet haben
 arbeiten			V haben	2 Pl Subj FutPerf	werdet gearbeitet haben
 arbeiten			V haben	3 Pl Subj FutPerf	werden gearbeitet haben
-arbeiten			V haben	Sg Imp	arbeite
+arbeiten			V haben	Sg Imp	arbeite, arbeit (ugs.)
 arbeiten			V haben	Pl Imp	arbeitet
+atmen			V haben	Inf Pres	atmen
+atmen			V haben	Inf Perf	geatmet haben
+atmen			V haben	Part Pres	atmend
+atmen			V haben	Part Perf	geatmet
+atmen			V haben	1 Sg Ind Pres	atme
+atmen			V haben	2 Sg Ind Pres	atmest
+atmen			V haben	3 Sg Ind Pres	atmet
+atmen			V haben	1 Pl Ind Pres	atmen
+atmen			V haben	2 Pl Ind Pres	atmet
+atmen			V haben	3 Pl Ind Pres	atmen
+atmen			V haben	1 Sg Subj Pres	atme
+atmen			V haben	2 Sg Subj Pres	atmest
+atmen			V haben	3 Sg Subj Pres	atme
+atmen			V haben	1 Pl Subj Pres	atmen
+atmen			V haben	2 Pl Subj Pres	atmet
+atmen			V haben	3 Pl Subj Pres	atmen
+atmen			V haben	1 Sg Ind Perf	habe geatmet
+atmen			V haben	2 Sg Ind Perf	hast geatmet
+atmen			V haben	3 Sg Ind Perf	hat geatmet
+atmen			V haben	1 Pl Ind Perf	haben geatmet
+atmen			V haben	2 Pl Ind Perf	habt geatmet
+atmen			V haben	3 Pl Ind Perf	haben geatmet
+atmen			V haben	1 Sg Subj Perf	habe geatmet
+atmen			V haben	2 Sg Subj Perf	habest geatmet
+atmen			V haben	3 Sg Subj Perf	habe geatmet
+atmen			V haben	1 Pl Subj Perf	haben geatmet
+atmen			V haben	2 Pl Subj Perf	habet geatmet
+atmen			V haben	3 Pl Subj Perf	haben geatmet
+atmen			V haben	1 Sg Ind Past	atmete
+atmen			V haben	2 Sg Ind Past	atmetest
+atmen			V haben	3 Sg Ind Past	atmete
+atmen			V haben	1 Pl Ind Past	atmeten
+atmen			V haben	2 Pl Ind Past	atmetet
+atmen			V haben	3 Pl Ind Past	atmeten
+atmen			V haben	1 Sg Subj Past	atmete
+atmen			V haben	2 Sg Subj Past	atmetest
+atmen			V haben	3 Sg Subj Past	atmete
+atmen			V haben	1 Pl Subj Past	atmeten
+atmen			V haben	2 Pl Subj Past	atmetet
+atmen			V haben	3 Pl Subj Past	atmeten
+atmen			V haben	1 Sg Ind PastPerf	hatte geatmet
+atmen			V haben	2 Sg Ind PastPerf	hattest geatmet
+atmen			V haben	3 Sg Ind PastPerf	hatte geatmet
+atmen			V haben	1 Pl Ind PastPerf	hatten geatmet
+atmen			V haben	2 Pl Ind PastPerf	hattet geatmet
+atmen			V haben	3 Pl Ind PastPerf	hatten geatmet
+atmen			V haben	1 Sg Subj PastPerf	hätte geatmet
+atmen			V haben	2 Sg Subj PastPerf	hättest geatmet
+atmen			V haben	3 Sg Subj PastPerf	hätte geatmet
+atmen			V haben	1 Pl Subj PastPerf	hätten geatmet
+atmen			V haben	2 Pl Subj PastPerf	hättet geatmet
+atmen			V haben	3 Pl Subj PastPerf	hätten geatmet
+atmen			V haben	1 Sg Ind Fut	werde atmen
+atmen			V haben	2 Sg Ind Fut	wirst atmen
+atmen			V haben	3 Sg Ind Fut	wird atmen
+atmen			V haben	1 Pl Ind Fut	werden atmen
+atmen			V haben	2 Pl Ind Fut	werdet atmen
+atmen			V haben	3 Pl Ind Fut	werden atmen
+atmen			V haben	1 Sg Subj Fut	werde atmen
+atmen			V haben	2 Sg Subj Fut	werdest atmen
+atmen			V haben	3 Sg Subj Fut	werde atmen
+atmen			V haben	1 Pl Subj Fut	werden atmen
+atmen			V haben	2 Pl Subj Fut	werdet atmen
+atmen			V haben	3 Pl Subj Fut	werden atmen
+atmen			V haben	1 Sg Ind FutPerf	werde geatmet haben
+atmen			V haben	2 Sg Ind FutPerf	wirst geatmet haben
+atmen			V haben	3 Sg Ind FutPerf	wird geatmet haben
+atmen			V haben	1 Pl Ind FutPerf	werden geatmet haben
+atmen			V haben	2 Pl Ind FutPerf	werdet geatmet haben
+atmen			V haben	3 Pl Ind FutPerf	werden geatmet haben
+atmen			V haben	1 Sg Subj FutPerf	werde geatmet haben
+atmen			V haben	2 Sg Subj FutPerf	werdest geatmet haben
+atmen			V haben	3 Sg Subj FutPerf	werde geatmet haben
+atmen			V haben	1 Pl Subj FutPerf	werden geatmet haben
+atmen			V haben	2 Pl Subj FutPerf	werdet geatmet haben
+atmen			V haben	3 Pl Subj FutPerf	werden geatmet haben
+atmen			V haben	Sg Imp	atme
+atmen			V haben	Pl Imp	atmet
 denken			V haben	Inf Pres	denken
 denken			V haben	Inf Perf	gedacht haben
 denken			V haben	Part Pres	denkend
@@ -315,7 +393,7 @@ halten			V haben	Inf Pres	halten
 halten			V haben	Inf Perf	gehalten haben
 halten			V haben	Part Pres	haltend
 halten			V haben	Part Perf	gehalten
-halten			V haben	1 Sg Ind Pres	halte
+halten			V haben	1 Sg Ind Pres	halte, halt (ugs.)
 halten			V haben	2 Sg Ind Pres	hältst
 halten			V haben	3 Sg Ind Pres	hält
 halten			V haben	1 Pl Ind Pres	halten
@@ -387,7 +465,7 @@ halten			V haben	3 Sg Subj FutPerf	werde gehalten haben
 halten			V haben	1 Pl Subj FutPerf	werden gehalten haben
 halten			V haben	2 Pl Subj FutPerf	werdet gehalten haben
 halten			V haben	3 Pl Subj FutPerf	werden gehalten haben
-halten			V haben	Sg Imp	halte
+halten			V haben	Sg Imp	halte, halt (ugs.)
 halten			V haben	Pl Imp	haltet
 können			V haben	Inf Pres	können
 können			V haben	Inf Perf	gekonnt haben, können haben
@@ -547,7 +625,7 @@ laden	1	2	V haben	Inf Pres	laden
 laden	1	2	V haben	Inf Perf	geladen haben
 laden	1	2	V haben	Part Pres	ladend
 laden	1	2	V haben	Part Perf	geladen
-laden	1	2	V haben	1 Sg Ind Pres	lade
+laden	1	2	V haben	1 Sg Ind Pres	lade, lad (ugs.)
 laden	1	2	V haben	2 Sg Ind Pres	ladest
 laden	1	2	V haben	3 Sg Ind Pres	ladet
 laden	1	2	V haben	1 Pl Ind Pres	laden
@@ -619,7 +697,7 @@ laden	1	2	V haben	3 Sg Subj FutPerf	werde geladen haben
 laden	1	2	V haben	1 Pl Subj FutPerf	werden geladen haben
 laden	1	2	V haben	2 Pl Subj FutPerf	werdet geladen haben
 laden	1	2	V haben	3 Pl Subj FutPerf	werden geladen haben
-laden	1	2	V haben	Sg Imp	lade
+laden	1	2	V haben	Sg Imp	lade, lad (ugs.)
 laden	1	2	V haben	Pl Imp	ladet
 laden	2	1	V haben	Inf Pres	laden
 laden	2	1	V haben	Inf Perf	geladen haben
@@ -703,7 +781,7 @@ laden	2	2	V haben	Inf Pres	laden
 laden	2	2	V haben	Inf Perf	geladen haben
 laden	2	2	V haben	Part Pres	ladend
 laden	2	2	V haben	Part Perf	geladen
-laden	2	2	V haben	1 Sg Ind Pres	lade
+laden	2	2	V haben	1 Sg Ind Pres	lade, lad (ugs.)
 laden	2	2	V haben	2 Sg Ind Pres	ladest
 laden	2	2	V haben	3 Sg Ind Pres	ladet
 laden	2	2	V haben	1 Pl Ind Pres	laden
@@ -775,7 +853,7 @@ laden	2	2	V haben	3 Sg Subj FutPerf	werde geladen haben
 laden	2	2	V haben	1 Pl Subj FutPerf	werden geladen haben
 laden	2	2	V haben	2 Pl Subj FutPerf	werdet geladen haben
 laden	2	2	V haben	3 Pl Subj FutPerf	werden geladen haben
-laden	2	2	V haben	Sg Imp	lade
+laden	2	2	V haben	Sg Imp	lade, lad (ugs.)
 laden	2	2	V haben	Pl Imp	ladet
 laufen			V haben	Inf Pres	laufen
 laufen			V haben	Inf Perf	gelaufen haben
@@ -1405,7 +1483,7 @@ senden		1	V haben	Inf Pres	senden
 senden		1	V haben	Inf Perf	gesendet haben
 senden		1	V haben	Part Pres	sendend
 senden		1	V haben	Part Perf	gesendet
-senden		1	V haben	1 Sg Ind Pres	sende
+senden		1	V haben	1 Sg Ind Pres	sende, send (ugs.)
 senden		1	V haben	2 Sg Ind Pres	sendest
 senden		1	V haben	3 Sg Ind Pres	sendet
 senden		1	V haben	1 Pl Ind Pres	senden
@@ -1477,13 +1555,13 @@ senden		1	V haben	3 Sg Subj FutPerf	werde gesendet haben
 senden		1	V haben	1 Pl Subj FutPerf	werden gesendet haben
 senden		1	V haben	2 Pl Subj FutPerf	werdet gesendet haben
 senden		1	V haben	3 Pl Subj FutPerf	werden gesendet haben
-senden		1	V haben	Sg Imp	sende
+senden		1	V haben	Sg Imp	sende, send (ugs.)
 senden		1	V haben	Pl Imp	sendet
 senden		2	V haben	Inf Pres	senden
 senden		2	V haben	Inf Perf	gesandt haben
 senden		2	V haben	Part Pres	sendend
 senden		2	V haben	Part Perf	gesandt
-senden		2	V haben	1 Sg Ind Pres	sende
+senden		2	V haben	1 Sg Ind Pres	sende, send (ugs.)
 senden		2	V haben	2 Sg Ind Pres	sendest
 senden		2	V haben	3 Sg Ind Pres	sendet
 senden		2	V haben	1 Pl Ind Pres	senden
@@ -1555,7 +1633,7 @@ senden		2	V haben	3 Sg Subj FutPerf	werde gesandt haben
 senden		2	V haben	1 Pl Subj FutPerf	werden gesandt haben
 senden		2	V haben	2 Pl Subj FutPerf	werdet gesandt haben
 senden		2	V haben	3 Pl Subj FutPerf	werden gesandt haben
-senden		2	V haben	Sg Imp	sende
+senden		2	V haben	Sg Imp	sende, send (ugs.)
 senden		2	V haben	Pl Imp	sendet
 spielen			V haben	Inf Pres	spielen
 spielen			V haben	Inf Perf	gespielt haben
@@ -1717,7 +1795,7 @@ werden		1	V sein	Inf Pres	werden
 werden		1	V sein	Inf Perf	geworden sein, worden sein
 werden		1	V sein	Part Pres	werdend
 werden		1	V sein	Part Perf	geworden, worden
-werden		1	V sein	1 Sg Ind Pres	werde
+werden		1	V sein	1 Sg Ind Pres	werde, werd (ugs.)
 werden		1	V sein	2 Sg Ind Pres	wirst
 werden		1	V sein	3 Sg Ind Pres	wird
 werden		1	V sein	1 Pl Ind Pres	werden
@@ -1789,13 +1867,13 @@ werden		1	V sein	3 Sg Subj FutPerf	werde geworden sein, werde worden sein
 werden		1	V sein	1 Pl Subj FutPerf	werden geworden sein, werden worden sein
 werden		1	V sein	2 Pl Subj FutPerf	werdet geworden sein, werdet worden sein
 werden		1	V sein	3 Pl Subj FutPerf	werden geworden sein, werden worden sein
-werden		1	V sein	Sg Imp	werde
+werden		1	V sein	Sg Imp	werde, werd (ugs.)
 werden		1	V sein	Pl Imp	werdet
 werden		2	V sein	Inf Pres	werden
 werden		2	V sein	Inf Perf	geworden sein, worden sein
 werden		2	V sein	Part Pres	werdend
 werden		2	V sein	Part Perf	geworden, worden
-werden		2	V sein	1 Sg Ind Pres	werde
+werden		2	V sein	1 Sg Ind Pres	werde, werd (ugs.)
 werden		2	V sein	2 Sg Ind Pres	wirst
 werden		2	V sein	3 Sg Ind Pres	wird
 werden		2	V sein	1 Pl Ind Pres	werden
@@ -1819,9 +1897,9 @@ werden		2	V sein	3 Sg Subj Perf	sei geworden, sei worden
 werden		2	V sein	1 Pl Subj Perf	seien geworden, seien worden
 werden		2	V sein	2 Pl Subj Perf	seiet geworden, seiet worden
 werden		2	V sein	3 Pl Subj Perf	seien geworden, seien worden
-werden		2	V sein	1 Sg Ind Past	ward
-werden		2	V sein	2 Sg Ind Past	wardst
-werden		2	V sein	3 Sg Ind Past	ward
+werden		2	V sein	1 Sg Ind Past	ward (va.)
+werden		2	V sein	2 Sg Ind Past	wardst (va.)
+werden		2	V sein	3 Sg Ind Past	ward (va.)
 werden		2	V sein	1 Pl Ind Past	wurden
 werden		2	V sein	2 Pl Ind Past	wurdet
 werden		2	V sein	3 Pl Ind Past	wurden
@@ -1867,7 +1945,7 @@ werden		2	V sein	3 Sg Subj FutPerf	werde geworden sein, werde worden sein
 werden		2	V sein	1 Pl Subj FutPerf	werden geworden sein, werden worden sein
 werden		2	V sein	2 Pl Subj FutPerf	werdet geworden sein, werdet worden sein
 werden		2	V sein	3 Pl Subj FutPerf	werden geworden sein, werden worden sein
-werden		2	V sein	Sg Imp	werde
+werden		2	V sein	Sg Imp	werde, werd (ugs.)
 werden		2	V sein	Pl Imp	werdet
 wissen			V haben	Inf Pres	wissen
 wissen			V haben	Inf Perf	gewusst haben, gewußt haben (ung.)

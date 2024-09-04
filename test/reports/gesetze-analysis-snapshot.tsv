@@ -1063,6 +1063,8 @@ Art	Art	NN					Fem	Nom	Sg
 Art	Art	NN					Fem	Gen	Sg									
 Art	Art	NN					Fem	Dat	Sg									
 Art	Art	NN					Fem	Acc	Sg									
+Art	arten	V				1			Sg				Ind	Pres	NonSt			CAP
+Art	arten	V							Sg				Imp		NonSt			CAP
 des	des	NN					Neut	Nom	Sg									
 des	des	NN					Neut	Nom	Pl									
 des	des	NN					Neut	Gen	Sg									

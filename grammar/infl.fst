@@ -1,5 +1,5 @@
 % infl.fst
-% Version 8.2
+% Version 8.3
 % Andreas Nolda 2024-09-04
 
 % based on code from SMORLemma by Rico Sennrich
@@ -1882,7 +1882,7 @@ $VPres$ = $VPresInd1SgSuff_e$      | \
           $VPresSubjSuff$
 
 % sende, sendest, sendet, senden, sendet, senden
-$VPres-d-t$ = $VPresInd1SgSuff_e$   | \
+$VPres-m-n$ = $VPresInd1SgSuff_e$   | \
               $VPresInd2SgSuff_est$ | \
               $VPresInd3SgSuff_et$  | \
               $VPresIndPlSuff$      | \
@@ -1905,16 +1905,12 @@ $VPresInd23Sg-d_t$ = $VPresInd2SgSuff_st$ | \
 % seh(e), sehen, seht, sehen
 % lauf(e), laufen, lauft, laufen
 % hab(e), haben, habt, haben
+% halt(e), halten, haltet, halten
 % lad(e), laden, ladet, laden
 $VPresNonInd23Sg$ = $VPresInd1SgSuff_e$      | \
                     $VPresInd1SgNonStSuff_0$ | \
                     $VPresIndPlSuff$         | \
                     $VPresSubjSuff$
-
-% halte, halten, haltet, halten
-$VPresNonInd23Sg-d-t$ = $VPresInd1SgSuff_e$ | \
-                        $VPresIndPlSuff$    | \
-                        $VPresSubjSuff$
 
 % tu(e), tust, tut, tun, tut, tun
 $VPres-tun$ = $VPresInd1SgSuff_e$      | \
@@ -2068,6 +2064,8 @@ $VPastStr$ = $VPastIndStr$ | \
 
 $VImpSgSuff_0$ = {<+V><Imp><Sg>}:{<rm|Imp>}
 
+$VImpSgNonStSuff_0$ = {<+V><Imp><Sg><NonSt>}:{<rm|Imp>} % cf. Duden-Grammatik (2016: § 609)
+
 $VImpSgSuff_e$ = {<+V><Imp><Sg>}:{<SB>e<rm|Imp>}
 
 $VImpPlSuff_t$ = {<+V><Imp><Pl>}:{<SB><ins(e)>t<rm|Imp>}
@@ -2081,7 +2079,10 @@ $VImpSg$ = $VImpSgSuff_0$ | \
 % tu; sei
 $VImpSg0$ = $VImpSgSuff_0$
 
-$VImpSg-d-t$ = $VImpSgSuff_e$
+$VImpSg-d-t$ = $VImpSgNonStSuff_0$ | \
+               $VImpSgSuff_e$
+
+$VImpSg-m-n$ = $VImpSgSuff_e$
 
 % seht; tut
 $VImpPl$ = $VImpPlSuff_t$
@@ -2094,8 +2095,12 @@ $VImpPl-sein$ = $VImpPlSuff-sein$
 $VImp$ = $VImpSg$ | \
          $VImpPl$
 
-% werde, werdet
+% werd(e), werdet
 $VImp-d-t$ = $VImpSg-d-t$ | \
+             $VImpPl$
+
+% kopfrechne, kopfrechnet
+$VImp-m-n$ = $VImpSg-m-n$ | \
              $VImpPl$
 
 % lieben; spielen
@@ -2124,23 +2129,45 @@ $VWeak+sein$ = $VInf$            | \
 $VWeak-d-t$ = $VInf$       | \
               $VPPres$     | \
               $VPPastWeak$ | \
-              $VPres-d-t$  | \
+              $VPres$      | \
               $VPastWeak$  | \
               $VImp-d-t$
 
 $VWeak-d-t+haben$ = $VInf$             | \
                     $VPPres$           | \
                     $VPPastWeak+haben$ | \
-                    $VPres-d-t$        | \
+                    $VPres$            | \
                     $VPastWeak$        | \
                     $VImp-d-t$
 
 $VWeak-d-t+sein$ = $VInf$            | \
                    $VPPres$          | \
                    $VPPastWeak+sein$ | \
-                   $VPres-d-t$       | \
+                   $VPres$           | \
                    $VPastWeak$       | \
                    $VImp-d-t$
+
+% atmen; rechnen
+$VWeak-m-n$ = $VInf$       | \
+              $VPPres$     | \
+              $VPPastWeak$ | \
+              $VPres-m-n$  | \
+              $VPastWeak$  | \
+              $VImp-m-n$
+
+$VWeak-m-n+haben$ = $VInf$             | \
+                    $VPPres$           | \
+                    $VPPastWeak+haben$ | \
+                    $VPres-m-n$        | \
+                    $VPastWeak$        | \
+                    $VImp-m-n$
+
+$VWeak-m-n+sein$ = $VInf$            | \
+                   $VPPres$          | \
+                   $VPPastWeak+sein$ | \
+                   $VPres-m-n$       | \
+                   $VPastWeak$       | \
+                   $VImp-m-n$
 
 % segeln; rudern (cf. $SchwaTrigger$ in markers.fst)
 $VWeak-el-er$ = $VWeak$
@@ -2563,6 +2590,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<Roman>                   $Roman$                | \
          <>:<VImp>                    $VImp$                 | \
          <>:<VImp-d-t>                $VImp-d-t$             | \
+         <>:<VImp-m-n>                $VImp-m-n$             | \
          <>:<VImpPl>                  $VImpPl$               | \
          <>:<VImpPl-sein>             $VImpPl-sein$          | \
          <>:<VImpSg>                  $VImpSg$               | \
@@ -2598,7 +2626,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPPastWeak><>:<sein>     $VPPastWeak+sein$      | \
          <>:<VPPres>                  $VPPres$               | \
          <>:<VPres>                   $VPres$                | \
-         <>:<VPres-d-t>               $VPres-d-t$            | \
+         <>:<VPres-m-n>               $VPres-m-n$            | \
          <>:<VPres-tun>               $VPres-tun$            | \
          <>:<VPresInd13Pl-sein>       $VPresInd13Pl-sein$    | \
          <>:<VPresInd1Sg-sein>        $VPresInd1Sg-sein$     | \
@@ -2611,17 +2639,19 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPresInd3Sg-sein>        $VPresInd3Sg-sein$     | \
          <>:<VPresInd3Sg-werden>      $VPresInd3Sg-werden$   | \
          <>:<VPresNonInd23Sg>         $VPresNonInd23Sg$      | \
-         <>:<VPresNonInd23Sg-d-t>     $VPresNonInd23Sg-d-t$  | \
          <>:<VPresSubj-sein>          $VPresSubj-sein$       | \
          <>:<VWeak>                   $VWeak$                | \
          <>:<VWeak><>:<haben>         $VWeak+haben$          | \
          <>:<VWeak><>:<sein>          $VWeak+sein$           | \
-         <>:<VWeak-el-er>             $VWeak-el-er$          | \
-         <>:<VWeak-el-er><>:<haben>   $VWeak-el-er+haben$    | \
-         <>:<VWeak-el-er><>:<sein>    $VWeak-el-er+sein$     | \
          <>:<VWeak-d-t>               $VWeak-d-t$            | \
          <>:<VWeak-d-t><>:<haben>     $VWeak-d-t+haben$      | \
          <>:<VWeak-d-t><>:<sein>      $VWeak-d-t+sein$       | \
+         <>:<VWeak-el-er>             $VWeak-el-er$          | \
+         <>:<VWeak-el-er><>:<haben>   $VWeak-el-er+haben$    | \
+         <>:<VWeak-el-er><>:<sein>    $VWeak-el-er+sein$     | \
+         <>:<VWeak-m-n>               $VWeak-m-n$            | \
+         <>:<VWeak-m-n><>:<haben>     $VWeak-m-n+haben$      | \
+         <>:<VWeak-m-n><>:<sein>      $VWeak-m-n+sein$       | \
          <>:<WAdv>                    $WAdv$                 | \
          <>:<W-welch>                 $W-welch$              | \
          <>:<WProMascAccSg>           $WProMascAccSg$        | \

@@ -1,3 +1,7 @@
+2024-09-04:
+
+* add support for unsuffixed non-standard singular imperative verb forms
+
 2024-09-03:
 
 * add support for unsuffixed non-standard indicative present-tense verb forms in
