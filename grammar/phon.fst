@@ -1,6 +1,6 @@
 % phon.fst
-% Version 6.2
-% Andreas Nolda 2024-09-03
+% Version 6.3
+% Andreas Nolda 2024-09-05
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -47,7 +47,7 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
            <dbl(s)>:[<>s]
 
 $PhonSDuplication$ = ((s) <dbl(s)> <=> s  (<SB> [aeiou])) & \
-                     ((s) <dbl(s)> <=> <> (<SB> ($Cons$ | <WB>)))
+                     ((s) <dbl(s)> <=> <> (<SB> $Cons$ | <WB>))
 
 
 % deletion of "st"-suffixes
@@ -78,14 +78,14 @@ $PhonEElision1$ = ([^<del(VC)|Pl>]) e <=> <> (<SB> e)
 % Tisch<SB>es<del(e)|Gen> -> Tisch<SB>es<del(e)|Gen>, Tisch<SB>s<del(e)|Gen>
 % Ei<SB>es<del(e)|Gen>    -> Ei<SB>es<del(e)|Gen>, Ei<SB>s<del(e)|Gen>
 
-$PhonEElision2$ = (([bcdfghjklmnpqrtuvwy] <SB>? <SB>) e => <> (s <del(e)|Gen>)) | \
-                  (([AEae]i <SB>? <SB>) e => <> (s <del(e)|Gen>))
+$PhonEElision2$ = (([bcdfghjklmnpqrtuvwy] <SB>) e => <> (s <del(e)|Gen>)) | \
+                  (([AEae]i <SB>) e => <> (s <del(e)|Gen>))
 
 % optional "e"-elision in pronoun stems ending in "er"
 % unser<del(e)|PRO><SB>en   -> unsr<del(e)|PRO><SB>en, unser<del(e)|PRO><SB>n
 % unserig<del(e)|PRO><SB>en -> unsrig<del(e)|PRO><SB>en
 
-$PhonEElision3$ = (e => <> (r(ig)? <del(e)|PRO> <SB>? e)) | \
+$PhonEElision3$ = (e => <> (r(ig)? <del(e)|PRO> <SB> e)) | \
                   ((er <del(e)|PRO> <SB>) e => <> ([mns]))
 
 % "e"-elision in adjective stems ending in "el"/"er"
