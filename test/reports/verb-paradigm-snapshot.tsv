@@ -15,7 +15,7 @@ arbeiten			V haben	3 Sg Subj Pres	arbeite
 arbeiten			V haben	1 Pl Subj Pres	arbeiten
 arbeiten			V haben	2 Pl Subj Pres	arbeitet
 arbeiten			V haben	3 Pl Subj Pres	arbeiten
-arbeiten			V haben	1 Sg Ind Perf	habe gearbeitet
+arbeiten			V haben	1 Sg Ind Perf	habe gearbeitet, hab gearbeitet (ugs.)
 arbeiten			V haben	2 Sg Ind Perf	hast gearbeitet
 arbeiten			V haben	3 Sg Ind Perf	hat gearbeitet
 arbeiten			V haben	1 Pl Ind Perf	haben gearbeitet
@@ -51,7 +51,7 @@ arbeiten			V haben	3 Sg Subj PastPerf	hätte gearbeitet
 arbeiten			V haben	1 Pl Subj PastPerf	hätten gearbeitet
 arbeiten			V haben	2 Pl Subj PastPerf	hättet gearbeitet
 arbeiten			V haben	3 Pl Subj PastPerf	hätten gearbeitet
-arbeiten			V haben	1 Sg Ind Fut	werde arbeiten
+arbeiten			V haben	1 Sg Ind Fut	werde arbeiten, werd arbeiten (ugs.)
 arbeiten			V haben	2 Sg Ind Fut	wirst arbeiten
 arbeiten			V haben	3 Sg Ind Fut	wird arbeiten
 arbeiten			V haben	1 Pl Ind Fut	werden arbeiten
@@ -63,7 +63,7 @@ arbeiten			V haben	3 Sg Subj Fut	werde arbeiten
 arbeiten			V haben	1 Pl Subj Fut	werden arbeiten
 arbeiten			V haben	2 Pl Subj Fut	werdet arbeiten
 arbeiten			V haben	3 Pl Subj Fut	werden arbeiten
-arbeiten			V haben	1 Sg Ind FutPerf	werde gearbeitet haben
+arbeiten			V haben	1 Sg Ind FutPerf	werde gearbeitet haben, werd gearbeitet haben (ugs.)
 arbeiten			V haben	2 Sg Ind FutPerf	wirst gearbeitet haben
 arbeiten			V haben	3 Sg Ind FutPerf	wird gearbeitet haben
 arbeiten			V haben	1 Pl Ind FutPerf	werden gearbeitet haben
@@ -93,7 +93,7 @@ atmen			V haben	3 Sg Subj Pres	atme
 atmen			V haben	1 Pl Subj Pres	atmen
 atmen			V haben	2 Pl Subj Pres	atmet
 atmen			V haben	3 Pl Subj Pres	atmen
-atmen			V haben	1 Sg Ind Perf	habe geatmet
+atmen			V haben	1 Sg Ind Perf	habe geatmet, hab geatmet (ugs.)
 atmen			V haben	2 Sg Ind Perf	hast geatmet
 atmen			V haben	3 Sg Ind Perf	hat geatmet
 atmen			V haben	1 Pl Ind Perf	haben geatmet
@@ -129,7 +129,7 @@ atmen			V haben	3 Sg Subj PastPerf	hätte geatmet
 atmen			V haben	1 Pl Subj PastPerf	hätten geatmet
 atmen			V haben	2 Pl Subj PastPerf	hättet geatmet
 atmen			V haben	3 Pl Subj PastPerf	hätten geatmet
-atmen			V haben	1 Sg Ind Fut	werde atmen
+atmen			V haben	1 Sg Ind Fut	werde atmen, werd atmen (ugs.)
 atmen			V haben	2 Sg Ind Fut	wirst atmen
 atmen			V haben	3 Sg Ind Fut	wird atmen
 atmen			V haben	1 Pl Ind Fut	werden atmen
@@ -141,7 +141,7 @@ atmen			V haben	3 Sg Subj Fut	werde atmen
 atmen			V haben	1 Pl Subj Fut	werden atmen
 atmen			V haben	2 Pl Subj Fut	werdet atmen
 atmen			V haben	3 Pl Subj Fut	werden atmen
-atmen			V haben	1 Sg Ind FutPerf	werde geatmet haben
+atmen			V haben	1 Sg Ind FutPerf	werde geatmet haben, werd geatmet haben (ugs.)
 atmen			V haben	2 Sg Ind FutPerf	wirst geatmet haben
 atmen			V haben	3 Sg Ind FutPerf	wird geatmet haben
 atmen			V haben	1 Pl Ind FutPerf	werden geatmet haben
@@ -171,7 +171,7 @@ denken			V haben	3 Sg Subj Pres	denke
 denken			V haben	1 Pl Subj Pres	denken
 denken			V haben	2 Pl Subj Pres	denket
 denken			V haben	3 Pl Subj Pres	denken
-denken			V haben	1 Sg Ind Perf	habe gedacht
+denken			V haben	1 Sg Ind Perf	habe gedacht, hab gedacht (ugs.)
 denken			V haben	2 Sg Ind Perf	hast gedacht
 denken			V haben	3 Sg Ind Perf	hat gedacht
 denken			V haben	1 Pl Ind Perf	haben gedacht
@@ -207,7 +207,7 @@ denken			V haben	3 Sg Subj PastPerf	hätte gedacht
 denken			V haben	1 Pl Subj PastPerf	hätten gedacht
 denken			V haben	2 Pl Subj PastPerf	hättet gedacht
 denken			V haben	3 Pl Subj PastPerf	hätten gedacht
-denken			V haben	1 Sg Ind Fut	werde denken
+denken			V haben	1 Sg Ind Fut	werde denken, werd denken (ugs.)
 denken			V haben	2 Sg Ind Fut	wirst denken
 denken			V haben	3 Sg Ind Fut	wird denken
 denken			V haben	1 Pl Ind Fut	werden denken
@@ -219,7 +219,7 @@ denken			V haben	3 Sg Subj Fut	werde denken
 denken			V haben	1 Pl Subj Fut	werden denken
 denken			V haben	2 Pl Subj Fut	werdet denken
 denken			V haben	3 Pl Subj Fut	werden denken
-denken			V haben	1 Sg Ind FutPerf	werde gedacht haben
+denken			V haben	1 Sg Ind FutPerf	werde gedacht haben, werd gedacht haben (ugs.)
 denken			V haben	2 Sg Ind FutPerf	wirst gedacht haben
 denken			V haben	3 Sg Ind FutPerf	wird gedacht haben
 denken			V haben	1 Pl Ind FutPerf	werden gedacht haben
@@ -285,7 +285,7 @@ gehen			V sein	3 Sg Subj PastPerf	wäre gegangen
 gehen			V sein	1 Pl Subj PastPerf	wären gegangen
 gehen			V sein	2 Pl Subj PastPerf	wäret gegangen, wärt gegangen
 gehen			V sein	3 Pl Subj PastPerf	wären gegangen
-gehen			V sein	1 Sg Ind Fut	werde gehen
+gehen			V sein	1 Sg Ind Fut	werde gehen, werd gehen (ugs.)
 gehen			V sein	2 Sg Ind Fut	wirst gehen
 gehen			V sein	3 Sg Ind Fut	wird gehen
 gehen			V sein	1 Pl Ind Fut	werden gehen
@@ -297,7 +297,7 @@ gehen			V sein	3 Sg Subj Fut	werde gehen
 gehen			V sein	1 Pl Subj Fut	werden gehen
 gehen			V sein	2 Pl Subj Fut	werdet gehen
 gehen			V sein	3 Pl Subj Fut	werden gehen
-gehen			V sein	1 Sg Ind FutPerf	werde gegangen sein
+gehen			V sein	1 Sg Ind FutPerf	werde gegangen sein, werd gegangen sein (ugs.)
 gehen			V sein	2 Sg Ind FutPerf	wirst gegangen sein
 gehen			V sein	3 Sg Ind FutPerf	wird gegangen sein
 gehen			V sein	1 Pl Ind FutPerf	werden gegangen sein
@@ -327,7 +327,7 @@ haben			V haben	3 Sg Subj Pres	habe
 haben			V haben	1 Pl Subj Pres	haben
 haben			V haben	2 Pl Subj Pres	habet
 haben			V haben	3 Pl Subj Pres	haben
-haben			V haben	1 Sg Ind Perf	habe gehabt
+haben			V haben	1 Sg Ind Perf	habe gehabt, hab gehabt (ugs.)
 haben			V haben	2 Sg Ind Perf	hast gehabt
 haben			V haben	3 Sg Ind Perf	hat gehabt
 haben			V haben	1 Pl Ind Perf	haben gehabt
@@ -363,7 +363,7 @@ haben			V haben	3 Sg Subj PastPerf	hätte gehabt
 haben			V haben	1 Pl Subj PastPerf	hätten gehabt
 haben			V haben	2 Pl Subj PastPerf	hättet gehabt
 haben			V haben	3 Pl Subj PastPerf	hätten gehabt
-haben			V haben	1 Sg Ind Fut	werde haben
+haben			V haben	1 Sg Ind Fut	werde haben, werd haben (ugs.)
 haben			V haben	2 Sg Ind Fut	wirst haben
 haben			V haben	3 Sg Ind Fut	wird haben
 haben			V haben	1 Pl Ind Fut	werden haben
@@ -375,7 +375,7 @@ haben			V haben	3 Sg Subj Fut	werde haben
 haben			V haben	1 Pl Subj Fut	werden haben
 haben			V haben	2 Pl Subj Fut	werdet haben
 haben			V haben	3 Pl Subj Fut	werden haben
-haben			V haben	1 Sg Ind FutPerf	werde gehabt haben
+haben			V haben	1 Sg Ind FutPerf	werde gehabt haben, werd gehabt haben (ugs.)
 haben			V haben	2 Sg Ind FutPerf	wirst gehabt haben
 haben			V haben	3 Sg Ind FutPerf	wird gehabt haben
 haben			V haben	1 Pl Ind FutPerf	werden gehabt haben
@@ -405,7 +405,7 @@ halten			V haben	3 Sg Subj Pres	halte
 halten			V haben	1 Pl Subj Pres	halten
 halten			V haben	2 Pl Subj Pres	haltet
 halten			V haben	3 Pl Subj Pres	halten
-halten			V haben	1 Sg Ind Perf	habe gehalten
+halten			V haben	1 Sg Ind Perf	habe gehalten, hab gehalten (ugs.)
 halten			V haben	2 Sg Ind Perf	hast gehalten
 halten			V haben	3 Sg Ind Perf	hat gehalten
 halten			V haben	1 Pl Ind Perf	haben gehalten
@@ -441,7 +441,7 @@ halten			V haben	3 Sg Subj PastPerf	hätte gehalten
 halten			V haben	1 Pl Subj PastPerf	hätten gehalten
 halten			V haben	2 Pl Subj PastPerf	hättet gehalten
 halten			V haben	3 Pl Subj PastPerf	hätten gehalten
-halten			V haben	1 Sg Ind Fut	werde halten
+halten			V haben	1 Sg Ind Fut	werde halten, werd halten (ugs.)
 halten			V haben	2 Sg Ind Fut	wirst halten
 halten			V haben	3 Sg Ind Fut	wird halten
 halten			V haben	1 Pl Ind Fut	werden halten
@@ -453,7 +453,7 @@ halten			V haben	3 Sg Subj Fut	werde halten
 halten			V haben	1 Pl Subj Fut	werden halten
 halten			V haben	2 Pl Subj Fut	werdet halten
 halten			V haben	3 Pl Subj Fut	werden halten
-halten			V haben	1 Sg Ind FutPerf	werde gehalten haben
+halten			V haben	1 Sg Ind FutPerf	werde gehalten haben, werd gehalten haben (ugs.)
 halten			V haben	2 Sg Ind FutPerf	wirst gehalten haben
 halten			V haben	3 Sg Ind FutPerf	wird gehalten haben
 halten			V haben	1 Pl Ind FutPerf	werden gehalten haben
@@ -483,7 +483,7 @@ heißen	1		V haben	3 Sg Subj Pres	heiße, heisse (CH)
 heißen	1		V haben	1 Pl Subj Pres	heißen, heissen (CH)
 heißen	1		V haben	2 Pl Subj Pres	heißet, heisset (CH)
 heißen	1		V haben	3 Pl Subj Pres	heißen, heissen (CH)
-heißen	1		V haben	1 Sg Ind Perf	habe geheißen, habe geheissen (CH)
+heißen	1		V haben	1 Sg Ind Perf	habe geheißen, hab geheißen (ugs.), habe geheissen (CH), hab geheissen (ugs., CH)
 heißen	1		V haben	2 Sg Ind Perf	hast geheißen, hast geheissen (CH)
 heißen	1		V haben	3 Sg Ind Perf	hat geheißen, hat geheissen (CH)
 heißen	1		V haben	1 Pl Ind Perf	haben geheißen, haben geheissen (CH)
@@ -519,7 +519,7 @@ heißen	1		V haben	3 Sg Subj PastPerf	hätte geheißen, hätte geheissen (CH)
 heißen	1		V haben	1 Pl Subj PastPerf	hätten geheißen, hätten geheissen (CH)
 heißen	1		V haben	2 Pl Subj PastPerf	hättet geheißen, hättet geheissen (CH)
 heißen	1		V haben	3 Pl Subj PastPerf	hätten geheißen, hätten geheissen (CH)
-heißen	1		V haben	1 Sg Ind Fut	werde heißen, werde heissen (CH)
+heißen	1		V haben	1 Sg Ind Fut	werde heißen, werd heißen (ugs.), werde heissen (CH), werd heissen (ugs., CH)
 heißen	1		V haben	2 Sg Ind Fut	wirst heißen, wirst heissen (CH)
 heißen	1		V haben	3 Sg Ind Fut	wird heißen, wird heissen (CH)
 heißen	1		V haben	1 Pl Ind Fut	werden heißen, werden heissen (CH)
@@ -531,7 +531,7 @@ heißen	1		V haben	3 Sg Subj Fut	werde heißen, werde heissen (CH)
 heißen	1		V haben	1 Pl Subj Fut	werden heißen, werden heissen (CH)
 heißen	1		V haben	2 Pl Subj Fut	werdet heißen, werdet heissen (CH)
 heißen	1		V haben	3 Pl Subj Fut	werden heißen, werden heissen (CH)
-heißen	1		V haben	1 Sg Ind FutPerf	werde geheißen haben, werde geheissen haben (CH)
+heißen	1		V haben	1 Sg Ind FutPerf	werde geheißen haben, werd geheißen haben (ugs.), werde geheissen haben (CH), werd geheissen haben (ugs., CH)
 heißen	1		V haben	2 Sg Ind FutPerf	wirst geheißen haben, wirst geheissen haben (CH)
 heißen	1		V haben	3 Sg Ind FutPerf	wird geheißen haben, wird geheissen haben (CH)
 heißen	1		V haben	1 Pl Ind FutPerf	werden geheißen haben, werden geheissen haben (CH)
@@ -561,7 +561,7 @@ heißen	2		V haben	3 Sg Subj Pres	heiße, heisse (CH)
 heißen	2		V haben	1 Pl Subj Pres	heißen, heissen (CH)
 heißen	2		V haben	2 Pl Subj Pres	heißet, heisset (CH)
 heißen	2		V haben	3 Pl Subj Pres	heißen, heissen (CH)
-heißen	2		V haben	1 Sg Ind Perf	habe geheißt, habe geheisst (CH)
+heißen	2		V haben	1 Sg Ind Perf	habe geheißt, hab geheißt (ugs.), habe geheisst (CH), hab geheisst (ugs., CH)
 heißen	2		V haben	2 Sg Ind Perf	hast geheißt, hast geheisst (CH)
 heißen	2		V haben	3 Sg Ind Perf	hat geheißt, hat geheisst (CH)
 heißen	2		V haben	1 Pl Ind Perf	haben geheißt, haben geheisst (CH)
@@ -597,7 +597,7 @@ heißen	2		V haben	3 Sg Subj PastPerf	hätte geheißt, hätte geheisst (CH)
 heißen	2		V haben	1 Pl Subj PastPerf	hätten geheißt, hätten geheisst (CH)
 heißen	2		V haben	2 Pl Subj PastPerf	hättet geheißt, hättet geheisst (CH)
 heißen	2		V haben	3 Pl Subj PastPerf	hätten geheißt, hätten geheisst (CH)
-heißen	2		V haben	1 Sg Ind Fut	werde heißen, werde heissen (CH)
+heißen	2		V haben	1 Sg Ind Fut	werde heißen, werd heißen (ugs.), werde heissen (CH), werd heissen (ugs., CH)
 heißen	2		V haben	2 Sg Ind Fut	wirst heißen, wirst heissen (CH)
 heißen	2		V haben	3 Sg Ind Fut	wird heißen, wird heissen (CH)
 heißen	2		V haben	1 Pl Ind Fut	werden heißen, werden heissen (CH)
@@ -609,7 +609,7 @@ heißen	2		V haben	3 Sg Subj Fut	werde heißen, werde heissen (CH)
 heißen	2		V haben	1 Pl Subj Fut	werden heißen, werden heissen (CH)
 heißen	2		V haben	2 Pl Subj Fut	werdet heißen, werdet heissen (CH)
 heißen	2		V haben	3 Pl Subj Fut	werden heißen, werden heissen (CH)
-heißen	2		V haben	1 Sg Ind FutPerf	werde geheißt haben, werde geheisst haben (CH)
+heißen	2		V haben	1 Sg Ind FutPerf	werde geheißt haben, werd geheißt haben (ugs.), werde geheisst haben (CH), werd geheisst haben (ugs., CH)
 heißen	2		V haben	2 Sg Ind FutPerf	wirst geheißt haben, wirst geheisst haben (CH)
 heißen	2		V haben	3 Sg Ind FutPerf	wird geheißt haben, wird geheisst haben (CH)
 heißen	2		V haben	1 Pl Ind FutPerf	werden geheißt haben, werden geheisst haben (CH)
@@ -639,7 +639,7 @@ können			V haben	3 Sg Subj Pres	könne
 können			V haben	1 Pl Subj Pres	können
 können			V haben	2 Pl Subj Pres	könnet
 können			V haben	3 Pl Subj Pres	können
-können			V haben	1 Sg Ind Perf	habe gekonnt, habe können
+können			V haben	1 Sg Ind Perf	habe gekonnt, habe können, hab gekonnt (ugs.), hab können (ugs.)
 können			V haben	2 Sg Ind Perf	hast gekonnt, hast können
 können			V haben	3 Sg Ind Perf	hat gekonnt, hat können
 können			V haben	1 Pl Ind Perf	haben gekonnt, haben können
@@ -675,7 +675,7 @@ können			V haben	3 Sg Subj PastPerf	hätte gekonnt, hätte können
 können			V haben	1 Pl Subj PastPerf	hätten gekonnt, hätten können
 können			V haben	2 Pl Subj PastPerf	hättet gekonnt, hättet können
 können			V haben	3 Pl Subj PastPerf	hätten gekonnt, hätten können
-können			V haben	1 Sg Ind Fut	werde können
+können			V haben	1 Sg Ind Fut	werde können, werd können (ugs.)
 können			V haben	2 Sg Ind Fut	wirst können
 können			V haben	3 Sg Ind Fut	wird können
 können			V haben	1 Pl Ind Fut	werden können
@@ -687,7 +687,7 @@ können			V haben	3 Sg Subj Fut	werde können
 können			V haben	1 Pl Subj Fut	werden können
 können			V haben	2 Pl Subj Fut	werdet können
 können			V haben	3 Pl Subj Fut	werden können
-können			V haben	1 Sg Ind FutPerf	werde gekonnt haben, werde können haben
+können			V haben	1 Sg Ind FutPerf	werde gekonnt haben, werde können haben, werd gekonnt haben (ugs.), werd können haben (ugs.)
 können			V haben	2 Sg Ind FutPerf	wirst gekonnt haben, wirst können haben
 können			V haben	3 Sg Ind FutPerf	wird gekonnt haben, wird können haben
 können			V haben	1 Pl Ind FutPerf	werden gekonnt haben, werden können haben
@@ -715,7 +715,7 @@ küssen			V haben	3 Sg Subj Pres	küsse
 küssen			V haben	1 Pl Subj Pres	küssen
 küssen			V haben	2 Pl Subj Pres	küsset
 küssen			V haben	3 Pl Subj Pres	küssen
-küssen			V haben	1 Sg Ind Perf	habe geküsst, habe geküßt (ung.)
+küssen			V haben	1 Sg Ind Perf	habe geküsst, hab geküsst (ugs.), habe geküßt (ung.), hab geküßt (ugs., ung.)
 küssen			V haben	2 Sg Ind Perf	hast geküsst, hast geküßt (ung.)
 küssen			V haben	3 Sg Ind Perf	hat geküsst, hat geküßt (ung.)
 küssen			V haben	1 Pl Ind Perf	haben geküsst, haben geküßt (ung.)
@@ -751,7 +751,7 @@ küssen			V haben	3 Sg Subj PastPerf	hätte geküsst, hätte geküßt (ung.)
 küssen			V haben	1 Pl Subj PastPerf	hätten geküsst, hätten geküßt (ung.)
 küssen			V haben	2 Pl Subj PastPerf	hättet geküsst, hättet geküßt (ung.)
 küssen			V haben	3 Pl Subj PastPerf	hätten geküsst, hätten geküßt (ung.)
-küssen			V haben	1 Sg Ind Fut	werde küssen
+küssen			V haben	1 Sg Ind Fut	werde küssen, werd küssen (ugs.)
 küssen			V haben	2 Sg Ind Fut	wirst küssen
 küssen			V haben	3 Sg Ind Fut	wird küssen
 küssen			V haben	1 Pl Ind Fut	werden küssen
@@ -763,7 +763,7 @@ küssen			V haben	3 Sg Subj Fut	werde küssen
 küssen			V haben	1 Pl Subj Fut	werden küssen
 küssen			V haben	2 Pl Subj Fut	werdet küssen
 küssen			V haben	3 Pl Subj Fut	werden küssen
-küssen			V haben	1 Sg Ind FutPerf	werde geküsst haben, werde geküßt haben (ung.)
+küssen			V haben	1 Sg Ind FutPerf	werde geküsst haben, werd geküsst haben (ugs.), werde geküßt haben (ung.), werd geküßt haben (ugs., ung.)
 küssen			V haben	2 Sg Ind FutPerf	wirst geküsst haben, wirst geküßt haben (ung.)
 küssen			V haben	3 Sg Ind FutPerf	wird geküsst haben, wird geküßt haben (ung.)
 küssen			V haben	1 Pl Ind FutPerf	werden geküsst haben, werden geküßt haben (ung.)
@@ -793,7 +793,7 @@ laden	1	1	V haben	3 Sg Subj Pres	lade
 laden	1	1	V haben	1 Pl Subj Pres	laden
 laden	1	1	V haben	2 Pl Subj Pres	ladet
 laden	1	1	V haben	3 Pl Subj Pres	laden
-laden	1	1	V haben	1 Sg Ind Perf	habe geladen
+laden	1	1	V haben	1 Sg Ind Perf	habe geladen, hab geladen (ugs.)
 laden	1	1	V haben	2 Sg Ind Perf	hast geladen
 laden	1	1	V haben	3 Sg Ind Perf	hat geladen
 laden	1	1	V haben	1 Pl Ind Perf	haben geladen
@@ -829,7 +829,7 @@ laden	1	1	V haben	3 Sg Subj PastPerf	hätte geladen
 laden	1	1	V haben	1 Pl Subj PastPerf	hätten geladen
 laden	1	1	V haben	2 Pl Subj PastPerf	hättet geladen
 laden	1	1	V haben	3 Pl Subj PastPerf	hätten geladen
-laden	1	1	V haben	1 Sg Ind Fut	werde laden
+laden	1	1	V haben	1 Sg Ind Fut	werde laden, werd laden (ugs.)
 laden	1	1	V haben	2 Sg Ind Fut	wirst laden
 laden	1	1	V haben	3 Sg Ind Fut	wird laden
 laden	1	1	V haben	1 Pl Ind Fut	werden laden
@@ -841,7 +841,7 @@ laden	1	1	V haben	3 Sg Subj Fut	werde laden
 laden	1	1	V haben	1 Pl Subj Fut	werden laden
 laden	1	1	V haben	2 Pl Subj Fut	werdet laden
 laden	1	1	V haben	3 Pl Subj Fut	werden laden
-laden	1	1	V haben	1 Sg Ind FutPerf	werde geladen haben
+laden	1	1	V haben	1 Sg Ind FutPerf	werde geladen haben, werd geladen haben (ugs.)
 laden	1	1	V haben	2 Sg Ind FutPerf	wirst geladen haben
 laden	1	1	V haben	3 Sg Ind FutPerf	wird geladen haben
 laden	1	1	V haben	1 Pl Ind FutPerf	werden geladen haben
@@ -871,7 +871,7 @@ laden	1	2	V haben	3 Sg Subj Pres	lade
 laden	1	2	V haben	1 Pl Subj Pres	laden
 laden	1	2	V haben	2 Pl Subj Pres	ladet
 laden	1	2	V haben	3 Pl Subj Pres	laden
-laden	1	2	V haben	1 Sg Ind Perf	habe geladen
+laden	1	2	V haben	1 Sg Ind Perf	habe geladen, hab geladen (ugs.)
 laden	1	2	V haben	2 Sg Ind Perf	hast geladen
 laden	1	2	V haben	3 Sg Ind Perf	hat geladen
 laden	1	2	V haben	1 Pl Ind Perf	haben geladen
@@ -907,7 +907,7 @@ laden	1	2	V haben	3 Sg Subj PastPerf	hätte geladen
 laden	1	2	V haben	1 Pl Subj PastPerf	hätten geladen
 laden	1	2	V haben	2 Pl Subj PastPerf	hättet geladen
 laden	1	2	V haben	3 Pl Subj PastPerf	hätten geladen
-laden	1	2	V haben	1 Sg Ind Fut	werde laden
+laden	1	2	V haben	1 Sg Ind Fut	werde laden, werd laden (ugs.)
 laden	1	2	V haben	2 Sg Ind Fut	wirst laden
 laden	1	2	V haben	3 Sg Ind Fut	wird laden
 laden	1	2	V haben	1 Pl Ind Fut	werden laden
@@ -919,7 +919,7 @@ laden	1	2	V haben	3 Sg Subj Fut	werde laden
 laden	1	2	V haben	1 Pl Subj Fut	werden laden
 laden	1	2	V haben	2 Pl Subj Fut	werdet laden
 laden	1	2	V haben	3 Pl Subj Fut	werden laden
-laden	1	2	V haben	1 Sg Ind FutPerf	werde geladen haben
+laden	1	2	V haben	1 Sg Ind FutPerf	werde geladen haben, werd geladen haben (ugs.)
 laden	1	2	V haben	2 Sg Ind FutPerf	wirst geladen haben
 laden	1	2	V haben	3 Sg Ind FutPerf	wird geladen haben
 laden	1	2	V haben	1 Pl Ind FutPerf	werden geladen haben
@@ -949,7 +949,7 @@ laden	2	1	V haben	3 Sg Subj Pres	lade
 laden	2	1	V haben	1 Pl Subj Pres	laden
 laden	2	1	V haben	2 Pl Subj Pres	ladet
 laden	2	1	V haben	3 Pl Subj Pres	laden
-laden	2	1	V haben	1 Sg Ind Perf	habe geladen
+laden	2	1	V haben	1 Sg Ind Perf	habe geladen, hab geladen (ugs.)
 laden	2	1	V haben	2 Sg Ind Perf	hast geladen
 laden	2	1	V haben	3 Sg Ind Perf	hat geladen
 laden	2	1	V haben	1 Pl Ind Perf	haben geladen
@@ -985,7 +985,7 @@ laden	2	1	V haben	3 Sg Subj PastPerf	hätte geladen
 laden	2	1	V haben	1 Pl Subj PastPerf	hätten geladen
 laden	2	1	V haben	2 Pl Subj PastPerf	hättet geladen
 laden	2	1	V haben	3 Pl Subj PastPerf	hätten geladen
-laden	2	1	V haben	1 Sg Ind Fut	werde laden
+laden	2	1	V haben	1 Sg Ind Fut	werde laden, werd laden (ugs.)
 laden	2	1	V haben	2 Sg Ind Fut	wirst laden
 laden	2	1	V haben	3 Sg Ind Fut	wird laden
 laden	2	1	V haben	1 Pl Ind Fut	werden laden
@@ -997,7 +997,7 @@ laden	2	1	V haben	3 Sg Subj Fut	werde laden
 laden	2	1	V haben	1 Pl Subj Fut	werden laden
 laden	2	1	V haben	2 Pl Subj Fut	werdet laden
 laden	2	1	V haben	3 Pl Subj Fut	werden laden
-laden	2	1	V haben	1 Sg Ind FutPerf	werde geladen haben
+laden	2	1	V haben	1 Sg Ind FutPerf	werde geladen haben, werd geladen haben (ugs.)
 laden	2	1	V haben	2 Sg Ind FutPerf	wirst geladen haben
 laden	2	1	V haben	3 Sg Ind FutPerf	wird geladen haben
 laden	2	1	V haben	1 Pl Ind FutPerf	werden geladen haben
@@ -1027,7 +1027,7 @@ laden	2	2	V haben	3 Sg Subj Pres	lade
 laden	2	2	V haben	1 Pl Subj Pres	laden
 laden	2	2	V haben	2 Pl Subj Pres	ladet
 laden	2	2	V haben	3 Pl Subj Pres	laden
-laden	2	2	V haben	1 Sg Ind Perf	habe geladen
+laden	2	2	V haben	1 Sg Ind Perf	habe geladen, hab geladen (ugs.)
 laden	2	2	V haben	2 Sg Ind Perf	hast geladen
 laden	2	2	V haben	3 Sg Ind Perf	hat geladen
 laden	2	2	V haben	1 Pl Ind Perf	haben geladen
@@ -1063,7 +1063,7 @@ laden	2	2	V haben	3 Sg Subj PastPerf	hätte geladen
 laden	2	2	V haben	1 Pl Subj PastPerf	hätten geladen
 laden	2	2	V haben	2 Pl Subj PastPerf	hättet geladen
 laden	2	2	V haben	3 Pl Subj PastPerf	hätten geladen
-laden	2	2	V haben	1 Sg Ind Fut	werde laden
+laden	2	2	V haben	1 Sg Ind Fut	werde laden, werd laden (ugs.)
 laden	2	2	V haben	2 Sg Ind Fut	wirst laden
 laden	2	2	V haben	3 Sg Ind Fut	wird laden
 laden	2	2	V haben	1 Pl Ind Fut	werden laden
@@ -1075,7 +1075,7 @@ laden	2	2	V haben	3 Sg Subj Fut	werde laden
 laden	2	2	V haben	1 Pl Subj Fut	werden laden
 laden	2	2	V haben	2 Pl Subj Fut	werdet laden
 laden	2	2	V haben	3 Pl Subj Fut	werden laden
-laden	2	2	V haben	1 Sg Ind FutPerf	werde geladen haben
+laden	2	2	V haben	1 Sg Ind FutPerf	werde geladen haben, werd geladen haben (ugs.)
 laden	2	2	V haben	2 Sg Ind FutPerf	wirst geladen haben
 laden	2	2	V haben	3 Sg Ind FutPerf	wird geladen haben
 laden	2	2	V haben	1 Pl Ind FutPerf	werden geladen haben
@@ -1105,7 +1105,7 @@ laufen			V haben	3 Sg Subj Pres	laufe
 laufen			V haben	1 Pl Subj Pres	laufen
 laufen			V haben	2 Pl Subj Pres	laufet
 laufen			V haben	3 Pl Subj Pres	laufen
-laufen			V haben	1 Sg Ind Perf	habe gelaufen
+laufen			V haben	1 Sg Ind Perf	habe gelaufen, hab gelaufen (ugs.)
 laufen			V haben	2 Sg Ind Perf	hast gelaufen
 laufen			V haben	3 Sg Ind Perf	hat gelaufen
 laufen			V haben	1 Pl Ind Perf	haben gelaufen
@@ -1141,7 +1141,7 @@ laufen			V haben	3 Sg Subj PastPerf	hätte gelaufen
 laufen			V haben	1 Pl Subj PastPerf	hätten gelaufen
 laufen			V haben	2 Pl Subj PastPerf	hättet gelaufen
 laufen			V haben	3 Pl Subj PastPerf	hätten gelaufen
-laufen			V haben	1 Sg Ind Fut	werde laufen
+laufen			V haben	1 Sg Ind Fut	werde laufen, werd laufen (ugs.)
 laufen			V haben	2 Sg Ind Fut	wirst laufen
 laufen			V haben	3 Sg Ind Fut	wird laufen
 laufen			V haben	1 Pl Ind Fut	werden laufen
@@ -1153,7 +1153,7 @@ laufen			V haben	3 Sg Subj Fut	werde laufen
 laufen			V haben	1 Pl Subj Fut	werden laufen
 laufen			V haben	2 Pl Subj Fut	werdet laufen
 laufen			V haben	3 Pl Subj Fut	werden laufen
-laufen			V haben	1 Sg Ind FutPerf	werde gelaufen haben
+laufen			V haben	1 Sg Ind FutPerf	werde gelaufen haben, werd gelaufen haben (ugs.)
 laufen			V haben	2 Sg Ind FutPerf	wirst gelaufen haben
 laufen			V haben	3 Sg Ind FutPerf	wird gelaufen haben
 laufen			V haben	1 Pl Ind FutPerf	werden gelaufen haben
@@ -1219,7 +1219,7 @@ laufen			V sein	3 Sg Subj PastPerf	wäre gelaufen
 laufen			V sein	1 Pl Subj PastPerf	wären gelaufen
 laufen			V sein	2 Pl Subj PastPerf	wäret gelaufen, wärt gelaufen
 laufen			V sein	3 Pl Subj PastPerf	wären gelaufen
-laufen			V sein	1 Sg Ind Fut	werde laufen
+laufen			V sein	1 Sg Ind Fut	werde laufen, werd laufen (ugs.)
 laufen			V sein	2 Sg Ind Fut	wirst laufen
 laufen			V sein	3 Sg Ind Fut	wird laufen
 laufen			V sein	1 Pl Ind Fut	werden laufen
@@ -1231,7 +1231,7 @@ laufen			V sein	3 Sg Subj Fut	werde laufen
 laufen			V sein	1 Pl Subj Fut	werden laufen
 laufen			V sein	2 Pl Subj Fut	werdet laufen
 laufen			V sein	3 Pl Subj Fut	werden laufen
-laufen			V sein	1 Sg Ind FutPerf	werde gelaufen sein
+laufen			V sein	1 Sg Ind FutPerf	werde gelaufen sein, werd gelaufen sein (ugs.)
 laufen			V sein	2 Sg Ind FutPerf	wirst gelaufen sein
 laufen			V sein	3 Sg Ind FutPerf	wird gelaufen sein
 laufen			V sein	1 Pl Ind FutPerf	werden gelaufen sein
@@ -1261,7 +1261,7 @@ lesen	1		V haben	3 Sg Subj Pres	lese
 lesen	1		V haben	1 Pl Subj Pres	lesen
 lesen	1		V haben	2 Pl Subj Pres	leset
 lesen	1		V haben	3 Pl Subj Pres	lesen
-lesen	1		V haben	1 Sg Ind Perf	habe gelesen
+lesen	1		V haben	1 Sg Ind Perf	habe gelesen, hab gelesen (ugs.)
 lesen	1		V haben	2 Sg Ind Perf	hast gelesen
 lesen	1		V haben	3 Sg Ind Perf	hat gelesen
 lesen	1		V haben	1 Pl Ind Perf	haben gelesen
@@ -1297,7 +1297,7 @@ lesen	1		V haben	3 Sg Subj PastPerf	hätte gelesen
 lesen	1		V haben	1 Pl Subj PastPerf	hätten gelesen
 lesen	1		V haben	2 Pl Subj PastPerf	hättet gelesen
 lesen	1		V haben	3 Pl Subj PastPerf	hätten gelesen
-lesen	1		V haben	1 Sg Ind Fut	werde lesen
+lesen	1		V haben	1 Sg Ind Fut	werde lesen, werd lesen (ugs.)
 lesen	1		V haben	2 Sg Ind Fut	wirst lesen
 lesen	1		V haben	3 Sg Ind Fut	wird lesen
 lesen	1		V haben	1 Pl Ind Fut	werden lesen
@@ -1309,7 +1309,7 @@ lesen	1		V haben	3 Sg Subj Fut	werde lesen
 lesen	1		V haben	1 Pl Subj Fut	werden lesen
 lesen	1		V haben	2 Pl Subj Fut	werdet lesen
 lesen	1		V haben	3 Pl Subj Fut	werden lesen
-lesen	1		V haben	1 Sg Ind FutPerf	werde gelesen haben
+lesen	1		V haben	1 Sg Ind FutPerf	werde gelesen haben, werd gelesen haben (ugs.)
 lesen	1		V haben	2 Sg Ind FutPerf	wirst gelesen haben
 lesen	1		V haben	3 Sg Ind FutPerf	wird gelesen haben
 lesen	1		V haben	1 Pl Ind FutPerf	werden gelesen haben
@@ -1339,7 +1339,7 @@ lesen	2		V haben	3 Sg Subj Pres	lese
 lesen	2		V haben	1 Pl Subj Pres	lesen
 lesen	2		V haben	2 Pl Subj Pres	leset
 lesen	2		V haben	3 Pl Subj Pres	lesen
-lesen	2		V haben	1 Sg Ind Perf	habe gelesen
+lesen	2		V haben	1 Sg Ind Perf	habe gelesen, hab gelesen (ugs.)
 lesen	2		V haben	2 Sg Ind Perf	hast gelesen
 lesen	2		V haben	3 Sg Ind Perf	hat gelesen
 lesen	2		V haben	1 Pl Ind Perf	haben gelesen
@@ -1375,7 +1375,7 @@ lesen	2		V haben	3 Sg Subj PastPerf	hätte gelesen
 lesen	2		V haben	1 Pl Subj PastPerf	hätten gelesen
 lesen	2		V haben	2 Pl Subj PastPerf	hättet gelesen
 lesen	2		V haben	3 Pl Subj PastPerf	hätten gelesen
-lesen	2		V haben	1 Sg Ind Fut	werde lesen
+lesen	2		V haben	1 Sg Ind Fut	werde lesen, werd lesen (ugs.)
 lesen	2		V haben	2 Sg Ind Fut	wirst lesen
 lesen	2		V haben	3 Sg Ind Fut	wird lesen
 lesen	2		V haben	1 Pl Ind Fut	werden lesen
@@ -1387,7 +1387,7 @@ lesen	2		V haben	3 Sg Subj Fut	werde lesen
 lesen	2		V haben	1 Pl Subj Fut	werden lesen
 lesen	2		V haben	2 Pl Subj Fut	werdet lesen
 lesen	2		V haben	3 Pl Subj Fut	werden lesen
-lesen	2		V haben	1 Sg Ind FutPerf	werde gelesen haben
+lesen	2		V haben	1 Sg Ind FutPerf	werde gelesen haben, werd gelesen haben (ugs.)
 lesen	2		V haben	2 Sg Ind FutPerf	wirst gelesen haben
 lesen	2		V haben	3 Sg Ind FutPerf	wird gelesen haben
 lesen	2		V haben	1 Pl Ind FutPerf	werden gelesen haben
@@ -1417,7 +1417,7 @@ schwimmen			V haben	3 Sg Subj Pres	schwimme
 schwimmen			V haben	1 Pl Subj Pres	schwimmen
 schwimmen			V haben	2 Pl Subj Pres	schwimmet
 schwimmen			V haben	3 Pl Subj Pres	schwimmen
-schwimmen			V haben	1 Sg Ind Perf	habe geschwommen
+schwimmen			V haben	1 Sg Ind Perf	habe geschwommen, hab geschwommen (ugs.)
 schwimmen			V haben	2 Sg Ind Perf	hast geschwommen
 schwimmen			V haben	3 Sg Ind Perf	hat geschwommen
 schwimmen			V haben	1 Pl Ind Perf	haben geschwommen
@@ -1453,7 +1453,7 @@ schwimmen			V haben	3 Sg Subj PastPerf	hätte geschwommen
 schwimmen			V haben	1 Pl Subj PastPerf	hätten geschwommen
 schwimmen			V haben	2 Pl Subj PastPerf	hättet geschwommen
 schwimmen			V haben	3 Pl Subj PastPerf	hätten geschwommen
-schwimmen			V haben	1 Sg Ind Fut	werde schwimmen
+schwimmen			V haben	1 Sg Ind Fut	werde schwimmen, werd schwimmen (ugs.)
 schwimmen			V haben	2 Sg Ind Fut	wirst schwimmen
 schwimmen			V haben	3 Sg Ind Fut	wird schwimmen
 schwimmen			V haben	1 Pl Ind Fut	werden schwimmen
@@ -1465,7 +1465,7 @@ schwimmen			V haben	3 Sg Subj Fut	werde schwimmen
 schwimmen			V haben	1 Pl Subj Fut	werden schwimmen
 schwimmen			V haben	2 Pl Subj Fut	werdet schwimmen
 schwimmen			V haben	3 Pl Subj Fut	werden schwimmen
-schwimmen			V haben	1 Sg Ind FutPerf	werde geschwommen haben
+schwimmen			V haben	1 Sg Ind FutPerf	werde geschwommen haben, werd geschwommen haben (ugs.)
 schwimmen			V haben	2 Sg Ind FutPerf	wirst geschwommen haben
 schwimmen			V haben	3 Sg Ind FutPerf	wird geschwommen haben
 schwimmen			V haben	1 Pl Ind FutPerf	werden geschwommen haben
@@ -1531,7 +1531,7 @@ schwimmen			V sein	3 Sg Subj PastPerf	wäre geschwommen
 schwimmen			V sein	1 Pl Subj PastPerf	wären geschwommen
 schwimmen			V sein	2 Pl Subj PastPerf	wäret geschwommen, wärt geschwommen
 schwimmen			V sein	3 Pl Subj PastPerf	wären geschwommen
-schwimmen			V sein	1 Sg Ind Fut	werde schwimmen
+schwimmen			V sein	1 Sg Ind Fut	werde schwimmen, werd schwimmen (ugs.)
 schwimmen			V sein	2 Sg Ind Fut	wirst schwimmen
 schwimmen			V sein	3 Sg Ind Fut	wird schwimmen
 schwimmen			V sein	1 Pl Ind Fut	werden schwimmen
@@ -1543,7 +1543,7 @@ schwimmen			V sein	3 Sg Subj Fut	werde schwimmen
 schwimmen			V sein	1 Pl Subj Fut	werden schwimmen
 schwimmen			V sein	2 Pl Subj Fut	werdet schwimmen
 schwimmen			V sein	3 Pl Subj Fut	werden schwimmen
-schwimmen			V sein	1 Sg Ind FutPerf	werde geschwommen sein
+schwimmen			V sein	1 Sg Ind FutPerf	werde geschwommen sein, werd geschwommen sein (ugs.)
 schwimmen			V sein	2 Sg Ind FutPerf	wirst geschwommen sein
 schwimmen			V sein	3 Sg Ind FutPerf	wird geschwommen sein
 schwimmen			V sein	1 Pl Ind FutPerf	werden geschwommen sein
@@ -1573,7 +1573,7 @@ segeln			V haben	3 Sg Subj Pres	segele, segle
 segeln			V haben	1 Pl Subj Pres	segeln
 segeln			V haben	2 Pl Subj Pres	segelt, seglet
 segeln			V haben	3 Pl Subj Pres	segeln
-segeln			V haben	1 Sg Ind Perf	habe gesegelt
+segeln			V haben	1 Sg Ind Perf	habe gesegelt, hab gesegelt (ugs.)
 segeln			V haben	2 Sg Ind Perf	hast gesegelt
 segeln			V haben	3 Sg Ind Perf	hat gesegelt
 segeln			V haben	1 Pl Ind Perf	haben gesegelt
@@ -1609,7 +1609,7 @@ segeln			V haben	3 Sg Subj PastPerf	hätte gesegelt
 segeln			V haben	1 Pl Subj PastPerf	hätten gesegelt
 segeln			V haben	2 Pl Subj PastPerf	hättet gesegelt
 segeln			V haben	3 Pl Subj PastPerf	hätten gesegelt
-segeln			V haben	1 Sg Ind Fut	werde segeln
+segeln			V haben	1 Sg Ind Fut	werde segeln, werd segeln (ugs.)
 segeln			V haben	2 Sg Ind Fut	wirst segeln
 segeln			V haben	3 Sg Ind Fut	wird segeln
 segeln			V haben	1 Pl Ind Fut	werden segeln
@@ -1621,7 +1621,7 @@ segeln			V haben	3 Sg Subj Fut	werde segeln
 segeln			V haben	1 Pl Subj Fut	werden segeln
 segeln			V haben	2 Pl Subj Fut	werdet segeln
 segeln			V haben	3 Pl Subj Fut	werden segeln
-segeln			V haben	1 Sg Ind FutPerf	werde gesegelt haben
+segeln			V haben	1 Sg Ind FutPerf	werde gesegelt haben, werd gesegelt haben (ugs.)
 segeln			V haben	2 Sg Ind FutPerf	wirst gesegelt haben
 segeln			V haben	3 Sg Ind FutPerf	wird gesegelt haben
 segeln			V haben	1 Pl Ind FutPerf	werden gesegelt haben
@@ -1687,7 +1687,7 @@ segeln			V sein	3 Sg Subj PastPerf	wäre gesegelt
 segeln			V sein	1 Pl Subj PastPerf	wären gesegelt
 segeln			V sein	2 Pl Subj PastPerf	wäret gesegelt, wärt gesegelt
 segeln			V sein	3 Pl Subj PastPerf	wären gesegelt
-segeln			V sein	1 Sg Ind Fut	werde segeln
+segeln			V sein	1 Sg Ind Fut	werde segeln, werd segeln (ugs.)
 segeln			V sein	2 Sg Ind Fut	wirst segeln
 segeln			V sein	3 Sg Ind Fut	wird segeln
 segeln			V sein	1 Pl Ind Fut	werden segeln
@@ -1699,7 +1699,7 @@ segeln			V sein	3 Sg Subj Fut	werde segeln
 segeln			V sein	1 Pl Subj Fut	werden segeln
 segeln			V sein	2 Pl Subj Fut	werdet segeln
 segeln			V sein	3 Pl Subj Fut	werden segeln
-segeln			V sein	1 Sg Ind FutPerf	werde gesegelt sein
+segeln			V sein	1 Sg Ind FutPerf	werde gesegelt sein, werd gesegelt sein (ugs.)
 segeln			V sein	2 Sg Ind FutPerf	wirst gesegelt sein
 segeln			V sein	3 Sg Ind FutPerf	wird gesegelt sein
 segeln			V sein	1 Pl Ind FutPerf	werden gesegelt sein
@@ -1729,7 +1729,7 @@ sehen			V haben	3 Sg Subj Pres	sehe
 sehen			V haben	1 Pl Subj Pres	sehen
 sehen			V haben	2 Pl Subj Pres	sehet
 sehen			V haben	3 Pl Subj Pres	sehen
-sehen			V haben	1 Sg Ind Perf	habe gesehen
+sehen			V haben	1 Sg Ind Perf	habe gesehen, hab gesehen (ugs.)
 sehen			V haben	2 Sg Ind Perf	hast gesehen
 sehen			V haben	3 Sg Ind Perf	hat gesehen
 sehen			V haben	1 Pl Ind Perf	haben gesehen
@@ -1765,7 +1765,7 @@ sehen			V haben	3 Sg Subj PastPerf	hätte gesehen
 sehen			V haben	1 Pl Subj PastPerf	hätten gesehen
 sehen			V haben	2 Pl Subj PastPerf	hättet gesehen
 sehen			V haben	3 Pl Subj PastPerf	hätten gesehen
-sehen			V haben	1 Sg Ind Fut	werde sehen
+sehen			V haben	1 Sg Ind Fut	werde sehen, werd sehen (ugs.)
 sehen			V haben	2 Sg Ind Fut	wirst sehen
 sehen			V haben	3 Sg Ind Fut	wird sehen
 sehen			V haben	1 Pl Ind Fut	werden sehen
@@ -1777,7 +1777,7 @@ sehen			V haben	3 Sg Subj Fut	werde sehen
 sehen			V haben	1 Pl Subj Fut	werden sehen
 sehen			V haben	2 Pl Subj Fut	werdet sehen
 sehen			V haben	3 Pl Subj Fut	werden sehen
-sehen			V haben	1 Sg Ind FutPerf	werde gesehen haben
+sehen			V haben	1 Sg Ind FutPerf	werde gesehen haben, werd gesehen haben (ugs.)
 sehen			V haben	2 Sg Ind FutPerf	wirst gesehen haben
 sehen			V haben	3 Sg Ind FutPerf	wird gesehen haben
 sehen			V haben	1 Pl Ind FutPerf	werden gesehen haben
@@ -1843,7 +1843,7 @@ sein	3		V sein	3 Sg Subj PastPerf	wäre gewesen
 sein	3		V sein	1 Pl Subj PastPerf	wären gewesen
 sein	3		V sein	2 Pl Subj PastPerf	wäret gewesen, wärt gewesen
 sein	3		V sein	3 Pl Subj PastPerf	wären gewesen
-sein	3		V sein	1 Sg Ind Fut	werde sein
+sein	3		V sein	1 Sg Ind Fut	werde sein, werd sein (ugs.)
 sein	3		V sein	2 Sg Ind Fut	wirst sein
 sein	3		V sein	3 Sg Ind Fut	wird sein
 sein	3		V sein	1 Pl Ind Fut	werden sein
@@ -1855,7 +1855,7 @@ sein	3		V sein	3 Sg Subj Fut	werde sein
 sein	3		V sein	1 Pl Subj Fut	werden sein
 sein	3		V sein	2 Pl Subj Fut	werdet sein
 sein	3		V sein	3 Pl Subj Fut	werden sein
-sein	3		V sein	1 Sg Ind FutPerf	werde gewesen sein
+sein	3		V sein	1 Sg Ind FutPerf	werde gewesen sein, werd gewesen sein (ugs.)
 sein	3		V sein	2 Sg Ind FutPerf	wirst gewesen sein
 sein	3		V sein	3 Sg Ind FutPerf	wird gewesen sein
 sein	3		V sein	1 Pl Ind FutPerf	werden gewesen sein
@@ -1885,7 +1885,7 @@ senden		1	V haben	3 Sg Subj Pres	sende
 senden		1	V haben	1 Pl Subj Pres	senden
 senden		1	V haben	2 Pl Subj Pres	sendet
 senden		1	V haben	3 Pl Subj Pres	senden
-senden		1	V haben	1 Sg Ind Perf	habe gesendet
+senden		1	V haben	1 Sg Ind Perf	habe gesendet, hab gesendet (ugs.)
 senden		1	V haben	2 Sg Ind Perf	hast gesendet
 senden		1	V haben	3 Sg Ind Perf	hat gesendet
 senden		1	V haben	1 Pl Ind Perf	haben gesendet
@@ -1921,7 +1921,7 @@ senden		1	V haben	3 Sg Subj PastPerf	hätte gesendet
 senden		1	V haben	1 Pl Subj PastPerf	hätten gesendet
 senden		1	V haben	2 Pl Subj PastPerf	hättet gesendet
 senden		1	V haben	3 Pl Subj PastPerf	hätten gesendet
-senden		1	V haben	1 Sg Ind Fut	werde senden
+senden		1	V haben	1 Sg Ind Fut	werde senden, werd senden (ugs.)
 senden		1	V haben	2 Sg Ind Fut	wirst senden
 senden		1	V haben	3 Sg Ind Fut	wird senden
 senden		1	V haben	1 Pl Ind Fut	werden senden
@@ -1933,7 +1933,7 @@ senden		1	V haben	3 Sg Subj Fut	werde senden
 senden		1	V haben	1 Pl Subj Fut	werden senden
 senden		1	V haben	2 Pl Subj Fut	werdet senden
 senden		1	V haben	3 Pl Subj Fut	werden senden
-senden		1	V haben	1 Sg Ind FutPerf	werde gesendet haben
+senden		1	V haben	1 Sg Ind FutPerf	werde gesendet haben, werd gesendet haben (ugs.)
 senden		1	V haben	2 Sg Ind FutPerf	wirst gesendet haben
 senden		1	V haben	3 Sg Ind FutPerf	wird gesendet haben
 senden		1	V haben	1 Pl Ind FutPerf	werden gesendet haben
@@ -1963,7 +1963,7 @@ senden		2	V haben	3 Sg Subj Pres	sende
 senden		2	V haben	1 Pl Subj Pres	senden
 senden		2	V haben	2 Pl Subj Pres	sendet
 senden		2	V haben	3 Pl Subj Pres	senden
-senden		2	V haben	1 Sg Ind Perf	habe gesandt
+senden		2	V haben	1 Sg Ind Perf	habe gesandt, hab gesandt (ugs.)
 senden		2	V haben	2 Sg Ind Perf	hast gesandt
 senden		2	V haben	3 Sg Ind Perf	hat gesandt
 senden		2	V haben	1 Pl Ind Perf	haben gesandt
@@ -1999,7 +1999,7 @@ senden		2	V haben	3 Sg Subj PastPerf	hätte gesandt
 senden		2	V haben	1 Pl Subj PastPerf	hätten gesandt
 senden		2	V haben	2 Pl Subj PastPerf	hättet gesandt
 senden		2	V haben	3 Pl Subj PastPerf	hätten gesandt
-senden		2	V haben	1 Sg Ind Fut	werde senden
+senden		2	V haben	1 Sg Ind Fut	werde senden, werd senden (ugs.)
 senden		2	V haben	2 Sg Ind Fut	wirst senden
 senden		2	V haben	3 Sg Ind Fut	wird senden
 senden		2	V haben	1 Pl Ind Fut	werden senden
@@ -2011,7 +2011,7 @@ senden		2	V haben	3 Sg Subj Fut	werde senden
 senden		2	V haben	1 Pl Subj Fut	werden senden
 senden		2	V haben	2 Pl Subj Fut	werdet senden
 senden		2	V haben	3 Pl Subj Fut	werden senden
-senden		2	V haben	1 Sg Ind FutPerf	werde gesandt haben
+senden		2	V haben	1 Sg Ind FutPerf	werde gesandt haben, werd gesandt haben (ugs.)
 senden		2	V haben	2 Sg Ind FutPerf	wirst gesandt haben
 senden		2	V haben	3 Sg Ind FutPerf	wird gesandt haben
 senden		2	V haben	1 Pl Ind FutPerf	werden gesandt haben
@@ -2041,7 +2041,7 @@ spielen			V haben	3 Sg Subj Pres	spiele
 spielen			V haben	1 Pl Subj Pres	spielen
 spielen			V haben	2 Pl Subj Pres	spielet
 spielen			V haben	3 Pl Subj Pres	spielen
-spielen			V haben	1 Sg Ind Perf	habe gespielt
+spielen			V haben	1 Sg Ind Perf	habe gespielt, hab gespielt (ugs.)
 spielen			V haben	2 Sg Ind Perf	hast gespielt
 spielen			V haben	3 Sg Ind Perf	hat gespielt
 spielen			V haben	1 Pl Ind Perf	haben gespielt
@@ -2077,7 +2077,7 @@ spielen			V haben	3 Sg Subj PastPerf	hätte gespielt
 spielen			V haben	1 Pl Subj PastPerf	hätten gespielt
 spielen			V haben	2 Pl Subj PastPerf	hättet gespielt
 spielen			V haben	3 Pl Subj PastPerf	hätten gespielt
-spielen			V haben	1 Sg Ind Fut	werde spielen
+spielen			V haben	1 Sg Ind Fut	werde spielen, werd spielen (ugs.)
 spielen			V haben	2 Sg Ind Fut	wirst spielen
 spielen			V haben	3 Sg Ind Fut	wird spielen
 spielen			V haben	1 Pl Ind Fut	werden spielen
@@ -2089,7 +2089,7 @@ spielen			V haben	3 Sg Subj Fut	werde spielen
 spielen			V haben	1 Pl Subj Fut	werden spielen
 spielen			V haben	2 Pl Subj Fut	werdet spielen
 spielen			V haben	3 Pl Subj Fut	werden spielen
-spielen			V haben	1 Sg Ind FutPerf	werde gespielt haben
+spielen			V haben	1 Sg Ind FutPerf	werde gespielt haben, werd gespielt haben (ugs.)
 spielen			V haben	2 Sg Ind FutPerf	wirst gespielt haben
 spielen			V haben	3 Sg Ind FutPerf	wird gespielt haben
 spielen			V haben	1 Pl Ind FutPerf	werden gespielt haben
@@ -2119,7 +2119,7 @@ tun			V haben	3 Sg Subj Pres	tue
 tun			V haben	1 Pl Subj Pres	tuen
 tun			V haben	2 Pl Subj Pres	tuet
 tun			V haben	3 Pl Subj Pres	tuen
-tun			V haben	1 Sg Ind Perf	habe getan
+tun			V haben	1 Sg Ind Perf	habe getan, hab getan (ugs.)
 tun			V haben	2 Sg Ind Perf	hast getan
 tun			V haben	3 Sg Ind Perf	hat getan
 tun			V haben	1 Pl Ind Perf	haben getan
@@ -2155,7 +2155,7 @@ tun			V haben	3 Sg Subj PastPerf	hätte getan
 tun			V haben	1 Pl Subj PastPerf	hätten getan
 tun			V haben	2 Pl Subj PastPerf	hättet getan
 tun			V haben	3 Pl Subj PastPerf	hätten getan
-tun			V haben	1 Sg Ind Fut	werde tun
+tun			V haben	1 Sg Ind Fut	werde tun, werd tun (ugs.)
 tun			V haben	2 Sg Ind Fut	wirst tun
 tun			V haben	3 Sg Ind Fut	wird tun
 tun			V haben	1 Pl Ind Fut	werden tun
@@ -2167,7 +2167,7 @@ tun			V haben	3 Sg Subj Fut	werde tun
 tun			V haben	1 Pl Subj Fut	werden tun
 tun			V haben	2 Pl Subj Fut	werdet tun
 tun			V haben	3 Pl Subj Fut	werden tun
-tun			V haben	1 Sg Ind FutPerf	werde getan haben
+tun			V haben	1 Sg Ind FutPerf	werde getan haben, werd getan haben (ugs.)
 tun			V haben	2 Sg Ind FutPerf	wirst getan haben
 tun			V haben	3 Sg Ind FutPerf	wird getan haben
 tun			V haben	1 Pl Ind FutPerf	werden getan haben
@@ -2233,7 +2233,7 @@ werden		1	V sein	3 Sg Subj PastPerf	wäre geworden, wäre worden
 werden		1	V sein	1 Pl Subj PastPerf	wären geworden, wären worden
 werden		1	V sein	2 Pl Subj PastPerf	wäret geworden, wäret worden, wärt geworden, wärt worden
 werden		1	V sein	3 Pl Subj PastPerf	wären geworden, wären worden
-werden		1	V sein	1 Sg Ind Fut	werde werden
+werden		1	V sein	1 Sg Ind Fut	werde werden, werd werden (ugs.)
 werden		1	V sein	2 Sg Ind Fut	wirst werden
 werden		1	V sein	3 Sg Ind Fut	wird werden
 werden		1	V sein	1 Pl Ind Fut	werden werden
@@ -2245,7 +2245,7 @@ werden		1	V sein	3 Sg Subj Fut	werde werden
 werden		1	V sein	1 Pl Subj Fut	werden werden
 werden		1	V sein	2 Pl Subj Fut	werdet werden
 werden		1	V sein	3 Pl Subj Fut	werden werden
-werden		1	V sein	1 Sg Ind FutPerf	werde geworden sein, werde worden sein
+werden		1	V sein	1 Sg Ind FutPerf	werde geworden sein, werde worden sein, werd geworden sein (ugs.), werd worden sein (ugs.)
 werden		1	V sein	2 Sg Ind FutPerf	wirst geworden sein, wirst worden sein
 werden		1	V sein	3 Sg Ind FutPerf	wird geworden sein, wird worden sein
 werden		1	V sein	1 Pl Ind FutPerf	werden geworden sein, werden worden sein
@@ -2311,7 +2311,7 @@ werden		2	V sein	3 Sg Subj PastPerf	wäre geworden, wäre worden
 werden		2	V sein	1 Pl Subj PastPerf	wären geworden, wären worden
 werden		2	V sein	2 Pl Subj PastPerf	wäret geworden, wäret worden, wärt geworden, wärt worden
 werden		2	V sein	3 Pl Subj PastPerf	wären geworden, wären worden
-werden		2	V sein	1 Sg Ind Fut	werde werden
+werden		2	V sein	1 Sg Ind Fut	werde werden, werd werden (ugs.)
 werden		2	V sein	2 Sg Ind Fut	wirst werden
 werden		2	V sein	3 Sg Ind Fut	wird werden
 werden		2	V sein	1 Pl Ind Fut	werden werden
@@ -2323,7 +2323,7 @@ werden		2	V sein	3 Sg Subj Fut	werde werden
 werden		2	V sein	1 Pl Subj Fut	werden werden
 werden		2	V sein	2 Pl Subj Fut	werdet werden
 werden		2	V sein	3 Pl Subj Fut	werden werden
-werden		2	V sein	1 Sg Ind FutPerf	werde geworden sein, werde worden sein
+werden		2	V sein	1 Sg Ind FutPerf	werde geworden sein, werde worden sein, werd geworden sein (ugs.), werd worden sein (ugs.)
 werden		2	V sein	2 Sg Ind FutPerf	wirst geworden sein, wirst worden sein
 werden		2	V sein	3 Sg Ind FutPerf	wird geworden sein, wird worden sein
 werden		2	V sein	1 Pl Ind FutPerf	werden geworden sein, werden worden sein
@@ -2353,7 +2353,7 @@ wissen			V haben	3 Sg Subj Pres	wisse
 wissen			V haben	1 Pl Subj Pres	wissen
 wissen			V haben	2 Pl Subj Pres	wisset
 wissen			V haben	3 Pl Subj Pres	wissen
-wissen			V haben	1 Sg Ind Perf	habe gewusst, habe gewußt (ung.)
+wissen			V haben	1 Sg Ind Perf	habe gewusst, hab gewusst (ugs.), habe gewußt (ung.), hab gewußt (ugs., ung.)
 wissen			V haben	2 Sg Ind Perf	hast gewusst, hast gewußt (ung.)
 wissen			V haben	3 Sg Ind Perf	hat gewusst, hat gewußt (ung.)
 wissen			V haben	1 Pl Ind Perf	haben gewusst, haben gewußt (ung.)
@@ -2389,7 +2389,7 @@ wissen			V haben	3 Sg Subj PastPerf	hätte gewusst, hätte gewußt (ung.)
 wissen			V haben	1 Pl Subj PastPerf	hätten gewusst, hätten gewußt (ung.)
 wissen			V haben	2 Pl Subj PastPerf	hättet gewusst, hättet gewußt (ung.)
 wissen			V haben	3 Pl Subj PastPerf	hätten gewusst, hätten gewußt (ung.)
-wissen			V haben	1 Sg Ind Fut	werde wissen
+wissen			V haben	1 Sg Ind Fut	werde wissen, werd wissen (ugs.)
 wissen			V haben	2 Sg Ind Fut	wirst wissen
 wissen			V haben	3 Sg Ind Fut	wird wissen
 wissen			V haben	1 Pl Ind Fut	werden wissen
@@ -2401,7 +2401,7 @@ wissen			V haben	3 Sg Subj Fut	werde wissen
 wissen			V haben	1 Pl Subj Fut	werden wissen
 wissen			V haben	2 Pl Subj Fut	werdet wissen
 wissen			V haben	3 Pl Subj Fut	werden wissen
-wissen			V haben	1 Sg Ind FutPerf	werde gewusst haben, werde gewußt haben (ung.)
+wissen			V haben	1 Sg Ind FutPerf	werde gewusst haben, werd gewusst haben (ugs.), werde gewußt haben (ung.), werd gewußt haben (ugs., ung.)
 wissen			V haben	2 Sg Ind FutPerf	wirst gewusst haben, wirst gewußt haben (ung.)
 wissen			V haben	3 Sg Ind FutPerf	wird gewusst haben, wird gewußt haben (ung.)
 wissen			V haben	1 Pl Ind FutPerf	werden gewusst haben, werden gewußt haben (ung.)

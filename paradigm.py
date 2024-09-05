@@ -1304,8 +1304,14 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                     add_perf_forms(formdict, lemma_index, paradigm_index,
                                    lexcat, parcat, forms, ppast_forms)
                     if nonst:
-                        # no such forms
-                        pass
+                        if auxiliary == "haben":
+                            nonst_forms = generate_special_forms(transducer, LEMMA_INDEX_HABEN, PARADIGM_INDEX_HABEN, SEG_HABEN,
+                                                                 pos, categorisation, [NONST])
+                        elif auxiliary == "sein":
+                            nonst_forms = generate_special_forms(transducer, LEMMA_INDEX_SEIN, PARADIGM_INDEX_SEIN, SEG_SEIN,
+                                                                 pos, categorisation, [NONST])
+                        add_special_perf_forms(formdict, lemma_index, paradigm_index,
+                                               lexcat, parcat, nonst_forms, ppast_forms, [TAG_NONST])
                     if old:
                         # no such forms
                         pass
@@ -1313,8 +1319,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                         add_special_perf_forms(formdict, lemma_index, paradigm_index,
                                                lexcat, parcat, forms, oldorth_ppast_forms, [TAG_OLDORTH])
                         if nonst:
-                            # no such forms
-                            pass
+                            add_special_perf_forms(formdict, lemma_index, paradigm_index,
+                                                   lexcat, parcat, nonst_forms, oldorth_ppast_forms, [TAG_NONST, TAG_OLDORTH])
                         if old:
                             # no such forms
                             pass
@@ -1322,8 +1328,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                         add_special_perf_forms(formdict, lemma_index, paradigm_index,
                                                lexcat, parcat, forms, ch_ppast_forms, [TAG_CH])
                         if nonst:
-                            # no such forms
-                            pass
+                            add_special_perf_forms(formdict, lemma_index, paradigm_index,
+                                                   lexcat, parcat, nonst_forms, ch_ppast_forms, [TAG_NONST, TAG_CH])
                         if old:
                             # no such forms
                             pass
@@ -1376,8 +1382,10 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                     add_fut_forms(formdict, lemma_index, paradigm_index,
                                   lexcat, parcat, forms, inf_forms)
                     if nonst:
-                        # no such forms
-                        pass
+                        nonst_forms = generate_special_forms(transducer, LEMMA_INDEX_WERDEN, PARADIGM_INDEX_WERDEN, SEG_WERDEN,
+                                                             pos, categorisation, [NONST])
+                        add_special_fut_forms(formdict, lemma_index, paradigm_index,
+                                              lexcat, parcat, nonst_forms, inf_forms, [TAG_NONST])
                     if old:
                         # no such forms
                         pass
@@ -1385,8 +1393,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                         add_special_fut_forms(formdict, lemma_index, paradigm_index,
                                               lexcat, parcat, forms, oldorth_inf_forms, [TAG_OLDORTH])
                         if nonst:
-                            # no such forms
-                            pass
+                            add_special_fut_forms(formdict, lemma_index, paradigm_index,
+                                                  lexcat, parcat, nonst_forms, oldorth_inf_forms, [TAG_NONST, TAG_OLDORTH])
                         if old:
                             # no such forms
                             pass
@@ -1394,8 +1402,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                         add_special_fut_forms(formdict, lemma_index, paradigm_index,
                                               lexcat, parcat, forms, ch_inf_forms, [TAG_CH])
                         if nonst:
-                            # no such forms
-                            pass
+                            add_special_fut_forms(formdict, lemma_index, paradigm_index,
+                                                  lexcat, parcat, nonst_forms, ch_inf_forms, [TAG_NONST, TAG_CH])
                         if old:
                             # no such forms
                             pass
@@ -1410,8 +1418,10 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                     add_futperf_forms(formdict, lemma_index, paradigm_index,
                                       lexcat, parcat, forms, [auxiliary], ppast_forms)
                     if nonst:
-                        # no such forms
-                        pass
+                        nonst_forms = generate_special_forms(transducer, LEMMA_INDEX_WERDEN, PARADIGM_INDEX_WERDEN, SEG_WERDEN,
+                                                             pos, categorisation, [NONST])
+                        add_special_futperf_forms(formdict, lemma_index, paradigm_index,
+                                                  lexcat, parcat, nonst_forms, [auxiliary], ppast_forms, [TAG_NONST])
                     if old:
                         # no such forms
                         pass
@@ -1419,8 +1429,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                         add_special_futperf_forms(formdict, lemma_index, paradigm_index,
                                                   lexcat, parcat, forms, [auxiliary], oldorth_ppast_forms, [TAG_OLDORTH])
                         if nonst:
-                            # no such forms
-                            pass
+                            add_special_futperf_forms(formdict, lemma_index, paradigm_index,
+                                                      lexcat, parcat, nonst_forms, [auxiliary], oldorth_ppast_forms, [TAG_NONST, TAG_OLDORTH])
                         if old:
                             # no such forms
                             pass
@@ -1428,8 +1438,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                         add_special_futperf_forms(formdict, lemma_index, paradigm_index,
                                                   lexcat, parcat, forms, [auxiliary], ch_ppast_forms, [TAG_CH])
                         if nonst:
-                            # no such forms
-                            pass
+                            add_special_futperf_forms(formdict, lemma_index, paradigm_index,
+                                                      lexcat, parcat, nonst_forms, [auxiliary], ch_ppast_forms, [TAG_NONST, TAG_CH])
                         if old:
                             # no such forms
                             pass
