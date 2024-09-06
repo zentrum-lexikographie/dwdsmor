@@ -1,6 +1,6 @@
 % infl.fst
-% Version 8.3
-% Andreas Nolda 2024-09-04
+% Version 8.4
+% Andreas Nolda 2024-09-06
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1782,11 +1782,17 @@ $VInf$ = $VInfSuff_en$
 % tun
 $VInf_n$ = $VInfSuff_n$
 
+% notwassern (cf. $SchwaTrigger$ in markers.fst)
+$VInf-el-er$ = $VInf$
+
 $VPPresSuff$ = {<+V><PPres>}:{<SB>end} | \
                {<+V><PPres><zu>}:{<ins(zu)><SB>end}
 
 % gehend; sehend; laufend
 $VPPres$ = $VPPresSuff$
+
+% notwassernd (cf. $SchwaTrigger$ in markers.fst)
+$VPPres-el-er$ = $VPPres$
 
 $VPPastSuff_et$ =  {<+V><PPast>}:{<ins(ge)><SB><ins(e)>t}
 
@@ -1898,6 +1904,10 @@ $VPres-s$ = $VPresInd1SgSuff_e$      | \
             $VPresInd3SgSuff_et$     | \
             $VPresIndPlSuff$         | \
             $VPresSubjSuff$
+
+% notwasser(e), notwasserst, notwassert, notwassern, notwassert, notwassern
+% (cf. $SchwaTrigger$ in markers.fst)
+$VPres-el-er$ = $VPres$
 
 % siehst, sieht
 % läufst, läuft
@@ -2127,11 +2137,12 @@ $VImp$ = $VImpSg$ | \
 $VImp-d-t$ = $VImpSg-d-t$ | \
              $VImpPl$
 
-$VImp-el-er$ = $VImp-d-t$
-
 % kopfrechne, kopfrechnet
 $VImp-m-n$ = $VImpSg-m-n$ | \
              $VImpPl$
+
+% notwasser(e), notwassert (cf. $SchwaTrigger$ in markers.fst)
+$VImp-el-er$ = $VImp-d-t$
 
 % lieben; spielen
 $VWeak$ = $VInf$       | \
@@ -2222,24 +2233,24 @@ $VWeak-s+sein$ = $VInf$            | \
                  $VImp$
 
 % segeln; rudern (cf. $SchwaTrigger$ in markers.fst)
-$VWeak-el-er$ = $VInf$       | \
-                $VPPres$     | \
-                $VPPastWeak$ | \
-                $VPres$      | \
-                $VPastWeak$  | \
+$VWeak-el-er$ = $VInf-el-er$   | \
+                $VPPres-el-er$ | \
+                $VPPastWeak$   | \
+                $VPres-el-er$  | \
+                $VPastWeak$    | \
                 $VImp-el-er$
 
-$VWeak-el-er+haben$ = $VInf$             | \
-                      $VPPres$           | \
+$VWeak-el-er+haben$ = $VInf-el-er$       | \
+                      $VPPres-el-er$     | \
                       $VPPastWeak+haben$ | \
-                      $VPres$            | \
+                      $VPres-el-er$      | \
                       $VPastWeak$        | \
                       $VImp-el-er$
 
-$VWeak-el-er+sein$ = $VInf$            | \
-                     $VPPres$          | \
+$VWeak-el-er+sein$ = $VInf-el-er$      | \
+                     $VPPres-el-er$    | \
                      $VPPastWeak+sein$ | \
-                     $VPres$           | \
+                     $VPres-el-er$     | \
                      $VPastWeak$       | \
                      $VImp-el-er$
 
@@ -2657,12 +2668,14 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<Roman>                   $Roman$                | \
          <>:<VImp>                    $VImp$                 | \
          <>:<VImp-d-t>                $VImp-d-t$             | \
+         <>:<VImp-el-er>              $VImp-el-er$           | \
          <>:<VImp-m-n>                $VImp-m-n$             | \
          <>:<VImpPl>                  $VImpPl$               | \
          <>:<VImpPl-sein>             $VImpPl-sein$          | \
          <>:<VImpSg>                  $VImpSg$               | \
          <>:<VImpSg0>                 $VImpSg0$              | \
          <>:<VInf>                    $VInf$                 | \
+         <>:<VInf-el-er>              $VInf-el-er$           | \
          <>:<VInf_n>                  $VInf_n$               | \
          <>:<VModPresIndSg>           $VModPresIndSg$        | \
          <>:<VModPresNonIndSg>        $VModPresNonIndSg$     | \
@@ -2694,7 +2707,9 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPPastWeak><>:<haben>    $VPPastWeak+haben$     | \
          <>:<VPPastWeak><>:<sein>     $VPPastWeak+sein$      | \
          <>:<VPPres>                  $VPPres$               | \
+         <>:<VPPres-el-er>            $VPPres-el-er$         | \
          <>:<VPres>                   $VPres$                | \
+         <>:<VPres-el-er>             $VPres-el-er$          | \
          <>:<VPres-m-n>               $VPres-m-n$            | \
          <>:<VPres-s>                 $VPres-s$              | \
          <>:<VPres-tun>               $VPres-tun$            | \

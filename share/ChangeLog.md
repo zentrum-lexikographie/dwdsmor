@@ -1,6 +1,7 @@
 2024-09-06:
 
 * add support for "googlen" and related verbs
+* add support for backformations ending in "eln" or "ern"
 
 2024-09-04:
 

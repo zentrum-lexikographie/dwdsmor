@@ -1401,6 +1401,162 @@ lesen	2		V haben	2 Pl Subj FutPerf	werdet gelesen haben
 lesen	2		V haben	3 Pl Subj FutPerf	werden gelesen haben
 lesen	2		V haben	Sg Imp	lies
 lesen	2		V haben	Pl Imp	lest
+notwassern			V haben	Inf Pres	notwassern
+notwassern			V haben	Inf Perf	notgewassert haben
+notwassern			V haben	Part Pres	notwassernd
+notwassern			V haben	Part Perf	notgewassert
+notwassern			V haben	1 Sg Ind Pres	notwassere, notwassre, notwasser (ugs.)
+notwassern			V haben	2 Sg Ind Pres	notwasserst
+notwassern			V haben	3 Sg Ind Pres	notwassert
+notwassern			V haben	1 Pl Ind Pres	notwassern
+notwassern			V haben	2 Pl Ind Pres	notwassert
+notwassern			V haben	3 Pl Ind Pres	notwassern
+notwassern			V haben	1 Sg Subj Pres	notwassere, notwassre
+notwassern			V haben	2 Sg Subj Pres	notwasserst
+notwassern			V haben	3 Sg Subj Pres	notwassere, notwassre
+notwassern			V haben	1 Pl Subj Pres	notwassern
+notwassern			V haben	2 Pl Subj Pres	notwassert
+notwassern			V haben	3 Pl Subj Pres	notwassern
+notwassern			V haben	1 Sg Ind Perf	habe notgewassert, hab notgewassert (ugs.)
+notwassern			V haben	2 Sg Ind Perf	hast notgewassert
+notwassern			V haben	3 Sg Ind Perf	hat notgewassert
+notwassern			V haben	1 Pl Ind Perf	haben notgewassert
+notwassern			V haben	2 Pl Ind Perf	habt notgewassert
+notwassern			V haben	3 Pl Ind Perf	haben notgewassert
+notwassern			V haben	1 Sg Subj Perf	habe notgewassert
+notwassern			V haben	2 Sg Subj Perf	habest notgewassert
+notwassern			V haben	3 Sg Subj Perf	habe notgewassert
+notwassern			V haben	1 Pl Subj Perf	haben notgewassert
+notwassern			V haben	2 Pl Subj Perf	habet notgewassert
+notwassern			V haben	3 Pl Subj Perf	haben notgewassert
+notwassern			V haben	1 Sg Ind Past	notwasserte
+notwassern			V haben	2 Sg Ind Past	notwassertest
+notwassern			V haben	3 Sg Ind Past	notwasserte
+notwassern			V haben	1 Pl Ind Past	notwasserten
+notwassern			V haben	2 Pl Ind Past	notwassertet
+notwassern			V haben	3 Pl Ind Past	notwasserten
+notwassern			V haben	1 Sg Subj Past	notwasserte
+notwassern			V haben	2 Sg Subj Past	notwassertest
+notwassern			V haben	3 Sg Subj Past	notwasserte
+notwassern			V haben	1 Pl Subj Past	notwasserten
+notwassern			V haben	2 Pl Subj Past	notwassertet
+notwassern			V haben	3 Pl Subj Past	notwasserten
+notwassern			V haben	1 Sg Ind PastPerf	hatte notgewassert
+notwassern			V haben	2 Sg Ind PastPerf	hattest notgewassert
+notwassern			V haben	3 Sg Ind PastPerf	hatte notgewassert
+notwassern			V haben	1 Pl Ind PastPerf	hatten notgewassert
+notwassern			V haben	2 Pl Ind PastPerf	hattet notgewassert
+notwassern			V haben	3 Pl Ind PastPerf	hatten notgewassert
+notwassern			V haben	1 Sg Subj PastPerf	hätte notgewassert
+notwassern			V haben	2 Sg Subj PastPerf	hättest notgewassert
+notwassern			V haben	3 Sg Subj PastPerf	hätte notgewassert
+notwassern			V haben	1 Pl Subj PastPerf	hätten notgewassert
+notwassern			V haben	2 Pl Subj PastPerf	hättet notgewassert
+notwassern			V haben	3 Pl Subj PastPerf	hätten notgewassert
+notwassern			V haben	1 Sg Ind Fut	werde notwassern, werd notwassern (ugs.)
+notwassern			V haben	2 Sg Ind Fut	wirst notwassern
+notwassern			V haben	3 Sg Ind Fut	wird notwassern
+notwassern			V haben	1 Pl Ind Fut	werden notwassern
+notwassern			V haben	2 Pl Ind Fut	werdet notwassern
+notwassern			V haben	3 Pl Ind Fut	werden notwassern
+notwassern			V haben	1 Sg Subj Fut	werde notwassern
+notwassern			V haben	2 Sg Subj Fut	werdest notwassern
+notwassern			V haben	3 Sg Subj Fut	werde notwassern
+notwassern			V haben	1 Pl Subj Fut	werden notwassern
+notwassern			V haben	2 Pl Subj Fut	werdet notwassern
+notwassern			V haben	3 Pl Subj Fut	werden notwassern
+notwassern			V haben	1 Sg Ind FutPerf	werde notgewassert haben, werd notgewassert haben (ugs.)
+notwassern			V haben	2 Sg Ind FutPerf	wirst notgewassert haben
+notwassern			V haben	3 Sg Ind FutPerf	wird notgewassert haben
+notwassern			V haben	1 Pl Ind FutPerf	werden notgewassert haben
+notwassern			V haben	2 Pl Ind FutPerf	werdet notgewassert haben
+notwassern			V haben	3 Pl Ind FutPerf	werden notgewassert haben
+notwassern			V haben	1 Sg Subj FutPerf	werde notgewassert haben
+notwassern			V haben	2 Sg Subj FutPerf	werdest notgewassert haben
+notwassern			V haben	3 Sg Subj FutPerf	werde notgewassert haben
+notwassern			V haben	1 Pl Subj FutPerf	werden notgewassert haben
+notwassern			V haben	2 Pl Subj FutPerf	werdet notgewassert haben
+notwassern			V haben	3 Pl Subj FutPerf	werden notgewassert haben
+notwassern			V haben	Sg Imp	notwassere, notwassre, notwasser (ugs.)
+notwassern			V haben	Pl Imp	notwassert
+notwassern			V sein	Inf Pres	notwassern
+notwassern			V sein	Inf Perf	notgewassert sein
+notwassern			V sein	Part Pres	notwassernd
+notwassern			V sein	Part Perf	notgewassert
+notwassern			V sein	1 Sg Ind Pres	notwassere, notwassre, notwasser (ugs.)
+notwassern			V sein	2 Sg Ind Pres	notwasserst
+notwassern			V sein	3 Sg Ind Pres	notwassert
+notwassern			V sein	1 Pl Ind Pres	notwassern
+notwassern			V sein	2 Pl Ind Pres	notwassert
+notwassern			V sein	3 Pl Ind Pres	notwassern
+notwassern			V sein	1 Sg Subj Pres	notwassere, notwassre
+notwassern			V sein	2 Sg Subj Pres	notwasserst
+notwassern			V sein	3 Sg Subj Pres	notwassere, notwassre
+notwassern			V sein	1 Pl Subj Pres	notwassern
+notwassern			V sein	2 Pl Subj Pres	notwassert
+notwassern			V sein	3 Pl Subj Pres	notwassern
+notwassern			V sein	1 Sg Ind Perf	bin notgewassert
+notwassern			V sein	2 Sg Ind Perf	bist notgewassert
+notwassern			V sein	3 Sg Ind Perf	ist notgewassert
+notwassern			V sein	1 Pl Ind Perf	sind notgewassert
+notwassern			V sein	2 Pl Ind Perf	seid notgewassert
+notwassern			V sein	3 Pl Ind Perf	sind notgewassert
+notwassern			V sein	1 Sg Subj Perf	sei notgewassert
+notwassern			V sein	2 Sg Subj Perf	seiest notgewassert, seist notgewassert
+notwassern			V sein	3 Sg Subj Perf	sei notgewassert
+notwassern			V sein	1 Pl Subj Perf	seien notgewassert
+notwassern			V sein	2 Pl Subj Perf	seiet notgewassert
+notwassern			V sein	3 Pl Subj Perf	seien notgewassert
+notwassern			V sein	1 Sg Ind Past	notwasserte
+notwassern			V sein	2 Sg Ind Past	notwassertest
+notwassern			V sein	3 Sg Ind Past	notwasserte
+notwassern			V sein	1 Pl Ind Past	notwasserten
+notwassern			V sein	2 Pl Ind Past	notwassertet
+notwassern			V sein	3 Pl Ind Past	notwasserten
+notwassern			V sein	1 Sg Subj Past	notwasserte
+notwassern			V sein	2 Sg Subj Past	notwassertest
+notwassern			V sein	3 Sg Subj Past	notwasserte
+notwassern			V sein	1 Pl Subj Past	notwasserten
+notwassern			V sein	2 Pl Subj Past	notwassertet
+notwassern			V sein	3 Pl Subj Past	notwasserten
+notwassern			V sein	1 Sg Ind PastPerf	war notgewassert
+notwassern			V sein	2 Sg Ind PastPerf	warst notgewassert
+notwassern			V sein	3 Sg Ind PastPerf	war notgewassert
+notwassern			V sein	1 Pl Ind PastPerf	waren notgewassert
+notwassern			V sein	2 Pl Ind PastPerf	wart notgewassert
+notwassern			V sein	3 Pl Ind PastPerf	waren notgewassert
+notwassern			V sein	1 Sg Subj PastPerf	wäre notgewassert
+notwassern			V sein	2 Sg Subj PastPerf	wärest notgewassert, wärst notgewassert
+notwassern			V sein	3 Sg Subj PastPerf	wäre notgewassert
+notwassern			V sein	1 Pl Subj PastPerf	wären notgewassert
+notwassern			V sein	2 Pl Subj PastPerf	wäret notgewassert, wärt notgewassert
+notwassern			V sein	3 Pl Subj PastPerf	wären notgewassert
+notwassern			V sein	1 Sg Ind Fut	werde notwassern, werd notwassern (ugs.)
+notwassern			V sein	2 Sg Ind Fut	wirst notwassern
+notwassern			V sein	3 Sg Ind Fut	wird notwassern
+notwassern			V sein	1 Pl Ind Fut	werden notwassern
+notwassern			V sein	2 Pl Ind Fut	werdet notwassern
+notwassern			V sein	3 Pl Ind Fut	werden notwassern
+notwassern			V sein	1 Sg Subj Fut	werde notwassern
+notwassern			V sein	2 Sg Subj Fut	werdest notwassern
+notwassern			V sein	3 Sg Subj Fut	werde notwassern
+notwassern			V sein	1 Pl Subj Fut	werden notwassern
+notwassern			V sein	2 Pl Subj Fut	werdet notwassern
+notwassern			V sein	3 Pl Subj Fut	werden notwassern
+notwassern			V sein	1 Sg Ind FutPerf	werde notgewassert sein, werd notgewassert sein (ugs.)
+notwassern			V sein	2 Sg Ind FutPerf	wirst notgewassert sein
+notwassern			V sein	3 Sg Ind FutPerf	wird notgewassert sein
+notwassern			V sein	1 Pl Ind FutPerf	werden notgewassert sein
+notwassern			V sein	2 Pl Ind FutPerf	werdet notgewassert sein
+notwassern			V sein	3 Pl Ind FutPerf	werden notgewassert sein
+notwassern			V sein	1 Sg Subj FutPerf	werde notgewassert sein
+notwassern			V sein	2 Sg Subj FutPerf	werdest notgewassert sein
+notwassern			V sein	3 Sg Subj FutPerf	werde notgewassert sein
+notwassern			V sein	1 Pl Subj FutPerf	werden notgewassert sein
+notwassern			V sein	2 Pl Subj FutPerf	werdet notgewassert sein
+notwassern			V sein	3 Pl Subj FutPerf	werden notgewassert sein
+notwassern			V sein	Sg Imp	notwassere, notwassre, notwasser (ugs.)
+notwassern			V sein	Pl Imp	notwassert
 schwimmen			V haben	Inf Pres	schwimmen
 schwimmen			V haben	Inf Perf	geschwommen haben
 schwimmen			V haben	Part Pres	schwimmend
