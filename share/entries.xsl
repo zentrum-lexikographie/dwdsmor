@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 15.3 -->
+<!-- Version 15.4 -->
 <!-- Andreas Nolda 2024-09-06 -->
 
 <xsl:stylesheet version="2.0"
@@ -5981,7 +5981,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="class">VWeak-m-n</xsl:with-param>
+                  <xsl:with-param name="class">VWeak-len</xsl:with-param>
                   <xsl:with-param name="auxiliary"
                                   select="$auxiliary"/>
                   <xsl:with-param name="etymology"
@@ -6916,7 +6916,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
+                  <xsl:with-param name="class">VInf-len</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -6937,7 +6937,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="class">VPPres</xsl:with-param>
+                  <xsl:with-param name="class">VPPres-len</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -6958,7 +6958,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="class">VPres-m-n</xsl:with-param>
+                  <xsl:with-param name="class">VPres-len</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -6979,7 +6979,7 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="class">VImp-m-n</xsl:with-param>
+                  <xsl:with-param name="class">VImp-len</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -8023,6 +8023,30 @@
               <xsl:when test="matches($past-without-particle,concat('^',$past-stem,'e?te$'))">
                 <!-- past indicative -->
                 <xsl:choose>
+                  <!-- past indicative ending in "c", "g", or "p" + "let" -->
+                  <xsl:when test="matches($past-without-particle,'[cgp]lete$')">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$past-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPastInd-len</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
                   <!-- past indicative with stem-final "d" or "t"
                        without "e" epenthesis before "-t" -->
                   <xsl:when test="matches($past-stem,'[dt]$') and
@@ -8076,6 +8100,30 @@
                 </xsl:choose>
                 <!-- past subjunctive -->
                 <xsl:choose>
+                  <!-- past indicative ending in "c", "g", or "p" + "let" -->
+                  <xsl:when test="matches($past-without-particle,'[cgp]lete$')">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$past-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPastSubj-len</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
                   <!-- "haben" -->
                   <xsl:when test="$lemma-without-particle='haben'">
                     <xsl:call-template name="verb-stem-entry">
@@ -8637,6 +8685,32 @@
               <!-- weak past participle -->
               <xsl:when test="matches($participle-without-particle,'e?t$')">
                 <xsl:choose>
+                  <!-- weak past participles ending in "c", "g", or "p" + "let" -->
+                  <xsl:when test="matches($participle-without-particle,'[cgp]let$')">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPPast-len</xsl:with-param>
+                      <xsl:with-param name="auxiliary"
+                                      select="$auxiliary"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
                   <!-- weak past participle with stem-final "d"
                        without "e" epenthesis before "-t" -->
                   <xsl:when test="ends-with($participle-stem,'d') and

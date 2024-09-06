@@ -233,6 +233,84 @@ denken			V haben	2 Pl Subj FutPerf	werdet gedacht haben
 denken			V haben	3 Pl Subj FutPerf	werden gedacht haben
 denken			V haben	Sg Imp	denk, denke
 denken			V haben	Pl Imp	denkt
+downcyclen		2	V haben	Inf Pres	downcyclen
+downcyclen		2	V haben	Inf Perf	downgecyclet haben
+downcyclen		2	V haben	Part Pres	downcyclend
+downcyclen		2	V haben	Part Perf	downgecyclet
+downcyclen		2	V haben	1 Sg Ind Pres	downcycle
+downcyclen		2	V haben	2 Sg Ind Pres	downcyclest
+downcyclen		2	V haben	3 Sg Ind Pres	downcyclet
+downcyclen		2	V haben	1 Pl Ind Pres	downcyclen
+downcyclen		2	V haben	2 Pl Ind Pres	downcyclet
+downcyclen		2	V haben	3 Pl Ind Pres	downcyclen
+downcyclen		2	V haben	1 Sg Subj Pres	downcycle
+downcyclen		2	V haben	2 Sg Subj Pres	downcyclest
+downcyclen		2	V haben	3 Sg Subj Pres	downcycle
+downcyclen		2	V haben	1 Pl Subj Pres	downcyclen
+downcyclen		2	V haben	2 Pl Subj Pres	downcyclet
+downcyclen		2	V haben	3 Pl Subj Pres	downcyclen
+downcyclen		2	V haben	1 Sg Ind Perf	habe downgecyclet, hab downgecyclet (ugs.)
+downcyclen		2	V haben	2 Sg Ind Perf	hast downgecyclet
+downcyclen		2	V haben	3 Sg Ind Perf	hat downgecyclet
+downcyclen		2	V haben	1 Pl Ind Perf	haben downgecyclet
+downcyclen		2	V haben	2 Pl Ind Perf	habt downgecyclet
+downcyclen		2	V haben	3 Pl Ind Perf	haben downgecyclet
+downcyclen		2	V haben	1 Sg Subj Perf	habe downgecyclet
+downcyclen		2	V haben	2 Sg Subj Perf	habest downgecyclet
+downcyclen		2	V haben	3 Sg Subj Perf	habe downgecyclet
+downcyclen		2	V haben	1 Pl Subj Perf	haben downgecyclet
+downcyclen		2	V haben	2 Pl Subj Perf	habet downgecyclet
+downcyclen		2	V haben	3 Pl Subj Perf	haben downgecyclet
+downcyclen		2	V haben	1 Sg Ind Past	downcyclete
+downcyclen		2	V haben	2 Sg Ind Past	downcycletest
+downcyclen		2	V haben	3 Sg Ind Past	downcyclete
+downcyclen		2	V haben	1 Pl Ind Past	downcycleten
+downcyclen		2	V haben	2 Pl Ind Past	downcycletet
+downcyclen		2	V haben	3 Pl Ind Past	downcycleten
+downcyclen		2	V haben	1 Sg Subj Past	downcyclete
+downcyclen		2	V haben	2 Sg Subj Past	downcycletest
+downcyclen		2	V haben	3 Sg Subj Past	downcyclete
+downcyclen		2	V haben	1 Pl Subj Past	downcycleten
+downcyclen		2	V haben	2 Pl Subj Past	downcycletet
+downcyclen		2	V haben	3 Pl Subj Past	downcycleten
+downcyclen		2	V haben	1 Sg Ind PastPerf	hatte downgecyclet
+downcyclen		2	V haben	2 Sg Ind PastPerf	hattest downgecyclet
+downcyclen		2	V haben	3 Sg Ind PastPerf	hatte downgecyclet
+downcyclen		2	V haben	1 Pl Ind PastPerf	hatten downgecyclet
+downcyclen		2	V haben	2 Pl Ind PastPerf	hattet downgecyclet
+downcyclen		2	V haben	3 Pl Ind PastPerf	hatten downgecyclet
+downcyclen		2	V haben	1 Sg Subj PastPerf	hätte downgecyclet
+downcyclen		2	V haben	2 Sg Subj PastPerf	hättest downgecyclet
+downcyclen		2	V haben	3 Sg Subj PastPerf	hätte downgecyclet
+downcyclen		2	V haben	1 Pl Subj PastPerf	hätten downgecyclet
+downcyclen		2	V haben	2 Pl Subj PastPerf	hättet downgecyclet
+downcyclen		2	V haben	3 Pl Subj PastPerf	hätten downgecyclet
+downcyclen		2	V haben	1 Sg Ind Fut	werde downcyclen, werd downcyclen (ugs.)
+downcyclen		2	V haben	2 Sg Ind Fut	wirst downcyclen
+downcyclen		2	V haben	3 Sg Ind Fut	wird downcyclen
+downcyclen		2	V haben	1 Pl Ind Fut	werden downcyclen
+downcyclen		2	V haben	2 Pl Ind Fut	werdet downcyclen
+downcyclen		2	V haben	3 Pl Ind Fut	werden downcyclen
+downcyclen		2	V haben	1 Sg Subj Fut	werde downcyclen
+downcyclen		2	V haben	2 Sg Subj Fut	werdest downcyclen
+downcyclen		2	V haben	3 Sg Subj Fut	werde downcyclen
+downcyclen		2	V haben	1 Pl Subj Fut	werden downcyclen
+downcyclen		2	V haben	2 Pl Subj Fut	werdet downcyclen
+downcyclen		2	V haben	3 Pl Subj Fut	werden downcyclen
+downcyclen		2	V haben	1 Sg Ind FutPerf	werde downgecyclet haben, werd downgecyclet haben (ugs.)
+downcyclen		2	V haben	2 Sg Ind FutPerf	wirst downgecyclet haben
+downcyclen		2	V haben	3 Sg Ind FutPerf	wird downgecyclet haben
+downcyclen		2	V haben	1 Pl Ind FutPerf	werden downgecyclet haben
+downcyclen		2	V haben	2 Pl Ind FutPerf	werdet downgecyclet haben
+downcyclen		2	V haben	3 Pl Ind FutPerf	werden downgecyclet haben
+downcyclen		2	V haben	1 Sg Subj FutPerf	werde downgecyclet haben
+downcyclen		2	V haben	2 Sg Subj FutPerf	werdest downgecyclet haben
+downcyclen		2	V haben	3 Sg Subj FutPerf	werde downgecyclet haben
+downcyclen		2	V haben	1 Pl Subj FutPerf	werden downgecyclet haben
+downcyclen		2	V haben	2 Pl Subj FutPerf	werdet downgecyclet haben
+downcyclen		2	V haben	3 Pl Subj FutPerf	werden downgecyclet haben
+downcyclen		2	V haben	Sg Imp	downcycle
+downcyclen		2	V haben	Pl Imp	downcyclet
 gehen			V sein	Inf Pres	gehen
 gehen			V sein	Inf Perf	gegangen sein
 gehen			V sein	Part Pres	gehend
@@ -1557,6 +1635,84 @@ notwassern			V sein	2 Pl Subj FutPerf	werdet notgewassert sein
 notwassern			V sein	3 Pl Subj FutPerf	werden notgewassert sein
 notwassern			V sein	Sg Imp	notwassere, notwassre, notwasser (ugs.)
 notwassern			V sein	Pl Imp	notwassert
+recyclen		2	V haben	Inf Pres	recyclen
+recyclen		2	V haben	Inf Perf	recyclet haben
+recyclen		2	V haben	Part Pres	recyclend
+recyclen		2	V haben	Part Perf	recyclet
+recyclen		2	V haben	1 Sg Ind Pres	recycle
+recyclen		2	V haben	2 Sg Ind Pres	recyclest
+recyclen		2	V haben	3 Sg Ind Pres	recyclet
+recyclen		2	V haben	1 Pl Ind Pres	recyclen
+recyclen		2	V haben	2 Pl Ind Pres	recyclet
+recyclen		2	V haben	3 Pl Ind Pres	recyclen
+recyclen		2	V haben	1 Sg Subj Pres	recycle
+recyclen		2	V haben	2 Sg Subj Pres	recyclest
+recyclen		2	V haben	3 Sg Subj Pres	recycle
+recyclen		2	V haben	1 Pl Subj Pres	recyclen
+recyclen		2	V haben	2 Pl Subj Pres	recyclet
+recyclen		2	V haben	3 Pl Subj Pres	recyclen
+recyclen		2	V haben	1 Sg Ind Perf	habe recyclet, hab recyclet (ugs.)
+recyclen		2	V haben	2 Sg Ind Perf	hast recyclet
+recyclen		2	V haben	3 Sg Ind Perf	hat recyclet
+recyclen		2	V haben	1 Pl Ind Perf	haben recyclet
+recyclen		2	V haben	2 Pl Ind Perf	habt recyclet
+recyclen		2	V haben	3 Pl Ind Perf	haben recyclet
+recyclen		2	V haben	1 Sg Subj Perf	habe recyclet
+recyclen		2	V haben	2 Sg Subj Perf	habest recyclet
+recyclen		2	V haben	3 Sg Subj Perf	habe recyclet
+recyclen		2	V haben	1 Pl Subj Perf	haben recyclet
+recyclen		2	V haben	2 Pl Subj Perf	habet recyclet
+recyclen		2	V haben	3 Pl Subj Perf	haben recyclet
+recyclen		2	V haben	1 Sg Ind Past	recyclete
+recyclen		2	V haben	2 Sg Ind Past	recycletest
+recyclen		2	V haben	3 Sg Ind Past	recyclete
+recyclen		2	V haben	1 Pl Ind Past	recycleten
+recyclen		2	V haben	2 Pl Ind Past	recycletet
+recyclen		2	V haben	3 Pl Ind Past	recycleten
+recyclen		2	V haben	1 Sg Subj Past	recyclete
+recyclen		2	V haben	2 Sg Subj Past	recycletest
+recyclen		2	V haben	3 Sg Subj Past	recyclete
+recyclen		2	V haben	1 Pl Subj Past	recycleten
+recyclen		2	V haben	2 Pl Subj Past	recycletet
+recyclen		2	V haben	3 Pl Subj Past	recycleten
+recyclen		2	V haben	1 Sg Ind PastPerf	hatte recyclet
+recyclen		2	V haben	2 Sg Ind PastPerf	hattest recyclet
+recyclen		2	V haben	3 Sg Ind PastPerf	hatte recyclet
+recyclen		2	V haben	1 Pl Ind PastPerf	hatten recyclet
+recyclen		2	V haben	2 Pl Ind PastPerf	hattet recyclet
+recyclen		2	V haben	3 Pl Ind PastPerf	hatten recyclet
+recyclen		2	V haben	1 Sg Subj PastPerf	hätte recyclet
+recyclen		2	V haben	2 Sg Subj PastPerf	hättest recyclet
+recyclen		2	V haben	3 Sg Subj PastPerf	hätte recyclet
+recyclen		2	V haben	1 Pl Subj PastPerf	hätten recyclet
+recyclen		2	V haben	2 Pl Subj PastPerf	hättet recyclet
+recyclen		2	V haben	3 Pl Subj PastPerf	hätten recyclet
+recyclen		2	V haben	1 Sg Ind Fut	werde recyclen, werd recyclen (ugs.)
+recyclen		2	V haben	2 Sg Ind Fut	wirst recyclen
+recyclen		2	V haben	3 Sg Ind Fut	wird recyclen
+recyclen		2	V haben	1 Pl Ind Fut	werden recyclen
+recyclen		2	V haben	2 Pl Ind Fut	werdet recyclen
+recyclen		2	V haben	3 Pl Ind Fut	werden recyclen
+recyclen		2	V haben	1 Sg Subj Fut	werde recyclen
+recyclen		2	V haben	2 Sg Subj Fut	werdest recyclen
+recyclen		2	V haben	3 Sg Subj Fut	werde recyclen
+recyclen		2	V haben	1 Pl Subj Fut	werden recyclen
+recyclen		2	V haben	2 Pl Subj Fut	werdet recyclen
+recyclen		2	V haben	3 Pl Subj Fut	werden recyclen
+recyclen		2	V haben	1 Sg Ind FutPerf	werde recyclet haben, werd recyclet haben (ugs.)
+recyclen		2	V haben	2 Sg Ind FutPerf	wirst recyclet haben
+recyclen		2	V haben	3 Sg Ind FutPerf	wird recyclet haben
+recyclen		2	V haben	1 Pl Ind FutPerf	werden recyclet haben
+recyclen		2	V haben	2 Pl Ind FutPerf	werdet recyclet haben
+recyclen		2	V haben	3 Pl Ind FutPerf	werden recyclet haben
+recyclen		2	V haben	1 Sg Subj FutPerf	werde recyclet haben
+recyclen		2	V haben	2 Sg Subj FutPerf	werdest recyclet haben
+recyclen		2	V haben	3 Sg Subj FutPerf	werde recyclet haben
+recyclen		2	V haben	1 Pl Subj FutPerf	werden recyclet haben
+recyclen		2	V haben	2 Pl Subj FutPerf	werdet recyclet haben
+recyclen		2	V haben	3 Pl Subj FutPerf	werden recyclet haben
+recyclen		2	V haben	Sg Imp	recycle
+recyclen		2	V haben	Pl Imp	recyclet
 schwimmen			V haben	Inf Pres	schwimmen
 schwimmen			V haben	Inf Perf	geschwommen haben
 schwimmen			V haben	Part Pres	schwimmend

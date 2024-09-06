@@ -1,5 +1,5 @@
 % infl.fst
-% Version 8.4
+% Version 8.5
 % Andreas Nolda 2024-09-06
 
 % based on code from SMORLemma by Rico Sennrich
@@ -1779,20 +1779,29 @@ $VInfSuff_n$ = {<+V><Inf>}:{<SB>n} | \
 % gehen; sehen; laufen
 $VInf$ = $VInfSuff_en$
 
+% notwassern (cf. $SchwaTrigger$ in markers.fst)
+$VInf-el-er$ = $VInfSuff_en$
+
+% downcyclen
+$VInf-len$ = $VInfSuff_n$
+
 % tun
 $VInf_n$ = $VInfSuff_n$
 
-% notwassern (cf. $SchwaTrigger$ in markers.fst)
-$VInf-el-er$ = $VInf$
+$VPPresSuff_end$ = {<+V><PPres>}:{<SB>end} | \
+                   {<+V><PPres><zu>}:{<ins(zu)><SB>end}
 
-$VPPresSuff$ = {<+V><PPres>}:{<SB>end} | \
-               {<+V><PPres><zu>}:{<ins(zu)><SB>end}
+$VPPresSuff_nd$ = {<+V><PPres>}:{<SB>nd} | \
+                  {<+V><PPres><zu>}:{<ins(zu)><SB>nd}
 
 % gehend; sehend; laufend
-$VPPres$ = $VPPresSuff$
+$VPPres$ = $VPPresSuff_end$
 
 % notwassernd (cf. $SchwaTrigger$ in markers.fst)
-$VPPres-el-er$ = $VPPres$
+$VPPres-el-er$ = $VPPresSuff_end$
+
+% downcyclend
+$VPPres-len$ = $VPPresSuff_nd$
 
 $VPPastSuff_et$ =  {<+V><PPast>}:{<ins(ge)><SB><ins(e)>t}
 
@@ -1834,6 +1843,13 @@ $VPPast_n+haben$ = $VPPastSuff_n$ $haben$
 
 $VPPast_n+sein$ = $VPPastSuff_n$ $sein$
 
+% downgecyclet
+$VPPast-len$ = $VPPastSuff_t$
+
+$VPPast-len+haben$ = $VPPastSuff_t$ $haben$
+
+$VPPast-len+sein$ = $VPPastSuff_t$ $sein$
+
 $VPresInd1SgSuff_0$ = {<+V><1><Sg><Pres><Ind>}:{}
 
 $VPresInd1SgNonStSuff_0$ = {<+V><1><Sg><Pres><Ind><NonSt>}:{} % cf. Duden-Grammatik (2016: § 622)
@@ -1873,6 +1889,13 @@ $VPresSubjSuff$ = {<+V><1><Sg><Pres><Subj>}:{<SB>e}   | \
                   {<+V><2><Pl><Pres><Subj>}:{<SB>et}  | \
                   {<+V><3><Pl><Pres><Subj>}:{<SB>en}
 
+$VPresSubjSuff-len$ = {<+V><1><Sg><Pres><Subj>}:{}       | \
+                      {<+V><2><Sg><Pres><Subj>}:{<SB>st} | \
+                      {<+V><3><Sg><Pres><Subj>}:{}       | \
+                      {<+V><1><Pl><Pres><Subj>}:{<SB>n}  | \
+                      {<+V><2><Pl><Pres><Subj>}:{<SB>t}  | \
+                      {<+V><3><Pl><Pres><Subj>}:{<SB>n}
+
 $VPresSubjSuff-sein$ = {<+V><1><Sg><Pres><Subj>}:{}        | \
                        {<+V><2><Sg><Pres><Subj>}:{<SB>est} | \
                        {<+V><2><Sg><Pres><Subj>}:{<SB>st}  | \
@@ -1908,6 +1931,13 @@ $VPres-s$ = $VPresInd1SgSuff_e$      | \
 % notwasser(e), notwasserst, notwassert, notwassern, notwassert, notwassern
 % (cf. $SchwaTrigger$ in markers.fst)
 $VPres-el-er$ = $VPres$
+
+% downcycle, downcyclest, downcyclet, downcyclen, downcyclet, downcyclen
+$VPres-len$ = $VPresInd1SgSuff_0$  | \
+              $VPresInd2SgSuff_st$ | \
+              $VPresInd3SgSuff_t$  | \
+              $VPresIndPlSuff-tun$ | \
+              $VPresSubjSuff-len$
 
 % siehst, sieht
 % läufst, läuft
@@ -2046,6 +2076,9 @@ $VPastSubj2Suff-sein$ = {<+V><2><Sg><Past><Subj>}:{<SB>st} | \
 $VPastWeak$ = $VPastIndWeakSuff_et$ | \
               $VPastSubjWeakSuff$
 
+$VPast-len$ = $VPastIndWeakSuff_t$ | \
+              $VPastSubjWeakSuff_t$
+
 % dachte, dachtest, dachte, dachten, dachtet, dachten
 % konnte, konntest, konnte, konnten, konntet, konnten
 % wusste, wusstest, wusste, wussten, wusstet, wussten
@@ -2054,6 +2087,9 @@ $VPastIndWeak$ = $VPastIndWeakSuff_et$
 % hatte, hattest, hatte, hatten, hattet, hatten
 % sandte, sandtest, sandte, sandten, sandtet, sandten
 $VPastInd-d-t_t$ = $VPastIndWeakSuff_t$
+
+% downcyclete, downcycletest, downcyclete, downcycleten, downcycletet, downcycleten
+$VPastInd-len$ = $VPastIndWeakSuff_t$
 
 % sah, sahst, sah, sahen, saht, sahen
 % fand, fand(e)st, fand, fanden, fandet, fanden
@@ -2076,6 +2112,9 @@ $VPastIndPl-werden$ = $VPastIndPlSuff-werden$
 % könnte, könntest, könnte, könnten, könntet, könnten
 % wüsste, wüsstest, wüsste, wüssten, wüsstet, wüssten
 $VPastSubjWeak$ = $VPastSubjWeakSuff$
+
+% downcyclete, downcycletest, downcyclete, downcycleten, downcycletet, downcycleten
+$VPastSubj-len$ = $VPastSubjWeakSuff_t$
 
 % sähe, sähest, sähe, sähen, sähet, sähen
 % täte, tätest, täte, täten, tätet, täten
@@ -2122,6 +2161,8 @@ $VImpSg-d-t$ = $VImpSgNonStSuff_0$ | \
 
 $VImpSg-m-n$ = $VImpSgSuff_e$
 
+$VImpSg-len$ = $VImpSgSuff_0$
+
 % seht; tut
 $VImpPl$ = $VImpPlSuff_t$
 
@@ -2142,7 +2183,12 @@ $VImp-m-n$ = $VImpSg-m-n$ | \
              $VImpPl$
 
 % notwasser(e), notwassert (cf. $SchwaTrigger$ in markers.fst)
-$VImp-el-er$ = $VImp-d-t$
+$VImp-el-er$ = $VImpSg-d-t$ | \
+               $VImpPl$
+
+% downcycle, downcyclet
+$VImp-len$ = $VImpSg-len$ | \
+             $VImpPl$
 
 % lieben; spielen
 $VWeak$ = $VInf$       | \
@@ -2253,6 +2299,28 @@ $VWeak-el-er+sein$ = $VInf-el-er$      | \
                      $VPres-el-er$     | \
                      $VPastWeak$       | \
                      $VImp-el-er$
+
+% recyclen
+$VWeak-len$ = $VInf-len$       | \
+              $VPPres-len$     | \
+              $VPPast-len$ | \
+              $VPres-len$  | \
+              $VPast-len$  | \
+              $VImp-len$
+
+$VWeak-len+haben$ = $VInf-len$             | \
+                    $VPPres-len$           | \
+                    $VPPast-len+haben$ | \
+                    $VPres-len$        | \
+                    $VPast-len$        | \
+                    $VImp-len$
+
+$VWeak-len+sein$ = $VInf-len$            | \
+                   $VPPres-len$          | \
+                   $VPPast-len+sein$ | \
+                   $VPres-len$       | \
+                   $VPast-len$       | \
+                   $VImp-len$
 
 
 % adpositions
@@ -2669,6 +2737,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VImp>                    $VImp$                 | \
          <>:<VImp-d-t>                $VImp-d-t$             | \
          <>:<VImp-el-er>              $VImp-el-er$           | \
+         <>:<VImp-len>                $VImp-len$             | \
          <>:<VImp-m-n>                $VImp-m-n$             | \
          <>:<VImpPl>                  $VImpPl$               | \
          <>:<VImpPl-sein>             $VImpPl-sein$          | \
@@ -2676,11 +2745,13 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VImpSg0>                 $VImpSg0$              | \
          <>:<VInf>                    $VInf$                 | \
          <>:<VInf-el-er>              $VInf-el-er$           | \
+         <>:<VInf-len>                $VInf-len$             | \
          <>:<VInf_n>                  $VInf_n$               | \
          <>:<VModPresIndSg>           $VModPresIndSg$        | \
          <>:<VModPresNonIndSg>        $VModPresNonIndSg$     | \
          <>:<VPart>                   $VPart$                | \
          <>:<VPastInd-d-t_t>          $VPastInd-d-t_t$       | \
+         <>:<VPastInd-len>            $VPastInd-len$         | \
          <>:<VPastInd-werden>         $VPastInd-werden$      | \
          <>:<VPastIndPl-werden>       $VPastIndPl-werden$    | \
          <>:<VPastIndSg-ward>         $VPastIndSg-ward$      | \
@@ -2690,6 +2761,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPastStr>                $VPastStr$             | \
          <>:<VPastStr-s>              $VPastStr-s$           | \
          <>:<VPastSubj-haben>         $VPastSubj-haben$      | \
+         <>:<VPastSubj-len>           $VPastSubj-len$        | \
          <>:<VPastSubj2-sein>         $VPastSubj2-sein$      | \
          <>:<VPastSubjOld>            $VPastSubjOld$         | \
          <>:<VPastSubjStr>            $VPastSubjStr$         | \
@@ -2697,6 +2769,9 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPPast-d_t>              $VPPast-d_t$           | \
          <>:<VPPast-d_t><>:<haben>    $VPPast-d_t+haben$     | \
          <>:<VPPast-d_t><>:<sein>     $VPPast-d_t+sein$      | \
+         <>:<VPPast-len>              $VPPast-len$           | \
+         <>:<VPPast-len><>:<haben>    $VPPast-len+haben$     | \
+         <>:<VPPast-len><>:<sein>     $VPPast-len+sein$      | \
          <>:<VPPast_n>                $VPPast_n$             | \
          <>:<VPPast_n><>:<haben>      $VPPast_n+haben$       | \
          <>:<VPPast_n><>:<sein>       $VPPast_n+sein$        | \
@@ -2708,8 +2783,10 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VPPastWeak><>:<sein>     $VPPastWeak+sein$      | \
          <>:<VPPres>                  $VPPres$               | \
          <>:<VPPres-el-er>            $VPPres-el-er$         | \
+         <>:<VPPres-len>              $VPPres-len$           | \
          <>:<VPres>                   $VPres$                | \
          <>:<VPres-el-er>             $VPres-el-er$          | \
+         <>:<VPres-len>               $VPres-len$            | \
          <>:<VPres-m-n>               $VPres-m-n$            | \
          <>:<VPres-s>                 $VPres-s$              | \
          <>:<VPres-tun>               $VPres-tun$            | \
@@ -2734,6 +2811,9 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<VWeak-el-er>             $VWeak-el-er$          | \
          <>:<VWeak-el-er><>:<haben>   $VWeak-el-er+haben$    | \
          <>:<VWeak-el-er><>:<sein>    $VWeak-el-er+sein$     | \
+         <>:<VWeak-len>               $VWeak-len$            | \
+         <>:<VWeak-len><>:<haben>     $VWeak-len+haben$      | \
+         <>:<VWeak-len><>:<sein>      $VWeak-len+sein$       | \
          <>:<VWeak-m-n>               $VWeak-m-n$            | \
          <>:<VWeak-m-n><>:<haben>     $VWeak-m-n+haben$      | \
          <>:<VWeak-m-n><>:<sein>      $VWeak-m-n+sein$       | \

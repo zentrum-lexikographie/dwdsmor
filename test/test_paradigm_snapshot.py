@@ -291,12 +291,14 @@ VERB_POS = "V"
 
 VERB_LEMMAS = ["spielen",     # VWeak
                "segeln",      # VWeak-el-er
+               "recyclen",    # VWeak-len
                "arbeiten",    # VWeak-d-t
                "atmen",       # VWeak-m-n
                "küssen",      # VWeak-s
                "heißen",      # VWeak-s, VInf, VPPres, VPPastStr, VPres-s, VPastStr-s, VImp
                "senden",      # VWeak-d-t, VInf, VPPres, VPPast-d_t, VPres, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t
                "notwassern",  # VInf-el-er, VPPres-el-er, VPPastWeak, VPres-el-er, VPastIndWeak, VPastSubjWeak, VImp-el-er
+               "downcyclen",  # VInf-len, VPPres-len, VPPast-len, VPres-len, VPastInd-len, VPastSubj-len, VImp-len
                "denken",      # VInf, VPPres, VPPastWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp
                "haben",       # VInf, VPPres, VPPastWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-d-t_t, VPastSubj-haben, VImp
                "wissen",      # VInf, VPPres, VPPastWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak

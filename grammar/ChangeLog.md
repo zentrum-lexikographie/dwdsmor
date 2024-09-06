@@ -2,8 +2,9 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2024-09-06:
 
-* add inflection classes `VInf-el-er`, `VPPres-el-er`, `VPres-el-er`, and
-  `VImp-el-er`
+* add inflection classes `VWeak-len`, `VInf-el-er`, `VInf-len`, `VPPres-el-er`,
+  `VPPres-len`, `VPPast-len`, `VPres-el-er`, `VPres-len`, `VPastInd-len`,
+  `VPastSubj-len`, `VImp-el-er`, and `VImp-len`
 
 2024-09-04:
 
