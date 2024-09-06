@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 15.2 -->
-<!-- Andreas Nolda 2024-09-04 -->
+<!-- Version 15.3 -->
+<!-- Andreas Nolda 2024-09-06 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -5932,6 +5932,32 @@
                                   select="$etymology"/>
                 </xsl:call-template>
               </xsl:when>
+              <!-- regular verbs ending in "c", "g", "p" or "y" + "len" -->
+              <xsl:when test="matches($lemma-without-particle,'[^aeiouäöü]ien$')">
+                <xsl:call-template name="verb-stem-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma-without-particle"/>
+                  <xsl:with-param name="lemma-index"
+                                  select="$lemma-index"/>
+                  <xsl:with-param name="paradigm-index"
+                                  select="$paradigm-index"/>
+                  <xsl:with-param name="stem"
+                                  select="$stem"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
+                  <xsl:with-param name="participle"
+                                  select="$participle-without-particle"/>
+                  <xsl:with-param name="particle"
+                                  select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
+                  <xsl:with-param name="class">VWeak</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
+                  <xsl:with-param name="etymology"
+                                  select="$etymology"/>
+                </xsl:call-template>
+              </xsl:when>
               <!-- regular verbs ending in consonant + "ien" -->
               <xsl:when test="matches($lemma-without-particle,'[^aeiouäöü]ien$')">
                 <xsl:call-template name="verb-stem-entry">
@@ -5952,6 +5978,32 @@
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
                   <xsl:with-param name="class">VWeak</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
+                  <xsl:with-param name="etymology"
+                                  select="$etymology"/>
+                </xsl:call-template>
+              </xsl:when>
+              <!-- regular verbs ending in "c", "g", "p", or "y" + "len" -->
+              <xsl:when test="matches($lemma-without-particle,'[cgpy]len$')">
+                <xsl:call-template name="verb-stem-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma-without-particle"/>
+                  <xsl:with-param name="lemma-index"
+                                  select="$lemma-index"/>
+                  <xsl:with-param name="paradigm-index"
+                                  select="$paradigm-index"/>
+                  <xsl:with-param name="stem"
+                                  select="$stem"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
+                  <xsl:with-param name="participle"
+                                  select="$participle-without-particle"/>
+                  <xsl:with-param name="particle"
+                                  select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
+                  <xsl:with-param name="class">VWeak-m-n</xsl:with-param>
                   <xsl:with-param name="auxiliary"
                                   select="$auxiliary"/>
                   <xsl:with-param name="etymology"

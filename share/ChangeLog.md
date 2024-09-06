@@ -1,3 +1,7 @@
+2024-09-06:
+
+* add support for "googlen" and related verbs
+
 2024-09-04:
 
 * add support for unsuffixed non-standard singular imperative verb forms
