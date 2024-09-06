@@ -158,6 +158,10 @@
       <xsl:when test="matches($lemma,'[^aeiouäöü]ien$')">
         <xsl:value-of select="replace($lemma,'(n)$','&lt;SB&gt;$1')"/>
       </xsl:when>
+      <!-- lemmas ending in "c", "g", or "p" + "len" -->
+      <xsl:when test="matches($lemma,'[cgp]len$')">
+        <xsl:value-of select="replace($lemma,'(n)$','&lt;SB&gt;$1')"/>
+      </xsl:when>
       <!-- other lemmas -->
       <xsl:otherwise>
         <xsl:value-of select="replace($lemma,'(e?n)$','&lt;SB&gt;$1')"/>
@@ -5958,8 +5962,8 @@
                                   select="$etymology"/>
                 </xsl:call-template>
               </xsl:when>
-              <!-- regular verbs ending in "c", "g", "p", or "y" + "len" -->
-              <xsl:when test="matches($lemma-without-particle,'[cgpy]len$')">
+              <!-- regular verbs ending in "c", "g", or "p" + "len" -->
+              <xsl:when test="matches($lemma-without-particle,'[cgp]len$')">
                 <xsl:call-template name="verb-stem-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
@@ -6893,8 +6897,8 @@
                                   select="$etymology"/>
                 </xsl:call-template>
               </xsl:when>
-              <!-- irregular verbs ending in "c", "g", "p", or "y" + "len" -->
-              <xsl:when test="matches($lemma-without-particle,'[cgpy]len$')">
+              <!-- irregular verbs ending in "c", "g", or "p" + "len" -->
+              <xsl:when test="matches($lemma-without-particle,'[cgp]len$')">
                 <xsl:call-template name="verb-stem-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>

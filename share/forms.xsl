@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 6.2 -->
-<!-- Andreas Nolda 2024-03-20 -->
+<!-- Version 6.3 -->
+<!-- Andreas Nolda 2024-09-06 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -78,6 +78,10 @@
     <xsl:when test="matches($lemma,'[^aeiouäöü]ien$')">
       <xsl:value-of select="replace($lemma,'n$','')"/>
     </xsl:when>
+    <!-- lemmas ending in "c", "g", or "p" + "len" -->
+    <xsl:when test="matches($lemma,'[cgp]len$')">
+      <xsl:value-of select="replace($lemma,'n$','')"/>
+    </xsl:when>
     <!-- other lemmas -->
     <xsl:otherwise>
       <xsl:value-of select="replace($lemma,'e?n$','')"/>
@@ -92,6 +96,10 @@
   <xsl:choose>
     <!-- forms ending in consonant + "iet" -->
     <xsl:when test="matches($form,'[^aeiouäöü]iet$')">
+      <xsl:value-of select="replace($form,'t$','')"/>
+    </xsl:when>
+    <!-- forms ending in "c", "g", or "p" + "let" -->
+    <xsl:when test="matches($form,'[cgp]let$')">
       <xsl:value-of select="replace($form,'t$','')"/>
     </xsl:when>
     <!-- forms ending in "tt" -->
@@ -128,6 +136,10 @@
     <xsl:when test="matches($form,'[^aeiouäöü]iete$')">
       <xsl:value-of select="replace($form,'te$','')"/>
     </xsl:when>
+    <!-- weak forms ending in "c", "g", or "p" + "lete" -->
+    <xsl:when test="matches($form,'[cgp]lete$')">
+      <xsl:value-of select="replace($form,'te$','')"/>
+    </xsl:when>
     <!-- other weak forms -->
     <xsl:when test="matches($form,'^.+?e?te$')">
       <xsl:value-of select="replace($form,'e?te$','')"/>
@@ -151,6 +163,15 @@
     </xsl:when>
     <!-- weak forms without "ge-" prefix ending in consonant + "iet" -->
     <xsl:when test="matches($form,'^.*[^aeiouäöü]iet$')">
+      <xsl:value-of select="replace($form,'t$','')"/>
+    </xsl:when>
+    <!-- weak forms with "ge-" prefix ending in "c", "g", or "p" + "let" -->
+    <xsl:when test="matches($form,'^ge.*[cgp]let$') and
+                    not(matches($form,concat('^',substring($lemma,1,3))))">
+      <xsl:value-of select="replace($form,'^ge(.+)t$','$1')"/>
+    </xsl:when>
+    <!-- weak forms without "ge-" prefix ending in "c", "g", or "p" + "let" -->
+    <xsl:when test="matches($form,'^.*[cgp]let$')">
       <xsl:value-of select="replace($form,'t$','')"/>
     </xsl:when>
     <!-- other weak forms with "ge-" prefix -->
