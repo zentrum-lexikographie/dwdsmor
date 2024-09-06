@@ -1,7 +1,8 @@
 2024-09-06:
 
-* add support for "googlen" and related verbs
-* add support for backformations ending in "eln" or "ern"
+* add support for "recyclen" and related verbs
+* add support for "downcyclen" and related verbs
+* add support for verbal backformations ending in "eln" or "ern"
 
 2024-09-04:
 
