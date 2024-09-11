@@ -243,6 +243,7 @@ optional arguments:
   -I, --no-index        do not output lemma and paradigm index
   -j, --json            output JSON object
   -m, --minimal         prefer analyses with minimal number of stem boundaries
+  -M, --maximal         prefer analyses with maximal number of stem boundaries
   -n, --no-analysis     do not output raw analysis
   -N, --no-segmentation
                         do not output segmented lemma

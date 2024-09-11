@@ -18,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 9.3
+version = 9.4
 
 
 BASEDIR = path.dirname(__file__)
@@ -327,6 +327,15 @@ def remove_nonminimal_analyses(analyses):
     return minimal_analyses
 
 
+def remove_nonmaximal_analyses(analyses):
+    maximal_analyses = []
+    maximum = max([analysis["seg"].count("<#>") for analysis in analyses], default=-1)
+    for analysis in analyses:
+        if analysis["seg"].count("<#>") == maximum:
+            maximal_analyses.append(analysis)
+    return maximal_analyses
+
+
 def remove_duplicate_analyses(analyses):
     unique_analyses = []
     for analysis in analyses:
@@ -337,13 +346,16 @@ def remove_duplicate_analyses(analyses):
 
 def create_word_analyses(words, analyses_tuple,
                          no_analysis=False, no_segmentation=False,
-                         no_index=False, no_wf=False, no_empty=False, minimal=False):
+                         no_index=False, no_wf=False, no_empty=False,
+                         minimal=False, maximal=False):
     word_analyses = []
     for word, analyses in zip(words, analyses_tuple):
         analyses = [analysis.as_dict() for analysis in analyses]
 
         if minimal:
             analyses = remove_nonminimal_analyses(analyses)
+        elif maximal:
+            analyses = remove_nonmaximal_analyses(analyses)
 
         for analysis in analyses:
             if no_analysis:
@@ -370,19 +382,23 @@ def create_word_analyses(words, analyses_tuple,
 
 def output_json(words, analyses_tuple, output_file,
                 no_analysis=False, no_segmentation=False,
-                no_index=False, no_wf=False, no_empty=False, minimal=False):
+                no_index=False, no_wf=False, no_empty=False,
+                minimal=False, maximal=False):
     word_analyses = create_word_analyses(words, analyses_tuple,
                                          no_analysis, no_segmentation,
-                                         no_index, no_wf, no_empty, minimal)
+                                         no_index, no_wf, no_empty,
+                                         minimal, maximal)
     json.dump(word_analyses, output_file, ensure_ascii=False)
 
 
 def output_yaml(words, analyses_tuple, output_file,
                 no_analysis=False, no_segmentation=False,
-                no_index=False, no_wf=False, no_empty=False, minimal=False):
+                no_index=False, no_wf=False, no_empty=False,
+                minimal=False, maximal=False):
     word_analyses = create_word_analyses(words, analyses_tuple,
                                          no_analysis, no_segmentation,
-                                         no_index, no_wf, no_empty, minimal)
+                                         no_index, no_wf, no_empty,
+                                         minimal, maximal)
     yaml.dump(word_analyses, output_file, allow_unicode=True, sort_keys=False, explicit_start=True)
 
 
@@ -396,7 +412,8 @@ def get_value_of_key(key, analysis):
 
 def output_dsv(words, analyses_tuple, output_file,
                no_analysis=False, no_segmentation=False,
-               no_index=False, no_wf=False, no_empty=False, minimal=False,
+               no_index=False, no_wf=False, no_empty=False,
+               minimal=False, maximal=False,
                header=True, plain=False, force_color=False, delimiter="\t"):
     kind = "dumb" if plain else None
     term = Terminal(kind=kind, force_styling=force_color)
@@ -405,7 +422,8 @@ def output_dsv(words, analyses_tuple, output_file,
 
     word_analyses = create_word_analyses(words, analyses_tuple,
                                          no_analysis, no_segmentation,
-                                         no_index, no_wf, no_empty, minimal)
+                                         no_index, no_wf, no_empty,
+                                         minimal, maximal)
 
     key_format = {"analysis": term.bright_black,
                   "lemma": term.bold_underline,
@@ -489,7 +507,8 @@ def output_dsv(words, analyses_tuple, output_file,
 
 def output_analyses(transducer, input_file, output_file,
                     no_analysis=False, no_segmentation=False,
-                    no_index=False, no_wf=False, no_empty=False, minimal=False,
+                    no_index=False, no_wf=False, no_empty=False,
+                    minimal=False, maximal=False,
                     header=True, plain=False, force_color=False,
                     output_format="tsv"):
     words = tuple(word.strip() for word in input_file.readlines() if word.strip())
@@ -498,20 +517,24 @@ def output_analyses(transducer, input_file, output_file,
         if output_format == "json":
             output_json(words, analyses_tuple, output_file,
                         no_analysis, no_segmentation,
-                        no_index, no_wf, no_empty, minimal)
+                        no_index, no_wf, no_empty,
+                        minimal, maximal)
         elif output_format == "yaml":
             output_yaml(words, analyses_tuple, output_file,
                         no_analysis, no_segmentation,
-                        no_index, no_wf, no_empty, minimal)
+                        no_index, no_wf, no_empty,
+                        minimal, maximal)
         elif output_format == "csv":
             output_dsv(words, analyses_tuple, output_file,
                        no_analysis, no_segmentation,
-                       no_index, no_wf, no_empty, minimal,
+                       no_index, no_wf, no_empty,
+                       minimal, maximal,
                        header, plain, force_color, delimiter=",")
         else:
             output_dsv(words, analyses_tuple, output_file,
                        no_analysis, no_segmentation,
-                       no_index, no_wf, no_empty, minimal,
+                       no_index, no_wf, no_empty,
+                       minimal, maximal,
                        header, plain, force_color)
 
 
@@ -536,6 +559,8 @@ def main():
                             help="output JSON object")
         parser.add_argument("-m", "--minimal", action="store_true",
                             help="prefer analyses with minimal number of stem boundaries")
+        parser.add_argument("-M", "--maximal", action="store_true",
+                            help="prefer analyses with maximal number of stem boundaries")
         parser.add_argument("-n", "--no-analysis", action="store_true",
                             help="do not output raw analysis")
         parser.add_argument("-N", "--no-segmentation", action="store_true",
@@ -565,7 +590,8 @@ def main():
             output_format = "tsv"
         output_analyses(transducer, args.input, args.output,
                         args.no_analysis, args.no_segmentation,
-                        args.no_index, args.no_wf, args.no_empty, args.minimal,
+                        args.no_index, args.no_wf, args.no_empty,
+                        args.minimal, args.maximal,
                         args.no_header, args.plain, args.force_color,
                         output_format)
     except KeyboardInterrupt:
