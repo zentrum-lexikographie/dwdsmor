@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_gesetze_analysis_snapshot.py
 # test DWDSmor analysis snapshots against legal texts for regression
-# Andreas Nolda 2024-01-18
+# Andreas Nolda 2024-09-12
 
 import io
 import csv
@@ -29,6 +29,11 @@ DATADIR = path.join(TESTDIR, "data", "gesetze")
 def transducer():
     # use transducer in standard format with deterministic order of analyses
     return sfst_transduce.Transducer(path.join(LIBDIR, "dwdsmor.a"))
+
+@fixture
+def transducer2():
+    # use transducer in standard format with deterministic order of analyses
+    return sfst_transduce.Transducer(path.join(LIBDIR, "dwdsmor-morph.a"))
 
 
 @fixture
@@ -64,10 +69,8 @@ def get_analyses(transducer, data_files):
 
     for data_file in sorted(data_files):
         with open(data_file) as file:
-            output_analyses(transducer, file, output,
-                            no_analysis=True, no_segmentation=True,
-                            no_index=True, no_wf=True, minimal=True,
-                            header=False, plain=True)
+            output_analyses(transducer, transducer2, file, output,
+                            minimal=True, header=False, plain=True)
     return output.getvalue()
 
 

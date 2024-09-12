@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # dwds_coverage.py -- DWDS library for coverage tests
-# Gregor Middell and Andreas Nolda 2023-11-30
+# Gregor Middell and Andreas Nolda 2024-09-12
 
 from collections import namedtuple
 from xml.etree.ElementTree import parse
 
 from dwdsmor import analyse_word
 
-from paradigm import generate_paradigms
+from paradigm import generate_formdict
 
 
 # mapping between DWDS and DWDSSmor part-of-speech categories
@@ -210,9 +210,9 @@ def generate_paradigms_for_dwds_entry(transducer, dwds_entry):
     dwdsmor_pos = ""
     lemma_covered = False
     for pos in dwds_to_dwdsmor_pos_list(dwds_pos):
-        formdict = generate_paradigms(transducer, dwds_lemma,
-                                      lemma_index=dwds_lemma_index, paradigm_index=dwds_paradigm_index,
-                                      pos=pos)
+        formdict = generate_formdict(transducer, dwds_lemma,
+                                     lemma_index=dwds_lemma_index, paradigm_index=dwds_paradigm_index,
+                                     pos=pos)
         lemma_covered = len(formdict) > 0
         if lemma_covered:
             dwdsmor_pos = pos

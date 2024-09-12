@@ -47,24 +47,24 @@ eine		2	CARD	Fem Gen Sg St Attr	einer
 eine		2	CARD	Fem Gen Sg St Subst	einer
 eine		2	CARD	Fem Gen Sg Wk Attr	einen
 eine		2	CARD	Fem Gen Sg Wk Subst	einen
-null			CARD	Invar Invar Invar Invar Attr	null
-null			CARD	Invar Invar Invar Invar Subst	null
-sieben	2		CARD	Invar Invar Invar Invar Attr	sieben
-sieben	2		CARD	Invar Invar Invar Invar Subst	sieben
+null			CARD	Invar Attr	null
+null			CARD	Invar Subst	null
+sieben	2		CARD	Invar Attr	sieben
+sieben	2		CARD	Invar Subst	sieben
 sieben	2		CARD	NoGend Nom Pl St Subst	siebene (ugs.)
 sieben	2		CARD	NoGend Nom Pl Wk Subst	siebene (ugs.)
 sieben	2		CARD	NoGend Acc Pl St Subst	siebene (ugs.)
 sieben	2		CARD	NoGend Acc Pl Wk Subst	siebene (ugs.)
-vier			CARD	Invar Invar Invar Invar Attr	vier
-vier			CARD	Invar Invar Invar Invar Subst	vier
+vier			CARD	Invar Attr	vier
+vier			CARD	Invar Subst	vier
 vier			CARD	NoGend Nom Pl St Subst	viere (ugs.)
 vier			CARD	NoGend Nom Pl Wk Subst	viere (ugs.)
 vier			CARD	NoGend Acc Pl St Subst	viere (ugs.)
 vier			CARD	NoGend Acc Pl Wk Subst	viere (ugs.)
 vier			CARD	NoGend Dat Pl St Subst	vieren
 vier			CARD	NoGend Dat Pl Wk Subst	vieren
-zwei			CARD	Invar Invar Invar Invar Attr	zwei
-zwei			CARD	Invar Invar Invar Invar Subst	zwei
+zwei			CARD	Invar Attr	zwei
+zwei			CARD	Invar Subst	zwei
 zwei			CARD	NoGend Nom Pl St Subst	zweie (ugs.)
 zwei			CARD	NoGend Nom Pl Wk Subst	zweie (ugs.)
 zwei			CARD	NoGend Acc Pl St Subst	zweie (ugs.)

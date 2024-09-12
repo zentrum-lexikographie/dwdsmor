@@ -1,7 +1,7 @@
 Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
 alldem		2	DEM	Neut Dat Sg St Subst	alldem
-dergleichen			DEM	Invar Invar Invar Invar Attr	dergleichen
-dergleichen			DEM	Invar Invar Invar Invar Subst	dergleichen
+dergleichen			DEM	Invar Attr	dergleichen
+dergleichen			DEM	Invar Subst	dergleichen
 die	2	2	DEM	Masc Nom Sg St Attr	der
 die	2	2	DEM	Masc Nom Sg St Subst	der
 die	2	2	DEM	Masc Acc Sg St Attr	den
@@ -130,7 +130,7 @@ jene		2	DEM	NoGend Dat Pl St Attr	jenen
 jene		2	DEM	NoGend Dat Pl St Subst	jenen
 jene		2	DEM	NoGend Gen Pl St Attr	jener
 jene		2	DEM	NoGend Gen Pl St Subst	jener
-solche		2	DEM	Invar Invar Invar Invar Attr	solch
+solche		2	DEM	Invar Attr	solch
 solche		2	DEM	Masc Nom Sg St Attr	solcher
 solche		2	DEM	Masc Nom Sg St Subst	solcher
 solche		2	DEM	Masc Nom Sg Wk Attr	solche

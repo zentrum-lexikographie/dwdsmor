@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2024-09-05
+# Andreas Nolda 2024-09-12
 
 import sys
 import argparse
@@ -18,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 11.0
+version = 12.0
 
 
 BASEDIR = path.dirname(__file__)
@@ -117,6 +117,29 @@ PARCAT = ["degree",
           "tense"]
 
 
+LABEL_MAP = {"lemma": "Lemma",
+             "lemma_index": "Lemma Index",
+             "paradigm_index": "Paradigm Index",
+             "categories": "Categories",
+             "pos": "POS",
+             "subcat": "Subcategory",
+             "auxiliary": "Auxiliary",
+             "person": "Person",
+             "gender": "Gender",
+             "paradigm": {"categories": "Paradigm Categories",
+                          "degree": "Degree",
+                          "person": "Person",
+                          "gender": "Gender",
+                          "case": "Case",
+                          "number": "Number",
+                          "inflection": "Inflection",
+                          "function": "Function",
+                          "nonfinite": "Nonfinite",
+                          "mood": "Mood",
+                          "tense": "Tense",
+                          "forms": "Paradigm Forms"}}
+
+
 Lexcat = namedtuple("Lexcat", LEXCAT, defaults=[None] * len(LEXCAT[1:]))
 
 Parcat = namedtuple("Parcat", PARCAT, defaults=[None] * len(PARCAT))
@@ -125,7 +148,7 @@ Parcat = namedtuple("Parcat", PARCAT, defaults=[None] * len(PARCAT))
 Formspec = namedtuple("Formspec", ["lemma_index", "paradigm_index",
                                    "lexcat", "parcat"])
 
-Lemmaspec = namedtuple("Lemmaspec", ["lemma_index", "paradigm_index", "seg",
+Lemmaspec = namedtuple("Lemmaspec", ["lemma_index", "paradigm_index", "seg_lemma",
                                      "pos", "subcat", "person", "gender"])
 
 
@@ -191,18 +214,18 @@ def format_categorisation(categorisation):
                     for cat in categorisation])
 
 
-def generate_forms(transducer, lemma_index, paradigm_index, seg,
+def generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                    pos, categorisation):
-    forms = transducer.generate(seg + format_lemma_index(lemma_index)
-                                    + format_paradigm_index(paradigm_index)
-                                    + format_pos(pos)
-                                    + format_categorisation(categorisation))
+    forms = transducer.generate(seg_lemma + format_lemma_index(lemma_index)
+                                          + format_paradigm_index(paradigm_index)
+                                          + format_pos(pos)
+                                          + format_categorisation(categorisation))
     return forms
 
 
-def generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+def generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                            pos, categorisation, cats):
-    forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+    forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                            pos, categorisation + cats)
     return forms
 
@@ -225,7 +248,8 @@ def add_additional_forms(formdict, lemma_index, paradigm_index,
 
 
 def add_special_forms(formdict, lemma_index, paradigm_index,
-                      lexcat, parcat, forms, tags):
+                      lexcat, parcat, forms,
+                      tags):
     if forms:
         formatted_forms = [form + " (" + ", ".join(tags) + ")"
                            for form in forms]
@@ -243,7 +267,8 @@ def add_sup_forms(formdict, lemma_index, paradigm_index,
 
 
 def add_special_sup_forms(formdict, lemma_index, paradigm_index,
-                          lexcat, parcat, forms, tags):
+                          lexcat, parcat, forms,
+                          tags):
     if forms:
         complex_forms = ["am " + form + " (" + ", ".join(tags) + ")"
                          for form in forms]
@@ -262,7 +287,8 @@ def add_perf_forms(formdict, lemma_index, paradigm_index,
 
 
 def add_special_perf_forms(formdict, lemma_index, paradigm_index,
-                           lexcat, parcat, forms, participles, tags):
+                           lexcat, parcat, forms, participles,
+                           tags):
     if forms:
         complex_forms = [form + " " + participle + " (" + ", ".join(tags) + ")"
                          for form in forms
@@ -282,7 +308,8 @@ def add_fut_forms(formdict, lemma_index, paradigm_index,
 
 
 def add_special_fut_forms(formdict, lemma_index, paradigm_index,
-                          lexcat, parcat, forms, infinitives, tags):
+                          lexcat, parcat, forms, infinitives,
+                          tags):
     if forms:
         complex_forms = [form + " " + infinitive + " (" + ", ".join(tags) + ")"
                          for form in forms
@@ -303,7 +330,8 @@ def add_futperf_forms(formdict, lemma_index, paradigm_index,
 
 
 def add_special_futperf_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, forms, infinitives, participles, tags):
+                              lexcat, parcat, forms, infinitives, participles,
+                              tags):
     if forms:
         complex_forms = [form + " " + participle + " " + infinitive + " (" + ", ".join(tags) + ")"
                          for form in forms
@@ -324,7 +352,8 @@ def add_nonfinite_perf_forms(formdict, lemma_index, paradigm_index,
 
 
 def add_special_nonfinite_perf_forms(formdict, lemma_index, paradigm_index,
-                                     lexcat, parcat, forms, participles, tags):
+                                     lexcat, parcat, forms, participles,
+                                     tags):
     if forms:
         complex_forms = [participle + " " + form + " (" + ", ".join(tags) + ")"
                          for participle in participles
@@ -343,7 +372,8 @@ def add_particle_verb_forms(formdict, lemma_index, paradigm_index,
 
 
 def add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                    lexcat, parcat, forms, particle, tags):
+                                    lexcat, parcat, forms, particle,
+                                    tags):
     if forms:
         complex_forms = [form[len(particle):] + " " + particle + " (" + ", ".join(tags) + ")"
                          for form in forms]
@@ -361,7 +391,8 @@ def add_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
 
 
 def add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                           lexcat, parcat, forms, particle, particle_2, tags):
+                                           lexcat, parcat, forms, particle, particle_2,
+                                           tags):
     if forms:
         complex_forms = [form[len(particle_2 + particle):] + " " + particle_2 + " " + particle + " (" + ", ".join(tags) + ")"
                          for form in forms]
@@ -379,7 +410,8 @@ def add_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
 
 
 def add_special_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                        lexcat, parcat, forms, particle, tags):
+                                        lexcat, parcat, forms, particle,
+                                        tags):
     if forms:
         complex_forms = [form[len(particle):] + " " + particle + " (" + ", ".join(tags) + ")"
                          for form in forms]
@@ -397,7 +429,8 @@ def add_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
 
 
 def add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                               lexcat, parcat, forms, particle, particle_2, tags):
+                                               lexcat, parcat, forms, particle, particle_2,
+                                               tags):
     if forms:
         complex_forms = [form[len(particle_2 + particle):] + " " + particle_2 + " " + particle + " (" + ", ".join(tags) + ")"
                          for form in forms]
@@ -405,7 +438,7 @@ def add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_i
                              lexcat, parcat, complex_forms)
 
 
-def get_noun_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_noun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                       pos, gender, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
     lexcat = Lexcat(pos = pos,
@@ -421,7 +454,7 @@ def get_noun_formdict(transducer, lemma_index, paradigm_index, seg,
                           case,
                           number,
                           inflection]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
@@ -432,10 +465,11 @@ def get_noun_formdict(transducer, lemma_index, paradigm_index, seg,
             # no such forms
             pass
         if oldorth:
-            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
+            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                                    pos, categorisation, [OLDORTH])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, oldorth_forms, [TAG_OLDORTH])
+                              lexcat, parcat, oldorth_forms,
+                              [TAG_OLDORTH])
             if nonst:
                 # no such forms
                 pass
@@ -443,10 +477,12 @@ def get_noun_formdict(transducer, lemma_index, paradigm_index, seg,
                 # no such forms
                 pass
         if ch:
-            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                              pos, categorisation, [CH])
+            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                              pos, categorisation,
+                                              [CH])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, ch_forms, [TAG_CH])
+                              lexcat, parcat, ch_forms,
+                              [TAG_CH])
             if nonst:
                 # no such forms
                 pass
@@ -463,54 +499,70 @@ def get_noun_formdict(transducer, lemma_index, paradigm_index, seg,
         categorisation = [gender,
                           case,
                           number]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
         if nonst:
-            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                 pos, categorisation, [NONST])
+            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                 pos, categorisation,
+                                                 [NONST])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, nonst_forms, [TAG_NONST])
+                              lexcat, parcat, nonst_forms,
+                              [TAG_NONST])
         if old:
-            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                               pos, categorisation, [OLD])
+            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                               pos, categorisation,
+                                               [OLD])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, old_forms, [TAG_OLD])
+                              lexcat, parcat, old_forms,
+                              [TAG_OLD])
         if oldorth:
-            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                   pos, categorisation, [OLDORTH])
+            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                   pos, categorisation,
+                                                   [OLDORTH])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, oldorth_forms, [TAG_OLDORTH])
+                              lexcat, parcat, oldorth_forms,
+                              [TAG_OLDORTH])
             if nonst:
-                nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                             pos, categorisation, [NONST, OLDORTH])
+                nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                             pos, categorisation,
+                                                             [NONST, OLDORTH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, nonst_oldorth_forms, [TAG_NONST, TAG_OLDORTH])
+                                  lexcat, parcat, nonst_oldorth_forms,
+                                  [TAG_NONST, TAG_OLDORTH])
             if old:
-                old_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                           pos, categorisation, [OLD, OLDORTH])
+                old_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                           pos, categorisation,
+                                                           [OLD, OLDORTH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, old_oldorth_forms, [TAG_OLD, TAG_OLDORTH])
+                                  lexcat, parcat, old_oldorth_forms,
+                                  [TAG_OLD, TAG_OLDORTH])
         if ch:
-            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                              pos, categorisation, [CH])
+            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                              pos, categorisation,
+                                              [CH])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, ch_forms, [TAG_CH])
+                              lexcat, parcat, ch_forms,
+                              [TAG_CH])
             if nonst:
-                nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                        pos, categorisation, [NONST, CH])
+                nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                        pos, categorisation,
+                                                        [NONST, CH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, nonst_ch_forms, [TAG_NONST, TAG_CH])
+                                  lexcat, parcat, nonst_ch_forms,
+                                  [TAG_NONST, TAG_CH])
             if old:
-                old_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                      pos, categorisation, [OLD, CH])
+                old_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                      pos, categorisation,
+                                                      [OLD, CH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, old_ch_forms, [TAG_OLD, TAG_CH])
+                                  lexcat, parcat, old_ch_forms,
+                                  [TAG_OLD, TAG_CH])
     return formdict
 
 
-def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                            pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
     lexcat = Lexcat(pos = pos)
@@ -520,7 +572,7 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
                         function = "Pred/Adv")
         categorisation = [degree,
                           "Pred/Adv"]
-        nonattributive_forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        nonattributive_forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                               pos, categorisation)
         if degree == "Sup":
             add_sup_forms(formdict, lemma_index, paradigm_index,
@@ -535,14 +587,17 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
             # no such forms
             pass
         if oldorth:
-            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                   pos, categorisation, [OLDORTH])
+            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                   pos, categorisation,
+                                                   [OLDORTH])
             if degree == "Sup":
                 add_special_sup_forms(formdict, lemma_index, paradigm_index,
-                                      lexcat, parcat, oldorth_forms, [TAG_OLDORTH])
+                                      lexcat, parcat, oldorth_forms,
+                                      [TAG_OLDORTH])
             else:
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, oldorth_forms, [TAG_OLDORTH])
+                                  lexcat, parcat, oldorth_forms,
+                                  [TAG_OLDORTH])
             if nonst:
                 # no such forms
                 pass
@@ -550,14 +605,17 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
                 # no such forms
                 pass
         if ch:
-            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                              pos, categorisation, [CH])
+            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                              pos, categorisation,
+                                              [CH])
             if degree == "Sup":
                 add_special_sup_forms(formdict, lemma_index, paradigm_index,
-                                      lexcat, parcat, ch_forms, [TAG_CH])
+                                      lexcat, parcat, ch_forms,
+                                      [TAG_CH])
             else:
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, ch_forms, [TAG_CH])
+                                  lexcat, parcat, ch_forms,
+                                  [TAG_CH])
             if nonst:
                 # no such forms
                 pass
@@ -580,7 +638,7 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
             categorisation = [degree,
                               function,
                               "Invar"]
-            forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+            forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                    pos, categorisation)
             add_forms(formdict, lemma_index, paradigm_index,
                       lexcat, parcat, forms)
@@ -591,10 +649,12 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
                 # no such forms
                 pass
             if oldorth:
-                oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                       pos, categorisation, [OLDORTH])
+                oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                       pos, categorisation,
+                                                       [OLDORTH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, oldorth_forms, [TAG_OLDORTH])
+                                  lexcat, parcat, oldorth_forms,
+                                  [TAG_OLDORTH])
                 if nonst:
                     # no such forms
                     pass
@@ -602,10 +662,12 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
                     # no such forms
                     pass
             if ch:
-                ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                  pos, categorisation, [CH])
+                ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                  pos, categorisation,
+                                                  [CH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, ch_forms, [TAG_CH])
+                                  lexcat, parcat, ch_forms,
+                                  [TAG_CH])
                 if nonst:
                     # no such forms
                     pass
@@ -629,7 +691,7 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
                               case,
                               number,
                               inflection]
-            forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+            forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                    pos, categorisation)
             add_forms(formdict, lemma_index, paradigm_index,
                       lexcat, parcat, forms)
@@ -637,40 +699,50 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
                 # no such forms
                 pass
             if old:
-                old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                   pos, categorisation, [OLD])
+                old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                   pos, categorisation,
+                                                   [OLD])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, old_forms, [TAG_OLD])
+                                  lexcat, parcat, old_forms,
+                                  [TAG_OLD])
             if oldorth:
-                oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                       pos, categorisation, [OLDORTH])
+                oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                       pos, categorisation,
+                                                       [OLDORTH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, oldorth_forms, [TAG_OLDORTH])
+                                  lexcat, parcat, oldorth_forms,
+                                  [TAG_OLDORTH])
                 if nonst:
                     # no such forms
                     pass
                 if old:
-                    old_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                               pos, categorisation, [OLD, OLDORTH])
+                    old_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                               pos, categorisation,
+                                                               [OLD, OLDORTH])
                     add_special_forms(formdict, lemma_index, paradigm_index,
-                                      lexcat, parcat, old_oldorth_forms, [TAG_OLD, TAG_OLDORTH])
+                                      lexcat, parcat, old_oldorth_forms,
+                                      [TAG_OLD, TAG_OLDORTH])
             if ch:
-                ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                  pos, categorisation, [CH])
+                ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                  pos, categorisation,
+                                                  [CH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, ch_forms, [TAG_CH])
+                                  lexcat, parcat, ch_forms,
+                                  [TAG_CH])
                 if nonst:
                     # no such forms
                     pass
                 if old:
-                    old_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                          pos, categorisation, [OLD, CH])
+                    old_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                          pos, categorisation,
+                                                          [OLD, CH])
                     add_special_forms(formdict, lemma_index, paradigm_index,
-                                      lexcat, parcat, old_ch_forms, [TAG_OLD, TAG_CH])
+                                      lexcat, parcat, old_ch_forms,
+                                      [TAG_OLD, TAG_CH])
     return formdict
 
 
-def get_article_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_article_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                          pos, subcat, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
     lexcat = Lexcat(pos = pos,
@@ -689,15 +761,17 @@ def get_article_formdict(transducer, lemma_index, paradigm_index, seg,
                           case,
                           number,
                           inflection]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
         if nonst:
-            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                 pos, categorisation, [NONST])
+            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                 pos, categorisation,
+                                                 [NONST])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, nonst_forms, [TAG_NONST])
+                              lexcat, parcat, nonst_forms,
+                              [TAG_NONST])
         if old:
             # no such forms
             pass
@@ -710,7 +784,7 @@ def get_article_formdict(transducer, lemma_index, paradigm_index, seg,
     return formdict
 
 
-def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                           pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
     lexcat = Lexcat(pos = pos)
@@ -726,7 +800,7 @@ def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg,
                         inflection = inflection)
         categorisation = [function,
                           "Invar"]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
@@ -740,10 +814,12 @@ def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg,
             # no such forms
             pass
         if ch:
-            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                              pos, categorisation, [CH])
+            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                              pos, categorisation,
+                                              [CH])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, ch_forms, [TAG_CH])
+                              lexcat, parcat, ch_forms,
+                              [TAG_CH])
             if nonst:
                 # no such forms
                 pass
@@ -765,15 +841,17 @@ def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg,
                           case,
                           number,
                           inflection]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
         if nonst:
-            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                 pos, categorisation, [NONST])
+            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                 pos, categorisation,
+                                                 [NONST])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, nonst_forms, [TAG_NONST])
+                              lexcat, parcat, nonst_forms,
+                              [TAG_NONST])
         if old:
             # no such forms
             pass
@@ -781,22 +859,26 @@ def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg,
             # no such forms
             pass
         if ch:
-            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                              pos, categorisation, [CH])
+            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                              pos, categorisation,
+                                              [CH])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, ch_forms, [TAG_CH])
+                              lexcat, parcat, ch_forms,
+                              [TAG_CH])
             if nonst:
-                nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                        pos, categorisation, [NONST, CH])
+                nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                        pos, categorisation,
+                                                        [NONST, CH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, nonst_ch_forms, [TAG_NONST, TAG_CH])
+                                  lexcat, parcat, nonst_ch_forms,
+                                  [TAG_NONST, TAG_CH])
             if old:
                 # no such forms
                 pass
     return formdict
 
 
-def get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                          pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
     lexcat = Lexcat(pos = pos)
@@ -813,7 +895,7 @@ def get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg,
                           case,
                           number,
                           inflection]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
@@ -827,10 +909,12 @@ def get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg,
             # no such forms
             pass
         if ch:
-            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                              pos, categorisation, [CH])
+            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                              pos, categorisation,
+                                              [CH])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, ch_forms, [TAG_CH])
+                              lexcat, parcat, ch_forms,
+                              [TAG_CH])
             if nonst:
                 # no such forms
                 pass
@@ -840,7 +924,7 @@ def get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg,
     return formdict
 
 
-def get_fraction_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_fraction_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                           pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
     lexcat = Lexcat(pos = pos)
@@ -856,7 +940,7 @@ def get_fraction_formdict(transducer, lemma_index, paradigm_index, seg,
                         inflection = inflection)
         categorisation = [function,
                           "Invar"]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
@@ -870,10 +954,12 @@ def get_fraction_formdict(transducer, lemma_index, paradigm_index, seg,
             # no such forms
             pass
         if ch:
-            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                              pos, categorisation, [CH])
+            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                              pos, categorisation,
+                                              [CH])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, ch_forms, [TAG_CH])
+                              lexcat, parcat, ch_forms,
+                              [TAG_CH])
             if nonst:
                 # no such forms
                 pass
@@ -883,7 +969,7 @@ def get_fraction_formdict(transducer, lemma_index, paradigm_index, seg,
     return formdict
 
 
-def get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                     pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
     lexcat = Lexcat(pos = pos)
@@ -899,7 +985,7 @@ def get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg
                         inflection = inflection)
         categorisation = [function,
                           "Invar"]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
@@ -930,15 +1016,17 @@ def get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg
                           case,
                           number,
                           inflection]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
         if nonst:
-            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                 pos, categorisation, [NONST])
+            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                 pos, categorisation,
+                                                 [NONST])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, nonst_forms, [TAG_NONST])
+                              lexcat, parcat, nonst_forms,
+                              [TAG_NONST])
         if old:
             # no such forms
             pass
@@ -951,7 +1039,7 @@ def get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg
     return formdict
 
 
-def get_substantival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_substantival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                       pos, subcat, person, gender, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
     categorisations = product(NUMBERS, CASES)
@@ -979,20 +1067,24 @@ def get_substantival_pronoun_formdict(transducer, lemma_index, paradigm_index, s
                               person,
                               case,
                               number]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
         if nonst:
-            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                 pos, categorisation, [NONST])
+            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                 pos, categorisation,
+                                                 [NONST])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, nonst_forms, [TAG_NONST])
+                              lexcat, parcat, nonst_forms,
+                              [TAG_NONST])
         if old:
-            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                               pos, categorisation, [OLD])
+            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                               pos, categorisation,
+                                               [OLD])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, old_forms, [TAG_OLD])
+                              lexcat, parcat, old_forms,
+                              [TAG_OLD])
         if oldorth:
             # no such forms
             pass
@@ -1002,7 +1094,7 @@ def get_substantival_pronoun_formdict(transducer, lemma_index, paradigm_index, s
     return formdict
 
 
-def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, gender, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
     # fixed gender
@@ -1013,7 +1105,7 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
                     number = "Invar")
     categorisation = [gender,
                       "Invar"]
-    forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+    forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                            pos, categorisation)
     add_forms(formdict, lemma_index, paradigm_index,
               lexcat, parcat, forms)
@@ -1039,20 +1131,24 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
         categorisation = [gender,
                           case,
                           number]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
         if nonst:
-            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                 pos, categorisation, [NONST])
+            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                 pos, categorisation,
+                                                 [NONST])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, nonst_forms, [TAG_NONST])
+                              lexcat, parcat, nonst_forms,
+                              [TAG_NONST])
         if old:
-            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                               pos, categorisation, [OLD])
+            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                               pos, categorisation,
+                                               [OLD])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, old_forms, [TAG_OLD])
+                              lexcat, parcat, old_forms,
+                              [TAG_OLD])
         if oldorth:
             # no such forms
             pass
@@ -1074,7 +1170,7 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
                         inflection = inflection)
         categorisation = [function,
                           "Invar"]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
@@ -1105,15 +1201,17 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
                           case,
                           number,
                           inflection]
-        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                pos, categorisation)
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, forms)
         if nonst:
-            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                 pos, categorisation, [NONST])
+            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                 pos, categorisation,
+                                                 [NONST])
             add_special_forms(formdict, lemma_index, paradigm_index,
-                              lexcat, parcat, nonst_forms, [TAG_NONST])
+                              lexcat, parcat, nonst_forms,
+                              [TAG_NONST])
         if old:
             # no such forms
             pass
@@ -1126,25 +1224,27 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
     return formdict
 
 
-def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                       pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
-    seg_list = seg.split(PARTICLE_BOUNDARY)
-    seg_count = seg.count(PARTICLE_BOUNDARY)
+    seg_list = seg_lemma.split(PARTICLE_BOUNDARY)
+    seg_count = seg_lemma.count(PARTICLE_BOUNDARY)
     particle = seg_list[1] if seg_count == 2 else seg_list[0] if seg_count == 1 else ""
     particle_2 = seg_list[0] if seg_count == 2 else ""
     for auxiliary in AUXILIARIES:
         categorisation = ["PPast",
                           auxiliary]
         # check whether the past participle actually selects the auxiliary
-        ppast_forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+        ppast_forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                      pos, categorisation)
         if oldorth:
-            oldorth_ppast_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                         pos, categorisation, [OLDORTH])
+            oldorth_ppast_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                         pos, categorisation,
+                                                         [OLDORTH])
         if ch:
-            ch_ppast_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                    pos, categorisation, [CH])
+            ch_ppast_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                    pos, categorisation,
+                                                    [CH])
         if ppast_forms:
             lexcat = Lexcat(pos = pos,
                             auxiliary = auxiliary)
@@ -1152,7 +1252,7 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
             parcat = Parcat(nonfinite = "Inf",
                             tense = "Pres")
             categorisation = ["Inf"]
-            inf_forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+            inf_forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                        pos, categorisation)
             add_forms(formdict, lemma_index, paradigm_index,
                       lexcat, parcat, inf_forms)
@@ -1163,10 +1263,12 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                 # no such forms
                 pass
             if oldorth:
-                oldorth_inf_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                      pos, categorisation, [OLDORTH])
+                oldorth_inf_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                           pos, categorisation,
+                                                           [OLDORTH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, oldorth_inf_forms, [TAG_OLDORTH])
+                                  lexcat, parcat, oldorth_inf_forms,
+                                  [TAG_OLDORTH])
                 if nonst:
                     # no such forms
                     pass
@@ -1174,10 +1276,12 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                     # no such forms
                     pass
             if ch:
-                ch_inf_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                      pos, categorisation, [CH])
+                ch_inf_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                      pos, categorisation,
+                                                      [CH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, ch_inf_forms, [TAG_CH])
+                                  lexcat, parcat, ch_inf_forms,
+                                  [TAG_CH])
                 if nonst:
                     # no such forms
                     pass
@@ -1197,7 +1301,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                 pass
             if oldorth:
                 add_special_nonfinite_perf_forms(formdict, lemma_index, paradigm_index,
-                                                 lexcat, parcat, [auxiliary], oldorth_ppast_forms, [TAG_OLDORTH])
+                                                 lexcat, parcat, [auxiliary], oldorth_ppast_forms,
+                                                 [TAG_OLDORTH])
                 if nonst:
                     # no such forms
                     pass
@@ -1206,7 +1311,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                     pass
             if ch:
                 add_special_nonfinite_perf_forms(formdict, lemma_index, paradigm_index,
-                                                 lexcat, parcat, [auxiliary], ch_ppast_forms, [TAG_CH])
+                                                 lexcat, parcat, [auxiliary], ch_ppast_forms,
+                                                 [TAG_CH])
                 if nonst:
                     # no such forms
                     pass
@@ -1218,7 +1324,7 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
             parcat = Parcat(nonfinite = "Part",
                             tense = "Pres")
             categorisation = ["PPres"]
-            ppres_forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+            ppres_forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                          pos, categorisation)
             add_forms(formdict, lemma_index, paradigm_index,
                       lexcat, parcat, ppres_forms)
@@ -1229,10 +1335,12 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                 # no such forms
                 pass
             if oldorth:
-                oldorth_ppres_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                        pos, categorisation, [OLDORTH])
+                oldorth_ppres_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                             pos, categorisation,
+                                                             [OLDORTH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, oldorth_ppres_forms, [TAG_OLDORTH])
+                                  lexcat, parcat, oldorth_ppres_forms,
+                                  [TAG_OLDORTH])
                 if nonst:
                     # no such forms
                     pass
@@ -1240,10 +1348,12 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                     # no such forms
                     pass
             if ch:
-                ch_ppres_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                        pos, categorisation, [CH])
+                ch_ppres_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                        pos, categorisation,
+                                                        [CH])
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, ch_ppres_forms, [TAG_CH])
+                                  lexcat, parcat, ch_ppres_forms,
+                                  [TAG_CH])
                 if nonst:
                     # no such forms
                     pass
@@ -1265,7 +1375,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                 pass
             if oldorth:
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, oldorth_ppast_forms, [TAG_OLDORTH])
+                                  lexcat, parcat, oldorth_ppast_forms,
+                                  [TAG_OLDORTH])
                 if nonst:
                     # no such forms
                     pass
@@ -1274,7 +1385,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                     pass
             if ch:
                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                  lexcat, parcat, ch_ppast_forms, [TAG_CH])
+                                  lexcat, parcat, ch_ppast_forms,
+                                  [TAG_CH])
                 if nonst:
                     # no such forms
                     pass
@@ -1306,30 +1418,37 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                     if nonst:
                         if auxiliary == "haben":
                             nonst_forms = generate_special_forms(transducer, LEMMA_INDEX_HABEN, PARADIGM_INDEX_HABEN, SEG_HABEN,
-                                                                 pos, categorisation, [NONST])
+                                                                 pos, categorisation,
+                                                                 [NONST])
                         elif auxiliary == "sein":
                             nonst_forms = generate_special_forms(transducer, LEMMA_INDEX_SEIN, PARADIGM_INDEX_SEIN, SEG_SEIN,
-                                                                 pos, categorisation, [NONST])
+                                                                 pos, categorisation,
+                                                                 [NONST])
                         add_special_perf_forms(formdict, lemma_index, paradigm_index,
-                                               lexcat, parcat, nonst_forms, ppast_forms, [TAG_NONST])
+                                               lexcat, parcat, nonst_forms, ppast_forms,
+                                               [TAG_NONST])
                     if old:
                         # no such forms
                         pass
                     if oldorth:
                         add_special_perf_forms(formdict, lemma_index, paradigm_index,
-                                               lexcat, parcat, forms, oldorth_ppast_forms, [TAG_OLDORTH])
+                                               lexcat, parcat, forms, oldorth_ppast_forms,
+                                               [TAG_OLDORTH])
                         if nonst:
                             add_special_perf_forms(formdict, lemma_index, paradigm_index,
-                                                   lexcat, parcat, nonst_forms, oldorth_ppast_forms, [TAG_NONST, TAG_OLDORTH])
+                                                   lexcat, parcat, nonst_forms, oldorth_ppast_forms,
+                                                   [TAG_NONST, TAG_OLDORTH])
                         if old:
                             # no such forms
                             pass
                     if ch:
                         add_special_perf_forms(formdict, lemma_index, paradigm_index,
-                                               lexcat, parcat, forms, ch_ppast_forms, [TAG_CH])
+                                               lexcat, parcat, forms, ch_ppast_forms,
+                                               [TAG_CH])
                         if nonst:
                             add_special_perf_forms(formdict, lemma_index, paradigm_index,
-                                                   lexcat, parcat, nonst_forms, ch_ppast_forms, [TAG_NONST, TAG_CH])
+                                                   lexcat, parcat, nonst_forms, ch_ppast_forms,
+                                                   [TAG_NONST, TAG_CH])
                         if old:
                             # no such forms
                             pass
@@ -1355,7 +1474,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                         pass
                     if oldorth:
                         add_special_perf_forms(formdict, lemma_index, paradigm_index,
-                                               lexcat, parcat, forms, oldorth_ppast_forms, [TAG_OLDORTH])
+                                               lexcat, parcat, forms, oldorth_ppast_forms,
+                                               [TAG_OLDORTH])
                         if nonst:
                             # no such forms
                             pass
@@ -1364,7 +1484,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                             pass
                     if ch:
                         add_special_perf_forms(formdict, lemma_index, paradigm_index,
-                                               lexcat, parcat, forms, ch_ppast_forms, [TAG_CH])
+                                               lexcat, parcat, forms, ch_ppast_forms,
+                                               [TAG_CH])
                         if nonst:
                             # no such forms
                             pass
@@ -1383,27 +1504,33 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                                   lexcat, parcat, forms, inf_forms)
                     if nonst:
                         nonst_forms = generate_special_forms(transducer, LEMMA_INDEX_WERDEN, PARADIGM_INDEX_WERDEN, SEG_WERDEN,
-                                                             pos, categorisation, [NONST])
+                                                             pos, categorisation,
+                                                             [NONST])
                         add_special_fut_forms(formdict, lemma_index, paradigm_index,
-                                              lexcat, parcat, nonst_forms, inf_forms, [TAG_NONST])
+                                              lexcat, parcat, nonst_forms, inf_forms,
+                                              [TAG_NONST])
                     if old:
                         # no such forms
                         pass
                     if oldorth:
                         add_special_fut_forms(formdict, lemma_index, paradigm_index,
-                                              lexcat, parcat, forms, oldorth_inf_forms, [TAG_OLDORTH])
+                                              lexcat, parcat, forms, oldorth_inf_forms,
+                                              [TAG_OLDORTH])
                         if nonst:
                             add_special_fut_forms(formdict, lemma_index, paradigm_index,
-                                                  lexcat, parcat, nonst_forms, oldorth_inf_forms, [TAG_NONST, TAG_OLDORTH])
+                                                  lexcat, parcat, nonst_forms, oldorth_inf_forms,
+                                                  [TAG_NONST, TAG_OLDORTH])
                         if old:
                             # no such forms
                             pass
                     if ch:
                         add_special_fut_forms(formdict, lemma_index, paradigm_index,
-                                              lexcat, parcat, forms, ch_inf_forms, [TAG_CH])
+                                              lexcat, parcat, forms, ch_inf_forms,
+                                              [TAG_CH])
                         if nonst:
                             add_special_fut_forms(formdict, lemma_index, paradigm_index,
-                                                  lexcat, parcat, nonst_forms, ch_inf_forms, [TAG_NONST, TAG_CH])
+                                                  lexcat, parcat, nonst_forms, ch_inf_forms,
+                                                  [TAG_NONST, TAG_CH])
                         if old:
                             # no such forms
                             pass
@@ -1419,27 +1546,33 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                                       lexcat, parcat, forms, [auxiliary], ppast_forms)
                     if nonst:
                         nonst_forms = generate_special_forms(transducer, LEMMA_INDEX_WERDEN, PARADIGM_INDEX_WERDEN, SEG_WERDEN,
-                                                             pos, categorisation, [NONST])
+                                                             pos, categorisation,
+                                                             [NONST])
                         add_special_futperf_forms(formdict, lemma_index, paradigm_index,
-                                                  lexcat, parcat, nonst_forms, [auxiliary], ppast_forms, [TAG_NONST])
+                                                  lexcat, parcat, nonst_forms, [auxiliary], ppast_forms,
+                                                  [TAG_NONST])
                     if old:
                         # no such forms
                         pass
                     if oldorth:
                         add_special_futperf_forms(formdict, lemma_index, paradigm_index,
-                                                  lexcat, parcat, forms, [auxiliary], oldorth_ppast_forms, [TAG_OLDORTH])
+                                                  lexcat, parcat, forms, [auxiliary], oldorth_ppast_forms,
+                                                  [TAG_OLDORTH])
                         if nonst:
                             add_special_futperf_forms(formdict, lemma_index, paradigm_index,
-                                                      lexcat, parcat, nonst_forms, [auxiliary], oldorth_ppast_forms, [TAG_NONST, TAG_OLDORTH])
+                                                      lexcat, parcat, nonst_forms, [auxiliary], oldorth_ppast_forms,
+                                                      [TAG_NONST, TAG_OLDORTH])
                         if old:
                             # no such forms
                             pass
                     if ch:
                         add_special_futperf_forms(formdict, lemma_index, paradigm_index,
-                                                  lexcat, parcat, forms, [auxiliary], ch_ppast_forms, [TAG_CH])
+                                                  lexcat, parcat, forms, [auxiliary], ch_ppast_forms,
+                                                  [TAG_CH])
                         if nonst:
                             add_special_futperf_forms(formdict, lemma_index, paradigm_index,
-                                                      lexcat, parcat, nonst_forms, [auxiliary], ch_ppast_forms, [TAG_NONST, TAG_CH])
+                                                      lexcat, parcat, nonst_forms, [auxiliary], ch_ppast_forms,
+                                                      [TAG_NONST, TAG_CH])
                         if old:
                             # no such forms
                             pass
@@ -1450,143 +1583,191 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                                       tense,
                                       mood]
                     if particle and particle_2:
-                        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+                        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                                pos, categorisation)
                         add_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                                        lexcat, parcat, forms, particle, particle_2)
                         if nonst:
-                            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                               pos, categorisation, [NONST])
+                            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                 pos, categorisation,
+                                                                 [NONST])
                             add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                   lexcat, parcat, nonst_forms, particle, particle_2, [TAG_NONST])
+                                                                   lexcat, parcat, nonst_forms, particle, particle_2,
+                                                                   [TAG_NONST])
                         if old:
-                            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                               pos, categorisation, [OLD])
+                            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                               pos, categorisation,
+                                                               [OLD])
                             add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                   lexcat, parcat, old_forms, particle, particle_2, [TAG_OLD])
+                                                                   lexcat, parcat, old_forms, particle, particle_2,
+                                                                   [TAG_OLD])
                         if oldorth:
-                            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                   pos, categorisation, [OLDORTH])
+                            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                   pos, categorisation,
+                                                                   [OLDORTH])
                             add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                   lexcat, parcat, oldorth_forms, particle, particle_2, [TAG_OLDORTH])
+                                                                   lexcat, parcat, oldorth_forms, particle, particle_2,
+                                                                   [TAG_OLDORTH])
                             if nonst:
-                                nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                             pos, categorisation, [NONST, OLDORTH])
+                                nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                             pos, categorisation,
+                                                                             [NONST, OLDORTH])
                                 add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                       lexcat, parcat, nonst_oldorth_forms, particle, particle_2, [TAG_NONST, TAG_OLDORTH])
+                                                                       lexcat, parcat, nonst_oldorth_forms, particle, particle_2,
+                                                                       [TAG_NONST, TAG_OLDORTH])
                             if old:
-                                old_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                           pos, categorisation, [OLD, OLDORTH])
+                                old_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                           pos, categorisation,
+                                                                           [OLD, OLDORTH])
                                 add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                       lexcat, parcat, old_oldorth_forms, particle, particle_2, [TAG_OLD, TAG_OLDORTH])
+                                                                       lexcat, parcat, old_oldorth_forms, particle, particle_2,
+                                                                       [TAG_OLD, TAG_OLDORTH])
                         if ch:
-                            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                              pos, categorisation, [CH])
+                            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                              pos, categorisation,
+                                                              [CH])
                             add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                   lexcat, parcat, ch_forms, particle, particle_2, [TAG_CH])
+                                                                   lexcat, parcat, ch_forms, particle, particle_2,
+                                                                   [TAG_CH])
                             if nonst:
-                                nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                        pos, categorisation, [NONST, CH])
+                                nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                        pos, categorisation,
+                                                                        [NONST, CH])
                                 add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                       lexcat, parcat, nonst_ch_forms, particle, particle_2, [TAG_NONST, TAG_CH])
+                                                                       lexcat, parcat, nonst_ch_forms, particle, particle_2,
+                                                                       [TAG_NONST, TAG_CH])
                             if old:
-                                old_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                      pos, categorisation, [OLD, CH])
+                                old_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                      pos, categorisation,
+                                                                      [OLD, CH])
                                 add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                       lexcat, parcat, old_ch_forms, particle, particle_2, [TAG_OLD, TAG_CH])
+                                                                       lexcat, parcat, old_ch_forms, particle, particle_2,
+                                                                       [TAG_OLD, TAG_CH])
 
                     elif particle:
-                        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+                        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                                pos, categorisation)
                         add_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                                 lexcat, parcat, forms, particle)
                         if nonst:
-                            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                               pos, categorisation, [NONST])
+                            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                 pos, categorisation,
+                                                                 [NONST])
                             add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                            lexcat, parcat, nonst_forms, particle, [TAG_NONST])
+                                                            lexcat, parcat, nonst_forms, particle,
+                                                            [TAG_NONST])
                         if old:
-                            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                               pos, categorisation, [OLD])
+                            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                               pos, categorisation,
+                                                               [OLD])
                             add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                            lexcat, parcat, old_forms, particle, [TAG_OLD])
+                                                            lexcat, parcat, old_forms, particle,
+                                                            [TAG_OLD])
                         if oldorth:
-                            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                   pos, categorisation, [OLDORTH])
+                            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                   pos, categorisation,
+                                                                   [OLDORTH])
                             add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                            lexcat, parcat, oldorth_forms, particle, [TAG_OLDORTH])
+                                                            lexcat, parcat, oldorth_forms, particle,
+                                                            [TAG_OLDORTH])
                             if nonst:
-                                nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                             pos, categorisation, [NONST, OLDORTH])
+                                nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                             pos, categorisation,
+                                                                             [NONST, OLDORTH])
                                 add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                lexcat, parcat, nonst_oldorth_forms, particle, [TAG_NONST, TAG_OLDORTH])
+                                                                lexcat, parcat, nonst_oldorth_forms, particle,
+                                                                [TAG_NONST, TAG_OLDORTH])
                             if old:
-                                old_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                           pos, categorisation, [OLD, OLDORTH])
+                                old_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                           pos, categorisation,
+                                                                           [OLD, OLDORTH])
                                 add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                lexcat, parcat, old_oldorth_forms, particle, [TAG_OLD, TAG_OLDORTH])
+                                                                lexcat, parcat, old_oldorth_forms, particle,
+                                                                [TAG_OLD, TAG_OLDORTH])
                         if ch:
-                            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                              pos, categorisation, [CH])
+                            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                              pos, categorisation,
+                                                              [CH])
                             add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                            lexcat, parcat, ch_forms, particle, [TAG_CH])
+                                                            lexcat, parcat, ch_forms, particle,
+                                                            [TAG_CH])
                             if nonst:
-                                nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                        pos, categorisation, [NONST, CH])
+                                nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                        pos, categorisation,
+                                                                        [NONST, CH])
                                 add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                lexcat, parcat, nonst_ch_forms, particle, [TAG_NONST, TAG_CH])
+                                                                lexcat, parcat, nonst_ch_forms, particle,
+                                                                [TAG_NONST, TAG_CH])
                             if old:
-                                old_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                      pos, categorisation, [OLD, CH])
+                                old_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                      pos, categorisation,
+                                                                      [OLD, CH])
                                 add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                lexcat, parcat, old_ch_forms, particle, [TAG_OLD, TAG_CH])
+                                                                lexcat, parcat, old_ch_forms, particle,
+                                                                [TAG_OLD, TAG_CH])
 
 
                     else:
-                        forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+                        forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                                pos, categorisation)
                         add_forms(formdict, lemma_index, paradigm_index,
                                   lexcat, parcat, forms)
                         if nonst:
-                            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                               pos, categorisation, [NONST])
+                            nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                               pos, categorisation,
+                                                                 [NONST])
                             add_special_forms(formdict, lemma_index, paradigm_index,
-                                              lexcat, parcat, nonst_forms, [TAG_NONST])
+                                              lexcat, parcat, nonst_forms,
+                                              [TAG_NONST])
                         if old:
-                            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                               pos, categorisation, [OLD])
+                            old_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                               pos, categorisation,
+                                                               [OLD])
                             add_special_forms(formdict, lemma_index, paradigm_index,
-                                              lexcat, parcat, old_forms, [TAG_OLD])
+                                              lexcat, parcat, old_forms,
+                                              [TAG_OLD])
                         if oldorth:
-                            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                   pos, categorisation, [OLDORTH])
+                            oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                   pos, categorisation,
+                                                                   [OLDORTH])
                             add_special_forms(formdict, lemma_index, paradigm_index,
-                                              lexcat, parcat, oldorth_forms, [TAG_OLDORTH])
+                                              lexcat, parcat, oldorth_forms,
+                                              [TAG_OLDORTH])
                             if nonst:
-                                nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                             pos, categorisation, [NONST, OLDORTH])
+                                nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                             pos, categorisation,
+                                                                             [NONST, OLDORTH])
                                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                                  lexcat, parcat, nonst_oldorth_forms, [TAG_NONST, TAG_OLDORTH])
+                                                  lexcat, parcat, nonst_oldorth_forms,
+                                                  [TAG_NONST, TAG_OLDORTH])
                             if old:
-                                old_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                           pos, categorisation, [OLD, OLDORTH])
+                                old_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                           pos, categorisation,
+                                                                           [OLD, OLDORTH])
                                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                                  lexcat, parcat, old_oldorth_forms, [TAG_OLD, TAG_OLDORTH])
+                                                  lexcat, parcat, old_oldorth_forms,
+                                                  [TAG_OLD, TAG_OLDORTH])
                         if ch:
-                            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                              pos, categorisation, [CH])
+                            ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                              pos, categorisation,
+                                                              [CH])
                             add_special_forms(formdict, lemma_index, paradigm_index,
-                                              lexcat, parcat, ch_forms, [TAG_CH])
+                                              lexcat, parcat, ch_forms,
+                                              [TAG_CH])
                             if nonst:
-                                nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                        pos, categorisation, [NONST, CH])
+                                nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                        pos, categorisation,
+                                                                        [NONST, CH])
                                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                                  lexcat, parcat, nonst_ch_forms, [TAG_NONST, TAG_CH])
+                                                  lexcat, parcat, nonst_ch_forms,
+                                                  [TAG_NONST, TAG_CH])
                             if old:
-                                old_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                      pos, categorisation, [OLD, CH])
+                                old_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                      pos, categorisation,
+                                                                      [OLD, CH])
                                 add_special_forms(formdict, lemma_index, paradigm_index,
-                                                  lexcat, parcat, old_ch_forms, [TAG_OLD, TAG_CH])
+                                                  lexcat, parcat, old_ch_forms,
+                                                  [TAG_OLD, TAG_CH])
 
             # imperative forms
             for number in NUMBERS:
@@ -1595,370 +1776,217 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
                 categorisation = ["Imp",
                                   number]
                 if particle and particle_2:
-                    forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+                    forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                            pos, categorisation)
                     add_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                                        lexcat, parcat, forms, particle, particle_2)
                     if nonst:
-                        nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                          pos, categorisation, [NONST])
+                        nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                             pos, categorisation,
+                                                             [NONST])
                         add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                   lexcat, parcat, nonst_forms, particle, particle_2, [TAG_NONST])
+                                                                   lexcat, parcat, nonst_forms, particle, particle_2,
+                                                                   [TAG_NONST])
                     if old:
                         # no such forms
                         pass
                     if oldorth:
-                        oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                               pos, categorisation, [OLDORTH])
+                        oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                               pos, categorisation,
+                                                               [OLDORTH])
                         add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                   lexcat, parcat, oldorth_forms, particle, particle_2, [TAG_OLDORTH])
+                                                                   lexcat, parcat, oldorth_forms, particle, particle_2,
+                                                                   [TAG_OLDORTH])
                         if nonst:
-                            nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                         pos, categorisation, [NONST, OLDORTH])
+                            nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                         pos, categorisation,
+                                                                         [NONST, OLDORTH])
                             add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                       lexcat, parcat, nonst_oldorth_forms, particle, particle_2, [TAG_NONST, TAG_OLDORTH])
+                                                                       lexcat, parcat, nonst_oldorth_forms, particle, particle_2,
+                                                                       [TAG_NONST, TAG_OLDORTH])
                         if old:
                             # no such forms
                             pass
                     if ch:
-                        ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                          pos, categorisation, [CH])
+                        ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                          pos, categorisation,
+                                                          [CH])
                         add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                   lexcat, parcat, ch_forms, particle, particle_2, [TAG_CH])
+                                                                   lexcat, parcat, ch_forms, particle, particle_2,
+                                                                   [TAG_CH])
                         if nonst:
-                            nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                    pos, categorisation, [NONST, CH])
+                            nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                    pos, categorisation,
+                                                                    [NONST, CH])
                             add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                       lexcat, parcat, nonst_ch_forms, particle, particle_2, [TAG_NONST, TAG_CH])
+                                                                       lexcat, parcat, nonst_ch_forms, particle, particle_2,
+                                                                       [TAG_NONST, TAG_CH])
                         if old:
                             # no such forms
                             pass
 
                 elif particle:
-                    forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+                    forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                            pos, categorisation)
                     add_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                                 lexcat, parcat, forms, particle)
                     if nonst:
-                        nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                          pos, categorisation, [NONST])
+                        nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                             pos, categorisation,
+                                                             [NONST])
                         add_special_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                            lexcat, parcat, nonst_forms, particle, [TAG_NONST])
+                                                            lexcat, parcat, nonst_forms, particle,
+                                                            [TAG_NONST])
                     if old:
                         # no such forms
                         pass
                     if oldorth:
-                        oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                               pos, categorisation, [OLDORTH])
+                        oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                               pos, categorisation,
+                                                               [OLDORTH])
                         add_special_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                            lexcat, parcat, oldorth_forms, particle, [TAG_OLDORTH])
+                                                            lexcat, parcat, oldorth_forms, particle,
+                                                            [TAG_OLDORTH])
                         if nonst:
-                            nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                         pos, categorisation, [NONST, OLDORTH])
+                            nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                         pos, categorisation,
+                                                                         [NONST, OLDORTH])
                             add_special_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                lexcat, parcat, nonst_oldorth_forms, particle, [TAG_NONST, TAG_OLDORTH])
+                                                                lexcat, parcat, nonst_oldorth_forms, particle,
+                                                                [TAG_NONST, TAG_OLDORTH])
                         if old:
                             # no such forms
                             pass
                     if ch:
-                        ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                          pos, categorisation, [CH])
+                        ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                          pos, categorisation,
+                                                          [CH])
                         add_special_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                            lexcat, parcat, ch_forms, particle, [TAG_CH])
+                                                            lexcat, parcat, ch_forms, particle,
+                                                            [TAG_CH])
                         if nonst:
-                            nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                    pos, categorisation, [NONST, CH])
+                            nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                    pos, categorisation,
+                                                                    [NONST, CH])
                             add_special_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
-                                                                lexcat, parcat, nonst_ch_forms, particle, [TAG_NONST, TAG_CH])
+                                                                lexcat, parcat, nonst_ch_forms, particle,
+                                                                [TAG_NONST, TAG_CH])
                         if old:
                             # no such forms
                             pass
 
                 else:
-                    forms = generate_forms(transducer, lemma_index, paradigm_index, seg,
+                    forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                            pos, categorisation)
                     add_forms(formdict, lemma_index, paradigm_index,
                               lexcat, parcat, forms)
                     if nonst:
-                        nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                          pos, categorisation, [NONST])
+                        nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                             pos, categorisation,
+                                                             [NONST])
                         add_special_forms(formdict, lemma_index, paradigm_index,
-                                          lexcat, parcat, nonst_forms, [TAG_NONST])
+                                          lexcat, parcat, nonst_forms,
+                                          [TAG_NONST])
                     if old:
                         # no such forms
                         pass
                     if oldorth:
-                        oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                               pos, categorisation, [OLDORTH])
+                        oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                               pos, categorisation,
+                                                               [OLDORTH])
                         add_special_forms(formdict, lemma_index, paradigm_index,
-                                          lexcat, parcat, oldorth_forms, [TAG_OLDORTH])
+                                          lexcat, parcat, oldorth_forms,
+                                          [TAG_OLDORTH])
                         if nonst:
-                            nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                         pos, categorisation, [NONST, OLDORTH])
+                            nonst_oldorth_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                         pos, categorisation,
+                                                                         [NONST, OLDORTH])
                             add_special_forms(formdict, lemma_index, paradigm_index,
-                                              lexcat, parcat, nonst_oldorth_forms, [TAG_NONST, TAG_OLDORTH])
+                                              lexcat, parcat, nonst_oldorth_forms,
+                                              [TAG_NONST, TAG_OLDORTH])
                         if old:
                             # no such forms
                             pass
                     if ch:
-                        ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                          pos, categorisation, [CH])
+                        ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                          pos, categorisation,
+                                                          [CH])
                         add_special_forms(formdict, lemma_index, paradigm_index,
-                                          lexcat, parcat, ch_forms, [TAG_CH])
+                                          lexcat, parcat, ch_forms,
+                                          [TAG_CH])
                         if nonst:
-                            nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg,
-                                                                    pos, categorisation, [NONST, CH])
+                            nonst_ch_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
+                                                                    pos, categorisation,
+                                                                    [NONST, CH])
                             add_special_forms(formdict, lemma_index, paradigm_index,
-                                              lexcat, parcat, nonst_ch_forms, [TAG_NONST, TAG_CH])
+                                              lexcat, parcat, nonst_ch_forms,
+                                              [TAG_NONST, TAG_CH])
                         if old:
                             # no such forms
                             pass
     return formdict
 
 
-def get_formdict(transducer, lemma_index, paradigm_index, seg,
+def get_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                  pos, subcat, person, gender, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
     # nouns
     if pos in ["NN", "NPROP"]:
-        formdict = get_noun_formdict(transducer, lemma_index, paradigm_index, seg,
+        formdict = get_noun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                      pos, gender, nonst, old, oldorth, ch)
     # adjectives
     elif pos == "ADJ":
-        formdict = get_adjective_formdict(transducer, lemma_index, paradigm_index, seg,
+        formdict = get_adjective_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                           pos, nonst, old, oldorth, ch)
     # articles
     elif pos == "ART":
-        formdict = get_article_formdict(transducer, lemma_index, paradigm_index, seg,
+        formdict = get_article_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                         pos, subcat, nonst, old, oldorth, ch)
     # cardinals
     elif pos == "CARD":
-        formdict = get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg,
+        formdict = get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                          pos, nonst, old, oldorth, ch)
     # ordinals
     elif pos == "ORD":
-        formdict = get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg,
+        formdict = get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                         pos, nonst, old, oldorth, ch)
     # fractions
     elif pos == "FRAC":
-        formdict = get_fraction_formdict(transducer, lemma_index, paradigm_index, seg,
+        formdict = get_fraction_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                          pos, nonst, old, oldorth, ch)
     # demonstrative and possessive pronouns
     elif pos in ["DEM", "POSS"]:
-        formdict = get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
+        formdict = get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                                    pos, nonst, old, oldorth, ch)
     # personal pronouns
     elif pos == "PPRO":
-        formdict = get_substantival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
+        formdict = get_substantival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                                      pos, subcat, person, gender, nonst, old, oldorth, ch)
     # other pronouns
     elif pos in ["INDEF", "REL", "WPRO"]:
-        formdict = get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg,
+        formdict = get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                               pos, gender, nonst, old, oldorth, ch)
     # verbs
     elif pos == "V":
-        formdict = get_verb_formdict(transducer, lemma_index, paradigm_index, seg,
+        formdict = get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                      pos, nonst, old, oldorth, ch)
     return formdict
-
-
-def paradigm_subset(formdict, lemma_index, paradigm_index, lexcat):
-    return [(key, value)
-            for key, value in formdict.items()
-            if key.lemma_index == lemma_index and key.paradigm_index == paradigm_index and key.lexcat == lexcat]
-
-
-def cat_dict(cats):
-    return {key: value
-            for key, value in cats._asdict().items()
-            if value}
-
-
-def cat_list(cats):
-    # remove duplicates while preserving order
-    return {"categories": list(dict.fromkeys(value for value in cat_dict(cats).values()))}
-
-
-def create_paradigm(lemma, formdict, lemma_index, paradigm_index, lexcat,
-                    no_cats=False, no_lemma=False, no_empty=False):
-    cat_value = cat_list if no_cats else cat_dict
-    paradigm = {"lemma": lemma,
-                "lemma_index": lemma_index,
-                "paradigm_index": paradigm_index,
-                **cat_value(lexcat),
-                "paradigm": [{**cat_value(key.parcat),
-                              "forms": value}
-                             for key, value in paradigm_subset(formdict, lemma_index, paradigm_index, lexcat)]}
-    if no_lemma:
-        for key in ["lemma", "lemma_index", "paradigm_index"]:
-            del paradigm[key]
-        for key in list(cat_value(lexcat)):
-            del paradigm[key]
-    if no_empty:
-        for key, value in list(paradigm.items()):
-            if not value:
-                del paradigm[key]
-    return paradigm
-
-
-def create_paradigms(lemma, formdict,
-                     no_cats=False, no_lemma=False, no_empty=False):
-    paradigms = []
-    # remove duplicates while preserving order
-    for lemma_index, paradigm_index, lexcat in list(dict.fromkeys((key.lemma_index, key.paradigm_index, key.lexcat)
-                                                                  for key in formdict.keys())):
-        paradigm = create_paradigm(lemma, formdict, lemma_index, paradigm_index, lexcat,
-                                   no_cats, no_lemma, no_empty)
-        paradigms.append(paradigm)
-    return paradigms
-
-
-def output_json(lemma, output_file, formdict,
-                no_cats=False, no_lemma=False, no_empty=False):
-    paradigms = create_paradigms(lemma, formdict,
-                                 no_cats, no_lemma, no_empty)
-    json.dump(paradigms, output_file, ensure_ascii=False)
-
-
-def output_yaml(lemma, output_file, formdict,
-                no_cats=False, no_lemma=False, no_empty=False):
-    paradigms = create_paradigms(lemma, formdict,
-                                 no_cats, no_lemma, no_empty)
-    yaml.dump(paradigms, output_file, allow_unicode=True, sort_keys=False, explicit_start=True)
-
-
-def get_label_of_key(key, key_labels):
-    return key_labels[key]
-
-
-def get_value_of_key(key, formspec):
-    return str(formspec._asdict().get(key, "") or "")
-
-
-def output_dsv(lemma, output_file, formdict,
-               no_cats=False, no_lemma=False, no_empty=False,
-               header=True, plain=False, force_color=False,
-               delimiter="\t"):
-    kind = "dumb" if plain else None
-    term = Terminal(kind=kind, force_styling=force_color)
-    plain = lambda string: string
-    csv_writer = csv.writer(output_file, delimiter=delimiter, lineterminator="\n")
-
-    key_format = {"lemma": term.bold_underline,
-                  "lemma_index": term.underline,
-                  "paradigm_index": term.underline,
-                  "lexcat": {"pos": term.underline,
-                             "subcat": term.underline,
-                             "auxiliary": term.underline,
-                             "person": term.underline,
-                             "gender": term.underline},
-                  "parcat": {"degree": plain,
-                             "person": plain,
-                             "gender": plain,
-                             "case": plain,
-                             "number": plain,
-                             "inflection": plain,
-                             "function": plain,
-                             "nonfinite": plain,
-                             "mood": plain,
-                             "tense": plain},
-                  "forms": term.bold}
-    key_labels = {"lemma": "Lemma",
-                  "lemma_index": "Lemma Index",
-                  "paradigm_index": "Paradigm Index",
-                  "lexcat": {"pos": "POS",
-                             "subcat": "Subcategory",
-                             "auxiliary": "Auxiliary",
-                             "person": "Person",
-                             "gender": "Gender"},
-                  "parcat": {"degree": "Degree",
-                             "person": "Person",
-                             "gender": "Gender",
-                             "case": "Case",
-                             "number": "Number",
-                             "inflection": "Inflection",
-                             "function": "Function",
-                             "nonfinite": "Nonfinite",
-                             "mood": "Mood",
-                             "tense": "Tense"},
-                  "forms": "Paradigm Forms"}
-
-    index_keys = [key for key in key_labels.keys() if key in ["lemma_index", "paradigm_index"]]
-    lexcat_keys = key_labels["lexcat"].keys()
-    parcat_keys = key_labels["parcat"].keys()
-
-    if no_cats:
-        key_format = {"lemma": term.bold_underline,
-                      "lemma_index": term.underline,
-                      "paradigm_index": term.underline,
-                      "lexcats": term.underline,
-                      "parcats": plain,
-                      "forms": term.bold}
-        key_labels = {"lemma": "Lemma",
-                      "lemma_index": "Lemma Index",
-                      "paradigm_index": "Paradigm Index",
-                      "lexcats": "Categories",
-                      "parcats": "Paradigm Categories",
-                      "forms": "Paradigm Forms"}
-
-    if no_empty:
-        index_keys_with_values = {key for formspec in formdict
-                                  for key, value in formspec._asdict().items() if isinstance(value, int)}
-        lexcat_keys_with_values = {key for formspec in formdict
-                                   for key, value in formspec.lexcat._asdict().items() if value}
-        parcat_keys_with_values = {key for formspec in formdict
-                                   for key, value in formspec.parcat._asdict().items() if value}
-        index_keys = [key for key in index_keys if key in index_keys_with_values]
-        lexcat_keys = [key for key in lexcat_keys if key in lexcat_keys_with_values]
-        parcat_keys = [key for key in parcat_keys if key in parcat_keys_with_values]
-
-    if header:
-        header_row = []
-        if not no_lemma:
-            header_row += [key_format["lemma"](get_label_of_key("lemma", key_labels))]
-            header_row += [key_format[key](get_label_of_key(key, key_labels)) for key in index_keys]
-            if no_cats:
-                header_row += [key_format["lexcats"](get_label_of_key("lexcats", key_labels))]
-            else:
-                header_row += [key_format["lexcat"][key](get_label_of_key(key, key_labels["lexcat"])) for key in lexcat_keys]
-        if no_cats:
-            header_row += [key_format["parcats"](get_label_of_key("parcats", key_labels))]
-        else:
-            header_row += [key_format["parcat"][key](get_label_of_key(key, key_labels["parcat"])) for key in parcat_keys]
-        header_row += [key_format["forms"](get_label_of_key("forms", key_labels))]
-        csv_writer.writerow(header_row)
-
-    for formspec in formdict:
-        row = []
-        if not no_lemma:
-            row += [key_format["lemma"](lemma)]
-            row += [key_format[key](get_value_of_key(key, formspec)) for key in index_keys]
-            if no_cats:
-                row += [key_format["lexcats"](" ".join(filter(None, formspec.lexcat)))]
-            else:
-                row += [key_format["lexcat"][key](get_value_of_key(key, formspec.lexcat)) for key in lexcat_keys]
-        if no_cats:
-            row += [key_format["parcats"](" ".join(filter(None, formspec.parcat)))]
-        else:
-            row += [key_format["parcat"][key](get_value_of_key(key, formspec.parcat)) for key in parcat_keys]
-        row += [key_format["forms"](", ".join(formdict[formspec]))]
-        csv_writer.writerow(row)
 
 
 def sort_lemmaspec(lemmaspec):
     lemma_index = lemmaspec.lemma_index if lemmaspec.lemma_index else 0
     paradigm_index = lemmaspec.paradigm_index if lemmaspec.paradigm_index else 0
-    seg = lemmaspec.seg
+    seg_lemma = lemmaspec.seg_lemma
     pos = POS.index(lemmaspec.pos)
     subcat = SUBCATS.index(lemmaspec.subcat) if lemmaspec.subcat else None
     person = PERSONS.index(lemmaspec.person) if lemmaspec.person else None
     gender = GENDERS.index(lemmaspec.gender) if lemmaspec.gender else None
-    return (lemma_index, paradigm_index, seg,
+    return (lemma_index, paradigm_index, seg_lemma,
             pos, subcat, person, gender)
 
 
-def generate_paradigms(transducer, lemma, lemma_index=None, paradigm_index=None,
-                       pos=None, user_specified=False, nonst=False, old=False, oldorth=False, ch=False):
+def generate_formdict(transducer, lemma, lemma_index=None, paradigm_index=None,
+                      pos=None, user_specified=False, nonst=False, old=False, oldorth=False, ch=False):
     lemmaspecs = []
     if user_specified:
         if pos == "ART":
@@ -1980,16 +2008,16 @@ def generate_paradigms(transducer, lemma, lemma_index=None, paradigm_index=None,
                                     lemma, pos, None, None, None)]
     else:
         analyses = analyse_word(transducer, lemma)
-        lemmaspecs = sorted({Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg,
+        lemmaspecs = sorted({Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
                                        analysis.pos, analysis.subcat, analysis.person, analysis.gender)
                              if analysis.pos == "PPRO"
-                             else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg,
+                             else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
                                             analysis.pos, analysis.subcat, None, None)
                              if analysis.pos == "ART"
-                             else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg,
+                             else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
                                             analysis.pos, None, None, analysis.gender)
                              if analysis.pos in ["INDEF", "NN", "NPROP", "REL", "WPRO"] and not analysis.function in FUNCTIONS
-                             else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg,
+                             else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
                                             analysis.pos, None, None, None)
                              for analysis in analyses if analysis.lemma == lemma and analysis.pos in POS},
                             key=sort_lemmaspec)
@@ -2008,30 +2036,170 @@ def generate_paradigms(transducer, lemma, lemma_index=None, paradigm_index=None,
     return formdict
 
 
-def output_paradigms(transducer, lemma, output_file, lemma_index=None, paradigm_index=None,
-                     pos=None, user_specified=False, nonst=False, old=False, oldorth=False, ch=False,
-                     no_cats=False, no_lemma=False, no_empty=False,
-                     header=True, plain=False, force_color=False,
-                     output_format="tsv"):
+def paradigm_subset(formdict, lemma_index, paradigm_index, lexcat):
+    return [(key, value)
+            for key, value in formdict.items()
+            if key.lemma_index == lemma_index and key.paradigm_index == paradigm_index and key.lexcat == lexcat]
+
+
+def cat_dict(cats):
+    return {key: value
+            for key, value in cats._asdict().items()
+            if value}
+
+
+def cat_list(cats):
+    # remove duplicates while preserving order
+    return {"categories": list(dict.fromkeys(value for value in cat_dict(cats).values()))}
+
+
+def get_paradigm_dict(lemma, formdict, lemma_index, paradigm_index, lexcat,
+                      no_cats=False, no_lemma=False, empty=True):
+    cat_value = cat_list if no_cats else cat_dict
+    paradigm_dict = {"lemma": lemma,
+                     "lemma_index": lemma_index,
+                     "paradigm_index": paradigm_index,
+                     **cat_value(lexcat),
+                     "paradigm": [{**cat_value(key.parcat),
+                                   "forms": value}
+                                  for key, value in paradigm_subset(formdict, lemma_index, paradigm_index, lexcat)]}
+    if no_lemma:
+        for key in ["lemma", "lemma_index", "paradigm_index"]:
+            del paradigm_dict[key]
+        for key in list(cat_value(lexcat)):
+            del paradigm_dict[key]
+    if not empty:
+        for key, value in list(paradigm_dict.items()):
+            if not value:
+                del paradigm_dict[key]
+    return paradigm_dict
+
+
+def get_paradigm_dicts(lemma, formdict,
+                       no_cats=False, no_lemma=False, empty=True):
+    paradigm_dicts = []
+    # remove duplicates while preserving order
+    for lemma_index, paradigm_index, lexcat in list(dict.fromkeys((key.lemma_index, key.paradigm_index, key.lexcat)
+                                                                  for key in formdict.keys())):
+        paradigm_dict = get_paradigm_dict(lemma, formdict, lemma_index, paradigm_index, lexcat,
+                                          no_cats, no_lemma, empty)
+        paradigm_dicts.append(paradigm_dict)
+    return paradigm_dicts
+
+
+def get_value_of_paradigm_key(key, paradigm):
+    value = paradigm.get(key, "") or ""
+    if isinstance(value, int):
+        formatted_value = str(value)
+    elif isinstance(value, list):
+        if key == "forms":
+            formatted_value = ", ".join(value)
+        else:
+            formatted_value = " ".join(value)
+    else:
+        formatted_value = value
+    return formatted_value
+
+
+def output_json(paradigms, output_file):
+    json.dump(paradigms, output_file, ensure_ascii=False)
+
+
+def output_yaml(paradigms, output_file):
+    yaml.dump(paradigms, output_file, allow_unicode=True, sort_keys=False, explicit_start=True)
+
+
+def output_dsv(paradigms, output_file, keys, paradigm_keys,
+               header=True, plain=False, force_color=False, delimiter="\t"):
     kind = "dumb" if plain else None
     term = Terminal(kind=kind, force_styling=force_color)
-    formdict = generate_paradigms(transducer, lemma, lemma_index, paradigm_index,
-                                  pos, user_specified, nonst, old, oldorth, ch)
+    plain = lambda string: string
+    csv_writer = csv.writer(output_file, delimiter=delimiter, lineterminator="\n")
+
+    key_format = {"lemma": term.bold_underline,
+                  "lemma_index": term.underline,
+                  "paradigm_index": term.underline,
+                  "categories": term.underline,
+                  "pos": term.underline,
+                  "subcat": term.underline,
+                  "auxiliary": term.underline,
+                  "person": term.underline,
+                  "gender": term.underline,
+                  "paradigm": {"categories": plain,
+                               "degree": plain,
+                               "person": plain,
+                               "gender": plain,
+                               "case": plain,
+                               "number": plain,
+                               "inflection": plain,
+                               "function": plain,
+                               "nonfinite": plain,
+                               "mood": plain,
+                               "tense": plain,
+                               "forms": term.bold}}
+
+    if header:
+        header_row = [key_format[key](LABEL_MAP[key]) for key in keys]
+        header_row += [key_format["paradigm"][key](LABEL_MAP["paradigm"][key]) for key in paradigm_keys]
+        csv_writer.writerow(header_row)
+
+    for paradigm_dict in paradigms:
+        for paradigm in paradigm_dict["paradigm"]:
+            row = [key_format[key](get_value_of_paradigm_key(key, paradigm_dict)) for key in keys]
+            row += [key_format["paradigm"][key](get_value_of_paradigm_key(key, paradigm)) for key in paradigm_keys]
+            csv_writer.writerow(row)
+
+
+def output_paradigms(transducer, lemma, output_file, lemma_index=None, paradigm_index=None,
+                     pos=None, user_specified=False, nonst=False, old=False, oldorth=False, ch=False,
+                     no_cats=False, no_lemma=False, empty=True,
+                     header=True, plain=False, force_color=False, output_format="tsv"):
+    kind = "dumb" if plain else None
+    term = Terminal(kind=kind, force_styling=force_color)
+    formdict = generate_formdict(transducer, lemma, lemma_index, paradigm_index,
+                                 pos, user_specified, nonst, old, oldorth, ch)
+
     if formdict:
+        paradigms = get_paradigm_dicts(lemma, formdict,
+                                       no_cats, no_lemma, empty)
+
         if output_format == "json":
-            output_json(lemma, output_file, formdict,
-                        no_cats, no_lemma, no_empty)
+            output_json(paradigms, output_file)
         elif output_format == "yaml":
-            output_yaml(lemma, output_file, formdict,
-                        no_cats, no_lemma, no_empty)
-        elif output_format == "csv":
-            output_dsv(lemma, output_file, formdict,
-                       no_cats, no_lemma, no_empty,
-                       header, plain, force_color, delimiter=",")
+            output_yaml(paradigms, output_file)
         else:
-            output_dsv(lemma, output_file, formdict,
-                       no_cats, no_lemma, no_empty,
-                       header, plain, force_color)
+            keys = [key for key, value in LABEL_MAP.items() if isinstance(value, str)]
+            paradigm_keys = [key for key, value in LABEL_MAP["paradigm"].items() if isinstance(value, str)]
+
+            if no_cats:
+                for key in LEXCAT:
+                    keys.remove(key)
+                for key in PARCAT:
+                    paradigm_keys.remove(key)
+            else:
+                keys.remove("categories")
+                paradigm_keys.remove("categories")
+
+            if no_lemma:
+                keys = []
+
+            if not empty:
+                keys_with_values = {key for paradigm_dict in paradigms
+                                    for key, value in paradigm_dict.items()
+                                    if isinstance(value, (str, int, list))}
+                paradigm_keys_with_values = {key for paradigm_dict in paradigms
+                                             for paradigm in paradigm_dict["paradigm"]
+                                             for key, value in paradigm.items()
+                                             if isinstance(value, (str, int, list))}
+                keys = [key for key in keys if key in keys_with_values]
+                paradigm_keys = [key for key in paradigm_keys if key in key in paradigm_keys_with_values]
+
+            if output_format == "csv":
+                output_dsv(paradigms, output_file, keys, paradigm_keys,
+                           header, plain, force_color, delimiter=",")
+            else:
+                output_dsv(paradigms, output_file, keys, paradigm_keys,
+                           header, plain, force_color)
     else:
         if lemma_index and paradigm_index and pos:
             print(term.bold(lemma) + ": "
@@ -2079,8 +2247,8 @@ def main():
                             help="output CSV table")
         parser.add_argument("-C", "--force-color", action="store_true",
                             help="preserve color and formatting when piping output")
-        parser.add_argument("-E", "--no-empty", action="store_true",
-                            help="do not output empty columns or values")
+        parser.add_argument("-E", "--no-empty", action="store_false",
+                            help="suppress empty columns or values")
         parser.add_argument("-H", "--no-header", action="store_false",
                             help="suppress table header")
         parser.add_argument("-i", "--lemma-index", type=int, choices=INDICES,
@@ -2106,7 +2274,7 @@ def main():
         parser.add_argument("-S", "--ch", action="store_true",
                             help="output also forms in Swiss spelling")
         parser.add_argument("-t", "--transducer", default=LIBFILE,
-                            help=f"path to transducer file (default: {path.relpath(LIBFILE, getcwd())})")
+                            help=f"path to transducer file in standard format (default: {path.relpath(LIBFILE, getcwd())})")
         parser.add_argument("-u", "--user-specified", action="store_true",
                             help="use only user-specified information")
         parser.add_argument("-v", "--version", action="version",
@@ -2128,8 +2296,7 @@ def main():
         output_paradigms(transducer, args.lemma, args.output, args.lemma_index, args.paradigm_index,
                          args.pos, args.user_specified, args.nonst, args.old, args.oldorth, args.ch,
                          args.no_cats, args.no_lemma, args.no_empty,
-                         args.no_header, args.plain, args.force_color,
-                         output_format)
+                         args.no_header, args.plain, args.force_color, output_format)
     except KeyboardInterrupt:
         sys.exit(130)
     return 0
