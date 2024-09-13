@@ -1,3 +1,7 @@
+2024-09-12:
+
+* properly segment suffixed lemmas
+
 2024-09-06:
 
 * add support for "recyclen" and related verbs

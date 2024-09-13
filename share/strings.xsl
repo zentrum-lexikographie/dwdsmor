@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 7.3 -->
-<!-- Andreas Nolda 2024-07-24 -->
+<!-- Version 7.4 -->
+<!-- Andreas Nolda 2024-09-12 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -451,6 +451,31 @@
             <xsl:text>&lt;SB&gt;</xsl:text>
           </xsl:if>
           <xsl:value-of select="substring-after($string2,$string1)"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$string2"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+  </xsl:variable>
+  <xsl:sequence select="$value"/>
+</xsl:function>
+
+<!-- return a segmented version of $string2 with $string1 as the last segment
+     and the remainder of $string2 as the first segment -->
+<xsl:function name="n:segment-from-end">
+  <xsl:param name="string1"/>
+  <xsl:param name="string2"/>
+  <xsl:variable name="value">
+    <xsl:if test="string-length($string1)&gt;0 or
+                  string-length($string2)&gt;0">
+      <xsl:choose>
+        <xsl:when test="ends-with($string2,$string1)">
+          <xsl:value-of select="substring($string2,1,string-length($string2) - string-length($string1))"/>
+          <xsl:if test="string-length($string1)&lt;string-length($string2)">
+            <xsl:text>&lt;SB&gt;</xsl:text>
+          </xsl:if>
+          <xsl:value-of select="$string1"/>
         </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="$string2"/>

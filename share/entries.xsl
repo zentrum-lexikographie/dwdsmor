@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 15.4 -->
-<!-- Andreas Nolda 2024-09-06 -->
+<!-- Version 15.5 -->
+<!-- Andreas Nolda 2024-09-12 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -156,15 +156,15 @@
     <xsl:choose>
       <!-- lemmas ending in consonant + "ien" -->
       <xsl:when test="matches($lemma,'[^aeiouäöü]ien$')">
-        <xsl:value-of select="replace($lemma,'(n)$','&lt;SB&gt;$1')"/>
+        <xsl:value-of select="n:segment-from-end('n',$lemma)"/>
       </xsl:when>
       <!-- lemmas ending in "c", "g", or "p" + "len" -->
       <xsl:when test="matches($lemma,'[cgp]len$')">
-        <xsl:value-of select="replace($lemma,'(n)$','&lt;SB&gt;$1')"/>
+        <xsl:value-of select="n:segment-from-end('n',$lemma)"/>
       </xsl:when>
       <!-- other lemmas -->
       <xsl:otherwise>
-        <xsl:value-of select="replace($lemma,'(e?n)$','&lt;SB&gt;$1')"/>
+        <xsl:value-of select="n:segment-from-end(replace($lemma,'^.+?(e?n)$','$1'),$lemma)"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -812,7 +812,7 @@
                           $superlative=concat('am ',$lemma,'en')">
             <xsl:call-template name="stem-entry">
               <xsl:with-param name="lemma"
-                              select="$lemma"/>
+                              select="n:segment-from-end('st',$lemma)"/>
               <xsl:with-param name="lemma-index"
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
@@ -1145,7 +1145,7 @@
                       $lemma='die'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('ie',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -1167,7 +1167,7 @@
                       $lemma='eine'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -1182,7 +1182,8 @@
                           select="$etymology"/>
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
-          <xsl:with-param name="lemma">eine</xsl:with-param>
+          <xsl:with-param name="lemma"
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -1201,7 +1202,7 @@
                       $lemma='keine'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -1243,7 +1244,7 @@
                       $lemma='eine'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -1264,7 +1265,7 @@
                       $lemma='keine'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -2305,7 +2306,7 @@
             <xsl:if test="string-length($class)&gt;0">
               <xsl:call-template name="stem-entry">
                 <xsl:with-param name="lemma"
-                                select="$lemma"/>
+                                select="n:segment-from-end('e',$lemma)"/>
                 <xsl:with-param name="lemma-index"
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
@@ -2688,7 +2689,7 @@
                       $number='singular'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3053,7 +3054,7 @@
                       ends-with($lemma,'diese')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3075,7 +3076,7 @@
                       ends-with($lemma,'jene')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3097,7 +3098,7 @@
                       ends-with($lemma,'die')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('ie',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3119,7 +3120,7 @@
                       ends-with($lemma,'solche')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3141,7 +3142,7 @@
                       $lemma='diejenige'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3157,7 +3158,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3173,7 +3174,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3189,7 +3190,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3205,7 +3206,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3221,7 +3222,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3237,7 +3238,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3253,7 +3254,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3269,7 +3270,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3285,7 +3286,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3301,7 +3302,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3317,7 +3318,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3340,7 +3341,7 @@
                        $lemma='dieselbige')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3356,7 +3357,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3372,7 +3373,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3388,7 +3389,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3404,7 +3405,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3420,7 +3421,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3436,7 +3437,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3452,7 +3453,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3468,7 +3469,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3484,7 +3485,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3500,7 +3501,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3516,7 +3517,7 @@
         </xsl:call-template>
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3601,7 +3602,7 @@
                       $lemma='eine'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3623,7 +3624,7 @@
                       $lemma='irgendeine'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3645,7 +3646,7 @@
                       $lemma='keine'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3667,7 +3668,7 @@
                       $lemma='welche'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3689,7 +3690,7 @@
                       $lemma='irgendwelche'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3711,7 +3712,7 @@
                       $lemma='einige'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3733,7 +3734,7 @@
                       $lemma='etliche'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3755,7 +3756,7 @@
                       $lemma='alle'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3778,7 +3779,7 @@
                        $lemma='jedwede')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3802,7 +3803,7 @@
                       $lemma='jegliche'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3823,7 +3824,7 @@
       <xsl:when test="$lemma='beide'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3842,7 +3843,7 @@
       <xsl:when test="$lemma='manche'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3861,7 +3862,7 @@
       <xsl:when test="$lemma='mehrere'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3880,7 +3881,7 @@
       <xsl:when test="$lemma='sämtliche'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -3984,7 +3985,7 @@
       <xsl:when test="$lemma='unsereiner'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('er',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -4430,7 +4431,7 @@
                       $lemma='welche'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -5418,7 +5419,7 @@
                       ends-with($lemma,'eine')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -5440,7 +5441,7 @@
                        $lemma='Ihre')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -5462,7 +5463,7 @@
                       $lemma='unsere'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -5484,7 +5485,7 @@
                        $lemma='Eure')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -5506,7 +5507,7 @@
                       ends-with($lemma,'einige')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -5547,7 +5548,7 @@
                       $lemma='unsrige'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -5568,7 +5569,7 @@
                        $lemma='Eurige')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -5609,7 +5610,7 @@
                       $lemma='die'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('ie',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
@@ -5753,7 +5754,7 @@
                       $lemma='welche'">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
-                          select="$lemma"/>
+                          select="n:segment-from-end('e',$lemma)"/>
           <xsl:with-param name="lemma-index"
                           select="$lemma-index"/>
           <xsl:with-param name="paradigm-index"
