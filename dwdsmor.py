@@ -30,9 +30,9 @@ LIBFILE = path.join(LIBDIR, "dwdsmor.ca")
 LIBFILE2 = path.join(LIBDIR, "dwdsmor-morph.a")
 
 
-STEM_BOUNDARY = "<#>"
+BOUNDARIES_INFL = ["<~>"]
 
-AFFIX_BOUNDARY = "<~>"
+BOUNDARIES_WF = ["<#>", "<->"]
 
 
 PROCESSES = ["COMP", "DER", "CONV"]
@@ -367,40 +367,44 @@ def get_analysis_dicts(analyses):
     return analysis_dicts
 
 
-def get_minimal_analyses(analyses, key, boundary):
+def count_boundaries(seg, boundaries):
+    count = sum([seg.count(boundary) for boundary in boundaries])
+    return count
+
+def get_minimal_analyses(analyses, key, boundaries):
     minimal_analyses = []
-    minimum = min([analysis[key].count(boundary) for analysis in analyses], default=-1)
+    minimum = min([count_boundaries(analysis[key], boundaries) for analysis in analyses], default=-1)
     for analysis in analyses:
-        if analysis[key].count(boundary) == minimum:
+        if count_boundaries(analysis[key], boundaries) == minimum:
             minimal_analyses.append(analysis)
     return minimal_analyses
 
 
-def get_maximal_analyses(analyses, key, boundary):
+def get_maximal_analyses(analyses, key, boundaries):
     maximal_analyses = []
-    maximum = max([analysis[key].count(boundary) for analysis in analyses], default=-1)
+    maximum = max([count_boundaries(analysis[key], boundaries) for analysis in analyses], default=-1)
     for analysis in analyses:
-        if analysis[key].count(boundary) == maximum:
+        if count_boundaries(analysis[key], boundaries) == maximum:
             maximal_analyses.append(analysis)
     return maximal_analyses
 
 
-def get_minimal_analyses_per_pos(analyses, key, boundary):
+def get_minimal_analyses_per_pos(analyses, key, boundaries):
     minimal_analyses = []
     # remove duplicates while preserving order
     for pos in list(dict.fromkeys([analysis["pos"] for analysis in analyses])):
         analyses_with_pos = [analysis for analysis in analyses if analysis["pos"] == pos]
-        analyses_with_pos = get_minimal_analyses(analyses_with_pos, key, boundary)
+        analyses_with_pos = get_minimal_analyses(analyses_with_pos, key, boundaries)
         minimal_analyses += analyses_with_pos
     return minimal_analyses
 
 
-def get_maximal_analyses_per_pos(analyses, key, boundary):
+def get_maximal_analyses_per_pos(analyses, key, boundaries):
     maximal_analyses = []
     # remove duplicates while preserving order
     for pos in list(dict.fromkeys([analysis["pos"] for analysis in analyses])):
         analyses_with_pos = [analysis for analysis in analyses if analysis["pos"] == pos]
-        analyses_with_pos = get_maximal_analyses(analyses_with_pos, key, boundary)
+        analyses_with_pos = get_maximal_analyses(analyses_with_pos, key, boundaries)
         maximal_analyses += analyses_with_pos
     return maximal_analyses
 
@@ -499,7 +503,7 @@ def output_analyses(transducer, transducer2, input_file, output_file,
             analyses = get_analysis_dicts(analyses)
 
             if minimal:
-                analyses = get_minimal_analyses_per_pos(analyses, "seg_lemma", STEM_BOUNDARY)
+                analyses = get_minimal_analyses_per_pos(analyses, "seg_lemma", BOUNDARIES_WF)
 
             for analysis in analyses:
                 if maximal or seg_word:
@@ -508,8 +512,8 @@ def output_analyses(transducer, transducer2, input_file, output_file,
                     analysis.update({"seg_word": seg_words[0] if seg_words else word})
 
             if maximal:
-                analyses = get_maximal_analyses_per_pos(analyses, "seg_word", AFFIX_BOUNDARY)
-                analyses = get_maximal_analyses_per_pos(analyses, "seg_lemma", STEM_BOUNDARY)
+                analyses = get_maximal_analyses_per_pos(analyses, "seg_word", BOUNDARIES_INFL)
+                analyses = get_maximal_analyses_per_pos(analyses, "seg_word", BOUNDARIES_WF)
 
             for analysis in analyses:
                 if not seg_word:
@@ -603,9 +607,9 @@ def main():
         parser.add_argument("-j", "--json", action="store_true",
                             help="output JSON object")
         parser.add_argument("-m", "--minimal", action="store_true",
-                            help="prefer analyses with minimal number of stem boundaries")
+                            help="prefer lemmas with minimal number of boundaries")
         parser.add_argument("-M", "--maximal", action="store_true",
-                            help="prefer analyses with maximal number of stem and affix boundaries (requires supplementary transducer files)")
+                            help="prefer word forms with maximal number of boundaries (requires supplementary transducer files)")
         parser.add_argument("-P", "--plain", action="store_true",
                             help="suppress color and formatting")
         parser.add_argument("-s", "--seg-lemma", action="store_true",

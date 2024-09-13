@@ -267,6 +267,8 @@ Auslagen	Auslage	NN					Fem	Nom	Pl
 Auslagen	Auslage	NN					Fem	Gen	Pl									
 Auslagen	Auslage	NN					Fem	Dat	Pl									
 Auslagen	Auslage	NN					Fem	Acc	Pl									
+Auslagen	ausliegen	V				1			Pl				Ind	Past				CAP
+Auslagen	ausliegen	V				3			Pl				Ind	Past				CAP
 werden	werden	V				1			Pl				Ind	Pres				
 werden	werden	V				1			Pl				Subj	Pres				
 werden	werden	V				3			Pl				Ind	Pres				
@@ -384,7 +386,6 @@ schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Dat	Pl	St	Attr/Subst
 schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Dat	Pl	Wk	Attr/Subst							
 schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Acc	Pl	Wk	Attr/Subst							
 Unfalls	Unfall	NN					Masc	Gen	Sg									
-Unfalls	Unfall	NN					Neut	Gen	Sg									
 mit	mit	ADV																
 mit	mit	PREP																
 Sachschaden	Sachschaden	NN					Masc	Nom	Sg									
@@ -429,9 +430,6 @@ schwerwiegender	schwerwiegend	ADJ			Pos		NoGend	Gen	Pl	St	Attr/Subst
 Unfall	Unfall	NN					Masc	Nom	Sg									
 Unfall	Unfall	NN					Masc	Dat	Sg									
 Unfall	Unfall	NN					Masc	Acc	Sg									
-Unfall	Unfall	NN					Neut	Nom	Sg									
-Unfall	Unfall	NN					Neut	Dat	Sg									
-Unfall	Unfall	NN					Neut	Acc	Sg									
 mit	mit	ADV																
 mit	mit	PREP																
 Sachschaden	Sachschaden	NN					Masc	Nom	Sg									
@@ -539,7 +537,6 @@ I	I	NN					Neut	Dat	Sg
 I	I	NN					Neut	Dat	Pl									
 I	I	NN					Neut	Acc	Sg									
 I	I	NN					Neut	Acc	Pl									
-I	i	INTJ																CAP
 I	i	NN					Neut	Nom	Sg									CAP
 I	i	NN					Neut	Nom	Pl									CAP
 I	i	NN					Neut	Gen	Sg									CAP
@@ -548,6 +545,7 @@ I	i	NN					Neut	Dat	Sg									CAP
 I	i	NN					Neut	Dat	Pl									CAP
 I	i	NN					Neut	Acc	Sg									CAP
 I	i	NN					Neut	Acc	Pl									CAP
+I	i	INTJ																CAP
 S.	S.	NN				Invar	Fem	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 S.	s.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
 3491	3491	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
@@ -719,7 +717,6 @@ I	I	NN					Neut	Dat	Sg
 I	I	NN					Neut	Dat	Pl									
 I	I	NN					Neut	Acc	Sg									
 I	I	NN					Neut	Acc	Pl									
-I	i	INTJ																CAP
 I	i	NN					Neut	Nom	Sg									CAP
 I	i	NN					Neut	Nom	Pl									CAP
 I	i	NN					Neut	Gen	Sg									CAP
@@ -728,12 +725,16 @@ I	i	NN					Neut	Dat	Sg									CAP
 I	i	NN					Neut	Dat	Pl									CAP
 I	i	NN					Neut	Acc	Sg									CAP
 I	i	NN					Neut	Acc	Pl									CAP
+I	i	INTJ																CAP
 S.	S.	NN				Invar	Fem	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 S.	s.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
 1305	1305	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 )	)	PUNCT	Paren															
 ,	,	PUNCT	Comma															
 zuletzt	zuletzt	ADV																
+zuletzt	zuletzen	V				2			Sg				Ind	Pres				
+zuletzt	zuletzen	V				2			Pl				Ind	Pres				
+zuletzt	zuletzen	V				3			Sg				Ind	Pres				
 geändert	ändern	V		haben								PPast						
 geändert	geändert	ADJ			Pos						Pred/Adv							
 durch	durch	ADV																
@@ -764,7 +765,6 @@ I	I	NN					Neut	Dat	Sg
 I	I	NN					Neut	Dat	Pl									
 I	I	NN					Neut	Acc	Sg									
 I	I	NN					Neut	Acc	Pl									
-I	i	INTJ																CAP
 I	i	NN					Neut	Nom	Sg									CAP
 I	i	NN					Neut	Nom	Pl									CAP
 I	i	NN					Neut	Gen	Sg									CAP
@@ -773,6 +773,7 @@ I	i	NN					Neut	Dat	Sg									CAP
 I	i	NN					Neut	Dat	Pl									CAP
 I	i	NN					Neut	Acc	Sg									CAP
 I	i	NN					Neut	Acc	Pl									CAP
+I	i	INTJ																CAP
 S.	S.	NN				Invar	Fem	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 S.	s.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
 2043	2043	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
@@ -1033,9 +1034,6 @@ schwerwiegender	schwerwiegend	ADJ			Pos		NoGend	Gen	Pl	St	Attr/Subst
 Unfall	Unfall	NN					Masc	Nom	Sg									
 Unfall	Unfall	NN					Masc	Dat	Sg									
 Unfall	Unfall	NN					Masc	Acc	Sg									
-Unfall	Unfall	NN					Neut	Nom	Sg									
-Unfall	Unfall	NN					Neut	Dat	Sg									
-Unfall	Unfall	NN					Neut	Acc	Sg									
 mit	mit	ADV																
 mit	mit	PREP																
 Sachschaden	Sachschaden	NN					Masc	Nom	Sg									
