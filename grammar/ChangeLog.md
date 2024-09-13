@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-09-13:
+
+* use `<->` as a morpheme-boundary marker after derivational prefixes and before
+  derivational suffixes
+
 2024-09-06:
 
 * add inflection classes `VWeak-len`, `VInf-el-er`, `VInf-len`, `VPPres-el-er`,
