@@ -1,6 +1,6 @@
 % orth.fst
-% Version 5.1
-% Andreas Nolda 2024-08-29
+% Version 5.2
+% Andreas Nolda 2024-09-12
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -75,11 +75,11 @@ $NoOrthOldFilterLv2$ = .*
 
 % generate Swiss spelling variants
 
-$C$ = [#char#]-[ß]
+$C$ = [#char# #morpheme-boundary#]-[ß]
 
 $OrthCH$ = ($C$* {ß}:{ss})+ $C$*
 
 
 % generate capitalised variants
 
-$OrthCap$ = [#lowercase#]:[#uppercase#] [#char#]*
+$OrthCap$ = [#lowercase#]:[#uppercase#] [#char# #morpheme-boundary#]*
