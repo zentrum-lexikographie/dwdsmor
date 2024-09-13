@@ -227,112 +227,120 @@ of word forms in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./dwdsmor.py -h
-usage: dwdsmor.py [-h] [-c] [-C] [-E] [-H] [-I] [-j] [-m] [-n] [-N] [-P] [-t TRANSDUCER]
-                  [-v] [-W] [-y] [input] [output]
+usage: dwdsmor.py [-h] [-a] [-c] [-C] [-E] [-H] [-i] [-I] [-j] [-m] [-M] [-P] [-s] [-S]
+                  [-t TRANSDUCER] [-T TRANSDUCER2] [-v] [-w] [-W] [-y] [input] [output]
 
 positional arguments:
   input                 input file (one word form per line; default: stdin)
   output                output file (default: stdout)
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
+  -a, --analysis-string
+                        output also analysis string
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
-  -E, --no-empty        do not output empty columns or values
+  -E, --no-empty        suppress empty columns or values
   -H, --no-header       suppress table header
-  -I, --no-index        do not output lemma and paradigm index
+  -i, --lemma-index     output also homographic lemma index
+  -I, --paradigm-index  output also paradigm index
   -j, --json            output JSON object
-  -m, --minimal         prefer analyses with minimal number of stem boundaries
-  -M, --maximal         prefer analyses with maximal number of stem boundaries
-  -n, --no-analysis     do not output raw analysis
-  -N, --no-segmentation
-                        do not output segmented lemma
+  -m, --minimal         prefer lemmas with minimal number of boundaries
+  -M, --maximal         prefer word forms with maximal number of boundaries (requires supplementary transducer files)
   -P, --plain           suppress color and formatting
+  -s, --seg-lemma       output also segmented lemma
+  -S, --seg-word        output also segmented word form (requires supplementary transducer file)
   -t TRANSDUCER, --transducer TRANSDUCER
-                        path to transducer file (default: lib/dwdsmor.ca)
+                        path to transducer file in compact format (default: lib/dwdsmor.ca)
+  -T TRANSDUCER2, --transducer2 TRANSDUCER2
+                        path to supplementary transducer file in standard format (default: lib/dwdsmor-morph.a)
   -v, --version         show program's version number and exit
-  -W, --no-wf           do not output word-formation process and means
+  -w, --wf-process      output also word-formation process
+  -W, --wf-means        output also word-formation means
   -y, --yaml            output YAML document
 ```
 
 By default, `dwdsmor.py` prints a TSV table on standard output:
 
 ```plaintext
-$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -E -n
-Wordform	Lemma	Segmentation	POS	Subcategory	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Characters
-Ihr	Sie	Sie	PPRO	Pers	3	NoGend	Gen	Pl						Old
-Ihr	sie	sie	PPRO	Pers	3	NoGend	Gen	Pl						Old	CAP
-Ihr	sie	sie	PPRO	Pers	3	Fem	Dat	Sg							CAP
-Ihr	sie	sie	PPRO	Pers	3	Fem	Gen	Sg						Old	CAP
-Ihr	ihr	ihr	PPRO	Pers	2		Nom	Pl							CAP
-Ihr	ihre	ihre	POSS			Neut	Acc	Sg	NoInfl	Attr					CAP
-Ihr	ihre	ihre	POSS			Neut	Nom	Sg	NoInfl	Attr					CAP
-Ihr	ihre	ihre	POSS			Masc	Nom	Sg	NoInfl	Attr					CAP
-Ihr	Ihre	Ihre	POSS			Neut	Acc	Sg	NoInfl	Attr
-Ihr	Ihre	Ihre	POSS			Neut	Nom	Sg	NoInfl	Attr
-Ihr	Ihre	Ihre	POSS			Masc	Nom	Sg	NoInfl	Attr
-könnt	können	könn<~>en	V		2			Pl				Ind	Pres
-euch	euch	euch	PPRO	Refl	2		Acc	Pl
-euch	euch	euch	PPRO	Refl	2		Dat	Pl
-euch	ihr	ihr	PPRO	Pers	2		Acc	Pl
-euch	ihr	ihr	PPRO	Pers	2		Dat	Pl
-auf	auf	auf	ADV
-auf	auf	auf	PREP
-den	die	die	REL			Masc	Acc	Sg	St	Subst
-den	die	die	DEM			Masc	Acc	Sg	St	Subst
-den	die	die	DEM			NoGend	Dat	Pl	St	Attr
-den	die	die	DEM			Masc	Acc	Sg	St	Attr
-den	die	die	ART	Def		Masc	Acc	Sg	St	Subst
-den	die	die	ART	Def		NoGend	Dat	Pl	St	Attr
-den	die	die	ART	Def		Masc	Acc	Sg	St	Attr
-Kinderbänken	Kinderbank	Kind<~>er<#>bank	NN			Fem	Dat	Pl
-ausruhen	ausruhen	aus<#>ruh<~>en	V		3			Pl				Subj	Pres
-ausruhen	ausruhen	aus<#>ruh<~>en	V		3			Pl				Ind	Pres
-ausruhen	ausruhen	aus<#>ruh<~>en	V		1			Pl				Subj	Pres
-ausruhen	ausruhen	aus<#>ruh<~>en	V		1			Pl				Ind	Pres
-ausruhen	ausruhen	aus<#>ruh<~>en	V								Inf
-.	.	.	PUNCT	Period
-
+$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -E
+Wordform	Lemma	POS	Subcategory	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Characters
+Ihr	Ihre	POSS			Neut	Acc	Sg	NoInfl	Attr
+Ihr	Ihre	POSS			Neut	Nom	Sg	NoInfl	Attr
+Ihr	Ihre	POSS			Masc	Nom	Sg	NoInfl	Attr
+Ihr	ihr	PPRO	Pers	2		Nom	Pl							CAP
+Ihr	ihre	POSS			Neut	Acc	Sg	NoInfl	Attr					CAP
+Ihr	ihre	POSS			Neut	Nom	Sg	NoInfl	Attr					CAP
+Ihr	ihre	POSS			Masc	Nom	Sg	NoInfl	Attr					CAP
+Ihr	Sie	PPRO	Pers	3	NoGend	Gen	Pl						Old
+Ihr	sie	PPRO	Pers	3	NoGend	Gen	Pl						Old	CAP
+Ihr	sie	PPRO	Pers	3	Fem	Dat	Sg							CAP
+Ihr	sie	PPRO	Pers	3	Fem	Gen	Sg						Old	CAP
+könnt	können	V		2			Pl				Ind	Pres
+euch	euch	PPRO	Refl	2		Acc	Pl
+euch	euch	PPRO	Refl	2		Dat	Pl
+euch	ihr	PPRO	Pers	2		Acc	Pl
+euch	ihr	PPRO	Pers	2		Dat	Pl
+auf	auf	ADV
+auf	auf	PREP
+den	die	REL			Masc	Acc	Sg	St	Subst
+den	die	DEM			Masc	Acc	Sg	St	Subst
+den	die	DEM			NoGend	Dat	Pl	St	Attr
+den	die	DEM			Masc	Acc	Sg	St	Attr
+den	die	ART	Def		Masc	Acc	Sg	St	Subst
+den	die	ART	Def		NoGend	Dat	Pl	St	Attr
+den	die	ART	Def		Masc	Acc	Sg	St	Attr
+Kinderbänken	Kinderbank	NN			Fem	Dat	Pl
+ausruhen	ausruhen	V								Inf
+ausruhen	ausruhen	V		3			Pl				Subj	Pres
+ausruhen	ausruhen	V		3			Pl				Ind	Pres
+ausruhen	ausruhen	V		1			Pl				Subj	Pres
+ausruhen	ausruhen	V		1			Pl				Ind	Pres
+.	.	PUNCT	Period
 ```
 
 The transducer can be selected as an argument of option `-t`:
 
 ```plaintext
-$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -E -n -t lib/dwdsmor-root.ca
-Wordform	Lemma	Segmentation	Process	Means	POS	Subcategory	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Characters
-Ihr	sie	sie			PPRO	Pers	3	NoGend	Gen	Pl						Old	CAP
-Ihr	sie	sie			PPRO	Pers	3	Fem	Dat	Sg							CAP
-Ihr	sie	sie			PPRO	Pers	3	Fem	Gen	Sg						Old	CAP
-Ihr	Sie	Sie			PPRO	Pers	3	NoGend	Gen	Pl						Old
-Ihr	ihr	ihr			PPRO	Pers	2		Nom	Pl							CAP
-Ihr	ihre	ihre			POSS			Neut	Acc	Sg	NoInfl	Attr					CAP
-Ihr	ihre	ihre			POSS			Neut	Nom	Sg	NoInfl	Attr					CAP
-Ihr	ihre	ihre			POSS			Masc	Nom	Sg	NoInfl	Attr					CAP
-Ihr	Ihre	Ihre			POSS			Neut	Acc	Sg	NoInfl	Attr
-Ihr	Ihre	Ihre			POSS			Neut	Nom	Sg	NoInfl	Attr
-Ihr	Ihre	Ihre			POSS			Masc	Nom	Sg	NoInfl	Attr
-könnt	können	könn<~>en			V		2			Pl				Ind	Pres
-euch	euch	euch			PPRO	Refl	2		Acc	Pl
-euch	euch	euch			PPRO	Refl	2		Dat	Pl
-euch	ihr	ihr			PPRO	Pers	2		Acc	Pl
-euch	ihr	ihr			PPRO	Pers	2		Dat	Pl
-auf	auf	auf			ADV
-auf	auf	auf			PREP
-den	die	die			REL			Masc	Acc	Sg	St	Subst
-den	die	die			DEM			Masc	Acc	Sg	St	Subst
-den	die	die			DEM			NoGend	Dat	Pl	St	Attr
-den	die	die			DEM			Masc	Acc	Sg	St	Attr
-den	die	die			ART	Def		Masc	Acc	Sg	St	Subst
-den	die	die			ART	Def		NoGend	Dat	Pl	St	Attr
-den	die	die			ART	Def		Masc	Acc	Sg	St	Attr
-Kinderbänken	Kind + Bank	Kind<+>Bank	COMP	concat	NN			Fem	Dat	Pl
-ausruhen	ruhen	ruh<~>en	DER	part(aus)	V		3			Pl				Subj	Pres
-ausruhen	ruhen	ruh<~>en	DER	part(aus)	V		3			Pl				Ind	Pres
-ausruhen	ruhen	ruh<~>en	DER	part(aus)	V		1			Pl				Subj	Pres
-ausruhen	ruhen	ruh<~>en	DER	part(aus)	V		1			Pl				Ind	Pres
-ausruhen	ruhen	ruh<~>en	DER	part(aus)	V								Inf
-.	.	.			PUNCT	Period
-
+$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -E -t lib/dwdsmor-root.ca
+Wordform	Lemma	POS	Subcategory	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Characters
+Ihr	Ihre	POSS			Neut	Acc	Sg	NoInfl	Attr
+Ihr	Ihre	POSS			Neut	Nom	Sg	NoInfl	Attr
+Ihr	Ihre	POSS			Masc	Nom	Sg	NoInfl	Attr
+Ihr	ihr	PPRO	Pers	2		Nom	Pl							CAP
+Ihr	ihre	POSS			Neut	Acc	Sg	NoInfl	Attr					CAP
+Ihr	ihre	POSS			Neut	Nom	Sg	NoInfl	Attr					CAP
+Ihr	ihre	POSS			Masc	Nom	Sg	NoInfl	Attr					CAP
+Ihr	Sie	PPRO	Pers	3	NoGend	Gen	Pl						Old
+Ihr	sie	PPRO	Pers	3	NoGend	Gen	Pl						Old	CAP
+Ihr	sie	PPRO	Pers	3	Fem	Dat	Sg							CAP
+Ihr	sie	PPRO	Pers	3	Fem	Gen	Sg						Old	CAP
+könnt	können	V		2			Pl				Ind	Pres
+euch	euch	PPRO	Refl	2		Acc	Pl
+euch	euch	PPRO	Refl	2		Dat	Pl
+euch	ihr	PPRO	Pers	2		Acc	Pl
+euch	ihr	PPRO	Pers	2		Dat	Pl
+auf	auf	ADV
+auf	auf	PREP
+den	die	REL			Masc	Acc	Sg	St	Subst
+den	die	DEM			Masc	Acc	Sg	St	Subst
+den	die	DEM			NoGend	Dat	Pl	St	Attr
+den	die	DEM			Masc	Acc	Sg	St	Attr
+den	die	ART	Def		Masc	Acc	Sg	St	Subst
+den	die	ART	Def		NoGend	Dat	Pl	St	Attr
+den	die	ART	Def		Masc	Acc	Sg	St	Attr
+Kinderbänken	Kind + Bank	NN			Fem	Dat	Pl
+ausruhen	ruhen	V								Inf
+ausruhen	ruhen	V		3			Pl				Subj	Pres
+ausruhen	ruhen	V		3			Pl				Ind	Pres
+ausruhen	ruhen	V		1			Pl				Subj	Pres
+ausruhen	ruhen	V		1			Pl				Ind	Pres
+ausruhen	ausruhen	V								Inf
+ausruhen	ausruhen	V		3			Pl				Subj	Pres
+ausruhen	ausruhen	V		3			Pl				Ind	Pres
+ausruhen	ausruhen	V		1			Pl				Subj	Pres
+ausruhen	ausruhen	V		1			Pl				Ind	Pres
+.	.	PUNCT	Period
 ```
 
 CSV, JSON, and YAML outputs are available with options `-c`, `-j`, and `-y`
@@ -344,18 +352,19 @@ in written German by means of a DWDSmor transducer:
 ```plaintext
 $ ./paradigm.py -h
 usage: paradigm.py [-h] [-c] [-C] [-E] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j] [-n] [-N]
-                   [-o] [-O] [-p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,POSS,PPRO,REL,V,WPRO}] [-P]
-                   [-s] [-S] [-t TRANSDUCER] [-u] [-v] [-y] lemma [output]
+                   [-o] [-O] [-p {ADJ,ART,CARD,DEM,FRAC,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}]
+                   [-P] [-s] [-S] [-t TRANSDUCER] [-u] [-v] [-y] lemma [output]
 
 positional arguments:
-  lemma                 lemma (determiners: Fem Nom Sg; nominalised adjectives: Wk)
+  lemma                 lemma (determiners: Fem Nom Sg; nominalised
+                        adjectives: Wk)
   output                output file (default: stdout)
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
-  -E, --no-empty        do not output empty columns or values
+  -E, --no-empty        suppress empty columns or values
   -H, --no-header       suppress table header
   -i {1,2,3,4,5}, --lemma-index {1,2,3,4,5}
                         homographic lemma index
@@ -366,13 +375,13 @@ optional arguments:
   -N, --no-lemma        do not output lemma, lemma index, paradigm index, and lexical categories
   -o, --old             output also archaic forms
   -O, --oldorth         output also forms in old spelling
-  -p {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}, --pos {ADJ,ART,CARD,DEM,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}
+  -p {ADJ,ART,CARD,DEM,FRAC,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}, --pos {ADJ,ART,CARD,DEM,FRAC,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}
                         part of speech
   -P, --plain           suppress color and formatting
   -s, --nonst           output also non-standard forms
   -S, --ch              output also forms in Swiss spelling
   -t TRANSDUCER, --transducer TRANSDUCER
-                        transducer file (default: lib/dwdsmor-index.a)
+                        path to transducer file in standard format (default: lib/dwdsmor-index.a)
   -u, --user-specified  use only user-specified information
   -v, --version         show program's version number and exit
   -y, --yaml            output YAML document
