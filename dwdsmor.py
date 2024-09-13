@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2024-09-12
+# Gregor Middell and Andreas Nolda 2024-09-13
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -18,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 10.0
+version = 10.1
 
 
 BASEDIR = path.dirname(__file__)
@@ -367,7 +367,7 @@ def get_analysis_dicts(analyses):
     return analysis_dicts
 
 
-def remove_nonminimal_analyses(analyses, key, boundary):
+def get_minimal_analyses(analyses, key, boundary):
     minimal_analyses = []
     minimum = min([analysis[key].count(boundary) for analysis in analyses], default=-1)
     for analysis in analyses:
@@ -376,7 +376,7 @@ def remove_nonminimal_analyses(analyses, key, boundary):
     return minimal_analyses
 
 
-def remove_nonmaximal_analyses(analyses, key, boundary):
+def get_maximal_analyses(analyses, key, boundary):
     maximal_analyses = []
     maximum = max([analysis[key].count(boundary) for analysis in analyses], default=-1)
     for analysis in analyses:
@@ -385,7 +385,27 @@ def remove_nonmaximal_analyses(analyses, key, boundary):
     return maximal_analyses
 
 
-def remove_nonmatching_seg_words(seg_words, word):
+def get_minimal_analyses_per_pos(analyses, key, boundary):
+    minimal_analyses = []
+    # remove duplicates while preserving order
+    for pos in list(dict.fromkeys([analysis["pos"] for analysis in analyses])):
+        analyses_with_pos = [analysis for analysis in analyses if analysis["pos"] == pos]
+        analyses_with_pos = get_minimal_analyses(analyses_with_pos, key, boundary)
+        minimal_analyses += analyses_with_pos
+    return minimal_analyses
+
+
+def get_maximal_analyses_per_pos(analyses, key, boundary):
+    maximal_analyses = []
+    # remove duplicates while preserving order
+    for pos in list(dict.fromkeys([analysis["pos"] for analysis in analyses])):
+        analyses_with_pos = [analysis for analysis in analyses if analysis["pos"] == pos]
+        analyses_with_pos = get_maximal_analyses(analyses_with_pos, key, boundary)
+        maximal_analyses += analyses_with_pos
+    return maximal_analyses
+
+
+def get_matching_seg_words(seg_words, word):
     matching_seg_words = []
     for seg_word in seg_words:
         if re.sub("<.>", "", seg_word) == word:
@@ -393,7 +413,7 @@ def remove_nonmatching_seg_words(seg_words, word):
     return matching_seg_words
 
 
-def remove_duplicate_analyses(analyses):
+def get_unique_analyses(analyses):
     unique_analyses = []
     for analysis in analyses:
         if analysis not in unique_analyses:
@@ -479,17 +499,17 @@ def output_analyses(transducer, transducer2, input_file, output_file,
             analyses = get_analysis_dicts(analyses)
 
             if minimal:
-                analyses = remove_nonminimal_analyses(analyses, "seg_lemma", STEM_BOUNDARY)
+                analyses = get_minimal_analyses_per_pos(analyses, "seg_lemma", STEM_BOUNDARY)
 
             for analysis in analyses:
                 if maximal or seg_word:
                     words_tuple = generate_words(transducer2, analysis["analysis"])
-                    seg_words = remove_nonmatching_seg_words(words_tuple, word)
+                    seg_words = get_matching_seg_words(words_tuple, word)
                     analysis.update({"seg_word": seg_words[0] if seg_words else word})
 
             if maximal:
-                analyses = remove_nonmaximal_analyses(analyses, "seg_word", AFFIX_BOUNDARY)
-                analyses = remove_nonmaximal_analyses(analyses, "seg_lemma", STEM_BOUNDARY)
+                analyses = get_maximal_analyses_per_pos(analyses, "seg_word", AFFIX_BOUNDARY)
+                analyses = get_maximal_analyses_per_pos(analyses, "seg_lemma", STEM_BOUNDARY)
 
             for analysis in analyses:
                 if not seg_word:
@@ -512,7 +532,7 @@ def output_analyses(transducer, transducer2, input_file, output_file,
                         if not value:
                             del analysis[key]
 
-            analyses = remove_duplicate_analyses(analyses)
+            analyses = get_unique_analyses(analyses)
 
             word_analyses.append({"word": word,
                                   "analyses": analyses})
