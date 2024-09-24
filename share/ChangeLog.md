@@ -1,3 +1,8 @@
+2024-09-24:
+
+* add support for adjectives with schwa-elision without comparative or
+  superlative forms
+
 2024-09-12:
 
 * properly segment suffixed lemmas

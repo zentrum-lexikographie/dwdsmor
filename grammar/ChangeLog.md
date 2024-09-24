@@ -1,5 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-09-24:
+
+* replace inflection classes `Adj-el_0`, `Adj-el_$`, `Adj-er_0`, and `Adj-en_0`
+  with inflection classes `AdjPos-el`, `AdjPos-er`, `AdjPos-en`, `AdjComp-el`,
+  `AdjComp-er`, and `AdjComp-en`
+* do not generate comparative and superlative forms for converted participles
+
 2024-09-13:
 
 * use `<->` as a morpheme-boundary marker after derivational prefixes and before

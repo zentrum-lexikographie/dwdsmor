@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 7.3
-% Andreas Nolda 2024-07-26
+% Version 7.4
+% Andreas Nolda 2024-09-24
 
 #include "symbols.fst"
 #include "num.fst"
@@ -175,9 +175,9 @@ $BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerWB$
 $BaseStemsVPPast-t$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-t$
 $BaseStemsVPPast-n$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-n$
 
-$ConvBaseStemsVPPres$ = $BaseStemsVPPres$   <ADJ> <base> <native> <>:<Adj_0>    $ConvPPres$
-$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<Adj_e>    $ConvPPast$ | \
-                        $BaseStemsVPPast-n$ <ADJ> <base> <native> <>:<Adj-en_0> $ConvPPast$
+$ConvBaseStemsVPPres$ = $BaseStemsVPPres$   <ADJ> <base> <native> <>:<AdjPos>    $ConvPPres$     % cf. Duden-Grammatik (2016: § 508)
+$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<AdjPos>    $ConvPPast$ | \ % cf. Duden-Grammatik (2016: § 508)
+                        $BaseStemsVPPast-n$ <ADJ> <base> <native> <>:<AdjPos-en> $ConvPPast$     % cf. Duden-Grammatik (2016: § 508)
 
 $ConvBaseStems$ = $ConvBaseStemsVPPres$ | \
                   $ConvBaseStemsVPPast$

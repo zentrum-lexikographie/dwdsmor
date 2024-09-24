@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 15.5 -->
-<!-- Andreas Nolda 2024-09-12 -->
+<!-- Version 15.6 -->
+<!-- Andreas Nolda 2024-09-24 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -450,43 +450,6 @@
           <!-- adjectives with a final schwa-syllable -->
           <xsl:when test="ends-with($lemma,'el') and
                           n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
-            <xsl:choose>
-              <xsl:when test="matches($comparative,concat('^',n:umlaut-re($positive),'r$'))">
-                <xsl:call-template name="stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="pos">ADJ</xsl:with-param>
-                  <xsl:with-param name="class">Adj-el_$</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:call-template name="stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="pos">ADJ</xsl:with-param>
-                  <xsl:with-param name="class">Adj-el_0</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:otherwise>
-            </xsl:choose>
-          </xsl:when>
-          <xsl:when test="ends-with($lemma,'en') and
-            n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
             <xsl:call-template name="stem-entry">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
@@ -497,10 +460,99 @@
               <xsl:with-param name="abbreviation"
                               select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">Adj-en_0</xsl:with-param>
+              <xsl:with-param name="class">AdjPos-el</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
+            <xsl:if test="ends-with($comparative,'er')">
+              <xsl:call-template name="stem-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="stem"
+                                select="replace($comparative,'er$','')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pos">ADJ</xsl:with-param>
+                <xsl:with-param name="class">AdjComp-el</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
+            <xsl:if test="ends-with($superlative,'sten')">
+              <xsl:call-template name="stem-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="stem"
+                                select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pos">ADJ</xsl:with-param>
+                <xsl:with-param name="class">AdjSup</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
+          </xsl:when>
+          <xsl:when test="ends-with($lemma,'en') and
+                          n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
+            <xsl:call-template name="stem-entry">
+              <xsl:with-param name="lemma"
+                              select="$lemma"/>
+              <xsl:with-param name="lemma-index"
+                              select="$lemma-index"/>
+              <xsl:with-param name="paradigm-index"
+                              select="$paradigm-index"/>
+              <xsl:with-param name="abbreviation"
+                              select="$abbreviation"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjPos-en</xsl:with-param>
+              <xsl:with-param name="etymology"
+                              select="$etymology"/>
+            </xsl:call-template>
+            <xsl:if test="ends-with($comparative,'er')">
+              <xsl:call-template name="stem-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="stem"
+                                select="replace($comparative,'er$','')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pos">ADJ</xsl:with-param>
+                <xsl:with-param name="class">AdjComp-en</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
+            <xsl:if test="ends-with($superlative,'sten')">
+              <xsl:call-template name="stem-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="stem"
+                                select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pos">ADJ</xsl:with-param>
+                <xsl:with-param name="class">AdjSup</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
           </xsl:when>
           <xsl:when test="ends-with($lemma,'er') and
                           n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
@@ -514,10 +566,46 @@
               <xsl:with-param name="abbreviation"
                               select="$abbreviation"/>
               <xsl:with-param name="pos">ADJ</xsl:with-param>
-              <xsl:with-param name="class">Adj-er_0</xsl:with-param>
+              <xsl:with-param name="class">AdjPos-er</xsl:with-param>
               <xsl:with-param name="etymology"
                               select="$etymology"/>
             </xsl:call-template>
+            <xsl:if test="ends-with($comparative,'er')">
+              <xsl:call-template name="stem-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="stem"
+                                select="replace($comparative,'er$','')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pos">ADJ</xsl:with-param>
+                <xsl:with-param name="class">AdjComp-er</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
+            <xsl:if test="ends-with($superlative,'sten')">
+              <xsl:call-template name="stem-entry">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+                <xsl:with-param name="lemma-index"
+                                select="$lemma-index"/>
+                <xsl:with-param name="paradigm-index"
+                                select="$paradigm-index"/>
+                <xsl:with-param name="stem"
+                                select="replace($superlative,'^am (.*[aeiouäöü].*)e?sten$','$1')"/>
+                <xsl:with-param name="abbreviation"
+                                select="$abbreviation"/>
+                <xsl:with-param name="pos">ADJ</xsl:with-param>
+                <xsl:with-param name="class">AdjSup</xsl:with-param>
+                <xsl:with-param name="etymology"
+                                select="$etymology"/>
+              </xsl:call-template>
+            </xsl:if>
           </xsl:when>
           <!-- adjectives with irregular positive forms -->
           <xsl:when test="string-length($positive)&gt;0 and

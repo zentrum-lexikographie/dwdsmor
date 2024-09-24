@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-09-06
+# Andreas Nolda 2024-09-24
 
 import io
 import csv
@@ -34,9 +34,9 @@ ADJECTIVE_LEMMAS = ["lila",      # AdjPos0
                     "neu",       # Adj_0, Adj_e
                     "warm",      # Adj_$
                     "kalt",      # Adj_$e
-                    "dunkel",    # Adj-el_0, Adj-el_$
-                    "finster",   # Adj-er_0
-                    "trocken",   # Adj-en_0
+                    "dunkel",    # AdjPos-el, AdjComp-el, AdjSup
+                    "bitter",    # AdjPos-er, AdjComp-er, AdjSup
+                    "trocken",   # AdjPos-en, AdjComp-en, AdjSup
                     "gut",       # AdjPos, AdjComp, AdjSup
                     "viel",      # AdjPos, AdjPos0-viel, AdjComp0-mehr, AdjSup
                     "hoch"]      # AdjPosPred, AdjPosAttr, AdjComp, AdjSup

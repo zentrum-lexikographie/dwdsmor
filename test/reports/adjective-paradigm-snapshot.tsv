@@ -1,5 +1,104 @@
 Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
 Berliner	2		ADJ	Pos Invar Attr/Subst	Berliner
+bitter			ADJ	Pos Pred/Adv	bitter
+bitter			ADJ	Comp Pred/Adv	bitterer, bittrer
+bitter			ADJ	Sup Pred/Adv	am bittersten
+bitter			ADJ	Pos Masc Nom Sg St Attr/Subst	bitterer, bittrer
+bitter			ADJ	Pos Masc Nom Sg Wk Attr/Subst	bittere, bittre
+bitter			ADJ	Pos Masc Acc Sg St Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos Masc Acc Sg Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos Masc Dat Sg St Attr/Subst	bitterem, bittrem, bitterm (va.)
+bitter			ADJ	Pos Masc Dat Sg Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos Masc Gen Sg St Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos Masc Gen Sg Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos Neut Nom Sg St Attr/Subst	bitteres, bittres
+bitter			ADJ	Pos Neut Nom Sg Wk Attr/Subst	bittere, bittre
+bitter			ADJ	Pos Neut Acc Sg St Attr/Subst	bitteres, bittres
+bitter			ADJ	Pos Neut Acc Sg Wk Attr/Subst	bittere, bittre
+bitter			ADJ	Pos Neut Dat Sg St Attr/Subst	bitterem, bittrem, bitterm (va.)
+bitter			ADJ	Pos Neut Dat Sg Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos Neut Gen Sg St Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos Neut Gen Sg Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos Fem Nom Sg St Attr/Subst	bittere, bittre
+bitter			ADJ	Pos Fem Nom Sg Wk Attr/Subst	bittere, bittre
+bitter			ADJ	Pos Fem Acc Sg St Attr/Subst	bittere, bittre
+bitter			ADJ	Pos Fem Acc Sg Wk Attr/Subst	bittere, bittre
+bitter			ADJ	Pos Fem Dat Sg St Attr/Subst	bitterer, bittrer
+bitter			ADJ	Pos Fem Dat Sg Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos Fem Gen Sg St Attr/Subst	bitterer, bittrer
+bitter			ADJ	Pos Fem Gen Sg Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos NoGend Nom Pl St Attr/Subst	bittere, bittre
+bitter			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos NoGend Acc Pl St Attr/Subst	bittere, bittre
+bitter			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos NoGend Dat Pl St Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos NoGend Gen Pl St Attr/Subst	bitterer, bittrer
+bitter			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Comp Masc Nom Sg St Attr/Subst	bittererer, bittrerer
+bitter			ADJ	Comp Masc Nom Sg Wk Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp Masc Acc Sg St Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp Masc Acc Sg Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp Masc Dat Sg St Attr/Subst	bittererem, bittrerem
+bitter			ADJ	Comp Masc Dat Sg Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp Masc Gen Sg St Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp Masc Gen Sg Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp Neut Nom Sg St Attr/Subst	bittereres, bittreres
+bitter			ADJ	Comp Neut Nom Sg Wk Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp Neut Acc Sg St Attr/Subst	bittereres, bittreres
+bitter			ADJ	Comp Neut Acc Sg Wk Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp Neut Dat Sg St Attr/Subst	bittererem, bittrerem
+bitter			ADJ	Comp Neut Dat Sg Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp Neut Gen Sg St Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp Neut Gen Sg Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp Fem Nom Sg St Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp Fem Nom Sg Wk Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp Fem Acc Sg St Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp Fem Acc Sg Wk Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp Fem Dat Sg St Attr/Subst	bittererer, bittrerer
+bitter			ADJ	Comp Fem Dat Sg Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp Fem Gen Sg St Attr/Subst	bittererer, bittrerer
+bitter			ADJ	Comp Fem Gen Sg Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp NoGend Nom Pl St Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp NoGend Acc Pl St Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp NoGend Dat Pl St Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp NoGend Gen Pl St Attr/Subst	bittererer, bittrerer
+bitter			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Sup Masc Nom Sg St Attr/Subst	bitterster
+bitter			ADJ	Sup Masc Nom Sg Wk Attr/Subst	bitterste
+bitter			ADJ	Sup Masc Acc Sg St Attr/Subst	bittersten
+bitter			ADJ	Sup Masc Acc Sg Wk Attr/Subst	bittersten
+bitter			ADJ	Sup Masc Dat Sg St Attr/Subst	bitterstem
+bitter			ADJ	Sup Masc Dat Sg Wk Attr/Subst	bittersten
+bitter			ADJ	Sup Masc Gen Sg St Attr/Subst	bittersten
+bitter			ADJ	Sup Masc Gen Sg Wk Attr/Subst	bittersten
+bitter			ADJ	Sup Neut Nom Sg St Attr/Subst	bitterstes
+bitter			ADJ	Sup Neut Nom Sg Wk Attr/Subst	bitterste
+bitter			ADJ	Sup Neut Acc Sg St Attr/Subst	bitterstes
+bitter			ADJ	Sup Neut Acc Sg Wk Attr/Subst	bitterste
+bitter			ADJ	Sup Neut Dat Sg St Attr/Subst	bitterstem
+bitter			ADJ	Sup Neut Dat Sg Wk Attr/Subst	bittersten
+bitter			ADJ	Sup Neut Gen Sg St Attr/Subst	bittersten
+bitter			ADJ	Sup Neut Gen Sg Wk Attr/Subst	bittersten
+bitter			ADJ	Sup Fem Nom Sg St Attr/Subst	bitterste
+bitter			ADJ	Sup Fem Nom Sg Wk Attr/Subst	bitterste
+bitter			ADJ	Sup Fem Acc Sg St Attr/Subst	bitterste
+bitter			ADJ	Sup Fem Acc Sg Wk Attr/Subst	bitterste
+bitter			ADJ	Sup Fem Dat Sg St Attr/Subst	bitterster
+bitter			ADJ	Sup Fem Dat Sg Wk Attr/Subst	bittersten
+bitter			ADJ	Sup Fem Gen Sg St Attr/Subst	bitterster
+bitter			ADJ	Sup Fem Gen Sg Wk Attr/Subst	bittersten
+bitter			ADJ	Sup NoGend Nom Pl St Attr/Subst	bitterste
+bitter			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	bittersten
+bitter			ADJ	Sup NoGend Acc Pl St Attr/Subst	bitterste
+bitter			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	bittersten
+bitter			ADJ	Sup NoGend Dat Pl St Attr/Subst	bittersten
+bitter			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	bittersten
+bitter			ADJ	Sup NoGend Gen Pl St Attr/Subst	bitterster
+bitter			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	bittersten
 bunt			ADJ	Pos Pred/Adv	bunt
 bunt			ADJ	Comp Pred/Adv	bunter
 bunt			ADJ	Sup Pred/Adv	am buntesten
@@ -330,105 +429,6 @@ dunkel		2	ADJ	Sup NoGend Dat Pl St Attr/Subst	dünkelsten
 dunkel		2	ADJ	Sup NoGend Dat Pl Wk Attr/Subst	dünkelsten
 dunkel		2	ADJ	Sup NoGend Gen Pl St Attr/Subst	dünkelster
 dunkel		2	ADJ	Sup NoGend Gen Pl Wk Attr/Subst	dünkelsten
-finster			ADJ	Pos Pred/Adv	finster
-finster			ADJ	Comp Pred/Adv	finsterer, finstrer
-finster			ADJ	Sup Pred/Adv	am finstersten
-finster			ADJ	Pos Masc Nom Sg St Attr/Subst	finsterer, finstrer
-finster			ADJ	Pos Masc Nom Sg Wk Attr/Subst	finstere, finstre
-finster			ADJ	Pos Masc Acc Sg St Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos Masc Acc Sg Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos Masc Dat Sg St Attr/Subst	finsterem, finstrem, finsterm (va.)
-finster			ADJ	Pos Masc Dat Sg Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos Masc Gen Sg St Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos Masc Gen Sg Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos Neut Nom Sg St Attr/Subst	finsteres, finstres
-finster			ADJ	Pos Neut Nom Sg Wk Attr/Subst	finstere, finstre
-finster			ADJ	Pos Neut Acc Sg St Attr/Subst	finsteres, finstres
-finster			ADJ	Pos Neut Acc Sg Wk Attr/Subst	finstere, finstre
-finster			ADJ	Pos Neut Dat Sg St Attr/Subst	finsterem, finstrem, finsterm (va.)
-finster			ADJ	Pos Neut Dat Sg Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos Neut Gen Sg St Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos Neut Gen Sg Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos Fem Nom Sg St Attr/Subst	finstere, finstre
-finster			ADJ	Pos Fem Nom Sg Wk Attr/Subst	finstere, finstre
-finster			ADJ	Pos Fem Acc Sg St Attr/Subst	finstere, finstre
-finster			ADJ	Pos Fem Acc Sg Wk Attr/Subst	finstere, finstre
-finster			ADJ	Pos Fem Dat Sg St Attr/Subst	finsterer, finstrer
-finster			ADJ	Pos Fem Dat Sg Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos Fem Gen Sg St Attr/Subst	finsterer, finstrer
-finster			ADJ	Pos Fem Gen Sg Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos NoGend Nom Pl St Attr/Subst	finstere, finstre
-finster			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos NoGend Acc Pl St Attr/Subst	finstere, finstre
-finster			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos NoGend Dat Pl St Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Pos NoGend Gen Pl St Attr/Subst	finsterer, finstrer
-finster			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	finsteren, finstren, finstern (va.)
-finster			ADJ	Comp Masc Nom Sg St Attr/Subst	finstererer, finstrerer
-finster			ADJ	Comp Masc Nom Sg Wk Attr/Subst	finsterere, finstrere
-finster			ADJ	Comp Masc Acc Sg St Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp Masc Acc Sg Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp Masc Dat Sg St Attr/Subst	finstererem, finstrerem
-finster			ADJ	Comp Masc Dat Sg Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp Masc Gen Sg St Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp Masc Gen Sg Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp Neut Nom Sg St Attr/Subst	finstereres, finstreres
-finster			ADJ	Comp Neut Nom Sg Wk Attr/Subst	finsterere, finstrere
-finster			ADJ	Comp Neut Acc Sg St Attr/Subst	finstereres, finstreres
-finster			ADJ	Comp Neut Acc Sg Wk Attr/Subst	finsterere, finstrere
-finster			ADJ	Comp Neut Dat Sg St Attr/Subst	finstererem, finstrerem
-finster			ADJ	Comp Neut Dat Sg Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp Neut Gen Sg St Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp Neut Gen Sg Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp Fem Nom Sg St Attr/Subst	finsterere, finstrere
-finster			ADJ	Comp Fem Nom Sg Wk Attr/Subst	finsterere, finstrere
-finster			ADJ	Comp Fem Acc Sg St Attr/Subst	finsterere, finstrere
-finster			ADJ	Comp Fem Acc Sg Wk Attr/Subst	finsterere, finstrere
-finster			ADJ	Comp Fem Dat Sg St Attr/Subst	finstererer, finstrerer
-finster			ADJ	Comp Fem Dat Sg Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp Fem Gen Sg St Attr/Subst	finstererer, finstrerer
-finster			ADJ	Comp Fem Gen Sg Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp NoGend Nom Pl St Attr/Subst	finsterere, finstrere
-finster			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp NoGend Acc Pl St Attr/Subst	finsterere, finstrere
-finster			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp NoGend Dat Pl St Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Comp NoGend Gen Pl St Attr/Subst	finstererer, finstrerer
-finster			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	finstereren, finstreren
-finster			ADJ	Sup Masc Nom Sg St Attr/Subst	finsterster
-finster			ADJ	Sup Masc Nom Sg Wk Attr/Subst	finsterste
-finster			ADJ	Sup Masc Acc Sg St Attr/Subst	finstersten
-finster			ADJ	Sup Masc Acc Sg Wk Attr/Subst	finstersten
-finster			ADJ	Sup Masc Dat Sg St Attr/Subst	finsterstem
-finster			ADJ	Sup Masc Dat Sg Wk Attr/Subst	finstersten
-finster			ADJ	Sup Masc Gen Sg St Attr/Subst	finstersten
-finster			ADJ	Sup Masc Gen Sg Wk Attr/Subst	finstersten
-finster			ADJ	Sup Neut Nom Sg St Attr/Subst	finsterstes
-finster			ADJ	Sup Neut Nom Sg Wk Attr/Subst	finsterste
-finster			ADJ	Sup Neut Acc Sg St Attr/Subst	finsterstes
-finster			ADJ	Sup Neut Acc Sg Wk Attr/Subst	finsterste
-finster			ADJ	Sup Neut Dat Sg St Attr/Subst	finsterstem
-finster			ADJ	Sup Neut Dat Sg Wk Attr/Subst	finstersten
-finster			ADJ	Sup Neut Gen Sg St Attr/Subst	finstersten
-finster			ADJ	Sup Neut Gen Sg Wk Attr/Subst	finstersten
-finster			ADJ	Sup Fem Nom Sg St Attr/Subst	finsterste
-finster			ADJ	Sup Fem Nom Sg Wk Attr/Subst	finsterste
-finster			ADJ	Sup Fem Acc Sg St Attr/Subst	finsterste
-finster			ADJ	Sup Fem Acc Sg Wk Attr/Subst	finsterste
-finster			ADJ	Sup Fem Dat Sg St Attr/Subst	finsterster
-finster			ADJ	Sup Fem Dat Sg Wk Attr/Subst	finstersten
-finster			ADJ	Sup Fem Gen Sg St Attr/Subst	finsterster
-finster			ADJ	Sup Fem Gen Sg Wk Attr/Subst	finstersten
-finster			ADJ	Sup NoGend Nom Pl St Attr/Subst	finsterste
-finster			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	finstersten
-finster			ADJ	Sup NoGend Acc Pl St Attr/Subst	finsterste
-finster			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	finstersten
-finster			ADJ	Sup NoGend Dat Pl St Attr/Subst	finstersten
-finster			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	finstersten
-finster			ADJ	Sup NoGend Gen Pl St Attr/Subst	finsterster
-finster			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	finstersten
 gut			ADJ	Pos Pred/Adv	gut
 gut			ADJ	Comp Pred/Adv	besser
 gut			ADJ	Sup Pred/Adv	am besten

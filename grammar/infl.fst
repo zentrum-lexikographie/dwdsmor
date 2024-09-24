@@ -1,6 +1,6 @@
 % infl.fst
-% Version 8.5
-% Andreas Nolda 2024-09-06
+% Version 8.6
+% Andreas Nolda 2024-09-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -837,6 +837,21 @@ $AdjPos0AttrSubst$ = {<+ADJ><Pos><Attr/Subst><Invar>}:{}
 $AdjPos$ = {<+ADJ><Pos><Pred/Adv>}:{} | \
            {<+ADJ><Pos>}:{} $AdjInflSuff$
 
+% dunkel
+$AdjPos-el$ = {}:{<del(e)|ADJ>} $AdjPos$                  | \
+              {<+ADJ><Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
+              {<+ADJ><Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
+
+% bitter
+$AdjPos-er$ = $AdjPos$                                    | \
+              {}:{<del(e)|ADJ>} $AdjPos$                  | \
+              {<+ADJ><Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
+              {<+ADJ><Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
+
+% trocken
+$AdjPos-en$ = $AdjPos$ | \
+              {}:{<del(e)|ADJ>} $AdjPos$
+
 % vorig-; hoh-
 $AdjPosAttr$ = {<+ADJ><Pos>}:{} $AdjInflSuff$
 
@@ -849,6 +864,16 @@ $AdjPosAttr-er$ = {<+ADJ><Pos>}:{} $AdjInflSuff$             | \
 % besser; höher
 $AdjComp$ = {<+ADJ><Comp><Pred/Adv>}:{<SB>er} | \
             {<+ADJ><Comp>}:{<SB>er} $AdjInflSuff$
+
+% dunkler
+$AdjComp-el$ = {}:{<del(e)|ADJ>} $AdjComp$
+
+% bitt(e)rer
+$AdjComp-er$ = $AdjComp$ | \
+               {}:{<del(e)|ADJ>} $AdjComp$
+
+% trock(e)ner
+$AdjComp-en$ = $AdjComp-er$
 
 % mehr; weniger
 $AdjComp0-mehr$ = {<+ADJ><Comp><Pred/Adv>}:{} | \
@@ -896,26 +921,6 @@ $Adj_\$e$ = {<+ADJ><Pos><Pred/Adv>}:{}                   | \
             {<+ADJ><Comp>}:{<uml><SB>er} $AdjInflSuff$   | \
             {<+ADJ><Sup><Pred/Adv>}:{<uml><SB>est<SB>en} | \
             {<+ADJ><Sup>}:{<uml><SB>est} $AdjInflSuff$
-
-% dunkel, dunkler, dunkelsten
-$Adj-el_0$ = {}:{<del(e)|ADJ>} $Adj_0$                   | \
-             {<+ADJ><Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
-             {<+ADJ><Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
-
-% dunkel, dünkler, dünkelsten (regional variant)
-$Adj-el_\$$ = {}:{<del(e)|ADJ>} $Adj_\$$                 | \
-              {<+ADJ><Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
-              {<+ADJ><Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
-
-% finster, finst(e)rer, finstersten
-$Adj-er_0$ = $Adj_0$                                     | \
-             {}:{<del(e)|ADJ>} $Adj_0$                   | \
-             {<+ADJ><Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
-             {<+ADJ><Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
-
-% trocken, trock(e)ner, trockensten
-$Adj-en_0$ = $Adj_0$ | \
-             {}:{<del(e)|ADJ>} $Adj_0$
 
 % deutsch; [das] Deutsch
 $Adj-Lang$ = $Adj_0$ | \
@@ -2405,18 +2410,20 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<AbbrNNoGend>             $AbbrNNoGend$          | \
          <>:<AbbrPoss>                $AbbrPoss$             | \
          <>:<AbbrVImp>                $AbbrVImp$             | \
-         <>:<Adj-el_$>                $Adj-el_\$$            | \
-         <>:<Adj-el_0>                $Adj-el_0$             | \
-         <>:<Adj-en_0>                $Adj-en_0$             | \
-         <>:<Adj-er_0>                $Adj-er_0$             | \
          <>:<Adj-Lang>                $Adj-Lang$             | \
          <>:<Adj_$>                   $Adj_\$$               | \
          <>:<Adj_$e>                  $Adj_\$e$              | \
          <>:<Adj_0>                   $Adj_0$                | \
          <>:<Adj_e>                   $Adj_e$                | \
          <>:<AdjComp>                 $AdjComp$              | \
+         <>:<AdjComp-el>              $AdjComp-el$           | \
+         <>:<AdjComp-en>              $AdjComp-en$           | \
+         <>:<AdjComp-er>              $AdjComp-er$           | \
          <>:<AdjComp0-mehr>           $AdjComp0-mehr$        | \
          <>:<AdjPos>                  $AdjPos$               | \
+         <>:<AdjPos-el>               $AdjPos-el$            | \
+         <>:<AdjPos-en>               $AdjPos-en$            | \
+         <>:<AdjPos-er>               $AdjPos-er$            | \
          <>:<AdjPos0>                 $AdjPos0$              | \
          <>:<AdjPos0-viel>            $AdjPos0-viel$         | \
          <>:<AdjPos0Attr>             $AdjPos0Attr$          | \
