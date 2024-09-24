@@ -9309,7 +9309,7 @@
     <xsl:choose>
       <xsl:when test="not(string(number($lemma-index))='NaN') and
                       $lemma-index&gt;0 and
-                      $lemma-index&lt;6">
+                      $lemma-index&lt;8">
         <xsl:text>&lt;</xsl:text>
         <xsl:text>IDX</xsl:text>
         <xsl:value-of select="$lemma-index"/>
@@ -9335,7 +9335,7 @@
     <xsl:choose>
       <xsl:when test="not(string(number($paradigm-index))='NaN') and
                       $paradigm-index&gt;0 and
-                      $paradigm-index&lt;6">
+                      $paradigm-index&lt;8">
         <xsl:text>&lt;</xsl:text>
         <xsl:text>PAR</xsl:text>
         <xsl:value-of select="$paradigm-index"/>

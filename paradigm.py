@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2024-09-12
+# Andreas Nolda 2024-09-24
 
 import sys
 import argparse
@@ -28,7 +28,7 @@ LIBDIR = path.join(BASEDIR, "lib")
 LIBFILE = path.join(LIBDIR, "dwdsmor-index.a")
 
 
-INDICES = [1, 2, 3, 4, 5]
+INDICES = [1, 2, 3, 4, 5, 6, 7, 8]
 
 
 POS = ["ADJ", "ART", "CARD", "DEM", "FRAC", "INDEF", "NN",

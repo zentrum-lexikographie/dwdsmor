@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2024-09-13
+# Gregor Middell and Andreas Nolda 2024-09-24
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -90,8 +90,8 @@ class Analysis(tuple):
             analysis = re.sub("<" + process + ">", "", analysis)
         for means in MEANS:
             analysis = re.sub("<" + means + r"(?:\([^>]+\))?(?:\|[^>]+)?" + ">", "", analysis)
-        analysis = re.sub(r"(?:<IDX[1-5]>)?", "", analysis)
-        analysis = re.sub(r"(?:<PAR[1-5]>)?", "", analysis)
+        analysis = re.sub(r"(?:<IDX[1-8]>)?", "", analysis)
+        analysis = re.sub(r"(?:<PAR[1-8]>)?", "", analysis)
         analysis = re.sub(r"<\+[^>]+>.*", "", analysis)
         if analysis == r"\:":
             analysis = ":"
@@ -104,11 +104,11 @@ class Analysis(tuple):
 
     @cached_property
     def lemma_index(self):
-        return next((int(tag[3:]) for tag in self.tags if re.fullmatch(r"IDX[1-5]", tag)), None)
+        return next((int(tag[3:]) for tag in self.tags if re.fullmatch(r"IDX[1-8]", tag)), None)
 
     @cached_property
     def paradigm_index(self):
-        return next((int(tag[3:]) for tag in self.tags if re.fullmatch(r"PAR[1-5]", tag)), None)
+        return next((int(tag[3:]) for tag in self.tags if re.fullmatch(r"PAR[1-8]", tag)), None)
 
     @cached_property
     def pos(self):

@@ -127,9 +127,9 @@
 
 #origin# = <native><foreign>
 
-#lemma-index# = <IDX1><IDX2><IDX3><IDX4><IDX5>
+#lemma-index# = <IDX1><IDX2><IDX3><IDX4><IDX5><IDX6><IDX7><IDX8>
 
-#paradigm-index# = <PAR1><PAR2><PAR3><PAR4><PAR5>
+#paradigm-index# = <PAR1><PAR2><PAR3><PAR4><PAR5><PAR6><PAR7><PAR8>
 
 #Abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNNoGend> \
                     <AbbrPoss><AbbrVImp>
