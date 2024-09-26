@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 7.4 -->
-<!-- Andreas Nolda 2024-09-12 -->
+<!-- Version 7.5 -->
+<!-- Andreas Nolda 2024-09-26 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -290,12 +290,12 @@
   <xsl:param name="string"/>
   <xsl:choose>
     <!-- replace the last vowel matching /(Au|Aa|Oo|[AOU])/ with /(Äu|[ÄÖÜ])/ -->
-    <xsl:when test="matches($string,'(Au|Aa|Oo|[AOU])[^aou-]*$')">
-      <xsl:sequence select="replace($string,'(Au|Aa|Oo|[AOU])([^aou-]*)$','(Äu|[ÄÖÜ])$2')"/>
+    <xsl:when test="matches($string,'(Au|Aa|Oo|[AOU])[^aouäöü-]*$')">
+      <xsl:sequence select="replace($string,'(Au|Aa|Oo|[AOU])([^aouäöü-]*)$','(Äu|[ÄÖÜ])$2')"/>
     </xsl:when>
     <!-- replace the last vowel matching /(au|aa|oo|[aou])/ with /(äu|[äöü])/ -->
-    <xsl:when test="matches($string,'(au|aa|oo|[aou])[^aou-]*$')">
-      <xsl:sequence select="replace($string,'(au|aa|oo|[aou])([^aou-]*)$','(äu|[äöü])$2')"/>
+    <xsl:when test="matches($string,'(au|aa|oo|[aou])[^aouäöü-]*$')">
+      <xsl:sequence select="replace($string,'(au|aa|oo|[aou])([^aouäöü-]*)$','(äu|[äöü])$2')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:sequence select="$string"/>

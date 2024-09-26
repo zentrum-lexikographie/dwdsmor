@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 15.6 -->
-<!-- Andreas Nolda 2024-09-24 -->
+<!-- Version 15.7 -->
+<!-- Andreas Nolda 2024-09-26 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2831,6 +2831,45 @@
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
+      </xsl:when>
+      <!-- lemma: compound of "Elektro" with a stem with initial "o" -->
+      <xsl:when test="matches($lemma,'Elektroo[^aouäöü-]*$')">
+        <!-- prevent "oo" from being considered as geminate "o" by umlaut functions -->
+        <xsl:variable name="class">
+          <xsl:call-template name="noun-class">
+            <xsl:with-param name="lemma"
+                            select="replace($lemma,'(Elektro)(o[^aouäöü-]*)$','$1&lt;CB&gt;$2')"/>
+            <xsl:with-param name="gender"
+                            select="$gender"/>
+            <xsl:with-param name="number"
+                            select="$number"/>
+            <xsl:with-param name="genitive-singular"
+                            select="replace($genitive-singular,'(Elektro)(o[^aouäöü-]*)$','$1&lt;CB&gt;$2')"/>
+            <xsl:with-param name="nominative-plural"
+                            select="replace($nominative-plural,'(Elektro)([oö][^aouäöü-]*)$','$1&lt;CB&gt;$2')"/>
+            <xsl:with-param name="diminutive"
+                            select="$diminutive"/>
+            <xsl:with-param name="pronunciations"
+                            select="$pronunciations"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="string-length($class)&gt;0">
+          <xsl:call-template name="stem-entry">
+            <xsl:with-param name="lemma"
+                            select="replace($lemma,'(Elektro)(o[^aouäöü-]*)$','$1&lt;CB&gt;$2')"/>
+            <xsl:with-param name="lemma-index"
+                            select="$lemma-index"/>
+            <xsl:with-param name="paradigm-index"
+                            select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+            <xsl:with-param name="pos">NN</xsl:with-param>
+            <xsl:with-param name="class"
+                            select="$class"/>
+            <xsl:with-param name="etymology"
+                            select="$etymology"/>
+          </xsl:call-template>
+        </xsl:if>
       </xsl:when>
       <!-- other nouns -->
       <xsl:otherwise>

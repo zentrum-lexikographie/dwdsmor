@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 5.3
-% Andreas Nolda 2024-03-15
+% Version 5.4
+% Andreas Nolda 2024-09-26
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -9,8 +9,8 @@
 
 % clean up inflection-related symbols on analysis level
 
-ALPHABET = [#entry-type# #char# #lemma-index# #paradigm-index# #category# \
-            #stem-type# #suff# #origin# #orthinfo# <Abbr><SB><VB>] \
+ALPHABET = [#entry-type# #char# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #stem-type# #suff# #origin# #orthinfo# <Abbr>] \
            <>:[#inflection# #auxiliary# <ge>]
 
 $CleanupInflLv2$ = .*
@@ -18,8 +18,9 @@ $CleanupInflLv2$ = .*
 
 % clean up lemma and paradigm indices
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #category# #stem-type# \
-            #suff# #origin# #inflection# #auxiliary# #orthinfo# <Abbr><SB><VB><ge>] \
+ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #category# \
+            #stem-type# #suff# #origin# #inflection# #auxiliary# #orthinfo# \
+            <Abbr><ge>] \
            [#lemma-index# #paradigm-index#]:<>
 
 $CleanupIndex$ = .*
@@ -27,8 +28,8 @@ $CleanupIndex$ = .*
 
 % clean up old-orthography markers
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #category# #stem-type# \
-            #suff# #origin# #inflection# #auxiliary# <Abbr><SB><VB><ge>] \
+ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #category# \
+            #stem-type# #suff# #origin# #inflection# #auxiliary# <Abbr><ge>] \
            [#orthinfo#]:<>
 
 $CleanupOrthOld$ = .*
