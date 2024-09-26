@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-09-24
+# Andreas Nolda 2024-09-26
 
 import io
 import csv
@@ -218,6 +218,7 @@ NOUN_LEMMAS = ["Jazz",           # NMasc/Sg_0
                "Komma",          # NNeut_s_s, NNeut_s_a/ata
                "Risiko",         # NNeut_s_s, NNeut_s_o/en
                "Dogma",          # NNeut_s_a/en
+               "Numerale",       # NNeut_s_e/ia, NNeut_s_e/ien
                "Paradoxon",      # NNeut_s_on/a
                "Stadion",        # NNeut_s_on/en
                "Maximum",        # NNeut_s_um/a

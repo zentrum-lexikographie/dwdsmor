@@ -719,6 +719,14 @@ Nichts			NN Neut	Nom Pl	Nichtse
 Nichts			NN Neut	Acc Pl	Nichtse
 Nichts			NN Neut	Dat Pl	Nichtsen
 Nichts			NN Neut	Gen Pl	Nichtse
+Numerale			NN Neut	Nom Sg	Numerale
+Numerale			NN Neut	Acc Sg	Numerale
+Numerale			NN Neut	Dat Sg	Numerale
+Numerale			NN Neut	Gen Sg	Numerales
+Numerale			NN Neut	Nom Pl	Numeralia, Numeralien
+Numerale			NN Neut	Acc Pl	Numeralia, Numeralien
+Numerale			NN Neut	Dat Pl	Numeralia, Numeralien
+Numerale			NN Neut	Gen Pl	Numeralia, Numeralien
 Obelisk			NN Masc	Nom Sg	Obelisk
 Obelisk			NN Masc	Acc Sg	Obelisk, Obelisken, Obelisk (ugs.)
 Obelisk			NN Masc	Dat Sg	Obelisk, Obelisken, Obelisk (ugs.)

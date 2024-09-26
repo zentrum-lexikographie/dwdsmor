@@ -1,6 +1,6 @@
 % infl.fst
-% Version 8.6
-% Andreas Nolda 2024-09-24
+% Version 8.7
+% Andreas Nolda 2024-09-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -395,6 +395,14 @@ $NNeut_0_ans/anzien$ = {<+NN><Neut>}:{}                       $NSgSuff_0$ | \
 $NNeut_0_e/i$ = {<+NN><Neut>}:{}                  $NSgSuff_0$ | \
                 {<+NN><Neut>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
 
+% Numerale, Numerale, Numeralia
+$NNeut_0_e/ia$ = {<+NN><Neut>}:{}                   $NSgSuff_0$ | \
+                 {<+NN><Neut>}:{<del(VC)|Pl><SB>ia} $NPlSuff_x$
+
+% Numerale, Numerale, Numeralien
+$NNeut_0_e/ien$ = {<+NN><Neut>}:{}                    $NSgSuff_0$ | \
+                  {<+NN><Neut>}:{<del(VC)|Pl><SB>ien} $NPlSuff_x$
+
 % Examen, Examen, Examina
 $NNeut_0_en/ina$ = {<+NN><Neut>}:{}                    $NSgSuff_0$ | \
                    {<+NN><Neut>}:{<del(VC)|Pl>in<SB>a} $NPlSuff_x$
@@ -529,6 +537,14 @@ $NNeut_s_a/en$ = {<+NN><Neut>}:{}                   $NSgSuff_s$ | \
 % Ricercare, Ricercares, Ricercari
 $NNeut_s_e/i$ = {<+NN><Neut>}:{}                  $NSgSuff_s$ | \
                 {<+NN><Neut>}:{<del(VC)|Pl><SB>i} $NPlSuff_x$
+
+% Numerale, Numerales, Numeralia
+$NNeut_s_e/ia$ = {<+NN><Neut>}:{}                   $NSgSuff_s$ | \
+                 {<+NN><Neut>}:{<del(VC)|Pl><SB>ia} $NPlSuff_x$
+
+% Numerale, Numerales, Numeralien
+$NNeut_s_e/ien$ = {<+NN><Neut>}:{}                    $NSgSuff_s$ | \
+                  {<+NN><Neut>}:{<del(VC)|Pl><SB>ien} $NPlSuff_x$
 
 % Examen, Examens, Examina
 $NNeut_s_en/ina$ = {<+NN><Neut>}:{}                    $NSgSuff_s$ | \
@@ -2623,6 +2639,8 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<NNeut_0_e>               $NNeut_0_e$            | \
          <>:<NNeut_0_e~ss>            $NNeut_0_e~ss$         | \
          <>:<NNeut_0_e/i>             $NNeut_0_e/i$          | \
+         <>:<NNeut_0_e/ia>            $NNeut_0_e/ia$         | \
+         <>:<NNeut_0_e/ien>           $NNeut_0_e/ien$        | \
          <>:<NNeut_0_en>              $NNeut_0_en$           | \
          <>:<NNeut_0_en/ina>          $NNeut_0_en/ina$       | \
          <>:<NNeut_0_ens/enzien>      $NNeut_0_ens/enzien$   | \
@@ -2657,6 +2675,8 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$              | \
          <>:<NNeut_s_a/en>            $NNeut_s_a/en$         | \
          <>:<NNeut_s_e>               $NNeut_s_e$            | \
          <>:<NNeut_s_e/i>             $NNeut_s_e/i$          | \
+         <>:<NNeut_s_e/ia>            $NNeut_s_e/ia$         | \
+         <>:<NNeut_s_e/ien>           $NNeut_s_e/ien$        | \
          <>:<NNeut_s_en>              $NNeut_s_en$           | \
          <>:<NNeut_s_en/ina>          $NNeut_s_en/ina$       | \
          <>:<NNeut_s_ien>             $NNeut_s_ien$          | \

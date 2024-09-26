@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-09-26:
+
+* add inflection classes `NNeut_0_e/ia`, `NNeut_s_e/ia`, `NNeut_0_e/ien`, and
+  `NNeut_s_e/ien`
+
 2024-09-24:
 
 * replace inflection classes `Adj-el_0`, `Adj-el_$`, `Adj-er_0`, and `Adj-en_0`

@@ -1,3 +1,9 @@
+2024-09-26:
+
+* add support for neuter nous with genitive singular forms ending in "-s"
+  or unmarked genitive singular forms and nominative plural forms ending in
+  "-ia" or "-ien" substituted for "-e"
+
 2024-09-24:
 
 * add support for adjectives with schwa-elision without comparative or

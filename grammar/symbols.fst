@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 8.8
-% Andreas Nolda 2024-09-24
+% Version 8.9
+% Andreas Nolda 2024-09-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -169,15 +169,16 @@
                     <NNeut/Sg_0><NNeut/Sg_es><NNeut/Sg_es~ss><NNeut/Sg_s> \
                     <NNeut_0_0><NNeut_0_a/ata><NNeut_0_a/en><NNeut_0_ans/anzien> \
                     <NNeut_0_ans/antien><NNeut_0_e><NNeut_0_e~ss><NNeut_0_e/i> \
-                    <NNeut_0_en><NNeut_0_en/ina><NNeut_0_ens/enzien><NNeut_0_es> \
-                    <NNeut_0_nen><NNeut_0_o/en><NNeut_0_o/i><NNeut_0_on/a> \
-                    <NNeut_0_on/en><NNeut_0_s><NNeut_0_um/a><NNeut_0_um/en> \
-                    <NNeut_0_us/en><NNeut_0_us/era><NNeut_0_us/ora><NNeut_0_x> \
-                    <NNeut_ens_en><NNeut_es_$e><NNeut_es_$er><NNeut_es_e> \
-                    <NNeut_es_e~ss><NNeut_es_en><NNeut_es_er><NNeut_es_es> \
-                    <NNeut_es_ien><NNeut_es_s><NNeut_s_$><NNeut_s_$er> \
-                    <NNeut_s_0><NNeut_s_a><NNeut_s_a/ata><NNeut_s_a/en> \
-                    <NNeut_s_e><NNeut_s_e/i><NNeut_s_en><NNeut_s_en/ina> \
+                    <NNeut_0_e/ia><NNeut_0_e/ien><NNeut_0_en><NNeut_0_en/ina> \
+                    <NNeut_0_ens/enzien><NNeut_0_es><NNeut_0_nen><NNeut_0_o/en> \
+                    <NNeut_0_o/i><NNeut_0_on/a><NNeut_0_on/en><NNeut_0_s> \
+                    <NNeut_0_um/a><NNeut_0_um/en><NNeut_0_us/en><NNeut_0_us/era> \
+                    <NNeut_0_us/ora><NNeut_0_x><NNeut_ens_en><NNeut_es_$e> \
+                    <NNeut_es_$er><NNeut_es_e><NNeut_es_e~ss><NNeut_es_en> \
+                    <NNeut_es_er><NNeut_es_es><NNeut_es_ien><NNeut_es_s> \
+                    <NNeut_s_$><NNeut_s_$er><NNeut_s_0><NNeut_s_a> \
+                    <NNeut_s_a/ata><NNeut_s_a/en><NNeut_s_e><NNeut_s_e/i> \
+                    <NNeut_s_e/ia><NNeut_s_e/ien><NNeut_s_en><NNeut_s_en/ina> \
                     <NNeut_s_ien><NNeut_s_n><NNeut_s_nen><NNeut_s_o/en> \
                     <NNeut_s_o/i><NNeut_s_on/a><NNeut_s_on/en><NNeut_s_s> \
                     <NNeut_s_um/a><NNeut_s_um/en><NNeut_s_x><NNoGend/Pl_0> \
