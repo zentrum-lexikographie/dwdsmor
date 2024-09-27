@@ -1,3 +1,7 @@
+2024-09-27:
+
+* add support for verbs with hyphenated particles
+
 2024-09-26:
 
 * add support for neuter nous with genitive singular forms ending in "-s"

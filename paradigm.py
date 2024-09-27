@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2024-09-24
+# Andreas Nolda 2024-09-27
 
 import sys
 import argparse
+import re
 import csv
 import json
 import yaml
@@ -18,7 +19,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 12.0
+version = 13.0
 
 
 BASEDIR = path.dirname(__file__)
@@ -80,9 +81,6 @@ SEG_HABEN = "hab<~>en"
 SEG_SEIN = "sei<~>n"
 
 SEG_WERDEN = "werd<~>en"
-
-
-PARTICLE_BOUNDARY = "<#>"
 
 
 LEMMA_INDEX_HABEN = None
@@ -214,6 +212,18 @@ def format_categorisation(categorisation):
                     for cat in categorisation])
 
 
+def format_particle_verb_form(form, particle):
+    return re.sub(f"^({particle})-?(.+)$", r"\2 \1", form)
+
+
+def format_double_particle_verb_form(form, particle, particle_2):
+    return re.sub(f"^({particle_2})-?({particle})-?(.+)$", r"\3 \1 \2", form)
+
+
+def format_tags(tags):
+    return "(" + ", ".join(tags) + ")"
+
+
 def generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                    pos, categorisation):
     forms = transducer.generate(seg_lemma + format_lemma_index(lemma_index)
@@ -251,7 +261,7 @@ def add_special_forms(formdict, lemma_index, paradigm_index,
                       lexcat, parcat, forms,
                       tags):
     if forms:
-        formatted_forms = [form + " (" + ", ".join(tags) + ")"
+        formatted_forms = [form + " " + format_tags(tags)
                            for form in forms]
         add_additional_forms(formdict, lemma_index, paradigm_index,
                              lexcat, parcat, formatted_forms)
@@ -270,7 +280,7 @@ def add_special_sup_forms(formdict, lemma_index, paradigm_index,
                           lexcat, parcat, forms,
                           tags):
     if forms:
-        complex_forms = ["am " + form + " (" + ", ".join(tags) + ")"
+        complex_forms = ["am " + form + " " + format_tags(tags)
                          for form in forms]
         add_additional_forms(formdict, lemma_index, paradigm_index,
                              lexcat, parcat, complex_forms)
@@ -290,7 +300,7 @@ def add_special_perf_forms(formdict, lemma_index, paradigm_index,
                            lexcat, parcat, forms, participles,
                            tags):
     if forms:
-        complex_forms = [form + " " + participle + " (" + ", ".join(tags) + ")"
+        complex_forms = [form + " " + participle + " " + format_tags(tags)
                          for form in forms
                          for participle in participles]
         add_additional_forms(formdict, lemma_index, paradigm_index,
@@ -311,7 +321,7 @@ def add_special_fut_forms(formdict, lemma_index, paradigm_index,
                           lexcat, parcat, forms, infinitives,
                           tags):
     if forms:
-        complex_forms = [form + " " + infinitive + " (" + ", ".join(tags) + ")"
+        complex_forms = [form + " " + infinitive + " " + format_tags(tags)
                          for form in forms
                          for infinitive in infinitives]
         add_additional_forms(formdict, lemma_index, paradigm_index,
@@ -333,7 +343,7 @@ def add_special_futperf_forms(formdict, lemma_index, paradigm_index,
                               lexcat, parcat, forms, infinitives, participles,
                               tags):
     if forms:
-        complex_forms = [form + " " + participle + " " + infinitive + " (" + ", ".join(tags) + ")"
+        complex_forms = [form + " " + participle + " " + infinitive + " " + format_tags(tags)
                          for form in forms
                          for participle in participles
                          for infinitive in infinitives]
@@ -355,7 +365,7 @@ def add_special_nonfinite_perf_forms(formdict, lemma_index, paradigm_index,
                                      lexcat, parcat, forms, participles,
                                      tags):
     if forms:
-        complex_forms = [participle + " " + form + " (" + ", ".join(tags) + ")"
+        complex_forms = [participle + " " + form + " " + format_tags(tags)
                          for participle in participles
                          for form in forms]
         add_additional_forms(formdict, lemma_index, paradigm_index,
@@ -365,7 +375,7 @@ def add_special_nonfinite_perf_forms(formdict, lemma_index, paradigm_index,
 def add_particle_verb_forms(formdict, lemma_index, paradigm_index,
                             lexcat, parcat, forms, particle):
     if forms:
-        complex_forms = [form[len(particle):] + " " + particle
+        complex_forms = [format_particle_verb_form(form, particle)
                          for form in forms]
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, complex_forms)
@@ -375,7 +385,7 @@ def add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                     lexcat, parcat, forms, particle,
                                     tags):
     if forms:
-        complex_forms = [form[len(particle):] + " " + particle + " (" + ", ".join(tags) + ")"
+        complex_forms = [format_particle_verb_form(form, particle) + " " + format_tags(tags)
                          for form in forms]
         add_additional_forms(formdict, lemma_index, paradigm_index,
                              lexcat, parcat, complex_forms)
@@ -384,7 +394,7 @@ def add_special_particle_verb_forms(formdict, lemma_index, paradigm_index,
 def add_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                    lexcat, parcat, forms, particle, particle_2):
     if forms:
-        complex_forms = [form[len(particle_2 + particle):] + " " + particle_2 + " " + particle
+        complex_forms = [format_double_particle_verb_form(form, particle, particle_2)
                          for form in forms]
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, complex_forms)
@@ -394,7 +404,7 @@ def add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index
                                            lexcat, parcat, forms, particle, particle_2,
                                            tags):
     if forms:
-        complex_forms = [form[len(particle_2 + particle):] + " " + particle_2 + " " + particle + " (" + ", ".join(tags) + ")"
+        complex_forms = [format_double_particle_verb_form(form, particle, particle_2) + " " + format_tags(tags)
                          for form in forms]
         add_additional_forms(formdict, lemma_index, paradigm_index,
                              lexcat, parcat, complex_forms)
@@ -403,7 +413,7 @@ def add_special_double_particle_verb_forms(formdict, lemma_index, paradigm_index
 def add_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                 lexcat, parcat, forms, particle):
     if forms:
-        complex_forms = [form[len(particle):] + " " + particle
+        complex_forms = [format_particle_verb_form(form, particle)
                          for form in forms]
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, complex_forms)
@@ -413,7 +423,7 @@ def add_special_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                         lexcat, parcat, forms, particle,
                                         tags):
     if forms:
-        complex_forms = [form[len(particle):] + " " + particle + " (" + ", ".join(tags) + ")"
+        complex_forms = [format_particle_verb_form(form, particle) + " " + format_tags(tags)
                          for form in forms]
         add_additional_forms(formdict, lemma_index, paradigm_index,
                              lexcat, parcat, complex_forms)
@@ -422,7 +432,7 @@ def add_special_imp_particle_verb_forms(formdict, lemma_index, paradigm_index,
 def add_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_index,
                                        lexcat, parcat, forms, particle, particle_2):
     if forms:
-        complex_forms = [form[len(particle_2 + particle):] + " " + particle_2 + " " + particle
+        complex_forms = [format_double_particle_verb_form(form, particle, particle_2)
                          for form in forms]
         add_forms(formdict, lemma_index, paradigm_index,
                   lexcat, parcat, complex_forms)
@@ -432,7 +442,7 @@ def add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_i
                                                lexcat, parcat, forms, particle, particle_2,
                                                tags):
     if forms:
-        complex_forms = [form[len(particle_2 + particle):] + " " + particle_2 + " " + particle + " (" + ", ".join(tags) + ")"
+        complex_forms = [format_double_particle_verb_form(form, particle, particle_2) + " " + format_tags(tags)
                          for form in forms]
         add_additional_forms(formdict, lemma_index, paradigm_index,
                              lexcat, parcat, complex_forms)
@@ -1227,10 +1237,10 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemm
 def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                       pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
-    seg_list = seg_lemma.split(PARTICLE_BOUNDARY)
-    seg_count = seg_lemma.count(PARTICLE_BOUNDARY)
-    particle = seg_list[1] if seg_count == 2 else seg_list[0] if seg_count == 1 else ""
-    particle_2 = seg_list[0] if seg_count == 2 else ""
+    seg_list = re.split("(?:<=>-)?<#>", seg_lemma)
+    seg_count = len(seg_list)
+    particle = seg_list[1] if seg_count == 3 else seg_list[0] if seg_count == 2 else ""
+    particle_2 = seg_list[0] if seg_count == 3 else ""
     for auxiliary in AUXILIARIES:
         categorisation = ["PPast",
                           auxiliary]
