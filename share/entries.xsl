@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 16.0 -->
+<!-- Version 16.1 -->
 <!-- Andreas Nolda 2024-09-27 -->
 
 <xsl:stylesheet version="2.0"
@@ -156,8 +156,8 @@
   <xsl:param name="etymology"/>
   <xsl:variable name="segmented-lemma">
     <xsl:choose>
-      <!-- lemmas ending in consonant + "ien" -->
-      <xsl:when test="matches($lemma,'[^aeiouäöü]ien$')">
+      <!-- lemmas ending in consonant + "een" or "ien" -->
+      <xsl:when test="matches($lemma,'[^aeiouäöü][ei]en$')">
         <xsl:value-of select="n:segment-from-end('n',$lemma)"/>
       </xsl:when>
       <!-- lemmas ending in "c", "g", or "p" + "len" -->
@@ -6090,8 +6090,8 @@
                                   select="$etymology"/>
                 </xsl:call-template>
               </xsl:when>
-              <!-- regular verbs ending in consonant + "ien" -->
-              <xsl:when test="matches($lemma-without-particle,'[^aeiouäöü]ien$')">
+              <!-- regular verbs ending in consonant + "een" or "ien" -->
+              <xsl:when test="matches($lemma-without-particle,'[^aeiouäöü][ei]en$')">
                 <xsl:call-template name="verb-stem-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
