@@ -203,14 +203,14 @@ Deutsche	2		NN Fem	Dat Pl St	Deutschen
 Deutsche	2		NN Fem	Dat Pl Wk	Deutschen
 Deutsche	2		NN Fem	Gen Pl St	Deutscher
 Deutsche	2		NN Fem	Gen Pl Wk	Deutschen
-Dezember			NN Masc	Nom Sg	Dezember
-Dezember			NN Masc	Acc Sg	Dezember
-Dezember			NN Masc	Dat Sg	Dezember
-Dezember			NN Masc	Gen Sg	Dezember, Dezembers
-Dezember			NN Masc	Nom Pl	Dezember
-Dezember			NN Masc	Acc Pl	Dezember
-Dezember			NN Masc	Dat Pl	Dezembern
-Dezember			NN Masc	Gen Pl	Dezember
+Dezember		1	NN Masc	Nom Sg	Dezember
+Dezember		1	NN Masc	Acc Sg	Dezember
+Dezember		1	NN Masc	Dat Sg	Dezember
+Dezember		1	NN Masc	Gen Sg	Dezember, Dezembers
+Dezember		1	NN Masc	Nom Pl	Dezember
+Dezember		1	NN Masc	Acc Pl	Dezember
+Dezember		1	NN Masc	Dat Pl	Dezembern
+Dezember		1	NN Masc	Gen Pl	Dezember
 Dinosaurus			NN Masc	Nom Sg	Dinosaurus
 Dinosaurus			NN Masc	Acc Sg	Dinosaurus
 Dinosaurus			NN Masc	Dat Sg	Dinosaurus
@@ -463,14 +463,14 @@ Irrtum			NN Masc	Nom Pl	Irrtümer
 Irrtum			NN Masc	Acc Pl	Irrtümer
 Irrtum			NN Masc	Dat Pl	Irrtümern
 Irrtum			NN Masc	Gen Pl	Irrtümer
-Januar			NN Masc	Nom Sg	Januar
-Januar			NN Masc	Acc Sg	Januar
-Januar			NN Masc	Dat Sg	Januar
-Januar			NN Masc	Gen Sg	Januar, Januars
-Januar			NN Masc	Nom Pl	Januare
-Januar			NN Masc	Acc Pl	Januare
-Januar			NN Masc	Dat Pl	Januaren
-Januar			NN Masc	Gen Pl	Januare
+Januar		1	NN Masc	Nom Sg	Januar
+Januar		1	NN Masc	Acc Sg	Januar
+Januar		1	NN Masc	Dat Sg	Januar
+Januar		1	NN Masc	Gen Sg	Januar, Januars
+Januar		1	NN Masc	Nom Pl	Januare
+Januar		1	NN Masc	Acc Pl	Januare
+Januar		1	NN Masc	Dat Pl	Januaren
+Januar		1	NN Masc	Gen Pl	Januare
 Jazz			NN Masc	Nom Sg	Jazz
 Jazz			NN Masc	Acc Sg	Jazz
 Jazz			NN Masc	Dat Sg	Jazz
