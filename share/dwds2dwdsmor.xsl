@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.19 -->
-<!-- Andreas Nolda 2024-08-22 -->
+<!-- Version 14.20 -->
+<!-- Andreas Nolda 2024-09-30 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -94,7 +94,7 @@
       <!-- ignore idioms and other syntactically complex units
            except for reflexive verbs and phrasal verbs -->
       <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse[not(@class='invisible')] or
-                                                   self::dwds:Genus or
+                                                   self::dwds:Genus[not(normalize-space(.)='ohne erkennbares Genus')] or
                                                    self::dwds:indeklinabel or
                                                    self::dwds:Genitiv[count(tokenize(normalize-space(.),'&#x20;'))=1] or
                                                    self::dwds:Plural[count(tokenize(normalize-space(.),'&#x20;'))=1] or

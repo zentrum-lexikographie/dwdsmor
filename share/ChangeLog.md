@@ -1,5 +1,6 @@
 2024-09-30:
 
+* ignore nouns with undetermined gender
 * drop support for verbs with hyphenated particles
 
 2024-09-27:
