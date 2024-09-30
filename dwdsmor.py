@@ -609,7 +609,7 @@ def main():
         parser.add_argument("-m", "--minimal", action="store_true",
                             help="prefer lemmas with minimal number of boundaries")
         parser.add_argument("-M", "--maximal", action="store_true",
-                            help="prefer word forms with maximal number of boundaries (requires supplementary transducer files)")
+                            help="prefer word forms with maximal number of boundaries (requires supplementary transducer file)")
         parser.add_argument("-P", "--plain", action="store_true",
                             help="suppress color and formatting")
         parser.add_argument("-s", "--seg-lemma", action="store_true",

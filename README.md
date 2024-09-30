@@ -246,7 +246,7 @@ options:
   -I, --paradigm-index  output also paradigm index
   -j, --json            output JSON object
   -m, --minimal         prefer lemmas with minimal number of boundaries
-  -M, --maximal         prefer word forms with maximal number of boundaries (requires supplementary transducer files)
+  -M, --maximal         prefer word forms with maximal number of boundaries (requires supplementary transducer file)
   -P, --plain           suppress color and formatting
   -s, --seg-lemma       output also segmented lemma
   -S, --seg-word        output also segmented word form (requires supplementary transducer file)
