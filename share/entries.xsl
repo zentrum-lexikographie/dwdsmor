@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 16.1 -->
-<!-- Andreas Nolda 2024-09-27 -->
+<!-- Version 16.2 -->
+<!-- Andreas Nolda 2024-09-30 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -149,8 +149,6 @@
   <xsl:param name="participle"/>
   <xsl:param name="particle"/>
   <xsl:param name="particle2"/>
-  <xsl:param name="particle-boundary"/>
-  <xsl:param name="particle2-boundary"/>
   <xsl:param name="class"/>
   <xsl:param name="auxiliary"/>
   <xsl:param name="etymology"/>
@@ -177,10 +175,10 @@
   <xsl:if test="string-length($particle)&gt;0">
     <xsl:if test="string-length($particle2)&gt;0">
       <xsl:value-of select="$particle2"/>
-      <xsl:value-of select="$particle2-boundary"/>
+      <xsl:text>&lt;VB&gt;</xsl:text>
     </xsl:if>
     <xsl:value-of select="$particle"/>
-    <xsl:value-of select="$particle-boundary"/>
+    <xsl:text>&lt;VB&gt;</xsl:text>
   </xsl:if>
   <xsl:call-template name="participle-prefix">
     <xsl:with-param name="lemma"
@@ -5948,30 +5946,14 @@
         </xsl:variable>
         <xsl:variable name="particle2"
                       select="substring-before(substring-after($present,' '),' ')"/>
-        <xsl:variable name="particle-boundary">
-          <xsl:if test="string-length($particle)&gt;0">
-            <xsl:if test="matches($lemma,concat('^',$particle2,'-?',$particle,'-'))">
-              <xsl:text>&lt;HB&gt;</xsl:text>
-            </xsl:if>
-            <xsl:text>&lt;VB&gt;</xsl:text>
-          </xsl:if>
-        </xsl:variable>
-        <xsl:variable name="particle2-boundary">
-          <xsl:if test="string-length($particle2)&gt;0">
-            <xsl:if test="matches($lemma,concat('^',$particle2,'-'))">
-              <xsl:text>&lt;HB&gt;</xsl:text>
-            </xsl:if>
-            <xsl:text>&lt;VB&gt;</xsl:text>
-          </xsl:if>
-        </xsl:variable>
         <xsl:variable name="lemma-without-particle"
-                      select="replace($lemma,concat('^',$particle2,'-?',$particle,'-?(.+)$'),'$1')"/>
+                      select="replace($lemma,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
         <xsl:variable name="present-without-particle"
                       select="replace($present,concat('^(.+?)(( ',$particle2,')? ',$particle,')?$'),'$1')"/>
         <xsl:variable name="past-without-particle"
                       select="replace($past,concat('^(.+?)(( ',$particle2,')? ',$particle,')?$'),'$1')"/>
         <xsl:variable name="participle-without-particle"
-                      select="replace($participle,concat('^',$particle2,'-?',$particle,'-?(.+)$'),'$1')"/>
+                      select="replace($participle,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
         <xsl:variable name="stem">
           <xsl:call-template name="verb-stem">
             <xsl:with-param name="lemma"
@@ -6054,10 +6036,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VWeak</xsl:with-param>
                   <xsl:with-param name="auxiliary"
                                   select="$auxiliary"/>
@@ -6081,10 +6059,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6109,10 +6083,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VWeak</xsl:with-param>
                   <xsl:with-param name="auxiliary"
                                   select="$auxiliary"/>
@@ -6139,10 +6109,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VWeak-len</xsl:with-param>
                   <xsl:with-param name="auxiliary"
                                   select="$auxiliary"/>
@@ -6170,10 +6136,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VWeak-m-n</xsl:with-param>
                   <xsl:with-param name="auxiliary"
                                   select="$auxiliary"/>
@@ -6204,10 +6166,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VWeak-s</xsl:with-param>
                   <xsl:with-param name="auxiliary"
                                   select="$auxiliary"/>
@@ -6247,10 +6205,6 @@
                                     select="$particle"/>
                     <xsl:with-param name="particle2"
                                     select="$particle2"/>
-                    <xsl:with-param name="particle-boundary"
-                                    select="$particle-boundary"/>
-                    <xsl:with-param name="particle2-boundary"
-                                    select="$particle2-boundary"/>
                     <xsl:with-param name="class"
                                     select="$class"/>
                     <xsl:with-param name="auxiliary"
@@ -6285,10 +6239,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6310,10 +6260,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6335,10 +6281,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6360,10 +6302,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6385,10 +6323,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6413,10 +6347,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf_n</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6438,10 +6368,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6462,10 +6388,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd1Sg-sein</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6487,10 +6409,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd2Sg-sein</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6512,10 +6430,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd3Sg-sein</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6536,10 +6450,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd13Pl-sein</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6561,10 +6471,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd2Pl-sein</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6586,10 +6492,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresSubj-sein</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6611,10 +6513,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImpSg0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6636,10 +6534,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImpPl-sein</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6666,10 +6560,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf_n</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6691,10 +6581,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6716,10 +6602,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPres-tun</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6741,10 +6623,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImpSg0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6766,10 +6644,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImpPl</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6794,10 +6668,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6819,10 +6689,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6844,10 +6710,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd2Sg-werden</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6869,10 +6731,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd3Sg-werden</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6894,10 +6752,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6919,10 +6773,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp-d-t</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6955,10 +6805,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -6980,10 +6826,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7005,10 +6847,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VModPresIndSg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7030,10 +6868,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VModPresNonIndSg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7058,10 +6892,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7083,10 +6913,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7108,10 +6934,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7133,10 +6955,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7158,10 +6976,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImpSg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7183,10 +6997,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImpPl</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7210,10 +7020,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">AbbrVImp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7238,10 +7044,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf-len</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7263,10 +7065,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres-len</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7288,10 +7086,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPres-len</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7313,10 +7107,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp-len</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7342,10 +7132,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf-el-er</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7367,10 +7153,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres-el-er</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7392,10 +7174,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPres-el-er</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7417,10 +7195,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp-el-er</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7447,10 +7221,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7472,10 +7242,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7497,10 +7263,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7522,10 +7284,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp-d-t</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7552,10 +7310,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7577,10 +7331,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7602,10 +7352,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPres-m-n</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7627,10 +7373,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp-m-n</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7660,10 +7402,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7685,10 +7423,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7710,10 +7444,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPres-s</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7735,10 +7465,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7763,10 +7489,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7788,10 +7510,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7813,10 +7531,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7838,10 +7552,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7868,10 +7578,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7893,10 +7599,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7918,10 +7620,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd23Sg-t_0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7943,10 +7641,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7968,10 +7662,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImpSg0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -7993,10 +7683,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImpPl</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8021,10 +7707,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8046,10 +7728,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8071,10 +7749,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8096,10 +7770,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8121,10 +7791,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImpSg0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8146,10 +7812,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImpPl</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8176,10 +7838,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8201,10 +7859,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8226,10 +7880,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd23Sg-d_t</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8251,10 +7901,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8276,10 +7922,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8305,10 +7947,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8330,10 +7968,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8355,10 +7989,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd23Sg-t_0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8380,10 +8010,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8405,10 +8031,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp-d-t</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8433,10 +8055,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VInf</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8458,10 +8076,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPPres</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8483,10 +8097,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8508,10 +8118,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8533,10 +8139,6 @@
                                   select="$particle"/>
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
-                  <xsl:with-param name="particle-boundary"
-                                  select="$particle-boundary"/>
-                  <xsl:with-param name="particle2-boundary"
-                                  select="$particle2-boundary"/>
                   <xsl:with-param name="class">VImp</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
@@ -8568,10 +8170,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastInd-len</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8598,10 +8196,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastInd-d-t_t</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8626,10 +8220,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastIndWeak</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8657,10 +8247,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubj-len</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8685,10 +8271,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubj-haben</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8719,10 +8301,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8747,10 +8325,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8776,10 +8350,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8804,10 +8374,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8837,10 +8403,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastIndStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8862,10 +8424,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8887,10 +8445,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubj2-sein</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8917,10 +8471,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastIndStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8942,10 +8492,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8971,10 +8517,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastInd-werden</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -8996,10 +8538,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -9024,10 +8562,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastIndSg-ward</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -9049,10 +8583,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastIndPl-werden</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -9074,10 +8604,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -9109,10 +8635,6 @@
                                           select="$particle"/>
                           <xsl:with-param name="particle2"
                                           select="$particle2"/>
-                          <xsl:with-param name="particle-boundary"
-                                          select="$particle-boundary"/>
-                          <xsl:with-param name="particle2-boundary"
-                                          select="$particle2-boundary"/>
                           <xsl:with-param name="class">VPastIndStr-s</xsl:with-param>
                           <xsl:with-param name="etymology"
                                           select="$etymology"/>
@@ -9137,10 +8659,6 @@
                                           select="$particle"/>
                           <xsl:with-param name="particle2"
                                           select="$particle2"/>
-                          <xsl:with-param name="particle-boundary"
-                                          select="$particle-boundary"/>
-                          <xsl:with-param name="particle2-boundary"
-                                          select="$particle2-boundary"/>
                           <xsl:with-param name="class">VPastIndStr</xsl:with-param>
                           <xsl:with-param name="etymology"
                                           select="$etymology"/>
@@ -9168,10 +8686,6 @@
                                         select="$particle"/>
                         <xsl:with-param name="particle2"
                                         select="$particle2"/>
-                        <xsl:with-param name="particle-boundary"
-                                        select="$particle-boundary"/>
-                        <xsl:with-param name="particle2-boundary"
-                                        select="$particle2-boundary"/>
                         <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                         <xsl:with-param name="etymology"
                                         select="$etymology"/>
@@ -9202,10 +8716,6 @@
                                         select="$particle"/>
                         <xsl:with-param name="particle2"
                                         select="$particle2"/>
-                        <xsl:with-param name="particle-boundary"
-                                        select="$particle-boundary"/>
-                        <xsl:with-param name="particle2-boundary"
-                                        select="$particle2-boundary"/>
                         <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
                         <xsl:with-param name="etymology"
                                         select="$etymology"/>
@@ -9239,10 +8749,6 @@
                                         select="$particle"/>
                         <xsl:with-param name="particle2"
                                         select="$particle2"/>
-                        <xsl:with-param name="particle-boundary"
-                                        select="$particle-boundary"/>
-                        <xsl:with-param name="particle2-boundary"
-                                        select="$particle2-boundary"/>
                         <xsl:with-param name="class">VPastSubjOld</xsl:with-param>
                         <xsl:with-param name="etymology"
                                         select="$etymology"/>
@@ -9270,10 +8776,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastStr-s</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -9298,10 +8800,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPastStr</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
@@ -9334,10 +8832,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPPast-len</xsl:with-param>
                       <xsl:with-param name="auxiliary"
                                       select="$auxiliary"/>
@@ -9366,10 +8860,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPPast-d_t</xsl:with-param>
                       <xsl:with-param name="auxiliary"
                                       select="$auxiliary"/>
@@ -9396,10 +8886,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPPastWeak</xsl:with-param>
                       <xsl:with-param name="auxiliary"
                                       select="$auxiliary"/>
@@ -9433,10 +8919,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPPast_n</xsl:with-param>
                       <xsl:with-param name="auxiliary"
                                       select="$auxiliary"/>
@@ -9463,10 +8945,6 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="particle-boundary"
-                                      select="$particle-boundary"/>
-                      <xsl:with-param name="particle2-boundary"
-                                      select="$particle2-boundary"/>
                       <xsl:with-param name="class">VPPastStr</xsl:with-param>
                       <xsl:with-param name="auxiliary"
                                       select="$auxiliary"/>
@@ -9563,22 +9041,6 @@
     </xsl:variable>
     <xsl:variable name="particle2"
                   select="substring-before(substring-after($present,' '),' ')"/>
-    <xsl:variable name="particle-boundary">
-      <xsl:if test="string-length($particle)&gt;0">
-        <xsl:if test="matches($lemma,concat('^',$particle2,'-?',$particle,'-'))">
-          <xsl:text>&lt;HB&gt;</xsl:text>
-        </xsl:if>
-        <xsl:text>&lt;VB&gt;</xsl:text>
-      </xsl:if>
-    </xsl:variable>
-    <xsl:variable name="particle2-boundary">
-      <xsl:if test="string-length($particle2)&gt;0">
-        <xsl:if test="matches($lemma,concat('^',$particle2,'-'))">
-          <xsl:text>&lt;HB&gt;</xsl:text>
-        </xsl:if>
-        <xsl:text>&lt;VB&gt;</xsl:text>
-      </xsl:if>
-    </xsl:variable>
     <xsl:variable name="lemma-without-particle"
                   select="replace($lemma,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
     <xsl:variable name="participle-without-particle"
@@ -9628,10 +9090,6 @@
                           select="$particle"/>
           <xsl:with-param name="particle2"
                           select="$particle2"/>
-          <xsl:with-param name="particle-boundary"
-                          select="$particle-boundary"/>
-          <xsl:with-param name="particle2-boundary"
-                          select="$particle2-boundary"/>
           <xsl:with-param name="class">VPPastWeak</xsl:with-param>
           <xsl:with-param name="auxiliary"
                           select="$auxiliary"/>
@@ -9658,10 +9116,6 @@
                           select="$particle"/>
           <xsl:with-param name="particle2"
                           select="$particle2"/>
-          <xsl:with-param name="particle-boundary"
-                          select="$particle-boundary"/>
-          <xsl:with-param name="particle2-boundary"
-                          select="$particle2-boundary"/>
           <xsl:with-param name="class">VPPastStr</xsl:with-param>
           <xsl:with-param name="auxiliary"
                           select="$auxiliary"/>

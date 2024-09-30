@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms
-# Andreas Nolda 2024-09-27
+# Andreas Nolda 2024-09-30
 
 import sys
 import argparse
-import re
 import csv
 import json
 import yaml
@@ -19,7 +18,7 @@ import sfst_transduce
 from dwdsmor import analyse_word
 
 
-version = 13.0
+version = 13.1
 
 
 BASEDIR = path.dirname(__file__)
@@ -213,11 +212,11 @@ def format_categorisation(categorisation):
 
 
 def format_particle_verb_form(form, particle):
-    return re.sub(f"^({particle})-?(.+)$", r"\2 \1", form)
+    return form[len(particle):] + " " + particle
 
 
 def format_double_particle_verb_form(form, particle, particle_2):
-    return re.sub(f"^({particle_2})-?({particle})-?(.+)$", r"\3 \1 \2", form)
+    return form[len(particle_2 + particle):] + " " + particle_2 + " " + particle
 
 
 def format_tags(tags):
@@ -1237,7 +1236,7 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemm
 def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                       pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = {}
-    seg_list = re.split("(?:<=>-)?<#>", seg_lemma)
+    seg_list = seg_lemma.split("<#>")
     seg_count = len(seg_list)
     particle = seg_list[1] if seg_count == 3 else seg_list[0] if seg_count == 2 else ""
     particle_2 = seg_list[0] if seg_count == 3 else ""

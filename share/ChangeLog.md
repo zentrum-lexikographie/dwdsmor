@@ -1,3 +1,7 @@
+2024-09-30:
+
+* drop support for verbs with hyphenated particles
+
 2024-09-27:
 
 * add support for verbs with hyphenated particles
