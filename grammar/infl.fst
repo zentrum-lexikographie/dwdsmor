@@ -762,14 +762,6 @@ $NameNoGend|Pl_0$ = {<+NPROP><NoGend>}:{} $NDatPlSuff_0$
 
 $NameNoGend|Pl_n$ = {<+NPROP><NoGend>}:{} $NDatPlSuff_n$
 
-% family names ending in -s, -z
-$Name-Fam_0$ = {<+NPROP><NoGend>}:{}        $NGenSgSuff_0$ | \
-               {<+NPROP><NoGend>}:{en<SB>s} $NDatPlSuff_0$
-
-% family names
-$Name-Fam_s$ = {<+NPROP><NoGend>}:{}      $NGenSgSuff_s$ | \
-               {<+NPROP><NoGend>}:{<SB>s} $NDatPlSuff_0$
-
 
 % adjectives
 
@@ -2515,8 +2507,6 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<IProNeutGenSg>          $IProNeutGenSg$          | \
          <>:<IProNeutNomSg>          $IProNeutNomSg$          | \
          <>:<Intj>                   $Intj$                   | \
-         <>:<Name-Fam_0>             $Name-Fam_0$             | \
-         <>:<Name-Fam_s>             $Name-Fam_s$             | \
          <>:<NameFem_0>              $NameFem_0$              | \
          <>:<NameFem_apos>           $NameFem_apos$           | \
          <>:<NameFem_s>              $NameFem_s$              | \

@@ -78,6 +78,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
   `NameNoGend|Pl_0` and `NameNoGend|Pl_n`, respectively
 * rename inflection classes `Poss/Wk` and `Poss/Wk` to `Poss|Wk` and
   `Poss/Wk-er`, respectively
+* remove unused inflection classes `Name-Fam_0` and `Name-Fam_s`
+
 
 2024-09-26:
 

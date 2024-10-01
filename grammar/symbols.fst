@@ -190,10 +190,10 @@
                     <NNeut_s_s_0><NNeut_s_um/a_0><NNeut_s_um/en_0><NNeut_s_0_0> \
                     <NNoGend|Pl_0><NNoGend|Pl_n>
 
-#Name-inflection# = <Name-Fam_0><Name-Fam_s><NameFem_0><NameFem_apos><NameFem_s> \
-                    <NameMasc_0><NameMasc_apos><NameMasc_es><NameMasc_s> \
-                    <NameNeut_0><NameNeut_apos><NameNeut_es><NameNeut_s> \
-                    <NameNoGend|Pl_0><NameNoGend|Pl_n>
+#Name-inflection# = <NameFem_0><NameFem_apos><NameFem_s><NameMasc_0> \
+                    <NameMasc_apos><NameMasc_es><NameMasc_s><NameNeut_0> \
+                    <NameNeut_apos><NameNeut_es><NameNeut_s><NameNoGend|Pl_0> \
+                    <NameNoGend|Pl_n>
 
 #Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier> \
                    <Card-zwei><DigCard><DigFrac><DigOrd><Frac0><Ord><Roman>
