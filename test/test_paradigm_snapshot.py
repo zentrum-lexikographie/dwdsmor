@@ -141,7 +141,9 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Kaktus",         # NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/een_0, NMasc_es_us/een_0~ss
                "Embryo",         # NMasc_0_nen_0, NMasc_0_s_0, NMasc_s_nen_0, NMasc_s_s_0, NNeut_0_nen_0 ...
                "Intercity",      # NMasc_0_s_0
+               "Veda",           # NMasc_0_a/en_0, NMasc_s_a/en_0, NMasc_0_s_0, NMasc_s_s_0
                "Carabiniere",    # NMasc_0_e/i_0, NMasc_s_e/i_0
+               "Taxi",           # NMasc_0_i/en_0, NMasc_s_i/en_0, NMasc_0_s_0, NMasc_s_s_0, NNeut_0_i/en_0 ...
                "Espresso",       # NMasc_0_o/i_0, NMasc_0_s_0, NMasc_s_o/i_0, NMasc_s_s_0, NNeut_0_s_0 ...
                "Heros",          # NMasc_0_os/oen_0
                "Kustos",         # NMasc_0_os/oden_0
@@ -176,7 +178,7 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Kanon",          # NMasc_s_s_0, NMasc_s_es_0
                "Dirigent",       # NMasc_en_en_0
                "Affe",           # NMasc_n_n_0
-               "Junge",          # NMasc_n_n_0, NMasc-Adj, NNeut-Adj, NFem-Adj
+               "Junge",          # NMasc_n_n_0, NMasc_n_ns_0, NMasc_n_e/s_0, NMasc-Adj, NNeut-Adj, NFem-Adj
                "Gedanke",        # NMasc_ns_n_0
                "Schade",         # NMasc_ns_$n_0
                "Deutsche",       # NMasc-Adj, NNeut-Adj|Sg, NFem-Adj
@@ -237,7 +239,7 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Hilfe",          # NFem_0_n_0
                "Minestrone",     # NFem_0_n_0, NFem_0_e/i_0
                "Oma",            # NFem_0_s_0
-               "Firma",          # NFem_0_a/en_0
+               "Vita",           # NFem_0_a/en_0, NFem_0_e_0
                "Phalanx",        # NFem_0_anx/angen_0
                "Lex",            # NFem_0_ex/eges_0
                "Basis",          # NFem_0_is/en_0

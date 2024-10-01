@@ -299,14 +299,6 @@ Feuer			NN Neut	Nom Pl	Feuer
 Feuer			NN Neut	Acc Pl	Feuer
 Feuer			NN Neut	Dat Pl	Feuern
 Feuer			NN Neut	Gen Pl	Feuer
-Firma		1	NN Fem	Nom Sg	Firma
-Firma		1	NN Fem	Acc Sg	Firma
-Firma		1	NN Fem	Dat Sg	Firma
-Firma		1	NN Fem	Gen Sg	Firma
-Firma		1	NN Fem	Nom Pl	Firmen
-Firma		1	NN Fem	Acc Pl	Firmen
-Firma		1	NN Fem	Dat Pl	Firmen
-Firma		1	NN Fem	Gen Pl	Firmen
 Floß			NN Neut	Nom Sg	Floß, Floss (CH)
 Floß			NN Neut	Acc Sg	Floß, Floss (CH)
 Floß			NN Neut	Dat Sg	Floß, Floße (va.), Floss (CH), Flosse (va., CH)
@@ -491,6 +483,14 @@ Junge	1	1	NN Masc	Nom Pl	Jungen
 Junge	1	1	NN Masc	Acc Pl	Jungen
 Junge	1	1	NN Masc	Dat Pl	Jungen
 Junge	1	1	NN Masc	Gen Pl	Jungen
+Junge	1	2	NN Masc	Nom Sg	Junge
+Junge	1	2	NN Masc	Acc Sg	Jungen
+Junge	1	2	NN Masc	Dat Sg	Jungen
+Junge	1	2	NN Masc	Gen Sg	Jungen
+Junge	1	2	NN Masc	Nom Pl	Jungens, Jungs
+Junge	1	2	NN Masc	Acc Pl	Jungens, Jungs
+Junge	1	2	NN Masc	Dat Pl	Jungens, Jungs
+Junge	1	2	NN Masc	Gen Pl	Jungens, Jungs
 Junge	2		NN Neut	Nom Sg St	Junges
 Junge	2		NN Neut	Nom Sg Wk	Junge
 Junge	2		NN Neut	Acc Sg St	Junges
@@ -963,6 +963,22 @@ Tablett			NN Neut	Nom Pl	Tablette, Tabletts
 Tablett			NN Neut	Acc Pl	Tablette, Tabletts
 Tablett			NN Neut	Dat Pl	Tabletten, Tabletts
 Tablett			NN Neut	Gen Pl	Tablette, Tabletts
+Taxi		1	NN Neut	Nom Sg	Taxi
+Taxi		1	NN Neut	Acc Sg	Taxi
+Taxi		1	NN Neut	Dat Sg	Taxi
+Taxi		1	NN Neut	Gen Sg	Taxi, Taxis
+Taxi		1	NN Neut	Nom Pl	Taxen, Taxis
+Taxi		1	NN Neut	Acc Pl	Taxen, Taxis
+Taxi		1	NN Neut	Dat Pl	Taxen, Taxis
+Taxi		1	NN Neut	Gen Pl	Taxen, Taxis
+Taxi		2	NN Masc	Nom Sg	Taxi
+Taxi		2	NN Masc	Acc Sg	Taxi
+Taxi		2	NN Masc	Dat Sg	Taxi
+Taxi		2	NN Masc	Gen Sg	Taxi, Taxis
+Taxi		2	NN Masc	Nom Pl	Taxen, Taxis
+Taxi		2	NN Masc	Acc Pl	Taxen, Taxis
+Taxi		2	NN Masc	Dat Pl	Taxen, Taxis
+Taxi		2	NN Masc	Gen Pl	Taxen, Taxis
 Tempus			NN Neut	Nom Sg	Tempus
 Tempus			NN Neut	Acc Sg	Tempus
 Tempus			NN Neut	Dat Sg	Tempus
@@ -1015,6 +1031,14 @@ Unglaube		1	NN Masc	Nom Sg	Unglaube
 Unglaube		1	NN Masc	Acc Sg	Unglauben
 Unglaube		1	NN Masc	Dat Sg	Unglauben
 Unglaube		1	NN Masc	Gen Sg	Unglaubens
+Veda			NN Masc	Nom Sg	Veda
+Veda			NN Masc	Acc Sg	Veda
+Veda			NN Masc	Dat Sg	Veda
+Veda			NN Masc	Gen Sg	Veda, Vedas
+Veda			NN Masc	Nom Pl	Vedas, Veden
+Veda			NN Masc	Acc Pl	Vedas, Veden
+Veda			NN Masc	Dat Pl	Vedas, Veden
+Veda			NN Masc	Gen Pl	Vedas, Veden
 Verständnis			NN Neut	Nom Sg	Verständnis
 Verständnis			NN Neut	Acc Sg	Verständnis
 Verständnis			NN Neut	Dat Sg	Verständnis, Verständnisse (va.)
@@ -1051,6 +1075,14 @@ Virus		2	NN Masc	Nom Pl	Viren
 Virus		2	NN Masc	Acc Pl	Viren
 Virus		2	NN Masc	Dat Pl	Viren
 Virus		2	NN Masc	Gen Pl	Viren
+Vita			NN Fem	Nom Sg	Vita
+Vita			NN Fem	Acc Sg	Vita
+Vita			NN Fem	Dat Sg	Vita
+Vita			NN Fem	Gen Sg	Vita
+Vita			NN Fem	Nom Pl	Vitae, Viten
+Vita			NN Fem	Acc Pl	Vitae, Viten
+Vita			NN Fem	Dat Pl	Vitae, Viten
+Vita			NN Fem	Gen Pl	Vitae, Viten
 Vize		1	NN Masc	Nom Sg	Vize
 Vize		1	NN Masc	Acc Sg	Vize
 Vize		1	NN Masc	Dat Sg	Vize

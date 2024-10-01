@@ -1,5 +1,5 @@
 % infl.fst
-% Version 9.0
+% Version 9.1
 % Andreas Nolda 2024-10-01
 
 % based on code from SMORLemma by Rico Sennrich
@@ -107,9 +107,13 @@ $NMasc_0_es_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_0$ | \
 $NMasc_0_nen_0$ = {<+NN><Masc>}:{}        $NGenSgSuff_0$ | \
                   {<+NN><Masc>}:{n<SB>en} $NDatPlSuff_0$
 
-% Intercity, Intercity, Intercitys, Intercitys
+% Intercity, Intercity, Intercitys, Intercitys; Taxi, Taxi, Taxis, Taxis
 $NMasc_0_s_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_0$ | \
                 {<+NN><Masc>}:{<SB>s} $NDatPlSuff_0$
+
+% Veda, Veda, Veden, Veden
+$NMasc_0_a/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
+                   {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Atlas, Atlas, Atlanten, Atlanten
 $NMasc_0_as/anten_0$ = {<+NN><Masc>}:{}                      $NGenSgSuff_0$ | \
@@ -122,6 +126,10 @@ $NMasc_0_e/i_0$ = {<+NN><Masc>}:{}                  $NGenSgSuff_0$ | \
 % Index, Index, Indizes, Indizes
 $NMasc_0_ex/izes_0$ = {<+NN><Masc>}:{}                     $NGenSgSuff_0$ | \
                       {<+NN><Masc>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
+
+% Taxi, Taxi, Taxen, Taxen
+$NMasc_0_i/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
+                   {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Saldo, Saldo, Salden, Salden
 $NMasc_0_o/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
@@ -266,13 +274,21 @@ $NMasc_s_n_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_s$ | \
 $NMasc_s_nen_0$ = {<+NN><Masc>}:{}        $NGenSgSuff_s$ | \
                   {<+NN><Masc>}:{n<SB>en} $NDatPlSuff_0$
 
-% Chef, Chefs, Chefs, Chefs; Bankier, Bankiers, Bankiers, Bankiers
+% Intercity, Intercitys, Intercitys, Intercitys; Taxi, Taxis, Taxis, Taxis
 $NMasc_s_s_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_s$ | \
                 {<+NN><Masc>}:{<SB>s} $NDatPlSuff_0$
+
+% Veda, Vedas, Veden, Veden
+$NMasc_s_a/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_s$ | \
+                   {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Carabiniere, Carabinieres, Carabinieri, Carabinieri
 $NMasc_s_e/i_0$ = {<+NN><Masc>}:{}                  $NGenSgSuff_s$ | \
                   {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+
+% Taxi, Taxis, Taxen, Taxen
+$NMasc_s_i/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_s$ | \
+                   {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Saldo, Saldos, Salden, Salden
 $NMasc_s_o/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_s$ | \
@@ -286,9 +302,17 @@ $NMasc_s_o/i_0$ = {<+NN><Masc>}:{}                  $NGenSgSuff_s$ | \
 $NMasc_en_en_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_en$ | \
                   {<+NN><Masc>}:{<SB>en} $NDatPlSuff_0$
 
-% Affe, Affen, Affen, Affen; Bauer, Bauern, Bauern, Bauern
+% Affe, Affen, Affen, Affen; Junge, Jungen, Jungen, Jungen
 $NMasc_n_n_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_n$ | \
                 {<+NN><Masc>}:{<SB>n} $NDatPlSuff_0$
+
+% Junge, Jungen, Jungens, Jungens
+$NMasc_n_ns_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_n$ | \
+                 {<+NN><Masc>}:{<SB>ns} $NDatPlSuff_0$
+
+% Junge, Jungen, Jungs, Jungs
+$NMasc_n_e/s_0$ = {<+NN><Masc>}:{}                  $NGenSgSuff_n$ | \
+                  {<+NN><Masc>}:{<del(VC)|Pl><SB>s} $NDatPlSuff_0$
 
 % Name, Namens, Namen, Namen; Buchstabe, Buchstabens, Buchstaben, Buchstaben
 $NMasc_ns_n_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_ns$ | \
@@ -403,6 +427,10 @@ $NNeut_0_en/ina_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_0$ | \
 % Reagens, Reagens, Reagenzien, Reagenzien
 $NNeut_0_ens/enzien_0$ = {<+NN><Neut>}:{}                       $NGenSgSuff_0$ | \
                          {<+NN><Neut>}:{<del(VC)|Pl>enzi<SB>en} $NDatPlSuff_0$
+
+% Taxi, Taxi, Taxen, Taxen
+$NNeut_0_i/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_0$ | \
+                   {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Konto, Konto, Konten, Konten
 $NNeut_0_o/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_0$ | \
@@ -543,6 +571,10 @@ $NNeut_s_e/ien_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_s$ | \
 $NNeut_s_en/ina_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_s$ | \
                      {<+NN><Neut>}:{<del(VC)|Pl>in<SB>a} $NDatPlSuff_0$
 
+% Taxi, Taxis, Taxen, Taxen
+$NNeut_s_i/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_s$ | \
+                   {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+
 % Konto, Kontos, Konten, Konten
 $NNeut_s_o/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_s$ | \
                    {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
@@ -633,6 +665,10 @@ $NFem_0_0_n$ = {<+NN><Fem>}:{} $NGenSgSuff_0$ | \
 $NFem_0_\$_n$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
                 {<+NN><Fem>}:{<uml>} $NDatPlSuff_n$
 
+% Vita, Vita, Vitae, Vitae
+$NFem_0_e_0$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
+               {<+NN><Fem>}:{<SB>e} $NDatPlSuff_0$
+
 % Drangsal, Drangsal, Drangsale, Drangsalen
 $NFem_0_e_n$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
                {<+NN><Fem>}:{<SB>e} $NDatPlSuff_n$
@@ -660,11 +696,11 @@ $NFem_0_n_0$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
 $NFem_0_es_0$ = {<+NN><Fem>}:{}       $NGenSgSuff_0$ | \
                 {<+NN><Fem>}:{<SB>es} $NDatPlSuff_0$
 
-% Oma, Oma, Omas, Omas
+% City, City, Citys, Citys
 $NFem_0_s_0$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
                {<+NN><Fem>}:{<SB>s} $NDatPlSuff_0$
 
-% Algebra, Algebra, Algebren, Algebren; Firma, Firma, Firmen, Firmen
+% Vita, Vita, Viten, Viten; Firma, Firma, Firmen, Firmen
 $NFem_0_a/en_0$ = {<+NN><Fem>}:{}                   $NGenSgSuff_0$ | \
                   {<+NN><Fem>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
@@ -2530,6 +2566,7 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<NFem_0_0_0>             $NFem_0_0_0$             | \
          <>:<NFem_0_0_n>             $NFem_0_0_n$             | \
          <>:<NFem_0_a/en_0>          $NFem_0_a/en_0$          | \
+         <>:<NFem_0_e_0>             $NFem_0_e_0$             | \
          <>:<NFem_0_e_n>             $NFem_0_e_n$             | \
          <>:<NFem_0_e_n~ss>          $NFem_0_e_n~ss$          | \
          <>:<NFem_0_anx/angen_0>     $NFem_0_anx/angen_0$     | \
@@ -2552,6 +2589,7 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<NMasc_0_$e_n>           $NMasc_0_\$e_n$          | \
          <>:<NMasc_0_0_0>            $NMasc_0_0_0$            | \
          <>:<NMasc_0_0_n>            $NMasc_0_0_n$            | \
+         <>:<NMasc_0_a/en_0>         $NMasc_0_a/en_0$         | \
          <>:<NMasc_0_as/anten_0>     $NMasc_0_as/anten_0$     | \
          <>:<NMasc_0_e_n>            $NMasc_0_e_n$            | \
          <>:<NMasc_0_e_n~ss>         $NMasc_0_e_n~ss$         | \
@@ -2559,6 +2597,7 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<NMasc_0_en_0>           $NMasc_0_en_0$           | \
          <>:<NMasc_0_es_0>           $NMasc_0_es_0$           | \
          <>:<NMasc_0_ex/izes_0>      $NMasc_0_ex/izes_0$      | \
+         <>:<NMasc_0_i/en_0>         $NMasc_0_i/en_0$         | \
          <>:<NMasc_0_nen_0>          $NMasc_0_nen_0$          | \
          <>:<NMasc_0_o/en_0>         $NMasc_0_o/en_0$         | \
          <>:<NMasc_0_o/i_0>          $NMasc_0_o/i_0$          | \
@@ -2586,7 +2625,9 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<NMasc_es_us/een_0~ss>   $NMasc_es_us/een_0~ss$   | \
          <>:<NMasc_es_us/en_0~ss>    $NMasc_es_us/en_0~ss$    | \
          <>:<NMasc_es_us/i_0~ss>     $NMasc_es_us/i_0~ss$     | \
+         <>:<NMasc_n_e/s_0>          $NMasc_n_e/s_0$          | \
          <>:<NMasc_n_n_0>            $NMasc_n_n_0$            | \
+         <>:<NMasc_n_ns_0>           $NMasc_n_ns_0$           | \
          <>:<NMasc_ns_n_0>           $NMasc_ns_n_0$           | \
          <>:<NMasc_ns_$n_0>          $NMasc_ns_\$n_0$         | \
          <>:<NMasc_s_$_n>            $NMasc_s_\$_n$           | \
@@ -2595,11 +2636,13 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<NMasc_s_$_0>            $NMasc_s_\$_0$           | \
          <>:<NMasc_s_0_0>            $NMasc_s_0_0$            | \
          <>:<NMasc_s_0_n>            $NMasc_s_0_n$            | \
+         <>:<NMasc_s_a/en_0>         $NMasc_s_a/en_0$         | \
          <>:<NMasc_s_e_n>            $NMasc_s_e_n$            | \
          <>:<NMasc_s_e/i_0>          $NMasc_s_e/i_0$          | \
          <>:<NMasc_s_en_0>           $NMasc_s_en_0$           | \
          <>:<NMasc_s_er_n>           $NMasc_s_er_n$           | \
          <>:<NMasc_s_es_0>           $NMasc_s_es_0$           | \
+         <>:<NMasc_s_i/en_0>         $NMasc_s_i/en_0$         | \
          <>:<NMasc_s_n_0>            $NMasc_s_n_0$            | \
          <>:<NMasc_s_nen_0>          $NMasc_s_nen_0$          | \
          <>:<NMasc_s_o/en_0>         $NMasc_s_o/en_0$         | \
@@ -2629,6 +2672,7 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<NNeut_0_en/ina_0>       $NNeut_0_en/ina_0$       | \
          <>:<NNeut_0_ens/enzien_0>   $NNeut_0_ens/enzien_0$   | \
          <>:<NNeut_0_es_0>           $NNeut_0_es_0$           | \
+         <>:<NNeut_0_i/en_0>         $NNeut_0_i/en_0$         | \
          <>:<NNeut_0_nen_0>          $NNeut_0_nen_0$          | \
          <>:<NNeut_0_o/en_0>         $NNeut_0_o/en_0$         | \
          <>:<NNeut_0_o/i_0>          $NNeut_0_o/i_0$          | \
@@ -2662,6 +2706,7 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<NNeut_s_e/ien_0>        $NNeut_s_e/ien_0$        | \
          <>:<NNeut_s_en_0>           $NNeut_s_en_0$           | \
          <>:<NNeut_s_en/ina_0>       $NNeut_s_en/ina_0$       | \
+         <>:<NNeut_s_i/en_0>         $NNeut_s_i/en_0$         | \
          <>:<NNeut_s_ien_0>          $NNeut_s_ien_0$          | \
          <>:<NNeut_s_n_0>            $NNeut_s_n_0$            | \
          <>:<NNeut_s_nen_0>          $NNeut_s_nen_0$          | \

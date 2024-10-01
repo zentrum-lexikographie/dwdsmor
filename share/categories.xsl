@@ -133,6 +133,13 @@
          nominative-plural="-s"
          dative-plural="-">NMasc_0_s_0</class>
   <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-a"
+       dative plural: unmarked -->
+  <class gender="mask."
+         genitive-singular="-"
+         nominative-plural="-a/en"
+         dative-plural="-">NMasc_0_a/en_0</class>
+  <!-- genitive singular: unmarked
        nominative plural: "-anten" substituted for "-as"
        dative plural: unmarked -->
   <class gender="mask."
@@ -160,6 +167,13 @@
          genitive-singular="-"
          nominative-plural="-ix/izes"
          dative-plural="-">NMasc_0_ex/izes_0<!-- sic! --></class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-i"
+       dative plural: unmarked -->
+  <class gender="mask."
+         genitive-singular="-"
+         nominative-plural="-i/en"
+         dative-plural="-">NMasc_0_i/en_0</class>
   <!-- genitive singular: unmarked
        nominative plural: "-en" substituted for "-o"
        dative plural: unmarked -->
@@ -462,12 +476,26 @@
          nominative-plural="-s"
          dative-plural="-">NMasc_s_s_0</class>
   <!-- genitive singular: "-s"
+       nominative plural: "-en" substituted for "-a"
+       dative plural: unmarked -->
+  <class gender="mask."
+         genitive-singular="-s"
+         nominative-plural="-a/en"
+         dative-plural="-">NMasc_s_a/en_0</class>
+  <!-- genitive singular: "-s"
        nominative plural: "-i" substituted for "-e"
        dative plural: unmarked -->
   <class gender="mask."
          genitive-singular="-s"
          nominative-plural="-e/i"
          dative-plural="-">NMasc_s_e/i_0</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-en" substituted for "-i"
+       dative plural: unmarked -->
+  <class gender="mask."
+         genitive-singular="-s"
+         nominative-plural="-i/en"
+         dative-plural="-">NMasc_s_i/en_0</class>
   <!-- genitive singular: "-s"
        nominative plural: "-en" substituted for "-o"
        dative plural: unmarked -->
@@ -492,6 +520,20 @@
          genitive-singular="-n"
          nominative-plural="-n"
          dative-plural="-">NMasc_n_n_0</class>
+  <!-- genitive singular: "-n"
+       nominative plural: "-ns"
+       dative plural: unmarked -->
+  <class gender="mask."
+         genitive-singular="-n"
+         nominative-plural="-ns"
+         dative-plural="-">NMasc_n_ns_0</class>
+  <!-- genitive singular: "-n"
+       nominative plural: "-s" substituted for "-e"
+       dative plural: unmarked -->
+  <class gender="mask."
+         genitive-singular="-n"
+         nominative-plural="-e/s"
+         dative-plural="-">NMasc_n_e/s_0</class>
   <!-- genitive singular: "-ns"
        nominative plural: "-n"
        dative plural: unmarked -->
@@ -649,6 +691,13 @@
          genitive-singular="-"
          nominative-plural="-ens/enzien"
          dative-plural="-">NNeut_0_ens/enzien_0</class>
+  <!-- genitive singular: unmarked
+       nominative plural: "-en" substituted for "-i"
+       dative plural: unmarked -->
+  <class gender="neutr."
+         genitive-singular="-"
+         nominative-plural="-i/en"
+         dative-plural="-">NNeut_0_i/en_0</class>
   <!-- genitive singular: unmarked
        nominative plural: "-en" substituted for "-o"
        dative plural: unmarked -->
@@ -933,6 +982,13 @@
          genitive-singular="-s"
          nominative-plural="-en/ina"
          dative-plural="-">NNeut_s_en/ina_0</class>
+  <!-- genitive singular: "-s"
+       nominative plural: "-en" substituted for "-i"
+       dative plural: unmarked -->
+  <class gender="neutr."
+         genitive-singular="-s"
+         nominative-plural="-i/en"
+         dative-plural="-">NNeut_s_i/en_0</class>
   <!-- genitive singular: "-s"
        nominative plural: "-en" substituted for "-o"
        dative plural: unmarked -->
@@ -1349,6 +1405,14 @@
                                                          [@genitive-singular=$genitive-singular-marker]
                                                          [@nominative-plural='-e/ien']"/>
         </xsl:when>
+        <!-- nominative plural: "-s" substituted for "-e" -->
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'e') and
+                        $nominative-plural=replace($lemma,'e$','s')">
+          <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-e/s']"/>
+        </xsl:when>
         <!-- nominative plural: "-ina" substituted for "-en" -->
         <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
                         ends-with($lemma,'en') and
@@ -1380,6 +1444,14 @@
           <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
                                                          [@genitive-singular=$genitive-singular-marker]
                                                          [@nominative-plural='-ex/izes']"/>
+        </xsl:when>
+        <!-- nominative plural: "-en" substituted for "-i" -->
+        <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and
+                        ends-with($lemma,'i') and
+                        $nominative-plural=replace($lemma,'i$','en')">
+          <xsl:value-of select="$noun-class-mapping/class[@gender=$gender]
+                                                         [@genitive-singular=$genitive-singular-marker]
+                                                         [@nominative-plural='-i/en']"/>
         </xsl:when>
         <!-- nominative plural: "-en" substituted for "-is" -->
         <xsl:when test="not(starts-with($nominative-plural-marker,'-')) and

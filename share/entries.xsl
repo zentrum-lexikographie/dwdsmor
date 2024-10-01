@@ -1976,6 +1976,26 @@
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
+      <!-- lemma: borrowed feminine nouns ending in "a"
+           nominative plural: "-e" -->
+      <xsl:when test="$gender='fem.' and
+                      ends-with($lemma,'a') and
+                      $nominative-plural-marker='-e'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NFem_0_e_0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- nouns with extra-paradigmatic plural -->
       <!-- lemma: compound with "Mann"
            nominative plural: compound with "Leute" -->
