@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 16.2 -->
-<!-- Andreas Nolda 2024-09-30 -->
+<!-- Version 16.3 -->
+<!-- Andreas Nolda 2024-10-01 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1713,7 +1713,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NMasc/Pl_x</xsl:with-param>
+          <xsl:with-param name="class">NMasc|Pl_0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1756,7 +1756,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NMasc/Pl_x</xsl:with-param>
+          <xsl:with-param name="class">NMasc|Pl_0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1799,7 +1799,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NNeut/Pl_0</xsl:with-param>
+          <xsl:with-param name="class">NNeut|Pl_n</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1842,7 +1842,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NNeut/Pl_0</xsl:with-param>
+          <xsl:with-param name="class">NNeut|Pl_n</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1885,7 +1885,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NMasc/Pl_x</xsl:with-param>
+          <xsl:with-param name="class">NMasc|Pl_0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1928,7 +1928,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NFem/Pl_x</xsl:with-param>
+          <xsl:with-param name="class">NFem|Pl_0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1971,7 +1971,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NNeut/Pl_x</xsl:with-param>
+          <xsl:with-param name="class">NNeut|Pl_0</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1992,7 +1992,7 @@
             <xsl:with-param name="abbreviation"
                             select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NNoGend/Pl_0</xsl:with-param>
+          <xsl:with-param name="class">NNoGend|Pl_n</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -2012,7 +2012,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NNoGend/Pl_0</xsl:with-param>
+          <xsl:with-param name="class">NNoGend|Pl_n</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -2508,7 +2508,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NMasc/Sg_s</xsl:with-param>
+                      <xsl:with-param name="class">NMasc|Sg_s</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2522,7 +2522,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NMasc/Sg_0</xsl:with-param>
+                      <xsl:with-param name="class">NMasc|Sg_0</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2538,7 +2538,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NMasc_s_s</xsl:with-param>
+                      <xsl:with-param name="class">NMasc_s_s_0</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2552,7 +2552,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NMasc_0_x</xsl:with-param>
+                      <xsl:with-param name="class">NMasc_0_0_0</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2573,7 +2573,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NNeut/Sg_s</xsl:with-param>
+                      <xsl:with-param name="class">NNeut|Sg_s</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2587,7 +2587,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NNeut/Sg_0</xsl:with-param>
+                      <xsl:with-param name="class">NNeut|Sg_0</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2603,7 +2603,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NNeut_s_s</xsl:with-param>
+                      <xsl:with-param name="class">NNeut_s_s_0</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2617,7 +2617,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NNeut_0_x</xsl:with-param>
+                      <xsl:with-param name="class">NNeut_0_0_0</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2638,7 +2638,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NFem/Sg_0</xsl:with-param>
+                      <xsl:with-param name="class">NFem|Sg_0</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2654,7 +2654,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NFem_0_s</xsl:with-param>
+                      <xsl:with-param name="class">NFem_0_s_0</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2668,7 +2668,7 @@
                         <xsl:with-param name="abbreviation"
                                         select="$abbreviation"/>
                       <xsl:with-param name="pos">NN</xsl:with-param>
-                      <xsl:with-param name="class">NFem_0_x</xsl:with-param>
+                      <xsl:with-param name="class">NFem_0_0_0</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -2687,7 +2687,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                   <xsl:with-param name="pos">NN</xsl:with-param>
-                  <xsl:with-param name="class">NNoGend/Pl_x</xsl:with-param>
+                  <xsl:with-param name="class">NNoGend|Pl_0</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
@@ -2807,7 +2807,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NNeut_s_0</xsl:with-param>
+          <xsl:with-param name="class">NNeut_s_0_n</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -2827,7 +2827,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NNeut_s_0</xsl:with-param>
+          <xsl:with-param name="class">NNeut_s_0_n</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -5644,7 +5644,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
-          <xsl:with-param name="class">Poss/Wk</xsl:with-param>
+          <xsl:with-param name="class">Poss|Wk</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -5665,7 +5665,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
-          <xsl:with-param name="class">Poss/Wk</xsl:with-param>
+          <xsl:with-param name="class">Poss|Wk</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -5685,7 +5685,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
-          <xsl:with-param name="class">Poss/Wk-er</xsl:with-param>
+          <xsl:with-param name="class">Poss|Wk-er</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -5706,7 +5706,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">POSS</xsl:with-param>
-          <xsl:with-param name="class">Poss/Wk-er</xsl:with-param>
+          <xsl:with-param name="class">Poss|Wk-er</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>

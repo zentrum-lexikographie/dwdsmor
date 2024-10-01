@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-09-26
+# Andreas Nolda 2024-10-01
 
 import io
 import csv
@@ -119,133 +119,133 @@ NAME_LEMMAS = ["Atlantik",   # NameMasc_0, NameMasc_s
                "Ostsee",     # NameFem_0
                "Felicitas",  # NameFem_apos
                "Oma",        # NameFem_s
-               "Alpen"]      # NameNoGend/Pl_x
+               "Alpen"]      # NameNoGend|Pl_0
 
 
 NOUN_POS = "NN"
 
-NOUN_LEMMAS = ["Jazz",           # NMasc/Sg_0
-               "Kitsch",         # NMasc/Sg_es
-               "Bau",            # NMasc/Sg_es, NMasc/Pl_x, NMasc_es_e
-               "Adel",           # NMasc/Sg_s
-               "Unglaube",       # NMasc/Sg_ns
-               "Blues",          # NMasc_0_x
-               "Dezember",       # NMasc_0_0, NMasc_s_0
-               "Januar",         # NMasc_0_e, NMasc_s_e
-               "Index",          # NMasc_0_e, NMasc_0_ex/izes, NMasc_es_e, NMasc_es_ex/izes
-               "Obelisk",        # NMasc_0_e, NMasc_0_en, NMasc_s_e, NMasc_s_en, NMasc_en_en
-               "Sandwich",       # NMasc_0_e, NMasc_0_es, NMasc_0_s, NMasc_es_e, NMasc_es_es, NMasc_es_s, NNeut_0_e, NNeut_0_es, NNeut_0_s, NNeut_es_e, NNeut_es_es, NNeut_es_s
-               "Zirkus",         # NMasc_0_e~ss
-               "Atlas",          # NMasc_0_e~ss, NMasc_es_e~ss, NMasc_0_as/anten, NMasc_s_as/anten
-               "Globus",         # NMasc_0_e~ss, NMasc_es_e~ss, NMasc_0_us/en, NMasc_es_us/en~ss
-               "Kaktus",         # NMasc_0_e~ss, NMasc_es_e~ss, NMasc_0_us/een, NMasc_es_us/een~ss
-               "Embryo",         # NMasc_0_nen, NMasc_0_s, NMasc_s_nen, NMasc_s_s, NNeut_0_nen ...
-               "Intercity",      # NMasc_0_s
-               "Carabiniere",    # NMasc_0_e/i, NMasc_s_e/i
-               "Espresso",       # NMasc_0_o/i, NMasc_0_s, NMasc_s_o/i, NMasc_s_s, NNeut_0_s, NNeut_s_x
-               "Heros",          # NMasc_0_os/oen
-               "Kustos",         # NMasc_0_os/oden
-               "Topos",          # NMasc_0_os/oi
-               "Virus",          # NMasc_0_us/en, NNeut_0_us/en
-               "Rhythmus",       # NMasc_0_us/en~ss
-               "Modus",          # NMasc_0_us/i
-               "Dinosaurus",     # NMasc_0_us/ier
-               "Larynx",         # NMasc_0_ynx/yngen
-               "Freund",         # NMasc_es_e
-               "Bus",            # NMasc_es_e~ss
-               "Arzt",           # NMasc_es_$e
-               "Block",          # NMasc_es_$e, NMasc_es_s
-               "Leib",           # NMasc_es_er
-               "Gott",           # NMasc_es_$er
-               "Schmerz",        # NMasc_es_en
-               "Crash",          # NMasc_es_es, NMasc_es_s
-               "Tennismatch",    # NMasc_es_es, NMasc_es_s, NNeut_es_es ...
-               "Daumen",         # NMasc_s_x
-               "Ski",            # NMasc_s_x, NMasc_s_er
-               "Garten",         # NMasc_s_$x
-               "Engel",          # NMasc_s_0
-               "Vize",           # NMasc_s_0, NMasc_s_s, NFem_0_0, NFem_0_s
-               "Apfel",          # NMasc_s_$
-               "Abend",          # NMasc_s_e
-               "Unfall",         # NMasc_s_$e
-               "Irrtum",         # NMasc_s_$er
-               "Direktor",       # NMasc_s_en
-               "Prototyp",       # NMasc_s_en, NMasc_en_en, NNeut_s_en
-               "Muskel",         # NMasc_s_n
-               "Opa",            # NMasc_s_s
-               "Kanon",          # NMasc_s_s, NMasc_s_es
-               "Dirigent",       # NMasc_en_en
-               "Affe",           # NMasc_n_n
-               "Junge",          # NMasc_n_n, NMasc-Adj, NNeut-Adj, NFem-Adj
-               "Gedanke",        # NMasc_ns_n
-               "Schade",         # NMasc_ns_$n
-               "Deutsche",       # NMasc-Adj, NNeut-Adj/Sg, NFem-Adj
-               "Abseits",        # NNeut/Sg_0
-               "Ausland",        # NNeut/Sg_es
-               "Verständnis",    # NNeut/Sg_es~ss
-               "Internet",       # NNeut/Sg_s
-               "Pluraletantum",  # NNeut/Sg_s, NNeut/Pl_x
-               "Vieh",           # NNeut/Sg_es, NNeut/Pl_0
-               "Ostern",         # NNeut_0_x
-               "Remis",          # NNeut_0_x, NNeut_0_en
-               "Zuhause",        # NNeut_0_0
-               "Nichts",         # NNeut_0_e
-               "Foyer",          # NNeut_0_s
-               "Determinans",    # NNeut_0_ans/antien
-               "Stimulans",      # NNeut_0_ans/anzien
-               "Ricercare",      # NNeut_0_e/i, NNeut_s_e/i
-               "Reagens",        # NNeut_0_ens/enzien
-               "Intermezzo",     # NNeut_0_o/i, NNeut_0_s, NNeut_s_o/i, NNeut_s_s
-               "Genus",          # NNeut_0_us/era
-               "Tempus",         # NNeut_0_us/ora
-               "Spiel",          # NNeut_es_e
-               "Tablett",        # NNeut_es_e, NNeut_es_s
-               "Zeugnis",        # NNeut_es_e~ss
-               "Floß",           # NNeut_es_$e
-               "Lied",           # NNeut_es_er
-               "Buch",           # NNeut_es_$er
-               "Ohr",            # NNeut_es_en
-               "Indiz",          # NNeut_es_ien
-               "Zeichen",        # NNeut_s_x
-               "Examen",         # NNeut_s_x, NNeut_s_en/ina
-               "Feuer",          # NNeut_s_0
-               "Kloster",        # NNeut_s_$
-               "Reflexiv",       # NNeut_s_a
-               "Signal",         # NNeut_s_e
-               "Auge",           # NNeut_s_n
-               "Material",       # NNeut_s_ien
-               "Sofa",           # NNeut_s_s
-               "Komma",          # NNeut_s_s, NNeut_s_a/ata
-               "Risiko",         # NNeut_s_s, NNeut_s_o/en
-               "Dogma",          # NNeut_s_a/en
-               "Numerale",       # NNeut_s_e/ia, NNeut_s_e/ien
-               "Paradoxon",      # NNeut_s_on/a
-               "Stadion",        # NNeut_s_on/en
-               "Maximum",        # NNeut_s_um/a
-               "Museum",         # NNeut_s_um/en
-               "Herz",           # NNeut_ens_en
+NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
+               "Kitsch",         # NMasc|Sg_es
+               "Bau",            # NMasc|Sg_es, NMasc|Pl_0, NMasc_es_e_n
+               "Adel",           # NMasc|Sg_s
+               "Unglaube",       # NMasc|Sg_ns
+               "Blues",          # NMasc_0_0_0
+               "Dezember",       # NMasc_0_0_n, NMasc_s_0_n
+               "Januar",         # NMasc_0_e_n, NMasc_s_e_n
+               "Index",          # NMasc_0_e_n, NMasc_0_ex/izes_0, NMasc_es_e_n, NMasc_es_ex/izes_0
+               "Obelisk",        # NMasc_0_e_n, NMasc_0_en_0, NMasc_s_e_n, NMasc_s_en_0, NMasc_en_en_0
+               "Sandwich",       # NMasc_0_e_n, NMasc_0_es_0, NMasc_0_s_0, NMasc_es_e_n, NMasc_es_es_0, NMasc_es_s_0, NNeut_0_e_n ...
+               "Zirkus",         # NMasc_0_e_n~ss
+               "Atlas",          # NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_as/anten_0, NMasc_s_as/anten_0
+               "Globus",         # NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/en_0, NMasc_es_us/en_0~ss
+               "Kaktus",         # NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/een_0, NMasc_es_us/een_0~ss
+               "Embryo",         # NMasc_0_nen_0, NMasc_0_s_0, NMasc_s_nen_0, NMasc_s_s_0, NNeut_0_nen_0 ...
+               "Intercity",      # NMasc_0_s_0
+               "Carabiniere",    # NMasc_0_e/i_0, NMasc_s_e/i_0
+               "Espresso",       # NMasc_0_o/i_0, NMasc_0_s_0, NMasc_s_o/i_0, NMasc_s_s_0, NNeut_0_s_0 ...
+               "Heros",          # NMasc_0_os/oen_0
+               "Kustos",         # NMasc_0_os/oden_0
+               "Topos",          # NMasc_0_os/oi_0
+               "Virus",          # NMasc_0_us/en_0, NNeut_0_us/en_0
+               "Rhythmus",       # NMasc_0_us/en_0~ss
+               "Modus",          # NMasc_0_us/i_0
+               "Dinosaurus",     # NMasc_0_us/ier_n
+               "Larynx",         # NMasc_0_ynx/yngen_0
+               "Freund",         # NMasc_es_e_n
+               "Bus",            # NMasc_es_e_n~ss
+               "Arzt",           # NMasc_es_$e_n
+               "Block",          # NMasc_es_$e_n, NMasc_es_s_0
+               "Leib",           # NMasc_es_er_n
+               "Gott",           # NMasc_es_$er_n
+               "Schmerz",        # NMasc_es_en_0
+               "Crash",          # NMasc_es_es_0, NMasc_es_s_0
+               "Tennismatch",    # NMasc_es_es_0, NMasc_es_s_0, NNeut_es_es_0 ...
+               "Daumen",         # NMasc_s_0_0
+               "Ski",            # NMasc_s_0_0, NMasc_s_er_n
+               "Garten",         # NMasc_s_$_0
+               "Engel",          # NMasc_s_0_n
+               "Vize",           # NMasc_s_0_n, NMasc_s_s_n, NFem_0_0_n ...
+               "Apfel",          # NMasc_s_$_n
+               "Abend",          # NMasc_s_e_n
+               "Unfall",         # NMasc_s_$e_n
+               "Irrtum",         # NMasc_s_$er_n
+               "Direktor",       # NMasc_s_en_0
+               "Prototyp",       # NMasc_s_en_0, NMasc_en_en_0, NNeut_s_en_0
+               "Muskel",         # NMasc_s_n_0
+               "Opa",            # NMasc_s_s_0
+               "Kanon",          # NMasc_s_s_0, NMasc_s_es_0
+               "Dirigent",       # NMasc_en_en_0
+               "Affe",           # NMasc_n_n_0
+               "Junge",          # NMasc_n_n_0, NMasc-Adj, NNeut-Adj, NFem-Adj
+               "Gedanke",        # NMasc_ns_n_0
+               "Schade",         # NMasc_ns_$n_0
+               "Deutsche",       # NMasc-Adj, NNeut-Adj|Sg, NFem-Adj
+               "Abseits",        # NNeut|Sg_0
+               "Ausland",        # NNeut|Sg_es
+               "Verständnis",    # NNeut|Sg_es~ss
+               "Internet",       # NNeut|Sg_s
+               "Pluraletantum",  # NNeut|Sg_s, NNeut|Pl_0
+               "Vieh",           # NNeut|Sg_es, NNeut|Pl_n
+               "Ostern",         # NNeut_0_0_0
+               "Remis",          # NNeut_0_0_0, NNeut_0_en_0
+               "Zuhause",        # NNeut_0_0_n
+               "Nichts",         # NNeut_0_e_n
+               "Foyer",          # NNeut_0_s_0
+               "Determinans",    # NNeut_0_ans/antien_0
+               "Stimulans",      # NNeut_0_ans/anzien_0
+               "Ricercare",      # NNeut_0_e/i_0, NNeut_s_e/i_0
+               "Reagens",        # NNeut_0_ens/enzien_0
+               "Intermezzo",     # NNeut_0_o/i_0, NNeut_0_s_0, NNeut_s_o/i_0, NNeut_s_s_0
+               "Genus",          # NNeut_0_us/era_0
+               "Tempus",         # NNeut_0_us/ora_0
+               "Spiel",          # NNeut_es_e_n
+               "Tablett",        # NNeut_es_e_n, NNeut_es_s_0
+               "Zeugnis",        # NNeut_es_e_n~ss
+               "Floß",           # NNeut_es_$e_n
+               "Lied",           # NNeut_es_er_n
+               "Buch",           # NNeut_es_$er_n
+               "Ohr",            # NNeut_es_en_0
+               "Indiz",          # NNeut_es_ien_0
+               "Zeichen",        # NNeut_s_0_0
+               "Examen",         # NNeut_s_0_0, NNeut_s_en/ina_0
+               "Feuer",          # NNeut_s_0_n
+               "Kloster",        # NNeut_s_$_n
+               "Reflexiv",       # NNeut_s_a_0
+               "Signal",         # NNeut_s_e_n
+               "Auge",           # NNeut_s_n_0
+               "Material",       # NNeut_s_ien_0
+               "Sofa",           # NNeut_s_s_0
+               "Komma",          # NNeut_s_s_0, NNeut_s_a/ata_0
+               "Risiko",         # NNeut_s_s_0, NNeut_s_o/en_0
+               "Dogma",          # NNeut_s_a/en_0
+               "Numerale",       # NNeut_s_e/ia_0, NNeut_s_e/ien_0
+               "Paradoxon",      # NNeut_s_on/a_0
+               "Stadion",        # NNeut_s_on/en_0
+               "Maximum",        # NNeut_s_um/a_0
+               "Museum",         # NNeut_s_um/en_0
+               "Herz",           # NNeut_ens_en_0
                "Innere",         # NNeut-Inner
-               "Ruhe",           # NFem/Sg_0
-               "Anchorwoman",    # NFem/Sg_0, NFem/Pl_x
-               "Jeans",          # NFem_0_x
-               "Tochter",        # NFem_0_$
-               "Milch",          # NFem_0_e, NFem_0_en
-               "Kenntnis",       # NFem_0_e~ss
-               "Wand",           # NFem_0_$e
-               "Frau",           # NFem_0_en
-               "Werkstatt",      # NFem_0_$en
-               "Hilfe",          # NFem_0_n
-               "Minestrone",     # NFem_0_n, NFem_0_e/i
-               "Oma",            # NFem_0_s
-               "Firma",          # NFem_0_a/en
-               "Phalanx",        # NFem_0_anx/angen
-               "Lex",            # NFem_0_ex/eges
-               "Basis",          # NFem_0_is/en
-               "Matrix",         # NFem_0_ix/izen
-               "Radix",          # NFem_0_ix/izes
+               "Ruhe",           # NFem|Sg_0
+               "Anchorwoman",    # NFem|Sg_0, NFem|Pl_0
+               "Jeans",          # NFem_0_0_0
+               "Tochter",        # NFem_0_$_n
+               "Milch",          # NFem_0_e_n, NFem_0_en_0
+               "Kenntnis",       # NFem_0_e_n~ss
+               "Wand",           # NFem_0_$e_n
+               "Frau",           # NFem_0_en_0
+               "Werkstatt",      # NFem_0_$en_0
+               "Hilfe",          # NFem_0_n_0
+               "Minestrone",     # NFem_0_n_0, NFem_0_e/i_0
+               "Oma",            # NFem_0_s_0
+               "Firma",          # NFem_0_a/en_0
+               "Phalanx",        # NFem_0_anx/angen_0
+               "Lex",            # NFem_0_ex/eges_0
+               "Basis",          # NFem_0_is/en_0
+               "Matrix",         # NFem_0_ix/izen_0
+               "Radix",          # NFem_0_ix/izes_0
                "Freundin",       # NFem-in
-               "Kosten",         # NNoGend/Pl_x
-               "Leute"]          # NNoGend/Pl_0
+               "Kosten",         # NNoGend|Pl_0
+               "Leute"]          # NNoGend|Pl_n
 
 
 ORDINAL_POS = "ORD"
@@ -257,8 +257,8 @@ POSSESSIVE_PRONOUN_POS = "POSS"
 
 POSSESSIVE_PRONOUN_LEMMAS = ["meine",    # Poss
                              "unsere",   # Poss-er
-                             "Deinige",  # Poss/Wk
-                             "Eurige"]   # Poss/Wk-er
+                             "Deinige",  # Poss|Wk
+                             "Eurige"]   # Poss|Wk-er
 
 
 PERSONAL_PRONOUN_POS = "PPRO"

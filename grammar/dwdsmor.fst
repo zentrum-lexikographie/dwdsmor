@@ -1,6 +1,6 @@
 % dwdsmor.fst
-% Version 10.5
-% Andreas Nolda 2024-09-24
+% Version 10.6
+% Andreas Nolda 2024-10-01
 
 #include "symbols.fst"
 #include "num.fst"
@@ -82,10 +82,10 @@ $Part-zwischen$ = <Prefix> zwischen
 
 $Pref-un$ = <Prefix> un
 
-$Suff-e$    = <Suffix> e    <NN> <base> <native> <>:<NMasc_n_n>
-$Suff-er$   = <Suffix> er   <NN> <base> <native> <>:<NMasc_s_0>
-$Suff-chen$ = <Suffix> chen <NN> <base> <native> <>:<NNeut_s_x>
-$Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_x>
+$Suff-e$    = <Suffix> e    <NN> <base> <native> <>:<NMasc_n_n_0>
+$Suff-er$   = <Suffix> er   <NN> <base> <native> <>:<NMasc_s_0_n>
+$Suff-chen$ = <Suffix> chen <NN> <base> <native> <>:<NNeut_s_0_0>
+$Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_0_0>
 
 % means
 
