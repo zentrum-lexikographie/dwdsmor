@@ -1,66 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
-    <Formangabe>
-      <Schreibung>abschleppen</Schreibung>
-      <Grammatik>
-        <Wortklasse>Verb</Wortklasse>
-        <Praesens>schleppt ab</Praesens>
-        <Praeteritum>schleppte ab</Praeteritum>
-        <Auxiliar>hat</Auxiliar>
-        <Partizip_II>abgeschleppt</Partizip_II>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>berauschen</Schreibung>
-      <Grammatik>
-        <Wortklasse>Verb</Wortklasse>
-        <Praesens>berauscht</Praesens>
-        <Praeteritum>berauschte</Praeteritum>
-        <Auxiliar>hat</Auxiliar>
-        <Partizip_II>berauscht</Partizip_II>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>festsetzen</Schreibung>
-      <Grammatik>
-        <Wortklasse>Verb</Wortklasse>
-        <Praesens>setzt fest</Praesens>
-        <Praeteritum>setzte fest</Praeteritum>
-        <Auxiliar>hat</Auxiliar>
-        <Partizip_II>festgesetzt</Partizip_II>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>forschen</Schreibung>
-      <Grammatik>
-        <Wortklasse>Verb</Wortklasse>
-        <Praesens>forscht</Praesens>
-        <Praeteritum>forschte</Praeteritum>
-        <Auxiliar>hat</Auxiliar>
-        <Partizip_II>geforscht</Partizip_II>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>schleppen</Schreibung>
-      <Grammatik>
-        <Wortklasse>Verb</Wortklasse>
-        <Praesens>schleppt</Praesens>
-        <Praeteritum>schleppte</Praeteritum>
-        <Auxiliar>hat</Auxiliar>
-        <Partizip_II>geschleppt</Partizip_II>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
     <Formangabe Typ="Abkürzung">
       <Schreibung>s.</Schreibung>
       <Grammatik>

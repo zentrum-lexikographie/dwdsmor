@@ -28,17 +28,6 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe>
-      <Schreibung>Glaubwürdigkeit</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>fem.</Genus>
-        <Genitiv>-</Genitiv>
-        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
     <Formangabe Typ="Symbol">
       <Schreibung>°</Schreibung>
       <Grammatik>
@@ -82,17 +71,6 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>Kreativität</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>fem.</Genus>
-        <Genitiv>-</Genitiv>
-        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
   </Artikel>
