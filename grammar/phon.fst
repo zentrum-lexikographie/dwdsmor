@@ -1,6 +1,6 @@
 % phon.fst
-% Version 6.3
-% Andreas Nolda 2024-09-05
+% Version 6.4
+% Andreas Nolda 2024-10-02
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -185,7 +185,7 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
             #category# #feature# #info#] \
            <ins(e)>:e
 
-$PhonEEpenthesis3$ = (([dt]m? | tw) <SB>) <ins(e)> <=> e
+$PhonEEpenthesis3$ = (([dt]m? | sm | tw) <SB>) <ins(e)> <=> e
 
 $PhonEEpenthesis$ = $PhonEEpenthesis1$ || \
                     $PhonEEpenthesis2$ || \
