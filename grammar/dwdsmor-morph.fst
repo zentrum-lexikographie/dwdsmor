@@ -1,6 +1,6 @@
-% dwdsmor-morphfst
-% Version 1.2
-% Andreas Nolda 2024-10-01
+% dwdsmor-morph.fst
+% Version 1.3
+% Andreas Nolda 2024-10-02
 
 #include "symbols.fst"
 #include "num.fst"
@@ -152,10 +152,12 @@ $BaseStemsVPPast$ = ^$BaseStemsVPPast$
 
 $BaseStemsVPPast-t$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-t$
 $BaseStemsVPPast-n$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-n$
+$BaseStemsVPPast-d$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-d$
 
-$ConvBaseStemsVPPres$ = $BaseStemsVPPres$   <ADJ> <base> <native> <>:<AdjPos>     % cf. Duden-Grammatik (2016: § 508)
-$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<AdjPos> | \ % cf. Duden-Grammatik (2016: § 508)
-                        $BaseStemsVPPast-n$ <ADJ> <base> <native> <>:<AdjPos-en>  % cf. Duden-Grammatik (2016: § 508)
+$ConvBaseStemsVPPres$ = $BaseStemsVPPres$   <ADJ> <base> <native> <>:<AdjPos>        % cf. Duden-Grammatik (2016: § 508)
+$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<AdjPos>    | \ % cf. Duden-Grammatik (2016: § 508)
+                        $BaseStemsVPPast-n$ <ADJ> <base> <native> <>:<AdjPos-en> | \ % cf. Duden-Grammatik (2016: § 508)
+                        $BaseStemsVPPast-d$ <ADJ> <base> <native> <>:<AdjPosPred>
 
 $ConvBaseStems$ = $ConvBaseStemsVPPres$ | \
                   $ConvBaseStemsVPPast$

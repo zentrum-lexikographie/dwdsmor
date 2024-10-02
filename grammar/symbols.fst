@@ -1,5 +1,5 @@
 % symbols.fst
-% Version 9.1
+% Version 9.2
 % Andreas Nolda 2024-10-01
 
 % based on code from SMORLemma by Rico Sennrich
@@ -229,22 +229,23 @@
                    <WProMascAccSg><WProMascDatSg><WProMascGenSg><WProMascNomSg> \
                    <WProNeutAccSg><WProNeutDatSg><WProNeutGenSg><WProNeutNomSg>
 
-#Verb-inflection# = <VImp><VImp-d-t><VImp-el-er><VImp-len><VImp-m-n><VImpPl> \
-                    <VImpPl-sein><VImpSg><VImpSg0><VInf><VInf-el-er><VInf-len> \
-                    <VInf_n><VModPresIndSg><VModPresNonIndSg><VPastInd-d-t_t> \
-                    <VPastInd-len><VPastInd-werden><VPastIndPl-werden> \
-                    <VPastIndSg-ward><VPastIndStr><VPastIndStr-s><VPastIndWeak> \
-                    <VPastStr><VPastStr-s><VPastSubj-haben><VPastSubj-len> \
-                    <VPastSubj2-sein><VPastSubjOld><VPastSubjStr><VPastSubjWeak> \
-                    <VPPast-d_t><VPPast-len><VPPast_n><VPPastStr><VPPastWeak> \
-                    <VPPres><VPPres-el-er><VPPres-len><VPres><VPres-el-er> \
-                    <VPres-len><VPres-m-n><VPres-s><VPres-tun> \
+#Verb-inflection# = <VImp><VImp-ak-ik><VImp-d-t><VImp-el-er><VImp-le><VImp-m-n> \
+                    <VImpPl><VImpPl-sein><VImpSg><VImpSg0><VInf><VInf-el-er> \
+                    <VInf-le><VInf_n><VModPresIndSg><VModPresNonIndSg> \
+                    <VPastInd-d-t_t><VPastInd-le><VPastInd-werden> \
+                    <VPastIndPl-werden><VPastIndSg-ward><VPastIndStr> \
+                    <VPastIndStr-s><VPastIndWeak><VPastStr><VPastStr-s> \
+                    <VPastSubj-haben><VPastSubj-le><VPastSubj2-sein> \
+                    <VPastSubjOld><VPastSubjStr><VPastSubjWeak><VPPast-d_t> \
+                    <VPPast-le><VPPast_ed><VPPast_n><VPPastStr><VPPastWeak> \
+                    <VPPres><VPPres-el-er><VPPres-le><VPres><VPres-ak-ik> \
+                    <VPres-el-er><VPres-le><VPres-m-n><VPres-s><VPres-tun> \
                     <VPresInd13Pl-sein><VPresInd1Sg-sein><VPresInd23Sg> \
                     <VPresInd23Sg-d_t><VPresInd23Sg-t_0><VPresInd2Pl-sein> \
                     <VPresInd2Sg-sein><VPresInd2Sg-werden><VPresInd3Sg-sein> \
                     <VPresInd3Sg-werden><VPresNonInd23Sg><VPresSubj-sein><VWeak> \
-                    <VWeak-d-t><VWeak-el-er><VWeak-signen><VWeak-len><VWeak-m-n> \
-                    <VWeak-s>
+                    <VWeak-ak-ik><VWeak-d-t><VWeak-el-er><VWeak-le><VWeak-m-n> \
+                    <VWeak-s><VWeak-signen>
 
 #Other-inflection# = <ConjCompar><ConjCoord><ConjInf><ConjSub><Intj><PIndInvar> \
                      <Postp><Prep><Prep+Art-m><Prep+Art-n><Prep+Art-r> \

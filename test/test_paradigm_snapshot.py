@@ -294,15 +294,17 @@ VERB_POS = "V"
 
 VERB_LEMMAS = ["spielen",     # VWeak
                "segeln",      # VWeak-el-er
-               "recyclen",    # VWeak-len
+               "recyclen",    # VWeak-le
+               "liken",       # VWeak-ak-ik
                "designen",    # VWeak-signen
                "arbeiten",    # VWeak-d-t
                "atmen",       # VWeak-m-n
                "küssen",      # VWeak-s
                "heißen",      # VWeak-s, VInf, VPPres, VPPastStr, VPres-s, VPastStr-s, VImp
                "senden",      # VWeak-d-t, VInf, VPPres, VPPast-d_t, VPres, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t
+               "faken",       # VWeak-ak-ik, VInf, VPPres, VPPast_ed, VPres-ak-ik, VPastIndWeak, VPastSubjWeak, VImp-ak-ik
                "notwassern",  # VInf-el-er, VPPres-el-er, VPPastWeak, VPres-el-er, VPastIndWeak, VPastSubjWeak, VImp-el-er
-               "downcyclen",  # VInf-len, VPPres-len, VPPast-len, VPres-len, VPastInd-len, VPastSubj-len, VImp-len
+               "downcyclen",  # VInf-le, VPPres-le, VPPast-le, VPres-le, VPastInd-le, VPastSubj-le, VImp-le
                "denken",      # VInf, VPPres, VPPastWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp
                "haben",       # VInf, VPPres, VPPastWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-d-t_t, VPastSubj-haben, VImp
                "wissen",      # VInf, VPPres, VPPastWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak

@@ -1,5 +1,5 @@
 % infl.fst
-% Version 9.2
+% Version 9.3
 % Andreas Nolda 2024-10-02
 
 % based on code from SMORLemma by Rico Sennrich
@@ -1825,7 +1825,7 @@ $VInf$ = $VInfSuff_en$
 $VInf-el-er$ = $VInfSuff_en$
 
 % downcyclen
-$VInf-len$ = $VInfSuff_n$
+$VInf-le$ = $VInfSuff_n$
 
 % tun
 $VInf_n$ = $VInfSuff_n$
@@ -1843,7 +1843,7 @@ $VPPres$ = $VPPresSuff_end$
 $VPPres-el-er$ = $VPPresSuff_end$
 
 % downcyclend
-$VPPres-len$ = $VPPresSuff_nd$
+$VPPres-le$ = $VPPresSuff_nd$
 
 $VPPastSuff_et$ =  {<+V><PPast>}:{<ins(ge)><SB><ins(e)>t}
 
@@ -1852,6 +1852,8 @@ $VPPastSuff_t$ =  {<+V><PPast>}:{<ins(ge)><SB>t}
 $VPPastSuff_en$ = {<+V><PPast>}:{<ins(ge)><SB>en}
 
 $VPPastSuff_n$ = {<+V><PPast>}:{<ins(ge)><SB>n}
+
+$VPPastSuff_ed$ =  {<+V><PPast>}:{<ins(ge)><SB>ed}
 
 $haben$ = {<haben>}:{}
 
@@ -1886,17 +1888,24 @@ $VPPast_n+haben$ = $VPPastSuff_n$ $haben$
 $VPPast_n+sein$ = $VPPastSuff_n$ $sein$
 
 % downgecyclet
-$VPPast-len$ = $VPPastSuff_t$
+$VPPast-le$ = $VPPastSuff_t$
 
-$VPPast-len+haben$ = $VPPastSuff_t$ $haben$
+$VPPast-le+haben$ = $VPPastSuff_t$ $haben$
 
-$VPPast-len+sein$ = $VPPastSuff_t$ $sein$
+$VPPast-le+sein$ = $VPPastSuff_t$ $sein$
 
 $VPPast-signen$ = $VPPastSuff_t$
 
 $VPPast-signen+haben$ = $VPPastSuff_t$ $haben$
 
 $VPPast-signen+sein$ = $VPPastSuff_t$ $sein$
+
+% gefaked
+$VPPast_ed$ = $VPPastSuff_ed$
+
+$VPPast_ed+haben$ = $VPPastSuff_ed$ $haben$
+
+$VPPast_ed+sein$ = $VPPastSuff_ed$ $sein$
 
 $VPresInd1SgSuff_0$ = {<+V><1><Sg><Pres><Ind>}:{}
 
@@ -1941,12 +1950,12 @@ $VPresSubjSuff$ = {<+V><1><Sg><Pres><Subj>}:{<SB>e}   | \
                   {<+V><2><Pl><Pres><Subj>}:{<SB>et}  | \
                   {<+V><3><Pl><Pres><Subj>}:{<SB>en}
 
-$VPresSubjSuff-len$ = {<+V><1><Sg><Pres><Subj>}:{}       | \
-                      {<+V><2><Sg><Pres><Subj>}:{<SB>st} | \
-                      {<+V><3><Sg><Pres><Subj>}:{}       | \
-                      {<+V><1><Pl><Pres><Subj>}:{<SB>n}  | \
-                      {<+V><2><Pl><Pres><Subj>}:{<SB>t}  | \
-                      {<+V><3><Pl><Pres><Subj>}:{<SB>n}
+$VPresSubjSuff-le$ = {<+V><1><Sg><Pres><Subj>}:{}       | \
+                     {<+V><2><Sg><Pres><Subj>}:{<SB>st} | \
+                     {<+V><3><Sg><Pres><Subj>}:{}       | \
+                     {<+V><1><Pl><Pres><Subj>}:{<SB>n}  | \
+                     {<+V><2><Pl><Pres><Subj>}:{<SB>t}  | \
+                     {<+V><3><Pl><Pres><Subj>}:{<SB>n}
 
 $VPresSubjSuff-sein$ = {<+V><1><Sg><Pres><Subj>}:{}        | \
                        {<+V><2><Sg><Pres><Subj>}:{<SB>est} | \
@@ -1985,11 +1994,18 @@ $VPres-s$ = $VPresInd1SgSuff_e$      | \
 $VPres-el-er$ = $VPres$
 
 % downcycle, downcyclest, downcyclet, downcyclen, downcyclet, downcyclen
-$VPres-len$ = $VPresInd1SgSuff_0$  | \
-              $VPresInd2SgSuff_st$ | \
-              $VPresInd3SgSuff_t$  | \
-              $VPresIndPlSuff-tun$ | \
-              $VPresSubjSuff-len$
+$VPres-le$ = $VPresInd1SgSuff_0$  | \
+             $VPresInd2SgSuff_st$ | \
+             $VPresInd3SgSuff_t$  | \
+             $VPresIndPlSuff-tun$ | \
+             $VPresSubjSuff-le$
+
+% fake, fakst, fakt, faken, fakt, faken
+$VPres-ak-ik$ = $VPresInd1SgSuff_e$   | \
+                $VPresInd2SgSuff_est$ | \
+                $VPresInd3SgSuff_et$  | \
+                $VPresIndPlSuff$      | \
+                $VPresSubjSuff$
 
 $VPres-signen$ = $VPresInd1SgSuff_e$     | \
                  $VPresInd2SgSuff_st$    | \
@@ -2134,8 +2150,8 @@ $VPastSubj2Suff-sein$ = {<+V><2><Sg><Past><Subj>}:{<SB>st} | \
 $VPastWeak$ = $VPastIndWeakSuff_et$ | \
               $VPastSubjWeakSuff$
 
-$VPast-len$ = $VPastIndWeakSuff_t$ | \
-              $VPastSubjWeakSuff_t$
+$VPast-le$ = $VPastIndWeakSuff_t$ | \
+             $VPastSubjWeakSuff_t$
 
 $VPast-signen$ = $VPastIndWeakSuff_t$ | \
                  $VPastSubjWeakSuff_t$
@@ -2150,7 +2166,7 @@ $VPastIndWeak$ = $VPastIndWeakSuff_et$
 $VPastInd-d-t_t$ = $VPastIndWeakSuff_t$
 
 % downcyclete, downcycletest, downcyclete, downcycleten, downcycletet, downcycleten
-$VPastInd-len$ = $VPastIndWeakSuff_t$
+$VPastInd-le$ = $VPastIndWeakSuff_t$
 
 % sah, sahst, sah, sahen, saht, sahen
 % fand, fand(e)st, fand, fanden, fandet, fanden
@@ -2175,7 +2191,7 @@ $VPastIndPl-werden$ = $VPastIndPlSuff-werden$
 $VPastSubjWeak$ = $VPastSubjWeakSuff$
 
 % downcyclete, downcycletest, downcyclete, downcycleten, downcycletet, downcycleten
-$VPastSubj-len$ = $VPastSubjWeakSuff_t$
+$VPastSubj-le$ = $VPastSubjWeakSuff_t$
 
 % sähe, sähest, sähe, sähen, sähet, sähen
 % täte, tätest, täte, täten, tätet, täten
@@ -2224,7 +2240,9 @@ $VImpSg-d-t$ = $VImpSgNonStSuff_0$ | \
 
 $VImpSg-m-n$ = $VImpSgSuff_e$
 
-$VImpSg-len$ = $VImpSgSuff_0$
+$VImpSg-le$ = $VImpSgSuff_0$
+
+$VImpSg-ak-ik$ = $VImpSgSuff_e$
 
 % seht; tut
 $VImpPl$ = $VImpPlSuff_et$
@@ -2252,8 +2270,12 @@ $VImp-el-er$ = $VImpSg-d-t$ | \
                $VImpPl$
 
 % downcycle, downcyclet
-$VImp-len$ = $VImpSg-len$ | \
-             $VImpPl$
+$VImp-le$ = $VImpSg-le$ | \
+            $VImpPl$
+
+% fake
+$VImp-ak-ik$ = $VImpSg-ak-ik$ | \
+               $VImpPl$
 
 $VImp-signen$ = $VImpSg$ | \
                 $VImpPl-signen$
@@ -2369,26 +2391,26 @@ $VWeak-el-er+sein$ = $VInf-el-er$      | \
                      $VImp-el-er$
 
 % recyclen
-$VWeak-len$ = $VInf-len$   | \
-              $VPPres-len$ | \
-              $VPPast-len$ | \
-              $VPres-len$  | \
-              $VPast-len$  | \
-              $VImp-len$
+$VWeak-le$ = $VInf-le$   | \
+             $VPPres-le$ | \
+             $VPPast-le$ | \
+             $VPres-le$  | \
+             $VPast-le$  | \
+             $VImp-le$
 
-$VWeak-len+haben$ = $VInf-len$         | \
-                    $VPPres-len$       | \
-                    $VPPast-len+haben$ | \
-                    $VPres-len$        | \
-                    $VPast-len$        | \
-                    $VImp-len$
+$VWeak-le+haben$ = $VInf-le$         | \
+                   $VPPres-le$       | \
+                   $VPPast-le+haben$ | \
+                   $VPres-le$        | \
+                   $VPast-le$        | \
+                   $VImp-le$
 
-$VWeak-len+sein$ = $VInf-len$        | \
-                   $VPPres-len$      | \
-                   $VPPast-len+sein$ | \
-                   $VPres-len$       | \
-                   $VPast-len$       | \
-                   $VImp-len$
+$VWeak-le+sein$ = $VInf-le$        | \
+                  $VPPres-le$      | \
+                  $VPPast-le+sein$ | \
+                  $VPres-le$       | \
+                  $VPast-le$       | \
+                  $VImp-le$
 
 % designen
 $VWeak-signen$ = $VInf$          | \
@@ -2411,6 +2433,28 @@ $VWeak-signen+sein$ = $VInf$               | \
                       $VPres-signen$       | \
                       $VPast-signen$       | \
                       $VImp-signen$
+
+% faken; liken
+$VWeak-ak-ik$ = $VInf$        | \
+                $VPPres$      | \
+                $VPPastWeak$  | \
+                $VPres-ak-ik$ | \
+                $VPastWeak$   | \
+                $VImp-ak-ik$
+
+$VWeak-ak-ik+haben$ = $VInf$             | \
+                      $VPPres$           | \
+                      $VPPastWeak+haben$ | \
+                      $VPres-ak-ik$      | \
+                      $VPastWeak$        | \
+                      $VImp-ak-ik$
+
+$VWeak-ak-ik+sein$ = $VInf$            | \
+                     $VPPres$          | \
+                     $VPPastWeak+sein$ | \
+                     $VPres-ak-ik$     | \
+                     $VPastWeak$       | \
+                     $VImp-ak-ik$
 
 
 % adpositions
@@ -2838,9 +2882,10 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<RProNeutNomSg>          $RProNeutNomSg$          | \
          <>:<Roman>                  $Roman$                  | \
          <>:<VImp>                   $VImp$                   | \
+         <>:<VImp-ak-ik>             $VImp-ak-ik$               | \
          <>:<VImp-d-t>               $VImp-d-t$               | \
          <>:<VImp-el-er>             $VImp-el-er$             | \
-         <>:<VImp-len>               $VImp-len$               | \
+         <>:<VImp-le>                $VImp-le$                | \
          <>:<VImp-m-n>               $VImp-m-n$               | \
          <>:<VImpPl>                 $VImpPl$                 | \
          <>:<VImpPl-sein>            $VImpPl-sein$            | \
@@ -2848,13 +2893,13 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<VImpSg0>                $VImpSg0$                | \
          <>:<VInf>                   $VInf$                   | \
          <>:<VInf-el-er>             $VInf-el-er$             | \
-         <>:<VInf-len>               $VInf-len$               | \
+         <>:<VInf-le>                $VInf-le$                | \
          <>:<VInf_n>                 $VInf_n$                 | \
          <>:<VModPresIndSg>          $VModPresIndSg$          | \
          <>:<VModPresNonIndSg>       $VModPresNonIndSg$       | \
          <>:<VPart>                  $VPart$                  | \
          <>:<VPastInd-d-t_t>         $VPastInd-d-t_t$         | \
-         <>:<VPastInd-len>           $VPastInd-len$           | \
+         <>:<VPastInd-le>            $VPastInd-le$            | \
          <>:<VPastInd-werden>        $VPastInd-werden$        | \
          <>:<VPastIndPl-werden>      $VPastIndPl-werden$      | \
          <>:<VPastIndSg-ward>        $VPastIndSg-ward$        | \
@@ -2864,7 +2909,7 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<VPastStr>               $VPastStr$               | \
          <>:<VPastStr-s>             $VPastStr-s$             | \
          <>:<VPastSubj-haben>        $VPastSubj-haben$        | \
-         <>:<VPastSubj-len>          $VPastSubj-len$          | \
+         <>:<VPastSubj-le>           $VPastSubj-le$           | \
          <>:<VPastSubj2-sein>        $VPastSubj2-sein$        | \
          <>:<VPastSubjOld>           $VPastSubjOld$           | \
          <>:<VPastSubjStr>           $VPastSubjStr$           | \
@@ -2872,9 +2917,12 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<VPPast-d_t>             $VPPast-d_t$             | \
          <>:<VPPast-d_t><>:<haben>   $VPPast-d_t+haben$       | \
          <>:<VPPast-d_t><>:<sein>    $VPPast-d_t+sein$        | \
-         <>:<VPPast-len>             $VPPast-len$             | \
-         <>:<VPPast-len><>:<haben>   $VPPast-len+haben$       | \
-         <>:<VPPast-len><>:<sein>    $VPPast-len+sein$        | \
+         <>:<VPPast-le>              $VPPast-le$              | \
+         <>:<VPPast-le><>:<haben>    $VPPast-le+haben$        | \
+         <>:<VPPast-le><>:<sein>     $VPPast-le+sein$         | \
+         <>:<VPPast_ed>              $VPPast_ed$              | \
+         <>:<VPPast_ed><>:<haben>    $VPPast_ed+haben$        | \
+         <>:<VPPast_ed><>:<sein>     $VPPast_ed+sein$         | \
          <>:<VPPast_n>               $VPPast_n$               | \
          <>:<VPPast_n><>:<haben>     $VPPast_n+haben$         | \
          <>:<VPPast_n><>:<sein>      $VPPast_n+sein$          | \
@@ -2886,10 +2934,11 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<VPPastWeak><>:<sein>    $VPPastWeak+sein$        | \
          <>:<VPPres>                 $VPPres$                 | \
          <>:<VPPres-el-er>           $VPPres-el-er$           | \
-         <>:<VPPres-len>             $VPPres-len$             | \
+         <>:<VPPres-le>              $VPPres-le$              | \
          <>:<VPres>                  $VPres$                  | \
+         <>:<VPres-ak-ik>            $VPres-ak-ik$            | \
          <>:<VPres-el-er>            $VPres-el-er$            | \
-         <>:<VPres-len>              $VPres-len$              | \
+         <>:<VPres-le>               $VPres-le$               | \
          <>:<VPres-m-n>              $VPres-m-n$              | \
          <>:<VPres-s>                $VPres-s$                | \
          <>:<VPres-tun>              $VPres-tun$              | \
@@ -2908,24 +2957,27 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<VWeak>                  $VWeak$                  | \
          <>:<VWeak><>:<haben>        $VWeak+haben$            | \
          <>:<VWeak><>:<sein>         $VWeak+sein$             | \
+         <>:<VWeak-ak-ik>            $VWeak-ak-ik$            | \
+         <>:<VWeak-ak-ik><>:<haben>  $VWeak-ak-ik+haben$      | \
+         <>:<VWeak-ak-ik><>:<sein>   $VWeak-ak-ik+sein$       | \
          <>:<VWeak-d-t>              $VWeak-d-t$              | \
          <>:<VWeak-d-t><>:<haben>    $VWeak-d-t+haben$        | \
          <>:<VWeak-d-t><>:<sein>     $VWeak-d-t+sein$         | \
          <>:<VWeak-el-er>            $VWeak-el-er$            | \
          <>:<VWeak-el-er><>:<haben>  $VWeak-el-er+haben$      | \
          <>:<VWeak-el-er><>:<sein>   $VWeak-el-er+sein$       | \
-         <>:<VWeak-signen>           $VWeak-signen$           | \
-         <>:<VWeak-signen><>:<haben> $VWeak-signen+haben$     | \
-         <>:<VWeak-signen><>:<sein>  $VWeak-signen+sein$      | \
-         <>:<VWeak-signen>           $VWeak-signen$           | \
-         <>:<VWeak-len><>:<haben>    $VWeak-len+haben$        | \
-         <>:<VWeak-len><>:<sein>     $VWeak-len+sein$         | \
+         <>:<VWeak-le>               $VWeak-le$               | \
+         <>:<VWeak-le><>:<haben>     $VWeak-le+haben$         | \
+         <>:<VWeak-le><>:<sein>      $VWeak-le+sein$          | \
          <>:<VWeak-m-n>              $VWeak-m-n$              | \
          <>:<VWeak-m-n><>:<haben>    $VWeak-m-n+haben$        | \
          <>:<VWeak-m-n><>:<sein>     $VWeak-m-n+sein$         | \
          <>:<VWeak-s>                $VWeak-s$                | \
          <>:<VWeak-s><>:<haben>      $VWeak-s+haben$          | \
          <>:<VWeak-s><>:<sein>       $VWeak-s+sein$           | \
+         <>:<VWeak-signen>           $VWeak-signen$           | \
+         <>:<VWeak-signen><>:<haben> $VWeak-signen+haben$     | \
+         <>:<VWeak-signen><>:<sein>  $VWeak-signen+sein$      | \
          <>:<WAdv>                   $WAdv$                   | \
          <>:<W-welch>                $W-welch$                | \
          <>:<WProMascAccSg>          $WProMascAccSg$          | \

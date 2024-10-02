@@ -1,6 +1,6 @@
 % stemtype.fst
-% Version 4.5
-% Andreas Nolda 2024-03-22
+% Version 4.6
+% Andreas Nolda 2024-10-02
 
 #include "symbols.fst"
 
@@ -23,6 +23,7 @@ ALPHABET = [#char# #boundary-trigger#]
 
 $BaseStemFilterVPPast-t$ = <Stem> .* t
 $BaseStemFilterVPPast-n$ = <Stem> .* n
+$BaseStemFilterVPPast-d$ = <Stem> .* d
 
 ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# #feature#]
 

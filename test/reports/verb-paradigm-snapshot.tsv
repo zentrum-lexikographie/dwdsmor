@@ -389,6 +389,84 @@ downcyclen		2	V haben	2 Pl Subj FutPerf	werdet downgecyclet haben
 downcyclen		2	V haben	3 Pl Subj FutPerf	werden downgecyclet haben
 downcyclen		2	V haben	Sg Imp	downcycle
 downcyclen		2	V haben	Pl Imp	downcyclet
+faken			V haben	Inf Pres	faken
+faken			V haben	Inf Perf	gefaked haben, gefakt haben
+faken			V haben	Part Pres	fakend
+faken			V haben	Part Perf	gefaked, gefakt
+faken			V haben	1 Sg Ind Pres	fake
+faken			V haben	2 Sg Ind Pres	fakst
+faken			V haben	3 Sg Ind Pres	fakt
+faken			V haben	1 Pl Ind Pres	faken
+faken			V haben	2 Pl Ind Pres	fakt
+faken			V haben	3 Pl Ind Pres	faken
+faken			V haben	1 Sg Subj Pres	fake
+faken			V haben	2 Sg Subj Pres	fakest
+faken			V haben	3 Sg Subj Pres	fake
+faken			V haben	1 Pl Subj Pres	faken
+faken			V haben	2 Pl Subj Pres	faket
+faken			V haben	3 Pl Subj Pres	faken
+faken			V haben	1 Sg Ind Perf	habe gefaked, habe gefakt, hab gefaked (ugs.), hab gefakt (ugs.)
+faken			V haben	2 Sg Ind Perf	hast gefaked, hast gefakt
+faken			V haben	3 Sg Ind Perf	hat gefaked, hat gefakt
+faken			V haben	1 Pl Ind Perf	haben gefaked, haben gefakt
+faken			V haben	2 Pl Ind Perf	habt gefaked, habt gefakt
+faken			V haben	3 Pl Ind Perf	haben gefaked, haben gefakt
+faken			V haben	1 Sg Subj Perf	habe gefaked, habe gefakt
+faken			V haben	2 Sg Subj Perf	habest gefaked, habest gefakt
+faken			V haben	3 Sg Subj Perf	habe gefaked, habe gefakt
+faken			V haben	1 Pl Subj Perf	haben gefaked, haben gefakt
+faken			V haben	2 Pl Subj Perf	habet gefaked, habet gefakt
+faken			V haben	3 Pl Subj Perf	haben gefaked, haben gefakt
+faken			V haben	1 Sg Ind Past	fakte
+faken			V haben	2 Sg Ind Past	faktest
+faken			V haben	3 Sg Ind Past	fakte
+faken			V haben	1 Pl Ind Past	fakten
+faken			V haben	2 Pl Ind Past	faktet
+faken			V haben	3 Pl Ind Past	fakten
+faken			V haben	1 Sg Subj Past	fakte
+faken			V haben	2 Sg Subj Past	faktest
+faken			V haben	3 Sg Subj Past	fakte
+faken			V haben	1 Pl Subj Past	fakten
+faken			V haben	2 Pl Subj Past	faktet
+faken			V haben	3 Pl Subj Past	fakten
+faken			V haben	1 Sg Ind PastPerf	hatte gefaked, hatte gefakt
+faken			V haben	2 Sg Ind PastPerf	hattest gefaked, hattest gefakt
+faken			V haben	3 Sg Ind PastPerf	hatte gefaked, hatte gefakt
+faken			V haben	1 Pl Ind PastPerf	hatten gefaked, hatten gefakt
+faken			V haben	2 Pl Ind PastPerf	hattet gefaked, hattet gefakt
+faken			V haben	3 Pl Ind PastPerf	hatten gefaked, hatten gefakt
+faken			V haben	1 Sg Subj PastPerf	hätte gefaked, hätte gefakt
+faken			V haben	2 Sg Subj PastPerf	hättest gefaked, hättest gefakt
+faken			V haben	3 Sg Subj PastPerf	hätte gefaked, hätte gefakt
+faken			V haben	1 Pl Subj PastPerf	hätten gefaked, hätten gefakt
+faken			V haben	2 Pl Subj PastPerf	hättet gefaked, hättet gefakt
+faken			V haben	3 Pl Subj PastPerf	hätten gefaked, hätten gefakt
+faken			V haben	1 Sg Ind Fut	werde faken, werd faken (ugs.)
+faken			V haben	2 Sg Ind Fut	wirst faken
+faken			V haben	3 Sg Ind Fut	wird faken
+faken			V haben	1 Pl Ind Fut	werden faken
+faken			V haben	2 Pl Ind Fut	werdet faken
+faken			V haben	3 Pl Ind Fut	werden faken
+faken			V haben	1 Sg Subj Fut	werde faken
+faken			V haben	2 Sg Subj Fut	werdest faken
+faken			V haben	3 Sg Subj Fut	werde faken
+faken			V haben	1 Pl Subj Fut	werden faken
+faken			V haben	2 Pl Subj Fut	werdet faken
+faken			V haben	3 Pl Subj Fut	werden faken
+faken			V haben	1 Sg Ind FutPerf	werde gefaked haben, werde gefakt haben, werd gefaked haben (ugs.), werd gefakt haben (ugs.)
+faken			V haben	2 Sg Ind FutPerf	wirst gefaked haben, wirst gefakt haben
+faken			V haben	3 Sg Ind FutPerf	wird gefaked haben, wird gefakt haben
+faken			V haben	1 Pl Ind FutPerf	werden gefaked haben, werden gefakt haben
+faken			V haben	2 Pl Ind FutPerf	werdet gefaked haben, werdet gefakt haben
+faken			V haben	3 Pl Ind FutPerf	werden gefaked haben, werden gefakt haben
+faken			V haben	1 Sg Subj FutPerf	werde gefaked haben, werde gefakt haben
+faken			V haben	2 Sg Subj FutPerf	werdest gefaked haben, werdest gefakt haben
+faken			V haben	3 Sg Subj FutPerf	werde gefaked haben, werde gefakt haben
+faken			V haben	1 Pl Subj FutPerf	werden gefaked haben, werden gefakt haben
+faken			V haben	2 Pl Subj FutPerf	werdet gefaked haben, werdet gefakt haben
+faken			V haben	3 Pl Subj FutPerf	werden gefaked haben, werden gefakt haben
+faken			V haben	Sg Imp	fake
+faken			V haben	Pl Imp	fakt
 gehen			V sein	Inf Pres	gehen
 gehen			V sein	Inf Perf	gegangen sein
 gehen			V sein	Part Pres	gehend
@@ -1557,6 +1635,84 @@ lesen	2		V haben	2 Pl Subj FutPerf	werdet gelesen haben
 lesen	2		V haben	3 Pl Subj FutPerf	werden gelesen haben
 lesen	2		V haben	Sg Imp	lies
 lesen	2		V haben	Pl Imp	lest
+liken			V haben	Inf Pres	liken
+liken			V haben	Inf Perf	gelikt haben
+liken			V haben	Part Pres	likend
+liken			V haben	Part Perf	gelikt
+liken			V haben	1 Sg Ind Pres	like
+liken			V haben	2 Sg Ind Pres	likst
+liken			V haben	3 Sg Ind Pres	likt
+liken			V haben	1 Pl Ind Pres	liken
+liken			V haben	2 Pl Ind Pres	likt
+liken			V haben	3 Pl Ind Pres	liken
+liken			V haben	1 Sg Subj Pres	like
+liken			V haben	2 Sg Subj Pres	likest
+liken			V haben	3 Sg Subj Pres	like
+liken			V haben	1 Pl Subj Pres	liken
+liken			V haben	2 Pl Subj Pres	liket
+liken			V haben	3 Pl Subj Pres	liken
+liken			V haben	1 Sg Ind Perf	habe gelikt, hab gelikt (ugs.)
+liken			V haben	2 Sg Ind Perf	hast gelikt
+liken			V haben	3 Sg Ind Perf	hat gelikt
+liken			V haben	1 Pl Ind Perf	haben gelikt
+liken			V haben	2 Pl Ind Perf	habt gelikt
+liken			V haben	3 Pl Ind Perf	haben gelikt
+liken			V haben	1 Sg Subj Perf	habe gelikt
+liken			V haben	2 Sg Subj Perf	habest gelikt
+liken			V haben	3 Sg Subj Perf	habe gelikt
+liken			V haben	1 Pl Subj Perf	haben gelikt
+liken			V haben	2 Pl Subj Perf	habet gelikt
+liken			V haben	3 Pl Subj Perf	haben gelikt
+liken			V haben	1 Sg Ind Past	likte
+liken			V haben	2 Sg Ind Past	liktest
+liken			V haben	3 Sg Ind Past	likte
+liken			V haben	1 Pl Ind Past	likten
+liken			V haben	2 Pl Ind Past	liktet
+liken			V haben	3 Pl Ind Past	likten
+liken			V haben	1 Sg Subj Past	likte
+liken			V haben	2 Sg Subj Past	liktest
+liken			V haben	3 Sg Subj Past	likte
+liken			V haben	1 Pl Subj Past	likten
+liken			V haben	2 Pl Subj Past	liktet
+liken			V haben	3 Pl Subj Past	likten
+liken			V haben	1 Sg Ind PastPerf	hatte gelikt
+liken			V haben	2 Sg Ind PastPerf	hattest gelikt
+liken			V haben	3 Sg Ind PastPerf	hatte gelikt
+liken			V haben	1 Pl Ind PastPerf	hatten gelikt
+liken			V haben	2 Pl Ind PastPerf	hattet gelikt
+liken			V haben	3 Pl Ind PastPerf	hatten gelikt
+liken			V haben	1 Sg Subj PastPerf	hätte gelikt
+liken			V haben	2 Sg Subj PastPerf	hättest gelikt
+liken			V haben	3 Sg Subj PastPerf	hätte gelikt
+liken			V haben	1 Pl Subj PastPerf	hätten gelikt
+liken			V haben	2 Pl Subj PastPerf	hättet gelikt
+liken			V haben	3 Pl Subj PastPerf	hätten gelikt
+liken			V haben	1 Sg Ind Fut	werde liken, werd liken (ugs.)
+liken			V haben	2 Sg Ind Fut	wirst liken
+liken			V haben	3 Sg Ind Fut	wird liken
+liken			V haben	1 Pl Ind Fut	werden liken
+liken			V haben	2 Pl Ind Fut	werdet liken
+liken			V haben	3 Pl Ind Fut	werden liken
+liken			V haben	1 Sg Subj Fut	werde liken
+liken			V haben	2 Sg Subj Fut	werdest liken
+liken			V haben	3 Sg Subj Fut	werde liken
+liken			V haben	1 Pl Subj Fut	werden liken
+liken			V haben	2 Pl Subj Fut	werdet liken
+liken			V haben	3 Pl Subj Fut	werden liken
+liken			V haben	1 Sg Ind FutPerf	werde gelikt haben, werd gelikt haben (ugs.)
+liken			V haben	2 Sg Ind FutPerf	wirst gelikt haben
+liken			V haben	3 Sg Ind FutPerf	wird gelikt haben
+liken			V haben	1 Pl Ind FutPerf	werden gelikt haben
+liken			V haben	2 Pl Ind FutPerf	werdet gelikt haben
+liken			V haben	3 Pl Ind FutPerf	werden gelikt haben
+liken			V haben	1 Sg Subj FutPerf	werde gelikt haben
+liken			V haben	2 Sg Subj FutPerf	werdest gelikt haben
+liken			V haben	3 Sg Subj FutPerf	werde gelikt haben
+liken			V haben	1 Pl Subj FutPerf	werden gelikt haben
+liken			V haben	2 Pl Subj FutPerf	werdet gelikt haben
+liken			V haben	3 Pl Subj FutPerf	werden gelikt haben
+liken			V haben	Sg Imp	like
+liken			V haben	Pl Imp	likt
 notwassern			V haben	Inf Pres	notwassern
 notwassern			V haben	Inf Perf	notgewassert haben
 notwassern			V haben	Part Pres	notwassernd

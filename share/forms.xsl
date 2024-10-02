@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 6.4 -->
-<!-- Andreas Nolda 2024-09-27 -->
+<!-- Version 7.0 -->
+<!-- Andreas Nolda 2024-10-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -174,6 +174,15 @@
     <xsl:when test="matches($form,'^.*[cgp]let$')">
       <xsl:value-of select="replace($form,'t$','')"/>
     </xsl:when>
+    <!-- weak forms with "-ed" suffix and "ge-" prefix -->
+    <xsl:when test="matches($form,'^ge.+ed$') and
+                    not(matches($form,concat('^',substring($lemma,1,3))))">
+      <xsl:value-of select="replace($form,'^ge(.+)ed$','$1')"/>
+    </xsl:when>
+    <!-- weak forms with "-ed" suffix and without "ge-" prefix -->
+    <xsl:when test="matches($form,'^.+ed$')">
+      <xsl:value-of select="replace($form,'ed$','')"/>
+    </xsl:when>
     <!-- other weak forms with "ge-" prefix -->
     <xsl:when test="matches($form,'^ge.+?e?t$') and
                     not(matches($form,concat('^',substring($lemma,1,3))))">
@@ -212,7 +221,7 @@
                       select="$lemma"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:if test="matches($form,concat('^ge',$participle-stem,'e?[nt]$'))">
+  <xsl:if test="matches($form,concat('^ge',$participle-stem,'(e?[nt]|ed)$'))">
     <xsl:text>&lt;ge&gt;</xsl:text>
   </xsl:if>
 </xsl:template>

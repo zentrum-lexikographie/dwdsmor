@@ -2,7 +2,11 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2024-10-02:
 
-* add inflection class `VWeak-signen`
+* rename inflection classes `VWeak-len`, `VInf-len`, `VPPres-len`, `VPPast-len`,
+  `VPres-len`, `VPastInd-len`, `VPastSubj-len`, and `VImp-len` to `VWeak-le`,
+  `VInf-le`, `VPPres-le`, `VPPast-le`, `VPres-le`, `VPastInd-le`,
+  `VPastSubj-le`, and `VImp-le`, respectively
+* add inflection classes `VWeak-signen`, `VWeak-ak-ik`, and `VPPast_ed`
 
 2024-10-01:
 
