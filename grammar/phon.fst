@@ -185,7 +185,7 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
             #category# #feature# #info#] \
            <ins(e)>:e
 
-$PhonEEpenthesis3$ = (([dt]m? | sm | tw) <SB>) <ins(e)> <=> e
+$PhonEEpenthesis3$ = (([dt]m? | s[mn] | tw) <SB>) <ins(e)> <=> e
 
 $PhonEEpenthesis$ = $PhonEEpenthesis1$ || \
                     $PhonEEpenthesis2$ || \
