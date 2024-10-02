@@ -1,6 +1,6 @@
 % infl.fst
-% Version 9.1
-% Andreas Nolda 2024-10-01
+% Version 9.2
+% Andreas Nolda 2024-10-02
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1892,6 +1892,12 @@ $VPPast-len+haben$ = $VPPastSuff_t$ $haben$
 
 $VPPast-len+sein$ = $VPPastSuff_t$ $sein$
 
+$VPPast-signen$ = $VPPastSuff_t$
+
+$VPPast-signen+haben$ = $VPPastSuff_t$ $haben$
+
+$VPPast-signen+sein$ = $VPPastSuff_t$ $sein$
+
 $VPresInd1SgSuff_0$ = {<+V><1><Sg><Pres><Ind>}:{}
 
 $VPresInd1SgNonStSuff_0$ = {<+V><1><Sg><Pres><Ind><NonSt>}:{} % cf. Duden-Grammatik (2016: § 622)
@@ -1918,6 +1924,10 @@ $VPresIndPlSuff$ = {<+V><1><Pl><Pres><Ind>}:{<SB>en}        | \
 $VPresIndPlSuff-tun$ = {<+V><1><Pl><Pres><Ind>}:{<SB>n} | \
                        {<+V><2><Pl><Pres><Ind>}:{<SB>t} | \
                        {<+V><3><Pl><Pres><Ind>}:{<SB>n}
+
+$VPresIndPlSuff-signen$ = {<+V><1><Pl><Pres><Ind>}:{<SB>en} | \
+                          {<+V><2><Pl><Pres><Ind>}:{<SB>t}  | \
+                          {<+V><3><Pl><Pres><Ind>}:{<SB>en}
 
 $VPresInd13PlSuff-sein$ = {<+V><1><Pl><Pres><Ind>}:{} | \
                           {<+V><3><Pl><Pres><Ind>}:{}
@@ -1980,6 +1990,12 @@ $VPres-len$ = $VPresInd1SgSuff_0$  | \
               $VPresInd3SgSuff_t$  | \
               $VPresIndPlSuff-tun$ | \
               $VPresSubjSuff-len$
+
+$VPres-signen$ = $VPresInd1SgSuff_e$     | \
+                 $VPresInd2SgSuff_st$    | \
+                 $VPresInd3SgSuff_t$     | \
+                 $VPresIndPlSuff-signen$ | \
+                 $VPresSubjSuff$
 
 % siehst, sieht
 % läufst, läuft
@@ -2121,6 +2137,9 @@ $VPastWeak$ = $VPastIndWeakSuff_et$ | \
 $VPast-len$ = $VPastIndWeakSuff_t$ | \
               $VPastSubjWeakSuff_t$
 
+$VPast-signen$ = $VPastIndWeakSuff_t$ | \
+                 $VPastSubjWeakSuff_t$
+
 % dachte, dachtest, dachte, dachten, dachtet, dachten
 % konnte, konntest, konnte, konnten, konntet, konnten
 % wusste, wusstest, wusste, wussten, wusstet, wussten
@@ -2187,7 +2206,9 @@ $VImpSgNonStSuff_0$ = {<+V><Imp><Sg><NonSt>}:{<rm|Imp>} % cf. Duden-Grammatik (2
 
 $VImpSgSuff_e$ = {<+V><Imp><Sg>}:{<SB>e<rm|Imp>}
 
-$VImpPlSuff_t$ = {<+V><Imp><Pl>}:{<SB><ins(e)>t<rm|Imp>}
+$VImpPlSuff_et$ = {<+V><Imp><Pl>}:{<SB><ins(e)>t<rm|Imp>}
+
+$VImpPlSuff_t$ = {<+V><Imp><Pl>}:{<SB>t<rm|Imp>}
 
 $VImpPlSuff-sein$ = {<+V><Imp><Pl>}:{<rm|Imp>}
 
@@ -2206,10 +2227,12 @@ $VImpSg-m-n$ = $VImpSgSuff_e$
 $VImpSg-len$ = $VImpSgSuff_0$
 
 % seht; tut
-$VImpPl$ = $VImpPlSuff_t$
+$VImpPl$ = $VImpPlSuff_et$
 
 % seid
 $VImpPl-sein$ = $VImpPlSuff-sein$
+
+$VImpPl-signen$ = $VImpPlSuff_t$
 
 % geh(e), geht
 % hab(e), habt
@@ -2231,6 +2254,9 @@ $VImp-el-er$ = $VImpSg-d-t$ | \
 % downcycle, downcyclet
 $VImp-len$ = $VImpSg-len$ | \
              $VImpPl$
+
+$VImp-signen$ = $VImpSg$ | \
+                $VImpPl-signen$
 
 % lieben; spielen
 $VWeak$ = $VInf$       | \
@@ -2343,26 +2369,48 @@ $VWeak-el-er+sein$ = $VInf-el-er$      | \
                      $VImp-el-er$
 
 % recyclen
-$VWeak-len$ = $VInf-len$       | \
-              $VPPres-len$     | \
+$VWeak-len$ = $VInf-len$   | \
+              $VPPres-len$ | \
               $VPPast-len$ | \
               $VPres-len$  | \
               $VPast-len$  | \
               $VImp-len$
 
-$VWeak-len+haben$ = $VInf-len$             | \
-                    $VPPres-len$           | \
+$VWeak-len+haben$ = $VInf-len$         | \
+                    $VPPres-len$       | \
                     $VPPast-len+haben$ | \
                     $VPres-len$        | \
                     $VPast-len$        | \
                     $VImp-len$
 
-$VWeak-len+sein$ = $VInf-len$            | \
-                   $VPPres-len$          | \
+$VWeak-len+sein$ = $VInf-len$        | \
+                   $VPPres-len$      | \
                    $VPPast-len+sein$ | \
                    $VPres-len$       | \
                    $VPast-len$       | \
                    $VImp-len$
+
+% designen
+$VWeak-signen$ = $VInf$          | \
+                 $VPPres$        | \
+                 $VPPast-signen$ | \
+                 $VPres-signen$  | \
+                 $VPast-signen$  | \
+                 $VImp-signen$
+
+$VWeak-signen+haben$ = $VInf$                | \
+                       $VPPres$              | \
+                       $VPPast-signen+haben$ | \
+                       $VPres-signen$        | \
+                       $VPast-signen$        | \
+                       $VImp-signen$
+
+$VWeak-signen+sein$ = $VInf$               | \
+                      $VPPres$             | \
+                      $VPPast-signen+sein$ | \
+                      $VPres-signen$       | \
+                      $VPast-signen$       | \
+                      $VImp-signen$
 
 
 % adpositions
@@ -2866,7 +2914,10 @@ $INFL$ = <>:<AbbrAdj>                $AbbrAdj$                | \
          <>:<VWeak-el-er>            $VWeak-el-er$            | \
          <>:<VWeak-el-er><>:<haben>  $VWeak-el-er+haben$      | \
          <>:<VWeak-el-er><>:<sein>   $VWeak-el-er+sein$       | \
-         <>:<VWeak-len>              $VWeak-len$              | \
+         <>:<VWeak-signen>           $VWeak-signen$           | \
+         <>:<VWeak-signen><>:<haben> $VWeak-signen+haben$     | \
+         <>:<VWeak-signen><>:<sein>  $VWeak-signen+sein$      | \
+         <>:<VWeak-signen>           $VWeak-signen$           | \
          <>:<VWeak-len><>:<haben>    $VWeak-len+haben$        | \
          <>:<VWeak-len><>:<sein>     $VWeak-len+sein$         | \
          <>:<VWeak-m-n>              $VWeak-m-n$              | \

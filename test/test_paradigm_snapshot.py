@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-10-01
+# Andreas Nolda 2024-10-02
 
 import io
 import csv
@@ -295,6 +295,7 @@ VERB_POS = "V"
 VERB_LEMMAS = ["spielen",     # VWeak
                "segeln",      # VWeak-el-er
                "recyclen",    # VWeak-len
+               "designen",    # VWeak-signen
                "arbeiten",    # VWeak-d-t
                "atmen",       # VWeak-m-n
                "küssen",      # VWeak-s

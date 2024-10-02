@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 16.3 -->
-<!-- Andreas Nolda 2024-10-01 -->
+<!-- Version 16.4 -->
+<!-- Andreas Nolda 2024-10-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -6130,6 +6130,32 @@
                   <xsl:with-param name="particle2"
                                   select="$particle2"/>
                   <xsl:with-param name="class">VWeak-len</xsl:with-param>
+                  <xsl:with-param name="auxiliary"
+                                  select="$auxiliary"/>
+                  <xsl:with-param name="etymology"
+                                  select="$etymology"/>
+                </xsl:call-template>
+              </xsl:when>
+              <!-- regular verbs ending in "signen" -->
+              <xsl:when test="ends-with($lemma-without-particle,'signen')">
+                <xsl:call-template name="verb-stem-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma-without-particle"/>
+                  <xsl:with-param name="lemma-index"
+                                  select="$lemma-index"/>
+                  <xsl:with-param name="paradigm-index"
+                                  select="$paradigm-index"/>
+                  <xsl:with-param name="stem"
+                                  select="$stem"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
+                  <xsl:with-param name="participle"
+                                  select="$participle-without-particle"/>
+                  <xsl:with-param name="particle"
+                                  select="$particle"/>
+                  <xsl:with-param name="particle2"
+                                  select="$particle2"/>
+                  <xsl:with-param name="class">VWeak-signen</xsl:with-param>
                   <xsl:with-param name="auxiliary"
                                   select="$auxiliary"/>
                   <xsl:with-param name="etymology"

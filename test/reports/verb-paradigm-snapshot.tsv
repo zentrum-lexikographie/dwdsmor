@@ -233,6 +233,84 @@ denken			V haben	2 Pl Subj FutPerf	werdet gedacht haben
 denken			V haben	3 Pl Subj FutPerf	werden gedacht haben
 denken			V haben	Sg Imp	denk, denke
 denken			V haben	Pl Imp	denkt
+designen			V haben	Inf Pres	designen
+designen			V haben	Inf Perf	designt haben
+designen			V haben	Part Pres	designend
+designen			V haben	Part Perf	designt
+designen			V haben	1 Sg Ind Pres	designe
+designen			V haben	2 Sg Ind Pres	designst
+designen			V haben	3 Sg Ind Pres	designt
+designen			V haben	1 Pl Ind Pres	designen
+designen			V haben	2 Pl Ind Pres	designt
+designen			V haben	3 Pl Ind Pres	designen
+designen			V haben	1 Sg Subj Pres	designe
+designen			V haben	2 Sg Subj Pres	designest
+designen			V haben	3 Sg Subj Pres	designe
+designen			V haben	1 Pl Subj Pres	designen
+designen			V haben	2 Pl Subj Pres	designet
+designen			V haben	3 Pl Subj Pres	designen
+designen			V haben	1 Sg Ind Perf	habe designt, hab designt (ugs.)
+designen			V haben	2 Sg Ind Perf	hast designt
+designen			V haben	3 Sg Ind Perf	hat designt
+designen			V haben	1 Pl Ind Perf	haben designt
+designen			V haben	2 Pl Ind Perf	habt designt
+designen			V haben	3 Pl Ind Perf	haben designt
+designen			V haben	1 Sg Subj Perf	habe designt
+designen			V haben	2 Sg Subj Perf	habest designt
+designen			V haben	3 Sg Subj Perf	habe designt
+designen			V haben	1 Pl Subj Perf	haben designt
+designen			V haben	2 Pl Subj Perf	habet designt
+designen			V haben	3 Pl Subj Perf	haben designt
+designen			V haben	1 Sg Ind Past	designte
+designen			V haben	2 Sg Ind Past	designtest
+designen			V haben	3 Sg Ind Past	designte
+designen			V haben	1 Pl Ind Past	designten
+designen			V haben	2 Pl Ind Past	designtet
+designen			V haben	3 Pl Ind Past	designten
+designen			V haben	1 Sg Subj Past	designte
+designen			V haben	2 Sg Subj Past	designtest
+designen			V haben	3 Sg Subj Past	designte
+designen			V haben	1 Pl Subj Past	designten
+designen			V haben	2 Pl Subj Past	designtet
+designen			V haben	3 Pl Subj Past	designten
+designen			V haben	1 Sg Ind PastPerf	hatte designt
+designen			V haben	2 Sg Ind PastPerf	hattest designt
+designen			V haben	3 Sg Ind PastPerf	hatte designt
+designen			V haben	1 Pl Ind PastPerf	hatten designt
+designen			V haben	2 Pl Ind PastPerf	hattet designt
+designen			V haben	3 Pl Ind PastPerf	hatten designt
+designen			V haben	1 Sg Subj PastPerf	hätte designt
+designen			V haben	2 Sg Subj PastPerf	hättest designt
+designen			V haben	3 Sg Subj PastPerf	hätte designt
+designen			V haben	1 Pl Subj PastPerf	hätten designt
+designen			V haben	2 Pl Subj PastPerf	hättet designt
+designen			V haben	3 Pl Subj PastPerf	hätten designt
+designen			V haben	1 Sg Ind Fut	werde designen, werd designen (ugs.)
+designen			V haben	2 Sg Ind Fut	wirst designen
+designen			V haben	3 Sg Ind Fut	wird designen
+designen			V haben	1 Pl Ind Fut	werden designen
+designen			V haben	2 Pl Ind Fut	werdet designen
+designen			V haben	3 Pl Ind Fut	werden designen
+designen			V haben	1 Sg Subj Fut	werde designen
+designen			V haben	2 Sg Subj Fut	werdest designen
+designen			V haben	3 Sg Subj Fut	werde designen
+designen			V haben	1 Pl Subj Fut	werden designen
+designen			V haben	2 Pl Subj Fut	werdet designen
+designen			V haben	3 Pl Subj Fut	werden designen
+designen			V haben	1 Sg Ind FutPerf	werde designt haben, werd designt haben (ugs.)
+designen			V haben	2 Sg Ind FutPerf	wirst designt haben
+designen			V haben	3 Sg Ind FutPerf	wird designt haben
+designen			V haben	1 Pl Ind FutPerf	werden designt haben
+designen			V haben	2 Pl Ind FutPerf	werdet designt haben
+designen			V haben	3 Pl Ind FutPerf	werden designt haben
+designen			V haben	1 Sg Subj FutPerf	werde designt haben
+designen			V haben	2 Sg Subj FutPerf	werdest designt haben
+designen			V haben	3 Sg Subj FutPerf	werde designt haben
+designen			V haben	1 Pl Subj FutPerf	werden designt haben
+designen			V haben	2 Pl Subj FutPerf	werdet designt haben
+designen			V haben	3 Pl Subj FutPerf	werden designt haben
+designen			V haben	Sg Imp	design, designe
+designen			V haben	Pl Imp	designt
 downcyclen		2	V haben	Inf Pres	downcyclen
 downcyclen		2	V haben	Inf Perf	downgecyclet haben
 downcyclen		2	V haben	Part Pres	downcyclend

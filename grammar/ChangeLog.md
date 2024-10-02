@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-10-02:
+
+* add inflection class `VWeak-signen`
+
 2024-10-01:
 
 * rename inflection classes `NMasc/Sg_0`, `NMasc/Sg_es`, `NMasc/Sg_s`,

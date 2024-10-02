@@ -1,3 +1,7 @@
+2024-10-02:
+
+* add support for "designen"
+
 2024-09-30:
 
 * ignore nouns with undetermined gender
