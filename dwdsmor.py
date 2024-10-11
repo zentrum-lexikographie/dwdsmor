@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2024-09-24
+# Gregor Middell and Andreas Nolda 2024-10-11
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -18,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 10.1
+version = 11.0
 
 
 BASEDIR = path.dirname(__file__)
@@ -32,12 +32,12 @@ LIBFILE2 = path.join(LIBDIR, "dwdsmor-morph.a")
 
 BOUNDARIES_INFL = ["<~>"]
 
-BOUNDARIES_WF = ["<#>", "<->"]
+BOUNDARIES_WF = ["<#>", "<->", "<|>"]
 
 
 PROCESSES = ["COMP", "DER", "CONV"]
 
-MEANS = ["concat", "hyph", "ident", "part", "pref", "suff"]
+MEANS = ["concat", "hyph", "ident", "pref", "prev", "suff"]
 
 
 LABEL_MAP = {"word": "Wordform",
@@ -58,8 +58,8 @@ LABEL_MAP = {"word": "Wordform",
                           "case": "Case",
                           "number": "Number",
                           "inflection": "Inflection",
-                          "function": "Function",
                           "nonfinite": "Nonfinite",
+                          "function": "Function",
                           "mood": "Mood",
                           "tense": "Tense",
                           "metainfo": "Metalinguistic",
@@ -125,8 +125,8 @@ class Analysis(tuple):
             return "∘".join(tag for tag in reversed(self.tags) if re.sub(r"(?:\(.+\))?(?:\|.+)?", "", tag) in MEANS)
 
     _subcat_tags = {"Pers": True, "Refl": True, "Rec": True, "Def": True, "Indef": True, "Neg": True,
-                    "Coord": True, "Sub": True, "Compar": True, "Comma": True, "Period": True,
-                    "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True, "Other": True}
+                    "Coord": True, "Sub": True, "InfCl": True, "AdjPos": True, "AdjComp": True, "AdjSup": True,
+                    "Comma": True, "Period": True, "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True, "Other": True}
 
     _auxiliary_tags = {"haben": True, "sein": True}
 
@@ -142,13 +142,13 @@ class Analysis(tuple):
 
     _inflection_tags = {"St": True, "Wk": True, "NoInfl": True, "Invar": True}
 
-    _function_tags = {"Attr": True, "Subst": True, "Attr/Subst": True, "Pred/Adv": True, "Invar": True}
+    _nonfinite_tags = {"Inf": True, "Part": True, "Invar": True}
 
-    _nonfinite_tags = {"Inf": True, "PPres": True, "PPast": True, "zu": True, "Invar": True}
+    _function_tags = {"Attr": True, "Subst": True, "Attr/Subst": True, "Pred/Adv": True, "Cl": True, "NonCl": True, "Invar": True}
 
     _mood_tags = {"Ind": True, "Subj": True, "Imp": True, "Invar": True}
 
-    _tense_tags = {"Pres": True, "Past": True, "Invar": True}
+    _tense_tags = {"Pres": True, "Past": True, "Perf": True, "Invar": True}
 
     _metainfo_tags = {"Old": True, "NonSt": True}
 
@@ -204,13 +204,13 @@ class Analysis(tuple):
         return tag
 
     @cached_property
-    def function(self):
-        tag = self.tag_of_type(Analysis._function_tags)
+    def nonfinite(self):
+        tag = self.tag_of_type(Analysis._nonfinite_tags)
         return tag
 
     @cached_property
-    def nonfinite(self):
-        tag = self.tag_of_type(Analysis._nonfinite_tags)
+    def function(self):
+        tag = self.tag_of_type(Analysis._function_tags)
         return tag
 
     @cached_property
@@ -260,8 +260,8 @@ class Analysis(tuple):
                     "case": self.case,
                     "number": self.number,
                     "inflection": self.inflection,
-                    "function": self.function,
                     "nonfinite": self.nonfinite,
+                    "function": self.function,
                     "mood": self.mood,
                     "tense": self.tense,
                     "metainfo": self.metainfo,
@@ -467,8 +467,8 @@ def output_dsv(word_analyses, output_file, keys, analyses_keys,
                                "case": plain,
                                "number": plain,
                                "inflection": plain,
-                               "function": plain,
                                "nonfinite": plain,
+                               "function": plain,
                                "mood": plain,
                                "tense": plain,
                                "metainfo": plain,
@@ -565,13 +565,13 @@ def output_analyses(transducer, transducer2, input_file, output_file,
                 analyses_keys.remove("means")
 
             if not empty:
-                keys_with_values = {key for word_analyses_dict in word_analyses
-                                    for key, value in word_analyses_dict.items()
-                                    if isinstance(value, str)}
-                analyses_keys_with_values = {key for word_analyses_dict in word_analyses
-                                             for analysis in word_analyses_dict["analyses"]
-                                             for key, value in analysis.items()
-                                             if isinstance(value, (str, int))}
+                keys_with_values = set([key for word_analyses_dict in word_analyses
+                                        for key, value in word_analyses_dict.items()
+                                        if isinstance(value, str)])
+                analyses_keys_with_values = set([key for word_analyses_dict in word_analyses
+                                                 for analysis in word_analyses_dict["analyses"]
+                                                 for key, value in analysis.items()
+                                                 if isinstance(value, (str, int))])
                 keys = [key for key in keys if key in keys_with_values]
                 analyses_keys = [key for key in analyses_keys if key in analyses_keys_with_values]
 

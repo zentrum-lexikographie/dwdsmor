@@ -1,3 +1,7 @@
+2024-10-11:
+
+* improve support for clausal infinitives with "zu"
+
 2024-10-02:
 
 * add support for "liken", "faken", and related verbs

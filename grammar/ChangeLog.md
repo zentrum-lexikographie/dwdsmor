@@ -1,5 +1,29 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-10-11:
+
+* rename inflection tags `<PPres>` and `<PPast>` to `<Part><Pres>` and
+  `<Part><Pref>`, respectively
+* rename inflection classes `VPPres`, `VPPres-el-er`, `VPPres-le`, `VPPastWeak`,
+  `VPPastStr`, `VPPast-d_t`, `VPPast-le`, `VPPast_n`, and `VPPast_ed` to
+  `VPartPres`, `VPartPres-el-er`, `VPartPres-le`, `VPartPerfWeak`,
+  `VPartPerfStr`, `VPartPerf-d_t`, `VPartPerf-le`, `VPartPerf_n`, and
+  `VPartPerf_ed`, respectively
+* rename pos tag `<+VPART>` to `<+PREV>` ('preverb')
+* rename inflection class `VPart` to `Prev`
+* add inflection tag `<NonCl>` ('non-clausal')
+* rename inflection tag `<zu>` to `<Cl>` ('clausal')
+* rename subcategory tags `<zu>` and `<Inf>` to `<InfCl>`
+* rename inflection classes `Ptcl-zu` and `ConjInf` to `PtclInfCl` and `ConjInfCl`
+* rename subcategory tags `<Adj>` and `<Compar>` to `<AdjPos>` and `<AdjComp>`,
+  respectively
+* rename inflection classes `PtclAdj` and `ConjCompar` to `PtclAdjPos` and
+  `ConjAdjComp`, respectively
+* add subcategory tag `<AdjSup>` and inflection class `PtclAdjSup`
+* remove unused inflection class `PIndInvar`
+* exclude clausal present participles with "zu" unless used as conversion bases
+* use `<|>` as morpheme-boundary marker after separable preverbs
+
 2024-10-02:
 
 * rename inflection classes `VWeak-len`, `VInf-len`, `VPPres-len`, `VPPast-len`,

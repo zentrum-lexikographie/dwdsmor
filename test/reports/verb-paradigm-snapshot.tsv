@@ -1,6 +1,8 @@
 Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
-arbeiten			V haben	Inf Pres	arbeiten
-arbeiten			V haben	Inf Perf	gearbeitet haben
+arbeiten			V haben	Inf NonCl Pres	arbeiten
+arbeiten			V haben	Inf Cl Pres	zu arbeiten
+arbeiten			V haben	Inf NonCl Perf	gearbeitet haben
+arbeiten			V haben	Inf Cl Perf	gearbeitet zu haben
 arbeiten			V haben	Part Pres	arbeitend
 arbeiten			V haben	Part Perf	gearbeitet
 arbeiten			V haben	1 Sg Ind Pres	arbeite, arbeit (ugs.)
@@ -77,8 +79,10 @@ arbeiten			V haben	2 Pl Subj FutPerf	werdet gearbeitet haben
 arbeiten			V haben	3 Pl Subj FutPerf	werden gearbeitet haben
 arbeiten			V haben	Sg Imp	arbeite, arbeit (ugs.)
 arbeiten			V haben	Pl Imp	arbeitet
-atmen			V haben	Inf Pres	atmen
-atmen			V haben	Inf Perf	geatmet haben
+atmen			V haben	Inf NonCl Pres	atmen
+atmen			V haben	Inf Cl Pres	zu atmen
+atmen			V haben	Inf NonCl Perf	geatmet haben
+atmen			V haben	Inf Cl Perf	geatmet zu haben
 atmen			V haben	Part Pres	atmend
 atmen			V haben	Part Perf	geatmet
 atmen			V haben	1 Sg Ind Pres	atme
@@ -155,8 +159,10 @@ atmen			V haben	2 Pl Subj FutPerf	werdet geatmet haben
 atmen			V haben	3 Pl Subj FutPerf	werden geatmet haben
 atmen			V haben	Sg Imp	atme
 atmen			V haben	Pl Imp	atmet
-denken			V haben	Inf Pres	denken
-denken			V haben	Inf Perf	gedacht haben
+denken			V haben	Inf NonCl Pres	denken
+denken			V haben	Inf Cl Pres	zu denken
+denken			V haben	Inf NonCl Perf	gedacht haben
+denken			V haben	Inf Cl Perf	gedacht zu haben
 denken			V haben	Part Pres	denkend
 denken			V haben	Part Perf	gedacht
 denken			V haben	1 Sg Ind Pres	denke, denk (ugs.)
@@ -233,8 +239,10 @@ denken			V haben	2 Pl Subj FutPerf	werdet gedacht haben
 denken			V haben	3 Pl Subj FutPerf	werden gedacht haben
 denken			V haben	Sg Imp	denk, denke
 denken			V haben	Pl Imp	denkt
-designen			V haben	Inf Pres	designen
-designen			V haben	Inf Perf	designt haben
+designen			V haben	Inf NonCl Pres	designen
+designen			V haben	Inf Cl Pres	zu designen
+designen			V haben	Inf NonCl Perf	designt haben
+designen			V haben	Inf Cl Perf	designt zu haben
 designen			V haben	Part Pres	designend
 designen			V haben	Part Perf	designt
 designen			V haben	1 Sg Ind Pres	designe
@@ -311,8 +319,10 @@ designen			V haben	2 Pl Subj FutPerf	werdet designt haben
 designen			V haben	3 Pl Subj FutPerf	werden designt haben
 designen			V haben	Sg Imp	design, designe
 designen			V haben	Pl Imp	designt
-downcyclen		2	V haben	Inf Pres	downcyclen
-downcyclen		2	V haben	Inf Perf	downgecyclet haben
+downcyclen		2	V haben	Inf NonCl Pres	downcyclen
+downcyclen		2	V haben	Inf Cl Pres	downzucyclen
+downcyclen		2	V haben	Inf NonCl Perf	downgecyclet haben
+downcyclen		2	V haben	Inf Cl Perf	downgecyclet zu haben
 downcyclen		2	V haben	Part Pres	downcyclend
 downcyclen		2	V haben	Part Perf	downgecyclet
 downcyclen		2	V haben	1 Sg Ind Pres	downcycle
@@ -389,8 +399,10 @@ downcyclen		2	V haben	2 Pl Subj FutPerf	werdet downgecyclet haben
 downcyclen		2	V haben	3 Pl Subj FutPerf	werden downgecyclet haben
 downcyclen		2	V haben	Sg Imp	downcycle
 downcyclen		2	V haben	Pl Imp	downcyclet
-faken			V haben	Inf Pres	faken
-faken			V haben	Inf Perf	gefaked haben, gefakt haben
+faken			V haben	Inf NonCl Pres	faken
+faken			V haben	Inf Cl Pres	zu faken
+faken			V haben	Inf NonCl Perf	gefaked haben, gefakt haben
+faken			V haben	Inf Cl Perf	gefaked zu haben, gefakt zu haben
 faken			V haben	Part Pres	fakend
 faken			V haben	Part Perf	gefaked, gefakt
 faken			V haben	1 Sg Ind Pres	fake
@@ -467,8 +479,10 @@ faken			V haben	2 Pl Subj FutPerf	werdet gefaked haben, werdet gefakt haben
 faken			V haben	3 Pl Subj FutPerf	werden gefaked haben, werden gefakt haben
 faken			V haben	Sg Imp	fake
 faken			V haben	Pl Imp	fakt
-gehen			V sein	Inf Pres	gehen
-gehen			V sein	Inf Perf	gegangen sein
+gehen			V sein	Inf NonCl Pres	gehen
+gehen			V sein	Inf Cl Pres	zu gehen
+gehen			V sein	Inf NonCl Perf	gegangen sein
+gehen			V sein	Inf Cl Perf	gegangen zu sein
 gehen			V sein	Part Pres	gehend
 gehen			V sein	Part Perf	gegangen
 gehen			V sein	1 Sg Ind Pres	gehe, geh (ugs.)
@@ -545,8 +559,10 @@ gehen			V sein	2 Pl Subj FutPerf	werdet gegangen sein
 gehen			V sein	3 Pl Subj FutPerf	werden gegangen sein
 gehen			V sein	Sg Imp	geh, gehe
 gehen			V sein	Pl Imp	geht
-haben			V haben	Inf Pres	haben
-haben			V haben	Inf Perf	gehabt haben
+haben			V haben	Inf NonCl Pres	haben
+haben			V haben	Inf Cl Pres	zu haben
+haben			V haben	Inf NonCl Perf	gehabt haben
+haben			V haben	Inf Cl Perf	gehabt zu haben
 haben			V haben	Part Pres	habend
 haben			V haben	Part Perf	gehabt
 haben			V haben	1 Sg Ind Pres	habe, hab (ugs.)
@@ -623,8 +639,10 @@ haben			V haben	2 Pl Subj FutPerf	werdet gehabt haben
 haben			V haben	3 Pl Subj FutPerf	werden gehabt haben
 haben			V haben	Sg Imp	hab, habe
 haben			V haben	Pl Imp	habt
-halten			V haben	Inf Pres	halten
-halten			V haben	Inf Perf	gehalten haben
+halten			V haben	Inf NonCl Pres	halten
+halten			V haben	Inf Cl Pres	zu halten
+halten			V haben	Inf NonCl Perf	gehalten haben
+halten			V haben	Inf Cl Perf	gehalten zu haben
 halten			V haben	Part Pres	haltend
 halten			V haben	Part Perf	gehalten
 halten			V haben	1 Sg Ind Pres	halte, halt (ugs.)
@@ -701,8 +719,10 @@ halten			V haben	2 Pl Subj FutPerf	werdet gehalten haben
 halten			V haben	3 Pl Subj FutPerf	werden gehalten haben
 halten			V haben	Sg Imp	halte, halt (ugs.)
 halten			V haben	Pl Imp	haltet
-heißen	1		V haben	Inf Pres	heißen, heissen (CH)
-heißen	1		V haben	Inf Perf	geheißen haben, geheissen haben (CH)
+heißen	1		V haben	Inf NonCl Pres	heißen, heissen (CH)
+heißen	1		V haben	Inf Cl Pres	zu heißen, zu heissen (CH)
+heißen	1		V haben	Inf NonCl Perf	geheißen haben, geheissen haben (CH)
+heißen	1		V haben	Inf Cl Perf	geheißen zu haben, geheissen zu haben (CH)
 heißen	1		V haben	Part Pres	heißend, heissend (CH)
 heißen	1		V haben	Part Perf	geheißen, geheissen (CH)
 heißen	1		V haben	1 Sg Ind Pres	heiße, heiß (ugs.), heisse (CH), heiss (ugs., CH)
@@ -779,8 +799,10 @@ heißen	1		V haben	2 Pl Subj FutPerf	werdet geheißen haben, werdet geheissen ha
 heißen	1		V haben	3 Pl Subj FutPerf	werden geheißen haben, werden geheissen haben (CH)
 heißen	1		V haben	Sg Imp	heiß, heiße, heiss (CH), heisse (CH)
 heißen	1		V haben	Pl Imp	heißt, heisst (CH)
-heißen	2		V haben	Inf Pres	heißen, heissen (CH)
-heißen	2		V haben	Inf Perf	geheißt haben, geheisst haben (CH)
+heißen	2		V haben	Inf NonCl Pres	heißen, heissen (CH)
+heißen	2		V haben	Inf Cl Pres	zu heißen, zu heissen (CH)
+heißen	2		V haben	Inf NonCl Perf	geheißt haben, geheisst haben (CH)
+heißen	2		V haben	Inf Cl Perf	geheißt zu haben, geheisst zu haben (CH)
 heißen	2		V haben	Part Pres	heißend, heissend (CH)
 heißen	2		V haben	Part Perf	geheißt, geheisst (CH)
 heißen	2		V haben	1 Sg Ind Pres	heiße, heiß (ugs.), heisse (CH), heiss (ugs., CH)
@@ -857,8 +879,10 @@ heißen	2		V haben	2 Pl Subj FutPerf	werdet geheißt haben, werdet geheisst habe
 heißen	2		V haben	3 Pl Subj FutPerf	werden geheißt haben, werden geheisst haben (CH)
 heißen	2		V haben	Sg Imp	heiß, heiße, heiss (CH), heisse (CH)
 heißen	2		V haben	Pl Imp	heißt, heisst (CH)
-können			V haben	Inf Pres	können
-können			V haben	Inf Perf	gekonnt haben, können haben
+können			V haben	Inf NonCl Pres	können
+können			V haben	Inf Cl Pres	zu können
+können			V haben	Inf NonCl Perf	gekonnt haben, können haben
+können			V haben	Inf Cl Perf	gekonnt zu haben, können zu haben
 können			V haben	Part Pres	könnend
 können			V haben	Part Perf	gekonnt, können
 können			V haben	1 Sg Ind Pres	kann
@@ -933,8 +957,10 @@ können			V haben	3 Sg Subj FutPerf	werde gekonnt haben, werde können haben
 können			V haben	1 Pl Subj FutPerf	werden gekonnt haben, werden können haben
 können			V haben	2 Pl Subj FutPerf	werdet gekonnt haben, werdet können haben
 können			V haben	3 Pl Subj FutPerf	werden gekonnt haben, werden können haben
-küssen			V haben	Inf Pres	küssen
-küssen			V haben	Inf Perf	geküsst haben, geküßt haben (ung.)
+küssen			V haben	Inf NonCl Pres	küssen
+küssen			V haben	Inf Cl Pres	zu küssen
+küssen			V haben	Inf NonCl Perf	geküsst haben, geküßt haben (ung.)
+küssen			V haben	Inf Cl Perf	geküsst zu haben, geküßt zu haben (ung.)
 küssen			V haben	Part Pres	küssend
 küssen			V haben	Part Perf	geküsst, geküßt (ung.)
 küssen			V haben	1 Sg Ind Pres	küsse, küss (ugs.), küß (ugs., ung.)
@@ -1011,8 +1037,10 @@ küssen			V haben	2 Pl Subj FutPerf	werdet geküsst haben, werdet geküßt haben
 küssen			V haben	3 Pl Subj FutPerf	werden geküsst haben, werden geküßt haben (ung.)
 küssen			V haben	Sg Imp	küss, küsse, küß (ung.)
 küssen			V haben	Pl Imp	küsst, küßt (ung.)
-laden	1	1	V haben	Inf Pres	laden
-laden	1	1	V haben	Inf Perf	geladen haben
+laden	1	1	V haben	Inf NonCl Pres	laden
+laden	1	1	V haben	Inf Cl Pres	zu laden
+laden	1	1	V haben	Inf NonCl Perf	geladen haben
+laden	1	1	V haben	Inf Cl Perf	geladen zu haben
 laden	1	1	V haben	Part Pres	ladend
 laden	1	1	V haben	Part Perf	geladen
 laden	1	1	V haben	1 Sg Ind Pres	lade, lad (ugs.)
@@ -1089,8 +1117,10 @@ laden	1	1	V haben	2 Pl Subj FutPerf	werdet geladen haben
 laden	1	1	V haben	3 Pl Subj FutPerf	werden geladen haben
 laden	1	1	V haben	Sg Imp	lad, lade
 laden	1	1	V haben	Pl Imp	ladet
-laden	1	2	V haben	Inf Pres	laden
-laden	1	2	V haben	Inf Perf	geladen haben
+laden	1	2	V haben	Inf NonCl Pres	laden
+laden	1	2	V haben	Inf Cl Pres	zu laden
+laden	1	2	V haben	Inf NonCl Perf	geladen haben
+laden	1	2	V haben	Inf Cl Perf	geladen zu haben
 laden	1	2	V haben	Part Pres	ladend
 laden	1	2	V haben	Part Perf	geladen
 laden	1	2	V haben	1 Sg Ind Pres	lade, lad (ugs.)
@@ -1167,8 +1197,10 @@ laden	1	2	V haben	2 Pl Subj FutPerf	werdet geladen haben
 laden	1	2	V haben	3 Pl Subj FutPerf	werden geladen haben
 laden	1	2	V haben	Sg Imp	lade, lad (ugs.)
 laden	1	2	V haben	Pl Imp	ladet
-laden	2	1	V haben	Inf Pres	laden
-laden	2	1	V haben	Inf Perf	geladen haben
+laden	2	1	V haben	Inf NonCl Pres	laden
+laden	2	1	V haben	Inf Cl Pres	zu laden
+laden	2	1	V haben	Inf NonCl Perf	geladen haben
+laden	2	1	V haben	Inf Cl Perf	geladen zu haben
 laden	2	1	V haben	Part Pres	ladend
 laden	2	1	V haben	Part Perf	geladen
 laden	2	1	V haben	1 Sg Ind Pres	lade, lad (ugs.)
@@ -1245,8 +1277,10 @@ laden	2	1	V haben	2 Pl Subj FutPerf	werdet geladen haben
 laden	2	1	V haben	3 Pl Subj FutPerf	werden geladen haben
 laden	2	1	V haben	Sg Imp	lad, lade
 laden	2	1	V haben	Pl Imp	ladet
-laden	2	2	V haben	Inf Pres	laden
-laden	2	2	V haben	Inf Perf	geladen haben
+laden	2	2	V haben	Inf NonCl Pres	laden
+laden	2	2	V haben	Inf Cl Pres	zu laden
+laden	2	2	V haben	Inf NonCl Perf	geladen haben
+laden	2	2	V haben	Inf Cl Perf	geladen zu haben
 laden	2	2	V haben	Part Pres	ladend
 laden	2	2	V haben	Part Perf	geladen
 laden	2	2	V haben	1 Sg Ind Pres	lade, lad (ugs.)
@@ -1323,8 +1357,10 @@ laden	2	2	V haben	2 Pl Subj FutPerf	werdet geladen haben
 laden	2	2	V haben	3 Pl Subj FutPerf	werden geladen haben
 laden	2	2	V haben	Sg Imp	lade, lad (ugs.)
 laden	2	2	V haben	Pl Imp	ladet
-laufen			V haben	Inf Pres	laufen
-laufen			V haben	Inf Perf	gelaufen haben
+laufen			V haben	Inf NonCl Pres	laufen
+laufen			V haben	Inf Cl Pres	zu laufen
+laufen			V haben	Inf NonCl Perf	gelaufen haben
+laufen			V haben	Inf Cl Perf	gelaufen zu haben
 laufen			V haben	Part Pres	laufend
 laufen			V haben	Part Perf	gelaufen
 laufen			V haben	1 Sg Ind Pres	laufe, lauf (ugs.)
@@ -1401,8 +1437,10 @@ laufen			V haben	2 Pl Subj FutPerf	werdet gelaufen haben
 laufen			V haben	3 Pl Subj FutPerf	werden gelaufen haben
 laufen			V haben	Sg Imp	lauf, laufe
 laufen			V haben	Pl Imp	lauft
-laufen			V sein	Inf Pres	laufen
-laufen			V sein	Inf Perf	gelaufen sein
+laufen			V sein	Inf NonCl Pres	laufen
+laufen			V sein	Inf Cl Pres	zu laufen
+laufen			V sein	Inf NonCl Perf	gelaufen sein
+laufen			V sein	Inf Cl Perf	gelaufen zu sein
 laufen			V sein	Part Pres	laufend
 laufen			V sein	Part Perf	gelaufen
 laufen			V sein	1 Sg Ind Pres	laufe, lauf (ugs.)
@@ -1479,8 +1517,10 @@ laufen			V sein	2 Pl Subj FutPerf	werdet gelaufen sein
 laufen			V sein	3 Pl Subj FutPerf	werden gelaufen sein
 laufen			V sein	Sg Imp	lauf, laufe
 laufen			V sein	Pl Imp	lauft
-lesen	1		V haben	Inf Pres	lesen
-lesen	1		V haben	Inf Perf	gelesen haben
+lesen	1		V haben	Inf NonCl Pres	lesen
+lesen	1		V haben	Inf Cl Pres	zu lesen
+lesen	1		V haben	Inf NonCl Perf	gelesen haben
+lesen	1		V haben	Inf Cl Perf	gelesen zu haben
 lesen	1		V haben	Part Pres	lesend
 lesen	1		V haben	Part Perf	gelesen
 lesen	1		V haben	1 Sg Ind Pres	lese, les (ugs.)
@@ -1557,8 +1597,10 @@ lesen	1		V haben	2 Pl Subj FutPerf	werdet gelesen haben
 lesen	1		V haben	3 Pl Subj FutPerf	werden gelesen haben
 lesen	1		V haben	Sg Imp	lies
 lesen	1		V haben	Pl Imp	lest
-lesen	2		V haben	Inf Pres	lesen
-lesen	2		V haben	Inf Perf	gelesen haben
+lesen	2		V haben	Inf NonCl Pres	lesen
+lesen	2		V haben	Inf Cl Pres	zu lesen
+lesen	2		V haben	Inf NonCl Perf	gelesen haben
+lesen	2		V haben	Inf Cl Perf	gelesen zu haben
 lesen	2		V haben	Part Pres	lesend
 lesen	2		V haben	Part Perf	gelesen
 lesen	2		V haben	1 Sg Ind Pres	lese, les (ugs.)
@@ -1635,8 +1677,10 @@ lesen	2		V haben	2 Pl Subj FutPerf	werdet gelesen haben
 lesen	2		V haben	3 Pl Subj FutPerf	werden gelesen haben
 lesen	2		V haben	Sg Imp	lies
 lesen	2		V haben	Pl Imp	lest
-liken			V haben	Inf Pres	liken
-liken			V haben	Inf Perf	gelikt haben
+liken			V haben	Inf NonCl Pres	liken
+liken			V haben	Inf Cl Pres	zu liken
+liken			V haben	Inf NonCl Perf	gelikt haben
+liken			V haben	Inf Cl Perf	gelikt zu haben
 liken			V haben	Part Pres	likend
 liken			V haben	Part Perf	gelikt
 liken			V haben	1 Sg Ind Pres	like
@@ -1713,8 +1757,10 @@ liken			V haben	2 Pl Subj FutPerf	werdet gelikt haben
 liken			V haben	3 Pl Subj FutPerf	werden gelikt haben
 liken			V haben	Sg Imp	like
 liken			V haben	Pl Imp	likt
-notwassern			V haben	Inf Pres	notwassern
-notwassern			V haben	Inf Perf	notgewassert haben
+notwassern			V haben	Inf NonCl Pres	notwassern
+notwassern			V haben	Inf Cl Pres	notzuwassern
+notwassern			V haben	Inf NonCl Perf	notgewassert haben
+notwassern			V haben	Inf Cl Perf	notgewassert zu haben
 notwassern			V haben	Part Pres	notwassernd
 notwassern			V haben	Part Perf	notgewassert
 notwassern			V haben	1 Sg Ind Pres	notwassere, notwassre, notwasser (ugs.)
@@ -1791,8 +1837,10 @@ notwassern			V haben	2 Pl Subj FutPerf	werdet notgewassert haben
 notwassern			V haben	3 Pl Subj FutPerf	werden notgewassert haben
 notwassern			V haben	Sg Imp	notwassere, notwassre, notwasser (ugs.)
 notwassern			V haben	Pl Imp	notwassert
-notwassern			V sein	Inf Pres	notwassern
-notwassern			V sein	Inf Perf	notgewassert sein
+notwassern			V sein	Inf NonCl Pres	notwassern
+notwassern			V sein	Inf Cl Pres	notzuwassern
+notwassern			V sein	Inf NonCl Perf	notgewassert sein
+notwassern			V sein	Inf Cl Perf	notgewassert zu sein
 notwassern			V sein	Part Pres	notwassernd
 notwassern			V sein	Part Perf	notgewassert
 notwassern			V sein	1 Sg Ind Pres	notwassere, notwassre, notwasser (ugs.)
@@ -1869,8 +1917,10 @@ notwassern			V sein	2 Pl Subj FutPerf	werdet notgewassert sein
 notwassern			V sein	3 Pl Subj FutPerf	werden notgewassert sein
 notwassern			V sein	Sg Imp	notwassere, notwassre, notwasser (ugs.)
 notwassern			V sein	Pl Imp	notwassert
-recyclen		2	V haben	Inf Pres	recyclen
-recyclen		2	V haben	Inf Perf	recyclet haben
+recyclen		2	V haben	Inf NonCl Pres	recyclen
+recyclen		2	V haben	Inf Cl Pres	zu recyclen
+recyclen		2	V haben	Inf NonCl Perf	recyclet haben
+recyclen		2	V haben	Inf Cl Perf	recyclet zu haben
 recyclen		2	V haben	Part Pres	recyclend
 recyclen		2	V haben	Part Perf	recyclet
 recyclen		2	V haben	1 Sg Ind Pres	recycle
@@ -1947,8 +1997,10 @@ recyclen		2	V haben	2 Pl Subj FutPerf	werdet recyclet haben
 recyclen		2	V haben	3 Pl Subj FutPerf	werden recyclet haben
 recyclen		2	V haben	Sg Imp	recycle
 recyclen		2	V haben	Pl Imp	recyclet
-schwimmen			V haben	Inf Pres	schwimmen
-schwimmen			V haben	Inf Perf	geschwommen haben
+schwimmen			V haben	Inf NonCl Pres	schwimmen
+schwimmen			V haben	Inf Cl Pres	zu schwimmen
+schwimmen			V haben	Inf NonCl Perf	geschwommen haben
+schwimmen			V haben	Inf Cl Perf	geschwommen zu haben
 schwimmen			V haben	Part Pres	schwimmend
 schwimmen			V haben	Part Perf	geschwommen
 schwimmen			V haben	1 Sg Ind Pres	schwimme, schwimm (ugs.)
@@ -2025,8 +2077,10 @@ schwimmen			V haben	2 Pl Subj FutPerf	werdet geschwommen haben
 schwimmen			V haben	3 Pl Subj FutPerf	werden geschwommen haben
 schwimmen			V haben	Sg Imp	schwimm, schwimme
 schwimmen			V haben	Pl Imp	schwimmt
-schwimmen			V sein	Inf Pres	schwimmen
-schwimmen			V sein	Inf Perf	geschwommen sein
+schwimmen			V sein	Inf NonCl Pres	schwimmen
+schwimmen			V sein	Inf Cl Pres	zu schwimmen
+schwimmen			V sein	Inf NonCl Perf	geschwommen sein
+schwimmen			V sein	Inf Cl Perf	geschwommen zu sein
 schwimmen			V sein	Part Pres	schwimmend
 schwimmen			V sein	Part Perf	geschwommen
 schwimmen			V sein	1 Sg Ind Pres	schwimme, schwimm (ugs.)
@@ -2103,8 +2157,10 @@ schwimmen			V sein	2 Pl Subj FutPerf	werdet geschwommen sein
 schwimmen			V sein	3 Pl Subj FutPerf	werden geschwommen sein
 schwimmen			V sein	Sg Imp	schwimm, schwimme
 schwimmen			V sein	Pl Imp	schwimmt
-segeln			V haben	Inf Pres	segeln
-segeln			V haben	Inf Perf	gesegelt haben
+segeln			V haben	Inf NonCl Pres	segeln
+segeln			V haben	Inf Cl Pres	zu segeln
+segeln			V haben	Inf NonCl Perf	gesegelt haben
+segeln			V haben	Inf Cl Perf	gesegelt zu haben
 segeln			V haben	Part Pres	segelnd
 segeln			V haben	Part Perf	gesegelt
 segeln			V haben	1 Sg Ind Pres	segele, segle, segel (ugs.)
@@ -2181,8 +2237,10 @@ segeln			V haben	2 Pl Subj FutPerf	werdet gesegelt haben
 segeln			V haben	3 Pl Subj FutPerf	werden gesegelt haben
 segeln			V haben	Sg Imp	segele, segle, segel (ugs.)
 segeln			V haben	Pl Imp	segelt
-segeln			V sein	Inf Pres	segeln
-segeln			V sein	Inf Perf	gesegelt sein
+segeln			V sein	Inf NonCl Pres	segeln
+segeln			V sein	Inf Cl Pres	zu segeln
+segeln			V sein	Inf NonCl Perf	gesegelt sein
+segeln			V sein	Inf Cl Perf	gesegelt zu sein
 segeln			V sein	Part Pres	segelnd
 segeln			V sein	Part Perf	gesegelt
 segeln			V sein	1 Sg Ind Pres	segele, segle, segel (ugs.)
@@ -2259,8 +2317,10 @@ segeln			V sein	2 Pl Subj FutPerf	werdet gesegelt sein
 segeln			V sein	3 Pl Subj FutPerf	werden gesegelt sein
 segeln			V sein	Sg Imp	segele, segle, segel (ugs.)
 segeln			V sein	Pl Imp	segelt
-sehen			V haben	Inf Pres	sehen
-sehen			V haben	Inf Perf	gesehen haben
+sehen			V haben	Inf NonCl Pres	sehen
+sehen			V haben	Inf Cl Pres	zu sehen
+sehen			V haben	Inf NonCl Perf	gesehen haben
+sehen			V haben	Inf Cl Perf	gesehen zu haben
 sehen			V haben	Part Pres	sehend
 sehen			V haben	Part Perf	gesehen
 sehen			V haben	1 Sg Ind Pres	sehe, seh (ugs.)
@@ -2337,8 +2397,10 @@ sehen			V haben	2 Pl Subj FutPerf	werdet gesehen haben
 sehen			V haben	3 Pl Subj FutPerf	werden gesehen haben
 sehen			V haben	Sg Imp	sieh, siehe
 sehen			V haben	Pl Imp	seht
-sein	3		V sein	Inf Pres	sein
-sein	3		V sein	Inf Perf	gewesen sein
+sein	3		V sein	Inf NonCl Pres	sein
+sein	3		V sein	Inf Cl Pres	zu sein
+sein	3		V sein	Inf NonCl Perf	gewesen sein
+sein	3		V sein	Inf Cl Perf	gewesen zu sein
 sein	3		V sein	Part Pres	seiend
 sein	3		V sein	Part Perf	gewesen
 sein	3		V sein	1 Sg Ind Pres	bin
@@ -2415,8 +2477,10 @@ sein	3		V sein	2 Pl Subj FutPerf	werdet gewesen sein
 sein	3		V sein	3 Pl Subj FutPerf	werden gewesen sein
 sein	3		V sein	Sg Imp	sei
 sein	3		V sein	Pl Imp	seid
-senden		1	V haben	Inf Pres	senden
-senden		1	V haben	Inf Perf	gesendet haben
+senden		1	V haben	Inf NonCl Pres	senden
+senden		1	V haben	Inf Cl Pres	zu senden
+senden		1	V haben	Inf NonCl Perf	gesendet haben
+senden		1	V haben	Inf Cl Perf	gesendet zu haben
 senden		1	V haben	Part Pres	sendend
 senden		1	V haben	Part Perf	gesendet
 senden		1	V haben	1 Sg Ind Pres	sende, send (ugs.)
@@ -2493,8 +2557,10 @@ senden		1	V haben	2 Pl Subj FutPerf	werdet gesendet haben
 senden		1	V haben	3 Pl Subj FutPerf	werden gesendet haben
 senden		1	V haben	Sg Imp	sende, send (ugs.)
 senden		1	V haben	Pl Imp	sendet
-senden		2	V haben	Inf Pres	senden
-senden		2	V haben	Inf Perf	gesandt haben
+senden		2	V haben	Inf NonCl Pres	senden
+senden		2	V haben	Inf Cl Pres	zu senden
+senden		2	V haben	Inf NonCl Perf	gesandt haben
+senden		2	V haben	Inf Cl Perf	gesandt zu haben
 senden		2	V haben	Part Pres	sendend
 senden		2	V haben	Part Perf	gesandt
 senden		2	V haben	1 Sg Ind Pres	sende, send (ugs.)
@@ -2571,8 +2637,10 @@ senden		2	V haben	2 Pl Subj FutPerf	werdet gesandt haben
 senden		2	V haben	3 Pl Subj FutPerf	werden gesandt haben
 senden		2	V haben	Sg Imp	sende, send (ugs.)
 senden		2	V haben	Pl Imp	sendet
-spielen			V haben	Inf Pres	spielen
-spielen			V haben	Inf Perf	gespielt haben
+spielen			V haben	Inf NonCl Pres	spielen
+spielen			V haben	Inf Cl Pres	zu spielen
+spielen			V haben	Inf NonCl Perf	gespielt haben
+spielen			V haben	Inf Cl Perf	gespielt zu haben
 spielen			V haben	Part Pres	spielend
 spielen			V haben	Part Perf	gespielt
 spielen			V haben	1 Sg Ind Pres	spiele, spiel (ugs.)
@@ -2649,8 +2717,10 @@ spielen			V haben	2 Pl Subj FutPerf	werdet gespielt haben
 spielen			V haben	3 Pl Subj FutPerf	werden gespielt haben
 spielen			V haben	Sg Imp	spiel, spiele
 spielen			V haben	Pl Imp	spielt
-tun			V haben	Inf Pres	tun
-tun			V haben	Inf Perf	getan haben
+tun			V haben	Inf NonCl Pres	tun
+tun			V haben	Inf Cl Pres	zu tun
+tun			V haben	Inf NonCl Perf	getan haben
+tun			V haben	Inf Cl Perf	getan zu haben
 tun			V haben	Part Pres	tuend
 tun			V haben	Part Perf	getan
 tun			V haben	1 Sg Ind Pres	tue, tu (ugs.)
@@ -2727,8 +2797,10 @@ tun			V haben	2 Pl Subj FutPerf	werdet getan haben
 tun			V haben	3 Pl Subj FutPerf	werden getan haben
 tun			V haben	Sg Imp	tu
 tun			V haben	Pl Imp	tut
-werden		1	V sein	Inf Pres	werden
-werden		1	V sein	Inf Perf	geworden sein, worden sein
+werden		1	V sein	Inf NonCl Pres	werden
+werden		1	V sein	Inf Cl Pres	zu werden
+werden		1	V sein	Inf NonCl Perf	geworden sein, worden sein
+werden		1	V sein	Inf Cl Perf	geworden zu sein, worden zu sein
 werden		1	V sein	Part Pres	werdend
 werden		1	V sein	Part Perf	geworden, worden
 werden		1	V sein	1 Sg Ind Pres	werde, werd (ugs.)
@@ -2805,8 +2877,10 @@ werden		1	V sein	2 Pl Subj FutPerf	werdet geworden sein, werdet worden sein
 werden		1	V sein	3 Pl Subj FutPerf	werden geworden sein, werden worden sein
 werden		1	V sein	Sg Imp	werde, werd (ugs.)
 werden		1	V sein	Pl Imp	werdet
-werden		2	V sein	Inf Pres	werden
-werden		2	V sein	Inf Perf	geworden sein, worden sein
+werden		2	V sein	Inf NonCl Pres	werden
+werden		2	V sein	Inf Cl Pres	zu werden
+werden		2	V sein	Inf NonCl Perf	geworden sein, worden sein
+werden		2	V sein	Inf Cl Perf	geworden zu sein, worden zu sein
 werden		2	V sein	Part Pres	werdend
 werden		2	V sein	Part Perf	geworden, worden
 werden		2	V sein	1 Sg Ind Pres	werde, werd (ugs.)
@@ -2883,8 +2957,10 @@ werden		2	V sein	2 Pl Subj FutPerf	werdet geworden sein, werdet worden sein
 werden		2	V sein	3 Pl Subj FutPerf	werden geworden sein, werden worden sein
 werden		2	V sein	Sg Imp	werde, werd (ugs.)
 werden		2	V sein	Pl Imp	werdet
-wissen			V haben	Inf Pres	wissen
-wissen			V haben	Inf Perf	gewusst haben, gewußt haben (ung.)
+wissen			V haben	Inf NonCl Pres	wissen
+wissen			V haben	Inf Cl Pres	zu wissen
+wissen			V haben	Inf NonCl Perf	gewusst haben, gewußt haben (ung.)
+wissen			V haben	Inf Cl Perf	gewusst zu haben, gewußt zu haben (ung.)
 wissen			V haben	Part Pres	wissend
 wissen			V haben	Part Perf	gewusst, gewußt (ung.)
 wissen			V haben	1 Sg Ind Pres	weiß, weiss (CH)

@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 9.2
-% Andreas Nolda 2024-10-01
+% Version 11.0
+% Andreas Nolda 2024-10-11
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -64,20 +64,20 @@
 #phon-trigger# = <dbl(s)><del(e)><del(e)|ADJ><del(e)|Gen><del(e)|PRO> \
                  <del(VC)|Pl><ins(e)><uml>
 
-#morph-trigger# = <ins(ge)><ins(zu)><rm|Imp>
+#morph-trigger# = <ins(ge)><ins(zu)><rm|Part><rm|Imp>
 
 #boundary-trigger# = <WB><CB><VB><HB><DB><PB><SB>
 
-#morpheme-boundary# = <+><#><\=><-><\~>
+#morpheme-boundary# = <+><|><#><\=><-><\~>
 
 #wf-process# = <COMP><DER><CONV>
 
-#wf-means# = <concat><hyph><ident|PPast><ident|PPres><part(ab)><part(an)> \
-             <part(auf)><part(aus)><part(bei)><part(durch)><part(ein)> \
-             <part(gegen)><part(hinter)><part(los)><part(mit)><part(nach)> \
-             <part(ueber)><part(um)><part(unter)><part(vor)><part(weg)> \
-             <part(zu)><part(zurueck)><part(zwischen)><pref(un)><suff(chen)> \
-             <suff(e)><suff(er)><suff(lein)>
+#wf-means# = <concat><hyph><ident|Part><pref(un)><prev(ab)><prev(an)><prev(auf)> \
+             <prev(aus)><prev(bei)><prev(durch)><prev(ein)><prev(gegen)> \
+             <prev(hinter)><prev(los)><prev(mit)><prev(nach)><prev(ueber)> \
+             <prev(um)><prev(unter)><prev(vor)><prev(weg)><prev(zu)> \
+             <prev(zurueck)><prev(zwischen)><suff(chen)><suff(e)><suff(er)> \
+             <suff(lein)>
 
 #category# = <ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER> \
              <POSS><PPRO><REL><V><WPRO>
@@ -86,10 +86,11 @@
 
 #part-of-speech# = <+ADJ><+ADV><+ART><+CARD><+CONJ><+DEM><+FRAC><+INDEF><+INTJ> \
                    <+NPROP><+NN><+ORD><+POSS><+POSTP><+PPRO><+PREP><+PREPART> \
-                   <+PROADV><+PTCL><+PUNCT><+REL><+V><+VPART><+WADV><+WPRO>
+                   <+PREV><+PROADV><+PTCL><+PUNCT><+REL><+V><+WADV><+WPRO>
 
-#subcat# = <Pers><Refl><Rec><Def><Indef><Neg><Coord><Sub><Compar><Adv><ProAdv> \
-           <Adj><Comma><Dash><Ellip><Paren><Period><Quote><Slash>
+#subcat# = <Pers><Refl><Rec><Def><Indef><Neg><Coord><Sub><InfCl><AdjPos> \
+           <AdjComp><AdjSup><Comma><Period><Ellip><Quote><Paren><Dash><Slash> \
+           <Other>
 
 #degree# = <Pos><Comp><Sup>
 
@@ -103,13 +104,13 @@
 
 #infl# = <St><Wk><NoInfl><Invar>
 
-#function# = <Attr><Subst><Attr/Subst><Pred/Adv>
+#function# = <Attr><Subst><Attr/Subst><Pred/Adv><Cl><NonCl>
 
-#nonfinite# = <Inf><PPres><PPast><zu>
+#nonfinite# = <Inf><Part>
 
 #mood# = <Ind><Subj><Imp>
 
-#tense# = <Pres><Past>
+#tense# = <Pres><Past><Perf>
 
 #feature# = #wf-process# #wf-means# #category# #auxiliary# #part-of-speech# \
             #subcat# #degree# #person# #gender# #case# #number# #infl# #function# \
@@ -232,25 +233,25 @@
 #Verb-inflection# = <VImp><VImp-ak-ik><VImp-d-t><VImp-el-er><VImp-le><VImp-m-n> \
                     <VImpPl><VImpPl-sein><VImpSg><VImpSg0><VInf><VInf-el-er> \
                     <VInf-le><VInf_n><VModPresIndSg><VModPresNonIndSg> \
-                    <VPastInd-d-t_t><VPastInd-le><VPastInd-werden> \
+                    <VPartPerf-d_t><VPartPerf-le><VPartPerf_ed><VPartPerf_n> \
+                    <VPartPerfStr><VPartPerfWeak><VPartPres><VPartPres-el-er> \
+                    <VPartPres-le><VPastInd-d-t_t><VPastInd-le><VPastInd-werden> \
                     <VPastIndPl-werden><VPastIndSg-ward><VPastIndStr> \
                     <VPastIndStr-s><VPastIndWeak><VPastStr><VPastStr-s> \
                     <VPastSubj-haben><VPastSubj-le><VPastSubj2-sein> \
-                    <VPastSubjOld><VPastSubjStr><VPastSubjWeak><VPPast-d_t> \
-                    <VPPast-le><VPPast_ed><VPPast_n><VPPastStr><VPPastWeak> \
-                    <VPPres><VPPres-el-er><VPPres-le><VPres><VPres-ak-ik> \
-                    <VPres-el-er><VPres-le><VPres-m-n><VPres-s><VPres-tun> \
-                    <VPresInd13Pl-sein><VPresInd1Sg-sein><VPresInd23Sg> \
-                    <VPresInd23Sg-d_t><VPresInd23Sg-t_0><VPresInd2Pl-sein> \
-                    <VPresInd2Sg-sein><VPresInd2Sg-werden><VPresInd3Sg-sein> \
-                    <VPresInd3Sg-werden><VPresNonInd23Sg><VPresSubj-sein><VWeak> \
-                    <VWeak-ak-ik><VWeak-d-t><VWeak-el-er><VWeak-le><VWeak-m-n> \
-                    <VWeak-s><VWeak-signen>
+                    <VPastSubjOld><VPastSubjStr><VPastSubjWeak><VPres> \
+                    <VPres-ak-ik><VPres-el-er><VPres-le><VPres-m-n><VPres-s> \
+                    <VPres-tun><VPresInd13Pl-sein><VPresInd1Sg-sein> \
+                    <VPresInd23Sg><VPresInd23Sg-d_t><VPresInd23Sg-t_0> \
+                    <VPresInd2Pl-sein><VPresInd2Sg-sein><VPresInd2Sg-werden> \
+                    <VPresInd3Sg-sein><VPresInd3Sg-werden><VPresNonInd23Sg> \
+                    <VPresSubj-sein><VWeak><VWeak-ak-ik><VWeak-d-t><VWeak-el-er> \
+                    <VWeak-le><VWeak-m-n><VWeak-s><VWeak-signen>
 
-#Other-inflection# = <ConjCompar><ConjCoord><ConjInf><ConjSub><Intj><PIndInvar> \
+#Other-inflection# = <ConjAdjComp><ConjCoord><ConjInfCl><ConjSub><Intj> \
                      <Postp><Prep><Prep+Art-m><Prep+Art-n><Prep+Art-r> \
-                     <Prep+Art-s><ProAdv><PtclAdj><PtclNeg><Ptcl-zu><VPart> \
-                     <WAdv>
+                     <Prep+Art-s><Prev><ProAdv><PtclAdjPos><PtclAdjSup> \
+                     <PtclInfCl><PtclNeg><WAdv>
 
 #inflection# = #Abbr-inflection# #Adj-inflection# #Adv-inflection# \
                #Art-inflection# #Noun-inflection# #Name-inflection# \

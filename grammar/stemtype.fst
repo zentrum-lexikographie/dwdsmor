@@ -1,6 +1,6 @@
 % stemtype.fst
-% Version 4.6
-% Andreas Nolda 2024-10-02
+% Version 5.0
+% Andreas Nolda 2024-10-11
 
 #include "symbols.fst"
 
@@ -21,11 +21,11 @@ $BaseStemFilterV$ = (<Prefix> .*)? <Stem> .* <V> <base> [^#stem-type#]*
 
 ALPHABET = [#char# #boundary-trigger#]
 
-$BaseStemFilterVPPast-t$ = <Stem> .* t
-$BaseStemFilterVPPast-n$ = <Stem> .* n
-$BaseStemFilterVPPast-d$ = <Stem> .* d
+$BaseStemFilterVPartPerf-t$ = <Stem> .* t
+$BaseStemFilterVPartPerf-n$ = <Stem> .* n
+$BaseStemFilterVPartPerf-d$ = <Stem> .* d
 
 ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# #feature#]
 
-$BaseStemFilterVPPresLv2$ = .* <+V> <PPres> .*
-$BaseStemFilterVPPastLv2$ = .* <+V> <PPast> .*
+$BaseStemFilterVPartPresLv2$ = .* <+V> <Part><Pres> .*
+$BaseStemFilterVPartPerfLv2$ = .* <+V> <Part><Perf> .*

@@ -4,25 +4,25 @@ Wordform	Lemma	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflec
 )	)	PUNCT	Paren															
 Für	für	ADV																CAP
 Für	für	PREP																CAP
-individuell	individuell	ADJ			Pos						Pred/Adv							
-zurechenbare	zurechenbar	ADJ			Pos		Masc	Nom	Sg	Wk	Attr/Subst							
-zurechenbare	zurechenbar	ADJ			Pos		Fem	Nom	Sg	St	Attr/Subst							
-zurechenbare	zurechenbar	ADJ			Pos		Fem	Nom	Sg	Wk	Attr/Subst							
-zurechenbare	zurechenbar	ADJ			Pos		Fem	Acc	Sg	St	Attr/Subst							
-zurechenbare	zurechenbar	ADJ			Pos		Fem	Acc	Sg	Wk	Attr/Subst							
-zurechenbare	zurechenbar	ADJ			Pos		Neut	Nom	Sg	Wk	Attr/Subst							
-zurechenbare	zurechenbar	ADJ			Pos		Neut	Acc	Sg	Wk	Attr/Subst							
-zurechenbare	zurechenbar	ADJ			Pos		NoGend	Nom	Pl	St	Attr/Subst							
-zurechenbare	zurechenbar	ADJ			Pos		NoGend	Acc	Pl	St	Attr/Subst							
-öffentliche	öffentlich	ADJ			Pos		Masc	Nom	Sg	Wk	Attr/Subst							
-öffentliche	öffentlich	ADJ			Pos		Fem	Nom	Sg	St	Attr/Subst							
-öffentliche	öffentlich	ADJ			Pos		Fem	Nom	Sg	Wk	Attr/Subst							
-öffentliche	öffentlich	ADJ			Pos		Fem	Acc	Sg	St	Attr/Subst							
-öffentliche	öffentlich	ADJ			Pos		Fem	Acc	Sg	Wk	Attr/Subst							
-öffentliche	öffentlich	ADJ			Pos		Neut	Nom	Sg	Wk	Attr/Subst							
-öffentliche	öffentlich	ADJ			Pos		Neut	Acc	Sg	Wk	Attr/Subst							
-öffentliche	öffentlich	ADJ			Pos		NoGend	Nom	Pl	St	Attr/Subst							
-öffentliche	öffentlich	ADJ			Pos		NoGend	Acc	Pl	St	Attr/Subst							
+individuell	individuell	ADJ			Pos							Pred/Adv						
+zurechenbare	zurechenbar	ADJ			Pos		Masc	Nom	Sg	Wk		Attr/Subst						
+zurechenbare	zurechenbar	ADJ			Pos		Fem	Nom	Sg	St		Attr/Subst						
+zurechenbare	zurechenbar	ADJ			Pos		Fem	Nom	Sg	Wk		Attr/Subst						
+zurechenbare	zurechenbar	ADJ			Pos		Fem	Acc	Sg	St		Attr/Subst						
+zurechenbare	zurechenbar	ADJ			Pos		Fem	Acc	Sg	Wk		Attr/Subst						
+zurechenbare	zurechenbar	ADJ			Pos		Neut	Nom	Sg	Wk		Attr/Subst						
+zurechenbare	zurechenbar	ADJ			Pos		Neut	Acc	Sg	Wk		Attr/Subst						
+zurechenbare	zurechenbar	ADJ			Pos		NoGend	Nom	Pl	St		Attr/Subst						
+zurechenbare	zurechenbar	ADJ			Pos		NoGend	Acc	Pl	St		Attr/Subst						
+öffentliche	öffentlich	ADJ			Pos		Masc	Nom	Sg	Wk		Attr/Subst						
+öffentliche	öffentlich	ADJ			Pos		Fem	Nom	Sg	St		Attr/Subst						
+öffentliche	öffentlich	ADJ			Pos		Fem	Nom	Sg	Wk		Attr/Subst						
+öffentliche	öffentlich	ADJ			Pos		Fem	Acc	Sg	St		Attr/Subst						
+öffentliche	öffentlich	ADJ			Pos		Fem	Acc	Sg	Wk		Attr/Subst						
+öffentliche	öffentlich	ADJ			Pos		Neut	Nom	Sg	Wk		Attr/Subst						
+öffentliche	öffentlich	ADJ			Pos		Neut	Acc	Sg	Wk		Attr/Subst						
+öffentliche	öffentlich	ADJ			Pos		NoGend	Nom	Pl	St		Attr/Subst						
+öffentliche	öffentlich	ADJ			Pos		NoGend	Acc	Pl	St		Attr/Subst						
 Leistungen	Leistung	NN					Fem	Nom	Pl									
 Leistungen	Leistung	NN					Fem	Gen	Pl									
 Leistungen	Leistung	NN					Fem	Dat	Pl									
@@ -35,24 +35,24 @@ des	des	NN					Neut	Dat	Sg
 des	des	NN					Neut	Dat	Pl									
 des	des	NN					Neut	Acc	Sg									
 des	des	NN					Neut	Acc	Pl									
-des	die	ART	Def				Masc	Gen	Sg	St	Attr							
-des	die	ART	Def				Neut	Gen	Sg	St	Attr							
-des	die	DEM					Masc	Gen	Sg	St	Attr							
-des	die	DEM					Neut	Gen	Sg	St	Attr							
+des	die	ART	Def				Masc	Gen	Sg	St		Attr						
+des	die	ART	Def				Neut	Gen	Sg	St		Attr						
+des	die	DEM					Masc	Gen	Sg	St		Attr						
+des	die	DEM					Neut	Gen	Sg	St		Attr						
 Eisenbahn-Bundesamtes	Eisenbahn-Bundesamt	NN					Neut	Gen	Sg									
 nach	nach	ADV																
 nach	nach	POSTP																
 nach	nach	PREP																
-dem	die	ART	Def				Masc	Dat	Sg	St	Attr							
-dem	die	ART	Def				Neut	Dat	Sg	St	Attr							
-dem	die	ART	Def				Masc	Dat	Sg	St	Subst							
-dem	die	ART	Def				Neut	Dat	Sg	St	Subst							
-dem	die	DEM					Masc	Dat	Sg	St	Attr							
-dem	die	DEM					Neut	Dat	Sg	St	Attr							
-dem	die	DEM					Masc	Dat	Sg	St	Subst							
-dem	die	DEM					Neut	Dat	Sg	St	Subst							
-dem	die	REL					Masc	Dat	Sg	St	Subst							
-dem	die	REL					Neut	Dat	Sg	St	Subst							
+dem	die	ART	Def				Masc	Dat	Sg	St		Attr						
+dem	die	ART	Def				Neut	Dat	Sg	St		Attr						
+dem	die	ART	Def				Masc	Dat	Sg	St		Subst						
+dem	die	ART	Def				Neut	Dat	Sg	St		Subst						
+dem	die	DEM					Masc	Dat	Sg	St		Attr						
+dem	die	DEM					Neut	Dat	Sg	St		Attr						
+dem	die	DEM					Masc	Dat	Sg	St		Subst						
+dem	die	DEM					Neut	Dat	Sg	St		Subst						
+dem	die	REL					Masc	Dat	Sg	St		Subst						
+dem	die	REL					Neut	Dat	Sg	St		Subst						
 EU-Fahrgastrechte-Kraftomnibus-Gesetz	EU-Fahrgastrechte-Kraftomnibus-Gesetz	NN					Neut	Nom	Sg									
 EU-Fahrgastrechte-Kraftomnibus-Gesetz	EU-Fahrgastrechte-Kraftomnibus-Gesetz	NN					Neut	Dat	Sg									
 EU-Fahrgastrechte-Kraftomnibus-Gesetz	EU-Fahrgastrechte-Kraftomnibus-Gesetz	NN					Neut	Acc	Sg									
@@ -60,47 +60,47 @@ werden	werden	V				1			Pl				Ind	Pres
 werden	werden	V				1			Pl				Subj	Pres				
 werden	werden	V				3			Pl				Ind	Pres				
 werden	werden	V				3			Pl				Subj	Pres				
-werden	werden	V										Inf						
-die	die	ART	Def				Fem	Nom	Sg	St	Attr							
-die	die	ART	Def				Fem	Acc	Sg	St	Attr							
-die	die	ART	Def				NoGend	Nom	Pl	St	Attr							
-die	die	ART	Def				NoGend	Acc	Pl	St	Attr							
-die	die	ART	Def				Fem	Nom	Sg	St	Subst							
-die	die	ART	Def				Fem	Acc	Sg	St	Subst							
-die	die	ART	Def				NoGend	Nom	Pl	St	Subst							
-die	die	ART	Def				NoGend	Acc	Pl	St	Subst							
-die	die	DEM					Fem	Nom	Sg	St	Attr							
-die	die	DEM					Fem	Acc	Sg	St	Attr							
-die	die	DEM					NoGend	Nom	Pl	St	Attr							
-die	die	DEM					NoGend	Acc	Pl	St	Attr							
-die	die	DEM					Fem	Nom	Sg	St	Subst							
-die	die	DEM					Fem	Acc	Sg	St	Subst							
-die	die	DEM					NoGend	Nom	Pl	St	Subst							
-die	die	DEM					NoGend	Acc	Pl	St	Subst							
-die	die	REL					Fem	Nom	Sg	St	Subst							
-die	die	REL					Fem	Acc	Sg	St	Subst							
-die	die	REL					NoGend	Nom	Pl	St	Subst							
-die	die	REL					NoGend	Acc	Pl	St	Subst							
+werden	werden	V									Inf	NonCl						
+die	die	ART	Def				Fem	Nom	Sg	St		Attr						
+die	die	ART	Def				Fem	Acc	Sg	St		Attr						
+die	die	ART	Def				NoGend	Nom	Pl	St		Attr						
+die	die	ART	Def				NoGend	Acc	Pl	St		Attr						
+die	die	ART	Def				Fem	Nom	Sg	St		Subst						
+die	die	ART	Def				Fem	Acc	Sg	St		Subst						
+die	die	ART	Def				NoGend	Nom	Pl	St		Subst						
+die	die	ART	Def				NoGend	Acc	Pl	St		Subst						
+die	die	DEM					Fem	Nom	Sg	St		Attr						
+die	die	DEM					Fem	Acc	Sg	St		Attr						
+die	die	DEM					NoGend	Nom	Pl	St		Attr						
+die	die	DEM					NoGend	Acc	Pl	St		Attr						
+die	die	DEM					Fem	Nom	Sg	St		Subst						
+die	die	DEM					Fem	Acc	Sg	St		Subst						
+die	die	DEM					NoGend	Nom	Pl	St		Subst						
+die	die	DEM					NoGend	Acc	Pl	St		Subst						
+die	die	REL					Fem	Nom	Sg	St		Subst						
+die	die	REL					Fem	Acc	Sg	St		Subst						
+die	die	REL					NoGend	Nom	Pl	St		Subst						
+die	die	REL					NoGend	Acc	Pl	St		Subst						
 im	in	PREPART					Masc	Dat	Sg									
 im	in	PREPART					Neut	Dat	Sg									
 Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Nom	Sg									
 Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Dat	Sg									
 Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Acc	Sg									
-bestimmten	bestimmt	ADJ			Pos		Masc	Gen	Sg	St	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		Masc	Gen	Sg	Wk	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		Masc	Dat	Sg	Wk	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		Masc	Acc	Sg	St	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		Masc	Acc	Sg	Wk	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		Fem	Gen	Sg	Wk	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		Fem	Dat	Sg	Wk	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		Neut	Gen	Sg	St	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		Neut	Gen	Sg	Wk	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		Neut	Dat	Sg	Wk	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		NoGend	Nom	Pl	Wk	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		NoGend	Gen	Pl	Wk	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		NoGend	Dat	Pl	St	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		NoGend	Dat	Pl	Wk	Attr/Subst							
-bestimmten	bestimmt	ADJ			Pos		NoGend	Acc	Pl	Wk	Attr/Subst							
+bestimmten	bestimmt	ADJ			Pos		Masc	Gen	Sg	St		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		Masc	Gen	Sg	Wk		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		Masc	Dat	Sg	Wk		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		Masc	Acc	Sg	St		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		Masc	Acc	Sg	Wk		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		Fem	Gen	Sg	Wk		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		Fem	Dat	Sg	Wk		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		Neut	Gen	Sg	St		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		Neut	Gen	Sg	Wk		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		Neut	Dat	Sg	Wk		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		NoGend	Nom	Pl	Wk		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		NoGend	Gen	Pl	Wk		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		NoGend	Dat	Pl	St		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		NoGend	Dat	Pl	Wk		Attr/Subst						
+bestimmten	bestimmt	ADJ			Pos		NoGend	Acc	Pl	Wk		Attr/Subst						
 bestimmten	bestimmen	V				1			Pl				Ind	Past				
 bestimmten	bestimmen	V				1			Pl				Subj	Past				
 bestimmten	bestimmen	V				3			Pl				Ind	Past				
@@ -113,55 +113,55 @@ Gebühren	gebühren	V				1			Pl				Ind	Pres				CAP
 Gebühren	gebühren	V				1			Pl				Subj	Pres				CAP
 Gebühren	gebühren	V				3			Pl				Ind	Pres				CAP
 Gebühren	gebühren	V				3			Pl				Subj	Pres				CAP
-Gebühren	gebühren	V										Inf						CAP
+Gebühren	gebühren	V									Inf	NonCl						CAP
 erhoben	erheben	V				1			Pl				Ind	Past				
 erhoben	erheben	V				3			Pl				Ind	Past				
-erhoben	erheben	V		haben								PPast						
-erhoben	erhoben	ADJ			Pos						Pred/Adv							
+erhoben	erheben	V		haben							Part			Perf				
+erhoben	erhoben	ADJ			Pos							Pred/Adv						
 .	.	PUNCT	Period															
 (	(	PUNCT	Paren															
 2	2	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 )	)	PUNCT	Paren															
-Die	die	ART	Def				Fem	Nom	Sg	St	Attr							CAP
-Die	die	ART	Def				Fem	Acc	Sg	St	Attr							CAP
-Die	die	ART	Def				NoGend	Nom	Pl	St	Attr							CAP
-Die	die	ART	Def				NoGend	Acc	Pl	St	Attr							CAP
-Die	die	ART	Def				Fem	Nom	Sg	St	Subst							CAP
-Die	die	ART	Def				Fem	Acc	Sg	St	Subst							CAP
-Die	die	ART	Def				NoGend	Nom	Pl	St	Subst							CAP
-Die	die	ART	Def				NoGend	Acc	Pl	St	Subst							CAP
-Die	die	DEM					Fem	Nom	Sg	St	Attr							CAP
-Die	die	DEM					Fem	Acc	Sg	St	Attr							CAP
-Die	die	DEM					NoGend	Nom	Pl	St	Attr							CAP
-Die	die	DEM					NoGend	Acc	Pl	St	Attr							CAP
-Die	die	DEM					Fem	Nom	Sg	St	Subst							CAP
-Die	die	DEM					Fem	Acc	Sg	St	Subst							CAP
-Die	die	DEM					NoGend	Nom	Pl	St	Subst							CAP
-Die	die	DEM					NoGend	Acc	Pl	St	Subst							CAP
-Die	die	REL					Fem	Nom	Sg	St	Subst							CAP
-Die	die	REL					Fem	Acc	Sg	St	Subst							CAP
-Die	die	REL					NoGend	Nom	Pl	St	Subst							CAP
-Die	die	REL					NoGend	Acc	Pl	St	Subst							CAP
+Die	die	ART	Def				Fem	Nom	Sg	St		Attr						CAP
+Die	die	ART	Def				Fem	Acc	Sg	St		Attr						CAP
+Die	die	ART	Def				NoGend	Nom	Pl	St		Attr						CAP
+Die	die	ART	Def				NoGend	Acc	Pl	St		Attr						CAP
+Die	die	ART	Def				Fem	Nom	Sg	St		Subst						CAP
+Die	die	ART	Def				Fem	Acc	Sg	St		Subst						CAP
+Die	die	ART	Def				NoGend	Nom	Pl	St		Subst						CAP
+Die	die	ART	Def				NoGend	Acc	Pl	St		Subst						CAP
+Die	die	DEM					Fem	Nom	Sg	St		Attr						CAP
+Die	die	DEM					Fem	Acc	Sg	St		Attr						CAP
+Die	die	DEM					NoGend	Nom	Pl	St		Attr						CAP
+Die	die	DEM					NoGend	Acc	Pl	St		Attr						CAP
+Die	die	DEM					Fem	Nom	Sg	St		Subst						CAP
+Die	die	DEM					Fem	Acc	Sg	St		Subst						CAP
+Die	die	DEM					NoGend	Nom	Pl	St		Subst						CAP
+Die	die	DEM					NoGend	Acc	Pl	St		Subst						CAP
+Die	die	REL					Fem	Nom	Sg	St		Subst						CAP
+Die	die	REL					Fem	Acc	Sg	St		Subst						CAP
+Die	die	REL					NoGend	Nom	Pl	St		Subst						CAP
+Die	die	REL					NoGend	Acc	Pl	St		Subst						CAP
 im	in	PREPART					Masc	Dat	Sg									
 im	in	PREPART					Neut	Dat	Sg									
 Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Nom	Sg									
 Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Dat	Sg									
 Gebührenverzeichnis	Gebührenverzeichnis	NN					Neut	Acc	Sg									
-aufgeführten	aufgeführt	ADJ			Pos		Masc	Gen	Sg	St	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		Masc	Gen	Sg	Wk	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		Masc	Dat	Sg	Wk	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		Masc	Acc	Sg	St	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		Masc	Acc	Sg	Wk	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		Fem	Gen	Sg	Wk	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		Fem	Dat	Sg	Wk	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		Neut	Gen	Sg	St	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		Neut	Gen	Sg	Wk	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		Neut	Dat	Sg	Wk	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		NoGend	Nom	Pl	Wk	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		NoGend	Gen	Pl	Wk	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		NoGend	Dat	Pl	St	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		NoGend	Dat	Pl	Wk	Attr/Subst							
-aufgeführten	aufgeführt	ADJ			Pos		NoGend	Acc	Pl	Wk	Attr/Subst							
+aufgeführten	aufgeführt	ADJ			Pos		Masc	Gen	Sg	St		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		Masc	Gen	Sg	Wk		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		Masc	Dat	Sg	Wk		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		Masc	Acc	Sg	St		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		Masc	Acc	Sg	Wk		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		Fem	Gen	Sg	Wk		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		Fem	Dat	Sg	Wk		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		Neut	Gen	Sg	St		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		Neut	Gen	Sg	Wk		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		Neut	Dat	Sg	Wk		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		NoGend	Nom	Pl	Wk		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		NoGend	Gen	Pl	Wk		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		NoGend	Dat	Pl	St		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		NoGend	Dat	Pl	Wk		Attr/Subst						
+aufgeführten	aufgeführt	ADJ			Pos		NoGend	Acc	Pl	Wk		Attr/Subst						
 Gebühren	Gebühr	NN					Fem	Nom	Pl									
 Gebühren	Gebühr	NN					Fem	Gen	Pl									
 Gebühren	Gebühr	NN					Fem	Dat	Pl									
@@ -170,36 +170,36 @@ Gebühren	gebühren	V				1			Pl				Ind	Pres				CAP
 Gebühren	gebühren	V				1			Pl				Subj	Pres				CAP
 Gebühren	gebühren	V				3			Pl				Ind	Pres				CAP
 Gebühren	gebühren	V				3			Pl				Subj	Pres				CAP
-Gebühren	gebühren	V										Inf						CAP
+Gebühren	gebühren	V									Inf	NonCl						CAP
 umfassen	umfassen	V				1			Pl				Ind	Pres				
 umfassen	umfassen	V				1			Pl				Subj	Pres				
 umfassen	umfassen	V				3			Pl				Ind	Pres				
 umfassen	umfassen	V				3			Pl				Subj	Pres				
-umfassen	umfassen	V										Inf						
+umfassen	umfassen	V									Inf	NonCl						
 jeweils	jeweils	ADV																
 auch	auch	ADV																
 auch	auch	CONJ	Coord															
 auch	auch	CONJ	Sub															
-die	die	ART	Def				Fem	Nom	Sg	St	Attr							
-die	die	ART	Def				Fem	Acc	Sg	St	Attr							
-die	die	ART	Def				NoGend	Nom	Pl	St	Attr							
-die	die	ART	Def				NoGend	Acc	Pl	St	Attr							
-die	die	ART	Def				Fem	Nom	Sg	St	Subst							
-die	die	ART	Def				Fem	Acc	Sg	St	Subst							
-die	die	ART	Def				NoGend	Nom	Pl	St	Subst							
-die	die	ART	Def				NoGend	Acc	Pl	St	Subst							
-die	die	DEM					Fem	Nom	Sg	St	Attr							
-die	die	DEM					Fem	Acc	Sg	St	Attr							
-die	die	DEM					NoGend	Nom	Pl	St	Attr							
-die	die	DEM					NoGend	Acc	Pl	St	Attr							
-die	die	DEM					Fem	Nom	Sg	St	Subst							
-die	die	DEM					Fem	Acc	Sg	St	Subst							
-die	die	DEM					NoGend	Nom	Pl	St	Subst							
-die	die	DEM					NoGend	Acc	Pl	St	Subst							
-die	die	REL					Fem	Nom	Sg	St	Subst							
-die	die	REL					Fem	Acc	Sg	St	Subst							
-die	die	REL					NoGend	Nom	Pl	St	Subst							
-die	die	REL					NoGend	Acc	Pl	St	Subst							
+die	die	ART	Def				Fem	Nom	Sg	St		Attr						
+die	die	ART	Def				Fem	Acc	Sg	St		Attr						
+die	die	ART	Def				NoGend	Nom	Pl	St		Attr						
+die	die	ART	Def				NoGend	Acc	Pl	St		Attr						
+die	die	ART	Def				Fem	Nom	Sg	St		Subst						
+die	die	ART	Def				Fem	Acc	Sg	St		Subst						
+die	die	ART	Def				NoGend	Nom	Pl	St		Subst						
+die	die	ART	Def				NoGend	Acc	Pl	St		Subst						
+die	die	DEM					Fem	Nom	Sg	St		Attr						
+die	die	DEM					Fem	Acc	Sg	St		Attr						
+die	die	DEM					NoGend	Nom	Pl	St		Attr						
+die	die	DEM					NoGend	Acc	Pl	St		Attr						
+die	die	DEM					Fem	Nom	Sg	St		Subst						
+die	die	DEM					Fem	Acc	Sg	St		Subst						
+die	die	DEM					NoGend	Nom	Pl	St		Subst						
+die	die	DEM					NoGend	Acc	Pl	St		Subst						
+die	die	REL					Fem	Nom	Sg	St		Subst						
+die	die	REL					Fem	Acc	Sg	St		Subst						
+die	die	REL					NoGend	Nom	Pl	St		Subst						
+die	die	REL					NoGend	Acc	Pl	St		Subst						
 Kosten	Kosten	NN					NoGend	Nom	Pl									
 Kosten	Kosten	NN					NoGend	Gen	Pl									
 Kosten	Kosten	NN					NoGend	Dat	Pl									
@@ -208,51 +208,51 @@ Kosten	kosten	V				1			Pl				Ind	Pres				CAP
 Kosten	kosten	V				1			Pl				Subj	Pres				CAP
 Kosten	kosten	V				3			Pl				Ind	Pres				CAP
 Kosten	kosten	V				3			Pl				Subj	Pres				CAP
-Kosten	kosten	V										Inf						CAP
+Kosten	kosten	V									Inf	NonCl						CAP
 Kosten	kosen	V				1			Pl				Ind	Past				CAP
 Kosten	kosen	V				1			Pl				Subj	Past				CAP
 Kosten	kosen	V				3			Pl				Ind	Past				CAP
 Kosten	kosen	V				3			Pl				Subj	Past				CAP
 für	für	ADV																
 für	für	PREP																
-die	die	ART	Def				Fem	Nom	Sg	St	Attr							
-die	die	ART	Def				Fem	Acc	Sg	St	Attr							
-die	die	ART	Def				NoGend	Nom	Pl	St	Attr							
-die	die	ART	Def				NoGend	Acc	Pl	St	Attr							
-die	die	ART	Def				Fem	Nom	Sg	St	Subst							
-die	die	ART	Def				Fem	Acc	Sg	St	Subst							
-die	die	ART	Def				NoGend	Nom	Pl	St	Subst							
-die	die	ART	Def				NoGend	Acc	Pl	St	Subst							
-die	die	DEM					Fem	Nom	Sg	St	Attr							
-die	die	DEM					Fem	Acc	Sg	St	Attr							
-die	die	DEM					NoGend	Nom	Pl	St	Attr							
-die	die	DEM					NoGend	Acc	Pl	St	Attr							
-die	die	DEM					Fem	Nom	Sg	St	Subst							
-die	die	DEM					Fem	Acc	Sg	St	Subst							
-die	die	DEM					NoGend	Nom	Pl	St	Subst							
-die	die	DEM					NoGend	Acc	Pl	St	Subst							
-die	die	REL					Fem	Nom	Sg	St	Subst							
-die	die	REL					Fem	Acc	Sg	St	Subst							
-die	die	REL					NoGend	Nom	Pl	St	Subst							
-die	die	REL					NoGend	Acc	Pl	St	Subst							
+die	die	ART	Def				Fem	Nom	Sg	St		Attr						
+die	die	ART	Def				Fem	Acc	Sg	St		Attr						
+die	die	ART	Def				NoGend	Nom	Pl	St		Attr						
+die	die	ART	Def				NoGend	Acc	Pl	St		Attr						
+die	die	ART	Def				Fem	Nom	Sg	St		Subst						
+die	die	ART	Def				Fem	Acc	Sg	St		Subst						
+die	die	ART	Def				NoGend	Nom	Pl	St		Subst						
+die	die	ART	Def				NoGend	Acc	Pl	St		Subst						
+die	die	DEM					Fem	Nom	Sg	St		Attr						
+die	die	DEM					Fem	Acc	Sg	St		Attr						
+die	die	DEM					NoGend	Nom	Pl	St		Attr						
+die	die	DEM					NoGend	Acc	Pl	St		Attr						
+die	die	DEM					Fem	Nom	Sg	St		Subst						
+die	die	DEM					Fem	Acc	Sg	St		Subst						
+die	die	DEM					NoGend	Nom	Pl	St		Subst						
+die	die	DEM					NoGend	Acc	Pl	St		Subst						
+die	die	REL					Fem	Nom	Sg	St		Subst						
+die	die	REL					Fem	Acc	Sg	St		Subst						
+die	die	REL					NoGend	Nom	Pl	St		Subst						
+die	die	REL					NoGend	Acc	Pl	St		Subst						
 Festsetzung	Festsetzung	NN					Fem	Nom	Sg									
 Festsetzung	Festsetzung	NN					Fem	Gen	Sg									
 Festsetzung	Festsetzung	NN					Fem	Dat	Sg									
 Festsetzung	Festsetzung	NN					Fem	Acc	Sg									
-der	die	ART	Def				Masc	Nom	Sg	St	Attr							
-der	die	ART	Def				Fem	Gen	Sg	St	Attr							
-der	die	ART	Def				Fem	Dat	Sg	St	Attr							
-der	die	ART	Def				NoGend	Gen	Pl	St	Attr							
-der	die	ART	Def				Masc	Nom	Sg	St	Subst							
-der	die	ART	Def				Fem	Dat	Sg	St	Subst							
-der	die	DEM					Masc	Nom	Sg	St	Attr							
-der	die	DEM					Fem	Gen	Sg	St	Attr							
-der	die	DEM					Fem	Dat	Sg	St	Attr							
-der	die	DEM					NoGend	Gen	Pl	St	Attr							
-der	die	DEM					Masc	Nom	Sg	St	Subst							
-der	die	DEM					Fem	Dat	Sg	St	Subst							
-der	die	REL					Masc	Nom	Sg	St	Subst							
-der	die	REL					Fem	Dat	Sg	St	Subst							
+der	die	ART	Def				Masc	Nom	Sg	St		Attr						
+der	die	ART	Def				Fem	Gen	Sg	St		Attr						
+der	die	ART	Def				Fem	Dat	Sg	St		Attr						
+der	die	ART	Def				NoGend	Gen	Pl	St		Attr						
+der	die	ART	Def				Masc	Nom	Sg	St		Subst						
+der	die	ART	Def				Fem	Dat	Sg	St		Subst						
+der	die	DEM					Masc	Nom	Sg	St		Attr						
+der	die	DEM					Fem	Gen	Sg	St		Attr						
+der	die	DEM					Fem	Dat	Sg	St		Attr						
+der	die	DEM					NoGend	Gen	Pl	St		Attr						
+der	die	DEM					Masc	Nom	Sg	St		Subst						
+der	die	DEM					Fem	Dat	Sg	St		Subst						
+der	die	REL					Masc	Nom	Sg	St		Subst						
+der	die	REL					Fem	Dat	Sg	St		Subst						
 Gebühren	Gebühr	NN					Fem	Nom	Pl									
 Gebühren	Gebühr	NN					Fem	Gen	Pl									
 Gebühren	Gebühr	NN					Fem	Dat	Pl									
@@ -261,7 +261,7 @@ Gebühren	gebühren	V				1			Pl				Ind	Pres				CAP
 Gebühren	gebühren	V				1			Pl				Subj	Pres				CAP
 Gebühren	gebühren	V				3			Pl				Ind	Pres				CAP
 Gebühren	gebühren	V				3			Pl				Subj	Pres				CAP
-Gebühren	gebühren	V										Inf						CAP
+Gebühren	gebühren	V									Inf	NonCl						CAP
 .	.	PUNCT	Period															
 Auslagen	Auslage	NN					Fem	Nom	Pl									
 Auslagen	Auslage	NN					Fem	Gen	Pl									
@@ -273,7 +273,7 @@ werden	werden	V				1			Pl				Ind	Pres
 werden	werden	V				1			Pl				Subj	Pres				
 werden	werden	V				3			Pl				Ind	Pres				
 werden	werden	V				3			Pl				Subj	Pres				
-werden	werden	V										Inf						
+werden	werden	V									Inf	NonCl						
 nach	nach	ADV																
 nach	nach	POSTP																
 nach	nach	PREP																
@@ -289,10 +289,10 @@ des	des	NN					Neut	Dat	Sg
 des	des	NN					Neut	Dat	Pl									
 des	des	NN					Neut	Acc	Sg									
 des	des	NN					Neut	Acc	Pl									
-des	die	ART	Def				Masc	Gen	Sg	St	Attr							
-des	die	ART	Def				Neut	Gen	Sg	St	Attr							
-des	die	DEM					Masc	Gen	Sg	St	Attr							
-des	die	DEM					Neut	Gen	Sg	St	Attr							
+des	die	ART	Def				Masc	Gen	Sg	St		Attr						
+des	die	ART	Def				Neut	Gen	Sg	St		Attr						
+des	die	DEM					Masc	Gen	Sg	St		Attr						
+des	die	DEM					Neut	Gen	Sg	St		Attr						
 §	§	NN				Invar	Masc	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 12	12	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 Absatz	Absatz	NN					Masc	Nom	Sg									
@@ -307,53 +307,53 @@ des	des	NN					Neut	Dat	Sg
 des	des	NN					Neut	Dat	Pl									
 des	des	NN					Neut	Acc	Sg									
 des	des	NN					Neut	Acc	Pl									
-des	die	ART	Def				Masc	Gen	Sg	St	Attr							
-des	die	ART	Def				Neut	Gen	Sg	St	Attr							
-des	die	DEM					Masc	Gen	Sg	St	Attr							
-des	die	DEM					Neut	Gen	Sg	St	Attr							
+des	die	ART	Def				Masc	Gen	Sg	St		Attr						
+des	die	ART	Def				Neut	Gen	Sg	St		Attr						
+des	die	DEM					Masc	Gen	Sg	St		Attr						
+des	die	DEM					Neut	Gen	Sg	St		Attr						
 Bundesgebührengesetzes	Bundesgebührengesetz	NN					Neut	Gen	Sg									
-gesondert	gesondert	ADJ			Pos						Pred/Adv							
-gesondert	sondern	V		haben								PPast						
+gesondert	gesondert	ADJ			Pos							Pred/Adv						
+gesondert	sondern	V		haben							Part			Perf				
 erhoben	erheben	V				1			Pl				Ind	Past				
 erhoben	erheben	V				3			Pl				Ind	Past				
-erhoben	erheben	V		haben								PPast						
-erhoben	erhoben	ADJ			Pos						Pred/Adv							
+erhoben	erheben	V		haben							Part			Perf				
+erhoben	erhoben	ADJ			Pos							Pred/Adv						
 .	.	PUNCT	Period															
 Verordnung	Verordnung	NN					Fem	Nom	Sg									
 Verordnung	Verordnung	NN					Fem	Gen	Sg									
 Verordnung	Verordnung	NN					Fem	Dat	Sg									
 Verordnung	Verordnung	NN					Fem	Acc	Sg									
 zur	zu	PREPART					Fem	Dat	Sg									
-näheren	nahe	ADJ			Comp		Masc	Gen	Sg	St	Attr/Subst							
-näheren	nahe	ADJ			Comp		Masc	Gen	Sg	Wk	Attr/Subst							
-näheren	nahe	ADJ			Comp		Masc	Dat	Sg	Wk	Attr/Subst							
-näheren	nahe	ADJ			Comp		Masc	Acc	Sg	St	Attr/Subst							
-näheren	nahe	ADJ			Comp		Masc	Acc	Sg	Wk	Attr/Subst							
-näheren	nahe	ADJ			Comp		Fem	Gen	Sg	Wk	Attr/Subst							
-näheren	nahe	ADJ			Comp		Fem	Dat	Sg	Wk	Attr/Subst							
-näheren	nahe	ADJ			Comp		Neut	Gen	Sg	St	Attr/Subst							
-näheren	nahe	ADJ			Comp		Neut	Gen	Sg	Wk	Attr/Subst							
-näheren	nahe	ADJ			Comp		Neut	Dat	Sg	Wk	Attr/Subst							
-näheren	nahe	ADJ			Comp		NoGend	Nom	Pl	Wk	Attr/Subst							
-näheren	nahe	ADJ			Comp		NoGend	Gen	Pl	Wk	Attr/Subst							
-näheren	nahe	ADJ			Comp		NoGend	Dat	Pl	St	Attr/Subst							
-näheren	nahe	ADJ			Comp		NoGend	Dat	Pl	Wk	Attr/Subst							
-näheren	nahe	ADJ			Comp		NoGend	Acc	Pl	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		Masc	Gen	Sg	St	Attr/Subst							
-näheren	nah	ADJ			Comp		Masc	Gen	Sg	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		Masc	Dat	Sg	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		Masc	Acc	Sg	St	Attr/Subst							
-näheren	nah	ADJ			Comp		Masc	Acc	Sg	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		Fem	Gen	Sg	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		Fem	Dat	Sg	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		Neut	Gen	Sg	St	Attr/Subst							
-näheren	nah	ADJ			Comp		Neut	Gen	Sg	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		Neut	Dat	Sg	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		NoGend	Nom	Pl	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		NoGend	Gen	Pl	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		NoGend	Dat	Pl	St	Attr/Subst							
-näheren	nah	ADJ			Comp		NoGend	Dat	Pl	Wk	Attr/Subst							
-näheren	nah	ADJ			Comp		NoGend	Acc	Pl	Wk	Attr/Subst							
+näheren	nahe	ADJ			Comp		Masc	Gen	Sg	St		Attr/Subst						
+näheren	nahe	ADJ			Comp		Masc	Gen	Sg	Wk		Attr/Subst						
+näheren	nahe	ADJ			Comp		Masc	Dat	Sg	Wk		Attr/Subst						
+näheren	nahe	ADJ			Comp		Masc	Acc	Sg	St		Attr/Subst						
+näheren	nahe	ADJ			Comp		Masc	Acc	Sg	Wk		Attr/Subst						
+näheren	nahe	ADJ			Comp		Fem	Gen	Sg	Wk		Attr/Subst						
+näheren	nahe	ADJ			Comp		Fem	Dat	Sg	Wk		Attr/Subst						
+näheren	nahe	ADJ			Comp		Neut	Gen	Sg	St		Attr/Subst						
+näheren	nahe	ADJ			Comp		Neut	Gen	Sg	Wk		Attr/Subst						
+näheren	nahe	ADJ			Comp		Neut	Dat	Sg	Wk		Attr/Subst						
+näheren	nahe	ADJ			Comp		NoGend	Nom	Pl	Wk		Attr/Subst						
+näheren	nahe	ADJ			Comp		NoGend	Gen	Pl	Wk		Attr/Subst						
+näheren	nahe	ADJ			Comp		NoGend	Dat	Pl	St		Attr/Subst						
+näheren	nahe	ADJ			Comp		NoGend	Dat	Pl	Wk		Attr/Subst						
+näheren	nahe	ADJ			Comp		NoGend	Acc	Pl	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		Masc	Gen	Sg	St		Attr/Subst						
+näheren	nah	ADJ			Comp		Masc	Gen	Sg	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		Masc	Dat	Sg	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		Masc	Acc	Sg	St		Attr/Subst						
+näheren	nah	ADJ			Comp		Masc	Acc	Sg	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		Fem	Gen	Sg	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		Fem	Dat	Sg	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		Neut	Gen	Sg	St		Attr/Subst						
+näheren	nah	ADJ			Comp		Neut	Gen	Sg	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		Neut	Dat	Sg	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		NoGend	Nom	Pl	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		NoGend	Gen	Pl	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		NoGend	Dat	Pl	St		Attr/Subst						
+näheren	nah	ADJ			Comp		NoGend	Dat	Pl	Wk		Attr/Subst						
+näheren	nah	ADJ			Comp		NoGend	Acc	Pl	Wk		Attr/Subst						
 Bestimmung	Bestimmung	NN					Fem	Nom	Sg									
 Bestimmung	Bestimmung	NN					Fem	Gen	Sg									
 Bestimmung	Bestimmung	NN					Fem	Dat	Sg									
@@ -366,25 +366,25 @@ des	des	NN					Neut	Dat	Sg
 des	des	NN					Neut	Dat	Pl									
 des	des	NN					Neut	Acc	Sg									
 des	des	NN					Neut	Acc	Pl									
-des	die	ART	Def				Masc	Gen	Sg	St	Attr							
-des	die	ART	Def				Neut	Gen	Sg	St	Attr							
-des	die	DEM					Masc	Gen	Sg	St	Attr							
-des	die	DEM					Neut	Gen	Sg	St	Attr							
-schwerwiegenden	schwerwiegend	ADJ			Pos		Masc	Gen	Sg	St	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		Masc	Gen	Sg	Wk	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		Masc	Dat	Sg	Wk	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		Masc	Acc	Sg	St	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		Masc	Acc	Sg	Wk	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		Fem	Gen	Sg	Wk	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		Fem	Dat	Sg	Wk	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		Neut	Gen	Sg	St	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		Neut	Gen	Sg	Wk	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		Neut	Dat	Sg	Wk	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Nom	Pl	Wk	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Gen	Pl	Wk	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Dat	Pl	St	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Dat	Pl	Wk	Attr/Subst							
-schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Acc	Pl	Wk	Attr/Subst							
+des	die	ART	Def				Masc	Gen	Sg	St		Attr						
+des	die	ART	Def				Neut	Gen	Sg	St		Attr						
+des	die	DEM					Masc	Gen	Sg	St		Attr						
+des	die	DEM					Neut	Gen	Sg	St		Attr						
+schwerwiegenden	schwerwiegend	ADJ			Pos		Masc	Gen	Sg	St		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		Masc	Gen	Sg	Wk		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		Masc	Dat	Sg	Wk		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		Masc	Acc	Sg	St		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		Masc	Acc	Sg	Wk		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		Fem	Gen	Sg	Wk		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		Fem	Dat	Sg	Wk		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		Neut	Gen	Sg	St		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		Neut	Gen	Sg	Wk		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		Neut	Dat	Sg	Wk		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Nom	Pl	Wk		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Gen	Pl	Wk		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Dat	Pl	St		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Dat	Pl	Wk		Attr/Subst						
+schwerwiegenden	schwerwiegend	ADJ			Pos		NoGend	Acc	Pl	Wk		Attr/Subst						
 Unfalls	Unfall	NN					Masc	Gen	Sg									
 mit	mit	ADV																
 mit	mit	PREP																
@@ -409,24 +409,24 @@ des	des	NN					Neut	Dat	Sg
 des	des	NN					Neut	Dat	Pl									
 des	des	NN					Neut	Acc	Sg									
 des	des	NN					Neut	Acc	Pl									
-des	die	ART	Def				Masc	Gen	Sg	St	Attr							
-des	die	ART	Def				Neut	Gen	Sg	St	Attr							
-des	die	DEM					Masc	Gen	Sg	St	Attr							
-des	die	DEM					Neut	Gen	Sg	St	Attr							
+des	die	ART	Def				Masc	Gen	Sg	St		Attr						
+des	die	ART	Def				Neut	Gen	Sg	St		Attr						
+des	die	DEM					Masc	Gen	Sg	St		Attr						
+des	die	DEM					Neut	Gen	Sg	St		Attr						
 Straßenverkehrsunfallstatistikgesetzes	Straßenverkehrsunfallstatistikgesetz	NN					Neut	Gen	Sg									
 Ein	einen	V				1			Sg				Ind	Pres	NonSt			CAP
 Ein	einen	V							Sg				Imp					CAP
-Ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl	Attr							CAP
-Ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl	Attr							CAP
-Ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr							CAP
-Ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							CAP
-Ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							CAP
-Ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							CAP
+Ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl		Attr						CAP
+Ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl		Attr						CAP
+Ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl		Attr						CAP
+Ein	eine	CARD					Masc	Nom	Sg	NoInfl		Attr						CAP
+Ein	eine	CARD					Neut	Nom	Sg	NoInfl		Attr						CAP
+Ein	eine	CARD					Neut	Acc	Sg	NoInfl		Attr						CAP
 Ein	ein	ADV																CAP
-schwerwiegender	schwerwiegend	ADJ			Pos		Masc	Nom	Sg	St	Attr/Subst							
-schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Gen	Sg	St	Attr/Subst							
-schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Dat	Sg	St	Attr/Subst							
-schwerwiegender	schwerwiegend	ADJ			Pos		NoGend	Gen	Pl	St	Attr/Subst							
+schwerwiegender	schwerwiegend	ADJ			Pos		Masc	Nom	Sg	St		Attr/Subst						
+schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Gen	Sg	St		Attr/Subst						
+schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Dat	Sg	St		Attr/Subst						
+schwerwiegender	schwerwiegend	ADJ			Pos		NoGend	Gen	Pl	St		Attr/Subst						
 Unfall	Unfall	NN					Masc	Nom	Sg									
 Unfall	Unfall	NN					Masc	Dat	Sg									
 Unfall	Unfall	NN					Masc	Acc	Sg									
@@ -453,10 +453,10 @@ des	des	NN					Neut	Dat	Sg
 des	des	NN					Neut	Dat	Pl									
 des	des	NN					Neut	Acc	Sg									
 des	des	NN					Neut	Acc	Pl									
-des	die	ART	Def				Masc	Gen	Sg	St	Attr							
-des	die	ART	Def				Neut	Gen	Sg	St	Attr							
-des	die	DEM					Masc	Gen	Sg	St	Attr							
-des	die	DEM					Neut	Gen	Sg	St	Attr							
+des	die	ART	Def				Masc	Gen	Sg	St		Attr						
+des	die	ART	Def				Neut	Gen	Sg	St		Attr						
+des	die	DEM					Masc	Gen	Sg	St		Attr						
+des	die	DEM					Neut	Gen	Sg	St		Attr						
 §	§	NN				Invar	Masc	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 2	2	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 Abs.	abs.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
@@ -469,10 +469,10 @@ des	des	NN					Neut	Dat	Sg
 des	des	NN					Neut	Dat	Pl									
 des	des	NN					Neut	Acc	Sg									
 des	des	NN					Neut	Acc	Pl									
-des	die	ART	Def				Masc	Gen	Sg	St	Attr							
-des	die	ART	Def				Neut	Gen	Sg	St	Attr							
-des	die	DEM					Masc	Gen	Sg	St	Attr							
-des	die	DEM					Neut	Gen	Sg	St	Attr							
+des	die	ART	Def				Masc	Gen	Sg	St		Attr						
+des	die	ART	Def				Neut	Gen	Sg	St		Attr						
+des	die	DEM					Masc	Gen	Sg	St		Attr						
+des	die	DEM					Neut	Gen	Sg	St		Attr						
 Straßenverkehrsunfallstatistikgesetzes	Straßenverkehrsunfallstatistikgesetz	NN					Neut	Gen	Sg									
 vom	von	PREPART					Masc	Dat	Sg									
 vom	von	PREPART					Neut	Dat	Sg									
@@ -483,16 +483,16 @@ Juni	Juni	NN					Masc	Dat	Sg
 Juni	Juni	NN					Masc	Acc	Sg									
 1990	1990	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 ,	,	PUNCT	Comma															
-das	die	ART	Def				Neut	Nom	Sg	St	Attr							
-das	die	ART	Def				Neut	Acc	Sg	St	Attr							
-das	die	ART	Def				Neut	Nom	Sg	St	Subst							
-das	die	ART	Def				Neut	Acc	Sg	St	Subst							
-das	die	DEM					Neut	Nom	Sg	St	Attr							
-das	die	DEM					Neut	Acc	Sg	St	Attr							
-das	die	DEM					Neut	Nom	Sg	St	Subst							
-das	die	DEM					Neut	Acc	Sg	St	Subst							
-das	die	REL					Neut	Nom	Sg	St	Subst							
-das	die	REL					Neut	Acc	Sg	St	Subst							
+das	die	ART	Def				Neut	Nom	Sg	St		Attr						
+das	die	ART	Def				Neut	Acc	Sg	St		Attr						
+das	die	ART	Def				Neut	Nom	Sg	St		Subst						
+das	die	ART	Def				Neut	Acc	Sg	St		Subst						
+das	die	DEM					Neut	Nom	Sg	St		Attr						
+das	die	DEM					Neut	Acc	Sg	St		Attr						
+das	die	DEM					Neut	Nom	Sg	St		Subst						
+das	die	DEM					Neut	Acc	Sg	St		Subst						
+das	die	REL					Neut	Nom	Sg	St		Subst						
+das	die	REL					Neut	Acc	Sg	St		Subst						
 durch	durch	ADV																
 durch	durch	PREP																
 Artikel	Artikel	NN					Masc	Nom	Sg									
@@ -510,10 +510,10 @@ des	des	NN					Neut	Dat	Sg
 des	des	NN					Neut	Dat	Pl									
 des	des	NN					Neut	Acc	Sg									
 des	des	NN					Neut	Acc	Pl									
-des	die	ART	Def				Masc	Gen	Sg	St	Attr							
-des	die	ART	Def				Neut	Gen	Sg	St	Attr							
-des	die	DEM					Masc	Gen	Sg	St	Attr							
-des	die	DEM					Neut	Gen	Sg	St	Attr							
+des	die	ART	Def				Masc	Gen	Sg	St		Attr						
+des	die	ART	Def				Neut	Gen	Sg	St		Attr						
+des	die	DEM					Masc	Gen	Sg	St		Attr						
+des	die	DEM					Neut	Gen	Sg	St		Attr						
 Gesetzes	Gesetz	NN					Neut	Gen	Sg									
 vom	von	PREPART					Masc	Dat	Sg									
 vom	von	PREPART					Neut	Dat	Sg									
@@ -550,10 +550,10 @@ S.	S.	NN				Invar	Fem	Invar	Invar	Invar	Invar	Invar	Invar	Invar
 S.	s.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
 3491	3491	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 )	)	PUNCT	Paren															
-geändert	ändern	V		haben								PPast						
-geändert	geändert	ADJ			Pos						Pred/Adv							
-worden	werden	V		sein								PPast						
-worden	worden	ADJ			Pos						Pred/Adv							
+geändert	ändern	V		haben							Part			Perf				
+geändert	geändert	ADJ			Pos							Pred/Adv						
+worden	werden	V		sein							Part			Perf				
+worden	worden	ADJ			Pos							Pred/Adv						
 ist	sein	V				3			Sg				Ind	Pres				
 ,	,	PUNCT	Comma															
 liegt	liegen	V				2			Pl				Ind	Pres				
@@ -566,31 +566,31 @@ wenn	wenn	CONJ	Sub
 nach	nach	ADV																
 nach	nach	POSTP																
 nach	nach	PREP																
-den	die	ART	Def				Masc	Acc	Sg	St	Attr							
-den	die	ART	Def				NoGend	Dat	Pl	St	Attr							
-den	die	ART	Def				Masc	Acc	Sg	St	Subst							
-den	die	DEM					Masc	Acc	Sg	St	Attr							
-den	die	DEM					NoGend	Dat	Pl	St	Attr							
-den	die	DEM					Masc	Acc	Sg	St	Subst							
-den	die	REL					Masc	Acc	Sg	St	Subst							
+den	die	ART	Def				Masc	Acc	Sg	St		Attr						
+den	die	ART	Def				NoGend	Dat	Pl	St		Attr						
+den	die	ART	Def				Masc	Acc	Sg	St		Subst						
+den	die	DEM					Masc	Acc	Sg	St		Attr						
+den	die	DEM					NoGend	Dat	Pl	St		Attr						
+den	die	DEM					Masc	Acc	Sg	St		Subst						
+den	die	REL					Masc	Acc	Sg	St		Subst						
 Feststellungen	Feststellung	NN					Fem	Nom	Pl									
 Feststellungen	Feststellung	NN					Fem	Gen	Pl									
 Feststellungen	Feststellung	NN					Fem	Dat	Pl									
 Feststellungen	Feststellung	NN					Fem	Acc	Pl									
-der	die	ART	Def				Masc	Nom	Sg	St	Attr							
-der	die	ART	Def				Fem	Gen	Sg	St	Attr							
-der	die	ART	Def				Fem	Dat	Sg	St	Attr							
-der	die	ART	Def				NoGend	Gen	Pl	St	Attr							
-der	die	ART	Def				Masc	Nom	Sg	St	Subst							
-der	die	ART	Def				Fem	Dat	Sg	St	Subst							
-der	die	DEM					Masc	Nom	Sg	St	Attr							
-der	die	DEM					Fem	Gen	Sg	St	Attr							
-der	die	DEM					Fem	Dat	Sg	St	Attr							
-der	die	DEM					NoGend	Gen	Pl	St	Attr							
-der	die	DEM					Masc	Nom	Sg	St	Subst							
-der	die	DEM					Fem	Dat	Sg	St	Subst							
-der	die	REL					Masc	Nom	Sg	St	Subst							
-der	die	REL					Fem	Dat	Sg	St	Subst							
+der	die	ART	Def				Masc	Nom	Sg	St		Attr						
+der	die	ART	Def				Fem	Gen	Sg	St		Attr						
+der	die	ART	Def				Fem	Dat	Sg	St		Attr						
+der	die	ART	Def				NoGend	Gen	Pl	St		Attr						
+der	die	ART	Def				Masc	Nom	Sg	St		Subst						
+der	die	ART	Def				Fem	Dat	Sg	St		Subst						
+der	die	DEM					Masc	Nom	Sg	St		Attr						
+der	die	DEM					Fem	Gen	Sg	St		Attr						
+der	die	DEM					Fem	Dat	Sg	St		Attr						
+der	die	DEM					NoGend	Gen	Pl	St		Attr						
+der	die	DEM					Masc	Nom	Sg	St		Subst						
+der	die	DEM					Fem	Dat	Sg	St		Subst						
+der	die	REL					Masc	Nom	Sg	St		Subst						
+der	die	REL					Fem	Dat	Sg	St		Subst						
 Beamten	Beamte	NN					Masc	Nom	Pl	Wk								
 Beamten	Beamte	NN					Masc	Gen	Sg	St								
 Beamten	Beamte	NN					Masc	Gen	Sg	Wk								
@@ -620,15 +620,15 @@ des	des	NN					Neut	Dat	Sg
 des	des	NN					Neut	Dat	Pl									
 des	des	NN					Neut	Acc	Sg									
 des	des	NN					Neut	Acc	Pl									
-des	die	ART	Def				Masc	Gen	Sg	St	Attr							
-des	die	ART	Def				Neut	Gen	Sg	St	Attr							
-des	die	DEM					Masc	Gen	Sg	St	Attr							
-des	die	DEM					Neut	Gen	Sg	St	Attr							
+des	die	ART	Def				Masc	Gen	Sg	St		Attr						
+des	die	ART	Def				Neut	Gen	Sg	St		Attr						
+des	die	DEM					Masc	Gen	Sg	St		Attr						
+des	die	DEM					Neut	Gen	Sg	St		Attr						
 Polizeidienstes	Polizeidienst	NN					Masc	Gen	Sg									
 1.	1.	ORD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 als	als	CONJ	Coord															
 als	als	CONJ	Sub															
-als	als	CONJ	Compar															
+als	als	CONJ	AdjComp															
 Unfallursache	Unfallursache	NN					Fem	Nom	Sg									
 Unfallursache	Unfallursache	NN					Fem	Gen	Sg									
 Unfallursache	Unfallursache	NN					Fem	Dat	Sg									
@@ -646,31 +646,31 @@ eine	einen	V				1			Sg				Ind	Pres
 eine	einen	V				1			Sg				Subj	Pres				
 eine	einen	V				3			Sg				Subj	Pres				
 eine	einen	V							Sg				Imp					
-eine	eine	ART	Indef				Fem	Nom	Sg	St	Attr							
-eine	eine	ART	Indef				Fem	Acc	Sg	St	Attr							
-eine	eine	ART	Indef				Fem	Nom	Sg	St	Subst							
-eine	eine	ART	Indef				Fem	Acc	Sg	St	Subst							
-eine	eine	CARD					Masc	Nom	Sg	Wk	Attr							
-eine	eine	CARD					Fem	Nom	Sg	St	Attr							
-eine	eine	CARD					Fem	Nom	Sg	Wk	Attr							
-eine	eine	CARD					Fem	Acc	Sg	St	Attr							
-eine	eine	CARD					Fem	Acc	Sg	Wk	Attr							
-eine	eine	CARD					Neut	Nom	Sg	Wk	Attr							
-eine	eine	CARD					Neut	Acc	Sg	Wk	Attr							
-eine	eine	CARD					Masc	Nom	Sg	Wk	Subst							
-eine	eine	CARD					Fem	Nom	Sg	St	Subst							
-eine	eine	CARD					Fem	Nom	Sg	Wk	Subst							
-eine	eine	CARD					Fem	Acc	Sg	St	Subst							
-eine	eine	CARD					Fem	Acc	Sg	Wk	Subst							
-eine	eine	CARD					Neut	Nom	Sg	Wk	Subst							
-eine	eine	CARD					Neut	Acc	Sg	Wk	Subst							
-eine	eine	INDEF					Masc	Nom	Sg	Wk	Subst							
-eine	eine	INDEF					Fem	Nom	Sg	St	Subst							
-eine	eine	INDEF					Fem	Nom	Sg	Wk	Subst							
-eine	eine	INDEF					Fem	Acc	Sg	St	Subst							
-eine	eine	INDEF					Fem	Acc	Sg	Wk	Subst							
-eine	eine	INDEF					Neut	Nom	Sg	Wk	Subst							
-eine	eine	INDEF					Neut	Acc	Sg	Wk	Subst							
+eine	eine	ART	Indef				Fem	Nom	Sg	St		Attr						
+eine	eine	ART	Indef				Fem	Acc	Sg	St		Attr						
+eine	eine	ART	Indef				Fem	Nom	Sg	St		Subst						
+eine	eine	ART	Indef				Fem	Acc	Sg	St		Subst						
+eine	eine	CARD					Masc	Nom	Sg	Wk		Attr						
+eine	eine	CARD					Fem	Nom	Sg	St		Attr						
+eine	eine	CARD					Fem	Nom	Sg	Wk		Attr						
+eine	eine	CARD					Fem	Acc	Sg	St		Attr						
+eine	eine	CARD					Fem	Acc	Sg	Wk		Attr						
+eine	eine	CARD					Neut	Nom	Sg	Wk		Attr						
+eine	eine	CARD					Neut	Acc	Sg	Wk		Attr						
+eine	eine	CARD					Masc	Nom	Sg	Wk		Subst						
+eine	eine	CARD					Fem	Nom	Sg	St		Subst						
+eine	eine	CARD					Fem	Nom	Sg	Wk		Subst						
+eine	eine	CARD					Fem	Acc	Sg	St		Subst						
+eine	eine	CARD					Fem	Acc	Sg	Wk		Subst						
+eine	eine	CARD					Neut	Nom	Sg	Wk		Subst						
+eine	eine	CARD					Neut	Acc	Sg	Wk		Subst						
+eine	eine	INDEF					Masc	Nom	Sg	Wk		Subst						
+eine	eine	INDEF					Fem	Nom	Sg	St		Subst						
+eine	eine	INDEF					Fem	Nom	Sg	Wk		Subst						
+eine	eine	INDEF					Fem	Acc	Sg	St		Subst						
+eine	eine	INDEF					Fem	Acc	Sg	Wk		Subst						
+eine	eine	INDEF					Neut	Nom	Sg	Wk		Subst						
+eine	eine	INDEF					Neut	Acc	Sg	Wk		Subst						
 Ordnungswidrigkeit	Ordnungswidrigkeit	NN					Fem	Nom	Sg									
 Ordnungswidrigkeit	Ordnungswidrigkeit	NN					Fem	Gen	Sg									
 Ordnungswidrigkeit	Ordnungswidrigkeit	NN					Fem	Dat	Sg									
@@ -678,20 +678,20 @@ Ordnungswidrigkeit	Ordnungswidrigkeit	NN					Fem	Acc	Sg
 ,	,	PUNCT	Comma															
 bei	bei	ADV																
 bei	bei	PREP																
-der	die	ART	Def				Masc	Nom	Sg	St	Attr							
-der	die	ART	Def				Fem	Gen	Sg	St	Attr							
-der	die	ART	Def				Fem	Dat	Sg	St	Attr							
-der	die	ART	Def				NoGend	Gen	Pl	St	Attr							
-der	die	ART	Def				Masc	Nom	Sg	St	Subst							
-der	die	ART	Def				Fem	Dat	Sg	St	Subst							
-der	die	DEM					Masc	Nom	Sg	St	Attr							
-der	die	DEM					Fem	Gen	Sg	St	Attr							
-der	die	DEM					Fem	Dat	Sg	St	Attr							
-der	die	DEM					NoGend	Gen	Pl	St	Attr							
-der	die	DEM					Masc	Nom	Sg	St	Subst							
-der	die	DEM					Fem	Dat	Sg	St	Subst							
-der	die	REL					Masc	Nom	Sg	St	Subst							
-der	die	REL					Fem	Dat	Sg	St	Subst							
+der	die	ART	Def				Masc	Nom	Sg	St		Attr						
+der	die	ART	Def				Fem	Gen	Sg	St		Attr						
+der	die	ART	Def				Fem	Dat	Sg	St		Attr						
+der	die	ART	Def				NoGend	Gen	Pl	St		Attr						
+der	die	ART	Def				Masc	Nom	Sg	St		Subst						
+der	die	ART	Def				Fem	Dat	Sg	St		Subst						
+der	die	DEM					Masc	Nom	Sg	St		Attr						
+der	die	DEM					Fem	Gen	Sg	St		Attr						
+der	die	DEM					Fem	Dat	Sg	St		Attr						
+der	die	DEM					NoGend	Gen	Pl	St		Attr						
+der	die	DEM					Masc	Nom	Sg	St		Subst						
+der	die	DEM					Fem	Dat	Sg	St		Subst						
+der	die	REL					Masc	Nom	Sg	St		Subst						
+der	die	REL					Fem	Dat	Sg	St		Subst						
 gemäß	gemäß	POSTP																
 gemäß	gemäß	PREP																
 Bußgeldkatalog-Verordnung	Bußgeldkatalog-Verordnung	NN					Fem	Nom	Sg									
@@ -735,8 +735,8 @@ zuletzt	zuletzt	ADV
 zuletzt	zuletzen	V				2			Sg				Ind	Pres				
 zuletzt	zuletzen	V				2			Pl				Ind	Pres				
 zuletzt	zuletzen	V				3			Sg				Ind	Pres				
-geändert	ändern	V		haben								PPast						
-geändert	geändert	ADJ			Pos						Pred/Adv							
+geändert	ändern	V		haben							Part			Perf				
+geändert	geändert	ADJ			Pos							Pred/Adv						
 durch	durch	ADV																
 durch	durch	PREP																
 Verordnung	Verordnung	NN					Fem	Nom	Sg									
@@ -779,38 +779,38 @@ S.	s.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
 2043	2043	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 )	)	PUNCT	Paren															
 ,	,	PUNCT	Comma															
-in	in	ADJ			Pos						Pred/Adv							
+in	in	ADJ			Pos							Pred/Adv						
 in	in	PREP																
-der	die	ART	Def				Masc	Nom	Sg	St	Attr							
-der	die	ART	Def				Fem	Gen	Sg	St	Attr							
-der	die	ART	Def				Fem	Dat	Sg	St	Attr							
-der	die	ART	Def				NoGend	Gen	Pl	St	Attr							
-der	die	ART	Def				Masc	Nom	Sg	St	Subst							
-der	die	ART	Def				Fem	Dat	Sg	St	Subst							
-der	die	DEM					Masc	Nom	Sg	St	Attr							
-der	die	DEM					Fem	Gen	Sg	St	Attr							
-der	die	DEM					Fem	Dat	Sg	St	Attr							
-der	die	DEM					NoGend	Gen	Pl	St	Attr							
-der	die	DEM					Masc	Nom	Sg	St	Subst							
-der	die	DEM					Fem	Dat	Sg	St	Subst							
-der	die	REL					Masc	Nom	Sg	St	Subst							
-der	die	REL					Fem	Dat	Sg	St	Subst							
+der	die	ART	Def				Masc	Nom	Sg	St		Attr						
+der	die	ART	Def				Fem	Gen	Sg	St		Attr						
+der	die	ART	Def				Fem	Dat	Sg	St		Attr						
+der	die	ART	Def				NoGend	Gen	Pl	St		Attr						
+der	die	ART	Def				Masc	Nom	Sg	St		Subst						
+der	die	ART	Def				Fem	Dat	Sg	St		Subst						
+der	die	DEM					Masc	Nom	Sg	St		Attr						
+der	die	DEM					Fem	Gen	Sg	St		Attr						
+der	die	DEM					Fem	Dat	Sg	St		Attr						
+der	die	DEM					NoGend	Gen	Pl	St		Attr						
+der	die	DEM					Masc	Nom	Sg	St		Subst						
+der	die	DEM					Fem	Dat	Sg	St		Subst						
+der	die	REL					Masc	Nom	Sg	St		Subst						
+der	die	REL					Fem	Dat	Sg	St		Subst						
 jeweils	jeweils	ADV																
-geltenden	geltend	ADJ			Pos		Masc	Gen	Sg	St	Attr/Subst							
-geltenden	geltend	ADJ			Pos		Masc	Gen	Sg	Wk	Attr/Subst							
-geltenden	geltend	ADJ			Pos		Masc	Dat	Sg	Wk	Attr/Subst							
-geltenden	geltend	ADJ			Pos		Masc	Acc	Sg	St	Attr/Subst							
-geltenden	geltend	ADJ			Pos		Masc	Acc	Sg	Wk	Attr/Subst							
-geltenden	geltend	ADJ			Pos		Fem	Gen	Sg	Wk	Attr/Subst							
-geltenden	geltend	ADJ			Pos		Fem	Dat	Sg	Wk	Attr/Subst							
-geltenden	geltend	ADJ			Pos		Neut	Gen	Sg	St	Attr/Subst							
-geltenden	geltend	ADJ			Pos		Neut	Gen	Sg	Wk	Attr/Subst							
-geltenden	geltend	ADJ			Pos		Neut	Dat	Sg	Wk	Attr/Subst							
-geltenden	geltend	ADJ			Pos		NoGend	Nom	Pl	Wk	Attr/Subst							
-geltenden	geltend	ADJ			Pos		NoGend	Gen	Pl	Wk	Attr/Subst							
-geltenden	geltend	ADJ			Pos		NoGend	Dat	Pl	St	Attr/Subst							
-geltenden	geltend	ADJ			Pos		NoGend	Dat	Pl	Wk	Attr/Subst							
-geltenden	geltend	ADJ			Pos		NoGend	Acc	Pl	Wk	Attr/Subst							
+geltenden	geltend	ADJ			Pos		Masc	Gen	Sg	St		Attr/Subst						
+geltenden	geltend	ADJ			Pos		Masc	Gen	Sg	Wk		Attr/Subst						
+geltenden	geltend	ADJ			Pos		Masc	Dat	Sg	Wk		Attr/Subst						
+geltenden	geltend	ADJ			Pos		Masc	Acc	Sg	St		Attr/Subst						
+geltenden	geltend	ADJ			Pos		Masc	Acc	Sg	Wk		Attr/Subst						
+geltenden	geltend	ADJ			Pos		Fem	Gen	Sg	Wk		Attr/Subst						
+geltenden	geltend	ADJ			Pos		Fem	Dat	Sg	Wk		Attr/Subst						
+geltenden	geltend	ADJ			Pos		Neut	Gen	Sg	St		Attr/Subst						
+geltenden	geltend	ADJ			Pos		Neut	Gen	Sg	Wk		Attr/Subst						
+geltenden	geltend	ADJ			Pos		Neut	Dat	Sg	Wk		Attr/Subst						
+geltenden	geltend	ADJ			Pos		NoGend	Nom	Pl	Wk		Attr/Subst						
+geltenden	geltend	ADJ			Pos		NoGend	Gen	Pl	Wk		Attr/Subst						
+geltenden	geltend	ADJ			Pos		NoGend	Dat	Pl	St		Attr/Subst						
+geltenden	geltend	ADJ			Pos		NoGend	Dat	Pl	Wk		Attr/Subst						
+geltenden	geltend	ADJ			Pos		NoGend	Acc	Pl	Wk		Attr/Subst						
 Fassung	Fassung	NN					Fem	Nom	Sg									
 Fassung	Fassung	NN					Fem	Gen	Sg									
 Fassung	Fassung	NN					Fem	Dat	Sg									
@@ -819,36 +819,36 @@ eine	einen	V				1			Sg				Ind	Pres
 eine	einen	V				1			Sg				Subj	Pres				
 eine	einen	V				3			Sg				Subj	Pres				
 eine	einen	V							Sg				Imp					
-eine	eine	ART	Indef				Fem	Nom	Sg	St	Attr							
-eine	eine	ART	Indef				Fem	Acc	Sg	St	Attr							
-eine	eine	ART	Indef				Fem	Nom	Sg	St	Subst							
-eine	eine	ART	Indef				Fem	Acc	Sg	St	Subst							
-eine	eine	CARD					Masc	Nom	Sg	Wk	Attr							
-eine	eine	CARD					Fem	Nom	Sg	St	Attr							
-eine	eine	CARD					Fem	Nom	Sg	Wk	Attr							
-eine	eine	CARD					Fem	Acc	Sg	St	Attr							
-eine	eine	CARD					Fem	Acc	Sg	Wk	Attr							
-eine	eine	CARD					Neut	Nom	Sg	Wk	Attr							
-eine	eine	CARD					Neut	Acc	Sg	Wk	Attr							
-eine	eine	CARD					Masc	Nom	Sg	Wk	Subst							
-eine	eine	CARD					Fem	Nom	Sg	St	Subst							
-eine	eine	CARD					Fem	Nom	Sg	Wk	Subst							
-eine	eine	CARD					Fem	Acc	Sg	St	Subst							
-eine	eine	CARD					Fem	Acc	Sg	Wk	Subst							
-eine	eine	CARD					Neut	Nom	Sg	Wk	Subst							
-eine	eine	CARD					Neut	Acc	Sg	Wk	Subst							
-eine	eine	INDEF					Masc	Nom	Sg	Wk	Subst							
-eine	eine	INDEF					Fem	Nom	Sg	St	Subst							
-eine	eine	INDEF					Fem	Nom	Sg	Wk	Subst							
-eine	eine	INDEF					Fem	Acc	Sg	St	Subst							
-eine	eine	INDEF					Fem	Acc	Sg	Wk	Subst							
-eine	eine	INDEF					Neut	Nom	Sg	Wk	Subst							
-eine	eine	INDEF					Neut	Acc	Sg	Wk	Subst							
+eine	eine	ART	Indef				Fem	Nom	Sg	St		Attr						
+eine	eine	ART	Indef				Fem	Acc	Sg	St		Attr						
+eine	eine	ART	Indef				Fem	Nom	Sg	St		Subst						
+eine	eine	ART	Indef				Fem	Acc	Sg	St		Subst						
+eine	eine	CARD					Masc	Nom	Sg	Wk		Attr						
+eine	eine	CARD					Fem	Nom	Sg	St		Attr						
+eine	eine	CARD					Fem	Nom	Sg	Wk		Attr						
+eine	eine	CARD					Fem	Acc	Sg	St		Attr						
+eine	eine	CARD					Fem	Acc	Sg	Wk		Attr						
+eine	eine	CARD					Neut	Nom	Sg	Wk		Attr						
+eine	eine	CARD					Neut	Acc	Sg	Wk		Attr						
+eine	eine	CARD					Masc	Nom	Sg	Wk		Subst						
+eine	eine	CARD					Fem	Nom	Sg	St		Subst						
+eine	eine	CARD					Fem	Nom	Sg	Wk		Subst						
+eine	eine	CARD					Fem	Acc	Sg	St		Subst						
+eine	eine	CARD					Fem	Acc	Sg	Wk		Subst						
+eine	eine	CARD					Neut	Nom	Sg	Wk		Subst						
+eine	eine	CARD					Neut	Acc	Sg	Wk		Subst						
+eine	eine	INDEF					Masc	Nom	Sg	Wk		Subst						
+eine	eine	INDEF					Fem	Nom	Sg	St		Subst						
+eine	eine	INDEF					Fem	Nom	Sg	Wk		Subst						
+eine	eine	INDEF					Fem	Acc	Sg	St		Subst						
+eine	eine	INDEF					Fem	Acc	Sg	Wk		Subst						
+eine	eine	INDEF					Neut	Nom	Sg	Wk		Subst						
+eine	eine	INDEF					Neut	Acc	Sg	Wk		Subst						
 Geldbuße	Geldbuße	NN					Fem	Nom	Sg									
 Geldbuße	Geldbuße	NN					Fem	Gen	Sg									
 Geldbuße	Geldbuße	NN					Fem	Dat	Sg									
 Geldbuße	Geldbuße	NN					Fem	Acc	Sg									
-festzusetzen	festsetzen	V										Inf						
+festzusetzen	festsetzen	V									Inf	Cl						
 ist	sein	V				3			Sg				Ind	Pres				
 ,	,	PUNCT	Comma															
 oder	oder	CONJ	Coord															
@@ -865,56 +865,56 @@ eine	einen	V				1			Sg				Ind	Pres
 eine	einen	V				1			Sg				Subj	Pres				
 eine	einen	V				3			Sg				Subj	Pres				
 eine	einen	V							Sg				Imp					
-eine	eine	ART	Indef				Fem	Nom	Sg	St	Attr							
-eine	eine	ART	Indef				Fem	Acc	Sg	St	Attr							
-eine	eine	ART	Indef				Fem	Nom	Sg	St	Subst							
-eine	eine	ART	Indef				Fem	Acc	Sg	St	Subst							
-eine	eine	CARD					Masc	Nom	Sg	Wk	Attr							
-eine	eine	CARD					Fem	Nom	Sg	St	Attr							
-eine	eine	CARD					Fem	Nom	Sg	Wk	Attr							
-eine	eine	CARD					Fem	Acc	Sg	St	Attr							
-eine	eine	CARD					Fem	Acc	Sg	Wk	Attr							
-eine	eine	CARD					Neut	Nom	Sg	Wk	Attr							
-eine	eine	CARD					Neut	Acc	Sg	Wk	Attr							
-eine	eine	CARD					Masc	Nom	Sg	Wk	Subst							
-eine	eine	CARD					Fem	Nom	Sg	St	Subst							
-eine	eine	CARD					Fem	Nom	Sg	Wk	Subst							
-eine	eine	CARD					Fem	Acc	Sg	St	Subst							
-eine	eine	CARD					Fem	Acc	Sg	Wk	Subst							
-eine	eine	CARD					Neut	Nom	Sg	Wk	Subst							
-eine	eine	CARD					Neut	Acc	Sg	Wk	Subst							
-eine	eine	INDEF					Masc	Nom	Sg	Wk	Subst							
-eine	eine	INDEF					Fem	Nom	Sg	St	Subst							
-eine	eine	INDEF					Fem	Nom	Sg	Wk	Subst							
-eine	eine	INDEF					Fem	Acc	Sg	St	Subst							
-eine	eine	INDEF					Fem	Acc	Sg	Wk	Subst							
-eine	eine	INDEF					Neut	Nom	Sg	Wk	Subst							
-eine	eine	INDEF					Neut	Acc	Sg	Wk	Subst							
+eine	eine	ART	Indef				Fem	Nom	Sg	St		Attr						
+eine	eine	ART	Indef				Fem	Acc	Sg	St		Attr						
+eine	eine	ART	Indef				Fem	Nom	Sg	St		Subst						
+eine	eine	ART	Indef				Fem	Acc	Sg	St		Subst						
+eine	eine	CARD					Masc	Nom	Sg	Wk		Attr						
+eine	eine	CARD					Fem	Nom	Sg	St		Attr						
+eine	eine	CARD					Fem	Nom	Sg	Wk		Attr						
+eine	eine	CARD					Fem	Acc	Sg	St		Attr						
+eine	eine	CARD					Fem	Acc	Sg	Wk		Attr						
+eine	eine	CARD					Neut	Nom	Sg	Wk		Attr						
+eine	eine	CARD					Neut	Acc	Sg	Wk		Attr						
+eine	eine	CARD					Masc	Nom	Sg	Wk		Subst						
+eine	eine	CARD					Fem	Nom	Sg	St		Subst						
+eine	eine	CARD					Fem	Nom	Sg	Wk		Subst						
+eine	eine	CARD					Fem	Acc	Sg	St		Subst						
+eine	eine	CARD					Fem	Acc	Sg	Wk		Subst						
+eine	eine	CARD					Neut	Nom	Sg	Wk		Subst						
+eine	eine	CARD					Neut	Acc	Sg	Wk		Subst						
+eine	eine	INDEF					Masc	Nom	Sg	Wk		Subst						
+eine	eine	INDEF					Fem	Nom	Sg	St		Subst						
+eine	eine	INDEF					Fem	Nom	Sg	Wk		Subst						
+eine	eine	INDEF					Fem	Acc	Sg	St		Subst						
+eine	eine	INDEF					Fem	Acc	Sg	Wk		Subst						
+eine	eine	INDEF					Neut	Nom	Sg	Wk		Subst						
+eine	eine	INDEF					Neut	Acc	Sg	Wk		Subst						
 Straftat	Straftat	NN					Fem	Nom	Sg									
 Straftat	Straftat	NN					Fem	Gen	Sg									
 Straftat	Straftat	NN					Fem	Dat	Sg									
 Straftat	Straftat	NN					Fem	Acc	Sg									
 ,	,	PUNCT	Comma															
-die	die	ART	Def				Fem	Nom	Sg	St	Attr							
-die	die	ART	Def				Fem	Acc	Sg	St	Attr							
-die	die	ART	Def				NoGend	Nom	Pl	St	Attr							
-die	die	ART	Def				NoGend	Acc	Pl	St	Attr							
-die	die	ART	Def				Fem	Nom	Sg	St	Subst							
-die	die	ART	Def				Fem	Acc	Sg	St	Subst							
-die	die	ART	Def				NoGend	Nom	Pl	St	Subst							
-die	die	ART	Def				NoGend	Acc	Pl	St	Subst							
-die	die	DEM					Fem	Nom	Sg	St	Attr							
-die	die	DEM					Fem	Acc	Sg	St	Attr							
-die	die	DEM					NoGend	Nom	Pl	St	Attr							
-die	die	DEM					NoGend	Acc	Pl	St	Attr							
-die	die	DEM					Fem	Nom	Sg	St	Subst							
-die	die	DEM					Fem	Acc	Sg	St	Subst							
-die	die	DEM					NoGend	Nom	Pl	St	Subst							
-die	die	DEM					NoGend	Acc	Pl	St	Subst							
-die	die	REL					Fem	Nom	Sg	St	Subst							
-die	die	REL					Fem	Acc	Sg	St	Subst							
-die	die	REL					NoGend	Nom	Pl	St	Subst							
-die	die	REL					NoGend	Acc	Pl	St	Subst							
+die	die	ART	Def				Fem	Nom	Sg	St		Attr						
+die	die	ART	Def				Fem	Acc	Sg	St		Attr						
+die	die	ART	Def				NoGend	Nom	Pl	St		Attr						
+die	die	ART	Def				NoGend	Acc	Pl	St		Attr						
+die	die	ART	Def				Fem	Nom	Sg	St		Subst						
+die	die	ART	Def				Fem	Acc	Sg	St		Subst						
+die	die	ART	Def				NoGend	Nom	Pl	St		Subst						
+die	die	ART	Def				NoGend	Acc	Pl	St		Subst						
+die	die	DEM					Fem	Nom	Sg	St		Attr						
+die	die	DEM					Fem	Acc	Sg	St		Attr						
+die	die	DEM					NoGend	Nom	Pl	St		Attr						
+die	die	DEM					NoGend	Acc	Pl	St		Attr						
+die	die	DEM					Fem	Nom	Sg	St		Subst						
+die	die	DEM					Fem	Acc	Sg	St		Subst						
+die	die	DEM					NoGend	Nom	Pl	St		Subst						
+die	die	DEM					NoGend	Acc	Pl	St		Subst						
+die	die	REL					Fem	Nom	Sg	St		Subst						
+die	die	REL					Fem	Acc	Sg	St		Subst						
+die	die	REL					NoGend	Nom	Pl	St		Subst						
+die	die	REL					NoGend	Acc	Pl	St		Subst						
 im	in	PREPART					Masc	Dat	Sg									
 im	in	PREPART					Neut	Dat	Sg									
 Zusammenhang	Zusammenhang	NN					Masc	Nom	Sg									
@@ -922,115 +922,115 @@ Zusammenhang	Zusammenhang	NN					Masc	Dat	Sg
 Zusammenhang	Zusammenhang	NN					Masc	Acc	Sg									
 mit	mit	ADV																
 mit	mit	PREP																
-der	die	ART	Def				Masc	Nom	Sg	St	Attr							
-der	die	ART	Def				Fem	Gen	Sg	St	Attr							
-der	die	ART	Def				Fem	Dat	Sg	St	Attr							
-der	die	ART	Def				NoGend	Gen	Pl	St	Attr							
-der	die	ART	Def				Masc	Nom	Sg	St	Subst							
-der	die	ART	Def				Fem	Dat	Sg	St	Subst							
-der	die	DEM					Masc	Nom	Sg	St	Attr							
-der	die	DEM					Fem	Gen	Sg	St	Attr							
-der	die	DEM					Fem	Dat	Sg	St	Attr							
-der	die	DEM					NoGend	Gen	Pl	St	Attr							
-der	die	DEM					Masc	Nom	Sg	St	Subst							
-der	die	DEM					Fem	Dat	Sg	St	Subst							
-der	die	REL					Masc	Nom	Sg	St	Subst							
-der	die	REL					Fem	Dat	Sg	St	Subst							
+der	die	ART	Def				Masc	Nom	Sg	St		Attr						
+der	die	ART	Def				Fem	Gen	Sg	St		Attr						
+der	die	ART	Def				Fem	Dat	Sg	St		Attr						
+der	die	ART	Def				NoGend	Gen	Pl	St		Attr						
+der	die	ART	Def				Masc	Nom	Sg	St		Subst						
+der	die	ART	Def				Fem	Dat	Sg	St		Subst						
+der	die	DEM					Masc	Nom	Sg	St		Attr						
+der	die	DEM					Fem	Gen	Sg	St		Attr						
+der	die	DEM					Fem	Dat	Sg	St		Attr						
+der	die	DEM					NoGend	Gen	Pl	St		Attr						
+der	die	DEM					Masc	Nom	Sg	St		Subst						
+der	die	DEM					Fem	Dat	Sg	St		Subst						
+der	die	REL					Masc	Nom	Sg	St		Subst						
+der	die	REL					Fem	Dat	Sg	St		Subst						
 Teilnahme	Teilnahme	NN					Fem	Nom	Sg									
 Teilnahme	Teilnahme	NN					Fem	Gen	Sg									
 Teilnahme	Teilnahme	NN					Fem	Dat	Sg									
 Teilnahme	Teilnahme	NN					Fem	Acc	Sg									
-am	am	PTCL																
+am	am	PTCL	AdjSup															
 am	an	PREPART					Masc	Dat	Sg									
 am	an	PREPART					Neut	Dat	Sg									
 Straßenverkehr	Straßenverkehr	NN					Masc	Nom	Sg									
 Straßenverkehr	Straßenverkehr	NN					Masc	Dat	Sg									
 Straßenverkehr	Straßenverkehr	NN					Masc	Acc	Sg									
-begangen	begangen	ADJ			Pos						Pred/Adv							
-begangen	begehen	V		haben								PPast						
-worden	werden	V		sein								PPast						
-worden	worden	ADJ			Pos						Pred/Adv							
+begangen	begangen	ADJ			Pos							Pred/Adv						
+begangen	begehen	V		haben							Part			Perf				
+worden	werden	V		sein							Part			Perf				
+worden	worden	ADJ			Pos							Pred/Adv						
 ist	sein	V				3			Sg				Ind	Pres				
 ,	,	PUNCT	Comma															
-anzunehmen	annehmen	V										Inf						
+anzunehmen	annehmen	V									Inf	Cl						
 ist	sein	V				3			Sg				Ind	Pres				
 und	und	CONJ	Coord															
 2.	2.	ORD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
 mindestens	mindestens	ADV																
 ein	einen	V				1			Sg				Ind	Pres	NonSt			
 ein	einen	V							Sg				Imp					
-ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl	Attr							
-ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl	Attr							
-ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr							
-ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							
-ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							
-ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							
+ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl		Attr						
+ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl		Attr						
+ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl		Attr						
+ein	eine	CARD					Masc	Nom	Sg	NoInfl		Attr						
+ein	eine	CARD					Neut	Nom	Sg	NoInfl		Attr						
+ein	eine	CARD					Neut	Acc	Sg	NoInfl		Attr						
 ein	ein	ADV																
 Kraftfahrzeug	Kraftfahrzeug	NN					Neut	Nom	Sg									
 Kraftfahrzeug	Kraftfahrzeug	NN					Neut	Dat	Sg									
 Kraftfahrzeug	Kraftfahrzeug	NN					Neut	Acc	Sg									
 aufgrund	aufgrund	ADV																
 aufgrund	aufgrund	PREP																
-eines	eine	ART	Indef				Masc	Gen	Sg	St	Attr							
-eines	eine	ART	Indef				Neut	Gen	Sg	St	Attr							
-eines	eine	ART	Indef				Masc	Gen	Sg	St	Subst							
-eines	eine	ART	Indef				Neut	Nom	Sg	St	Subst							
-eines	eine	ART	Indef				Neut	Gen	Sg	St	Subst							
-eines	eine	ART	Indef				Neut	Acc	Sg	St	Subst							
-eines	eine	CARD					Masc	Gen	Sg	St	Attr							
-eines	eine	CARD					Neut	Gen	Sg	St	Attr							
-eines	eine	CARD					Masc	Gen	Sg	St	Subst							
-eines	eine	CARD					Neut	Nom	Sg	St	Subst							
-eines	eine	CARD					Neut	Gen	Sg	St	Subst							
-eines	eine	CARD					Neut	Acc	Sg	St	Subst							
-eines	eine	INDEF					Masc	Gen	Sg	St	Subst							
-eines	eine	INDEF					Neut	Nom	Sg	St	Subst							
-eines	eine	INDEF					Neut	Gen	Sg	St	Subst							
-eines	eine	INDEF					Neut	Acc	Sg	St	Subst							
+eines	eine	ART	Indef				Masc	Gen	Sg	St		Attr						
+eines	eine	ART	Indef				Neut	Gen	Sg	St		Attr						
+eines	eine	ART	Indef				Masc	Gen	Sg	St		Subst						
+eines	eine	ART	Indef				Neut	Nom	Sg	St		Subst						
+eines	eine	ART	Indef				Neut	Gen	Sg	St		Subst						
+eines	eine	ART	Indef				Neut	Acc	Sg	St		Subst						
+eines	eine	CARD					Masc	Gen	Sg	St		Attr						
+eines	eine	CARD					Neut	Gen	Sg	St		Attr						
+eines	eine	CARD					Masc	Gen	Sg	St		Subst						
+eines	eine	CARD					Neut	Nom	Sg	St		Subst						
+eines	eine	CARD					Neut	Gen	Sg	St		Subst						
+eines	eine	CARD					Neut	Acc	Sg	St		Subst						
+eines	eine	INDEF					Masc	Gen	Sg	St		Subst						
+eines	eine	INDEF					Neut	Nom	Sg	St		Subst						
+eines	eine	INDEF					Neut	Gen	Sg	St		Subst						
+eines	eine	INDEF					Neut	Acc	Sg	St		Subst						
 Unfallschadens	Unfallschaden	NN					Masc	Gen	Sg									
 von	von	ADV																
 von	von	PREP																
-der	die	ART	Def				Masc	Nom	Sg	St	Attr							
-der	die	ART	Def				Fem	Gen	Sg	St	Attr							
-der	die	ART	Def				Fem	Dat	Sg	St	Attr							
-der	die	ART	Def				NoGend	Gen	Pl	St	Attr							
-der	die	ART	Def				Masc	Nom	Sg	St	Subst							
-der	die	ART	Def				Fem	Dat	Sg	St	Subst							
-der	die	DEM					Masc	Nom	Sg	St	Attr							
-der	die	DEM					Fem	Gen	Sg	St	Attr							
-der	die	DEM					Fem	Dat	Sg	St	Attr							
-der	die	DEM					NoGend	Gen	Pl	St	Attr							
-der	die	DEM					Masc	Nom	Sg	St	Subst							
-der	die	DEM					Fem	Dat	Sg	St	Subst							
-der	die	REL					Masc	Nom	Sg	St	Subst							
-der	die	REL					Fem	Dat	Sg	St	Subst							
+der	die	ART	Def				Masc	Nom	Sg	St		Attr						
+der	die	ART	Def				Fem	Gen	Sg	St		Attr						
+der	die	ART	Def				Fem	Dat	Sg	St		Attr						
+der	die	ART	Def				NoGend	Gen	Pl	St		Attr						
+der	die	ART	Def				Masc	Nom	Sg	St		Subst						
+der	die	ART	Def				Fem	Dat	Sg	St		Subst						
+der	die	DEM					Masc	Nom	Sg	St		Attr						
+der	die	DEM					Fem	Gen	Sg	St		Attr						
+der	die	DEM					Fem	Dat	Sg	St		Attr						
+der	die	DEM					NoGend	Gen	Pl	St		Attr						
+der	die	DEM					Masc	Nom	Sg	St		Subst						
+der	die	DEM					Fem	Dat	Sg	St		Subst						
+der	die	REL					Masc	Nom	Sg	St		Subst						
+der	die	REL					Fem	Dat	Sg	St		Subst						
 Unfallstelle	Unfallstelle	NN					Fem	Nom	Sg									
 Unfallstelle	Unfallstelle	NN					Fem	Gen	Sg									
 Unfallstelle	Unfallstelle	NN					Fem	Dat	Sg									
 Unfallstelle	Unfallstelle	NN					Fem	Acc	Sg									
-abgeschleppt	abgeschleppt	ADJ			Pos						Pred/Adv							
-abgeschleppt	abschleppen	V		haben								PPast						
+abgeschleppt	abgeschleppt	ADJ			Pos							Pred/Adv						
+abgeschleppt	abschleppen	V		haben							Part			Perf				
 werden	werden	V				1			Pl				Ind	Pres				
 werden	werden	V				1			Pl				Subj	Pres				
 werden	werden	V				3			Pl				Ind	Pres				
 werden	werden	V				3			Pl				Subj	Pres				
-werden	werden	V										Inf						
+werden	werden	V									Inf	NonCl						
 muß	müssen	V				1			Sg				Ind	Pres		OLDORTH		
 muß	müssen	V				3			Sg				Ind	Pres		OLDORTH		
 .	.	PUNCT	Period															
 Ein	einen	V				1			Sg				Ind	Pres	NonSt			CAP
 Ein	einen	V							Sg				Imp					CAP
-Ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl	Attr							CAP
-Ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl	Attr							CAP
-Ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr							CAP
-Ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							CAP
-Ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							CAP
-Ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							CAP
+Ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl		Attr						CAP
+Ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl		Attr						CAP
+Ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl		Attr						CAP
+Ein	eine	CARD					Masc	Nom	Sg	NoInfl		Attr						CAP
+Ein	eine	CARD					Neut	Nom	Sg	NoInfl		Attr						CAP
+Ein	eine	CARD					Neut	Acc	Sg	NoInfl		Attr						CAP
 Ein	ein	ADV																CAP
-schwerwiegender	schwerwiegend	ADJ			Pos		Masc	Nom	Sg	St	Attr/Subst							
-schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Gen	Sg	St	Attr/Subst							
-schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Dat	Sg	St	Attr/Subst							
-schwerwiegender	schwerwiegend	ADJ			Pos		NoGend	Gen	Pl	St	Attr/Subst							
+schwerwiegender	schwerwiegend	ADJ			Pos		Masc	Nom	Sg	St		Attr/Subst						
+schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Gen	Sg	St		Attr/Subst						
+schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Dat	Sg	St		Attr/Subst						
+schwerwiegender	schwerwiegend	ADJ			Pos		NoGend	Gen	Pl	St		Attr/Subst						
 Unfall	Unfall	NN					Masc	Nom	Sg									
 Unfall	Unfall	NN					Masc	Dat	Sg									
 Unfall	Unfall	NN					Masc	Acc	Sg									
@@ -1049,7 +1049,7 @@ vor	vor	ADV
 vor	vor	PREP																
 ,	,	PUNCT	Comma															
 wenn	wenn	CONJ	Sub															
-ohne	ohne	CONJ										Inf						
+ohne	ohne	CONJ	InfCl															
 ohne	ohne	PREP																
 Rücksicht	Rücksicht	NN					Fem	Nom	Sg									
 Rücksicht	Rücksicht	NN					Fem	Gen	Sg									
@@ -1071,19 +1071,19 @@ des	des	NN					Neut	Dat	Sg
 des	des	NN					Neut	Dat	Pl									
 des	des	NN					Neut	Acc	Sg									
 des	des	NN					Neut	Acc	Pl									
-des	die	ART	Def				Masc	Gen	Sg	St	Attr							
-des	die	ART	Def				Neut	Gen	Sg	St	Attr							
-des	die	DEM					Masc	Gen	Sg	St	Attr							
-des	die	DEM					Neut	Gen	Sg	St	Attr							
+des	die	ART	Def				Masc	Gen	Sg	St		Attr						
+des	die	ART	Def				Neut	Gen	Sg	St		Attr						
+des	die	DEM					Masc	Gen	Sg	St		Attr						
+des	die	DEM					Neut	Gen	Sg	St		Attr						
 Sachschadens	Sachschaden	NN					Masc	Gen	Sg									
 ein	einen	V				1			Sg				Ind	Pres	NonSt			
 ein	einen	V							Sg				Imp					
-ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl	Attr							
-ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl	Attr							
-ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl	Attr							
-ein	eine	CARD					Masc	Nom	Sg	NoInfl	Attr							
-ein	eine	CARD					Neut	Nom	Sg	NoInfl	Attr							
-ein	eine	CARD					Neut	Acc	Sg	NoInfl	Attr							
+ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl		Attr						
+ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl		Attr						
+ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl		Attr						
+ein	eine	CARD					Masc	Nom	Sg	NoInfl		Attr						
+ein	eine	CARD					Neut	Nom	Sg	NoInfl		Attr						
+ein	eine	CARD					Neut	Acc	Sg	NoInfl		Attr						
 ein	ein	ADV																
 Unfallbeteiligter	Unfallbeteiligte	NN					Masc	Nom	Sg	St								
 Unfallbeteiligter	Unfallbeteiligte	NN					Masc	Gen	Pl	St								
@@ -1092,20 +1092,20 @@ Unfallbeteiligter	Unfallbeteiligte	NN					Fem	Gen	Pl	St
 Unfallbeteiligter	Unfallbeteiligte	NN					Fem	Dat	Sg	St								
 unter	unter	ADV																
 unter	unter	PREP																
-der	die	ART	Def				Masc	Nom	Sg	St	Attr							
-der	die	ART	Def				Fem	Gen	Sg	St	Attr							
-der	die	ART	Def				Fem	Dat	Sg	St	Attr							
-der	die	ART	Def				NoGend	Gen	Pl	St	Attr							
-der	die	ART	Def				Masc	Nom	Sg	St	Subst							
-der	die	ART	Def				Fem	Dat	Sg	St	Subst							
-der	die	DEM					Masc	Nom	Sg	St	Attr							
-der	die	DEM					Fem	Gen	Sg	St	Attr							
-der	die	DEM					Fem	Dat	Sg	St	Attr							
-der	die	DEM					NoGend	Gen	Pl	St	Attr							
-der	die	DEM					Masc	Nom	Sg	St	Subst							
-der	die	DEM					Fem	Dat	Sg	St	Subst							
-der	die	REL					Masc	Nom	Sg	St	Subst							
-der	die	REL					Fem	Dat	Sg	St	Subst							
+der	die	ART	Def				Masc	Nom	Sg	St		Attr						
+der	die	ART	Def				Fem	Gen	Sg	St		Attr						
+der	die	ART	Def				Fem	Dat	Sg	St		Attr						
+der	die	ART	Def				NoGend	Gen	Pl	St		Attr						
+der	die	ART	Def				Masc	Nom	Sg	St		Subst						
+der	die	ART	Def				Fem	Dat	Sg	St		Subst						
+der	die	DEM					Masc	Nom	Sg	St		Attr						
+der	die	DEM					Fem	Gen	Sg	St		Attr						
+der	die	DEM					Fem	Dat	Sg	St		Attr						
+der	die	DEM					NoGend	Gen	Pl	St		Attr						
+der	die	DEM					Masc	Nom	Sg	St		Subst						
+der	die	DEM					Fem	Dat	Sg	St		Subst						
+der	die	REL					Masc	Nom	Sg	St		Subst						
+der	die	REL					Fem	Dat	Sg	St		Subst						
 Einwirkung	Einwirkung	NN					Fem	Nom	Sg									
 Einwirkung	Einwirkung	NN					Fem	Gen	Sg									
 Einwirkung	Einwirkung	NN					Fem	Dat	Sg									
@@ -1116,64 +1116,64 @@ Alkohol	Alkohol	NN					Masc	Nom	Sg
 Alkohol	Alkohol	NN					Masc	Dat	Sg									
 Alkohol	Alkohol	NN					Masc	Acc	Sg									
 oder	oder	CONJ	Coord															
-anderen	ander	ADJ			Pos		Masc	Gen	Sg	St	Attr/Subst							
-anderen	ander	ADJ			Pos		Masc	Gen	Sg	Wk	Attr/Subst							
-anderen	ander	ADJ			Pos		Masc	Dat	Sg	Wk	Attr/Subst							
-anderen	ander	ADJ			Pos		Masc	Acc	Sg	St	Attr/Subst							
-anderen	ander	ADJ			Pos		Masc	Acc	Sg	Wk	Attr/Subst							
-anderen	ander	ADJ			Pos		Fem	Gen	Sg	Wk	Attr/Subst							
-anderen	ander	ADJ			Pos		Fem	Dat	Sg	Wk	Attr/Subst							
-anderen	ander	ADJ			Pos		Neut	Gen	Sg	St	Attr/Subst							
-anderen	ander	ADJ			Pos		Neut	Gen	Sg	Wk	Attr/Subst							
-anderen	ander	ADJ			Pos		Neut	Dat	Sg	Wk	Attr/Subst							
-anderen	ander	ADJ			Pos		NoGend	Nom	Pl	Wk	Attr/Subst							
-anderen	ander	ADJ			Pos		NoGend	Gen	Pl	Wk	Attr/Subst							
-anderen	ander	ADJ			Pos		NoGend	Dat	Pl	St	Attr/Subst							
-anderen	ander	ADJ			Pos		NoGend	Dat	Pl	Wk	Attr/Subst							
-anderen	ander	ADJ			Pos		NoGend	Acc	Pl	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		Masc	Gen	Sg	St	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		Masc	Gen	Sg	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		Masc	Dat	Sg	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		Masc	Acc	Sg	St	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		Masc	Acc	Sg	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		Fem	Gen	Sg	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		Fem	Dat	Sg	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		Neut	Gen	Sg	St	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		Neut	Gen	Sg	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		Neut	Dat	Sg	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		NoGend	Nom	Pl	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		NoGend	Gen	Pl	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		NoGend	Dat	Pl	St	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		NoGend	Dat	Pl	Wk	Attr/Subst							
-berauschenden	berauschend	ADJ			Pos		NoGend	Acc	Pl	Wk	Attr/Subst							
+anderen	ander	ADJ			Pos		Masc	Gen	Sg	St		Attr/Subst						
+anderen	ander	ADJ			Pos		Masc	Gen	Sg	Wk		Attr/Subst						
+anderen	ander	ADJ			Pos		Masc	Dat	Sg	Wk		Attr/Subst						
+anderen	ander	ADJ			Pos		Masc	Acc	Sg	St		Attr/Subst						
+anderen	ander	ADJ			Pos		Masc	Acc	Sg	Wk		Attr/Subst						
+anderen	ander	ADJ			Pos		Fem	Gen	Sg	Wk		Attr/Subst						
+anderen	ander	ADJ			Pos		Fem	Dat	Sg	Wk		Attr/Subst						
+anderen	ander	ADJ			Pos		Neut	Gen	Sg	St		Attr/Subst						
+anderen	ander	ADJ			Pos		Neut	Gen	Sg	Wk		Attr/Subst						
+anderen	ander	ADJ			Pos		Neut	Dat	Sg	Wk		Attr/Subst						
+anderen	ander	ADJ			Pos		NoGend	Nom	Pl	Wk		Attr/Subst						
+anderen	ander	ADJ			Pos		NoGend	Gen	Pl	Wk		Attr/Subst						
+anderen	ander	ADJ			Pos		NoGend	Dat	Pl	St		Attr/Subst						
+anderen	ander	ADJ			Pos		NoGend	Dat	Pl	Wk		Attr/Subst						
+anderen	ander	ADJ			Pos		NoGend	Acc	Pl	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		Masc	Gen	Sg	St		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		Masc	Gen	Sg	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		Masc	Dat	Sg	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		Masc	Acc	Sg	St		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		Masc	Acc	Sg	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		Fem	Gen	Sg	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		Fem	Dat	Sg	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		Neut	Gen	Sg	St		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		Neut	Gen	Sg	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		Neut	Dat	Sg	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		NoGend	Nom	Pl	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		NoGend	Gen	Pl	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		NoGend	Dat	Pl	St		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		NoGend	Dat	Pl	Wk		Attr/Subst						
+berauschenden	berauschend	ADJ			Pos		NoGend	Acc	Pl	Wk		Attr/Subst						
 Mitteln	Mittel	NN					Neut	Dat	Pl									
 Mitteln	mitteln	V				1			Pl				Ind	Pres				CAP
 Mitteln	mitteln	V				1			Pl				Subj	Pres				CAP
 Mitteln	mitteln	V				3			Pl				Ind	Pres				CAP
 Mitteln	mitteln	V				3			Pl				Subj	Pres				CAP
-Mitteln	mitteln	V										Inf						CAP
-gestanden	gestanden	ADJ			Pos						Pred/Adv							
+Mitteln	mitteln	V									Inf	NonCl						CAP
+gestanden	gestanden	ADJ			Pos							Pred/Adv						
 gestanden	gestehen	V				1			Pl				Ind	Past				
 gestanden	gestehen	V				3			Pl				Ind	Past				
-gestanden	gestehen	V		haben								PPast						
-gestanden	stehen	V		haben								PPast						
+gestanden	gestehen	V		haben							Part			Perf				
+gestanden	stehen	V		haben							Part			Perf				
 hat	haben	V				3			Sg				Ind	Pres				
 .	.	PUNCT	Period															
-Diese	diese	DEM					Fem	Nom	Sg	St	Attr							CAP
-Diese	diese	DEM					Fem	Acc	Sg	St	Attr							CAP
-Diese	diese	DEM					NoGend	Nom	Pl	St	Attr							CAP
-Diese	diese	DEM					NoGend	Acc	Pl	St	Attr							CAP
-Diese	diese	DEM					Fem	Nom	Sg	St	Subst							CAP
-Diese	diese	DEM					Fem	Acc	Sg	St	Subst							CAP
-Diese	diese	DEM					NoGend	Nom	Pl	St	Subst							CAP
-Diese	diese	DEM					NoGend	Acc	Pl	St	Subst							CAP
+Diese	diese	DEM					Fem	Nom	Sg	St		Attr						CAP
+Diese	diese	DEM					Fem	Acc	Sg	St		Attr						CAP
+Diese	diese	DEM					NoGend	Nom	Pl	St		Attr						CAP
+Diese	diese	DEM					NoGend	Acc	Pl	St		Attr						CAP
+Diese	diese	DEM					Fem	Nom	Sg	St		Subst						CAP
+Diese	diese	DEM					Fem	Acc	Sg	St		Subst						CAP
+Diese	diese	DEM					NoGend	Nom	Pl	St		Subst						CAP
+Diese	diese	DEM					NoGend	Acc	Pl	St		Subst						CAP
 Verordnung	Verordnung	NN					Fem	Nom	Sg									
 Verordnung	Verordnung	NN					Fem	Gen	Sg									
 Verordnung	Verordnung	NN					Fem	Dat	Sg									
 Verordnung	Verordnung	NN					Fem	Acc	Sg									
 tritt	treten	V				3			Sg				Ind	Pres				
 tritt	treten	V							Sg				Imp					
-am	am	PTCL																
+am	am	PTCL	AdjSup															
 am	an	PREPART					Masc	Dat	Sg									
 am	an	PREPART					Neut	Dat	Sg									
 1.	1.	ORD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
@@ -1182,7 +1182,7 @@ Januar	Januar	NN					Masc	Gen	Sg
 Januar	Januar	NN					Masc	Dat	Sg									
 Januar	Januar	NN					Masc	Acc	Sg									
 1995	1995	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
-in	in	ADJ			Pos						Pred/Adv							
+in	in	ADJ			Pos							Pred/Adv						
 in	in	PREP																
 Kraft	Kraft	NN					Fem	Nom	Sg									
 Kraft	Kraft	NN					Fem	Gen	Sg									

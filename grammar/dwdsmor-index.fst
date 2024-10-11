@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 8.2
-% Andreas Nolda 2023-10-16
+% Version 8.3
+% Andreas Nolda 2024-10-11
 
 #include "symbols.fst"
 #include "stemtype.fst"
@@ -53,6 +53,7 @@ $MORPH$ = $LEX$ $INFL$ || $InflFilter$
 
 $MORPH$ = $MORPH$ || $MarkerGe$
 $MORPH$ = $MORPH$ || $MarkerZu$
+$MORPH$ = $MORPH$ || $MarkerPart$
 $MORPH$ = $MORPH$ || $MarkerImpVB$
 
 

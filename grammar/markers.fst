@@ -1,6 +1,6 @@
 % markers.fst
-% Version 8.6
-% Andreas Nolda 2024-09-26
+% Version 9.0
+% Andreas Nolda 2024-10-11
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -12,7 +12,7 @@ ALPHABET = [#entry-type# #char# #boundary-trigger# #category# #stem-type# #suff#
             #origin# #inflection# #auxiliary# <Abbr><ge>] \
            e:<e>
 
-$SchwaTrigger$ = e <=> <e> ([lr] <V> .* [<VInf-el-er><VPPres-el-er><VPres-el-er><VImp-el-er><VWeak-el-er>])
+$SchwaTrigger$ = e <=> <e> ([lr] <V> .* [<VWeak-el-er><VInf-el-er><VPartPres-el-er><VPres-el-er><VImp-el-er>])
 
 $SurfaceTriggers$ = $SchwaTrigger$
 
@@ -20,7 +20,7 @@ $SurfaceTriggers$ = $SchwaTrigger$
 % process <ins(ge)> marker
 
 $C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #boundary-trigger# \
-       <rm|Imp><ins(zu)><zu>]
+       <rm|Imp><rm|Part><ins(zu)>]
 
 $MarkerGe$ = $C$* | \
              $C$* <ge>:<> {<>}:{ge<PB>} $C$* <ins(ge)>:<> $C$* | \
@@ -31,27 +31,43 @@ $MarkerGe$ = $C$* | \
 % process <ins(zu)> marker
 
 $C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #boundary-trigger# \
+       <rm|Imp><rm|Part>]
+
+$CMinusCB$ = $C$-[<CB>]
+$CMinusVB$ = $C$-[<VB>]
+
+$MarkerZu$ = ($CMinusCB$* <CB>)*                                $CMinusCB$* | \
+            (($CMinusVB$* <VB>)? $CMinusVB$* <VB>)?             $CMinusVB$* | \
+             ($CMinusCB$* <CB>)* $CMinusCB$* <CB> {<>}:{zu<PB>} $CMinusCB$* <ins(zu)>:<> $CMinusCB$* | \
+             ($CMinusVB$* <VB>)? $CMinusVB$* <VB> {<>}:{zu<PB>} $CMinusVB$* <ins(zu)>:<> $CMinusVB$*
+
+
+% process <rm|Part> marker
+
+$C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #boundary-trigger# \
        <rm|Imp>]
 
-$C$ = $C$-[<VB>] | <zu>:<>
+% exclude clausal present participles with "zu"
+$MarkerPart$ = $C$*
 
-$MarkerZu$ = (($C$* <VB>)? $C$* <VB>)?             $C$* | \
-              ($C$* <VB>)? $C$* <VB> {<>}:{zu<PB>} $C$* <ins(zu)>:<> $C$*
+% include clausal present participles with "zu" as conversion bases
+$MarkerPartConv$ = $C$* <rm|Part>:<> $C$* | \
+                   $C$*
 
 
 % process <rm|Imp> marker
 
 $C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #boundary-trigger#]
 
-$C$ = $C$-[<VB>]
+$CMinusVB$ = $C$-[<VB>]
 
-% exclude imperative forms of particle verbs, which do not occur as a single token
-$MarkerImp$ =                           $C$* <rm|Imp>:<> $C$* | \
-              (($C$* <VB>)? $C$* <VB>)? $C$*
+% exclude imperative forms of verbs with preverbs, which do not occur as a single token
+$MarkerImp$ =                                         $CMinusVB$* <rm|Imp>:<> $CMinusVB$* | \
+              (($CMinusVB$* <VB>)? $CMinusVB$* <VB>)? $CMinusVB$*
 
-% include imperative forms of particle verbs for paradigm generation
-$MarkerImpVB$ = (($C$* <VB>)? $C$* <VB>)? $C$* <rm|Imp>:<> $C$* | \
-                (($C$* <VB>)? $C$* <VB>)?                  $C$*
+% include imperative forms of verbs with preverbs for paradigm generation
+$MarkerImpVB$ = (($CMinusVB$* <VB>)? $CMinusVB$* <VB>)? $CMinusVB$* <rm|Imp>:<> $CMinusVB$* | \
+                (($CMinusVB$* <VB>)? $CMinusVB$* <VB>)?                         $CMinusVB$*
 
 
 % process morpheme-boundary triggers
@@ -62,10 +78,11 @@ $MarkerWB$ = <WB>:<Stem> .* <WB>:<>
 
 ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# <TRUNC>]
 
-$MarkerBoundaryLv2$ = (.                   | \
-                            <#>:[<CB><VB>] | \
-                       {<\=>\-}:{<HB>}     | \
-                            <->:<DB>       | \
+$MarkerBoundaryLv2$ = (.               | \
+                            <|>:<VB>   | \
+                            <#>:<CB>   | \
+                       {<\=>\-}:{<HB>} | \
+                            <->:<DB>   | \
                            <\~>:[<PB><SB>])*
 
 ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# <TRUNC>] \
@@ -73,7 +90,7 @@ ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# <TRUNC>] \
 
 $MarkerBoundaryRootLv2$ = (.         | \
                             <+>:<CB> | \
-                            <#>:<VB> | \
+                            <|>:<VB> | \
                            <\~>:[<PB><SB>])*
 
 ALPHABET = [#char#] \
@@ -84,8 +101,9 @@ $MarkerBoundary$ = (. | \
 
 ALPHABET = [#char#]
 
-$MarkerBoundaryMorph$ = (.                       | \
-                             [<CB><VB>]:<#>      | \
-                                 {<HB>}:{<\=>\-} | \
-                                   <DB>:<->      | \
-                             [<PB><SB>]:<\~>)*
+$MarkerBoundaryMorph$ = (.                   | \
+                               <VB>:<|>      | \
+                               <CB>:<#>      | \
+                             {<HB>}:{<\=>\-} | \
+                               <DB>:<->      | \
+                         [<PB><SB>]:<\~>)*

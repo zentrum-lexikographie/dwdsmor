@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 14.20 -->
-<!-- Andreas Nolda 2024-09-30 -->
+<!-- Version 15.0 -->
+<!-- Andreas Nolda 2024-10-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -175,7 +175,7 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="word-formation-specs"
-                 select="$grouped-word-formation-specs"/>
+                  select="$grouped-word-formation-specs"/>
     <!-- sequence number of <Formangabe> -->
     <xsl:variable name="paradigm-index">
       <!-- empty in cases where there is a single <Formangabe> -->
@@ -248,7 +248,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">PtclAdj</xsl:with-param>
+                    <xsl:with-param name="class">PtclAdjPos</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -352,7 +352,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">ConjCompar</xsl:with-param>
+                    <xsl:with-param name="class">ConjAdjComp</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -382,7 +382,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">PtclAdj</xsl:with-param>
+                    <xsl:with-param name="class">PtclAdjPos</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -396,7 +396,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">Ptcl-zu</xsl:with-param>
+                    <xsl:with-param name="class">PtclInfCl</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1195,7 +1195,7 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="pos">OTHER</xsl:with-param>
-                    <xsl:with-param name="class">PtclAdj</xsl:with-param>
+                    <xsl:with-param name="class">PtclAdjSup</xsl:with-param>
                     <xsl:with-param name="etymology"
                                     select="$etymology"/>
                   </xsl:call-template>
@@ -1263,7 +1263,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="type">comp</xsl:with-param>
+                    <xsl:with-param name="type">adjcomp</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -1435,7 +1435,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="type">comp</xsl:with-param>
+                    <xsl:with-param name="type">adjcomp</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -1547,7 +1547,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="type">inf</xsl:with-param>
+                    <xsl:with-param name="type">infcl</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -1564,7 +1564,7 @@
                                     select="$paradigm-index"/>
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
-                    <xsl:with-param name="type">comp</xsl:with-param>
+                    <xsl:with-param name="type">adjcomp</xsl:with-param>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"

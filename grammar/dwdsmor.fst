@@ -1,6 +1,6 @@
 % dwdsmor.fst
-% Version 10.7
-% Andreas Nolda 2024-10-02
+% Version 11.0
+% Andreas Nolda 2024-10-11
 
 #include "symbols.fst"
 #include "num.fst"
@@ -55,28 +55,28 @@ $CompStems$ = $LEX$ || $CompStemFilter$
 
 % word formation
 
-% particles
+% preverbs
 
-$Part-ab$       = <Prefix> ab
-$Part-an$       = <Prefix> an
-$Part-auf$      = <Prefix> auf
-$Part-aus$      = <Prefix> aus
-$Part-bei$      = <Prefix> bei
-$Part-durch$    = <Prefix> durch
-$Part-ein$      = <Prefix> ein
-$Part-gegen$    = <Prefix> gegen
-$Part-hinter$   = <Prefix> hinter
-$Part-los$      = <Prefix> los
-$Part-mit$      = <Prefix> mit
-$Part-nach$     = <Prefix> nach
-$Part-ueber$    = <Prefix> über
-$Part-um$       = <Prefix> um
-$Part-unter$    = <Prefix> unter
-$Part-vor$      = <Prefix> vor
-$Part-weg$      = <Prefix> weg
-$Part-zu$       = <Prefix> zu
-$Part-zurueck$  = <Prefix> zurück
-$Part-zwischen$ = <Prefix> zwischen
+$Prev-ab$       = <Prefix> ab
+$Prev-an$       = <Prefix> an
+$Prev-auf$      = <Prefix> auf
+$Prev-aus$      = <Prefix> aus
+$Prev-bei$      = <Prefix> bei
+$Prev-durch$    = <Prefix> durch
+$Prev-ein$      = <Prefix> ein
+$Prev-gegen$    = <Prefix> gegen
+$Prev-hinter$   = <Prefix> hinter
+$Prev-los$      = <Prefix> los
+$Prev-mit$      = <Prefix> mit
+$Prev-nach$     = <Prefix> nach
+$Prev-ueber$    = <Prefix> über
+$Prev-um$       = <Prefix> um
+$Prev-unter$    = <Prefix> unter
+$Prev-vor$      = <Prefix> vor
+$Prev-weg$      = <Prefix> weg
+$Prev-zu$       = <Prefix> zu
+$Prev-zurueck$  = <Prefix> zurück
+$Prev-zwischen$ = <Prefix> zwischen
 
 % affixes
 
@@ -92,28 +92,28 @@ $Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_0_0>
 $DC$ = <dc>
 $UC$ = <uc>
 
-% derived base stems with particles
+% derived base stems with preverbs
 
-$DerBaseStems$ = $Part-ab$       <VB> $BaseStems$ | \
-                 $Part-an$       <VB> $BaseStems$ | \
-                 $Part-auf$      <VB> $BaseStems$ | \
-                 $Part-aus$      <VB> $BaseStems$ | \
-                 $Part-bei$      <VB> $BaseStems$ | \
-                 $Part-durch$    <VB> $BaseStems$ | \
-                 $Part-ein$      <VB> $BaseStems$ | \
-                 $Part-gegen$    <VB> $BaseStems$ | \
-                 $Part-hinter$   <VB> $BaseStems$ | \
-                 $Part-los$      <VB> $BaseStems$ | \
-                 $Part-mit$      <VB> $BaseStems$ | \
-                 $Part-nach$     <VB> $BaseStems$ | \
-                 $Part-ueber$    <VB> $BaseStems$ | \
-                 $Part-um$       <VB> $BaseStems$ | \
-                 $Part-unter$    <VB> $BaseStems$ | \
-                 $Part-vor$      <VB> $BaseStems$ | \
-                 $Part-weg$      <VB> $BaseStems$ | \
-                 $Part-zu$       <VB> $BaseStems$ | \
-                 $Part-zurueck$  <VB> $BaseStems$ | \
-                 $Part-zwischen$ <VB> $BaseStems$ || $DerFilter$
+$DerBaseStems$ = $Prev-ab$       <VB> $BaseStems$ | \
+                 $Prev-an$       <VB> $BaseStems$ | \
+                 $Prev-auf$      <VB> $BaseStems$ | \
+                 $Prev-aus$      <VB> $BaseStems$ | \
+                 $Prev-bei$      <VB> $BaseStems$ | \
+                 $Prev-durch$    <VB> $BaseStems$ | \
+                 $Prev-ein$      <VB> $BaseStems$ | \
+                 $Prev-gegen$    <VB> $BaseStems$ | \
+                 $Prev-hinter$   <VB> $BaseStems$ | \
+                 $Prev-los$      <VB> $BaseStems$ | \
+                 $Prev-mit$      <VB> $BaseStems$ | \
+                 $Prev-nach$     <VB> $BaseStems$ | \
+                 $Prev-ueber$    <VB> $BaseStems$ | \
+                 $Prev-um$       <VB> $BaseStems$ | \
+                 $Prev-unter$    <VB> $BaseStems$ | \
+                 $Prev-vor$      <VB> $BaseStems$ | \
+                 $Prev-weg$      <VB> $BaseStems$ | \
+                 $Prev-zu$       <VB> $BaseStems$ | \
+                 $Prev-zurueck$  <VB> $BaseStems$ | \
+                 $Prev-zwischen$ <VB> $BaseStems$ || $DerFilter$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStems$
 
@@ -127,40 +127,40 @@ $BaseStemsV$ = $BaseStemsV$ || $CleanupWF$
 
 $BaseStemsV$ = $BaseStemsV$ $INFL$ || $InflFilter$
 
-$BaseStemsVPPres$ = $BaseStemFilterVPPresLv2$ || $BaseStemsV$
-$BaseStemsVPPast$ = $BaseStemFilterVPPastLv2$ || $BaseStemsV$
+$BaseStemsVPartPres$ = $BaseStemFilterVPartPresLv2$ || $BaseStemsV$
+$BaseStemsVPartPerf$ = $BaseStemFilterVPartPerfLv2$ || $BaseStemsV$
 
-$BaseStemsVPPres$ = $CleanupCatLv2$ || $BaseStemsVPPres$
-$BaseStemsVPPast$ = $CleanupCatLv2$ || $BaseStemsVPPast$
+$BaseStemsVPartPres$ = $CleanupCatLv2$ || $BaseStemsVPartPres$
+$BaseStemsVPartPerf$ = $CleanupCatLv2$ || $BaseStemsVPartPerf$
 
-$BaseStemsVPPres$ = $BaseStemsVPPres$ || $MarkerGe$
-$BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerGe$
-$BaseStemsVPPres$ = $BaseStemsVPPres$ || $MarkerZu$
-$BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerZu$
+$BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $MarkerGe$
+$BaseStemsVPartPerf$ = $BaseStemsVPartPerf$ || $MarkerGe$
+$BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $MarkerZu$
+$BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $MarkerPartConv$
 
-$BaseStemsVPPres$ = <>:<WB> $BaseStemsVPPres$ <>:<WB>
-$BaseStemsVPPast$ = <>:<WB> $BaseStemsVPPast$ <>:<WB>
+$BaseStemsVPartPres$ = <>:<WB> $BaseStemsVPartPres$ <>:<WB>
+$BaseStemsVPartPerf$ = <>:<WB> $BaseStemsVPartPerf$ <>:<WB>
 
-$BaseStemsVPPres$ = $BaseStemsVPPres$ || $PHON$
-$BaseStemsVPPast$ = $BaseStemsVPPast$ || $PHON$
+$BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $PHON$
+$BaseStemsVPartPerf$ = $BaseStemsVPartPerf$ || $PHON$
 
-$BaseStemsVPPres$ = $BaseStemsVPPres$ || $MarkerWB$
-$BaseStemsVPPast$ = $BaseStemsVPPast$ || $MarkerWB$
+$BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $MarkerWB$
+$BaseStemsVPartPerf$ = $BaseStemsVPartPerf$ || $MarkerWB$
 
-$BaseStemsVPPres$ = ^$BaseStemsVPPres$
-$BaseStemsVPPast$ = ^$BaseStemsVPPast$
+$BaseStemsVPartPres$ = ^$BaseStemsVPartPres$
+$BaseStemsVPartPerf$ = ^$BaseStemsVPartPerf$
 
-$BaseStemsVPPast-t$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-t$
-$BaseStemsVPPast-n$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-n$
-$BaseStemsVPPast-d$ = $BaseStemsVPPast$ || $BaseStemFilterVPPast-d$
+$BaseStemsVPartPerf-t$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf-t$
+$BaseStemsVPartPerf-n$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf-n$
+$BaseStemsVPartPerf-d$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf-d$
 
-$ConvBaseStemsVPPres$ = $BaseStemsVPPres$   <ADJ> <base> <native> <>:<AdjPos>        % cf. Duden-Grammatik (2016: § 508)
-$ConvBaseStemsVPPast$ = $BaseStemsVPPast-t$ <ADJ> <base> <native> <>:<AdjPos>    | \ % cf. Duden-Grammatik (2016: § 508)
-                        $BaseStemsVPPast-n$ <ADJ> <base> <native> <>:<AdjPos-en> | \ % cf. Duden-Grammatik (2016: § 508)
-                        $BaseStemsVPPast-d$ <ADJ> <base> <native> <>:<AdjPosPred>
+$ConvBaseStemsVPartPres$ = $BaseStemsVPartPres$   <ADJ> <base> <native> <>:<AdjPosAttr>    % cf. Duden-Grammatik (2016: § 481, § 508, § 829)
+$ConvBaseStemsVPartPerf$ = $BaseStemsVPartPerf-t$ <ADJ> <base> <native> <>:<AdjPos>    | \ % cf. Duden-Grammatik (2016: § 508)
+                           $BaseStemsVPartPerf-n$ <ADJ> <base> <native> <>:<AdjPos-en> | \ % cf. Duden-Grammatik (2016: § 508)
+                           $BaseStemsVPartPerf-d$ <ADJ> <base> <native> <>:<AdjPosPred>
 
-$ConvBaseStems$ = $ConvBaseStemsVPPres$ | \
-                  $ConvBaseStemsVPPast$
+$ConvBaseStems$ = $ConvBaseStemsVPartPres$ | \
+                  $ConvBaseStemsVPartPerf$
 
 $BaseStems$ = $BaseStems$ | $ConvBaseStems$
 
@@ -186,26 +186,26 @@ $BASE$ = $BaseStems$
 
 $DerCompStems$ = $UC$ $Pref-un$       <DB> $DC$ $CompStems$ | \
                       $Pref-un$       <DB>      $CompStems$ | \
-                      $Part-ab$       <VB>      $CompStems$ | \
-                      $Part-an$       <VB>      $CompStems$ | \
-                      $Part-auf$      <VB>      $CompStems$ | \
-                      $Part-aus$      <VB>      $CompStems$ | \
-                      $Part-bei$      <VB>      $CompStems$ | \
-                      $Part-durch$    <VB>      $CompStems$ | \
-                      $Part-ein$      <VB>      $CompStems$ | \
-                      $Part-gegen$    <VB>      $CompStems$ | \
-                      $Part-hinter$   <VB>      $CompStems$ | \
-                      $Part-los$      <VB>      $CompStems$ | \
-                      $Part-mit$      <VB>      $CompStems$ | \
-                      $Part-nach$     <VB>      $CompStems$ | \
-                      $Part-ueber$    <VB>      $CompStems$ | \
-                      $Part-um$       <VB>      $CompStems$ | \
-                      $Part-unter$    <VB>      $CompStems$ | \
-                      $Part-vor$      <VB>      $CompStems$ | \
-                      $Part-weg$      <VB>      $CompStems$ | \
-                      $Part-zu$       <VB>      $CompStems$ | \
-                      $Part-zurueck$  <VB>      $CompStems$ | \
-                      $Part-zwischen$ <VB>      $CompStems$ || $DerFilter$
+                      $Prev-ab$       <VB>      $CompStems$ | \
+                      $Prev-an$       <VB>      $CompStems$ | \
+                      $Prev-auf$      <VB>      $CompStems$ | \
+                      $Prev-aus$      <VB>      $CompStems$ | \
+                      $Prev-bei$      <VB>      $CompStems$ | \
+                      $Prev-durch$    <VB>      $CompStems$ | \
+                      $Prev-ein$      <VB>      $CompStems$ | \
+                      $Prev-gegen$    <VB>      $CompStems$ | \
+                      $Prev-hinter$   <VB>      $CompStems$ | \
+                      $Prev-los$      <VB>      $CompStems$ | \
+                      $Prev-mit$      <VB>      $CompStems$ | \
+                      $Prev-nach$     <VB>      $CompStems$ | \
+                      $Prev-ueber$    <VB>      $CompStems$ | \
+                      $Prev-um$       <VB>      $CompStems$ | \
+                      $Prev-unter$    <VB>      $CompStems$ | \
+                      $Prev-vor$      <VB>      $CompStems$ | \
+                      $Prev-weg$      <VB>      $CompStems$ | \
+                      $Prev-zu$       <VB>      $CompStems$ | \
+                      $Prev-zurueck$  <VB>      $CompStems$ | \
+                      $Prev-zwischen$ <VB>      $CompStems$ || $DerFilter$
 
 $CompStems$ = $CompStems$ | $DerCompStems$
 
@@ -234,6 +234,7 @@ $MORPH$ = $LEX$ $INFL$ || $InflFilter$
 
 $MORPH$ = $MORPH$ || $MarkerGe$
 $MORPH$ = $MORPH$ || $MarkerZu$
+$MORPH$ = $MORPH$ || $MarkerPart$
 $MORPH$ = $MORPH$ || $MarkerImp$
 
 

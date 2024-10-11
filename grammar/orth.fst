@@ -1,6 +1,6 @@
 % orth.fst
-% Version 5.2
-% Andreas Nolda 2024-09-12
+% Version 5.3
+% Andreas Nolda 2024-10-11
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -54,15 +54,15 @@ $WordSSOld$ = anlä$SSOld$lich | \
 
 $B$ = [#boundary-trigger# \-]
 
-$BNoSB$ = $B$-[<SB>]
+$BMinusSB$ = $B$-[<SB>]
 
-$OrthOld$ = (($B$+     $Syllables$)*                   \
-             ($B$+     $SyllablesSSOld$)               \
-             ($B$+     $Syllables$)*                   \
-             ($BNoSB$+ $SyllablesNoSSOldInfl$)) $B$+ | \
-            (($B$+     $Syllables$)*                   \
-             ($BNoSB$+ $SyllablesSSOldInfl$))   $B$+ | \
-            ($B$+      $WordSSOld$) $B$+
+$OrthOld$ = (($B$+        $Syllables$)*                   \
+             ($B$+        $SyllablesSSOld$)               \
+             ($B$+        $Syllables$)*                   \
+             ($BMinusSB$+ $SyllablesNoSSOldInfl$)) $B$+ | \
+            (($B$+        $Syllables$)*                   \
+             ($BMinusSB$+ $SyllablesSSOldInfl$))   $B$+ | \
+            ($B$+         $WordSSOld$) $B$+
 
 
 % filter out old spelling variants

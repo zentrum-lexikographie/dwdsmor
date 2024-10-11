@@ -351,7 +351,7 @@ in written German by means of a DWDSmor transducer:
 
 ```plaintext
 $ ./paradigm.py -h
-usage: paradigm.py [-h] [-c] [-C] [-E] [-H] [-i {1,2,3,4,5}] [-I {1,2,3,4,5}] [-j] [-n] [-N]
+usage: paradigm.py [-h] [-c] [-C] [-E] [-H] [-i {1,2,3,4,5,6,7,8}] [-I {1,2,3,4,5,6,7,8}] [-j] [-n] [-N]
                    [-o] [-O] [-p {ADJ,ART,CARD,DEM,FRAC,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}]
                    [-P] [-s] [-S] [-t TRANSDUCER] [-u] [-v] [-y] lemma [output]
 
@@ -366,9 +366,9 @@ options:
   -C, --force-color     preserve color and formatting when piping output
   -E, --no-empty        suppress empty columns or values
   -H, --no-header       suppress table header
-  -i {1,2,3,4,5}, --lemma-index {1,2,3,4,5}
+  -i {1,2,3,4,5,6,7,8}, --lemma-index {1,2,3,4,5,6,7,8}
                         homographic lemma index
-  -I {1,2,3,4,5}, --paradigm-index {1,2,3,4,5}
+  -I {1,2,3,4,5,6,7,8}, --paradigm-index {1,2,3,4,5,6,7,8}
                         paradigm index
   -j, --json            output JSON object
   -n, --no-cats         do not output category names

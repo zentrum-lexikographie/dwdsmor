@@ -1,6 +1,6 @@
 % wf.fst
-% Version 7.5
-% Andreas Nolda 2024-07-26
+% Version 8.0
+% Andreas Nolda 2024-10-11
 
 #include "symbols.fst"
 
@@ -21,29 +21,29 @@ $O$ = [#orth-trigger#]
 $DerRestrPOSPref-un$ =      <Prefix> un <DB>      <Stem> ($C$* <VB>)? $C$* <ADJ> $C$*
 $DerRestrPOSPref-Un$ = <uc> <Prefix> un <DB> <dc> <Stem> ($C$* <VB>)? $C$* <NN>  $C$*
 
-% restrict part(...) to verbal bases
-$DerRestrPOSPart-mit$      = <Prefix> mit      <VB> <Stem> ($C$* <VB>)? $C$* <V> $C$*
+% restrict prev(...) to verbal bases
+$DerRestrPOSPrev-mit$      = <Prefix> mit      <VB> <Stem> ($C$* <VB>)? $C$* <V> $C$*
 
-% restrict part(...) to verbal bases without particle
-$DerRestrPOSPart-ab$       = <Prefix> ab       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-an$       = <Prefix> an       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-auf$      = <Prefix> auf      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-aus$      = <Prefix> aus      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-bei$      = <Prefix> bei      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-durch$    = <Prefix> durch    <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-ein$      = <Prefix> ein      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-gegen$    = <Prefix> gegen    <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-hinter$   = <Prefix> hinter   <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-los$      = <Prefix> los      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-nach$     = <Prefix> nach     <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-ueber$    = <Prefix> über     <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-um$       = <Prefix> um       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-unter$    = <Prefix> unter    <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-vor$      = <Prefix> vor      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-weg$      = <Prefix> weg      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-zu$       = <Prefix> zu       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-zurueck$  = <Prefix> zurück   <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPart-zwischen$ = <Prefix> zwischen <VB> <Stem> $C$* <V> $C$*
+% restrict prev(...) to verbal bases without preverb
+$DerRestrPOSPrev-ab$       = <Prefix> ab       <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-an$       = <Prefix> an       <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-auf$      = <Prefix> auf      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-aus$      = <Prefix> aus      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-bei$      = <Prefix> bei      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-durch$    = <Prefix> durch    <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-ein$      = <Prefix> ein      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-gegen$    = <Prefix> gegen    <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-hinter$   = <Prefix> hinter   <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-los$      = <Prefix> los      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-nach$     = <Prefix> nach     <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-ueber$    = <Prefix> über     <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-um$       = <Prefix> um       <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-unter$    = <Prefix> unter    <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-vor$      = <Prefix> vor      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-weg$      = <Prefix> weg      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-zu$       = <Prefix> zu       <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-zurueck$  = <Prefix> zurück   <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-zwischen$ = <Prefix> zwischen <VB> <Stem> $C$* <V> $C$*
 
 % restrict suff(e) to proper-name bases (?)
 $DerRestrPOSSuff-e$ = $O$* <Stem> $C$* <NPROP> $C$* <DB> <Suffix> e $C$*
@@ -66,26 +66,26 @@ $DerRestrAbbrSuff-lein$ = !($O$* <Stem> <Abbr> $C$* <DB> <Suffix> lein $C$*)
 
 $DerRestrPOS$ = $DerRestrPOSPref-un$       | \
                 $DerRestrPOSPref-Un$       | \
-                $DerRestrPOSPart-ab$       | \
-                $DerRestrPOSPart-an$       | \
-                $DerRestrPOSPart-auf$      | \
-                $DerRestrPOSPart-aus$      | \
-                $DerRestrPOSPart-bei$      | \
-                $DerRestrPOSPart-durch$    | \
-                $DerRestrPOSPart-ein$      | \
-                $DerRestrPOSPart-gegen$    | \
-                $DerRestrPOSPart-hinter$   | \
-                $DerRestrPOSPart-los$      | \
-                $DerRestrPOSPart-mit$      | \
-                $DerRestrPOSPart-nach$     | \
-                $DerRestrPOSPart-ueber$    | \
-                $DerRestrPOSPart-um$       | \
-                $DerRestrPOSPart-unter$    | \
-                $DerRestrPOSPart-vor$      | \
-                $DerRestrPOSPart-weg$      | \
-                $DerRestrPOSPart-zu$       | \
-                $DerRestrPOSPart-zurueck$  | \
-                $DerRestrPOSPart-zwischen$ | \
+                $DerRestrPOSPrev-ab$       | \
+                $DerRestrPOSPrev-an$       | \
+                $DerRestrPOSPrev-auf$      | \
+                $DerRestrPOSPrev-aus$      | \
+                $DerRestrPOSPrev-bei$      | \
+                $DerRestrPOSPrev-durch$    | \
+                $DerRestrPOSPrev-ein$      | \
+                $DerRestrPOSPrev-gegen$    | \
+                $DerRestrPOSPrev-hinter$   | \
+                $DerRestrPOSPrev-los$      | \
+                $DerRestrPOSPrev-mit$      | \
+                $DerRestrPOSPrev-nach$     | \
+                $DerRestrPOSPrev-ueber$    | \
+                $DerRestrPOSPrev-um$       | \
+                $DerRestrPOSPrev-unter$    | \
+                $DerRestrPOSPrev-vor$      | \
+                $DerRestrPOSPrev-weg$      | \
+                $DerRestrPOSPrev-zu$       | \
+                $DerRestrPOSPrev-zurueck$  | \
+                $DerRestrPOSPrev-zwischen$ | \
                 $DerRestrPOSSuff-e$        | \
                 $DerRestrPOSSuff-er$       | \
                 $DerRestrPOSSuff-chen$     | \

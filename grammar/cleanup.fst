@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 5.4
-% Andreas Nolda 2024-09-26
+% Version 5.5
+% Andreas Nolda 2024-10-11
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -84,7 +84,7 @@ $CleanupWF$ = .*
 
 ALPHABET = [#char# #orth-trigger# #boundary-trigger# #lemma-index# \
             #paradigm-index# #wf-process# #wf-means# #orthinfo#] \
-           <>:[#part-of-speech# #nonfinite# #auxiliary#]
+           <>:[#part-of-speech# #nonfinite# #tense# #function# #auxiliary#]
 
 $CleanupCatLv2$ = .*
 

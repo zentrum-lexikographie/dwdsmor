@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 7.0 -->
-<!-- Andreas Nolda 2024-10-01 -->
+<!-- Version 7.1 -->
+<!-- Andreas Nolda 2024-10-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1886,10 +1886,10 @@
   <class type="coord">ConjCoord</class>
   <!-- subordinating conjunctions -->
   <class type="subord">ConjSub</class>
-  <!-- infinitive conjunctions -->
-  <class type="inf">ConjInf</class>
+  <!-- clausal infinitive conjunctions -->
+  <class type="infcl">ConjInfCl</class>
   <!-- comparative conjunctions -->
-  <class type="comp">ConjCompar</class>
+  <class type="adjcomp">ConjAdjComp</class>
 </xsl:variable>
 
 <xsl:template name="conjunction-class">
