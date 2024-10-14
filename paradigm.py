@@ -2091,23 +2091,24 @@ def generate_formdict(transducer, lemma, lemma_index=None, paradigm_index=None,
                       pos=None, user_specified=False, nonst=False, old=False, oldorth=False, ch=False):
     lemmaspecs = []
     if user_specified:
+        seg_lemma = lemma
         if pos == "ART":
-            lemmaspecs = [Lemmaspec(lemma_index, paradigm_index,
-                                    lemma, pos, subcat, None, None)
+            lemmaspecs = [Lemmaspec(lemma_index, paradigm_index, seg_lemma,
+                                    pos, subcat, None, None)
                           for subcat in SUBCATS]
         elif pos == "PPRO":
-            lemmaspecs = [Lemmaspec(lemma_index, paradigm_index,
-                                    lemma, pos, subcat, person, gender)
+            lemmaspecs = [Lemmaspec(lemma_index, paradigm_index, seg_lemma,
+                                    pos, subcat, person, gender)
                           for subcat in SUBCATS
                           for person in PERSONS
                           for gender in GENDERS]
         elif pos in ["INDEF", "NN", "NPROP", "REL", "WPRO"]:
-            lemmaspecs = [Lemmaspec(lemma_index, paradigm_index,
-                                    lemma, pos, None, None, gender)
+            lemmaspecs = [Lemmaspec(lemma_index, paradigm_index, seg_lemma,
+                                    pos, None, None, gender)
                           for gender in GENDERS]
         else:
-            lemmaspecs = [Lemmaspec(lemma_index, paradigm_index,
-                                    lemma, pos, None, None, None)]
+            lemmaspecs = [Lemmaspec(lemma_index, paradigm_index, seg_lemma,
+                                    pos, None, None, None)]
     else:
         analyses = analyse_word(transducer, lemma)
         lemmaspecs = sorted(set([Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
