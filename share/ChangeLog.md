@@ -1,3 +1,7 @@
+2024-10-14:
+
+* filter out inconsistent grammar specifications for verbs with separable preverbs
+
 2024-10-11:
 
 * improve support for clausal infinitives with "zu"
