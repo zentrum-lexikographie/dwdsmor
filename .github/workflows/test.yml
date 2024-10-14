@@ -1,0 +1,20 @@
+on: [push]
+
+name: Test
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out sources
+      uses: actions/checkout@v4
+    - name: Install dependencies
+      run: |
+        sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+            make\
+            default-jdk\
+            libsaxonhe-java\
+            sfst
+    - name: Build sample automaton
+      run: |
+        make sample sample-install dwdsmor install
