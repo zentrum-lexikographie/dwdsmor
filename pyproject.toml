@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dwdsmor"
+version = "1.0.0"
+description = "SFST/SMOR/DWDS-based German morphology"
+authors = [
+    {name = "Andreas Nolda", email = "andreas.nolda@bbaw.de"},
+    {name = "Gregor Middell", email = "gregor.middell@bbaw.de"}
+]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Text Processing :: Linguistic"
+]
+requires-python = ">=3.9"
+dependencies = ["sfst-transduce"]
+dynamic = ["readme"]
+
+[project.optional-dependencies]
+cli = [
+    "blessings",
+    "PyYAML"
+]
+test = [
+    "pytest",
+    "PyYAML",
+    "syrupy"
+]
+dev = [
+    "flake8",
+    "flake8-bugbear",
+    "mypy",
+    "pre-commit"
+]
+
+[project.scripts]
+dwdsmor = "dwdsmor.cli.analyse:main"
+dwdsmor-paradigm = "dwdsmor.cli.generate:main"
+
+[project.urls]
+Homepage = "https://github.com/zentrum-lexikographie/dwdsmor"
+
+[tool.isort]
+profile = "black"
+
+[[tool.mypy.overrides]]
+module = "blessings"
+ignore_missing_imports = true
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"], content-type = "text/markdown"}
+
+[tool.setuptools.packages.find]
+exclude = ["test"]
+
+[tool.setuptools.package-data]
+"dwdsmor" = ["grammar.txt"]

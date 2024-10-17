@@ -6,37 +6,37 @@ from collections import namedtuple
 from xml.etree.ElementTree import parse
 
 from dwdsmor import analyse_word
-
-from paradigm import generate_formdict
-
+from dwdsmor.cli.generate import generate_formdict
 
 # mapping between DWDS and DWDSSmor part-of-speech categories
-POS_MAP = {"Adjektiv":               ["ADJ"],
-           "Adverb":                 ["ADV", "PTCL", "INTJ", "CONJ"],
-           "bestimmter Artikel":     ["ART"],
-           "Bruchzahl":              ["FRAC"],
-           "Demonstrativpronomen":   ["DEM", "PROADV"],
-           "Eigenname":              ["NPROP"],
-           "Indefinitpronomen":      ["INDEF", "ART"],
-           "Interjektion":           ["INTJ"],
-           "Interrogativpronomen":   ["WPRO"],
-           "Kardinalzahl":           ["CARD"],
-           "Konjunktion":            ["CONJ", "ADV", "INTJ"],
-           "Ordinalzahl":            ["ORD"],
-           "Partikel":               ["PTCL", "ADV", "INTJ"],
-           "partizipiales Adjektiv": ["ADJ"],
-           "partizipiales Adverb":   ["ADV"],
-           "Personalpronomen":       ["PPRO"],
-           "Possessivpronomen":      ["POSS"],
-           "Präposition":            ["PREP", "POSTP"],
-           "Präposition + Artikel":  ["PREPART", "PTCL"],
-           "Pronominaladverb":       ["PROADV"],
-           "Reflexivpronomen":       ["PPRO"],
-           "Relativpronomen":        ["REL"],
-           "reziprokes Pronomen":    ["PPRO"],
-           "Substantiv":             ["NN"],
-           "unbestimmter Artikel":   ["ART"],
-           "Verb":                   ["V"]}
+POS_MAP = {
+    "Adjektiv": ["ADJ"],
+    "Adverb": ["ADV", "PTCL", "INTJ", "CONJ"],
+    "bestimmter Artikel": ["ART"],
+    "Bruchzahl": ["FRAC"],
+    "Demonstrativpronomen": ["DEM", "PROADV"],
+    "Eigenname": ["NPROP"],
+    "Indefinitpronomen": ["INDEF", "ART"],
+    "Interjektion": ["INTJ"],
+    "Interrogativpronomen": ["WPRO"],
+    "Kardinalzahl": ["CARD"],
+    "Konjunktion": ["CONJ", "ADV", "INTJ"],
+    "Ordinalzahl": ["ORD"],
+    "Partikel": ["PTCL", "ADV", "INTJ"],
+    "partizipiales Adjektiv": ["ADJ"],
+    "partizipiales Adverb": ["ADV"],
+    "Personalpronomen": ["PPRO"],
+    "Possessivpronomen": ["POSS"],
+    "Präposition": ["PREP", "POSTP"],
+    "Präposition + Artikel": ["PREPART", "PTCL"],
+    "Pronominaladverb": ["PROADV"],
+    "Reflexivpronomen": ["PPRO"],
+    "Relativpronomen": ["REL"],
+    "reziprokes Pronomen": ["PPRO"],
+    "Substantiv": ["NN"],
+    "unbestimmter Artikel": ["ART"],
+    "Verb": ["V"],
+}
 
 
 def get_dwds_entries(data_files):
@@ -48,7 +48,11 @@ def get_dwds_entries(data_files):
                 entry = list(root).index(article) + 1
                 if article.get("Status") == "Red-f" or not article.get("Status"):
                     for formspec in article.findall(f"{ns}Formangabe"):
-                        dwds_paradigm_index = int(article.findall(f"{ns}Formangabe").index(formspec) + 1) if len(article.findall(f"{ns}Formangabe")) > 1 else None
+                        dwds_paradigm_index = (
+                            int(article.findall(f"{ns}Formangabe").index(formspec) + 1)
+                            if len(article.findall(f"{ns}Formangabe")) > 1
+                            else None
+                        )
 
                         for grammarspec in formspec.findall(f"{ns}Grammatik"):
                             for pos in grammarspec.findall(f"{ns}Wortklasse"):
@@ -57,18 +61,23 @@ def get_dwds_entries(data_files):
                                 if dwds_pos == "":
                                     dwds_grammar = False
                                 elif dwds_pos in ["Eigenname", "Substantiv"]:
-                                    if (grammarspec.findall(f"{ns}Genus") and
-                                        grammarspec.findall(f"{ns}Genitiv")):
+                                    if grammarspec.findall(
+                                        f"{ns}Genus"
+                                    ) and grammarspec.findall(f"{ns}Genitiv"):
                                         dwds_grammar = True
-                                    elif grammarspec.findall(f"{ns}Numeruspraeferenz[.='nur im Plural']"):
+                                    elif grammarspec.findall(
+                                        f"{ns}Numeruspraeferenz[.='nur im Plural']"
+                                    ):
                                         dwds_grammar = True
                                     else:
                                         dwds_grammar = False
-                                elif dwds_pos in ["bestimmter Artikel",
-                                                  "Demonstrativpronomen",
-                                                  "Possessivpronomen",
-                                                  "Relativpronomen",
-                                                  "unbestimmter Artikel"]:
+                                elif dwds_pos in [
+                                    "bestimmter Artikel",
+                                    "Demonstrativpronomen",
+                                    "Possessivpronomen",
+                                    "Relativpronomen",
+                                    "unbestimmter Artikel",
+                                ]:
                                     if grammarspec.findall(f"{ns}Genus"):
                                         dwds_grammar = True
                                     elif grammarspec.findall(f"{ns}indeklinabel"):
@@ -76,10 +85,12 @@ def get_dwds_entries(data_files):
                                     else:
                                         dwds_grammar = False
                                 elif dwds_pos == "Verb":
-                                    if (grammarspec.findall(f"{ns}Praesens") or
-                                        grammarspec.findall(f"{ns}Praeteritum") or
-                                        grammarspec.findall(f"{ns}Partizip_II") or
-                                        grammarspec.findall(f"{ns}Auxiliar")):
+                                    if (
+                                        grammarspec.findall(f"{ns}Praesens")
+                                        or grammarspec.findall(f"{ns}Praeteritum")
+                                        or grammarspec.findall(f"{ns}Partizip_II")
+                                        or grammarspec.findall(f"{ns}Auxiliar")
+                                    ):
                                         dwds_grammar = True
                                     else:
                                         dwds_grammar = False
@@ -90,35 +101,51 @@ def get_dwds_entries(data_files):
                         if dwds_pos not in POS_MAP.keys():
                             continue
 
-                        # ignore form specifications of articles, numerals, and attributive pronouns with non-feminine gender
-                        # if there is a feminine form specification with feminine gender
-                        if dwds_pos in ["bestimmter Artikel",
-                                        "Demonstrativpronomen",
-                                        "Indefinitpronomen",
-                                        "Interrogativpronomen",
-                                        "Kardinalzahl",
-                                        "Ordinalzahl",
-                                        "Possessivpronomen",
-                                        "Relativpronomen",
-                                        "unbestimmter Artikel"]:
+                        # ignore form specifications of articles,
+                        # numerals, and attributive pronouns with
+                        # non-feminine gender if there is a feminine
+                        # form specification with feminine gender
+                        if dwds_pos in [
+                            "bestimmter Artikel",
+                            "Demonstrativpronomen",
+                            "Indefinitpronomen",
+                            "Interrogativpronomen",
+                            "Kardinalzahl",
+                            "Ordinalzahl",
+                            "Possessivpronomen",
+                            "Relativpronomen",
+                            "unbestimmter Artikel",
+                        ]:
                             nonfeminine_formspec = False
-                            if article.findall(f"{ns}Formangabe/{ns}Grammatik/{ns}Genus[.='fem.']"):
-                                if formspec.findtext(f"{ns}Grammatik/{ns}Genus") != "fem.":
+                            if article.findall(
+                                f"{ns}Formangabe/{ns}Grammatik/{ns}Genus[.='fem.']"
+                            ):
+                                if (
+                                    formspec.findtext(f"{ns}Grammatik/{ns}Genus")
+                                    != "fem."
+                                ):
                                     nonfeminine_formspec = True
                             if nonfeminine_formspec:
                                 continue
 
-                        # ignore form specifications of articles and pronouns with non-nominative case
-                        if dwds_pos in ["bestimmter Artikel",
-                                        "Demonstrativpronomen",
-                                        "Personalpronomen",
-                                        "Relativpronomen"]:  # ...
+                        # ignore form specifications of articles and
+                        # pronouns with non-nominative case
+                        if dwds_pos in [
+                            "bestimmter Artikel",
+                            "Demonstrativpronomen",
+                            "Personalpronomen",
+                            "Relativpronomen",
+                        ]:  # ...
                             nonnominative_formspec = False
-                            for case in formspec.findall(f"{ns}Grammatik/{ns}Kasuspraeferenz"):
+                            for case in formspec.findall(
+                                f"{ns}Grammatik/{ns}Kasuspraeferenz"
+                            ):
                                 if not case.get("Frequenz"):
-                                    if case.text in ["im Akkusativ",
-                                                     "im Dativ",
-                                                     "im Genitiv"]:
+                                    if case.text in [
+                                        "im Akkusativ",
+                                        "im Dativ",
+                                        "im Genitiv",
+                                    ]:
                                         nonnominative_formspec = True
                             if nonnominative_formspec:
                                 continue
@@ -130,26 +157,37 @@ def get_dwds_entries(data_files):
                                 # ignore idioms and other syntactically complex units
                                 if " " in dwds_lemma:
                                     continue
-                                dwds_lemma_index = int(spelling.get("hidx")) if "hidx" in spelling.keys() else None
+                                dwds_lemma_index = (
+                                    int(spelling.get("hidx"))
+                                    if "hidx" in spelling.keys()
+                                    else None
+                                )
 
-                                dwds_entry = {"entry": entry,
-                                              "file": data_file,
-                                              "dwds_lemma": dwds_lemma,
-                                              "dwds_lemma_index": dwds_lemma_index,
-                                              "dwds_paradigm_index": dwds_paradigm_index,
-                                              "dwds_pos": dwds_pos,
-                                              "dwds_grammar": dwds_grammar}
+                                dwds_entry = {
+                                    "entry": entry,
+                                    "file": data_file,
+                                    "dwds_lemma": dwds_lemma,
+                                    "dwds_lemma_index": dwds_lemma_index,
+                                    "dwds_paradigm_index": dwds_paradigm_index,
+                                    "dwds_pos": dwds_pos,
+                                    "dwds_grammar": dwds_grammar,
+                                }
                                 yield dwds_entry
 
 
-EntryWithAnalysis = namedtuple("EntryWithAnalysis", ["entry",
-                                                     "file",
-                                                     "dwds_lemma",
-                                                     "dwds_grammar",
-                                                     "dwds_pos",
-                                                     "dwdsmor_lemma",
-                                                     "dwdsmor_pos",
-                                                     "lemma_covered"])
+EntryWithAnalysis = namedtuple(
+    "EntryWithAnalysis",
+    [
+        "entry",
+        "file",
+        "dwds_lemma",
+        "dwds_grammar",
+        "dwds_pos",
+        "dwdsmor_lemma",
+        "dwdsmor_pos",
+        "lemma_covered",
+    ],
+)
 
 
 def dwds_to_dwdsmor_pos_list(pos):
@@ -177,25 +215,32 @@ def analyse_dwds_entry(transducer, dwds_entry):
                 dwdsmor_pos = analysis.pos
                 break
 
-    return EntryWithAnalysis(entry,
-                             file,
-                             dwds_lemma,
-                             dwds_grammar,
-                             dwds_pos,
-                             dwdsmor_lemma,
-                             dwdsmor_pos,
-                             lemma_covered)
+    return EntryWithAnalysis(
+        entry,
+        file,
+        dwds_lemma,
+        dwds_grammar,
+        dwds_pos,
+        dwdsmor_lemma,
+        dwdsmor_pos,
+        lemma_covered,
+    )
 
 
-EntryWithParadigm = namedtuple("EntryWithParadigm", ["entry",
-                                                     "file",
-                                                     "dwds_lemma",
-                                                     "dwds_lemma_index",
-                                                     "dwds_paradigm_index",
-                                                     "dwds_grammar",
-                                                     "dwds_pos",
-                                                     "dwdsmor_pos",
-                                                     "lemma_covered"])
+EntryWithParadigm = namedtuple(
+    "EntryWithParadigm",
+    [
+        "entry",
+        "file",
+        "dwds_lemma",
+        "dwds_lemma_index",
+        "dwds_paradigm_index",
+        "dwds_grammar",
+        "dwds_pos",
+        "dwdsmor_pos",
+        "lemma_covered",
+    ],
+)
 
 
 def generate_paradigms_for_dwds_entry(transducer, dwds_entry):
@@ -210,20 +255,26 @@ def generate_paradigms_for_dwds_entry(transducer, dwds_entry):
     dwdsmor_pos = ""
     lemma_covered = False
     for pos in dwds_to_dwdsmor_pos_list(dwds_pos):
-        formdict = generate_formdict(transducer, dwds_lemma,
-                                     lemma_index=dwds_lemma_index, paradigm_index=dwds_paradigm_index,
-                                     pos=pos)
+        formdict = generate_formdict(
+            transducer,
+            dwds_lemma,
+            lemma_index=dwds_lemma_index,
+            paradigm_index=dwds_paradigm_index,
+            pos=pos,
+        )
         lemma_covered = len(formdict) > 0
         if lemma_covered:
             dwdsmor_pos = pos
             break
 
-    return EntryWithParadigm(entry,
-                             file,
-                             dwds_lemma,
-                             dwds_lemma_index,
-                             dwds_paradigm_index,
-                             dwds_grammar,
-                             dwds_pos,
-                             dwdsmor_pos,
-                             lemma_covered)
+    return EntryWithParadigm(
+        entry,
+        file,
+        dwds_lemma,
+        dwds_lemma_index,
+        dwds_paradigm_index,
+        dwds_grammar,
+        dwds_pos,
+        dwdsmor_pos,
+        lemma_covered,
+    )

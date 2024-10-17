@@ -5,10 +5,7 @@
 from os import path
 
 from pytest import fixture
-
 from syrupy.extensions.single_file import SingleFileSnapshotExtension, WriteMode
-from syrupy.location import PyTestLocation
-
 
 TESTDIR = path.dirname(__file__)
 
@@ -21,8 +18,9 @@ class TSVSnapshotExtension(SingleFileSnapshotExtension):
 
     @classmethod
     def get_snapshot_name(cls, *, test_location, index):
-        snapshot_name = SingleFileSnapshotExtension.get_snapshot_name(test_location=test_location,
-                                                                      index=index)
+        snapshot_name = SingleFileSnapshotExtension.get_snapshot_name(
+            test_location=test_location, index=index
+        )
         if snapshot_name.startswith("test_"):
             snapshot_name = snapshot_name[5:]
         snapshot_name = snapshot_name.replace("_", "-")
