@@ -3,18 +3,14 @@
 # test DWDSmor paradigm snapshots for regression
 # Andreas Nolda 2024-11-19
 
-import io
 import csv
+import io
 from os import path
 
+import sfst_transduce
 from pytest import fixture
 
-import sfst_transduce
-
-from paradigm import output_paradigms
-
-from test.snapshot import tsv_snapshot_test
-
+from dwdsmor.cli.generate import output_paradigms
 
 TESTDIR = path.dirname(__file__)
 
@@ -25,52 +21,68 @@ LIBDIR = path.join(BASEDIR, "lib")
 
 ADJECTIVE_POS = "ADJ"
 
-ADJECTIVE_LEMMAS = ["lila",      # AdjPos0
-                    "klasse",    # AdjPos0-e
-                    "tabu",      # AdjPosPred
-                    "pleite",    # AdjPosPred-e
-                    "Berliner",  # AdjPosAttrSubst0
-                    "derartig",  # AdjPos
-                    "hell",      # Adj_er_st
-                    "bunt",      # Adj_er_est
-                    "neu",       # Adj_er_st, Adj_er_est
-                    "warm",      # Adj_er_$st
-                    "kalt",      # Adj_er_$est
-                    "leise",     # AdjPos-e, AdjComp_er, AdjSup_est
-                    "dunkel",    # AdjPos-el, AdjComp-el_er, AdjSup_st
-                    "bitter",    # AdjPos-er, AdjComp-er_er, AdjSup_st
-                    "trocken",   # AdjPos-en, AdjComp-en_er, AdjSup_st
-                    "gut",       # AdjPos, AdjComp_er, AdjSup_st
-                    "viel",      # AdjPos, AdjPos0-viel, AdjComp0, AdjSup_st
-                    "hoch",      # AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_st
-                    "fit"]       # AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_est
+ADJECTIVE_LEMMAS = [
+    "lila",      # AdjPos0
+    "klasse",    # AdjPos0-e
+    "tabu",      # AdjPosPred
+    "pleite",    # AdjPosPred-e
+    "Berliner",  # AdjPosAttrSubst0
+    "derartig",  # AdjPos
+    "hell",      # Adj_er_st
+    "bunt",      # Adj_er_est
+    "neu",       # Adj_er_st, Adj_er_est
+    "warm",      # Adj_er_$st
+    "kalt",      # Adj_er_$est
+    "leise",     # AdjPos-e, AdjComp_er, AdjSup_est
+    "dunkel",    # AdjPos-el, AdjComp-el_er, AdjSup_st
+    "bitter",    # AdjPos-er, AdjComp-er_er, AdjSup_st
+    "trocken",   # AdjPos-en, AdjComp-en_er, AdjSup_st
+    "gut",       # AdjPos, AdjComp_er, AdjSup_st
+    "viel",      # AdjPos, AdjPos0-viel, AdjComp0, AdjSup_st
+    "hoch",      # AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_st
+    "fit"]       # AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_est
 
 
 ARTICLE_POS = "ART"
 
-ARTICLE_LEMMAS = ["die",    # ArtDef
-                  "eine",   # ArtIndef, ArtIndef-n
-                  "keine"]  # ArtNeg
+# ArtDef  # ArtIndef, ArtIndef-n  # ArtNeg
+ARTICLE_LEMMAS = ["die", "eine", "keine"]
 
 
 CARDINAL_POS = "CARD"
 
-CARDINAL_LEMMAS = ["eine",    # Card-ein
-                   "zwei",    # Card-zwei
-                   "vier",    # Card-vier
-                   "sieben",  # Card-sieben
-                   "null"]    # Card0
+CARDINAL_LEMMAS = [
+    # Card-ein
+    "eine",
+    # Card-zwei
+    "zwei",
+    # Card-vier
+    "vier",
+    # Card-sieben
+    "sieben",
+    # Card0
+    "null",
+]
 
 
 DEMONSTRATIVE_PRONOUN_POS = "DEM"
 
-DEMONSTRATIVE_PRONOUN_LEMMAS = ["die",          # DemDef
-                                "diese",        # Dem-dies
-                                "solche",       # Dem-solch
-                                "alldem",       # Dem-alldem
-                                "jene",         # Dem
-                                "dergleichen",  # Dem0
-                                "diejenige"]    # ArtDef-der+DemMasc, ArtDef-den+DemMasc ...
+DEMONSTRATIVE_PRONOUN_LEMMAS = [
+    # DemDef
+    "die",
+    # Dem-dies
+    "diese",
+    # Dem-solch
+    "solche",
+    # Dem-alldem
+    "alldem",
+    # Dem
+    "jene",
+    # Dem0
+    "dergleichen",
+    # ArtDef-der+DemMasc, ArtDef-den+DemMasc ...
+    "diejenige",
+]
 
 
 FRACTION_POS = "FRAC"
@@ -80,37 +92,68 @@ FRACTION_LEMMAS = ["anderthalb"]  # Frac0
 
 INDEFINITE_PRONOUN_POS = "INDEF"
 
-INDEFINITE_PRONOUN_LEMMAS = ["welche",        # Indef-welch
-                             "irgendwelche",  # Indef-irgendwelch
-                             "alle",          # Indef-all
-                             "jede",          # Indef-jed
-                             "jegliche",      # Indef-jeglich
-                             "sämtliche",     # Indef-saemtlich
-                             "beide",         # Indef-beid
-                             "einige",        # Indef-einig
-                             "manche",        # Indef-manch
-                             "mehrere",       # Indef-mehrer
-                             "genug",         # Indef0
-                             "eine",          # Indef-ein
-                             "irgendeine",    # Indef-irgendein
-                             "keine",         # Indef-kein
-                             "etwas",         # IProNeut
-                             "jemand",        # IProMasc
-                             "jedermann",     # IPro-jedermann
-                             "jedefrau",      # IPro-jedefrau
-                             "man",           # IPro-man
-                             "frau",          # IPro-frau
-                             "unsereiner",    # IPro-unsereiner
-                             "unsereins",     # IPro-unsereins
-                             "wer",           # IProMascNomSg, IProMascAccSg, IProMascDatSg, IProMascGenSg
-                             "was"]           # IProNeutNomSg, IProNeutAccSg, IProNeutDatSg, IProNeutGenSg
+INDEFINITE_PRONOUN_LEMMAS = [
+    # Indef-welch
+    "welche",
+    # Indef-irgendwelch
+    "irgendwelche",
+    # Indef-all
+    "alle",
+    # Indef-jed
+    "jede",
+    # Indef-jeglich
+    "jegliche",
+    # Indef-saemtlich
+    "sämtliche",
+    # Indef-beid
+    "beide",
+    # Indef-einig
+    "einige",
+    # Indef-manch
+    "manche",
+    # Indef-mehrer
+    "mehrere",
+    # Indef0
+    "genug",
+    # Indef-ein
+    "eine",
+    # Indef-irgendein
+    "irgendeine",
+    # Indef-kein
+    "keine",
+    # IProNeut
+    "etwas",
+    # IProMasc
+    "jemand",
+    # IPro-jedermann
+    "jedermann",
+    # IPro-jedefrau
+    "jedefrau",
+    # IPro-man
+    "man",
+    # IPro-frau
+    "frau",
+    # IPro-unsereiner
+    "unsereiner",
+    # IPro-unsereins
+    "unsereins",
+    # IProMascNomSg, IProMascAccSg, IProMascDatSg, IProMascGenSg
+    "wer",
+    # IProNeutNomSg, IProNeutAccSg, IProNeutDatSg, IProNeutGenSg
+    "was",
+]
 
 
 INTERROGATIVE_PRONOUN_POS = "WPRO"
 
-INTERROGATIVE_PRONOUN_LEMMAS = ["wer",     # WProMascNomSg, WProMascAccSg, WProMascDatSg, WProMascGenSg, WProNeutNomSg ...
-                                "was",     # WProMascNomSg, WProMascAccSg, WProMascDatSg, WProMascGenSg, WProNeutNomSg ...
-                                "welche"]  # W-welch
+INTERROGATIVE_PRONOUN_LEMMAS = [
+    # WProMascNomSg, WProMascAccSg, WProMascDatSg, WProMascGenSg, WProNeutNomSg ...
+    "wer",
+    # WProMascNomSg, WProMascAccSg, WProMascDatSg, WProMascGenSg, WProNeutNomSg ...
+    "was",
+    # W-welch
+    "welche",
+]
 
 
 NAME_POS = "NPROP"
@@ -280,10 +323,16 @@ ORDINAL_LEMMAS = ["erste"]  # Ord
 
 POSSESSIVE_PRONOUN_POS = "POSS"
 
-POSSESSIVE_PRONOUN_LEMMAS = ["meine",    # Poss
-                             "unsere",   # Poss-er
-                             "Deinige",  # Poss|Wk
-                             "Eurige"]   # Poss|Wk-er
+POSSESSIVE_PRONOUN_LEMMAS = [
+    # Poss
+    "meine",
+    # Poss-er
+    "unsere",
+    # Poss|Wk
+    "Deinige",
+    # Poss|Wk-er
+    "Eurige",
+]
 
 
 PERSONAL_PRONOUN_POS = "PPRO"
@@ -307,43 +356,95 @@ PERSONAL_PRONOUN_LEMMAS = ["ich",       # PPro1NomSg, PPro1AccSg, PPro1DatSg, PP
 
 RELATIVE_PRONOUN_POS = "REL"
 
-RELATIVE_PRONOUN_LEMMAS = ["die",     # Rel
-                           "wer",     # RProMascNomSg, RProMascAccSg, RProMascDatSg, RProMascGenSg, RProNeutNomSg ...
-                           "was",     # RProMascNomSg, RProMascAccSg, RProMascDatSg, RProMascGenSg, RProNeutNomSg ...
-                           "welche"]  # Rel-welch
+RELATIVE_PRONOUN_LEMMAS = [
+    # Rel
+    "die",
+    # RProMascNomSg, RProMascAccSg, RProMascDatSg, RProMascGenSg, RProNeutNomSg ...
+    "wer",
+    # RProMascNomSg, RProMascAccSg, RProMascDatSg, RProMascGenSg, RProNeutNomSg ...
+    "was",
+    # Rel-welch
+    "welche",
+]
 
 
 VERB_POS = "V"
 
-VERB_LEMMAS = ["spielen",     # VWeak
-               "segeln",      # VWeak-el-er
-               "recyclen",    # VWeak-le
-               "liken",       # VWeak-ak-ik
-               "designen",    # VWeak-signen
-               "arbeiten",    # VWeak-d-t
-               "atmen",       # VWeak-m-n
-               "küssen",      # VWeak-s
-               "heißen",      # VWeak-s, VInf, VPPres, VPPastStr, VPres-s, VPastStr-s, VImp
-               "senden",      # VWeak-d-t, VInf, VPPres, VPPast-d_t, VPres, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t
-               "faken",       # VWeak-ak-ik, VInf, VPPres, VPPast_ed, VPres-ak-ik, VPastIndWeak, VPastSubjWeak, VImp-ak-ik
-               "notwassern",  # VInf-el-er, VPPres-el-er, VPPastWeak, VPres-el-er, VPastIndWeak, VPastSubjWeak, VImp-el-er
-               "downcyclen",  # VInf-le, VPPres-le, VPPast-le, VPres-le, VPastInd-le, VPastSubj-le, VImp-le
-               "denken",      # VInf, VPPres, VPPastWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp
-               "haben",       # VInf, VPPres, VPPastWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-d-t_t, VPastSubj-haben, VImp
-               "wissen",      # VInf, VPPres, VPPastWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak
-               "können",      # VInf, VPPres, VPPastWeak, VPPastStr, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak
-               "gehen",       # VInf, VPPres, VPPastStr, VPres, VPastStr, VImp
-               "schwimmen",   # VInf, VPPres, VPPastStr, VPres, VPastIndStr, VPastSubjStr, VPastSubjOld, VImp
-               "laden",       # VInf, VPPres, VPPastStr, VPres, VPresInd23Sg-d_t, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImp, VImp-d-t
-               "laufen",      # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastStr, VImp
-               "halten",      # VInf, VPPres, VPPastStr, VPresInd23Sg-t_0, VPresNonInd23Sg, VPastStr, VImp-d-t
-               "sehen",       # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImpSg, VImpPl
-               "lesen",       # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr-s, VPastSubjStr, VImpSg0, VImpPl
-               "tun",         # VInf_n, VPPres, VPPast_n, VPres-tun, VPastIndStr, VPastSubjStr, VImpSg0, VImpPl
-               "werden",      # VInf, VPPres, VPPastStr, VPresInd2Sg-werden, VPresInd3Sg-werden, VPresNonInd23Sg, VPastInd-werden,
-                              # VPastIndSg-ward, VPastIndPl-werden, VPastSubjStr, VImp-d-t
-               "sein"]        # VInf_n, VPPres, VPPastStr, VPresInd1Sg-sein, VPresInd2Sg-sein, VPresInd3Sg-sein, VPresInd13Pl-sein,
-                              # VPresInd2Pl-sein, VPresSubj-sein, VPastIndStr, VPastSubjStr, VPastSubj2-sein, VImpSg0, VImpPl-sein
+VERB_LEMMAS = [
+    # VWeak
+    "spielen",
+    # VWeak-el-er
+    "segeln",
+    # VWeak-le
+    "recyclen",
+    # VWeak-ak-ik
+    "liken",
+    # VWeak-signen
+    "designen",
+    # VWeak-d-t
+    "arbeiten",
+    # VWeak-m-n
+    "atmen",
+    # VWeak-s
+    "küssen",
+    # VWeak-s, VInf, VPPres, VPPastStr, VPres-s, VPastStr-s, VImp
+    "heißen",
+    # VWeak-d-t, VInf, VPPres, VPPast-d_t, VPres, VPastInd-d-t_t,
+    # VPastSubjWeak, VImp-d-t
+    "senden",
+    # VWeak-ak-ik, VInf, VPPres, VPPast_ed, VPres-ak-ik,
+    # VPastIndWeak, VPastSubjWeak, VImp-ak-ik
+    "faken",
+    # VInf-el-er, VPPres-el-er, VPPastWeak, VPres-el-er,
+    # VPastIndWeak, VPastSubjWeak, VImp-el-er
+    "notwassern",
+    # VInf-le, VPPres-le, VPPast-le, VPres-le, VPastInd-le,
+    # VPastSubj-le, VImp-le
+    "downcyclen",
+    # VInf, VPPres, VPPastWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp
+    "denken",
+    # VInf, VPPres, VPPastWeak, VPresInd23Sg, VPresNonInd23Sg,
+    # VPastInd-d-t_t, VPastSubj-haben, VImp
+    "haben",
+    # VInf, VPPres, VPPastWeak, VModPresIndSg, VModPresNonIndSg,
+    # VPastIndWeak, VPastSubjWeak
+    "wissen",
+    # VInf, VPPres, VPPastWeak, VPPastStr, VModPresIndSg,
+    # VModPresNonIndSg, VPastIndWeak, VPastSubjWeak
+    "können",
+    # VInf, VPPres, VPPastStr, VPres, VPastStr, VImp
+    "gehen",
+    # VInf, VPPres, VPPastStr, VPres, VPastIndStr, VPastSubjStr,
+    # VPastSubjOld, VImp
+    "schwimmen",
+    # VInf, VPPres, VPPastStr, VPres, VPresInd23Sg-d_t,
+    # VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImp, VImp-d-t
+    "laden",
+    # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastStr, VImp
+    "laufen",
+    # VInf, VPPres, VPPastStr, VPresInd23Sg-t_0, VPresNonInd23Sg,
+    # VPastStr, VImp-d-t
+    "halten",
+    # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg,
+    # VPastIndStr, VPastSubjStr, VImpSg, VImpPl
+    "sehen",
+    # VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg,
+    # VPastIndStr-s, VPastSubjStr, VImpSg0, VImpPl
+    "lesen",
+    # VInf_n, VPPres, VPPast_n, VPres-tun, VPastIndStr,
+    # VPastSubjStr, VImpSg0, VImpPl
+    "tun",
+    # VInf, VPPres, VPPastStr, VPresInd2Sg-werden,
+    # VPresInd3Sg-werden, VPresNonInd23Sg, VPastInd-werden,
+    "werden",
+    # VPastIndSg-ward, VPastIndPl-werden, VPastSubjStr, VImp-d-t,
+    # VInf_n, VPPres, VPPastStr, VPresInd1Sg-sein, VPresInd2Sg-sein,
+    # VPresInd3Sg-sein, VPresInd13Pl-sein, VPresInd2Pl-sein,
+    # VPresSubj-sein, VPastIndStr, VPastSubjStr, VPastSubj2-sein,
+    # VImpSg0, VImpPl-sein
+    "sein",
+]
+
 
 @fixture
 def transducer():
@@ -354,18 +455,30 @@ def get_paradigms(transducer, lemmas, pos):
     output = io.StringIO()
     csv_writer = csv.writer(output, delimiter="\t", lineterminator="\n")
 
-    header_row = ["Lemma",
-                  "Lemma Index",
-                  "Paradigm Index",
-                  "Categories",
-                  "Paradigm Categories",
-                  "Paradigm Forms"]
+    header_row = [
+        "Lemma",
+        "Lemma Index",
+        "Paradigm Index",
+        "Categories",
+        "Paradigm Categories",
+        "Paradigm Forms",
+    ]
     csv_writer.writerow(header_row)
 
     for lemma in sorted(set(lemmas)):
-        output_paradigms(transducer, lemma, output, pos=pos,
-                         nonst=True, old=True, oldorth=True, ch=True,
-                         no_cats=True, header=False, plain=True)
+        output_paradigms(
+            transducer,
+            lemma,
+            output,
+            pos=pos,
+            nonst=True,
+            old=True,
+            oldorth=True,
+            ch=True,
+            no_cats=True,
+            header=False,
+            plain=True,
+        )
     return output.getvalue()
 
 
@@ -385,7 +498,9 @@ def test_cardinal_paradigm_snapshot(tsv_snapshot_test, transducer):
 
 
 def test_demonstrative_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
-    paradigms = get_paradigms(transducer, DEMONSTRATIVE_PRONOUN_LEMMAS, DEMONSTRATIVE_PRONOUN_POS)
+    paradigms = get_paradigms(
+        transducer, DEMONSTRATIVE_PRONOUN_LEMMAS, DEMONSTRATIVE_PRONOUN_POS
+    )
     assert paradigms == tsv_snapshot_test
 
 
@@ -395,12 +510,16 @@ def test_fraction_paradigm_snapshot(tsv_snapshot_test, transducer):
 
 
 def test_indefinite_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
-    paradigms = get_paradigms(transducer, INDEFINITE_PRONOUN_LEMMAS, INDEFINITE_PRONOUN_POS)
+    paradigms = get_paradigms(
+        transducer, INDEFINITE_PRONOUN_LEMMAS, INDEFINITE_PRONOUN_POS
+    )
     assert paradigms == tsv_snapshot_test
 
 
 def test_interrogative_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
-    paradigms = get_paradigms(transducer, INTERROGATIVE_PRONOUN_LEMMAS, INTERROGATIVE_PRONOUN_POS)
+    paradigms = get_paradigms(
+        transducer, INTERROGATIVE_PRONOUN_LEMMAS, INTERROGATIVE_PRONOUN_POS
+    )
     assert paradigms == tsv_snapshot_test
 
 
@@ -420,7 +539,9 @@ def test_ordinal_paradigm_snapshot(tsv_snapshot_test, transducer):
 
 
 def test_possessive_pronoun_paradigm_snapshot(tsv_snapshot_test, transducer):
-    paradigms = get_paradigms(transducer, POSSESSIVE_PRONOUN_LEMMAS, POSSESSIVE_PRONOUN_POS)
+    paradigms = get_paradigms(
+        transducer, POSSESSIVE_PRONOUN_LEMMAS, POSSESSIVE_PRONOUN_POS
+    )
     assert paradigms == tsv_snapshot_test
 
 

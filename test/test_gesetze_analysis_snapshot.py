@@ -3,18 +3,14 @@
 # test DWDSmor analysis snapshots against legal texts for regression
 # Andreas Nolda 2024-09-12
 
-import io
 import csv
-from os import path, listdir
-
-from pytest import fixture
+import io
+from os import listdir, path
 
 import sfst_transduce
+from pytest import fixture
 
-from dwdsmor import output_analyses
-
-from test.snapshot import tsv_snapshot_test
-
+from dwdsmor.cli.analyse import output_analyses
 
 TESTDIR = path.dirname(__file__)
 
@@ -30,6 +26,7 @@ def transducer():
     # use transducer in standard format with deterministic order of analyses
     return sfst_transduce.Transducer(path.join(LIBDIR, "dwdsmor.a"))
 
+
 @fixture
 def transducer2():
     # use transducer in standard format with deterministic order of analyses
@@ -38,7 +35,9 @@ def transducer2():
 
 @fixture
 def data_files():
-    toc_files = [path.join(DATADIR, file) for file in listdir(DATADIR) if file.endswith(".tok")]
+    toc_files = [
+        path.join(DATADIR, file) for file in listdir(DATADIR) if file.endswith(".tok")
+    ]
     return tuple(toc_files)
 
 
@@ -46,31 +45,40 @@ def get_analyses(transducer, data_files):
     output = io.StringIO()
     csv_writer = csv.writer(output, delimiter="\t", lineterminator="\n")
 
-    header_row = ["Wordform",
-                  "Lemma",
-                  "POS",
-                  "Subcategory",
-                  "Auxiliary",
-                  "Degree",
-                  "Person",
-                  "Gender",
-                  "Case",
-                  "Number",
-                  "Inflection",
-                  "Function",
-                  "Nonfinite",
-                  "Mood",
-                  "Tense",
-                  "Metalinguistic",
-                  "Orthography",
-                  "Ellipsis",
-                  "Characters"]
+    header_row = [
+        "Wordform",
+        "Lemma",
+        "POS",
+        "Subcategory",
+        "Auxiliary",
+        "Degree",
+        "Person",
+        "Gender",
+        "Case",
+        "Number",
+        "Inflection",
+        "Function",
+        "Nonfinite",
+        "Mood",
+        "Tense",
+        "Metalinguistic",
+        "Orthography",
+        "Ellipsis",
+        "Characters",
+    ]
     csv_writer.writerow(header_row)
 
     for data_file in sorted(data_files):
         with open(data_file) as file:
-            output_analyses(transducer, transducer2, file, output,
-                            minimal=True, header=False, plain=True)
+            output_analyses(
+                transducer,
+                transducer2,
+                file,
+                output,
+                minimal=True,
+                header=False,
+                plain=True,
+            )
     return output.getvalue()
 
 

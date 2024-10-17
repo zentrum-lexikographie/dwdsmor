@@ -1,1 +1,1 @@
--e .[cli,test]
+-e .[cli,dev,test]

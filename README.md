@@ -21,6 +21,9 @@ This repository provides source code for building DWDSmor lexica and transducers
 as well as for using DWDSmor transducers for morphological analysis and paradigm
 generation:
 
+* `dwdsmor/` contains Python packages for using DWDSmor, including
+  scripts for morphological analysis and for paradigm generation by
+  means of DWDSmor transducers.
 * `share/` contains XSLT stylesheets for extracting lexical entries in SMORLemma
   format form XML sources of DWDS articles. Sample inputs and outputs can be
   found in `samples/`.
@@ -33,8 +36,6 @@ generation:
 * `grammar/` contains an FST grammar derived from SMORLemma, providing the
   morphology for building DWDSmor automata from DWDSmor lexica.
 * `test/` implements a test suite for the DWDSmor transducers.
-* `dwdsmor.py` and `paradigm.py` are user-level Python scripts for morphological
-  analysis and for paradigm generation by means of DWDSmor transducers.
 
 DWDSmor is in active development. In its current stage, DWDSmor supports most
 inflection classes and some productive word-formation patterns of written
@@ -114,7 +115,7 @@ make sample && make sample-install && make dwdsmor
 ```
 
 After building DWDSmor transducers, install them into `lib/`, where the
-user-level Python scripts `dwdsmor.py` and `paradigm.py` expect them by default:
+Python scripts `dwdsmor` and `dwdsmor-paradigm` expect them by default:
 
 ```sh
 make install
@@ -222,13 +223,13 @@ make -C test test-paradigm-regression
 
 DWDSmor provides two Python scripts for using the DWDSmor transducers.
 
-`dwdsmor.py` is a Python script for the lemmatisation and morphological analysis
+`dwdsmor` is a Python script for the lemmatisation and morphological analysis
 of word forms in written German by means of a DWDSmor transducer:
 
 ```plaintext
-$ ./dwdsmor.py -h
-usage: dwdsmor.py [-h] [-a] [-c] [-C] [-E] [-H] [-i] [-I] [-j] [-m] [-M] [-P] [-s] [-S]
-                  [-t TRANSDUCER] [-T TRANSDUCER2] [-v] [-w] [-W] [-y] [input] [output]
+$ dwdsmor -h
+usage: dwdsmor [-h] [-a] [-c] [-C] [-E] [-H] [-i] [-I] [-j] [-m] [-M] [-P] [-s] [-S]
+               [-t TRANSDUCER] [-T TRANSDUCER2] [-v] [-w] [-W] [-y] [input] [output]
 
 positional arguments:
   input                 input file (one word form per line; default: stdin)
@@ -260,10 +261,10 @@ options:
   -y, --yaml            output YAML document
 ```
 
-By default, `dwdsmor.py` prints a TSV table on standard output:
+By default, `dwdsmor` prints a TSV table on standard output:
 
 ```plaintext
-$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -E
+$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | dwdsmor -E
 Wordform	Lemma	POS	Subcategory	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Characters
 Ihr	Ihre	POSS			Neut	Acc	Sg	NoInfl	Attr
 Ihr	Ihre	POSS			Neut	Nom	Sg	NoInfl	Attr
@@ -302,7 +303,7 @@ ausruhen	ausruhen	V		1			Pl				Ind	Pres
 The transducer can be selected as an argument of option `-t`:
 
 ```plaintext
-$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | ./dwdsmor.py -E -t lib/dwdsmor-root.ca
+$ echo "Ihr\nkönnt\neuch\nauf\nden\nKinderbänken\nausruhen\n." | dwdsmor -E -t lib/dwdsmor-root.ca
 Wordform	Lemma	POS	Subcategory	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Characters
 Ihr	Ihre	POSS			Neut	Acc	Sg	NoInfl	Attr
 Ihr	Ihre	POSS			Neut	Nom	Sg	NoInfl	Attr
@@ -346,14 +347,14 @@ ausruhen	ausruhen	V		1			Pl				Ind	Pres
 CSV, JSON, and YAML outputs are available with options `-c`, `-j`, and `-y`
 respectively.
 
-`paradigm.py` is Python script for the generation of paradigms of lexical words
-in written German by means of a DWDSmor transducer:
+`dwdsmor-paradigm` is Python script for the generation of paradigms of
+lexical words in written German by means of a DWDSmor transducer:
 
 ```plaintext
-$ ./paradigm.py -h
-usage: paradigm.py [-h] [-c] [-C] [-E] [-H] [-i {1,2,3,4,5,6,7,8}] [-I {1,2,3,4,5,6,7,8}] [-j] [-n] [-N]
-                   [-o] [-O] [-p {ADJ,ART,CARD,DEM,FRAC,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}]
-                   [-P] [-s] [-S] [-t TRANSDUCER] [-u] [-v] [-y] lemma [output]
+$ dwdsmor-paradigm -h
+usage: dwdsmor-paradigm [-h] [-c] [-C] [-E] [-H] [-i {1,2,3,4,5,6,7,8}] [-I {1,2,3,4,5,6,7,8}] [-j] [-n] [-N]
+                        [-o] [-O] [-p {ADJ,ART,CARD,DEM,FRAC,INDEF,NN,NPROP,ORD,POSS,PPRO,REL,V,WPRO}]
+                        [-P] [-s] [-S] [-t TRANSDUCER] [-u] [-v] [-y] lemma [output]
 
 positional arguments:
   lemma                 lemma (determiners: Fem Nom Sg; nominalised
@@ -387,10 +388,10 @@ options:
   -y, --yaml            output YAML document
 ```
 
-By default, `paradigm.py` outputs a similar TSV table as `dwdsmor.py`:
+By default, `dwdsmor-paradigm` outputs a similar TSV table as `dwdsmor`:
 
 ```plaintext
-$ ./paradigm.py -E Bank
+$ dwdsmor-paradigm -E Bank
 Lemma	Lemma Index	POS	Gender	Case	Number	Paradigm Forms
 Bank	1	NN	Fem	Nom	Sg	Bank
 Bank	1	NN	Fem	Acc	Sg	Bank
@@ -414,7 +415,7 @@ For a condensed version, the options `-n` and `-N` can be specified. The DWDS
 homographic lemma index can be selected with option `-i`:
 
 ```plaintext
-$ ./paradigm.py -n -N -i 1 Bank
+$ dwdsmor-paradigm -n -N -i 1 Bank
 Paradigm Categories	Paradigm Forms
 Nom Sg	Bank
 Acc Sg	Bank
@@ -430,7 +431,7 @@ The default transducer for paradigm generation is `dwdsmor-index.a` and
 restricted to inflection only. Paradigms for word-formation products which are
 unavailable in the DWDS can be generated with the transducer `dwdsmor.a`:
 ```plaintext
-$ ./paradigm.py -n -N -t lib/dwdsmor.a Kinderbank
+$ dwdsmor-paradigm -n -N -t lib/dwdsmor.a Kinderbank
 Paradigm Categories	Paradigm Forms
 Nom Sg	Kinderbank
 Acc Sg	Kinderbank
