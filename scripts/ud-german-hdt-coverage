@@ -1,0 +1,196 @@
+#!/usr/bin/env python
+
+import tarfile
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import Dict, Iterable
+from urllib.request import urlopen
+
+import conllu
+import sfst_transduce
+from conllu.models import Token
+from tabulate import tabulate
+from tqdm import tqdm
+
+from dwdsmor import analyse_word
+
+TESTDIR = Path(__file__).parent.parent / "test"
+UD_GERMAN_HDT_URL = (
+    "https://codeload.github.com/UniversalDependencies/UD_German-HDT/"
+    "tar.gz/refs/tags/r2.12"
+)
+UD_GERMAN_HDT_DIR = TESTDIR / "UD_German-HDT-r2.12"
+
+
+def ud_german_hdt_tokens() -> Iterable[Token]:
+    if not UD_GERMAN_HDT_DIR.is_dir():
+        with urlopen(UD_GERMAN_HDT_URL) as response:
+            with tarfile.open(fileobj=response, mode="r|gz") as tar_f:
+                tar_f.extractall(path=TESTDIR)
+    for conll_path in sorted(UD_GERMAN_HDT_DIR.rglob("*.conllu")):
+        with conll_path.open() as conll_file:
+            for sentence in conllu.parse_incr(conll_file):
+                for token in sentence:
+                    if not isinstance(token["id"], int):
+                        continue  # remove subtokens
+                    if token["lemma"] in {"unknown", "NULL"}:
+                        continue  # remove unknown lemmata
+                    if "-" in token["form"]:
+                        continue  # remove Bindestrich-Komposita
+                    yield token
+
+
+POS_TAG_MAP = {
+    "ADJA": {"ORD", "FRAC", "ADJ", "CARD", "INDEF"},
+    "ADJD": {"ADJ"},
+    "ADV": {"ADJ", "ADV", "PROADV"},
+    "APPO": {"POSTP"},
+    "APPR": {"PREP"},
+    "APPRART": {"PREPART"},
+    "APZR": {"ADV", "POSTP", "PREP"},
+    "ART": {"ART"},
+    "CARD": {"FRAC", "CARD"},
+    "FM": {"NN", "ADJ", "PREP"},
+    "ITJ": {"INTJ", "ADV"},
+    "KOKOM": {"CONJ"},
+    "KON": {"CONJ"},
+    "KOUI": {"CONJ"},
+    "KOUS": {"CONJ"},
+    "NE": {"NPROP"},
+    "NN": {"NN", "ADJ", "NPROP"},
+    "PDAT": {"DEM"},
+    "PDS": {"DEM"},
+    "PIAT": {"ADJ", "ART", "INDEF", "DEM"},
+    "PIDAT": {"ADJ", "INDEF", "DEM"},
+    "PIS": {"ADJ", "INDEF", "DEM"},
+    "PPER": {"PPRO"},
+    "PPOSAT": {"POSS"},
+    "PPOSS": {"POSS"},
+    "PRELAT": {"REL"},
+    "PRELS": {"REL"},
+    "PRF": {"PPRO"},
+    "PROP": {"ADV", "PROADV"},
+    "PTKA": {"PTCL"},
+    "PTKANT": {"INTJ", "PTCL"},
+    "PTKNEG": {"PTCL"},
+    "PTKVZ": {"ADV", "VPART", "ADJ", "PREP"},
+    "PTKZU": {"PTCL"},
+    "PWAT": {"WPRO"},
+    "PWAV": {"ADV", "PROADV"},
+    "PWS": {"WPRO"},
+    "TRUNC": {"NN", "V"},
+    "VAFIN": {"V"},
+    "VAIMP": {"V"},
+    "VAINF": {"V"},
+    "VAPP": {"V"},
+    "VMFIN": {"V"},
+    "VMINF": {"V"},
+    "VMPP": {"V"},
+    "VVFIN": {"V"},
+    "VVIMP": {"V"},
+    "VVINF": {"V"},
+    "VVIZU": {"V"},
+    "VVPP": {"V"},
+    "XY": {"XY", "NN"},
+    "$.": {"PUNCT"},
+    "$,": {"PUNCT"},
+    "$(": {"PUNCT"},
+}
+
+if __name__ == "__main__":
+    transducer = sfst_transduce.CompactTransducer("lib/dwdsmor.ca")
+    tokens = ud_german_hdt_tokens()
+    tokens = tuple(tqdm(tokens, desc="Read German-UD/HDT", total=3_500_000))
+    matches: Dict[str, Dict[str, int]] = defaultdict(Counter)
+    mismatches: Dict[str, Dict[str, int]] = defaultdict(Counter)
+    for token in tqdm(tokens, desc="Analyze German-UD/HDT"):
+        form = token["form"]
+        lemma = token["lemma"]
+        xpos = token["xpos"]
+        pos_candidates = {xpos}.union(POS_TAG_MAP.get(xpos, {}))
+        is_match = False
+        for analysis in tuple(analyse_word(transducer, form)):
+            if analysis.lemma == lemma and analysis.pos in pos_candidates:
+                is_match = True
+                break
+        if not is_match and len(tuple(analyse_word(transducer, lemma))) > 0:
+            # skip tokens where we can analyze the given lemma but not the form:
+            # compounds are lemmatized to their basic words in German-UD/HDT
+            continue
+        registry = matches if is_match else mismatches
+        registry[xpos][lemma] += 1
+
+    headers = [
+        "POS",
+        "# types",
+        "# tokens",
+        "% types",
+        "% tokens",
+        "% types covered",
+        "% tokens covered",
+    ]
+    colalign = [
+        "left",
+        "right",
+        "right",
+        "right",
+        "right",
+        "right",
+        "right",
+    ]
+    coverage = []
+
+    def pct(v):
+        return "{:.2%}".format(v)
+
+    def count(v):
+        return "{:,d}".format(v)
+
+    total_tokens = 0
+    total_types = 0
+    total_type_matches = 0
+    total_token_matches = 0
+    for registry in [matches, mismatches]:
+        for _pos_tag, types in registry.items():
+            for _type, token_count in types.items():
+                total_types += 1
+                total_tokens += token_count
+    pos_tags = sorted(set(matches.keys()).union(mismatches.keys()))
+    for pos_tag in pos_tags:
+        tag_tokens = 0
+        tag_types = 0
+        tag_token_matches = 0
+        tag_type_matches = 0
+        for registry, is_match in [(matches, True), (mismatches, False)]:
+            for _type, token_count in registry.get(pos_tag, {}).items():
+                tag_types += 1
+                tag_tokens += token_count
+                if is_match:
+                    total_type_matches += 1
+                    total_token_matches += token_count
+                    tag_type_matches += 1
+                    tag_token_matches += token_count
+        coverage.append(
+            [
+                pos_tag,
+                count(tag_types),
+                count(tag_tokens),
+                pct(tag_types / total_types),
+                pct(tag_tokens / total_tokens),
+                pct(tag_type_matches / tag_types),
+                pct(tag_token_matches / tag_tokens),
+            ]
+        )
+    coverage.insert(
+        0,
+        [
+            "Σ",
+            count(total_types),
+            count(total_tokens),
+            pct(1),
+            pct(1),
+            f"**{pct(total_type_matches / total_types)}**",
+            f"**{pct(total_token_matches / total_tokens)}**",
+        ],
+    )
+    print(tabulate(coverage, headers=headers, colalign=colalign, tablefmt="github"))

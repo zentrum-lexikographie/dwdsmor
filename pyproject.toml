@@ -29,6 +29,7 @@ cli = [
     "PyYAML"
 ]
 test = [
+    "conllu",
     "pytest",
     "PyYAML",
     "syrupy"
@@ -52,6 +53,14 @@ profile = "black"
 
 [[tool.mypy.overrides]]
 module = "blessings"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "tabulate"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "tqdm"
 ignore_missing_imports = true
 
 [tool.setuptools.dynamic]
