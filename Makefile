@@ -31,27 +31,34 @@ RSRCFILES = $(SRCDIR)/Makefile \
             $(wildcard $(SRCDIR)/*.fst) \
             $(wildcard $(SRCDIR)/*.lex)
 
-all: dwds dwds-install dwdsmor
-	echo $(DATE) > $(CURDIR)/VERSION
-	echo $(DATETIME) > $(CURDIR)/BUILD
+all:
+	make -C $(CURDIR) sample
+	make -C $(CURDIR) dwds
 
-dwds:
+stamp-version:
+	echo $(DATE) > $(INSTALLDIR)/VERSION
+	echo $(DATETIME) > $(INSTALLDIR)/BUILD
+
+dwds-lex:
 	$(MAKE) -C $(DWDSDIR) all
 
-dwds-install:
+dwds-lex-install:
 	$(MAKE) -C $(DWDSDIR) install
 
-sample:
+sample-lex:
 	$(MAKE) -C $(SAMPLEDIR) all
 
-sample-install:
+sample-lex-install:
 	$(MAKE) -C $(SAMPLEDIR) install
 
 dwdsmor:
 	$(MAKE) -j $(JOBS) -C $(SRCDIR) all
 
-install:
-	$(MAKE) -C $(SRCDIR) install
+dwds: stamp-version dwds-lex dwds-lex-install dwdsmor
+	DWDSMOR_EDITION=dwds $(MAKE) -C $(SRCDIR) install
+
+sample: stamp-version sample-lex sample-lex-install dwdsmor
+	DWDSMOR_EDITION=sample $(MAKE) -C $(SRCDIR) install
 
 test-coverage:
 	$(MAKE) -j $(JOBS) -C $(TESTDIR) test-coverage
