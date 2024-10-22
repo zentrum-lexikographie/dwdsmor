@@ -1,6 +1,6 @@
 % phon.fst
 % Version 6.4
-% Andreas Nolda 2024-10-02
+% Andreas Nolda 2024-10-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -138,7 +138,6 @@ $PhonEElision$ = $PhonEElision1$ || \
 % "s"-deletion in "st"-suffixes
 % ras<SB><ins(e)>st  -> ras<SB><ins(e)>t
 % feix<SB><ins(e)>st -> feix<SB><ins(e)>t
-% birs<SB>st         -> birs<SB>t
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
