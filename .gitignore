@@ -17,6 +17,7 @@ BUILD
 *.ca
 *.lex
 *.log
+*.temp
 
 manifest.xml
 
