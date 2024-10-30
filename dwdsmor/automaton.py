@@ -15,16 +15,16 @@ def get_default_repository_dir() -> Path:
 
 
 @dataclass
-class Repository:
+class Automata:
     dir: Path = field(default_factory=get_default_repository_dir)
 
     def transducer(
-        self, edition="open", automaton_type="lemma", compact=True, both_layers=False
+        self, edition="open", automaton_type="lemma", generate=True, both_layers=False
     ) -> Union[Transducer, CompactTransducer]:
-        file_suffix = "ca" if compact else "a"
-        transducer_file = self.dir / edition / f"{automaton_type}.{file_suffix}"
+        file_suffix = "a" if generate else "ca"
+        transducer_file = Path(self.dir) / edition / f"{automaton_type}.{file_suffix}"
         assert transducer_file.is_file(), f"{transducer_file} does not exist"
-        if compact:
+        if not generate:
             transducer = CompactTransducer(transducer_file.as_posix())
             transducer.both_layers = both_layers
             return transducer

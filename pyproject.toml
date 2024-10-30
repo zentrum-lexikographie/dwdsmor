@@ -56,6 +56,10 @@ module = "blessings"
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
+module = "parsimonious.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
 module = "tabulate"
 ignore_missing_imports = true
 
