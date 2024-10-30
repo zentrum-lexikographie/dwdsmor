@@ -1,5 +1,17 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-10-30:
+
+* rename inflection classes `Adj_0`, `Adj_e`, `Adj_$`, `Adj_$e`, `AdjPos0Attr`,
+  `AdjPos0AttrSubst`, `AdjComp0-mehr`, `AdjComp`, `AdjComp-el`, `AdjComp-en`,
+  `AdjComp-er`, `AdjSup`, `AdjSupAttr`, `AdvComp`, and `AdvSup` to `Adj_er_st`,
+  `Adj_er_est`, `Adj_er_$st`, `Adj_er_$est`, `AdjPosAttr0`, `AdjPosAttrSubst0`,
+  `AdjComp0`, `AdjComp_er`, `AdjComp-el_er`, `AdjComp-en_er`, `AdjComp-er_er`,
+  `AdjSup_st`, `AdjSupAttr_st`, `AdvComp_er`, and `AdvSup_st` respectively
+* add inflection classes `AdjPos-e`, `AdjPos0-e`, `AdjPosPred-e`, `AdjSup_est`,
+  `AdjSupAttr_est`, and `AdvSup_est`
+* remove unused inflection classes `Adj-Lang` and `AdjSup-aller`
+
 2024-10-11:
 
 * rename inflection tags `<PPres>` and `<PPast>` to `<Part><Pres>` and

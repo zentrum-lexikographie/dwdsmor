@@ -1,6 +1,6 @@
 % infl.fst
-% Version 10.0
-% Andreas Nolda 2024-10-11
+% Version 11.0
+% Andreas Nolda 2024-10-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -853,26 +853,48 @@ $AdjInflSuff-n$ = {<Attr/Subst><Masc><Acc><Sg><St>}:{<SB>n}   | \
 $AdjInflSuff-m$ = {<Attr/Subst><Masc><Dat><Sg><St>}:{<SB>m} | \
                   {<Attr/Subst><Neut><Dat><Sg><St>}:{<SB>m}
 
-% lila; klasse
-$AdjPos0$ = {<+ADJ><Pos><Pred/Adv>}:{} | \
-            {<+ADJ><Pos><Attr><Invar>}:{}
-
-% viel; wenig
-$AdjPos0-viel$ = {<+ADJ><Pos><Pred/Adv>}:{} | \
-                 {<+ADJ><Pos><Attr/Subst><Invar>}:{}
-
-% innen; hoch
+% tabu
 $AdjPosPred$ = {<+ADJ><Pos><Pred/Adv>}:{}
 
+% pleite
+$AdjPosPred-e$ = {<+ADJ><Pos><Pred/Adv>}:{<SB>e}
+
 % zig
-$AdjPos0Attr$ = {<+ADJ><Pos><Attr><Invar>}:{}
+$AdjPosAttr0$ = {<+ADJ><Pos><Attr><Invar>}:{}
+
+$AdjPosAttr0-e$ = {<+ADJ><Pos><Attr><Invar>}:{<SB>e}
 
 % Berliner ('related to Berlin')
-$AdjPos0AttrSubst$ = {<+ADJ><Pos><Attr/Subst><Invar>}:{}
+$AdjPosAttrSubst0$ = {<+ADJ><Pos><Attr/Subst><Invar>}:{}
+
+% vorig-; hoh-
+$AdjPosAttr$ = {<+ADJ><Pos>}:{} $AdjInflSuff$
+
+% ander-; ober-
+$AdjPosAttr-er$ = $AdjPosAttr$                               | \
+                  {<+ADJ><Pos>}:{<del(e)|ADJ>} $AdjInflSuff$ | \
+                  {<+ADJ><Pos>}:{} $AdjInflSuff-n$           | \
+                  {<+ADJ><Pos>}:{} $AdjInflSuff-m$
+
+% lila
+$AdjPos0$ = $AdjPosPred$ | \
+            $AdjPosAttr0$
+
+% klasse
+$AdjPos0-e$ = $AdjPosPred-e$ | \
+              $AdjPosAttr0-e$
+
+% viel; wenig
+$AdjPos0-viel$ = $AdjPosPred$ | \
+                 $AdjPosAttrSubst0$
 
 % derartig; famos; bloß
-$AdjPos$ = {<+ADJ><Pos><Pred/Adv>}:{} | \
-           {<+ADJ><Pos>}:{} $AdjInflSuff$
+$AdjPos$ = $AdjPosPred$ | \
+           $AdjPosAttr$
+
+% leise
+$AdjPos-e$ = $AdjPosPred-e$ | \
+             $AdjPosAttr$
 
 % dunkel
 $AdjPos-el$ = {}:{<del(e)|ADJ>} $AdjPos$                  | \
@@ -889,79 +911,65 @@ $AdjPos-er$ = $AdjPos$                                    | \
 $AdjPos-en$ = $AdjPos$ | \
               {}:{<del(e)|ADJ>} $AdjPos$
 
-% vorig-; hoh-
-$AdjPosAttr$ = {<+ADJ><Pos>}:{} $AdjInflSuff$
-
-% ander-; ober-
-$AdjPosAttr-er$ = {<+ADJ><Pos>}:{} $AdjInflSuff$             | \
-                  {<+ADJ><Pos>}:{<del(e)|ADJ>} $AdjInflSuff$ | \
-                  {<+ADJ><Pos>}:{} $AdjInflSuff-n$           | \
-                  {<+ADJ><Pos>}:{} $AdjInflSuff-m$
+% mehr; weniger
+$AdjComp0$ = {<+ADJ><Comp><Pred/Adv>}:{} | \
+             {<+ADJ><Comp><Attr/Subst><Invar>}:{}
 
 % besser; höher
-$AdjComp$ = {<+ADJ><Comp><Pred/Adv>}:{<SB>er} | \
-            {<+ADJ><Comp>}:{<SB>er} $AdjInflSuff$
+$AdjComp_er$ = {<+ADJ><Comp><Pred/Adv>}:{<SB>er} | \
+               {<+ADJ><Comp>}:{<SB>er} $AdjInflSuff$
 
 % dunkler
-$AdjComp-el$ = {}:{<del(e)|ADJ>} $AdjComp$
+$AdjComp-el_er$ = {}:{<del(e)|ADJ>} $AdjComp_er$
 
 % bitt(e)rer
-$AdjComp-er$ = $AdjComp$ | \
-               {}:{<del(e)|ADJ>} $AdjComp$
+$AdjComp-er_er$ = $AdjComp_er$ | \
+                  {}:{<del(e)|ADJ>} $AdjComp_er$
 
 % trock(e)ner
-$AdjComp-en$ = $AdjComp-er$
+$AdjComp-en_er$ = $AdjComp-er_er$
 
-% mehr; weniger
-$AdjComp0-mehr$ = {<+ADJ><Comp><Pred/Adv>}:{} | \
-                  {<+ADJ><Comp><Attr/Subst><Invar>}:{}
-
-% besten; höchsten
-$AdjSup$ = {<+ADJ><Sup><Pred/Adv>}:{<SB>st<SB>en} | \
-           {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
-
-% allerbesten; allerhöchsten
-$AdjSup-aller$ = {<+ADJ><Sup><Pred/Adv>}:{<SB>st<SB>en} | \
-                 {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
+$AdjComp_\$er$ = {<+ADJ><Comp><Pred/Adv>}:{<uml><SB>er} | \
+                 {<+ADJ><Comp>}:{<uml><SB>er} $AdjInflSuff$
 
 % obersten
-$AdjSupAttr$ = {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
+$AdjSupAttr_st$ = {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
 
-% faul, fauler, faulsten
-$Adj_0$ = {<+ADJ><Pos><Pred/Adv>}:{}             | \
-          {<+ADJ><Pos>}:{} $AdjInflSuff$         | \
-          {<+ADJ><Comp><Pred/Adv>}:{<SB>er}      | \
-          {<+ADJ><Comp>}:{<SB>er} $AdjInflSuff$  | \
-          {<+ADJ><Sup><Pred/Adv>}:{<SB>st<SB>en} | \
-          {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
+$AdjSupAttr_est$ = {<+ADJ><Sup>}:{<SB>est} $AdjInflSuff$
+
+% besten; höchsten
+$AdjSup_st$ = {<+ADJ><Sup><Pred/Adv>}:{<SB>st<SB>en} | \
+              {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
+
+% fittesten
+$AdjSup_est$ = {<+ADJ><Sup><Pred/Adv>}:{<SB>est<SB>en} | \
+               {<+ADJ><Sup>}:{<SB>est} $AdjInflSuff$
+
+$AdjSup_\$st$ = {<+ADJ><Sup><Pred/Adv>}:{<uml><SB>st<SB>en} | \
+                {<+ADJ><Sup>}:{<uml><SB>st} $AdjInflSuff$
+
+$AdjSup_\$est$ = {<+ADJ><Sup><Pred/Adv>}:{<uml><SB>est<SB>en} | \
+                 {<+ADJ><Sup>}:{<uml><SB>est} $AdjInflSuff$
+
+% hell, heller, hellsten
+$Adj_er_st$ = $AdjPos$     | \
+              $AdjComp_er$ | \
+              $AdjSup_st$
 
 % bunt, bunter, buntesten
-$Adj_e$ = {<+ADJ><Pos><Pred/Adv>}:{}              | \
-          {<+ADJ><Pos>}:{} $AdjInflSuff$          | \
-          {<+ADJ><Comp><Pred/Adv>}:{<SB>er}       | \
-          {<+ADJ><Comp>}:{<SB>er} $AdjInflSuff$   | \
-          {<+ADJ><Sup><Pred/Adv>}:{<SB>est<SB>en} | \
-          {<+ADJ><Sup>}:{<SB>est} $AdjInflSuff$
+$Adj_er_est$ = $AdjPos$     | \
+               $AdjComp_er$ | \
+               $AdjSup_est$
 
 % warm, wärmer, wärmsten
-$Adj_\$$ = {<+ADJ><Pos><Pred/Adv>}:{}                  | \
-           {<+ADJ><Pos>}:{} $AdjInflSuff$              | \
-           {<+ADJ><Comp><Pred/Adv>}:{<uml><SB>er}      | \
-           {<+ADJ><Comp>}:{<uml><SB>er} $AdjInflSuff$  | \
-           {<+ADJ><Sup><Pred/Adv>}:{<uml><SB>st<SB>en} | \
-           {<+ADJ><Sup>}:{<uml><SB>st} $AdjInflSuff$
+$Adj_er_\$st$ = $AdjPos$       | \
+                $AdjComp_\$er$ | \
+                $AdjSup_\$st$
 
 % kalt, kälter, kältesten
-$Adj_\$e$ = {<+ADJ><Pos><Pred/Adv>}:{}                   | \
-            {<+ADJ><Pos>}:{} $AdjInflSuff$               | \
-            {<+ADJ><Comp><Pred/Adv>}:{<uml><SB>er}       | \
-            {<+ADJ><Comp>}:{<uml><SB>er} $AdjInflSuff$   | \
-            {<+ADJ><Sup><Pred/Adv>}:{<uml><SB>est<SB>en} | \
-            {<+ADJ><Sup>}:{<uml><SB>est} $AdjInflSuff$
-
-% deutsch; [das] Deutsch
-$Adj-Lang$ = $Adj_0$ | \
-             $NNeut|Sg_s$
+$Adj_er_\$est$ = $AdjPos$       | \
+                 $AdjComp_\$er$ | \
+                 $AdjSup_\$est$
 
 
 % articles and pronouns
@@ -1804,10 +1812,13 @@ $Adv$ = {<+ADV>}:{}
 $AdvComp0$ = {<+ADV><Comp>}:{}
 
 % öfter; lieber
-$AdvComp$ = {<+ADV><Comp>}:{<SB>er}
+$AdvComp_er$ = {<+ADV><Comp>}:{<SB>er}
 
-% öftesten; liebsten; meisten
-$AdvSup$ = {<+ADV><Sup>}:{<SB>sten}
+% liebsten; meisten
+$AdvSup_st$ = {<+ADV><Sup>}:{<SB>st<SB>en}
+
+% öftesten; ehesten
+$AdvSup_est$ = {<+ADV><Sup>}:{<SB>est<SB>en}
 
 % darunter
 $ProAdv$ = {<+PROADV>}:{}
@@ -2551,34 +2562,38 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<AbbrNNoGend>             $AbbrNNoGend$            | \
          <>:<AbbrPoss>                $AbbrPoss$               | \
          <>:<AbbrVImp>                $AbbrVImp$               | \
-         <>:<Adj-Lang>                $Adj-Lang$               | \
-         <>:<Adj_$>                   $Adj_\$$                 | \
-         <>:<Adj_$e>                  $Adj_\$e$                | \
-         <>:<Adj_0>                   $Adj_0$                  | \
-         <>:<Adj_e>                   $Adj_e$                  | \
-         <>:<AdjComp>                 $AdjComp$                | \
-         <>:<AdjComp-el>              $AdjComp-el$             | \
-         <>:<AdjComp-en>              $AdjComp-en$             | \
-         <>:<AdjComp-er>              $AdjComp-er$             | \
-         <>:<AdjComp0-mehr>           $AdjComp0-mehr$          | \
+         <>:<Adj_er_$est>             $Adj_er_\$est$           | \
+         <>:<Adj_er_$st>              $Adj_er_\$st$            | \
+         <>:<Adj_er_est>              $Adj_er_est$             | \
+         <>:<Adj_er_st>               $Adj_er_st$              | \
+         <>:<AdjComp-el_er>           $AdjComp-el_er$          | \
+         <>:<AdjComp-en_er>           $AdjComp-en_er$          | \
+         <>:<AdjComp-er_er>           $AdjComp-er_er$          | \
+         <>:<AdjComp0>                $AdjComp0$               | \
+         <>:<AdjComp_er>              $AdjComp_er$             | \
          <>:<AdjPos>                  $AdjPos$                 | \
+         <>:<AdjPos-e>                $AdjPos-e$               | \
          <>:<AdjPos-el>               $AdjPos-el$              | \
          <>:<AdjPos-en>               $AdjPos-en$              | \
          <>:<AdjPos-er>               $AdjPos-er$              | \
          <>:<AdjPos0>                 $AdjPos0$                | \
+         <>:<AdjPos0-e>               $AdjPos0-e$              | \
          <>:<AdjPos0-viel>            $AdjPos0-viel$           | \
-         <>:<AdjPos0Attr>             $AdjPos0Attr$            | \
-         <>:<AdjPos0AttrSubst>        $AdjPos0AttrSubst$       | \
          <>:<AdjPosAttr>              $AdjPosAttr$             | \
          <>:<AdjPosAttr-er>           $AdjPosAttr-er$          | \
+         <>:<AdjPosAttr0>             $AdjPosAttr0$            | \
+         <>:<AdjPosAttrSubst0>        $AdjPosAttrSubst0$       | \
          <>:<AdjPosPred>              $AdjPosPred$             | \
-         <>:<AdjSup>                  $AdjSup$                 | \
-         <>:<AdjSup-aller>            $AdjSup-aller$           | \
-         <>:<AdjSupAttr>              $AdjSupAttr$             | \
+         <>:<AdjPosPred-e>            $AdjPosPred-e$           | \
+         <>:<AdjSup_est>              $AdjSup_est$             | \
+         <>:<AdjSup_st>               $AdjSup_st$              | \
+         <>:<AdjSupAttr_est>          $AdjSupAttr_est$         | \
+         <>:<AdjSupAttr_st>           $AdjSupAttr_st$          | \
          <>:<Adv>                     $Adv$                    | \
-         <>:<AdvComp>                 $AdvComp$                | \
+         <>:<AdvComp_er>              $AdvComp_er$             | \
          <>:<AdvComp0>                $AdvComp0$               | \
-         <>:<AdvSup>                  $AdvSup$                 | \
+         <>:<AdvSup_est>              $AdvSup_est$             | \
+         <>:<AdvSup_st>               $AdvSup_st$              | \
          <>:<ArtDef>                  $ArtDef$                 | \
          <>:<ArtDef-das+DemNeut>      $ArtDef-das+DemNeut$     | \
          <>:<ArtDef-dem+DemMasc>      $ArtDef-dem+DemMasc$     | \

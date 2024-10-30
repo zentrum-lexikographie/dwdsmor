@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 7.1 -->
-<!-- Andreas Nolda 2024-10-11 -->
+<!-- Version 7.2 -->
+<!-- Andreas Nolda 2024-10-30 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -12,15 +12,15 @@
 <xsl:variable name="adjective-class-mapping">
   <!-- gradable adjectives: -->
   <!-- superlative: "-sten" or "-ten" -->
-  <class superlative="-sten">Adj_0</class>
-  <class superlative="-ten">Adj_0</class>
+  <class superlative="-sten">Adj_er_st</class>
+  <class superlative="-ten">Adj_er_st</class>
   <!-- superlative: umlaut and "-sten" or  "-ten" -->
-  <class superlative="&#x308;-sten">Adj_$</class>
-  <class superlative="&#x308;-ten">Adj_$</class>
+  <class superlative="&#x308;-sten">Adj_er_$st</class>
+  <class superlative="&#x308;-ten">Adj_er_$st</class>
   <!-- superlative: "-esten" -->
-  <class superlative="-esten">Adj_e</class>
+  <class superlative="-esten">Adj_er_est</class>
   <!-- superlative: umlaut and "-esten" -->
-  <class superlative="&#x308;-esten">Adj_$e</class>
+  <class superlative="&#x308;-esten">Adj_er_$est</class>
   <!-- ungradable adjectives: -->
   <class>AdjPos</class>
 </xsl:variable>

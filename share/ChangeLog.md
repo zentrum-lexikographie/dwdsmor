@@ -1,3 +1,7 @@
+2024-10-30:
+
+* properly segment adjective lemmas with final schwa
+
 2024-10-14:
 
 * filter out inconsistent grammar specifications for verbs with separable preverbs

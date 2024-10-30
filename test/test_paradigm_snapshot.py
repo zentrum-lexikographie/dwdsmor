@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-10-02
+# Andreas Nolda 2024-10-30
 
 import io
 import csv
@@ -26,20 +26,24 @@ LIBDIR = path.join(BASEDIR, "lib")
 ADJECTIVE_POS = "ADJ"
 
 ADJECTIVE_LEMMAS = ["lila",      # AdjPos0
-                    "pleite",    # AdjPosPred
-                    "Berliner",  # AdjPos0AttrSubst
+                    "klasse",    # AdjPos0-e
+                    "tabu",      # AdjPosPred
+                    "pleite",    # AdjPosPred-e
+                    "Berliner",  # AdjPosAttrSubst0
                     "derartig",  # AdjPos
-                    "hell",      # Adj_0
-                    "bunt",      # Adj_e
-                    "neu",       # Adj_0, Adj_e
-                    "warm",      # Adj_$
-                    "kalt",      # Adj_$e
-                    "dunkel",    # AdjPos-el, AdjComp-el, AdjSup
-                    "bitter",    # AdjPos-er, AdjComp-er, AdjSup
-                    "trocken",   # AdjPos-en, AdjComp-en, AdjSup
-                    "gut",       # AdjPos, AdjComp, AdjSup
-                    "viel",      # AdjPos, AdjPos0-viel, AdjComp0-mehr, AdjSup
-                    "hoch"]      # AdjPosPred, AdjPosAttr, AdjComp, AdjSup
+                    "hell",      # Adj_er_st
+                    "bunt",      # Adj_er_est
+                    "neu",       # Adj_er_st, Adj_er_est
+                    "warm",      # Adj_er_$st
+                    "kalt",      # Adj_er_$est
+                    "leise",     # AdjPos-e, AdjComp_er, AdjSup_est
+                    "dunkel",    # AdjPos-el, AdjComp-el_er, AdjSup_st
+                    "bitter",    # AdjPos-er, AdjComp-er_er, AdjSup_st
+                    "trocken",   # AdjPos-en, AdjComp-en_er, AdjSup_st
+                    "gut",       # AdjPos, AdjComp_er, AdjSup_st
+                    "viel",      # AdjPos, AdjPos0-viel, AdjComp0, AdjSup_st
+                    "hoch",      # AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_st
+                    "fit"]       # AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_est
 
 
 ARTICLE_POS = "ART"

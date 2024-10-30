@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 11.0
-% Andreas Nolda 2024-10-11
+% Version 11.1
+% Andreas Nolda 2024-10-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -135,13 +135,15 @@
 #Abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNNoGend> \
                     <AbbrPoss><AbbrVImp>
 
-#Adj-inflection# = <Adj-Lang><Adj_$><Adj_$e><Adj_0><Adj_e><AdjComp><AdjComp-el> \
-                   <AdjComp-en><AdjComp-er><AdjComp0-mehr><AdjPos><AdjPos-el> \
-                   <AdjPos-en><AdjPos-er><AdjPos0><AdjPos0-viel><AdjPos0Attr> \
-                   <AdjPos0AttrSubst><AdjPosAttr><AdjPosAttr-er><AdjPosPred> \
-                   <AdjSup><AdjSup-aller><AdjSupAttr>
+#Adj-inflection# = <Adj_er_$est><Adj_er_$st><Adj_er_est><Adj_er_st> \
+                   <AdjComp-el_er><AdjComp-en_er><AdjComp-er_er><AdjComp0> \
+                   <AdjComp_er><AdjPos><AdjPos-e><AdjPos-el><AdjPos-en> \
+                   <AdjPos-er><AdjPos0><AdjPos0-e><AdjPos0-viel><AdjPosAttr> \
+                   <AdjPosAttr-er><AdjPosAttr0><AdjPosAttrSubst0><AdjPosPred> \
+                   <AdjPosPred-e><AdjSup_est><AdjSup_st><AdjSupAttr_est> \
+                   <AdjSupAttr_st>
 
-#Adv-inflection# = <Adv><AdvComp><AdvComp0><AdvSup>
+#Adv-inflection# = <Adv><AdvComp_er><AdvComp0><AdvSup_est><AdvSup_st>
 
 #Art-inflection# = <ArtDef><ArtIndef><ArtIndef-n><ArtNeg>
 

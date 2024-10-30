@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
 <!-- Version 7.5 -->
-<!-- Andreas Nolda 2024-09-26 -->
+<!-- Andreas Nolda 2024-10-30 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -109,12 +109,12 @@
     <xsl:otherwise>
       <xsl:choose>
         <!-- $string ends in "ee" plus optional "l", "n", or "r" -->
-        <xsl:when test="matches($string,'ee[lnr]$')">
+        <xsl:when test="matches($string,'ee[lnr]?$')">
           <!-- $string does not have a final schwa-syllable -->
           <xsl:sequence select="false()"/>
         </xsl:when>
         <!-- $string ends in "ie" plus optional "l", "n", or "r" -->
-        <xsl:when test="matches($string,'ie[lnr]$')">
+        <xsl:when test="matches($string,'ie[lnr]?$')">
           <!-- $string does not have a final schwa-syllable -->
           <xsl:sequence select="false()"/>
         </xsl:when>
