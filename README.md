@@ -163,10 +163,6 @@ make -C test test-sample-lemma-coverage
 ```
 
 ```sh
-make -C test test-tuebadz-lemma-coverage
-```
-
-```sh
 make -C test test-dwds-paradigm-coverage
 ```
 
@@ -176,9 +172,7 @@ make -C test test-sample-paradigm-coverage
 
 The `test-dwds-lemma-coverage` and `test-dwds-paradigm-coverage` targets of
 `test/Makefile` require DWDS sources in `lexicon/dwds/wb/` (not part of this
-repository). The `test-tuebadz-lemma-coverage` target presupposes a TüBa-D/Z
-treebank export `tuebadz-11.0-exportXML-v2.xml` at `test/data/tuebadz/`
-(likewise not part of this repository).
+repository).
 
 Note that runs of the `test-dwds-paradigm-coverage` and
 `test-sample-paradigm-coverage` targets of `test/Makefile` may take a
