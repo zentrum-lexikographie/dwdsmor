@@ -13,8 +13,7 @@ from conllu.models import Token
 from tabulate import tabulate
 from tqdm import tqdm
 
-from dwdsmor import analyse_word
-from dwdsmor.automaton import Repository
+from dwdsmor import Automata
 
 TESTDIR = Path(__file__).parent.parent / "test"
 UD_GERMAN_HDT_URL = (
@@ -104,19 +103,13 @@ if __name__ == "__main__":
         description="Benchmarks coverage of DWDSmor against German-UD/HDT."
     )
     arg_parser.add_argument(
-        "--edition",
-        help="the edition to run the benchmark against",
-        type=str,
-        default="dwds",
-    )
-    arg_parser.add_argument(
         "--limit",
         help="an optional limit for the # of tokens to use for the benchmark",
         type=int,
     )
     args = arg_parser.parse_args()
 
-    transducer = Repository().transducer(edition=args.edition)
+    analyzer = Automata().analyzer()
 
     limit = max(0, args.limit) if args.limit else 3_500_000
     tokens: Iterable[Token] = itertools.islice(ud_german_hdt_tokens(), limit)
@@ -130,11 +123,13 @@ if __name__ == "__main__":
         xpos = token["xpos"]
         pos_candidates = {xpos}.union(POS_TAG_MAP.get(xpos, {}))
         is_match = False
-        for analysis in tuple(analyse_word(transducer, form)):
-            if analysis.lemma == lemma and analysis.pos in pos_candidates:
-                is_match = True
-                break
-        if not is_match and len(tuple(analyse_word(transducer, lemma))) > 0:
+        for traversal in analyzer.analyze(form):
+            if traversal.analysis == lemma:
+                pos = traversal.pos
+                if pos and pos[1:] in pos_candidates:
+                    is_match = True
+                    break
+        if not is_match and len(tuple(analyzer.analyze(lemma))) > 0:
             # skip tokens where we can analyze the given lemma but not the form:
             # compounds are lemmatized to their basic words in German-UD/HDT
             continue
@@ -166,6 +161,9 @@ if __name__ == "__main__":
 
     def count(v):
         return "{:,d}".format(v)
+
+    def bold(s):
+        return f"**{s}**"
 
     total_tokens = 0
     total_types = 0
@@ -210,8 +208,8 @@ if __name__ == "__main__":
             count(total_tokens),
             pct(1),
             pct(1),
-            f"**{pct(total_type_matches / total_types)}**",
-            f"**{pct(total_token_matches / total_tokens)}**",
+            bold(pct(total_type_matches / total_types)),
+            bold(pct(total_token_matches / total_tokens)),
         ],
     )
     print(tabulate(coverage, headers=headers, colalign=colalign, tablefmt="github"))
