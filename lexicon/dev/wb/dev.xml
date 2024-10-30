@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DWDS xmlns="http://www.dwds.de/ns/1.0">
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>testen</Schreibung>
+         <Grammatik>
+            <Wortklasse>Verb</Wortklasse>
+            <Praesens>testet</Praesens>
+            <Praeteritum>testete</Praeteritum>
+            <Auxiliar>hat</Auxiliar>
+            <Partizip_II>getestet</Partizip_II>
+         </Grammatik>
+      </Formangabe>
+      <Verweise/>
+   </Artikel>
+</DWDS>

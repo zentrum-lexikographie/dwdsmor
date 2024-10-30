@@ -8,13 +8,23 @@ jobs:
     steps:
     - name: Check out sources
       uses: actions/checkout@v4
-    - name: Install dependencies
+    - name: Install OS dependencies
       run: |
         sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-            make\
+            python3\
             default-jdk\
             libsaxonhe-java\
             sfst
-    - name: Build sample automaton
-      run: |
-        make sample sample-install dwdsmor install
+    - name: Install Python dependencies
+      run: pip install -U pip && pip install .[dev]
+    - name: Cache pre-commit hooks
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pre-commit
+        key: ${{ runner.os }}-precommit-${{ hashFiles('.pre-commit-config.yaml') }}
+    - name: Lint sources
+      run: pre-commit run --all-files
+    - name: Build
+      run: scripts/build
+    - name: Run tests
+      run: pytest

@@ -1,10 +1,16 @@
 #!/usr/bin/env python
 
 import argparse
+import csv
+from datetime import datetime
 import logging
+import lzma
+import os
 from pathlib import Path
 import subprocess
 import sys
+
+from dwdsmor.traversal import Traversal, tags
 
 project_dir = Path(__file__).parent.parent
 
@@ -12,6 +18,13 @@ xsl_dir = project_dir / "share"
 grammar_dir = project_dir / "grammar"
 lexicon_dir = project_dir / "lexicon"
 build_dir = project_dir / "build"
+
+logging.basicConfig(
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    stream=sys.stderr,
+    level=(logging.DEBUG if os.getenv("DEBUG") else logging.INFO),
+)
 
 
 def run(cmd, output_file=None, log_file=None, **args):
@@ -45,6 +58,15 @@ def run(cmd, output_file=None, log_file=None, **args):
         if log_file is not None and e.stderr is not None:
             log_file.write_text(e.stderr)
         raise
+
+
+def git_rev(git_dir):
+    return run(
+        ["git", "rev-parse", "--short", "HEAD"], capture_output=True, cwd=git_dir
+    ).stdout.strip()
+
+
+project_git_rev = git_rev(project_dir)
 
 
 def saxon(xsl, *args, **kwargs):
@@ -102,7 +124,7 @@ def build_lexicon(edition_dir, force=False):
 
     if not force and is_current(lex_txt, sources):
         logging.debug("Skip building lexicon '%s'", edition_name)
-        return
+        return False
 
     logging.info("Building lexicon '%s'", edition_name)
     edition_build_dir.mkdir(parents=True, exist_ok=True)
@@ -122,6 +144,7 @@ def build_lexicon(edition_dir, force=False):
         log_file=lex_log,
     )
     lex_txt.write_text("\n".join(sorted(set(lexicon.stdout.splitlines()))))
+    return True
 
 
 fst_sources = [
@@ -141,6 +164,7 @@ def build_automaton(edition_dir, automaton_type, force=False):
     automaton_src_tmpl = grammar_dir / f"dwdsmor-{automaton_type}.fst"
     automaton_a = edition_build_dir / f"{automaton_type}.a"
     automaton_ca = edition_build_dir / f"{automaton_type}.ca"
+    automaton_compile_log = edition_build_dir / f"{automaton_type}.compile.log"
 
     sources = [lexicon_src, automaton_src_tmpl, *fst_sources]
     if (
@@ -149,7 +173,7 @@ def build_automaton(edition_dir, automaton_type, force=False):
         and is_current(automaton_ca, sources)
     ):
         logging.debug("Skip building automaton '%s/%s'", edition_name, automaton_type)
-        return
+        return False
 
     logging.info("Building automaton '%s/%s'", edition_name, automaton_type)
     automaton_src = grammar_dir / f"{edition_name}-{automaton_type}.fst"
@@ -164,11 +188,69 @@ def build_automaton(edition_dir, automaton_type, force=False):
         run(
             ["fst-compiler-utf8", automaton_src.as_posix(), automaton_a.as_posix()],
             cwd=grammar_dir,
+            log_file=automaton_compile_log,
         )
         run(["fst-compact", automaton_a.as_posix(), automaton_ca.as_posix()])
     finally:
         if automaton_src.is_file:
             automaton_src.unlink()
+    return True
+
+
+traversal_automaton_types = {"index"}
+
+
+def build_traversals(edition_dir, automaton_type, force=False):
+    edition_name = edition_dir.name
+
+    edition_build_dir = build_dir / edition_name
+
+    automaton_a = edition_build_dir / f"{automaton_type}.a"
+    automaton_traversal = edition_build_dir / f"{automaton_type}.csv.lzma"
+
+    if not force and is_current(automaton_traversal, [automaton_a]):
+        logging.debug(
+            "Skip building full traversal of '%s/%s'", edition_name, automaton_type
+        )
+        return False
+
+    logging.info("Building full traversal of '%s/%s'", edition_name, automaton_type)
+    with subprocess.Popen(
+        ["fst-generate", automaton_a.as_posix()],
+        encoding="utf-8",
+        stdout=subprocess.PIPE,
+    ) as traversals, lzma.open(automaton_traversal, "wt") as traversals_csv:
+        table = csv.writer(traversals_csv)
+        tag_types = tuple(tags.keys())
+        table.writerow(
+            [
+                "spec",
+                "analysis",
+                "surface",
+                *tag_types,
+            ]
+        )
+        for traversal_str in traversals.stdout:
+            traversal = Traversal.parse(traversal_str.strip())
+            table.writerow(
+                [
+                    traversal.spec,
+                    traversal.analysis,
+                    traversal.surface,
+                    *(getattr(traversal, tt) for tt in tag_types),
+                ]
+            )
+    return True
+
+
+def stamp_build(edition_dir):
+    edition_name = edition_dir.name
+    edition_wb_dir = edition_dir / "wb"
+    edition_build_dir = build_dir / edition_name
+
+    (edition_build_dir / "GIT_REV").write_text(project_git_rev)
+    (edition_build_dir / "GIT_REV_LEX").write_text(git_rev(edition_wb_dir))
+    (edition_build_dir / "BUILT").write_text(datetime.utcnow().isoformat())
 
 
 if __name__ == "__main__":
@@ -179,18 +261,10 @@ if __name__ == "__main__":
     arg_parser.add_argument(
         "--automaton", help="Automaton type to build (all by default)", action="append"
     )
-    arg_parser.add_argument("--debug", help="Print debug messages", action="store_true")
     arg_parser.add_argument(
-        "--force", help="Force building (also outdated target)", action="store_true"
+        "--force", help="Force building (also current targets)", action="store_true"
     )
     args = arg_parser.parse_args()
-
-    logging.basicConfig(
-        format="%(asctime)s - %(levelname)s - %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
-        stream=sys.stderr,
-        level=(logging.DEBUG if args.debug else logging.INFO),
-    )
 
     editions = (
         [lexicon_dir / edition for edition in args.editions]
@@ -207,6 +281,17 @@ if __name__ == "__main__":
         edition_name = edition_dir.name
         if not has_sources(edition_dir):
             logging.info("Skipping edition '%s' without sources", edition_name)
-        build_lexicon(edition_dir, force=args.force)
+            continue
+        edition_built = build_lexicon(edition_dir, force=args.force)
         for automaton_type in automaton_types:
-            build_automaton(edition_dir, automaton_type, force=args.force)
+            edition_built = (
+                build_automaton(edition_dir, automaton_type, force=args.force)
+                or edition_built
+            )
+            if automaton_type in traversal_automaton_types:
+                edition_built = (
+                    build_traversals(edition_dir, automaton_type, force=args.force)
+                    or edition_built
+                )
+        if edition_built:
+            stamp_build(edition_dir)

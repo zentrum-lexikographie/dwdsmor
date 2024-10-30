@@ -1,0 +1,264 @@
+POSS,Inflection Classes,Lemma
+ADJ,AdjPos,derartig
+ADJ,"AdjPos, AdjComp_er, AdjSup_st",gut
+ADJ,"AdjPos, AdjPos0-viel, AdjComp0, AdjSup_st",viel
+ADJ,"AdjPos-e, AdjComp_er, AdjSup_est",leise
+ADJ,"AdjPos-el, AdjComp-el_er, AdjSup_st",dunkel
+ADJ,"AdjPos-en, AdjComp-en_er, AdjSup_st",trocken
+ADJ,"AdjPos-er, AdjComp-er_er, AdjSup_st",bitter
+ADJ,AdjPos0,lila
+ADJ,AdjPos0-e,klasse
+ADJ,AdjPosAttrSubst0,Berliner
+ADJ,AdjPosPred,tabu
+ADJ,"AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_est",fit
+ADJ,"AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_st",hoch
+ADJ,AdjPosPred-e,pleite
+ADJ,Adj_er_$est,kalt
+ADJ,Adj_er_$st,warm
+ADJ,Adj_er_est,bunt
+ADJ,Adj_er_st,hell
+ADJ,"Adj_er_st, Adj_er_est",neu
+ART,ArtDef,die
+ART,"ArtIndef, ArtIndef-n",eine
+ART,ArtNeg,keine
+CARD,Card-ein,eine
+CARD,Card-sieben,sieben
+CARD,Card-vier,vier
+CARD,Card-zwei,zwei
+CARD,Card0,null
+DEM,"ArtDef-der+DemMasc, ArtDef-den+DemMasc ...",diejenige
+DEM,Dem,jene
+DEM,Dem-alldem,alldem
+DEM,Dem-dies,diese
+DEM,Dem-solch,solche
+DEM,Dem0,dergleichen
+DEM,DemDef,die
+FRAC,Frac0,anderthalb
+INDEF,IPro-frau,frau
+INDEF,IPro-jedefrau,jedefrau
+INDEF,IPro-jedermann,jedermann
+INDEF,IPro-man,man
+INDEF,IPro-unsereiner,unsereiner
+INDEF,IPro-unsereins,unsereins
+INDEF,IProMasc,jemand
+INDEF,"IProMascNomSg, IProMascAccSg, IProMascDatSg, IProMascGenSg",wer
+INDEF,IProNeut,etwas
+INDEF,"IProNeutNomSg, IProNeutAccSg, IProNeutDatSg, IProNeutGenSg",was
+INDEF,Indef-all,alle
+INDEF,Indef-beid,beide
+INDEF,Indef-ein,eine
+INDEF,Indef-einig,einige
+INDEF,Indef-irgendein,irgendeine
+INDEF,Indef-irgendwelch,irgendwelche
+INDEF,Indef-jed,jede
+INDEF,Indef-jeglich,jegliche
+INDEF,Indef-kein,keine
+INDEF,Indef-manch,manche
+INDEF,Indef-mehrer,mehrere
+INDEF,Indef-saemtlich,sämtliche
+INDEF,Indef-welch,welche
+INDEF,Indef0,genug
+NN,NFem-in,Freundin
+NN,NFem_0_$_n,Tochter
+NN,NFem_0_$e_n,Wand
+NN,NFem_0_$en_0,Werkstatt
+NN,NFem_0_0_0,Jeans
+NN,"NFem_0_0_0, NFem_0_es/en_0",Spezies
+NN,NFem_0_ans/anten_0,Spirans
+NN,NFem_0_anx/angen_0,Phalanx
+NN,"NFem_0_e_n, NFem_0_en_0",Milch
+NN,NFem_0_e_n~ss,Kenntnis
+NN,NFem_0_en_0,Frau
+NN,NFem_0_ex/eges_0,Lex
+NN,NFem_0_ien_0,Vigil
+NN,NFem_0_is/en_0,Basis
+NN,NFem_0_is/iden_0,Apsis
+NN,NFem_0_is/ides_0,Glottis
+NN,NFem_0_ix/ices_0,Helix
+NN,NFem_0_ix/izen_0,Matrix
+NN,NFem_0_ix/izes_0,Radix
+NN,NFem_0_n_0,Hilfe
+NN,"NFem_0_n_0, NFem_0_e/i_0",Minestrone
+NN,NFem_0_nes_0,Laudatio
+NN,NFem_0_os/otes_0,Dos
+NN,NFem_0_ox/oces_0,Vox
+NN,NFem_0_s_0,Oma
+NN,"NFem_0_s_0, NFem_0_a/e_0, NFem_0_a/en_0",Pizza
+NN,NFem|Sg_0,Ruhe
+NN,"NFem|Sg_0, NFem|Pl_0",Anchorwoman
+NN,"NMasc-Adj, NNeut-Adj|Sg, NFem-Adj",Deutsche
+NN,NMasc_0_0_0,Blues
+NN,"NMasc_0_0_0, NMasc_0_is/es_0",Gravis
+NN,"NMasc_0_0_n, NMasc_s_0_n",Dezember
+NN,"NMasc_0_a/en_0, NMasc_s_a/en_0, NMasc_0_s_0, NMasc_s_s_0",Veda
+NN,"NMasc_0_e/i_0, NMasc_s_e/i_0",Carabiniere
+NN,"NMasc_0_e_n, NMasc_0_en_0, NMasc_s_e_n, NMasc_s_en_0, NMasc_en_en_0",Obelisk
+NN,"NMasc_0_e_n, NMasc_0_es_0, NMasc_0_s_0, NMasc_es_e_n, NMasc_es_es_0, NMasc_es_s_0, NNeut_0_e_n ...",Sandwich
+NN,"NMasc_0_e_n, NMasc_0_ex/izes_0, NMasc_es_e_n, NMasc_es_ex/izes_0",Index
+NN,"NMasc_0_e_n, NMasc_0_ix/izes_0, NMasc_es_e_n, Nmasc_es_ix/izes_0, NFem_0_ix/izes_0 ",Appendix
+NN,"NMasc_0_e_n, NMasc_s_e_n",Januar
+NN,NMasc_0_e_n~ss,Zirkus
+NN,"NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_as/anten_0, NMasc_s_as/anten_0",Atlas
+NN,"NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/een_0, NMasc_es_us/een_0~ss",Kaktus
+NN,"NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/en_0, NMasc_es_us/en_0~ss",Globus
+NN,NMasc_0_ens/entes_0,Dens
+NN,"NMasc_0_es/iden_0, NMasc_0_es/ides_0",Präses
+NN,"NMasc_0_i/en_0, NMasc_s_i/en_0, NMasc_0_s_0, NMasc_s_s_0, NNeut_0_i/en_0 ...",Taxi
+NN,NMasc_0_i_0,Signor
+NN,"NMasc_0_nen_0, NMasc_0_s_0, NMasc_s_nen_0, NMasc_s_s_0, NNeut_0_nen_0 ...",Embryo
+NN,"NMasc_0_o/i_0, NMasc_0_s_0, NMasc_s_o/i_0, NMasc_s_s_0, NNeut_0_s_0 ...",Espresso
+NN,NMasc_0_os/en_0,Mythos
+NN,NMasc_0_os/oden_0,Kustos
+NN,NMasc_0_os/oen_0,Heros
+NN,NMasc_0_os/oi_0,Topos
+NN,NMasc_0_s_0,Intercity
+NN,"NMasc_0_us/en_0, NNeut_0_us/en_0",Virus
+NN,NMasc_0_us/en_0~ss,Rhythmus
+NN,NMasc_0_us/i_0,Modus
+NN,NMasc_0_us/ier_n,Dinosaurus
+NN,NMasc_0_ynx/yngen_0,Larynx
+NN,NMasc_en_en_0,Dirigent
+NN,NMasc_es_$e_n,Arzt
+NN,"NMasc_es_$e_n, NMasc_es_s_0",Block
+NN,NMasc_es_$er_n,Gott
+NN,NMasc_es_e_n,Freund
+NN,NMasc_es_e_n~ss,Bus
+NN,NMasc_es_en_0,Schmerz
+NN,NMasc_es_er_n,Leib
+NN,"NMasc_es_es_0, NMasc_es_s_0",Crash
+NN,"NMasc_es_es_0, NMasc_es_s_0, NNeut_es_es_0 ...",Tennismatch
+NN,NMasc_n_n_0,Affe
+NN,"NMasc_n_n_0, NMasc_n_ns_0, NMasc_n_e/s_0, NMasc-Adj, NNeut-Adj, NFem-Adj",Junge
+NN,NMasc_ns_$n_0,Schade
+NN,NMasc_ns_n_0,Gedanke
+NN,NMasc_s_$_0,Garten
+NN,NMasc_s_$_n,Apfel
+NN,NMasc_s_$e_n,Unfall
+NN,NMasc_s_$er_n,Irrtum
+NN,NMasc_s_0_0,Daumen
+NN,"NMasc_s_0_0, NMasc_s_er_n",Ski
+NN,NMasc_s_0_n,Engel
+NN,"NMasc_s_0_n, NMasc_s_s_n, NFem_0_0_n ...",Vize
+NN,NMasc_s_e_n,Abend
+NN,NMasc_s_en_0,Direktor
+NN,"NMasc_s_en_0, NMasc_en_en_0, NNeut_s_en_0",Prototyp
+NN,NMasc_s_er/res_0,Pater
+NN,NMasc_s_ien_0,Versal
+NN,NMasc_s_n_0,Muskel
+NN,NMasc_s_s_0,Opa
+NN,"NMasc_s_s_0, NMasc_s_es_0",Kanon
+NN,NMasc|Sg_0,Jazz
+NN,NMasc|Sg_es,Kitsch
+NN,"NMasc|Sg_es, NMasc|Pl_0, NMasc_es_e_n",Bau
+NN,NMasc|Sg_ns,Unglaube
+NN,NMasc|Sg_s,Adel
+NN,NNeut-Inner,Innere
+NN,NNeut_0_0_0,Ostern
+NN,"NNeut_0_0_0, NNeut_0_en_0",Remis
+NN,NNeut_0_0_n,Zuhause
+NN,NNeut_0_ans/antien_0,Determinans
+NN,NNeut_0_ans/anzien_0,Stimulans
+NN,"NNeut_0_e/i_0, NNeut_s_e/i_0",Ricercare
+NN,NNeut_0_e_n,Nichts
+NN,"NNeut_0_e_n, NNeut_0_ex/izia_0, NNeut_es_e_n, NNeut_es_ex/izia_0",Simplex
+NN,"NNeut_0_ens/entia_0, NNeut_0_ens/entien_0, NNeut_0_ens/enzien_0",Akzidens
+NN,"NNeut_0_o/i_0, NNeut_0_s_0, NNeut_s_o/i_0, NNeut_s_s_0",Intermezzo
+NN,NNeut_0_s_0,Foyer
+NN,NNeut_0_os/en_0,Epos
+NN,NNeut_0_us/era_0,Genus
+NN,NNeut_0_us/ora_0,Tempus
+NN,NNeut_ens_en_0,Herz
+NN,NNeut_es_$e_n,Floß
+NN,NNeut_es_$er_n,Buch
+NN,NNeut_es_e_n,Spiel
+NN,"NNeut_es_e_n, NNeut_es_s_0",Tablett
+NN,NNeut_es_e_n~ss,Zeugnis
+NN,NNeut_es_en_0,Ohr
+NN,NNeut_es_er_n,Lied
+NN,NNeut_es_ien_0,Indiz
+NN,NNeut_s_$_n,Kloster
+NN,NNeut_s_0_0,Zeichen
+NN,"NNeut_s_0_0, NNeut_s_en/ina_0",Examen
+NN,NNeut_s_0_n,Feuer
+NN,NNeut_s_a/en_0,Dogma
+NN,NNeut_s_a_0,Reflexiv
+NN,"NNeut_s_e/ia_0, NNeut_s_e/ien_0",Numerale
+NN,NNeut_s_e_n,Signal
+NN,NNeut_s_ien_0,Material
+NN,NNeut_s_n_0,Auge
+NN,NNeut_s_on/a_0,Paradoxon
+NN,NNeut_s_on/en_0,Stadion
+NN,NNeut_s_s_0,Sofa
+NN,"NNeut_s_s_0, NNeut_s_a/ata_0",Komma
+NN,"NNeut_s_s_0, NNeut_s_o/en_0",Risiko
+NN,NNeut_s_um/a_0,Maximum
+NN,NNeut_s_um/en_0,Museum
+NN,NNeut|Sg_0,Abseits
+NN,NNeut|Sg_es,Ausland
+NN,"NNeut|Sg_es, NNeut|Pl_n",Vieh
+NN,NNeut|Sg_es~ss,Verständnis
+NN,NNeut|Sg_s,Internet
+NN,"NNeut|Sg_s, NNeut|Pl_0",Pluraletantum
+NN,NNoGend|Pl_0,Kosten
+NN,NNoGend|Pl_n,Leute
+NPROP,NameFem_0,Ostsee
+NPROP,NameFem_apos,Felicitas
+NPROP,NameFem_s,Oma
+NPROP,"NameMasc_0, NameMasc_s",Atlantik
+NPROP,NameMasc_apos,Andreas
+NPROP,NameMasc_es,Rhein
+NPROP,NameMasc_s,Opa
+NPROP,NameNeut_s,Berlin
+NPROP,NameNoGend|Pl_0,Alpen
+ORD,Ord,erste
+POSS,Poss,meine
+POSS,Poss-er,unsere
+POSS,Poss|Wk,Deinige
+POSS,Poss|Wk-er,Eurige
+PPRO,"PPro1NomPl, PPro1AccPl, PPro1DatPl, PPro1GenPl",wir
+PPRO,"PPro1NomSg, PPro1AccSg, PPro1DatSg, PPro1GenSg",ich
+PPRO,"PPro2NomPl, PPro2AccPl, PPro2DatPl, PPro2GenPl",ihr
+PPRO,"PPro2NomSg, PPro2AccSg, PPro2DatSg, PPro2GenSg",du
+PPRO,"PProFemNomSg, PProFemAccSg, PProFemDatSg, PProFemGenSg, PProNoGendNomPl ...",sie
+PPRO,"PProMascNomSg, PProMascAccSg, PProMascDatSg, PProMascGenSg",er
+PPRO,"PProNeutNomSg, PProNeutAccSg, PProNeutDatSg, PProNeutGenSg, PProNeutNomSg-s, PProNeutAccSg-s",es
+PPRO,PRecPl,einander
+PPRO,"PRefl1AccSg, PRefl1DatSg",mich
+PPRO,PRefl1Pl,uns
+PPRO,"PRefl2AccSg, PRefl2DatSg",dich
+PPRO,PRefl2Pl,euch
+PPRO,PRefl3,sich
+REL,"RProMascNomSg, RProMascAccSg, RProMascDatSg, RProMascGenSg, RProNeutNomSg ...",was
+REL,"RProMascNomSg, RProMascAccSg, RProMascDatSg, RProMascGenSg, RProNeutNomSg ...",wer
+REL,Rel,die
+REL,Rel-welch,welche
+V,"VInf, VPPres, VPPastStr, VPres, VPastIndStr, VPastSubjStr, VPastSubjOld, VImp",schwimmen
+V,"VInf, VPPres, VPPastStr, VPres, VPastStr, VImp",gehen
+V,"VInf, VPPres, VPPastStr, VPres, VPresInd23Sg-d_t, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImp, VImp-d-t",laden
+V,"VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImpSg, VImpPl",sehen
+V,"VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr-s, VPastSubjStr, VImpSg0, VImpPl",lesen
+V,"VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastStr, VImp",laufen
+V,"VInf, VPPres, VPPastStr, VPresInd23Sg-t_0, VPresNonInd23Sg, VPastStr, VImp-d-t",halten
+V,"VInf, VPPres, VPPastStr, VPresInd2Sg-werden, VPresInd3Sg-werden, VPresNonInd23Sg, VPastInd-werden,",werden
+V,"VInf, VPPres, VPPastWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak",wissen
+V,"VInf, VPPres, VPPastWeak, VPPastStr, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak",können
+V,"VInf, VPPres, VPPastWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp",denken
+V,"VInf, VPPres, VPPastWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-d-t_t, VPastSubj-haben, VImp",haben
+V,"VInf-el-er, VPPres-el-er, VPPastWeak, VPres-el-er, VPastIndWeak, VPastSubjWeak, VImp-el-er",notwassern
+V,"VInf-le, VPPres-le, VPPast-le, VPres-le, VPastInd-le, VPastSubj-le, VImp-le",downcyclen
+V,"VInf_n, VPPres, VPPast_n, VPres-tun, VPastIndStr, VPastSubjStr, VImpSg0, VImpPl",tun
+V,"VPastIndSg-ward, VPastIndPl-werden, VPastSubjStr, VImp-d-t, VInf_n, VPPres, VPPastStr, VPresInd1Sg-sein, VPresInd2Sg-sein, VPresInd3Sg-sein, VPresInd13Pl-sein, VPresInd2Pl-sein, VPresSubj-sein, VPastIndStr, VPastSubjStr, VPastSubj2-sein, VImpSg0, VImpPl-sein",sein
+V,VWeak,spielen
+V,VWeak-ak-ik,liken
+V,"VWeak-ak-ik, VInf, VPPres, VPPast_ed, VPres-ak-ik, VPastIndWeak, VPastSubjWeak, VImp-ak-ik",faken
+V,VWeak-d-t,arbeiten
+V,"VWeak-d-t, VInf, VPPres, VPPast-d_t, VPres, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t",senden
+V,VWeak-el-er,segeln
+V,VWeak-le,recyclen
+V,VWeak-m-n,atmen
+V,VWeak-s,küssen
+V,"VWeak-s, VInf, VPPres, VPPastStr, VPres-s, VPastStr-s, VImp",heißen
+V,VWeak-signen,designen
+WPRO,W-welch,welche
+WPRO,"WProMascNomSg, WProMascA,ccSg, WProMascDatSg, WProMascGenSg, WProNeutNomSg ...",wer
+WPRO,"WProMascNomSg, WProMascAccSg, WProMascDatSg, WProMascGenSg, WProNeutNomSg ...",was

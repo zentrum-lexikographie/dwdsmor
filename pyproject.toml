@@ -20,43 +20,40 @@ classifiers = [
     "Topic :: Text Processing :: Linguistic"
 ]
 requires-python = ">=3.9"
-dependencies = ["sfst-transduce"]
 dynamic = ["readme"]
+dependencies = [
+    "python-dotenv",
+    "sfst-transduce",
+    "tabulate",
+]
 
 [project.optional-dependencies]
-cli = [
-    "blessings",
-    "PyYAML"
-]
-test = [
-    "conllu",
-    "pytest",
-    "PyYAML",
-    "syrupy"
-]
 dev = [
+    "coverage",
+    "conllu",
     "flake8",
     "flake8-bugbear",
     "mypy",
-    "pre-commit"
+    "pre-commit",
+    "pytest",
+    "syrupy",
+    "tqdm"
 ]
 
 [project.scripts]
-dwdsmor = "dwdsmor.cli.analyse:main"
-dwdsmor-paradigm = "dwdsmor.cli.generate:main"
+dwdsmor = "dwdsmor.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/zentrum-lexikographie/dwdsmor"
+
+[tool.coverage.run]
+omit = ["dwdsmor/cli.py", "test/**/*.py"]
 
 [tool.isort]
 profile = "black"
 
 [[tool.mypy.overrides]]
 module = "blessings"
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = "parsimonious.*"
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
@@ -67,11 +64,11 @@ ignore_missing_imports = true
 module = "tqdm"
 ignore_missing_imports = true
 
+[tool.pytest.ini_options]
+testpaths = [ "test"]
+
 [tool.setuptools.dynamic]
 readme = {file = ["README.md"], content-type = "text/markdown"}
 
 [tool.setuptools.packages.find]
 exclude = ["test"]
-
-[tool.setuptools.package-data]
-"dwdsmor" = ["grammar.txt"]

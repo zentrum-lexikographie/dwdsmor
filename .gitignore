@@ -4,6 +4,7 @@
 *~
 \#*
 
+/.coverage
 /.idea/
 /.venv/
 /.python-version

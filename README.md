@@ -85,7 +85,8 @@ source .venv/bin/activate
 Then run the DWDSmor setup routine in order to install Python dependencies:
 
 ```sh
-make setup
+# make setup
+pip install -e .[dev]
 ```
 
 
@@ -441,7 +442,7 @@ Again, options `-c`, `-j`, `-y` select alternative CSV, JSON, and YAML outputs.
 
 ## Coverage (German-UD-HDT)
 
-    DWDSMOR_AUTOMATA_DIR=build scripts/ud-german-hdt-coverage
+    DWDSMOR_AUTOMATA_ROOT=build scripts/ud-german-hdt-coverage
 
 ### Open Edition
 
