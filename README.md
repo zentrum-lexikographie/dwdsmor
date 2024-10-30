@@ -447,6 +447,8 @@ Again, options `-c`, `-j`, `-y` select alternative CSV, JSON, and YAML outputs.
 
 ## Coverage (German-UD-HDT)
 
+    DWDSMOR_AUTOMATA_DIR=build scripts/ud-german-hdt-coverage
+
 ### Open Edition
 
 | POS    |   # types |   # tokens |   % types |   % tokens |   % types covered |   % tokens covered |
