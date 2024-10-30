@@ -118,6 +118,11 @@
           <!-- $string does not have a final schwa-syllable -->
           <xsl:sequence select="false()"/>
         </xsl:when>
+        <!-- $string ends in "ive" -->
+        <xsl:when test="ends-with($string,'ive')">
+          <!-- $string does not have a final schwa-syllable -->
+          <xsl:sequence select="false()"/>
+        </xsl:when>
         <!-- $string ends in "fidel" -->
         <xsl:when test="ends-with($string,'fidel')">
           <!-- $string does not have a final schwa-syllable -->
