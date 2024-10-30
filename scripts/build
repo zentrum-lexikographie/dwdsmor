@@ -52,6 +52,7 @@ def saxon(xsl, *args, **kwargs):
     return run(
         [
             "java",
+            "-Xmx8g",
             "-cp",
             "/usr/share/java/Saxon-HE.jar",
             "net.sf.saxon.Transform",
