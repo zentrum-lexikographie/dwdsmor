@@ -443,6 +443,26 @@
           <!-- attributive-only adjectives -->
           <xsl:when test="$function='attr'">
             <xsl:choose>
+              <!-- attributive-only adjectives with a final schwa-syllable -->
+              <xsl:when test="ends-with($lemma,'e') and
+                              n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
+                <xsl:call-template name="stem-entry">
+                  <xsl:with-param name="lemma"
+                                  select="replace($lemma,'(e)$','&lt;SB&gt;$1')"/>
+                  <xsl:with-param name="lemma-index"
+                                  select="$lemma-index"/>
+                  <xsl:with-param name="paradigm-index"
+                                  select="$paradigm-index"/>
+                  <xsl:with-param name="stem"
+                                  select="replace($lemma,'e$','')"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
+                  <xsl:with-param name="pos">ADJ</xsl:with-param>
+                  <xsl:with-param name="class">AdjPosAttr</xsl:with-param>
+                  <xsl:with-param name="etymology"
+                                  select="$etymology"/>
+                </xsl:call-template>
+              </xsl:when>
               <xsl:when test="ends-with($lemma,'er') and
                               n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
                 <xsl:call-template name="stem-entry">
@@ -460,6 +480,7 @@
                                   select="$etymology"/>
                 </xsl:call-template>
               </xsl:when>
+              <!-- other attributive-only adjectives -->
               <xsl:otherwise>
                 <xsl:call-template name="stem-entry">
                   <xsl:with-param name="lemma"
