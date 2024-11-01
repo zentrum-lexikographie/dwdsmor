@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-10-30
+# Andreas Nolda 2024-11-01
 
 import io
 import csv
@@ -134,6 +134,7 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Adel",           # NMasc|Sg_s
                "Unglaube",       # NMasc|Sg_ns
                "Blues",          # NMasc_0_0_0
+               "Gravis",         # NMasc_0_0_0, NMasc_0_is/es_0
                "Dezember",       # NMasc_0_0_n, NMasc_s_0_n
                "Januar",         # NMasc_0_e_n, NMasc_s_e_n
                "Index",          # NMasc_0_e_n, NMasc_0_ex/izes_0, NMasc_es_e_n, NMasc_es_ex/izes_0
@@ -145,8 +146,11 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Kaktus",         # NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/een_0, NMasc_es_us/een_0~ss
                "Embryo",         # NMasc_0_nen_0, NMasc_0_s_0, NMasc_s_nen_0, NMasc_s_s_0, NNeut_0_nen_0 ...
                "Intercity",      # NMasc_0_s_0
+               "Signor",         # NMasc_0_i_0
                "Veda",           # NMasc_0_a/en_0, NMasc_s_a/en_0, NMasc_0_s_0, NMasc_s_s_0
                "Carabiniere",    # NMasc_0_e/i_0, NMasc_s_e/i_0
+               "Dens",           # NMasc_0_ens/entes_0
+               "Präses",         # NMasc_0_es/iden_0, NMasc_0_es/ides_0
                "Taxi",           # NMasc_0_i/en_0, NMasc_s_i/en_0, NMasc_0_s_0, NMasc_s_s_0, NNeut_0_i/en_0 ...
                "Espresso",       # NMasc_0_o/i_0, NMasc_0_s_0, NMasc_s_o/i_0, NMasc_s_s_0, NNeut_0_s_0 ...
                "Heros",          # NMasc_0_os/oen_0
@@ -180,6 +184,8 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Muskel",         # NMasc_s_n_0
                "Opa",            # NMasc_s_s_0
                "Kanon",          # NMasc_s_s_0, NMasc_s_es_0
+               "Versal",         # NMasc_s_ien_0
+               "Pater",          # NMasc_s_er/res_0
                "Dirigent",       # NMasc_en_en_0
                "Affe",           # NMasc_n_n_0
                "Junge",          # NMasc_n_n_0, NMasc_n_ns_0, NMasc_n_e/s_0, NMasc-Adj, NNeut-Adj, NFem-Adj
@@ -200,7 +206,7 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Determinans",    # NNeut_0_ans/antien_0
                "Stimulans",      # NNeut_0_ans/anzien_0
                "Ricercare",      # NNeut_0_e/i_0, NNeut_s_e/i_0
-               "Reagens",        # NNeut_0_ens/enzien_0
+               "Akzidens",       # NNeut_0_ens/entia_0, NNeut_0_ens/entien_0, NNeut_0_ens/enzien_0
                "Intermezzo",     # NNeut_0_o/i_0, NNeut_0_s_0, NNeut_s_o/i_0, NNeut_s_s_0
                "Genus",          # NNeut_0_us/era_0
                "Tempus",         # NNeut_0_us/ora_0
@@ -243,12 +249,20 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Hilfe",          # NFem_0_n_0
                "Minestrone",     # NFem_0_n_0, NFem_0_e/i_0
                "Oma",            # NFem_0_s_0
-               "Vita",           # NFem_0_a/en_0, NFem_0_e_0
+               "Pizza",          # NFem_0_s_0, NFem_0_a/e_0, NFem_0_a/en_0
+               "Vigil",          # NFem_0_ien_0
+               "Laudatio",       # NFem_0_nes_0
+               "Spirans",        # NFem_0_ans/anten_0
                "Phalanx",        # NFem_0_anx/angen_0
                "Lex",            # NFem_0_ex/eges_0
                "Basis",          # NFem_0_is/en_0
+               "Apsis",          # NFem_0_is/iden_0
+               "Glottis",        # NFem_0_is/ides_0
+               "Helix",          # NFem_0_ix/ices_0
                "Matrix",         # NFem_0_ix/izen_0
                "Radix",          # NFem_0_ix/izes_0
+               "Dos",            # NFem_0_os/otes_0
+               "Vox",            # NFem_0_ox/oces_0
                "Freundin",       # NFem-in
                "Kosten",         # NNoGend|Pl_0
                "Leute"]          # NNoGend|Pl_n

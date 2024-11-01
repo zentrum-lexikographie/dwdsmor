@@ -1,6 +1,6 @@
 % phon.fst
-% Version 6.4
-% Andreas Nolda 2024-10-22
+% Version 6.5
+% Andreas Nolda 2024-11-01
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -204,14 +204,14 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
 
 $PhonSuffSubstitution1$ = ([aeiouy]n) [sx] <=> <> (<del(VC)|Pl>)
 
-% remove consonant in "-um"/"-en"/"-on"/"-as"/"-is"/"-os"/"-us"/"-ex"/"-ix"
+% remove consonant in "-um"/"-en"/"-on"/"-er"/"-as"/"-is"/"-os"/"-us"/"-ex"/"-ix"
 % remove pre-final consonant in "-ans"/"-ens"/"-anx"/"-ynx"
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \
-           [mnsx]:<>
+           [mnrsx]:<>
 
-$PhonSuffSubstitution2$ = ([aeiouy]) [mnsx] <=> <> (<del(VC)|Pl>)
+$PhonSuffSubstitution2$ = ([aeiouy]) [mnrsx] <=> <> (<del(VC)|Pl>)
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
             #category# #feature# #info#] \

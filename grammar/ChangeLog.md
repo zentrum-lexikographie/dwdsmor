@@ -1,5 +1,14 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-11-01:
+
+* add inflection classes `NMasc_0_i_0`, `NMasc_0_es/iden_0`,
+  `NMasc_0_es/ides_0`, `NMasc_s_ien_0`, `NMasc_0_ens/entes_0`,
+  `NMasc_0_is/es_0`, `NMasc_s_er/res_0`, `NNeut_0_ens/entia_0`,
+  `NNeut_0_ens/entien_0`, `NFem_0_ien_0`, `NFem_0_nes_0`, `NFem_0_a/e_0`,
+  `NFem_0_ans/anten_0`, `NFem_0_is/ides_0`, `NFem_0_ix/izes_0`,
+  `NFem_0_os/otes_0`, and `NFem_0_ox/oces_0`
+
 2024-10-30:
 
 * rename inflection classes `Adj_0`, `Adj_e`, `Adj_$`, `Adj_$e`, `AdjPos0Attr`,

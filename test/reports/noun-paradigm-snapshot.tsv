@@ -23,6 +23,14 @@ Affe			NN Masc	Nom Pl	Affen
 Affe			NN Masc	Acc Pl	Affen
 Affe			NN Masc	Dat Pl	Affen
 Affe			NN Masc	Gen Pl	Affen
+Akzidens			NN Neut	Nom Sg	Akzidens
+Akzidens			NN Neut	Acc Sg	Akzidens
+Akzidens			NN Neut	Dat Sg	Akzidens
+Akzidens			NN Neut	Gen Sg	Akzidens
+Akzidens			NN Neut	Nom Pl	Akzidentia, Akzidentien, Akzidenzien
+Akzidens			NN Neut	Acc Pl	Akzidentia, Akzidentien, Akzidenzien
+Akzidens			NN Neut	Dat Pl	Akzidentia, Akzidentien, Akzidenzien
+Akzidens			NN Neut	Gen Pl	Akzidentia, Akzidentien, Akzidenzien
 Anchorwoman			NN Fem	Nom Sg	Anchorwoman
 Anchorwoman			NN Fem	Acc Sg	Anchorwoman
 Anchorwoman			NN Fem	Dat Sg	Anchorwoman
@@ -39,6 +47,14 @@ Apfel			NN Masc	Nom Pl	Äpfel
 Apfel			NN Masc	Acc Pl	Äpfel
 Apfel			NN Masc	Dat Pl	Äpfeln
 Apfel			NN Masc	Gen Pl	Äpfel
+Apsis			NN Fem	Nom Sg	Apsis
+Apsis			NN Fem	Acc Sg	Apsis
+Apsis			NN Fem	Dat Sg	Apsis
+Apsis			NN Fem	Gen Sg	Apsis
+Apsis			NN Fem	Nom Pl	Apsiden
+Apsis			NN Fem	Acc Pl	Apsiden
+Apsis			NN Fem	Dat Pl	Apsiden
+Apsis			NN Fem	Gen Pl	Apsiden
 Arzt			NN Masc	Nom Sg	Arzt
 Arzt			NN Masc	Acc Sg	Arzt
 Arzt			NN Masc	Dat Sg	Arzt, Arzte (va.)
@@ -155,6 +171,14 @@ Daumen			NN Masc	Nom Pl	Daumen
 Daumen			NN Masc	Acc Pl	Daumen
 Daumen			NN Masc	Dat Pl	Daumen
 Daumen			NN Masc	Gen Pl	Daumen
+Dens			NN Masc	Nom Sg	Dens
+Dens			NN Masc	Acc Sg	Dens
+Dens			NN Masc	Dat Sg	Dens
+Dens			NN Masc	Gen Sg	Dens
+Dens			NN Masc	Nom Pl	Dentes
+Dens			NN Masc	Acc Pl	Dentes
+Dens			NN Masc	Dat Pl	Dentes
+Dens			NN Masc	Gen Pl	Dentes
 Determinans			NN Neut	Nom Sg	Determinans
 Determinans			NN Neut	Acc Sg	Determinans
 Determinans			NN Neut	Dat Sg	Determinans
@@ -243,6 +267,14 @@ Dogma			NN Neut	Nom Pl	Dogmen
 Dogma			NN Neut	Acc Pl	Dogmen
 Dogma			NN Neut	Dat Pl	Dogmen
 Dogma			NN Neut	Gen Pl	Dogmen
+Dos			NN Fem	Nom Sg	Dos
+Dos			NN Fem	Acc Sg	Dos
+Dos			NN Fem	Dat Sg	Dos
+Dos			NN Fem	Gen Sg	Dos
+Dos			NN Fem	Nom Pl	Dotes
+Dos			NN Fem	Acc Pl	Dotes
+Dos			NN Fem	Dat Pl	Dotes
+Dos			NN Fem	Gen Pl	Dotes
 Embryo		1	NN Masc	Nom Sg	Embryo
 Embryo		1	NN Masc	Acc Sg	Embryo
 Embryo		1	NN Masc	Dat Sg	Embryo
@@ -371,6 +403,14 @@ Globus			NN Masc	Nom Pl	Globen, Globusse
 Globus			NN Masc	Acc Pl	Globen, Globusse
 Globus			NN Masc	Dat Pl	Globen, Globussen
 Globus			NN Masc	Gen Pl	Globen, Globusse
+Glottis			NN Fem	Nom Sg	Glottis
+Glottis			NN Fem	Acc Sg	Glottis
+Glottis			NN Fem	Dat Sg	Glottis
+Glottis			NN Fem	Gen Sg	Glottis
+Glottis			NN Fem	Nom Pl	Glottides
+Glottis			NN Fem	Acc Pl	Glottides
+Glottis			NN Fem	Dat Pl	Glottides
+Glottis			NN Fem	Gen Pl	Glottides
 Gott			NN Masc	Nom Sg	Gott
 Gott			NN Masc	Acc Sg	Gott
 Gott			NN Masc	Dat Sg	Gott, Gotte (va.)
@@ -379,6 +419,22 @@ Gott			NN Masc	Nom Pl	Götter
 Gott			NN Masc	Acc Pl	Götter
 Gott			NN Masc	Dat Pl	Göttern
 Gott			NN Masc	Gen Pl	Götter
+Gravis			NN Masc	Nom Sg	Gravis
+Gravis			NN Masc	Acc Sg	Gravis
+Gravis			NN Masc	Dat Sg	Gravis
+Gravis			NN Masc	Gen Sg	Gravis
+Gravis			NN Masc	Nom Pl	Graves, Gravis
+Gravis			NN Masc	Acc Pl	Graves, Gravis
+Gravis			NN Masc	Dat Pl	Graves, Gravis
+Gravis			NN Masc	Gen Pl	Graves, Gravis
+Helix			NN Fem	Nom Sg	Helix
+Helix			NN Fem	Acc Sg	Helix
+Helix			NN Fem	Dat Sg	Helix
+Helix			NN Fem	Gen Sg	Helix
+Helix			NN Fem	Nom Pl	Helices
+Helix			NN Fem	Acc Pl	Helices
+Helix			NN Fem	Dat Pl	Helices
+Helix			NN Fem	Gen Pl	Helices
 Heros			NN Masc	Nom Sg	Heros
 Heros			NN Masc	Acc Sg	Heros
 Heros			NN Masc	Dat Sg	Heros
@@ -619,6 +675,14 @@ Larynx			NN Masc	Nom Pl	Laryngen
 Larynx			NN Masc	Acc Pl	Laryngen
 Larynx			NN Masc	Dat Pl	Laryngen
 Larynx			NN Masc	Gen Pl	Laryngen
+Laudatio			NN Fem	Nom Sg	Laudatio
+Laudatio			NN Fem	Acc Sg	Laudatio
+Laudatio			NN Fem	Dat Sg	Laudatio
+Laudatio			NN Fem	Gen Sg	Laudatio
+Laudatio			NN Fem	Nom Pl	Laudationes
+Laudatio			NN Fem	Acc Pl	Laudationes
+Laudatio			NN Fem	Dat Pl	Laudationes
+Laudatio			NN Fem	Gen Pl	Laudationes
 Leib			NN Masc	Nom Sg	Leib
 Leib			NN Masc	Acc Sg	Leib
 Leib			NN Masc	Dat Sg	Leib, Leibe (va.)
@@ -775,6 +839,14 @@ Paradoxon			NN Neut	Nom Pl	Paradoxa
 Paradoxon			NN Neut	Acc Pl	Paradoxa
 Paradoxon			NN Neut	Dat Pl	Paradoxa
 Paradoxon			NN Neut	Gen Pl	Paradoxa
+Pater			NN Masc	Nom Sg	Pater
+Pater			NN Masc	Acc Sg	Pater
+Pater			NN Masc	Dat Sg	Pater
+Pater			NN Masc	Gen Sg	Paters
+Pater			NN Masc	Nom Pl	Pater, Patres
+Pater			NN Masc	Acc Pl	Pater, Patres
+Pater			NN Masc	Dat Pl	Patern, Patres
+Pater			NN Masc	Gen Pl	Pater, Patres
 Phalanx			NN Fem	Nom Sg	Phalanx
 Phalanx			NN Fem	Acc Sg	Phalanx
 Phalanx			NN Fem	Dat Sg	Phalanx
@@ -783,6 +855,14 @@ Phalanx			NN Fem	Nom Pl	Phalangen
 Phalanx			NN Fem	Acc Pl	Phalangen
 Phalanx			NN Fem	Dat Pl	Phalangen
 Phalanx			NN Fem	Gen Pl	Phalangen
+Pizza			NN Fem	Nom Sg	Pizza
+Pizza			NN Fem	Acc Sg	Pizza
+Pizza			NN Fem	Dat Sg	Pizza
+Pizza			NN Fem	Gen Sg	Pizza
+Pizza			NN Fem	Nom Pl	Pizzas, Pizze, Pizzen
+Pizza			NN Fem	Acc Pl	Pizzas, Pizze, Pizzen
+Pizza			NN Fem	Dat Pl	Pizzas, Pizze, Pizzen
+Pizza			NN Fem	Gen Pl	Pizzas, Pizze, Pizzen
 Pluraletantum			NN Neut	Nom Sg	Pluraletantum
 Pluraletantum			NN Neut	Acc Sg	Pluraletantum
 Pluraletantum			NN Neut	Dat Sg	Pluraletantum
@@ -815,6 +895,14 @@ Prototyp		3	NN Masc	Nom Pl	Prototypen
 Prototyp		3	NN Masc	Acc Pl	Prototypen
 Prototyp		3	NN Masc	Dat Pl	Prototypen
 Prototyp		3	NN Masc	Gen Pl	Prototypen
+Präses			NN Masc	Nom Sg	Präses
+Präses			NN Masc	Acc Sg	Präses
+Präses			NN Masc	Dat Sg	Präses
+Präses			NN Masc	Gen Sg	Präses
+Präses			NN Masc	Nom Pl	Präsiden, Präsides
+Präses			NN Masc	Acc Pl	Präsiden, Präsides
+Präses			NN Masc	Dat Pl	Präsiden, Präsides
+Präses			NN Masc	Gen Pl	Präsiden, Präsides
 Radix			NN Fem	Nom Sg	Radix
 Radix			NN Fem	Acc Sg	Radix
 Radix			NN Fem	Dat Sg	Radix
@@ -823,14 +911,6 @@ Radix			NN Fem	Nom Pl	Radizes
 Radix			NN Fem	Acc Pl	Radizes
 Radix			NN Fem	Dat Pl	Radizes
 Radix			NN Fem	Gen Pl	Radizes
-Reagens			NN Neut	Nom Sg	Reagens
-Reagens			NN Neut	Acc Sg	Reagens
-Reagens			NN Neut	Dat Sg	Reagens
-Reagens			NN Neut	Gen Sg	Reagens
-Reagens			NN Neut	Nom Pl	Reagenzien
-Reagens			NN Neut	Acc Pl	Reagenzien
-Reagens			NN Neut	Dat Pl	Reagenzien
-Reagens			NN Neut	Gen Pl	Reagenzien
 Reflexiv			NN Neut	Nom Sg	Reflexiv
 Reflexiv			NN Neut	Acc Sg	Reflexiv
 Reflexiv			NN Neut	Dat Sg	Reflexiv
@@ -915,6 +995,14 @@ Signal			NN Neut	Nom Pl	Signale
 Signal			NN Neut	Acc Pl	Signale
 Signal			NN Neut	Dat Pl	Signalen
 Signal			NN Neut	Gen Pl	Signale
+Signor			NN Masc	Nom Sg	Signor
+Signor			NN Masc	Acc Sg	Signor
+Signor			NN Masc	Dat Sg	Signor
+Signor			NN Masc	Gen Sg	Signor
+Signor			NN Masc	Nom Pl	Signori
+Signor			NN Masc	Acc Pl	Signori
+Signor			NN Masc	Dat Pl	Signori
+Signor			NN Masc	Gen Pl	Signori
 Ski			NN Masc	Nom Sg	Ski
 Ski			NN Masc	Acc Sg	Ski
 Ski			NN Masc	Dat Sg	Ski
@@ -939,6 +1027,14 @@ Spiel			NN Neut	Nom Pl	Spiele
 Spiel			NN Neut	Acc Pl	Spiele
 Spiel			NN Neut	Dat Pl	Spielen
 Spiel			NN Neut	Gen Pl	Spiele
+Spirans			NN Fem	Nom Sg	Spirans
+Spirans			NN Fem	Acc Sg	Spirans
+Spirans			NN Fem	Dat Sg	Spirans
+Spirans			NN Fem	Gen Sg	Spirans
+Spirans			NN Fem	Nom Pl	Spiranten
+Spirans			NN Fem	Acc Pl	Spiranten
+Spirans			NN Fem	Dat Pl	Spiranten
+Spirans			NN Fem	Gen Pl	Spiranten
 Stadion			NN Neut	Nom Sg	Stadion
 Stadion			NN Neut	Acc Sg	Stadion
 Stadion			NN Neut	Dat Sg	Stadion
@@ -1039,6 +1135,14 @@ Veda			NN Masc	Nom Pl	Vedas, Veden
 Veda			NN Masc	Acc Pl	Vedas, Veden
 Veda			NN Masc	Dat Pl	Vedas, Veden
 Veda			NN Masc	Gen Pl	Vedas, Veden
+Versal			NN Masc	Nom Sg	Versal
+Versal			NN Masc	Acc Sg	Versal
+Versal			NN Masc	Dat Sg	Versal
+Versal			NN Masc	Gen Sg	Versals
+Versal			NN Masc	Nom Pl	Versalien
+Versal			NN Masc	Acc Pl	Versalien
+Versal			NN Masc	Dat Pl	Versalien
+Versal			NN Masc	Gen Pl	Versalien
 Verständnis			NN Neut	Nom Sg	Verständnis
 Verständnis			NN Neut	Acc Sg	Verständnis
 Verständnis			NN Neut	Dat Sg	Verständnis, Verständnisse (va.)
@@ -1059,6 +1163,14 @@ Vieh		2	NN Neut	Nom Pl	Viecher
 Vieh		2	NN Neut	Acc Pl	Viecher
 Vieh		2	NN Neut	Dat Pl	Viechern
 Vieh		2	NN Neut	Gen Pl	Viecher
+Vigil			NN Fem	Nom Sg	Vigil
+Vigil			NN Fem	Acc Sg	Vigil
+Vigil			NN Fem	Dat Sg	Vigil
+Vigil			NN Fem	Gen Sg	Vigil
+Vigil			NN Fem	Nom Pl	Vigilien
+Vigil			NN Fem	Acc Pl	Vigilien
+Vigil			NN Fem	Dat Pl	Vigilien
+Vigil			NN Fem	Gen Pl	Vigilien
 Virus		1	NN Neut	Nom Sg	Virus
 Virus		1	NN Neut	Acc Sg	Virus
 Virus		1	NN Neut	Dat Sg	Virus
@@ -1075,14 +1187,6 @@ Virus		2	NN Masc	Nom Pl	Viren
 Virus		2	NN Masc	Acc Pl	Viren
 Virus		2	NN Masc	Dat Pl	Viren
 Virus		2	NN Masc	Gen Pl	Viren
-Vita			NN Fem	Nom Sg	Vita
-Vita			NN Fem	Acc Sg	Vita
-Vita			NN Fem	Dat Sg	Vita
-Vita			NN Fem	Gen Sg	Vita
-Vita			NN Fem	Nom Pl	Vitae, Viten
-Vita			NN Fem	Acc Pl	Vitae, Viten
-Vita			NN Fem	Dat Pl	Vitae, Viten
-Vita			NN Fem	Gen Pl	Vitae, Viten
 Vize		1	NN Masc	Nom Sg	Vize
 Vize		1	NN Masc	Acc Sg	Vize
 Vize		1	NN Masc	Dat Sg	Vize
@@ -1099,6 +1203,14 @@ Vize		2	NN Fem	Nom Pl	Vize, Vizes
 Vize		2	NN Fem	Acc Pl	Vize, Vizes
 Vize		2	NN Fem	Dat Pl	Vizen, Vizes
 Vize		2	NN Fem	Gen Pl	Vize, Vizes
+Vox			NN Fem	Nom Sg	Vox
+Vox			NN Fem	Acc Sg	Vox
+Vox			NN Fem	Dat Sg	Vox
+Vox			NN Fem	Gen Sg	Vox
+Vox			NN Fem	Nom Pl	Voces
+Vox			NN Fem	Acc Pl	Voces
+Vox			NN Fem	Dat Pl	Voces
+Vox			NN Fem	Gen Pl	Voces
 Wand			NN Fem	Nom Sg	Wand
 Wand			NN Fem	Acc Sg	Wand
 Wand			NN Fem	Dat Sg	Wand
