@@ -1,6 +1,6 @@
 % infl.fst
-% Version 11.1
-% Andreas Nolda 2024-11-01
+% Version 11.2
+% Andreas Nolda 2024-11-07
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -144,20 +144,17 @@ $NMasc_0_ex/izes_0$ = {<+NN><Masc>}:{}                     $NGenSgSuff_0$ | \
                       {<+NN><Masc>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
 
 % Taxi, Taxi, Taxen, Taxen
-$NMasc_0_i/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
-                   {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NMasc_0_i/en_0$ = $NMasc_0_a/en_0$
 
 % Gravis, Gravis, Graves, Graves
 $NMasc_0_is/es_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
                     {<+NN><Masc>}:{<del(VC)|Pl><SB>es} $NDatPlSuff_0$
 
 % Saldo, Saldo, Salden, Salden
-$NMasc_0_o/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
-                   {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NMasc_0_o/en_0$ = $NMasc_0_a/en_0$
 
 % Espresso, Espresso, Espressi, Espressi
-$NMasc_0_o/i_0$ = {<+NN><Masc>}:{}                  $NGenSgSuff_0$ | \
-                  {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NMasc_0_o/i_0$ = $NMasc_0_e/i_0$
 
 % Heros, Heros, Heroen, Heroen
 $NMasc_0_os/oen_0$ = {<+NN><Masc>}:{}                    $NGenSgSuff_0$ | \
@@ -176,16 +173,14 @@ $NMasc_0_us/e_n$ = {<+NN><Masc>}:{}                  $NGenSgSuff_0$ | \
                    {<+NN><Masc>}:{<del(VC)|Pl><SB>e} $NDatPlSuff_n$
 
 % Virus, Virus, Viren, Viren; Mythos, Mythos, Mythen, Mythen
-$NMasc_0_us/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
-                    {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NMasc_0_us/en_0$ = $NMasc_0_a/en_0$
 
 % Kaktus, Kaktus, Kakteen, Kakteen
 $NMasc_0_us/een_0$ = {<+NN><Masc>}:{}                    $NGenSgSuff_0$ | \
                      {<+NN><Masc>}:{<del(VC)|Pl>e<SB>en} $NDatPlSuff_0$
 
 % Intimus, Intimus, Intimi, Intimi
-$NMasc_0_us/i_0$ = {<+NN><Masc>}:{}                  $NGenSgSuff_0$ | \
-                   {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NMasc_0_us/i_0$ = $NMasc_0_e/i_0$
 
 % Dinosaurus, Dinosaurus, Dinosaurier, Dinosauriern
 $NMasc_0_us/ier_n$ = {<+NN><Masc>}:{}                    $NGenSgSuff_0$ | \
@@ -315,16 +310,13 @@ $NMasc_s_er/res_0$ = {<+NN><Masc>}:{}                    $NGenSgSuff_s$ | \
                      {<+NN><Masc>}:{<del(VC)|Pl>r<SB>es} $NDatPlSuff_0$
 
 % Taxi, Taxis, Taxen, Taxen
-$NMasc_s_i/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_s$ | \
-                   {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NMasc_s_i/en_0$ = $NMasc_s_a/en_0$
 
 % Saldo, Saldos, Salden, Salden
-$NMasc_s_o/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_s$ | \
-                   {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NMasc_s_o/en_0$ = $NMasc_s_a/en_0$
 
 % Espresso, Espressos, Espressi, Espressi
-$NMasc_s_o/i_0$ = {<+NN><Masc>}:{}                  $NGenSgSuff_s$ | \
-                  {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NMasc_s_o/i_0$ = $NMasc_s_e/i_0$
 
 % Fels, Felsen, Felsen, Felsen; Mensch, Menschen, Menschen, Menschen
 $NMasc_en_en_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_en$ | \
@@ -465,36 +457,29 @@ $NNeut_0_ens/enzien_0$ = {<+NN><Neut>}:{}                       $NGenSgSuff_0$ |
                          {<+NN><Neut>}:{<del(VC)|Pl>enzi<SB>en} $NDatPlSuff_0$
 
 % Taxi, Taxi, Taxen, Taxen
-$NNeut_0_i/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_0$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_0_i/en_0$ = $NNeut_0_a/en_0$
 
 % Konto, Konto, Konten, Konten
-$NNeut_0_o/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_0$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_0_o/en_0$ = $NNeut_0_a/en_0$
 
 % Intermezzo, Intermezzo, Intermezzi, Intermezzi
-$NNeut_0_o/i_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_0$ | \
-                  {<+NN><Neut>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NNeut_0_o/i_0$ = $NNeut_0_e/i_0$
 
 % Oxymoron, Oxymoron, Oxymora, Oxymora
 $NNeut_0_on/a_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_0$ | \
                    {<+NN><Neut>}:{<del(VC)|Pl><SB>a} $NDatPlSuff_0$
 
 % Stadion, Stadion, Stadien, Stadien
-$NNeut_0_on/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_0$ | \
-                    {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_0_on/en_0$ = $NNeut_0_a/en_0$
 
 % Aktivum, Aktivum, Aktiva, Aktiva
-$NNeut_0_um/a_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_0$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>a} $NDatPlSuff_0$
+$NNeut_0_um/a_0$ = $NNeut_0_on/a_0$
 
 % Museum, Museum, Museen, Museen
-$NNeut_0_um/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_0$ | \
-                    {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_0_um/en_0$ = $NNeut_0_a/en_0$
 
 % Virus, Virus, Viren, Viren; Epos, Epos, Epen, Epen
-$NNeut_0_us/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_0$ | \
-                    {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_0_us/en_0$ = $NNeut_0_a/en_0$
 
 % Genus, Genus, Genera, Genera
 $NNeut_0_us/era_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_0$ | \
@@ -608,32 +593,26 @@ $NNeut_s_en/ina_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_s$ | \
                      {<+NN><Neut>}:{<del(VC)|Pl>in<SB>a} $NDatPlSuff_0$
 
 % Taxi, Taxis, Taxen, Taxen
-$NNeut_s_i/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_s$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_s_i/en_0$ = $NNeut_s_a/en_0$
 
 % Konto, Kontos, Konten, Konten
-$NNeut_s_o/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_s$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_s_o/en_0$ = $NNeut_s_a/en_0$
 
 % Intermezzo, Intermezzos, Intermezzi, Intermezzi
-$NNeut_s_o/i_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_s$ | \
-                  {<+NN><Neut>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NNeut_s_o/i_0$ = $NNeut_s_e/i_0$
 
 % Oxymoron, Oxymorons, Oxymora, Oxymora
 $NNeut_s_on/a_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_s$ | \
                    {<+NN><Neut>}:{<del(VC)|Pl><SB>a} $NDatPlSuff_0$
 
 % Stadion, Stadions, Stadien, Stadien
-$NNeut_s_on/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_s$ | \
-                    {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_s_on/en_0$ = $NNeut_s_a/en_0$
 
 % Aktivum, Aktivums, Aktiva, Aktiva
-$NNeut_s_um/a_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_s$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>a} $NDatPlSuff_0$
+$NNeut_s_um/a_0$ = $NNeut_s_on/a_0$
 
 % Museum, Museums, Museen, Museen
-$NNeut_s_um/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_s$ | \
-                    {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_s_um/en_0$ = $NNeut_s_a/en_0$
 
 % Herz, Herzens, Herzen, Herzen
 $NNeut_ens_en_0$ = {<+NN><Neut>}:{}       $NGenSgSuff_ens$ | \
@@ -769,8 +748,7 @@ $NFem_0_ex/eges_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
                      {<+NN><Fem>}:{<del(VC)|Pl>eg<SB>es} $NDatPlSuff_0$
 
 % Basis, Basis, Basen, Basen
-$NFem_0_is/en_0$ = {<+NN><Fem>}:{}                   $NGenSgSuff_0$ | \
-                   {<+NN><Fem>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NFem_0_is/en_0$ = $NFem_0_a/en_0$
 
 % Apsis, Apsis, Apsiden, Apsiden
 $NFem_0_is/iden_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
