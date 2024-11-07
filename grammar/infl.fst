@@ -716,12 +716,12 @@ $NFem_0_s_0$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
                {<+NN><Fem>}:{<SB>s} $NDatPlSuff_0$
 
 % Vigil, Vigil, Vigilien, Vigilien
-$NFem_0_ien_0$ = {<+NN><Fem>}:{}            $NGenSgSuff_0$ | \
-                 {<+NN><Fem>}:{<SB>i<SB>en} $NDatPlSuff_0$
+$NFem_0_ien_0$ = {<+NN><Fem>}:{}        $NGenSgSuff_0$ | \
+                 {<+NN><Fem>}:{i<SB>en} $NDatPlSuff_0$
 
 % Laudatio, Laudatio, Laudationes, Laudationes
-$NFem_0_nes_0$ = {<+NN><Fem>}:{}            $NGenSgSuff_0$ | \
-                 {<+NN><Fem>}:{<SB>n<SB>es} $NDatPlSuff_0$
+$NFem_0_nes_0$ = {<+NN><Fem>}:{}        $NGenSgSuff_0$ | \
+                 {<+NN><Fem>}:{n<SB>es} $NDatPlSuff_0$
 
 % Pizza, Pizza, Pizze, Pizze
 $NFem_0_a/e_0$ = {<+NN><Fem>}:{}                  $NGenSgSuff_0$ | \
