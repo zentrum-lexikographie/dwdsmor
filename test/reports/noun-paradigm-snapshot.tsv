@@ -47,6 +47,22 @@ Apfel			NN Masc	Nom Pl	Äpfel
 Apfel			NN Masc	Acc Pl	Äpfel
 Apfel			NN Masc	Dat Pl	Äpfeln
 Apfel			NN Masc	Gen Pl	Äpfel
+Appendix		1	NN Masc	Nom Sg	Appendix
+Appendix		1	NN Masc	Acc Sg	Appendix
+Appendix		1	NN Masc	Dat Sg	Appendix, Appendixe (va.)
+Appendix		1	NN Masc	Gen Sg	Appendix, Appendixes
+Appendix		1	NN Masc	Nom Pl	Appendixe, Appendizes
+Appendix		1	NN Masc	Acc Pl	Appendixe, Appendizes
+Appendix		1	NN Masc	Dat Pl	Appendixen, Appendizes
+Appendix		1	NN Masc	Gen Pl	Appendixe, Appendizes
+Appendix		2	NN Fem	Nom Sg	Appendix
+Appendix		2	NN Fem	Acc Sg	Appendix
+Appendix		2	NN Fem	Dat Sg	Appendix
+Appendix		2	NN Fem	Gen Sg	Appendix
+Appendix		2	NN Fem	Nom Pl	Appendices, Appendizes
+Appendix		2	NN Fem	Acc Pl	Appendices, Appendizes
+Appendix		2	NN Fem	Dat Pl	Appendices, Appendizes
+Appendix		2	NN Fem	Gen Pl	Appendices, Appendizes
 Apsis			NN Fem	Nom Sg	Apsis
 Apsis			NN Fem	Acc Sg	Apsis
 Apsis			NN Fem	Dat Sg	Apsis
@@ -299,6 +315,14 @@ Engel			NN Masc	Nom Pl	Engel
 Engel			NN Masc	Acc Pl	Engel
 Engel			NN Masc	Dat Pl	Engeln
 Engel			NN Masc	Gen Pl	Engel
+Epos			NN Neut	Nom Sg	Epos
+Epos			NN Neut	Acc Sg	Epos
+Epos			NN Neut	Dat Sg	Epos
+Epos			NN Neut	Gen Sg	Epos
+Epos			NN Neut	Nom Pl	Epen
+Epos			NN Neut	Acc Pl	Epen
+Epos			NN Neut	Dat Pl	Epen
+Epos			NN Neut	Gen Pl	Epen
 Espresso	1		NN Masc	Nom Sg	Espresso
 Espresso	1		NN Masc	Acc Sg	Espresso
 Espresso	1		NN Masc	Dat Sg	Espresso
@@ -775,6 +799,14 @@ Muskel			NN Masc	Nom Pl	Muskeln
 Muskel			NN Masc	Acc Pl	Muskeln
 Muskel			NN Masc	Dat Pl	Muskeln
 Muskel			NN Masc	Gen Pl	Muskeln
+Mythos			NN Masc	Nom Sg	Mythos
+Mythos			NN Masc	Acc Sg	Mythos
+Mythos			NN Masc	Dat Sg	Mythos
+Mythos			NN Masc	Gen Sg	Mythos
+Mythos			NN Masc	Nom Pl	Mythen
+Mythos			NN Masc	Acc Pl	Mythen
+Mythos			NN Masc	Dat Pl	Mythen
+Mythos			NN Masc	Gen Pl	Mythen
 Nichts			NN Neut	Nom Sg	Nichts
 Nichts			NN Neut	Acc Sg	Nichts
 Nichts			NN Neut	Dat Sg	Nichts
@@ -1003,6 +1035,14 @@ Signor			NN Masc	Nom Pl	Signori
 Signor			NN Masc	Acc Pl	Signori
 Signor			NN Masc	Dat Pl	Signori
 Signor			NN Masc	Gen Pl	Signori
+Simplex			NN Neut	Nom Sg	Simplex
+Simplex			NN Neut	Acc Sg	Simplex
+Simplex			NN Neut	Dat Sg	Simplex, Simplexe (va.)
+Simplex			NN Neut	Gen Sg	Simplex, Simplexes
+Simplex			NN Neut	Nom Pl	Simplexe, Simplizia
+Simplex			NN Neut	Acc Pl	Simplexe, Simplizia
+Simplex			NN Neut	Dat Pl	Simplexen, Simplizia
+Simplex			NN Neut	Gen Pl	Simplexe, Simplizia
 Ski			NN Masc	Nom Sg	Ski
 Ski			NN Masc	Acc Sg	Ski
 Ski			NN Masc	Dat Sg	Ski
@@ -1019,6 +1059,14 @@ Sofa			NN Neut	Nom Pl	Sofas
 Sofa			NN Neut	Acc Pl	Sofas
 Sofa			NN Neut	Dat Pl	Sofas
 Sofa			NN Neut	Gen Pl	Sofas
+Spezies			NN Fem	Nom Sg	Spezies
+Spezies			NN Fem	Acc Sg	Spezies
+Spezies			NN Fem	Dat Sg	Spezies
+Spezies			NN Fem	Gen Sg	Spezies
+Spezies			NN Fem	Nom Pl	Spezien, Spezies
+Spezies			NN Fem	Acc Pl	Spezien, Spezies
+Spezies			NN Fem	Dat Pl	Spezien, Spezies
+Spezies			NN Fem	Gen Pl	Spezien, Spezies
 Spiel			NN Neut	Nom Sg	Spiel
 Spiel			NN Neut	Acc Sg	Spiel
 Spiel			NN Neut	Dat Sg	Spiel, Spiele (va.)

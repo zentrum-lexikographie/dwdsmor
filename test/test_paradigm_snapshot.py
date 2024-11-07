@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-11-01
+# Andreas Nolda 2024-11-07
 
 import io
 import csv
@@ -138,6 +138,7 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Dezember",       # NMasc_0_0_n, NMasc_s_0_n
                "Januar",         # NMasc_0_e_n, NMasc_s_e_n
                "Index",          # NMasc_0_e_n, NMasc_0_ex/izes_0, NMasc_es_e_n, NMasc_es_ex/izes_0
+               "Appendix",       # NMasc_0_e_n, NMasc_0_ix/izes_0, NMasc_es_e_n, NMasc_es_ix/izes_0, NFem_0_ix/izes_0 ...
                "Obelisk",        # NMasc_0_e_n, NMasc_0_en_0, NMasc_s_e_n, NMasc_s_en_0, NMasc_en_en_0
                "Sandwich",       # NMasc_0_e_n, NMasc_0_es_0, NMasc_0_s_0, NMasc_es_e_n, NMasc_es_es_0, NMasc_es_s_0, NNeut_0_e_n ...
                "Zirkus",         # NMasc_0_e_n~ss
@@ -153,6 +154,7 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Präses",         # NMasc_0_es/iden_0, NMasc_0_es/ides_0
                "Taxi",           # NMasc_0_i/en_0, NMasc_s_i/en_0, NMasc_0_s_0, NMasc_s_s_0, NNeut_0_i/en_0 ...
                "Espresso",       # NMasc_0_o/i_0, NMasc_0_s_0, NMasc_s_o/i_0, NMasc_s_s_0, NNeut_0_s_0 ...
+               "Mythos",         # NMasc_0_os/en_0
                "Heros",          # NMasc_0_os/oen_0
                "Kustos",         # NMasc_0_os/oden_0
                "Topos",          # NMasc_0_os/oi_0
@@ -202,12 +204,14 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Remis",          # NNeut_0_0_0, NNeut_0_en_0
                "Zuhause",        # NNeut_0_0_n
                "Nichts",         # NNeut_0_e_n
+               "Simplex",        # NNeut_0_e_n, NNeut_0_ex/izia_0, NNeut_es_e_n, NNeut_es_ex/izia_0
                "Foyer",          # NNeut_0_s_0
                "Determinans",    # NNeut_0_ans/antien_0
                "Stimulans",      # NNeut_0_ans/anzien_0
                "Ricercare",      # NNeut_0_e/i_0, NNeut_s_e/i_0
                "Akzidens",       # NNeut_0_ens/entia_0, NNeut_0_ens/entien_0, NNeut_0_ens/enzien_0
                "Intermezzo",     # NNeut_0_o/i_0, NNeut_0_s_0, NNeut_s_o/i_0, NNeut_s_s_0
+               "Epos",           # NNeut_0_os/en_0
                "Genus",          # NNeut_0_us/era_0
                "Tempus",         # NNeut_0_us/ora_0
                "Spiel",          # NNeut_es_e_n
@@ -240,6 +244,7 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Ruhe",           # NFem|Sg_0
                "Anchorwoman",    # NFem|Sg_0, NFem|Pl_0
                "Jeans",          # NFem_0_0_0
+               "Spezies",        # NFem_0_0_0, NFem_0_es/en_0
                "Tochter",        # NFem_0_$_n
                "Milch",          # NFem_0_e_n, NFem_0_en_0
                "Kenntnis",       # NFem_0_e_n~ss
