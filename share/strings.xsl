@@ -6,8 +6,7 @@
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:n="http://andreas.nolda.org/ns/lib"
-                exclude-result-prefixes="xs">
+                xmlns:n="http://andreas.nolda.org/ns/lib">
 
 <!-- return true if $pronunciations have a final schwa-syllable -->
 <xsl:function name="n:has-final-schwa-syllable" as="xs:boolean">
