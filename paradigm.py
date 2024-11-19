@@ -150,8 +150,36 @@ Lemmaspec = namedtuple("Lemmaspec", ["lemma_index", "paradigm_index", "seg_lemma
 
 
 def filter_categorisations(categorisations, pos):
-    # Masc, Neut, Fem, and UnmGend
-    if pos in ["ADJ", "ART", "CARD", "DEM", "INDEF", "ORD", "POSS", "REL", "WPRO"]:
+    if pos in ["ADJ", "ART", "CARD", "DEM", "FRAC", "INDEF", "NN",
+               "NPROP", "ORD", "POSS", "PPRO", "REL", "WPRO"]:
+        # Nom, Acc, Dat, and Gen do not co-occur with UnmNum.
+        categorisations = filterfalse(lambda cat: "Nom" in cat and "UnmNum" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Acc" in cat and "UnmNum" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Dat" in cat and "UnmNum" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Gen" in cat and "UnmNum" in cat,
+                                      categorisations)
+        # Nom, Acc, Dat, and Gen do not co-occur with UnmFunc.
+        categorisations = filterfalse(lambda cat: "Nom" in cat and "UnmFunc" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Acc" in cat and "UnmFunc" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Dat" in cat and "UnmFunc" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Gen" in cat and "UnmFunc" in cat,
+                                      categorisations)
+        # Sg and Pl do not co-occur with UnmFunc.
+        categorisations = filterfalse(lambda cat: "Sg" in cat and "UnmFunc" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Pl" in cat and "UnmFunc" in cat,
+                                      categorisations)
+    if pos in ["ADJ", "ART", "CARD", "DEM", "FRAC", "INDEF", "NN",
+               "ORD", "POSS", "REL", "WPRO"]:
+        # UnmGend does not co-occur with Sg.
+        categorisations = filterfalse(lambda cat: "UnmGend" in cat and "Sg" in cat,
+                                      categorisations)
         # Masc, Neut, and Fem do not co-occur with Pl.
         categorisations = filterfalse(lambda cat: "Masc" in cat and "Pl" in cat,
                                       categorisations)
@@ -159,10 +187,59 @@ def filter_categorisations(categorisations, pos):
                                       categorisations)
         categorisations = filterfalse(lambda cat: "Fem" in cat and "Pl" in cat,
                                       categorisations)
-        # UnmGend does not co-occur with Sg.
-        categorisations = filterfalse(lambda cat: "UnmGend" in cat and "Sg" in cat,
+        # Masc, Neut, and Fem do not co-occur with UnmCase.
+        categorisations = filterfalse(lambda cat: "Masc" in cat and "UnmCase" in cat,
                                       categorisations)
-    # Attr, Subst, and Pred/Adv
+        categorisations = filterfalse(lambda cat: "Neut" in cat and "UnmCase" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Fem" in cat and "UnmCase" in cat,
+                                      categorisations)
+        # Masc, Neut, and Fem do not co-occur with UnmNum.
+        categorisations = filterfalse(lambda cat: "Masc" in cat and "UnmNum" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Neut" in cat and "UnmNum" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Fem" in cat and "UnmNum" in cat,
+                                      categorisations)
+        # Masc, Neut, and Fem do not co-occur with UnmFunc.
+        categorisations = filterfalse(lambda cat: "Masc" in cat and "UnmFunc" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Neut" in cat and "UnmFunc" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Fem" in cat and "UnmFunc" in cat,
+                                      categorisations)
+        # Dat and Gen do not co-occur with UnmInfl.
+        categorisations = filterfalse(lambda cat: "Dat" in cat and "UnmInfl" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Gen" in cat and "UnmInfl" in cat,
+                                      categorisations)
+        # St and Wk do not co-occur with UnmCase.
+        categorisations = filterfalse(lambda cat: "St" in cat and "UnmCase" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Wk" in cat and "UnmCase" in cat,
+                                      categorisations)
+        # St and Wk do not co-occur with UnmNum.
+        categorisations = filterfalse(lambda cat: "St" in cat and "UnmNum" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Wk" in cat and "UnmNum" in cat,
+                                      categorisations)
+        # St and Wk do not co-occur with UnmFunc.
+        categorisations = filterfalse(lambda cat: "St" in cat and "UnmFunc" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Wk" in cat and "UnmFunc" in cat,
+                                      categorisations)
+    if pos in ["ADJ", "DEM", "NN", "ORD", "REL", "WPRO"]:
+        # Sg and Pl do not co-occur with UnmInfl.
+        categorisations = filterfalse(lambda cat: "Sg" in cat and "UnmInfl" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Pl" in cat and "UnmInfl" in cat,
+                                      categorisations)
+    if pos in ["ART", "CARD", "DEM", "INDEF", "POSS", "REL", "WPRO"]:
+        # There are no categories Attr/Subst or Pred/Adv.
+        categorisations = filterfalse(lambda cat: "Attr/Subst" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Pred/Adv" in cat,
+                                      categorisations)
     if pos in ["ADJ", "ORD"]:
         # There is no category Subst.
         categorisations = filterfalse(lambda cat: "Subst" in cat,
@@ -170,12 +247,11 @@ def filter_categorisations(categorisations, pos):
         # Pred/Adv does not co-occur with any category.
         categorisations = filterfalse(lambda cat: "Pred/Adv" in cat and len(cat) > 1,
                                       categorisations)
-    # Attr/Subst and Pred/Adv
-    if pos in ["ART", "CARD", "DEM", "INDEF", "POSS", "REL", "WPRO"]:
-        # There are no categories Attr/Subst or Pred/Adv.
-        categorisations = filterfalse(lambda cat: "Attr/Subst" in cat,
+    if pos in ["V"]:
+        # Ind and Subj do not co-occur with UnmNum.
+        categorisations = filterfalse(lambda cat: "Ind" in cat and "UnmNum" in cat,
                                       categorisations)
-        categorisations = filterfalse(lambda cat: "Pred/Adv" in cat,
+        categorisations = filterfalse(lambda cat: "Subj" in cat and "UnmNum" in cat,
                                       categorisations)
     return categorisations
 
