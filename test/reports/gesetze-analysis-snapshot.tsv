@@ -1,6 +1,6 @@
 Wordform	Lemma	POS	Subcategory	Auxiliary	Degree	Person	Gender	Case	Number	Inflection	Function	Nonfinite	Mood	Tense	Metalinguistic	Orthography	Ellipsis	Characters
 (	(	PUNCT	Paren															
-1	1	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+1	1	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 )	)	PUNCT	Paren															
 Für	für	ADV																CAP
 Für	für	PREP																CAP
@@ -120,7 +120,7 @@ erhoben	erheben	V		haben							Part			Perf
 erhoben	erhoben	ADJ			Pos							Pred/Adv						
 .	.	PUNCT	Period															
 (	(	PUNCT	Paren															
-2	2	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+2	2	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 )	)	PUNCT	Paren															
 Die	die	ART	Def				Fem	Nom	Sg	St		Attr						CAP
 Die	die	ART	Def				Fem	Acc	Sg	St		Attr						CAP
@@ -293,12 +293,12 @@ des	die	ART	Def				Masc	Gen	Sg	St		Attr
 des	die	ART	Def				Neut	Gen	Sg	St		Attr						
 des	die	DEM					Masc	Gen	Sg	St		Attr						
 des	die	DEM					Neut	Gen	Sg	St		Attr						
-§	§	NN				Invar	Masc	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
-12	12	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+§	§	NN					Masc	UnmCase	UnmNum									
+12	12	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 Absatz	Absatz	NN					Masc	Nom	Sg									
 Absatz	Absatz	NN					Masc	Dat	Sg									
 Absatz	Absatz	NN					Masc	Acc	Sg									
-1	1	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+1	1	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 des	des	NN					Neut	Nom	Sg									
 des	des	NN					Neut	Nom	Pl									
 des	des	NN					Neut	Gen	Sg									
@@ -457,10 +457,10 @@ des	die	ART	Def				Masc	Gen	Sg	St		Attr
 des	die	ART	Def				Neut	Gen	Sg	St		Attr						
 des	die	DEM					Masc	Gen	Sg	St		Attr						
 des	die	DEM					Neut	Gen	Sg	St		Attr						
-§	§	NN				Invar	Masc	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
-2	2	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
-Abs.	abs.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
-1	1	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+§	§	NN					Masc	UnmCase	UnmNum									
+2	2	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
+Abs.	abs.	V							UnmNum				Imp					CAP
+1	1	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 des	des	NN					Neut	Nom	Sg									
 des	des	NN					Neut	Nom	Pl									
 des	des	NN					Neut	Gen	Sg									
@@ -476,12 +476,12 @@ des	die	DEM					Neut	Gen	Sg	St		Attr
 Straßenverkehrsunfallstatistikgesetzes	Straßenverkehrsunfallstatistikgesetz	NN					Neut	Gen	Sg									
 vom	von	PREPART					Masc	Dat	Sg									
 vom	von	PREPART					Neut	Dat	Sg									
-15.	15.	ORD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+15.	15.	ORD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 Juni	Juni	NN					Masc	Nom	Sg									
 Juni	Juni	NN					Masc	Gen	Sg									
 Juni	Juni	NN					Masc	Dat	Sg									
 Juni	Juni	NN					Masc	Acc	Sg									
-1990	1990	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+1990	1990	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 ,	,	PUNCT	Comma															
 das	die	ART	Def				Neut	Nom	Sg	St		Attr						
 das	die	ART	Def				Neut	Acc	Sg	St		Attr						
@@ -501,7 +501,7 @@ Artikel	Artikel	NN					Masc	Gen	Pl
 Artikel	Artikel	NN					Masc	Dat	Sg									
 Artikel	Artikel	NN					Masc	Acc	Sg									
 Artikel	Artikel	NN					Masc	Acc	Pl									
-1	1	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+1	1	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 des	des	NN					Neut	Nom	Sg									
 des	des	NN					Neut	Nom	Pl									
 des	des	NN					Neut	Gen	Sg									
@@ -517,7 +517,7 @@ des	die	DEM					Neut	Gen	Sg	St		Attr
 Gesetzes	Gesetz	NN					Neut	Gen	Sg									
 vom	von	PREPART					Masc	Dat	Sg									
 vom	von	PREPART					Neut	Dat	Sg									
-23.	23.	ORD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+23.	23.	ORD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 November	November	NN					Masc	Nom	Sg									
 November	November	NN					Masc	Nom	Pl									
 November	November	NN					Masc	Gen	Sg									
@@ -525,10 +525,10 @@ November	November	NN					Masc	Gen	Pl
 November	November	NN					Masc	Dat	Sg									
 November	November	NN					Masc	Acc	Sg									
 November	November	NN					Masc	Acc	Pl									
-1994	1994	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+1994	1994	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 (	(	PUNCT	Paren															
-BGBl.	BGBl.	NN				Invar	Neut	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
-I	I	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+BGBl.	BGBl.	NN					Neut	UnmCase	UnmNum									
+I	I	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 I	I	NN					Neut	Nom	Sg									
 I	I	NN					Neut	Nom	Pl									
 I	I	NN					Neut	Gen	Sg									
@@ -546,9 +546,9 @@ I	i	NN					Neut	Dat	Pl									CAP
 I	i	NN					Neut	Acc	Sg									CAP
 I	i	NN					Neut	Acc	Pl									CAP
 I	i	INTJ																CAP
-S.	S.	NN				Invar	Fem	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
-S.	s.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
-3491	3491	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+S.	S.	NN					Fem	UnmCase	UnmNum									
+S.	s.	V							UnmNum				Imp					CAP
+3491	3491	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 )	)	PUNCT	Paren															
 geändert	ändern	V		haben							Part			Perf				
 geändert	geändert	ADJ			Pos							Pred/Adv						
@@ -625,7 +625,7 @@ des	die	ART	Def				Neut	Gen	Sg	St		Attr
 des	die	DEM					Masc	Gen	Sg	St		Attr						
 des	die	DEM					Neut	Gen	Sg	St		Attr						
 Polizeidienstes	Polizeidienst	NN					Masc	Gen	Sg									
-1.	1.	ORD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+1.	1.	ORD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 als	als	CONJ	Coord															
 als	als	CONJ	Sub															
 als	als	CONJ	AdjComp															
@@ -700,15 +700,15 @@ Bußgeldkatalog-Verordnung	Bußgeldkatalog-Verordnung	NN					Fem	Dat	Sg
 Bußgeldkatalog-Verordnung	Bußgeldkatalog-Verordnung	NN					Fem	Acc	Sg									
 vom	von	PREPART					Masc	Dat	Sg									
 vom	von	PREPART					Neut	Dat	Sg									
-4.	4.	ORD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+4.	4.	ORD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 Juli	Juli	NN					Masc	Nom	Sg									
 Juli	Juli	NN					Masc	Gen	Sg									
 Juli	Juli	NN					Masc	Dat	Sg									
 Juli	Juli	NN					Masc	Acc	Sg									
-1989	1989	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+1989	1989	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 (	(	PUNCT	Paren															
-BGBl.	BGBl.	NN				Invar	Neut	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
-I	I	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+BGBl.	BGBl.	NN					Neut	UnmCase	UnmNum									
+I	I	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 I	I	NN					Neut	Nom	Sg									
 I	I	NN					Neut	Nom	Pl									
 I	I	NN					Neut	Gen	Sg									
@@ -726,9 +726,9 @@ I	i	NN					Neut	Dat	Pl									CAP
 I	i	NN					Neut	Acc	Sg									CAP
 I	i	NN					Neut	Acc	Pl									CAP
 I	i	INTJ																CAP
-S.	S.	NN				Invar	Fem	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
-S.	s.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
-1305	1305	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+S.	S.	NN					Fem	UnmCase	UnmNum									
+S.	s.	V							UnmNum				Imp					CAP
+1305	1305	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 )	)	PUNCT	Paren															
 ,	,	PUNCT	Comma															
 zuletzt	zuletzt	ADV																
@@ -745,7 +745,7 @@ Verordnung	Verordnung	NN					Fem	Dat	Sg
 Verordnung	Verordnung	NN					Fem	Acc	Sg									
 vom	von	PREPART					Masc	Dat	Sg									
 vom	von	PREPART					Neut	Dat	Sg									
-4.	4.	ORD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+4.	4.	ORD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 Dezember	Dezember	NN					Masc	Nom	Sg									
 Dezember	Dezember	NN					Masc	Nom	Pl									
 Dezember	Dezember	NN					Masc	Gen	Sg									
@@ -753,10 +753,10 @@ Dezember	Dezember	NN					Masc	Gen	Pl
 Dezember	Dezember	NN					Masc	Dat	Sg									
 Dezember	Dezember	NN					Masc	Acc	Sg									
 Dezember	Dezember	NN					Masc	Acc	Pl									
-1993	1993	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+1993	1993	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 (	(	PUNCT	Paren															
-BGBl.	BGBl.	NN				Invar	Neut	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
-I	I	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+BGBl.	BGBl.	NN					Neut	UnmCase	UnmNum									
+I	I	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 I	I	NN					Neut	Nom	Sg									
 I	I	NN					Neut	Nom	Pl									
 I	I	NN					Neut	Gen	Sg									
@@ -774,9 +774,9 @@ I	i	NN					Neut	Dat	Pl									CAP
 I	i	NN					Neut	Acc	Sg									CAP
 I	i	NN					Neut	Acc	Pl									CAP
 I	i	INTJ																CAP
-S.	S.	NN				Invar	Fem	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
-S.	s.	V				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Imp	Invar				CAP
-2043	2043	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+S.	S.	NN					Fem	UnmCase	UnmNum									
+S.	s.	V							UnmNum				Imp					CAP
+2043	2043	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 )	)	PUNCT	Paren															
 ,	,	PUNCT	Comma															
 in	in	ADJ			Pos							Pred/Adv						
@@ -955,7 +955,7 @@ ist	sein	V				3			Sg				Ind	Pres
 anzunehmen	annehmen	V									Inf	Cl						
 ist	sein	V				3			Sg				Ind	Pres				
 und	und	CONJ	Coord															
-2.	2.	ORD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+2.	2.	ORD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 mindestens	mindestens	ADV																
 ein	einen	V				1			Sg				Ind	Pres	NonSt			
 ein	einen	V							Sg				Imp					
@@ -1176,12 +1176,12 @@ tritt	treten	V							Sg				Imp
 am	am	PTCL	AdjSup															
 am	an	PREPART					Masc	Dat	Sg									
 am	an	PREPART					Neut	Dat	Sg									
-1.	1.	ORD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+1.	1.	ORD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 Januar	Januar	NN					Masc	Nom	Sg									
 Januar	Januar	NN					Masc	Gen	Sg									
 Januar	Januar	NN					Masc	Dat	Sg									
 Januar	Januar	NN					Masc	Acc	Sg									
-1995	1995	CARD				Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar	Invar				
+1995	1995	CARD					UnmGend	UnmCase	UnmNum	UnmInfl		UnmFunc						
 in	in	ADJ			Pos							Pred/Adv						
 in	in	PREP																
 Kraft	Kraft	NN					Fem	Nom	Sg									

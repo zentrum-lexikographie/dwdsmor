@@ -1,5 +1,5 @@
 Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
-Berliner	2		ADJ	Pos Invar Attr/Subst	Berliner
+Berliner	2		ADJ	Pos UnmGend UnmCase UnmNum UnmInfl Attr/Subst	Berliner
 bitter			ADJ	Pos Pred/Adv	bitter
 bitter			ADJ	Comp Pred/Adv	bitterer, bittrer
 bitter			ADJ	Sup Pred/Adv	am bittersten
@@ -925,7 +925,7 @@ kalt			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	kältesten
 kalt			ADJ	Sup NoGend Gen Pl St Attr/Subst	kältester
 kalt			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	kältesten
 klasse			ADJ	Pos Pred/Adv	klasse
-klasse			ADJ	Pos Invar Attr	klasse
+klasse			ADJ	Pos UnmGend UnmCase UnmNum UnmInfl Attr	klasse
 leise			ADJ	Pos Pred/Adv	leise
 leise			ADJ	Comp Pred/Adv	leiser
 leise			ADJ	Sup Pred/Adv	am leisesten
@@ -1026,7 +1026,7 @@ leise			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	leisesten
 leise			ADJ	Sup NoGend Gen Pl St Attr/Subst	leisester
 leise			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	leisesten
 lila			ADJ	Pos Pred/Adv	lila
-lila			ADJ	Pos Invar Attr	lila
+lila			ADJ	Pos NoGend UnmCase UnmNum UnmInfl Attr	lila
 neu			ADJ	Pos Pred/Adv	neu
 neu			ADJ	Comp Pred/Adv	neuer
 neu			ADJ	Sup Pred/Adv	am neuesten, am neusten
@@ -1230,7 +1230,6 @@ trocken			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	trockensten
 viel			ADJ	Pos Pred/Adv	viel
 viel			ADJ	Comp Pred/Adv	mehr
 viel			ADJ	Sup Pred/Adv	am meisten
-viel			ADJ	Pos Invar Attr/Subst	viel
 viel			ADJ	Pos Masc Nom Sg St Attr/Subst	vieler
 viel			ADJ	Pos Masc Nom Sg Wk Attr/Subst	viele
 viel			ADJ	Pos Masc Acc Sg St Attr/Subst	vielen
@@ -1263,7 +1262,8 @@ viel			ADJ	Pos NoGend Dat Pl St Attr/Subst	vielen
 viel			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	vielen
 viel			ADJ	Pos NoGend Gen Pl St Attr/Subst	vieler
 viel			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	vielen
-viel			ADJ	Comp Invar Attr/Subst	mehr
+viel			ADJ	Pos UnmGend UnmCase UnmNum UnmInfl Attr/Subst	viel
+viel			ADJ	Comp UnmGend UnmCase UnmNum UnmInfl Attr/Subst	mehr
 viel			ADJ	Sup Masc Nom Sg St Attr/Subst	meister
 viel			ADJ	Sup Masc Nom Sg Wk Attr/Subst	meiste
 viel			ADJ	Sup Masc Acc Sg St Attr/Subst	meisten

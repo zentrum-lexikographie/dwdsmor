@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 11.2
-% Andreas Nolda 2024-11-01
+% Version 12.0
+% Andreas Nolda 2024-11-19
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -96,15 +96,15 @@
 
 #person# = <1><2><3>
 
-#gender# = <Masc><Fem><Neut><NoGend>
+#gender# = <Masc><Fem><Neut><NoGend><UnmGend>
 
-#case# = <Nom><Gen><Dat><Acc>
+#case# = <Nom><Gen><Dat><Acc><UnmCase>
 
-#number# = <Sg><Pl>
+#number# = <Sg><Pl><UnmNum>
 
-#infl# = <St><Wk><NoInfl><Invar>
+#infl# = <St><Wk><NoInfl><UnmInfl>
 
-#function# = <Attr><Subst><Attr/Subst><Pred/Adv><Cl><NonCl>
+#function# = <Attr><Subst><Attr/Subst><Pred/Adv><Cl><NonCl><UnmFunc>
 
 #nonfinite# = <Inf><Part>
 

@@ -3,7 +3,6 @@ was	1		WPRO Neut	Nom Sg	was
 was	1		WPRO Neut	Acc Sg	was
 was	1		WPRO Neut	Dat Sg	was (ugs.)
 was	1		WPRO Neut	Gen Sg	wessen, wes (va.)
-welche	1	2	WPRO	Invar Attr	welch
 welche	1	2	WPRO	Masc Nom Sg St Attr	welcher
 welche	1	2	WPRO	Masc Nom Sg St Subst	welcher
 welche	1	2	WPRO	Masc Acc Sg St Attr	welchen
@@ -36,6 +35,7 @@ welche	1	2	WPRO	NoGend Dat Pl St Attr	welchen
 welche	1	2	WPRO	NoGend Dat Pl St Subst	welchen
 welche	1	2	WPRO	NoGend Gen Pl St Attr	welcher
 welche	1	2	WPRO	NoGend Gen Pl St Subst	welcher
+welche	1	2	WPRO	UnmGend UnmCase UnmNum UnmInfl Attr	welch
 wer	1		WPRO Masc	Nom Sg	wer
 wer	1		WPRO Masc	Acc Sg	wen
 wer	1		WPRO Masc	Dat Sg	wem

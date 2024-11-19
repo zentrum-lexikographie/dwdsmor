@@ -1,5 +1,4 @@
 Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
-alle	2	2	INDEF	Invar Attr	all
 alle	2	2	INDEF	Masc Nom Sg St Attr	aller
 alle	2	2	INDEF	Masc Nom Sg St Subst	aller
 alle	2	2	INDEF	Masc Acc Sg St Attr	allen
@@ -34,6 +33,7 @@ alle	2	2	INDEF	NoGend Dat Pl St Attr	allen
 alle	2	2	INDEF	NoGend Dat Pl St Subst	allen
 alle	2	2	INDEF	NoGend Gen Pl St Attr	aller
 alle	2	2	INDEF	NoGend Gen Pl St Subst	aller
+alle	2	2	INDEF	UnmGend UnmCase UnmNum UnmInfl Attr	all
 beide			INDEF	Neut Nom Sg St Subst	beides
 beide			INDEF	Neut Nom Sg Wk Subst	beide
 beide			INDEF	Neut Acc Sg St Subst	beides
@@ -114,10 +114,10 @@ einige		2	INDEF	NoGend Dat Pl St Attr	einigen
 einige		2	INDEF	NoGend Dat Pl St Subst	einigen
 einige		2	INDEF	NoGend Gen Pl St Attr	einiger
 einige		2	INDEF	NoGend Gen Pl St Subst	einiger
-etwas			INDEF Neut	Invar	etwas
+etwas			INDEF Neut	UnmCase UnmNum	etwas
 frau			INDEF Fem	Nom Sg	frau
-genug			INDEF	Invar Attr	genug
-genug			INDEF	Invar Subst	genug
+genug			INDEF	UnmGend UnmCase UnmNum UnmInfl Attr	genug
+genug			INDEF	UnmGend UnmCase UnmNum UnmInfl Subst	genug
 irgendeine		2	INDEF	Masc Nom Sg NoInfl Attr	irgendein
 irgendeine		2	INDEF	Masc Nom Sg St Subst	irgendeiner
 irgendeine		2	INDEF	Masc Acc Sg St Attr	irgendeinen
@@ -307,7 +307,6 @@ keine		2	INDEF	NoGend Acc Pl St Subst	keine
 keine		2	INDEF	NoGend Dat Pl St Subst	keinen
 keine		2	INDEF	NoGend Gen Pl St Subst	keiner
 man	1		INDEF Masc	Nom Sg	man
-manche			INDEF	Invar Attr	manch
 manche			INDEF	Masc Nom Sg St Attr	mancher
 manche			INDEF	Masc Nom Sg St Subst	mancher
 manche			INDEF	Masc Acc Sg St Attr	manchen
@@ -340,6 +339,7 @@ manche			INDEF	NoGend Dat Pl St Attr	manchen
 manche			INDEF	NoGend Dat Pl St Subst	manchen
 manche			INDEF	NoGend Gen Pl St Attr	mancher
 manche			INDEF	NoGend Gen Pl St Subst	mancher
+manche			INDEF	UnmGend UnmCase UnmNum UnmInfl Attr	manch
 mehrere			INDEF	Neut Nom Sg St Attr	mehreres
 mehrere			INDEF	Neut Nom Sg St Subst	mehreres
 mehrere			INDEF	Neut Acc Sg St Attr	mehreres
@@ -352,7 +352,6 @@ mehrere			INDEF	NoGend Dat Pl St Attr	mehreren
 mehrere			INDEF	NoGend Dat Pl St Subst	mehreren
 mehrere			INDEF	NoGend Gen Pl St Attr	mehrerer
 mehrere			INDEF	NoGend Gen Pl St Subst	mehrerer
-sämtliche		2	INDEF	Invar Subst	sämtlich
 sämtliche		2	INDEF	Masc Nom Sg St Attr	sämtlicher
 sämtliche		2	INDEF	Masc Nom Sg St Subst	sämtlicher
 sämtliche		2	INDEF	Masc Nom Sg Wk Attr	sämtliche
@@ -417,10 +416,11 @@ sämtliche		2	INDEF	NoGend Gen Pl St Attr	sämtlicher
 sämtliche		2	INDEF	NoGend Gen Pl St Subst	sämtlicher
 sämtliche		2	INDEF	NoGend Gen Pl Wk Attr	sämtlichen
 sämtliche		2	INDEF	NoGend Gen Pl Wk Subst	sämtlichen
+sämtliche		2	INDEF	UnmGend UnmCase UnmNum UnmInfl Subst	sämtlich
 unsereiner			INDEF Masc	Nom Sg	unsereiner
 unsereiner			INDEF Masc	Acc Sg	unsereinen
 unsereiner			INDEF Masc	Dat Sg	unsereinem
-unsereins			INDEF Masc	Invar	unsereins
+unsereins			INDEF Masc	UnmCase UnmNum	unsereins
 was	2		INDEF Neut	Nom Sg	was
 was	2		INDEF Neut	Acc Sg	was
 was	2		INDEF Neut	Dat Sg	was (ugs.)

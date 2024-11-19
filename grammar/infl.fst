@@ -1,6 +1,6 @@
 % infl.fst
-% Version 11.2
-% Andreas Nolda 2024-11-07
+% Version 12.0
+% Andreas Nolda 2024-11-19
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -929,12 +929,12 @@ $AdjPosPred$ = {<+ADJ><Pos><Pred/Adv>}:{}
 $AdjPosPred-e$ = {<+ADJ><Pos><Pred/Adv>}:{<SB>e}
 
 % zig
-$AdjPosAttr0$ = {<+ADJ><Pos><Attr><Invar>}:{}
+$AdjPosAttr0$ = {<+ADJ><Pos><Attr><NoGend><UnmCase><UnmNum><UnmInfl>}:{}
 
-$AdjPosAttr0-e$ = {<+ADJ><Pos><Attr><Invar>}:{<SB>e}
+$AdjPosAttr0-e$ = {<+ADJ><Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{<SB>e}
 
 % Berliner ('related to Berlin')
-$AdjPosAttrSubst0$ = {<+ADJ><Pos><Attr/Subst><Invar>}:{}
+$AdjPosAttrSubst0$ = {<+ADJ><Pos><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 % vorig-; hoh-
 $AdjPosAttr$ = {<+ADJ><Pos>}:{} $AdjInflSuff$
@@ -982,7 +982,7 @@ $AdjPos-en$ = $AdjPos$ | \
 
 % mehr; weniger
 $AdjComp0$ = {<+ADJ><Comp><Pred/Adv>}:{} | \
-             {<+ADJ><Comp><Attr/Subst><Invar>}:{}
+             {<+ADJ><Comp><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 % besser; höher
 $AdjComp_er$ = {<+ADJ><Comp><Pred/Adv>}:{<SB>er} | \
@@ -1130,11 +1130,11 @@ $DemSuff-solch|Wk$ = {[<Attr><Subst>]<Masc><Nom><Sg><Wk>}:{<SB>e}    | \
 
 $DemSuff-solch$ = $DemSuff-solch|St$ | \
                   $DemSuff-solch|Wk$ | \ % cf. Duden-Grammatik (2016: § 432)
-                  {<Attr><Invar>}:{}
+                  {<Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 $DemSuff-alldem$ = {<Subst><Neut><Dat><Sg><St>}:{<SB>em}
 
-$DemSuff0$ = {[<Attr><Subst>]<Invar>}:{}
+$DemSuff0$ = {[<Attr><Subst>]<UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 $ArtDef-der+DemMascSuff$ = {<Nom><Sg><Wk>}:{<SB>e}
 
@@ -1165,7 +1165,7 @@ $ArtDef-den+DemNoGendSuff$ = {<Dat><Pl><Wk>}:{<SB>en}
 $ArtDef-der+DemNoGendSuff$ = {<Gen><Pl><Wk>}:{<SB>en}
 
 $WSuff-welch$ = $DemSuff-solch|St$ | \
-                {<Attr><Invar>}:{}
+                {<Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 $RelSuff-welch$ = $WSuff-welch$ % cf. Duden-Grammatik (2016: § 403)
 
@@ -1191,7 +1191,7 @@ $IndefSuff-irgendwelch$ = $DemSuff-solch|St$
 $IndefSuff-all$ = $DemSuff-solch|St$                           | \
                   {<Subst><Masc><Dat><Sg><Wk><NonSt>}:{<SB>en} | \ % cf. Duden-Grammatik (2016: § 411)
                   {<Subst><Neut><Dat><Sg><Wk><NonSt>}:{<SB>en} | \ % cf. Duden-Grammatik (2016: § 411)
-                  {<Attr><Invar>}:{}
+                  {<Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 $IndefSuff-jed|St$ = {[<Attr><Subst>]<Masc><Nom><Sg><St>}:{<SB>er} | \
                      {[<Attr><Subst>]<Masc><Acc><Sg><St>}:{<SB>en} | \
@@ -1229,7 +1229,7 @@ $IndefSuff-jeglich$ = $DemSuff$ | \
 
 $IndefSuff-saemtlich$ = $DemSuff-solch|St$ | \
                         $DemSuff-solch|Wk$ | \
-                        {<Subst><Invar>}:{}
+                        {<Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 $IndefSuff-beid$ = {<Subst><Neut><Nom><Sg><St>}:{<SB>es}           | \
                    {<Subst><Neut><Acc><Sg><St>}:{<SB>es}           | \
@@ -1259,7 +1259,7 @@ $IndefSuff-mehrer$ = {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{<SB>es}   | \
                      {[<Attr><Subst>]<NoGend><Dat><Pl><St>}:{<SB>en} | \
                      {[<Attr><Subst>]<NoGend><Gen><Pl><St>}:{<SB>er}
 
-$IndefSuff0$ = {[<Attr><Subst>]<Invar>}:{}
+$IndefSuff0$ = {[<Attr><Subst>]<UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 $ArtIndefAttrSuff$ = {<Attr><Masc><Nom><Sg><NoInfl>}:{}     | \
                      {<Attr><Masc><Acc><Sg><St>}:{<SB>en}   | \
@@ -1351,7 +1351,7 @@ $PossSuff|Wk$ = {<Subst><Masc><Nom><Sg><Wk>}:{<SB>e}    | \
 $PossSuff$ = $PossSuff|St$ | \
              $PossSuff|Wk$
 
-$IProSuff0$ = {<Invar>}:{}
+$IProSuff0$ = {<UnmCase><UnmNum>}:{}
 
 $IProSuff$ = {<Nom><Sg>}:{}       | \
              {<Acc><Sg>}:{<SB>en} | \
@@ -1790,7 +1790,7 @@ $IProNeutGenSg$ = {<+INDEF><Neut>}:{} $IProGenSgSuff$
 
 % numerals
 
-$CardSuff0$ = {[<Attr><Subst>]<Invar>}:{}
+$CardSuff0$ = {[<Attr><Subst>]<NoGend><UnmCase><Pl><UnmInfl>}:{}
 
 $CardSuff-ein|St$ = $ArtIndefSuff$
 
@@ -1859,17 +1859,17 @@ $Ord$ = {<+ORD>}:{} $AdjInflSuff$
 % eineinhalb; anderthalb; drittel
 $Frac0$ = <+FRAC>:<> $CardSuff0$
 
-% 1
-$DigCard$ = {<+CARD><Invar>}:{}
+% 1, 10
+$DigCard$ = {<+CARD><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
-% 1.
-$DigOrd$ = {<+ORD><Invar>}:{}
+% 1., 10.
+$DigOrd$ = {<+ORD><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
-% 1,5
-$DigFrac$ = {<+FRAC><Invar>}:{}
+% 1,5, 10,5
+$DigFrac$ = {<+FRAC><UnmFunc><NoGend><UnmCase><Pl><UnmInfl>}:{}
 
-% I
-$Roman$ = {<+CARD><Invar>}:{}
+% I, X
+$Roman$ = {<+CARD><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 
 % adverbs
@@ -2601,25 +2601,25 @@ $Intj$ = {<+INTJ>}:{}
 % abbreviations
 
 % Kfm. (= Kaufmann)
-$AbbrNMasc$ = {<+NN><Masc><Invar>}:{}
+$AbbrNMasc$ = {<+NN><Masc><UnmCase><UnmNum>}:{}
 
 % Gr. (= Gros)
-$AbbrNNeut$ = {<+NN><Neut><Invar>}:{}
+$AbbrNNeut$ = {<+NN><Neut><UnmCase><UnmNum>}:{}
 
 % Kffr. (= Kauffrau)
-$AbbrNFem$ = {<+NN><Fem><Invar>}:{}
+$AbbrNFem$ = {<+NN><Fem><UnmCase><UnmNum>}:{}
 
 % Gebr. (= Gebrüder)
-$AbbrNNoGend$ = {<+NN><NoGend><Invar>}:{}
+$AbbrNNoGend$ = {<+NN><NoGend><UnmCase><Pl>}:{}
 
 % f. (= folgende)
-$AbbrAdj$ = {<+ADJ><Pos><Invar>}:{}
+$AbbrAdj$ = {<+ADJ><Pos><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 % Ew. (= Euer)
-$AbbrPoss$ = {<+POSS><Attr><Invar>}:{}
+$AbbrPoss$ = {<+POSS><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 % vgl. (= vergleiche)
-$AbbrVImp$ = {<+V><Imp><Invar>}:{}
+$AbbrVImp$ = {<+V><Imp><UnmNum>}:{}
 
 
 % inflection transducer

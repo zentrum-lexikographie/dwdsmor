@@ -1,6 +1,6 @@
 % trunc.fst
-% Version 1.1
-% Andreas Nolda 2024-03-15
+% Version 2.0
+% Andreas Nolda 2024-11-19
 
 #include "symbols.fst"
 
@@ -35,11 +35,11 @@ $C$ =    [#char# #lemma-index# #paradigm-index# #boundary-trigger# \
           #wf-process# #wf-means#]
 $T$ = <>:[#char# #lemma-index# #paradigm-index# <PB><SB>]
 
-$TruncFinalLv2-CB$ = $C$* [^<HB>] <CB> \-:<> $T$* .* <Invar>:<>
+$TruncFinalLv2-CB$ = $C$* [^<HB>] <CB> \-:<> $T$* .* {<UnmGend><UnmCase><UnmNum>}:{}
 
-$TruncFinalLv2-HB$ = $C$* <>:<HB> <CB> \-:<> $T$* .* <Invar>:<>
+$TruncFinalLv2-HB$ = $C$* <>:<HB> <CB> \-:<> $T$* .* {<UnmGend><UnmCase><UnmNum>}:{}
 
-$TruncFinalLv2-VB$ = $C$* <VB> \-:<> $T$* .* <Invar>:<>
+$TruncFinalLv2-VB$ = $C$* <VB> \-:<> $T$* .* {<UnmGend><UnmCase><UnmNum>}:{}
 
 $TruncFinalLv2$ = $TruncFinalLv2-CB$ | \
                   $TruncFinalLv2-HB$ | \

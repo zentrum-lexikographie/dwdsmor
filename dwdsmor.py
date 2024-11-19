@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # dwdsmor.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2024-10-11
+# Gregor Middell and Andreas Nolda 2024-11-19
 # with contributions by Adrien Barbaresi
 
 import sys
@@ -18,7 +18,7 @@ from blessings import Terminal
 import sfst_transduce
 
 
-version = 11.0
+version = 12.0
 
 
 BASEDIR = path.dirname(__file__)
@@ -132,23 +132,23 @@ class Analysis(tuple):
 
     _degree_tags = {"Pos": True, "Comp": True, "Sup": True}
 
-    _person_tags = {"1": True, "2": True, "3": True, "Invar": True}
+    _person_tags = {"1": True, "2": True, "3": True}
 
-    _gender_tags = {"Fem": True, "Neut": True, "Masc": True, "NoGend": True, "Invar": True}
+    _gender_tags = {"Fem": True, "Neut": True, "Masc": True, "NoGend": True, "UnmGend": True}
 
-    _case_tags = {"Nom": True, "Gen": True, "Dat": True, "Acc": True, "Invar": True}
+    _case_tags = {"Nom": True, "Gen": True, "Dat": True, "Acc": True, "UnmCase": True}
 
-    _number_tags = {"Sg": True, "Pl": True, "Invar": True}
+    _number_tags = {"Sg": True, "Pl": True, "UnmNum": True}
 
-    _inflection_tags = {"St": True, "Wk": True, "NoInfl": True, "Invar": True}
+    _inflection_tags = {"St": True, "Wk": True, "NoInfl": True, "UnmInfl": True}
 
-    _nonfinite_tags = {"Inf": True, "Part": True, "Invar": True}
+    _nonfinite_tags = {"Inf": True, "Part": True}
 
-    _function_tags = {"Attr": True, "Subst": True, "Attr/Subst": True, "Pred/Adv": True, "Cl": True, "NonCl": True, "Invar": True}
+    _function_tags = {"Attr": True, "Subst": True, "Attr/Subst": True, "Pred/Adv": True, "Cl": True, "NonCl": True, "UnmFunc": True}
 
-    _mood_tags = {"Ind": True, "Subj": True, "Imp": True, "Invar": True}
+    _mood_tags = {"Ind": True, "Subj": True, "Imp": True}
 
-    _tense_tags = {"Pres": True, "Past": True, "Perf": True, "Invar": True}
+    _tense_tags = {"Pres": True, "Past": True, "Perf": True}
 
     _metainfo_tags = {"Old": True, "NonSt": True}
 

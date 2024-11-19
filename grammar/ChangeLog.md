@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2024-11-19:
+
+* replace inflection tag `<Invar>` with `<UnmFunc>`, `<UnmGend>`, `<UnmCase>`,
+  `<UnmNum>`, and/or `<UnmInfl>`
+
 2024-11-07:
 
 * add inflection classes `NMasc_0_ix/izes_0`, `NMasc_es_ix/izes_0`,
