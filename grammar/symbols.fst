@@ -96,7 +96,7 @@
 
 #person# = <1><2><3>
 
-#gender# = <Masc><Fem><Neut><NoGend><UnmGend>
+#gender# = <Masc><Fem><Neut><UnmGend>
 
 #case# = <Nom><Gen><Dat><Acc><UnmCase>
 
@@ -132,7 +132,7 @@
 
 #paradigm-index# = <PAR1><PAR2><PAR3><PAR4><PAR5><PAR6><PAR7><PAR8>
 
-#Abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNNoGend> \
+#Abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNUnmGend> \
                     <AbbrPoss><AbbrVImp>
 
 #Adj-inflection# = <Adj_er_$est><Adj_er_$st><Adj_er_est><Adj_er_st> \
@@ -203,21 +203,22 @@
                     <NNeut_s_ien_0><NNeut_s_n_0><NNeut_s_nen_0><NNeut_s_o/en_0> \
                     <NNeut_s_o/i_0><NNeut_s_on/a_0><NNeut_s_on/en_0> \
                     <NNeut_s_s_0><NNeut_s_um/a_0><NNeut_s_um/en_0><NNeut_s_0_0> \
-                    <NNoGend|Pl_0><NNoGend|Pl_n>
+                    <NUnmGend|Pl_0><NUnmGend|Pl_n>
 
 #Name-inflection# = <NameFem_0><NameFem_apos><NameFem_s><NameMasc_0> \
                     <NameMasc_apos><NameMasc_es><NameMasc_s><NameNeut_0> \
-                    <NameNeut_apos><NameNeut_es><NameNeut_s><NameNoGend|Pl_0> \
-                    <NameNoGend|Pl_n>
+                    <NameNeut_apos><NameNeut_es><NameNeut_s><NameUnmGend|Pl_0> \
+                    <NameUnmGend|Pl_n>
 
 #Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier> \
                    <Card-zwei><DigCard><DigFrac><DigOrd><Frac0><Ord><Roman>
 
 #Pro-inflection# = <ArtDef-das+DemNeut><ArtDef-dem+DemMasc><ArtDef-dem+DemNeut> \
-                   <ArtDef-den+DemMasc><ArtDef-den+DemNoGend><ArtDef-der+DemFem> \
-                   <ArtDef-der+DemMasc><ArtDef-der+DemNoGend> \
-                   <ArtDef-des+DemMasc><ArtDef-des+DemNeut><ArtDef-die+DemFem> \
-                   <ArtDef-die+DemNoGend><Dem><Dem0><Dem-alldem><Dem-dies> \
+                   <ArtDef-den+DemMasc><ArtDef-den+DemUnmGend> \
+                   <ArtDef-der+DemFem><ArtDef-der+DemMasc> \
+                   <ArtDef-der+DemUnmGend><ArtDef-des+DemMasc> \
+                   <ArtDef-des+DemNeut><ArtDef-die+DemFem> \
+                   <ArtDef-die+DemUnmGend><Dem><Dem0><Dem-alldem><Dem-dies> \
                    <Dem-solch><DemDef><Indef0><Indef-all><Indef-beid><Indef-ein> \
                    <Indef-einig><Indef-irgendein><Indef-irgendwelch><Indef-jed> \
                    <Indef-jeglich><Indef-kein><Indef-manch><Indef-mehrer> \
@@ -233,9 +234,9 @@
                    <PProFemDatSg><PProFemGenSg><PProFemNomSg><PProMascAccSg> \
                    <PProMascDatSg><PProMascGenSg><PProMascNomSg><PProNeutAccSg> \
                    <PProNeutAccSg-s><PProNeutDatSg><PProNeutGenSg> \
-                   <PProNeutNomSg><PProNeutNomSg-s><PProNoGendAccPl> \
-                   <PProNoGendDatPl><PProNoGendGenPl><PProNoGendNomPl><PRecPl> \
-                   <PRefl1AccSg><PRefl1DatSg><PRefl2AccSg><PRefl2DatSg> \
+                   <PProNeutNomSg><PProNeutNomSg-s><PProUnmGendAccPl> \
+                   <PProUnmGendDatPl><PProUnmGendGenPl><PProUnmGendNomPl> \
+                   <PRecPl><PRefl1AccSg><PRefl1DatSg><PRefl2AccSg><PRefl2DatSg> \
                    <PRefl1Pl><PRefl2Pl><PRefl3><Rel><Rel-welch><RProMascAccSg> \
                    <RProMascDatSg><RProMascGenSg><RProMascNomSg><RProNeutAccSg> \
                    <RProNeutDatSg><RProNeutGenSg><RProNeutNomSg><W-welch> \

@@ -39,10 +39,10 @@ sie	1		PPRO Pers 3 Fem	Nom Sg	sie
 sie	1		PPRO Pers 3 Fem	Acc Sg	sie
 sie	1		PPRO Pers 3 Fem	Dat Sg	ihr
 sie	1		PPRO Pers 3 Fem	Gen Sg	ihrer, ihr (va.)
-sie	2		PPRO Pers 3 NoGend	Nom Pl	sie
-sie	2		PPRO Pers 3 NoGend	Acc Pl	sie
-sie	2		PPRO Pers 3 NoGend	Dat Pl	ihnen
-sie	2		PPRO Pers 3 NoGend	Gen Pl	ihrer, ihr (va.)
+sie	2		PPRO Pers 3 UnmGend	Nom Pl	sie
+sie	2		PPRO Pers 3 UnmGend	Acc Pl	sie
+sie	2		PPRO Pers 3 UnmGend	Dat Pl	ihnen
+sie	2		PPRO Pers 3 UnmGend	Gen Pl	ihrer, ihr (va.)
 uns			PPRO Refl 1	Acc Pl	uns
 uns			PPRO Refl 1	Dat Pl	uns
 wir			PPRO Pers 1	Nom Pl	wir

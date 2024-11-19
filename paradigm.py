@@ -40,7 +40,7 @@ DEGREES = ["Pos", "Comp", "Sup"]
 
 PERSONS = ["1", "2", "3"]
 
-GENDERS = ["Masc", "Neut", "Fem", "NoGend", "UnmGend"]
+GENDERS = ["Masc", "Neut", "Fem", "UnmGend"]
 
 CASES = ["Nom", "Acc", "Dat", "Gen", "UnmCase"]
 
@@ -150,7 +150,7 @@ Lemmaspec = namedtuple("Lemmaspec", ["lemma_index", "paradigm_index", "seg_lemma
 
 
 def filter_categorisations(categorisations, pos):
-    # Masc, Neut, Fem, and NoGend
+    # Masc, Neut, Fem, and UnmGend
     if pos in ["ADJ", "ART", "CARD", "DEM", "INDEF", "ORD", "POSS", "REL", "WPRO"]:
         # Masc, Neut, and Fem do not co-occur with Pl.
         categorisations = filterfalse(lambda cat: "Masc" in cat and "Pl" in cat,
@@ -159,8 +159,8 @@ def filter_categorisations(categorisations, pos):
                                       categorisations)
         categorisations = filterfalse(lambda cat: "Fem" in cat and "Pl" in cat,
                                       categorisations)
-        # NoGend does not co-occur with Sg.
-        categorisations = filterfalse(lambda cat: "NoGend" in cat and "Sg" in cat,
+        # UnmGend does not co-occur with Sg.
+        categorisations = filterfalse(lambda cat: "UnmGend" in cat and "Sg" in cat,
                                       categorisations)
     # NoInfl
     if pos in ["ADJ", "NN", "ORD"]:

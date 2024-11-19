@@ -11,10 +11,10 @@ Deinige		2	POSS	Fem Nom Sg Wk Subst	Deinige
 Deinige		2	POSS	Fem Acc Sg Wk Subst	Deinige
 Deinige		2	POSS	Fem Dat Sg Wk Subst	Deinigen
 Deinige		2	POSS	Fem Gen Sg Wk Subst	Deinigen
-Deinige		2	POSS	NoGend Nom Pl Wk Subst	Deinigen
-Deinige		2	POSS	NoGend Acc Pl Wk Subst	Deinigen
-Deinige		2	POSS	NoGend Dat Pl Wk Subst	Deinigen
-Deinige		2	POSS	NoGend Gen Pl Wk Subst	Deinigen
+Deinige		2	POSS	UnmGend Nom Pl Wk Subst	Deinigen
+Deinige		2	POSS	UnmGend Acc Pl Wk Subst	Deinigen
+Deinige		2	POSS	UnmGend Dat Pl Wk Subst	Deinigen
+Deinige		2	POSS	UnmGend Gen Pl Wk Subst	Deinigen
 Eurige		2	POSS	Masc Nom Sg Wk Subst	Euerige, Eurige
 Eurige		2	POSS	Masc Acc Sg Wk Subst	Euerigen, Eurigen
 Eurige		2	POSS	Masc Dat Sg Wk Subst	Euerigen, Eurigen
@@ -27,10 +27,10 @@ Eurige		2	POSS	Fem Nom Sg Wk Subst	Euerige, Eurige
 Eurige		2	POSS	Fem Acc Sg Wk Subst	Euerige, Eurige
 Eurige		2	POSS	Fem Dat Sg Wk Subst	Euerigen, Eurigen
 Eurige		2	POSS	Fem Gen Sg Wk Subst	Euerigen, Eurigen
-Eurige		2	POSS	NoGend Nom Pl Wk Subst	Euerigen, Eurigen
-Eurige		2	POSS	NoGend Acc Pl Wk Subst	Euerigen, Eurigen
-Eurige		2	POSS	NoGend Dat Pl Wk Subst	Euerigen, Eurigen
-Eurige		2	POSS	NoGend Gen Pl Wk Subst	Euerigen, Eurigen
+Eurige		2	POSS	UnmGend Nom Pl Wk Subst	Euerigen, Eurigen
+Eurige		2	POSS	UnmGend Acc Pl Wk Subst	Euerigen, Eurigen
+Eurige		2	POSS	UnmGend Dat Pl Wk Subst	Euerigen, Eurigen
+Eurige		2	POSS	UnmGend Gen Pl Wk Subst	Euerigen, Eurigen
 meine		2	POSS	Masc Nom Sg NoInfl Attr	mein
 meine		2	POSS	Masc Nom Sg St Subst	meiner
 meine		2	POSS	Masc Nom Sg Wk Subst	meine
@@ -67,18 +67,18 @@ meine		2	POSS	Fem Dat Sg Wk Subst	meinen
 meine		2	POSS	Fem Gen Sg St Attr	meiner
 meine		2	POSS	Fem Gen Sg St Subst	meiner
 meine		2	POSS	Fem Gen Sg Wk Subst	meinen
-meine		2	POSS	NoGend Nom Pl St Attr	meine
-meine		2	POSS	NoGend Nom Pl St Subst	meine
-meine		2	POSS	NoGend Nom Pl Wk Subst	meinen
-meine		2	POSS	NoGend Acc Pl St Attr	meine
-meine		2	POSS	NoGend Acc Pl St Subst	meine
-meine		2	POSS	NoGend Acc Pl Wk Subst	meinen
-meine		2	POSS	NoGend Dat Pl St Attr	meinen
-meine		2	POSS	NoGend Dat Pl St Subst	meinen
-meine		2	POSS	NoGend Dat Pl Wk Subst	meinen
-meine		2	POSS	NoGend Gen Pl St Attr	meiner
-meine		2	POSS	NoGend Gen Pl St Subst	meiner
-meine		2	POSS	NoGend Gen Pl Wk Subst	meinen
+meine		2	POSS	UnmGend Nom Pl St Attr	meine
+meine		2	POSS	UnmGend Nom Pl St Subst	meine
+meine		2	POSS	UnmGend Nom Pl Wk Subst	meinen
+meine		2	POSS	UnmGend Acc Pl St Attr	meine
+meine		2	POSS	UnmGend Acc Pl St Subst	meine
+meine		2	POSS	UnmGend Acc Pl Wk Subst	meinen
+meine		2	POSS	UnmGend Dat Pl St Attr	meinen
+meine		2	POSS	UnmGend Dat Pl St Subst	meinen
+meine		2	POSS	UnmGend Dat Pl Wk Subst	meinen
+meine		2	POSS	UnmGend Gen Pl St Attr	meiner
+meine		2	POSS	UnmGend Gen Pl St Subst	meiner
+meine		2	POSS	UnmGend Gen Pl Wk Subst	meinen
 unsere		2	POSS	Masc Nom Sg NoInfl Attr	unser
 unsere		2	POSS	Masc Nom Sg St Subst	unserer, unsrer
 unsere		2	POSS	Masc Nom Sg Wk Subst	unsere, unsre
@@ -115,15 +115,15 @@ unsere		2	POSS	Fem Dat Sg Wk Subst	unseren, unsern, unsren
 unsere		2	POSS	Fem Gen Sg St Attr	unserer, unsrer
 unsere		2	POSS	Fem Gen Sg St Subst	unserer, unsrer
 unsere		2	POSS	Fem Gen Sg Wk Subst	unseren, unsern, unsren
-unsere		2	POSS	NoGend Nom Pl St Attr	unsere, unsre
-unsere		2	POSS	NoGend Nom Pl St Subst	unsere, unsre
-unsere		2	POSS	NoGend Nom Pl Wk Subst	unseren, unsern, unsren
-unsere		2	POSS	NoGend Acc Pl St Attr	unsere, unsre
-unsere		2	POSS	NoGend Acc Pl St Subst	unsere, unsre
-unsere		2	POSS	NoGend Acc Pl Wk Subst	unseren, unsern, unsren
-unsere		2	POSS	NoGend Dat Pl St Attr	unseren, unsern, unsren
-unsere		2	POSS	NoGend Dat Pl St Subst	unseren, unsern, unsren
-unsere		2	POSS	NoGend Dat Pl Wk Subst	unseren, unsern, unsren
-unsere		2	POSS	NoGend Gen Pl St Attr	unserer, unsrer
-unsere		2	POSS	NoGend Gen Pl St Subst	unserer, unsrer
-unsere		2	POSS	NoGend Gen Pl Wk Subst	unseren, unsern, unsren
+unsere		2	POSS	UnmGend Nom Pl St Attr	unsere, unsre
+unsere		2	POSS	UnmGend Nom Pl St Subst	unsere, unsre
+unsere		2	POSS	UnmGend Nom Pl Wk Subst	unseren, unsern, unsren
+unsere		2	POSS	UnmGend Acc Pl St Attr	unsere, unsre
+unsere		2	POSS	UnmGend Acc Pl St Subst	unsere, unsre
+unsere		2	POSS	UnmGend Acc Pl Wk Subst	unseren, unsern, unsren
+unsere		2	POSS	UnmGend Dat Pl St Attr	unseren, unsern, unsren
+unsere		2	POSS	UnmGend Dat Pl St Subst	unseren, unsern, unsren
+unsere		2	POSS	UnmGend Dat Pl Wk Subst	unseren, unsern, unsren
+unsere		2	POSS	UnmGend Gen Pl St Attr	unserer, unsrer
+unsere		2	POSS	UnmGend Gen Pl St Subst	unserer, unsrer
+unsere		2	POSS	UnmGend Gen Pl Wk Subst	unseren, unsern, unsren

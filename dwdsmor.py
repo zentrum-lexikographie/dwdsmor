@@ -134,7 +134,7 @@ class Analysis(tuple):
 
     _person_tags = {"1": True, "2": True, "3": True}
 
-    _gender_tags = {"Fem": True, "Neut": True, "Masc": True, "NoGend": True, "UnmGend": True}
+    _gender_tags = {"Fem": True, "Neut": True, "Masc": True, "UnmGend": True}
 
     _case_tags = {"Nom": True, "Gen": True, "Dat": True, "Acc": True, "UnmCase": True}
 

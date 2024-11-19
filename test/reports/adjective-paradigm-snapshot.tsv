@@ -27,14 +27,14 @@ bitter			ADJ	Pos Fem Dat Sg St Attr/Subst	bitterer, bittrer
 bitter			ADJ	Pos Fem Dat Sg Wk Attr/Subst	bitteren, bittren, bittern (va.)
 bitter			ADJ	Pos Fem Gen Sg St Attr/Subst	bitterer, bittrer
 bitter			ADJ	Pos Fem Gen Sg Wk Attr/Subst	bitteren, bittren, bittern (va.)
-bitter			ADJ	Pos NoGend Nom Pl St Attr/Subst	bittere, bittre
-bitter			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
-bitter			ADJ	Pos NoGend Acc Pl St Attr/Subst	bittere, bittre
-bitter			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
-bitter			ADJ	Pos NoGend Dat Pl St Attr/Subst	bitteren, bittren, bittern (va.)
-bitter			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
-bitter			ADJ	Pos NoGend Gen Pl St Attr/Subst	bitterer, bittrer
-bitter			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos UnmGend Nom Pl St Attr/Subst	bittere, bittre
+bitter			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos UnmGend Acc Pl St Attr/Subst	bittere, bittre
+bitter			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos UnmGend Dat Pl St Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
+bitter			ADJ	Pos UnmGend Gen Pl St Attr/Subst	bitterer, bittrer
+bitter			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	bitteren, bittren, bittern (va.)
 bitter			ADJ	Comp Masc Nom Sg St Attr/Subst	bittererer, bittrerer
 bitter			ADJ	Comp Masc Nom Sg Wk Attr/Subst	bitterere, bittrere
 bitter			ADJ	Comp Masc Acc Sg St Attr/Subst	bittereren, bittreren
@@ -59,14 +59,14 @@ bitter			ADJ	Comp Fem Dat Sg St Attr/Subst	bittererer, bittrerer
 bitter			ADJ	Comp Fem Dat Sg Wk Attr/Subst	bittereren, bittreren
 bitter			ADJ	Comp Fem Gen Sg St Attr/Subst	bittererer, bittrerer
 bitter			ADJ	Comp Fem Gen Sg Wk Attr/Subst	bittereren, bittreren
-bitter			ADJ	Comp NoGend Nom Pl St Attr/Subst	bitterere, bittrere
-bitter			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	bittereren, bittreren
-bitter			ADJ	Comp NoGend Acc Pl St Attr/Subst	bitterere, bittrere
-bitter			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	bittereren, bittreren
-bitter			ADJ	Comp NoGend Dat Pl St Attr/Subst	bittereren, bittreren
-bitter			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	bittereren, bittreren
-bitter			ADJ	Comp NoGend Gen Pl St Attr/Subst	bittererer, bittrerer
-bitter			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp UnmGend Nom Pl St Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp UnmGend Acc Pl St Attr/Subst	bitterere, bittrere
+bitter			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp UnmGend Dat Pl St Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	bittereren, bittreren
+bitter			ADJ	Comp UnmGend Gen Pl St Attr/Subst	bittererer, bittrerer
+bitter			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	bittereren, bittreren
 bitter			ADJ	Sup Masc Nom Sg St Attr/Subst	bitterster
 bitter			ADJ	Sup Masc Nom Sg Wk Attr/Subst	bitterste
 bitter			ADJ	Sup Masc Acc Sg St Attr/Subst	bittersten
@@ -91,14 +91,14 @@ bitter			ADJ	Sup Fem Dat Sg St Attr/Subst	bitterster
 bitter			ADJ	Sup Fem Dat Sg Wk Attr/Subst	bittersten
 bitter			ADJ	Sup Fem Gen Sg St Attr/Subst	bitterster
 bitter			ADJ	Sup Fem Gen Sg Wk Attr/Subst	bittersten
-bitter			ADJ	Sup NoGend Nom Pl St Attr/Subst	bitterste
-bitter			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	bittersten
-bitter			ADJ	Sup NoGend Acc Pl St Attr/Subst	bitterste
-bitter			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	bittersten
-bitter			ADJ	Sup NoGend Dat Pl St Attr/Subst	bittersten
-bitter			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	bittersten
-bitter			ADJ	Sup NoGend Gen Pl St Attr/Subst	bitterster
-bitter			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	bittersten
+bitter			ADJ	Sup UnmGend Nom Pl St Attr/Subst	bitterste
+bitter			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	bittersten
+bitter			ADJ	Sup UnmGend Acc Pl St Attr/Subst	bitterste
+bitter			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	bittersten
+bitter			ADJ	Sup UnmGend Dat Pl St Attr/Subst	bittersten
+bitter			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	bittersten
+bitter			ADJ	Sup UnmGend Gen Pl St Attr/Subst	bitterster
+bitter			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	bittersten
 bunt			ADJ	Pos Pred/Adv	bunt
 bunt			ADJ	Comp Pred/Adv	bunter
 bunt			ADJ	Sup Pred/Adv	am buntesten
@@ -126,14 +126,14 @@ bunt			ADJ	Pos Fem Dat Sg St Attr/Subst	bunter
 bunt			ADJ	Pos Fem Dat Sg Wk Attr/Subst	bunten
 bunt			ADJ	Pos Fem Gen Sg St Attr/Subst	bunter
 bunt			ADJ	Pos Fem Gen Sg Wk Attr/Subst	bunten
-bunt			ADJ	Pos NoGend Nom Pl St Attr/Subst	bunte
-bunt			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	bunten
-bunt			ADJ	Pos NoGend Acc Pl St Attr/Subst	bunte
-bunt			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	bunten
-bunt			ADJ	Pos NoGend Dat Pl St Attr/Subst	bunten
-bunt			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	bunten
-bunt			ADJ	Pos NoGend Gen Pl St Attr/Subst	bunter
-bunt			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	bunten
+bunt			ADJ	Pos UnmGend Nom Pl St Attr/Subst	bunte
+bunt			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	bunten
+bunt			ADJ	Pos UnmGend Acc Pl St Attr/Subst	bunte
+bunt			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	bunten
+bunt			ADJ	Pos UnmGend Dat Pl St Attr/Subst	bunten
+bunt			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	bunten
+bunt			ADJ	Pos UnmGend Gen Pl St Attr/Subst	bunter
+bunt			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	bunten
 bunt			ADJ	Comp Masc Nom Sg St Attr/Subst	bunterer
 bunt			ADJ	Comp Masc Nom Sg Wk Attr/Subst	buntere
 bunt			ADJ	Comp Masc Acc Sg St Attr/Subst	bunteren
@@ -158,14 +158,14 @@ bunt			ADJ	Comp Fem Dat Sg St Attr/Subst	bunterer
 bunt			ADJ	Comp Fem Dat Sg Wk Attr/Subst	bunteren
 bunt			ADJ	Comp Fem Gen Sg St Attr/Subst	bunterer
 bunt			ADJ	Comp Fem Gen Sg Wk Attr/Subst	bunteren
-bunt			ADJ	Comp NoGend Nom Pl St Attr/Subst	buntere
-bunt			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	bunteren
-bunt			ADJ	Comp NoGend Acc Pl St Attr/Subst	buntere
-bunt			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	bunteren
-bunt			ADJ	Comp NoGend Dat Pl St Attr/Subst	bunteren
-bunt			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	bunteren
-bunt			ADJ	Comp NoGend Gen Pl St Attr/Subst	bunterer
-bunt			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	bunteren
+bunt			ADJ	Comp UnmGend Nom Pl St Attr/Subst	buntere
+bunt			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	bunteren
+bunt			ADJ	Comp UnmGend Acc Pl St Attr/Subst	buntere
+bunt			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	bunteren
+bunt			ADJ	Comp UnmGend Dat Pl St Attr/Subst	bunteren
+bunt			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	bunteren
+bunt			ADJ	Comp UnmGend Gen Pl St Attr/Subst	bunterer
+bunt			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	bunteren
 bunt			ADJ	Sup Masc Nom Sg St Attr/Subst	buntester
 bunt			ADJ	Sup Masc Nom Sg Wk Attr/Subst	bunteste
 bunt			ADJ	Sup Masc Acc Sg St Attr/Subst	buntesten
@@ -190,14 +190,14 @@ bunt			ADJ	Sup Fem Dat Sg St Attr/Subst	buntester
 bunt			ADJ	Sup Fem Dat Sg Wk Attr/Subst	buntesten
 bunt			ADJ	Sup Fem Gen Sg St Attr/Subst	buntester
 bunt			ADJ	Sup Fem Gen Sg Wk Attr/Subst	buntesten
-bunt			ADJ	Sup NoGend Nom Pl St Attr/Subst	bunteste
-bunt			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	buntesten
-bunt			ADJ	Sup NoGend Acc Pl St Attr/Subst	bunteste
-bunt			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	buntesten
-bunt			ADJ	Sup NoGend Dat Pl St Attr/Subst	buntesten
-bunt			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	buntesten
-bunt			ADJ	Sup NoGend Gen Pl St Attr/Subst	buntester
-bunt			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	buntesten
+bunt			ADJ	Sup UnmGend Nom Pl St Attr/Subst	bunteste
+bunt			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	buntesten
+bunt			ADJ	Sup UnmGend Acc Pl St Attr/Subst	bunteste
+bunt			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	buntesten
+bunt			ADJ	Sup UnmGend Dat Pl St Attr/Subst	buntesten
+bunt			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	buntesten
+bunt			ADJ	Sup UnmGend Gen Pl St Attr/Subst	buntester
+bunt			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	buntesten
 derartig			ADJ	Pos Pred/Adv	derartig
 derartig			ADJ	Pos Masc Nom Sg St Attr/Subst	derartiger
 derartig			ADJ	Pos Masc Nom Sg Wk Attr/Subst	derartige
@@ -223,14 +223,14 @@ derartig			ADJ	Pos Fem Dat Sg St Attr/Subst	derartiger
 derartig			ADJ	Pos Fem Dat Sg Wk Attr/Subst	derartigen
 derartig			ADJ	Pos Fem Gen Sg St Attr/Subst	derartiger
 derartig			ADJ	Pos Fem Gen Sg Wk Attr/Subst	derartigen
-derartig			ADJ	Pos NoGend Nom Pl St Attr/Subst	derartige
-derartig			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	derartigen
-derartig			ADJ	Pos NoGend Acc Pl St Attr/Subst	derartige
-derartig			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	derartigen
-derartig			ADJ	Pos NoGend Dat Pl St Attr/Subst	derartigen
-derartig			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	derartigen
-derartig			ADJ	Pos NoGend Gen Pl St Attr/Subst	derartiger
-derartig			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	derartigen
+derartig			ADJ	Pos UnmGend Nom Pl St Attr/Subst	derartige
+derartig			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	derartigen
+derartig			ADJ	Pos UnmGend Acc Pl St Attr/Subst	derartige
+derartig			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	derartigen
+derartig			ADJ	Pos UnmGend Dat Pl St Attr/Subst	derartigen
+derartig			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	derartigen
+derartig			ADJ	Pos UnmGend Gen Pl St Attr/Subst	derartiger
+derartig			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	derartigen
 dunkel		1	ADJ	Pos Pred/Adv	dunkel
 dunkel		1	ADJ	Comp Pred/Adv	dunkler
 dunkel		1	ADJ	Sup Pred/Adv	am dunkelsten
@@ -258,14 +258,14 @@ dunkel		1	ADJ	Pos Fem Dat Sg St Attr/Subst	dunkler
 dunkel		1	ADJ	Pos Fem Dat Sg Wk Attr/Subst	dunklen, dunkeln (va.)
 dunkel		1	ADJ	Pos Fem Gen Sg St Attr/Subst	dunkler
 dunkel		1	ADJ	Pos Fem Gen Sg Wk Attr/Subst	dunklen, dunkeln (va.)
-dunkel		1	ADJ	Pos NoGend Nom Pl St Attr/Subst	dunkle
-dunkel		1	ADJ	Pos NoGend Nom Pl Wk Attr/Subst	dunklen, dunkeln (va.)
-dunkel		1	ADJ	Pos NoGend Acc Pl St Attr/Subst	dunkle
-dunkel		1	ADJ	Pos NoGend Acc Pl Wk Attr/Subst	dunklen, dunkeln (va.)
-dunkel		1	ADJ	Pos NoGend Dat Pl St Attr/Subst	dunklen, dunkeln (va.)
-dunkel		1	ADJ	Pos NoGend Dat Pl Wk Attr/Subst	dunklen, dunkeln (va.)
-dunkel		1	ADJ	Pos NoGend Gen Pl St Attr/Subst	dunkler
-dunkel		1	ADJ	Pos NoGend Gen Pl Wk Attr/Subst	dunklen, dunkeln (va.)
+dunkel		1	ADJ	Pos UnmGend Nom Pl St Attr/Subst	dunkle
+dunkel		1	ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	dunklen, dunkeln (va.)
+dunkel		1	ADJ	Pos UnmGend Acc Pl St Attr/Subst	dunkle
+dunkel		1	ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	dunklen, dunkeln (va.)
+dunkel		1	ADJ	Pos UnmGend Dat Pl St Attr/Subst	dunklen, dunkeln (va.)
+dunkel		1	ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	dunklen, dunkeln (va.)
+dunkel		1	ADJ	Pos UnmGend Gen Pl St Attr/Subst	dunkler
+dunkel		1	ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	dunklen, dunkeln (va.)
 dunkel		1	ADJ	Comp Masc Nom Sg St Attr/Subst	dunklerer
 dunkel		1	ADJ	Comp Masc Nom Sg Wk Attr/Subst	dunklere
 dunkel		1	ADJ	Comp Masc Acc Sg St Attr/Subst	dunkleren
@@ -290,14 +290,14 @@ dunkel		1	ADJ	Comp Fem Dat Sg St Attr/Subst	dunklerer
 dunkel		1	ADJ	Comp Fem Dat Sg Wk Attr/Subst	dunkleren
 dunkel		1	ADJ	Comp Fem Gen Sg St Attr/Subst	dunklerer
 dunkel		1	ADJ	Comp Fem Gen Sg Wk Attr/Subst	dunkleren
-dunkel		1	ADJ	Comp NoGend Nom Pl St Attr/Subst	dunklere
-dunkel		1	ADJ	Comp NoGend Nom Pl Wk Attr/Subst	dunkleren
-dunkel		1	ADJ	Comp NoGend Acc Pl St Attr/Subst	dunklere
-dunkel		1	ADJ	Comp NoGend Acc Pl Wk Attr/Subst	dunkleren
-dunkel		1	ADJ	Comp NoGend Dat Pl St Attr/Subst	dunkleren
-dunkel		1	ADJ	Comp NoGend Dat Pl Wk Attr/Subst	dunkleren
-dunkel		1	ADJ	Comp NoGend Gen Pl St Attr/Subst	dunklerer
-dunkel		1	ADJ	Comp NoGend Gen Pl Wk Attr/Subst	dunkleren
+dunkel		1	ADJ	Comp UnmGend Nom Pl St Attr/Subst	dunklere
+dunkel		1	ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	dunkleren
+dunkel		1	ADJ	Comp UnmGend Acc Pl St Attr/Subst	dunklere
+dunkel		1	ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	dunkleren
+dunkel		1	ADJ	Comp UnmGend Dat Pl St Attr/Subst	dunkleren
+dunkel		1	ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	dunkleren
+dunkel		1	ADJ	Comp UnmGend Gen Pl St Attr/Subst	dunklerer
+dunkel		1	ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	dunkleren
 dunkel		1	ADJ	Sup Masc Nom Sg St Attr/Subst	dunkelster
 dunkel		1	ADJ	Sup Masc Nom Sg Wk Attr/Subst	dunkelste
 dunkel		1	ADJ	Sup Masc Acc Sg St Attr/Subst	dunkelsten
@@ -322,14 +322,14 @@ dunkel		1	ADJ	Sup Fem Dat Sg St Attr/Subst	dunkelster
 dunkel		1	ADJ	Sup Fem Dat Sg Wk Attr/Subst	dunkelsten
 dunkel		1	ADJ	Sup Fem Gen Sg St Attr/Subst	dunkelster
 dunkel		1	ADJ	Sup Fem Gen Sg Wk Attr/Subst	dunkelsten
-dunkel		1	ADJ	Sup NoGend Nom Pl St Attr/Subst	dunkelste
-dunkel		1	ADJ	Sup NoGend Nom Pl Wk Attr/Subst	dunkelsten
-dunkel		1	ADJ	Sup NoGend Acc Pl St Attr/Subst	dunkelste
-dunkel		1	ADJ	Sup NoGend Acc Pl Wk Attr/Subst	dunkelsten
-dunkel		1	ADJ	Sup NoGend Dat Pl St Attr/Subst	dunkelsten
-dunkel		1	ADJ	Sup NoGend Dat Pl Wk Attr/Subst	dunkelsten
-dunkel		1	ADJ	Sup NoGend Gen Pl St Attr/Subst	dunkelster
-dunkel		1	ADJ	Sup NoGend Gen Pl Wk Attr/Subst	dunkelsten
+dunkel		1	ADJ	Sup UnmGend Nom Pl St Attr/Subst	dunkelste
+dunkel		1	ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	dunkelsten
+dunkel		1	ADJ	Sup UnmGend Acc Pl St Attr/Subst	dunkelste
+dunkel		1	ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	dunkelsten
+dunkel		1	ADJ	Sup UnmGend Dat Pl St Attr/Subst	dunkelsten
+dunkel		1	ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	dunkelsten
+dunkel		1	ADJ	Sup UnmGend Gen Pl St Attr/Subst	dunkelster
+dunkel		1	ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	dunkelsten
 dunkel		2	ADJ	Pos Pred/Adv	dunkel
 dunkel		2	ADJ	Comp Pred/Adv	dünkler
 dunkel		2	ADJ	Sup Pred/Adv	am dünkelsten
@@ -357,14 +357,14 @@ dunkel		2	ADJ	Pos Fem Dat Sg St Attr/Subst	dunkler
 dunkel		2	ADJ	Pos Fem Dat Sg Wk Attr/Subst	dunklen, dunkeln (va.)
 dunkel		2	ADJ	Pos Fem Gen Sg St Attr/Subst	dunkler
 dunkel		2	ADJ	Pos Fem Gen Sg Wk Attr/Subst	dunklen, dunkeln (va.)
-dunkel		2	ADJ	Pos NoGend Nom Pl St Attr/Subst	dunkle
-dunkel		2	ADJ	Pos NoGend Nom Pl Wk Attr/Subst	dunklen, dunkeln (va.)
-dunkel		2	ADJ	Pos NoGend Acc Pl St Attr/Subst	dunkle
-dunkel		2	ADJ	Pos NoGend Acc Pl Wk Attr/Subst	dunklen, dunkeln (va.)
-dunkel		2	ADJ	Pos NoGend Dat Pl St Attr/Subst	dunklen, dunkeln (va.)
-dunkel		2	ADJ	Pos NoGend Dat Pl Wk Attr/Subst	dunklen, dunkeln (va.)
-dunkel		2	ADJ	Pos NoGend Gen Pl St Attr/Subst	dunkler
-dunkel		2	ADJ	Pos NoGend Gen Pl Wk Attr/Subst	dunklen, dunkeln (va.)
+dunkel		2	ADJ	Pos UnmGend Nom Pl St Attr/Subst	dunkle
+dunkel		2	ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	dunklen, dunkeln (va.)
+dunkel		2	ADJ	Pos UnmGend Acc Pl St Attr/Subst	dunkle
+dunkel		2	ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	dunklen, dunkeln (va.)
+dunkel		2	ADJ	Pos UnmGend Dat Pl St Attr/Subst	dunklen, dunkeln (va.)
+dunkel		2	ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	dunklen, dunkeln (va.)
+dunkel		2	ADJ	Pos UnmGend Gen Pl St Attr/Subst	dunkler
+dunkel		2	ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	dunklen, dunkeln (va.)
 dunkel		2	ADJ	Comp Masc Nom Sg St Attr/Subst	dünklerer
 dunkel		2	ADJ	Comp Masc Nom Sg Wk Attr/Subst	dünklere
 dunkel		2	ADJ	Comp Masc Acc Sg St Attr/Subst	dünkleren
@@ -389,14 +389,14 @@ dunkel		2	ADJ	Comp Fem Dat Sg St Attr/Subst	dünklerer
 dunkel		2	ADJ	Comp Fem Dat Sg Wk Attr/Subst	dünkleren
 dunkel		2	ADJ	Comp Fem Gen Sg St Attr/Subst	dünklerer
 dunkel		2	ADJ	Comp Fem Gen Sg Wk Attr/Subst	dünkleren
-dunkel		2	ADJ	Comp NoGend Nom Pl St Attr/Subst	dünklere
-dunkel		2	ADJ	Comp NoGend Nom Pl Wk Attr/Subst	dünkleren
-dunkel		2	ADJ	Comp NoGend Acc Pl St Attr/Subst	dünklere
-dunkel		2	ADJ	Comp NoGend Acc Pl Wk Attr/Subst	dünkleren
-dunkel		2	ADJ	Comp NoGend Dat Pl St Attr/Subst	dünkleren
-dunkel		2	ADJ	Comp NoGend Dat Pl Wk Attr/Subst	dünkleren
-dunkel		2	ADJ	Comp NoGend Gen Pl St Attr/Subst	dünklerer
-dunkel		2	ADJ	Comp NoGend Gen Pl Wk Attr/Subst	dünkleren
+dunkel		2	ADJ	Comp UnmGend Nom Pl St Attr/Subst	dünklere
+dunkel		2	ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	dünkleren
+dunkel		2	ADJ	Comp UnmGend Acc Pl St Attr/Subst	dünklere
+dunkel		2	ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	dünkleren
+dunkel		2	ADJ	Comp UnmGend Dat Pl St Attr/Subst	dünkleren
+dunkel		2	ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	dünkleren
+dunkel		2	ADJ	Comp UnmGend Gen Pl St Attr/Subst	dünklerer
+dunkel		2	ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	dünkleren
 dunkel		2	ADJ	Sup Masc Nom Sg St Attr/Subst	dünkelster
 dunkel		2	ADJ	Sup Masc Nom Sg Wk Attr/Subst	dünkelste
 dunkel		2	ADJ	Sup Masc Acc Sg St Attr/Subst	dünkelsten
@@ -421,14 +421,14 @@ dunkel		2	ADJ	Sup Fem Dat Sg St Attr/Subst	dünkelster
 dunkel		2	ADJ	Sup Fem Dat Sg Wk Attr/Subst	dünkelsten
 dunkel		2	ADJ	Sup Fem Gen Sg St Attr/Subst	dünkelster
 dunkel		2	ADJ	Sup Fem Gen Sg Wk Attr/Subst	dünkelsten
-dunkel		2	ADJ	Sup NoGend Nom Pl St Attr/Subst	dünkelste
-dunkel		2	ADJ	Sup NoGend Nom Pl Wk Attr/Subst	dünkelsten
-dunkel		2	ADJ	Sup NoGend Acc Pl St Attr/Subst	dünkelste
-dunkel		2	ADJ	Sup NoGend Acc Pl Wk Attr/Subst	dünkelsten
-dunkel		2	ADJ	Sup NoGend Dat Pl St Attr/Subst	dünkelsten
-dunkel		2	ADJ	Sup NoGend Dat Pl Wk Attr/Subst	dünkelsten
-dunkel		2	ADJ	Sup NoGend Gen Pl St Attr/Subst	dünkelster
-dunkel		2	ADJ	Sup NoGend Gen Pl Wk Attr/Subst	dünkelsten
+dunkel		2	ADJ	Sup UnmGend Nom Pl St Attr/Subst	dünkelste
+dunkel		2	ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	dünkelsten
+dunkel		2	ADJ	Sup UnmGend Acc Pl St Attr/Subst	dünkelste
+dunkel		2	ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	dünkelsten
+dunkel		2	ADJ	Sup UnmGend Dat Pl St Attr/Subst	dünkelsten
+dunkel		2	ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	dünkelsten
+dunkel		2	ADJ	Sup UnmGend Gen Pl St Attr/Subst	dünkelster
+dunkel		2	ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	dünkelsten
 fit			ADJ	Pos Pred/Adv	fit
 fit			ADJ	Comp Pred/Adv	fitter
 fit			ADJ	Sup Pred/Adv	am fittesten
@@ -456,14 +456,14 @@ fit			ADJ	Pos Fem Dat Sg St Attr/Subst	fitter
 fit			ADJ	Pos Fem Dat Sg Wk Attr/Subst	fitten
 fit			ADJ	Pos Fem Gen Sg St Attr/Subst	fitter
 fit			ADJ	Pos Fem Gen Sg Wk Attr/Subst	fitten
-fit			ADJ	Pos NoGend Nom Pl St Attr/Subst	fitte
-fit			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	fitten
-fit			ADJ	Pos NoGend Acc Pl St Attr/Subst	fitte
-fit			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	fitten
-fit			ADJ	Pos NoGend Dat Pl St Attr/Subst	fitten
-fit			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	fitten
-fit			ADJ	Pos NoGend Gen Pl St Attr/Subst	fitter
-fit			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	fitten
+fit			ADJ	Pos UnmGend Nom Pl St Attr/Subst	fitte
+fit			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	fitten
+fit			ADJ	Pos UnmGend Acc Pl St Attr/Subst	fitte
+fit			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	fitten
+fit			ADJ	Pos UnmGend Dat Pl St Attr/Subst	fitten
+fit			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	fitten
+fit			ADJ	Pos UnmGend Gen Pl St Attr/Subst	fitter
+fit			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	fitten
 fit			ADJ	Comp Masc Nom Sg St Attr/Subst	fitterer
 fit			ADJ	Comp Masc Nom Sg Wk Attr/Subst	fittere
 fit			ADJ	Comp Masc Acc Sg St Attr/Subst	fitteren
@@ -488,14 +488,14 @@ fit			ADJ	Comp Fem Dat Sg St Attr/Subst	fitterer
 fit			ADJ	Comp Fem Dat Sg Wk Attr/Subst	fitteren
 fit			ADJ	Comp Fem Gen Sg St Attr/Subst	fitterer
 fit			ADJ	Comp Fem Gen Sg Wk Attr/Subst	fitteren
-fit			ADJ	Comp NoGend Nom Pl St Attr/Subst	fittere
-fit			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	fitteren
-fit			ADJ	Comp NoGend Acc Pl St Attr/Subst	fittere
-fit			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	fitteren
-fit			ADJ	Comp NoGend Dat Pl St Attr/Subst	fitteren
-fit			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	fitteren
-fit			ADJ	Comp NoGend Gen Pl St Attr/Subst	fitterer
-fit			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	fitteren
+fit			ADJ	Comp UnmGend Nom Pl St Attr/Subst	fittere
+fit			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	fitteren
+fit			ADJ	Comp UnmGend Acc Pl St Attr/Subst	fittere
+fit			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	fitteren
+fit			ADJ	Comp UnmGend Dat Pl St Attr/Subst	fitteren
+fit			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	fitteren
+fit			ADJ	Comp UnmGend Gen Pl St Attr/Subst	fitterer
+fit			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	fitteren
 fit			ADJ	Sup Masc Nom Sg St Attr/Subst	fittester
 fit			ADJ	Sup Masc Nom Sg Wk Attr/Subst	fitteste
 fit			ADJ	Sup Masc Acc Sg St Attr/Subst	fittesten
@@ -520,14 +520,14 @@ fit			ADJ	Sup Fem Dat Sg St Attr/Subst	fittester
 fit			ADJ	Sup Fem Dat Sg Wk Attr/Subst	fittesten
 fit			ADJ	Sup Fem Gen Sg St Attr/Subst	fittester
 fit			ADJ	Sup Fem Gen Sg Wk Attr/Subst	fittesten
-fit			ADJ	Sup NoGend Nom Pl St Attr/Subst	fitteste
-fit			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	fittesten
-fit			ADJ	Sup NoGend Acc Pl St Attr/Subst	fitteste
-fit			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	fittesten
-fit			ADJ	Sup NoGend Dat Pl St Attr/Subst	fittesten
-fit			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	fittesten
-fit			ADJ	Sup NoGend Gen Pl St Attr/Subst	fittester
-fit			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	fittesten
+fit			ADJ	Sup UnmGend Nom Pl St Attr/Subst	fitteste
+fit			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	fittesten
+fit			ADJ	Sup UnmGend Acc Pl St Attr/Subst	fitteste
+fit			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	fittesten
+fit			ADJ	Sup UnmGend Dat Pl St Attr/Subst	fittesten
+fit			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	fittesten
+fit			ADJ	Sup UnmGend Gen Pl St Attr/Subst	fittester
+fit			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	fittesten
 gut			ADJ	Pos Pred/Adv	gut
 gut			ADJ	Comp Pred/Adv	besser
 gut			ADJ	Sup Pred/Adv	am besten
@@ -555,14 +555,14 @@ gut			ADJ	Pos Fem Dat Sg St Attr/Subst	guter
 gut			ADJ	Pos Fem Dat Sg Wk Attr/Subst	guten
 gut			ADJ	Pos Fem Gen Sg St Attr/Subst	guter
 gut			ADJ	Pos Fem Gen Sg Wk Attr/Subst	guten
-gut			ADJ	Pos NoGend Nom Pl St Attr/Subst	gute
-gut			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	guten
-gut			ADJ	Pos NoGend Acc Pl St Attr/Subst	gute
-gut			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	guten
-gut			ADJ	Pos NoGend Dat Pl St Attr/Subst	guten
-gut			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	guten
-gut			ADJ	Pos NoGend Gen Pl St Attr/Subst	guter
-gut			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	guten
+gut			ADJ	Pos UnmGend Nom Pl St Attr/Subst	gute
+gut			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	guten
+gut			ADJ	Pos UnmGend Acc Pl St Attr/Subst	gute
+gut			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	guten
+gut			ADJ	Pos UnmGend Dat Pl St Attr/Subst	guten
+gut			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	guten
+gut			ADJ	Pos UnmGend Gen Pl St Attr/Subst	guter
+gut			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	guten
 gut			ADJ	Comp Masc Nom Sg St Attr/Subst	besserer
 gut			ADJ	Comp Masc Nom Sg Wk Attr/Subst	bessere
 gut			ADJ	Comp Masc Acc Sg St Attr/Subst	besseren
@@ -587,14 +587,14 @@ gut			ADJ	Comp Fem Dat Sg St Attr/Subst	besserer
 gut			ADJ	Comp Fem Dat Sg Wk Attr/Subst	besseren
 gut			ADJ	Comp Fem Gen Sg St Attr/Subst	besserer
 gut			ADJ	Comp Fem Gen Sg Wk Attr/Subst	besseren
-gut			ADJ	Comp NoGend Nom Pl St Attr/Subst	bessere
-gut			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	besseren
-gut			ADJ	Comp NoGend Acc Pl St Attr/Subst	bessere
-gut			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	besseren
-gut			ADJ	Comp NoGend Dat Pl St Attr/Subst	besseren
-gut			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	besseren
-gut			ADJ	Comp NoGend Gen Pl St Attr/Subst	besserer
-gut			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	besseren
+gut			ADJ	Comp UnmGend Nom Pl St Attr/Subst	bessere
+gut			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	besseren
+gut			ADJ	Comp UnmGend Acc Pl St Attr/Subst	bessere
+gut			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	besseren
+gut			ADJ	Comp UnmGend Dat Pl St Attr/Subst	besseren
+gut			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	besseren
+gut			ADJ	Comp UnmGend Gen Pl St Attr/Subst	besserer
+gut			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	besseren
 gut			ADJ	Sup Masc Nom Sg St Attr/Subst	bester
 gut			ADJ	Sup Masc Nom Sg Wk Attr/Subst	beste
 gut			ADJ	Sup Masc Acc Sg St Attr/Subst	besten
@@ -619,14 +619,14 @@ gut			ADJ	Sup Fem Dat Sg St Attr/Subst	bester
 gut			ADJ	Sup Fem Dat Sg Wk Attr/Subst	besten
 gut			ADJ	Sup Fem Gen Sg St Attr/Subst	bester
 gut			ADJ	Sup Fem Gen Sg Wk Attr/Subst	besten
-gut			ADJ	Sup NoGend Nom Pl St Attr/Subst	beste
-gut			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	besten
-gut			ADJ	Sup NoGend Acc Pl St Attr/Subst	beste
-gut			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	besten
-gut			ADJ	Sup NoGend Dat Pl St Attr/Subst	besten
-gut			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	besten
-gut			ADJ	Sup NoGend Gen Pl St Attr/Subst	bester
-gut			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	besten
+gut			ADJ	Sup UnmGend Nom Pl St Attr/Subst	beste
+gut			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	besten
+gut			ADJ	Sup UnmGend Acc Pl St Attr/Subst	beste
+gut			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	besten
+gut			ADJ	Sup UnmGend Dat Pl St Attr/Subst	besten
+gut			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	besten
+gut			ADJ	Sup UnmGend Gen Pl St Attr/Subst	bester
+gut			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	besten
 hell			ADJ	Pos Pred/Adv	hell
 hell			ADJ	Comp Pred/Adv	heller
 hell			ADJ	Sup Pred/Adv	am hellsten
@@ -654,14 +654,14 @@ hell			ADJ	Pos Fem Dat Sg St Attr/Subst	heller
 hell			ADJ	Pos Fem Dat Sg Wk Attr/Subst	hellen
 hell			ADJ	Pos Fem Gen Sg St Attr/Subst	heller
 hell			ADJ	Pos Fem Gen Sg Wk Attr/Subst	hellen
-hell			ADJ	Pos NoGend Nom Pl St Attr/Subst	helle
-hell			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	hellen
-hell			ADJ	Pos NoGend Acc Pl St Attr/Subst	helle
-hell			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	hellen
-hell			ADJ	Pos NoGend Dat Pl St Attr/Subst	hellen
-hell			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	hellen
-hell			ADJ	Pos NoGend Gen Pl St Attr/Subst	heller
-hell			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	hellen
+hell			ADJ	Pos UnmGend Nom Pl St Attr/Subst	helle
+hell			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	hellen
+hell			ADJ	Pos UnmGend Acc Pl St Attr/Subst	helle
+hell			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	hellen
+hell			ADJ	Pos UnmGend Dat Pl St Attr/Subst	hellen
+hell			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	hellen
+hell			ADJ	Pos UnmGend Gen Pl St Attr/Subst	heller
+hell			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	hellen
 hell			ADJ	Comp Masc Nom Sg St Attr/Subst	hellerer
 hell			ADJ	Comp Masc Nom Sg Wk Attr/Subst	hellere
 hell			ADJ	Comp Masc Acc Sg St Attr/Subst	helleren
@@ -686,14 +686,14 @@ hell			ADJ	Comp Fem Dat Sg St Attr/Subst	hellerer
 hell			ADJ	Comp Fem Dat Sg Wk Attr/Subst	helleren
 hell			ADJ	Comp Fem Gen Sg St Attr/Subst	hellerer
 hell			ADJ	Comp Fem Gen Sg Wk Attr/Subst	helleren
-hell			ADJ	Comp NoGend Nom Pl St Attr/Subst	hellere
-hell			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	helleren
-hell			ADJ	Comp NoGend Acc Pl St Attr/Subst	hellere
-hell			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	helleren
-hell			ADJ	Comp NoGend Dat Pl St Attr/Subst	helleren
-hell			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	helleren
-hell			ADJ	Comp NoGend Gen Pl St Attr/Subst	hellerer
-hell			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	helleren
+hell			ADJ	Comp UnmGend Nom Pl St Attr/Subst	hellere
+hell			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	helleren
+hell			ADJ	Comp UnmGend Acc Pl St Attr/Subst	hellere
+hell			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	helleren
+hell			ADJ	Comp UnmGend Dat Pl St Attr/Subst	helleren
+hell			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	helleren
+hell			ADJ	Comp UnmGend Gen Pl St Attr/Subst	hellerer
+hell			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	helleren
 hell			ADJ	Sup Masc Nom Sg St Attr/Subst	hellster
 hell			ADJ	Sup Masc Nom Sg Wk Attr/Subst	hellste
 hell			ADJ	Sup Masc Acc Sg St Attr/Subst	hellsten
@@ -718,14 +718,14 @@ hell			ADJ	Sup Fem Dat Sg St Attr/Subst	hellster
 hell			ADJ	Sup Fem Dat Sg Wk Attr/Subst	hellsten
 hell			ADJ	Sup Fem Gen Sg St Attr/Subst	hellster
 hell			ADJ	Sup Fem Gen Sg Wk Attr/Subst	hellsten
-hell			ADJ	Sup NoGend Nom Pl St Attr/Subst	hellste
-hell			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	hellsten
-hell			ADJ	Sup NoGend Acc Pl St Attr/Subst	hellste
-hell			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	hellsten
-hell			ADJ	Sup NoGend Dat Pl St Attr/Subst	hellsten
-hell			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	hellsten
-hell			ADJ	Sup NoGend Gen Pl St Attr/Subst	hellster
-hell			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	hellsten
+hell			ADJ	Sup UnmGend Nom Pl St Attr/Subst	hellste
+hell			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	hellsten
+hell			ADJ	Sup UnmGend Acc Pl St Attr/Subst	hellste
+hell			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	hellsten
+hell			ADJ	Sup UnmGend Dat Pl St Attr/Subst	hellsten
+hell			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	hellsten
+hell			ADJ	Sup UnmGend Gen Pl St Attr/Subst	hellster
+hell			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	hellsten
 hoch			ADJ	Pos Pred/Adv	hoch
 hoch			ADJ	Comp Pred/Adv	höher
 hoch			ADJ	Sup Pred/Adv	am höchsten
@@ -753,14 +753,14 @@ hoch			ADJ	Pos Fem Dat Sg St Attr/Subst	hoher
 hoch			ADJ	Pos Fem Dat Sg Wk Attr/Subst	hohen
 hoch			ADJ	Pos Fem Gen Sg St Attr/Subst	hoher
 hoch			ADJ	Pos Fem Gen Sg Wk Attr/Subst	hohen
-hoch			ADJ	Pos NoGend Nom Pl St Attr/Subst	hohe
-hoch			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	hohen
-hoch			ADJ	Pos NoGend Acc Pl St Attr/Subst	hohe
-hoch			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	hohen
-hoch			ADJ	Pos NoGend Dat Pl St Attr/Subst	hohen
-hoch			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	hohen
-hoch			ADJ	Pos NoGend Gen Pl St Attr/Subst	hoher
-hoch			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	hohen
+hoch			ADJ	Pos UnmGend Nom Pl St Attr/Subst	hohe
+hoch			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	hohen
+hoch			ADJ	Pos UnmGend Acc Pl St Attr/Subst	hohe
+hoch			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	hohen
+hoch			ADJ	Pos UnmGend Dat Pl St Attr/Subst	hohen
+hoch			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	hohen
+hoch			ADJ	Pos UnmGend Gen Pl St Attr/Subst	hoher
+hoch			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	hohen
 hoch			ADJ	Comp Masc Nom Sg St Attr/Subst	höherer
 hoch			ADJ	Comp Masc Nom Sg Wk Attr/Subst	höhere
 hoch			ADJ	Comp Masc Acc Sg St Attr/Subst	höheren
@@ -785,14 +785,14 @@ hoch			ADJ	Comp Fem Dat Sg St Attr/Subst	höherer
 hoch			ADJ	Comp Fem Dat Sg Wk Attr/Subst	höheren
 hoch			ADJ	Comp Fem Gen Sg St Attr/Subst	höherer
 hoch			ADJ	Comp Fem Gen Sg Wk Attr/Subst	höheren
-hoch			ADJ	Comp NoGend Nom Pl St Attr/Subst	höhere
-hoch			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	höheren
-hoch			ADJ	Comp NoGend Acc Pl St Attr/Subst	höhere
-hoch			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	höheren
-hoch			ADJ	Comp NoGend Dat Pl St Attr/Subst	höheren
-hoch			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	höheren
-hoch			ADJ	Comp NoGend Gen Pl St Attr/Subst	höherer
-hoch			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	höheren
+hoch			ADJ	Comp UnmGend Nom Pl St Attr/Subst	höhere
+hoch			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	höheren
+hoch			ADJ	Comp UnmGend Acc Pl St Attr/Subst	höhere
+hoch			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	höheren
+hoch			ADJ	Comp UnmGend Dat Pl St Attr/Subst	höheren
+hoch			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	höheren
+hoch			ADJ	Comp UnmGend Gen Pl St Attr/Subst	höherer
+hoch			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	höheren
 hoch			ADJ	Sup Masc Nom Sg St Attr/Subst	höchster
 hoch			ADJ	Sup Masc Nom Sg Wk Attr/Subst	höchste
 hoch			ADJ	Sup Masc Acc Sg St Attr/Subst	höchsten
@@ -817,14 +817,14 @@ hoch			ADJ	Sup Fem Dat Sg St Attr/Subst	höchster
 hoch			ADJ	Sup Fem Dat Sg Wk Attr/Subst	höchsten
 hoch			ADJ	Sup Fem Gen Sg St Attr/Subst	höchster
 hoch			ADJ	Sup Fem Gen Sg Wk Attr/Subst	höchsten
-hoch			ADJ	Sup NoGend Nom Pl St Attr/Subst	höchste
-hoch			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	höchsten
-hoch			ADJ	Sup NoGend Acc Pl St Attr/Subst	höchste
-hoch			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	höchsten
-hoch			ADJ	Sup NoGend Dat Pl St Attr/Subst	höchsten
-hoch			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	höchsten
-hoch			ADJ	Sup NoGend Gen Pl St Attr/Subst	höchster
-hoch			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	höchsten
+hoch			ADJ	Sup UnmGend Nom Pl St Attr/Subst	höchste
+hoch			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	höchsten
+hoch			ADJ	Sup UnmGend Acc Pl St Attr/Subst	höchste
+hoch			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	höchsten
+hoch			ADJ	Sup UnmGend Dat Pl St Attr/Subst	höchsten
+hoch			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	höchsten
+hoch			ADJ	Sup UnmGend Gen Pl St Attr/Subst	höchster
+hoch			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	höchsten
 kalt			ADJ	Pos Pred/Adv	kalt
 kalt			ADJ	Comp Pred/Adv	kälter
 kalt			ADJ	Sup Pred/Adv	am kältesten
@@ -852,14 +852,14 @@ kalt			ADJ	Pos Fem Dat Sg St Attr/Subst	kalter
 kalt			ADJ	Pos Fem Dat Sg Wk Attr/Subst	kalten
 kalt			ADJ	Pos Fem Gen Sg St Attr/Subst	kalter
 kalt			ADJ	Pos Fem Gen Sg Wk Attr/Subst	kalten
-kalt			ADJ	Pos NoGend Nom Pl St Attr/Subst	kalte
-kalt			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	kalten
-kalt			ADJ	Pos NoGend Acc Pl St Attr/Subst	kalte
-kalt			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	kalten
-kalt			ADJ	Pos NoGend Dat Pl St Attr/Subst	kalten
-kalt			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	kalten
-kalt			ADJ	Pos NoGend Gen Pl St Attr/Subst	kalter
-kalt			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	kalten
+kalt			ADJ	Pos UnmGend Nom Pl St Attr/Subst	kalte
+kalt			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	kalten
+kalt			ADJ	Pos UnmGend Acc Pl St Attr/Subst	kalte
+kalt			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	kalten
+kalt			ADJ	Pos UnmGend Dat Pl St Attr/Subst	kalten
+kalt			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	kalten
+kalt			ADJ	Pos UnmGend Gen Pl St Attr/Subst	kalter
+kalt			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	kalten
 kalt			ADJ	Comp Masc Nom Sg St Attr/Subst	kälterer
 kalt			ADJ	Comp Masc Nom Sg Wk Attr/Subst	kältere
 kalt			ADJ	Comp Masc Acc Sg St Attr/Subst	kälteren
@@ -884,14 +884,14 @@ kalt			ADJ	Comp Fem Dat Sg St Attr/Subst	kälterer
 kalt			ADJ	Comp Fem Dat Sg Wk Attr/Subst	kälteren
 kalt			ADJ	Comp Fem Gen Sg St Attr/Subst	kälterer
 kalt			ADJ	Comp Fem Gen Sg Wk Attr/Subst	kälteren
-kalt			ADJ	Comp NoGend Nom Pl St Attr/Subst	kältere
-kalt			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	kälteren
-kalt			ADJ	Comp NoGend Acc Pl St Attr/Subst	kältere
-kalt			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	kälteren
-kalt			ADJ	Comp NoGend Dat Pl St Attr/Subst	kälteren
-kalt			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	kälteren
-kalt			ADJ	Comp NoGend Gen Pl St Attr/Subst	kälterer
-kalt			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	kälteren
+kalt			ADJ	Comp UnmGend Nom Pl St Attr/Subst	kältere
+kalt			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	kälteren
+kalt			ADJ	Comp UnmGend Acc Pl St Attr/Subst	kältere
+kalt			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	kälteren
+kalt			ADJ	Comp UnmGend Dat Pl St Attr/Subst	kälteren
+kalt			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	kälteren
+kalt			ADJ	Comp UnmGend Gen Pl St Attr/Subst	kälterer
+kalt			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	kälteren
 kalt			ADJ	Sup Masc Nom Sg St Attr/Subst	kältester
 kalt			ADJ	Sup Masc Nom Sg Wk Attr/Subst	kälteste
 kalt			ADJ	Sup Masc Acc Sg St Attr/Subst	kältesten
@@ -916,14 +916,14 @@ kalt			ADJ	Sup Fem Dat Sg St Attr/Subst	kältester
 kalt			ADJ	Sup Fem Dat Sg Wk Attr/Subst	kältesten
 kalt			ADJ	Sup Fem Gen Sg St Attr/Subst	kältester
 kalt			ADJ	Sup Fem Gen Sg Wk Attr/Subst	kältesten
-kalt			ADJ	Sup NoGend Nom Pl St Attr/Subst	kälteste
-kalt			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	kältesten
-kalt			ADJ	Sup NoGend Acc Pl St Attr/Subst	kälteste
-kalt			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	kältesten
-kalt			ADJ	Sup NoGend Dat Pl St Attr/Subst	kältesten
-kalt			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	kältesten
-kalt			ADJ	Sup NoGend Gen Pl St Attr/Subst	kältester
-kalt			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	kältesten
+kalt			ADJ	Sup UnmGend Nom Pl St Attr/Subst	kälteste
+kalt			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	kältesten
+kalt			ADJ	Sup UnmGend Acc Pl St Attr/Subst	kälteste
+kalt			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	kältesten
+kalt			ADJ	Sup UnmGend Dat Pl St Attr/Subst	kältesten
+kalt			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	kältesten
+kalt			ADJ	Sup UnmGend Gen Pl St Attr/Subst	kältester
+kalt			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	kältesten
 klasse			ADJ	Pos Pred/Adv	klasse
 klasse			ADJ	Pos UnmGend UnmCase UnmNum UnmInfl Attr	klasse
 leise			ADJ	Pos Pred/Adv	leise
@@ -953,14 +953,14 @@ leise			ADJ	Pos Fem Dat Sg St Attr/Subst	leiser
 leise			ADJ	Pos Fem Dat Sg Wk Attr/Subst	leisen
 leise			ADJ	Pos Fem Gen Sg St Attr/Subst	leiser
 leise			ADJ	Pos Fem Gen Sg Wk Attr/Subst	leisen
-leise			ADJ	Pos NoGend Nom Pl St Attr/Subst	leise
-leise			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	leisen
-leise			ADJ	Pos NoGend Acc Pl St Attr/Subst	leise
-leise			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	leisen
-leise			ADJ	Pos NoGend Dat Pl St Attr/Subst	leisen
-leise			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	leisen
-leise			ADJ	Pos NoGend Gen Pl St Attr/Subst	leiser
-leise			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	leisen
+leise			ADJ	Pos UnmGend Nom Pl St Attr/Subst	leise
+leise			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	leisen
+leise			ADJ	Pos UnmGend Acc Pl St Attr/Subst	leise
+leise			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	leisen
+leise			ADJ	Pos UnmGend Dat Pl St Attr/Subst	leisen
+leise			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	leisen
+leise			ADJ	Pos UnmGend Gen Pl St Attr/Subst	leiser
+leise			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	leisen
 leise			ADJ	Comp Masc Nom Sg St Attr/Subst	leiserer
 leise			ADJ	Comp Masc Nom Sg Wk Attr/Subst	leisere
 leise			ADJ	Comp Masc Acc Sg St Attr/Subst	leiseren
@@ -985,14 +985,14 @@ leise			ADJ	Comp Fem Dat Sg St Attr/Subst	leiserer
 leise			ADJ	Comp Fem Dat Sg Wk Attr/Subst	leiseren
 leise			ADJ	Comp Fem Gen Sg St Attr/Subst	leiserer
 leise			ADJ	Comp Fem Gen Sg Wk Attr/Subst	leiseren
-leise			ADJ	Comp NoGend Nom Pl St Attr/Subst	leisere
-leise			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	leiseren
-leise			ADJ	Comp NoGend Acc Pl St Attr/Subst	leisere
-leise			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	leiseren
-leise			ADJ	Comp NoGend Dat Pl St Attr/Subst	leiseren
-leise			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	leiseren
-leise			ADJ	Comp NoGend Gen Pl St Attr/Subst	leiserer
-leise			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	leiseren
+leise			ADJ	Comp UnmGend Nom Pl St Attr/Subst	leisere
+leise			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	leiseren
+leise			ADJ	Comp UnmGend Acc Pl St Attr/Subst	leisere
+leise			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	leiseren
+leise			ADJ	Comp UnmGend Dat Pl St Attr/Subst	leiseren
+leise			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	leiseren
+leise			ADJ	Comp UnmGend Gen Pl St Attr/Subst	leiserer
+leise			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	leiseren
 leise			ADJ	Sup Masc Nom Sg St Attr/Subst	leisester
 leise			ADJ	Sup Masc Nom Sg Wk Attr/Subst	leiseste
 leise			ADJ	Sup Masc Acc Sg St Attr/Subst	leisesten
@@ -1017,16 +1017,16 @@ leise			ADJ	Sup Fem Dat Sg St Attr/Subst	leisester
 leise			ADJ	Sup Fem Dat Sg Wk Attr/Subst	leisesten
 leise			ADJ	Sup Fem Gen Sg St Attr/Subst	leisester
 leise			ADJ	Sup Fem Gen Sg Wk Attr/Subst	leisesten
-leise			ADJ	Sup NoGend Nom Pl St Attr/Subst	leiseste
-leise			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	leisesten
-leise			ADJ	Sup NoGend Acc Pl St Attr/Subst	leiseste
-leise			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	leisesten
-leise			ADJ	Sup NoGend Dat Pl St Attr/Subst	leisesten
-leise			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	leisesten
-leise			ADJ	Sup NoGend Gen Pl St Attr/Subst	leisester
-leise			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	leisesten
+leise			ADJ	Sup UnmGend Nom Pl St Attr/Subst	leiseste
+leise			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	leisesten
+leise			ADJ	Sup UnmGend Acc Pl St Attr/Subst	leiseste
+leise			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	leisesten
+leise			ADJ	Sup UnmGend Dat Pl St Attr/Subst	leisesten
+leise			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	leisesten
+leise			ADJ	Sup UnmGend Gen Pl St Attr/Subst	leisester
+leise			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	leisesten
 lila			ADJ	Pos Pred/Adv	lila
-lila			ADJ	Pos NoGend UnmCase UnmNum UnmInfl Attr	lila
+lila			ADJ	Pos UnmGend UnmCase UnmNum UnmInfl Attr	lila
 neu			ADJ	Pos Pred/Adv	neu
 neu			ADJ	Comp Pred/Adv	neuer
 neu			ADJ	Sup Pred/Adv	am neuesten, am neusten
@@ -1054,14 +1054,14 @@ neu			ADJ	Pos Fem Dat Sg St Attr/Subst	neuer
 neu			ADJ	Pos Fem Dat Sg Wk Attr/Subst	neuen
 neu			ADJ	Pos Fem Gen Sg St Attr/Subst	neuer
 neu			ADJ	Pos Fem Gen Sg Wk Attr/Subst	neuen
-neu			ADJ	Pos NoGend Nom Pl St Attr/Subst	neue
-neu			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	neuen
-neu			ADJ	Pos NoGend Acc Pl St Attr/Subst	neue
-neu			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	neuen
-neu			ADJ	Pos NoGend Dat Pl St Attr/Subst	neuen
-neu			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	neuen
-neu			ADJ	Pos NoGend Gen Pl St Attr/Subst	neuer
-neu			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	neuen
+neu			ADJ	Pos UnmGend Nom Pl St Attr/Subst	neue
+neu			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	neuen
+neu			ADJ	Pos UnmGend Acc Pl St Attr/Subst	neue
+neu			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	neuen
+neu			ADJ	Pos UnmGend Dat Pl St Attr/Subst	neuen
+neu			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	neuen
+neu			ADJ	Pos UnmGend Gen Pl St Attr/Subst	neuer
+neu			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	neuen
 neu			ADJ	Comp Masc Nom Sg St Attr/Subst	neuerer
 neu			ADJ	Comp Masc Nom Sg Wk Attr/Subst	neuere
 neu			ADJ	Comp Masc Acc Sg St Attr/Subst	neueren
@@ -1086,14 +1086,14 @@ neu			ADJ	Comp Fem Dat Sg St Attr/Subst	neuerer
 neu			ADJ	Comp Fem Dat Sg Wk Attr/Subst	neueren
 neu			ADJ	Comp Fem Gen Sg St Attr/Subst	neuerer
 neu			ADJ	Comp Fem Gen Sg Wk Attr/Subst	neueren
-neu			ADJ	Comp NoGend Nom Pl St Attr/Subst	neuere
-neu			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	neueren
-neu			ADJ	Comp NoGend Acc Pl St Attr/Subst	neuere
-neu			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	neueren
-neu			ADJ	Comp NoGend Dat Pl St Attr/Subst	neueren
-neu			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	neueren
-neu			ADJ	Comp NoGend Gen Pl St Attr/Subst	neuerer
-neu			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	neueren
+neu			ADJ	Comp UnmGend Nom Pl St Attr/Subst	neuere
+neu			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	neueren
+neu			ADJ	Comp UnmGend Acc Pl St Attr/Subst	neuere
+neu			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	neueren
+neu			ADJ	Comp UnmGend Dat Pl St Attr/Subst	neueren
+neu			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	neueren
+neu			ADJ	Comp UnmGend Gen Pl St Attr/Subst	neuerer
+neu			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	neueren
 neu			ADJ	Sup Masc Nom Sg St Attr/Subst	neuester, neuster
 neu			ADJ	Sup Masc Nom Sg Wk Attr/Subst	neueste, neuste
 neu			ADJ	Sup Masc Acc Sg St Attr/Subst	neuesten, neusten
@@ -1118,14 +1118,14 @@ neu			ADJ	Sup Fem Dat Sg St Attr/Subst	neuester, neuster
 neu			ADJ	Sup Fem Dat Sg Wk Attr/Subst	neuesten, neusten
 neu			ADJ	Sup Fem Gen Sg St Attr/Subst	neuester, neuster
 neu			ADJ	Sup Fem Gen Sg Wk Attr/Subst	neuesten, neusten
-neu			ADJ	Sup NoGend Nom Pl St Attr/Subst	neueste, neuste
-neu			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	neuesten, neusten
-neu			ADJ	Sup NoGend Acc Pl St Attr/Subst	neueste, neuste
-neu			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	neuesten, neusten
-neu			ADJ	Sup NoGend Dat Pl St Attr/Subst	neuesten, neusten
-neu			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	neuesten, neusten
-neu			ADJ	Sup NoGend Gen Pl St Attr/Subst	neuester, neuster
-neu			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	neuesten, neusten
+neu			ADJ	Sup UnmGend Nom Pl St Attr/Subst	neueste, neuste
+neu			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	neuesten, neusten
+neu			ADJ	Sup UnmGend Acc Pl St Attr/Subst	neueste, neuste
+neu			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	neuesten, neusten
+neu			ADJ	Sup UnmGend Dat Pl St Attr/Subst	neuesten, neusten
+neu			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	neuesten, neusten
+neu			ADJ	Sup UnmGend Gen Pl St Attr/Subst	neuester, neuster
+neu			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	neuesten, neusten
 pleite			ADJ	Pos Pred/Adv	pleite
 tabu			ADJ	Pos Pred/Adv	tabu
 trocken			ADJ	Pos Pred/Adv	trocken
@@ -1155,14 +1155,14 @@ trocken			ADJ	Pos Fem Dat Sg St Attr/Subst	trockener, trockner
 trocken			ADJ	Pos Fem Dat Sg Wk Attr/Subst	trockenen, trocknen
 trocken			ADJ	Pos Fem Gen Sg St Attr/Subst	trockener, trockner
 trocken			ADJ	Pos Fem Gen Sg Wk Attr/Subst	trockenen, trocknen
-trocken			ADJ	Pos NoGend Nom Pl St Attr/Subst	trockene, trockne
-trocken			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	trockenen, trocknen
-trocken			ADJ	Pos NoGend Acc Pl St Attr/Subst	trockene, trockne
-trocken			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	trockenen, trocknen
-trocken			ADJ	Pos NoGend Dat Pl St Attr/Subst	trockenen, trocknen
-trocken			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	trockenen, trocknen
-trocken			ADJ	Pos NoGend Gen Pl St Attr/Subst	trockener, trockner
-trocken			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	trockenen, trocknen
+trocken			ADJ	Pos UnmGend Nom Pl St Attr/Subst	trockene, trockne
+trocken			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	trockenen, trocknen
+trocken			ADJ	Pos UnmGend Acc Pl St Attr/Subst	trockene, trockne
+trocken			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	trockenen, trocknen
+trocken			ADJ	Pos UnmGend Dat Pl St Attr/Subst	trockenen, trocknen
+trocken			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	trockenen, trocknen
+trocken			ADJ	Pos UnmGend Gen Pl St Attr/Subst	trockener, trockner
+trocken			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	trockenen, trocknen
 trocken			ADJ	Comp Masc Nom Sg St Attr/Subst	trockenerer, trocknerer
 trocken			ADJ	Comp Masc Nom Sg Wk Attr/Subst	trockenere, trocknere
 trocken			ADJ	Comp Masc Acc Sg St Attr/Subst	trockeneren, trockneren
@@ -1187,14 +1187,14 @@ trocken			ADJ	Comp Fem Dat Sg St Attr/Subst	trockenerer, trocknerer
 trocken			ADJ	Comp Fem Dat Sg Wk Attr/Subst	trockeneren, trockneren
 trocken			ADJ	Comp Fem Gen Sg St Attr/Subst	trockenerer, trocknerer
 trocken			ADJ	Comp Fem Gen Sg Wk Attr/Subst	trockeneren, trockneren
-trocken			ADJ	Comp NoGend Nom Pl St Attr/Subst	trockenere, trocknere
-trocken			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	trockeneren, trockneren
-trocken			ADJ	Comp NoGend Acc Pl St Attr/Subst	trockenere, trocknere
-trocken			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	trockeneren, trockneren
-trocken			ADJ	Comp NoGend Dat Pl St Attr/Subst	trockeneren, trockneren
-trocken			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	trockeneren, trockneren
-trocken			ADJ	Comp NoGend Gen Pl St Attr/Subst	trockenerer, trocknerer
-trocken			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	trockeneren, trockneren
+trocken			ADJ	Comp UnmGend Nom Pl St Attr/Subst	trockenere, trocknere
+trocken			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	trockeneren, trockneren
+trocken			ADJ	Comp UnmGend Acc Pl St Attr/Subst	trockenere, trocknere
+trocken			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	trockeneren, trockneren
+trocken			ADJ	Comp UnmGend Dat Pl St Attr/Subst	trockeneren, trockneren
+trocken			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	trockeneren, trockneren
+trocken			ADJ	Comp UnmGend Gen Pl St Attr/Subst	trockenerer, trocknerer
+trocken			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	trockeneren, trockneren
 trocken			ADJ	Sup Masc Nom Sg St Attr/Subst	trockenster
 trocken			ADJ	Sup Masc Nom Sg Wk Attr/Subst	trockenste
 trocken			ADJ	Sup Masc Acc Sg St Attr/Subst	trockensten
@@ -1219,14 +1219,14 @@ trocken			ADJ	Sup Fem Dat Sg St Attr/Subst	trockenster
 trocken			ADJ	Sup Fem Dat Sg Wk Attr/Subst	trockensten
 trocken			ADJ	Sup Fem Gen Sg St Attr/Subst	trockenster
 trocken			ADJ	Sup Fem Gen Sg Wk Attr/Subst	trockensten
-trocken			ADJ	Sup NoGend Nom Pl St Attr/Subst	trockenste
-trocken			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	trockensten
-trocken			ADJ	Sup NoGend Acc Pl St Attr/Subst	trockenste
-trocken			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	trockensten
-trocken			ADJ	Sup NoGend Dat Pl St Attr/Subst	trockensten
-trocken			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	trockensten
-trocken			ADJ	Sup NoGend Gen Pl St Attr/Subst	trockenster
-trocken			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	trockensten
+trocken			ADJ	Sup UnmGend Nom Pl St Attr/Subst	trockenste
+trocken			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	trockensten
+trocken			ADJ	Sup UnmGend Acc Pl St Attr/Subst	trockenste
+trocken			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	trockensten
+trocken			ADJ	Sup UnmGend Dat Pl St Attr/Subst	trockensten
+trocken			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	trockensten
+trocken			ADJ	Sup UnmGend Gen Pl St Attr/Subst	trockenster
+trocken			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	trockensten
 viel			ADJ	Pos Pred/Adv	viel
 viel			ADJ	Comp Pred/Adv	mehr
 viel			ADJ	Sup Pred/Adv	am meisten
@@ -1254,14 +1254,14 @@ viel			ADJ	Pos Fem Dat Sg St Attr/Subst	vieler
 viel			ADJ	Pos Fem Dat Sg Wk Attr/Subst	vielen
 viel			ADJ	Pos Fem Gen Sg St Attr/Subst	vieler
 viel			ADJ	Pos Fem Gen Sg Wk Attr/Subst	vielen
-viel			ADJ	Pos NoGend Nom Pl St Attr/Subst	viele
-viel			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	vielen
-viel			ADJ	Pos NoGend Acc Pl St Attr/Subst	viele
-viel			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	vielen
-viel			ADJ	Pos NoGend Dat Pl St Attr/Subst	vielen
-viel			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	vielen
-viel			ADJ	Pos NoGend Gen Pl St Attr/Subst	vieler
-viel			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	vielen
+viel			ADJ	Pos UnmGend Nom Pl St Attr/Subst	viele
+viel			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	vielen
+viel			ADJ	Pos UnmGend Acc Pl St Attr/Subst	viele
+viel			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	vielen
+viel			ADJ	Pos UnmGend Dat Pl St Attr/Subst	vielen
+viel			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	vielen
+viel			ADJ	Pos UnmGend Gen Pl St Attr/Subst	vieler
+viel			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	vielen
 viel			ADJ	Pos UnmGend UnmCase UnmNum UnmInfl Attr/Subst	viel
 viel			ADJ	Comp UnmGend UnmCase UnmNum UnmInfl Attr/Subst	mehr
 viel			ADJ	Sup Masc Nom Sg St Attr/Subst	meister
@@ -1288,14 +1288,14 @@ viel			ADJ	Sup Fem Dat Sg St Attr/Subst	meister
 viel			ADJ	Sup Fem Dat Sg Wk Attr/Subst	meisten
 viel			ADJ	Sup Fem Gen Sg St Attr/Subst	meister
 viel			ADJ	Sup Fem Gen Sg Wk Attr/Subst	meisten
-viel			ADJ	Sup NoGend Nom Pl St Attr/Subst	meiste
-viel			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	meisten
-viel			ADJ	Sup NoGend Acc Pl St Attr/Subst	meiste
-viel			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	meisten
-viel			ADJ	Sup NoGend Dat Pl St Attr/Subst	meisten
-viel			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	meisten
-viel			ADJ	Sup NoGend Gen Pl St Attr/Subst	meister
-viel			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	meisten
+viel			ADJ	Sup UnmGend Nom Pl St Attr/Subst	meiste
+viel			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	meisten
+viel			ADJ	Sup UnmGend Acc Pl St Attr/Subst	meiste
+viel			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	meisten
+viel			ADJ	Sup UnmGend Dat Pl St Attr/Subst	meisten
+viel			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	meisten
+viel			ADJ	Sup UnmGend Gen Pl St Attr/Subst	meister
+viel			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	meisten
 warm			ADJ	Pos Pred/Adv	warm
 warm			ADJ	Comp Pred/Adv	wärmer
 warm			ADJ	Sup Pred/Adv	am wärmsten
@@ -1323,14 +1323,14 @@ warm			ADJ	Pos Fem Dat Sg St Attr/Subst	warmer
 warm			ADJ	Pos Fem Dat Sg Wk Attr/Subst	warmen
 warm			ADJ	Pos Fem Gen Sg St Attr/Subst	warmer
 warm			ADJ	Pos Fem Gen Sg Wk Attr/Subst	warmen
-warm			ADJ	Pos NoGend Nom Pl St Attr/Subst	warme
-warm			ADJ	Pos NoGend Nom Pl Wk Attr/Subst	warmen
-warm			ADJ	Pos NoGend Acc Pl St Attr/Subst	warme
-warm			ADJ	Pos NoGend Acc Pl Wk Attr/Subst	warmen
-warm			ADJ	Pos NoGend Dat Pl St Attr/Subst	warmen
-warm			ADJ	Pos NoGend Dat Pl Wk Attr/Subst	warmen
-warm			ADJ	Pos NoGend Gen Pl St Attr/Subst	warmer
-warm			ADJ	Pos NoGend Gen Pl Wk Attr/Subst	warmen
+warm			ADJ	Pos UnmGend Nom Pl St Attr/Subst	warme
+warm			ADJ	Pos UnmGend Nom Pl Wk Attr/Subst	warmen
+warm			ADJ	Pos UnmGend Acc Pl St Attr/Subst	warme
+warm			ADJ	Pos UnmGend Acc Pl Wk Attr/Subst	warmen
+warm			ADJ	Pos UnmGend Dat Pl St Attr/Subst	warmen
+warm			ADJ	Pos UnmGend Dat Pl Wk Attr/Subst	warmen
+warm			ADJ	Pos UnmGend Gen Pl St Attr/Subst	warmer
+warm			ADJ	Pos UnmGend Gen Pl Wk Attr/Subst	warmen
 warm			ADJ	Comp Masc Nom Sg St Attr/Subst	wärmerer
 warm			ADJ	Comp Masc Nom Sg Wk Attr/Subst	wärmere
 warm			ADJ	Comp Masc Acc Sg St Attr/Subst	wärmeren
@@ -1355,14 +1355,14 @@ warm			ADJ	Comp Fem Dat Sg St Attr/Subst	wärmerer
 warm			ADJ	Comp Fem Dat Sg Wk Attr/Subst	wärmeren
 warm			ADJ	Comp Fem Gen Sg St Attr/Subst	wärmerer
 warm			ADJ	Comp Fem Gen Sg Wk Attr/Subst	wärmeren
-warm			ADJ	Comp NoGend Nom Pl St Attr/Subst	wärmere
-warm			ADJ	Comp NoGend Nom Pl Wk Attr/Subst	wärmeren
-warm			ADJ	Comp NoGend Acc Pl St Attr/Subst	wärmere
-warm			ADJ	Comp NoGend Acc Pl Wk Attr/Subst	wärmeren
-warm			ADJ	Comp NoGend Dat Pl St Attr/Subst	wärmeren
-warm			ADJ	Comp NoGend Dat Pl Wk Attr/Subst	wärmeren
-warm			ADJ	Comp NoGend Gen Pl St Attr/Subst	wärmerer
-warm			ADJ	Comp NoGend Gen Pl Wk Attr/Subst	wärmeren
+warm			ADJ	Comp UnmGend Nom Pl St Attr/Subst	wärmere
+warm			ADJ	Comp UnmGend Nom Pl Wk Attr/Subst	wärmeren
+warm			ADJ	Comp UnmGend Acc Pl St Attr/Subst	wärmere
+warm			ADJ	Comp UnmGend Acc Pl Wk Attr/Subst	wärmeren
+warm			ADJ	Comp UnmGend Dat Pl St Attr/Subst	wärmeren
+warm			ADJ	Comp UnmGend Dat Pl Wk Attr/Subst	wärmeren
+warm			ADJ	Comp UnmGend Gen Pl St Attr/Subst	wärmerer
+warm			ADJ	Comp UnmGend Gen Pl Wk Attr/Subst	wärmeren
 warm			ADJ	Sup Masc Nom Sg St Attr/Subst	wärmster
 warm			ADJ	Sup Masc Nom Sg Wk Attr/Subst	wärmste
 warm			ADJ	Sup Masc Acc Sg St Attr/Subst	wärmsten
@@ -1387,11 +1387,11 @@ warm			ADJ	Sup Fem Dat Sg St Attr/Subst	wärmster
 warm			ADJ	Sup Fem Dat Sg Wk Attr/Subst	wärmsten
 warm			ADJ	Sup Fem Gen Sg St Attr/Subst	wärmster
 warm			ADJ	Sup Fem Gen Sg Wk Attr/Subst	wärmsten
-warm			ADJ	Sup NoGend Nom Pl St Attr/Subst	wärmste
-warm			ADJ	Sup NoGend Nom Pl Wk Attr/Subst	wärmsten
-warm			ADJ	Sup NoGend Acc Pl St Attr/Subst	wärmste
-warm			ADJ	Sup NoGend Acc Pl Wk Attr/Subst	wärmsten
-warm			ADJ	Sup NoGend Dat Pl St Attr/Subst	wärmsten
-warm			ADJ	Sup NoGend Dat Pl Wk Attr/Subst	wärmsten
-warm			ADJ	Sup NoGend Gen Pl St Attr/Subst	wärmster
-warm			ADJ	Sup NoGend Gen Pl Wk Attr/Subst	wärmsten
+warm			ADJ	Sup UnmGend Nom Pl St Attr/Subst	wärmste
+warm			ADJ	Sup UnmGend Nom Pl Wk Attr/Subst	wärmsten
+warm			ADJ	Sup UnmGend Acc Pl St Attr/Subst	wärmste
+warm			ADJ	Sup UnmGend Acc Pl Wk Attr/Subst	wärmsten
+warm			ADJ	Sup UnmGend Dat Pl St Attr/Subst	wärmsten
+warm			ADJ	Sup UnmGend Dat Pl Wk Attr/Subst	wärmsten
+warm			ADJ	Sup UnmGend Gen Pl St Attr/Subst	wärmster
+warm			ADJ	Sup UnmGend Gen Pl Wk Attr/Subst	wärmsten

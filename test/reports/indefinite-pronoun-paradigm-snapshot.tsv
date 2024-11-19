@@ -25,14 +25,14 @@ alle	2	2	INDEF	Fem Dat Sg St Attr	aller
 alle	2	2	INDEF	Fem Dat Sg St Subst	aller
 alle	2	2	INDEF	Fem Gen Sg St Attr	aller
 alle	2	2	INDEF	Fem Gen Sg St Subst	aller
-alle	2	2	INDEF	NoGend Nom Pl St Attr	alle
-alle	2	2	INDEF	NoGend Nom Pl St Subst	alle
-alle	2	2	INDEF	NoGend Acc Pl St Attr	alle
-alle	2	2	INDEF	NoGend Acc Pl St Subst	alle
-alle	2	2	INDEF	NoGend Dat Pl St Attr	allen
-alle	2	2	INDEF	NoGend Dat Pl St Subst	allen
-alle	2	2	INDEF	NoGend Gen Pl St Attr	aller
-alle	2	2	INDEF	NoGend Gen Pl St Subst	aller
+alle	2	2	INDEF	UnmGend Nom Pl St Attr	alle
+alle	2	2	INDEF	UnmGend Nom Pl St Subst	alle
+alle	2	2	INDEF	UnmGend Acc Pl St Attr	alle
+alle	2	2	INDEF	UnmGend Acc Pl St Subst	alle
+alle	2	2	INDEF	UnmGend Dat Pl St Attr	allen
+alle	2	2	INDEF	UnmGend Dat Pl St Subst	allen
+alle	2	2	INDEF	UnmGend Gen Pl St Attr	aller
+alle	2	2	INDEF	UnmGend Gen Pl St Subst	aller
 alle	2	2	INDEF	UnmGend UnmCase UnmNum UnmInfl Attr	all
 beide			INDEF	Neut Nom Sg St Subst	beides
 beide			INDEF	Neut Nom Sg Wk Subst	beide
@@ -42,22 +42,22 @@ beide			INDEF	Neut Dat Sg St Subst	beidem
 beide			INDEF	Neut Dat Sg Wk Subst	beiden
 beide			INDEF	Neut Gen Sg St Subst	beides
 beide			INDEF	Neut Gen Sg Wk Subst	beiden
-beide			INDEF	NoGend Nom Pl St Attr	beide
-beide			INDEF	NoGend Nom Pl St Subst	beide
-beide			INDEF	NoGend Nom Pl Wk Attr	beiden
-beide			INDEF	NoGend Nom Pl Wk Subst	beiden
-beide			INDEF	NoGend Acc Pl St Attr	beide
-beide			INDEF	NoGend Acc Pl St Subst	beide
-beide			INDEF	NoGend Acc Pl Wk Attr	beiden
-beide			INDEF	NoGend Acc Pl Wk Subst	beiden
-beide			INDEF	NoGend Dat Pl St Attr	beiden
-beide			INDEF	NoGend Dat Pl St Subst	beiden
-beide			INDEF	NoGend Dat Pl Wk Attr	beiden
-beide			INDEF	NoGend Dat Pl Wk Subst	beiden
-beide			INDEF	NoGend Gen Pl St Attr	beider
-beide			INDEF	NoGend Gen Pl St Subst	beider
-beide			INDEF	NoGend Gen Pl Wk Attr	beiden
-beide			INDEF	NoGend Gen Pl Wk Subst	beiden
+beide			INDEF	UnmGend Nom Pl St Attr	beide
+beide			INDEF	UnmGend Nom Pl St Subst	beide
+beide			INDEF	UnmGend Nom Pl Wk Attr	beiden
+beide			INDEF	UnmGend Nom Pl Wk Subst	beiden
+beide			INDEF	UnmGend Acc Pl St Attr	beide
+beide			INDEF	UnmGend Acc Pl St Subst	beide
+beide			INDEF	UnmGend Acc Pl Wk Attr	beiden
+beide			INDEF	UnmGend Acc Pl Wk Subst	beiden
+beide			INDEF	UnmGend Dat Pl St Attr	beiden
+beide			INDEF	UnmGend Dat Pl St Subst	beiden
+beide			INDEF	UnmGend Dat Pl Wk Attr	beiden
+beide			INDEF	UnmGend Dat Pl Wk Subst	beiden
+beide			INDEF	UnmGend Gen Pl St Attr	beider
+beide			INDEF	UnmGend Gen Pl St Subst	beider
+beide			INDEF	UnmGend Gen Pl Wk Attr	beiden
+beide			INDEF	UnmGend Gen Pl Wk Subst	beiden
 eine		2	INDEF	Masc Nom Sg St Subst	einer
 eine		2	INDEF	Masc Nom Sg Wk Subst	eine
 eine		2	INDEF	Masc Acc Sg St Subst	einen
@@ -106,14 +106,14 @@ einige		2	INDEF	Fem Dat Sg St Attr	einiger
 einige		2	INDEF	Fem Dat Sg St Subst	einiger
 einige		2	INDEF	Fem Gen Sg St Attr	einiger
 einige		2	INDEF	Fem Gen Sg St Subst	einiger
-einige		2	INDEF	NoGend Nom Pl St Attr	einige
-einige		2	INDEF	NoGend Nom Pl St Subst	einige
-einige		2	INDEF	NoGend Acc Pl St Attr	einige
-einige		2	INDEF	NoGend Acc Pl St Subst	einige
-einige		2	INDEF	NoGend Dat Pl St Attr	einigen
-einige		2	INDEF	NoGend Dat Pl St Subst	einigen
-einige		2	INDEF	NoGend Gen Pl St Attr	einiger
-einige		2	INDEF	NoGend Gen Pl St Subst	einiger
+einige		2	INDEF	UnmGend Nom Pl St Attr	einige
+einige		2	INDEF	UnmGend Nom Pl St Subst	einige
+einige		2	INDEF	UnmGend Acc Pl St Attr	einige
+einige		2	INDEF	UnmGend Acc Pl St Subst	einige
+einige		2	INDEF	UnmGend Dat Pl St Attr	einigen
+einige		2	INDEF	UnmGend Dat Pl St Subst	einigen
+einige		2	INDEF	UnmGend Gen Pl St Attr	einiger
+einige		2	INDEF	UnmGend Gen Pl St Subst	einiger
 etwas			INDEF Neut	UnmCase UnmNum	etwas
 frau			INDEF Fem	Nom Sg	frau
 genug			INDEF	UnmGend UnmCase UnmNum UnmInfl Attr	genug
@@ -166,14 +166,14 @@ irgendwelche		2	INDEF	Fem Dat Sg St Attr	irgendwelcher
 irgendwelche		2	INDEF	Fem Dat Sg St Subst	irgendwelcher
 irgendwelche		2	INDEF	Fem Gen Sg St Attr	irgendwelcher
 irgendwelche		2	INDEF	Fem Gen Sg St Subst	irgendwelcher
-irgendwelche		2	INDEF	NoGend Nom Pl St Attr	irgendwelche
-irgendwelche		2	INDEF	NoGend Nom Pl St Subst	irgendwelche
-irgendwelche		2	INDEF	NoGend Acc Pl St Attr	irgendwelche
-irgendwelche		2	INDEF	NoGend Acc Pl St Subst	irgendwelche
-irgendwelche		2	INDEF	NoGend Dat Pl St Attr	irgendwelchen
-irgendwelche		2	INDEF	NoGend Dat Pl St Subst	irgendwelchen
-irgendwelche		2	INDEF	NoGend Gen Pl St Attr	irgendwelcher
-irgendwelche		2	INDEF	NoGend Gen Pl St Subst	irgendwelcher
+irgendwelche		2	INDEF	UnmGend Nom Pl St Attr	irgendwelche
+irgendwelche		2	INDEF	UnmGend Nom Pl St Subst	irgendwelche
+irgendwelche		2	INDEF	UnmGend Acc Pl St Attr	irgendwelche
+irgendwelche		2	INDEF	UnmGend Acc Pl St Subst	irgendwelche
+irgendwelche		2	INDEF	UnmGend Dat Pl St Attr	irgendwelchen
+irgendwelche		2	INDEF	UnmGend Dat Pl St Subst	irgendwelchen
+irgendwelche		2	INDEF	UnmGend Gen Pl St Attr	irgendwelcher
+irgendwelche		2	INDEF	UnmGend Gen Pl St Subst	irgendwelcher
 jede		2	INDEF	Masc Nom Sg St Attr	jeder
 jede		2	INDEF	Masc Nom Sg St Subst	jeder
 jede		2	INDEF	Masc Nom Sg Wk Attr	jede
@@ -278,14 +278,14 @@ jegliche		2	INDEF	Fem Gen Sg St Attr	jeglicher
 jegliche		2	INDEF	Fem Gen Sg St Subst	jeglicher
 jegliche		2	INDEF	Fem Gen Sg Wk Attr	jeglichen
 jegliche		2	INDEF	Fem Gen Sg Wk Subst	jeglichen
-jegliche		2	INDEF	NoGend Nom Pl St Attr	jegliche
-jegliche		2	INDEF	NoGend Nom Pl St Subst	jegliche
-jegliche		2	INDEF	NoGend Acc Pl St Attr	jegliche
-jegliche		2	INDEF	NoGend Acc Pl St Subst	jegliche
-jegliche		2	INDEF	NoGend Dat Pl St Attr	jeglichen
-jegliche		2	INDEF	NoGend Dat Pl St Subst	jeglichen
-jegliche		2	INDEF	NoGend Gen Pl St Attr	jeglicher
-jegliche		2	INDEF	NoGend Gen Pl St Subst	jeglicher
+jegliche		2	INDEF	UnmGend Nom Pl St Attr	jegliche
+jegliche		2	INDEF	UnmGend Nom Pl St Subst	jegliche
+jegliche		2	INDEF	UnmGend Acc Pl St Attr	jegliche
+jegliche		2	INDEF	UnmGend Acc Pl St Subst	jegliche
+jegliche		2	INDEF	UnmGend Dat Pl St Attr	jeglichen
+jegliche		2	INDEF	UnmGend Dat Pl St Subst	jeglichen
+jegliche		2	INDEF	UnmGend Gen Pl St Attr	jeglicher
+jegliche		2	INDEF	UnmGend Gen Pl St Subst	jeglicher
 jemand			INDEF Masc	Nom Sg	jemand
 jemand			INDEF Masc	Acc Sg	jemand, jemanden
 jemand			INDEF Masc	Dat Sg	jemand, jemandem
@@ -302,10 +302,10 @@ keine		2	INDEF	Fem Nom Sg St Subst	keine
 keine		2	INDEF	Fem Acc Sg St Subst	keine
 keine		2	INDEF	Fem Dat Sg St Subst	keiner
 keine		2	INDEF	Fem Gen Sg St Subst	keiner
-keine		2	INDEF	NoGend Nom Pl St Subst	keine
-keine		2	INDEF	NoGend Acc Pl St Subst	keine
-keine		2	INDEF	NoGend Dat Pl St Subst	keinen
-keine		2	INDEF	NoGend Gen Pl St Subst	keiner
+keine		2	INDEF	UnmGend Nom Pl St Subst	keine
+keine		2	INDEF	UnmGend Acc Pl St Subst	keine
+keine		2	INDEF	UnmGend Dat Pl St Subst	keinen
+keine		2	INDEF	UnmGend Gen Pl St Subst	keiner
 man	1		INDEF Masc	Nom Sg	man
 manche			INDEF	Masc Nom Sg St Attr	mancher
 manche			INDEF	Masc Nom Sg St Subst	mancher
@@ -331,27 +331,27 @@ manche			INDEF	Fem Dat Sg St Attr	mancher
 manche			INDEF	Fem Dat Sg St Subst	mancher
 manche			INDEF	Fem Gen Sg St Attr	mancher
 manche			INDEF	Fem Gen Sg St Subst	mancher
-manche			INDEF	NoGend Nom Pl St Attr	manche
-manche			INDEF	NoGend Nom Pl St Subst	manche
-manche			INDEF	NoGend Acc Pl St Attr	manche
-manche			INDEF	NoGend Acc Pl St Subst	manche
-manche			INDEF	NoGend Dat Pl St Attr	manchen
-manche			INDEF	NoGend Dat Pl St Subst	manchen
-manche			INDEF	NoGend Gen Pl St Attr	mancher
-manche			INDEF	NoGend Gen Pl St Subst	mancher
+manche			INDEF	UnmGend Nom Pl St Attr	manche
+manche			INDEF	UnmGend Nom Pl St Subst	manche
+manche			INDEF	UnmGend Acc Pl St Attr	manche
+manche			INDEF	UnmGend Acc Pl St Subst	manche
+manche			INDEF	UnmGend Dat Pl St Attr	manchen
+manche			INDEF	UnmGend Dat Pl St Subst	manchen
+manche			INDEF	UnmGend Gen Pl St Attr	mancher
+manche			INDEF	UnmGend Gen Pl St Subst	mancher
 manche			INDEF	UnmGend UnmCase UnmNum UnmInfl Attr	manch
 mehrere			INDEF	Neut Nom Sg St Attr	mehreres
 mehrere			INDEF	Neut Nom Sg St Subst	mehreres
 mehrere			INDEF	Neut Acc Sg St Attr	mehreres
 mehrere			INDEF	Neut Acc Sg St Subst	mehreres
-mehrere			INDEF	NoGend Nom Pl St Attr	mehrere
-mehrere			INDEF	NoGend Nom Pl St Subst	mehrere
-mehrere			INDEF	NoGend Acc Pl St Attr	mehrere
-mehrere			INDEF	NoGend Acc Pl St Subst	mehrere
-mehrere			INDEF	NoGend Dat Pl St Attr	mehreren
-mehrere			INDEF	NoGend Dat Pl St Subst	mehreren
-mehrere			INDEF	NoGend Gen Pl St Attr	mehrerer
-mehrere			INDEF	NoGend Gen Pl St Subst	mehrerer
+mehrere			INDEF	UnmGend Nom Pl St Attr	mehrere
+mehrere			INDEF	UnmGend Nom Pl St Subst	mehrere
+mehrere			INDEF	UnmGend Acc Pl St Attr	mehrere
+mehrere			INDEF	UnmGend Acc Pl St Subst	mehrere
+mehrere			INDEF	UnmGend Dat Pl St Attr	mehreren
+mehrere			INDEF	UnmGend Dat Pl St Subst	mehreren
+mehrere			INDEF	UnmGend Gen Pl St Attr	mehrerer
+mehrere			INDEF	UnmGend Gen Pl St Subst	mehrerer
 sämtliche		2	INDEF	Masc Nom Sg St Attr	sämtlicher
 sämtliche		2	INDEF	Masc Nom Sg St Subst	sämtlicher
 sämtliche		2	INDEF	Masc Nom Sg Wk Attr	sämtliche
@@ -400,22 +400,22 @@ sämtliche		2	INDEF	Fem Gen Sg St Attr	sämtlicher
 sämtliche		2	INDEF	Fem Gen Sg St Subst	sämtlicher
 sämtliche		2	INDEF	Fem Gen Sg Wk Attr	sämtlichen
 sämtliche		2	INDEF	Fem Gen Sg Wk Subst	sämtlichen
-sämtliche		2	INDEF	NoGend Nom Pl St Attr	sämtliche
-sämtliche		2	INDEF	NoGend Nom Pl St Subst	sämtliche
-sämtliche		2	INDEF	NoGend Nom Pl Wk Attr	sämtlichen
-sämtliche		2	INDEF	NoGend Nom Pl Wk Subst	sämtlichen
-sämtliche		2	INDEF	NoGend Acc Pl St Attr	sämtliche
-sämtliche		2	INDEF	NoGend Acc Pl St Subst	sämtliche
-sämtliche		2	INDEF	NoGend Acc Pl Wk Attr	sämtlichen
-sämtliche		2	INDEF	NoGend Acc Pl Wk Subst	sämtlichen
-sämtliche		2	INDEF	NoGend Dat Pl St Attr	sämtlichen
-sämtliche		2	INDEF	NoGend Dat Pl St Subst	sämtlichen
-sämtliche		2	INDEF	NoGend Dat Pl Wk Attr	sämtlichen
-sämtliche		2	INDEF	NoGend Dat Pl Wk Subst	sämtlichen
-sämtliche		2	INDEF	NoGend Gen Pl St Attr	sämtlicher
-sämtliche		2	INDEF	NoGend Gen Pl St Subst	sämtlicher
-sämtliche		2	INDEF	NoGend Gen Pl Wk Attr	sämtlichen
-sämtliche		2	INDEF	NoGend Gen Pl Wk Subst	sämtlichen
+sämtliche		2	INDEF	UnmGend Nom Pl St Attr	sämtliche
+sämtliche		2	INDEF	UnmGend Nom Pl St Subst	sämtliche
+sämtliche		2	INDEF	UnmGend Nom Pl Wk Attr	sämtlichen
+sämtliche		2	INDEF	UnmGend Nom Pl Wk Subst	sämtlichen
+sämtliche		2	INDEF	UnmGend Acc Pl St Attr	sämtliche
+sämtliche		2	INDEF	UnmGend Acc Pl St Subst	sämtliche
+sämtliche		2	INDEF	UnmGend Acc Pl Wk Attr	sämtlichen
+sämtliche		2	INDEF	UnmGend Acc Pl Wk Subst	sämtlichen
+sämtliche		2	INDEF	UnmGend Dat Pl St Attr	sämtlichen
+sämtliche		2	INDEF	UnmGend Dat Pl St Subst	sämtlichen
+sämtliche		2	INDEF	UnmGend Dat Pl Wk Attr	sämtlichen
+sämtliche		2	INDEF	UnmGend Dat Pl Wk Subst	sämtlichen
+sämtliche		2	INDEF	UnmGend Gen Pl St Attr	sämtlicher
+sämtliche		2	INDEF	UnmGend Gen Pl St Subst	sämtlicher
+sämtliche		2	INDEF	UnmGend Gen Pl Wk Attr	sämtlichen
+sämtliche		2	INDEF	UnmGend Gen Pl Wk Subst	sämtlichen
 sämtliche		2	INDEF	UnmGend UnmCase UnmNum UnmInfl Subst	sämtlich
 unsereiner			INDEF Masc	Nom Sg	unsereiner
 unsereiner			INDEF Masc	Acc Sg	unsereinen
@@ -437,10 +437,10 @@ welche	3	2	INDEF	Fem Nom Sg St Subst	welche
 welche	3	2	INDEF	Fem Acc Sg St Subst	welche
 welche	3	2	INDEF	Fem Dat Sg St Subst	welcher
 welche	3	2	INDEF	Fem Gen Sg St Subst	welcher
-welche	3	2	INDEF	NoGend Nom Pl St Subst	welche
-welche	3	2	INDEF	NoGend Acc Pl St Subst	welche
-welche	3	2	INDEF	NoGend Dat Pl St Subst	welchen
-welche	3	2	INDEF	NoGend Gen Pl St Subst	welcher
+welche	3	2	INDEF	UnmGend Nom Pl St Subst	welche
+welche	3	2	INDEF	UnmGend Acc Pl St Subst	welche
+welche	3	2	INDEF	UnmGend Dat Pl St Subst	welchen
+welche	3	2	INDEF	UnmGend Gen Pl St Subst	welcher
 wer	2		INDEF Masc	Nom Sg	wer
 wer	2		INDEF Masc	Acc Sg	wen
 wer	2		INDEF Masc	Dat Sg	wem

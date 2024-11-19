@@ -27,14 +27,14 @@ welche	1	2	WPRO	Fem Dat Sg St Attr	welcher
 welche	1	2	WPRO	Fem Dat Sg St Subst	welcher
 welche	1	2	WPRO	Fem Gen Sg St Attr	welcher
 welche	1	2	WPRO	Fem Gen Sg St Subst	welcher
-welche	1	2	WPRO	NoGend Nom Pl St Attr	welche
-welche	1	2	WPRO	NoGend Nom Pl St Subst	welche
-welche	1	2	WPRO	NoGend Acc Pl St Attr	welche
-welche	1	2	WPRO	NoGend Acc Pl St Subst	welche
-welche	1	2	WPRO	NoGend Dat Pl St Attr	welchen
-welche	1	2	WPRO	NoGend Dat Pl St Subst	welchen
-welche	1	2	WPRO	NoGend Gen Pl St Attr	welcher
-welche	1	2	WPRO	NoGend Gen Pl St Subst	welcher
+welche	1	2	WPRO	UnmGend Nom Pl St Attr	welche
+welche	1	2	WPRO	UnmGend Nom Pl St Subst	welche
+welche	1	2	WPRO	UnmGend Acc Pl St Attr	welche
+welche	1	2	WPRO	UnmGend Acc Pl St Subst	welche
+welche	1	2	WPRO	UnmGend Dat Pl St Attr	welchen
+welche	1	2	WPRO	UnmGend Dat Pl St Subst	welchen
+welche	1	2	WPRO	UnmGend Gen Pl St Attr	welcher
+welche	1	2	WPRO	UnmGend Gen Pl St Subst	welcher
 welche	1	2	WPRO	UnmGend UnmCase UnmNum UnmInfl Attr	welch
 wer	1		WPRO Masc	Nom Sg	wer
 wer	1		WPRO Masc	Acc Sg	wen

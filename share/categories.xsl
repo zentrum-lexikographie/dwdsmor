@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 7.4 -->
-<!-- Andreas Nolda 2024-11-07 -->
+<!-- Version 7.5 -->
+<!-- Andreas Nolda 2024-11-19 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1338,9 +1338,9 @@
          dative-plural="-n">NFem-Adj</class>
   <!-- pluralia tantum: -->
   <!-- dative plural: unmarked -->
-  <class dative-plural="-">NNoGend|Pl_0</class>
+  <class dative-plural="-">NUnmGend|Pl_0</class>
   <!-- dative plural: "-n" -->
-  <class dative-plural="-n">NNoGend|Pl_n</class>
+  <class dative-plural="-n">NUnmGend|Pl_n</class>
 </xsl:variable>
 
 <xsl:template name="noun-class">
@@ -1954,9 +1954,9 @@
          genitive-singular="-s">NameFem_s</class>
   <!-- plural proper names: -->
   <!-- dative plural: unmarked -->
-  <class dative-plural="-">NameNoGend|Pl_0</class>
+  <class dative-plural="-">NameUnmGend|Pl_0</class>
   <!-- dative plural: "-n" -->
-  <class dative-plural="-n">NameNoGend|Pl_n</class>
+  <class dative-plural="-n">NameUnmGend|Pl_n</class>
 </xsl:variable>
 
 <xsl:template name="name-class">

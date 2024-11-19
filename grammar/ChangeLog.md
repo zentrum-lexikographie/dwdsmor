@@ -4,6 +4,15 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 * replace inflection tag `<Invar>` with `<UnmFunc>`, `<UnmGend>`, `<UnmCase>`,
   `<UnmNum>`, and/or `<UnmInfl>`
+* replace inflection tag `<NoGend>` with `<UnmGend>`
+* rename inflection classes `<NNoGend|Pl_0>`, `<NNoGend|Pl_n>`,
+  `<NameNoGend|Pl_0>`, `<NameNoGend|Pl_n>`, `<ArtDef-den+DemNoGend>`,
+  `<ArtDef-der+DemNoGend>`, `<ArtDef-die+DemNoGend>`, `<PProNoGendAccPl>`,
+  `<PProNoGendDatPl>`, `<PProNoGendGenPl>`, `<PProNoGendNomPl>`, and
+  `<AbbrNNoGend>` to `<NUnmGend|Pl_0>`, `<NUnmGend|Pl_n>`, `<NameUnmGend|Pl_0>`,
+  `<NameUnmGend|Pl_n>`, `<ArtDef-den+DemUnmGend>`, `<ArtDef-der+DemUnmGend>`,
+  `<ArtDef-die+DemUnmGend>`, `<PProUnmGendAccPl>`, `<PProUnmGendDatPl>`,
+  `<PProUnmGendGenPl>`, `<PProUnmGendNomPl>`, and `<AbbrNUnmGend>`, respectively
 
 2024-11-07:
 

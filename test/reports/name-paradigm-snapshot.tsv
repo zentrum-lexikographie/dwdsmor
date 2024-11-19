@@ -1,8 +1,8 @@
 Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
-Alpen			NPROP NoGend	Nom Pl	Alpen
-Alpen			NPROP NoGend	Acc Pl	Alpen
-Alpen			NPROP NoGend	Dat Pl	Alpen
-Alpen			NPROP NoGend	Gen Pl	Alpen
+Alpen			NPROP UnmGend	Nom Pl	Alpen
+Alpen			NPROP UnmGend	Acc Pl	Alpen
+Alpen			NPROP UnmGend	Dat Pl	Alpen
+Alpen			NPROP UnmGend	Gen Pl	Alpen
 Andreas			NPROP Masc	Nom Sg	Andreas
 Andreas			NPROP Masc	Acc Sg	Andreas
 Andreas			NPROP Masc	Dat Sg	Andreas

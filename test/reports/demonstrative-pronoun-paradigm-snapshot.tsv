@@ -26,14 +26,14 @@ die	2	2	DEM	Fem Dat Sg St Attr	der
 die	2	2	DEM	Fem Dat Sg St Subst	der
 die	2	2	DEM	Fem Gen Sg St Attr	der
 die	2	2	DEM	Fem Gen Sg St Subst	deren, derer
-die	2	2	DEM	NoGend Nom Pl St Attr	die
-die	2	2	DEM	NoGend Nom Pl St Subst	die
-die	2	2	DEM	NoGend Acc Pl St Attr	die
-die	2	2	DEM	NoGend Acc Pl St Subst	die
-die	2	2	DEM	NoGend Dat Pl St Attr	den
-die	2	2	DEM	NoGend Dat Pl St Subst	denen
-die	2	2	DEM	NoGend Gen Pl St Attr	der
-die	2	2	DEM	NoGend Gen Pl St Subst	deren, derer
+die	2	2	DEM	UnmGend Nom Pl St Attr	die
+die	2	2	DEM	UnmGend Nom Pl St Subst	die
+die	2	2	DEM	UnmGend Acc Pl St Attr	die
+die	2	2	DEM	UnmGend Acc Pl St Subst	die
+die	2	2	DEM	UnmGend Dat Pl St Attr	den
+die	2	2	DEM	UnmGend Dat Pl St Subst	denen
+die	2	2	DEM	UnmGend Gen Pl St Attr	der
+die	2	2	DEM	UnmGend Gen Pl St Subst	deren, derer
 diejenige		2	DEM	Masc Nom Sg Wk Attr	derjenige
 diejenige		2	DEM	Masc Nom Sg Wk Subst	derjenige
 diejenige		2	DEM	Masc Acc Sg Wk Attr	denjenigen
@@ -58,14 +58,14 @@ diejenige		2	DEM	Fem Dat Sg Wk Attr	derjenigen
 diejenige		2	DEM	Fem Dat Sg Wk Subst	derjenigen
 diejenige		2	DEM	Fem Gen Sg Wk Attr	derjenigen
 diejenige		2	DEM	Fem Gen Sg Wk Subst	derjenigen
-diejenige		2	DEM	NoGend Nom Pl Wk Attr	diejenigen
-diejenige		2	DEM	NoGend Nom Pl Wk Subst	diejenigen
-diejenige		2	DEM	NoGend Acc Pl Wk Attr	diejenigen
-diejenige		2	DEM	NoGend Acc Pl Wk Subst	diejenigen
-diejenige		2	DEM	NoGend Dat Pl Wk Attr	denjenigen
-diejenige		2	DEM	NoGend Dat Pl Wk Subst	denjenigen
-diejenige		2	DEM	NoGend Gen Pl Wk Attr	derjenigen
-diejenige		2	DEM	NoGend Gen Pl Wk Subst	derjenigen
+diejenige		2	DEM	UnmGend Nom Pl Wk Attr	diejenigen
+diejenige		2	DEM	UnmGend Nom Pl Wk Subst	diejenigen
+diejenige		2	DEM	UnmGend Acc Pl Wk Attr	diejenigen
+diejenige		2	DEM	UnmGend Acc Pl Wk Subst	diejenigen
+diejenige		2	DEM	UnmGend Dat Pl Wk Attr	denjenigen
+diejenige		2	DEM	UnmGend Dat Pl Wk Subst	denjenigen
+diejenige		2	DEM	UnmGend Gen Pl Wk Attr	derjenigen
+diejenige		2	DEM	UnmGend Gen Pl Wk Subst	derjenigen
 diese		2	DEM	Masc Nom Sg St Attr	dieser
 diese		2	DEM	Masc Nom Sg St Subst	dieser
 diese		2	DEM	Masc Acc Sg St Attr	diesen
@@ -90,14 +90,14 @@ diese		2	DEM	Fem Dat Sg St Attr	dieser
 diese		2	DEM	Fem Dat Sg St Subst	dieser
 diese		2	DEM	Fem Gen Sg St Attr	dieser
 diese		2	DEM	Fem Gen Sg St Subst	dieser
-diese		2	DEM	NoGend Nom Pl St Attr	diese
-diese		2	DEM	NoGend Nom Pl St Subst	diese
-diese		2	DEM	NoGend Acc Pl St Attr	diese
-diese		2	DEM	NoGend Acc Pl St Subst	diese
-diese		2	DEM	NoGend Dat Pl St Attr	diesen
-diese		2	DEM	NoGend Dat Pl St Subst	diesen
-diese		2	DEM	NoGend Gen Pl St Attr	dieser
-diese		2	DEM	NoGend Gen Pl St Subst	dieser
+diese		2	DEM	UnmGend Nom Pl St Attr	diese
+diese		2	DEM	UnmGend Nom Pl St Subst	diese
+diese		2	DEM	UnmGend Acc Pl St Attr	diese
+diese		2	DEM	UnmGend Acc Pl St Subst	diese
+diese		2	DEM	UnmGend Dat Pl St Attr	diesen
+diese		2	DEM	UnmGend Dat Pl St Subst	diesen
+diese		2	DEM	UnmGend Gen Pl St Attr	dieser
+diese		2	DEM	UnmGend Gen Pl St Subst	dieser
 jene		2	DEM	Masc Nom Sg St Attr	jener
 jene		2	DEM	Masc Nom Sg St Subst	jener
 jene		2	DEM	Masc Acc Sg St Attr	jenen
@@ -122,14 +122,14 @@ jene		2	DEM	Fem Dat Sg St Attr	jener
 jene		2	DEM	Fem Dat Sg St Subst	jener
 jene		2	DEM	Fem Gen Sg St Attr	jener
 jene		2	DEM	Fem Gen Sg St Subst	jener
-jene		2	DEM	NoGend Nom Pl St Attr	jene
-jene		2	DEM	NoGend Nom Pl St Subst	jene
-jene		2	DEM	NoGend Acc Pl St Attr	jene
-jene		2	DEM	NoGend Acc Pl St Subst	jene
-jene		2	DEM	NoGend Dat Pl St Attr	jenen
-jene		2	DEM	NoGend Dat Pl St Subst	jenen
-jene		2	DEM	NoGend Gen Pl St Attr	jener
-jene		2	DEM	NoGend Gen Pl St Subst	jener
+jene		2	DEM	UnmGend Nom Pl St Attr	jene
+jene		2	DEM	UnmGend Nom Pl St Subst	jene
+jene		2	DEM	UnmGend Acc Pl St Attr	jene
+jene		2	DEM	UnmGend Acc Pl St Subst	jene
+jene		2	DEM	UnmGend Dat Pl St Attr	jenen
+jene		2	DEM	UnmGend Dat Pl St Subst	jenen
+jene		2	DEM	UnmGend Gen Pl St Attr	jener
+jene		2	DEM	UnmGend Gen Pl St Subst	jener
 solche		2	DEM	Masc Nom Sg St Attr	solcher
 solche		2	DEM	Masc Nom Sg St Subst	solcher
 solche		2	DEM	Masc Nom Sg Wk Attr	solche
@@ -178,20 +178,20 @@ solche		2	DEM	Fem Gen Sg St Attr	solcher
 solche		2	DEM	Fem Gen Sg St Subst	solcher
 solche		2	DEM	Fem Gen Sg Wk Attr	solchen
 solche		2	DEM	Fem Gen Sg Wk Subst	solchen
-solche		2	DEM	NoGend Nom Pl St Attr	solche
-solche		2	DEM	NoGend Nom Pl St Subst	solche
-solche		2	DEM	NoGend Nom Pl Wk Attr	solchen
-solche		2	DEM	NoGend Nom Pl Wk Subst	solchen
-solche		2	DEM	NoGend Acc Pl St Attr	solche
-solche		2	DEM	NoGend Acc Pl St Subst	solche
-solche		2	DEM	NoGend Acc Pl Wk Attr	solchen
-solche		2	DEM	NoGend Acc Pl Wk Subst	solchen
-solche		2	DEM	NoGend Dat Pl St Attr	solchen
-solche		2	DEM	NoGend Dat Pl St Subst	solchen
-solche		2	DEM	NoGend Dat Pl Wk Attr	solchen
-solche		2	DEM	NoGend Dat Pl Wk Subst	solchen
-solche		2	DEM	NoGend Gen Pl St Attr	solcher
-solche		2	DEM	NoGend Gen Pl St Subst	solcher
-solche		2	DEM	NoGend Gen Pl Wk Attr	solchen
-solche		2	DEM	NoGend Gen Pl Wk Subst	solchen
+solche		2	DEM	UnmGend Nom Pl St Attr	solche
+solche		2	DEM	UnmGend Nom Pl St Subst	solche
+solche		2	DEM	UnmGend Nom Pl Wk Attr	solchen
+solche		2	DEM	UnmGend Nom Pl Wk Subst	solchen
+solche		2	DEM	UnmGend Acc Pl St Attr	solche
+solche		2	DEM	UnmGend Acc Pl St Subst	solche
+solche		2	DEM	UnmGend Acc Pl Wk Attr	solchen
+solche		2	DEM	UnmGend Acc Pl Wk Subst	solchen
+solche		2	DEM	UnmGend Dat Pl St Attr	solchen
+solche		2	DEM	UnmGend Dat Pl St Subst	solchen
+solche		2	DEM	UnmGend Dat Pl Wk Attr	solchen
+solche		2	DEM	UnmGend Dat Pl Wk Subst	solchen
+solche		2	DEM	UnmGend Gen Pl St Attr	solcher
+solche		2	DEM	UnmGend Gen Pl St Subst	solcher
+solche		2	DEM	UnmGend Gen Pl Wk Attr	solchen
+solche		2	DEM	UnmGend Gen Pl Wk Subst	solchen
 solche		2	DEM	UnmGend UnmCase UnmNum UnmInfl Attr	solch

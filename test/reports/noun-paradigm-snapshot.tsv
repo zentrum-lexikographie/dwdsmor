@@ -679,10 +679,10 @@ Komma			NN Neut	Nom Pl	Kommas, Kommata
 Komma			NN Neut	Acc Pl	Kommas, Kommata
 Komma			NN Neut	Dat Pl	Kommas, Kommata
 Komma			NN Neut	Gen Pl	Kommas, Kommata
-Kosten			NN NoGend	Nom Pl	Kosten
-Kosten			NN NoGend	Acc Pl	Kosten
-Kosten			NN NoGend	Dat Pl	Kosten
-Kosten			NN NoGend	Gen Pl	Kosten
+Kosten			NN UnmGend	Nom Pl	Kosten
+Kosten			NN UnmGend	Acc Pl	Kosten
+Kosten			NN UnmGend	Dat Pl	Kosten
+Kosten			NN UnmGend	Gen Pl	Kosten
 Kustos			NN Masc	Nom Sg	Kustos
 Kustos			NN Masc	Acc Sg	Kustos
 Kustos			NN Masc	Dat Sg	Kustos
@@ -715,10 +715,10 @@ Leib			NN Masc	Nom Pl	Leiber
 Leib			NN Masc	Acc Pl	Leiber
 Leib			NN Masc	Dat Pl	Leibern
 Leib			NN Masc	Gen Pl	Leiber
-Leute			NN NoGend	Nom Pl	Leute
-Leute			NN NoGend	Acc Pl	Leute
-Leute			NN NoGend	Dat Pl	Leuten
-Leute			NN NoGend	Gen Pl	Leute
+Leute			NN UnmGend	Nom Pl	Leute
+Leute			NN UnmGend	Acc Pl	Leute
+Leute			NN UnmGend	Dat Pl	Leuten
+Leute			NN UnmGend	Gen Pl	Leute
 Lex			NN Fem	Nom Sg	Lex
 Lex			NN Fem	Acc Sg	Lex
 Lex			NN Fem	Dat Sg	Lex

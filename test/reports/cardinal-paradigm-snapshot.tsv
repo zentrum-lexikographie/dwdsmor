@@ -47,29 +47,29 @@ eine		2	CARD	Fem Gen Sg St Attr	einer
 eine		2	CARD	Fem Gen Sg St Subst	einer
 eine		2	CARD	Fem Gen Sg Wk Attr	einen
 eine		2	CARD	Fem Gen Sg Wk Subst	einen
-null			CARD	NoGend UnmCase Pl UnmInfl Attr	null
-null			CARD	NoGend UnmCase Pl UnmInfl Subst	null
-sieben	2		CARD	NoGend Nom Pl St Subst	siebene (ugs.)
-sieben	2		CARD	NoGend Nom Pl Wk Subst	siebene (ugs.)
-sieben	2		CARD	NoGend Acc Pl St Subst	siebene (ugs.)
-sieben	2		CARD	NoGend Acc Pl Wk Subst	siebene (ugs.)
-sieben	2		CARD	NoGend UnmCase Pl UnmInfl Attr	sieben
-sieben	2		CARD	NoGend UnmCase Pl UnmInfl Subst	sieben
-vier			CARD	NoGend Nom Pl St Subst	viere (ugs.)
-vier			CARD	NoGend Nom Pl Wk Subst	viere (ugs.)
-vier			CARD	NoGend Acc Pl St Subst	viere (ugs.)
-vier			CARD	NoGend Acc Pl Wk Subst	viere (ugs.)
-vier			CARD	NoGend Dat Pl St Subst	vieren
-vier			CARD	NoGend Dat Pl Wk Subst	vieren
-vier			CARD	NoGend UnmCase Pl UnmInfl Attr	vier
-vier			CARD	NoGend UnmCase Pl UnmInfl Subst	vier
-zwei			CARD	NoGend Nom Pl St Subst	zweie (ugs.)
-zwei			CARD	NoGend Nom Pl Wk Subst	zweie (ugs.)
-zwei			CARD	NoGend Acc Pl St Subst	zweie (ugs.)
-zwei			CARD	NoGend Acc Pl Wk Subst	zweie (ugs.)
-zwei			CARD	NoGend Dat Pl St Subst	zweien
-zwei			CARD	NoGend Dat Pl Wk Subst	zweien
-zwei			CARD	NoGend Gen Pl St Attr	zweier
-zwei			CARD	NoGend Gen Pl St Subst	zweier
-zwei			CARD	NoGend UnmCase Pl UnmInfl Attr	zwei
-zwei			CARD	NoGend UnmCase Pl UnmInfl Subst	zwei
+null			CARD	UnmGend UnmCase Pl UnmInfl Attr	null
+null			CARD	UnmGend UnmCase Pl UnmInfl Subst	null
+sieben	2		CARD	UnmGend Nom Pl St Subst	siebene (ugs.)
+sieben	2		CARD	UnmGend Nom Pl Wk Subst	siebene (ugs.)
+sieben	2		CARD	UnmGend Acc Pl St Subst	siebene (ugs.)
+sieben	2		CARD	UnmGend Acc Pl Wk Subst	siebene (ugs.)
+sieben	2		CARD	UnmGend UnmCase Pl UnmInfl Attr	sieben
+sieben	2		CARD	UnmGend UnmCase Pl UnmInfl Subst	sieben
+vier			CARD	UnmGend Nom Pl St Subst	viere (ugs.)
+vier			CARD	UnmGend Nom Pl Wk Subst	viere (ugs.)
+vier			CARD	UnmGend Acc Pl St Subst	viere (ugs.)
+vier			CARD	UnmGend Acc Pl Wk Subst	viere (ugs.)
+vier			CARD	UnmGend Dat Pl St Subst	vieren
+vier			CARD	UnmGend Dat Pl Wk Subst	vieren
+vier			CARD	UnmGend UnmCase Pl UnmInfl Attr	vier
+vier			CARD	UnmGend UnmCase Pl UnmInfl Subst	vier
+zwei			CARD	UnmGend Nom Pl St Subst	zweie (ugs.)
+zwei			CARD	UnmGend Nom Pl Wk Subst	zweie (ugs.)
+zwei			CARD	UnmGend Acc Pl St Subst	zweie (ugs.)
+zwei			CARD	UnmGend Acc Pl Wk Subst	zweie (ugs.)
+zwei			CARD	UnmGend Dat Pl St Subst	zweien
+zwei			CARD	UnmGend Dat Pl Wk Subst	zweien
+zwei			CARD	UnmGend Gen Pl St Attr	zweier
+zwei			CARD	UnmGend Gen Pl St Subst	zweier
+zwei			CARD	UnmGend UnmCase Pl UnmInfl Attr	zwei
+zwei			CARD	UnmGend UnmCase Pl UnmInfl Subst	zwei

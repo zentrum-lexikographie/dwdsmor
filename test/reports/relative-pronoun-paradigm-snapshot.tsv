@@ -11,10 +11,10 @@ die	3	2	REL	Fem Nom Sg St Subst	die
 die	3	2	REL	Fem Acc Sg St Subst	die
 die	3	2	REL	Fem Dat Sg St Subst	der
 die	3	2	REL	Fem Gen Sg St Subst	deren, derer
-die	3	2	REL	NoGend Nom Pl St Subst	die
-die	3	2	REL	NoGend Acc Pl St Subst	die
-die	3	2	REL	NoGend Dat Pl St Subst	denen
-die	3	2	REL	NoGend Gen Pl St Subst	deren, derer
+die	3	2	REL	UnmGend Nom Pl St Subst	die
+die	3	2	REL	UnmGend Acc Pl St Subst	die
+die	3	2	REL	UnmGend Dat Pl St Subst	denen
+die	3	2	REL	UnmGend Gen Pl St Subst	deren, derer
 was	3		REL Neut	Nom Sg	was
 was	3		REL Neut	Acc Sg	was
 was	3		REL Neut	Dat Sg	was (ugs.)
@@ -43,14 +43,14 @@ welche	2	2	REL	Fem Dat Sg St Attr	welcher
 welche	2	2	REL	Fem Dat Sg St Subst	welcher
 welche	2	2	REL	Fem Gen Sg St Attr	welcher
 welche	2	2	REL	Fem Gen Sg St Subst	welcher
-welche	2	2	REL	NoGend Nom Pl St Attr	welche
-welche	2	2	REL	NoGend Nom Pl St Subst	welche
-welche	2	2	REL	NoGend Acc Pl St Attr	welche
-welche	2	2	REL	NoGend Acc Pl St Subst	welche
-welche	2	2	REL	NoGend Dat Pl St Attr	welchen
-welche	2	2	REL	NoGend Dat Pl St Subst	welchen
-welche	2	2	REL	NoGend Gen Pl St Attr	welcher
-welche	2	2	REL	NoGend Gen Pl St Subst	welcher
+welche	2	2	REL	UnmGend Nom Pl St Attr	welche
+welche	2	2	REL	UnmGend Nom Pl St Subst	welche
+welche	2	2	REL	UnmGend Acc Pl St Attr	welche
+welche	2	2	REL	UnmGend Acc Pl St Subst	welche
+welche	2	2	REL	UnmGend Dat Pl St Attr	welchen
+welche	2	2	REL	UnmGend Dat Pl St Subst	welchen
+welche	2	2	REL	UnmGend Gen Pl St Attr	welcher
+welche	2	2	REL	UnmGend Gen Pl St Subst	welcher
 welche	2	2	REL	UnmGend UnmCase UnmNum UnmInfl Attr	welch
 wer	3		REL Masc	Nom Sg	wer
 wer	3		REL Masc	Acc Sg	wen

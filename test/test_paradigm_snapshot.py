@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # test_paradigm_snapshot.py
 # test DWDSmor paradigm snapshots for regression
-# Andreas Nolda 2024-11-07
+# Andreas Nolda 2024-11-19
 
 import io
 import csv
@@ -123,7 +123,7 @@ NAME_LEMMAS = ["Atlantik",   # NameMasc_0, NameMasc_s
                "Ostsee",     # NameFem_0
                "Felicitas",  # NameFem_apos
                "Oma",        # NameFem_s
-               "Alpen"]      # NameNoGend|Pl_0
+               "Alpen"]      # NameUnmGend|Pl_0
 
 
 NOUN_POS = "NN"
@@ -269,8 +269,8 @@ NOUN_LEMMAS = ["Jazz",           # NMasc|Sg_0
                "Dos",            # NFem_0_os/otes_0
                "Vox",            # NFem_0_ox/oces_0
                "Freundin",       # NFem-in
-               "Kosten",         # NNoGend|Pl_0
-               "Leute"]          # NNoGend|Pl_n
+               "Kosten",         # NUnmGend|Pl_0
+               "Leute"]          # NUnmGend|Pl_n
 
 
 ORDINAL_POS = "ORD"
@@ -295,7 +295,7 @@ PERSONAL_PRONOUN_LEMMAS = ["ich",       # PPro1NomSg, PPro1AccSg, PPro1DatSg, PP
 
                            "wir",       # PPro1NomPl, PPro1AccPl, PPro1DatPl, PPro1GenPl
                            "ihr",       # PPro2NomPl, PPro2AccPl, PPro2DatPl, PPro2GenPl
-                           "sie",       # PProFemNomSg, PProFemAccSg, PProFemDatSg, PProFemGenSg, PProNoGendNomPl ...
+                           "sie",       # PProFemNomSg, PProFemAccSg, PProFemDatSg, PProFemGenSg, PProUnmGendNomPl ...
 
                            "mich",      # PRefl1AccSg, PRefl1DatSg
                            "dich",      # PRefl2AccSg, PRefl2DatSg
