@@ -118,18 +118,18 @@ etwas			INDEF Neut	UnmCase UnmNum	etwas
 frau			INDEF Fem	Nom Sg	frau
 genug			INDEF	UnmGend UnmCase UnmNum UnmInfl Attr	genug
 genug			INDEF	UnmGend UnmCase UnmNum UnmInfl Subst	genug
-irgendeine		2	INDEF	Masc Nom Sg NoInfl Attr	irgendein
 irgendeine		2	INDEF	Masc Nom Sg St Subst	irgendeiner
+irgendeine		2	INDEF	Masc Nom Sg UnmInfl Attr	irgendein
 irgendeine		2	INDEF	Masc Acc Sg St Attr	irgendeinen
 irgendeine		2	INDEF	Masc Acc Sg St Subst	irgendeinen
 irgendeine		2	INDEF	Masc Dat Sg St Attr	irgendeinem
 irgendeine		2	INDEF	Masc Dat Sg St Subst	irgendeinem
 irgendeine		2	INDEF	Masc Gen Sg St Attr	irgendeines
 irgendeine		2	INDEF	Masc Gen Sg St Subst	irgendeines
-irgendeine		2	INDEF	Neut Nom Sg NoInfl Attr	irgendein
 irgendeine		2	INDEF	Neut Nom Sg St Subst	irgendeines, irgendeins
-irgendeine		2	INDEF	Neut Acc Sg NoInfl Attr	irgendein
+irgendeine		2	INDEF	Neut Nom Sg UnmInfl Attr	irgendein
 irgendeine		2	INDEF	Neut Acc Sg St Subst	irgendeines, irgendeins
+irgendeine		2	INDEF	Neut Acc Sg UnmInfl Attr	irgendein
 irgendeine		2	INDEF	Neut Dat Sg St Attr	irgendeinem
 irgendeine		2	INDEF	Neut Dat Sg St Subst	irgendeinem
 irgendeine		2	INDEF	Neut Gen Sg St Attr	irgendeines

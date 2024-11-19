@@ -31,18 +31,18 @@ die	1	2	ART Def	UnmGend Dat Pl St Attr	den
 die	1	2	ART Def	UnmGend Dat Pl St Subst	denen
 die	1	2	ART Def	UnmGend Gen Pl St Attr	der
 die	1	2	ART Def	UnmGend Gen Pl St Subst	deren, derer
-eine		2	ART Indef	Masc Nom Sg NoInfl Attr	ein, ’n (ugs.)
 eine		2	ART Indef	Masc Nom Sg St Subst	einer
+eine		2	ART Indef	Masc Nom Sg UnmInfl Attr	ein, ’n (ugs.)
 eine		2	ART Indef	Masc Acc Sg St Attr	einen, ’nen (ugs.)
 eine		2	ART Indef	Masc Acc Sg St Subst	einen
 eine		2	ART Indef	Masc Dat Sg St Attr	einem, ’nem (ugs.)
 eine		2	ART Indef	Masc Dat Sg St Subst	einem
 eine		2	ART Indef	Masc Gen Sg St Attr	eines, ’nes (ugs.)
 eine		2	ART Indef	Masc Gen Sg St Subst	eines
-eine		2	ART Indef	Neut Nom Sg NoInfl Attr	ein, ’n (ugs.)
 eine		2	ART Indef	Neut Nom Sg St Subst	eines, eins
-eine		2	ART Indef	Neut Acc Sg NoInfl Attr	ein, ’n (ugs.)
+eine		2	ART Indef	Neut Nom Sg UnmInfl Attr	ein, ’n (ugs.)
 eine		2	ART Indef	Neut Acc Sg St Subst	eines, eins
+eine		2	ART Indef	Neut Acc Sg UnmInfl Attr	ein, ’n (ugs.)
 eine		2	ART Indef	Neut Dat Sg St Attr	einem, ’nem (ugs.)
 eine		2	ART Indef	Neut Dat Sg St Subst	einem
 eine		2	ART Indef	Neut Gen Sg St Attr	eines, ’nes (ugs.)
@@ -55,18 +55,18 @@ eine		2	ART Indef	Fem Dat Sg St Attr	einer, ’ner (ugs.)
 eine		2	ART Indef	Fem Dat Sg St Subst	einer
 eine		2	ART Indef	Fem Gen Sg St Attr	einer, ’ner (ugs.)
 eine		2	ART Indef	Fem Gen Sg St Subst	einer
-keine		2	ART Neg	Masc Nom Sg NoInfl Attr	kein
 keine		2	ART Neg	Masc Nom Sg St Subst	keiner
+keine		2	ART Neg	Masc Nom Sg UnmInfl Attr	kein
 keine		2	ART Neg	Masc Acc Sg St Attr	keinen
 keine		2	ART Neg	Masc Acc Sg St Subst	keinen
 keine		2	ART Neg	Masc Dat Sg St Attr	keinem
 keine		2	ART Neg	Masc Dat Sg St Subst	keinem
 keine		2	ART Neg	Masc Gen Sg St Attr	keines, keinen (ugs.)
 keine		2	ART Neg	Masc Gen Sg St Subst	keines
-keine		2	ART Neg	Neut Nom Sg NoInfl Attr	kein
 keine		2	ART Neg	Neut Nom Sg St Subst	keines, keins
-keine		2	ART Neg	Neut Acc Sg NoInfl Attr	kein
+keine		2	ART Neg	Neut Nom Sg UnmInfl Attr	kein
 keine		2	ART Neg	Neut Acc Sg St Subst	keines, keins
+keine		2	ART Neg	Neut Acc Sg UnmInfl Attr	kein
 keine		2	ART Neg	Neut Dat Sg St Attr	keinem
 keine		2	ART Neg	Neut Dat Sg St Subst	keinem
 keine		2	ART Neg	Neut Gen Sg St Attr	keines, keinen (ugs.)

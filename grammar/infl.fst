@@ -1261,12 +1261,12 @@ $IndefSuff-mehrer$ = {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{<SB>es}    | \
 
 $IndefSuff0$ = {[<Attr><Subst>]<UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
-$ArtIndefAttrSuff$ = {<Attr><Masc><Nom><Sg><NoInfl>}:{}     | \
+$ArtIndefAttrSuff$ = {<Attr><Masc><Nom><Sg><UnmInfl>}:{}    | \
                      {<Attr><Masc><Acc><Sg><St>}:{<SB>en}   | \
                      {<Attr><Masc><Dat><Sg><St>}:{<SB>em}   | \
                      {<Attr><Masc><Gen><Sg><St>}:{<SB>es}   | \
-                     {<Attr><Neut><Nom><Sg><NoInfl>}:{}     | \
-                     {<Attr><Neut><Acc><Sg><NoInfl>}:{}     | \
+                     {<Attr><Neut><Nom><Sg><UnmInfl>}:{}    | \
+                     {<Attr><Neut><Acc><Sg><UnmInfl>}:{}    | \
                      {<Attr><Neut><Dat><Sg><St>}:{<SB>em}   | \
                      {<Attr><Neut><Gen><Sg><St>}:{<SB>es}   | \
                      {<Attr><Fem><Nom><Sg><St>}:{<SB>e}     | \

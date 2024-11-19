@@ -416,12 +416,12 @@ des	die	DEM					Neut	Gen	Sg	St		Attr
 Straßenverkehrsunfallstatistikgesetzes	Straßenverkehrsunfallstatistikgesetz	NN					Neut	Gen	Sg									
 Ein	einen	V				1			Sg				Ind	Pres	NonSt			CAP
 Ein	einen	V							Sg				Imp					CAP
-Ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl		Attr						CAP
-Ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl		Attr						CAP
-Ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl		Attr						CAP
-Ein	eine	CARD					Masc	Nom	Sg	NoInfl		Attr						CAP
-Ein	eine	CARD					Neut	Nom	Sg	NoInfl		Attr						CAP
-Ein	eine	CARD					Neut	Acc	Sg	NoInfl		Attr						CAP
+Ein	eine	ART	Indef				Masc	Nom	Sg	UnmInfl		Attr						CAP
+Ein	eine	ART	Indef				Neut	Nom	Sg	UnmInfl		Attr						CAP
+Ein	eine	ART	Indef				Neut	Acc	Sg	UnmInfl		Attr						CAP
+Ein	eine	CARD					Masc	Nom	Sg	UnmInfl		Attr						CAP
+Ein	eine	CARD					Neut	Nom	Sg	UnmInfl		Attr						CAP
+Ein	eine	CARD					Neut	Acc	Sg	UnmInfl		Attr						CAP
 Ein	ein	ADV																CAP
 schwerwiegender	schwerwiegend	ADJ			Pos		Masc	Nom	Sg	St		Attr/Subst						
 schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Gen	Sg	St		Attr/Subst						
@@ -959,12 +959,12 @@ und	und	CONJ	Coord
 mindestens	mindestens	ADV																
 ein	einen	V				1			Sg				Ind	Pres	NonSt			
 ein	einen	V							Sg				Imp					
-ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl		Attr						
-ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl		Attr						
-ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl		Attr						
-ein	eine	CARD					Masc	Nom	Sg	NoInfl		Attr						
-ein	eine	CARD					Neut	Nom	Sg	NoInfl		Attr						
-ein	eine	CARD					Neut	Acc	Sg	NoInfl		Attr						
+ein	eine	ART	Indef				Masc	Nom	Sg	UnmInfl		Attr						
+ein	eine	ART	Indef				Neut	Nom	Sg	UnmInfl		Attr						
+ein	eine	ART	Indef				Neut	Acc	Sg	UnmInfl		Attr						
+ein	eine	CARD					Masc	Nom	Sg	UnmInfl		Attr						
+ein	eine	CARD					Neut	Nom	Sg	UnmInfl		Attr						
+ein	eine	CARD					Neut	Acc	Sg	UnmInfl		Attr						
 ein	ein	ADV																
 Kraftfahrzeug	Kraftfahrzeug	NN					Neut	Nom	Sg									
 Kraftfahrzeug	Kraftfahrzeug	NN					Neut	Dat	Sg									
@@ -1020,12 +1020,12 @@ muß	müssen	V				3			Sg				Ind	Pres		OLDORTH
 .	.	PUNCT	Period															
 Ein	einen	V				1			Sg				Ind	Pres	NonSt			CAP
 Ein	einen	V							Sg				Imp					CAP
-Ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl		Attr						CAP
-Ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl		Attr						CAP
-Ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl		Attr						CAP
-Ein	eine	CARD					Masc	Nom	Sg	NoInfl		Attr						CAP
-Ein	eine	CARD					Neut	Nom	Sg	NoInfl		Attr						CAP
-Ein	eine	CARD					Neut	Acc	Sg	NoInfl		Attr						CAP
+Ein	eine	ART	Indef				Masc	Nom	Sg	UnmInfl		Attr						CAP
+Ein	eine	ART	Indef				Neut	Nom	Sg	UnmInfl		Attr						CAP
+Ein	eine	ART	Indef				Neut	Acc	Sg	UnmInfl		Attr						CAP
+Ein	eine	CARD					Masc	Nom	Sg	UnmInfl		Attr						CAP
+Ein	eine	CARD					Neut	Nom	Sg	UnmInfl		Attr						CAP
+Ein	eine	CARD					Neut	Acc	Sg	UnmInfl		Attr						CAP
 Ein	ein	ADV																CAP
 schwerwiegender	schwerwiegend	ADJ			Pos		Masc	Nom	Sg	St		Attr/Subst						
 schwerwiegender	schwerwiegend	ADJ			Pos		Fem	Gen	Sg	St		Attr/Subst						
@@ -1078,12 +1078,12 @@ des	die	DEM					Neut	Gen	Sg	St		Attr
 Sachschadens	Sachschaden	NN					Masc	Gen	Sg									
 ein	einen	V				1			Sg				Ind	Pres	NonSt			
 ein	einen	V							Sg				Imp					
-ein	eine	ART	Indef				Masc	Nom	Sg	NoInfl		Attr						
-ein	eine	ART	Indef				Neut	Nom	Sg	NoInfl		Attr						
-ein	eine	ART	Indef				Neut	Acc	Sg	NoInfl		Attr						
-ein	eine	CARD					Masc	Nom	Sg	NoInfl		Attr						
-ein	eine	CARD					Neut	Nom	Sg	NoInfl		Attr						
-ein	eine	CARD					Neut	Acc	Sg	NoInfl		Attr						
+ein	eine	ART	Indef				Masc	Nom	Sg	UnmInfl		Attr						
+ein	eine	ART	Indef				Neut	Nom	Sg	UnmInfl		Attr						
+ein	eine	ART	Indef				Neut	Acc	Sg	UnmInfl		Attr						
+ein	eine	CARD					Masc	Nom	Sg	UnmInfl		Attr						
+ein	eine	CARD					Neut	Nom	Sg	UnmInfl		Attr						
+ein	eine	CARD					Neut	Acc	Sg	UnmInfl		Attr						
 ein	ein	ADV																
 Unfallbeteiligter	Unfallbeteiligte	NN					Masc	Nom	Sg	St								
 Unfallbeteiligter	Unfallbeteiligte	NN					Masc	Gen	Pl	St								

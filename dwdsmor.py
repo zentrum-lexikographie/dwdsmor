@@ -140,7 +140,7 @@ class Analysis(tuple):
 
     _number_tags = {"Sg": True, "Pl": True, "UnmNum": True}
 
-    _inflection_tags = {"St": True, "Wk": True, "NoInfl": True, "UnmInfl": True}
+    _inflection_tags = {"St": True, "Wk": True, "UnmInfl": True}
 
     _nonfinite_tags = {"Inf": True, "Part": True}
 

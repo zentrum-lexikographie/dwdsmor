@@ -46,7 +46,7 @@ CASES = ["Nom", "Acc", "Dat", "Gen", "UnmCase"]
 
 NUMBERS = ["Sg", "Pl", "UnmNum"]
 
-INFLECTIONS = ["NoInfl", "St", "Wk", "UnmInfl"]
+INFLECTIONS = ["St", "Wk", "UnmInfl"]
 
 FUNCTIONS = ["Attr", "Subst", "Attr/Subst", "Pred/Adv", "UnmFunc"]
 
@@ -161,11 +161,6 @@ def filter_categorisations(categorisations, pos):
                                       categorisations)
         # UnmGend does not co-occur with Sg.
         categorisations = filterfalse(lambda cat: "UnmGend" in cat and "Sg" in cat,
-                                      categorisations)
-    # NoInfl
-    if pos in ["ADJ", "NN", "ORD"]:
-        # There is no category NoInfl.
-        categorisations = filterfalse(lambda cat: "NoInfl" in cat,
                                       categorisations)
     # Attr, Subst, and Pred/Adv
     if pos in ["ADJ", "ORD"]:

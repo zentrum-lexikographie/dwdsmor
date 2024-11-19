@@ -1,8 +1,8 @@
 Lemma	Lemma Index	Paradigm Index	Categories	Paradigm Categories	Paradigm Forms
-eine		2	CARD	Masc Nom Sg NoInfl Attr	ein
 eine		2	CARD	Masc Nom Sg St Subst	einer
 eine		2	CARD	Masc Nom Sg Wk Attr	eine
 eine		2	CARD	Masc Nom Sg Wk Subst	eine
+eine		2	CARD	Masc Nom Sg UnmInfl Attr	ein
 eine		2	CARD	Masc Acc Sg St Attr	einen
 eine		2	CARD	Masc Acc Sg St Subst	einen
 eine		2	CARD	Masc Acc Sg Wk Attr	einen
@@ -15,14 +15,14 @@ eine		2	CARD	Masc Gen Sg St Attr	eines
 eine		2	CARD	Masc Gen Sg St Subst	eines
 eine		2	CARD	Masc Gen Sg Wk Attr	einen
 eine		2	CARD	Masc Gen Sg Wk Subst	einen
-eine		2	CARD	Neut Nom Sg NoInfl Attr	ein
 eine		2	CARD	Neut Nom Sg St Subst	eines, eins
 eine		2	CARD	Neut Nom Sg Wk Attr	eine
 eine		2	CARD	Neut Nom Sg Wk Subst	eine
-eine		2	CARD	Neut Acc Sg NoInfl Attr	ein
+eine		2	CARD	Neut Nom Sg UnmInfl Attr	ein
 eine		2	CARD	Neut Acc Sg St Subst	eines, eins
 eine		2	CARD	Neut Acc Sg Wk Attr	eine
 eine		2	CARD	Neut Acc Sg Wk Subst	eine
+eine		2	CARD	Neut Acc Sg UnmInfl Attr	ein
 eine		2	CARD	Neut Dat Sg St Attr	einem
 eine		2	CARD	Neut Dat Sg St Subst	einem
 eine		2	CARD	Neut Dat Sg Wk Attr	einen

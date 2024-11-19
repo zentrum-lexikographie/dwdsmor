@@ -102,7 +102,7 @@
 
 #number# = <Sg><Pl><UnmNum>
 
-#infl# = <St><Wk><NoInfl><UnmInfl>
+#infl# = <St><Wk><UnmInfl>
 
 #function# = <Attr><Subst><Attr/Subst><Pred/Adv><Cl><NonCl><UnmFunc>
 
