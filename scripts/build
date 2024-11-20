@@ -10,7 +10,9 @@ from pathlib import Path
 import subprocess
 import sys
 
-from dwdsmor.traversal import Traversal, tags
+from dwdsmor.tag import all_tags
+from dwdsmor.traversal import Traversal
+
 
 project_dir = Path(__file__).parent.parent
 
@@ -221,13 +223,12 @@ def build_traversals(edition_dir, automaton_type, force=False):
         stdout=subprocess.PIPE,
     ) as traversals, lzma.open(automaton_traversal, "wt") as traversals_csv:
         table = csv.writer(traversals_csv)
-        tag_types = tuple(tags.keys())
         table.writerow(
             [
                 "spec",
                 "analysis",
                 "surface",
-                *tag_types,
+                *all_tags,
             ]
         )
         for traversal_str in traversals.stdout:
@@ -237,7 +238,7 @@ def build_traversals(edition_dir, automaton_type, force=False):
                     traversal.spec,
                     traversal.analysis,
                     traversal.surface,
-                    *(getattr(traversal, tt) for tt in tag_types),
+                    *(getattr(traversal, tt) for tt in all_tags),
                 ]
             )
     return True
