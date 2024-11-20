@@ -199,8 +199,8 @@ NN,"NNeut|Sg_es, NNeut|Pl_n",Vieh
 NN,NNeut|Sg_es~ss,Verständnis
 NN,NNeut|Sg_s,Internet
 NN,"NNeut|Sg_s, NNeut|Pl_0",Pluraletantum
-NN,NNoGend|Pl_0,Kosten
-NN,NNoGend|Pl_n,Leute
+NN,NUnmGend|Pl_0,Kosten
+NN,NUnmGend|Pl_n,Leute
 NPROP,NameFem_0,Ostsee
 NPROP,NameFem_apos,Felicitas
 NPROP,NameFem_s,Oma
@@ -209,7 +209,7 @@ NPROP,NameMasc_apos,Andreas
 NPROP,NameMasc_es,Rhein
 NPROP,NameMasc_s,Opa
 NPROP,NameNeut_s,Berlin
-NPROP,NameNoGend|Pl_0,Alpen
+NPROP,NameUnmGend|Pl_0,Alpen
 ORD,Ord,erste
 POSS,Poss,meine
 POSS,Poss-er,unsere
@@ -219,7 +219,7 @@ PPRO,"PPro1NomPl, PPro1AccPl, PPro1DatPl, PPro1GenPl",wir
 PPRO,"PPro1NomSg, PPro1AccSg, PPro1DatSg, PPro1GenSg",ich
 PPRO,"PPro2NomPl, PPro2AccPl, PPro2DatPl, PPro2GenPl",ihr
 PPRO,"PPro2NomSg, PPro2AccSg, PPro2DatSg, PPro2GenSg",du
-PPRO,"PProFemNomSg, PProFemAccSg, PProFemDatSg, PProFemGenSg, PProNoGendNomPl ...",sie
+PPRO,"PProFemNomSg, PProFemAccSg, PProFemDatSg, PProFemGenSg, PProUnmGendNomPl ...",sie
 PPRO,"PProMascNomSg, PProMascAccSg, PProMascDatSg, PProMascGenSg",er
 PPRO,"PProNeutNomSg, PProNeutAccSg, PProNeutDatSg, PProNeutGenSg, PProNeutNomSg-s, PProNeutAccSg-s",es
 PPRO,PRecPl,einander
