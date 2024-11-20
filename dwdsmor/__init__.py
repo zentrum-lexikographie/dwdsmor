@@ -1,5 +1,4 @@
-__version__ = "1.0.0"
-
 from .automaton import Automata
+from .version import __version__
 
-__all__ = ["Automata"]
+__all__ = ["Automata", "__version__"]
