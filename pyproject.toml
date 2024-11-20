@@ -4,7 +4,6 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dwdsmor"
-version = "1.0.0"
 description = "SFST/SMOR/DWDS-based German morphology"
 authors = [
     {name = "Andreas Nolda", email = "andreas.nolda@bbaw.de"},
@@ -20,8 +19,9 @@ classifiers = [
     "Topic :: Text Processing :: Linguistic"
 ]
 requires-python = ">=3.9"
-dynamic = ["readme"]
+dynamic = ["readme", "version"]
 dependencies = [
+    "huggingface_hub[cli]",
     "python-dotenv",
     "sfst-transduce",
     "tabulate",
@@ -69,6 +69,7 @@ testpaths = [ "test"]
 
 [tool.setuptools.dynamic]
 readme = {file = ["README.md"], content-type = "text/markdown"}
+version = {attr = "dwdsmor.version.__version__"}
 
 [tool.setuptools.packages.find]
 exclude = ["test"]
