@@ -4,9 +4,18 @@ from dataclasses import asdict, astuple, dataclass
 from itertools import product
 
 from tabulate import tabulate
+from tqdm import tqdm
 
 from dwdsmor import Automata
-from dwdsmor.traversal import Traversal, boundary_tags, tags
+from dwdsmor.tag import (
+    all_tags,
+    boundary_tags,
+    inflection_tag_seqs,
+    info_tags,
+    lexeme_tags,
+    tag_values,
+)
+from dwdsmor.traversal import Traversal
 
 headers = {
     "word": "Wordform",
@@ -18,7 +27,7 @@ headers = {
     "process": "Process",
     "means": "Means",
     "pos": "POS",
-    "subcat": "Subcategory",
+    "category": "Subcategory",
     "auxiliary": "Auxiliary",
     "degree": "Degree",
     "person": "Person",
@@ -36,50 +45,23 @@ headers = {
     "charinfo": "Characters",
 }
 
-noun_tagging = ("gender", "case", "number", "inflection")
-verb_tagging = ("number", "tense", "mood")
-nonfinite_tagging = ("nonfinite", "tense", "auxiliary")
-info_tagging = ("metainfo", "orthinfo")
-
-has_subcat_tagging = {"+ART", "+PPRO"}
-has_degree_tagging = {
-    "+ADJ",
-    "+CARD",
-    "+DEM",
-    "+INDEF",
-    "+ORD",
-    "+POSS",
-    "+REL",
-    "+WPRO",
-}
-has_function_tagging = {"+ART", *has_degree_tagging}
-has_person_tagging = {"+PPRO", "+V"}
-
 
 def get_taggings(pos, with_info=False):
-    preamble = []
-    if pos in has_subcat_tagging:
-        preamble.append("subcat")
-    if pos in has_degree_tagging:
-        preamble.append("degree")
-    if pos in has_function_tagging:
-        preamble.append("function")
-    if pos in has_person_tagging:
-        preamble.append("person")
+    tag_seqs = inflection_tag_seqs.get(pos) or inflection_tag_seqs.get("")
+    if with_info:
+        tag_seqs(ts + info_tags for ts in tag_seqs)
 
-    preamble = tuple(preamble)
-    coda = info_tagging if with_info else tuple()
-
-    if pos == "+V":
-        tagging = (preamble + verb_tagging + coda, preamble + nonfinite_tagging + coda)
-    elif pos in {"+ART", "+NN", "+NPROP", "+PPRO"}:
-        tagging = (preamble + noun_tagging + coda,)
-    else:
-        tagging = (preamble + noun_tagging + coda, preamble + nonfinite_tagging + coda)
-
-    for tagging_pattern in tagging:
-        for tagging in product(*((tags[tt] | {None}) for tt in tagging_pattern)):
-            yield tuple((t for t in tagging if t is not None))
+    taggings = set()
+    for tag_seq in tag_seqs:
+        tagging_values = []
+        for tag_type in tag_seq:
+            tag_type_values = (
+                tag_values.get(pos, dict()).get(tag_type) or tag_values[""][tag_type]
+            )
+            tagging_values.append(tag_type_values | {None})
+        for tagging in product(*tagging_values):
+            taggings.add(tuple((t for t in tagging if t is not None)))
+    return taggings
 
 
 @dataclass
@@ -98,6 +80,9 @@ class Result(Traversal):
 def main():
     arg_parser = argparse.ArgumentParser(description="Traverse DWDSmor automata.")
     arg_parser.add_argument("-g", "--generate", help="Generate", action="store_true")
+    arg_parser.add_argument(
+        "-s", "--silent", help="Do not report progress", action="store_true"
+    )
     arg_parser.add_argument("words", nargs="*")
     args = arg_parser.parse_args()
 
@@ -108,18 +93,25 @@ def main():
         analyzer = automata.analyzer("index")
         generator = automata.generator("index")
         for word in args.words:
-            base_specs = set()
+            lexeme_specs = set()
             for traversal in analyzer.analyze(word):
                 traversal = traversal.reparse(visible_boundaries=boundary_tags)
-                base_spec = traversal.analysis
-                for base_tagging in ["lidx", "pidx", "pos"]:
-                    tag = getattr(traversal, base_tagging)
+                lexeme_spec = traversal.analysis
+                for lexeme_tag in lexeme_tags:
+                    tag = getattr(traversal, lexeme_tag)
                     if tag is not None:
-                        base_spec += f"<{tag}>"
-                base_specs.add((traversal.pos, base_spec))
-            for pos, base_spec in sorted(base_specs):
-                for tagging in get_taggings(pos):
-                    spec = base_spec + "".join(f"<{tag}>" for tag in tagging)
+                        lexeme_spec += f"<{tag}>"
+                lexeme_specs.add((traversal.pos, lexeme_spec))
+            for pos, lexeme_spec in sorted(lexeme_specs):
+                taggings = get_taggings(pos)
+                if not args.silent:
+                    taggings = tqdm(
+                        taggings,
+                        desc=f"Inflection patterns ({pos})",
+                        total=len(taggings),
+                    )
+                for tagging in taggings:
+                    spec = lexeme_spec + "".join(f"<{tag}>" for tag in tagging)
                     for generated in generator.generate(spec):
                         results.append(Result.from_spec(spec, generated.spec))
     else:
@@ -141,6 +133,8 @@ def main():
     if not results:
         return 1
 
+    results = sorted(results, key=lambda r: r.spec)
+
     def has_value(tag_type, results=results):
         for result in results:
             if getattr(result, tag_type) is not None:
@@ -151,7 +145,7 @@ def main():
         "word",
         "analysis",
         "spec",
-        *(tt for tt in tags.keys() if has_value(tt)),
+        *(tt for tt in all_tags if has_value(tt)),
     ]
 
     print(
