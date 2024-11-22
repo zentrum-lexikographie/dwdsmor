@@ -6,14 +6,14 @@
 import csv
 from pathlib import Path
 
-from .conftest import automata, if_dwds_available
+from .conftest import automata_edition, if_dwds_available
 
 test_dir = Path(__file__).parent
 
 
 @if_dwds_available
 def test_analysis(snapshot):
-    analyzer = automata("dwds").analyzer()
+    analyzer = automata_edition("dwds").analyzer()
     data_dir = test_dir / "gesetze"
     tokens = {t for f in data_dir.rglob("*.tok") for t in f.read_text().splitlines()}
     result = sorted(((t, a.spec) for t in tokens for a in analyzer.analyze(t)))
@@ -22,7 +22,7 @@ def test_analysis(snapshot):
 
 @if_dwds_available
 def test_generation(snapshot):
-    traversals = automata("dwds").traversals()
+    traversals = automata_edition("dwds").traversals()
     test_cases_file = test_dir / "inflection_test_cases.csv"
     result = []
     with test_cases_file.open("rt") as f:

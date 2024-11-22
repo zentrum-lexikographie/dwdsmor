@@ -37,7 +37,8 @@ dev = [
     "pre-commit",
     "pytest",
     "syrupy",
-    "tqdm"
+    "tqdm",
+    "Jinja2"
 ]
 
 [project.scripts]
@@ -54,6 +55,10 @@ profile = "black"
 
 [[tool.mypy.overrides]]
 module = "blessings"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "huggingface_hub"
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
