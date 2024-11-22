@@ -6,7 +6,7 @@ from itertools import product
 from tabulate import tabulate
 from tqdm import tqdm
 
-from dwdsmor import Automata
+import dwdsmor
 from dwdsmor.tag import (
     all_tags,
     boundary_tags,
@@ -87,7 +87,7 @@ def main():
     args = arg_parser.parse_args()
 
     results = []
-    automata = Automata()
+    automata = dwdsmor.automata()
 
     if args.generate:
         analyzer = automata.analyzer("index")

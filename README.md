@@ -2,20 +2,29 @@
 
 _SFST/SMOR/DWDS-based German morphology_
 
-This project provides a component for the lemmatisation and morphological
-analysis of word forms as well as for the generation of paradigms of lexical
-words in written German. To this end we adopt:
+![PyPI - Version](https://img.shields.io/pypi/v/dwdsmor)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dwdsmor)
+![GitHub License](https://img.shields.io/github/license/zentrum-lexikographie/dwdsmor)
 
-1. [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++ library
-   and toolbox for finite-state transducers (FSTs) (Schmidt 2006)
-2. [SMORLemma](https://github.com/rsennrich/SMORLemma) (Sennrich and Kunz 2014),
-   a modified version of the Stuttgart Morphology
-   ([SMOR](https://www.cis.lmu.de/~schmid/tools/SMOR/)) (Schmid, Fitschen, and
-   Heid 2004) with an alternative lemmatisation component
-3. the [DWDS dictionary](https://www.dwds.de/) (BBAW n.d.) replacing the
-   [IMSLex](https://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/imslex/)
-   (Fitschen 2004) as the lexical data source for German words, their grammatical
-   categories, and their morphological properties.
+DWDSmor implements the lemmatisation and morphological analysis of
+word forms as well as the generation of paradigms of lexical words in
+written German.
+
+## Usage
+
+DWDSmor is available via PyPI:
+
+    pip install dwdsmor
+
+For lemmatisation:
+
+    >>> import dwsdmor
+    >>> lemmatizer = dwdsmor.lemmatizer()
+    >>> assert lemmatizer("getestet", "+V") == "testen"
+    >>> assert lemmatizer("getestet", "+ADJ") == "getestet"
+…
+
+## Development
 
 This repository provides source code for building DWDSmor lexica and transducers
 as well as for using DWDSmor transducers for morphological analysis and paradigm
@@ -553,13 +562,20 @@ Again, options `-c`, `-j`, `-y` select alternative CSV, JSON, and YAML outputs.
 | VVPP   |     3,169 |     59,328 |     4.68% |      2.39% |           97.70% |            99.71% |
 | XY     |         6 |        305 |     0.01% |      0.01% |           16.67% |            34.10% |
 
-## Contact
+## Credits
 
-Feel free to contact [Andreas Nolda](mailto:andreas.nolda@bbaw.de) for
-questions regarding the lexicon or the grammar and
-[Gregor Middell](mailto:gregor.middell@bbaw.de) for question related
-to the integration of DWDSmor into your corpus-annotation pipeline.
+DWSDmor is based on the following software and datasets:
 
+1. [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++ library
+   and toolbox for finite-state transducers (FSTs) (Schmidt 2006)
+2. [SMORLemma](https://github.com/rsennrich/SMORLemma) (Sennrich and Kunz 2014),
+   a modified version of the Stuttgart Morphology
+   ([SMOR](https://www.cis.lmu.de/~schmid/tools/SMOR/)) (Schmid, Fitschen, and
+   Heid 2004) with an alternative lemmatisation component
+3. the [DWDS dictionary](https://www.dwds.de/) (BBAW n.d.) replacing the
+   [IMSLex](https://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/imslex/)
+   (Fitschen 2004) as the lexical data source for German words, their grammatical
+   categories, and their morphological properties.
 
 ## Bibliography
 
@@ -593,6 +609,14 @@ to the integration of DWDSmor into your corpus-annotation pipeline.
   Language Resources and Evaluation, ed. by Nicoletta Calzolari *et al.*,
   European Language Resources Association, 1063–1067.
   [PDF](http://www.lrec-conf.org/proceedings/lrec2014/pdf/116_Paper.pdf).
+
+
+## Contact
+
+Feel free to contact [Andreas Nolda](mailto:andreas.nolda@bbaw.de) for
+questions regarding the lexicon or the grammar and
+[Gregor Middell](mailto:gregor.middell@bbaw.de) for question related
+to the integration of DWDSmor into your corpus-annotation pipeline.
 
 
 ## License
