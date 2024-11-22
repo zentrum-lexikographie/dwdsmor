@@ -20,8 +20,8 @@ For lemmatisation:
 
     >>> import dwsdmor
     >>> lemmatizer = dwdsmor.lemmatizer()
-    >>> assert lemmatizer("getestet", "+V") == "testen"
-    >>> assert lemmatizer("getestet", "+ADJ") == "getestet"
+    >>> assert lemmatizer("getestet", {"+V"}) == "testen"
+    >>> assert lemmatizer("getestet", {"+ADJ"}) == "getestet"
 …
 
 ## Development

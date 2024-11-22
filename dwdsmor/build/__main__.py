@@ -3,35 +3,26 @@
 import argparse
 import csv
 from datetime import datetime
-import logging
 import lzma
-import os
 from pathlib import Path
 import subprocess
-import sys
 
-from dwdsmor.tag import all_tags
-from dwdsmor.traversal import Traversal
+from ..log import logger
+from ..tag import all_tags
+from ..traversal import Traversal
 
 
-project_dir = Path(__file__).parent.parent
+project_dir = Path(".").resolve()
 
 xsl_dir = project_dir / "share"
 grammar_dir = project_dir / "grammar"
 lexicon_dir = project_dir / "lexicon"
 build_dir = project_dir / "build"
 
-logging.basicConfig(
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-    stream=sys.stderr,
-    level=(logging.DEBUG if os.getenv("DEBUG") else logging.INFO),
-)
-
 
 def run(cmd, output_file=None, log_file=None, **args):
     "Run a subprocess, optionally redirecting stdout/stderr to files."
-    logging.debug("! %s", cmd)
+    logger.debug("! %s", cmd)
 
     args["capture_output"] = (
         args["capture_output"]
@@ -125,10 +116,10 @@ def build_lexicon(edition_dir, force=False):
     lex_log = edition_build_dir / "lex.log"
 
     if not force and is_current(lex_txt, sources):
-        logging.debug("Skip building lexicon '%s'", edition_name)
+        logger.debug("Skip building lexicon '%s'", edition_name)
         return False
 
-    logging.info("Building lexicon '%s'", edition_name)
+    logger.info("Building lexicon '%s'", edition_name)
     edition_build_dir.mkdir(parents=True, exist_ok=True)
     saxon(
         xsl_dir / "dwds2manifest.xsl",
@@ -174,10 +165,10 @@ def build_automaton(edition_dir, automaton_type, force=False):
         and is_current(automaton_a, sources)
         and is_current(automaton_ca, sources)
     ):
-        logging.debug("Skip building automaton '%s/%s'", edition_name, automaton_type)
+        logger.debug("Skip building automaton '%s/%s'", edition_name, automaton_type)
         return False
 
-    logging.info("Building automaton '%s/%s'", edition_name, automaton_type)
+    logger.info("Building automaton '%s/%s'", edition_name, automaton_type)
     automaton_src = grammar_dir / f"{edition_name}-{automaton_type}.fst"
     try:
         edition_build_dir.mkdir(parents=True, exist_ok=True)
@@ -211,12 +202,12 @@ def build_traversals(edition_dir, automaton_type, force=False):
     automaton_traversal = edition_build_dir / f"{automaton_type}.csv.lzma"
 
     if not force and is_current(automaton_traversal, [automaton_a]):
-        logging.debug(
+        logger.debug(
             "Skip building full traversal of '%s/%s'", edition_name, automaton_type
         )
         return False
 
-    logging.info("Building full traversal of '%s/%s'", edition_name, automaton_type)
+    logger.info("Building full traversal of '%s/%s'", edition_name, automaton_type)
     with subprocess.Popen(
         ["fst-generate", automaton_a.as_posix()],
         encoding="utf-8",
@@ -255,7 +246,9 @@ def stamp_build(edition_dir):
 
 
 if __name__ == "__main__":
-    arg_parser = argparse.ArgumentParser(description="Build DWDSmor automata.")
+    arg_parser = argparse.ArgumentParser(
+        prog=__package__, description="Build DWDSmor automata."
+    )
     arg_parser.add_argument(
         "editions", help="Editions to build (all by default)", nargs="*"
     )
@@ -281,7 +274,7 @@ if __name__ == "__main__":
         assert edition_dir.is_dir()
         edition_name = edition_dir.name
         if not has_sources(edition_dir):
-            logging.info("Skipping edition '%s' without sources", edition_name)
+            logger.info("Skipping edition '%s' without sources", edition_name)
             continue
         edition_built = build_lexicon(edition_dir, force=args.force)
         for automaton_type in automaton_types:
