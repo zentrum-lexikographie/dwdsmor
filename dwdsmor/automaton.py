@@ -14,10 +14,11 @@ __all__ = [
     "Generator",
     "Analyzer",
     "Automata",
+    "automata",
+    "Lemmatizer",
+    "lemmatizer",
     "load_from_hub",
     "save_to_hub",
-    "automata",
-    "lemmatizer",
 ]
 
 import csv
@@ -32,10 +33,12 @@ from typing import Dict, Iterable, List, Optional, Union
 
 from dotenv import dotenv_values
 from huggingface_hub import ModelHubMixin, create_tag, snapshot_download
+from huggingface_hub.utils import disable_progress_bars, enable_progress_bars
 from sfst_transduce import CompactTransducer, Transducer
 
-from dwdsmor.traversal import Traversal
-from dwdsmor.version import __version__
+from .log import logger
+from .traversal import Traversal
+from .version import __version__
 
 config = {
     **dotenv_values(".env.shared"),
@@ -73,11 +76,11 @@ def detect_root_dir() -> Path:
     """
     Detect local automata directory if none is specified.
 
-    1. Try to get it from an environment variable ``DWDSMOR_AUTOMATA_ROOT``.
+    1. Try to get it from an environment variable ``DWDSMOR_AUTOMATA_DIR``.
     2. Try to detect a development environment and get it from there.
     3. Raise ``AutomataDirNotFound``.
     """
-    root = config.get("DWDSMOR_AUTOMATA_ROOT")
+    root = config.get("DWDSMOR_AUTOMATA_DIR")
     if root:
         return Path(root)
     root = detect_dev_root_dir()
@@ -204,7 +207,7 @@ class Automata(ModelHubMixin, library_name="sfst"):
             copy(self.root_dir / metadata_filename, save_directory)
 
 
-default_repo_id = "gremid/dwdsmor-dev"  # FIXME: "zentrum-lexikographie/dwdsmor-open"
+default_repo_id = config.get("DWDSMOR_HF_REPO_ID", "zentrum-lexikographie/dwdsmor-open")
 
 
 def load_from_hub(
@@ -212,7 +215,12 @@ def load_from_hub(
 ):
     repo_id = repo_id or default_repo_id
     revision = revision or f"v{__version__}"
-    return Automata.from_pretrained(repo_id, *args, revision=revision, **kwargs)
+    logger.debug("Load automata from Huggingface repo %s @ %s", repo_id, revision)
+    try:
+        disable_progress_bars()
+        return Automata.from_pretrained(repo_id, *args, revision=revision, **kwargs)
+    finally:
+        enable_progress_bars()
 
 
 def save_to_hub(automata, repo_id, *args, tag: Optional[str] = None, **kwargs):
@@ -226,10 +234,15 @@ def automata(automata_location: Optional[str] = None, *args, **kwargs):
     if automata_location is not None:
         path = Path(automata_location)
         if path.is_dir():
+            logger.debug("Load automata from local dir '%s'", str(path))
             return Automata(path)
     if automata_location is None:
         try:
-            return Automata(detect_root_dir())
+            detected_dir = detect_root_dir()
+            logger.debug(
+                "Load automata from detected local dir '%s'", str(detected_dir)
+            )
+            return Automata(detected_dir)
         except AutomataDirNotFound:
             pass
     return load_from_hub(automata_location, *args, **kwargs)
@@ -239,9 +252,9 @@ class Lemmatizer:
     def __init__(self, automata, automaton_type="lemma"):
         self.analyzer = automata.analyzer(automaton_type)
 
-    def __call__(self, word, pos=None):
+    def __call__(self, word, pos_set=None):
         for traversal in self.analyzer.analyze(word):
-            if pos is None or pos == traversal.pos:
+            if pos_set is None or traversal.pos in pos_set:
                 return traversal.analysis
 
 

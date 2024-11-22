@@ -31,6 +31,7 @@ dependencies = [
 dev = [
     "coverage",
     "conllu",
+    "datasets",
     "flake8",
     "flake8-bugbear",
     "mypy",
@@ -54,7 +55,7 @@ omit = ["dwdsmor/cli.py", "test/**/*.py"]
 profile = "black"
 
 [[tool.mypy.overrides]]
-module = "blessings"
+module = "datasets"
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]

@@ -11,7 +11,7 @@ from xml.etree.ElementTree import parse
 from tabulate import tabulate
 from tqdm import tqdm
 
-from dwdsmor import Automata
+import dwdsmor
 
 # mapping between DWDS and DWDSSmor part-of-speech categories
 pos_map = {
@@ -123,7 +123,8 @@ def parse_entries(wb_dir, xml_file):
 
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser(
-        description="Benchmarks coverage of DWDSmor against DWDSwb."
+        prog=__package__,
+        description="Benchmarks coverage of DWDSmor against the lexicon source.",
     )
     arg_parser.add_argument(
         "--edition",
@@ -139,7 +140,7 @@ if __name__ == "__main__":
     arg_parser.add_argument("--summary", help="Summarize coverage", action="store_true")
     args = arg_parser.parse_args()
 
-    project_dir = Path(__file__).parent.parent
+    project_dir = Path(".").resolve()
     automata_dir = project_dir / "build" / args.edition
     wb_dir = project_dir / "lexicon" / args.edition / "wb"
     wb_xml_files = tuple(sorted(wb_dir.rglob("*.xml")))
@@ -150,7 +151,7 @@ if __name__ == "__main__":
 
     assert len(wb_xml_files) > 0, f"No lexicon articles found in {wb_dir}"
 
-    automata = Automata(automata_dir)
+    automata = dwdsmor.automata(automata_dir)
     analyzer = automata.analyzer()
     traversals = automata.traversals()
 
