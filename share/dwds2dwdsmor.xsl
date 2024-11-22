@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 15.1 -->
-<!-- Andreas Nolda 2024-10-14 -->
+<!-- Version 16.0 -->
+<!-- Andreas Nolda 2024-11-22 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -189,7 +189,7 @@
     </xsl:variable>
     <!-- sequence of phonetic transcriptions (if any) -->
     <xsl:variable name="pronunciations"
-                  select="distinct-values(dwds:Aussprache[not(@class='invisible')]/@IPA)"/>
+                  select="distinct-values(dwds:Aussprache[not(@class='invisible')]/dwds:IPA[string-length(normalize-space(.))&gt;0]/normalize-space(.))"/>
     <!-- ignore idioms and non-standard spellings -->
     <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                          [not(@Typ)]">

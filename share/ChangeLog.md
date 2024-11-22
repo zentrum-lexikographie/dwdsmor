@@ -1,3 +1,7 @@
+2024-11-22:
+
+* update XPath to DWDS phonetic transcriptions
+
 2024-10-30:
 
 * properly segment adjective lemmas with final schwa
