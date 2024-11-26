@@ -115,14 +115,14 @@ def compute_coverage(automata, limit=None, show_progress=False):
     mismatches = defaultdict(Counter)
     for token in tokens:
         form, lemma, xpos = token
-        pos_candidates = {f"+{xpos}"}.union(dwdsmor_pos_tags.get(xpos, {}))
-        is_match = lemmatizer(form, pos_candidates) == lemma
+        pos_candidates = {f"+{xpos}"}.union(dwdsmor_pos_tags.get(xpos, set()))
+        is_match = lemmatizer(form, pos_candidates) is not None
         if not is_match and lemmatizer(lemma) is not None:
             # skip tokens where we can analyze the given lemma but not the form:
             # compounds are lemmatized to their basic words in German-UD/HDT
             continue
         registry = matches if is_match else mismatches
-        registry[xpos][lemma] += 1
+        registry[xpos][form] += 1
 
     coverage = []
 
@@ -130,7 +130,7 @@ def compute_coverage(automata, limit=None, show_progress=False):
     total_types = 0
     total_type_matches = 0
     total_token_matches = 0
-    for registry in [matches, mismatches]:
+    for registry in (matches, mismatches):
         for _pos_tag, types in registry.items():
             for _type, token_count in types.items():
                 total_types += 1
@@ -141,7 +141,7 @@ def compute_coverage(automata, limit=None, show_progress=False):
         tag_types = 0
         tag_token_matches = 0
         tag_type_matches = 0
-        for registry, is_match in [(matches, True), (mismatches, False)]:
+        for registry, is_match in ((matches, True), (mismatches, False)):
             for _type, token_count in registry.get(pos_tag, {}).items():
                 tag_types += 1
                 tag_tokens += token_count
