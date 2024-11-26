@@ -22,8 +22,7 @@ as well as for using DWDSmor transducers for morphological analysis and paradigm
 generation:
 
 * `share/` contains XSLT stylesheets for extracting lexical entries in SMORLemma
-  format form XML sources of DWDS articles. Sample inputs and outputs can be
-  found in `samples/`.
+  format form XML sources of DWDS articles.
 * `lexicon/dwds/` contains scripts for building DWDSmor lexica by means of the
   XSLT stylesheets in `share/` and DWDS sources in `lexicon/dwds/wb/`, which are
   not part of this repository.
