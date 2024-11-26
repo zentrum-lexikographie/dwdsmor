@@ -16,7 +16,6 @@ def ud_de_hdt_tokens():
         "universal_dependencies",
         "de_hdt",
         split="train",
-        streaming=True,
         trust_remote_code=True,
     )
     for s in sentences:
@@ -189,7 +188,7 @@ if __name__ == "__main__":
     args = arg_parser.parse_args()
 
     def pct(v):
-        return "{:.2%}".format(v)
+        return "{:.3%}".format(v)
 
     def count(v):
         return "{:,d}".format(v)
