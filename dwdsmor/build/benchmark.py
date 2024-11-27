@@ -58,6 +58,7 @@ ud_to_dwdsmor_pos = {
     "PRELAT": {"REL"},
     "PRELS": {"REL"},
     "PRF": {"PPRO"},
+    "PROAV": {"PROADV"},
     "PROP": {"ADV", "PROADV"},
     "PTKA": {"PTCL"},
     "PTKANT": {"INTJ", "PTCL"},
