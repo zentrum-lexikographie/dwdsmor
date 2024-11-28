@@ -5,12 +5,21 @@ import csv
 from datetime import datetime
 import lzma
 from pathlib import Path
+import re
 import subprocess
+from huggingface_hub import (
+    ModelCard,
+    ModelCardData,
+    create_repo,
+    create_tag,
+    upload_folder,
+)
 
+from .benchmark import coverage_headers, compute_coverage
+from ..automaton import automata
 from ..log import logger
 from ..tag import all_tags
 from ..traversal import Traversal
-
 
 project_dir = Path(".").resolve()
 
@@ -190,6 +199,22 @@ def build_automaton(edition_dir, automaton_type, force=False):
     return True
 
 
+def build_metrics(edition_dir, force=False):
+    edition_name = edition_dir.name
+
+    edition_build_dir = build_dir / edition_name
+    automaton_ca = edition_build_dir / "lemma.ca"
+    metrics_csv = edition_build_dir / "lemma.metrics.csv"
+    if not force and is_current(metrics_csv, (automaton_ca,)):
+        logger.debug("Skip measuring UD/de-hdt coverage for '%s/lemma'", edition_name)
+        return False
+    logger.info("Measure UD/de-hdt coverage of '%s/lemma'", edition_name)
+    coverage = compute_coverage(automata(edition_build_dir))
+    with metrics_csv.open("wt", encoding="utf-8") as metrics_f:
+        csv.writer(metrics_f).writerows((coverage_headers, *coverage))
+    return True
+
+
 traversal_automaton_types = {"index"}
 
 
@@ -245,10 +270,96 @@ def stamp_build(edition_dir):
     (edition_build_dir / "BUILT").write_text(datetime.utcnow().isoformat())
 
 
-if __name__ == "__main__":
-    arg_parser = argparse.ArgumentParser(
-        prog=__package__, description="Build DWDSmor automata."
+edition_hub_coordinates = {
+    "open": ("zentrum-lexikographie/dwdsmor-open", {"private": False}),
+    "dwds": ("zentrum-lexikographie/dwdsmor-dwds", {"private": True}),
+}
+
+
+def remove_github_md_badges(md):
+    return re.sub(r"^!\[.+$", "", md, count=0, flags=re.MULTILINE)
+
+
+hub_upload_allow_patterns = [
+    "*.a",
+    "*.ca*",
+    "*.csv.lzma",
+    "BUILT",
+    "GIT_REV",
+    "GIT_REV_LEX",
+    "README.md",
+]
+
+
+def push_to_hub(edition_dir, tag=None):
+    edition_name = edition_dir.name
+    edition_build_dir = build_dir / edition_name
+
+    if edition_name not in edition_hub_coordinates:
+        logger.info("Skipping huggingface upload of '%s'", edition_name)
+        return
+
+    readme_file = project_dir / "README.md"
+    readme_text = remove_github_md_badges(readme_file.read_text())
+    card_data = ModelCardData(
+        language="de",
+        library_name="sfst",
+        license="gpl-2.0",
+        tags=["sfst", "dwdsmor", "token-classification", "lemmatisation"],
     )
+    metrics_file = edition_build_dir / "lemma.metrics.csv"
+    if metrics_file.is_file():
+        metrics = []
+        with metrics_file.open("rt", encoding="utf-8") as metrics_csv:
+            for n, record in enumerate(csv.reader(metrics_csv)):
+                if n == 0:
+                    continue
+                pos, token_pct = record[0], record[-1]
+                metrics.append(
+                    {
+                        "type": "coverage",
+                        "name": f"Lemma ({pos})" if pos else "Lemma",
+                        "value": float(token_pct) * 100,
+                    }
+                )
+        card_data["model-index"] = [
+            {
+                "name": "dwdsmor",
+                "results": [
+                    {
+                        "task": {
+                            "type": "token-classification",
+                            "name": "Lemmatisation",
+                        },
+                        "dataset": {
+                            "name": "Universal Dependencies Treebank (de-hdt)",
+                            "type": "universal_dependencies",
+                            "config": "de_hdt",
+                            "split": "train",
+                        },
+                        "metrics": metrics,
+                    }
+                ],
+            }
+        ]
+
+    card_content = f"---\n{card_data.to_yaml()}\n---\n\n{readme_text}"
+    ModelCard(card_content).save(edition_build_dir / "README.md")
+
+    repo_id, repo_opts = edition_hub_coordinates[edition_name]
+
+    create_repo(repo_id, exist_ok=True, **repo_opts)
+    upload_folder(
+        repo_id=repo_id,
+        folder_path=edition_build_dir,
+        allow_patterns=hub_upload_allow_patterns,
+    )
+    if tag:
+        create_tag(repo_id, tag=tag, tag_message="Bump release version")
+
+
+if __name__ == "__main__":
+    arg_parser = argparse.ArgumentParser(description="Build DWDSmor.")
     arg_parser.add_argument(
         "editions", help="Editions to build (all by default)", nargs="*"
     )
@@ -257,6 +368,9 @@ if __name__ == "__main__":
     )
     arg_parser.add_argument(
         "--force", help="Force building (also current targets)", action="store_true"
+    )
+    arg_parser.add_argument(
+        "--with-metrics", help="Measure UD/de-hdt coverage", action="store_true"
     )
     args = arg_parser.parse_args()
 
@@ -282,6 +396,10 @@ if __name__ == "__main__":
                 build_automaton(edition_dir, automaton_type, force=args.force)
                 or edition_built
             )
+            if args.with_metrics:
+                edition_built = (
+                    build_metrics(edition_dir, force=args.force) or edition_built
+                )
             if automaton_type in traversal_automaton_types:
                 edition_built = (
                     build_traversals(edition_dir, automaton_type, force=args.force)

@@ -18,7 +18,6 @@ __all__ = [
     "Lemmatizer",
     "lemmatizer",
     "load_from_hub",
-    "save_to_hub",
 ]
 
 import csv
@@ -28,11 +27,10 @@ from collections import defaultdict
 from dataclasses import dataclass
 from os import PathLike
 from pathlib import Path
-from shutil import copy
 from typing import Dict, Iterable, List, Optional, Union
 
 from dotenv import dotenv_values
-from huggingface_hub import ModelHubMixin, create_tag, snapshot_download
+from huggingface_hub import snapshot_download
 from huggingface_hub.utils import disable_progress_bars, enable_progress_bars
 from sfst_transduce import CompactTransducer, Transducer
 
@@ -131,7 +129,7 @@ def assert_valid_automaton_type(automaton_type: str, types=automaton_types):
     )
 
 
-class Automata(ModelHubMixin, library_name="sfst"):
+class Automata:
     def __init__(self, root_dir: Optional[Union[str, PathLike]] = None):
         self.root_dir = Path(root_dir) if root_dir else detect_root_dir()
 
@@ -170,64 +168,21 @@ class Automata(ModelHubMixin, library_name="sfst"):
                 traversals[traversal_obj.analysis].append(traversal_obj)
         return traversals
 
-    @classmethod
-    def _from_pretrained(
-        cls,
-        *,
-        model_id: str,
-        revision: str,
-        cache_dir: str,
-        force_download: bool,
-        proxies: Optional[Dict],
-        resume_download: bool,
-        local_files_only: bool,
-        token: Union[str, bool, None],
-        **model_kwargs,
-    ):
-        return cls(
-            snapshot_download(
-                repo_id=model_id,
-                revision=revision,
-                cache_dir=cache_dir,
-                force_download=force_download,
-                proxies=proxies,
-                resume_download=resume_download,
-                token=token,
-                local_files_only=local_files_only,
-            )
-        )
-
-    def _save_pretrained(self, save_directory: Path) -> None:
-        for automata_suffix in (".a", ".ca"):
-            for automaton_file in self.root_dir.glob(f"*{automata_suffix}"):
-                copy(automaton_file, save_directory)
-        for index_file in self.root_dir.glob("*.csv.lzma"):
-            copy(index_file, save_directory)
-        for metadata_filename in ("BUILT", "GIT_REV", "GIT_REV_LEX"):
-            copy(self.root_dir / metadata_filename, save_directory)
-
 
 default_repo_id = config.get("DWDSMOR_HF_REPO_ID", "zentrum-lexikographie/dwdsmor-open")
 
 
 def load_from_hub(
-    repo_id: Optional[str] = None, *args, revision: Optional[str] = None, **kwargs
+    repo_id: Optional[str] = None, revision: Optional[str] = None, **kwargs
 ):
     repo_id = repo_id or default_repo_id
     revision = revision or f"v{__version__}"
     logger.debug("Load automata from Huggingface repo %s @ %s", repo_id, revision)
     try:
         disable_progress_bars()
-        return Automata.from_pretrained(repo_id, *args, revision=revision, **kwargs)
+        return Automata(snapshot_download(repo_id=repo_id, revision=revision, **kwargs))
     finally:
         enable_progress_bars()
-
-
-def save_to_hub(automata, repo_id, *args, tag: Optional[str] = None, **kwargs):
-    saved = automata.push_to_hub(repo_id, *args, **kwargs)
-    tag = tag or f"v{__version__}"
-    create_tag(repo_id, tag=tag, tag_message="Bump release version")
-    return saved
 
 
 def automata(automata_location: Optional[str] = None, *args, **kwargs):
@@ -252,10 +207,16 @@ class Lemmatizer:
     def __init__(self, automata, automaton_type="lemma"):
         self.analyzer = automata.analyzer(automaton_type)
 
-    def __call__(self, word, pos_set=None):
-        for traversal in self.analyzer.analyze(word):
-            if pos_set is None or traversal.pos in pos_set:
-                return traversal.analysis
+    def __call__(self, word, **criteria):
+        traversals = tuple(self.analyzer.analyze(word))
+        criteria_stack = list(criteria.items())
+        criteria_stack.reverse()
+        while criteria_stack:
+            attr, attr_vals = criteria_stack.pop()
+            filtered = tuple((t for t in traversals if getattr(t, attr) in attr_vals))
+            traversals = filtered or traversals
+        for traversal in traversals:
+            return traversal.analysis
 
 
 def lemmatizer(*args, **kwargs):
