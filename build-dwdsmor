@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+
+from os import chdir, execlp
+from pathlib import Path
+from sys import argv
+
+chdir(Path(__file__).parent)
+execlp("python", "python", "-m", "dwdsmor.build.cli", *argv[1:])

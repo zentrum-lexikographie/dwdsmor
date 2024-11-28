@@ -13,7 +13,7 @@ classifiers = [
     "Development Status :: 1 - Planning",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     "Topic :: Education",
     "Topic :: Scientific/Engineering",
     "Topic :: Text Processing :: Linguistic"
@@ -60,6 +60,10 @@ ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
 module = "huggingface_hub"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "huggingface_hub.utils"
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
