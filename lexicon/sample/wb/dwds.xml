@@ -2,6 +2,22 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung hidx="1">ansatzweise</Schreibung>
+         <Grammatik>
+            <Wortklasse>Adverb</Wortklasse>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Ansatz</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-weise</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>geliebt</Schreibung>
          <Grammatik>
             <Wortklasse>partizipiales Adjektiv</Wortklasse>
@@ -75,6 +91,17 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung hidx="2">ausnahmsweise</Schreibung>
+         <Grammatik>
+            <Wortklasse>Adjektiv</Wortklasse>
+            <Funktionspraeferenz Frequenz="nur">attributiv</Funktionspraeferenz>
+            <Einschraenkung>mit Substantiven, die einen Vorgang
+                    ausdrücken</Einschraenkung>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung hidx="2">alle</Schreibung>
          <Grammatik>
             <Wortklasse>Pronomen</Wortklasse>
@@ -93,6 +120,25 @@
             <Wortklasse>partizipiales Adjektiv</Wortklasse>
          </Grammatik>
       </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Mischung</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-en</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>mischen</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-ung</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -174,9 +220,31 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Feuer</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>neutr.</Genus>
+            <Genitiv>-s</Genitiv>
+            <Plural>-</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>besetzt</Schreibung>
          <Grammatik>
             <Wortklasse>partizipiales Adjektiv</Wortklasse>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung hidx="2">ansatzweise</Schreibung>
+         <Grammatik>
+            <Wortklasse>Adjektiv</Wortklasse>
+            <Funktionspraeferenz Frequenz="nur">attributiv</Funktionspraeferenz>
+            <Einschraenkung>mit Substantiven, die einen Vorgang
+                    ausdrücken</Einschraenkung>
          </Grammatik>
       </Formangabe>
    </Artikel>
@@ -364,6 +432,16 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>gemischt</Schreibung>
+         <Grammatik>
+            <Wortklasse>partizipiales Adjektiv</Wortklasse>
+            <Komparativ>gemischter</Komparativ>
+            <Superlativ>am gemischtesten</Superlativ>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Elbe</Schreibung>
          <Grammatik>
             <Wortklasse>Eigenname</Wortklasse>
@@ -373,6 +451,26 @@
          </Grammatik>
       </Formangabe>
       <Verweise/>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Ausbildung</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-en</Plural>
+            <Numeruspraeferenz>meist im Singular</Numeruspraeferenz>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>ausbilden</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-ung</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -397,6 +495,26 @@
             <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
          </Grammatik>
       </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Bodentruppe</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-n</Plural>
+            <Numeruspraeferenz>meist im Plural</Numeruspraeferenz>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Boden</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>Truppe</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -515,6 +633,19 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>einzig</Schreibung>
+         <Grammatik>
+            <Wortklasse>Adjektiv</Wortklasse>
+         </Grammatik>
+      </Formangabe>
+      <Verweise>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-ig</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Beteiligung</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -553,6 +684,14 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>hinreichend</Schreibung>
+         <Grammatik>
+            <Wortklasse>partizipiales Adjektiv</Wortklasse>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Elektronik</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -585,6 +724,22 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung hidx="1">ausnahmsweise</Schreibung>
+         <Grammatik>
+            <Wortklasse>Adverb</Wortklasse>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Ausnahme</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-weise</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>säubern</Schreibung>
          <Grammatik>
             <Wortklasse>Verb</Wortklasse>
@@ -597,6 +752,22 @@
       <Verweise Typ="Derivation">
          <Verweis Typ="Grundform">
             <Ziellemma>sauber</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Ausflug</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-(e)s</Genitiv>
+            <Plural>Ausflüge</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Grundform">
+            <Ziellemma>ausfliegen</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -618,6 +789,17 @@
             <Ziellemma>-ung</Ziellemma>
          </Verweis>
       </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Kapitel</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>neutr.</Genus>
+            <Genitiv>-s</Genitiv>
+            <Plural>-</Plural>
+         </Grammatik>
+      </Formangabe>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -852,6 +1034,37 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Grafik</Schreibung>
+         <Schreibung>Graphik</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-en</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Negation</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-en</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>negieren</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-ation</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Droge</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -993,7 +1206,6 @@
             <Funktionspraeferenz>substantivisch</Funktionspraeferenz>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -1903,6 +2115,25 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Freundin</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-nen</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Freund</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma hidx="1">-in</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Appell</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -2160,17 +2391,6 @@
          <Schreibung>Nr.</Schreibung>
          <Grammatik>
             <Wortklasse/>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Schach</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>neutr.</Genus>
-            <Genitiv>-(e)s</Genitiv>
-            <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
          </Grammatik>
       </Formangabe>
    </Artikel>
@@ -2489,6 +2709,35 @@
          </Verweis>
          <Verweis Typ="Letztglied">
             <Ziellemma>-ung</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Lastwagen</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-s</Genitiv>
+            <Plural>-</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Formangabe Typ="Nebenform">
+         <Schreibung>Lastwagen</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-s</Genitiv>
+            <Plural>-</Plural>
+            <Plural>Lastwägen</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Last</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>Wagen</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -4550,6 +4799,17 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Bibliothek</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-en</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Arbeitsplatz</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -4569,6 +4829,20 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>regnen</Schreibung>
+         <Grammatik>
+            <Wortklasse>Verb</Wortklasse>
+            <Praesens>regnet</Praesens>
+            <Praeteritum>regnete</Praeteritum>
+            <Auxiliar>hat</Auxiliar>
+            <Auxiliar>ist</Auxiliar>
+            <Partizip_II>geregnet</Partizip_II>
+         </Grammatik>
+      </Formangabe>
+      <Verweise/>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Besuch</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -4580,12 +4854,43 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Variation</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-en</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>variieren</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-ation</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Lauf</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
             <Genus>mask.</Genus>
             <Genitiv>-(e)s</Genitiv>
             <Plural>Läufe</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>wehren</Schreibung>
+         <Grammatik>
+            <Wortklasse>Verb</Wortklasse>
+            <Praesens>wehrt</Praesens>
+            <Praeteritum>wehrte</Praeteritum>
+            <Auxiliar>hat</Auxiliar>
+            <Partizip_II>gewehrt</Partizip_II>
          </Grammatik>
       </Formangabe>
    </Artikel>
@@ -4648,6 +4953,25 @@
          </Verweis>
          <Verweis Typ="Letztglied">
             <Ziellemma>sehen</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Freier</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-s</Genitiv>
+            <Plural>-</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>freien</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma hidx="1">-er</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -6828,6 +7152,25 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Marktplatz</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-es</Genitiv>
+            <Plural>Marktplätze</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Markt</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>Platz</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Sequenz</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -7118,6 +7461,17 @@
             <Ziellemma>halten</Ziellemma>
          </Verweis>
       </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Kartoffel</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-n</Plural>
+         </Grammatik>
+      </Formangabe>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -7805,7 +8159,11 @@
             <Plural>-en</Plural>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
+      <Verweise>
+         <Verweis Typ="formal_verwandt">
+            <Ziellemma>koalieren</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -10556,17 +10914,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Los</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>neutr.</Genus>
-            <Genitiv>-es</Genitiv>
-            <Plural>-e</Plural>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>Heimatland</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -12009,7 +12356,6 @@
             <Funktionspraeferenz>substantivisch</Funktionspraeferenz>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -14484,25 +14830,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Fahnder</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-s</Genitiv>
-            <Plural>-</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Derivation">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>fahnden</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma hidx="1">-er</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>Nein</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -15217,14 +15544,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>hinreichend</Schreibung>
-         <Grammatik>
-            <Wortklasse>partizipiales Adjektiv</Wortklasse>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>hinweg</Schreibung>
          <Grammatik>
             <Wortklasse>Adverb</Wortklasse>
@@ -15286,8 +15605,7 @@
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
             <Genus>neutr.</Genus>
-            <Genitiv>-s</Genitiv>
-            <Genitiv>-es</Genitiv>
+            <Genitiv>-(e)s</Genitiv>
             <Plural>-e</Plural>
          </Grammatik>
       </Formangabe>
@@ -15382,14 +15700,6 @@
             <Genus>mask.</Genus>
             <Genitiv>-n</Genitiv>
             <Plural>-(n)</Plural>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>ätzend</Schreibung>
-         <Grammatik>
-            <Wortklasse>partizipiales Adjektiv</Wortklasse>
          </Grammatik>
       </Formangabe>
    </Artikel>
@@ -15649,14 +15959,6 @@
             <Ziellemma hidx="2">-end</Ziellemma>
          </Verweis>
       </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Abkürzung">
-         <Schreibung>etc.</Schreibung>
-         <Grammatik>
-            <Wortklasse/>
-         </Grammatik>
-      </Formangabe>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -16235,6 +16537,37 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Personalrat</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-(e)s</Genitiv>
+            <Plural>Personalräte</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Personal</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>Rat</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>U-Haft</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-en</Plural>
+            <Numeruspraeferenz>Plural selten</Numeruspraeferenz>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Iraner</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -16614,34 +16947,6 @@
             <Ziellemma>Werk</Ziellemma>
          </Verweis>
       </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>ansatzweise</Schreibung>
-         <Grammatik>
-            <Wortklasse>Adverb</Wortklasse>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Ansatz</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>-weise</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>U-Haft</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-en</Plural>
-            <Numeruspraeferenz>meist im Singular</Numeruspraeferenz>
-         </Grammatik>
-      </Formangabe>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -17947,6 +18252,30 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Appendix</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-</Genitiv>
+            <Genitiv>-es</Genitiv>
+            <Plural>Appendizes</Plural>
+            <Plural>Appendices</Plural>
+            <Plural>-e</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Appendix</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>Appendizes</Plural>
+            <Plural>Appendices</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Drachen</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -18748,25 +19077,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Bußgeldbescheid</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-(e)s</Genitiv>
-            <Plural>-e</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Bußgeld</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>Bescheid</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>Vermieter</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -19022,6 +19332,25 @@
          </Verweis>
          <Verweis Typ="Letztglied">
             <Ziellemma>Versicherung</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Fahnder</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-s</Genitiv>
+            <Plural>-</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>fahnden</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma hidx="1">-er</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -20430,6 +20759,27 @@
             <Ziellemma hidx="1">-er</Ziellemma>
          </Verweis>
       </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Kopf</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-(e)s</Genitiv>
+            <Plural>Köpfe</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Formangabe Typ="Nebenform">
+         <Schreibung>Kopf</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-(e)s</Genitiv>
+            <Plural>-</Plural>
+            <Einschraenkung>bei Mengenangabe</Einschraenkung>
+         </Grammatik>
+      </Formangabe>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -21888,25 +22238,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Personalrat</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-(e)s</Genitiv>
-            <Plural>Personalräte</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Personal</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>Rat</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>Popstar</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -22063,8 +22394,8 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Disco</Schreibung>
-         <Schreibung>Disko</Schreibung>
+         <Schreibung hidx="1">Disco</Schreibung>
+         <Schreibung hidx="1">Disko</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
             <Genus>fem.</Genus>
@@ -24386,7 +24717,6 @@
             <Plural>-e</Plural>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -25982,19 +26312,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>wehren</Schreibung>
-         <Grammatik>
-            <Wortklasse>Verb</Wortklasse>
-            <Praesens>wehrt</Praesens>
-            <Praeteritum>wehrte</Praeteritum>
-            <Auxiliar>hat</Auxiliar>
-            <Partizip_II>gewehrt</Partizip_II>
-         </Grammatik>
-      </Formangabe>
-      <Verweise/>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>weg</Schreibung>
          <Grammatik>
             <Wortklasse>Adverb</Wortklasse>
@@ -26611,7 +26928,11 @@
             <Wortklasse>Adverb</Wortklasse>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Grundform">
+            <Ziellemma>vierte</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -27382,17 +27703,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung hidx="1">Nagel</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-s</Genitiv>
-            <Plural>Nägel</Plural>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>nahen</Schreibung>
          <Grammatik>
             <Wortklasse>Verb</Wortklasse>
@@ -27550,17 +27860,6 @@
          </Grammatik>
       </Formangabe>
       <Verweise/>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung hidx="2">Nagel</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-s</Genitiv>
-            <Plural>Nägel</Plural>
-         </Grammatik>
-      </Formangabe>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -27933,7 +28232,7 @@
       </Formangabe>
       <Verweise Typ="Komposition">
          <Verweis Typ="Erstglied">
-            <Ziellemma hidx="1">Nagel</Ziellemma>
+            <Ziellemma>Nagel</Ziellemma>
          </Verweis>
          <Verweis Typ="Letztglied">
             <Ziellemma>neu</Ziellemma>
@@ -27988,17 +28287,6 @@
             <Genus>mask.</Genus>
             <Genitiv>-(e)s</Genitiv>
             <Plural>-e</Plural>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Bibliothek</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-en</Plural>
          </Grammatik>
       </Formangabe>
    </Artikel>
@@ -30351,17 +30639,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung hidx="1">Kapitel</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>neutr.</Genus>
-            <Genitiv>-s</Genitiv>
-            <Plural>-</Plural>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>Katalog</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -30933,17 +31210,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Kartoffel</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-n</Plural>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>Kassiererin</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -31448,25 +31714,6 @@
          </Grammatik>
       </Formangabe>
       <Verweise/>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Mischung</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-en</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Derivation">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>mischen</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>-ung</Ziellemma>
-         </Verweis>
-      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -32469,7 +32716,6 @@
             <Wortklasse>Interjektion</Wortklasse>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -38533,25 +38779,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Bodentruppe</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-n</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Boden</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>Truppe</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>bösartig</Schreibung>
          <Grammatik>
             <Wortklasse>Adjektiv</Wortklasse>
@@ -40452,18 +40679,6 @@
          </Grammatik>
       </Formangabe>
       <Verweise/>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Grafik</Schreibung>
-         <Schreibung>Graphik</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-en</Plural>
-         </Grammatik>
-      </Formangabe>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -43835,25 +44050,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Marktplatz</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-es</Genitiv>
-            <Plural>Marktplätze</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Markt</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>Platz</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>Maschine</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -44451,7 +44647,6 @@
             <Plural>-n</Plural>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -47178,7 +47373,6 @@
             <Numeruspraeferenz>meist im Singular</Numeruspraeferenz>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -47326,6 +47520,19 @@
             <Ziellemma>-lich</Ziellemma>
          </Verweis>
       </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Spezies</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-</Plural>
+            <Plural>Spezien</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -48221,7 +48428,6 @@
             <Plural>-n</Plural>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -48380,25 +48586,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Variation</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-en</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Derivation">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>variieren</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>-ation</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>Vaterland</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -48443,24 +48630,6 @@
             <Plural>Vakuen</Plural>
          </Grammatik>
       </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Adresse</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-n</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Formangabe Typ="Abkürzung">
-         <Schreibung>Adr.</Schreibung>
-         <Grammatik>
-            <Wortklasse/>
-         </Grammatik>
-      </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -48787,17 +48956,6 @@
          </Grammatik>
       </Formangabe>
       <Verweise/>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Wurzel</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-n</Plural>
-         </Grammatik>
-      </Formangabe>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -49692,22 +49850,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>kürzlich</Schreibung>
-         <Grammatik>
-            <Wortklasse>Adverb</Wortklasse>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Derivation">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>kurz</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>-lich</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>küren</Schreibung>
          <Grammatik>
             <Wortklasse>Verb</Wortklasse>
@@ -50038,6 +50180,11 @@
             <Plural>-e</Plural>
          </Grammatik>
       </Formangabe>
+      <Verweise>
+         <Verweis Typ="formal_verwandt">
+            <Ziellemma>Kultus</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -50170,19 +50317,6 @@
             <Ziellemma>-isch</Ziellemma>
          </Verweis>
       </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>küssen</Schreibung>
-         <Grammatik>
-            <Wortklasse>Verb</Wortklasse>
-            <Praesens>küsst</Praesens>
-            <Praeteritum>küsste</Praeteritum>
-            <Auxiliar>hat</Auxiliar>
-            <Partizip_II>geküsst</Partizip_II>
-         </Grammatik>
-      </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -50984,17 +51118,6 @@
          </Grammatik>
       </Formangabe>
       <Verweise/>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Feuer</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>neutr.</Genus>
-            <Genitiv>-s</Genitiv>
-            <Plural>-</Plural>
-         </Grammatik>
-      </Formangabe>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -51975,7 +52098,6 @@
             <Plural>Wände</Plural>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -53671,35 +53793,6 @@
          </Grammatik>
       </Formangabe>
       <Verweise/>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Lastwagen</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-s</Genitiv>
-            <Plural>-</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Formangabe Typ="Nebenform">
-         <Schreibung>Lastwagen</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-s</Genitiv>
-            <Plural>-</Plural>
-            <Plural>Lastwägen</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Last</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>Wagen</Ziellemma>
-         </Verweis>
-      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -55767,7 +55860,6 @@
             <Plural>-n</Plural>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -61768,25 +61860,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Freier</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-s</Genitiv>
-            <Plural>-</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Derivation">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>freien</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma hidx="1">-er</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>Freundschaft</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -61983,25 +62056,6 @@
             <Plural>Frösche</Plural>
          </Grammatik>
       </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Freundin</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-nen</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Derivation">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Freund</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma hidx="1">-in</Ziellemma>
-         </Verweis>
-      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -65933,33 +65987,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Reisebus</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-ses</Genitiv>
-            <Plural>-se</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>reisen</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>Bus</Ziellemma>
-         </Verweis>
-      </Verweise>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Reise</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>Bus</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>rechtens</Schreibung>
          <Grammatik>
             <Wortklasse>Adverb</Wortklasse>
@@ -66421,7 +66448,7 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Reiter</Schreibung>
+         <Schreibung hidx="1">Reiter</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
             <Genus>mask.</Genus>
@@ -66561,20 +66588,6 @@
             <Ziellemma>-lich</Ziellemma>
          </Verweis>
       </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>regnen</Schreibung>
-         <Grammatik>
-            <Wortklasse>Verb</Wortklasse>
-            <Praesens>regnet</Praesens>
-            <Praeteritum>regnete</Praeteritum>
-            <Auxiliar>hat</Auxiliar>
-            <Auxiliar>ist</Auxiliar>
-            <Partizip_II>geregnet</Partizip_II>
-         </Grammatik>
-      </Formangabe>
-      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -66780,6 +66793,11 @@
             <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
          </Grammatik>
       </Formangabe>
+      <Verweise>
+         <Verweis Typ="formal_verwandt">
+            <Ziellemma>Justitia</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -67695,22 +67713,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Ausflug</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-(e)s</Genitiv>
-            <Plural>Ausflüge</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Derivation">
-         <Verweis Typ="Grundform">
-            <Ziellemma>ausfliegen</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>auffordern</Schreibung>
          <Grammatik>
             <Wortklasse>Verb</Wortklasse>
@@ -68500,26 +68502,6 @@
       <Verweise Typ="Derivation">
          <Verweis Typ="Grundform">
             <Ziellemma>auflegen</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Ausbildung</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-en</Plural>
-            <Numeruspraeferenz>meist im Singular</Numeruspraeferenz>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Derivation">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>ausbilden</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>-ung</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -71004,22 +70986,6 @@
          </Verweis>
          <Verweis Typ="Letztglied">
             <Ziellemma>räumen</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>ausnahmsweise</Schreibung>
-         <Grammatik>
-            <Wortklasse>Adverb</Wortklasse>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Ausnahme</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>-weise</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -78239,6 +78205,8 @@
          <Schreibung>neidisch</Schreibung>
          <Grammatik>
             <Wortklasse>Adjektiv</Wortklasse>
+            <Komparativ>neidischer</Komparativ>
+            <Superlativ>am neidischsten</Superlativ>
          </Grammatik>
       </Formangabe>
       <Verweise Typ="Derivation">
@@ -78525,25 +78493,6 @@
          </Verweis>
          <Verweis Typ="Letztglied">
             <Ziellemma hidx="1">-zig</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>Negation</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>fem.</Genus>
-            <Genitiv>-</Genitiv>
-            <Plural>-en</Plural>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Derivation">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>negieren</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>-ation</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -84273,17 +84222,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Kopf</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>mask.</Genus>
-            <Genitiv>-(e)s</Genitiv>
-            <Plural>Köpfe</Plural>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>Kommunikation</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -89051,7 +88989,11 @@
             <Wortklasse>Adverb</Wortklasse>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Grundform">
+            <Ziellemma>best</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -95228,17 +95170,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>Subjekt</Schreibung>
-         <Grammatik>
-            <Wortklasse>Substantiv</Wortklasse>
-            <Genus>neutr.</Genus>
-            <Genitiv>-(e)s</Genitiv>
-            <Plural>-e</Plural>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>substanziell</Schreibung>
          <Schreibung>substantiell</Schreibung>
          <Grammatik>
@@ -98371,14 +98302,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>gemischt</Schreibung>
-         <Grammatik>
-            <Wortklasse>partizipiales Adjektiv</Wortklasse>
-         </Grammatik>
-      </Formangabe>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>gehalten</Schreibung>
          <Grammatik>
             <Wortklasse>partizipiales Adjektiv</Wortklasse>
@@ -99264,7 +99187,7 @@
       </Formangabe>
       <Verweise Typ="Derivation">
          <Verweis Typ="Grundform">
-            <Ziellemma>Order</Ziellemma>
+            <Ziellemma hidx="1">Order</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -103255,22 +103178,6 @@
          </Verweis>
          <Verweis Typ="Letztglied">
             <Ziellemma>-ung</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>hilfreich</Schreibung>
-         <Grammatik>
-            <Wortklasse>Adjektiv</Wortklasse>
-         </Grammatik>
-      </Formangabe>
-      <Verweise Typ="Komposition">
-         <Verweis Typ="Erstglied">
-            <Ziellemma>Hilfe</Ziellemma>
-         </Verweis>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>reich</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -107655,19 +107562,6 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
-         <Schreibung>einzig</Schreibung>
-         <Grammatik>
-            <Wortklasse>Adjektiv</Wortklasse>
-         </Grammatik>
-      </Formangabe>
-      <Verweise>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>-ig</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
          <Schreibung>einziehen</Schreibung>
          <Grammatik>
             <Wortklasse>Verb</Wortklasse>
@@ -110852,6 +110746,17 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Epos</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>neutr.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>Epen</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>kräftig</Schreibung>
          <Grammatik>
             <Wortklasse>Adjektiv</Wortklasse>
@@ -110928,6 +110833,11 @@
             <Plural>-n</Plural>
          </Grammatik>
       </Formangabe>
+      <Verweise>
+         <Verweis Typ="formal_verwandt">
+            <Ziellemma>Krisis</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -111271,26 +111181,6 @@
       <Verweise>
          <Verweis Typ="formal_verwandt">
             <Ziellemma>kritisch</Ziellemma>
-         </Verweis>
-      </Verweise>
-   </Artikel>
-   <Artikel>
-      <Formangabe Typ="Hauptform">
-         <Schreibung>kritisch</Schreibung>
-         <Grammatik>
-            <Wortklasse>Adjektiv</Wortklasse>
-            <Komparativ>kritischer</Komparativ>
-            <Superlativ>am kritischsten</Superlativ>
-         </Grammatik>
-      </Formangabe>
-      <Verweise>
-         <Verweis Typ="Letztglied">
-            <Ziellemma>-isch</Ziellemma>
-         </Verweis>
-      </Verweise>
-      <Verweise>
-         <Verweis Typ="formal_verwandt">
-            <Ziellemma>Kritik</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -112028,6 +111918,20 @@
             <Ziellemma>-ung</Ziellemma>
          </Verweis>
       </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Simplex</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>neutr.</Genus>
+            <Genitiv>-</Genitiv>
+            <Genitiv>-es</Genitiv>
+            <Plural>-e</Plural>
+            <Plural>Simplizia</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -116659,7 +116563,11 @@
             <Partizip_II>gekuckt</Partizip_II>
          </Grammatik>
       </Formangabe>
-      <Verweise/>
+      <Verweise>
+         <Verweis Typ="formal_verwandt">
+            <Ziellemma>gucken</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -117332,6 +117240,34 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Subjekt</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>neutr.</Genus>
+            <Genitiv>-(e)s</Genitiv>
+            <Plural>-e</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Adresse</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-n</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Formangabe Typ="Abkürzung">
+         <Schreibung>Adr.</Schreibung>
+         <Grammatik>
+            <Wortklasse/>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Fonds</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -117362,6 +117298,26 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>kritisch</Schreibung>
+         <Grammatik>
+            <Wortklasse>Adjektiv</Wortklasse>
+            <Komparativ>kritischer</Komparativ>
+            <Superlativ>am kritischsten</Superlativ>
+         </Grammatik>
+      </Formangabe>
+      <Verweise>
+         <Verweis Typ="formal_verwandt">
+            <Ziellemma>Kritik</Ziellemma>
+         </Verweis>
+      </Verweise>
+      <Verweise>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-isch</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Bürokratie</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -117379,6 +117335,33 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Reisebus</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-ses</Genitiv>
+            <Plural>-se</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>reisen</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>Bus</Ziellemma>
+         </Verweis>
+      </Verweise>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Reise</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>Bus</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Komma</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -117388,6 +117371,26 @@
             <Plural>-ta</Plural>
          </Grammatik>
       </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Wurzel</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>fem.</Genus>
+            <Genitiv>-</Genitiv>
+            <Plural>-n</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Abkürzung">
+         <Schreibung>etc.</Schreibung>
+         <Grammatik>
+            <Wortklasse/>
+         </Grammatik>
+      </Formangabe>
+      <Verweise/>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -117404,6 +117407,41 @@
          </Verweis>
          <Verweis Typ="Letztglied">
             <Ziellemma>-isch</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>kürzlich</Schreibung>
+         <Grammatik>
+            <Wortklasse>Adjektiv</Wortklasse>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Derivation">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>kurz</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>-lich</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Bußgeldbescheid</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-(e)s</Genitiv>
+            <Plural>-e</Plural>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Bußgeld</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>Bescheid</Ziellemma>
          </Verweis>
       </Verweise>
    </Artikel>
@@ -117439,6 +117477,24 @@
             <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
          </Grammatik>
       </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>hilfreich</Schreibung>
+         <Grammatik>
+            <Wortklasse>Adjektiv</Wortklasse>
+            <Komparativ>hilfreicher</Komparativ>
+            <Superlativ>am hilfreichsten</Superlativ>
+         </Grammatik>
+      </Formangabe>
+      <Verweise Typ="Komposition">
+         <Verweis Typ="Erstglied">
+            <Ziellemma>Hilfe</Ziellemma>
+         </Verweis>
+         <Verweis Typ="Letztglied">
+            <Ziellemma>reich</Ziellemma>
+         </Verweis>
+      </Verweise>
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
@@ -117492,6 +117548,17 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Nagel</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>mask.</Genus>
+            <Genitiv>-s</Genitiv>
+            <Plural>Nägel</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>zum</Schreibung>
          <Grammatik>
             <Wortklasse>Präposition + Artikel</Wortklasse>
@@ -117508,6 +117575,23 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>küssen</Schreibung>
+         <Grammatik>
+            <Wortklasse>Verb</Wortklasse>
+            <Praesens>küsst</Praesens>
+            <Praeteritum>küsste</Praeteritum>
+            <Auxiliar>hat</Auxiliar>
+            <Partizip_II>geküsst</Partizip_II>
+         </Grammatik>
+      </Formangabe>
+      <Verweise>
+         <Verweis Typ="formal_verwandt">
+            <Ziellemma>Kuss</Ziellemma>
+         </Verweis>
+      </Verweise>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Verkehr</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -117515,6 +117599,18 @@
             <Genitiv>-(e)s</Genitiv>
             <Plural>-e</Plural>
             <Numeruspraeferenz>meist im Singular</Numeruspraeferenz>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>Schach</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>neutr.</Genus>
+            <Genitiv>-(e)s</Genitiv>
+            <Plural>-s</Plural>
+            <Numeruspraeferenz>Plural selten</Numeruspraeferenz>
          </Grammatik>
       </Formangabe>
    </Artikel>
@@ -117559,6 +117655,17 @@
    </Artikel>
    <Artikel>
       <Formangabe Typ="Hauptform">
+         <Schreibung>Los</Schreibung>
+         <Grammatik>
+            <Wortklasse>Substantiv</Wortklasse>
+            <Genus>neutr.</Genus>
+            <Genitiv>-es</Genitiv>
+            <Plural>-e</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
          <Schreibung>Luftwaffe</Schreibung>
          <Grammatik>
             <Wortklasse>Substantiv</Wortklasse>
@@ -117585,6 +117692,14 @@
             <Genus>fem.</Genus>
             <Genitiv>-</Genitiv>
             <Plural>Basen</Plural>
+         </Grammatik>
+      </Formangabe>
+   </Artikel>
+   <Artikel>
+      <Formangabe Typ="Hauptform">
+         <Schreibung>ätzend</Schreibung>
+         <Grammatik>
+            <Wortklasse>partizipiales Adjektiv</Wortklasse>
          </Grammatik>
       </Formangabe>
    </Artikel>
