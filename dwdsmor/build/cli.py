@@ -318,8 +318,8 @@ def push_to_hub(edition_dir, tag=None):
                 metrics.append(
                     {
                         "type": "coverage",
-                        "name": f"Lemma ({pos})" if pos else "Lemma",
-                        "value": float(token_pct) * 100,
+                        "name": f"Coverage ({pos})" if pos else "Coverage",
+                        "value": float(token_pct),
                     }
                 )
         card_data["model-index"] = [
