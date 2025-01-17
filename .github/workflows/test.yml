@@ -26,6 +26,6 @@ jobs:
     - name: Lint sources
       run: pre-commit run --all-files
     - name: Build
-      run: python -m dwdsmor.build
+      run: ./build-dwdsmor
     - name: Run tests
       run: pytest
