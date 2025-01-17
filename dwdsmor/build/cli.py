@@ -20,6 +20,7 @@ from ..automaton import automata
 from ..log import logger
 from ..tag import all_tags
 from ..traversal import Traversal
+from ..version import __version__
 
 project_dir = Path(".").resolve()
 
@@ -372,6 +373,12 @@ if __name__ == "__main__":
     arg_parser.add_argument(
         "--with-metrics", help="Measure UD/de-hdt coverage", action="store_true"
     )
+    arg_parser.add_argument(
+        "--release", help="Push automata to HF hub", action="store_true"
+    )
+    arg_parser.add_argument(
+        "--tag", help="Tag HF hub release with current version", action="store_true"
+    )
     args = arg_parser.parse_args()
 
     editions = (
@@ -380,9 +387,9 @@ if __name__ == "__main__":
         else lexicon_dir.iterdir()
     )
     automaton_types = (
-        args.automaton
-        if len(args.automaton or []) > 0
-        else ["finite", "index", "lemma", "morph", "root"]
+        tuple(args.automaton)
+        if args.automaton
+        else ("finite", "index", "lemma", "morph", "root")
     )
     for edition_dir in editions:
         assert edition_dir.is_dir()
@@ -396,10 +403,6 @@ if __name__ == "__main__":
                 build_automaton(edition_dir, automaton_type, force=args.force)
                 or edition_built
             )
-            if args.with_metrics:
-                edition_built = (
-                    build_metrics(edition_dir, force=args.force) or edition_built
-                )
             if automaton_type in traversal_automaton_types:
                 edition_built = (
                     build_traversals(edition_dir, automaton_type, force=args.force)
@@ -407,3 +410,7 @@ if __name__ == "__main__":
                 )
         if edition_built:
             stamp_build(edition_dir)
+        if args.with_metrics or args.release:
+            build_metrics(edition_dir, force=args.force)
+        if args.release:
+            push_to_hub(edition_dir, tag=(f"v{__version__}" if args.tag else None))
