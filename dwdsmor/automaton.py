@@ -212,8 +212,8 @@ class Lemmatizer:
         criteria_stack = list(criteria.items())
         criteria_stack.reverse()
         while criteria_stack:
-            if len(traversals) < 2:
-                traversal, *_ = traversals
+            if len(traversals) == 1:
+                (traversal,) = traversals
                 return traversal.analysis
             attr, attr_vals = criteria_stack.pop()
             filtered = tuple((t for t in traversals if getattr(t, attr) in attr_vals))
