@@ -1,14 +1,11 @@
+name: Release Please
 on:
   push:
     branches:
       - feature/python-lib
-
 permissions:
   contents: write
   pull-requests: write
-
-name: Release Please
-
 jobs:
   release-please:
     runs-on: ubuntu-latest

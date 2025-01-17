@@ -1,8 +1,6 @@
-on:
-  push:
-
 name: Test
-
+on:
+  pull_request:
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -17,12 +15,7 @@ jobs:
             libsaxonhe-java\
             sfst
     - name: Install Python dependencies
-      run: pip install -U pip && pip install .[dev]
-    - name: Cache pre-commit hooks
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/pre-commit
-        key: ${{ runner.os }}-precommit-${{ hashFiles('.pre-commit-config.yaml') }}
+      run: pip install -U pip setuptools && pip install .[dev]
     - name: Lint sources
       run: pre-commit run --all-files
     - name: Build
