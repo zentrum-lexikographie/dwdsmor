@@ -1,18 +1,31 @@
-# DWDSmor
-
-_SFST/SMOR/DWDS-based German morphology_
+# DWDSmor – German morphology
 
 ![PyPI - Version](https://img.shields.io/pypi/v/dwdsmor)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dwdsmor)
 ![GitHub License](https://img.shields.io/github/license/zentrum-lexikographie/dwdsmor)
 
-DWDSmor implements the lemmatisation and morphological analysis of
-word forms as well as the generation of paradigms of lexical words in
-written German.
+DWDSmor implements the **lemmatisation and morphological analysis** of
+word forms as well as the **generation of paradigms of lexical words**
+in **written German**. Finite state transducers (automata) map word
+forms to specifications of corresponding lexical words and tagging
+which represents morphological properties. By traversing such
+transducers
+
+1. a given word form can be analysed and lemmatised, or
+1. a lexical word together with a set of morphological tagging will
+   generate corresponding inflected word forms.
+
+The automata are compiled and traversed via
+[SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++
+library and toolbox for finite-state transducers (FSTs). Their
+coverage of the German language depends on
+
+1. the DWDSmor grammar, defining the rules by which word formation happens, and
+1. a lexicon, assigning inflection classes to lexical words.
 
 ## Usage
 
-DWDSmor is available via PyPI:
+DWDSmor as a Python library is available via the package index PyPI:
 
 ``` plaintext
 pip install dwdsmor
