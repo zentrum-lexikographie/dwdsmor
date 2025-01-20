@@ -2,7 +2,7 @@ name: Release Please
 on:
   push:
     branches:
-      - feature/python-lib
+      - dev
 permissions:
   contents: write
   pull-requests: write
