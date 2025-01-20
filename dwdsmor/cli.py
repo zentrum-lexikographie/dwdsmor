@@ -90,8 +90,8 @@ def main():
     automata = dwdsmor.automata()
 
     if args.generate:
-        analyzer = automata.analyzer("index")
-        generator = automata.generator("index")
+        analyzer = automata.analyzer("finite")
+        generator = automata.generator("finite")
         for word in args.words:
             lexeme_specs = set()
             for traversal in analyzer.analyze(word):
