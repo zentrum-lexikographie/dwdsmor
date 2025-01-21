@@ -31,19 +31,18 @@ morphology for building automata from lexica, is common to all DWDSmor
 installations and published as open source. In contrast we provide
 **multiple lexica** resulting in different editions of DWDSmor:
 
-1. the **Open Edition** is based on a subset of the [DWDS
-   dictionary](https://www.dwds.de/), covering the most common word
-   forms and released freely with the grammar for general use and
-   experiments;
-1. the **DWDS Edition**, which is derived from the complete lexical
-   dataset of the DWDS and available upon request for research
-   purposes.
+1. the **DWDS Edition**, derived from the complete lexical dataset of
+   the [DWDS dictionary](https://www.dwds.de/) and available upon
+   request for research purposes,
+1. the **Open Edition**, based on a subset of the DWDS, covering the
+   most common word forms and released freely with the grammar for
+   general use and experiments.
 
 Depending on the edition and word class, coverage ranges from 70 to
 100% with the notable exceptions of foreign language words and named
 entities: Generally, both classes are not part of the underlying DWDS
-dictionary and thus barely covered. Current overall coverage measured
-against the [German Universal Dependencies
+dictionary and thus barely covered by DWDSmor. Current overall
+coverage measured against the [German Universal Dependencies
 treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
 is documented on the respective [Hugging Face Hub
 page](https://huggingface.co/zentrum-lexikographie) of each edition.
