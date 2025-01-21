@@ -1,6 +1,8 @@
 name: Test
 on:
   pull_request:
+    branches_ignore:
+      - release-please*
 jobs:
   test:
     runs-on: ubuntu-latest
