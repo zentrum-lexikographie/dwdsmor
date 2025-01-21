@@ -1,7 +1,7 @@
 name: Test
 on:
   pull_request:
-    branches_ignore:
+    branches-ignore:
       - release-please*
   push:
     branches:
