@@ -59,7 +59,7 @@ pip install dwdsmor
 The library can be used for lemmatisation:
 
 ``` python-console
->>> import dwsdmor
+>>> import dwdsmor
 >>> lemmatizer = dwdsmor.lemmatizer()
 >>> assert lemmatizer("getestet", pos={"+V"}) == "testen"
 >>> assert lemmatizer("getestet", pos={"+ADJ"}) == "getestet"
