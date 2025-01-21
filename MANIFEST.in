@@ -1,0 +1,2 @@
+prune dwdsmor/build
+prune test

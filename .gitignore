@@ -26,5 +26,6 @@ manifest.xml
 /lexicon/tagh/
 
 /build/
+/dist/
 /lib/
 /releases/
