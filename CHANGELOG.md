@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.1.0...v0.1.1) (2025-01-21)
+
+
+### Bug Fixes
+
+* **GitHub Actions:** Add quotes to Python version in publish workflow ([4620672](https://github.com/zentrum-lexikographie/dwdsmor/commit/4620672417467493545ea978fa91a262071751a3))
+
 ## 0.1.0 (2025-01-21)
 
 
