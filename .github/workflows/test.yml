@@ -27,4 +27,4 @@ jobs:
     - name: Build
       run: ./build-dwdsmor
     - name: Run tests
-      run: pytest
+      run: pytest --snapshot-warn-unused
