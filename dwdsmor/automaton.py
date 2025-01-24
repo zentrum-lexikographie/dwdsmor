@@ -209,7 +209,7 @@ class Lemmatizer:
 
     def __call__(self, word, **criteria):
         traversals = tuple(self.analyzer.analyze(word))
-        criteria_stack = list(criteria.items())
+        criteria_stack = list((k, v) for k, v in criteria.items() if v)
         criteria_stack.reverse()
         while criteria_stack:
             if len(traversals) == 1:
