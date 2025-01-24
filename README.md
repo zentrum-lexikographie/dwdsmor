@@ -65,6 +65,18 @@ The library can be used for lemmatisation:
 >>> assert lemmatizer("getestet", pos={"+ADJ"}) == "getestet"
 ```
 
+There is also integration with spacy:
+
+``` python-console
+>>> import spacy
+>>> import dwdsmor.spacy
+>>> nlp = spacy.load("de_hdt_lg")
+>>> nlp.add_pipe("dwdsmor")
+<dwdsmor.spacy.Component object at 0x7f99e634f220>
+>>> tuple((t.lemma_, t._.dwdsmor_lemma) for t in nlp("Das ist ein Test."))
+(('der', 'die'), ('sein', 'sein'), ('ein', 'eine'), ('Test', 'Test'), ('.', '.'))
+```
+
 Next to the Python API, the package provides a simple command line
 interface named `dwdsmor`. To analyze a word form, pass it as an
 argument:
