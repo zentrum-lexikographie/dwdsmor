@@ -35,7 +35,7 @@
       'Behebung',
       'NN',
       'Behebung',
-      'Behebung',
+      None,
     ),
     tuple(
       'der',
@@ -83,7 +83,7 @@
       'Kundenservice',
       'NN',
       'Service',
-      'Kundenservice',
+      None,
     ),
     tuple(
       'vor',
@@ -155,7 +155,7 @@
       'Gespräche',
       'NN',
       'Gespräch',
-      'Gespräch',
+      None,
     ),
     tuple(
       ',',
@@ -221,7 +221,7 @@
       'verschiedenster',
       'ADJA',
       'verschieden',
-      'verschieden',
+      None,
     ),
     tuple(
       '"',
@@ -293,13 +293,13 @@
       'Vital',
       'NN',
       'Vital',
-      'vital',
+      None,
     ),
     tuple(
       'Center',
       'NN',
       'Center',
-      'Center',
+      None,
     ),
     tuple(
       'und',
@@ -359,7 +359,7 @@
       'Terminvergabe',
       'NN',
       'Terminvergabe',
-      'Terminvergabe',
+      None,
     ),
     tuple(
       ',',
@@ -377,7 +377,7 @@
       'Behandlungsräumen',
       'NN',
       'Behandlungsräumen',
-      'Behandlungsraum',
+      None,
     ),
     tuple(
       'oder',
@@ -407,7 +407,7 @@
       'Trainingsplänen',
       'NN',
       'Trainingsplan',
-      'Trainingsplan',
+      None,
     ),
     tuple(
       'sind',
@@ -461,7 +461,7 @@
       'Sauberkeit',
       'NN',
       'Sauberkeit',
-      'Sauberkeit',
+      None,
     ),
     tuple(
       ',',
@@ -485,7 +485,7 @@
       'Freundlichkeit',
       'NN',
       'Freundlichkeit',
-      'Freundlichkeit',
+      None,
     ),
     tuple(
       'brauche',
@@ -515,13 +515,13 @@
       'zu',
       'PTKZU',
       'zu',
-      'zu',
+      None,
     ),
     tuple(
       'erwähnen',
       'VVINF',
       'erwähnen',
-      'erwähnen',
+      None,
     ),
     tuple(
       ',',
@@ -569,7 +569,7 @@
       'Standard',
       'NN',
       'Standard',
-      'Standard',
+      None,
     ),
     tuple(
       ',',
@@ -605,7 +605,7 @@
       'übertroffen',
       'VVPP',
       'übertreffen',
-      'übertreffen',
+      None,
     ),
     tuple(
       'wird',
@@ -623,7 +623,7 @@
       'Physiotherapie',
       'NE',
       'Physiotherapie',
-      'Physiotherapie',
+      None,
     ),
     tuple(
       'ist',
@@ -779,7 +779,7 @@
       'an',
       'PTKVZ',
       'an',
-      'an',
+      None,
     ),
     tuple(
       ',',
@@ -809,13 +809,13 @@
       'zu',
       'PTKZU',
       'zu',
-      'zu',
+      None,
     ),
     tuple(
       'vereinbaren',
       'VVINF',
       'vereinbaren',
-      'vereinbaren',
+      None,
     ),
     tuple(
       ',',
@@ -839,7 +839,7 @@
       'Konditor',
       'NN',
       'Konditor',
-      'Konditor',
+      None,
     ),
     tuple(
       'auch',
@@ -1001,7 +1001,7 @@
       'Bedienung',
       'NN',
       'Bedienung',
-      'Bedienung',
+      None,
     ),
     tuple(
       'verschwand',
