@@ -6431,9 +6431,13 @@
       'Gravi:<>s:<><+NN>:<><Masc>:<><>:e<>:s<Dat>:<><Pl>:<>',
       'Gravi:<>s:<><+NN>:<><Masc>:<><>:e<>:s<Gen>:<><Pl>:<>',
       'Gravi:<>s:<><+NN>:<><Masc>:<><>:e<>:s<Nom>:<><Pl>:<>',
+      'Gravis<+NN>:<><Masc>:<><Acc>:<><Pl>:<>',
       'Gravis<+NN>:<><Masc>:<><Acc>:<><Sg>:<>',
+      'Gravis<+NN>:<><Masc>:<><Dat>:<><Pl>:<>',
       'Gravis<+NN>:<><Masc>:<><Dat>:<><Sg>:<>',
+      'Gravis<+NN>:<><Masc>:<><Gen>:<><Pl>:<>',
       'Gravis<+NN>:<><Masc>:<><Gen>:<><Sg>:<>',
+      'Gravis<+NN>:<><Masc>:<><Nom>:<><Pl>:<>',
       'Gravis<+NN>:<><Masc>:<><Nom>:<><Sg>:<>',
     ),
     tuple(
