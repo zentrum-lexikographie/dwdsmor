@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.1.1...v0.2.0) (2025-01-27)
+
+
+### Features
+
+* Add spaCy integration as single-threaded pipeline component ([d549219](https://github.com/zentrum-lexikographie/dwdsmor/commit/d549219dc8b929b503cc79e8be2a0a2a12cc7625))
+
 ## [0.1.1](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.1.0...v0.1.1) (2025-01-21)
 
 
