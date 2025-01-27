@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.2.0...v0.2.1) (2025-01-27)
+
+
+### Bug Fixes
+
+* **Project:** Remove spaCy model dependency (blocks PyPI publication) ([b6f5e97](https://github.com/zentrum-lexikographie/dwdsmor/commit/b6f5e977be5e520f67ff4d874388428e13883c75))
+
 ## [0.2.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.1.1...v0.2.0) (2025-01-27)
 
 
