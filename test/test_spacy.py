@@ -1,3 +1,5 @@
+from subprocess import check_call
+
 import spacy
 from datasets import load_dataset
 from pytest import fixture
@@ -6,10 +8,20 @@ import dwdsmor.spacy  # noqa
 
 from .conftest import if_dwds_available
 
+spacy_model_package = (
+    "de_hdt_lg @ https://huggingface.co/zentrum-lexikographie/de_hdt_lg/"
+    "resolve/main/de_hdt_lg-any-py3-none-any.whl"
+    "#sha256=44bd0b0299865341ee1756efd60670fa148dbfd2a14d0c1d5ab99c61af08236a"
+)
+
 
 @fixture(scope="module")
 def nlp():
-    nlp = spacy.load("de_hdt_lg")
+    try:
+        nlp = spacy.load("de_hdt_lg")
+    except OSError:
+        check_call(["pip", "install", "-qqq", spacy_model_package])
+        nlp = spacy.load("de_hdt_lg")
     nlp.add_pipe("dwdsmor")
     return nlp
 
