@@ -61,8 +61,8 @@ The library can be used for lemmatisation:
 ``` python-console
 >>> import dwdsmor
 >>> lemmatizer = dwdsmor.lemmatizer()
->>> assert lemmatizer("getestet", pos={"+V"}) == "testen"
->>> assert lemmatizer("getestet", pos={"+ADJ"}) == "getestet"
+>>> assert lemmatizer("getestet", pos={"+V"}).analysis == "testen"
+>>> assert lemmatizer("getestet", pos={"+ADJ"}).analysis == "getestet"
 ```
 
 There is also integration with spacy:
@@ -73,7 +73,7 @@ There is also integration with spacy:
 >>> nlp = spacy.load("de_hdt_lg")
 >>> nlp.add_pipe("dwdsmor")
 <dwdsmor.spacy.Component object at 0x7f99e634f220>
->>> tuple((t.lemma_, t._.dwdsmor_lemma) for t in nlp("Das ist ein Test."))
+>>> tuple((t.lemma_, t._.dwdsmor.analysis) for t in nlp("Das ist ein Test."))
 (('der', 'die'), ('sein', 'sein'), ('ein', 'eine'), ('Test', 'Test'), ('.', '.'))
 ```
 

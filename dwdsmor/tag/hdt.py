@@ -1,3 +1,6 @@
+from collections import OrderedDict
+from functools import cache
+
 pos_map = {
     "$(": {"+PUNCT"},
     "$,": {"+PUNCT"},
@@ -103,3 +106,24 @@ nonfinite_map = {
     "Part": {"Part"},
     "Inf": {"Inf"},
 }
+
+
+def criterion(k, v, mapping):
+    return (k, mapping.get(v, {v}) if v else None)
+
+
+@cache
+def criteria(pos, number, gender, case, person, tense, degree, mood, nonfinite):
+    return OrderedDict(
+        (
+            criterion("pos", pos, pos_map),
+            criterion("number", number, number_map),
+            criterion("gender", gender, gender_map),
+            criterion("case", case, case_map),
+            criterion("person", person, person_map),
+            criterion("tense", tense, tense_map),
+            criterion("degree", degree, degree_map),
+            criterion("mood", mood, mood_map),
+            criterion("nonfinite", nonfinite, nonfinite_map),
+        )
+    )

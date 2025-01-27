@@ -213,13 +213,13 @@ class Lemmatizer:
         criteria_stack.reverse()
         while criteria_stack:
             if len(traversals) == 1:
-                (traversal,) = traversals
-                return traversal.analysis
+                break
             attr, attr_vals = criteria_stack.pop()
             filtered = tuple((t for t in traversals if getattr(t, attr) in attr_vals))
             traversals = filtered or traversals
+        traversals = sorted(traversals, key=lambda t: len(t.spec))
         for traversal in traversals:
-            return traversal.analysis
+            return traversal
 
 
 def lemmatizer(*args, automaton_type="lemma", **kwargs):

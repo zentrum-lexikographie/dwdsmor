@@ -4,6 +4,8 @@ from pytest import fixture
 
 import dwdsmor.spacy  # noqa
 
+from .conftest import if_dwds_available
+
 
 @fixture(scope="module")
 def nlp():
@@ -23,8 +25,14 @@ def sentences():
     return tuple(s["text"] for s in ds.select(range(100)))
 
 
+@if_dwds_available
 def test_lemmatisation(nlp, sentences, snapshot):
     sentences = sentences[:10]
     docs = nlp.pipe(sentences)
-    tokens = ((t.text, t.tag_, t.lemma_, t._.dwdsmor_lemma) for d in docs for t in d)
+    tokens = (
+        (t.text, t.tag_, t.lemma_, t._.dwdsmor.analysis)
+        for d in docs
+        for t in d
+        if t._.dwdsmor and t.lemma_ != t._.dwdsmor.analysis
+    )
     assert tuple(tokens) == snapshot
