@@ -164,6 +164,7 @@ class Automata:
         traversals = defaultdict(list)
         with lzma.open(traversals_file, "rt") as traversals_csv:
             for traversal in csv.DictReader(traversals_csv):
+                del traversal["inflected"]
                 traversal_obj = Traversal(**traversal)
                 traversals[traversal_obj.analysis].append(traversal_obj)
         return traversals

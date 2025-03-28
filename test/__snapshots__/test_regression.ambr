@@ -1890,6 +1890,66 @@
       'berausch<~>end<+ADJ><Pos><Attr/Subst><UnmGend><Nom><Pl><Wk>',
     ),
     tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><Fem><Dat><Sg><Wk>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><Fem><Gen><Sg><Wk>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><Masc><Acc><Sg><St>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><Masc><Acc><Sg><Wk>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><Masc><Dat><Sg><Wk>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><Masc><Gen><Sg><St>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><Masc><Gen><Sg><Wk>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><Neut><Dat><Sg><Wk>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><Neut><Gen><Sg><St>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><Neut><Gen><Sg><Wk>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><UnmGend><Acc><Pl><Wk>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><UnmGend><Dat><Pl><St>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><UnmGend><Dat><Pl><Wk>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><UnmGend><Gen><Pl><Wk>',
+    ),
+    tuple(
+      'berauschenden',
+      'berauschend<+ADJ><Pos><Attr/Subst><UnmGend><Nom><Pl><Wk>',
+    ),
+    tuple(
       'bestimmten',
       'bestimm<~>en<+V><1><Pl><Past><Ind>',
     ),
