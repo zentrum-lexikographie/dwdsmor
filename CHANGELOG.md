@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.2.1...v0.3.0) (2025-03-28)
+
+
+### Features
+
+* **Lexicon:** Update DWDS lexicon ([02c69f5](https://github.com/zentrum-lexikographie/dwdsmor/commit/02c69f57bf6bc5a76c916bca92922fd00ef2d6a2))
+* **Paradigm Generation:** handle separable verbs ([f584277](https://github.com/zentrum-lexikographie/dwdsmor/commit/f58427721c9360a6eb211676e32649fc4897ed82))
+
 ## [0.2.1](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.2.0...v0.2.1) (2025-01-27)
 
 
