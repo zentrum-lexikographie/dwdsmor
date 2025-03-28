@@ -16,6 +16,7 @@ from dwdsmor.tag import (
     tag_values,
 )
 from dwdsmor.traversal import Traversal
+from dwdsmor.util import inflected
 
 headers = {
     "word": "Wordform",
@@ -89,9 +90,9 @@ def main():
     results = []
     automata = dwdsmor.automata()
 
+    analyzer = automata.analyzer("index")
     if args.generate:
-        analyzer = automata.analyzer("finite")
-        generator = automata.generator("finite")
+        generator = automata.generator("index")
         for word in args.words:
             lexeme_specs = set()
             for traversal in analyzer.analyze(word):
@@ -113,9 +114,9 @@ def main():
                 for tagging in taggings:
                     spec = lexeme_spec + "".join(f"<{tag}>" for tag in tagging)
                     for generated in generator.generate(spec):
-                        results.append(Result.from_spec(spec, generated.spec))
+                        infl_form = inflected(spec, generated.spec)
+                        results.append(Result.from_spec(spec, infl_form))
     else:
-        analyzer = automata.analyzer("lemma")
         for word in args.words:
             max_boundaries = {}
             for traversal in analyzer.analyze(word):

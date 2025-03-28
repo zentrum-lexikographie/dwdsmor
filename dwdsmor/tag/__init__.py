@@ -102,9 +102,15 @@ tag_types = {
 
 
 inflection_boundary_tags = "~"
-word_formation_tags = "#-|"
+separable_verb_tag = "|"
+word_formation_tags = "#-"
 other_boundary_tags = "="
-boundary_tags = inflection_boundary_tags + word_formation_tags + other_boundary_tags
+boundary_tags = (
+    inflection_boundary_tags
+    + separable_verb_tag
+    + word_formation_tags
+    + other_boundary_tags
+)
 
 inflection_tag_seqs = {
     "": (("function", "gender", "case", "number", "inflection"),),

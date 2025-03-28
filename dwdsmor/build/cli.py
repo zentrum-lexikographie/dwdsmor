@@ -20,6 +20,7 @@ from ..automaton import automata
 from ..log import logger
 from ..tag import all_tags
 from ..traversal import Traversal
+from ..util import inflected
 from ..version import __version__
 
 project_dir = Path(".").resolve()
@@ -245,6 +246,7 @@ def build_traversals(edition_dir, automaton_type, force=False):
                 "spec",
                 "analysis",
                 "surface",
+                "inflected",
                 *all_tags,
             ]
         )
@@ -255,6 +257,7 @@ def build_traversals(edition_dir, automaton_type, force=False):
                     traversal.spec,
                     traversal.analysis,
                     traversal.surface,
+                    inflected(traversal.spec, traversal.surface),
                     *(getattr(traversal, tt) for tt in all_tags),
                 ]
             )
