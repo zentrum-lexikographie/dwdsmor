@@ -3,6 +3,7 @@
 import argparse
 import csv
 from datetime import datetime
+import logging
 import lzma
 from pathlib import Path
 import re
@@ -22,6 +23,8 @@ from ..tag import all_tags
 from ..traversal import Traversal
 from ..util import inflected
 from ..version import __version__
+
+logger = logging.getLogger("dwdsmor")
 
 project_dir = Path(".").resolve()
 

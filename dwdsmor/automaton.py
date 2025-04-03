@@ -21,6 +21,7 @@ __all__ = [
 ]
 
 import csv
+import logging
 import lzma
 import os
 from collections import defaultdict
@@ -34,9 +35,10 @@ from huggingface_hub import snapshot_download
 from huggingface_hub.utils import disable_progress_bars, enable_progress_bars
 from sfst_transduce import CompactTransducer, Transducer
 
-from .log import logger
 from .traversal import Traversal
 from .version import __version__
+
+logger = logging.getLogger("dwdsmor")
 
 config = {
     **dotenv_values(".env.shared"),
