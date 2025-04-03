@@ -7,6 +7,7 @@ from tabulate import tabulate
 from tqdm import tqdm
 
 import dwdsmor
+from dwdsmor.log import configure_logging
 from dwdsmor.tag import (
     all_tags,
     boundary_tags,
@@ -86,6 +87,7 @@ def main():
     )
     arg_parser.add_argument("words", nargs="*")
     args = arg_parser.parse_args()
+    configure_logging()
 
     results = []
     automata = dwdsmor.automata()

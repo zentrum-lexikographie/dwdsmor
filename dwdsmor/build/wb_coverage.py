@@ -12,6 +12,7 @@ from tabulate import tabulate
 from tqdm import tqdm
 
 import dwdsmor
+from dwdsmor.log import configure_logging
 
 # mapping between DWDS and DWDSSmor part-of-speech categories
 pos_map = {
@@ -139,7 +140,7 @@ if __name__ == "__main__":
     )
     arg_parser.add_argument("--summary", help="Summarize coverage", action="store_true")
     args = arg_parser.parse_args()
-
+    configure_logging()
     project_dir = Path(".").resolve()
     automata_dir = project_dir / "build" / args.edition
     wb_dir = project_dir / "lexicon" / args.edition / "wb"

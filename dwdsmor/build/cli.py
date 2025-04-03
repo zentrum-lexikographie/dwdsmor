@@ -18,7 +18,7 @@ from huggingface_hub import (
 
 from .benchmark import coverage_headers, compute_coverage
 from ..automaton import automata
-from ..log import logger
+from ..log import configure_logging
 from ..tag import all_tags
 from ..traversal import Traversal
 from ..util import inflected
@@ -386,7 +386,7 @@ if __name__ == "__main__":
         "--tag", help="Tag HF hub release with current version", action="store_true"
     )
     args = arg_parser.parse_args()
-
+    configure_logging()
     editions = (
         [lexicon_dir / edition for edition in args.editions]
         if len(args.editions or []) > 0

@@ -9,6 +9,7 @@ from tabulate import tabulate
 from tqdm import tqdm
 
 from dwdsmor.automaton import Lemmatizer, automata
+from dwdsmor.log import configure_logging
 
 
 def ud_de_hdt_tokens():
@@ -187,6 +188,7 @@ if __name__ == "__main__":
         type=int,
     )
     args = arg_parser.parse_args()
+    configure_logging()
 
     def pct(v):
         return "{:.3%}".format(v)
