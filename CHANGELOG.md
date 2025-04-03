@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.1](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.3.0...v0.3.1) (2025-04-03)
+
+
+### Bug Fixes
+
+* add parameters to choose automata on CLI (fixes [#14](https://github.com/zentrum-lexikographie/dwdsmor/issues/14)) ([5c25b95](https://github.com/zentrum-lexikographie/dwdsmor/commit/5c25b95eba2375c0115913a04caccbe628704797))
+* correct inflection tag sequence for adverbs ([f1ad8bb](https://github.com/zentrum-lexikographie/dwdsmor/commit/f1ad8bb4f4d22b35466d9605313ba5352b931003))
+* use more flexible automaton "finite" for lemmatization on CLI ([efd811d](https://github.com/zentrum-lexikographie/dwdsmor/commit/efd811d37def620df3fc68c0f1271d5db1b52a4c))
+
 ## [0.3.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.2.1...v0.3.0) (2025-03-28)
 
 
