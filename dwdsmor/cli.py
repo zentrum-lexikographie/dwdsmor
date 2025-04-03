@@ -81,6 +81,9 @@ class Result(Traversal):
 
 def main():
     arg_parser = argparse.ArgumentParser(description="Traverse DWDSmor automata.")
+    arg_parser.add_argument(
+        "-a", "--automata", type=str, help="Location of automata to use"
+    )
     arg_parser.add_argument("-g", "--generate", help="Generate", action="store_true")
     arg_parser.add_argument(
         "-s", "--silent", help="Do not report progress", action="store_true"
