@@ -93,7 +93,7 @@ def main():
     configure_logging()
 
     results = []
-    automata = dwdsmor.automata()
+    automata = dwdsmor.automata(args.automata)
 
     if args.generate:
         analyzer = automata.analyzer("index")
