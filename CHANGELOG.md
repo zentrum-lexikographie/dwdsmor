@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.3.1...v0.3.2) (2025-04-03)
+
+
+### Bug Fixes
+
+* actually pick up CLI parameter choosing automata location ([0edeece](https://github.com/zentrum-lexikographie/dwdsmor/commit/0edeeceb19c68041c8e0a0d4162640d18b832e38))
+
 ## [0.3.1](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.3.0...v0.3.1) (2025-04-03)
 
 
