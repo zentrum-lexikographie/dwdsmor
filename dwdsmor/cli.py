@@ -95,8 +95,8 @@ def main():
     results = []
     automata = dwdsmor.automata()
 
-    analyzer = automata.analyzer("index")
     if args.generate:
+        analyzer = automata.analyzer("index")
         generator = automata.generator("index")
         for word in args.words:
             lexeme_specs = set()
@@ -122,6 +122,7 @@ def main():
                         infl_form = inflected(spec, generated.spec)
                         results.append(Result.from_spec(spec, infl_form))
     else:
+        analyzer = automata.analyzer("finite")
         for word in args.words:
             max_boundaries = {}
             for traversal in analyzer.analyze(word):
