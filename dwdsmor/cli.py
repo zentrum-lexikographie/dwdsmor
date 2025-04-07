@@ -122,7 +122,7 @@ def main():
                         infl_form = inflected(spec, generated.spec)
                         results.append(Result.from_spec(spec, infl_form))
     else:
-        analyzer = automata.analyzer("finite")
+        analyzer = automata.analyzer("lemma")
         for word in args.words:
             max_boundaries = {}
             for traversal in analyzer.analyze(word):
