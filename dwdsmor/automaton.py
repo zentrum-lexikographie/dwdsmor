@@ -162,7 +162,7 @@ class Automata:
 
     def traversals(self, automaton_type="index") -> Dict[str, List[Traversal]]:
         assert_valid_automaton_type(automaton_type, types=traversal_automaton_types)
-        traversals_file = Path(self.root_dir) / f"{automaton_type}.csv.lzma"
+        traversals_file = Path(self.root_dir) / f"{automaton_type}.csv.xz"
         traversals = defaultdict(list)
         with lzma.open(traversals_file, "rt") as traversals_csv:
             for traversal in csv.DictReader(traversals_csv):

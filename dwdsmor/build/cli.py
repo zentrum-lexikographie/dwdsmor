@@ -229,7 +229,7 @@ def build_traversals(edition_dir, automaton_type, force=False):
     edition_build_dir = build_dir / edition_name
 
     automaton_a = edition_build_dir / f"{automaton_type}.a"
-    automaton_traversal = edition_build_dir / f"{automaton_type}.csv.lzma"
+    automaton_traversal = edition_build_dir / f"{automaton_type}.csv.xz"
 
     if not force and is_current(automaton_traversal, [automaton_a]):
         logger.debug(
@@ -296,7 +296,7 @@ def remove_github_md_badges(md):
 hub_upload_allow_patterns = [
     "*.a",
     "*.ca*",
-    "*.csv.lzma",
+    "*.csv.xz",
     "BUILT",
     "GIT_REV",
     "GIT_REV_LEX",
