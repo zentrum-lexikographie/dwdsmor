@@ -92,7 +92,7 @@ tag_values = {
             "Other",
         },
     },
-    "+V": {"category": {"NonCl", "Cl"}},
+    "+V": {"function": {"NonCl", "Cl"}},
 }
 
 
@@ -130,7 +130,7 @@ inflection_tag_seqs = {
     "+PTCL": (("category"),),
     "+V": (
         ("mood", "number"),
-        ("nonfinite", "category"),
+        ("nonfinite", "function"),
         ("nonfinite", "tense", "auxiliary"),
         ("person", "number", "tense", "mood"),
     ),
