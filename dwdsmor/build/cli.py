@@ -238,9 +238,14 @@ def build_traversals(edition_dir, automaton_type, force=False):
         return False
 
     logger.info("Building full traversal of '%s/%s'", edition_name, automaton_type)
+    fst_generate = subprocess.Popen(
+        ["fst-generate", "-b", automaton_a.as_posix()],
+        stdout=subprocess.PIPE,
+    )
     with subprocess.Popen(
-        ["fst-generate", automaton_a.as_posix()],
+        ["sort", "-u"],
         encoding="utf-8",
+        stdin=fst_generate.stdout,
         stdout=subprocess.PIPE,
     ) as traversals, lzma.open(automaton_traversal, "wt") as traversals_csv:
         table = csv.writer(traversals_csv)
@@ -254,13 +259,14 @@ def build_traversals(edition_dir, automaton_type, force=False):
             ]
         )
         for traversal_str in traversals.stdout:
-            traversal = Traversal.parse(traversal_str.strip())
+            surface, spec = traversal_str.split()
+            traversal = Traversal.parse(spec)
             table.writerow(
                 [
-                    traversal.spec,
+                    spec,
                     traversal.analysis,
-                    traversal.surface,
-                    inflected(traversal.spec, traversal.surface),
+                    surface,
+                    inflected(spec, surface),
                     *(getattr(traversal, tt) for tt in all_tags),
                 ]
             )
