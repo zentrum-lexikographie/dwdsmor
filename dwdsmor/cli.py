@@ -109,6 +109,7 @@ def main():
                         lexeme_spec += f"<{tag}>"
                 lexeme_specs.add((traversal.pos, lexeme_spec))
             for pos, lexeme_spec in sorted(lexeme_specs):
+                local_results = []
                 taggings = get_taggings(pos)
                 if not args.silent:
                     taggings = tqdm(
@@ -120,10 +121,13 @@ def main():
                     spec = lexeme_spec + "".join(f"<{tag}>" for tag in tagging)
                     for generated in generator.generate(spec):
                         infl_form = inflected(spec, generated.spec)
-                        results.append(Result.from_spec(spec, infl_form))
+                        local_results.append(Result.from_spec(spec, infl_form))
+                local_results = sorted(local_results, key=lambda r: r.spec)
+                results.extend(local_results)
     else:
         analyzer = automata.analyzer("lemma")
         for word in args.words:
+            local_results = []
             max_boundaries = {}
             for traversal in analyzer.analyze(word):
                 with_boundaries = traversal.reparse(
@@ -135,12 +139,12 @@ def main():
                 group_by = astuple(traversal)[1:]
                 if max_boundaries.get(group_by, -1) < boundaries:
                     max_boundaries[group_by] = boundaries
-                    results.append(Result.from_traversal(traversal, word))
+                    local_results.append(Result.from_traversal(traversal, word))
+            local_results = sorted(local_results, key=lambda r: r.spec)
+            results.extend(local_results)
 
     if not results:
         return 1
-
-    results = sorted(results, key=lambda r: r.spec)
 
     def has_value(tag_type, results=results):
         for result in results:
