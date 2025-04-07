@@ -224,7 +224,7 @@ if __name__ == "__main__":
                     compute_coverage(automata(), limit=args.limit, show_progress=True)
                 )
             ],
-            tablefmt="github",
+            tablefmt="tsv",
             headers=coverage_headers,
             colalign=[
                 "left",

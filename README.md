@@ -82,11 +82,10 @@ interface named `dwdsmor`. To analyze a word form, pass it as an
 argument:
 
 ```plaintext
-$ dwdsmor getestet
-| Wordform   | Lemma    | Analysis                            | POS   | Degree   | Function   | Nonfinite   | Tense   | Auxiliary   |
-|------------|----------|-------------------------------------|-------|----------|------------|-------------|---------|-------------|
-| getestet   | getestet | ge<~>test<~>et<+ADJ><Pos><Pred/Adv> | +ADJ  | Pos      | Pred/Adv   |             |         |             |
-| getestet   | testen   | test<~>en<+V><Part><Perf><haben>    | +V    |          |            | Part        | Perf    | haben       |
+$ dwdsmor gebildet
+Wordform  	Lemma   	Analysis                           	POS  	Degree  	Function  	Nonfinite  	Tense  	Auxiliary
+gebildet  	bilden  	bild<~>en<+V><Part><Perf><haben>   	+V   	        	          	Part       	Perf   	haben
+gebildet  	gebildet	ge<~>bild<~>et<+ADJ><Pos><Pred/Adv>	+ADJ 	Pos     	Pred/Adv
 ```
 
 To generate all word forms for a lexical word, pass it (or a form
@@ -94,26 +93,29 @@ which can be analyzed as the lexical word) as an argument together
 with the option `-g`:
 
 ``` plaintext
-$ dwdsmor -g getestet
+$ dwdsmor -g gebildet
 […]
-| Wordform   | Lemma    | Analysis                                                    | POS   | Subcategory   | Degree   | Function   |   Person | Gender   | Case   | Number   | Nonfinite   | Tense   | Mood   | Auxiliary   | Inflection   |
-|------------|----------|-------------------------------------------------------------|-------|---------------|----------|------------|----------|----------|--------|----------|-------------|---------|--------|-------------|--------------|
-| getestete  | getestet | ge<~>test<~>et<+ADJ><Pos><Attr/Subst><Fem><Acc><Sg><St>     | +ADJ  |               | Pos      | Attr/Subst |          | Fem      | Acc    | Sg       |             |         |        |             | St           |
-| getestete  | getestet | ge<~>test<~>et<+ADJ><Pos><Attr/Subst><Fem><Acc><Sg><Wk>     | +ADJ  |               | Pos      | Attr/Subst |          | Fem      | Acc    | Sg       |             |         |        |             | Wk           |
-| getesteter | getestet | ge<~>test<~>et<+ADJ><Pos><Attr/Subst><Fem><Dat><Sg><St>     | +ADJ  |               | Pos      | Attr/Subst |          | Fem      | Dat    | Sg       |             |         |        |             | St           |
-| getesteten | getestet | ge<~>test<~>et<+ADJ><Pos><Attr/Subst><Fem><Dat><Sg><Wk>     | +ADJ  |               | Pos      | Attr/Subst |          | Fem      | Dat    | Sg       |             |         |        |             | Wk           |
-| getesteter | getestet | ge<~>test<~>et<+ADJ><Pos><Attr/Subst><Fem><Gen><Sg><St>     | +ADJ  |               | Pos      | Attr/Subst |          | Fem      | Gen    | Sg       |             |         |        |             | St           |
-| getesteten | getestet | ge<~>test<~>et<+ADJ><Pos><Attr/Subst><Fem><Gen><Sg><Wk>     | +ADJ  |               | Pos      | Attr/Subst |          | Fem      | Gen    | Sg       |             |         |        |             | Wk           |
+Wordform  	Lemma   	Analysis                                             	POS  	Degree  	Function  	  Person	Gender  	Case  	Number  	Nonfinite  	Tense  	Mood  	Auxiliary  	Inflection
 […]
-| testeten   | testen   | test<~>en<+V><1><Pl><Past><Ind>                             | +V    |               |          |            |        1 |          |        | Pl       |             | Past    | Ind    |             |              |
-| testeten   | testen   | test<~>en<+V><1><Pl><Past><Subj>                            | +V    |               |          |            |        1 |          |        | Pl       |             | Past    | Subj   |             |              |
-| testen     | testen   | test<~>en<+V><1><Pl><Pres><Ind>                             | +V    |               |          |            |        1 |          |        | Pl       |             | Pres    | Ind    |             |              |
-| testen     | testen   | test<~>en<+V><1><Pl><Pres><Subj>                            | +V    |               |          |            |        1 |          |        | Pl       |             | Pres    | Subj   |             |              |
-| testete    | testen   | test<~>en<+V><1><Sg><Past><Ind>                             | +V    |               |          |            |        1 |          |        | Sg       |             | Past    | Ind    |             |              |
-| testete    | testen   | test<~>en<+V><1><Sg><Past><Subj>                            | +V    |               |          |            |        1 |          |        | Sg       |             | Past    | Subj   |             |              |
-| teste      | testen   | test<~>en<+V><1><Sg><Pres><Ind>                             | +V    |               |          |            |        1 |          |        | Sg       |             | Pres    | Ind    |             |              |
-| teste      | testen   | test<~>en<+V><1><Sg><Pres><Subj>                            | +V    |               |          |            |        1 |          |        | Sg       |             | Pres    | Subj   |             |              |
-| testetet   | testen   | test<~>en<+V><2><Pl><Past><Ind>                             | +V    |               |          |            |        2 |          |        | Pl       |             | Past    | Ind    |             |              |
+gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Acc><Sg><St>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Acc   	Sg      	           	       	      	           	St
+gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Acc><Sg><Wk>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Acc   	Sg      	           	       	      	           	Wk
+gebildeter	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Dat><Sg><St>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Dat   	Sg      	           	       	      	           	St
+gebildeten	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Dat><Sg><Wk>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Dat   	Sg      	           	       	      	           	Wk
+gebildeter	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Gen><Sg><St>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Gen   	Sg      	           	       	      	           	St
+gebildeten	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Gen><Sg><Wk>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Gen   	Sg      	           	       	      	           	Wk
+gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Nom><Sg><St>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Nom   	Sg      	           	       	      	           	St
+gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Nom><Sg><Wk>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Nom   	Sg      	           	       	      	           	Wk
+gebildeten	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Masc><Acc><Sg><St>   	+ADJ 	Pos     	Attr/Subst	        	Masc    	Acc   	Sg      	           	       	      	           	St
+[…]
+bildeten  	bilden  	bild<~>en<+V><1><Pl><Past><Ind>                      	+V   	        	          	       1	        	      	Pl      	           	Past   	Ind
+bildeten  	bilden  	bild<~>en<+V><1><Pl><Past><Subj>                     	+V   	        	          	       1	        	      	Pl      	           	Past   	Subj
+bilden    	bilden  	bild<~>en<+V><1><Pl><Pres><Ind>                      	+V   	        	          	       1	        	      	Pl      	           	Pres   	Ind
+bilden    	bilden  	bild<~>en<+V><1><Pl><Pres><Subj>                     	+V   	        	          	       1	        	      	Pl      	           	Pres   	Subj
+bildete   	bilden  	bild<~>en<+V><1><Sg><Past><Ind>                      	+V   	        	          	       1	        	      	Sg      	           	Past   	Ind
+bildete   	bilden  	bild<~>en<+V><1><Sg><Past><Subj>                     	+V   	        	          	       1	        	      	Sg      	           	Past   	Subj
+bilde     	bilden  	bild<~>en<+V><1><Sg><Pres><Ind>                      	+V   	        	          	       1	        	      	Sg      	           	Pres   	Ind
+bilde     	bilden  	bild<~>en<+V><1><Sg><Pres><Subj>                     	+V   	        	          	       1	        	      	Sg      	           	Pres   	Subj
+bildetet  	bilden  	bild<~>en<+V><2><Pl><Past><Ind>                      	+V   	        	          	       2	        	      	Pl      	           	Past   	Ind
 […]
 ```
 

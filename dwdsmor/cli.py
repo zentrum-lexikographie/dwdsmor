@@ -163,7 +163,7 @@ def main():
         tabulate(
             [[getattr(r, c) for c in cols] for r in results],
             headers=[headers.get(c, c) for c in cols],
-            tablefmt="github",
+            tablefmt="tsv",
         )
     )
 

@@ -282,4 +282,4 @@ if __name__ == "__main__":
                 bold(pct(total_generated / total_entries)),
             ],
         )
-        print(tabulate(coverage, headers=headers, colalign=colalign, tablefmt="github"))
+        print(tabulate(coverage, headers=headers, colalign=colalign, tablefmt="tsv"))
