@@ -64,7 +64,12 @@ tag_values = {
         "syninfo": {"SEP"},
         "ellipinfo": {"TRUNC"},
         "processes": {"COMP", "DER", "CONV"},
-        "means": {"concat", "hyph", "ident", "pref", "prev", "suff"},
+        "means": {"concat", "hyph", "ident", "pref(un)",
+                  "prev(ab)", "prev(an)", "prev(auf)", "prev(aus)", "prev(bei)",
+                  "prev(durch)", "prev(ein)", "prev(gegen)", "prev(hinter)", "prev(los)",
+                  "prev(mit)", "prev(nach)", "prev(ueber)", "prev(um)", "prev(unter)",
+                  "prev(vor)", "prev(weg)", "prev(zu)", "prev(zurueck)", "prev(zwischen)",
+                  "suff(e)", "suff(er)", "suff(chen)", "suff(lein)"},
     },
     "+ADJ": {"function": {"Attr", "Subst", "Attr/Subst", "Pred/Adv"}},
     "+ART": {
