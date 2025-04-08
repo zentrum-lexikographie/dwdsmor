@@ -43,6 +43,7 @@ headers = {
     "tense": "Tense",
     "metainfo": "Metalinguistic",
     "orthinfo": "Orthography",
+    "syninfo": "Syntax",
     "ellipinfo": "Ellipsis",
     "charinfo": "Characters",
 }

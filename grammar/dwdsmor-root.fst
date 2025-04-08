@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 8.0
-% Andreas Nolda 2024-10-11
+% Version 9.0
+% Andreas Nolda 2025-04-07
 
 #include "symbols.fst"
 #include "num.fst"
@@ -9,6 +9,7 @@
 #include "infl.fst"
 #include "markers.fst"
 #include "phon.fst"
+#include "sep.fst"
 #include "trunc.fst"
 #include "orth.fst"
 #include "punct.fst"
@@ -267,6 +268,12 @@ $MORPH$ = <>:<WB> $MORPH$ <>:<WB>
 % (morpho)phonology
 
 $MORPH$ = $MORPH$ || $PHON$
+
+
+% preverb separation
+
+$MORPH$ = $MORPH$ | ($SepPrev1RootLv2$ || $MORPH$ || $SepPrev1$) <SEP>:<> | \
+                    ($SepPrev2RootLv2$ || $MORPH$ || $SepPrev2$) <SEP>:<>
 
 
 % morpheme truncation

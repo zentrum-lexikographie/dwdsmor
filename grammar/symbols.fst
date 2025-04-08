@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 12.0
-% Andreas Nolda 2024-11-19
+% Version 12.1
+% Andreas Nolda 2025-04-07
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -94,7 +94,7 @@
 
 #degree# = <Pos><Comp><Sup>
 
-#person# = <1><2><3>
+#person# = <1><2><3><UnmPers>
 
 #gender# = <Masc><Fem><Neut><UnmGend>
 
@@ -108,9 +108,9 @@
 
 #nonfinite# = <Inf><Part>
 
-#mood# = <Ind><Subj><Imp>
+#mood# = <Ind><Subj><Imp><UnmMood>
 
-#tense# = <Pres><Past><Perf>
+#tense# = <Pres><Past><Perf><UnmTense>
 
 #feature# = #wf-process# #wf-means# #category# #auxiliary# #part-of-speech# \
             #subcat# #degree# #person# #gender# #case# #number# #infl# #function# \

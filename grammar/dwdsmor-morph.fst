@@ -1,6 +1,6 @@
 % dwdsmor-morph.fst
-% Version 2.0
-% Andreas Nolda 2024-10-11
+% Version 3.0
+% Andreas Nolda 2025-04-07
 
 #include "symbols.fst"
 #include "num.fst"
@@ -9,6 +9,7 @@
 #include "infl.fst"
 #include "markers.fst"
 #include "phon.fst"
+#include "sep.fst"
 #include "trunc.fst"
 #include "orth.fst"
 #include "punct.fst"
@@ -255,6 +256,12 @@ $MORPH$ = (^_$MORPHLv2$) || $MORPH$
 % cleanup of word-boundary markers on analysis level
 
 $MORPH$ = $CleanupWBLv2$ || $MORPH$
+
+
+% preverb separation
+
+$MORPH$ = $MORPH$ | ($SepPrev1Lv2$ || $MORPH$ || $SepPrev1$) <SEP>:<> | \
+                    ($SepPrev2Lv2$ || $MORPH$ || $SepPrev2$) <SEP>:<>
 
 
 % morpheme truncation

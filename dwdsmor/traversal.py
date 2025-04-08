@@ -26,6 +26,7 @@ class Traversal:
     metainfo: str | None = None
     orthinfo: str | None = None
     charinfo: str | None = None
+    syninfo: str | None = None
     ellipinfo: str | None = None
     processes: str | None = None
     means: str | None = None

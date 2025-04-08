@@ -13,7 +13,7 @@ inflection_tags = (
     "auxiliary",
     "inflection",
 )
-info_tags = ("metainfo", "orthinfo", "charinfo", "ellipinfo")
+info_tags = ("metainfo", "orthinfo", "charinfo", "syninfo", "ellipinfo")
 wordformation_tags = ("processes", "means")
 
 all_tags = (*lexeme_tags, *inflection_tags, *info_tags, *wordformation_tags)
@@ -49,18 +49,19 @@ tag_values = {
         },
         "degree": {"Pos", "Comp", "Sup"},
         "function": {"Attr", "Subst", "UnmFunc"},
-        "person": {"1", "2", "3"},
+        "person": {"1", "2", "3", "UnmPers"},
         "gender": {"Fem", "Neut", "Masc", "UnmGend"},
         "case": {"Nom", "Gen", "Dat", "Acc", "UnmCase"},
         "number": {"Sg", "Pl", "UnmNum"},
         "nonfinite": {"Inf", "Part"},
-        "tense": {"Pres", "Past", "Perf"},
-        "mood": {"Ind", "Subj", "Imp"},
+        "tense": {"Pres", "Past", "Perf", "UnmTense"},
+        "mood": {"Ind", "Subj", "Imp", "UnmMood"},
         "auxiliary": {"haben", "sein"},
         "inflection": {"St", "Wk", "UnmInfl"},
         "metainfo": {"Old", "NonSt"},
         "orthinfo": {"OLDORTH", "CH"},
         "charinfo": {"CAP"},
+        "syninfo": {"SEP"},
         "ellipinfo": {"TRUNC"},
         "processes": {"COMP", "DER", "CONV"},
         "means": {"concat", "hyph", "ident", "pref", "prev", "suff"},

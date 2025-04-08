@@ -55,7 +55,7 @@ $CleanupWBLv2$ = .*
 % clean up old-orthography markers on analysis level
 
 ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #feature# #metainfo# <TRUNC>]
+            #feature# #metainfo# <SEP><TRUNC>]
 
 % deduplicate and postpone <OLDORTH>
 $CleanupOrthOldLv2$ = .* | \
@@ -91,7 +91,7 @@ $CleanupCatLv2$ = .*
 
 % clean up lemma and paradigm indices on analysis level
 
-ALPHABET = [#char# #morpheme-boundary# #feature# #info# <TRUNC>] \
+ALPHABET = [#char# #morpheme-boundary# #feature# #info# <SEP><TRUNC>] \
            <>:[#lemma-index# #paradigm-index#]
 
 $CleanupIndexLv2$ = .*
