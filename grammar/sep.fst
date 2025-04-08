@@ -1,6 +1,6 @@
 % sep.fst
-% Version 1.0
-% Andreas Nolda 2025-04-07
+% Version 1.1
+% Andreas Nolda 2025-04-08
 
 #include "symbols.fst"
 
@@ -32,7 +32,7 @@ ALPHABET = [#feature# #info#]-[#nonfinite#]
 $C$ =    [#char# #lemma-index# #paradigm-index# \
           #wf-process# #wf-means# <PB><SB>]
 $T$ = <>:[#char# #lemma-index# #paradigm-index# <VB>]
-$W$ =    [#wf-process# #wf-means#]
+$W$ =    [#wf-process#] <prev()>:[#wf-means#]
 
 $SepPrev2Lv2$ = $T$* <>:<VB> $C$* <+V> .*
 

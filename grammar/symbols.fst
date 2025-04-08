@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 12.1
-% Andreas Nolda 2025-04-07
+% Version 12.2
+% Andreas Nolda 2025-04-08
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -72,12 +72,12 @@
 
 #wf-process# = <COMP><DER><CONV>
 
-#wf-means# = <concat><hyph><ident|Part><pref(un)><prev(ab)><prev(an)><prev(auf)> \
-             <prev(aus)><prev(bei)><prev(durch)><prev(ein)><prev(gegen)> \
-             <prev(hinter)><prev(los)><prev(mit)><prev(nach)><prev(ueber)> \
-             <prev(um)><prev(unter)><prev(vor)><prev(weg)><prev(zu)> \
-             <prev(zurueck)><prev(zwischen)><suff(chen)><suff(e)><suff(er)> \
-             <suff(lein)>
+#wf-means# = <concat><hyph><ident|Part><pref(un)><prev()><prev(ab)><prev(an)> \
+             <prev(auf)><prev(aus)><prev(bei)><prev(durch)><prev(ein)> \
+             <prev(gegen)><prev(hinter)><prev(los)><prev(mit)><prev(nach)> \
+             <prev(ueber)><prev(um)><prev(unter)><prev(vor)><prev(weg)> \
+             <prev(zu)><prev(zurueck)><prev(zwischen)><suff(chen)><suff(e)> \
+             <suff(er)><suff(lein)>
 
 #category# = <ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER> \
              <POSS><PPRO><REL><V><WPRO>
