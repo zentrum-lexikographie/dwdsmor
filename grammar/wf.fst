@@ -1,6 +1,6 @@
 % wf.fst
-% Version 8.0
-% Andreas Nolda 2024-10-11
+% Version 8.1
+% Andreas Nolda 2025-04-08
 
 #include "symbols.fst"
 
@@ -21,10 +21,10 @@ $O$ = [#orth-trigger#]
 $DerRestrPOSPref-un$ =      <Prefix> un <DB>      <Stem> ($C$* <VB>)? $C$* <ADJ> $C$*
 $DerRestrPOSPref-Un$ = <uc> <Prefix> un <DB> <dc> <Stem> ($C$* <VB>)? $C$* <NN>  $C$*
 
-% restrict prev(...) to verbal bases
-$DerRestrPOSPrev-mit$      = <Prefix> mit      <VB> <Stem> ($C$* <VB>)? $C$* <V> $C$*
+% restrict prev() to verbal bases
+$DerRestrPOSPrev-mit$ = <Prefix> mit <VB> <Stem> ($C$* <VB>)? $C$* <V> $C$*
 
-% restrict prev(...) to verbal bases without preverb
+% restrict prev() to verbal bases without preverb
 $DerRestrPOSPrev-ab$       = <Prefix> ab       <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-an$       = <Prefix> an       <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-auf$      = <Prefix> auf      <VB> <Stem> $C$* <V> $C$*
@@ -32,7 +32,11 @@ $DerRestrPOSPrev-aus$      = <Prefix> aus      <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-bei$      = <Prefix> bei      <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-durch$    = <Prefix> durch    <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-ein$      = <Prefix> ein      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-fort$     = <Prefix> fort     <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-gegen$    = <Prefix> gegen    <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-heim$     = <Prefix> heim     <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-her$      = <Prefix> her      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-hin$      = <Prefix> hin      <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-hinter$   = <Prefix> hinter   <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-los$      = <Prefix> los      <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-nach$     = <Prefix> nach     <VB> <Stem> $C$* <V> $C$*
@@ -41,6 +45,7 @@ $DerRestrPOSPrev-um$       = <Prefix> um       <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-unter$    = <Prefix> unter    <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-vor$      = <Prefix> vor      <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-weg$      = <Prefix> weg      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-wieder$   = <Prefix> wieder   <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-zu$       = <Prefix> zu       <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-zurueck$  = <Prefix> zurück   <VB> <Stem> $C$* <V> $C$*
 $DerRestrPOSPrev-zwischen$ = <Prefix> zwischen <VB> <Stem> $C$* <V> $C$*
@@ -73,7 +78,11 @@ $DerRestrPOS$ = $DerRestrPOSPref-un$       | \
                 $DerRestrPOSPrev-bei$      | \
                 $DerRestrPOSPrev-durch$    | \
                 $DerRestrPOSPrev-ein$      | \
+                $DerRestrPOSPrev-fort$     | \
                 $DerRestrPOSPrev-gegen$    | \
+                $DerRestrPOSPrev-heim$     | \
+                $DerRestrPOSPrev-her$      | \
+                $DerRestrPOSPrev-hin$      | \
                 $DerRestrPOSPrev-hinter$   | \
                 $DerRestrPOSPrev-los$      | \
                 $DerRestrPOSPrev-mit$      | \
@@ -83,6 +92,7 @@ $DerRestrPOS$ = $DerRestrPOSPref-un$       | \
                 $DerRestrPOSPrev-unter$    | \
                 $DerRestrPOSPrev-vor$      | \
                 $DerRestrPOSPrev-weg$      | \
+                $DerRestrPOSPrev-wieder$   | \
                 $DerRestrPOSPrev-zu$       | \
                 $DerRestrPOSPrev-zurueck$  | \
                 $DerRestrPOSPrev-zwischen$ | \

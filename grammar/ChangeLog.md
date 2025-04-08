@@ -1,5 +1,15 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-04-08:
+
+* add support for the formation of particle verbs with "fort", "heim", "her",
+  "hin", and "wieder"
+
+2025-04-07:
+
+* add support for separated parts of separable verbs, marked by `<SEP>` in the
+  analysis string
+
 2024-11-19:
 
 * replace inflection tag `<Invar>` with `<UnmFunc>`, `<UnmGend>`, `<UnmCase>`,

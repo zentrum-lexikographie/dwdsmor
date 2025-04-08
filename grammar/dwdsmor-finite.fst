@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 12.0
-% Andreas Nolda 2025-04-07
+% Version 12.1
+% Andreas Nolda 2025-04-08
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -65,7 +65,11 @@ $Prev-aus$      = <Prefix> aus
 $Prev-bei$      = <Prefix> bei
 $Prev-durch$    = <Prefix> durch
 $Prev-ein$      = <Prefix> ein
+$Prev-fort$     = <Prefix> fort
 $Prev-gegen$    = <Prefix> gegen
+$Prev-heim$     = <Prefix> heim
+$Prev-her$      = <Prefix> her
+$Prev-hin$      = <Prefix> hin
 $Prev-hinter$   = <Prefix> hinter
 $Prev-los$      = <Prefix> los
 $Prev-mit$      = <Prefix> mit
@@ -75,6 +79,7 @@ $Prev-um$       = <Prefix> um
 $Prev-unter$    = <Prefix> unter
 $Prev-vor$      = <Prefix> vor
 $Prev-weg$      = <Prefix> weg
+$Prev-wieder$   = <Prefix> wieder
 $Prev-zu$       = <Prefix> zu
 $Prev-zurueck$  = <Prefix> zurück
 $Prev-zwischen$ = <Prefix> zwischen
@@ -102,7 +107,11 @@ $DerBaseStems$ = $Prev-ab$       <VB> $BaseStems$ | \
                  $Prev-bei$      <VB> $BaseStems$ | \
                  $Prev-durch$    <VB> $BaseStems$ | \
                  $Prev-ein$      <VB> $BaseStems$ | \
+                 $Prev-fort$     <VB> $BaseStems$ | \
                  $Prev-gegen$    <VB> $BaseStems$ | \
+                 $Prev-heim$     <VB> $BaseStems$ | \
+                 $Prev-her$      <VB> $BaseStems$ | \
+                 $Prev-hin$      <VB> $BaseStems$ | \
                  $Prev-hinter$   <VB> $BaseStems$ | \
                  $Prev-los$      <VB> $BaseStems$ | \
                  $Prev-mit$      <VB> $BaseStems$ | \
@@ -112,6 +121,7 @@ $DerBaseStems$ = $Prev-ab$       <VB> $BaseStems$ | \
                  $Prev-unter$    <VB> $BaseStems$ | \
                  $Prev-vor$      <VB> $BaseStems$ | \
                  $Prev-weg$      <VB> $BaseStems$ | \
+                 $Prev-wieder$   <VB> $BaseStems$ | \
                  $Prev-zu$       <VB> $BaseStems$ | \
                  $Prev-zurueck$  <VB> $BaseStems$ | \
                  $Prev-zwischen$ <VB> $BaseStems$ || $DerFilter$
@@ -194,7 +204,11 @@ $DerCompStems$ = $UC$ $Pref-un$       <DB> $DC$ $CompStems$ | \
                       $Prev-bei$      <VB>      $CompStems$ | \
                       $Prev-durch$    <VB>      $CompStems$ | \
                       $Prev-ein$      <VB>      $CompStems$ | \
+                      $Prev-fort$     <VB>      $CompStems$ | \
                       $Prev-gegen$    <VB>      $CompStems$ | \
+                      $Prev-heim$     <VB>      $CompStems$ | \
+                      $Prev-her$      <VB>      $CompStems$ | \
+                      $Prev-hin$      <VB>      $CompStems$ | \
                       $Prev-hinter$   <VB>      $CompStems$ | \
                       $Prev-los$      <VB>      $CompStems$ | \
                       $Prev-mit$      <VB>      $CompStems$ | \
@@ -203,6 +217,7 @@ $DerCompStems$ = $UC$ $Pref-un$       <DB> $DC$ $CompStems$ | \
                       $Prev-um$       <VB>      $CompStems$ | \
                       $Prev-unter$    <VB>      $CompStems$ | \
                       $Prev-vor$      <VB>      $CompStems$ | \
+                      $Prev-wieder$   <VB>      $CompStems$ | \
                       $Prev-weg$      <VB>      $CompStems$ | \
                       $Prev-zu$       <VB>      $CompStems$ | \
                       $Prev-zurueck$  <VB>      $CompStems$ | \

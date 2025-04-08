@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 9.0
-% Andreas Nolda 2025-04-07
+% Version 9.1
+% Andreas Nolda 2025-04-08
 
 #include "symbols.fst"
 #include "num.fst"
@@ -56,7 +56,11 @@ $Prev-aus$      = <Prefix> {}:{aus}
 $Prev-bei$      = <Prefix> {}:{bei}
 $Prev-durch$    = <Prefix> {}:{durch}
 $Prev-ein$      = <Prefix> {}:{ein}
+$Prev-fort$     = <Prefix> {}:{fort}
 $Prev-gegen$    = <Prefix> {}:{gegen}
+$Prev-heim$     = <Prefix> {}:{heim}
+$Prev-her$      = <Prefix> {}:{her}
+$Prev-hin$      = <Prefix> {}:{hin}
 $Prev-hinter$   = <Prefix> {}:{hinter}
 $Prev-los$      = <Prefix> {}:{los}
 $Prev-mit$      = <Prefix> {}:{mit}
@@ -66,6 +70,7 @@ $Prev-um$       = <Prefix> {}:{um}
 $Prev-unter$    = <Prefix> {}:{unter}
 $Prev-vor$      = <Prefix> {}:{vor}
 $Prev-weg$      = <Prefix> {}:{weg}
+$Prev-wieder$   = <Prefix> {}:{wieder}
 $Prev-zu$       = <Prefix> {}:{zu}
 $Prev-zurueck$  = <Prefix> {}:{zurück}
 $Prev-zwischen$ = <Prefix> {}:{zwischen}
@@ -90,7 +95,11 @@ $DerPrev-aus$      = <DER>:<> <prev(aus)>:<>
 $DerPrev-bei$      = <DER>:<> <prev(bei)>:<>
 $DerPrev-durch$    = <DER>:<> <prev(durch)>:<>
 $DerPrev-ein$      = <DER>:<> <prev(ein)>:<>
+$DerPrev-fort$     = <DER>:<> <prev(fort)>:<>
 $DerPrev-gegen$    = <DER>:<> <prev(gegen)>:<>
+$DerPrev-heim$     = <DER>:<> <prev(heim)>:<>
+$DerPrev-her$      = <DER>:<> <prev(her)>:<>
+$DerPrev-hin$      = <DER>:<> <prev(hin)>:<>
 $DerPrev-hinter$   = <DER>:<> <prev(hinter)>:<>
 $DerPrev-los$      = <DER>:<> <prev(los)>:<>
 $DerPrev-mit$      = <DER>:<> <prev(mit)>:<>
@@ -100,6 +109,7 @@ $DerPrev-um$       = <DER>:<> <prev(um)>:<>
 $DerPrev-unter$    = <DER>:<> <prev(unter)>:<>
 $DerPrev-vor$      = <DER>:<> <prev(vor)>:<>
 $DerPrev-weg$      = <DER>:<> <prev(weg)>:<>
+$DerPrev-wieder$   = <DER>:<> <prev(wieder)>:<>
 $DerPrev-zu$       = <DER>:<> <prev(zu)>:<>
 $DerPrev-zurueck$  = <DER>:<> <prev(zurueck)>:<>
 $DerPrev-zwischen$ = <DER>:<> <prev(zwischen)>:<>
@@ -126,7 +136,11 @@ $DerBaseStems$ = $Prev-ab$       <>:<VB> $BaseStems$ $DerPrev-ab$       | \
                  $Prev-bei$      <>:<VB> $BaseStems$ $DerPrev-bei$      | \
                  $Prev-durch$    <>:<VB> $BaseStems$ $DerPrev-durch$    | \
                  $Prev-ein$      <>:<VB> $BaseStems$ $DerPrev-ein$      | \
+                 $Prev-fort$     <>:<VB> $BaseStems$ $DerPrev-fort$     | \
                  $Prev-gegen$    <>:<VB> $BaseStems$ $DerPrev-gegen$    | \
+                 $Prev-heim$     <>:<VB> $BaseStems$ $DerPrev-heim$     | \
+                 $Prev-her$      <>:<VB> $BaseStems$ $DerPrev-her$      | \
+                 $Prev-hin$      <>:<VB> $BaseStems$ $DerPrev-hin$      | \
                  $Prev-hinter$   <>:<VB> $BaseStems$ $DerPrev-hinter$   | \
                  $Prev-los$      <>:<VB> $BaseStems$ $DerPrev-los$      | \
                  $Prev-mit$      <>:<VB> $BaseStems$ $DerPrev-mit$      | \
@@ -136,6 +150,7 @@ $DerBaseStems$ = $Prev-ab$       <>:<VB> $BaseStems$ $DerPrev-ab$       | \
                  $Prev-unter$    <>:<VB> $BaseStems$ $DerPrev-unter$    | \
                  $Prev-vor$      <>:<VB> $BaseStems$ $DerPrev-vor$      | \
                  $Prev-weg$      <>:<VB> $BaseStems$ $DerPrev-weg$      | \
+                 $Prev-wieder$   <>:<VB> $BaseStems$ $DerPrev-wieder$   | \
                  $Prev-zu$       <>:<VB> $BaseStems$ $DerPrev-zu$       | \
                  $Prev-zurueck$  <>:<VB> $BaseStems$ $DerPrev-zurueck$  | \
                  $Prev-zwischen$ <>:<VB> $BaseStems$ $DerPrev-zwischen$ || $DerFilter$
@@ -215,7 +230,11 @@ $DerCompStems$ = $UC$ $Pref-un$       <>:<DB> $DC$ $CompStems$ $DerPref-un$     
                       $Prev-bei$      <>:<VB>      $CompStems$ $DerPrev-bei$     | \
                       $Prev-durch$    <>:<VB>      $CompStems$ $DerPrev-durch$   | \
                       $Prev-ein$      <>:<VB>      $CompStems$ $DerPrev-ein$     | \
+                      $Prev-fort$     <>:<VB>      $CompStems$ $DerPrev-fort$    | \
                       $Prev-gegen$    <>:<VB>      $CompStems$ $DerPrev-gegen$   | \
+                      $Prev-heim$     <>:<VB>      $CompStems$ $DerPrev-heim$    | \
+                      $Prev-her$      <>:<VB>      $CompStems$ $DerPrev-her$     | \
+                      $Prev-hin$      <>:<VB>      $CompStems$ $DerPrev-hin$     | \
                       $Prev-hinter$   <>:<VB>      $CompStems$ $DerPrev-hinter$  | \
                       $Prev-los$      <>:<VB>      $CompStems$ $DerPrev-los$     | \
                       $Prev-mit$      <>:<VB>      $CompStems$ $DerPrev-mit$     | \
@@ -225,6 +244,7 @@ $DerCompStems$ = $UC$ $Pref-un$       <>:<DB> $DC$ $CompStems$ $DerPref-un$     
                       $Prev-unter$    <>:<VB>      $CompStems$ $DerPrev-unter$   | \
                       $Prev-vor$      <>:<VB>      $CompStems$ $DerPrev-vor$     | \
                       $Prev-weg$      <>:<VB>      $CompStems$ $DerPrev-weg$     | \
+                      $Prev-wieder$   <>:<VB>      $CompStems$ $DerPrev-wieder$  | \
                       $Prev-zu$       <>:<VB>      $CompStems$ $DerPrev-zu$      | \
                       $Prev-zurueck$  <>:<VB>      $CompStems$ $DerPrev-zurueck$ | \
                       $Prev-zwischen$ <>:<VB>      $CompStems$ $DerPrev-zwischen$ || $DerFilter$
