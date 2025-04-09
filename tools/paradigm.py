@@ -2,20 +2,21 @@
 # paradigm.py -- generate paradigms with DWDSmor
 # Andreas Nolda 2025-04-09
 
-import sys
 import argparse
 import csv
 import json
-import yaml
-from os import path, pardir, getcwd
+import sys
 from collections import defaultdict, namedtuple
 from itertools import filterfalse, product
+from os import getcwd, pardir, path
+
+from analysis import analyse_word
 
 from blessings import Terminal
 
 import sfst_transduce
 
-from analysis import analyse_word
+import yaml
 
 
 version = 16.0
@@ -514,15 +515,15 @@ def add_special_imp_double_particle_verb_forms(formdict, lemma_index, paradigm_i
 def get_noun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                       pos, gender, nonst=False, old=False, oldorth=False, ch=False):
     formdict = defaultdict(list)
-    lexcat = Lexcat(pos = pos,
-                    gender = gender)
+    lexcat = Lexcat(pos=pos,
+                    gender=gender)
     # nominalised adjectives
     categorisations = product(NUMBERS, CASES, INFLECTIONS)
     categorisations = filter_categorisations(categorisations, pos)
     for number, case, inflection in categorisations:
-        parcat = Parcat(case = case,
-                        number = number,
-                        inflection = inflection)
+        parcat = Parcat(case=case,
+                        number=number,
+                        inflection=inflection)
         categorisation = [gender,
                           case,
                           number,
@@ -567,8 +568,8 @@ def get_noun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
     categorisations = product(NUMBERS, CASES)
     categorisations = filter_categorisations(categorisations, pos)
     for number, case in categorisations:
-        parcat = Parcat(case = case,
-                        number = number)
+        parcat = Parcat(case=case,
+                        number=number)
         categorisation = [gender,
                           case,
                           number]
@@ -638,11 +639,11 @@ def get_noun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
 def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                            pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = defaultdict(list)
-    lexcat = Lexcat(pos = pos)
+    lexcat = Lexcat(pos=pos)
     for degree in DEGREES:
         # non-attributive forms
-        parcat = Parcat(degree = degree,
-                        function = "Pred/Adv")
+        parcat = Parcat(degree=degree,
+                        function="Pred/Adv")
         categorisation = [degree,
                           "Pred/Adv"]
         nonattributive_forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
@@ -701,12 +702,12 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
         categorisations = product(GENDERS, NUMBERS, CASES, INFLECTIONS, FUNCTIONS)
         categorisations = filter_categorisations(categorisations, pos)
         for gender, number, case, inflection, function in categorisations:
-            parcat = Parcat(degree = degree,
-                            function = function,
-                            gender = gender,
-                            case = case,
-                            number = number,
-                            inflection = inflection)
+            parcat = Parcat(degree=degree,
+                            function=function,
+                            gender=gender,
+                            case=case,
+                            number=number,
+                            inflection=inflection)
             categorisation = [degree,
                               function,
                               gender,
@@ -767,16 +768,16 @@ def get_adjective_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
 def get_article_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                          pos, subcat, nonst=False, old=False, oldorth=False, ch=False):
     formdict = defaultdict(list)
-    lexcat = Lexcat(pos = pos,
-                    subcat = subcat)
+    lexcat = Lexcat(pos=pos,
+                    subcat=subcat)
     categorisations = product(GENDERS, NUMBERS, CASES, INFLECTIONS, FUNCTIONS)
     categorisations = filter_categorisations(categorisations, pos)
     for gender, number, case, inflection, function in categorisations:
-        parcat = Parcat(function = function,
-                        gender = gender,
-                        case = case,
-                        number = number,
-                        inflection = inflection)
+        parcat = Parcat(function=function,
+                        gender=gender,
+                        case=case,
+                        number=number,
+                        inflection=inflection)
         categorisation = [subcat,
                           function,
                           gender,
@@ -809,16 +810,16 @@ def get_article_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
 def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                           pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = defaultdict(list)
-    lexcat = Lexcat(pos = pos)
+    lexcat = Lexcat(pos=pos)
     # forms inflected for function, gender, case, number, and inflectional strength
     categorisations = product(GENDERS, NUMBERS, CASES, INFLECTIONS, FUNCTIONS)
     categorisations = filter_categorisations(categorisations, pos)
     for gender, number, case, inflection, function in categorisations:
-        parcat = Parcat(function = function,
-                        gender = gender,
-                        case = case,
-                        number = number,
-                        inflection = inflection)
+        parcat = Parcat(function=function,
+                        gender=gender,
+                        case=case,
+                        number=number,
+                        inflection=inflection)
         categorisation = [function,
                           gender,
                           case,
@@ -864,15 +865,15 @@ def get_cardinal_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
 def get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                          pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = defaultdict(list)
-    lexcat = Lexcat(pos = pos)
+    lexcat = Lexcat(pos=pos)
     categorisations = product(GENDERS, NUMBERS, CASES, INFLECTIONS, FUNCTIONS)
     categorisations = filter_categorisations(categorisations, pos)
     for gender, number, case, inflection, function in categorisations:
-        parcat = Parcat(function = function,
-                        gender = gender,
-                        case = case,
-                        number = number,
-                        inflection = inflection)
+        parcat = Parcat(function=function,
+                        gender=gender,
+                        case=case,
+                        number=number,
+                        inflection=inflection)
         categorisation = [function,
                           gender,
                           case,
@@ -910,16 +911,16 @@ def get_ordinal_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
 def get_fraction_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                           pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = defaultdict(list)
-    lexcat = Lexcat(pos = pos)
+    lexcat = Lexcat(pos=pos)
     # forms inflected for function, gender, case, number, and inflectional strength
     categorisations = product(GENDERS, NUMBERS, CASES, INFLECTIONS, FUNCTIONS)
     categorisations = filter_categorisations(categorisations, pos)
     for gender, number, case, inflection, function in categorisations:
-        parcat = Parcat(function = function,
-                        gender = gender,
-                        case = case,
-                        number = number,
-                        inflection = inflection)
+        parcat = Parcat(function=function,
+                        gender=gender,
+                        case=case,
+                        number=number,
+                        inflection=inflection)
         categorisation = [function,
                           gender,
                           case,
@@ -957,16 +958,16 @@ def get_fraction_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
 def get_adjectival_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                     pos, nonst=False, old=False, oldorth=False, ch=False):
     formdict = defaultdict(list)
-    lexcat = Lexcat(pos = pos)
+    lexcat = Lexcat(pos=pos)
     # forms inflected for function, gender, case, number, and inflectional strength
     categorisations = product(GENDERS, NUMBERS, CASES, INFLECTIONS, FUNCTIONS)
     categorisations = filter_categorisations(categorisations, pos)
     for gender, number, case, inflection, function in categorisations:
-        parcat = Parcat(function = function,
-                        gender = gender,
-                        case = case,
-                        number = number,
-                        inflection = inflection)
+        parcat = Parcat(function=function,
+                        gender=gender,
+                        case=case,
+                        number=number,
+                        inflection=inflection)
         categorisation = [function,
                           gender,
                           case,
@@ -1002,23 +1003,23 @@ def get_substantival_pronoun_formdict(transducer, lemma_index, paradigm_index, s
     categorisations = filter_categorisations(categorisations, pos)
     for number, case in categorisations:
         if gender:
-            lexcat = Lexcat(pos = pos,
-                            subcat = subcat,
-                            person = person,
-                            gender = gender)
-            parcat = Parcat(case = case,
-                            number = number)
+            lexcat = Lexcat(pos=pos,
+                            subcat=subcat,
+                            person=person,
+                            gender=gender)
+            parcat = Parcat(case=case,
+                            number=number)
             categorisation = [subcat,
                               person,
                               gender,
                               case,
                               number]
         else:
-            lexcat = Lexcat(pos = pos,
-                            subcat = subcat,
-                            person = person)
-            parcat = Parcat(case = case,
-                            number = number)
+            lexcat = Lexcat(pos=pos,
+                            subcat=subcat,
+                            person=person)
+            parcat = Parcat(case=case,
+                            number=number)
             categorisation = [subcat,
                               person,
                               case,
@@ -1054,14 +1055,14 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemm
                                pos, gender, nonst=False, old=False, oldorth=False, ch=False):
     formdict = defaultdict(list)
     # fixed gender
-    lexcat = Lexcat(pos = pos,
-                    gender = gender)
+    lexcat = Lexcat(pos=pos,
+                    gender=gender)
     # forms with fixed gender and inflected for case and number
     categorisations = product(NUMBERS, CASES)
     categorisations = filter_categorisations(categorisations, pos)
     for number, case in categorisations:
-        parcat = Parcat(case = case,
-                        number = number)
+        parcat = Parcat(case=case,
+                        number=number)
         categorisation = [gender,
                           case,
                           number]
@@ -1091,16 +1092,16 @@ def get_other_pronoun_formdict(transducer, lemma_index, paradigm_index, seg_lemm
             pass
 
     # no fixed gender
-    lexcat = Lexcat(pos = pos)
+    lexcat = Lexcat(pos=pos)
     # forms inflected for function, gender, case, number, and inflectional strength
     categorisations = product(GENDERS, NUMBERS, CASES, INFLECTIONS, FUNCTIONS)
     categorisations = filter_categorisations(categorisations, pos)
     for gender, number, case, inflection, function in categorisations:
-        parcat = Parcat(function = function,
-                        gender = gender,
-                        case = case,
-                        number = number,
-                        inflection = inflection)
+        parcat = Parcat(function=function,
+                        gender=gender,
+                        case=case,
+                        number=number,
+                        inflection=inflection)
         categorisation = [function,
                           gender,
                           case,
@@ -1152,12 +1153,12 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                                         [CH])
         # test whether the past participle actually selects the auxiliary
         if part_perf_forms:
-            lexcat = Lexcat(pos = pos,
-                            auxiliary = auxiliary)
+            lexcat = Lexcat(pos=pos,
+                            auxiliary=auxiliary)
             # infinitives
-            parcat = Parcat(nonfinite = "Inf",
-                            function = "NonCl",
-                            tense = "Pres")
+            parcat = Parcat(nonfinite="Inf",
+                            function="NonCl",
+                            tense="Pres")
             categorisation = ["Inf",
                               "NonCl"]
             inf_forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
@@ -1197,9 +1198,9 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                     # no such forms
                     pass
 
-            parcat = Parcat(nonfinite = "Inf",
-                            function = "Cl",
-                            tense = "Pres")
+            parcat = Parcat(nonfinite="Inf",
+                            function="Cl",
+                            tense="Pres")
             categorisation = ["Inf",
                               "Cl"]
             inf_cl_forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
@@ -1245,9 +1246,9 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                     # no such forms
                     pass
 
-            parcat = Parcat(nonfinite = "Inf",
-                            function = "NonCl",
-                            tense = "Perf")
+            parcat = Parcat(nonfinite="Inf",
+                            function="NonCl",
+                            tense="Perf")
             add_nonfinite_perf_forms(formdict, lemma_index, paradigm_index,
                                      lexcat, parcat, [auxiliary], part_perf_forms)
             if nonst:
@@ -1277,9 +1278,9 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                     # no such forms
                     pass
 
-            parcat = Parcat(nonfinite = "Inf",
-                            function = "Cl",
-                            tense = "Perf")
+            parcat = Parcat(nonfinite="Inf",
+                            function="Cl",
+                            tense="Perf")
             add_nonfinite_perf_forms(formdict, lemma_index, paradigm_index,
                                      lexcat, parcat, [format_clausal_infinitive(auxiliary)], part_perf_forms)
             if nonst:
@@ -1310,8 +1311,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                     pass
 
             # participles
-            parcat = Parcat(nonfinite = "Part",
-                            tense = "Pres")
+            parcat = Parcat(nonfinite="Part",
+                            tense="Pres")
             categorisation = ["Part",
                               "Pres"]
             part_pres_forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
@@ -1351,8 +1352,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                     # no such forms
                     pass
 
-            parcat = Parcat(nonfinite = "Part",
-                            tense = "Perf")
+            parcat = Parcat(nonfinite="Part",
+                            tense="Perf")
             categorisation = ["Part",
                               "Perf",
                               auxiliary]
@@ -1389,10 +1390,10 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
             categorisations = product(TENSES, MOODS, NUMBERS, PERSONS)
             categorisations = filter_categorisations(categorisations, pos)
             for tense, mood, number, person in categorisations:
-                parcat = Parcat(person = person,
-                                number = number,
-                                mood = mood,
-                                tense = tense)
+                parcat = Parcat(person=person,
+                                number=number,
+                                mood=mood,
+                                tense=tense)
                 if tense == "Perf":
                     categorisation = [person,
                                       number,
@@ -1697,7 +1698,6 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                                                 lexcat, parcat, old_ch_forms, particle,
                                                                 [TAG_OLD, TAG_CH])
 
-
                     else:
                         forms = generate_forms(transducer, lemma_index, paradigm_index, seg_lemma,
                                                pos, categorisation)
@@ -1705,7 +1705,7 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
                                   lexcat, parcat, forms)
                         if nonst:
                             nonst_forms = generate_special_forms(transducer, lemma_index, paradigm_index, seg_lemma,
-                                                               pos, categorisation,
+                                                                 pos, categorisation,
                                                                  [NONST])
                             add_special_forms(formdict, lemma_index, paradigm_index,
                                               lexcat, parcat, nonst_forms,
@@ -1762,8 +1762,8 @@ def get_verb_formdict(transducer, lemma_index, paradigm_index, seg_lemma,
 
             # imperative forms
             for number in NUMBERS:
-                parcat = Parcat(number = number,
-                                mood = "Imp")
+                parcat = Parcat(number=number,
+                                mood="Imp")
                 categorisation = ["Imp",
                                   number]
                 if particle and particle_2:
@@ -1975,6 +1975,7 @@ def sort_lemmaspec(lemmaspec):
     return (lemma_index, paradigm_index, seg_lemma,
             pos, subcat, person, gender)
 
+
 def sort_form(form):
     key = -1
     for index, tags in enumerate([format_tags([TAG_NONST]),
@@ -1988,6 +1989,7 @@ def sort_form(form):
         if form.endswith(tags):
             key = index
     return (key, form)
+
 
 def generate_formdict(transducer, lemma, lemma_index=None, paradigm_index=None,
                       pos=None, user_specified=False, nonst=False, old=False, oldorth=False, ch=False):
@@ -2013,18 +2015,18 @@ def generate_formdict(transducer, lemma, lemma_index=None, paradigm_index=None,
                                     pos, None, None, None)]
     else:
         analyses = analyse_word(transducer, lemma)
-        lemmaspecs = sorted(set([Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
-                                           analysis.pos, analysis.subcat, analysis.person, analysis.gender)
-                                 if analysis.pos == "PPRO"
-                                 else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
-                                                analysis.pos, analysis.subcat, None, None)
-                                 if analysis.pos == "ART"
-                                 else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
-                                                analysis.pos, None, None, analysis.gender)
-                                 if analysis.pos in ["INDEF", "NN", "NPROP", "REL", "WPRO"] and not analysis.function in FUNCTIONS
-                                 else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
-                                                analysis.pos, None, None, None)
-                                 for analysis in analyses if analysis.lemma == lemma and analysis.pos in POS]),
+        lemmaspecs = sorted({Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
+                                       analysis.pos, analysis.subcat, analysis.person, analysis.gender)
+                             if analysis.pos == "PPRO"
+                             else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
+                                            analysis.pos, analysis.subcat, None, None)
+                             if analysis.pos == "ART"
+                             else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
+                                            analysis.pos, None, None, analysis.gender)
+                             if analysis.pos in ["INDEF", "NN", "NPROP", "REL", "WPRO"] and analysis.function not in FUNCTIONS
+                             else Lemmaspec(analysis.lemma_index, analysis.paradigm_index, analysis.seg_lemma,
+                                            analysis.pos, None, None, None)
+                             for analysis in analyses if analysis.lemma == lemma and analysis.pos in POS},
                             key=sort_lemmaspec)
         if lemma_index in INDICES:
             lemmaspecs = [lemmaspec for lemmaspec in lemmaspecs
@@ -2108,6 +2110,10 @@ def get_value_of_paradigm_key(key, paradigm):
     return formatted_value
 
 
+def output_string(string):
+    return string
+
+
 def output_json(paradigms, output_file):
     json.dump(paradigms, output_file, ensure_ascii=False)
 
@@ -2120,7 +2126,7 @@ def output_dsv(paradigms, output_file, keys, paradigm_keys,
                header=True, plain=False, force_color=False, delimiter="\t"):
     kind = "dumb" if plain else None
     term = Terminal(kind=kind, force_styling=force_color)
-    plain = lambda string: string
+    plain = output_string
     csv_writer = csv.writer(output_file, delimiter=delimiter, lineterminator="\n")
 
     key_format = {"lemma": term.bold_underline,
@@ -2191,13 +2197,13 @@ def output_paradigms(transducer, lemma, output_file, lemma_index=None, paradigm_
                 keys = []
 
             if not empty:
-                keys_with_values = set([key for paradigm_dict in paradigms
-                                        for key, value in paradigm_dict.items()
-                                        if isinstance(value, (str, int, list))])
-                paradigm_keys_with_values = set([key for paradigm_dict in paradigms
-                                                 for paradigm in paradigm_dict["paradigm"]
-                                                 for key, value in paradigm.items()
-                                                 if isinstance(value, (str, int, list))])
+                keys_with_values = {key for paradigm_dict in paradigms
+                                    for key, value in paradigm_dict.items()
+                                    if isinstance(value, (str, int, list))}
+                paradigm_keys_with_values = {key for paradigm_dict in paradigms
+                                             for paradigm in paradigm_dict["paradigm"]
+                                             for key, value in paradigm.items()
+                                             if isinstance(value, (str, int, list))}
                 keys = [key for key in keys if key in keys_with_values]
                 paradigm_keys = [key for key in paradigm_keys if key in key in paradigm_keys_with_values]
 

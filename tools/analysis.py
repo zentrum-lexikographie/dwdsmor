@@ -3,19 +3,20 @@
 # Gregor Middell and Andreas Nolda 2025-04-09
 # with contributions by Adrien Barbaresi
 
-import sys
 import argparse
-import re
 import csv
 import json
-import yaml
-from os import path, pardir, getcwd
+import re
+import sys
 from collections import namedtuple
 from functools import cached_property
+from os import getcwd, pardir, path
 
 from blessings import Terminal
 
 import sfst_transduce
+
+import yaml
 
 
 version = 13.0
@@ -373,6 +374,7 @@ def count_boundaries(seg, boundaries):
     count = sum([seg.count(boundary) for boundary in boundaries])
     return count
 
+
 def get_minimal_analyses(analyses, key, boundaries):
     minimal_analyses = []
     minimum = min([count_boundaries(analysis[key], boundaries) for analysis in analyses], default=-1)
@@ -436,6 +438,10 @@ def get_value_of_analysis_key(key, analysis):
     return formatted_value
 
 
+def output_string(string):
+    return string
+
+
 def output_json(word_analyses, output_file):
     json.dump(word_analyses, output_file, ensure_ascii=False)
 
@@ -448,7 +454,7 @@ def output_dsv(word_analyses, output_file, keys, analyses_keys,
                header=True, plain=False, force_color=False, delimiter="\t"):
     kind = "dumb" if plain else None
     term = Terminal(kind=kind, force_styling=force_color)
-    plain = lambda string: string
+    plain = output_string
     csv_writer = csv.writer(output_file, delimiter=delimiter, lineterminator="\n")
 
     key_format = {"word": term.bold,
@@ -567,13 +573,13 @@ def output_analyses(transducer, transducer2, input_file, output_file,
                 analyses_keys.remove("means")
 
             if not empty:
-                keys_with_values = set([key for word_analyses_dict in word_analyses
-                                        for key, value in word_analyses_dict.items()
-                                        if isinstance(value, str)])
-                analyses_keys_with_values = set([key for word_analyses_dict in word_analyses
-                                                 for analysis in word_analyses_dict["analyses"]
-                                                 for key, value in analysis.items()
-                                                 if isinstance(value, (str, int))])
+                keys_with_values = {key for word_analyses_dict in word_analyses
+                                    for key, value in word_analyses_dict.items()
+                                    if isinstance(value, str)}
+                analyses_keys_with_values = {key for word_analyses_dict in word_analyses
+                                             for analysis in word_analyses_dict["analyses"]
+                                             for key, value in analysis.items()
+                                             if isinstance(value, (str, int))}
                 keys = [key for key in keys if key in keys_with_values]
                 analyses_keys = [key for key in analyses_keys if key in analyses_keys_with_values]
 
