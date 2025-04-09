@@ -12,6 +12,7 @@ repos:
   rev: 22.10.0
   hooks:
     - id: black
+      exclude: tools
 - repo: https://github.com/PyCQA/flake8
   rev: 7.0.0
   hooks:
@@ -21,8 +22,10 @@ repos:
   rev: 5.12.0
   hooks:
     - id: isort
+      exclude: tools
 - repo: https://github.com/pre-commit/mirrors-mypy
   rev: v1.8.0
   hooks:
     - id: mypy
       additional_dependencies: [types-PyYAML]
+      exclude: tools
