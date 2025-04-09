@@ -67,6 +67,7 @@ LABEL_MAP = {"word": "Wordform",
                           "tense": "Tense",
                           "metainfo": "Metalinguistic",
                           "orthinfo": "Orthography",
+                          "syninfo": "Syntax",
                           "ellipinfo": "Ellipsis",
                           "charinfo": "Characters"}}
 
@@ -135,7 +136,7 @@ class Analysis(tuple):
 
     _degree_tags = {"Pos": True, "Comp": True, "Sup": True}
 
-    _person_tags = {"1": True, "2": True, "3": True}
+    _person_tags = {"1": True, "2": True, "3": True, "UnmPers": True}
 
     _gender_tags = {"Fem": True, "Neut": True, "Masc": True, "UnmGend": True}
 
@@ -149,13 +150,15 @@ class Analysis(tuple):
 
     _function_tags = {"Attr": True, "Subst": True, "Attr/Subst": True, "Pred/Adv": True, "Cl": True, "NonCl": True, "UnmFunc": True}
 
-    _mood_tags = {"Ind": True, "Subj": True, "Imp": True}
+    _mood_tags = {"Ind": True, "Subj": True, "Imp": True, "UnmMood": True}
 
-    _tense_tags = {"Pres": True, "Past": True, "Perf": True}
+    _tense_tags = {"Pres": True, "Past": True, "Perf": True, "UnmTense": True}
 
     _metainfo_tags = {"Old": True, "NonSt": True}
 
     _orthinfo_tags = {"OLDORTH": True, "CH": True}
+
+    _syninfo_tags = {"SEP": True}
 
     _ellipinfo_tags = {"TRUNC": True}
 
@@ -237,6 +240,11 @@ class Analysis(tuple):
         return tag
 
     @cached_property
+    def syninfo(self):
+        tag = self.tag_of_type(Analysis._syninfo_tags)
+        return tag
+
+    @cached_property
     def ellipinfo(self):
         tag = self.tag_of_type(Analysis._ellipinfo_tags)
         return tag
@@ -269,6 +277,7 @@ class Analysis(tuple):
                     "tense": self.tense,
                     "metainfo": self.metainfo,
                     "orthinfo": self.orthinfo,
+                    "syninfo": self.syninfo,
                     "ellipinfo": self.ellipinfo,
                     "charinfo": self.charinfo}
         return analysis
@@ -481,6 +490,7 @@ def output_dsv(word_analyses, output_file, keys, analyses_keys,
                                "tense": plain,
                                "metainfo": plain,
                                "orthinfo": plain,
+                               "syninfo": plain,
                                "ellipinfo": plain,
                                "charinfo": plain}}
 
