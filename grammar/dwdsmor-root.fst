@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 9.1
-% Andreas Nolda 2025-04-08
+% Version 9.2
+% Andreas Nolda 2025-04-10
 
 #include "symbols.fst"
 #include "num.fst"
@@ -126,6 +126,7 @@ $Comp-hyph$   = <COMP>:<> <hyph>:<>
 
 $DC$ = <>:<dc>
 $UC$ = <>:<uc>
+$O$  = <>:[#orth-trigger#]
 
 % derived base stems with preverbs
 
@@ -253,9 +254,9 @@ $CompStems$ = $CompStems$ | $DerCompStems$
 
 % compounds
 
-$COMP$ = $CompStems$ \
-         (<HB><CB> $CompStems$ $Comp-hyph$ | <CB> $DC$ $CompStems$ $Comp-concat$)* \
-         (<HB><CB> $BaseStems$ $Comp-hyph$ | <CB> $DC$ $BaseStems$ $Comp-concat$) || $CompFilter$
+$COMP$ =           $O$? $CompStems$ \
+         (<HB><CB> $O$? $CompStems$ $Comp-hyph$ | <CB> $DC$ $CompStems$ $Comp-concat$)* \
+         (<HB><CB>      $BaseStems$ $Comp-hyph$ | <CB> $DC$ $BaseStems$ $Comp-concat$) || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$
 

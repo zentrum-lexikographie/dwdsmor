@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-04-10:
+
+* add support for nominal compounds with adjectival or verbal initial or
+  intermediate bases
+
 2025-04-08:
 
 * add support for the formation of particle verbs with "fort", "heim", "her",

@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 12.1
-% Andreas Nolda 2025-04-08
+% Version 12.2
+% Andreas Nolda 2025-04-10
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -97,6 +97,7 @@ $Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_0_0>
 
 $DC$ = <dc>
 $UC$ = <uc>
+$O$  = [#orth-trigger#]
 
 % derived base stems with preverbs
 
@@ -227,7 +228,8 @@ $CompStems$ = $CompStems$ | $DerCompStems$
 
 % compounds
 
-$COMP$ = $CompStems$ (<HB><CB> $BaseStems$ | <CB> $DC$ $BaseStems$) || $CompFilter$
+$COMP$ =           $O$? $CompStems$ \
+         (<HB><CB>      $BaseStems$ | <CB> $DC$ $BaseStems$) || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$
 

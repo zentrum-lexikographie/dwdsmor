@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 16.0 -->
-<!-- Andreas Nolda 2024-11-22 -->
+<!-- Version 16.1 -->
+<!-- Andreas Nolda 2025-04-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2466,6 +2466,8 @@
     <xsl:when test="ends-with(normalize-space(.),'.')">yes</xsl:when>
     <!-- acronyms in uppercase letters with optional numbers and lowercase letters -->
     <xsl:when test="matches(normalize-space(.),'^\p{N}*\p{Lu}([\p{L}\p{N}]*\p{Lu})*\p{N}*$')">yes</xsl:when>
+    <!-- acronyms consisting of uppercase letters preceded by a lowercase letter -->
+    <xsl:when test="matches(normalize-space(.),'^\p{Ll}\p{Lu}+$')">yes</xsl:when>
     <!-- acronyms consisting of an uppercase consonant letter
          followed by lowercase consonant letters -->
     <xsl:when test="matches(normalize-space(.),'^[\p{Lu}-[AEIOUÄÖÜ]][\p{Ll}-[aeiouäöü]]+$')">yes</xsl:when>
