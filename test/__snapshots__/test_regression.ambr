@@ -499,6 +499,18 @@
     ),
     tuple(
       'EU-Fahrgastrechte-Kraftomnibus-Gesetz',
+      'EU<=>-<#>Fahr<#>gast<#>recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<+NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'EU-Fahrgastrechte-Kraftomnibus-Gesetz',
+      'EU<=>-<#>Fahr<#>gast<#>recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<+NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'EU-Fahrgastrechte-Kraftomnibus-Gesetz',
+      'EU<=>-<#>Fahr<#>gast<#>recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<+NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'EU-Fahrgastrechte-Kraftomnibus-Gesetz',
       'EU<=>-<#>Fahrgast<#>recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<+NN><Neut><Acc><Sg>',
     ),
     tuple(
@@ -644,6 +656,18 @@
     tuple(
       'Feststellungen',
       'Fest<#>stellung<+NN><Fem><Nom><Pl>',
+    ),
+    tuple(
+      'Feststellungen',
+      'Feststell<#>un<->gen<+NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Feststellungen',
+      'Feststell<#>un<->gen<+NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Feststellungen',
+      'Feststell<#>un<->gen<+NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Feststellungen',
@@ -992,6 +1016,18 @@
     tuple(
       'Kraft',
       'kraft<+PREP><CAP>',
+    ),
+    tuple(
+      'Kraftfahrzeug',
+      'Kraft<#>fahr<#>zeug<+NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Kraftfahrzeug',
+      'Kraft<#>fahr<#>zeug<+NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Kraftfahrzeug',
+      'Kraft<#>fahr<#>zeug<+NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Kraftfahrzeug',
