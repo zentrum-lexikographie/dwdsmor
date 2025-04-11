@@ -83,15 +83,18 @@ $Prev-wieder$   = <Prefix> wieder
 $Prev-zu$       = <Prefix> zu
 $Prev-zurueck$  = <Prefix> zurück
 $Prev-zwischen$ = <Prefix> zwischen
+% ...
 
 % affixes
 
 $Pref-un$ = <Prefix> un
+% ...
 
 $Suff-e$    = <Suffix> e    <NN> <base> <native> <>:<NMasc_n_n_0>
 $Suff-er$   = <Suffix> er   <NN> <base> <native> <>:<NMasc_s_0_n>
 $Suff-chen$ = <Suffix> chen <NN> <base> <native> <>:<NNeut_s_0_0>
 $Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_0_0>
+% ...
 
 % means
 

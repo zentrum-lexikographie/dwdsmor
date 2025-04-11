@@ -112,48 +112,51 @@ $DerFilter$ = $DerRestrPOS$ & $DerRestrAbbr$
 
 % compounding restrictions
 
-% provisionally restrict compounding to nominal final bases and
-% nominal, adjectival, or verbal initial or intermediate bases
+% provisionally restrict nominal compounds to nominal,
+% adjectival, or verbal initial or intermediate bases
 $CompRestrPOS$ = (($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP><ADJ><V>] $C$* <HB>? <CB>)  \
                  (($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP><ADJ><V>] $C$* <HB>? <CB>)* \
                  (($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>]         $C$*)
 
-% exclude downcased nominal initial bases
+% in nominal compounds, exclude downcased nominal initial bases
 $CompRestrOrth1$ = !((           <dc> ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*)  \
                      (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)* \
-                     (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*))
+                     (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*))
 
-% exclude downcased nominal intermediate bases with a preceding hyphen
+% in nominal compounds, exclude downcased nominal intermediate bases
+% with a preceding hyphen
 $CompRestrOrth2$ = !((                ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)  \
                      (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)* \
                      (<HB>  <CB> <dc> ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*)  \
                      (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)* \
-                     (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*))
+                     (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*))
 
-% exclude upcased unprefixed nominal initial bases
+%  in nominal compounds, exclude upcased unprefixed nominal initial bases
 $CompRestrOrth3$ = !((           <uc>                                  $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*)  \
                      (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)* \
-                     (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*))
+                     (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*))
 
-% exclude upcased unprefixed nominal intermediate bases
+% in nominal compounds, exclude upcased unprefixed nominal intermediate bases
 $CompRestrOrth4$ = !((                ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)  \
                      (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)* \
                      (<HB>? <CB> <uc>                                  $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*)  \
                      (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)* \
-                     (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*))
+                     (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*))
 
-% require adjectival or verbal initial bases to be upcased
+% in nominal compounds, require adjectival or verbal initial bases
+% to be upcased
 $CompRestrOrth5$ = ((          <uc> ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<ADJ><V>]    $C$*) | \
                     (               ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*))  \
                    (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)*  \
-                   (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)
+                   (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*)
 
-% require adjectival or verbal intermediate bases with a preceding hyphen to be upcased
+% in nominal compounds, require adjectival or verbal intermediate bases
+% with a preceding hyphen to be upcased
 $CompRestrOrth6$ = (                 ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)   \
                    ((<HB>  <CB> <uc> ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<ADJ><V>]    $C$*) | \
                     (      <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<ADJ><V>]    $C$*) | \
                     (<HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*))* \
-                   ( <HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)*               $C$*)
+                   ( <HB>? <CB>      ($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem> $C$* (<DB> <Suffix> $C$*)* [<NN><NPROP>] $C$*)
 
 % exclude compounding of abbreviated non-final bases without a following hyphen
 $CompRestrAbbr1$ = !((($O$* <Prefix> $C$* [<DB><VB>])? $O$* <Stem>        $C$* (<DB> <Suffix> $C$*)* <HB>? <CB>)* \
