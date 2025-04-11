@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 12.3
-% Andreas Nolda 2025-04-08
+% Version 12.4
+% Andreas Nolda 2025-04-11
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -263,9 +263,9 @@
                     <VWeak-le><VWeak-m-n><VWeak-s><VWeak-signen>
 
 #Other-inflection# = <ConjAdjComp><ConjCoord><ConjInfCl><ConjSub><Intj> \
-                     <Postp><Prep><Prep+Art-m><Prep+Art-n><Prep+Art-r> \
-                     <Prep+Art-s><Prev><ProAdv><PtclAdjPos><PtclAdjSup> \
-                     <PtclInfCl><PtclNeg><WAdv>
+                     <Postp><Prep><Prep+Art-m><Prep+Art-m-NonSt> \
+                     <Prep+Art-n-NonSt><Prep+Art-r><Prep+Art-s><Prev><ProAdv> \
+                     <PtclAdjPos><PtclAdjSup><PtclInfCl><PtclNeg><WAdv>
 
 #inflection# = #Abbr-inflection# #Adj-inflection# #Adv-inflection# \
                #Art-inflection# #Noun-inflection# #Name-inflection# \

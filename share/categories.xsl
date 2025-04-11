@@ -2126,8 +2126,6 @@
 <xsl:variable name="contracted-adposition-class-mapping">
   <!-- clitic article: "(de)m" -->
   <class clitic="m">Prep+Art-m</class>
-  <!-- clitic article: "(de)n" -->
-  <class clitic="n">Prep+Art-n</class>
   <!-- clitic article: "(de)r" -->
   <class clitic="r">Prep+Art-r</class>
   <!-- clitic article: "(da)s" -->

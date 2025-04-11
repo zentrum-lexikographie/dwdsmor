@@ -1,3 +1,7 @@
+2025-04-11:
+
+* add support for non-standard contracted adpositions
+
 2024-11-22:
 
 * update XPath to DWDS phonetic transcriptions

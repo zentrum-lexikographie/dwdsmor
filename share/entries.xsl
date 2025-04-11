@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 17.2 -->
-<!-- Andreas Nolda 2024-11-19 -->
+<!-- Version 17.3 -->
+<!-- Andreas Nolda 2025-04-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -10253,37 +10253,66 @@
   <xsl:param name="pronunciations"/>
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
+    <xsl:variable name="adposition-lemma">
+      <xsl:choose>
+        <xsl:when test="string-length($adposition)&gt;0">
+          <xsl:value-of select="$adposition"/>
+        </xsl:when>
+        <xsl:when test="$lemma='am'">an</xsl:when>
+        <xsl:when test="$lemma='im'">in</xsl:when>
+        <xsl:when test="$lemma='vom'">von</xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="replace($lemma,'^(.+).$','$1')"/>
+        </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="clitic">
+      <xsl:choose>
+        <xsl:when test="$lemma='am'">m</xsl:when>
+        <xsl:when test="$lemma='im'">m</xsl:when>
+        <xsl:when test="$lemma='vom'">m</xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="substring-after($lemma,$adposition-lemma)"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:choose>
-      <xsl:when test="string-length($adposition)&gt;0">
-        <xsl:variable name="class">
-          <xsl:call-template name="contracted-adposition-class">
-            <xsl:with-param name="lemma"
-                            select="$lemma"/>
-            <xsl:with-param name="clitic"
-                            select="replace($lemma,'^.+(.)$','$1')"/>
-            <xsl:with-param name="pronunciations"
-                            select="$pronunciations"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:if test="string-length($class)&gt;0">
-          <xsl:call-template name="stem-entry">
-            <xsl:with-param name="lemma"
-                            select="$adposition"/>
-            <xsl:with-param name="lemma-index"
-                            select="$lemma-index"/>
-            <xsl:with-param name="paradigm-index"
-                            select="$paradigm-index"/>
-            <xsl:with-param name="stem"
-                            select="$lemma"/>
-            <xsl:with-param name="abbreviation"
-                            select="$abbreviation"/>
-            <xsl:with-param name="pos">OTHER</xsl:with-param>
-            <xsl:with-param name="class"
-                            select="$class"/>
-            <xsl:with-param name="etymology"
-                            select="$etymology"/>
-          </xsl:call-template>
-        </xsl:if>
+      <xsl:when test="$lemma='aufm' or
+                      $lemma='ausm'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$adposition-lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="$lemma"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">OTHER</xsl:with-param>
+          <xsl:with-param name="class">Prep+Art-m-NonSt</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$clitic='n'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$adposition-lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="$lemma"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">OTHER</xsl:with-param>
+          <xsl:with-param name="class">Prep+Art-n-NonSt</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
         <xsl:variable name="class">
@@ -10291,7 +10320,7 @@
             <xsl:with-param name="lemma"
                             select="$lemma"/>
             <xsl:with-param name="clitic"
-                            select="replace($lemma,'^.+(.)$','$1')"/>
+                            select="$clitic"/>
             <xsl:with-param name="pronunciations"
                             select="$pronunciations"/>
           </xsl:call-template>
@@ -10299,11 +10328,13 @@
         <xsl:if test="string-length($class)&gt;0">
           <xsl:call-template name="stem-entry">
             <xsl:with-param name="lemma"
-                            select="$lemma"/>
+                            select="$adposition-lemma"/>
             <xsl:with-param name="lemma-index"
                             select="$lemma-index"/>
             <xsl:with-param name="paradigm-index"
                             select="$paradigm-index"/>
+            <xsl:with-param name="stem"
+                            select="$lemma"/>
             <xsl:with-param name="abbreviation"
                             select="$abbreviation"/>
             <xsl:with-param name="pos">OTHER</xsl:with-param>

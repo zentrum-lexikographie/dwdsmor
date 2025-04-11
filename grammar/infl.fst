@@ -1,6 +1,6 @@
 % infl.fst
-% Version 12.0
-% Andreas Nolda 2024-11-19
+% Version 12.1
+% Andreas Nolda 2025-04-11
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -2552,8 +2552,11 @@ $Prep$ = {<+PREP>}:{}
 $Prep+Art-m$ = {<+PREPART><Masc><Dat><Sg>}:{} | \
                {<+PREPART><Neut><Dat><Sg>}:{}
 
+$Prep+Art-m-NonSt$ = {<+PREPART><Masc><Dat><Sg><NonSt>}:{} | \
+                     {<+PREPART><Neut><Dat><Sg><NonSt>}:{}
+
 % untern
-$Prep+Art-n$ = {<+PREPART><Masc><Acc><Sg>}:{}
+$Prep+Art-n-NonSt$ = {<+PREPART><Masc><Acc><Sg><NonSt>}:{} % cf. Duden-Grammatik (2016: § 928)
 
 % unters
 $Prep+Art-s$ = {<+PREPART><Neut><Acc><Sg>}:{}
@@ -2982,7 +2985,8 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<PRefl3>                  $PRefl3$                 | \
          <>:<Prep>                    $Prep$                   | \
          <>:<Prep+Art-m>              $Prep+Art-m$             | \
-         <>:<Prep+Art-n>              $Prep+Art-n$             | \
+         <>:<Prep+Art-m-NonSt>        $Prep+Art-m-NonSt$       | \
+         <>:<Prep+Art-n-NonSt>        $Prep+Art-n-NonSt$       | \
          <>:<Prep+Art-r>              $Prep+Art-r$             | \
          <>:<Prep+Art-s>              $Prep+Art-s$             | \
          <>:<Prev>                    $Prev$                   | \

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 16.1 -->
-<!-- Andreas Nolda 2025-04-10 -->
+<!-- Version 16.2 -->
+<!-- Andreas Nolda 2025-04-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -81,14 +81,25 @@
       </xsl:if>
     </xsl:variable>
     <xsl:variable name="adposition">
-      <xsl:choose>
-        <!-- adpositional basis of contracted adposition -->
-        <xsl:when test="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])='Präposition + Artikel'">
-          <xsl:value-of select="normalize-space(../dwds:Verweise[@Typ='Zusammenrückung']/dwds:Verweis[not(@class='invisible')]
-                                                                                                     [@Typ='Erstglied']/dwds:Ziellemma)"/>
-        </xsl:when>
-        <!-- TODO: more adposition values -->
-      </xsl:choose>
+      <!-- adpositional basis of contracted adposition -->
+      <xsl:if test="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])='Präposition + Artikel'">
+        <xsl:choose>
+          <!-- canonical representation -->
+          <xsl:when test="../dwds:Verweise[@Typ='Zusammenrückung']
+                                          [dwds:Verweis[not(@class='invisible')]
+                                                       [@Typ='Erstglied']]">
+            <xsl:value-of select="normalize-space(../dwds:Verweise[@Typ='Zusammenrückung']/dwds:Verweis[not(@class='invisible')]
+                                                                                                       [@Typ='Erstglied']/dwds:Ziellemma)"/>
+          </xsl:when>
+          <!-- legacy representation -->
+          <xsl:when test="../dwds:Verweise[@Typ='Derivation']
+                                          [dwds:Verweis[not(@class='invisible')]
+                                                       [@Typ='Erstglied']]">
+            <xsl:value-of select="normalize-space(../dwds:Verweise[@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
+                                                                                                  [@Typ='Erstglied']/dwds:Ziellemma)"/>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:if>
     </xsl:variable>
     <xsl:variable name="flat-grammar-specs">
       <!-- ignore idioms and other syntactically complex units
