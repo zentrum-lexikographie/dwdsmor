@@ -1,5 +1,5 @@
 # .gitignore
-# Andreas Nolda 2023-10-04
+# Andreas Nolda 2025-04-11
 
 *~
 \#*
@@ -22,8 +22,7 @@ BUILD
 
 manifest.xml
 
-/lexicon/sample/src/wb
-/lexicon/tagh/
+/lexicon/open/src/
 
 /build/
 /dist/
