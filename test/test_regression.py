@@ -1,8 +1,3 @@
-#!/usr/bin/env python3
-# test_gesetze_analysis_snapshot.py
-# test DWDSmor analysis snapshots against legal texts for regression
-# Andreas Nolda 2024-09-12
-
 import csv
 from pathlib import Path
 
@@ -30,7 +25,11 @@ def test_generation(snapshot):
             if n == 0:
                 continue
             lemma_traversals = sorted(
-                (t.spec for t in traversals.get(lemma, []) if t.pos == f"+{pos}")
+                (
+                    (t.spec, t.surface)
+                    for t in traversals.get(lemma, [])
+                    if t.pos == f"+{pos}"
+                )
             )
             result.append((pos, inflection_classes, lemma, *lemma_traversals))
     assert result == snapshot
