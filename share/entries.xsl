@@ -7037,15 +7037,13 @@
                 </xsl:call-template>
               </xsl:when>
               <!-- preterite-present verbs -->
-              <xsl:when test="$lemma-without-particle='bedürfen' or
-                              $lemma-without-particle='dürfen' or
-                              $lemma-without-particle='können' or
-                              $lemma-without-particle='mögen' or
-                              $lemma-without-particle='müssen' or
-                              $lemma-without-particle='sollen' or
-                              $lemma-without-particle='vermögen' or
-                              $lemma-without-particle='wissen' or
-                              $lemma-without-particle='wollen'">
+              <xsl:when test="ends-with($lemma-without-particle,'dürfen') or
+                              ends-with($lemma-without-particle,'können') or
+                              ends-with($lemma-without-particle,'mögen') or
+                              ends-with($lemma-without-particle,'müssen') or
+                              ends-with($lemma-without-particle,'sollen') or
+                              ends-with($lemma-without-particle,'wissen') or
+                              ends-with($lemma-without-particle,'wollen')">
                 <xsl:call-template name="verb-stem-entry">
                   <xsl:with-param name="lemma"
                                   select="$lemma-without-particle"/>
