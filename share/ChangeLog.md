@@ -1,3 +1,7 @@
+2025-04-22:
+
+* add support for verbal backformations ending in "sen" or "zen"
+
 2025-04-11:
 
 * add support for non-standard contracted adpositions
