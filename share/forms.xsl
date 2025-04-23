@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 7.0 -->
-<!-- Andreas Nolda 2024-10-02 -->
+<!-- Version 7.1 -->
+<!-- Andreas Nolda 2025-04-22 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -14,6 +14,8 @@
   <xsl:param name="form"/>
   <xsl:param name="lemma"/>
   <xsl:choose>
+    <!-- empty forms -->
+    <xsl:when test="string-length($form)=0"/>
     <!-- suffixes -->
     <xsl:when test="starts-with($form,'-')">
       <xsl:value-of select="$form"/>
@@ -43,6 +45,8 @@
   <xsl:param name="form"/>
   <xsl:param name="stem"/>
   <xsl:choose>
+    <!-- empty forms -->
+    <xsl:when test="string-length($form)=0"/>
     <!-- suffixes -->
     <xsl:when test="starts-with($form,'-')">
       <xsl:value-of select="$form"/>

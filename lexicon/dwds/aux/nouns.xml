@@ -19,8 +19,26 @@
     </Formangabe>
   </Artikel>
   <Artikel>
+    <Formangabe Typ="Symbol">
+      <Schreibung>$</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
     <Formangabe Typ="Abkürzung">
       <Schreibung hidx="1">Dr.</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Symbol">
+      <Schreibung hidx="1">€</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
@@ -156,6 +174,15 @@
     </Formangabe>
   </Artikel>
   <Artikel>
+    <Formangabe Typ="Symbol">
+      <Schreibung>£</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
     <Formangabe Typ="Abkürzung">
       <Schreibung hidx="1">Prof.</Schreibung>
       <Grammatik>
@@ -224,6 +251,15 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe Typ="Symbol">
+      <Schreibung>¥</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
       </Grammatik>
     </Formangabe>
   </Artikel>

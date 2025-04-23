@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 12.4
-% Andreas Nolda 2025-04-11
+% Version 12.5
+% Andreas Nolda 2025-04-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -33,7 +33,7 @@
 
 #frac# = ½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅐⅛⅜⅝⅞⅑⅒ % ...
 
-#symbol# = §\%‰°′″*†&\+−×÷ % ...
+#symbol# = §\%‰°′″*†&\+−×÷€£$¥ % ...
 
 #punctcomma# = \,
 
