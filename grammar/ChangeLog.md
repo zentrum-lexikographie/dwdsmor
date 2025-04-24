@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-04-24:
+
+* add inflecion class `NFem_n_n_0` for archaic weak inflection of "Gnade"
+
 2025-04-22:
 
 * add support for common currency symbols

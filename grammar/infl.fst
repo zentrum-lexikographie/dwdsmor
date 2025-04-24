@@ -1,6 +1,6 @@
 % infl.fst
-% Version 12.1
-% Andreas Nolda 2025-04-11
+% Version 12.2
+% Andreas Nolda 2025-04-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -26,6 +26,11 @@ $NGenSgSuff_n$ = {<Nom><Sg>}:{}      | \
                  {<Acc><Sg>}:{<SB>n} | \
                  {<Dat><Sg>}:{<SB>n} | \
                  {<Gen><Sg>}:{<SB>n}
+
+$NGenSgOldSuff_n$ = {<Nom><Sg>}:{}           | \
+                    {<Acc><Sg><Old>}:{<SB>n} | \
+                    {<Dat><Sg><Old>}:{<SB>n} | \
+                    {<Gen><Sg><Old>}:{<SB>n}
 
 $NGenSgSuff_es$ = {<Nom><Sg>}:{}           | \
                   {<Acc><Sg>}:{}           | \
@@ -723,7 +728,7 @@ $NFem_0_en_0$ = {<+NN><Fem>}:{}       $NGenSgSuff_0$ | \
 $NFem_0_\$en_0$ = {<+NN><Fem>}:{}            $NGenSgSuff_0$ | \
                   {<+NN><Fem>}:{<uml><SB>en} $NDatPlSuff_0$
 
-% Hilfe, Hilfe, Hilfen, Hilfen; Tafel, Tafel, Tafeln, Tafeln
+% Hilfe, Hilfe, Hilfen, Hilfen; Gnade, Gnade, Gnaden, Gnaden
 $NFem_0_n_0$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
                {<+NN><Fem>}:{<SB>n} $NDatPlSuff_0$
 
@@ -800,6 +805,10 @@ $NFem_0_os/otes_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
 % Vox, Vox, Voces, Voces
 $NFem_0_ox/oces_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
                      {<+NN><Fem>}:{<del(VC)|Pl>oc<SB>es} $NDatPlSuff_0$
+
+% Gnade, Gnaden (archaic), Gnaden, Gnaden
+$NFem_n_n_0$ = {<+NN><Fem>}:{}      $NGenSgOldSuff_n$ | \
+               {<+NN><Fem>}:{<SB>n} $NDatPlSuff_0$
 
 % Freundin, Freundin, Freundinnen
 $NFem-in$ = {<+NN><Fem>}:{}        $NGenSgSuff_0$ | \
@@ -2780,6 +2789,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NFem_0_os/otes_0>        $NFem_0_os/otes_0$       | \
          <>:<NFem_0_ox/oces_0>        $NFem_0_ox/oces_0$       | \
          <>:<NFem_0_s_0>              $NFem_0_s_0$             | \
+         <>:<NFem_n_n_0>              $NFem_n_n_0$             | \
          <>:<NMasc-Adj>               $NMasc-Adj$              | \
          <>:<NMasc|Pl_0>              $NMasc|Pl_0$             | \
          <>:<NMasc|Sg_0>              $NMasc|Sg_0$             | \

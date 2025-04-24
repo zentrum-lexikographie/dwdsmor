@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 12.5
-% Andreas Nolda 2025-04-22
+% Version 12.6
+% Andreas Nolda 2025-04-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -156,11 +156,11 @@
                     <NFem_0_ex/eges_0><NFem_0_is/en_0><NFem_0_is/iden_0> \
                     <NFem_0_is/ides_0><NFem_0_ix/ices_0><NFem_0_ix/izen_0> \
                     <NFem_0_ix/izes_0><NFem_0_n_0><NFem_0_ien_0><NFem_0_nes_0> \
-                    <NFem_0_os/otes_0><NFem_0_ox/oces_0><NFem_0_s_0><NMasc-Adj> \
-                    <NMasc|Pl_0><NMasc|Sg_0><NMasc|Sg_es><NMasc|Sg_ns> \
-                    <NMasc|Sg_s><NMasc_0_$e_n><NMasc_0_0_0><NMasc_0_0_n> \
-                    <NMasc_0_a/en_0><NMasc_0_as/anten_0><NMasc_0_e_n> \
-                    <NMasc_0_e_n~ss><NMasc_0_e/i_0><NMasc_0_en_0> \
+                    <NFem_0_os/otes_0><NFem_0_ox/oces_0><NFem_0_s_0><NFem_n_n_0> \
+                    <NMasc-Adj><NMasc|Pl_0><NMasc|Sg_0><NMasc|Sg_es> \
+                    <NMasc|Sg_ns><NMasc|Sg_s><NMasc_0_$e_n><NMasc_0_0_0> \
+                    <NMasc_0_0_n><NMasc_0_a/en_0><NMasc_0_as/anten_0> \
+                    <NMasc_0_e_n><NMasc_0_e_n~ss><NMasc_0_e/i_0><NMasc_0_en_0> \
                     <NMasc_0_ens/entes_0><NMasc_0_es/iden_0><NMasc_0_es/ides_0> \
                     <NMasc_0_es_0><NMasc_0_ex/izes_0><NMasc_0_ix/izes_0> \
                     <NMasc_0_i/en_0><NMasc_0_i_0><NMasc_0_is/es_0> \

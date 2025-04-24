@@ -14535,6 +14535,75 @@
     ),
     tuple(
       'NN',
+      'NFem_0_n_0, NFem_n_n_0',
+      'Gnade',
+      tuple(
+        'Gnade<PAR1><+NN><Fem><Acc><Pl>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR1><+NN><Fem><Acc><Sg>',
+        'Gnade',
+      ),
+      tuple(
+        'Gnade<PAR1><+NN><Fem><Dat><Pl>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR1><+NN><Fem><Dat><Sg>',
+        'Gnade',
+      ),
+      tuple(
+        'Gnade<PAR1><+NN><Fem><Gen><Pl>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR1><+NN><Fem><Gen><Sg>',
+        'Gnade',
+      ),
+      tuple(
+        'Gnade<PAR1><+NN><Fem><Nom><Pl>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR1><+NN><Fem><Nom><Sg>',
+        'Gnade',
+      ),
+      tuple(
+        'Gnade<PAR2><+NN><Fem><Acc><Pl>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR2><+NN><Fem><Acc><Sg><Old>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR2><+NN><Fem><Dat><Pl>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR2><+NN><Fem><Dat><Sg><Old>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR2><+NN><Fem><Gen><Pl>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR2><+NN><Fem><Gen><Sg><Old>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR2><+NN><Fem><Nom><Pl>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<PAR2><+NN><Fem><Nom><Sg>',
+        'Gnade',
+      ),
+    ),
+    tuple(
+      'NN',
       'NFem_0_nes_0',
       'Laudatio',
       tuple(

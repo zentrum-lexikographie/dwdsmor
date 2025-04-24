@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 7.5 -->
-<!-- Andreas Nolda 2024-11-19 -->
+<!-- Version 7.6 -->
+<!-- Andreas Nolda 2025-04-24 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1324,6 +1324,11 @@
          genitive-singular="-"
          nominative-plural="-ox/oces"
          dative-plural="-">NFem_0_ox/oces_0</class>
+  <!-- all forms except nominative singular: "-n" -->
+  <class gender="fem."
+         genitive-singular="-n"
+         nominative-plural="-n"
+         dative-plural="-">NFem_n_n_0</class>
   <!-- genitive singular: unmarked
        nominative plural: geminate "n" + "-en"
        dative plural: unmarked -->
