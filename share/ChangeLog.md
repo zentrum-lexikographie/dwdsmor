@@ -1,3 +1,7 @@
+2025-04-24:
+
+* improve support for meta-markers
+
 2025-04-22:
 
 * add support for prefixed modal verbs
