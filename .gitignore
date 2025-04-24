@@ -1,10 +1,11 @@
 # .gitignore
-# Andreas Nolda 2025-04-11
+# Andreas Nolda 2025-04-24
 
 *~
 \#*
 
 /.coverage
+/.hypothesis/
 /.idea/
 /.venv/
 /.python-version
