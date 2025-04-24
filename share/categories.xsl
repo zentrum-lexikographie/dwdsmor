@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 7.6 -->
+<!-- Version 7.7 -->
 <!-- Andreas Nolda 2025-04-24 -->
 
 <xsl:stylesheet version="2.0"
@@ -856,6 +856,13 @@
          genitive-singular="-ses"
          nominative-plural="-se"
          dative-plural="-n">NNeut_es_e_n~ss</class>
+  <!-- genitive singular: geminate "z" + "-es"
+       nominative plural: geminate "z" + "-e"
+       dative plural: "-n" -->
+  <class gender="neutr."
+         genitive-singular="-zes"
+         nominative-plural="-ze"
+         dative-plural="-n">NNeut_es_e_n~zz</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: umlaut and "-e"
        dative plural: "-n" -->

@@ -1,11 +1,12 @@
 % infl.fst
-% Version 12.2
+% Version 12.3
 % Andreas Nolda 2025-04-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
 $SS$ = <>:<dbl(s)>
+$ZZ$ = <>:<dbl(z)>
 
 
 % nouns
@@ -38,6 +39,11 @@ $NGenSgSuff_es$ = {<Nom><Sg>}:{}           | \
                   {<Dat><Sg><Old>}:{<SB>e} | \ % cf. Duden-Grammatik (2016: § 317)
                   {<Gen><Sg>}:{<SB>es<del(e)|Gen>}
 
+$NGenSgNonStSuff_es$ = {<Nom><Sg>}:{} | \
+                       {<Acc><Sg>}:{} | \
+                       {<Dat><Sg>}:{} | \
+                       {<Gen><Sg><NonSt>}:{<SB>es<del(e)|Gen>}
+
 $NGenSgSuff_s$ = {<Nom><Sg>}:{} | \
                  {<Acc><Sg>}:{} | \
                  {<Dat><Sg>}:{} | \
@@ -62,6 +68,11 @@ $NDatPlSuff_n$ = {<Nom><Pl>}:{}      | \
                  {<Acc><Pl>}:{}      | \
                  {<Dat><Pl>}:{<SB>n} | \
                  {<Gen><Pl>}:{}
+
+$NDatPlNonStSuff_n$ = {<Nom><Pl><NonSt>}:{}      | \
+                      {<Acc><Pl><NonSt>}:{}      | \
+                      {<Dat><Pl><NonSt>}:{<SB>n} | \
+                      {<Gen><Pl><NonSt>}:{}
 
 
 % masculine nouns
@@ -395,7 +406,7 @@ $NNeut|Pl_0$ = {<+NN><Neut>}:{} $NDatPlSuff_0$
 % Viecher, Viechern (suppletive plural)
 $NNeut|Pl_n$ = {<+NN><Neut>}:{} $NDatPlSuff_n$
 
-% Relais, Relais, Relais, Relais
+% Relais, Relais, Relais, Relais; Quiz, Quiz, Quiz, Quiz
 $NNeut_0_0_0$ = {<+NN><Neut>}:{} $NGenSgSuff_0$ | \
                 {<+NN><Neut>}:{} $NDatPlSuff_0$
 
@@ -516,6 +527,10 @@ $NNeut_es_e_n$ = {<+NN><Neut>}:{}      $NGenSgSuff_es$ | \
 
 % Zeugnis, Zeugnisses, Zeugnisse, Zeugnissen; Rhinozeros, Rhinozerosses, Rhinozerosse, Rhinozerossen
 $NNeut_es_e_n~ss$ = $SS$ $NNeut_es_e_n$
+
+% Quiz, Quizzes, Quizze, Quizzen (coll.)
+$NNeut_es_e_n~zz$ = $ZZ$ {<+NN><Neut>}:{}      $NGenSgNonStSuff_es$ | \
+                    $ZZ$ {<+NN><Neut>}:{<SB>e} $NDatPlNonStSuff_n$
 
 % Floß, Floßes, Flöße, Flößen
 $NNeut_es_\$e_n$ = {<+NN><Neut>}:{}           $NGenSgSuff_es$ | \
@@ -2913,6 +2928,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut_es_$er_n>          $NNeut_es_\$er_n$        | \
          <>:<NNeut_es_e_n>            $NNeut_es_e_n$           | \
          <>:<NNeut_es_e_n~ss>         $NNeut_es_e_n~ss$        | \
+         <>:<NNeut_es_e_n~zz>         $NNeut_es_e_n~zz$        | \
          <>:<NNeut_es_en_0>           $NNeut_es_en_0$          | \
          <>:<NNeut_es_er_n>           $NNeut_es_er_n$          | \
          <>:<NNeut_es_es_0>           $NNeut_es_es_0$          | \

@@ -1,5 +1,5 @@
 % symbols.fst
-% Version 12.6
+% Version 12.7
 % Andreas Nolda 2025-04-24
 
 % based on code from SMORLemma by Rico Sennrich
@@ -61,7 +61,7 @@
 
 #orth-trigger# = <dc><uc>
 
-#phon-trigger# = <dbl(s)><del(e)><del(e)|ADJ><del(e)|Gen><del(e)|PRO> \
+#phon-trigger# = <dbl(s)><dbl(z)><del(e)><del(e)|ADJ><del(e)|Gen><del(e)|PRO> \
                  <del(VC)|Pl><ins(e)><uml>
 
 #morph-trigger# = <ins(ge)><ins(zu)><rm|Part><rm|Imp>
@@ -195,10 +195,10 @@
                     <NNeut_0_um/en_0><NNeut_0_us/en_0><NNeut_0_us/era_0> \
                     <NNeut_0_us/ora_0><NNeut_ens_en_0><NNeut_es_$e_n> \
                     <NNeut_es_$er_n><NNeut_es_e_n><NNeut_es_e_n~ss> \
-                    <NNeut_es_en_0><NNeut_es_er_n><NNeut_es_es_0> \
-                    <NNeut_es_ex/izia_0><NNeut_es_ien_0><NNeut_es_s_0> \
-                    <NNeut_s_$_n><NNeut_s_$er_n><NNeut_s_0_n><NNeut_s_a_0> \
-                    <NNeut_s_a/ata_0><NNeut_s_a/en_0><NNeut_s_e_n> \
+                    <NNeut_es_e_n~zz><NNeut_es_en_0><NNeut_es_er_n> \
+                    <NNeut_es_es_0><NNeut_es_ex/izia_0><NNeut_es_ien_0> \
+                    <NNeut_es_s_0><NNeut_s_$_n><NNeut_s_$er_n><NNeut_s_0_n> \
+                    <NNeut_s_a_0><NNeut_s_a/ata_0><NNeut_s_a/en_0><NNeut_s_e_n> \
                     <NNeut_s_e/i_0><NNeut_s_e/ia_0><NNeut_s_e/ien_0> \
                     <NNeut_s_en_0><NNeut_s_en/ina_0><NNeut_s_i/en_0> \
                     <NNeut_s_ien_0><NNeut_s_n_0><NNeut_s_nen_0><NNeut_s_o/en_0> \

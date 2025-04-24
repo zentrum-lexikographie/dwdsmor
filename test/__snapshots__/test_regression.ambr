@@ -18900,6 +18900,63 @@
     ),
     tuple(
       'NN',
+      'NNeut_0_0_0, NNeut_es_e_n~zz',
+      'Quiz',
+      tuple(
+        'Quiz<+NN><Neut><Acc><Pl>',
+        'Quiz',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Acc><Pl><NonSt>',
+        'Quizze',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Acc><Sg>',
+        'Quiz',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Dat><Pl>',
+        'Quiz',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Dat><Pl><NonSt>',
+        'Quizzen',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Dat><Sg>',
+        'Quiz',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Gen><Pl>',
+        'Quiz',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Gen><Pl><NonSt>',
+        'Quizze',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Gen><Sg>',
+        'Quiz',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Gen><Sg><NonSt>',
+        'Quizzes',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Nom><Pl>',
+        'Quiz',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Nom><Pl><NonSt>',
+        'Quizze',
+      ),
+      tuple(
+        'Quiz<+NN><Neut><Nom><Sg>',
+        'Quiz',
+      ),
+    ),
+    tuple(
+      'NN',
       'NNeut_0_0_n',
       'Zuhause',
       tuple(

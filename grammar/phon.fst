@@ -1,6 +1,6 @@
 % phon.fst
-% Version 6.5
-% Andreas Nolda 2024-11-01
+% Version 6.6
+% Andreas Nolda 2025-04-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -48,6 +48,18 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index
 
 $PhonSDuplication$ = ((s) <dbl(s)> <=> s  (<SB> [aeiou])) & \
                      ((s) <dbl(s)> <=> <> (<SB> $Cons$ | <WB>))
+
+
+% stem-final "z"-duplication
+% Quiz<dbl(z)><SB>es -> Quizz<SB>es
+% Quiz<dbl(z)><SB>e  -> Quizz<SB>e
+
+ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #lemma-index# #paradigm-index# \
+            #category# #feature# #info# <e>] \
+           <dbl(z)>:[<>z]
+
+$PhonZDuplication$ = ((z) <dbl(z)> <=> z  (<SB> [aeiou])) & \
+                     ((z) <dbl(z)> <=> <> (<SB> $Cons$ | <WB>))
 
 
 % deletion of "st"-suffixes
@@ -322,6 +334,7 @@ $PhonMarker$ = .*
 
 $PHON$ = $PhonUmlaut$           || \
          $PhonSDuplication$     || \
+         $PhonZDuplication$     || \
          $PhonStDeletion$       || \
          $PhonEElision$         || \
          $PhonSDeletion$        || \
