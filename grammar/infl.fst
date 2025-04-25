@@ -69,11 +69,6 @@ $NDatPlSuff_n$ = {<Nom><Pl>}:{}      | \
                  {<Dat><Pl>}:{<SB>n} | \
                  {<Gen><Pl>}:{}
 
-$NDatPlNonStSuff_n$ = {<Nom><Pl><NonSt>}:{}      | \
-                      {<Acc><Pl><NonSt>}:{}      | \
-                      {<Dat><Pl><NonSt>}:{<SB>n} | \
-                      {<Gen><Pl><NonSt>}:{}
-
 
 % masculine nouns
 
@@ -530,7 +525,7 @@ $NNeut_es_e_n~ss$ = $SS$ $NNeut_es_e_n$
 
 % Quiz, Quizzes, Quizze, Quizzen (coll.)
 $NNeut_es_e_n~zz$ = $ZZ$ {<+NN><Neut>}:{}      $NGenSgNonStSuff_es$ | \
-                    $ZZ$ {<+NN><Neut>}:{<SB>e} $NDatPlNonStSuff_n$
+                    $ZZ$ {<+NN><Neut>}:{<SB>e} $NDatPlSuff_n$ {<NonSt>}:{}
 
 % Floß, Floßes, Flöße, Flößen
 $NNeut_es_\$e_n$ = {<+NN><Neut>}:{}           $NGenSgSuff_es$ | \
