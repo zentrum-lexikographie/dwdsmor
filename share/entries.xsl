@@ -1835,6 +1835,7 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="abbreviation"/>
+  <xsl:param name="noun-type"/>
   <xsl:param name="gender"/>
   <xsl:param name="number"/>
   <xsl:param name="genitive-singular"/>
@@ -1860,6 +1861,119 @@
       </xsl:call-template>
     </xsl:variable>
     <xsl:choose>
+      <!-- measure nouns -->
+      <!-- masculine measure nouns -->
+      <!-- genitive singular: "-(e)s"
+           nominative plural: "-" -->
+      <xsl:when test="$noun-type='measure-noun' and
+                      $gender='mask.' and
+                      ($genitive-singular-marker='-(e)s' or
+                       $genitive-singular-marker='-es') and
+                      $nominative-plural-marker='-'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NMasc0_es</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- genitive singular: "-s"
+           nominative plural: "-" -->
+      <xsl:when test="$noun-type='measure-noun' and
+                      $gender='mask.' and
+                      ($genitive-singular-marker='-(s)' or
+                       $genitive-singular-marker='-s') and
+                      $nominative-plural-marker='-'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NMasc0_s</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- neuter measure nouns -->
+      <!-- genitive singular: "-(e)s"
+           nominative plural: "-" -->
+      <xsl:when test="$noun-type='measure-noun' and
+                      $gender='neutr.' and
+                      ($genitive-singular-marker='-(e)s' or
+                       $genitive-singular-marker='-es') and
+                      $nominative-plural-marker='-'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NNeut0_es</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- genitive singular: "-s"
+           nominative plural: "-" -->
+      <xsl:when test="$noun-type='measure-noun' and
+                      $gender='neutr.' and
+                      ($genitive-singular-marker='-(s)' or
+                       $genitive-singular-marker='-s') and
+                      $nominative-plural-marker='-'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NNeut0_s</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- feminine measure nouns -->
+      <!-- genitive singular: "-"
+           nominative plural: "-" -->
+      <xsl:when test="$noun-type='measure-noun' and
+                      $gender='fem.' and
+                      $genitive-singular-marker='-' and
+                      $nominative-plural-marker='-'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NFem0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <!-- nouns with suppletive plural -->
       <!-- lemma: "Bau"
            nominative plural: "Bauten" -->
@@ -1875,6 +1989,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
+          <xsl:with-param name="noun-type"
+                          select="noun-type"/>
           <xsl:with-param name="gender"
                           select="$gender"/>
           <xsl:with-param name="number">singular</xsl:with-param>
@@ -1918,6 +2034,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
+          <xsl:with-param name="noun-type"
+                          select="noun-type"/>
           <xsl:with-param name="gender"
                           select="$gender"/>
           <xsl:with-param name="number">singular</xsl:with-param>
@@ -1961,6 +2079,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
+          <xsl:with-param name="noun-type"
+                          select="noun-type"/>
           <xsl:with-param name="gender"
                           select="$gender"/>
           <xsl:with-param name="number">singular</xsl:with-param>
@@ -2004,6 +2124,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
+          <xsl:with-param name="noun-type"
+                          select="noun-type"/>
           <xsl:with-param name="gender"
                           select="$gender"/>
           <xsl:with-param name="number">singular</xsl:with-param>
@@ -2047,6 +2169,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
+          <xsl:with-param name="noun-type"
+                          select="noun-type"/>
           <xsl:with-param name="gender"
                           select="$gender"/>
           <xsl:with-param name="number">singular</xsl:with-param>
@@ -2090,6 +2214,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
+          <xsl:with-param name="noun-type"
+                          select="noun-type"/>
           <xsl:with-param name="gender"
                           select="$gender"/>
           <xsl:with-param name="number">singular</xsl:with-param>
@@ -2133,6 +2259,8 @@
                           select="$paradigm-index"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
+          <xsl:with-param name="noun-type"
+                          select="noun-type"/>
           <xsl:with-param name="gender"
                           select="$gender"/>
           <xsl:with-param name="number">singular</xsl:with-param>

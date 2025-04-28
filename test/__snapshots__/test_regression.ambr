@@ -13751,6 +13751,47 @@
     ),
     tuple(
       'NN',
+      'NFem0, NFem_0_$e_n',
+      'Hand',
+      tuple(
+        'Hand<PAR1><+NN><Fem><Acc><Pl>',
+        'Hände',
+      ),
+      tuple(
+        'Hand<PAR1><+NN><Fem><Acc><Sg>',
+        'Hand',
+      ),
+      tuple(
+        'Hand<PAR1><+NN><Fem><Dat><Pl>',
+        'Händen',
+      ),
+      tuple(
+        'Hand<PAR1><+NN><Fem><Dat><Sg>',
+        'Hand',
+      ),
+      tuple(
+        'Hand<PAR1><+NN><Fem><Gen><Pl>',
+        'Hände',
+      ),
+      tuple(
+        'Hand<PAR1><+NN><Fem><Gen><Sg>',
+        'Hand',
+      ),
+      tuple(
+        'Hand<PAR1><+NN><Fem><Nom><Pl>',
+        'Hände',
+      ),
+      tuple(
+        'Hand<PAR1><+NN><Fem><Nom><Sg>',
+        'Hand',
+      ),
+      tuple(
+        'Hand<PAR2><+NN><Fem><UnmCase><UnmNum>',
+        'Hand',
+      ),
+    ),
+    tuple(
+      'NN',
       'NFem_0_$_n',
       'Tochter',
       tuple(
@@ -15040,6 +15081,108 @@
       tuple(
         'Deutsche<IDX1><PAR2><+NN><Neut><Nom><Sg><Wk>',
         'Deutsche',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NMasc0_es, NMasc_es_$e_n',
+      'Kopf',
+      tuple(
+        'Kopf<PAR1><+NN><Masc><Acc><Pl>',
+        'Köpfe',
+      ),
+      tuple(
+        'Kopf<PAR1><+NN><Masc><Acc><Sg>',
+        'Kopf',
+      ),
+      tuple(
+        'Kopf<PAR1><+NN><Masc><Dat><Pl>',
+        'Köpfen',
+      ),
+      tuple(
+        'Kopf<PAR1><+NN><Masc><Dat><Sg>',
+        'Kopf',
+      ),
+      tuple(
+        'Kopf<PAR1><+NN><Masc><Dat><Sg><Old>',
+        'Kopfe',
+      ),
+      tuple(
+        'Kopf<PAR1><+NN><Masc><Gen><Pl>',
+        'Köpfe',
+      ),
+      tuple(
+        'Kopf<PAR1><+NN><Masc><Gen><Sg>',
+        'Kopfes',
+      ),
+      tuple(
+        'Kopf<PAR1><+NN><Masc><Gen><Sg>',
+        'Kopfs',
+      ),
+      tuple(
+        'Kopf<PAR1><+NN><Masc><Nom><Pl>',
+        'Köpfe',
+      ),
+      tuple(
+        'Kopf<PAR1><+NN><Masc><Nom><Sg>',
+        'Kopf',
+      ),
+      tuple(
+        'Kopf<PAR2><+NN><Masc><Gen><Sg>',
+        'Kopfes',
+      ),
+      tuple(
+        'Kopf<PAR2><+NN><Masc><Gen><Sg>',
+        'Kopfs',
+      ),
+      tuple(
+        'Kopf<PAR2><+NN><Masc><UnmCase><UnmNum>',
+        'Kopf',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NMasc0_s, NMasc_s_$_0',
+      'Faden',
+      tuple(
+        'Faden<PAR1><+NN><Masc><Acc><Pl>',
+        'Fäden',
+      ),
+      tuple(
+        'Faden<PAR1><+NN><Masc><Acc><Sg>',
+        'Faden',
+      ),
+      tuple(
+        'Faden<PAR1><+NN><Masc><Dat><Pl>',
+        'Fäden',
+      ),
+      tuple(
+        'Faden<PAR1><+NN><Masc><Dat><Sg>',
+        'Faden',
+      ),
+      tuple(
+        'Faden<PAR1><+NN><Masc><Gen><Pl>',
+        'Fäden',
+      ),
+      tuple(
+        'Faden<PAR1><+NN><Masc><Gen><Sg>',
+        'Fadens',
+      ),
+      tuple(
+        'Faden<PAR1><+NN><Masc><Nom><Pl>',
+        'Fäden',
+      ),
+      tuple(
+        'Faden<PAR1><+NN><Masc><Nom><Sg>',
+        'Faden',
+      ),
+      tuple(
+        'Faden<PAR2><+NN><Masc><Gen><Sg>',
+        'Fadens',
+      ),
+      tuple(
+        'Faden<PAR2><+NN><Masc><UnmCase><UnmNum>',
+        'Faden',
       ),
     ),
     tuple(
@@ -18806,6 +18949,108 @@
       tuple(
         'Inner<~>e<+NN><Neut><Nom><Sg><Wk>',
         'Innere',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NNeut0_es, NNeut_es_e_n',
+      'Paar',
+      tuple(
+        'Paar<PAR1><+NN><Neut><Acc><Pl>',
+        'Paare',
+      ),
+      tuple(
+        'Paar<PAR1><+NN><Neut><Acc><Sg>',
+        'Paar',
+      ),
+      tuple(
+        'Paar<PAR1><+NN><Neut><Dat><Pl>',
+        'Paaren',
+      ),
+      tuple(
+        'Paar<PAR1><+NN><Neut><Dat><Sg>',
+        'Paar',
+      ),
+      tuple(
+        'Paar<PAR1><+NN><Neut><Dat><Sg><Old>',
+        'Paare',
+      ),
+      tuple(
+        'Paar<PAR1><+NN><Neut><Gen><Pl>',
+        'Paare',
+      ),
+      tuple(
+        'Paar<PAR1><+NN><Neut><Gen><Sg>',
+        'Paares',
+      ),
+      tuple(
+        'Paar<PAR1><+NN><Neut><Gen><Sg>',
+        'Paars',
+      ),
+      tuple(
+        'Paar<PAR1><+NN><Neut><Nom><Pl>',
+        'Paare',
+      ),
+      tuple(
+        'Paar<PAR1><+NN><Neut><Nom><Sg>',
+        'Paar',
+      ),
+      tuple(
+        'Paar<PAR2><+NN><Neut><Gen><Sg>',
+        'Paares',
+      ),
+      tuple(
+        'Paar<PAR2><+NN><Neut><Gen><Sg>',
+        'Paars',
+      ),
+      tuple(
+        'Paar<PAR2><+NN><Neut><UnmCase><UnmNum>',
+        'Paar',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NNeut0_s, NNeut_s_s_0',
+      'Kilo',
+      tuple(
+        'Kilo<PAR1><+NN><Neut><Acc><Pl>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<PAR1><+NN><Neut><Acc><Sg>',
+        'Kilo',
+      ),
+      tuple(
+        'Kilo<PAR1><+NN><Neut><Dat><Pl>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<PAR1><+NN><Neut><Dat><Sg>',
+        'Kilo',
+      ),
+      tuple(
+        'Kilo<PAR1><+NN><Neut><Gen><Pl>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<PAR1><+NN><Neut><Gen><Sg>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<PAR1><+NN><Neut><Nom><Pl>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<PAR1><+NN><Neut><Nom><Sg>',
+        'Kilo',
+      ),
+      tuple(
+        'Kilo<PAR2><+NN><Neut><Gen><Sg>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<PAR2><+NN><Neut><UnmCase><UnmNum>',
+        'Kilo',
       ),
     ),
     tuple(

@@ -46,6 +46,27 @@
     </Formangabe>
   </Artikel>
   <Artikel>
+    <Formangabe>
+      <Schreibung>Faden</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+        <Genitiv>-s</Genitiv>
+        <Plural>Fäden</Plural>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>Faden</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>mask.</Genus>
+        <Genitiv>-(s)</Genitiv>
+        <Plural>-</Plural>
+        <Einschraenkung>bei Maßangabe</Einschraenkung>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
     <Formangabe Typ="Symbol">
       <Schreibung>°</Schreibung>
       <Grammatik>
@@ -65,12 +86,54 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>Hand</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-</Genitiv>
+        <Plural>Hände</Plural>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>Hand</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>fem.</Genus>
+        <Genitiv>-</Genitiv>
+        <Plural>-</Plural>
+        <Einschraenkung>bei Maßangabe</Einschraenkung>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>Hundertste</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>neutr.</Genus>
         <Genitiv>-n</Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Kilo</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+        <Genitiv>-s</Genitiv>
+        <Plural>-s</Plural>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>Kilo</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+        <Genitiv>-(s)</Genitiv>
+        <Plural>-</Plural>
+        <Einschraenkung>bei Maßangabe</Einschraenkung>
       </Grammatik>
     </Formangabe>
   </Artikel>

@@ -1,6 +1,6 @@
 % infl.fst
-% Version 12.3
-% Andreas Nolda 2025-04-24
+% Version 12.4
+% Andreas Nolda 2025-04-25
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -10,6 +10,14 @@ $ZZ$ = <>:<dbl(z)>
 
 
 % nouns
+
+$NSuff0$ = {<UnmCase><UnmNum>}:{}
+
+$NSuff0_es$ = $NSuff0$ | \
+              {<Gen><Sg>}:{<SB>es<del(e)|Gen>}
+
+$NSuff0_s$ = $NSuff0$ | \
+             {<Gen><Sg>}:{<SB>s}
 
 $NGenSgSuff_0$ = {<Nom><Sg>}:{} | \
                  {<Acc><Sg>}:{} | \
@@ -71,6 +79,12 @@ $NDatPlSuff_n$ = {<Nom><Pl>}:{}      | \
 
 
 % masculine nouns
+
+% Kopf, Kopf(e)s (measure noun)
+$NMasc0_es$ = {<+NN><Masc>}:{} $NSuff0_es$
+
+% Faden, Fadens (measure noun)
+$NMasc0_s$ = {<+NN><Masc>}:{} $NSuff0_s$
 
 % Fiskus, Fiskus
 $NMasc|Sg_0$ = {<+NN><Masc>}:{} $NGenSgSuff_0$
@@ -214,7 +228,7 @@ $NMasc_es_e_n$ = {<+NN><Masc>}:{}      $NGenSgSuff_es$ | \
 % Bus, Busses, Busse, Bussen
 $NMasc_es_e_n~ss$ = $SS$ $NMasc_es_e_n$
 
-% Arzt, Arzt(e)s, Ärzte, Ärzten
+% Arzt, Arzt(e)s, Ärzte, Ärzten; Kopf, Kopf(e)s, Köpfe, Köpfen
 $NMasc_es_\$e_n$ = {<+NN><Masc>}:{}           $NGenSgSuff_es$ | \
                    {<+NN><Masc>}:{<uml><SB>e} $NDatPlSuff_n$
 
@@ -265,7 +279,7 @@ $NMasc_es_us/i_0~ss$ = $SS$ {<+NN><Masc>}:{}                  $NGenSgSuff_es$ | 
 $NMasc_s_0_0$ = {<+NN><Masc>}:{} $NGenSgSuff_s$ | \
                 {<+NN><Masc>}:{} $NDatPlSuff_0$
 
-% Garten, Gartens, Gärten, Gärten; Schaden, Schadens, Schäden
+% Garten, Gartens, Gärten, Gärten; Schaden, Schadens, Schäden; Faden, Fadens, Fäden, Fäden
 $NMasc_s_\$_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_s$ | \
                  {<+NN><Masc>}:{<uml>} $NDatPlSuff_0$
 
@@ -382,6 +396,12 @@ $NMasc-Adj$ = {<+NN><Masc><Nom><Sg><St>}:{<SB>er} | \
 
 
 % neuter nouns
+
+% Paar, Paar(e)s (measure noun)
+$NNeut0_es$ = {<+NN><Neut>}:{} $NSuff0_es$
+
+% Kilo, Kilo(s) (measure noun)
+$NNeut0_s$ = {<+NN><Neut>}:{} $NSuff0_s$
 
 % Abseits, Abseits
 $NNeut|Sg_0$ = {<+NN><Neut>}:{} $NGenSgSuff_0$
@@ -697,6 +717,9 @@ $NNeut-Adj$ = {<+NN><Neut><Nom><Sg><St>}:{<SB>es} | \
 
 % feminine nouns
 
+% Hand (measure noun)
+$NFem0$ = {<+NN><Fem>}:{} $NSuff0$
+
 % Wut, Wut
 $NFem|Sg_0$ = {<+NN><Fem>}:{} $NGenSgSuff_0$
 
@@ -726,7 +749,7 @@ $NFem_0_e_n$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
 % Kenntnis, Kenntnis, Kenntnisse, Kenntnissen
 $NFem_0_e_n~ss$ = $SS$ $NFem_0_e_n$
 
-% Wand, Wand, Wände, Wänden
+% Wand, Wand, Wände, Wänden; Hand, Hand, Hände, Händen
 $NFem_0_\$e_n$ = {<+NN><Fem>}:{}           $NGenSgSuff_0$ | \
                  {<+NN><Fem>}:{<uml><SB>e} $NDatPlSuff_n$
 
@@ -2766,6 +2789,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NameNeut_s>              $NameNeut_s$             | \
          <>:<NameUnmGend|Pl_0>        $NameUnmGend|Pl_0$       | \
          <>:<NameUnmGend|Pl_n>        $NameUnmGend|Pl_n$       | \
+         <>:<NFem0>                   $NFem0$                  | \
          <>:<NFem-Adj>                $NFem-Adj$               | \
          <>:<NFem-in>                 $NFem-in$                | \
          <>:<NFem|Pl_0>               $NFem|Pl_0$              | \
@@ -2800,6 +2824,8 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NFem_0_ox/oces_0>        $NFem_0_ox/oces_0$       | \
          <>:<NFem_0_s_0>              $NFem_0_s_0$             | \
          <>:<NFem_n_n_0>              $NFem_n_n_0$             | \
+         <>:<NMasc0_es>               $NMasc0_es$              | \
+         <>:<NMasc0_s>                $NMasc0_s$               | \
          <>:<NMasc-Adj>               $NMasc-Adj$              | \
          <>:<NMasc|Pl_0>              $NMasc|Pl_0$             | \
          <>:<NMasc|Sg_0>              $NMasc|Sg_0$             | \
@@ -2878,6 +2904,8 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMasc_s_o/en_0>          $NMasc_s_o/en_0$         | \
          <>:<NMasc_s_o/i_0>           $NMasc_s_o/i_0$          | \
          <>:<NMasc_s_s_0>             $NMasc_s_s_0$            | \
+         <>:<NNeut0_es>               $NNeut0_es$              | \
+         <>:<NNeut0_s>                $NNeut0_s$               | \
          <>:<NNeut-Adj>               $NNeut-Adj$              | \
          <>:<NNeut-Adj|Sg>            $NNeut-Adj|Sg$           | \
          <>:<NNeut-Inner>             $NNeut-Inner$            | \

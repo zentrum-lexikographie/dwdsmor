@@ -1,3 +1,7 @@
+2025-04-25:
+
+* add initial support for measure nouns
+
 2025-04-24:
 
 * improve support for meta-markers

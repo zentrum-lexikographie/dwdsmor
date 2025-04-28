@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 16.2 -->
-<!-- Andreas Nolda 2025-04-11 -->
+<!-- Version 16.3 -->
+<!-- Andreas Nolda 2025-04-26 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -210,6 +210,9 @@
         <!-- homograph index -->
         <xsl:variable name="lemma-index"
                       select="@hidx"/>
+        <xsl:variable name="meaning-type">
+          <xsl:call-template name="get-meaning-type-value"/>
+        </xsl:variable>
         <xsl:variable name="abbreviation">
           <xsl:call-template name="get-abbreviation-value"/>
         </xsl:variable>
@@ -513,6 +516,12 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
+                <xsl:with-param name="noun-type">
+                  <xsl:call-template name="get-noun-type-value">
+                    <xsl:with-param name="meaning-type"
+                                    select="$meaning-type"/>
+                  </xsl:call-template>
+                </xsl:with-param>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="number">singular</xsl:with-param>
@@ -537,6 +546,12 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
+                <xsl:with-param name="noun-type">
+                  <xsl:call-template name="get-noun-type-value">
+                    <xsl:with-param name="meaning-type"
+                                    select="$meaning-type"/>
+                  </xsl:call-template>
+                </xsl:with-param>
                 <xsl:with-param name="number">plural</xsl:with-param>
                 <xsl:with-param name="diminutive"
                                 select="$diminutive"/>
@@ -560,6 +575,12 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
+                <xsl:with-param name="noun-type">
+                  <xsl:call-template name="get-noun-type-value">
+                    <xsl:with-param name="meaning-type"
+                                    select="$meaning-type"/>
+                  </xsl:call-template>
+                </xsl:with-param>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="genitive-singular"
@@ -2471,6 +2492,19 @@
   </xsl:choose>
 </xsl:template>
 
+<xsl:template name="get-meaning-type-value">
+  <xsl:choose>
+    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Generalisierung']
+                                                                                                                                            [starts-with(normalize-space(.),'Maßangabe')]">measure</xsl:when>
+    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Generalisierung']
+                                                                                                                                            [starts-with(normalize-space(.),'Maßeinheit')]">measure</xsl:when>
+    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Basis']
+                                                                                                                                            [starts-with(normalize-space(.),'Maßeinheit')]">measure</xsl:when>
+    <!-- TODO: more meaning-type values -->
+    <xsl:otherwise>any</xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
 <xsl:template name="get-abbreviation-value">
   <xsl:choose>
     <!-- abbreviations with final period -->
@@ -2514,6 +2548,20 @@
     <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">nonattr</xsl:when>
     <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">nonattr</xsl:when>
     <!-- no test for "nicht prädikativ", which may still allow for adverbial use -->
+    <xsl:otherwise>any</xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="get-noun-type-value">
+  <xsl:param name="meaning-type"/>
+  <xsl:choose>
+    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Maßangabe')">measure-noun</xsl:when>
+    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Mengenangabe')">measure-noun</xsl:when>
+    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Wertangabe')">measure-noun</xsl:when>
+    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'mit Mengenangabe')">measure-noun</xsl:when>
+    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nach Zahlenangabe')">measure-noun</xsl:when>
+    <xsl:when test="$meaning-type='measure'">measure-noun</xsl:when>
+    <!-- TODO: more noun-type values -->
     <xsl:otherwise>any</xsl:otherwise>
   </xsl:choose>
 </xsl:template>

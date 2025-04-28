@@ -59,6 +59,7 @@ INDEF,Indef-saemtlich,sämtliche
 INDEF,Indef-welch,welche
 INDEF,Indef0,genug
 NN,NFem-in,Freundin
+NN,"NFem0, NFem_0_$e_n",Hand
 NN,NFem_0_$_n,Tochter
 NN,NFem_0_$e_n,Wand
 NN,NFem_0_$en_0,Werkstatt
@@ -88,6 +89,8 @@ NN,"NFem_0_s_0, NFem_0_a/e_0, NFem_0_a/en_0",Pizza
 NN,NFem|Sg_0,Ruhe
 NN,"NFem|Sg_0, NFem|Pl_0",Anchorwoman
 NN,"NMasc-Adj, NNeut-Adj|Sg, NFem-Adj",Deutsche
+NN,"NMasc0_es, NMasc_es_$e_n",Kopf
+NN,"NMasc0_s, NMasc_s_$_0",Faden
 NN,NMasc_0_0_0,Blues
 NN,"NMasc_0_0_0, NMasc_0_is/es_0",Gravis
 NN,"NMasc_0_0_n, NMasc_s_0_n",Dezember
@@ -154,6 +157,8 @@ NN,"NMasc|Sg_es, NMasc|Pl_0, NMasc_es_e_n",Bau
 NN,NMasc|Sg_ns,Unglaube
 NN,NMasc|Sg_s,Adel
 NN,NNeut-Inner,Innere
+NN,"NNeut0_es, NNeut_es_e_n",Paar
+NN,"NNeut0_s, NNeut_s_s_0",Kilo
 NN,NNeut_0_0_0,Ostern
 NN,"NNeut_0_0_0, NNeut_0_en_0",Remis
 NN,"NNeut_0_0_0, NNeut_es_e_n~zz",Quiz

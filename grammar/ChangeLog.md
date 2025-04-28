@@ -1,8 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-04-25:
+
+* add inflection classes `NMasc0_s`, `NNeut0_s`, and `NFem0` for measure nouns
+
 2025-04-24:
 
-* add inflecion class `NFem_n_n_0` for archaic weak inflection of "Gnade"
+* add inflection class `NFem_n_n_0` for archaic weak inflection of "Gnade"
 * add inflection class `NNeut_es_e_n~zz` for colloquial inflection of "Quiz"
 
 2025-04-22:
