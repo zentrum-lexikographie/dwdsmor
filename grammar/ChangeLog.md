@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-04-30:
+
+* add inflection class `NMasc_0_us/er_n`
+* add inflection classes `NNeut_0_em/en_0` and `NNeut_s_em/en_0`
+
 2025-04-25:
 
 * add inflection classes `NMasc0_s`, `NNeut0_s`, and `NFem0` for measure nouns

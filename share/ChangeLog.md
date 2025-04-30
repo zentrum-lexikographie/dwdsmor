@@ -1,5 +1,10 @@
 2025-04-30:
 
+* add support for masculine nouns with unmarked genitive singular forms and
+  nominative plural forms ending in "-er" substituted for "-us"
+* add support for neuter nous with genitive singular forms ending in "-s"
+  or unmarked genitive singular forms and nominative plural forms ending in
+  "-en" substituted for "-em"
 * add support for more nouns with suppletive plural forms
 
 2025-04-25:

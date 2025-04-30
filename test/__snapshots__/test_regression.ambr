@@ -16910,6 +16910,43 @@
     ),
     tuple(
       'NN',
+      'NMasc_0_us/er',
+      'Kanonikus',
+      tuple(
+        'Kanonikus<+NN><Masc><Acc><Pl>',
+        'Kanoniker',
+      ),
+      tuple(
+        'Kanonikus<+NN><Masc><Acc><Sg>',
+        'Kanonikus',
+      ),
+      tuple(
+        'Kanonikus<+NN><Masc><Dat><Pl>',
+        'Kanonikern',
+      ),
+      tuple(
+        'Kanonikus<+NN><Masc><Dat><Sg>',
+        'Kanonikus',
+      ),
+      tuple(
+        'Kanonikus<+NN><Masc><Gen><Pl>',
+        'Kanoniker',
+      ),
+      tuple(
+        'Kanonikus<+NN><Masc><Gen><Sg>',
+        'Kanonikus',
+      ),
+      tuple(
+        'Kanonikus<+NN><Masc><Nom><Pl>',
+        'Kanoniker',
+      ),
+      tuple(
+        'Kanonikus<+NN><Masc><Nom><Sg>',
+        'Kanonikus',
+      ),
+    ),
+    tuple(
+      'NN',
       'NMasc_0_us/i_0',
       'Modus',
       tuple(
@@ -18364,6 +18401,75 @@
       tuple(
         'Abend<+NN><Masc><Nom><Sg>',
         'Abend',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NNeut_s_em/en_0, NNeut_s_s_0',
+      'Requiem',
+      tuple(
+        'Requiem<PAR1><+NN><Neut><Acc><Pl>',
+        'Requiems',
+      ),
+      tuple(
+        'Requiem<PAR1><+NN><Neut><Acc><Sg>',
+        'Requiem',
+      ),
+      tuple(
+        'Requiem<PAR1><+NN><Neut><Dat><Pl>',
+        'Requiems',
+      ),
+      tuple(
+        'Requiem<PAR1><+NN><Neut><Dat><Sg>',
+        'Requiem',
+      ),
+      tuple(
+        'Requiem<PAR1><+NN><Neut><Gen><Pl>',
+        'Requiems',
+      ),
+      tuple(
+        'Requiem<PAR1><+NN><Neut><Gen><Sg>',
+        'Requiems',
+      ),
+      tuple(
+        'Requiem<PAR1><+NN><Neut><Nom><Pl>',
+        'Requiems',
+      ),
+      tuple(
+        'Requiem<PAR1><+NN><Neut><Nom><Sg>',
+        'Requiem',
+      ),
+      tuple(
+        'Requiem<PAR2><+NN><Neut><Acc><Pl>',
+        'Requien',
+      ),
+      tuple(
+        'Requiem<PAR2><+NN><Neut><Acc><Sg>',
+        'Requiem',
+      ),
+      tuple(
+        'Requiem<PAR2><+NN><Neut><Dat><Pl>',
+        'Requien',
+      ),
+      tuple(
+        'Requiem<PAR2><+NN><Neut><Dat><Sg>',
+        'Requiem',
+      ),
+      tuple(
+        'Requiem<PAR2><+NN><Neut><Gen><Pl>',
+        'Requien',
+      ),
+      tuple(
+        'Requiem<PAR2><+NN><Neut><Gen><Sg>',
+        'Requiems',
+      ),
+      tuple(
+        'Requiem<PAR2><+NN><Neut><Nom><Pl>',
+        'Requien',
+      ),
+      tuple(
+        'Requiem<PAR2><+NN><Neut><Nom><Sg>',
+        'Requiem',
       ),
     ),
     tuple(

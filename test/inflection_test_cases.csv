@@ -118,6 +118,7 @@ NN,NMasc_0_os/oi_0,Topos
 NN,NMasc_0_s_0,Intercity
 NN,"NMasc_0_us/en_0, NNeut_0_us/en_0",Virus
 NN,NMasc_0_us/en_0~ss,Rhythmus
+NN,NMasc_0_us/er,Kanonikus
 NN,NMasc_0_us/i_0,Modus
 NN,NMasc_0_us/ier_n,Dinosaurus
 NN,NMasc_0_ynx/yngen_0,Larynx
@@ -144,6 +145,7 @@ NN,"NMasc_s_0_0, NMasc_s_er_n",Ski
 NN,NMasc_s_0_n,Engel
 NN,"NMasc_s_0_n, NMasc_s_s_n, NFem_0_0_n ...",Vize
 NN,NMasc_s_e_n,Abend
+NN,"NNeut_s_em/en_0, NNeut_s_s_0",Requiem
 NN,NMasc_s_en_0,Direktor
 NN,"NMasc_s_en_0, NMasc_en_en_0, NNeut_s_en_0",Prototyp
 NN,NMasc_s_er/res_0,Pater

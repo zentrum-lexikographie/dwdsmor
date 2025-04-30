@@ -1,6 +1,6 @@
 % infl.fst
-% Version 12.4
-% Andreas Nolda 2025-04-25
+% Version 12.5
+% Andreas Nolda 2025-04-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -184,6 +184,9 @@ $NMasc_0_o/en_0$ = $NMasc_0_a/en_0$
 % Espresso, Espresso, Espressi, Espressi
 $NMasc_0_o/i_0$ = $NMasc_0_e/i_0$
 
+% Mythos, Mythos, Mythen, Mythen
+$NMasc_0_os/en_0$ = $NMasc_0_a/en_0$
+
 % Heros, Heros, Heroen, Heroen
 $NMasc_0_os/oen_0$ = {<+NN><Masc>}:{}                    $NGenSgSuff_0$ | \
                      {<+NN><Masc>}:{<del(VC)|Pl>o<SB>en} $NDatPlSuff_0$
@@ -200,15 +203,16 @@ $NMasc_0_os/oi_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
 $NMasc_0_us/e_n$ = {<+NN><Masc>}:{}                  $NGenSgSuff_0$ | \
                    {<+NN><Masc>}:{<del(VC)|Pl><SB>e} $NDatPlSuff_n$
 
-% Mythos, Mythos, Mythen, Mythen
-$NMasc_0_os/en_0$ = $NMasc_0_a/en_0$
-
 % Virus, Virus, Viren, Viren
 $NMasc_0_us/en_0$ = $NMasc_0_a/en_0$
 
 % Kaktus, Kaktus, Kakteen, Kakteen
 $NMasc_0_us/een_0$ = {<+NN><Masc>}:{}                    $NGenSgSuff_0$ | \
                      {<+NN><Masc>}:{<del(VC)|Pl>e<SB>en} $NDatPlSuff_0$
+
+% Kanonikus, Kanonikus, Kanoniker, Kanonikern
+$NMasc_0_us/er_n$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
+                    {<+NN><Masc>}:{<del(VC)|Pl><SB>er} $NDatPlSuff_n$
 
 % Intimus, Intimus, Intimi, Intimi
 $NMasc_0_us/i_0$ = $NMasc_0_e/i_0$
@@ -480,6 +484,9 @@ $NNeut_0_e/ia_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_0$ | \
 $NNeut_0_e/ien_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_0$ | \
                     {<+NN><Neut>}:{<del(VC)|Pl><SB>ien} $NDatPlSuff_0$
 
+% Requiem, Requiem, Requien, Requien
+$NNeut_0_em/en_0$ = $NNeut_0_a/en_0$
+
 % Examen, Examen, Examina, Examina
 $NNeut_0_en/ina_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_0$ | \
                      {<+NN><Neut>}:{<del(VC)|Pl>in<SB>a} $NDatPlSuff_0$
@@ -516,14 +523,14 @@ $NNeut_0_on/a_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_0$ | \
 % Stadion, Stadion, Stadien, Stadien
 $NNeut_0_on/en_0$ = $NNeut_0_a/en_0$
 
+% Epos, Epos, Epen, Epen
+$NNeut_0_os/en_0$ = $NNeut_0_a/en_0$
+
 % Aktivum, Aktivum, Aktiva, Aktiva
 $NNeut_0_um/a_0$ = $NNeut_0_on/a_0$
 
 % Museum, Museum, Museen, Museen
 $NNeut_0_um/en_0$ = $NNeut_0_a/en_0$
-
-% Epos, Epos, Epen, Epen
-$NNeut_0_os/en_0$ = $NNeut_0_a/en_0$
 
 % Virus, Virus, Viren, Viren
 $NNeut_0_us/en_0$ = $NNeut_0_a/en_0$
@@ -642,6 +649,9 @@ $NNeut_s_e/ia_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_s$ | \
 % Numerale, Numerales, Numeralien, Numeralien
 $NNeut_s_e/ien_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_s$ | \
                     {<+NN><Neut>}:{<del(VC)|Pl><SB>ien} $NDatPlSuff_0$
+
+% Requiem, Requiems, Requien, Requien
+$NNeut_s_em/en_0$ = $NNeut_s_a/en_0$
 
 % Examen, Examens, Examina, Examina
 $NNeut_s_en/ina_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_s$ | \
@@ -2861,6 +2871,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMasc_0_us/e_n>          $NMasc_0_us/e_n$         | \
          <>:<NMasc_0_us/een_0>        $NMasc_0_us/een_0$       | \
          <>:<NMasc_0_us/en_0>         $NMasc_0_us/en_0$        | \
+         <>:<NMasc_0_us/er_n>         $NMasc_0_us/er_n$        | \
          <>:<NMasc_0_us/i_0>          $NMasc_0_us/i_0$         | \
          <>:<NMasc_0_us/ier_n>        $NMasc_0_us/ier_n$       | \
          <>:<NMasc_0_ynx/yngen_0>     $NMasc_0_ynx/yngen_0$    | \
@@ -2926,6 +2937,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut_0_e/i_0>           $NNeut_0_e/i_0$          | \
          <>:<NNeut_0_e/ia_0>          $NNeut_0_e/ia_0$         | \
          <>:<NNeut_0_e/ien_0>         $NNeut_0_e/ien_0$        | \
+         <>:<NNeut_0_em/en_0>         $NNeut_0_em/en_0$        | \
          <>:<NNeut_0_en_0>            $NNeut_0_en_0$           | \
          <>:<NNeut_0_en/ina_0>        $NNeut_0_en/ina_0$       | \
          <>:<NNeut_0_ens/entia_0>     $NNeut_0_ens/entia_0$    | \
@@ -2968,6 +2980,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut_s_e/i_0>           $NNeut_s_e/i_0$          | \
          <>:<NNeut_s_e/ia_0>          $NNeut_s_e/ia_0$         | \
          <>:<NNeut_s_e/ien_0>         $NNeut_s_e/ien_0$        | \
+         <>:<NNeut_s_em/en_0>         $NNeut_s_em/en_0$        | \
          <>:<NNeut_s_en_0>            $NNeut_s_en_0$           | \
          <>:<NNeut_s_en/ina_0>        $NNeut_s_en/ina_0$       | \
          <>:<NNeut_s_i/en_0>          $NNeut_s_i/en_0$         | \

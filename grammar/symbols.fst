@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 12.8
-% Andreas Nolda 2025-04-25
+% Version 12.9
+% Andreas Nolda 2025-04-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -168,26 +168,27 @@
                     <NMasc_0_o/en_0><NMasc_0_o/i_0><NMasc_0_os/en_0> \
                     <NMasc_0_os/oden_0><NMasc_0_os/oen_0><NMasc_0_os/oi_0> \
                     <NMasc_0_s_0><NMasc_0_us/e_n><NMasc_0_us/een_0> \
-                    <NMasc_0_us/en_0><NMasc_0_us/i_0><NMasc_0_us/ier_n> \
-                    <NMasc_0_ynx/yngen_0><NMasc_en_en_0><NMasc_es_$e_n> \
-                    <NMasc_es_$er_n><NMasc_es_as/anten_0~ss><NMasc_es_e_n> \
-                    <NMasc_es_e_n~ss><NMasc_es_en_0><NMasc_es_er_n> \
-                    <NMasc_es_es_0><NMasc_es_ex/izes_0><NMasc_es_ix/izes_0> \
-                    <NMasc_es_s_0><NMasc_es_us/een_0~ss><NMasc_es_us/en_0~ss> \
-                    <NMasc_es_us/i_0~ss><NMasc_n_e/s_0><NMasc_n_n_0> \
-                    <NMasc_n_ns_0><NMasc_ns_n_0><NMasc_ns_$n_0><NMasc_s_$_n> \
-                    <NMasc_s_$e_n><NMasc_s_$er_n><NMasc_s_$_0><NMasc_s_0_0> \
-                    <NMasc_s_0_n><NMasc_s_a/en_0><NMasc_s_e_n><NMasc_s_e/i_0> \
-                    <NMasc_s_er/res_0><NMasc_s_en_0><NMasc_s_er_n><NMasc_s_es_0> \
-                    <NMasc_s_i/en_0><NMasc_s_/en_0><NMasc_s_n_0><NMasc_s_ien_0> \
-                    <NMasc_s_nen_0><NMasc_s_o/en_0><NMasc_s_o/i_0><NMasc_s_s_0> \
-                    <NNeut0_es><NNeut0_s><NNeut-Adj><NNeut-Adj|Sg><NNeut-Inner> \
-                    <NNeut|Pl_0><NNeut|Pl_n><NNeut|Sg_0><NNeut|Sg_es> \
-                    <NNeut|Sg_es~ss><NNeut|Sg_s><NNeut_0_0_0><NNeut_0_0_n> \
-                    <NNeut_0_a/ata_0><NNeut_0_a/en_0><NNeut_0_ans/antien_0> \
-                    <NNeut_0_ans/anzien_0><NNeut_0_e_n><NNeut_0_e_n~ss> \
-                    <NNeut_0_e/i_0><NNeut_0_e/ia_0><NNeut_0_e/ien_0> \
-                    <NNeut_0_en_0><NNeut_0_en/ina_0><NNeut_0_ens/entia_0> \
+                    <NMasc_0_us/en_0><NMasc_0_us/er_n><NMasc_0_us/i_0> \
+                    <NMasc_0_us/ier_n><NMasc_0_ynx/yngen_0><NMasc_en_en_0> \
+                    <NMasc_es_$e_n><NMasc_es_$er_n><NMasc_es_as/anten_0~ss> \
+                    <NMasc_es_e_n><NMasc_es_e_n~ss><NMasc_es_en_0> \
+                    <NMasc_es_er_n><NMasc_es_es_0><NMasc_es_ex/izes_0> \
+                    <NMasc_es_ix/izes_0><NMasc_es_s_0><NMasc_es_us/een_0~ss> \
+                    <NMasc_es_us/en_0~ss><NMasc_es_us/i_0~ss><NMasc_n_e/s_0> \
+                    <NMasc_n_n_0><NMasc_n_ns_0><NMasc_ns_n_0><NMasc_ns_$n_0> \
+                    <NMasc_s_$_n><NMasc_s_$e_n><NMasc_s_$er_n><NMasc_s_$_0> \
+                    <NMasc_s_0_0><NMasc_s_0_n><NMasc_s_a/en_0><NMasc_s_e_n> \
+                    <NMasc_s_e/i_0><NMasc_s_er/res_0><NMasc_s_en_0> \
+                    <NMasc_s_er_n><NMasc_s_es_0><NMasc_s_i/en_0><NMasc_s_/en_0> \
+                    <NMasc_s_n_0><NMasc_s_ien_0><NMasc_s_nen_0><NMasc_s_o/en_0> \
+                    <NMasc_s_o/i_0><NMasc_s_s_0><NNeut0_es><NNeut0_s><NNeut-Adj> \
+                    <NNeut-Adj|Sg><NNeut-Inner><NNeut|Pl_0><NNeut|Pl_n> \
+                    <NNeut|Sg_0><NNeut|Sg_es><NNeut|Sg_es~ss><NNeut|Sg_s> \
+                    <NNeut_0_0_0><NNeut_0_0_n><NNeut_0_a/ata_0><NNeut_0_a/en_0> \
+                    <NNeut_0_ans/antien_0><NNeut_0_ans/anzien_0><NNeut_0_e_n> \
+                    <NNeut_0_e_n~ss><NNeut_0_e/i_0><NNeut_0_e/ia_0> \
+                    <NNeut_0_e/ien_0><NNeut_0_em/en_0><NNeut_0_en_0> \
+                    <NNeut_0_en/ina_0><NNeut_0_ens/entia_0> \
                     <NNeut_0_ens/entien_0><NNeut_0_ens/enzien_0><NNeut_0_es_0> \
                     <NNeut_0_ex/izia_0><NNeut_0_i/en_0><NNeut_0_nen_0> \
                     <NNeut_0_o/en_0><NNeut_0_o/i_0><NNeut_0_on/a_0> \
@@ -200,11 +201,12 @@
                     <NNeut_es_ien_0><NNeut_es_s_0><NNeut_s_$_n><NNeut_s_$er_n> \
                     <NNeut_s_0_n><NNeut_s_a_0><NNeut_s_a/ata_0><NNeut_s_a/en_0> \
                     <NNeut_s_e_n><NNeut_s_e/i_0><NNeut_s_e/ia_0> \
-                    <NNeut_s_e/ien_0><NNeut_s_en_0><NNeut_s_en/ina_0> \
-                    <NNeut_s_i/en_0><NNeut_s_ien_0><NNeut_s_n_0><NNeut_s_nen_0> \
-                    <NNeut_s_o/en_0><NNeut_s_o/i_0><NNeut_s_on/a_0> \
-                    <NNeut_s_on/en_0><NNeut_s_s_0><NNeut_s_um/a_0> \
-                    <NNeut_s_um/en_0><NNeut_s_0_0><NUnmGend|Pl_0><NUnmGend|Pl_n>
+                    <NNeut_s_e/ien_0><NNeut_s_em/en_0><NNeut_s_en_0> \
+                    <NNeut_s_en/ina_0><NNeut_s_i/en_0><NNeut_s_ien_0> \
+                    <NNeut_s_n_0><NNeut_s_nen_0><NNeut_s_o/en_0><NNeut_s_o/i_0> \
+                    <NNeut_s_on/a_0><NNeut_s_on/en_0><NNeut_s_s_0> \
+                    <NNeut_s_um/a_0><NNeut_s_um/en_0><NNeut_s_0_0> \
+                    <NUnmGend|Pl_0><NUnmGend|Pl_n>
 
 #Name-inflection# = <NameFem_0><NameFem_apos><NameFem_s><NameMasc_0> \
                     <NameMasc_apos><NameMasc_es><NameMasc_s><NameNeut_0> \
