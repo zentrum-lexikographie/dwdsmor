@@ -1,3 +1,7 @@
+2025-04-30:
+
+* add support for more nouns with suppletive plural forms
+
 2025-04-25:
 
 * add initial support for measure nouns
