@@ -10,8 +10,8 @@ test_dir = Path(__file__).parent
 def test_analysis(snapshot):
     analyzer = automata_edition("dwds").analyzer()
     data_dir = test_dir / "gesetze"
-    tokens = {t for f in data_dir.rglob("*.tok") for t in f.read_text().splitlines()}
-    result = sorted(((t, a.spec) for t in tokens for a in analyzer.analyze(t)))
+    tokens = [t for f in data_dir.rglob("*.tok") for t in f.read_text().splitlines()]
+    result = [(t, a.spec) for t in tokens for a in analyzer.analyze(t)]
     assert snapshot == result
 
 
