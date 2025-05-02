@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 12.2
-% Andreas Nolda 2025-04-10
+% Version 12.3
+% Andreas Nolda 2025-05-02
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -175,7 +175,7 @@ $ConvBaseStemsVPartPerf$ = $BaseStemsVPartPerf-t$ <ADJ> <base> <native> <>:<AdjP
                            $BaseStemsVPartPerf-d$ <ADJ> <base> <native> <>:<AdjPosPred>
 
 $ConvBaseStems$ = $ConvBaseStemsVPartPres$ | \
-                  $ConvBaseStemsVPartPerf$
+                  $ConvBaseStemsVPartPerf$ || $ConvFilter$
 
 $BaseStems$ = $BaseStems$ | $ConvBaseStems$
 

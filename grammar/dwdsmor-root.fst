@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 9.2
-% Andreas Nolda 2025-04-10
+% Version 9.3
+% Andreas Nolda 2025-05-02
 
 #include "symbols.fst"
 #include "num.fst"
@@ -201,7 +201,7 @@ $ConvBaseStemsVPartPerf$ = $BaseStemsVPartPerf-t$ <ADJ> <base> <native> <>:<AdjP
                            $BaseStemsVPartPerf-d$ <ADJ> <base> <native> <>:<AdjPosPred> $ConvPart$
 
 $ConvBaseStems$ = $ConvBaseStemsVPartPres$ | \
-                  $ConvBaseStemsVPartPerf$
+                  $ConvBaseStemsVPartPerf$ || $ConvFilter$
 
 $BaseStems$ = $BaseStems$ | $ConvBaseStems$
 

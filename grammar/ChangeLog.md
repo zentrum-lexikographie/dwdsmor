@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-05-02:
+
+* exclude "worden" as a conversion basis
+
 2025-04-30:
 
 * add inflection class `NMasc_0_us/er_n`

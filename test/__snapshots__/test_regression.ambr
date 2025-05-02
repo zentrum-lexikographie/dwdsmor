@@ -3426,10 +3426,6 @@
       'werd<~>en<+V><Part><Perf><sein>',
     ),
     tuple(
-      'worden',
-      'word<~>en<+ADJ><Pos><Pred/Adv>',
-    ),
-    tuple(
       'zuletzt',
       'zu<|>letz<~>en<+V><2><Pl><Pres><Ind>',
     ),
