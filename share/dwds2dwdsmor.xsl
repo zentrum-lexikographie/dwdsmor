@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 16.3 -->
-<!-- Andreas Nolda 2025-04-26 -->
+<!-- Version 16.4 -->
+<!-- Andreas Nolda 2025-05-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -220,6 +220,9 @@
         <xsl:for-each select="$grammar-specs/dwds:Grammatik">
           <xsl:variable name="pos"
                         select="normalize-space(dwds:Wortklasse[not(@class='invisible')])"/>
+          <xsl:variable name="inflection">
+            <xsl:call-template name="get-inflection-value"/>
+          </xsl:variable>
           <xsl:choose>
             <!-- adjectives and adjectival participles -->
             <xsl:when test="$pos='Adjektiv' or
@@ -236,9 +239,8 @@
                 <xsl:with-param name="function">
                   <xsl:call-template name="get-function-value"/>
                 </xsl:with-param>
-                <xsl:with-param name="inflection">
-                  <xsl:call-template name="get-inflection-value"/>
-                </xsl:with-param>
+                <xsl:with-param name="inflection"
+                                select="$inflection"/>
                 <xsl:with-param name="positive"
                                 select="normalize-space(dwds:Positivvariante)"/>
                 <xsl:with-param name="comparative"
@@ -1087,6 +1089,7 @@
                               string-length(normalize-space(dwds:Praeteritum))&gt;0 and
                               string-length(normalize-space(dwds:Partizip_II))&gt;0 and
                               string-length(normalize-space(dwds:Auxiliar))&gt;0) or
+                             $inflection='no' or
                              $abbreviation='yes')">
               <xsl:call-template name="verb-entry-set">
                 <xsl:with-param name="lemma"
@@ -1097,6 +1100,8 @@
                                 select="$paradigm-index"/>
                 <xsl:with-param name="abbreviation"
                                 select="$abbreviation"/>
+                <xsl:with-param name="inflection"
+                                select="$inflection"/>
                 <xsl:with-param name="present">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
@@ -2569,6 +2574,7 @@
 <xsl:template name="get-inflection-value">
   <xsl:choose>
     <xsl:when test="dwds:indeklinabel">no</xsl:when>
+    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur im Infinitiv'">no</xsl:when>
     <xsl:otherwise>yes</xsl:otherwise>
   </xsl:choose>
 </xsl:template>

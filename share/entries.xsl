@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 17.6 -->
-<!-- Andreas Nolda 2025-04-30 -->
+<!-- Version 17.7 -->
+<!-- Andreas Nolda 2025-05-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -6374,6 +6374,7 @@
   <xsl:param name="lemma-index"/>
   <xsl:param name="paradigm-index"/>
   <xsl:param name="abbreviation"/>
+  <xsl:param name="inflection"/>
   <xsl:param name="present"/>
   <xsl:param name="past"/>
   <xsl:param name="participle"/>
@@ -6400,94 +6401,21 @@
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:variable name="particle">
-          <xsl:choose>
-            <xsl:when test="count(tokenize($present,'&#x20;'))=3">
-              <xsl:value-of select="substring-after(substring-after($present,' '),' ')"/>
-            </xsl:when>
-            <xsl:when test="count(tokenize($present,'&#x20;'))&lt;3">
-              <xsl:value-of select="substring-after($present,' ')"/>
-            </xsl:when>
-          </xsl:choose>
-        </xsl:variable>
-        <xsl:variable name="particle2"
-                      select="substring-before(substring-after($present,' '),' ')"/>
-        <xsl:variable name="lemma-without-particle"
-                      select="replace($lemma,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
-        <xsl:variable name="present-without-particle"
-                      select="replace($present,concat('^(.+?)(( ',$particle2,')? ',$particle,')?$'),'$1')"/>
-        <xsl:variable name="past-without-particle"
-                      select="replace($past,concat('^(.+?)(( ',$particle2,')? ',$particle,')?$'),'$1')"/>
-        <xsl:variable name="participle-without-particle"
-                      select="replace($participle,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
-        <xsl:variable name="stem">
-          <xsl:call-template name="verb-stem">
-            <xsl:with-param name="lemma"
-                            select="$lemma-without-particle"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="present-stem">
-          <xsl:call-template name="present-stem">
-            <xsl:with-param name="form"
-                            select="$present-without-particle"/>
-            <xsl:with-param name="lemma"
-                            select="$lemma-without-particle"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="past-stem">
-          <xsl:call-template name="past-stem">
-            <xsl:with-param name="form"
-                            select="$past-without-particle"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="participle-stem">
-          <xsl:call-template name="participle-stem">
-            <xsl:with-param name="form"
-                            select="$participle-without-particle"/>
-            <xsl:with-param name="lemma"
-                            select="$lemma-without-particle"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="present-marker"><!-- of regular verbs -->
-          <xsl:call-template name="get-verbal-marker">
-            <xsl:with-param name="form"
-                            select="$present-without-particle"/>
-            <xsl:with-param name="stem"
-                            select="$stem"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="past-marker"><!-- of regular verbs -->
-          <xsl:call-template name="get-verbal-marker">
-            <xsl:with-param name="form"
-                            select="$past-without-particle"/>
-            <xsl:with-param name="stem"
-                            select="$stem"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="participle-marker"><!-- of regular verbs -->
-          <xsl:call-template name="get-verbal-marker">
-            <xsl:with-param name="form"
-                            select="$participle-without-particle"/>
-            <xsl:with-param name="stem"
-                            select="$stem"/>
-          </xsl:call-template>
-        </xsl:variable>
         <xsl:choose>
-          <!-- regular verbs -->
-          <xsl:when test="$present-marker='-t' and
-                          $past-marker='-te' and
-                          ($participle-marker='-t' or
-                           $participle-marker='ge-t') or
-                          $present-marker='-et' and
-                          $past-marker='-ete' and
-                          ($participle-marker='-et' or
-                           $participle-marker='ge-et')">
+          <!-- uninflected verbs (infinitive only) -->
+          <xsl:when test="$inflection='no'">
+            <xsl:variable name="stem">
+              <xsl:call-template name="verb-stem">
+                <xsl:with-param name="lemma"
+                                select="$lemma"/>
+              </xsl:call-template>
+            </xsl:variable>
             <xsl:choose>
-              <!-- "brauchen" -->
-              <xsl:when test="$lemma-without-particle='brauchen'">
-                <xsl:call-template name="verb-stem-entry">
+              <!-- borrowed uninflected verbs ending in "c", "g", or "p" + "len" -->
+              <xsl:when test="matches($lemma,'[cgp]len$')">
+                <xsl:call-template name="stem-entry">
                   <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
+                                  select="$lemma"/>
                   <xsl:with-param name="lemma-index"
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
@@ -6496,45 +6424,18 @@
                                   select="$stem"/>
                   <xsl:with-param name="abbreviation"
                                   select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VWeak</xsl:with-param>
-                  <xsl:with-param name="auxiliary"
-                                  select="$auxiliary"/>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="n:umlaut($past-stem)"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
+                  <xsl:with-param name="pos">V</xsl:with-param>
+                  <xsl:with-param name="class">VInf-le</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
               </xsl:when>
-              <!-- borrowed verbs ending in "signen" -->
-              <xsl:when test="ends-with($lemma-without-particle,'signen')">
-                <xsl:call-template name="verb-stem-entry">
+              <!-- uninflected verbs ending in "eln" or "ern" -->
+              <xsl:when test="ends-with($lemma,'eln') or
+                              ends-with($lemma,'ern')">
+                <xsl:call-template name="stem-entry">
                   <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
+                                  select="$lemma"/>
                   <xsl:with-param name="lemma-index"
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
@@ -6543,1106 +6444,129 @@
                                   select="$stem"/>
                   <xsl:with-param name="abbreviation"
                                   select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VWeak-signen</xsl:with-param>
-                  <xsl:with-param name="auxiliary"
-                                  select="$auxiliary"/>
+                  <xsl:with-param name="pos">V</xsl:with-param>
+                  <xsl:with-param name="class">VInf-el-er</xsl:with-param>
                   <xsl:with-param name="etymology"
                                   select="$etymology"/>
                 </xsl:call-template>
               </xsl:when>
-              <!-- borrowed verbs ending in "bi", "fa", or "li" + "ken" -->
-              <xsl:when test="matches($lemma-without-particle,'(bi|fa|li)ken$')">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VWeak-ak-ik</xsl:with-param>
-                  <xsl:with-param name="auxiliary"
-                                  select="$auxiliary"/>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- borrowed verbs ending in "c", "g", or "p" + "len" -->
-              <xsl:when test="matches($lemma-without-particle,'[cgp]len$')">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VWeak-le</xsl:with-param>
-                  <xsl:with-param name="auxiliary"
-                                  select="$auxiliary"/>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- regular verbs ending in consonant + "een" or "ien" -->
-              <xsl:when test="matches($lemma-without-particle,'[^aeiouäöü][ei]en$')">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VWeak</xsl:with-param>
-                  <xsl:with-param name="auxiliary"
-                                  select="$auxiliary"/>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- regular verbs with stem-final "n" or "m", preceded
-                   by "b", "d", "f", "g", "k", "p", "s", "t", or "ch" -->
-              <xsl:when test="matches($present-stem,'([bdfgkpst]|ch)[mn]$')">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VWeak-m-n</xsl:with-param>
-                  <xsl:with-param name="auxiliary"
-                                  select="$auxiliary"/>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- regular verbs with stem-final "s", "ß", "x", "z", or "sch" -->
-              <xsl:when test="(ends-with($present-stem,'s') or
-                               ends-with($present-stem,'ß') or
-                               ends-with($present-stem,'x') or
-                               ends-with($present-stem,'z') or
-                               ends-with($present-stem,'sch'))">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VWeak-s</xsl:with-param>
-                  <xsl:with-param name="auxiliary"
-                                  select="$auxiliary"/>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- other regular verbs -->
+              <!-- other uninflected verbs -->
               <xsl:otherwise>
-                <xsl:variable name="class">
-                  <xsl:call-template name="verb-class">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma-without-particle"/>
-                    <xsl:with-param name="past"
-                                    select="$past-without-particle"/>
-                    <xsl:with-param name="participle"
-                                    select="$participle-without-particle"/>
-                    <xsl:with-param name="pronunciations"
-                                    select="$pronunciations"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:if test="string-length($class)&gt;0">
-                  <xsl:call-template name="verb-stem-entry">
-                    <xsl:with-param name="lemma"
-                                    select="$lemma-without-particle"/>
-                    <xsl:with-param name="lemma-index"
-                                    select="$lemma-index"/>
-                    <xsl:with-param name="paradigm-index"
-                                    select="$paradigm-index"/>
-                    <xsl:with-param name="stem"
-                                    select="$stem"/>
-                    <xsl:with-param name="abbreviation"
-                                    select="$abbreviation"/>
-                    <xsl:with-param name="participle"
-                                    select="$participle-without-particle"/>
-                    <xsl:with-param name="particle"
-                                    select="$particle"/>
-                    <xsl:with-param name="particle2"
-                                    select="$particle2"/>
-                    <xsl:with-param name="class"
-                                    select="$class"/>
-                    <xsl:with-param name="auxiliary"
-                                    select="$auxiliary"/>
-                    <xsl:with-param name="etymology"
-                                    select="$etymology"/>
-                  </xsl:call-template>
-                </xsl:if>
+                <xsl:call-template name="stem-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma"/>
+                  <xsl:with-param name="lemma-index"
+                                  select="$lemma-index"/>
+                  <xsl:with-param name="paradigm-index"
+                                  select="$paradigm-index"/>
+                  <xsl:with-param name="stem"
+                                  select="$stem"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
+                  <xsl:with-param name="pos">V</xsl:with-param>
+                  <xsl:with-param name="class">VInf</xsl:with-param>
+                  <xsl:with-param name="etymology"
+                                  select="$etymology"/>
+                </xsl:call-template>
               </xsl:otherwise>
             </xsl:choose>
           </xsl:when>
-          <!-- irregular verbs -->
+          <!-- inflected verbs -->
           <xsl:otherwise>
-            <!-- present -->
+            <xsl:variable name="particle">
+              <xsl:choose>
+                <xsl:when test="count(tokenize($present,'&#x20;'))=3">
+                  <xsl:value-of select="substring-after(substring-after($present,' '),' ')"/>
+                </xsl:when>
+                <xsl:when test="count(tokenize($present,'&#x20;'))&lt;3">
+                  <xsl:value-of select="substring-after($present,' ')"/>
+                </xsl:when>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="particle2"
+                          select="substring-before(substring-after($present,' '),' ')"/>
+            <xsl:variable name="lemma-without-particle"
+                          select="replace($lemma,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
+            <xsl:variable name="present-without-particle"
+                          select="replace($present,concat('^(.+?)(( ',$particle2,')? ',$particle,')?$'),'$1')"/>
+            <xsl:variable name="past-without-particle"
+                          select="replace($past,concat('^(.+?)(( ',$particle2,')? ',$particle,')?$'),'$1')"/>
+            <xsl:variable name="participle-without-particle"
+                          select="replace($participle,concat('^',$particle2,$particle,'(.+)$'),'$1')"/>
+            <xsl:variable name="stem">
+              <xsl:call-template name="verb-stem">
+                <xsl:with-param name="lemma"
+                                select="$lemma-without-particle"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:variable name="present-stem">
+              <xsl:call-template name="present-stem">
+                <xsl:with-param name="form"
+                                select="$present-without-particle"/>
+                <xsl:with-param name="lemma"
+                                select="$lemma-without-particle"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:variable name="past-stem">
+              <xsl:call-template name="past-stem">
+                <xsl:with-param name="form"
+                                select="$past-without-particle"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:variable name="participle-stem">
+              <xsl:call-template name="participle-stem">
+                <xsl:with-param name="form"
+                                select="$participle-without-particle"/>
+                <xsl:with-param name="lemma"
+                                select="$lemma-without-particle"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:variable name="present-marker"><!-- of regular verbs -->
+              <xsl:call-template name="get-verbal-marker">
+                <xsl:with-param name="form"
+                                select="$present-without-particle"/>
+                <xsl:with-param name="stem"
+                                select="$stem"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:variable name="past-marker"><!-- of regular verbs -->
+              <xsl:call-template name="get-verbal-marker">
+                <xsl:with-param name="form"
+                                select="$past-without-particle"/>
+                <xsl:with-param name="stem"
+                                select="$stem"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:variable name="participle-marker"><!-- of regular verbs -->
+              <xsl:call-template name="get-verbal-marker">
+                <xsl:with-param name="form"
+                                select="$participle-without-particle"/>
+                <xsl:with-param name="stem"
+                                select="$stem"/>
+              </xsl:call-template>
+            </xsl:variable>
             <xsl:choose>
-              <!-- "haben" -->
-              <xsl:when test="$lemma-without-particle='haben'">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="replace($present-stem,'t$','')"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImp</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- "sein" -->
-              <xsl:when test="$lemma-without-particle='sein'">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf_n</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem">bin</xsl:with-param>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd1Sg-sein</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="concat('b',$present-stem)"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd2Sg-sein</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="replace($present-stem,'t$','')"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd3Sg-sein</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem">sind</xsl:with-param>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd13Pl-sein</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="concat($stem,'d')"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd2Pl-sein</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresSubj-sein</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImpSg0</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="concat($stem,'d')"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImpPl-sein</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- "tun" and related verbs -->
-              <xsl:when test="$lemma-without-particle='tun' or
-                              $lemma-without-particle='betun' or
-                              $lemma-without-particle='vertun'">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf_n</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPres-tun</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImpSg0</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImpPl</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- "werden" -->
-              <xsl:when test="$lemma-without-particle='werden'">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="replace($present-stem,'d$','')"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd2Sg-werden</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd3Sg-werden</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImp-d-t</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- preterite-present verbs -->
-              <xsl:when test="ends-with($lemma-without-particle,'dürfen') or
-                              ends-with($lemma-without-particle,'können') or
-                              ends-with($lemma-without-particle,'mögen') or
-                              ends-with($lemma-without-particle,'müssen') or
-                              ends-with($lemma-without-particle,'sollen') or
-                              ends-with($lemma-without-particle,'wissen') or
-                              ends-with($lemma-without-particle,'wollen')">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VModPresIndSg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VModPresNonIndSg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- "sehen" -->
-              <xsl:when test="$lemma-without-particle='sehen'">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImpSg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImpPl</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- "vgl." -->
-              <xsl:when test="$lemma='vgl.'">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation">yes</xsl:with-param>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">AbbrVImp</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- borrowed verbs ending in "bi", "fa", or "li" + "ken" -->
-              <xsl:when test="matches($lemma-without-particle,'(bi|fa|li)ken$')">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPres-ak-ik</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImp-ak-ik</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- borrowed verbs ending in "c", "g", or "p" + "len" -->
-              <xsl:when test="matches($lemma-without-particle,'[cgp]len$')">
+              <!-- regular verbs -->
+              <xsl:when test="$present-marker='-t' and
+                              $past-marker='-te' and
+                              ($participle-marker='-t' or
+                               $participle-marker='ge-t') or
+                              $present-marker='-et' and
+                              $past-marker='-ete' and
+                              ($participle-marker='-et' or
+                               $participle-marker='ge-et')">
                 <xsl:choose>
-                  <!-- back-formation -->
-                  <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                  matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'n$'))">
+                  <!-- "brauchen" -->
+                  <xsl:when test="$lemma-without-particle='brauchen'">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                                      select="$lemma-without-particle"/>
                       <xsl:with-param name="lemma-index"
                                       select="$lemma-index"/>
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -7651,19 +6575,21 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VInf-le</xsl:with-param>
+                      <xsl:with-param name="class">VWeak</xsl:with-param>
+                      <xsl:with-param name="auxiliary"
+                                      select="$auxiliary"/>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                                      select="$lemma-without-particle"/>
                       <xsl:with-param name="lemma-index"
                                       select="$lemma-index"/>
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                                      select="n:umlaut($past-stem)"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -7672,55 +6598,13 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres-le</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres-le</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp-le</xsl:with-param>
+                      <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- no back-formation -->
-                  <xsl:otherwise>
+                  <!-- borrowed verbs ending in "signen" -->
+                  <xsl:when test="ends-with($lemma-without-particle,'signen')">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -7738,170 +6622,15 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VInf-le</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres-le</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres-le</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp-le</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:when>
-              <!-- irregular verbs ending in "eln" or "ern" -->
-              <xsl:when test="ends-with($lemma-without-particle,'eln') or
-                              ends-with($lemma-without-particle,'ern')">
-                <xsl:choose>
-                  <!-- back-formation -->
-                  <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                  matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'n$'))">
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VInf-el-er</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres-el-er</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres-el-er</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp-el-er</xsl:with-param>
+                      <xsl:with-param name="class">VWeak-signen</xsl:with-param>
+                      <xsl:with-param name="auxiliary"
+                                      select="$auxiliary"/>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- no back-formation -->
-                  <xsl:otherwise>
+                  <!-- borrowed verbs ending in "bi", "fa", or "li" + "ken" -->
+                  <xsl:when test="matches($lemma-without-particle,'(bi|fa|li)ken$')">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -7919,171 +6648,15 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VInf-el-er</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres-el-er</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres-el-er</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp-el-er</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:when>
-              <!-- uniform present stem with stem-final "d" or "t" -->
-              <xsl:when test="$stem=$present-stem and
-                              (ends-with($present-stem,'d') or
-                               ends-with($present-stem,'t'))">
-                <xsl:choose>
-                  <!-- back-formation -->
-                  <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                  matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'en$'))">
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VInf</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp-d-t</xsl:with-param>
+                      <xsl:with-param name="class">VWeak-ak-ik</xsl:with-param>
+                      <xsl:with-param name="auxiliary"
+                                      select="$auxiliary"/>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- no back-formation -->
-                  <xsl:otherwise>
+                  <!-- borrowed verbs ending in "c", "g", or "p" + "len" -->
+                  <xsl:when test="matches($lemma-without-particle,'[cgp]len$')">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -8101,171 +6674,15 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VInf</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp-d-t</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:when>
-              <!-- uniform present stem with stem-final "n" or "m", preceded
-                   by "b", "d", "f", "g", "k", "p", "s", "t", or "ch" -->
-              <xsl:when test="$stem=$present-stem and
-                              matches($present-stem,'([bdfgkpst]|ch)[mn]$')">
-                <xsl:choose>
-                  <!-- back-formation -->
-                  <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                  matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'en$'))">
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VInf</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres-m-n</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp-m-n</xsl:with-param>
+                      <xsl:with-param name="class">VWeak-le</xsl:with-param>
+                      <xsl:with-param name="auxiliary"
+                                      select="$auxiliary"/>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- no back-formation -->
-                  <xsl:otherwise>
+                  <!-- regular verbs ending in consonant + "een" or "ien" -->
+                  <xsl:when test="matches($lemma-without-particle,'[^aeiouäöü][ei]en$')">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -8283,174 +6700,16 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VInf</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres-m-n</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp-m-n</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:when>
-              <!-- uniform present stem with stem-final "s", "ß", "x", "z", or "sch" -->
-              <xsl:when test="$stem=$present-stem and
-                              (ends-with($past-stem,'s') or
-                               ends-with($past-stem,'ß') or
-                               ends-with($past-stem,'x') or
-                               ends-with($past-stem,'z') or
-                               ends-with($past-stem,'sch'))">
-                <xsl:choose>
-                  <!-- back-formation -->
-                  <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                  matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'en$'))">
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VInf</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres-s</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp</xsl:with-param>
+                      <xsl:with-param name="class">VWeak</xsl:with-param>
+                      <xsl:with-param name="auxiliary"
+                                      select="$auxiliary"/>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- no back-formation -->
-                  <xsl:otherwise>
+                  <!-- regular verbs with stem-final "n" or "m", preceded
+                       by "b", "d", "f", "g", "k", "p", "s", "t", or "ch" -->
+                  <xsl:when test="matches($present-stem,'([bdfgkpst]|ch)[mn]$')">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -8468,1041 +6727,90 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VInf</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres-s</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:when>
-              <!-- uniform present stem -->
-              <xsl:when test="$stem=$present-stem">
-                <xsl:choose>
-                  <!-- back-formation -->
-                  <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                  matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VInf</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp</xsl:with-param>
+                      <xsl:with-param name="class">VWeak-m-n</xsl:with-param>
+                      <xsl:with-param name="auxiliary"
+                                      select="$auxiliary"/>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- no back-formation -->
+                  <!-- regular verbs with stem-final "s", "ß", "x", "z", or "sch" -->
+                  <xsl:when test="(ends-with($present-stem,'s') or
+                                   ends-with($present-stem,'ß') or
+                                   ends-with($present-stem,'x') or
+                                   ends-with($present-stem,'z') or
+                                   ends-with($present-stem,'sch'))">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VWeak-s</xsl:with-param>
+                      <xsl:with-param name="auxiliary"
+                                      select="$auxiliary"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- other regular verbs -->
                   <xsl:otherwise>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VInf</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPres</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VImp</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
+                    <xsl:variable name="class">
+                      <xsl:call-template name="verb-class">
+                        <xsl:with-param name="lemma"
+                                        select="$lemma-without-particle"/>
+                        <xsl:with-param name="past"
+                                        select="$past-without-particle"/>
+                        <xsl:with-param name="participle"
+                                        select="$participle-without-particle"/>
+                        <xsl:with-param name="pronunciations"
+                                        select="$pronunciations"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:if test="string-length($class)&gt;0">
+                      <xsl:call-template name="verb-stem-entry">
+                        <xsl:with-param name="lemma"
+                                        select="$lemma-without-particle"/>
+                        <xsl:with-param name="lemma-index"
+                                        select="$lemma-index"/>
+                        <xsl:with-param name="paradigm-index"
+                                        select="$paradigm-index"/>
+                        <xsl:with-param name="stem"
+                                        select="$stem"/>
+                        <xsl:with-param name="abbreviation"
+                                        select="$abbreviation"/>
+                        <xsl:with-param name="participle"
+                                        select="$participle-without-particle"/>
+                        <xsl:with-param name="particle"
+                                        select="$particle"/>
+                        <xsl:with-param name="particle2"
+                                        select="$particle2"/>
+                        <xsl:with-param name="class"
+                                        select="$class"/>
+                        <xsl:with-param name="auxiliary"
+                                        select="$auxiliary"/>
+                        <xsl:with-param name="etymology"
+                                        select="$etymology"/>
+                      </xsl:call-template>
+                    </xsl:if>
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:when>
-              <!-- present stem for 2nd/3rd person singular with "e"/"i"-alternation
-                   with stem-final "t" -->
-              <xsl:when test="ends-with($present-stem,'t') and
-                              matches($present-stem,n:e-i-alternation-re($stem))">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd23Sg-t_0</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImpSg0</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImpPl</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- other present stem for 2nd/3rd person singular with "e"/"i"-alternation -->
-              <xsl:when test="matches($present-stem,n:e-i-alternation-re($stem))">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImpSg0</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImpPl</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- present stem for 2nd/3rd person singular with stem-final "d"
-                   without "e" epenthesis before "-t" -->
-              <xsl:when test="ends-with($present-stem,'d') and
-                              $present-without-particle=concat($present-stem,'t')">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd23Sg-d_t</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImp</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- present stem for 2nd/3rd person singular with stem-final "t" -->
-              <xsl:when test="ends-with($present-stem,'t') and
-                              $present-without-particle=$present-stem">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd23Sg-t_0</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImp-d-t</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- other present stem for 2nd/3rd person singular -->
+              <!-- irregular verbs -->
               <xsl:otherwise>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VInf</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPres</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$present-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VImp</xsl:with-param>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:otherwise>
-            </xsl:choose>
-            <!-- past -->
-            <xsl:choose>
-              <!-- weak past stem -->
-              <xsl:when test="matches($past-without-particle,concat('^',$past-stem,'e?te$'))">
-                <!-- past indicative -->
+                <!-- present -->
                 <xsl:choose>
-                  <!-- past indicative of borrowed verbs ending in "c", "g", or "p" + "let" -->
-                  <xsl:when test="matches($past-without-particle,'[cgp]lete$')">
-                    <xsl:choose>
-                      <!-- back-formation -->
-                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'n$'))">
-                        <xsl:call-template name="verb-stem-entry">
-                          <xsl:with-param name="lemma"
-                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
-                          <xsl:with-param name="lemma-index"
-                                          select="$lemma-index"/>
-                          <xsl:with-param name="paradigm-index"
-                                          select="$paradigm-index"/>
-                          <xsl:with-param name="stem"
-                                          select="replace($past-stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                          <xsl:with-param name="abbreviation"
-                                          select="$abbreviation"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="particle2"
-                                          select="$particle2"/>
-                          <xsl:with-param name="class">VPastInd-le</xsl:with-param>
-                          <xsl:with-param name="etymology"
-                                          select="$etymology"/>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- no back-formation -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-stem-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="lemma-index"
-                                          select="$lemma-index"/>
-                          <xsl:with-param name="paradigm-index"
-                                          select="$paradigm-index"/>
-                          <xsl:with-param name="stem"
-                                          select="$past-stem"/>
-                          <xsl:with-param name="abbreviation"
-                                          select="$abbreviation"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="particle2"
-                                          select="$particle2"/>
-                          <xsl:with-param name="class">VPastInd-le</xsl:with-param>
-                          <xsl:with-param name="etymology"
-                                          select="$etymology"/>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:when>
-                  <!-- past indicative with stem-final "d" or "t"
-                       without "e" epenthesis before "-t" -->
-                  <xsl:when test="matches($past-stem,'[dt]$') and
-                                  $past-without-particle=concat($past-stem,'te')">
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$past-stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPastInd-d-t_t</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <!-- other weak past stem -->
-                  <xsl:otherwise>
-                    <xsl:choose>
-                      <!-- back-formation -->
-                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
-                        <xsl:call-template name="verb-stem-entry">
-                          <xsl:with-param name="lemma"
-                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
-                          <xsl:with-param name="lemma-index"
-                                          select="$lemma-index"/>
-                          <xsl:with-param name="paradigm-index"
-                                          select="$paradigm-index"/>
-                          <xsl:with-param name="stem"
-                                          select="replace($past-stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                          <xsl:with-param name="abbreviation"
-                                          select="$abbreviation"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="particle2"
-                                          select="$particle2"/>
-                          <xsl:with-param name="class">VPastIndWeak</xsl:with-param>
-                          <xsl:with-param name="etymology"
-                                          select="$etymology"/>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- no back-formation -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-stem-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="lemma-index"
-                                          select="$lemma-index"/>
-                          <xsl:with-param name="paradigm-index"
-                                          select="$paradigm-index"/>
-                          <xsl:with-param name="stem"
-                                          select="$past-stem"/>
-                          <xsl:with-param name="abbreviation"
-                                          select="$abbreviation"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="particle2"
-                                          select="$particle2"/>
-                          <xsl:with-param name="class">VPastIndWeak</xsl:with-param>
-                          <xsl:with-param name="etymology"
-                                          select="$etymology"/>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:otherwise>
-                </xsl:choose>
-                <!-- past subjunctive -->
-                <xsl:choose>
-                  <!-- past indicative of borrowed verbs ending in "c", "g", or "p" + "let" -->
-                  <xsl:when test="matches($past-without-particle,'[cgp]lete$')">
-                    <xsl:choose>
-                      <!-- back-formation -->
-                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'n$'))">
-                        <xsl:call-template name="verb-stem-entry">
-                          <xsl:with-param name="lemma"
-                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
-                          <xsl:with-param name="lemma-index"
-                                          select="$lemma-index"/>
-                          <xsl:with-param name="paradigm-index"
-                                          select="$paradigm-index"/>
-                          <xsl:with-param name="stem"
-                                          select="replace($past-stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                          <xsl:with-param name="abbreviation"
-                                          select="$abbreviation"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="particle2"
-                                          select="$particle2"/>
-                          <xsl:with-param name="class">VPastSubj-le</xsl:with-param>
-                          <xsl:with-param name="etymology"
-                                          select="$etymology"/>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- no back-formation -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-stem-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="lemma-index"
-                                          select="$lemma-index"/>
-                          <xsl:with-param name="paradigm-index"
-                                          select="$paradigm-index"/>
-                          <xsl:with-param name="stem"
-                                          select="$past-stem"/>
-                          <xsl:with-param name="abbreviation"
-                                          select="$abbreviation"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="particle2"
-                                          select="$particle2"/>
-                          <xsl:with-param name="class">VPastSubj-le</xsl:with-param>
-                          <xsl:with-param name="etymology"
-                                          select="$etymology"/>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:when>
                   <!-- "haben" -->
                   <xsl:when test="$lemma-without-particle='haben'">
                     <xsl:call-template name="verb-stem-entry">
@@ -9513,7 +6821,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="n:umlaut($past-stem)"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9522,19 +6830,10 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastSubj-haben</xsl:with-param>
+                      <xsl:with-param name="class">VInf</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
-                  </xsl:when>
-                  <!-- preterite-present verbs with umlautable past stem -->
-                  <xsl:when test="$lemma-without-particle='bedürfen' or
-                                  $lemma-without-particle='dürfen' or
-                                  $lemma-without-particle='können' or
-                                  $lemma-without-particle='mögen' or
-                                  $lemma-without-particle='müssen' or
-                                  $lemma-without-particle='vermögen' or
-                                  $lemma-without-particle='wissen'">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -9543,7 +6842,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="n:umlaut($past-stem)"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9552,13 +6851,10 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
-                  </xsl:when>
-                  <!-- past stem ending in "ach" -->
-                  <xsl:when test="ends-with($past-stem,'ach')">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -9567,7 +6863,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="n:umlaut($past-stem)"/>
+                                      select="replace($present-stem,'t$','')"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9576,14 +6872,10 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
+                      <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
-                  </xsl:when>
-                  <!-- Rückumlaut -->
-                  <xsl:when test="matches($present-stem,'en[dn]$') and
-                                  matches($past-stem,'an[dn]$')">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -9592,7 +6884,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="$stem"/><!-- sic! -->
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9601,70 +6893,32 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
+                      <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImp</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- other weak past stem -->
-                  <xsl:otherwise>
-                    <xsl:choose>
-                      <!-- back-formation -->
-                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
-                        <xsl:call-template name="verb-stem-entry">
-                          <xsl:with-param name="lemma"
-                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
-                          <xsl:with-param name="lemma-index"
-                                          select="$lemma-index"/>
-                          <xsl:with-param name="paradigm-index"
-                                          select="$paradigm-index"/>
-                          <xsl:with-param name="stem"
-                                          select="replace($past-stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
-                          <xsl:with-param name="abbreviation"
-                                          select="$abbreviation"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="particle2"
-                                          select="$particle2"/>
-                          <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
-                          <xsl:with-param name="etymology"
-                                          select="$etymology"/>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- no back-formation -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-stem-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="lemma-index"
-                                          select="$lemma-index"/>
-                          <xsl:with-param name="paradigm-index"
-                                          select="$paradigm-index"/>
-                          <xsl:with-param name="stem"
-                                          select="$past-stem"/>
-                          <xsl:with-param name="abbreviation"
-                                          select="$abbreviation"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="particle2"
-                                          select="$particle2"/>
-                          <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
-                          <xsl:with-param name="etymology"
-                                          select="$etymology"/>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:when>
-              <!-- strong past stem -->
-              <xsl:otherwise>
-                <xsl:choose>
                   <!-- "sein" -->
                   <xsl:when test="$lemma-without-particle='sein'">
                     <xsl:call-template name="verb-stem-entry">
@@ -9675,7 +6929,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="$past-stem"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9684,7 +6938,7 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastIndStr</xsl:with-param>
+                      <xsl:with-param name="class">VInf_n</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -9696,7 +6950,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="n:umlaut($past-stem)"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9705,7 +6959,27 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem">bin</xsl:with-param>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd1Sg-sein</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -9717,7 +6991,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="n:umlaut($past-stem)"/>
+                                      select="concat('b',$present-stem)"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9726,7 +7000,132 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastSubj2-sein</xsl:with-param>
+                      <xsl:with-param name="class">VPresInd2Sg-sein</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="replace($present-stem,'t$','')"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd3Sg-sein</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem">sind</xsl:with-param>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd13Pl-sein</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="concat($stem,'d')"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd2Pl-sein</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresSubj-sein</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImpSg0</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="concat($stem,'d')"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImpPl-sein</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -9743,7 +7142,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="$past-stem"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9752,7 +7151,7 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastIndStr</xsl:with-param>
+                      <xsl:with-param name="class">VInf_n</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -9764,7 +7163,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="n:umlaut($past-stem)"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9773,14 +7172,76 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPres-tun</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImpSg0</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImpPl</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
                   <!-- "werden" -->
-                  <xsl:when test="$lemma-without-particle='werden' and
-                                  $past-stem='wurde'">
+                  <xsl:when test="$lemma-without-particle='werden'">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -9789,7 +7250,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="replace($past-stem,'e$','')"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9798,7 +7259,7 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastInd-werden</xsl:with-param>
+                      <xsl:with-param name="class">VInf</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -9810,7 +7271,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="n:umlaut(replace($past-stem,'e$',''))"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9819,13 +7280,103 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="replace($present-stem,'d$','')"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd2Sg-werden</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$present-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd3Sg-werden</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImp-d-t</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
-                  <xsl:when test="$lemma-without-particle='werden' and
-                                  $past-stem='ward'">
+                  <!-- preterite-present verbs -->
+                  <xsl:when test="ends-with($lemma-without-particle,'dürfen') or
+                                  ends-with($lemma-without-particle,'können') or
+                                  ends-with($lemma-without-particle,'mögen') or
+                                  ends-with($lemma-without-particle,'müssen') or
+                                  ends-with($lemma-without-particle,'sollen') or
+                                  ends-with($lemma-without-particle,'wissen') or
+                                  ends-with($lemma-without-particle,'wollen')">
                     <xsl:call-template name="verb-stem-entry">
                       <xsl:with-param name="lemma"
                                       select="$lemma-without-particle"/>
@@ -9834,7 +7385,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="$past-stem"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9843,7 +7394,7 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastIndSg-ward</xsl:with-param>
+                      <xsl:with-param name="class">VInf</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -9855,7 +7406,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="replace($past-stem,'a','u')"/>
+                                      select="$stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9864,7 +7415,7 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastIndPl-werden</xsl:with-param>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
@@ -9876,7 +7427,7 @@
                       <xsl:with-param name="paradigm-index"
                                       select="$paradigm-index"/>
                       <xsl:with-param name="stem"
-                                      select="n:umlaut(replace($past-stem,'a','u'))"/>
+                                      select="$present-stem"/>
                       <xsl:with-param name="abbreviation"
                                       select="$abbreviation"/>
                       <xsl:with-param name="participle"
@@ -9885,20 +7436,2013 @@
                                       select="$particle"/>
                       <xsl:with-param name="particle2"
                                       select="$particle2"/>
-                      <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                      <xsl:with-param name="class">VModPresIndSg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VModPresNonIndSg</xsl:with-param>
                       <xsl:with-param name="etymology"
                                       select="$etymology"/>
                     </xsl:call-template>
                   </xsl:when>
-                  <!-- umlautable strong past stem -->
-                  <!-- Caveat: "e" is considered as a full vowel. -->
-                  <xsl:when test="matches($past-stem,'(au|aa|oo|[aou])[^aeiouäöü]*$')">
+                  <!-- "sehen" -->
+                  <xsl:when test="$lemma-without-particle='sehen'">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VInf</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$present-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$present-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImpSg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImpPl</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- "vgl." -->
+                  <xsl:when test="$lemma='vgl.'">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation">yes</xsl:with-param>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">AbbrVImp</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- borrowed verbs ending in "bi", "fa", or "li" + "ken" -->
+                  <xsl:when test="matches($lemma-without-particle,'(bi|fa|li)ken$')">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VInf</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPres-ak-ik</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImp-ak-ik</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- borrowed verbs ending in "c", "g", or "p" + "len" -->
+                  <xsl:when test="matches($lemma-without-particle,'[cgp]len$')">
+                    <xsl:choose>
+                      <!-- back-formation -->
+                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'n$'))">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf-le</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres-le</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres-le</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp-le</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- no back-formation -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf-le</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres-le</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres-le</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp-le</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:when>
+                  <!-- irregular verbs ending in "eln" or "ern" -->
+                  <xsl:when test="ends-with($lemma-without-particle,'eln') or
+                                  ends-with($lemma-without-particle,'ern')">
+                    <xsl:choose>
+                      <!-- back-formation -->
+                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'n$'))">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf-el-er</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres-el-er</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres-el-er</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp-el-er</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- no back-formation -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf-el-er</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres-el-er</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres-el-er</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp-el-er</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:when>
+                  <!-- uniform present stem with stem-final "d" or "t" -->
+                  <xsl:when test="$stem=$present-stem and
+                                  (ends-with($present-stem,'d') or
+                                   ends-with($present-stem,'t'))">
+                    <xsl:choose>
+                      <!-- back-formation -->
+                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'en$'))">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp-d-t</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- no back-formation -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp-d-t</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:when>
+                  <!-- uniform present stem with stem-final "n" or "m", preceded
+                       by "b", "d", "f", "g", "k", "p", "s", "t", or "ch" -->
+                  <xsl:when test="$stem=$present-stem and
+                                  matches($present-stem,'([bdfgkpst]|ch)[mn]$')">
+                    <xsl:choose>
+                      <!-- back-formation -->
+                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'en$'))">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres-m-n</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp-m-n</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- no back-formation -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres-m-n</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp-m-n</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:when>
+                  <!-- uniform present stem with stem-final "s", "ß", "x", "z", or "sch" -->
+                  <xsl:when test="$stem=$present-stem and
+                                  (ends-with($past-stem,'s') or
+                                   ends-with($past-stem,'ß') or
+                                   ends-with($past-stem,'x') or
+                                   ends-with($past-stem,'z') or
+                                   ends-with($past-stem,'sch'))">
+                    <xsl:choose>
+                      <!-- back-formation -->
+                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'en$'))">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres-s</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(en)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- no back-formation -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres-s</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:when>
+                  <!-- uniform present stem -->
+                  <xsl:when test="$stem=$present-stem">
+                    <xsl:choose>
+                      <!-- back-formation -->
+                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- no back-formation -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VInf</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPres</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VImp</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:when>
+                  <!-- present stem for 2nd/3rd person singular with "e"/"i"-alternation
+                       with stem-final "t" -->
+                  <xsl:when test="ends-with($present-stem,'t') and
+                                  matches($present-stem,n:e-i-alternation-re($stem))">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VInf</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$present-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd23Sg-t_0</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$present-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImpSg0</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImpPl</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- other present stem for 2nd/3rd person singular with "e"/"i"-alternation -->
+                  <xsl:when test="matches($present-stem,n:e-i-alternation-re($stem))">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VInf</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$present-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$present-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImpSg0</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImpPl</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- present stem for 2nd/3rd person singular with stem-final "d"
+                       without "e" epenthesis before "-t" -->
+                  <xsl:when test="ends-with($present-stem,'d') and
+                                  $present-without-particle=concat($present-stem,'t')">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VInf</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$present-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd23Sg-d_t</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImp</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- present stem for 2nd/3rd person singular with stem-final "t" -->
+                  <xsl:when test="ends-with($present-stem,'t') and
+                                  $present-without-particle=$present-stem">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VInf</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$present-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd23Sg-t_0</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImp-d-t</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- other present stem for 2nd/3rd person singular -->
+                  <xsl:otherwise>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VInf</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPartPres</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$present-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPresNonInd23Sg</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VImp</xsl:with-param>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                </xsl:choose>
+                <!-- past -->
+                <xsl:choose>
+                  <!-- weak past stem -->
+                  <xsl:when test="matches($past-without-particle,concat('^',$past-stem,'e?te$'))">
                     <!-- past indicative -->
                     <xsl:choose>
-                      <!-- past indicative with stem-final "s", "ß", or "z" -->
-                      <xsl:when test="ends-with($past-stem,'s') or
-                                      ends-with($past-stem,'ß') or
-                                      ends-with($past-stem,'z')">
+                      <!-- past indicative of borrowed verbs ending in "c", "g", or "p" + "let" -->
+                      <xsl:when test="matches($past-without-particle,'[cgp]lete$')">
+                        <xsl:choose>
+                          <!-- back-formation -->
+                          <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                          matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'n$'))">
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="replace($past-stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastInd-le</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- no back-formation -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastInd-le</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:when>
+                      <!-- past indicative with stem-final "d" or "t"
+                           without "e" epenthesis before "-t" -->
+                      <xsl:when test="matches($past-stem,'[dt]$') and
+                                      $past-without-particle=concat($past-stem,'te')">
                         <xsl:call-template name="verb-stem-entry">
                           <xsl:with-param name="lemma"
                                           select="$lemma-without-particle"/>
@@ -9916,13 +9460,286 @@
                                           select="$particle"/>
                           <xsl:with-param name="particle2"
                                           select="$particle2"/>
-                          <xsl:with-param name="class">VPastIndStr-s</xsl:with-param>
+                          <xsl:with-param name="class">VPastInd-d-t_t</xsl:with-param>
                           <xsl:with-param name="etymology"
                                           select="$etymology"/>
                         </xsl:call-template>
                       </xsl:when>
-                      <!-- other past indicative -->
+                      <!-- other weak past stem -->
                       <xsl:otherwise>
+                        <xsl:choose>
+                          <!-- back-formation -->
+                          <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                          matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="replace($past-stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastIndWeak</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- no back-formation -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastIndWeak</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <!-- past subjunctive -->
+                    <xsl:choose>
+                      <!-- past indicative of borrowed verbs ending in "c", "g", or "p" + "let" -->
+                      <xsl:when test="matches($past-without-particle,'[cgp]lete$')">
+                        <xsl:choose>
+                          <!-- back-formation -->
+                          <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                          matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'n$'))">
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="replace($past-stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastSubj-le</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- no back-formation -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastSubj-le</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:when>
+                      <!-- "haben" -->
+                      <xsl:when test="$lemma-without-particle='haben'">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastSubj-haben</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- preterite-present verbs with umlautable past stem -->
+                      <xsl:when test="$lemma-without-particle='bedürfen' or
+                                      $lemma-without-particle='dürfen' or
+                                      $lemma-without-particle='können' or
+                                      $lemma-without-particle='mögen' or
+                                      $lemma-without-particle='müssen' or
+                                      $lemma-without-particle='vermögen' or
+                                      $lemma-without-particle='wissen'">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- past stem ending in "ach" -->
+                      <xsl:when test="ends-with($past-stem,'ach')">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- Rückumlaut -->
+                      <xsl:when test="matches($present-stem,'en[dn]$') and
+                                      matches($past-stem,'an[dn]$')">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$stem"/><!-- sic! -->
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- other weak past stem -->
+                      <xsl:otherwise>
+                        <xsl:choose>
+                          <!-- back-formation -->
+                          <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                          matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="replace($past-stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- no back-formation -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastSubjWeak</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:when>
+                  <!-- strong past stem -->
+                  <xsl:otherwise>
+                    <xsl:choose>
+                      <!-- "sein" -->
+                      <xsl:when test="$lemma-without-particle='sein'">
                         <xsl:call-template name="verb-stem-entry">
                           <xsl:with-param name="lemma"
                                           select="$lemma-without-particle"/>
@@ -9944,171 +9761,367 @@
                           <xsl:with-param name="etymology"
                                           select="$etymology"/>
                         </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                    <!-- past subjunctive -->
-                    <xsl:if test="not(ends-with($lemma-without-particle,'sterben') or
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastSubj2-sein</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- "tun" and related verbs -->
+                      <xsl:when test="$lemma-without-particle='tun' or
+                                      $lemma-without-particle='betun' or
+                                      $lemma-without-particle='vertun'">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$past-stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastIndStr</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut($past-stem)"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- "werden" -->
+                      <xsl:when test="$lemma-without-particle='werden' and
+                                      $past-stem='wurde'">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($past-stem,'e$','')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastInd-werden</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut(replace($past-stem,'e$',''))"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <xsl:when test="$lemma-without-particle='werden' and
+                                      $past-stem='ward'">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$past-stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastIndSg-ward</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="replace($past-stem,'a','u')"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastIndPl-werden</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="n:umlaut(replace($past-stem,'a','u'))"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- umlautable strong past stem -->
+                      <!-- Caveat: "e" is considered as a full vowel. -->
+                      <xsl:when test="matches($past-stem,'(au|aa|oo|[aou])[^aeiouäöü]*$')">
+                        <!-- past indicative -->
+                        <xsl:choose>
+                          <!-- past indicative with stem-final "s", "ß", or "z" -->
+                          <xsl:when test="ends-with($past-stem,'s') or
+                                          ends-with($past-stem,'ß') or
+                                          ends-with($past-stem,'z')">
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastIndStr-s</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- other past indicative -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastIndStr</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                        <!-- past subjunctive -->
+                        <xsl:if test="not(ends-with($lemma-without-particle,'sterben') or
+                                          ends-with($lemma-without-particle,'werben') or
+                                          ends-with($lemma-without-particle,'werfen'))">
+                          <xsl:call-template name="verb-stem-entry">
+                            <xsl:with-param name="lemma"
+                                            select="$lemma-without-particle"/>
+                            <xsl:with-param name="lemma-index"
+                                            select="$lemma-index"/>
+                            <xsl:with-param name="paradigm-index"
+                                            select="$paradigm-index"/>
+                            <xsl:with-param name="stem"
+                                            select="n:umlaut($past-stem)"/>
+                            <xsl:with-param name="abbreviation"
+                                            select="$abbreviation"/>
+                            <xsl:with-param name="participle"
+                                            select="$participle-without-particle"/>
+                            <xsl:with-param name="particle"
+                                            select="$particle"/>
+                            <xsl:with-param name="particle2"
+                                            select="$particle2"/>
+                            <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                            <xsl:with-param name="etymology"
+                                            select="$etymology"/>
+                          </xsl:call-template>
+                        </xsl:if>
+                        <!-- past subjunctive with "ü" -->
+                        <xsl:if test="ends-with($lemma-without-particle,'heben') or
+                                      ends-with($lemma-without-particle,'helfen') or
+                                      ends-with($lemma-without-particle,'schwören') or
+                                      ends-with($lemma-without-particle,'stehen') or
+                                      ends-with($lemma-without-particle,'sterben') or
                                       ends-with($lemma-without-particle,'werben') or
-                                      ends-with($lemma-without-particle,'werfen'))">
-                      <xsl:call-template name="verb-stem-entry">
-                        <xsl:with-param name="lemma"
-                                        select="$lemma-without-particle"/>
-                        <xsl:with-param name="lemma-index"
-                                        select="$lemma-index"/>
-                        <xsl:with-param name="paradigm-index"
-                                        select="$paradigm-index"/>
-                        <xsl:with-param name="stem"
-                                        select="n:umlaut($past-stem)"/>
-                        <xsl:with-param name="abbreviation"
-                                        select="$abbreviation"/>
-                        <xsl:with-param name="participle"
-                                        select="$participle-without-particle"/>
-                        <xsl:with-param name="particle"
-                                        select="$particle"/>
-                        <xsl:with-param name="particle2"
-                                        select="$particle2"/>
-                        <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
-                        <xsl:with-param name="etymology"
-                                        select="$etymology"/>
-                      </xsl:call-template>
-                    </xsl:if>
-                    <!-- past subjunctive with "ü" -->
-                    <xsl:if test="ends-with($lemma-without-particle,'heben') or
-                                  ends-with($lemma-without-particle,'helfen') or
-                                  ends-with($lemma-without-particle,'schwören') or
-                                  ends-with($lemma-without-particle,'stehen') or
-                                  ends-with($lemma-without-particle,'sterben') or
-                                  ends-with($lemma-without-particle,'werben') or
-                                  ends-with($lemma-without-particle,'werfen')">
-                      <xsl:call-template name="verb-stem-entry">
-                        <xsl:with-param name="lemma"
-                                        select="$lemma-without-particle"/>
-                        <xsl:with-param name="lemma-index"
-                                        select="$lemma-index"/>
-                        <xsl:with-param name="paradigm-index"
-                                        select="$paradigm-index"/>
-                        <xsl:with-param name="stem"
-                                        select="n:umlaut(replace($past-stem,'[ao]([^aeiouäöü]*)$','u$1'))"/>
-                        <xsl:with-param name="abbreviation"
-                                        select="$abbreviation"/>
-                        <xsl:with-param name="participle"
-                                        select="$participle-without-particle"/>
-                        <xsl:with-param name="particle"
-                                        select="$particle"/>
-                        <xsl:with-param name="particle2"
-                                        select="$particle2"/>
-                        <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
-                        <xsl:with-param name="etymology"
-                                        select="$etymology"/>
-                      </xsl:call-template>
-                    </xsl:if>
-                    <!-- archaic past subjunctive with "ö" -->
-                    <xsl:if test="ends-with($lemma-without-particle,'befehlen') or
-                                  ends-with($lemma-without-particle,'beginnen') or
-                                  ends-with($lemma-without-particle,'empfehlen') or
-                                  ends-with($lemma-without-particle,'gelten') or
-                                  ends-with($lemma-without-particle,'gewinnen') or
-                                  ends-with($lemma-without-particle,'rinnen') or
-                                  ends-with($lemma-without-particle,'schelten') or
-                                  ends-with($lemma-without-particle,'schwimmen') or
-                                  ends-with($lemma-without-particle,'sinnen') or
-                                  ends-with($lemma-without-particle,'spinnen')">
-                      <xsl:call-template name="verb-stem-entry">
-                        <xsl:with-param name="lemma"
-                                        select="$lemma-without-particle"/>
-                        <xsl:with-param name="lemma-index"
-                                        select="$lemma-index"/>
-                        <xsl:with-param name="paradigm-index"
-                                        select="$paradigm-index"/>
-                        <xsl:with-param name="stem"
-                                        select="n:umlaut(replace($past-stem,'a([^aeiouäöü]*)$','o$1'))"/>
-                        <xsl:with-param name="abbreviation"
-                                        select="$abbreviation"/>
-                        <xsl:with-param name="participle"
-                                        select="$participle-without-particle"/>
-                        <xsl:with-param name="particle"
-                                        select="$particle"/>
-                        <xsl:with-param name="particle2"
-                                        select="$particle2"/>
-                        <xsl:with-param name="class">VPastSubjOld</xsl:with-param>
-                        <xsl:with-param name="etymology"
-                                        select="$etymology"/>
-                      </xsl:call-template>
-                    </xsl:if>
-                  </xsl:when>
-                  <!-- non-umlautable strong past stem with stem-final "s", "ß", or "z" -->
-                  <xsl:when test="ends-with($past-stem,'s') or
-                                  ends-with($past-stem,'ß') or
-                                  ends-with($past-stem,'z')">
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$past-stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPastStr-s</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <!-- other non-umlautable strong past stem -->
-                  <xsl:otherwise>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$past-stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPastStr</xsl:with-param>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:otherwise>
-            </xsl:choose>
-            <!-- past participle -->
-            <xsl:choose>
-              <!-- weak past participle -->
-              <xsl:when test="matches($participle-without-particle,'e?t$')">
-                <xsl:choose>
-                  <!-- weak past participles of borrowed verbs ending in "c", "g", or "p" + "let" -->
-                  <xsl:when test="matches($participle-without-particle,'[cgp]let$')">
-                    <xsl:choose>
-                      <!-- back-formation -->
-                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'n$'))">
+                                      ends-with($lemma-without-particle,'werfen')">
+                          <xsl:call-template name="verb-stem-entry">
+                            <xsl:with-param name="lemma"
+                                            select="$lemma-without-particle"/>
+                            <xsl:with-param name="lemma-index"
+                                            select="$lemma-index"/>
+                            <xsl:with-param name="paradigm-index"
+                                            select="$paradigm-index"/>
+                            <xsl:with-param name="stem"
+                                            select="n:umlaut(replace($past-stem,'[ao]([^aeiouäöü]*)$','u$1'))"/>
+                            <xsl:with-param name="abbreviation"
+                                            select="$abbreviation"/>
+                            <xsl:with-param name="participle"
+                                            select="$participle-without-particle"/>
+                            <xsl:with-param name="particle"
+                                            select="$particle"/>
+                            <xsl:with-param name="particle2"
+                                            select="$particle2"/>
+                            <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                            <xsl:with-param name="etymology"
+                                            select="$etymology"/>
+                          </xsl:call-template>
+                        </xsl:if>
+                        <!-- archaic past subjunctive with "ö" -->
+                        <xsl:if test="ends-with($lemma-without-particle,'befehlen') or
+                                      ends-with($lemma-without-particle,'beginnen') or
+                                      ends-with($lemma-without-particle,'empfehlen') or
+                                      ends-with($lemma-without-particle,'gelten') or
+                                      ends-with($lemma-without-particle,'gewinnen') or
+                                      ends-with($lemma-without-particle,'rinnen') or
+                                      ends-with($lemma-without-particle,'schelten') or
+                                      ends-with($lemma-without-particle,'schwimmen') or
+                                      ends-with($lemma-without-particle,'sinnen') or
+                                      ends-with($lemma-without-particle,'spinnen')">
+                          <xsl:call-template name="verb-stem-entry">
+                            <xsl:with-param name="lemma"
+                                            select="$lemma-without-particle"/>
+                            <xsl:with-param name="lemma-index"
+                                            select="$lemma-index"/>
+                            <xsl:with-param name="paradigm-index"
+                                            select="$paradigm-index"/>
+                            <xsl:with-param name="stem"
+                                            select="n:umlaut(replace($past-stem,'a([^aeiouäöü]*)$','o$1'))"/>
+                            <xsl:with-param name="abbreviation"
+                                            select="$abbreviation"/>
+                            <xsl:with-param name="participle"
+                                            select="$participle-without-particle"/>
+                            <xsl:with-param name="particle"
+                                            select="$particle"/>
+                            <xsl:with-param name="particle2"
+                                            select="$particle2"/>
+                            <xsl:with-param name="class">VPastSubjOld</xsl:with-param>
+                            <xsl:with-param name="etymology"
+                                            select="$etymology"/>
+                          </xsl:call-template>
+                        </xsl:if>
+                      </xsl:when>
+                      <!-- non-umlautable strong past stem with stem-final "s", "ß", or "z" -->
+                      <xsl:when test="ends-with($past-stem,'s') or
+                                      ends-with($past-stem,'ß') or
+                                      ends-with($past-stem,'z')">
                         <xsl:call-template name="verb-stem-entry">
                           <xsl:with-param name="lemma"
-                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                                          select="$lemma-without-particle"/>
                           <xsl:with-param name="lemma-index"
                                           select="$lemma-index"/>
                           <xsl:with-param name="paradigm-index"
                                           select="$paradigm-index"/>
                           <xsl:with-param name="stem"
-                                          select="replace($participle-stem,'^(.+)(ge)(.+)$','$1&lt;CB&gt;$2&lt;PB&gt;$3')"/>
+                                          select="$past-stem"/>
                           <xsl:with-param name="abbreviation"
                                           select="$abbreviation"/>
                           <xsl:with-param name="participle"
@@ -10117,14 +10130,247 @@
                                           select="$particle"/>
                           <xsl:with-param name="particle2"
                                           select="$particle2"/>
-                          <xsl:with-param name="class">VPartPerf-le</xsl:with-param>
+                          <xsl:with-param name="class">VPastStr-s</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- other non-umlautable strong past stem -->
+                      <xsl:otherwise>
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$past-stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPastStr</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:otherwise>
+                </xsl:choose>
+                <!-- past participle -->
+                <xsl:choose>
+                  <!-- weak past participle -->
+                  <xsl:when test="matches($participle-without-particle,'e?t$')">
+                    <xsl:choose>
+                      <!-- weak past participles of borrowed verbs ending in "c", "g", or "p" + "let" -->
+                      <xsl:when test="matches($participle-without-particle,'[cgp]let$')">
+                        <xsl:choose>
+                          <!-- back-formation -->
+                          <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                          matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'n$'))">
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(n)$'),'$1&lt;CB&gt;$2$3')"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="replace($participle-stem,'^(.+)(ge)(.+)$','$1&lt;CB&gt;$2&lt;PB&gt;$3')"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPartPerf-le</xsl:with-param>
+                              <xsl:with-param name="auxiliary"
+                                              select="$auxiliary"/>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- no back-formation -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="$participle-stem"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPartPerf-le</xsl:with-param>
+                              <xsl:with-param name="auxiliary"
+                                              select="$auxiliary"/>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:when>
+                      <!-- weak past participle with stem-final "d"
+                           without "e" epenthesis before "-t" -->
+                      <xsl:when test="ends-with($participle-stem,'d') and
+                                      matches($participle-without-particle,concat('^(ge)?',$participle-stem,'t$'))">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$participle-stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPerf-d_t</xsl:with-param>
                           <xsl:with-param name="auxiliary"
                                           select="$auxiliary"/>
                           <xsl:with-param name="etymology"
                                           select="$etymology"/>
                         </xsl:call-template>
                       </xsl:when>
-                      <!-- no back-formation -->
+                      <!-- other weak past participle -->
+                      <xsl:otherwise>
+                        <xsl:choose>
+                          <!-- back-formation -->
+                          <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                                          matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="replace($participle-stem,'^(.+)(ge)(.+)$','$1&lt;CB&gt;$2&lt;PB&gt;$3')"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPartPerfWeak</xsl:with-param>
+                              <xsl:with-param name="auxiliary"
+                                              select="$auxiliary"/>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- no back-formation -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="$participle-stem"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPartPerfWeak</xsl:with-param>
+                              <xsl:with-param name="auxiliary"
+                                              select="$auxiliary"/>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:when>
+                  <!-- borrowed past participle ending in "ed" -->
+                  <xsl:when test="ends-with($participle-without-particle,'ed')">
+                    <xsl:call-template name="verb-stem-entry">
+                      <xsl:with-param name="lemma"
+                                      select="$lemma-without-particle"/>
+                      <xsl:with-param name="lemma-index"
+                                      select="$lemma-index"/>
+                      <xsl:with-param name="paradigm-index"
+                                      select="$paradigm-index"/>
+                      <xsl:with-param name="stem"
+                                      select="$participle-stem"/>
+                      <xsl:with-param name="abbreviation"
+                                      select="$abbreviation"/>
+                      <xsl:with-param name="participle"
+                                      select="$participle-without-particle"/>
+                      <xsl:with-param name="particle"
+                                      select="$particle"/>
+                      <xsl:with-param name="particle2"
+                                      select="$particle2"/>
+                      <xsl:with-param name="class">VPartPerf_ed</xsl:with-param>
+                      <xsl:with-param name="auxiliary"
+                                      select="$auxiliary"/>
+                      <xsl:with-param name="etymology"
+                                      select="$etymology"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <!-- strong past participle -->
+                  <xsl:otherwise>
+                    <xsl:choose>
+                      <!-- "tun" and related verbs -->
+                      <xsl:when test="$lemma-without-particle='tun' or
+                                      $lemma-without-particle='betun' or
+                                      $lemma-without-particle='vertun'">
+                        <xsl:call-template name="verb-stem-entry">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma-without-particle"/>
+                          <xsl:with-param name="lemma-index"
+                                          select="$lemma-index"/>
+                          <xsl:with-param name="paradigm-index"
+                                          select="$paradigm-index"/>
+                          <xsl:with-param name="stem"
+                                          select="$participle-stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation"/>
+                          <xsl:with-param name="participle"
+                                          select="$participle-without-particle"/>
+                          <xsl:with-param name="particle"
+                                          select="$particle"/>
+                          <xsl:with-param name="particle2"
+                                          select="$particle2"/>
+                          <xsl:with-param name="class">VPartPerf_n</xsl:with-param>
+                          <xsl:with-param name="auxiliary"
+                                          select="$auxiliary"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <!-- other strong past participle -->
                       <xsl:otherwise>
                         <xsl:call-template name="verb-stem-entry">
                           <xsl:with-param name="lemma"
@@ -10143,7 +10389,7 @@
                                           select="$particle"/>
                           <xsl:with-param name="particle2"
                                           select="$particle2"/>
-                          <xsl:with-param name="class">VPartPerf-le</xsl:with-param>
+                          <xsl:with-param name="class">VPartPerfStr</xsl:with-param>
                           <xsl:with-param name="auxiliary"
                                           select="$auxiliary"/>
                           <xsl:with-param name="etymology"
@@ -10151,177 +10397,6 @@
                         </xsl:call-template>
                       </xsl:otherwise>
                     </xsl:choose>
-                  </xsl:when>
-                  <!-- weak past participle with stem-final "d"
-                       without "e" epenthesis before "-t" -->
-                  <xsl:when test="ends-with($participle-stem,'d') and
-                                  matches($participle-without-particle,concat('^(ge)?',$participle-stem,'t$'))">
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPerf-d_t</xsl:with-param>
-                      <xsl:with-param name="auxiliary"
-                                      select="$auxiliary"/>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <!-- other weak past participle -->
-                  <xsl:otherwise>
-                    <xsl:choose>
-                      <!-- back-formation -->
-                      <xsl:when test="matches($participle-stem,'^.+ge.+$') and
-                                      matches($lemma-without-particle,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
-                        <xsl:call-template name="verb-stem-entry">
-                          <xsl:with-param name="lemma"
-                                          select="replace($lemma-without-particle,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
-                          <xsl:with-param name="lemma-index"
-                                          select="$lemma-index"/>
-                          <xsl:with-param name="paradigm-index"
-                                          select="$paradigm-index"/>
-                          <xsl:with-param name="stem"
-                                          select="replace($participle-stem,'^(.+)(ge)(.+)$','$1&lt;CB&gt;$2&lt;PB&gt;$3')"/>
-                          <xsl:with-param name="abbreviation"
-                                          select="$abbreviation"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="particle2"
-                                          select="$particle2"/>
-                          <xsl:with-param name="class">VPartPerfWeak</xsl:with-param>
-                          <xsl:with-param name="auxiliary"
-                                          select="$auxiliary"/>
-                          <xsl:with-param name="etymology"
-                                          select="$etymology"/>
-                        </xsl:call-template>
-                      </xsl:when>
-                      <!-- no back-formation -->
-                      <xsl:otherwise>
-                        <xsl:call-template name="verb-stem-entry">
-                          <xsl:with-param name="lemma"
-                                          select="$lemma-without-particle"/>
-                          <xsl:with-param name="lemma-index"
-                                          select="$lemma-index"/>
-                          <xsl:with-param name="paradigm-index"
-                                          select="$paradigm-index"/>
-                          <xsl:with-param name="stem"
-                                          select="$participle-stem"/>
-                          <xsl:with-param name="abbreviation"
-                                          select="$abbreviation"/>
-                          <xsl:with-param name="participle"
-                                          select="$participle-without-particle"/>
-                          <xsl:with-param name="particle"
-                                          select="$particle"/>
-                          <xsl:with-param name="particle2"
-                                          select="$particle2"/>
-                          <xsl:with-param name="class">VPartPerfWeak</xsl:with-param>
-                          <xsl:with-param name="auxiliary"
-                                          select="$auxiliary"/>
-                          <xsl:with-param name="etymology"
-                                          select="$etymology"/>
-                        </xsl:call-template>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:when>
-              <!-- borrowed past participle ending in "ed" -->
-              <xsl:when test="ends-with($participle-without-particle,'ed')">
-                <xsl:call-template name="verb-stem-entry">
-                  <xsl:with-param name="lemma"
-                                  select="$lemma-without-particle"/>
-                  <xsl:with-param name="lemma-index"
-                                  select="$lemma-index"/>
-                  <xsl:with-param name="paradigm-index"
-                                  select="$paradigm-index"/>
-                  <xsl:with-param name="stem"
-                                  select="$participle-stem"/>
-                  <xsl:with-param name="abbreviation"
-                                  select="$abbreviation"/>
-                  <xsl:with-param name="participle"
-                                  select="$participle-without-particle"/>
-                  <xsl:with-param name="particle"
-                                  select="$particle"/>
-                  <xsl:with-param name="particle2"
-                                  select="$particle2"/>
-                  <xsl:with-param name="class">VPartPerf_ed</xsl:with-param>
-                  <xsl:with-param name="auxiliary"
-                                  select="$auxiliary"/>
-                  <xsl:with-param name="etymology"
-                                  select="$etymology"/>
-                </xsl:call-template>
-              </xsl:when>
-              <!-- strong past participle -->
-              <xsl:otherwise>
-                <xsl:choose>
-                  <!-- "tun" and related verbs -->
-                  <xsl:when test="$lemma-without-particle='tun' or
-                                  $lemma-without-particle='betun' or
-                                  $lemma-without-particle='vertun'">
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPerf_n</xsl:with-param>
-                      <xsl:with-param name="auxiliary"
-                                      select="$auxiliary"/>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <!-- other strong past participle -->
-                  <xsl:otherwise>
-                    <xsl:call-template name="verb-stem-entry">
-                      <xsl:with-param name="lemma"
-                                      select="$lemma-without-particle"/>
-                      <xsl:with-param name="lemma-index"
-                                      select="$lemma-index"/>
-                      <xsl:with-param name="paradigm-index"
-                                      select="$paradigm-index"/>
-                      <xsl:with-param name="stem"
-                                      select="$participle-stem"/>
-                      <xsl:with-param name="abbreviation"
-                                      select="$abbreviation"/>
-                      <xsl:with-param name="participle"
-                                      select="$participle-without-particle"/>
-                      <xsl:with-param name="particle"
-                                      select="$particle"/>
-                      <xsl:with-param name="particle2"
-                                      select="$particle2"/>
-                      <xsl:with-param name="class">VPartPerfStr</xsl:with-param>
-                      <xsl:with-param name="auxiliary"
-                                      select="$auxiliary"/>
-                      <xsl:with-param name="etymology"
-                                      select="$etymology"/>
-                    </xsl:call-template>
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:otherwise>

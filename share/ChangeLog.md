@@ -1,3 +1,7 @@
+2025-05-02:
+
+* add support for uninflected verbs with infinitive only
+
 2025-04-30:
 
 * add support for masculine nouns with unmarked genitive singular forms and
