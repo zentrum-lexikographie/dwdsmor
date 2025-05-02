@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.4.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.3.2...v0.4.0) (2025-05-02)
+
+
+### Features
+
+* add inflection class for colloquial inflection of "Quiz" ([c087f58](https://github.com/zentrum-lexikographie/dwdsmor/commit/c087f583e1d251b89f82ad78ef2098332b2fd5e2))
+* add initial support for measure nouns ([681f0f6](https://github.com/zentrum-lexikographie/dwdsmor/commit/681f0f6ecbd3f491f68004971a6130bc6069804d))
+* add support for additional cases of loan-word inflection ([0ac5232](https://github.com/zentrum-lexikographie/dwdsmor/commit/0ac5232796ad6197788b77086c799f6700b7c476))
+* add support for more nouns with suppletive plural forms ([f3bc818](https://github.com/zentrum-lexikographie/dwdsmor/commit/f3bc8183bf9bb446f54d28f975fbf13ef775b906))
+* add support for non-standard contracted adpositions ([aed0251](https://github.com/zentrum-lexikographie/dwdsmor/commit/aed0251d12c21b7f4caf105f0907d5da38421dd1))
+* add support for separated parts of separable verbs ([354e283](https://github.com/zentrum-lexikographie/dwdsmor/commit/354e283c9087f4144e71dfc5bcd9a6a34059b917))
+* add support for uninflected verbs with infinitive only ([89d6e5c](https://github.com/zentrum-lexikographie/dwdsmor/commit/89d6e5c80e0d946e10035dc6751fbdc85e492405))
+* port tools from master branch ([3299523](https://github.com/zentrum-lexikographie/dwdsmor/commit/32995230a389877bebd4c4a0ade7c85bea8df8e1))
+* reduce number of analyses of separated verbs by the "root" transducer ([fa4b201](https://github.com/zentrum-lexikographie/dwdsmor/commit/fa4b201165b77fbbd370b291b0874c908c586c3d))
+* update analysis.py for separated parts of separable verbs ([07f3934](https://github.com/zentrum-lexikographie/dwdsmor/commit/07f3934d9f040e282fb44f9030eb6a1039fa331f))
+
+
+### Bug Fixes
+
+* classify "Cl" and "NonCl" as function tags as in the master branch ([79c53ff](https://github.com/zentrum-lexikographie/dwdsmor/commit/79c53fffccd67b063c3d6665e6ed1ede6763216e))
+* do not sort results globally in command-line interface ([ec851ca](https://github.com/zentrum-lexikographie/dwdsmor/commit/ec851caed9f518899a79a63392c14859c893a59b))
+* exclude "worden" as a conversion basis ([3a5ae43](https://github.com/zentrum-lexikographie/dwdsmor/commit/3a5ae43e0a554292c4a2ffdd8db7a9c59d980ef3))
+* fix regression in regression-test snapshot creation ([dfa84af](https://github.com/zentrum-lexikographie/dwdsmor/commit/dfa84af8bcf37b96b5ff8b022058ae983092417d))
+* list all word-formation means tags supported by the "root" tranducer ([904f9df](https://github.com/zentrum-lexikographie/dwdsmor/commit/904f9df3dc9c70d021c060051d58d77460ef6c22))
+* set analyzer automaton to "lemma" in command-line interface ([3e75780](https://github.com/zentrum-lexikographie/dwdsmor/commit/3e75780d1444add92b9a8dff7da75d850dac126c))
+* update regression test for nominal compounds with verbal bases ([a5c9d17](https://github.com/zentrum-lexikographie/dwdsmor/commit/a5c9d17fef15f26fb176c8af3c512576444c38eb))
+* update regression test snapshot ([7870e2f](https://github.com/zentrum-lexikographie/dwdsmor/commit/7870e2fb8522561503c7d866477ada9369fec390))
+
 ## [0.3.2](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.3.1...v0.3.2) (2025-04-03)
 
 
