@@ -115,12 +115,11 @@ def build_lexicon(edition_dir, force=False):
 
     aux_dir = edition_dir / "aux"
     src_dir = edition_dir / "wb"
-    exclude_file = edition_dir / "exclude.xml"
     sources = (
-        list(aux_dir.rglob("*"))
-        + list(src_dir.rglob("*"))
-        + list(xsl_dir.rglob("*"))
-        + [exclude_file]
+        list(xsl_dir.glob("*.xsl"))
+        + list(src_dir.rglob("*.xml"))
+        + list(aux_dir.glob("*.xml"))
+        + list(edition_dir.glob("exclude.xml"))
     )
 
     edition_build_dir = build_dir / edition_name
@@ -135,11 +134,15 @@ def build_lexicon(edition_dir, force=False):
 
     logger.info("Building lexicon '%s'", edition_name)
     edition_build_dir.mkdir(parents=True, exist_ok=True)
+    exclude_file = edition_dir / "exclude.xml"
+    xsl_params = [f"dwds-dir={src_dir.as_posix()}"]
+    if aux_dir.is_dir():
+        xsl_params.append(f"aux-dir={aux_dir.as_posix()}")
+    if exclude_file.is_file():
+        xsl_params.append(f"exclude-file={exclude_file.as_posix()}")
     saxon(
         xsl_dir / "dwds2manifest.xsl",
-        f"dwds-dir={src_dir.as_posix()}",
-        f"aux-dir={aux_dir.as_posix()}",
-        f"exclude-file={exclude_file.as_posix()}",
+        *xsl_params,
         cwd=edition_dir,
         output_file=manifest_xml,
         log_file=manifest_log,
@@ -156,7 +159,7 @@ def build_lexicon(edition_dir, force=False):
 
 fst_sources = [
     fst_file
-    for fst_file in grammar_dir.rglob("*.fst")
+    for fst_file in grammar_dir.glob("*.fst")
     if not fst_file.name.startswith("dwdsmor-")
 ]
 
