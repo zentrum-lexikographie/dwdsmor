@@ -53,22 +53,22 @@ class AutomataDirNotFound(Exception):
 
 def detect_dev_root_dir():
     """
-    Detect development environment and return one of its automaton
-    dirs.
+    Detect development environment and return one of its automata
+    build directories.
 
     Development environments are flagged via a set environment
-    variable ``DWDSMOR_ENV`` (i. e. in ``.env.shared``). In such
-    environments, one of the automata in a subdirectory of ``build/``,
-    i.e. ``build/open`` is returned.
+    variable ``DWDSMOR_DEV`` (i. e. in ``.env.shared``). In such
+    environments, one of the automata build directories ``build/dev/``,
+    ``build/dwds/``, and ``build/open/`` is returned.
     """
     if config.get("DWDSMOR_DEV"):
         build_dir = Path("build")
-        for edition in ("dwds", "open", "dev"):
+        for edition in ("dev", "dwds", "open"):
             edition_dir = build_dir / edition
             if edition_dir.is_dir():
                 return str(edition_dir)
         raise AutomataDirNotFound(
-            "$DWDSMOR_DEV is set, but no known automata available under build/"
+            "$DWDSMOR_DEV is set, but no automata build directory is available"
         )
 
 
@@ -76,14 +76,14 @@ def detect_root_dir() -> Path:
     """
     Detect local automata directory if none is specified.
 
-    1. Try to get it from an environment variable ``DWDSMOR_AUTOMATA_DIR``.
-    2. Try to detect a development environment and get it from there.
+    1. Try to detect a development environment and get it from there.
+    2. Try to get it from an environment variable ``DWDSMOR_AUTOMATA_DIR``.
     3. Raise ``AutomataDirNotFound``.
     """
-    root = config.get("DWDSMOR_AUTOMATA_DIR")
+    root = detect_dev_root_dir()
     if root:
         return Path(root)
-    root = detect_dev_root_dir()
+    root = config.get("DWDSMOR_AUTOMATA_DIR")
     if root:
         return Path(root)
     raise AutomataDirNotFound()

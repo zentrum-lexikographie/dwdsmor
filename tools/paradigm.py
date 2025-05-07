@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms with DWDSmor
-# Andreas Nolda 2025-04-09
+# Andreas Nolda 2025-05-07
 
 import argparse
 import csv
@@ -8,27 +8,25 @@ import json
 import sys
 from collections import defaultdict, namedtuple
 from itertools import filterfalse, product
-from os import getcwd, pardir, path
+from os import path
 
 from analysis import analyse_word
 
 from blessings import Terminal
+
+from dwdsmor.automaton import detect_root_dir
 
 import sfst_transduce
 
 import yaml
 
 
-version = 16.0
+version = 16.1
 
 
-BASEDIR = path.abspath(path.join(path.dirname(__file__), pardir))
+ROOT_DIR = detect_root_dir()
 
-BUILDDIR = path.join(BASEDIR, "build")
-
-EDITIONDIR = path.join(BUILDDIR, "dwds")
-
-TRANSDUCER = path.join(EDITIONDIR, "index.a")
+TRANSDUCER = path.join(ROOT_DIR, "index.a")
 
 
 INDICES = [1, 2, 3, 4, 5, 6, 7, 8]
@@ -2291,7 +2289,7 @@ def main():
         parser.add_argument("-S", "--ch", action="store_true",
                             help="output also forms in Swiss spelling")
         parser.add_argument("-t", "--transducer", default=TRANSDUCER,
-                            help=f"path to transducer file in standard format (default: {path.relpath(TRANSDUCER, getcwd())})")
+                            help=f"path to transducer file in standard format (default: {TRANSDUCER})")
         parser.add_argument("-u", "--user-specified", action="store_true",
                             help="use only user-specified information")
         parser.add_argument("-v", "--version", action="version",

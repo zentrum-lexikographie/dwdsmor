@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # analysis.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2025-04-09
+# Gregor Middell and Andreas Nolda 2025-05-07
 # with contributions by Adrien Barbaresi
 
 import argparse
@@ -10,27 +10,25 @@ import re
 import sys
 from collections import namedtuple
 from functools import cached_property
-from os import getcwd, pardir, path
+from os import path
 
 from blessings import Terminal
+
+from dwdsmor.automaton import detect_root_dir
 
 import sfst_transduce
 
 import yaml
 
 
-version = 13.0
+version = 13.1
 
 
-BASEDIR = path.abspath(path.join(path.dirname(__file__), pardir))
+ROOT_DIR = detect_root_dir()
 
-BUILDDIR = path.join(BASEDIR, "build")
+TRANSDUCER = path.join(ROOT_DIR, "lemma.ca")
 
-EDITIONDIR = path.join(BUILDDIR, "dwds")
-
-TRANSDUCER = path.join(EDITIONDIR, "lemma.ca")
-
-TRANSDUCER2 = path.join(EDITIONDIR, "morph.a")
+TRANSDUCER2 = path.join(ROOT_DIR, "morph.a")
 
 
 BOUNDARIES_INFL = ["<~>"]
@@ -635,9 +633,9 @@ def main():
         parser.add_argument("-S", "--seg-word", action="store_true",
                             help="output also segmented word form (requires supplementary transducer file)")
         parser.add_argument("-t", "--transducer", default=TRANSDUCER,
-                            help=f"path to transducer file in compact format (default: {path.relpath(TRANSDUCER, getcwd())})")
+                            help=f"path to transducer file in compact format (default: {TRANSDUCER})")
         parser.add_argument("-T", "--transducer2", default=TRANSDUCER2,
-                            help=f"path to supplementary transducer file in standard format (default: {path.relpath(TRANSDUCER2, getcwd())})")
+                            help=f"path to supplementary transducer file in standard format (default: {TRANSDUCER2})")
         parser.add_argument("-v", "--version", action="version",
                             version=f"{parser.prog} {version}")
         parser.add_argument("-w", "--wf-process", action="store_true",
