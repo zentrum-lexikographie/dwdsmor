@@ -199,7 +199,7 @@ def build_automaton(edition_dir, automaton_type, force=False):
         )
         run(["fst-compact", automaton_a.as_posix(), automaton_ca.as_posix()])
     finally:
-        if lexicon_symlink.is_symlink:
+        if lexicon_symlink.is_symlink():
             lexicon_symlink.unlink()
     return True
 
