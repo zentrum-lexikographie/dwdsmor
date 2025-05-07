@@ -171,12 +171,13 @@ def build_automaton(edition_dir, automaton_type, force=False):
     edition_build_dir = build_dir / edition_name
 
     lexicon_src = edition_build_dir / "lex.txt"
-    automaton_src_tmpl = grammar_dir / f"dwdsmor-{automaton_type}.fst"
+    lexicon_symlink = grammar_dir / "lex.txt"
+    automaton_src = grammar_dir / f"dwdsmor-{automaton_type}.fst"
     automaton_a = edition_build_dir / f"{automaton_type}.a"
     automaton_ca = edition_build_dir / f"{automaton_type}.ca"
     automaton_compile_log = edition_build_dir / f"{automaton_type}.compile.log"
 
-    sources = [lexicon_src, automaton_src_tmpl, *fst_sources]
+    sources = [lexicon_src, automaton_src, *fst_sources]
     if (
         not force
         and is_current(automaton_a, sources)
@@ -186,15 +187,11 @@ def build_automaton(edition_dir, automaton_type, force=False):
         return False
 
     logger.info("Building automaton '%s/%s'", edition_name, automaton_type)
-    automaton_src = grammar_dir / f"{edition_name}-{automaton_type}.fst"
     try:
         edition_build_dir.mkdir(parents=True, exist_ok=True)
-        automaton_src_txt = automaton_src_tmpl.read_text(encoding="utf-8")
-        automaton_src_txt = automaton_src_txt.replace(
-            '$LEX$ = "dwds.lex"', f'$LEX$ = "{lexicon_src.as_posix()}"'
-        )
-        automaton_src.write_text(automaton_src_txt, encoding="utf-8")
-
+        if lexicon_symlink.is_file():
+            lexicon_symlink.unlink()
+        lexicon_symlink.symlink_to(lexicon_src)
         run(
             ["fst-compiler-utf8", automaton_src.as_posix(), automaton_a.as_posix()],
             cwd=grammar_dir,
@@ -202,8 +199,8 @@ def build_automaton(edition_dir, automaton_type, force=False):
         )
         run(["fst-compact", automaton_a.as_posix(), automaton_ca.as_posix()])
     finally:
-        if automaton_src.is_file:
-            automaton_src.unlink()
+        if lexicon_symlink.is_symlink:
+            lexicon_symlink.unlink()
     return True
 
 

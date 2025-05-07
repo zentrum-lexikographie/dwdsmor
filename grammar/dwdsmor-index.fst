@@ -13,7 +13,7 @@
 
 % lexicon
 
-$LEX$ = "dwds.lex"
+$LEX$ = "lex.txt"
 
 
 % cleanup of level-specific symbols

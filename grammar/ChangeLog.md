@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-05-07:
+
+* rename `dwds.lex` to `lex.txt`
+
 2025-05-02:
 
 * exclude "worden" as a conversion basis

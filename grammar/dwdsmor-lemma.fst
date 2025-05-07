@@ -18,7 +18,7 @@
 
 % lexicon
 
-$LEX$ = "dwds.lex"
+$LEX$ = "lex.txt"
 
 
 % numbers
