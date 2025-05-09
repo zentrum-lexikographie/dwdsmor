@@ -4,6 +4,8 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 * optimize automata by fronting the orthography tags `<OLDORTH>`, `<CH>`, and
   `<CAP>`
+* optimize automata by fronting the ellipsis tag `<TRUNC>` and the syntax tag
+  `<SEP>`
 
 2025-05-07:
 

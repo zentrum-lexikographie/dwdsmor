@@ -296,14 +296,14 @@ $MORPH$ = $MORPH$ || $PHON$
 
 % preverb separation
 
-$MORPH$ = $MORPH$ | ($SepPrev1RootLv2$ || $MORPH$ || $SepPrev1$) <SEP>:<> | \
-                    ($SepPrev2RootLv2$ || $MORPH$ || $SepPrev2$) <SEP>:<>
+$MORPH$ = $MORPH$ | <SEP>:<> ($SepPrev1RootLv2$ || $MORPH$ || $SepPrev1$) | \
+                    <SEP>:<> ($SepPrev2RootLv2$ || $MORPH$ || $SepPrev2$)
 
 
 % morpheme truncation
 
-$MORPH$ = $MORPH$ | ($TruncInitialLv2$ || $MORPH$ || $TruncInitial$) <TRUNC>:<> | \
-                    ($TruncFinalLv2$   || $MORPH$ || $TruncFinal$)   <TRUNC>:<>
+$MORPH$ = $MORPH$ | <TRUNC>:<> ($TruncInitialLv2$ || $MORPH$ || $TruncInitial$) | \
+                    <TRUNC>:<> ($TruncFinalLv2$   || $MORPH$ || $TruncFinal$)
 
 
 % old spelling

@@ -179,6 +179,10 @@
     ),
     tuple(
       'nach',
+      '<SEP>nach<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'nach',
       'nach<+ADV>',
     ),
     tuple(
@@ -188,10 +192,6 @@
     tuple(
       'nach',
       'nach<+PREP>',
-    ),
-    tuple(
-      'nach',
-      'nach<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'dem',
@@ -259,6 +259,22 @@
     ),
     tuple(
       'werden',
+      '<SEP>werd<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'werden',
+      '<SEP>werd<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'werden',
+      '<SEP>werd<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'werden',
+      '<SEP>werd<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'werden',
       'werd<~>en<+V><Inf><NonCl>',
     ),
     tuple(
@@ -267,15 +283,7 @@
     ),
     tuple(
       'werden',
-      'werd<~>en<+V><3><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'werden',
       'werd<~>en<+V><3><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'werden',
-      'werd<~>en<+V><3><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'werden',
@@ -283,15 +291,7 @@
     ),
     tuple(
       'werden',
-      'werd<~>en<+V><1><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'werden',
       'werd<~>en<+V><1><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'werden',
-      'werd<~>en<+V><1><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'die',
@@ -395,11 +395,23 @@
     ),
     tuple(
       'bestimmten',
-      'bestimm<~>en<+V><3><Pl><Past><Subj>',
+      '<SEP>bestimm<~>en<+V><3><Pl><Past><Subj>',
     ),
     tuple(
       'bestimmten',
-      'bestimm<~>en<+V><3><Pl><Past><Subj><SEP>',
+      '<SEP>bestimm<~>en<+V><3><Pl><Past><Ind>',
+    ),
+    tuple(
+      'bestimmten',
+      '<SEP>bestimm<~>en<+V><1><Pl><Past><Subj>',
+    ),
+    tuple(
+      'bestimmten',
+      '<SEP>bestimm<~>en<+V><1><Pl><Past><Ind>',
+    ),
+    tuple(
+      'bestimmten',
+      'bestimm<~>en<+V><3><Pl><Past><Subj>',
     ),
     tuple(
       'bestimmten',
@@ -407,23 +419,11 @@
     ),
     tuple(
       'bestimmten',
-      'bestimm<~>en<+V><3><Pl><Past><Ind><SEP>',
-    ),
-    tuple(
-      'bestimmten',
       'bestimm<~>en<+V><1><Pl><Past><Subj>',
     ),
     tuple(
       'bestimmten',
-      'bestimm<~>en<+V><1><Pl><Past><Subj><SEP>',
-    ),
-    tuple(
-      'bestimmten',
       'bestimm<~>en<+V><1><Pl><Past><Ind>',
-    ),
-    tuple(
-      'bestimmten',
-      'bestimm<~>en<+V><1><Pl><Past><Ind><SEP>',
     ),
     tuple(
       'bestimmten',
@@ -547,6 +547,22 @@
     ),
     tuple(
       'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
       '<CAP>gebühr<~>en<+V><Inf><NonCl>',
     ),
     tuple(
@@ -555,15 +571,7 @@
     ),
     tuple(
       'Gebühren',
-      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Gebühren',
       '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'Gebühren',
-      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Gebühren',
@@ -571,15 +579,7 @@
     ),
     tuple(
       'Gebühren',
-      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Gebühren',
       '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'Gebühren',
-      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Gebühren',
@@ -599,6 +599,14 @@
     ),
     tuple(
       'erhoben',
+      '<SEP>erheb<~>en<+V><3><Pl><Past><Ind>',
+    ),
+    tuple(
+      'erhoben',
+      '<SEP>erheb<~>en<+V><1><Pl><Past><Ind>',
+    ),
+    tuple(
+      'erhoben',
       'erhob<~>en<+ADJ><Pos><Pred/Adv>',
     ),
     tuple(
@@ -611,15 +619,7 @@
     ),
     tuple(
       'erhoben',
-      'erheb<~>en<+V><3><Pl><Past><Ind><SEP>',
-    ),
-    tuple(
-      'erhoben',
       'erheb<~>en<+V><1><Pl><Past><Ind>',
-    ),
-    tuple(
-      'erhoben',
-      'erheb<~>en<+V><1><Pl><Past><Ind><SEP>',
     ),
     tuple(
       '.',
@@ -799,6 +799,22 @@
     ),
     tuple(
       'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
       '<CAP>gebühr<~>en<+V><Inf><NonCl>',
     ),
     tuple(
@@ -807,15 +823,7 @@
     ),
     tuple(
       'Gebühren',
-      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Gebühren',
       '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'Gebühren',
-      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Gebühren',
@@ -823,15 +831,7 @@
     ),
     tuple(
       'Gebühren',
-      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Gebühren',
       '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'Gebühren',
-      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Gebühren',
@@ -848,6 +848,22 @@
     tuple(
       'Gebühren',
       'Gebühr<+NN><Fem><Nom><Pl>',
+    ),
+    tuple(
+      'umfassen',
+      '<SEP>umfass<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'umfassen',
+      '<SEP>umfass<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'umfassen',
+      '<SEP>umfass<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'umfassen',
+      '<SEP>umfass<~>en<+V><1><Pl><Pres><Ind>',
     ),
     tuple(
       'umfassen',
@@ -879,15 +895,7 @@
     ),
     tuple(
       'umfassen',
-      'umfass<~>en<+V><3><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'umfassen',
       'umfass<~>en<+V><3><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'umfassen',
-      'umfass<~>en<+V><3><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'umfassen',
@@ -895,15 +903,7 @@
     ),
     tuple(
       'umfassen',
-      'umfass<~>en<+V><1><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'umfassen',
       'umfass<~>en<+V><1><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'umfassen',
-      'umfass<~>en<+V><1><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'jeweils',
@@ -1003,11 +1003,39 @@
     ),
     tuple(
       'Kosten',
-      '<CAP>kos<~>en<+V><3><Pl><Past><Subj>',
+      '<CAP><SEP>kos<~>en<+V><3><Pl><Past><Subj>',
     ),
     tuple(
       'Kosten',
-      '<CAP>kos<~>en<+V><3><Pl><Past><Subj><SEP>',
+      '<CAP><SEP>kos<~>en<+V><3><Pl><Past><Ind>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP><SEP>kos<~>en<+V><1><Pl><Past><Subj>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP><SEP>kos<~>en<+V><1><Pl><Past><Ind>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP><SEP>kost<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP><SEP>kost<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP><SEP>kost<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP><SEP>kost<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kos<~>en<+V><3><Pl><Past><Subj>',
     ),
     tuple(
       'Kosten',
@@ -1015,23 +1043,11 @@
     ),
     tuple(
       'Kosten',
-      '<CAP>kos<~>en<+V><3><Pl><Past><Ind><SEP>',
-    ),
-    tuple(
-      'Kosten',
       '<CAP>kos<~>en<+V><1><Pl><Past><Subj>',
     ),
     tuple(
       'Kosten',
-      '<CAP>kos<~>en<+V><1><Pl><Past><Subj><SEP>',
-    ),
-    tuple(
-      'Kosten',
       '<CAP>kos<~>en<+V><1><Pl><Past><Ind>',
-    ),
-    tuple(
-      'Kosten',
-      '<CAP>kos<~>en<+V><1><Pl><Past><Ind><SEP>',
     ),
     tuple(
       'Kosten',
@@ -1043,15 +1059,7 @@
     ),
     tuple(
       'Kosten',
-      '<CAP>kost<~>en<+V><3><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Kosten',
       '<CAP>kost<~>en<+V><3><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'Kosten',
-      '<CAP>kost<~>en<+V><3><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Kosten',
@@ -1059,15 +1067,7 @@
     ),
     tuple(
       'Kosten',
-      '<CAP>kost<~>en<+V><1><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Kosten',
       '<CAP>kost<~>en<+V><1><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'Kosten',
-      '<CAP>kost<~>en<+V><1><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Kosten',
@@ -1247,6 +1247,22 @@
     ),
     tuple(
       'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP><SEP>gebühr<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
       '<CAP>gebühr<~>en<+V><Inf><NonCl>',
     ),
     tuple(
@@ -1255,15 +1271,7 @@
     ),
     tuple(
       'Gebühren',
-      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Gebühren',
       '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'Gebühren',
-      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Gebühren',
@@ -1271,15 +1279,7 @@
     ),
     tuple(
       'Gebühren',
-      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Gebühren',
       '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'Gebühren',
-      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Gebühren',
@@ -1343,6 +1343,22 @@
     ),
     tuple(
       'werden',
+      '<SEP>werd<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'werden',
+      '<SEP>werd<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'werden',
+      '<SEP>werd<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'werden',
+      '<SEP>werd<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'werden',
       'werd<~>en<+V><Inf><NonCl>',
     ),
     tuple(
@@ -1351,15 +1367,7 @@
     ),
     tuple(
       'werden',
-      'werd<~>en<+V><3><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'werden',
       'werd<~>en<+V><3><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'werden',
-      'werd<~>en<+V><3><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'werden',
@@ -1367,15 +1375,11 @@
     ),
     tuple(
       'werden',
-      'werd<~>en<+V><1><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'werden',
       'werd<~>en<+V><1><Pl><Pres><Ind>',
     ),
     tuple(
-      'werden',
-      'werd<~>en<+V><1><Pl><Pres><Ind><SEP>',
+      'nach',
+      '<SEP>nach<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
     ),
     tuple(
       'nach',
@@ -1388,10 +1392,6 @@
     tuple(
       'nach',
       'nach<+PREP>',
-    ),
-    tuple(
-      'nach',
-      'nach<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'Maßgabe',
@@ -1563,6 +1563,14 @@
     ),
     tuple(
       'erhoben',
+      '<SEP>erheb<~>en<+V><3><Pl><Past><Ind>',
+    ),
+    tuple(
+      'erhoben',
+      '<SEP>erheb<~>en<+V><1><Pl><Past><Ind>',
+    ),
+    tuple(
+      'erhoben',
       'erhob<~>en<+ADJ><Pos><Pred/Adv>',
     ),
     tuple(
@@ -1575,15 +1583,7 @@
     ),
     tuple(
       'erhoben',
-      'erheb<~>en<+V><3><Pl><Past><Ind><SEP>',
-    ),
-    tuple(
-      'erhoben',
       'erheb<~>en<+V><1><Pl><Past><Ind>',
-    ),
-    tuple(
-      'erhoben',
-      'erheb<~>en<+V><1><Pl><Past><Ind><SEP>',
     ),
     tuple(
       '.',
@@ -1867,15 +1867,15 @@
     ),
     tuple(
       'mit',
+      '<SEP>mit<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'mit',
       'mit<+ADV>',
     ),
     tuple(
       'mit',
       'mit<+PREP>',
-    ),
-    tuple(
-      'mit',
-      'mit<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'Sachschaden',
@@ -1919,6 +1919,18 @@
     ),
     tuple(
       'Sinne',
+      '<CAP><SEP>sinn<~>en<+V><3><Sg><Pres><Subj>',
+    ),
+    tuple(
+      'Sinne',
+      '<CAP><SEP>sinn<~>en<+V><1><Sg><Pres><Subj>',
+    ),
+    tuple(
+      'Sinne',
+      '<CAP><SEP>sinn<~>en<+V><1><Sg><Pres><Ind>',
+    ),
+    tuple(
+      'Sinne',
       '<CAP>sinn<~>en<+V><Imp><Sg>',
     ),
     tuple(
@@ -1927,23 +1939,11 @@
     ),
     tuple(
       'Sinne',
-      '<CAP>sinn<~>en<+V><3><Sg><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Sinne',
       '<CAP>sinn<~>en<+V><1><Sg><Pres><Subj>',
     ),
     tuple(
       'Sinne',
-      '<CAP>sinn<~>en<+V><1><Sg><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Sinne',
       '<CAP>sinn<~>en<+V><1><Sg><Pres><Ind>',
-    ),
-    tuple(
-      'Sinne',
-      '<CAP>sinn<~>en<+V><1><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       'Sinne',
@@ -2031,6 +2031,14 @@
     ),
     tuple(
       'Ein',
+      '<CAP><SEP>ein<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'Ein',
+      '<CAP><SEP>ein<~>en<+V><1><Sg><Pres><Ind><NonSt>',
+    ),
+    tuple(
+      'Ein',
       '<CAP>ein<~>e<+CARD><Attr><Neut><Acc><Sg><UnmInfl>',
     ),
     tuple(
@@ -2063,15 +2071,7 @@
     ),
     tuple(
       'Ein',
-      '<CAP>ein<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP>',
-    ),
-    tuple(
-      'Ein',
       '<CAP>ein<+ADV>',
-    ),
-    tuple(
-      'Ein',
-      '<CAP>ein<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'schwerwiegender',
@@ -2127,15 +2127,15 @@
     ),
     tuple(
       'mit',
+      '<SEP>mit<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'mit',
       'mit<+ADV>',
     ),
     tuple(
       'mit',
       'mit<+PREP>',
-    ),
-    tuple(
-      'mit',
-      'mit<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'Sachschaden',
@@ -2179,6 +2179,18 @@
     ),
     tuple(
       'Sinne',
+      '<CAP><SEP>sinn<~>en<+V><3><Sg><Pres><Subj>',
+    ),
+    tuple(
+      'Sinne',
+      '<CAP><SEP>sinn<~>en<+V><1><Sg><Pres><Subj>',
+    ),
+    tuple(
+      'Sinne',
+      '<CAP><SEP>sinn<~>en<+V><1><Sg><Pres><Ind>',
+    ),
+    tuple(
+      'Sinne',
       '<CAP>sinn<~>en<+V><Imp><Sg>',
     ),
     tuple(
@@ -2187,23 +2199,11 @@
     ),
     tuple(
       'Sinne',
-      '<CAP>sinn<~>en<+V><3><Sg><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Sinne',
       '<CAP>sinn<~>en<+V><1><Sg><Pres><Subj>',
     ),
     tuple(
       'Sinne',
-      '<CAP>sinn<~>en<+V><1><Sg><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Sinne',
       '<CAP>sinn<~>en<+V><1><Sg><Pres><Ind>',
-    ),
-    tuple(
-      'Sinne',
-      '<CAP>sinn<~>en<+V><1><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       'Sinne',
@@ -2431,15 +2431,15 @@
     ),
     tuple(
       'durch',
+      '<SEP>durch<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'durch',
       'durch<+ADV>',
     ),
     tuple(
       'durch',
       'durch<+PREP>',
-    ),
-    tuple(
-      'durch',
-      'durch<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'Artikel',
@@ -2647,11 +2647,11 @@
     ),
     tuple(
       'S.',
-      '<CAP>s.<+V><Imp><UnmNum>',
+      '<CAP><SEP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',
-      '<CAP>s.<+V><Imp><UnmNum><SEP>',
+      '<CAP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',
@@ -2679,15 +2679,23 @@
     ),
     tuple(
       'ist',
-      'sei<~>n<+V><3><Sg><Pres><Ind>',
+      '<SEP>sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       'ist',
-      'sei<~>n<+V><3><Sg><Pres><Ind><SEP>',
+      'sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       ',',
       ',<+PUNCT><Comma>',
+    ),
+    tuple(
+      'liegt',
+      '<SEP>lieg<~>en<+V><3><Sg><Pres><Ind>',
+    ),
+    tuple(
+      'liegt',
+      '<SEP>lieg<~>en<+V><2><Pl><Pres><Ind>',
     ),
     tuple(
       'liegt',
@@ -2699,15 +2707,11 @@
     ),
     tuple(
       'liegt',
-      'lieg<~>en<+V><3><Sg><Pres><Ind><SEP>',
-    ),
-    tuple(
-      'liegt',
       'lieg<~>en<+V><2><Pl><Pres><Ind>',
     ),
     tuple(
-      'liegt',
-      'lieg<~>en<+V><2><Pl><Pres><Ind><SEP>',
+      'vor',
+      '<SEP>vor<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
     ),
     tuple(
       'vor',
@@ -2718,16 +2722,16 @@
       'vor<+PREP>',
     ),
     tuple(
-      'vor',
-      'vor<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
-    ),
-    tuple(
       ',',
       ',<+PUNCT><Comma>',
     ),
     tuple(
       'wenn',
       'wenn<+CONJ><Sub>',
+    ),
+    tuple(
+      'nach',
+      '<SEP>nach<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
     ),
     tuple(
       'nach',
@@ -2740,10 +2744,6 @@
     tuple(
       'nach',
       'nach<+PREP>',
-    ),
-    tuple(
-      'nach',
-      'nach<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'den',
@@ -2887,11 +2887,23 @@
     ),
     tuple(
       'Beamten',
-      '<CAP>beam<~>en<+V><3><Pl><Past><Subj>',
+      '<CAP><SEP>beam<~>en<+V><3><Pl><Past><Subj>',
     ),
     tuple(
       'Beamten',
-      '<CAP>beam<~>en<+V><3><Pl><Past><Subj><SEP>',
+      '<CAP><SEP>beam<~>en<+V><3><Pl><Past><Ind>',
+    ),
+    tuple(
+      'Beamten',
+      '<CAP><SEP>beam<~>en<+V><1><Pl><Past><Subj>',
+    ),
+    tuple(
+      'Beamten',
+      '<CAP><SEP>beam<~>en<+V><1><Pl><Past><Ind>',
+    ),
+    tuple(
+      'Beamten',
+      '<CAP>beam<~>en<+V><3><Pl><Past><Subj>',
     ),
     tuple(
       'Beamten',
@@ -2899,23 +2911,11 @@
     ),
     tuple(
       'Beamten',
-      '<CAP>beam<~>en<+V><3><Pl><Past><Ind><SEP>',
-    ),
-    tuple(
-      'Beamten',
       '<CAP>beam<~>en<+V><1><Pl><Past><Subj>',
     ),
     tuple(
       'Beamten',
-      '<CAP>beam<~>en<+V><1><Pl><Past><Subj><SEP>',
-    ),
-    tuple(
-      'Beamten',
       '<CAP>beam<~>en<+V><1><Pl><Past><Ind>',
-    ),
-    tuple(
-      'Beamten',
-      '<CAP>beam<~>en<+V><1><Pl><Past><Ind><SEP>',
     ),
     tuple(
       'Beamten',
@@ -3143,6 +3143,18 @@
     ),
     tuple(
       'eine',
+      '<SEP>ein<~>en<+V><3><Sg><Pres><Subj>',
+    ),
+    tuple(
+      'eine',
+      '<SEP>ein<~>en<+V><1><Sg><Pres><Subj>',
+    ),
+    tuple(
+      'eine',
+      '<SEP>ein<~>en<+V><1><Sg><Pres><Ind>',
+    ),
+    tuple(
+      'eine',
       'ein<~>e<+INDEF><Subst><Neut><Acc><Sg><Wk>',
     ),
     tuple(
@@ -3251,23 +3263,11 @@
     ),
     tuple(
       'eine',
-      'ein<~>en<+V><3><Sg><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'eine',
       'ein<~>en<+V><1><Sg><Pres><Subj>',
     ),
     tuple(
       'eine',
-      'ein<~>en<+V><1><Sg><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'eine',
       'ein<~>en<+V><1><Sg><Pres><Ind>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>en<+V><1><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       'Ordnungswidrigkeit',
@@ -3307,15 +3307,15 @@
     ),
     tuple(
       'bei',
+      '<SEP>bei<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'bei',
       'bei<+ADV>',
     ),
     tuple(
       'bei',
       'bei<+PREP>',
-    ),
-    tuple(
-      'bei',
-      'bei<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'der',
@@ -3527,11 +3527,11 @@
     ),
     tuple(
       'S.',
-      '<CAP>s.<+V><Imp><UnmNum>',
+      '<CAP><SEP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',
-      '<CAP>s.<+V><Imp><UnmNum><SEP>',
+      '<CAP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',
@@ -3575,15 +3575,15 @@
     ),
     tuple(
       'durch',
+      '<SEP>durch<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'durch',
       'durch<+ADV>',
     ),
     tuple(
       'durch',
       'durch<+PREP>',
-    ),
-    tuple(
-      'durch',
-      'durch<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'Verordnung',
@@ -3727,11 +3727,11 @@
     ),
     tuple(
       'S.',
-      '<CAP>s.<+V><Imp><UnmNum>',
+      '<CAP><SEP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',
-      '<CAP>s.<+V><Imp><UnmNum><SEP>',
+      '<CAP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',
@@ -3895,6 +3895,18 @@
     ),
     tuple(
       'eine',
+      '<SEP>ein<~>en<+V><3><Sg><Pres><Subj>',
+    ),
+    tuple(
+      'eine',
+      '<SEP>ein<~>en<+V><1><Sg><Pres><Subj>',
+    ),
+    tuple(
+      'eine',
+      '<SEP>ein<~>en<+V><1><Sg><Pres><Ind>',
+    ),
+    tuple(
+      'eine',
       'ein<~>e<+INDEF><Subst><Neut><Acc><Sg><Wk>',
     ),
     tuple(
@@ -4003,23 +4015,11 @@
     ),
     tuple(
       'eine',
-      'ein<~>en<+V><3><Sg><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'eine',
       'ein<~>en<+V><1><Sg><Pres><Subj>',
     ),
     tuple(
       'eine',
-      'ein<~>en<+V><1><Sg><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'eine',
       'ein<~>en<+V><1><Sg><Pres><Ind>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>en<+V><1><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       'Geldbuße',
@@ -4059,11 +4059,11 @@
     ),
     tuple(
       'ist',
-      'sei<~>n<+V><3><Sg><Pres><Ind>',
+      '<SEP>sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       'ist',
-      'sei<~>n<+V><3><Sg><Pres><Ind><SEP>',
+      'sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       ',',
@@ -4111,6 +4111,18 @@
     ),
     tuple(
       'eine',
+      '<SEP>ein<~>en<+V><3><Sg><Pres><Subj>',
+    ),
+    tuple(
+      'eine',
+      '<SEP>ein<~>en<+V><1><Sg><Pres><Subj>',
+    ),
+    tuple(
+      'eine',
+      '<SEP>ein<~>en<+V><1><Sg><Pres><Ind>',
+    ),
+    tuple(
+      'eine',
       'ein<~>e<+INDEF><Subst><Neut><Acc><Sg><Wk>',
     ),
     tuple(
@@ -4219,23 +4231,11 @@
     ),
     tuple(
       'eine',
-      'ein<~>en<+V><3><Sg><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'eine',
       'ein<~>en<+V><1><Sg><Pres><Subj>',
     ),
     tuple(
       'eine',
-      'ein<~>en<+V><1><Sg><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'eine',
       'ein<~>en<+V><1><Sg><Pres><Ind>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>en<+V><1><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       'Straftat',
@@ -4375,15 +4375,15 @@
     ),
     tuple(
       'mit',
+      '<SEP>mit<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'mit',
       'mit<+ADV>',
     ),
     tuple(
       'mit',
       'mit<+PREP>',
-    ),
-    tuple(
-      'mit',
-      'mit<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'der',
@@ -4499,11 +4499,11 @@
     ),
     tuple(
       'ist',
-      'sei<~>n<+V><3><Sg><Pres><Ind>',
+      '<SEP>sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       'ist',
-      'sei<~>n<+V><3><Sg><Pres><Ind><SEP>',
+      'sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       ',',
@@ -4515,11 +4515,11 @@
     ),
     tuple(
       'ist',
-      'sei<~>n<+V><3><Sg><Pres><Ind>',
+      '<SEP>sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       'ist',
-      'sei<~>n<+V><3><Sg><Pres><Ind><SEP>',
+      'sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       'und',
@@ -4532,6 +4532,14 @@
     tuple(
       'mindestens',
       'mindestens<+ADV>',
+    ),
+    tuple(
+      'ein',
+      '<SEP>ein<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'ein',
+      '<SEP>ein<~>en<+V><1><Sg><Pres><Ind><NonSt>',
     ),
     tuple(
       'ein',
@@ -4567,15 +4575,7 @@
     ),
     tuple(
       'ein',
-      'ein<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP>',
-    ),
-    tuple(
-      'ein',
       'ein<+ADV>',
-    ),
-    tuple(
-      'ein',
-      'ein<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'Kraftfahrzeug',
@@ -4859,6 +4859,22 @@
     ),
     tuple(
       'werden',
+      '<SEP>werd<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'werden',
+      '<SEP>werd<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'werden',
+      '<SEP>werd<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'werden',
+      '<SEP>werd<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'werden',
       'werd<~>en<+V><Inf><NonCl>',
     ),
     tuple(
@@ -4867,15 +4883,7 @@
     ),
     tuple(
       'werden',
-      'werd<~>en<+V><3><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'werden',
       'werd<~>en<+V><3><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'werden',
-      'werd<~>en<+V><3><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'werden',
@@ -4883,15 +4891,15 @@
     ),
     tuple(
       'werden',
-      'werd<~>en<+V><1><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'werden',
       'werd<~>en<+V><1><Pl><Pres><Ind>',
     ),
     tuple(
-      'werden',
-      'werd<~>en<+V><1><Pl><Pres><Ind><SEP>',
+      'muß',
+      '<OLDORTH><SEP>müss<~>en<+V><3><Sg><Pres><Ind>',
+    ),
+    tuple(
+      'muß',
+      '<OLDORTH><SEP>müss<~>en<+V><1><Sg><Pres><Ind>',
     ),
     tuple(
       'muß',
@@ -4899,19 +4907,19 @@
     ),
     tuple(
       'muß',
-      '<OLDORTH>müss<~>en<+V><3><Sg><Pres><Ind><SEP>',
-    ),
-    tuple(
-      'muß',
       '<OLDORTH>müss<~>en<+V><1><Sg><Pres><Ind>',
-    ),
-    tuple(
-      'muß',
-      '<OLDORTH>müss<~>en<+V><1><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       '.',
       '.<+PUNCT><Period>',
+    ),
+    tuple(
+      'Ein',
+      '<CAP><SEP>ein<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'Ein',
+      '<CAP><SEP>ein<~>en<+V><1><Sg><Pres><Ind><NonSt>',
     ),
     tuple(
       'Ein',
@@ -4947,15 +4955,7 @@
     ),
     tuple(
       'Ein',
-      '<CAP>ein<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP>',
-    ),
-    tuple(
-      'Ein',
       '<CAP>ein<+ADV>',
-    ),
-    tuple(
-      'Ein',
-      '<CAP>ein<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'schwerwiegender',
@@ -5011,15 +5011,15 @@
     ),
     tuple(
       'mit',
+      '<SEP>mit<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'mit',
       'mit<+ADV>',
     ),
     tuple(
       'mit',
       'mit<+PREP>',
-    ),
-    tuple(
-      'mit',
-      'mit<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'Sachschaden',
@@ -5055,6 +5055,14 @@
     ),
     tuple(
       'liegt',
+      '<SEP>lieg<~>en<+V><3><Sg><Pres><Ind>',
+    ),
+    tuple(
+      'liegt',
+      '<SEP>lieg<~>en<+V><2><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'liegt',
       'lieg<~>en<+V><Imp><Pl>',
     ),
     tuple(
@@ -5063,15 +5071,7 @@
     ),
     tuple(
       'liegt',
-      'lieg<~>en<+V><3><Sg><Pres><Ind><SEP>',
-    ),
-    tuple(
-      'liegt',
       'lieg<~>en<+V><2><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'liegt',
-      'lieg<~>en<+V><2><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'auch',
@@ -5087,15 +5087,15 @@
     ),
     tuple(
       'vor',
+      '<SEP>vor<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'vor',
       'vor<+ADV>',
     ),
     tuple(
       'vor',
       'vor<+PREP>',
-    ),
-    tuple(
-      'vor',
-      'vor<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       ',',
@@ -5131,6 +5131,10 @@
     ),
     tuple(
       'auf',
+      '<SEP>auf<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'auf',
       'auf<+ADV>',
     ),
     tuple(
@@ -5138,8 +5142,8 @@
       'auf<+PREP>',
     ),
     tuple(
-      'auf',
-      'auf<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
+      'Art',
+      '<CAP><SEP>art<~>en<+V><1><Sg><Pres><Ind><NonSt>',
     ),
     tuple(
       'Art',
@@ -5148,10 +5152,6 @@
     tuple(
       'Art',
       '<CAP>art<~>en<+V><1><Sg><Pres><Ind><NonSt>',
-    ),
-    tuple(
-      'Art',
-      '<CAP>art<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP>',
     ),
     tuple(
       'Art',
@@ -5247,6 +5247,14 @@
     ),
     tuple(
       'ein',
+      '<SEP>ein<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'ein',
+      '<SEP>ein<~>en<+V><1><Sg><Pres><Ind><NonSt>',
+    ),
+    tuple(
+      'ein',
       'ein<~>e<+CARD><Attr><Neut><Acc><Sg><UnmInfl>',
     ),
     tuple(
@@ -5279,15 +5287,7 @@
     ),
     tuple(
       'ein',
-      'ein<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP>',
-    ),
-    tuple(
-      'ein',
       'ein<+ADV>',
-    ),
-    tuple(
-      'ein',
-      'ein<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'Unfallbeteiligter',
@@ -5351,15 +5351,15 @@
     ),
     tuple(
       'unter',
+      '<SEP>unter<+V><UnmPers><UnmNum><UnmTense><UnmMood>',
+    ),
+    tuple(
+      'unter',
       'unter<+ADV>',
     ),
     tuple(
       'unter',
       'unter<+PREP>',
-    ),
-    tuple(
-      'unter',
-      'unter<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'der',
@@ -5639,6 +5639,22 @@
     ),
     tuple(
       'Mitteln',
+      '<CAP><SEP>mittel<~>n<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Mitteln',
+      '<CAP><SEP>mittel<~>n<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Mitteln',
+      '<CAP><SEP>mittel<~>n<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Mitteln',
+      '<CAP><SEP>mittel<~>n<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Mitteln',
       '<CAP>mittel<~>n<+V><Inf><NonCl>',
     ),
     tuple(
@@ -5647,15 +5663,7 @@
     ),
     tuple(
       'Mitteln',
-      '<CAP>mittel<~>n<+V><3><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Mitteln',
       '<CAP>mittel<~>n<+V><3><Pl><Pres><Ind>',
-    ),
-    tuple(
-      'Mitteln',
-      '<CAP>mittel<~>n<+V><3><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Mitteln',
@@ -5663,19 +5671,19 @@
     ),
     tuple(
       'Mitteln',
-      '<CAP>mittel<~>n<+V><1><Pl><Pres><Subj><SEP>',
-    ),
-    tuple(
-      'Mitteln',
       '<CAP>mittel<~>n<+V><1><Pl><Pres><Ind>',
     ),
     tuple(
       'Mitteln',
-      '<CAP>mittel<~>n<+V><1><Pl><Pres><Ind><SEP>',
+      'Mittel<+NN><Neut><Dat><Pl>',
     ),
     tuple(
-      'Mitteln',
-      'Mittel<+NN><Neut><Dat><Pl>',
+      'gestanden',
+      '<SEP>gesteh<~>en<+V><3><Pl><Past><Ind>',
+    ),
+    tuple(
+      'gestanden',
+      '<SEP>gesteh<~>en<+V><1><Pl><Past><Ind>',
     ),
     tuple(
       'gestanden',
@@ -5695,15 +5703,7 @@
     ),
     tuple(
       'gestanden',
-      'gesteh<~>en<+V><3><Pl><Past><Ind><SEP>',
-    ),
-    tuple(
-      'gestanden',
       'gesteh<~>en<+V><1><Pl><Past><Ind>',
-    ),
-    tuple(
-      'gestanden',
-      'gesteh<~>en<+V><1><Pl><Past><Ind><SEP>',
     ),
     tuple(
       'gestanden',
@@ -5715,11 +5715,11 @@
     ),
     tuple(
       'hat',
-      'hab<~>en<+V><3><Sg><Pres><Ind>',
+      '<SEP>hab<~>en<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       'hat',
-      'hab<~>en<+V><3><Sg><Pres><Ind><SEP>',
+      'hab<~>en<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       '.',
@@ -5775,15 +5775,15 @@
     ),
     tuple(
       'tritt',
+      '<SEP>tret<~>en<+V><3><Sg><Pres><Ind>',
+    ),
+    tuple(
+      'tritt',
       'tret<~>en<+V><Imp><Sg>',
     ),
     tuple(
       'tritt',
       'tret<~>en<+V><3><Sg><Pres><Ind>',
-    ),
-    tuple(
-      'tritt',
-      'tret<~>en<+V><3><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       'am',

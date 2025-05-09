@@ -279,14 +279,14 @@ $MORPH$ = $CleanupWBLv2$ || $MORPH$
 
 % preverb separation
 
-$MORPH$ = $MORPH$ | ($SepPrev1Lv2$ || $MORPH$ || $SepPrev1$) <SEP>:<> | \
-                    ($SepPrev2Lv2$ || $MORPH$ || $SepPrev2$) <SEP>:<>
+$MORPH$ = $MORPH$ | <SEP>:<> ($SepPrev1Lv2$ || $MORPH$ || $SepPrev1$) | \
+                    <SEP>:<> ($SepPrev2Lv2$ || $MORPH$ || $SepPrev2$)
 
 
 % morpheme truncation
 
-$MORPH$ = $MORPH$ | ($TruncInitialLv2$ || $MORPH$ || $TruncInitial$) <TRUNC>:<> | \
-                    ($TruncFinalLv2$   || $MORPH$ || $TruncFinal$)   <TRUNC>:<>
+$MORPH$ = $MORPH$ | <TRUNC>:<> ($TruncInitialLv2$ || $MORPH$ || $TruncInitial$) | \
+                    <TRUNC>:<> ($TruncFinalLv2$   || $MORPH$ || $TruncFinal$)
 
 
 % old spelling
