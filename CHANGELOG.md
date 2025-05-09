@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.4.0...v0.5.0) (2025-05-09)
+
+
+### Bug Fixes
+
+* add missing parentheses ([a2ce0ea](https://github.com/zentrum-lexikographie/dwdsmor/commit/a2ce0ea77836bdbb2aa3ddc2e680ba7198306cde))
+
+
+### Performance Improvements
+
+* optimize automata by fronting ellipsis and syntax tags ([e8c6170](https://github.com/zentrum-lexikographie/dwdsmor/commit/e8c61705de66660f72aadfe48a5d6d62d38aa595))
+* optimize automata by fronting orthography tags ([0a27286](https://github.com/zentrum-lexikographie/dwdsmor/commit/0a27286267c5d81f23f3f984eda983ef3ae6b06f))
+
 ## [0.4.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.3.2...v0.4.0) (2025-05-02)
 
 
