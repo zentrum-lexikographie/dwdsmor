@@ -15,11 +15,11 @@
     ),
     tuple(
       'Für',
-      'für<+PREP><CAP>',
+      '<CAP>für<+PREP>',
     ),
     tuple(
       'Für',
-      'für<+ADV><CAP>',
+      '<CAP>für<+ADV>',
     ),
     tuple(
       'individuell',
@@ -547,6 +547,42 @@
     ),
     tuple(
       'Gebühren',
+      '<CAP>gebühr<~>en<+V><Inf><NonCl>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Subj><SEP>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind><SEP>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Subj><SEP>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind><SEP>',
+    ),
+    tuple(
+      'Gebühren',
       'Gebühr<+NN><Fem><Acc><Pl>',
     ),
     tuple(
@@ -560,42 +596,6 @@
     tuple(
       'Gebühren',
       'Gebühr<+NN><Fem><Nom><Pl>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><Inf><NonCl><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Subj><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Subj><SEP><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Ind><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Ind><SEP><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Subj><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Subj><SEP><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Ind><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Ind><SEP><CAP>',
     ),
     tuple(
       'erhoben',
@@ -639,83 +639,83 @@
     ),
     tuple(
       'Die',
-      'd<~>ie<+REL><Subst><UnmGend><Acc><Pl><St><CAP>',
+      '<CAP>d<~>ie<+REL><Subst><UnmGend><Acc><Pl><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+REL><Subst><UnmGend><Nom><Pl><St><CAP>',
+      '<CAP>d<~>ie<+REL><Subst><UnmGend><Nom><Pl><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+REL><Subst><Fem><Acc><Sg><St><CAP>',
+      '<CAP>d<~>ie<+REL><Subst><Fem><Acc><Sg><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+REL><Subst><Fem><Nom><Sg><St><CAP>',
+      '<CAP>d<~>ie<+REL><Subst><Fem><Nom><Sg><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+DEM><Subst><UnmGend><Acc><Pl><St><CAP>',
+      '<CAP>d<~>ie<+DEM><Subst><UnmGend><Acc><Pl><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+DEM><Subst><UnmGend><Nom><Pl><St><CAP>',
+      '<CAP>d<~>ie<+DEM><Subst><UnmGend><Nom><Pl><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+DEM><Subst><Fem><Acc><Sg><St><CAP>',
+      '<CAP>d<~>ie<+DEM><Subst><Fem><Acc><Sg><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+DEM><Subst><Fem><Nom><Sg><St><CAP>',
+      '<CAP>d<~>ie<+DEM><Subst><Fem><Nom><Sg><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+DEM><Attr><UnmGend><Acc><Pl><St><CAP>',
+      '<CAP>d<~>ie<+DEM><Attr><UnmGend><Acc><Pl><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+DEM><Attr><UnmGend><Nom><Pl><St><CAP>',
+      '<CAP>d<~>ie<+DEM><Attr><UnmGend><Nom><Pl><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+DEM><Attr><Fem><Acc><Sg><St><CAP>',
+      '<CAP>d<~>ie<+DEM><Attr><Fem><Acc><Sg><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+DEM><Attr><Fem><Nom><Sg><St><CAP>',
+      '<CAP>d<~>ie<+DEM><Attr><Fem><Nom><Sg><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+ART><Def><Subst><UnmGend><Acc><Pl><St><CAP>',
+      '<CAP>d<~>ie<+ART><Def><Subst><UnmGend><Acc><Pl><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+ART><Def><Subst><UnmGend><Nom><Pl><St><CAP>',
+      '<CAP>d<~>ie<+ART><Def><Subst><UnmGend><Nom><Pl><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+ART><Def><Subst><Fem><Acc><Sg><St><CAP>',
+      '<CAP>d<~>ie<+ART><Def><Subst><Fem><Acc><Sg><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+ART><Def><Subst><Fem><Nom><Sg><St><CAP>',
+      '<CAP>d<~>ie<+ART><Def><Subst><Fem><Nom><Sg><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+ART><Def><Attr><UnmGend><Acc><Pl><St><CAP>',
+      '<CAP>d<~>ie<+ART><Def><Attr><UnmGend><Acc><Pl><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+ART><Def><Attr><UnmGend><Nom><Pl><St><CAP>',
+      '<CAP>d<~>ie<+ART><Def><Attr><UnmGend><Nom><Pl><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+ART><Def><Attr><Fem><Acc><Sg><St><CAP>',
+      '<CAP>d<~>ie<+ART><Def><Attr><Fem><Acc><Sg><St>',
     ),
     tuple(
       'Die',
-      'd<~>ie<+ART><Def><Attr><Fem><Nom><Sg><St><CAP>',
+      '<CAP>d<~>ie<+ART><Def><Attr><Fem><Nom><Sg><St>',
     ),
     tuple(
       'im',
@@ -799,6 +799,42 @@
     ),
     tuple(
       'Gebühren',
+      '<CAP>gebühr<~>en<+V><Inf><NonCl>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Subj><SEP>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind><SEP>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Subj><SEP>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind><SEP>',
+    ),
+    tuple(
+      'Gebühren',
       'Gebühr<+NN><Fem><Acc><Pl>',
     ),
     tuple(
@@ -812,42 +848,6 @@
     tuple(
       'Gebühren',
       'Gebühr<+NN><Fem><Nom><Pl>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><Inf><NonCl><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Subj><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Subj><SEP><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Ind><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Ind><SEP><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Subj><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Subj><SEP><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Ind><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Ind><SEP><CAP>',
     ),
     tuple(
       'umfassen',
@@ -1003,6 +1003,74 @@
     ),
     tuple(
       'Kosten',
+      '<CAP>kos<~>en<+V><3><Pl><Past><Subj>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kos<~>en<+V><3><Pl><Past><Subj><SEP>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kos<~>en<+V><3><Pl><Past><Ind>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kos<~>en<+V><3><Pl><Past><Ind><SEP>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kos<~>en<+V><1><Pl><Past><Subj>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kos<~>en<+V><1><Pl><Past><Subj><SEP>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kos<~>en<+V><1><Pl><Past><Ind>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kos<~>en<+V><1><Pl><Past><Ind><SEP>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kost<~>en<+V><Inf><NonCl>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kost<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kost<~>en<+V><3><Pl><Pres><Subj><SEP>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kost<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kost<~>en<+V><3><Pl><Pres><Ind><SEP>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kost<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kost<~>en<+V><1><Pl><Pres><Subj><SEP>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kost<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Kosten',
+      '<CAP>kost<~>en<+V><1><Pl><Pres><Ind><SEP>',
+    ),
+    tuple(
+      'Kosten',
       'Kosten<+NN><UnmGend><Acc><Pl>',
     ),
     tuple(
@@ -1016,74 +1084,6 @@
     tuple(
       'Kosten',
       'Kosten<+NN><UnmGend><Nom><Pl>',
-    ),
-    tuple(
-      'Kosten',
-      'kos<~>en<+V><3><Pl><Past><Subj><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kos<~>en<+V><3><Pl><Past><Subj><SEP><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kos<~>en<+V><3><Pl><Past><Ind><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kos<~>en<+V><3><Pl><Past><Ind><SEP><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kos<~>en<+V><1><Pl><Past><Subj><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kos<~>en<+V><1><Pl><Past><Subj><SEP><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kos<~>en<+V><1><Pl><Past><Ind><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kos<~>en<+V><1><Pl><Past><Ind><SEP><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kost<~>en<+V><Inf><NonCl><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kost<~>en<+V><3><Pl><Pres><Subj><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kost<~>en<+V><3><Pl><Pres><Subj><SEP><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kost<~>en<+V><3><Pl><Pres><Ind><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kost<~>en<+V><3><Pl><Pres><Ind><SEP><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kost<~>en<+V><1><Pl><Pres><Subj><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kost<~>en<+V><1><Pl><Pres><Subj><SEP><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kost<~>en<+V><1><Pl><Pres><Ind><CAP>',
-    ),
-    tuple(
-      'Kosten',
-      'kost<~>en<+V><1><Pl><Pres><Ind><SEP><CAP>',
     ),
     tuple(
       'für',
@@ -1247,6 +1247,42 @@
     ),
     tuple(
       'Gebühren',
+      '<CAP>gebühr<~>en<+V><Inf><NonCl>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Subj><SEP>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><3><Pl><Pres><Ind><SEP>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Subj>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Subj><SEP>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Gebühren',
+      '<CAP>gebühr<~>en<+V><1><Pl><Pres><Ind><SEP>',
+    ),
+    tuple(
+      'Gebühren',
       'Gebühr<+NN><Fem><Acc><Pl>',
     ),
     tuple(
@@ -1262,44 +1298,16 @@
       'Gebühr<+NN><Fem><Nom><Pl>',
     ),
     tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><Inf><NonCl><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Subj><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Subj><SEP><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Ind><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><3><Pl><Pres><Ind><SEP><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Subj><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Subj><SEP><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Ind><CAP>',
-    ),
-    tuple(
-      'Gebühren',
-      'gebühr<~>en<+V><1><Pl><Pres><Ind><SEP><CAP>',
-    ),
-    tuple(
       '.',
       '.<+PUNCT><Period>',
+    ),
+    tuple(
+      'Auslagen',
+      '<CAP>aus<|>lieg<~>en<+V><3><Pl><Past><Ind>',
+    ),
+    tuple(
+      'Auslagen',
+      '<CAP>aus<|>lieg<~>en<+V><1><Pl><Past><Ind>',
     ),
     tuple(
       'Auslagen',
@@ -1332,14 +1340,6 @@
     tuple(
       'Auslagen',
       'Auslage<+NN><Fem><Nom><Pl>',
-    ),
-    tuple(
-      'Auslagen',
-      'aus<|>lieg<~>en<+V><3><Pl><Past><Ind><CAP>',
-    ),
-    tuple(
-      'Auslagen',
-      'aus<|>lieg<~>en<+V><1><Pl><Past><Ind><CAP>',
     ),
     tuple(
       'werden',
@@ -1919,31 +1919,31 @@
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><Imp><Sg><CAP>',
+      '<CAP>sinn<~>en<+V><Imp><Sg>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><3><Sg><Pres><Subj><CAP>',
+      '<CAP>sinn<~>en<+V><3><Sg><Pres><Subj>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><3><Sg><Pres><Subj><SEP><CAP>',
+      '<CAP>sinn<~>en<+V><3><Sg><Pres><Subj><SEP>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><1><Sg><Pres><Subj><CAP>',
+      '<CAP>sinn<~>en<+V><1><Sg><Pres><Subj>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><1><Sg><Pres><Subj><SEP><CAP>',
+      '<CAP>sinn<~>en<+V><1><Sg><Pres><Subj><SEP>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><1><Sg><Pres><Ind><CAP>',
+      '<CAP>sinn<~>en<+V><1><Sg><Pres><Ind>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><1><Sg><Pres><Ind><SEP><CAP>',
+      '<CAP>sinn<~>en<+V><1><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       'Sinne',
@@ -2031,47 +2031,47 @@
     ),
     tuple(
       'Ein',
-      'ein<~>e<+CARD><Attr><Neut><Acc><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+CARD><Attr><Neut><Acc><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>e<+CARD><Attr><Neut><Nom><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+CARD><Attr><Neut><Nom><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>e<+CARD><Attr><Masc><Nom><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+CARD><Attr><Masc><Nom><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>e<+ART><Indef><Attr><Neut><Acc><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+ART><Indef><Attr><Neut><Acc><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>e<+ART><Indef><Attr><Neut><Nom><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+ART><Indef><Attr><Neut><Nom><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>e<+ART><Indef><Attr><Masc><Nom><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+ART><Indef><Attr><Masc><Nom><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>en<+V><Imp><Sg><CAP>',
+      '<CAP>ein<~>en<+V><Imp><Sg>',
     ),
     tuple(
       'Ein',
-      'ein<~>en<+V><1><Sg><Pres><Ind><NonSt><CAP>',
+      '<CAP>ein<~>en<+V><1><Sg><Pres><Ind><NonSt>',
     ),
     tuple(
       'Ein',
-      'ein<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP><CAP>',
+      '<CAP>ein<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP>',
     ),
     tuple(
       'Ein',
-      'ein<+ADV><CAP>',
+      '<CAP>ein<+ADV>',
     ),
     tuple(
       'Ein',
-      'ein<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP><CAP>',
+      '<CAP>ein<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'schwerwiegender',
@@ -2179,31 +2179,31 @@
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><Imp><Sg><CAP>',
+      '<CAP>sinn<~>en<+V><Imp><Sg>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><3><Sg><Pres><Subj><CAP>',
+      '<CAP>sinn<~>en<+V><3><Sg><Pres><Subj>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><3><Sg><Pres><Subj><SEP><CAP>',
+      '<CAP>sinn<~>en<+V><3><Sg><Pres><Subj><SEP>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><1><Sg><Pres><Subj><CAP>',
+      '<CAP>sinn<~>en<+V><1><Sg><Pres><Subj>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><1><Sg><Pres><Subj><SEP><CAP>',
+      '<CAP>sinn<~>en<+V><1><Sg><Pres><Subj><SEP>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><1><Sg><Pres><Ind><CAP>',
+      '<CAP>sinn<~>en<+V><1><Sg><Pres><Ind>',
     ),
     tuple(
       'Sinne',
-      'sinn<~>en<+V><1><Sg><Pres><Ind><SEP><CAP>',
+      '<CAP>sinn<~>en<+V><1><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       'Sinne',
@@ -2279,7 +2279,7 @@
     ),
     tuple(
       'Abs.',
-      'ab<|>s.<+V><Imp><UnmNum><CAP>',
+      '<CAP>ab<|>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       '1',
@@ -2575,39 +2575,39 @@
     ),
     tuple(
       'I',
-      'i<+INTJ><CAP>',
+      '<CAP>i<+INTJ>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Acc><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Acc><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Acc><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Acc><Sg>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Dat><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Dat><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Dat><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Dat><Sg>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Gen><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Gen><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Gen><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Gen><Sg>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Nom><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Nom><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Nom><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Nom><Sg>',
     ),
     tuple(
       'I',
@@ -2647,11 +2647,11 @@
     ),
     tuple(
       'S.',
-      's.<+V><Imp><UnmNum><CAP>',
+      '<CAP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',
-      's.<+V><Imp><UnmNum><SEP><CAP>',
+      '<CAP>s.<+V><Imp><UnmNum><SEP>',
     ),
     tuple(
       'S.',
@@ -2887,35 +2887,35 @@
     ),
     tuple(
       'Beamten',
-      'beam<~>en<+V><3><Pl><Past><Subj><CAP>',
+      '<CAP>beam<~>en<+V><3><Pl><Past><Subj>',
     ),
     tuple(
       'Beamten',
-      'beam<~>en<+V><3><Pl><Past><Subj><SEP><CAP>',
+      '<CAP>beam<~>en<+V><3><Pl><Past><Subj><SEP>',
     ),
     tuple(
       'Beamten',
-      'beam<~>en<+V><3><Pl><Past><Ind><CAP>',
+      '<CAP>beam<~>en<+V><3><Pl><Past><Ind>',
     ),
     tuple(
       'Beamten',
-      'beam<~>en<+V><3><Pl><Past><Ind><SEP><CAP>',
+      '<CAP>beam<~>en<+V><3><Pl><Past><Ind><SEP>',
     ),
     tuple(
       'Beamten',
-      'beam<~>en<+V><1><Pl><Past><Subj><CAP>',
+      '<CAP>beam<~>en<+V><1><Pl><Past><Subj>',
     ),
     tuple(
       'Beamten',
-      'beam<~>en<+V><1><Pl><Past><Subj><SEP><CAP>',
+      '<CAP>beam<~>en<+V><1><Pl><Past><Subj><SEP>',
     ),
     tuple(
       'Beamten',
-      'beam<~>en<+V><1><Pl><Past><Ind><CAP>',
+      '<CAP>beam<~>en<+V><1><Pl><Past><Ind>',
     ),
     tuple(
       'Beamten',
-      'beam<~>en<+V><1><Pl><Past><Ind><SEP><CAP>',
+      '<CAP>beam<~>en<+V><1><Pl><Past><Ind><SEP>',
     ),
     tuple(
       'Beamten',
@@ -3455,39 +3455,39 @@
     ),
     tuple(
       'I',
-      'i<+INTJ><CAP>',
+      '<CAP>i<+INTJ>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Acc><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Acc><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Acc><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Acc><Sg>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Dat><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Dat><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Dat><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Dat><Sg>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Gen><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Gen><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Gen><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Gen><Sg>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Nom><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Nom><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Nom><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Nom><Sg>',
     ),
     tuple(
       'I',
@@ -3527,11 +3527,11 @@
     ),
     tuple(
       'S.',
-      's.<+V><Imp><UnmNum><CAP>',
+      '<CAP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',
-      's.<+V><Imp><UnmNum><SEP><CAP>',
+      '<CAP>s.<+V><Imp><UnmNum><SEP>',
     ),
     tuple(
       'S.',
@@ -3655,39 +3655,39 @@
     ),
     tuple(
       'I',
-      'i<+INTJ><CAP>',
+      '<CAP>i<+INTJ>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Acc><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Acc><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Acc><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Acc><Sg>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Dat><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Dat><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Dat><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Dat><Sg>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Gen><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Gen><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Gen><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Gen><Sg>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Nom><Pl><CAP>',
+      '<CAP>i<+NN><Neut><Nom><Pl>',
     ),
     tuple(
       'I',
-      'i<+NN><Neut><Nom><Sg><CAP>',
+      '<CAP>i<+NN><Neut><Nom><Sg>',
     ),
     tuple(
       'I',
@@ -3727,11 +3727,11 @@
     ),
     tuple(
       'S.',
-      's.<+V><Imp><UnmNum><CAP>',
+      '<CAP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',
-      's.<+V><Imp><UnmNum><SEP><CAP>',
+      '<CAP>s.<+V><Imp><UnmNum><SEP>',
     ),
     tuple(
       'S.',
@@ -4895,19 +4895,19 @@
     ),
     tuple(
       'muß',
-      'müss<~>en<+V><3><Sg><Pres><Ind><SEP><OLDORTH>',
+      '<OLDORTH>müss<~>en<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       'muß',
-      'müss<~>en<+V><3><Sg><Pres><Ind><OLDORTH>',
+      '<OLDORTH>müss<~>en<+V><3><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       'muß',
-      'müss<~>en<+V><1><Sg><Pres><Ind><SEP><OLDORTH>',
+      '<OLDORTH>müss<~>en<+V><1><Sg><Pres><Ind>',
     ),
     tuple(
       'muß',
-      'müss<~>en<+V><1><Sg><Pres><Ind><OLDORTH>',
+      '<OLDORTH>müss<~>en<+V><1><Sg><Pres><Ind><SEP>',
     ),
     tuple(
       '.',
@@ -4915,47 +4915,47 @@
     ),
     tuple(
       'Ein',
-      'ein<~>e<+CARD><Attr><Neut><Acc><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+CARD><Attr><Neut><Acc><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>e<+CARD><Attr><Neut><Nom><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+CARD><Attr><Neut><Nom><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>e<+CARD><Attr><Masc><Nom><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+CARD><Attr><Masc><Nom><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>e<+ART><Indef><Attr><Neut><Acc><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+ART><Indef><Attr><Neut><Acc><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>e<+ART><Indef><Attr><Neut><Nom><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+ART><Indef><Attr><Neut><Nom><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>e<+ART><Indef><Attr><Masc><Nom><Sg><UnmInfl><CAP>',
+      '<CAP>ein<~>e<+ART><Indef><Attr><Masc><Nom><Sg><UnmInfl>',
     ),
     tuple(
       'Ein',
-      'ein<~>en<+V><Imp><Sg><CAP>',
+      '<CAP>ein<~>en<+V><Imp><Sg>',
     ),
     tuple(
       'Ein',
-      'ein<~>en<+V><1><Sg><Pres><Ind><NonSt><CAP>',
+      '<CAP>ein<~>en<+V><1><Sg><Pres><Ind><NonSt>',
     ),
     tuple(
       'Ein',
-      'ein<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP><CAP>',
+      '<CAP>ein<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP>',
     ),
     tuple(
       'Ein',
-      'ein<+ADV><CAP>',
+      '<CAP>ein<+ADV>',
     ),
     tuple(
       'Ein',
-      'ein<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP><CAP>',
+      '<CAP>ein<+V><UnmPers><UnmNum><UnmTense><UnmMood><SEP>',
     ),
     tuple(
       'schwerwiegender',
@@ -5143,6 +5143,18 @@
     ),
     tuple(
       'Art',
+      '<CAP>art<~>en<+V><Imp><Sg><NonSt>',
+    ),
+    tuple(
+      'Art',
+      '<CAP>art<~>en<+V><1><Sg><Pres><Ind><NonSt>',
+    ),
+    tuple(
+      'Art',
+      '<CAP>art<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP>',
+    ),
+    tuple(
+      'Art',
       'Art<+NN><Fem><Acc><Sg>',
     ),
     tuple(
@@ -5156,18 +5168,6 @@
     tuple(
       'Art',
       'Art<+NN><Fem><Nom><Sg>',
-    ),
-    tuple(
-      'Art',
-      'art<~>en<+V><Imp><Sg><NonSt><CAP>',
-    ),
-    tuple(
-      'Art',
-      'art<~>en<+V><1><Sg><Pres><Ind><NonSt><CAP>',
-    ),
-    tuple(
-      'Art',
-      'art<~>en<+V><1><Sg><Pres><Ind><NonSt><SEP><CAP>',
     ),
     tuple(
       'des',
@@ -5639,39 +5639,39 @@
     ),
     tuple(
       'Mitteln',
-      'mittel<~>n<+V><Inf><NonCl><CAP>',
+      '<CAP>mittel<~>n<+V><Inf><NonCl>',
     ),
     tuple(
       'Mitteln',
-      'mittel<~>n<+V><3><Pl><Pres><Subj><CAP>',
+      '<CAP>mittel<~>n<+V><3><Pl><Pres><Subj>',
     ),
     tuple(
       'Mitteln',
-      'mittel<~>n<+V><3><Pl><Pres><Subj><SEP><CAP>',
+      '<CAP>mittel<~>n<+V><3><Pl><Pres><Subj><SEP>',
     ),
     tuple(
       'Mitteln',
-      'mittel<~>n<+V><3><Pl><Pres><Ind><CAP>',
+      '<CAP>mittel<~>n<+V><3><Pl><Pres><Ind>',
     ),
     tuple(
       'Mitteln',
-      'mittel<~>n<+V><3><Pl><Pres><Ind><SEP><CAP>',
+      '<CAP>mittel<~>n<+V><3><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Mitteln',
-      'mittel<~>n<+V><1><Pl><Pres><Subj><CAP>',
+      '<CAP>mittel<~>n<+V><1><Pl><Pres><Subj>',
     ),
     tuple(
       'Mitteln',
-      'mittel<~>n<+V><1><Pl><Pres><Subj><SEP><CAP>',
+      '<CAP>mittel<~>n<+V><1><Pl><Pres><Subj><SEP>',
     ),
     tuple(
       'Mitteln',
-      'mittel<~>n<+V><1><Pl><Pres><Ind><CAP>',
+      '<CAP>mittel<~>n<+V><1><Pl><Pres><Ind>',
     ),
     tuple(
       'Mitteln',
-      'mittel<~>n<+V><1><Pl><Pres><Ind><SEP><CAP>',
+      '<CAP>mittel<~>n<+V><1><Pl><Pres><Ind><SEP>',
     ),
     tuple(
       'Mitteln',
@@ -5727,35 +5727,35 @@
     ),
     tuple(
       'Diese',
-      'dies<~>e<+DEM><Subst><UnmGend><Acc><Pl><St><CAP>',
+      '<CAP>dies<~>e<+DEM><Subst><UnmGend><Acc><Pl><St>',
     ),
     tuple(
       'Diese',
-      'dies<~>e<+DEM><Subst><UnmGend><Nom><Pl><St><CAP>',
+      '<CAP>dies<~>e<+DEM><Subst><UnmGend><Nom><Pl><St>',
     ),
     tuple(
       'Diese',
-      'dies<~>e<+DEM><Subst><Fem><Acc><Sg><St><CAP>',
+      '<CAP>dies<~>e<+DEM><Subst><Fem><Acc><Sg><St>',
     ),
     tuple(
       'Diese',
-      'dies<~>e<+DEM><Subst><Fem><Nom><Sg><St><CAP>',
+      '<CAP>dies<~>e<+DEM><Subst><Fem><Nom><Sg><St>',
     ),
     tuple(
       'Diese',
-      'dies<~>e<+DEM><Attr><UnmGend><Acc><Pl><St><CAP>',
+      '<CAP>dies<~>e<+DEM><Attr><UnmGend><Acc><Pl><St>',
     ),
     tuple(
       'Diese',
-      'dies<~>e<+DEM><Attr><UnmGend><Nom><Pl><St><CAP>',
+      '<CAP>dies<~>e<+DEM><Attr><UnmGend><Nom><Pl><St>',
     ),
     tuple(
       'Diese',
-      'dies<~>e<+DEM><Attr><Fem><Acc><Sg><St><CAP>',
+      '<CAP>dies<~>e<+DEM><Attr><Fem><Acc><Sg><St>',
     ),
     tuple(
       'Diese',
-      'dies<~>e<+DEM><Attr><Fem><Nom><Sg><St><CAP>',
+      '<CAP>dies<~>e<+DEM><Attr><Fem><Nom><Sg><St>',
     ),
     tuple(
       'Verordnung',
@@ -5831,6 +5831,10 @@
     ),
     tuple(
       'Kraft',
+      '<CAP>kraft<+PREP>',
+    ),
+    tuple(
+      'Kraft',
       'Kraft<+NN><Fem><Acc><Sg>',
     ),
     tuple(
@@ -5844,10 +5848,6 @@
     tuple(
       'Kraft',
       'Kraft<+NN><Fem><Nom><Sg>',
-    ),
-    tuple(
-      'Kraft',
-      'kraft<+PREP><CAP>',
     ),
     tuple(
       '.',
@@ -22200,76 +22200,76 @@
       'NNeut_es_$e_n',
       'Floß',
       tuple(
-        'Floß<+NN><Neut><Acc><Pl>',
-        'Flöße',
+        '<CH>Floß<+NN><Neut><Acc><Pl>',
+        'Flösse',
       ),
       tuple(
-        'Floß<+NN><Neut><Acc><Pl><CH>',
+        '<CH>Floß<+NN><Neut><Acc><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<+NN><Neut><Dat><Pl>',
+        'Flössen',
+      ),
+      tuple(
+        '<CH>Floß<+NN><Neut><Dat><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<+NN><Neut><Dat><Sg><Old>',
+        'Flosse',
+      ),
+      tuple(
+        '<CH>Floß<+NN><Neut><Gen><Pl>',
         'Flösse',
+      ),
+      tuple(
+        '<CH>Floß<+NN><Neut><Gen><Sg>',
+        'Flosses',
+      ),
+      tuple(
+        '<CH>Floß<+NN><Neut><Nom><Pl>',
+        'Flösse',
+      ),
+      tuple(
+        '<CH>Floß<+NN><Neut><Nom><Sg>',
+        'Floss',
+      ),
+      tuple(
+        'Floß<+NN><Neut><Acc><Pl>',
+        'Flöße',
       ),
       tuple(
         'Floß<+NN><Neut><Acc><Sg>',
         'Floß',
       ),
       tuple(
-        'Floß<+NN><Neut><Acc><Sg><CH>',
-        'Floss',
-      ),
-      tuple(
         'Floß<+NN><Neut><Dat><Pl>',
         'Flößen',
-      ),
-      tuple(
-        'Floß<+NN><Neut><Dat><Pl><CH>',
-        'Flössen',
       ),
       tuple(
         'Floß<+NN><Neut><Dat><Sg>',
         'Floß',
       ),
       tuple(
-        'Floß<+NN><Neut><Dat><Sg><CH>',
-        'Floss',
-      ),
-      tuple(
         'Floß<+NN><Neut><Dat><Sg><Old>',
         'Floße',
-      ),
-      tuple(
-        'Floß<+NN><Neut><Dat><Sg><Old><CH>',
-        'Flosse',
       ),
       tuple(
         'Floß<+NN><Neut><Gen><Pl>',
         'Flöße',
       ),
       tuple(
-        'Floß<+NN><Neut><Gen><Pl><CH>',
-        'Flösse',
-      ),
-      tuple(
         'Floß<+NN><Neut><Gen><Sg>',
         'Floßes',
-      ),
-      tuple(
-        'Floß<+NN><Neut><Gen><Sg><CH>',
-        'Flosses',
       ),
       tuple(
         'Floß<+NN><Neut><Nom><Pl>',
         'Flöße',
       ),
       tuple(
-        'Floß<+NN><Neut><Nom><Pl><CH>',
-        'Flösse',
-      ),
-      tuple(
         'Floß<+NN><Neut><Nom><Sg>',
         'Floß',
-      ),
-      tuple(
-        'Floß<+NN><Neut><Nom><Sg><CH>',
-        'Floss',
       ),
     ),
     tuple(
@@ -27108,20 +27108,80 @@
       'VInf, VPPres, VPPastWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak',
       'wissen',
       tuple(
+        '<CH>wiss<~>en<+V><1><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<+V><2><Sg><Pres><Ind>',
+        'weisst',
+      ),
+      tuple(
+        '<CH>wiss<~>en<+V><3><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><1><Pl><Past><Ind>',
+        'wußten',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><1><Pl><Past><Subj>',
+        'wüßten',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><1><Sg><Past><Ind>',
+        'wußte',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><1><Sg><Past><Subj>',
+        'wüßte',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><2><Pl><Past><Ind>',
+        'wußtet',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><2><Pl><Past><Subj>',
+        'wüßtet',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><2><Pl><Pres><Ind>',
+        'wißt',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><2><Sg><Past><Ind>',
+        'wußtest',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><2><Sg><Past><Subj>',
+        'wüßtest',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><3><Pl><Past><Ind>',
+        'wußten',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><3><Pl><Past><Subj>',
+        'wüßten',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><3><Sg><Past><Ind>',
+        'wußte',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><3><Sg><Past><Subj>',
+        'wüßte',
+      ),
+      tuple(
+        '<OLDORTH>wiss<~>en<+V><Part><Perf><haben>',
+        'gewußt',
+      ),
+      tuple(
         'wiss<~>en<+V><1><Pl><Past><Ind>',
         'wussten',
       ),
       tuple(
-        'wiss<~>en<+V><1><Pl><Past><Ind><OLDORTH>',
-        'wußten',
-      ),
-      tuple(
         'wiss<~>en<+V><1><Pl><Past><Subj>',
         'wüssten',
-      ),
-      tuple(
-        'wiss<~>en<+V><1><Pl><Past><Subj><OLDORTH>',
-        'wüßten',
       ),
       tuple(
         'wiss<~>en<+V><1><Pl><Pres><Ind>',
@@ -27136,24 +27196,12 @@
         'wusste',
       ),
       tuple(
-        'wiss<~>en<+V><1><Sg><Past><Ind><OLDORTH>',
-        'wußte',
-      ),
-      tuple(
         'wiss<~>en<+V><1><Sg><Past><Subj>',
         'wüsste',
       ),
       tuple(
-        'wiss<~>en<+V><1><Sg><Past><Subj><OLDORTH>',
-        'wüßte',
-      ),
-      tuple(
         'wiss<~>en<+V><1><Sg><Pres><Ind>',
         'weiß',
-      ),
-      tuple(
-        'wiss<~>en<+V><1><Sg><Pres><Ind><CH>',
-        'weiss',
       ),
       tuple(
         'wiss<~>en<+V><1><Sg><Pres><Subj>',
@@ -27164,24 +27212,12 @@
         'wusstet',
       ),
       tuple(
-        'wiss<~>en<+V><2><Pl><Past><Ind><OLDORTH>',
-        'wußtet',
-      ),
-      tuple(
         'wiss<~>en<+V><2><Pl><Past><Subj>',
         'wüsstet',
       ),
       tuple(
-        'wiss<~>en<+V><2><Pl><Past><Subj><OLDORTH>',
-        'wüßtet',
-      ),
-      tuple(
         'wiss<~>en<+V><2><Pl><Pres><Ind>',
         'wisst',
-      ),
-      tuple(
-        'wiss<~>en<+V><2><Pl><Pres><Ind><OLDORTH>',
-        'wißt',
       ),
       tuple(
         'wiss<~>en<+V><2><Pl><Pres><Subj>',
@@ -27192,24 +27228,12 @@
         'wusstest',
       ),
       tuple(
-        'wiss<~>en<+V><2><Sg><Past><Ind><OLDORTH>',
-        'wußtest',
-      ),
-      tuple(
         'wiss<~>en<+V><2><Sg><Past><Subj>',
         'wüsstest',
       ),
       tuple(
-        'wiss<~>en<+V><2><Sg><Past><Subj><OLDORTH>',
-        'wüßtest',
-      ),
-      tuple(
         'wiss<~>en<+V><2><Sg><Pres><Ind>',
         'weißt',
-      ),
-      tuple(
-        'wiss<~>en<+V><2><Sg><Pres><Ind><CH>',
-        'weisst',
       ),
       tuple(
         'wiss<~>en<+V><2><Sg><Pres><Subj>',
@@ -27220,16 +27244,8 @@
         'wussten',
       ),
       tuple(
-        'wiss<~>en<+V><3><Pl><Past><Ind><OLDORTH>',
-        'wußten',
-      ),
-      tuple(
         'wiss<~>en<+V><3><Pl><Past><Subj>',
         'wüssten',
-      ),
-      tuple(
-        'wiss<~>en<+V><3><Pl><Past><Subj><OLDORTH>',
-        'wüßten',
       ),
       tuple(
         'wiss<~>en<+V><3><Pl><Pres><Ind>',
@@ -27244,24 +27260,12 @@
         'wusste',
       ),
       tuple(
-        'wiss<~>en<+V><3><Sg><Past><Ind><OLDORTH>',
-        'wußte',
-      ),
-      tuple(
         'wiss<~>en<+V><3><Sg><Past><Subj>',
         'wüsste',
       ),
       tuple(
-        'wiss<~>en<+V><3><Sg><Past><Subj><OLDORTH>',
-        'wüßte',
-      ),
-      tuple(
         'wiss<~>en<+V><3><Sg><Pres><Ind>',
         'weiß',
-      ),
-      tuple(
-        'wiss<~>en<+V><3><Sg><Pres><Ind><CH>',
-        'weiss',
       ),
       tuple(
         'wiss<~>en<+V><3><Sg><Pres><Subj>',
@@ -27274,10 +27278,6 @@
       tuple(
         'wiss<~>en<+V><Part><Perf><haben>',
         'gewusst',
-      ),
-      tuple(
-        'wiss<~>en<+V><Part><Perf><haben><OLDORTH>',
-        'gewußt',
       ),
       tuple(
         'wiss<~>en<+V><Part><Pres>',
@@ -29360,20 +29360,88 @@
       'VWeak-s',
       'küssen',
       tuple(
+        '<OLDORTH>küss<~>en<+V><1><Pl><Past><Ind>',
+        'küßten',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><1><Pl><Past><Subj>',
+        'küßten',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><1><Sg><Past><Ind>',
+        'küßte',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><1><Sg><Past><Subj>',
+        'küßte',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><1><Sg><Pres><Ind><NonSt>',
+        'küß',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><2><Pl><Past><Ind>',
+        'küßtet',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><2><Pl><Past><Subj>',
+        'küßtet',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><2><Pl><Pres><Ind>',
+        'küßt',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><2><Sg><Past><Ind>',
+        'küßtest',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><2><Sg><Past><Subj>',
+        'küßtest',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><2><Sg><Pres><Ind>',
+        'küßt',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><3><Pl><Past><Ind>',
+        'küßten',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><3><Pl><Past><Subj>',
+        'küßten',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><3><Sg><Past><Ind>',
+        'küßte',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><3><Sg><Past><Subj>',
+        'küßte',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><3><Sg><Pres><Ind>',
+        'küßt',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><Imp><Pl>',
+        'küßt',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><Imp><Sg>',
+        'küß',
+      ),
+      tuple(
+        '<OLDORTH>küss<~>en<+V><Part><Perf><haben>',
+        'geküßt',
+      ),
+      tuple(
         'küss<~>en<+V><1><Pl><Past><Ind>',
         'küssten',
       ),
       tuple(
-        'küss<~>en<+V><1><Pl><Past><Ind><OLDORTH>',
-        'küßten',
-      ),
-      tuple(
         'küss<~>en<+V><1><Pl><Past><Subj>',
         'küssten',
-      ),
-      tuple(
-        'küss<~>en<+V><1><Pl><Past><Subj><OLDORTH>',
-        'küßten',
       ),
       tuple(
         'küss<~>en<+V><1><Pl><Pres><Ind>',
@@ -29388,16 +29456,8 @@
         'küsste',
       ),
       tuple(
-        'küss<~>en<+V><1><Sg><Past><Ind><OLDORTH>',
-        'küßte',
-      ),
-      tuple(
         'küss<~>en<+V><1><Sg><Past><Subj>',
         'küsste',
-      ),
-      tuple(
-        'küss<~>en<+V><1><Sg><Past><Subj><OLDORTH>',
-        'küßte',
       ),
       tuple(
         'küss<~>en<+V><1><Sg><Pres><Ind>',
@@ -29408,10 +29468,6 @@
         'küss',
       ),
       tuple(
-        'küss<~>en<+V><1><Sg><Pres><Ind><NonSt><OLDORTH>',
-        'küß',
-      ),
-      tuple(
         'küss<~>en<+V><1><Sg><Pres><Subj>',
         'küsse',
       ),
@@ -29420,24 +29476,12 @@
         'küsstet',
       ),
       tuple(
-        'küss<~>en<+V><2><Pl><Past><Ind><OLDORTH>',
-        'küßtet',
-      ),
-      tuple(
         'küss<~>en<+V><2><Pl><Past><Subj>',
         'küsstet',
       ),
       tuple(
-        'küss<~>en<+V><2><Pl><Past><Subj><OLDORTH>',
-        'küßtet',
-      ),
-      tuple(
         'küss<~>en<+V><2><Pl><Pres><Ind>',
         'küsst',
-      ),
-      tuple(
-        'küss<~>en<+V><2><Pl><Pres><Ind><OLDORTH>',
-        'küßt',
       ),
       tuple(
         'küss<~>en<+V><2><Pl><Pres><Subj>',
@@ -29448,24 +29492,12 @@
         'küsstest',
       ),
       tuple(
-        'küss<~>en<+V><2><Sg><Past><Ind><OLDORTH>',
-        'küßtest',
-      ),
-      tuple(
         'küss<~>en<+V><2><Sg><Past><Subj>',
         'küsstest',
       ),
       tuple(
-        'küss<~>en<+V><2><Sg><Past><Subj><OLDORTH>',
-        'küßtest',
-      ),
-      tuple(
         'küss<~>en<+V><2><Sg><Pres><Ind>',
         'küsst',
-      ),
-      tuple(
-        'küss<~>en<+V><2><Sg><Pres><Ind><OLDORTH>',
-        'küßt',
       ),
       tuple(
         'küss<~>en<+V><2><Sg><Pres><Ind><Old>',
@@ -29480,16 +29512,8 @@
         'küssten',
       ),
       tuple(
-        'küss<~>en<+V><3><Pl><Past><Ind><OLDORTH>',
-        'küßten',
-      ),
-      tuple(
         'küss<~>en<+V><3><Pl><Past><Subj>',
         'küssten',
-      ),
-      tuple(
-        'küss<~>en<+V><3><Pl><Past><Subj><OLDORTH>',
-        'küßten',
       ),
       tuple(
         'küss<~>en<+V><3><Pl><Pres><Ind>',
@@ -29504,24 +29528,12 @@
         'küsste',
       ),
       tuple(
-        'küss<~>en<+V><3><Sg><Past><Ind><OLDORTH>',
-        'küßte',
-      ),
-      tuple(
         'küss<~>en<+V><3><Sg><Past><Subj>',
         'küsste',
       ),
       tuple(
-        'küss<~>en<+V><3><Sg><Past><Subj><OLDORTH>',
-        'küßte',
-      ),
-      tuple(
         'küss<~>en<+V><3><Sg><Pres><Ind>',
         'küsst',
-      ),
-      tuple(
-        'küss<~>en<+V><3><Sg><Pres><Ind><OLDORTH>',
-        'küßt',
       ),
       tuple(
         'küss<~>en<+V><3><Sg><Pres><Subj>',
@@ -29532,10 +29544,6 @@
         'küsst',
       ),
       tuple(
-        'küss<~>en<+V><Imp><Pl><OLDORTH>',
-        'küßt',
-      ),
-      tuple(
         'küss<~>en<+V><Imp><Sg>',
         'küss',
       ),
@@ -29544,20 +29552,12 @@
         'küsse',
       ),
       tuple(
-        'küss<~>en<+V><Imp><Sg><OLDORTH>',
-        'küß',
-      ),
-      tuple(
         'küss<~>en<+V><Inf><NonCl>',
         'küssen',
       ),
       tuple(
         'küss<~>en<+V><Part><Perf><haben>',
         'geküsst',
-      ),
-      tuple(
-        'küss<~>en<+V><Part><Perf><haben><OLDORTH>',
-        'geküßt',
       ),
       tuple(
         'küss<~>en<+V><Part><Pres>',
@@ -29569,116 +29569,324 @@
       'VWeak-s, VInf, VPPres, VPPastStr, VPres-s, VPastStr-s, VImp',
       'heißen',
       tuple(
-        'heiß<~>en<IDX1><+V><1><Pl><Past><Ind>',
-        'hießen',
+        '<CH>heiß<~>en<IDX1><+V><1><Pl><Past><Ind>',
+        'hiessen',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><1><Pl><Past><Ind><CH>',
+        '<CH>heiß<~>en<IDX1><+V><1><Pl><Past><Subj>',
         'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><1><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><1><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Pl><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Pl><Past><Ind><Old>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Pl><Past><Subj>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Sg><Past><Ind>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Sg><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Sg><Past><Subj>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><3><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><3><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><3><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><3><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><Part><Perf><haben>',
+        'geheissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><+V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><1><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><1><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><1><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><1><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><2><Pl><Past><Ind>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><2><Pl><Past><Subj>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><2><Sg><Past><Ind>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><2><Sg><Past><Subj>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><3><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><3><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><3><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><3><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><Part><Perf><haben>',
+        'geheisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><+V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        'heiß<~>en<IDX1><+V><1><Pl><Past><Ind>',
+        'hießen',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><1><Pl><Past><Subj>',
         'hießen',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><1><Pl><Past><Subj><CH>',
-        'hiessen',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><1><Pl><Pres><Ind>',
         'heißen',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><1><Pl><Pres><Ind><CH>',
-        'heissen',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><1><Pl><Pres><Subj>',
         'heißen',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><1><Pl><Pres><Subj><CH>',
-        'heissen',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><1><Sg><Past><Ind>',
         'hieß',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><1><Sg><Past><Ind><CH>',
-        'hiess',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><1><Sg><Past><Subj>',
         'hieße',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><1><Sg><Past><Subj><CH>',
-        'hiesse',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><1><Sg><Pres><Ind>',
         'heiße',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><1><Sg><Pres><Ind><CH>',
-        'heisse',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><1><Sg><Pres><Ind><NonSt>',
         'heiß',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><1><Sg><Pres><Ind><NonSt><CH>',
-        'heiss',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><1><Sg><Pres><Subj>',
         'heiße',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><1><Sg><Pres><Subj><CH>',
-        'heisse',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><2><Pl><Past><Ind>',
         'hießt',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><2><Pl><Past><Ind><CH>',
-        'hiesst',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><2><Pl><Past><Ind><Old>',
         'hießet',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><2><Pl><Past><Ind><Old><CH>',
-        'hiesset',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><2><Pl><Past><Subj>',
         'hießet',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><2><Pl><Past><Subj><CH>',
-        'hiesset',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><2><Pl><Pres><Ind>',
         'heißt',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><2><Pl><Pres><Ind><CH>',
-        'heisst',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><2><Pl><Pres><Subj>',
         'heißet',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><2><Pl><Pres><Subj><CH>',
-        'heisset',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><2><Sg><Past><Ind>',
@@ -29689,116 +29897,56 @@
         'hießt',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><2><Sg><Past><Ind><CH>',
-        'hiessest',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><2><Sg><Past><Ind><CH>',
-        'hiesst',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><2><Sg><Past><Subj>',
         'hießest',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><2><Sg><Past><Subj><CH>',
-        'hiessest',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><2><Sg><Pres><Ind>',
         'heißt',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><2><Sg><Pres><Ind><CH>',
-        'heisst',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><2><Sg><Pres><Ind><Old>',
         'heißest',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><2><Sg><Pres><Ind><Old><CH>',
-        'heissest',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><2><Sg><Pres><Subj>',
         'heißest',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><2><Sg><Pres><Subj><CH>',
-        'heissest',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><3><Pl><Past><Ind>',
         'hießen',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><3><Pl><Past><Ind><CH>',
-        'hiessen',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><3><Pl><Past><Subj>',
         'hießen',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><3><Pl><Past><Subj><CH>',
-        'hiessen',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><3><Pl><Pres><Ind>',
         'heißen',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><3><Pl><Pres><Ind><CH>',
-        'heissen',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><3><Pl><Pres><Subj>',
         'heißen',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><3><Pl><Pres><Subj><CH>',
-        'heissen',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><3><Sg><Past><Ind>',
         'hieß',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><3><Sg><Past><Ind><CH>',
-        'hiess',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><3><Sg><Past><Subj>',
         'hieße',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><3><Sg><Past><Subj><CH>',
-        'hiesse',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><3><Sg><Pres><Ind>',
         'heißt',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><3><Sg><Pres><Ind><CH>',
-        'heisst',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><3><Sg><Pres><Subj>',
         'heiße',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><3><Sg><Pres><Subj><CH>',
-        'heisse',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><Imp><Pl>',
         'heißt',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><Imp><Pl><CH>',
-        'heisst',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><Imp><Sg>',
@@ -29807,254 +29955,126 @@
       tuple(
         'heiß<~>en<IDX1><+V><Imp><Sg>',
         'heiße',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><Imp><Sg><CH>',
-        'heiss',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><Imp><Sg><CH>',
-        'heisse',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><Inf><NonCl>',
         'heißen',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><Inf><NonCl><CH>',
-        'heissen',
-      ),
-      tuple(
         'heiß<~>en<IDX1><+V><Part><Perf><haben>',
         'geheißen',
-      ),
-      tuple(
-        'heiß<~>en<IDX1><+V><Part><Perf><haben><CH>',
-        'geheissen',
       ),
       tuple(
         'heiß<~>en<IDX1><+V><Part><Pres>',
         'heißend',
       ),
       tuple(
-        'heiß<~>en<IDX1><+V><Part><Pres><CH>',
-        'heissend',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><1><Pl><Past><Ind>',
         'heißten',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><1><Pl><Past><Ind><CH>',
-        'heissten',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><1><Pl><Past><Subj>',
         'heißten',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><1><Pl><Past><Subj><CH>',
-        'heissten',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><1><Pl><Pres><Ind>',
         'heißen',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><1><Pl><Pres><Ind><CH>',
-        'heissen',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><1><Pl><Pres><Subj>',
         'heißen',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><1><Pl><Pres><Subj><CH>',
-        'heissen',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><1><Sg><Past><Ind>',
         'heißte',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><1><Sg><Past><Ind><CH>',
-        'heisste',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><1><Sg><Past><Subj>',
         'heißte',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><1><Sg><Past><Subj><CH>',
-        'heisste',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><1><Sg><Pres><Ind>',
         'heiße',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><1><Sg><Pres><Ind><CH>',
-        'heisse',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><1><Sg><Pres><Ind><NonSt>',
         'heiß',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><1><Sg><Pres><Ind><NonSt><CH>',
-        'heiss',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><1><Sg><Pres><Subj>',
         'heiße',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><1><Sg><Pres><Subj><CH>',
-        'heisse',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><2><Pl><Past><Ind>',
         'heißtet',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><2><Pl><Past><Ind><CH>',
-        'heisstet',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><2><Pl><Past><Subj>',
         'heißtet',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><2><Pl><Past><Subj><CH>',
-        'heisstet',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><2><Pl><Pres><Ind>',
         'heißt',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><2><Pl><Pres><Ind><CH>',
-        'heisst',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><2><Pl><Pres><Subj>',
         'heißet',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><2><Pl><Pres><Subj><CH>',
-        'heisset',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><2><Sg><Past><Ind>',
         'heißtest',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><2><Sg><Past><Ind><CH>',
-        'heisstest',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><2><Sg><Past><Subj>',
         'heißtest',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><2><Sg><Past><Subj><CH>',
-        'heisstest',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><2><Sg><Pres><Ind>',
         'heißt',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><2><Sg><Pres><Ind><CH>',
-        'heisst',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><2><Sg><Pres><Ind><Old>',
         'heißest',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><2><Sg><Pres><Ind><Old><CH>',
-        'heissest',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><2><Sg><Pres><Subj>',
         'heißest',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><2><Sg><Pres><Subj><CH>',
-        'heissest',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><3><Pl><Past><Ind>',
         'heißten',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><3><Pl><Past><Ind><CH>',
-        'heissten',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><3><Pl><Past><Subj>',
         'heißten',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><3><Pl><Past><Subj><CH>',
-        'heissten',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><3><Pl><Pres><Ind>',
         'heißen',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><3><Pl><Pres><Ind><CH>',
-        'heissen',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><3><Pl><Pres><Subj>',
         'heißen',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><3><Pl><Pres><Subj><CH>',
-        'heissen',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><3><Sg><Past><Ind>',
         'heißte',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><3><Sg><Past><Ind><CH>',
-        'heisste',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><3><Sg><Past><Subj>',
         'heißte',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><3><Sg><Past><Subj><CH>',
-        'heisste',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><3><Sg><Pres><Ind>',
         'heißt',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><3><Sg><Pres><Ind><CH>',
-        'heisst',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><3><Sg><Pres><Subj>',
         'heiße',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><3><Sg><Pres><Subj><CH>',
-        'heisse',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><Imp><Pl>',
         'heißt',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><Imp><Pl><CH>',
-        'heisst',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><Imp><Sg>',
@@ -30065,36 +30085,16 @@
         'heiße',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><Imp><Sg><CH>',
-        'heiss',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><Imp><Sg><CH>',
-        'heisse',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><Inf><NonCl>',
         'heißen',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><Inf><NonCl><CH>',
-        'heissen',
       ),
       tuple(
         'heiß<~>en<IDX2><+V><Part><Perf><haben>',
         'geheißt',
       ),
       tuple(
-        'heiß<~>en<IDX2><+V><Part><Perf><haben><CH>',
-        'geheisst',
-      ),
-      tuple(
         'heiß<~>en<IDX2><+V><Part><Pres>',
         'heißend',
-      ),
-      tuple(
-        'heiß<~>en<IDX2><+V><Part><Pres><CH>',
-        'heissend',
       ),
     ),
     tuple(

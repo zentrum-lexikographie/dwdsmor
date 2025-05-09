@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 12.3
-% Andreas Nolda 2025-05-02
+% Version 13.0
+% Andreas Nolda 2025-05-09
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -39,7 +39,7 @@ $LEX$ = ( $LEX$ || $BaseStemFilter$) | \
 
 $LEX$ = $CleanupInflLv2$ || $LEX$
 
-$LEX$ = $LEX$ || $CleanupIndex$ || $CleanupOrthOld$
+$LEX$ = $LEX$ || $CleanupIndex$ || $CleanupOrth$
 
 
 % surface triggers
@@ -290,9 +290,7 @@ $MORPH$ = $MORPH$ | ($TruncInitialLv2$ || $MORPH$ || $TruncInitial$) <TRUNC>:<> 
 
 % old spelling
 
-$MORPH$ = $MORPH$ | ($MORPH$ || $OrthOld$) <OLDORTH>:<>
-
-$MORPH$ = $CleanupOrthOldLv2$ || $MORPH$
+$MORPH$ = $MORPH$ | <OLDORTH>:<> ($MORPH$ || $OrthOld$)
 
 
 % cleanup of word-boundary markers
@@ -314,12 +312,12 @@ $MORPH$ = $CleanupIndexLv2$ || $MORPH$
 
 % Swiss spelling
 
-$MORPH$ = $MORPH$ | ($NoOrthOldFilterLv2$ || $MORPH$ || $OrthCH$) <CH>:<>
+$MORPH$ = $MORPH$ | <CH>:<> ($NoOrthOldFilterLv2$ || $MORPH$ || $OrthCH$)
 
 
 % capitalisation
 
-$MORPH$ = $MORPH$ | ($MORPH$ || $OrthCap$) <CAP>:<>
+$MORPH$ = $MORPH$ | <CAP>:<> ($MORPH$ || $OrthCap$)
 
 
 % punctuation

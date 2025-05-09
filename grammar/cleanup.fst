@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 5.5
-% Andreas Nolda 2024-10-11
+% Version 5.6
+% Andreas Nolda 2025-05-09
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -26,13 +26,13 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #category# 
 $CleanupIndex$ = .*
 
 
-% clean up old-orthography markers
+% clean up lexical orthography markers
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #category# \
             #stem-type# #suff# #origin# #inflection# #auxiliary# <Abbr><ge>] \
            [#orthinfo#]:<>
 
-$CleanupOrthOld$ = .*
+$CleanupOrth$ = .*
 
 
 % clean up word boundaries
@@ -50,16 +50,6 @@ ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# \
            <>:<WB>
 
 $CleanupWBLv2$ = .*
-
-
-% clean up old-orthography markers on analysis level
-
-ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #feature# #metainfo# <SEP><TRUNC>]
-
-% deduplicate and postpone <OLDORTH>
-$CleanupOrthOldLv2$ = .* | \
-                      .* <>:<OLDORTH>+ .* <OLDORTH>:<>
 
 
 % clean up word-formation-related symbols on analysis level

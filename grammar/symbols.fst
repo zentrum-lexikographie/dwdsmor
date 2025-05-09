@@ -1,6 +1,6 @@
 % symbols.fst
 % Version 12.9
-% Andreas Nolda 2025-04-30
+% Andreas Nolda 2025-05-09
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -117,7 +117,7 @@
             #subcat# #degree# #person# #gender# #case# #number# #infl# #function# \
             #nonfinite# #mood# #tense#
 
-#orthinfo# = <OLDORTH>
+#orthinfo# = <CH><OLDORTH>
 
 #metainfo# = <NonSt><Old>
 
