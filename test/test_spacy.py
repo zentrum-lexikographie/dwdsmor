@@ -22,7 +22,7 @@ def nlp():
     except OSError:
         check_call(["pip", "install", "-qqq", spacy_model_package])
         nlp = spacy.load("de_hdt_lg")
-    nlp.add_pipe("dwdsmor")
+    nlp.add_pipe("dwdsmor", config={"automata_location": "build/dwds"})
     return nlp
 
 
