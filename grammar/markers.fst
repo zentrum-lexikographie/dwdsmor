@@ -76,7 +76,7 @@ ALPHABET = [#char# #boundary-trigger#]
 
 $MarkerWB$ = <WB>:<Stem> .* <WB>:<>
 
-ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# <SEP><TRUNC>]
+ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info#]
 
 $MarkerBoundaryLv2$ = (.               | \
                             <|>:<VB>   | \
@@ -85,7 +85,7 @@ $MarkerBoundaryLv2$ = (.               | \
                             <->:<DB>   | \
                            <\~>:[<PB><SB>])*
 
-ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# <SEP><TRUNC>] \
+ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info#] \
            <>:[<HB><DB>]
 
 $MarkerBoundaryRootLv2$ = (.         | \

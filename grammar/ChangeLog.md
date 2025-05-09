@@ -6,6 +6,9 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
   `<CAP>`
 * optimize automata by fronting the ellipsis tag `<TRUNC>` and the syntax tag
   `<SEP>`
+* optimize automata by fronting the tags `<COMP>`, `<DER>`, and `<CONV>` for
+  word-formation processes as well as the corresponding tags for word-formation
+  means
 
 2025-05-07:
 

@@ -81,7 +81,7 @@ $CleanupCatLv2$ = .*
 
 % clean up lemma and paradigm indices on analysis level
 
-ALPHABET = [#char# #morpheme-boundary# #feature# #info# <SEP><TRUNC>] \
+ALPHABET = [#char# #morpheme-boundary# #feature# #info#] \
            <>:[#lemma-index# #paradigm-index#]
 
 $CleanupIndexLv2$ = .*

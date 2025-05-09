@@ -231,9 +231,8 @@ $CompStems$ = $CompStems$ | $DerCompStems$
 
 % compounds
 
-$COMP$ =           $O$? $CompStems$ \
-         (<HB><CB> $O$? $CompStems$ | <CB> $DC$ $CompStems$)* \
-         (<HB><CB>      $BaseStems$ | <CB> $DC$ $BaseStems$) || $CompFilter$
+$COMP$ = ($O$? $CompStems$ <HB>? <CB>)+ \
+          $O$? $BaseStems$ || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$
 

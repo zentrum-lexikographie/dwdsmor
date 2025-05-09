@@ -1,6 +1,6 @@
 % sep.fst
-% Version 1.1
-% Andreas Nolda 2025-04-08
+% Version 1.2
+% Andreas Nolda 2025-05-09
 
 #include "symbols.fst"
 
@@ -16,7 +16,7 @@ $W$ =    [#wf-process# #wf-means#]
 
 $SepPrev1Lv2$ = $C$* <>:<VB> $T$* <+V> .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{}
 
-$SepPrev1RootLv2$ = $T$* $W$+ <+V> .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{} | \
+$SepPrev1RootLv2$ = $W$+ $T$* <+V> .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{} | \
                     $SepPrev1Lv2$
 
 $C$ = [#char# #boundary-trigger#]:<>
@@ -36,7 +36,7 @@ $W$ =    [#wf-process#] <prev()>:[#wf-means#]
 
 $SepPrev2Lv2$ = $T$* <>:<VB> $C$* <+V> .*
 
-$SepPrev2RootLv2$ = $C$* $W$+ <+V> .* | \
+$SepPrev2RootLv2$ = $W$+ $C$* <+V> .* | \
                     $SepPrev2Lv2$
 
 $C$ = [#char# <PB><SB>]

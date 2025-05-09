@@ -117,11 +117,15 @@
             #subcat# #degree# #person# #gender# #case# #number# #infl# #function# \
             #nonfinite# #mood# #tense#
 
-#orthinfo# = <CH><OLDORTH>
-
 #metainfo# = <NonSt><Old>
 
-#info# = #orthinfo# #metainfo#
+#orthinfo# = <CH><OLDORTH>
+
+#syninfo# = <SEP>
+
+#ellipinfo# = <TRUNC>
+
+#info# = #metainfo# #orthinfo# #syninfo# #ellipinfo#
 
 #stem-type# = <base><comp><der>
 
