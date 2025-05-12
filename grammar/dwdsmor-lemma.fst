@@ -1,6 +1,6 @@
 % dwdsmor-lemma.fst
-% Version 13.0
-% Andreas Nolda 2025-05-09
+% Version 13.1
+% Andreas Nolda 2025-05-12
 
 #include "symbols.fst"
 #include "num.fst"
@@ -55,52 +55,6 @@ $CompStems$ = $LEX$ || $CompStemFilter$
 
 
 % word formation
-
-% preverbs
-
-$Prev-ab$       = <Prefix> ab
-$Prev-an$       = <Prefix> an
-$Prev-auf$      = <Prefix> auf
-$Prev-aus$      = <Prefix> aus
-$Prev-bei$      = <Prefix> bei
-$Prev-durch$    = <Prefix> durch
-$Prev-ein$      = <Prefix> ein
-$Prev-fort$     = <Prefix> fort
-$Prev-gegen$    = <Prefix> gegen
-$Prev-heim$     = <Prefix> heim
-$Prev-her$      = <Prefix> her
-$Prev-hin$      = <Prefix> hin
-$Prev-hinter$   = <Prefix> hinter
-$Prev-los$      = <Prefix> los
-$Prev-mit$      = <Prefix> mit
-$Prev-nach$     = <Prefix> nach
-$Prev-ueber$    = <Prefix> über
-$Prev-um$       = <Prefix> um
-$Prev-unter$    = <Prefix> unter
-$Prev-vor$      = <Prefix> vor
-$Prev-weg$      = <Prefix> weg
-$Prev-wieder$   = <Prefix> wieder
-$Prev-zu$       = <Prefix> zu
-$Prev-zurueck$  = <Prefix> zurück
-$Prev-zwischen$ = <Prefix> zwischen
-% ...
-
-% affixes
-
-$Pref-un$ = <Prefix> un
-% ...
-
-$Suff-e$    = <Suffix> e    <NN> <base> <native> <>:<NMasc_n_n_0>
-$Suff-er$   = <Suffix> er   <NN> <base> <native> <>:<NMasc_s_0_n>
-$Suff-chen$ = <Suffix> chen <NN> <base> <native> <>:<NNeut_s_0_0>
-$Suff-lein$ = <Suffix> lein <NN> <base> <native> <>:<NNeut_s_0_0>
-% ...
-
-% means
-
-$DC$ = <dc>
-$UC$ = <uc>
-$O$  = [#orth-trigger#]
 
 % derived base stems with preverbs
 
@@ -186,7 +140,7 @@ $DerStemsSuff-er$   = $DerStems$ || $DerStemFilterSuff-er$
 $DerStemsSuff-chen$ = $DerStems$ || $DerStemFilterSuff-chen$
 $DerStemsSuff-lein$ = $DerStems$ || $DerStemFilterSuff-lein$
 
-$DerBaseStems$ = $UC$ $Pref-un$           <DB> $DC$ $BaseStems$ | \
+$DerBaseStems$ = <uc> $Pref-un$           <DB> <dc> $BaseStems$ | \
                       $Pref-un$           <DB>      $BaseStems$ | \
                       $DerStemsSuff-e$    <DB>      $Suff-e$    | \
                       $DerStemsSuff-er$   <DB>      $Suff-er$   | \
@@ -199,7 +153,7 @@ $BASE$ = $BaseStems$
 
 % derived compounding stems
 
-$DerCompStems$ = $UC$ $Pref-un$       <DB> $DC$ $CompStems$ | \
+$DerCompStems$ = <uc> $Pref-un$       <DB> <dc> $CompStems$ | \
                       $Pref-un$       <DB>      $CompStems$ | \
                       $Prev-ab$       <VB>      $CompStems$ | \
                       $Prev-an$       <VB>      $CompStems$ | \
@@ -231,8 +185,8 @@ $CompStems$ = $CompStems$ | $DerCompStems$
 
 % compounds
 
-$COMP$ = ($O$? $CompStems$ <HB>? <CB>)+ \
-          $O$? $BaseStems$ || $CompFilter$
+$COMP$ = ([<dc><uc>]? $CompStems$ <HB>? <CB>)+ \
+          [<dc><uc>]? $BaseStems$ || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$
 
