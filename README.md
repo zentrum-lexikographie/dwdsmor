@@ -136,7 +136,7 @@ written German.
 * [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/): a C++
   library and toolbox for finite-state transducers (FSTs); please take
   a look at its homepage for installation and usage instructions.
-* [Python >= v3.9](https://www.python.org/): DWDSmor targets Python as
+* [Python >= v3.10](https://www.python.org/): DWDSmor targets Python as
   its primary runtime environment. The DWDSmor transducers can be used
   via SFST's commandline tools, queried in Python applications via
   language-specific
