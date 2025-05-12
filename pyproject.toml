@@ -26,10 +26,11 @@ classifiers = [
 requires-python = ">=3.10"
 dynamic = ["readme", "version"]
 dependencies = [
+    "blessings",
     "huggingface_hub[cli]",
     "python-dotenv",
     "sfst-transduce",
-    "tabulate",
+    "tabulate"
 ]
 
 [project.optional-dependencies]
@@ -45,7 +46,8 @@ dev = [
     "spacy==3.7.5",
     "syrupy",
     "tqdm",
-    "Jinja2"]
+    "Jinja2"
+]
 
 [project.scripts]
 dwdsmor = "dwdsmor.cli:main"
