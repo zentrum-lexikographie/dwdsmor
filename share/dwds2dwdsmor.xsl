@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 16.4 -->
-<!-- Andreas Nolda 2025-05-02 -->
+<!-- Version 16.5 -->
+<!-- Andreas Nolda 2025-05-12 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -125,7 +125,7 @@
                                                                          [count(tokenize(normalize-space(.),'&#x20;'))&lt;4] or
                                                    self::dwds:Partizip_II[count(tokenize(normalize-space(.),'&#x20;'))=1] or
                                                    self::dwds:Auxiliar or
-                                                   self::dwds:Funktionspraeferenz or
+                                                   self::dwds:Funktionspraeferenz[not(normalize-space(.)='adverbiell')] or
                                                    self::dwds:Numeruspraeferenz[not(@class='invisible')] or
                                                    self::dwds:Einschraenkung]"
                           group-by="name()">

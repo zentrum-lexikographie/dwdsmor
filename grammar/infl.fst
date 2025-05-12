@@ -1,6 +1,6 @@
 % infl.fst
-% Version 12.5
-% Andreas Nolda 2025-04-30
+% Version 12.6
+% Andreas Nolda 2025-05-12
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -991,11 +991,16 @@ $AdjPosAttrSubst0$ = {<+ADJ><Pos><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>
 % vorig-; hoh-
 $AdjPosAttr$ = {<+ADJ><Pos>}:{} $AdjInflSuff$
 
-% ander-; ober-
+% ander-; vorder-
 $AdjPosAttr-er$ = $AdjPosAttr$                               | \
                   {<+ADJ><Pos>}:{<del(e)|ADJ>} $AdjInflSuff$ | \
                   {<+ADJ><Pos>}:{} $AdjInflSuff-n$           | \
                   {<+ADJ><Pos>}:{} $AdjInflSuff-m$
+
+% mittler-
+$AdjPosAttr-ler$ = $AdjPosAttr$                               | \
+                   {<+ADJ><Pos>}:{} $AdjInflSuff-n$           | \
+                   {<+ADJ><Pos>}:{} $AdjInflSuff-m$
 
 % lila
 $AdjPos0$ = $AdjPosPred$ | \
@@ -1053,7 +1058,7 @@ $AdjComp-en_er$ = $AdjComp-er_er$
 $AdjComp_\$er$ = {<+ADJ><Comp><Pred/Adv>}:{<uml><SB>er} | \
                  {<+ADJ><Comp>}:{<uml><SB>er} $AdjInflSuff$
 
-% obersten
+% vordersten
 $AdjSupAttr_st$ = {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
 
 $AdjSupAttr_est$ = {<+ADJ><Sup>}:{<SB>est} $AdjInflSuff$
@@ -2705,6 +2710,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<AdjPos0-viel>            $AdjPos0-viel$           | \
          <>:<AdjPosAttr>              $AdjPosAttr$             | \
          <>:<AdjPosAttr-er>           $AdjPosAttr-er$          | \
+         <>:<AdjPosAttr-ler>          $AdjPosAttr-ler$         | \
          <>:<AdjPosAttr0>             $AdjPosAttr0$            | \
          <>:<AdjPosAttrSubst0>        $AdjPosAttrSubst0$       | \
          <>:<AdjPosPred>              $AdjPosPred$             | \

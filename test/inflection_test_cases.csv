@@ -8,11 +8,14 @@ ADJ,"AdjPos-en, AdjComp-en_er, AdjSup_st",trocken
 ADJ,"AdjPos-er, AdjComp-er_er, AdjSup_st",bitter
 ADJ,AdjPos0,lila
 ADJ,AdjPos0-e,klasse
+ADJ,AdjPosAttr0,zig
 ADJ,AdjPosAttrSubst0,Berliner
 ADJ,AdjPosPred,tabu
 ADJ,"AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_est",fit
 ADJ,"AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_st",hoch
 ADJ,AdjPosPred-e,pleite
+ADJ,"AdjPosAttr-er, AdjSupAttr_st",vorder
+ADJ,"AdjPosAttr-ler, AdjSupAttr_st",mittler
 ADJ,Adj_er_$est,kalt
 ADJ,Adj_er_$st,warm
 ADJ,Adj_er_est,bunt

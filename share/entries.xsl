@@ -463,6 +463,23 @@
                                   select="$etymology"/>
                 </xsl:call-template>
               </xsl:when>
+              <xsl:when test="ends-with($lemma,'ler') and
+                              n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
+                <xsl:call-template name="stem-entry">
+                  <xsl:with-param name="lemma"
+                                  select="$lemma"/>
+                  <xsl:with-param name="lemma-index"
+                                  select="$lemma-index"/>
+                  <xsl:with-param name="paradigm-index"
+                                  select="$paradigm-index"/>
+                  <xsl:with-param name="abbreviation"
+                                  select="$abbreviation"/>
+                  <xsl:with-param name="pos">ADJ</xsl:with-param>
+                  <xsl:with-param name="class">AdjPosAttr-ler</xsl:with-param>
+                  <xsl:with-param name="etymology"
+                                  select="$etymology"/>
+                </xsl:call-template>
+              </xsl:when>
               <xsl:when test="ends-with($lemma,'er') and
                               n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
                 <xsl:call-template name="stem-entry">
