@@ -107,13 +107,17 @@ nonfinite_map = {
     "Inf": {"Inf"},
 }
 
+syninfo_map = {"SEP": {"SEP"}}
+
 
 def criterion(k, v, mapping):
     return (k, mapping.get(v, {v}) if v else None)
 
 
 @cache
-def criteria(pos, number, gender, case, person, tense, degree, mood, nonfinite):
+def criteria(
+    pos, number, gender, case, person, tense, degree, mood, nonfinite, syninfo
+):
     return OrderedDict(
         (
             criterion("pos", pos, pos_map),
@@ -125,5 +129,6 @@ def criteria(pos, number, gender, case, person, tense, degree, mood, nonfinite):
             criterion("degree", degree, degree_map),
             criterion("mood", mood, mood_map),
             criterion("nonfinite", nonfinite, nonfinite_map),
+            criterion("syninfo", syninfo, syninfo_map),
         )
     )
