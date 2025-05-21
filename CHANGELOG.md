@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.5.0...v0.6.0) (2025-05-21)
+
+
+### Features
+
+* add 'syninfo' to criteria ([195d75c](https://github.com/zentrum-lexikographie/dwdsmor/commit/195d75c14e4829c8a90bef8e2851242d0d7b5be2))
+* add 'syninfo' to criteria ([9b85c11](https://github.com/zentrum-lexikographie/dwdsmor/commit/9b85c11bdc97ed2ff59563dd23c12bfd20a4d2d9))
+
 ## [0.5.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.4.0...v0.5.0) (2025-05-12)
 
 
