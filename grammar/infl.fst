@@ -1,6 +1,6 @@
 % infl.fst
-% Version 12.6
-% Andreas Nolda 2025-05-12
+% Version 12.7
+% Andreas Nolda 2025-05-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -2315,6 +2315,9 @@ $VPastInd-le$ = $VPastIndWeakSuff_t$
 % fand, fand(e)st, fand, fanden, fandet, fanden
 $VPastIndStr$ = $VPastIndStrSuff$
 
+% schwur, schwurst, schwur, schwuren, schwuret, schwuren
+$VPastIndOld$ = $VPastIndStr$ {<Old>}:{}
+
 % las, las(es)t, las, lasen, last, lasen
 $VPastIndStr-s$ = $VPastIndStrSuff-s$
 
@@ -3116,6 +3119,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<VPastInd-werden>         $VPastInd-werden$        | \
          <>:<VPastIndPl-werden>       $VPastIndPl-werden$      | \
          <>:<VPastIndSg-ward>         $VPastIndSg-ward$        | \
+         <>:<VPastIndOld>             $VPastIndOld$            | \
          <>:<VPastIndStr>             $VPastIndStr$            | \
          <>:<VPastIndStr-s>           $VPastIndStr-s$          | \
          <>:<VPastIndWeak>            $VPastIndWeak$           | \

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 17.7 -->
-<!-- Andreas Nolda 2025-05-02 -->
+<!-- Version 17.8 -->
+<!-- Andreas Nolda 2025-05-26 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -10011,6 +10011,30 @@
                                               select="$etymology"/>
                             </xsl:call-template>
                           </xsl:when>
+                          <!-- archaic past indicative with "u" -->
+                          <xsl:when test="ends-with($past-stem,'schwur')">
+                            <xsl:call-template name="verb-stem-entry">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma-without-particle"/>
+                              <xsl:with-param name="lemma-index"
+                                              select="$lemma-index"/>
+                              <xsl:with-param name="paradigm-index"
+                                              select="$paradigm-index"/>
+                              <xsl:with-param name="stem"
+                                              select="$past-stem"/>
+                              <xsl:with-param name="abbreviation"
+                                              select="$abbreviation"/>
+                              <xsl:with-param name="participle"
+                                              select="$participle-without-particle"/>
+                              <xsl:with-param name="particle"
+                                              select="$particle"/>
+                              <xsl:with-param name="particle2"
+                                              select="$particle2"/>
+                              <xsl:with-param name="class">VPastIndOld</xsl:with-param>
+                              <xsl:with-param name="etymology"
+                                              select="$etymology"/>
+                            </xsl:call-template>
+                          </xsl:when>
                           <!-- other past indicative -->
                           <xsl:otherwise>
                             <xsl:call-template name="verb-stem-entry">
@@ -10037,9 +10061,14 @@
                           </xsl:otherwise>
                         </xsl:choose>
                         <!-- past subjunctive -->
-                        <xsl:if test="not(ends-with($lemma-without-particle,'sterben') or
-                                          ends-with($lemma-without-particle,'werben') or
-                                          ends-with($lemma-without-particle,'werfen'))">
+                        <xsl:if test="not(ends-with($lemma-without-particle,'schwören') and
+                                          ends-with($past-stem,'schwur') or
+                                          ends-with($lemma-without-particle,'sterben') and
+                                          ends-with($past-stem,'starb') or
+                                          ends-with($lemma-without-particle,'werben') and
+                                          ends-with($past-stem,'warb') or
+                                          ends-with($lemma-without-particle,'werfen') and
+                                          ends-with($past-stem,'warf'))">
                           <xsl:call-template name="verb-stem-entry">
                             <xsl:with-param name="lemma"
                                             select="$lemma-without-particle"/>
@@ -10063,9 +10092,7 @@
                           </xsl:call-template>
                         </xsl:if>
                         <!-- past subjunctive with "ü" -->
-                        <xsl:if test="ends-with($lemma-without-particle,'heben') or
-                                      ends-with($lemma-without-particle,'helfen') or
-                                      ends-with($lemma-without-particle,'schwören') or
+                        <xsl:if test="ends-with($lemma-without-particle,'helfen') or
                                       ends-with($lemma-without-particle,'stehen') or
                                       ends-with($lemma-without-particle,'sterben') or
                                       ends-with($lemma-without-particle,'werben') or
@@ -10078,7 +10105,7 @@
                             <xsl:with-param name="paradigm-index"
                                             select="$paradigm-index"/>
                             <xsl:with-param name="stem"
-                                            select="n:umlaut(replace($past-stem,'[ao]([^aeiouäöü]*)$','u$1'))"/>
+                                            select="n:umlaut(replace($past-stem,'a([^aeiouäöü]*)$','u$1'))"/>
                             <xsl:with-param name="abbreviation"
                                             select="$abbreviation"/>
                             <xsl:with-param name="participle"
@@ -10088,6 +10115,31 @@
                             <xsl:with-param name="particle2"
                                             select="$particle2"/>
                             <xsl:with-param name="class">VPastSubjStr</xsl:with-param>
+                            <xsl:with-param name="etymology"
+                                            select="$etymology"/>
+                          </xsl:call-template>
+                        </xsl:if>
+                        <!-- archaic past subjunctive with "ü" -->
+                        <xsl:if test="ends-with($lemma-without-particle,'heben') or
+                                      ends-with($lemma-without-particle,'schwören')">
+                          <xsl:call-template name="verb-stem-entry">
+                            <xsl:with-param name="lemma"
+                                            select="$lemma-without-particle"/>
+                            <xsl:with-param name="lemma-index"
+                                            select="$lemma-index"/>
+                            <xsl:with-param name="paradigm-index"
+                                            select="$paradigm-index"/>
+                            <xsl:with-param name="stem"
+                                            select="n:umlaut(replace($past-stem,'o([^aeiouäöü]*)$','u$1'))"/>
+                            <xsl:with-param name="abbreviation"
+                                            select="$abbreviation"/>
+                            <xsl:with-param name="participle"
+                                            select="$participle-without-particle"/>
+                            <xsl:with-param name="particle"
+                                            select="$particle"/>
+                            <xsl:with-param name="particle2"
+                                            select="$particle2"/>
+                            <xsl:with-param name="class">VPastSubjOld</xsl:with-param>
                             <xsl:with-param name="etymology"
                                             select="$etymology"/>
                           </xsl:call-template>

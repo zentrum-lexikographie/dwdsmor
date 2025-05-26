@@ -1,6 +1,7 @@
 2025-05-26:
 
 * update XPaths to DWDS grammatical specifications, with `<Wert>` child elements
+* add support for verbs with archaic past indicative forms
 
 2025-05-02:
 

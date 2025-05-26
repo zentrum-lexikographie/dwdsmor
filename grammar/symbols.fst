@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 12.10
-% Andreas Nolda 2025-05-12
+% Version 12.11
+% Andreas Nolda 2025-05-26
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -256,9 +256,9 @@
                     <VPartPerf-d_t><VPartPerf-le><VPartPerf_ed><VPartPerf_n> \
                     <VPartPerfStr><VPartPerfWeak><VPartPres><VPartPres-el-er> \
                     <VPartPres-le><VPastInd-d-t_t><VPastInd-le><VPastInd-werden> \
-                    <VPastIndPl-werden><VPastIndSg-ward><VPastIndStr> \
-                    <VPastIndStr-s><VPastIndWeak><VPastStr><VPastStr-s> \
-                    <VPastSubj-haben><VPastSubj-le><VPastSubj2-sein> \
+                    <VPastIndPl-werden><VPastIndSg-ward><VPastIndOld> \
+                    <VPastIndStr><VPastIndStr-s><VPastIndWeak><VPastStr> \
+                    <VPastStr-s><VPastSubj-haben><VPastSubj-le><VPastSubj2-sein> \
                     <VPastSubjOld><VPastSubjStr><VPastSubjWeak><VPres> \
                     <VPres-ak-ik><VPres-el-er><VPres-le><VPres-m-n><VPres-s> \
                     <VPres-tun><VPresInd13Pl-sein><VPresInd1Sg-sein> \

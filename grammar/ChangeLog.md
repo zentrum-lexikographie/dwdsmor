@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-05-26:
+
+* add inflection class `VPastIndOld`
+
 2025-05-12:
 
 * add inflection class `AdjPosAttr-ler`
