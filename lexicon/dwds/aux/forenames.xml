@@ -6,7 +6,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>mask.</Genus>
-        <Genitiv>-(’)</Genitiv>
+        <Genitiv>
+          <Wert>-(’)</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -17,7 +19,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>
-        <Genitiv>-(’)</Genitiv>
+        <Genitiv>
+          <Wert>-(’)</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>

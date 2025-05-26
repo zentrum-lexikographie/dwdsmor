@@ -51,8 +51,12 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
-        <Genitiv>-s</Genitiv>
-        <Plural>Fäden</Plural>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
+        <Plural>
+          <Wert>Fäden</Wert>
+        </Plural>
       </Grammatik>
     </Formangabe>
     <Formangabe>
@@ -60,8 +64,12 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
-        <Genitiv>-(s)</Genitiv>
-        <Plural>-</Plural>
+        <Genitiv>
+          <Wert>-(s)</Wert>
+        </Genitiv>
+        <Plural>
+          <Wert>-</Wert>
+        </Plural>
         <Einschraenkung>bei Maßangabe</Einschraenkung>
       </Grammatik>
     </Formangabe>
@@ -90,8 +98,12 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>fem.</Genus>
-        <Genitiv>-</Genitiv>
-        <Plural>Hände</Plural>
+        <Genitiv>
+          <Wert>-</Wert>
+        </Genitiv>
+        <Plural>
+          <Wert>Hände</Wert>
+        </Plural>
       </Grammatik>
     </Formangabe>
     <Formangabe>
@@ -99,8 +111,12 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>fem.</Genus>
-        <Genitiv>-</Genitiv>
-        <Plural>-</Plural>
+        <Genitiv>
+          <Wert>-</Wert>
+        </Genitiv>
+        <Plural>
+          <Wert>-</Wert>
+        </Plural>
         <Einschraenkung>bei Maßangabe</Einschraenkung>
       </Grammatik>
     </Formangabe>
@@ -111,7 +127,9 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>neutr.</Genus>
-        <Genitiv>-n</Genitiv>
+        <Genitiv>
+          <Wert>-n</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -122,8 +140,12 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>neutr.</Genus>
-        <Genitiv>-s</Genitiv>
-        <Plural>-s</Plural>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
+        <Plural>
+          <Wert>-s</Wert>
+        </Plural>
       </Grammatik>
     </Formangabe>
     <Formangabe>
@@ -131,8 +153,12 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>neutr.</Genus>
-        <Genitiv>-(s)</Genitiv>
-        <Plural>-</Plural>
+        <Genitiv>
+          <Wert>-(s)</Wert>
+        </Genitiv>
+        <Plural>
+          <Wert>-</Wert>
+        </Plural>
         <Einschraenkung>bei Maßangabe</Einschraenkung>
       </Grammatik>
     </Formangabe>

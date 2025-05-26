@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwds.xsl -->
-<!-- Version 1.2 -->
-<!-- Andreas Nolda 2024-03-18 -->
+<!-- Version 2.0 -->
+<!-- Andreas Nolda 2025-05-26 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -68,7 +68,8 @@
                                              [Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                         [not(@Typ)]]
                                              [Grammatik/Wortklasse]"/>
-      <xsl:apply-templates select="Verweise[not(@Typ!='Derivation' and
+      <xsl:apply-templates select="Verweise[not(@class='invisible')]
+                                           [not(@Typ!='Derivation' and
                                                 @Typ!='Komposition' and
                                                 @Typ!='Zusammenrückung')]"/>
       <xsl:apply-templates select="Lesart[not(@class='invisible')]
@@ -181,5 +182,19 @@
   <Lesart>
     <Definition Typ="Generalisierung">Tonbezeichnung</Definition>
   </Lesart>
+</xsl:template>
+
+<!-- copy elements by default -->
+<xsl:template match="*">
+  <xsl:copy>
+    <xsl:apply-templates select="* |
+                                 @* |
+                                 text()"/>
+  </xsl:copy>
+</xsl:template>
+
+<!-- copy attributes by default -->
+<xsl:template match="@*">
+  <xsl:copy/>
 </xsl:template>
 </xsl:stylesheet>

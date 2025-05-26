@@ -1,3 +1,7 @@
+2025-05-26:
+
+* update XPaths to DWDS grammatical specifications, with `<Wert>` child elements
+
 2025-05-02:
 
 * add support for uninflected verbs with infinitive only

@@ -6,7 +6,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -17,7 +19,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>mask.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -28,7 +32,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -39,7 +45,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -50,7 +58,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -61,7 +71,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -72,7 +84,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -83,7 +97,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -94,7 +110,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>mask.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -105,7 +123,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>mask.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -116,7 +136,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>mask.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -127,7 +149,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>mask.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -138,7 +162,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>mask.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>
@@ -149,7 +175,9 @@
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>mask.</Genus>
-        <Genitiv>-s</Genitiv>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
     </Formangabe>

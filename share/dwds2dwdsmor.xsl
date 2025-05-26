@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 16.5 -->
-<!-- Andreas Nolda 2025-05-12 -->
+<!-- Version 17.0 -->
+<!-- Andreas Nolda 2025-05-26 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -68,13 +68,16 @@
       <xsl:if test="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])='Substantiv'">
         <xsl:choose>
           <!-- normalised diminutive suffix -->
-          <xsl:when test="../dwds:Verweise[@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
+          <xsl:when test="../dwds:Verweise[not(@class='invisible')]
+                                          [@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
                                                                           [@Typ='Letztglied']/dwds:Ziellemma[normalize-space(.)='-chen']">chen</xsl:when>
-          <xsl:when test="../dwds:Verweise[@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
+          <xsl:when test="../dwds:Verweise[not(@class='invisible')]
+                                          [@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
                                                                           [@Typ='Letztglied']/dwds:Ziellemma[normalize-space(.)='-lein' or
                                                                                                              normalize-space(.)='-le' or
                                                                                                              normalize-space(.)='-li']">lein</xsl:when>
-          <xsl:when test="../dwds:Verweise[@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
+          <xsl:when test="../dwds:Verweise[not(@class='invisible')]
+                                          [@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
                                                                           [@Typ='Letztglied']/dwds:Ziellemma[normalize-space(.)='-l']">l</xsl:when>
           <!-- TODO: more diminutive values -->
         </xsl:choose>
@@ -85,17 +88,21 @@
       <xsl:if test="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])='Präposition + Artikel'">
         <xsl:choose>
           <!-- canonical representation -->
-          <xsl:when test="../dwds:Verweise[@Typ='Zusammenrückung']
+          <xsl:when test="../dwds:Verweise[not(@class='invisible')]
+                                          [@Typ='Zusammenrückung']
                                           [dwds:Verweis[not(@class='invisible')]
                                                        [@Typ='Erstglied']]">
-            <xsl:value-of select="normalize-space(../dwds:Verweise[@Typ='Zusammenrückung']/dwds:Verweis[not(@class='invisible')]
+            <xsl:value-of select="normalize-space(../dwds:Verweise[not(@class='invisible')]
+                                                                  [@Typ='Zusammenrückung']/dwds:Verweis[not(@class='invisible')]
                                                                                                        [@Typ='Erstglied']/dwds:Ziellemma)"/>
           </xsl:when>
           <!-- legacy representation -->
-          <xsl:when test="../dwds:Verweise[@Typ='Derivation']
+          <xsl:when test="../dwds:Verweise[not(@class='invisible')]
+                                          [@Typ='Derivation']
                                           [dwds:Verweis[not(@class='invisible')]
                                                        [@Typ='Erstglied']]">
-            <xsl:value-of select="normalize-space(../dwds:Verweise[@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
+            <xsl:value-of select="normalize-space(../dwds:Verweise[not(@class='invisible')]
+                                                                  [@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
                                                                                                   [@Typ='Erstglied']/dwds:Ziellemma)"/>
           </xsl:when>
         </xsl:choose>
@@ -107,23 +114,23 @@
       <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse[not(@class='invisible')] or
                                                    self::dwds:Genus[not(normalize-space(.)='ohne erkennbares Genus')] or
                                                    self::dwds:indeklinabel or
-                                                   self::dwds:Genitiv[count(tokenize(normalize-space(.),'&#x20;'))=1] or
-                                                   self::dwds:Plural[count(tokenize(normalize-space(.),'&#x20;'))=1] or
-                                                   self::dwds:Positivvariante[count(tokenize(normalize-space(.),'&#x20;'))=1] or
-                                                   self::dwds:Komparativ[count(tokenize(normalize-space(.),'&#x20;'))=1] or
-                                                   self::dwds:Superlativ[tokenize(normalize-space(.),'&#x20;')[1]='am']
-                                                                        [count(tokenize(normalize-space(.),'&#x20;'))=2] or
-                                                   self::dwds:Superlativ[not(tokenize(normalize-space(.),'&#x20;')[1]='am')]
-                                                                        [count(tokenize(normalize-space(.),'&#x20;'))=1] or
-                                                   self::dwds:Praesens[tokenize(normalize-space(.),'&#x20;')[2]='sich']
-                                                                      [count(tokenize(normalize-space(.),'&#x20;'))&lt;5] or
-                                                   self::dwds:Praesens[not(tokenize(normalize-space(.),'&#x20;')[2]='sich')]
-                                                                      [count(tokenize(normalize-space(.),'&#x20;'))&lt;4] or
-                                                   self::dwds:Praeteritum[tokenize(normalize-space(.),'&#x20;')[2]='sich']
-                                                                         [count(tokenize(normalize-space(.),'&#x20;'))&lt;5] or
-                                                   self::dwds:Praeteritum[not(tokenize(normalize-space(.),'&#x20;')[2]='sich')]
-                                                                         [count(tokenize(normalize-space(.),'&#x20;'))&lt;4] or
-                                                   self::dwds:Partizip_II[count(tokenize(normalize-space(.),'&#x20;'))=1] or
+                                                   self::dwds:Genitiv[count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
+                                                   self::dwds:Plural[count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
+                                                   self::dwds:Positivvariante[count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
+                                                   self::dwds:Komparativ[count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
+                                                   self::dwds:Superlativ[tokenize(normalize-space(dwds:Wert),'&#x20;')[1]='am']
+                                                                        [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=2] or
+                                                   self::dwds:Superlativ[not(tokenize(normalize-space(dwds:Wert),'&#x20;')[1]='am')]
+                                                                        [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
+                                                   self::dwds:Praesens[tokenize(normalize-space(dwds:Wert),'&#x20;')[2]='sich']
+                                                                      [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))&lt;5] or
+                                                   self::dwds:Praesens[not(tokenize(normalize-space(dwds:Wert),'&#x20;')[2]='sich')]
+                                                                      [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))&lt;4] or
+                                                   self::dwds:Praeteritum[tokenize(normalize-space(dwds:Wert),'&#x20;')[2]='sich']
+                                                                         [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))&lt;5] or
+                                                   self::dwds:Praeteritum[not(tokenize(normalize-space(dwds:Wert),'&#x20;')[2]='sich')]
+                                                                         [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))&lt;4] or
+                                                   self::dwds:Partizip_II[count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
                                                    self::dwds:Auxiliar or
                                                    self::dwds:Funktionspraeferenz[not(normalize-space(.)='adverbiell')] or
                                                    self::dwds:Numeruspraeferenz[not(@class='invisible')] or
@@ -158,24 +165,24 @@
       <xsl:choose>
         <!-- remove grammar specification for a noun with genitive singular form ending in "-s"
              if there is another grammar specification for a noun with genitive singular form ending in "-es" -->
-        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[normalize-space(.)='-es']] and
-                        $grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[normalize-space(.)='-s']]">
-          <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[not(normalize-space(.)='-s')]]"/>
+        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[normalize-space(dwds:Wert)='-es']] and
+                        $grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[normalize-space(dwds:Wert)='-s']]">
+          <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[dwds:Genitiv[not(normalize-space(dwds:Wert)='-s')]]"/>
         </xsl:when>
         <!-- remove grammar specification for a verb with separable preverb only in the present tense -->
-        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Praesens[contains(normalize-space(.),'&#x20;')] and
-                                                              dwds:Praeteritum[not(contains(normalize-space(.),'&#x20;'))]]"/>
+        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Praesens[contains(normalize-space(dwds:Wert),'&#x20;')] and
+                                                              dwds:Praeteritum[not(contains(normalize-space(dwds:Wert),'&#x20;'))]]"/>
         <!-- remove grammar specification for a verb with separable preverb only in the past tense -->
-        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Praeteritum[contains(normalize-space(.),'&#x20;')] and
-                                                              dwds:Praesens[not(contains(normalize-space(.),'&#x20;'))]]"/>
+        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Praeteritum[contains(normalize-space(dwds:Wert),'&#x20;')] and
+                                                              dwds:Praesens[not(contains(normalize-space(dwds:Wert),'&#x20;'))]]"/>
         <!-- reduce grammar specification for a weak verb with strong participle to participle
              if there is another grammar specification for a weak verb with weak participle -->
-        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]] and
-                        $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]] and
-                        $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]]/dwds:Praesens=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]]/dwds:Praesens and
-                        $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]]/dwds:Praeteritum=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?t$')]]/dwds:Praeteritum">
-          <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[not(matches(normalize-space(.),'e?n$'))]]"/>
-          <xsl:for-each select="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(.),'e?n$')]]">
+        <xsl:when test="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(dwds:Wert),'e?n$')]] and
+                        $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(dwds:Wert),'e?t$')]] and
+                        $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(dwds:Wert),'e?n$')]]/dwds:Praesens/dwds:Wert=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(dwds:Wert),'e?t$')]]/dwds:Praesens/dwds:Wert and
+                        $grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(dwds:Wert),'e?n$')]]/dwds:Praeteritum/dwds:Wert=$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(dwds:Wert),'e?t$')]]/dwds:Praeteritum/dwds:Wert">
+          <xsl:copy-of select="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[not(matches(normalize-space(dwds:Wert),'e?n$'))]]"/>
+          <xsl:for-each select="$grouped-grammar-specs/dwds:Grammatik[dwds:Partizip_II[matches(normalize-space(dwds:Wert),'e?n$')]]">
             <dwds:Grammatik>
               <dwds:Wortklasse>Partizip</dwds:Wortklasse><!-- ad-hoc POS -->
               <xsl:copy-of select="dwds:Praesens"/><!-- required for identifying phrasal verbs -->
@@ -242,11 +249,11 @@
                 <xsl:with-param name="inflection"
                                 select="$inflection"/>
                 <xsl:with-param name="positive"
-                                select="normalize-space(dwds:Positivvariante)"/>
+                                select="normalize-space(dwds:Positivvariante/dwds:Wert)"/>
                 <xsl:with-param name="comparative"
-                                select="normalize-space(dwds:Komparativ)"/>
+                                select="normalize-space(dwds:Komparativ/dwds:Wert)"/>
                 <xsl:with-param name="superlative"
-                                select="normalize-space(dwds:Superlativ)"/>
+                                select="normalize-space(dwds:Superlativ/dwds:Wert)"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -432,9 +439,9 @@
                     <xsl:with-param name="abbreviation"
                                     select="$abbreviation"/>
                     <xsl:with-param name="comparative"
-                                    select="normalize-space(dwds:Komparativ)"/>
+                                    select="normalize-space(dwds:Komparativ/dwds:Wert)"/>
                     <xsl:with-param name="superlative"
-                                    select="normalize-space(dwds:Superlativ)"/>
+                                    select="normalize-space(dwds:Superlativ/dwds:Wert)"/>
                     <xsl:with-param name="pronunciations"
                                     select="$pronunciations"/>
                     <xsl:with-param name="etymology"
@@ -507,7 +514,7 @@
             <xsl:when test="$pos='Substantiv' and
                             normalize-space(dwds:Numeruspraeferenz[not(@class='invisible')])='nur im Singular' and
                             string-length(normalize-space(dwds:Genus))&gt;0 and
-                            (string-length(normalize-space(dwds:Genitiv))&gt;0 or
+                            (string-length(normalize-space(dwds:Genitiv/dwds:Wert))&gt;0 or
                              $abbreviation='yes')">
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
@@ -528,7 +535,7 @@
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="number">singular</xsl:with-param>
                 <xsl:with-param name="genitive-singular"
-                                select="normalize-space(dwds:Genitiv)"/>
+                                select="normalize-space(dwds:Genitiv/dwds:Wert)"/>
                 <xsl:with-param name="diminutive"
                                 select="$diminutive"/>
                 <xsl:with-param name="pronunciations"
@@ -565,8 +572,8 @@
             </xsl:when>
             <xsl:when test="$pos='Substantiv' and
                             string-length(normalize-space(dwds:Genus))&gt;0 and
-                            ((string-length(normalize-space(dwds:Genitiv))&gt;0 and
-                              string-length(normalize-space(dwds:Plural))&gt;0) or
+                            ((string-length(normalize-space(dwds:Genitiv/dwds:Wert))&gt;0 and
+                              string-length(normalize-space(dwds:Plural/dwds:Wert))&gt;0) or
                              $abbreviation='yes')">
               <xsl:call-template name="noun-entry-set">
                 <xsl:with-param name="lemma"
@@ -586,9 +593,9 @@
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="genitive-singular"
-                                select="normalize-space(dwds:Genitiv)"/>
+                                select="normalize-space(dwds:Genitiv/dwds:Wert)"/>
                 <xsl:with-param name="nominative-plural"
-                                select="normalize-space(dwds:Plural)"/>
+                                select="normalize-space(dwds:Plural/dwds:Wert)"/>
                 <xsl:with-param name="diminutive"
                                 select="$diminutive"/>
                 <xsl:with-param name="pronunciations"
@@ -601,7 +608,7 @@
             <xsl:when test="$pos='Eigenname' and
                             normalize-space(dwds:Numeruspraeferenz[not(@class='invisible')])='nur im Singular' and
                             ((string-length(normalize-space(dwds:Genus))&gt;0 and
-                              string-length(normalize-space(dwds:Genitiv))&gt;0) or
+                              string-length(normalize-space(dwds:Genitiv/dwds:Wert))&gt;0) or
                              $abbreviation='yes')">
               <xsl:call-template name="name-entry-set">
                 <xsl:with-param name="lemma"
@@ -616,7 +623,7 @@
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="number">singular</xsl:with-param>
                 <xsl:with-param name="genitive-singular"
-                                select="normalize-space(dwds:Genitiv)"/>
+                                select="normalize-space(dwds:Genitiv/dwds:Wert)"/>
                 <xsl:with-param name="diminutive"
                                 select="$diminutive"/>
                 <xsl:with-param name="pronunciations"
@@ -1085,10 +1092,10 @@
             </xsl:when>
             <!-- verbs -->
             <xsl:when test="$pos='Verb' and
-                            ((string-length(normalize-space(dwds:Praesens))&gt;0 and
-                              string-length(normalize-space(dwds:Praeteritum))&gt;0 and
-                              string-length(normalize-space(dwds:Partizip_II))&gt;0 and
-                              string-length(normalize-space(dwds:Auxiliar))&gt;0) or
+                            ((string-length(normalize-space(dwds:Praesens/dwds:Wert))&gt;0 and
+                              string-length(normalize-space(dwds:Praeteritum/dwds:Wert))&gt;0 and
+                              string-length(normalize-space(dwds:Partizip_II/dwds:Wert))&gt;0 and
+                              string-length(normalize-space(dwds:Auxiliar/dwds:Wert))&gt;0) or
                              $inflection='no' or
                              $abbreviation='yes')">
               <xsl:call-template name="verb-entry-set">
@@ -1105,29 +1112,29 @@
                 <xsl:with-param name="present">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
-                    <xsl:when test="tokenize(normalize-space(dwds:Praesens),'&#x20;')[2]='sich'">
-                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praesens),'&#x20;'),2)"/>
+                    <xsl:when test="tokenize(normalize-space(dwds:Praesens/dwds:Wert),'&#x20;')[2]='sich'">
+                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praesens/dwds:Wert),'&#x20;'),2)"/>
                     </xsl:when>
                     <xsl:otherwise>
-                      <xsl:value-of select="normalize-space(dwds:Praesens)"/>
+                      <xsl:value-of select="normalize-space(dwds:Praesens/dwds:Wert)"/>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:with-param>
                 <xsl:with-param name="past">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
-                    <xsl:when test="tokenize(normalize-space(dwds:Praeteritum),'&#x20;')[2]='sich'">
-                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praeteritum),'&#x20;'),2)"/>
+                    <xsl:when test="tokenize(normalize-space(dwds:Praeteritum/dwds:Wert),'&#x20;')[2]='sich'">
+                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praeteritum/dwds:Wert),'&#x20;'),2)"/>
                     </xsl:when>
                     <xsl:otherwise>
-                      <xsl:value-of select="normalize-space(dwds:Praeteritum)"/>
+                      <xsl:value-of select="normalize-space(dwds:Praeteritum/dwds:Wert)"/>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:with-param>
                 <xsl:with-param name="participle"
-                                select="normalize-space(dwds:Partizip_II)"/>
+                                select="normalize-space(dwds:Partizip_II/dwds:Wert)"/>
                 <xsl:with-param name="auxiliary"
-                                select="normalize-space(dwds:Auxiliar)"/>
+                                select="normalize-space(dwds:Auxiliar/dwds:Wert)"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -1136,9 +1143,9 @@
             </xsl:when>
             <!-- verbal participles (ad-hoc POS) -->
             <xsl:when test="$pos='Partizip' and
-                            string-length(normalize-space(dwds:Praesens))&gt;0 and
-                            string-length(normalize-space(dwds:Partizip_II))&gt;0 and
-                            string-length(normalize-space(dwds:Auxiliar))&gt;0">
+                            string-length(normalize-space(dwds:Praesens/dwds:Wert))&gt;0 and
+                            string-length(normalize-space(dwds:Partizip_II/dwds:Wert))&gt;0 and
+                            string-length(normalize-space(dwds:Auxiliar/dwds:Wert))&gt;0">
               <xsl:call-template name="participle-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -1151,18 +1158,18 @@
                 <xsl:with-param name="present">
                   <!-- remove "sich", if any -->
                   <xsl:choose>
-                    <xsl:when test="tokenize(normalize-space(dwds:Praesens),'&#x20;')[2]='sich'">
-                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praesens),'&#x20;'),2)"/>
+                    <xsl:when test="tokenize(normalize-space(dwds:Praesens/dwds:Wert),'&#x20;')[2]='sich'">
+                      <xsl:value-of select="remove(tokenize(normalize-space(dwds:Praesens/dwds:Wert),'&#x20;'),2)"/>
                     </xsl:when>
                     <xsl:otherwise>
-                      <xsl:value-of select="normalize-space(dwds:Praesens)"/>
+                      <xsl:value-of select="normalize-space(dwds:Praesens/dwds:Wert)"/>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:with-param>
                 <xsl:with-param name="participle"
-                                select="normalize-space(dwds:Partizip_II)"/>
+                                select="normalize-space(dwds:Partizip_II/dwds:Wert)"/>
                 <xsl:with-param name="auxiliary"
-                                select="normalize-space(dwds:Auxiliar)"/>
+                                select="normalize-space(dwds:Auxiliar/dwds:Wert)"/>
                 <xsl:with-param name="pronunciations"
                                 select="$pronunciations"/>
                 <xsl:with-param name="etymology"
@@ -2017,7 +2024,8 @@
           </xsl:choose>
         </xsl:for-each>
         <!-- compounding stems inferred from links to the compound bases -->
-        <xsl:for-each select="../../dwds:Verweise[not(@Typ!='Komposition')]
+        <xsl:for-each select="../../dwds:Verweise[not(@class='invisible')]
+                                                 [not(@Typ!='Komposition')]
                                                  [dwds:Verweis[not(@class='invisible')]
                                                               [@Typ='Erstglied']]
                                                  [not(dwds:Verweis[not(@class='invisible')]
@@ -2211,7 +2219,8 @@
           </xsl:if>
         </xsl:for-each>
         <!-- derivation stems inferred from links to the derivation bases -->
-        <xsl:for-each select="../../dwds:Verweise[not(@Typ!='Derivation')]
+        <xsl:for-each select="../../dwds:Verweise[not(@class='invisible')]
+                                                 [not(@Typ!='Derivation')]
                                                  [dwds:Verweis[not(@class='invisible')]
                                                               [@Typ='Erstglied']]
                                                  [not(dwds:Verweis[not(@class='invisible')]
