@@ -23,11 +23,14 @@ def lemmatize_token(lemmatizer: Lemmatizer, token: Token):
         morph(token_morph, "Number"),
         morph(token_morph, "Gender"),
         morph(token_morph, "Case"),
-        morph(token_morph, "Person"),
+        morph(token_morph, "Person") or "UnmPers"
+        if token.dep_ == "compound:prt"
+        else None,
         morph(token_morph, "Tense"),
         morph(token_morph, "Degree"),
         morph(token_morph, "Mood"),
         morph(token_morph, "VerbForm"),
+        "SEP" if token.dep_ == "compound:prt" else None,
     )
     token._.dwdsmor = lemmatizer(token.text, **token_criteria)
     return token
