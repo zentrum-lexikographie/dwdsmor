@@ -48,3 +48,29 @@ def test_lemmatisation(nlp, sentences, snapshot):
         if t._.dwdsmor and t.lemma_ != t._.dwdsmor.analysis
     )
     assert tuple(tokens) == snapshot
+
+
+@if_dwds_available
+def test_particle_lemmatization(nlp):
+    sentences = [
+        "Sie nimmt nicht an der Wahl teil.",
+        "Wir arbeiten dennoch weiter.",
+    ]
+    docs = nlp.pipe(sentences)
+    tokens = [[t._.dwdsmor.analysis for t in doc] for doc in docs]
+    docs_without_dep = nlp.pipe(sentences, disable="parser")
+    tokens_without_dep = [
+        [t._.dwdsmor.analysis for t in doc] for doc in docs_without_dep
+    ]
+    expected = [
+        ["sie", "nehmen", "nicht", "an", "die", "Wahl", "teil", "."],
+        [
+            "wir",
+            "arbeiten",
+            "dennoch",
+            "weiter",
+            ".",
+        ],
+    ]
+    assert tokens == expected
+    assert tokens != tokens_without_dep
