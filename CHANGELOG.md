@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.6.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.5.0...v0.6.0) (2025-05-30)
+
+
+### Features
+
+* add 'syninfo' to criteria ([195d75c](https://github.com/zentrum-lexikographie/dwdsmor/commit/195d75c14e4829c8a90bef8e2851242d0d7b5be2))
+* add 'syninfo' to criteria ([9b85c11](https://github.com/zentrum-lexikographie/dwdsmor/commit/9b85c11bdc97ed2ff59563dd23c12bfd20a4d2d9))
+* mark more archaic past forms as &lt;Old&gt; ([035f23c](https://github.com/zentrum-lexikographie/dwdsmor/commit/035f23c048b4085787c76e2c75075574c9909931))
+
+
+### Bug Fixes
+
+* pass 'syninfo' attribute to criteria use in spaCy lemmatization component ([7b8b630](https://github.com/zentrum-lexikographie/dwdsmor/commit/7b8b630230ccc3727919ba151c9bde463355b26b))
+* pass 'syninfo' attribute to criteria use in spaCy lemmatization component ([7c51542](https://github.com/zentrum-lexikographie/dwdsmor/commit/7c515427457b1d409ce3e964368c05d25730079b))
+
+
+### Miscellaneous Chores
+
+* update XSLT stylesheets and lexicon XML files to DWDS schema ([ac143fd](https://github.com/zentrum-lexikographie/dwdsmor/commit/ac143fd69f82a13dcc082a9b898cfa80ea0e09e2))
+
 ## [0.5.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.4.0...v0.5.0) (2025-05-12)
 
 
