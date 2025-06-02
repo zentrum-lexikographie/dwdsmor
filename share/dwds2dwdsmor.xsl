@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 17.0 -->
-<!-- Andreas Nolda 2025-05-26 -->
+<!-- Version 17.1 -->
+<!-- Andreas Nolda 2025-06-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -114,23 +114,23 @@
       <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse[not(@class='invisible')] or
                                                    self::dwds:Genus[not(normalize-space(.)='ohne erkennbares Genus')] or
                                                    self::dwds:indeklinabel or
-                                                   self::dwds:Genitiv[count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
-                                                   self::dwds:Plural[count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
-                                                   self::dwds:Positivvariante[count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
-                                                   self::dwds:Komparativ[count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
-                                                   self::dwds:Superlativ[tokenize(normalize-space(dwds:Wert),'&#x20;')[1]='am']
-                                                                        [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=2] or
-                                                   self::dwds:Superlativ[not(tokenize(normalize-space(dwds:Wert),'&#x20;')[1]='am')]
-                                                                        [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
-                                                   self::dwds:Praesens[tokenize(normalize-space(dwds:Wert),'&#x20;')[2]='sich']
-                                                                      [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))&lt;5] or
-                                                   self::dwds:Praesens[not(tokenize(normalize-space(dwds:Wert),'&#x20;')[2]='sich')]
-                                                                      [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))&lt;4] or
-                                                   self::dwds:Praeteritum[tokenize(normalize-space(dwds:Wert),'&#x20;')[2]='sich']
-                                                                         [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))&lt;5] or
-                                                   self::dwds:Praeteritum[not(tokenize(normalize-space(dwds:Wert),'&#x20;')[2]='sich')]
-                                                                         [count(tokenize(normalize-space(dwds:Wert),'&#x20;'))&lt;4] or
-                                                   self::dwds:Partizip_II[count(tokenize(normalize-space(dwds:Wert),'&#x20;'))=1] or
+                                                   self::dwds:Genitiv[count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))=1] or
+                                                   self::dwds:Plural[count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))=1] or
+                                                   self::dwds:Positivvariante[count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))=1] or
+                                                   self::dwds:Komparativ[count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))=1] or
+                                                   self::dwds:Superlativ[tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;')[1]='am']
+                                                                        [count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))=2] or
+                                                   self::dwds:Superlativ[not(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;')[1]='am')]
+                                                                        [count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))=1] or
+                                                   self::dwds:Praesens[tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;')[2]='sich']
+                                                                      [count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))&lt;5] or
+                                                   self::dwds:Praesens[not(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;')[2]='sich')]
+                                                                      [count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))&lt;4] or
+                                                   self::dwds:Praeteritum[tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;')[2]='sich']
+                                                                         [count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))&lt;5] or
+                                                   self::dwds:Praeteritum[not(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;')[2]='sich')]
+                                                                         [count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))&lt;4] or
+                                                   self::dwds:Partizip_II[count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))=1] or
                                                    self::dwds:Auxiliar or
                                                    self::dwds:Funktionspraeferenz[not(normalize-space(.)='adverbiell')] or
                                                    self::dwds:Numeruspraeferenz[not(@class='invisible')] or

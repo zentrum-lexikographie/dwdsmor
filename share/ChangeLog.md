@@ -1,3 +1,7 @@
+2025-06-02:
+
+* ignore `<Wert>` elements with `@Typ` (i.e., invalid or non-standard spellings)
+
 2025-05-26:
 
 * update XPaths to DWDS grammatical specifications, with `<Wert>` child elements

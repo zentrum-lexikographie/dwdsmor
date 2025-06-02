@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 7.1 -->
-<!-- Andreas Nolda 2025-04-22 -->
+<!-- Version 7.2 -->
+<!-- Andreas Nolda 2025-06-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -195,6 +195,15 @@
     <!-- other weak forms without "ge-" prefix -->
     <xsl:when test="matches($form,'^.+?e?t$')">
       <xsl:value-of select="replace($form,'e?t$','')"/>
+    </xsl:when>
+    <!-- strong forms with "ge-" prefix ending in consonnant + "ien" -->
+    <xsl:when test="matches($form,'^ge.*[^aeiouäöü]ien$') and
+                    not(matches($form,concat('^',substring($lemma,1,3))))">
+      <xsl:value-of select="replace($form,'^ge(.+)n$','$1')"/>
+    </xsl:when>
+    <!-- strong forms without "ge-" prefix ending in consonnant + "ien" -->
+    <xsl:when test="matches($form,'^.*[^aeiouäöü]ien')">
+      <xsl:value-of select="replace($form,'n$','')"/>
     </xsl:when>
     <!-- strong forms with "ge-" prefix -->
     <xsl:when test="matches($form,'^ge.+?e?n$') and
