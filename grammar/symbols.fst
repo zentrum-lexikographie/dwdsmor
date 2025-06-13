@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 12.11
-% Andreas Nolda 2025-05-26
+% Version 12.12
+% Andreas Nolda 2025-06-13
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -80,6 +80,8 @@
              <prev(zu)><prev(zurueck)><prev(zwischen)><suff(chen)><suff(e)> \
              <suff(er)><suff(lein)>
 
+#wf# = #wf-process# #wf-means#
+
 #category# = <ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER> \
              <POSS><PPRO><REL><V><WPRO>
 
@@ -113,9 +115,9 @@
 
 #tense# = <Pres><Past><Perf><UnmTense>
 
-#feature# = #wf-process# #wf-means# #category# #auxiliary# #part-of-speech# \
-            #subcat# #degree# #person# #gender# #case# #number# #infl# #function# \
-            #nonfinite# #mood# #tense#
+#feature# = #category# #auxiliary# #part-of-speech# #subcat# #degree# #person# \
+            #gender# #case# #number# #infl# #function# #nonfinite# #mood# \
+            #tense#
 
 #metainfo# = <NonSt><Old>
 
@@ -136,6 +138,8 @@
 #lemma-index# = <IDX1><IDX2><IDX3><IDX4><IDX5><IDX6><IDX7><IDX8>
 
 #paradigm-index# = <PAR1><PAR2><PAR3><PAR4><PAR5><PAR6><PAR7><PAR8>
+
+#index# = #lemma-index# #paradigm-index#
 
 #Abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNUnmGend> \
                     <AbbrPoss><AbbrVImp>

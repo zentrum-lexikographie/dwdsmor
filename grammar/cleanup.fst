@@ -1,6 +1,6 @@
 % cleanup.fst
 % Version 5.6
-% Andreas Nolda 2025-05-09
+% Andreas Nolda 2025-06-13
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -9,8 +9,8 @@
 
 % clean up inflection-related symbols on analysis level
 
-ALPHABET = [#entry-type# #char# #boundary-trigger# #lemma-index# #paradigm-index# \
-            #category# #stem-type# #suff# #origin# #orthinfo# <Abbr>] \
+ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #category# \
+            #stem-type# #suff# #origin# #orthinfo# <Abbr>] \
            <>:[#inflection# #auxiliary# <ge>]
 
 $CleanupInflLv2$ = .*
@@ -21,7 +21,7 @@ $CleanupInflLv2$ = .*
 ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #category# \
             #stem-type# #suff# #origin# #inflection# #auxiliary# #orthinfo# \
             <Abbr><ge>] \
-           [#lemma-index# #paradigm-index#]:<>
+           [#index#]:<>
 
 $CleanupIndex$ = .*
 
@@ -45,7 +45,7 @@ $CleanupWB$ = .*
 
 % clean up word boundaries on analysis level
 
-ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info# \
+ALPHABET = [#char# #index# #feature# #info# \
             <CB><VB><HB><DB><PB><SB>] \
            <>:<WB>
 
@@ -54,8 +54,7 @@ $CleanupWBLv2$ = .*
 
 % clean up word-formation-related symbols on analysis level
 
-ALPHABET = [#char# #orth-trigger# #boundary-trigger# #lemma-index# \
-            #paradigm-index# #wf-process# #wf-means# #orthinfo#] \
+ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #wf# #orthinfo#] \
            <>:[#entry-type# #category# #stem-type# #suff# #origin# <Abbr>]
 
 $CleanupWFLv2$ = .*
@@ -72,8 +71,7 @@ $CleanupWF$ = .*
 
 % clean up categories on analysis level
 
-ALPHABET = [#char# #orth-trigger# #boundary-trigger# #lemma-index# \
-            #paradigm-index# #wf-process# #wf-means# #orthinfo#] \
+ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #wf# #orthinfo#] \
            <>:[#part-of-speech# #nonfinite# #tense# #function# #auxiliary#]
 
 $CleanupCatLv2$ = .*
@@ -81,7 +79,7 @@ $CleanupCatLv2$ = .*
 
 % clean up lemma and paradigm indices on analysis level
 
-ALPHABET = [#char# #morpheme-boundary# #feature# #info#] \
-           <>:[#lemma-index# #paradigm-index#]
+ALPHABET = [#wf# #char# #morpheme-boundary# #feature# #info#] \
+           <>:[#index#]
 
 $CleanupIndexLv2$ = .*

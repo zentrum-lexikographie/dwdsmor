@@ -1,12 +1,12 @@
 % stemtype.fst
 % Version 5.0
-% Andreas Nolda 2024-10-11
+% Andreas Nolda 2025-06-13
 
 #include "symbols.fst"
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# \
-            #lemma-index# #paradigm-index# #category# #stem-type# #suff# \
-            #origin# #inflection# #auxiliary# <Abbr><ge>]
+ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #index# \
+            #category# #stem-type# #suff# #origin# #inflection# #auxiliary# \
+            <Abbr><ge>]
 
 $BaseStemFilter$ = <Stem> .* <base> [^#stem-type#]*
 $CompStemFilter$ = <Stem> .* <comp> [^#stem-type#]*
@@ -25,7 +25,7 @@ $BaseStemFilterVPartPerf-t$ = <Stem> .* t
 $BaseStemFilterVPartPerf-n$ = <Stem> .* n
 $BaseStemFilterVPartPerf-d$ = <Stem> .* d
 
-ALPHABET = [#char# #boundary-trigger# #lemma-index# #paradigm-index# #feature#]
+ALPHABET = [#wf# #char# #boundary-trigger# #index# #feature#]
 
 $BaseStemFilterVPartPresLv2$ = .* <+V> <Part><Pres> .*
 $BaseStemFilterVPartPerfLv2$ = .* <+V> <Part><Perf> .*

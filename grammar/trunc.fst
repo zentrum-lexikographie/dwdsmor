@@ -1,6 +1,6 @@
 % trunc.fst
 % Version 2.1
-% Andreas Nolda 2025-05-09
+% Andreas Nolda 2025-06-13
 
 #include "symbols.fst"
 
@@ -9,10 +9,9 @@
 
 ALPHABET = [#feature# #info#]
 
-$C$ =    [#char# #lemma-index# #paradigm-index# #boundary-trigger# \
-          #wf-process# #wf-means#]
-$T$ = <>:[#char# #lemma-index# #paradigm-index# <HB><SB>]
-$W$ =    [#wf-process# #wf-means# #syninfo#]
+$C$ =    [#char# #index# #boundary-trigger# #wf#]
+$T$ = <>:[#char# #index# <HB><SB>]
+$W$ =    [#wf# #syninfo#]
 
 $TruncInitialLv2$ = $T$* \-:<> <CB> $C$* .*
 
@@ -28,13 +27,12 @@ $TruncInitial$ = $TruncInitial-CB$
 
 % truncate final morpheme sequence
 
-ALPHABET = [#wf-process# #wf-means# #part-of-speech#] \
+ALPHABET = [#wf# #part-of-speech#] \
            <>:[#category# #auxiliary# #subcat# #degree# #person# #gender# #case# \
                #number# #infl# #function# #nonfinite# #mood# #tense# #info#]
 
-$C$ =    [#char# #lemma-index# #paradigm-index# #boundary-trigger# \
-          #wf-process# #wf-means# #syninfo#]
-$T$ = <>:[#char# #lemma-index# #paradigm-index# <PB><SB>]
+$C$ =    [#char# #index# #boundary-trigger# #wf# #syninfo#]
+$T$ = <>:[#char# #index# <PB><SB>]
 
 $TruncFinalLv2-CB$ = $C$* [^<HB>] <CB> \-:<> $T$* .* {<UnmGend><UnmCase><UnmNum>}:{}
 

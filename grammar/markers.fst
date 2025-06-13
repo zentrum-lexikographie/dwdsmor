@@ -1,6 +1,6 @@
 % markers.fst
 % Version 9.0
-% Andreas Nolda 2024-10-11
+% Andreas Nolda 2025-06-13
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -76,7 +76,7 @@ ALPHABET = [#char# #boundary-trigger#]
 
 $MarkerWB$ = <WB>:<Stem> .* <WB>:<>
 
-ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info#]
+ALPHABET = [#char# #index# #feature# #info#]
 
 $MarkerBoundaryLv2$ = (.               | \
                             <|>:<VB>   | \
@@ -85,7 +85,7 @@ $MarkerBoundaryLv2$ = (.               | \
                             <->:<DB>   | \
                            <\~>:[<PB><SB>])*
 
-ALPHABET = [#char# #lemma-index# #paradigm-index# #feature# #info#] \
+ALPHABET = [#wf# #char# #index# #feature# #info#] \
            <>:[<HB><DB>]
 
 $MarkerBoundaryRootLv2$ = (.         | \

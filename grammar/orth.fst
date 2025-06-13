@@ -1,6 +1,6 @@
 % orth.fst
 % Version 5.4
-% Andreas Nolda 2025-05-09
+% Andreas Nolda 2025-06-13
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -67,8 +67,8 @@ $OrthOld$ = (($B$+        $Syllables$)*                   \
 
 % filter out old spelling variants
 
-ALPHABET = [#char# #morpheme-boundary# #lemma-index# #paradigm-index# \
-            #feature# #metainfo# #syninfo# #ellipinfo#]
+ALPHABET = [#wf# #char# #morpheme-boundary# #index# #feature# \
+            #metainfo# #syninfo# #ellipinfo#]
 
 $NoOrthOldFilterLv2$ = .*
 

@@ -1,6 +1,6 @@
 % sep.fst
 % Version 1.2
-% Andreas Nolda 2025-05-09
+% Andreas Nolda 2025-06-13
 
 #include "symbols.fst"
 
@@ -10,9 +10,9 @@
 ALPHABET = <>:[#auxiliary# #subcat# #degree# #person# #gender# #case# \
                #number# #infl# #function# #nonfinite# #mood# #tense# #info#]
 
-$C$ =    [#char# #lemma-index# #paradigm-index#]
-$T$ = <>:[#char# #lemma-index# #paradigm-index# #boundary-trigger#]
-$W$ =    [#wf-process# #wf-means#]
+$C$ =    [#char# #index#]
+$T$ = <>:[#char# #index# #boundary-trigger#]
+$W$ =    [#wf#]
 
 $SepPrev1Lv2$ = $C$* <>:<VB> $T$* <+V> .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{}
 
@@ -27,11 +27,10 @@ $SepPrev1$ = <WB> $T$* <VB>:<> $C$* <WB>
 
 % separate finite verb
 
-ALPHABET = [#feature# #info#]-[#nonfinite#]
+ALPHABET = [#wf# #feature# #info#]-[#nonfinite#]
 
-$C$ =    [#char# #lemma-index# #paradigm-index# \
-          #wf-process# #wf-means# <PB><SB>]
-$T$ = <>:[#char# #lemma-index# #paradigm-index# <VB>]
+$C$ =    [#char# #index# #wf# <PB><SB>]
+$T$ = <>:[#char# #index# <VB>]
 $W$ =    [#wf-process#] <prev()>:[#wf-means#]
 
 $SepPrev2Lv2$ = $T$* <>:<VB> $C$* <+V> .*
