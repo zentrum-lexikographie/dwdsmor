@@ -1,3 +1,7 @@
+2025-06-12:
+
+* add support for proper names classified as nouns in DWDS articles
+
 2025-06-02:
 
 * ignore `<Wert>` elements with `@Typ` (i.e., invalid or non-standard spellings)
