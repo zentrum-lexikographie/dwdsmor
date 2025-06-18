@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # analysis.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2025-05-07
+# Gregor Middell and Andreas Nolda 2025-06-18
 # with contributions by Adrien Barbaresi
 
 import argparse
@@ -119,12 +119,12 @@ class Analysis(tuple):
     @cached_property
     def process(self):
         if [tag for tag in self.tags if tag in PROCESSES]:
-            return "∘".join(tag for tag in reversed(self.tags) if tag in PROCESSES)
+            return ", ".join(tag for tag in self.tags if tag in PROCESSES)
 
     @cached_property
     def means(self):
         if [tag for tag in self.tags if re.sub(r"(?:\(.+\))?(?:\|.+)?", "", tag) in MEANS]:
-            return "∘".join(tag for tag in reversed(self.tags) if re.sub(r"(?:\(.+\))?(?:\|.+)?", "", tag) in MEANS)
+            return ", ".join(tag for tag in self.tags if re.sub(r"(?:\(.+\))?(?:\|.+)?", "", tag) in MEANS)
 
     _subcat_tags = {"Pers": True, "Refl": True, "Rec": True, "Def": True, "Indef": True, "Neg": True,
                     "Coord": True, "Sub": True, "InfCl": True, "AdjPos": True, "AdjComp": True, "AdjSup": True,

@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 5.6
-% Andreas Nolda 2025-06-13
+% Version 5.7
+% Andreas Nolda 2025-06-18
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -52,26 +52,47 @@ ALPHABET = [#char# #index# #feature# #info# \
 $CleanupWBLv2$ = .*
 
 
+% clean up affixes in root lemmas on the analysis level
+
+ALPHABET = [#wf# #category# #stem-type# #index# #suff# #origin#]
+
+$C$ =    [#char# #boundary-trigger#]
+$D$ = <>:[#char# #boundary-trigger#]
+$O$ = <>:[#orth-trigger#]
+
+$Pref$ =    $O$* .* <Pref> $D$+ <>:[<VB><DB>] $O$*
+$Suff$ = <>:<DB> .* <Suff> $D$+ .*
+
+$CleanupAffRootLv2$ = ($Pref$* .* $O$* <Stem> <Abbr>? $C$+ .* $Suff$* .* <HB>? <CB>)* \
+                      ($Pref$* .* $O$* <Stem> <Abbr>? $C$+ .* $Suff$*)
+
+
 % clean up word-formation-related symbols on analysis level
+
+ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #orthinfo#] \
+           <>:[#entry-type# #category# #stem-type# #suff# #origin# #wf# <Abbr>]
+
+$CleanupWFLv2$ = .*
 
 ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #wf# #orthinfo#] \
            <>:[#entry-type# #category# #stem-type# #suff# #origin# <Abbr>]
 
-$CleanupWFLv2$ = .*
+$CleanupWFRootLv2$ = .*
 
 
 % clean up word-formation-related symbols
 
 ALPHABET = [#char# #surface-trigger# #orth-trigger# #boundary-trigger# \
             #inflection# #auxiliary# <ge>] \
-           [#entry-type# #category# #stem-type# #suff# #origin# <Abbr>]:<>
+           [#entry-type# #category# #stem-type# #suff# #origin# #wf# <Abbr>]:<>
 
 $CleanupWF$ = .*
 
 
 % clean up categories on analysis level
 
-ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #wf# #orthinfo#] \
+ALPHABET = [#entry-type# #char# #orth-trigger# #boundary-trigger# #index# \
+            #category# #stem-type# #origin# #wf# #orthinfo#] \
            <>:[#part-of-speech# #nonfinite# #tense# #function# #auxiliary#]
 
 $CleanupCatLv2$ = .*
@@ -79,7 +100,7 @@ $CleanupCatLv2$ = .*
 
 % clean up lemma and paradigm indices on analysis level
 
-ALPHABET = [#wf# #char# #morpheme-boundary# #feature# #info#] \
+ALPHABET = [#char# #morpheme-boundary# #wf# #feature# #info#] \
            <>:[#index#]
 
 $CleanupIndexLv2$ = .*

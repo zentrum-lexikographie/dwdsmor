@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 10.2
-% Andreas Nolda 2025-06-04
+% Version 11.0
+% Andreas Nolda 2025-06-18
 
 #include "symbols.fst"
 #include "num.fst"
@@ -49,39 +49,13 @@ $CompStems$ = $LEX$ || $CompStemFilter$
 
 % derived base stems with preverbs
 
-$DerBaseStemsPrev$ = $DerPrevRoot-ab$       $PrevRoot-ab$       <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-an$       $PrevRoot-an$       <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-auf$      $PrevRoot-auf$      <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-aus$      $PrevRoot-aus$      <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-bei$      $PrevRoot-bei$      <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-durch$    $PrevRoot-durch$    <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-ein$      $PrevRoot-ein$      <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-fort$     $PrevRoot-fort$     <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-gegen$    $PrevRoot-gegen$    <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-heim$     $PrevRoot-heim$     <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-her$      $PrevRoot-her$      <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-hin$      $PrevRoot-hin$      <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-hinter$   $PrevRoot-hinter$   <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-los$      $PrevRoot-los$      <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-mit$      $PrevRoot-mit$      <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-nach$     $PrevRoot-nach$     <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-ueber$    $PrevRoot-ueber$    <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-um$       $PrevRoot-um$       <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-unter$    $PrevRoot-unter$    <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-vor$      $PrevRoot-vor$      <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-weg$      $PrevRoot-weg$      <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-wieder$   $PrevRoot-wieder$   <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-zu$       $PrevRoot-zu$       <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-zurueck$  $PrevRoot-zurueck$  <>:<VB> $BaseStems$ | \
-                     $DerPrevRoot-zwischen$ $PrevRoot-zwischen$ <>:<VB> $BaseStems$ || $DerFilter$
+$DerBaseStemsPrev$ = $DerPrev$ <VB> $BaseStems$ || $DerFilter$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStemsPrev$
 
 % converted base stems
 
 $BaseStemsV$ = $BaseStems$ || $BaseStemFilterV$
-
-$BaseStemsV$ = $CleanupWFLv2$ || $BaseStemsV$
 
 $BaseStemsV$ = $BaseStemsV$ || $CleanupWF$
 
@@ -107,34 +81,31 @@ $BaseStemsVPartPerf$ = $BaseStemsVPartPerf$ || $PHON$
 $BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $MarkerWB$
 $BaseStemsVPartPerf$ = $BaseStemsVPartPerf$ || $MarkerWB$
 
-$BaseStemsVPartPerf-t$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf-t$
-$BaseStemsVPartPerf-n$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf-n$
-$BaseStemsVPartPerf-d$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf-d$
+$BaseStemsVPartPerf_t$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf_t$
+$BaseStemsVPartPerf_n$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf_n$
+$BaseStemsVPartPerf_d$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf_d$
 
-$ConvBaseStemsVPartPres$ = $ConvPartRoot$ $BaseStemsVPartPres$   <ADJ> <base> <native> <>:<AdjPosAttr> % cf. Duden-Grammatik (2016: § 481, § 508, § 829)
-$ConvBaseStemsVPartPerf$ = $ConvPartRoot$ $BaseStemsVPartPerf-t$ <ADJ> <base> <native> <>:<AdjPos>    | \ % cf. Duden-Grammatik (2016: § 508)
-                           $ConvPartRoot$ $BaseStemsVPartPerf-n$ <ADJ> <base> <native> <>:<AdjPos-en> | \ % cf. Duden-Grammatik (2016: § 508)
-                           $ConvPartRoot$ $BaseStemsVPartPerf-d$ <ADJ> <base> <native> <>:<AdjPosPred>
-
-$ConvBaseStems$ = $ConvBaseStemsVPartPres$ | \
-                  $ConvBaseStemsVPartPerf$ || $ConvFilter$
+$ConvBaseStems$ = $BaseStemsVPartPres$   $ConvPartPres$   | \
+                  $BaseStemsVPartPerf_t$ $ConvPartPerf_t$ | \
+                  $BaseStemsVPartPerf_n$ $ConvPartPerf_n$ | \
+                  $BaseStemsVPartPerf_d$ $ConvPartPerf_d$ || $ConvFilter$
 
 $BaseStems$ = $BaseStems$ | $ConvBaseStems$
 
 % derived base stems with affixes
 
-$DerBaseStemsPref$ = $DerPrefRoot-un$ <>:<uc> $PrefRoot-un$ <>:<DB> <>:<dc> $BaseStems$ | \
-                     $DerPrefRoot-un$         $PrefRoot-un$ <>:<DB>         $BaseStems$ || $DerFilter$
+$DerBaseStemsPref$ = <uc> $DerPref-un$ <DB> <dc> $BaseStems$ | \
+                          $DerPref-un$ <DB>      $BaseStems$ || $DerFilter$
 
 $DerStemsSuff-e$    = $DerStems$ || $DerStemFilterSuff-e$
 $DerStemsSuff-er$   = $DerStems$ || $DerStemFilterSuff-er$
 $DerStemsSuff-chen$ = $DerStems$ || $DerStemFilterSuff-chen$
 $DerStemsSuff-lein$ = $DerStems$ || $DerStemFilterSuff-lein$
 
-$DerBaseStemsSuff$ = $DerSuffRoot-e$    $DerStemsSuff-e$    <>:<DB> $SuffRoot-e$    | \
-                     $DerSuffRoot-er$   $DerStemsSuff-er$   <>:<DB> $SuffRoot-er$   | \
-                     $DerSuffRoot-chen$ $DerStemsSuff-chen$ <>:<DB> $SuffRoot-chen$ | \
-                     $DerSuffRoot-lein$ $DerStemsSuff-lein$ <>:<DB> $SuffRoot-lein$ || $DerFilter$
+$DerBaseStemsSuff$ = $DerStemsSuff-e$    <DB> $DerSuff-e$    | \
+                     $DerStemsSuff-er$   <DB> $DerSuff-er$   | \
+                     $DerStemsSuff-chen$ <DB> $DerSuff-chen$ | \
+                     $DerStemsSuff-lein$ <DB> $DerSuff-lein$ || $DerFilter$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStemsPref$ | $DerBaseStemsSuff$
 
@@ -142,49 +113,27 @@ $BASE$ = $BaseStems$
 
 % derived compounding stems
 
-$DerCompStemsPref$ = $DerPrefRoot-un$  <>:<uc> $PrefRoot-un$ <>:<DB> <>:<dc> $CompStems$ | \
-                     $DerPrefRoot-un$          $PrefRoot-un$ <>:<DB>         $CompStems$ || $DerFilter$
+$DerCompStemsPref$ = <uc> $DerPref-un$ <DB> <dc> $CompStems$ | \
+                          $DerPref-un$ <DB>      $CompStems$ || $DerFilter$
 
-$DerCompStemsPrev$ = $DerPrevRoot-ab$       $PrevRoot-ab$       <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-an$       $PrevRoot-an$       <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-auf$      $PrevRoot-auf$      <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-aus$      $PrevRoot-aus$      <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-bei$      $PrevRoot-bei$      <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-durch$    $PrevRoot-durch$    <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-ein$      $PrevRoot-ein$      <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-fort$     $PrevRoot-fort$     <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-gegen$    $PrevRoot-gegen$    <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-heim$     $PrevRoot-heim$     <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-her$      $PrevRoot-her$      <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-hin$      $PrevRoot-hin$      <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-hinter$   $PrevRoot-hinter$   <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-los$      $PrevRoot-los$      <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-mit$      $PrevRoot-mit$      <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-nach$     $PrevRoot-nach$     <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-ueber$    $PrevRoot-ueber$    <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-um$       $PrevRoot-um$       <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-unter$    $PrevRoot-unter$    <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-vor$      $PrevRoot-vor$      <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-weg$      $PrevRoot-weg$      <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-wieder$   $PrevRoot-wieder$   <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-zu$       $PrevRoot-zu$       <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-zurueck$  $PrevRoot-zurueck$  <>:<VB> $CompStems$ | \
-                     $DerPrevRoot-zwischen$ $PrevRoot-zwischen$ <>:<VB> $CompStems$ || $DerFilter$
+$DerCompStemsPrev$ = $DerPrev$ <VB> $CompStems$ || $DerFilter$
 
 $CompStems$ = $CompStems$ | $DerCompStemsPref$ | $DerCompStemsPrev$
 
 % compounds
 
-$COMP$ = ($CompRoot-concat$ <>:[<dc><uc>]? $CompStems$     <CB> | \
-          $CompRoot-hyph$   <>:[<dc><uc>]? $CompStems$ <HB><CB>)+ \
-                            <>:[<dc><uc>]? $BaseStems$ || $CompFilter$
+$COMP$ = ([<dc><uc>]? $CompStems$ $Comp-concat$   <CB> | \
+          [<dc><uc>]? $CompStems$ $Comp-hyph$ <HB><CB>)+ \
+          [<dc><uc>]? $BaseStems$ || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$
 
 
-% cleanup of word-formation-related symbols
+% cleanup of word-formation-related forms and symbols
 
-$LEX$ = $CleanupWFLv2$ || $LEX$
+$LEX$ = $CleanupAffRootLv2$ || $LEX$
+
+$LEX$ = $CleanupWFRootLv2$ || $LEX$
 
 $LEX$ = $LEX$ || $CleanupWF$
 

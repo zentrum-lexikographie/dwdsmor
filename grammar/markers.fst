@@ -85,7 +85,7 @@ $MarkerBoundaryLv2$ = (.               | \
                             <->:<DB>   | \
                            <\~>:[<PB><SB>])*
 
-ALPHABET = [#wf# #char# #index# #feature# #info#] \
+ALPHABET = [#char# #index# #wf# #feature# #info#] \
            <>:[<HB><DB>]
 
 $MarkerBoundaryRootLv2$ = (.         | \

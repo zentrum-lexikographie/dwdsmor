@@ -67,8 +67,8 @@ $OrthOld$ = (($B$+        $Syllables$)*                   \
 
 % filter out old spelling variants
 
-ALPHABET = [#wf# #char# #morpheme-boundary# #index# #feature# \
-            #metainfo# #syninfo# #ellipinfo#]
+ALPHABET = [#char# #morpheme-boundary# #index# #wf# #feature# #metainfo# \
+            #syninfo# #ellipinfo#]
 
 $NoOrthOldFilterLv2$ = .*
 

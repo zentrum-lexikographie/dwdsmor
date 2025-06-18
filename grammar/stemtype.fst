@@ -1,6 +1,6 @@
 % stemtype.fst
-% Version 5.0
-% Andreas Nolda 2025-06-13
+% Version 5.1
+% Andreas Nolda 2025-06-18
 
 #include "symbols.fst"
 
@@ -17,15 +17,16 @@ $DerStemFilterSuff-er$   = <Stem> .* <der> <-er>   [^#stem-type#]*
 $DerStemFilterSuff-chen$ = <Stem> .* <der> <-chen> [^#stem-type#]*
 $DerStemFilterSuff-lein$ = <Stem> .* <der> <-lein> [^#stem-type#]*
 
-$BaseStemFilterV$ = (<Prefix> .*)? <Stem> .* <V> <base> [^#stem-type#]*
+$BaseStemFilterV$ = (<Pref> .*)? <Stem> .* <V> <base> [^#stem-type#]*
 
 ALPHABET = [#char# #boundary-trigger#]
 
-$BaseStemFilterVPartPerf-t$ = <Stem> .* t
-$BaseStemFilterVPartPerf-n$ = <Stem> .* n
-$BaseStemFilterVPartPerf-d$ = <Stem> .* d
+$BaseStemFilterVPartPerf_t$ = <Stem> .* t
+$BaseStemFilterVPartPerf_n$ = <Stem> .* n
+$BaseStemFilterVPartPerf_d$ = <Stem> .* d
 
-ALPHABET = [#wf# #char# #boundary-trigger# #index# #feature#]
+ALPHABET = [#char# #boundary-trigger# #index# #wf# #category# #stem-type# \
+            #origin# #auxiliary#]
 
-$BaseStemFilterVPartPresLv2$ = .* <+V> <Part><Pres> .*
-$BaseStemFilterVPartPerfLv2$ = .* <+V> <Part><Perf> .*
+$BaseStemFilterVPartPresLv2$ = (.* <Pref> .*)? <Stem> .* <+V> <Part><Pres> .*
+$BaseStemFilterVPartPerfLv2$ = (.* <Pref> .*)? <Stem> .* <+V> <Part><Perf> .*

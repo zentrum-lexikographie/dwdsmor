@@ -1,5 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-06-18:
+
+* harmonize word-formation grammar across automata
+* make the order of word-formation tags semantically insignificant, by
+  interfixing `<COMP>` between base lemmas, prefixing or suffixing `<DER>` to
+  base lemmas, and suffixing `<CONV>` to base lemmas
+
 2025-05-26:
 
 * add inflection class `VPastIndOld`

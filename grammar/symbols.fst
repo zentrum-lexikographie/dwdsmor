@@ -5,7 +5,7 @@
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
-#entry-type# = <Stem><Suffix><Prefix>
+#entry-type# = <Stem><Pref><Suff>
 
 #uppercase-vowel# = AEIOUÀ-ÆĀĂĄÈ-ËĒĔĖĘĚÌ-ÏĨĪĬĮİĲÒ-ÖŒØŌŎŐŒÙ-ÜŨŪŬŮŰŲYÝ % ...
 
