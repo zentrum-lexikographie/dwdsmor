@@ -2278,10 +2278,6 @@
       '2<+CARD><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>',
     ),
     tuple(
-      'Abs.',
-      '<CAP>ab<|>s.<+V><Imp><UnmNum>',
-    ),
-    tuple(
       '1',
       '1<+CARD><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>',
     ),
@@ -2644,10 +2640,6 @@
     tuple(
       'I',
       'I<+NN><Neut><Nom><Sg>',
-    ),
-    tuple(
-      'S.',
-      '<CAP><SEP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',
@@ -3523,10 +3515,6 @@
     ),
     tuple(
       'S.',
-      '<CAP><SEP>s.<+V><Imp><UnmNum>',
-    ),
-    tuple(
-      'S.',
       '<CAP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
@@ -3720,10 +3708,6 @@
     tuple(
       'I',
       'I<+NN><Neut><Nom><Sg>',
-    ),
-    tuple(
-      'S.',
-      '<CAP><SEP>s.<+V><Imp><UnmNum>',
     ),
     tuple(
       'S.',

@@ -3,6 +3,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 2025-06-19:
 
 * exclude "sein" as a basis for preverb prefixation
+* exclude abbreviated bases for preverb prefixation
 
 2025-06-18:
 

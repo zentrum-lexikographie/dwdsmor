@@ -200,11 +200,15 @@ $DerRestrAbbrSuff-lein$ = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> ^$DerSuff-lein$)
 % exclude pref(un) for abbreviated bases
 $DerRestrAbbrPref-un$ = !([<dc><uc>]* ^$DerPref-un$ <DB> [<dc><uc>]* <Stem> <Abbr> ($C$* <VB>)? $C$*)
 
+% exclude prev() for abbreviated bases (?)
+$DerRestrAbbrPrev$ = !(^$DerPrev$ <VB> [<dc><uc>]* <Stem> <Abbr> $C$*)
+
 $DerRestrAbbr$ = $DerRestrAbbrSuff-e$    & \
                  $DerRestrAbbrSuff-er$   & \
                  $DerRestrAbbrSuff-chen$ & \
                  $DerRestrAbbrSuff-lein$ & \
-                 $DerRestrAbbrPref-un$
+                 $DerRestrAbbrPref-un$   & \
+                 $DerRestrAbbrPrev$
 
 $DerFilter$ = $DerRestrPOS$ & $DerRestrAbbr$
 
