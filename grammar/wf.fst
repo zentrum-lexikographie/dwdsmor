@@ -81,20 +81,40 @@ $Comp-hyph$   = <COMP>:<> <hyph>:<>
 
 % restrictions
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# #boundary-trigger# #category# \
-            #stem-type# #suff# #origin# #inflection# #auxiliary# <Abbr><ge>]
+% conversion restrictions
+
+ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
+            #boundary-trigger# #category# #stem-type# #suff# #origin# \
+            #inflection# #auxiliary# <Abbr><ge>]
+
+% exclude "worden" as a conversion basis
+$ConvRestrLexPartPerf$ = !(<Stem>word<SB>en ^$ConvPartPerf_n$)
+
+$ConvRestrLex$ = $ConvRestrLexPartPerf$
+
+$ConvFilter$ = $ConvRestrLex$
+
+% derivation restrictions
+
+ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #wf# \
+            #category# #stem-type# #suff# #origin# <Abbr>]
+
+$C$ = [#index# #stem-type# #origin#]
+
+% exclude "sein" as a basis for preverb prefixation
+% cf. Deutsche Rechtschreibung (2024: § 35)
+$DerRestrLexPrevLv2$ = !(_$DerPrev$ <VB> <Stem> sei<SB>n $C$* <V> $C$*)
+
+$DerRestrLexLv2$ = $DerRestrLexPrevLv2$
+
+$DerFilterLv2$ = $DerRestrLexLv2$
+
+ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
+            #boundary-trigger# #category# #stem-type# #suff# #origin# \
+            #inflection# #auxiliary# <Abbr><ge>]
 
 $C$ = .
 $C$ = $C$-[#entry-type# <CB><VB><HB><DB>]
-
-% conversion restrictions
-
-% exclude "worden" as a conversion basis
-$ConvRestr-worden$ = !(<Stem>word<SB>en ^$ConvPartPerf_n$)
-
-$ConvFilter$ = $ConvRestr-worden$
-
-% derivation restrictions
 
 % restrict suff(e) to proper-name bases (?)
 $DerRestrPOSSuff-e$ = [<dc><uc>]* <Stem> $C$* <NPROP> $C$* <DB> ^$DerSuff-e$

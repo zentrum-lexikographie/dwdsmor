@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 11.0
-% Andreas Nolda 2025-06-18
+% Version 11.1
+% Andreas Nolda 2025-06-19
 
 #include "symbols.fst"
 #include "num.fst"
@@ -50,6 +50,8 @@ $CompStems$ = $LEX$ || $CompStemFilter$
 % derived base stems with preverbs
 
 $DerBaseStemsPrev$ = $DerPrev$ <VB> $BaseStems$ || $DerFilter$
+
+$DerBaseStemsPrev$ = $DerFilterLv2$ || $DerBaseStemsPrev$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStemsPrev$
 
@@ -117,6 +119,8 @@ $DerCompStemsPref$ = <uc> $DerPref-un$ <DB> <dc> $CompStems$ | \
                           $DerPref-un$ <DB>      $CompStems$ || $DerFilter$
 
 $DerCompStemsPrev$ = $DerPrev$ <VB> $CompStems$ || $DerFilter$
+
+$DerCompStemsPrev$ = $DerFilterLv2$ || $DerCompStemsPrev$
 
 $CompStems$ = $CompStems$ | $DerCompStemsPref$ | $DerCompStemsPrev$
 

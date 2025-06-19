@@ -2679,10 +2679,6 @@
     ),
     tuple(
       'ist',
-      '<SEP>sei<~>n<+V><3><Sg><Pres><Ind>',
-    ),
-    tuple(
-      'ist',
       'sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
@@ -4059,10 +4055,6 @@
     ),
     tuple(
       'ist',
-      '<SEP>sei<~>n<+V><3><Sg><Pres><Ind>',
-    ),
-    tuple(
-      'ist',
       'sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
@@ -4499,10 +4491,6 @@
     ),
     tuple(
       'ist',
-      '<SEP>sei<~>n<+V><3><Sg><Pres><Ind>',
-    ),
-    tuple(
-      'ist',
       'sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
@@ -4512,10 +4500,6 @@
     tuple(
       'anzunehmen',
       'an<|>nehm<~>en<+V><Inf><Cl>',
-    ),
-    tuple(
-      'ist',
-      '<SEP>sei<~>n<+V><3><Sg><Pres><Ind>',
     ),
     tuple(
       'ist',
