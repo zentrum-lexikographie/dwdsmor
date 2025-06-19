@@ -1,6 +1,6 @@
 % wf.fst
-% Version 12.0
-% Andreas Nolda 2025-06-18
+% Version 12.1
+% Andreas Nolda 2025-06-19
 
 #include "symbols.fst"
 
@@ -90,54 +90,54 @@ $C$ = $C$-[#entry-type# <CB><VB><HB><DB>]
 % conversion restrictions
 
 % exclude "worden" as a conversion basis
-$ConvRestr-worden$ = !(<Stem>word<SB>en <ADJ> $C$*)
+$ConvRestr-worden$ = !(<Stem>word<SB>en ^$ConvPartPerf_n$)
 
 $ConvFilter$ = $ConvRestr-worden$
 
 % derivation restrictions
 
 % restrict suff(e) to proper-name bases (?)
-$DerRestrPOSSuff-e$ = [<dc><uc>]* <Stem> $C$* <NPROP> $C$* <DB> <Suff> e $C$*
+$DerRestrPOSSuff-e$ = [<dc><uc>]* <Stem> $C$* <NPROP> $C$* <DB> ^$DerSuff-e$
 
 % restrict suff(er) to proper-name bases (?)
-$DerRestrPOSSuff-er$ = [<dc><uc>]* <Stem> $C$* <NPROP> $C$* <DB> <Suff> er $C$*
+$DerRestrPOSSuff-er$ = [<dc><uc>]* <Stem> $C$* <NPROP> $C$* <DB> ^$DerSuff-er$
 
 % restrict suff(chen) and suff(lein) to nominal bases
-$DerRestrPOSSuff-chen$ = [<dc><uc>]* <Stem> $C$* <NN> $C$* <DB> <Suff> chen $C$*
-$DerRestrPOSSuff-lein$ = [<dc><uc>]* <Stem> $C$* <NN> $C$* <DB> <Suff> lein $C$*
+$DerRestrPOSSuff-chen$ = [<dc><uc>]* <Stem> $C$* <NN> $C$* <DB> ^$DerSuff-chen$
+$DerRestrPOSSuff-lein$ = [<dc><uc>]* <Stem> $C$* <NN> $C$* <DB> ^$DerSuff-lein$
 
 % restrict pref(un) to adjectival and nominal bases
-$DerRestrPOSPref-un$ =      <Pref> un <DB>      <Stem> ($C$* <VB>)? $C$* <ADJ> $C$*
-$DerRestrPOSPref-Un$ = <uc> <Pref> un <DB> <dc> <Stem> ($C$* <VB>)? $C$* <NN>  $C$*
+$DerRestrPOSPref-un$ =      ^$DerPref-un$ <DB>      <Stem> ($C$* <VB>)? $C$* <ADJ> $C$*
+$DerRestrPOSPref-Un$ = <uc> ^$DerPref-un$ <DB> <dc> <Stem> ($C$* <VB>)? $C$* <NN>  $C$*
 
 % restrict prev() to verbal bases
-$DerRestrPOSPrev-mit$ = <Pref> mit <VB> <Stem> ($C$* <VB>)? $C$* <V> $C$*
+$DerRestrPOSPrev-mit$ = ^$DerPrev-mit$ <VB> <Stem> ($C$* <VB>)? $C$* <V> $C$*
 
 % restrict prev() to verbal bases without preverb
-$DerRestrPOSPrev-ab$       = <Pref> ab       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-an$       = <Pref> an       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-auf$      = <Pref> auf      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-aus$      = <Pref> aus      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-bei$      = <Pref> bei      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-durch$    = <Pref> durch    <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-ein$      = <Pref> ein      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-fort$     = <Pref> fort     <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-gegen$    = <Pref> gegen    <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-heim$     = <Pref> heim     <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-her$      = <Pref> her      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-hin$      = <Pref> hin      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-hinter$   = <Pref> hinter   <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-los$      = <Pref> los      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-nach$     = <Pref> nach     <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-ueber$    = <Pref> über     <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-um$       = <Pref> um       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-unter$    = <Pref> unter    <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-vor$      = <Pref> vor      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-weg$      = <Pref> weg      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-wieder$   = <Pref> wieder   <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-zu$       = <Pref> zu       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-zurueck$  = <Pref> zurück   <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-zwischen$ = <Pref> zwischen <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-ab$       = ^$DerPrev-ab$       <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-an$       = ^$DerPrev-an$       <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-auf$      = ^$DerPrev-auf$      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-aus$      = ^$DerPrev-aus$      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-bei$      = ^$DerPrev-bei$      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-durch$    = ^$DerPrev-durch$    <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-ein$      = ^$DerPrev-ein$      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-fort$     = ^$DerPrev-fort$     <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-gegen$    = ^$DerPrev-gegen$    <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-heim$     = ^$DerPrev-heim$     <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-her$      = ^$DerPrev-her$      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-hin$      = ^$DerPrev-hin$      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-hinter$   = ^$DerPrev-hinter$   <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-los$      = ^$DerPrev-los$      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-nach$     = ^$DerPrev-nach$     <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-ueber$    = ^$DerPrev-ueber$    <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-um$       = ^$DerPrev-um$       <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-unter$    = ^$DerPrev-unter$    <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-vor$      = ^$DerPrev-vor$      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-weg$      = ^$DerPrev-weg$      <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-wieder$   = ^$DerPrev-wieder$   <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-zu$       = ^$DerPrev-zu$       <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-zurueck$  = ^$DerPrev-zurueck$  <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-zwischen$ = ^$DerPrev-zwischen$ <VB> <Stem> $C$* <V> $C$*
 
 $DerRestrPOS$ = $DerRestrPOSSuff-e$        | \
                 $DerRestrPOSSuff-er$       | \
@@ -172,13 +172,13 @@ $DerRestrPOS$ = $DerRestrPOSSuff-e$        | \
                 $DerRestrPOSPrev-zwischen$
 
 % exclude suff(e), suff(er), suff(chen), and suff(lein) for abbreviated bases (?)
-$DerRestrAbbrSuff-e$    = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> <Suff> e    $C$*)
-$DerRestrAbbrSuff-er$   = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> <Suff> er   $C$*)
-$DerRestrAbbrSuff-chen$ = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> <Suff> chen $C$*)
-$DerRestrAbbrSuff-lein$ = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> <Suff> lein $C$*)
+$DerRestrAbbrSuff-e$    = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> ^$DerSuff-e$)
+$DerRestrAbbrSuff-er$   = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> ^$DerSuff-er$)
+$DerRestrAbbrSuff-chen$ = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> ^$DerSuff-chen$)
+$DerRestrAbbrSuff-lein$ = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> ^$DerSuff-lein$)
 
 % exclude pref(un) for abbreviated bases
-$DerRestrAbbrPref-un$ = !([<dc><uc>]* <Pref> un <DB> [<dc><uc>]* <Stem> <Abbr> ($C$* <VB>)? $C$*)
+$DerRestrAbbrPref-un$ = !([<dc><uc>]* ^$DerPref-un$ <DB> [<dc><uc>]* <Stem> <Abbr> ($C$* <VB>)? $C$*)
 
 $DerRestrAbbr$ = $DerRestrAbbrSuff-e$    & \
                  $DerRestrAbbrSuff-er$   & \
