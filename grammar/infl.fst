@@ -1,6 +1,6 @@
 % infl.fst
 % Version 12.7
-% Andreas Nolda 2025-05-26
+% Andreas Nolda 2025-06-20
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -101,7 +101,7 @@ $NMasc|Sg_ns$ = {<+NN><Masc>}:{} $NGenSgSuff_ns$
 % Bauten, Bauten (suppletive plural)
 $NMasc|Pl_0$ = {<+NN><Masc>}:{} $NDatPlSuff_0$
 
-% Revers, Revers, Revers, Revers; Gravis, Gravis, Gravis, Gravis
+% Revers, Revers, Revers, Revers
 $NMasc_0_0_0$ = {<+NN><Masc>}:{} $NGenSgSuff_0$ | \
                 {<+NN><Masc>}:{} $NDatPlSuff_0$
 
@@ -171,7 +171,7 @@ $NMasc_0_ex/izes_0$ = {<+NN><Masc>}:{}                     $NGenSgSuff_0$ | \
 % Taxi, Taxi, Taxen, Taxen
 $NMasc_0_i/en_0$ = $NMasc_0_a/en_0$
 
-% Gravis, Gravis, Graves, Graves
+% Instrumentalis, Instrumentalis, Instrumentales, Instrumentales
 $NMasc_0_is/es_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
                     {<+NN><Masc>}:{<del(VC)|Pl><SB>es} $NDatPlSuff_0$
 

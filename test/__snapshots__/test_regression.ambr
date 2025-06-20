@@ -18315,55 +18315,39 @@
     ),
     tuple(
       'NN',
-      'NMasc_0_0_0, NMasc_0_is/es_0',
-      'Gravis',
+      'NMasc_0_is/es_0',
+      'Instrumentalis',
       tuple(
-        'Gravis<+NN><Masc><Acc><Pl>',
-        'Graves',
+        'Instrumentalis<+NN><Masc><Acc><Pl>',
+        'Instrumentales',
       ),
       tuple(
-        'Gravis<+NN><Masc><Acc><Pl>',
-        'Gravis',
+        'Instrumentalis<+NN><Masc><Acc><Sg>',
+        'Instrumentalis',
       ),
       tuple(
-        'Gravis<+NN><Masc><Acc><Sg>',
-        'Gravis',
+        'Instrumentalis<+NN><Masc><Dat><Pl>',
+        'Instrumentales',
       ),
       tuple(
-        'Gravis<+NN><Masc><Dat><Pl>',
-        'Graves',
+        'Instrumentalis<+NN><Masc><Dat><Sg>',
+        'Instrumentalis',
       ),
       tuple(
-        'Gravis<+NN><Masc><Dat><Pl>',
-        'Gravis',
+        'Instrumentalis<+NN><Masc><Gen><Pl>',
+        'Instrumentales',
       ),
       tuple(
-        'Gravis<+NN><Masc><Dat><Sg>',
-        'Gravis',
+        'Instrumentalis<+NN><Masc><Gen><Sg>',
+        'Instrumentalis',
       ),
       tuple(
-        'Gravis<+NN><Masc><Gen><Pl>',
-        'Graves',
+        'Instrumentalis<+NN><Masc><Nom><Pl>',
+        'Instrumentales',
       ),
       tuple(
-        'Gravis<+NN><Masc><Gen><Pl>',
-        'Gravis',
-      ),
-      tuple(
-        'Gravis<+NN><Masc><Gen><Sg>',
-        'Gravis',
-      ),
-      tuple(
-        'Gravis<+NN><Masc><Nom><Pl>',
-        'Graves',
-      ),
-      tuple(
-        'Gravis<+NN><Masc><Nom><Pl>',
-        'Gravis',
-      ),
-      tuple(
-        'Gravis<+NN><Masc><Nom><Sg>',
-        'Gravis',
+        'Instrumentalis<+NN><Masc><Nom><Sg>',
+        'Instrumentalis',
       ),
     ),
     tuple(

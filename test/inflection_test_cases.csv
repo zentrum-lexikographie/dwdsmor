@@ -95,7 +95,7 @@ NN,"NMasc-Adj, NNeut-Adj|Sg, NFem-Adj",Deutsche
 NN,"NMasc0_es, NMasc_es_$e_n",Kopf
 NN,"NMasc0_s, NMasc_s_$_0",Faden
 NN,NMasc_0_0_0,Blues
-NN,"NMasc_0_0_0, NMasc_0_is/es_0",Gravis
+NN,NMasc_0_is/es_0,Instrumentalis
 NN,"NMasc_0_0_n, NMasc_s_0_n",Dezember
 NN,"NMasc_0_a/en_0, NMasc_s_a/en_0, NMasc_0_s_0, NMasc_s_s_0",Veda
 NN,"NMasc_0_e/i_0, NMasc_s_e/i_0",Carabiniere
