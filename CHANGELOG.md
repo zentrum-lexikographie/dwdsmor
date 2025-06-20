@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.7.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.6.0...v0.7.0) (2025-06-20)
+
+
+### Features
+
+* add support for proper names classified as nouns in DWDS articles ([a593692](https://github.com/zentrum-lexikographie/dwdsmor/commit/a593692f6c62bb710890f13d7338aa05e2a99e55))
+* exclude "sein" as a basis for preverb prefixation ([836d09b](https://github.com/zentrum-lexikographie/dwdsmor/commit/836d09ba023a61b51342d6c0af850447f0ab1499))
+* exclude abbreviated bases for preverb prefixation ([c7e0225](https://github.com/zentrum-lexikographie/dwdsmor/commit/c7e0225c9b0f447f2812cefdfda585de59950c8a))
+
 ## [0.6.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.5.0...v0.6.0) (2025-05-30)
 
 
