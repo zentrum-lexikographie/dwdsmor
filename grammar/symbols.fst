@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 12.12
-% Andreas Nolda 2025-06-13
+% Version 13.0
+% Andreas Nolda 2025-06-27
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -82,13 +82,14 @@
 
 #wf# = #wf-process# #wf-means#
 
-#category# = <ADJ><ADV><ART><CARD><DEM><FRAC><INDEF><NN><NPROP><ORD><OTHER> \
-             <POSS><PPRO><REL><V><WPRO>
+#category# = <ADJ><ADV><ART><CARD><CONJ><DEM><FRAC><INDEF><INTJ><NN><NPROP><ORD> \
+             <POSS><POSTP><PPRO><PREP><PREPART><PREV><PROADV><PTCL><PUNCT><REL> \
+             <V><WADV><WPRO>
 
 #auxiliary# = <haben><sein>
 
 #part-of-speech# = <+ADJ><+ADV><+ART><+CARD><+CONJ><+DEM><+FRAC><+INDEF><+INTJ> \
-                   <+NPROP><+NN><+ORD><+POSS><+POSTP><+PPRO><+PREP><+PREPART> \
+                   <+NN><+NPROP><+ORD><+POSS><+POSTP><+PPRO><+PREP><+PREPART> \
                    <+PREV><+PROADV><+PTCL><+PUNCT><+REL><+V><+WADV><+WPRO>
 
 #subcat# = <Pers><Refl><Rec><Def><Indef><Neg><Coord><Sub><InfCl><AdjPos> \

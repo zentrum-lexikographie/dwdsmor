@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 17.8 -->
-<!-- Andreas Nolda 2025-05-26 -->
+<!-- Version 17.9 -->
+<!-- Andreas Nolda 2025-06-27 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -10683,7 +10683,7 @@
                             select="$paradigm-index"/>
             <xsl:with-param name="abbreviation"
                             select="$abbreviation"/>
-            <xsl:with-param name="pos">OTHER</xsl:with-param>
+            <xsl:with-param name="pos">PREP</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class1"/>
             <xsl:with-param name="etymology"
@@ -10698,9 +10698,38 @@
                             select="$paradigm-index"/>
             <xsl:with-param name="abbreviation"
                             select="$abbreviation"/>
-            <xsl:with-param name="pos">OTHER</xsl:with-param>
+            <xsl:with-param name="pos">POSTP</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class2"/>
+            <xsl:with-param name="etymology"
+                            select="$etymology"/>
+          </xsl:call-template>
+        </xsl:if>
+      </xsl:when>
+      <xsl:when test="$position='post'">
+        <xsl:variable name="class">
+          <xsl:call-template name="adposition-class">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+            <xsl:with-param name="position"
+                            select="$position"/>
+            <xsl:with-param name="pronunciations"
+                            select="$pronunciations"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="string-length($class)&gt;0">
+          <xsl:call-template name="stem-entry">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+            <xsl:with-param name="lemma-index"
+                            select="$lemma-index"/>
+            <xsl:with-param name="paradigm-index"
+                            select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+            <xsl:with-param name="pos">POSTP</xsl:with-param>
+            <xsl:with-param name="class"
+                            select="$class"/>
             <xsl:with-param name="etymology"
                             select="$etymology"/>
           </xsl:call-template>
@@ -10727,7 +10756,7 @@
                             select="$paradigm-index"/>
             <xsl:with-param name="abbreviation"
                             select="$abbreviation"/>
-            <xsl:with-param name="pos">OTHER</xsl:with-param>
+            <xsl:with-param name="pos">PREP</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class"/>
             <xsl:with-param name="etymology"
@@ -10786,7 +10815,7 @@
                           select="$lemma"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
-          <xsl:with-param name="pos">OTHER</xsl:with-param>
+          <xsl:with-param name="pos">PREPART</xsl:with-param>
           <xsl:with-param name="class">Prep+Art-m-NonSt</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -10804,7 +10833,7 @@
                           select="$lemma"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
-          <xsl:with-param name="pos">OTHER</xsl:with-param>
+          <xsl:with-param name="pos">PREPART</xsl:with-param>
           <xsl:with-param name="class">Prep+Art-n-NonSt</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -10833,7 +10862,7 @@
                             select="$lemma"/>
             <xsl:with-param name="abbreviation"
                             select="$abbreviation"/>
-            <xsl:with-param name="pos">OTHER</xsl:with-param>
+            <xsl:with-param name="pos">PREPART</xsl:with-param>
             <xsl:with-param name="class"
                             select="$class"/>
             <xsl:with-param name="etymology"
@@ -10875,7 +10904,7 @@
                         select="$paradigm-index"/>
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
-        <xsl:with-param name="pos">OTHER</xsl:with-param>
+        <xsl:with-param name="pos">CONJ</xsl:with-param>
         <xsl:with-param name="class"
                         select="$class"/>
         <xsl:with-param name="etymology"

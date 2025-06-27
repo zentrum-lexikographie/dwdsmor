@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-06-27:
+
+* replace lexical category `<OTHER>` with `<CONJ>`, `<INTJ>`, `<POSTP>`,
+  `<PREP>`, `<PREPART>`, `<PREV>`, `<PROADV>`, `<PTCL>`, `<PUNCT>`, and `<WADV>`
+
 2025-06-19:
 
 * exclude "sein" as a basis for preverb prefixation
@@ -126,7 +131,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
   `VPartPres`, `VPartPres-el-er`, `VPartPres-le`, `VPartPerfWeak`,
   `VPartPerfStr`, `VPartPerf-d_t`, `VPartPerf-le`, `VPartPerf_n`, and
   `VPartPerf_ed`, respectively
-* rename pos tag `<+VPART>` to `<+PREV>` ('preverb')
+* rename POS tag `<+VPART>` to `<+PREV>` ('preverb')
 * rename inflection class `VPart` to `Prev`
 * add inflection tag `<NonCl>` ('non-clausal')
 * rename inflection tag `<zu>` to `<Cl>` ('clausal')
