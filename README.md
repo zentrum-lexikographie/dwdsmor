@@ -12,45 +12,76 @@ which represents morphological properties. By traversing such
 transducers
 
 1. a given word form can be analysed and lemmatised, or
-1. a lexical word together with a set of morphological tagging will
+2. a lexical word together with a set of morphological tagging will
    generate corresponding inflected word forms.
 
-The automata are compiled and traversed via
+The DWDSmor automata are compiled and traversed via
 [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++
-library and toolbox for finite-state transducers (FSTs). Their
-coverage of the German language depends on
+library and toolbox for finite-state transducers (FSTs). In addition, a
+DWDSmor Python library is provided, using
+the [SFST Python bindings](https://github.com/gremid/sfst-transduce).
 
-1. the DWDSmor grammar, defining the rules by which word formation
-   happens, and
-1. a lexicon, declaring inflection classes and other morphological
-   properties for covered lexical words.
+The coverage of the DWDSmor automata of the German language depends on
 
-The grammar, derived from
-[SMORLemma](https://github.com/rsennrich/SMORLemma) and providing the
-morphology for building automata from lexica, is common to all DWDSmor
-installations and published as open source. In contrast we provide
-**multiple lexica** resulting in different editions of DWDSmor:
+1. the DWDSmor grammar, which defines lemmatisation, inflection, and
+   word-formation rules for written German, and
+2. a DWDSmor lexicon, which declares lexical entries with lemmas, stem
+   forms, word classes, and inflection classes of the covered lexical
+   words.
+
+While the DWDSmor grammar for word-formation is still work in progress,
+its inflection grammar is very comprehensive. The inflection grammar as
+well as the lexicon format are based on (heavily modified) code from
+[SMORLemma](https://github.com/rsennrich/SMORLemma), which in turn is
+derived from the Stuttgart Morphology
+([SMOR](https://www.cis.lmu.de/~schmid/tools/SMOR/)).
+
+From the DWDSmor grammar and a DWDSmor lexicon, a DWDSmor edition can be
+compiled, containing several automata types in standard (`.a`) and
+compact format (`.ca`):
+
+* `lemma.{a,ca}`: transducer with inflection and word-formation
+  components, for lemmatisation and morphological analysis of word
+  forms in terms of grammatical categories.
+* `morph.{a,ca}`: transducer with inflection and word-formation
+  components, for the generation of morphologically segmented word
+  forms.
+* `finite.{a,ca}`: transducer with an inflection component and a
+  finite word-formation component, for testing purposes.
+* `root.{a,ca}`: transducer with inflection and word-formation
+  components, for lexical analysis of word forms in terms of root
+  lemmas (i.e., lemmas of ultimate word-formation bases),
+  word-formation process, word-formation means, and grammatical
+  categories in term of the Pattern-and-Restriction Theory of word
+  formation (Nolda 2022).
+* `index.{a,ca}`: transducer with an inflection component only with
+  DWDS homographic lemma indices, for paradigm generation.
+
+Currently, the following DWDSmor editions are supported:
 
 1. the **DWDS Edition**, derived from the complete lexical dataset of
-   the [DWDS dictionary](https://www.dwds.de/) and available upon
-   request for research purposes,
-1. the **Open Edition**, based on a subset of the DWDS, covering the
-   most common word forms and released freely with the grammar for
-   general use and experiments.
+   the [DWDS dictionary](https://www.dwds.de) and available upon
+   request for research purposes, and
+2. the **Open Edition**, based on a free subset of the grammatical
+   specifications in the DWDS dictionary.
 
-Depending on the edition and word class, coverage ranges from 70 to
-100% with the notable exceptions of foreign language words and named
-entities: Generally, both classes are not part of the underlying DWDS
-dictionary and thus barely covered by DWDSmor. Current overall
-coverage measured against the [German Universal Dependencies
-treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
-is documented on the respective [Hugging Face Hub
-page](https://huggingface.co/zentrum-lexikographie) of each edition.
+The Open Edition covers a sample of common German words and is released
+freely with the grammar for general use and experiments.
+
+Current overall coverage is measured against the
+[German Universal Dependencies treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
+and documented on the respective
+[Hugging Face Hub page](https://huggingface.co/zentrum-lexikographie) of
+each edition. Coverage in the DWDS Edition typically ranges between
+95 % and 100 % in most word classes; notable exceptions include
+foreign-language words and named entities, which are barely part of the
+underlying DWDS dictionary and thus poorly covered by DWDSmor.
 
 
 ## Usage
 
-DWDSmor as a Python library is available via the package index PyPI:
+The DWDSmor Python library is available via the Python Package Index
+(PyPI):
 
 ``` plaintext
 pip install dwdsmor
@@ -77,9 +108,9 @@ There is also integration with spacy:
 (('der', 'die'), ('sein', 'sein'), ('ein', 'eine'), ('Test', 'Test'), ('.', '.'))
 ```
 
-Next to the Python API, the package provides a simple command-line
-interface named `dwdsmor`. To analyze a word form, pass it as an
-argument:
+In addition to the Python API, the package provides a simple
+command-line interface named `dwdsmor`. To analyze a word form, pass it
+as an argument:
 
 ```plaintext
 $ dwdsmor gebildet
@@ -119,8 +150,9 @@ bildetet  	bilden  	bild<~>en<+V><2><Pl><Past><Ind>                      	V   	 
 […]
 ```
 
-More sophisticated tools for analysis and paradigm generation are provided in
-the `tools/` subdirectory, i.e. `tools/analysis.py` and `tools/paradigm.py`.
+More sophisticated tools for analysis and paradigm generation with the
+DWDSmor Python library are provided by the Python scripts `analysis.py`
+and `paradigm.py` in the `tools/` subdirectory.
 
 
 ## Development
@@ -133,25 +165,19 @@ written German.
 ### Prerequisites
 
 * [GNU/Linux](https://www.debian.org/): Development, builds and tests
-  of DWDSmor are performed on [Debian
-  GNU/Linux](https://debian.org/). While other UNIX-like operating
-  systems such as MacOS should work, too, they are not actively
-  supported.
-* [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/): a C++
-  library and toolbox for finite-state transducers (FSTs); please take
-  a look at its homepage for installation and usage instructions.
-* [Python >= v3.10](https://www.python.org/): DWDSmor targets Python as
-  its primary runtime environment. The DWDSmor transducers can be used
-  via SFST's commandline tools, queried in Python applications via
-  language-specific
-  [bindings](https://github.com/gremid/sfst-transduce), or used by the
-  Python scripts `dwdsmor.py` and `paradigm.py` for morphological
-  analysis and for paradigm generation.
+  of DWDSmor are performed on [Debian GNU/Linux](https://debian.org/).
+  While other UNIX-like operating systems such as MacOS should work,
+  too, they are not actively supported.
+* [Python >= v3.10](https://www.python.org/): The DWDSmor Python library
+  provides an interface for building the DWDSmor automata from XML
+  sources of DWDS articles.
 * [Saxon-HE](https://www.saxonica.com/): The extraction of lexical
-  entries from XML sources of DWDS articles is implemented in XSLT 2,
-  for which Saxon-HE is used as the runtime environment. Saxon
-  requires [Java](https://openjdk.java.net/)) as a runtime
-  environment.
+  entries from XML sources of DWDS articles is implemented in XSLT 2,
+  for which Saxon-HE is used as an XSLT processor. Saxon requires
+  [Java](https://openjdk.java.net/)) as a runtime environment.
+* [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/): The
+  DWDSmor automata are compiled using the SFST C++ library and toolbox
+  for finite-state transducers (FSTs).
 
 On a Debian-based distribution, the following command install the
 required software:
@@ -209,27 +235,7 @@ To build all editions available in the current git checkout, run:
 ```
 
 The build result can be found in `build/` with one subdirectory per
-edition. Each edition contains several automata types in standard and
-compact format:
-
-
-* `lemma.{a,ca}`: transducer with inflection and word-formation
-  components, for lemmatisation and morphological analysis of word
-  forms in terms of grammatical categories
-* `morph.{a,ca}`: transducer with inflection and word-formation
-  components, for the generation of morphologically segmented word
-  forms
-* `finite.{a,ca}`: transducer with an inflection component and a
-  finite word-formation component, for testing purposes
-* `root.{a,ca}`: transducer with inflection and word-formation
-  components, for lexical analysis of word forms in terms of root
-  lemmas (i.e., lemmas of ultimate word-formation bases),
-  word-formation process, word-formation means, and grammatical
-  categories in term of the Pattern-and-Restriction Theory of word
-  formation (Nolda 2022)
-* `index.{a,ca}`: transducer with an inflection component only with
-  DWDS homographic lemma indices, for paradigm generation
-
+edition.
 
 ### Testing
 
@@ -257,11 +263,11 @@ question about this project.
 DWSDmor is based on the following software and datasets:
 
 1. [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++ library
-   and toolbox for finite-state transducers (FSTs) (Schmidt 2006)
+   and toolbox for finite-state transducers (FSTs) (Schmidt 2006).
 2. [SMORLemma](https://github.com/rsennrich/SMORLemma) (Sennrich and Kunz 2014),
    a modified version of the Stuttgart Morphology
    ([SMOR](https://www.cis.lmu.de/~schmid/tools/SMOR/)) (Schmid, Fitschen, and
-   Heid 2004) with an alternative lemmatisation component
+   Heid 2004) with an alternative lemmatisation component.
 3. the [DWDS dictionary](https://www.dwds.de/) (BBAW n.d.) replacing the
    [IMSLex](https://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/imslex/)
    (Fitschen 2004) as the lexical data source for German words, their grammatical
