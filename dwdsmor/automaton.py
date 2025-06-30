@@ -51,6 +51,9 @@ class AutomataDirNotFound(Exception):
     pass
 
 
+editions = {"dev", "dwds", "open"}
+
+
 def detect_dev_root_dir():
     """
     Detect development environment and return one of its automata
@@ -63,10 +66,10 @@ def detect_dev_root_dir():
     """
     if config.get("DWDSMOR_DEV"):
         build_dir = Path("build")
-        for edition in ("dev", "dwds", "open"):
-            edition_dir = build_dir / edition
-            if edition_dir.is_dir():
-                return str(edition_dir)
+        for edition in editions:
+            edition_build_dir = build_dir / edition
+            if edition_build_dir.is_dir():
+                return str(edition_build_dir)
         raise AutomataDirNotFound(
             "$DWDSMOR_DEV is set, but no automata build directory is available"
         )

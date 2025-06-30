@@ -89,7 +89,7 @@ def main():
     )
     arg_parser.add_argument("-g", "--generate", help="generate", action="store_true")
     arg_parser.add_argument(
-        "-s", "--silent", help="do not report progress", action="store_true"
+        "-q", "--quiet", help="do not report progress", action="store_true"
     )
     arg_parser.add_argument("words", nargs="*")
     args = arg_parser.parse_args()
@@ -122,7 +122,7 @@ def main():
             for pos, lexeme_spec in sorted(lexeme_specs):
                 local_results = []
                 taggings = get_taggings(pos)
-                if not args.silent:
+                if not args.quiet:
                     taggings = tqdm(
                         taggings,
                         desc=f"Inflection patterns ({pos})",

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import argparse
 import csv
 import sys
@@ -11,7 +12,7 @@ from xml.etree.ElementTree import parse
 from tabulate import tabulate
 from tqdm import tqdm
 
-import dwdsmor
+from dwdsmor.automaton import automata, editions
 from dwdsmor.log import configure_logging
 
 
@@ -40,7 +41,7 @@ pos_map = {
     "Reflexivpronomen": {"PPRO"},
     "Relativpronomen": {"REL"},
     "reziprokes Pronomen": {"PPRO"},
-    "Substantiv": {"NN"},
+    "Substantiv": {"NN", "NPROP"},
     "unbestimmter Artikel": {"ART"},
     "Verb": {"V"},
 }
@@ -129,21 +130,29 @@ if __name__ == "__main__":
         description="Benchmarks coverage of DWDSmor against the lexicon source.",
     )
     arg_parser.add_argument(
+        "-e",
         "--edition",
-        help="the edition to run the benchmark against",
+        choices=editions,
+        help="edition to run the benchmark against (default: dwds)",
         type=str,
-        default="open",
+        default="dwds",
+    )
+    arg_parser.add_argument(
+        "-d", "--debug", help="print coverage data to stdout", action="store_true"
+    )
+    arg_parser.add_argument(
+        "-q", "--quiet", help="do not report progress", action="store_true"
     )
     arg_parser.add_argument(
         "--limit",
-        help="an optional limit for the # of entries to use for the benchmark",
+        help="number of lexicon entries used for the benchmark (default: all)",
         type=int,
     )
-    arg_parser.add_argument("--summary", help="Summarize coverage", action="store_true")
     args = arg_parser.parse_args()
     configure_logging()
+
     project_dir = Path(".").resolve()
-    automata_dir = project_dir / "build" / args.edition
+    edition_build_dir = project_dir / "build" / args.edition
     wb_dir = project_dir / "lexicon" / args.edition / "wb"
     wb_xml_files = tuple(sorted(wb_dir.rglob("*.xml")))
 
@@ -153,15 +162,16 @@ if __name__ == "__main__":
 
     assert len(wb_xml_files) > 0, f"No lexicon articles found in {wb_dir}"
 
-    automata = dwdsmor.automata(automata_dir)
-    analyzer = automata.analyzer()
-    traversals = automata.traversals()
+    edition_automata = automata(edition_build_dir)
+    analyzer = edition_automata.analyzer()
+    traversals = edition_automata.traversals()
 
-    aggregated = args.summary
+    aggregated = not args.debug
     report = csv.writer(sys.stdout) if not aggregated else None
     report_header = False
     if report is None:
-        wb_xml_files = tqdm(wb_xml_files, "Process lexicon articles")
+        if not args.quiet:
+            wb_xml_files = tqdm(wb_xml_files, "Processing lexicon articles")
 
     grammar_entries: Dict[str, Dict[bool, int]] = defaultdict(Counter)
     analyzed_entries: Dict[str, Dict[bool, int]] = defaultdict(Counter)
@@ -171,13 +181,11 @@ if __name__ == "__main__":
             pos_candidates = pos_map[entry.pos]
             analyzed = False
             generated = False
-            mismatches = []
             for a_traversal in analyzer.analyze(entry.lemma):
                 if a_traversal.analysis == entry.lemma:
                     if a_traversal.pos in pos_candidates:
                         analyzed = True
                         break
-                mismatches.append((a_traversal.analysis, a_traversal.pos))
             for g_traversal in traversals.get(entry.lemma, []):
                 if g_traversal.lidx == entry.lidx and g_traversal.pos in pos_candidates:
                     generated = True
@@ -186,22 +194,18 @@ if __name__ == "__main__":
                 grammar_entries[entry.pos][entry.has_grammar] += 1
                 analyzed_entries[entry.pos][analyzed] += 1
                 generated_entries[entry.pos][generated] += 1
-            if (
-                report is not None
-                and entry.has_grammar
-                and (not analyzed or not generated)
-            ):
+            if report is not None:
                 if not report_header:
                     report.writerow(
                         (
                             "File",
-                            "File Entry #",
+                            "Entry Number",
                             "Lemma",
-                            "Lemma #",
+                            "Lemma Index",
                             "POS",
+                            "With Grammar",
                             "Analyzed",
                             "Generated",
-                            "Mismatched Analysis…",
                         )
                     )
                     report_header = True
@@ -211,26 +215,19 @@ if __name__ == "__main__":
                     entry.lemma,
                     entry.lidx,
                     entry.pos,
+                    "1" if entry.has_grammar else "0",
                     "1" if analyzed else "0",
                     "1" if generated else "0",
                 )
-                mismatch_cols = tuple(
-                    (
-                        s
-                        for mismatch in sorted(set(mismatches))
-                        if not analyzed
-                        for s in mismatch
-                    )
-                )
-                report.writerow(result_cols + mismatch_cols)
+                report.writerow(result_cols)
     if aggregated:
         headers = [
             "POS",
-            "# entries",
-            "% entries",
-            "% with grammar",
-            "% analyzed",
-            "% generated",
+            "Entries",
+            "% Entries",
+            "% Entries with Grammar",
+            "% Analyzed Entries",
+            "% Generated Entries",
         ]
         colalign = ["left", "right", "right", "right", "right", "right"]
         coverage = []
@@ -240,9 +237,6 @@ if __name__ == "__main__":
 
         def count(v):
             return "{:,d}".format(v)
-
-        def bold(s):
-            return f"**{s}**"
 
         total_entries = 0
         total_with_grammar = 0
@@ -278,9 +272,9 @@ if __name__ == "__main__":
                 "Σ",
                 count(total_entries),
                 pct(1),
-                bold(pct(total_with_grammar / total_entries)),
-                bold(pct(total_analyzed / total_entries)),
-                bold(pct(total_generated / total_entries)),
+                pct(total_with_grammar / total_entries),
+                pct(total_analyzed / total_entries),
+                pct(total_generated / total_entries),
             ],
         )
         print(tabulate(coverage, headers=headers, colalign=colalign, tablefmt="tsv"))

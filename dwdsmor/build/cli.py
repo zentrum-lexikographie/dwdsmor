@@ -17,7 +17,7 @@ from huggingface_hub import (
 )
 
 from .benchmark import coverage_headers, compute_coverage
-from ..automaton import automata, automaton_types
+from ..automaton import automata, automaton_types, editions
 from ..log import configure_logging
 from ..tag import all_tags
 from ..traversal import Traversal
@@ -204,7 +204,7 @@ def build_automaton(edition_dir, automaton_type, force=False):
     return True
 
 
-def build_metrics(edition_dir, force=False):
+def build_metrics(edition_dir, force=False, quiet=False):
     edition_name = edition_dir.name
 
     edition_build_dir = build_dir / edition_name
@@ -213,8 +213,8 @@ def build_metrics(edition_dir, force=False):
     if not force and is_current(metrics_csv, (automaton_ca,)):
         logger.debug("Skip measuring UD/de-hdt coverage for '%s/lemma'", edition_name)
         return False
-    logger.info("Measure UD/de-hdt coverage of '%s/lemma'", edition_name)
-    coverage = compute_coverage(automata(edition_build_dir))
+    logger.info("Measuring UD/de-hdt coverage of '%s/lemma'", edition_name)
+    coverage = compute_coverage(automata(edition_build_dir), quiet=quiet)
     with metrics_csv.open("wt", encoding="utf-8") as metrics_f:
         csv.writer(metrics_f).writerows((coverage_headers, *coverage))
     return True
@@ -374,13 +374,13 @@ def push_to_hub(edition_dir, tag=None):
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser(description="Build DWDSmor.")
     arg_parser.add_argument(
-        "editions", help="editions to build (all by default)", nargs="*"
+        "editions", choices=editions, help="editions to build (default: all)", nargs="*"
     )
     arg_parser.add_argument(
         "-t",
         "--automaton-type",
         choices=automaton_types,
-        help="automaton type to build (all by default)",
+        help="automaton type to build (default: all)",
         action="append",
     )
     arg_parser.add_argument(
@@ -393,6 +393,9 @@ if __name__ == "__main__":
         action="store_true",
     )
     arg_parser.add_argument(
+        "-q", "--quiet", help="do not report progress", action="store_true"
+    )
+    arg_parser.add_argument(
         "--release", help="push automata to HF hub", action="store_true"
     )
     arg_parser.add_argument(
@@ -400,7 +403,7 @@ if __name__ == "__main__":
     )
     args = arg_parser.parse_args()
     configure_logging()
-    editions = (
+    edition_dirs = (
         [lexicon_dir / edition for edition in args.editions]
         if len(args.editions or []) > 0
         else lexicon_dir.iterdir()
@@ -408,7 +411,7 @@ if __name__ == "__main__":
     build_automaton_types = (
         tuple(args.automaton_type) if args.automaton_type else automaton_types
     )
-    for edition_dir in editions:
+    for edition_dir in edition_dirs:
         assert edition_dir.is_dir()
         edition_name = edition_dir.name
         if not has_sources(edition_dir):
@@ -428,6 +431,6 @@ if __name__ == "__main__":
         if edition_built:
             stamp_build(edition_dir)
         if args.with_metrics or args.release:
-            build_metrics(edition_dir, force=args.force)
+            build_metrics(edition_dir, force=args.force, quiet=args.quiet)
         if args.release:
             push_to_hub(edition_dir, tag=(f"v{__version__}" if args.tag else None))

@@ -1,14 +1,17 @@
 #!/usr/bin/env python
 
 import argparse
+import csv
+import sys
 from collections import Counter, defaultdict
 from itertools import islice
+from pathlib import Path
 
 from datasets import load_dataset
 from tabulate import tabulate
 from tqdm import tqdm
 
-from dwdsmor.automaton import Lemmatizer, automata
+from dwdsmor.automaton import Lemmatizer, automata, editions
 from dwdsmor.log import configure_logging
 
 
@@ -90,21 +93,24 @@ ud_to_dwdsmor_pos = {
 
 coverage_headers = [
     "POS",
-    "# types",
-    "# tokens",
-    "% types",
-    "% tokens",
-    "% types covered",
-    "% tokens covered",
+    "Types",
+    "Tokens",
+    "% Types",
+    "% Tokens",
+    "% Lemmatized Types",
+    "% Lemmatized Tokens",
 ]
 
 
-def compute_coverage(automata, limit=None, show_progress=False):
+def compute_coverage(automata, round_digits=4, limit=None, debug=False, quiet=False):
     lemmatizer = Lemmatizer(automata)
     tokens = ud_de_hdt_tokens()
     if limit is not None:
         tokens = islice(tokens, max(0, limit))
-    if show_progress:
+    if debug:
+        report = csv.writer(sys.stdout)
+        report.writerow(("Form", "Lemma", "POS", "Lemmatized"))
+    if not debug or quiet:
         tokens = tqdm(
             tokens, unit="token", desc="Lemmatizing UD/de-hdt", total=(limit or 2700000)
         )
@@ -112,12 +118,14 @@ def compute_coverage(automata, limit=None, show_progress=False):
     mismatches = defaultdict(Counter)
     for token in tokens:
         form, lemma, xpos = token
-        pos_candidates = {xpos}.union(ud_to_dwdsmor_pos.get(xpos, set()))
+        pos_candidates = ud_to_dwdsmor_pos.get(xpos, set())
         is_match = lemmatizer(form, pos=pos_candidates) is not None
         if not is_match and lemmatizer(lemma) is not None:
             # skip tokens where we can analyze the given lemma but not the form:
             # compounds are lemmatized to their basic words in German-UD/HDT
             continue
+        if debug:
+            report.writerow((form, lemma, xpos, 1 if is_match else 0))
         registry = matches if is_match else mismatches
         registry[xpos][form] += 1
 
@@ -152,10 +160,10 @@ def compute_coverage(automata, limit=None, show_progress=False):
                 pos_tag,
                 tag_types,
                 tag_tokens,
-                tag_types / total_types,
-                tag_tokens / total_tokens,
-                tag_type_matches / tag_types,
-                tag_token_matches / tag_tokens,
+                round(tag_types / total_types, round_digits),
+                round(tag_tokens / total_tokens, round_digits),
+                round(tag_type_matches / tag_types, round_digits),
+                round(tag_token_matches / tag_tokens, round_digits),
             ]
         )
     coverage.insert(
@@ -166,8 +174,8 @@ def compute_coverage(automata, limit=None, show_progress=False):
             total_tokens,
             1,
             1,
-            total_type_matches / total_types,
-            total_token_matches / total_tokens,
+            round(total_type_matches / total_types, round_digits),
+            round(total_token_matches / total_tokens, round_digits),
         ],
     )
     return coverage
@@ -179,15 +187,34 @@ if __name__ == "__main__":
         description="Benchmarks coverage of DWDSmor against German-UD/HDT.",
     )
     arg_parser.add_argument(
+        "-e",
+        "--edition",
+        choices=editions,
+        help="edition to run the benchmark against (default: dwds)",
+        type=str,
+        default="dwds",
+    )
+    arg_parser.add_argument(
+        "-d", "--debug", help="print coverage data to stdout", action="store_true"
+    )
+    arg_parser.add_argument(
+        "-q", "--quiet", help="do not report progress", action="store_true"
+    )
+    arg_parser.add_argument(
         "--limit",
-        help="an optional limit for the # of tokens to use for the benchmark",
+        help="number of tokens used for the benchmark (default: all)",
         type=int,
     )
     args = arg_parser.parse_args()
     configure_logging()
 
+    project_dir = Path(".").resolve()
+    edition_build_dir = project_dir / "build" / args.edition
+
+    colalign = ["left", "right", "right", "right", "right", "right", "right"]
+
     def pct(v):
-        return "{:.3%}".format(v)
+        return "{:.2%}".format(v)
 
     def count(v):
         return "{:,d}".format(v)
@@ -212,24 +239,22 @@ if __name__ == "__main__":
             pct(token_coverage),
         ]
 
-    print(
-        tabulate(
-            [
-                format_coverage(coverage, n == 0)
-                for n, coverage in enumerate(
-                    compute_coverage(automata(), limit=args.limit, show_progress=True)
-                )
-            ],
-            tablefmt="tsv",
-            headers=coverage_headers,
-            colalign=[
-                "left",
-                "right",
-                "right",
-                "right",
-                "right",
-                "right",
-                "right",
-            ],
-        )
+    coverage = compute_coverage(
+        automata(edition_build_dir),
+        limit=args.limit,
+        debug=args.debug,
+        quiet=args.quiet,
     )
+
+    if not args.debug:
+        print(
+            tabulate(
+                [
+                    format_coverage(coverage, n == 0)
+                    for n, coverage in enumerate(coverage)
+                ],
+                tablefmt="tsv",
+                headers=coverage_headers,
+                colalign=colalign,
+            )
+        )
