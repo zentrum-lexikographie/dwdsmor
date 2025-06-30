@@ -77,7 +77,7 @@ There is also integration with spacy:
 (('der', 'die'), ('sein', 'sein'), ('ein', 'eine'), ('Test', 'Test'), ('.', '.'))
 ```
 
-Next to the Python API, the package provides a simple command line
+Next to the Python API, the package provides a simple command-line
 interface named `dwdsmor`. To analyze a word form, pass it as an
 argument:
 
@@ -118,6 +118,10 @@ bilde     	bilden  	bild<~>en<+V><1><Sg><Pres><Subj>                     	V   	 
 bildetet  	bilden  	bild<~>en<+V><2><Pl><Past><Ind>                      	V   	        	          	       2	        	      	Pl      	           	Past   	Ind
 […]
 ```
+
+More sophisticated tools for analysis and paradigm generation are provided in
+the `tools/` subdirectory, i.e. `tools/analysis.py` and `tools/paradigm.py`.
+
 
 ## Development
 

@@ -1,61 +1,37 @@
 #!/usr/bin/env python3
 # analysis.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2025-06-30
-# with contributions by Adrien Barbaresi
+# Andreas Nolda 2025-06-30
 
 import argparse
 import csv
 import json
-import re
 import sys
-from collections import namedtuple
-from functools import cached_property
-from os import path
+from dataclasses import asdict
+from pathlib import Path
 
 from blessings import Terminal
 
-from dwdsmor.automaton import detect_root_dir
-
-import sfst_transduce
+from dwdsmor import automaton, tag
 
 import yaml
 
 
-version = 13.2
+progname = Path(__file__).name
 
-
-ROOT_DIR = detect_root_dir()
-
-TRANSDUCER = path.join(ROOT_DIR, "lemma.ca")
-
-TRANSDUCER2 = path.join(ROOT_DIR, "morph.a")
-
-
-BOUNDARIES_INFL = ["<~>"]
-
-BOUNDARIES_WF = ["<#>", "<->", "<|>"]
-
-
-POS = ["ADJ", "ART", "CARD", "DEM", "FRAC", "INDEF", "NN",
-       "NPROP", "ORD", "POSS", "PPRO", "REL", "V", "WPRO"]
-
-
-PROCESSES = ["COMP", "DER", "CONV"]
-
-MEANS = ["concat", "hyph", "ident", "pref", "prev", "suff"]
+version = 14.0
 
 
 LABEL_MAP = {"word": "Wordform",
              "analyses": {"seg_word": "Segmented Wordform",
-                          "analysis": "Analysis",
-                          "lemma": "Lemma",
+                          "spec": "Analysis",
+                          "analysis": "Lemma",
                           "seg_lemma": "Segmented Lemma",
-                          "lemma_index": "Lemma Index",
-                          "paradigm_index": "Paradigm Index",
-                          "process": "Process",
+                          "lidx": "Lemma Index",
+                          "pidx": "Paradigm Index",
+                          "processes": "Process",
                           "means": "Means",
                           "pos": "POS",
-                          "subcat": "Subcategory",
+                          "category": "Subcategory",
                           "auxiliary": "Auxiliary",
                           "degree": "Degree",
                           "person": "Person",
@@ -74,312 +50,42 @@ LABEL_MAP = {"word": "Wordform",
                           "charinfo": "Characters"}}
 
 
-Component = namedtuple("Component", ["lemma", "tags"])
+def analyze_word(analyzer, word, automaton_type=None):
+    if automaton_type == "root":
+        return analyzer.analyze(word, visible_boundaries="+", boundary_tag=" + ", join_tags=True)
+    elif automaton_type == "index":
+        return analyzer.analyze(word, idx_to_int=True)
+    else:
+        return analyzer.analyze(word)
 
 
-class Analysis(tuple):
-
-    def __new__(cls, analysis, components):
-        inst = tuple.__new__(cls, components)
-        inst.analysis = analysis
-        return inst
-
-    @cached_property
-    def lemma(self):
-        lemma = "".join(analysis.lemma for analysis in self)
-        return lemma
-
-    @cached_property
-    def seg_lemma(self):
-        analysis = self.analysis
-        for process in PROCESSES:
-            analysis = re.sub("<" + process + ">", "", analysis)
-        for means in MEANS:
-            analysis = re.sub("<" + means + r"(?:\([^>]+\))?(?:\|[^>]+)?" + ">", "", analysis)
-        analysis = re.sub(r"(?:<IDX[1-8]>)?", "", analysis)
-        analysis = re.sub(r"(?:<PAR[1-8]>)?", "", analysis)
-        for pos in POS:
-            analysis = re.sub(f"<{pos}>(?:<[^>]+>)*", "", analysis)
-        if analysis == r"\:":
-            analysis = ":"
-        return analysis
-
-    @cached_property
-    def tags(self):
-        tags = [tag for analysis in self for tag in analysis.tags]
-        return tags
-
-    @cached_property
-    def lemma_index(self):
-        return next((int(tag[3:]) for tag in self.tags if re.fullmatch(r"IDX[1-8]", tag)), None)
-
-    @cached_property
-    def paradigm_index(self):
-        return next((int(tag[3:]) for tag in self.tags if re.fullmatch(r"PAR[1-8]", tag)), None)
-
-    @cached_property
-    def pos(self):
-        return next((tag for tag in self.tags if tag in POS), None)
-
-    @cached_property
-    def process(self):
-        if [tag for tag in self.tags if tag in PROCESSES]:
-            return ", ".join(tag for tag in self.tags if tag in PROCESSES)
-
-    @cached_property
-    def means(self):
-        if [tag for tag in self.tags if re.sub(r"(?:\(.+\))?(?:\|.+)?", "", tag) in MEANS]:
-            return ", ".join(tag for tag in self.tags if re.sub(r"(?:\(.+\))?(?:\|.+)?", "", tag) in MEANS)
-
-    _subcat_tags = {"Pers": True, "Refl": True, "Rec": True, "Def": True, "Indef": True, "Neg": True,
-                    "Coord": True, "Sub": True, "InfCl": True, "AdjPos": True, "AdjComp": True, "AdjSup": True,
-                    "Comma": True, "Period": True, "Ellip": True, "Quote": True, "Paren": True, "Dash": True, "Slash": True, "Other": True}
-
-    _auxiliary_tags = {"haben": True, "sein": True}
-
-    _degree_tags = {"Pos": True, "Comp": True, "Sup": True}
-
-    _person_tags = {"1": True, "2": True, "3": True, "UnmPers": True}
-
-    _gender_tags = {"Fem": True, "Neut": True, "Masc": True, "UnmGend": True}
-
-    _case_tags = {"Nom": True, "Gen": True, "Dat": True, "Acc": True, "UnmCase": True}
-
-    _number_tags = {"Sg": True, "Pl": True, "UnmNum": True}
-
-    _inflection_tags = {"St": True, "Wk": True, "UnmInfl": True}
-
-    _nonfinite_tags = {"Inf": True, "Part": True}
-
-    _function_tags = {"Attr": True, "Subst": True, "Attr/Subst": True, "Pred/Adv": True, "Cl": True, "NonCl": True, "UnmFunc": True}
-
-    _mood_tags = {"Ind": True, "Subj": True, "Imp": True, "UnmMood": True}
-
-    _tense_tags = {"Pres": True, "Past": True, "Perf": True, "UnmTense": True}
-
-    _metainfo_tags = {"Old": True, "NonSt": True}
-
-    _orthinfo_tags = {"OLDORTH": True, "CH": True}
-
-    _syninfo_tags = {"SEP": True}
-
-    _ellipinfo_tags = {"TRUNC": True}
-
-    _charinfo_tags = {"CAP": True}
-
-    def tag_of_type(self, type_map):
-        for tag in self.tags:
-            if tag in type_map:
-                return tag
-
-    @cached_property
-    def subcat(self):
-        tag = self.tag_of_type(Analysis._subcat_tags)
-        return tag
-
-    @cached_property
-    def auxiliary(self):
-        tag = self.tag_of_type(Analysis._auxiliary_tags)
-        return tag
-
-    @cached_property
-    def degree(self):
-        tag = self.tag_of_type(Analysis._degree_tags)
-        return tag
-
-    @cached_property
-    def person(self):
-        tag = self.tag_of_type(Analysis._person_tags)
-        return tag
-
-    @cached_property
-    def gender(self):
-        tag = self.tag_of_type(Analysis._gender_tags)
-        return tag
-
-    @cached_property
-    def case(self):
-        tag = self.tag_of_type(Analysis._case_tags)
-        return tag
-
-    @cached_property
-    def number(self):
-        tag = self.tag_of_type(Analysis._number_tags)
-        return tag
-
-    @cached_property
-    def inflection(self):
-        tag = self.tag_of_type(Analysis._inflection_tags)
-        return tag
-
-    @cached_property
-    def nonfinite(self):
-        tag = self.tag_of_type(Analysis._nonfinite_tags)
-        return tag
-
-    @cached_property
-    def function(self):
-        tag = self.tag_of_type(Analysis._function_tags)
-        return tag
-
-    @cached_property
-    def mood(self):
-        tag = self.tag_of_type(Analysis._mood_tags)
-        return tag
-
-    @cached_property
-    def tense(self):
-        tag = self.tag_of_type(Analysis._tense_tags)
-        return tag
-
-    @cached_property
-    def metainfo(self):
-        tag = self.tag_of_type(Analysis._metainfo_tags)
-        return tag
-
-    @cached_property
-    def orthinfo(self):
-        tag = self.tag_of_type(Analysis._orthinfo_tags)
-        return tag
-
-    @cached_property
-    def syninfo(self):
-        tag = self.tag_of_type(Analysis._syninfo_tags)
-        return tag
-
-    @cached_property
-    def ellipinfo(self):
-        tag = self.tag_of_type(Analysis._ellipinfo_tags)
-        return tag
-
-    @cached_property
-    def charinfo(self):
-        tag = self.tag_of_type(Analysis._charinfo_tags)
-        return tag
-
-    def as_dict(self):
-        analysis = {"analysis": self.analysis,
-                    "lemma": self.lemma,
-                    "seg_lemma": self.seg_lemma,
-                    "lemma_index": self.lemma_index,
-                    "paradigm_index": self.paradigm_index,
-                    "process": self.process,
-                    "means": self.means,
-                    "pos": self.pos,
-                    "subcat": self.subcat,
-                    "auxiliary": self.auxiliary,
-                    "degree": self.degree,
-                    "person": self.person,
-                    "gender": self.gender,
-                    "case": self.case,
-                    "number": self.number,
-                    "inflection": self.inflection,
-                    "nonfinite": self.nonfinite,
-                    "function": self.function,
-                    "mood": self.mood,
-                    "tense": self.tense,
-                    "metainfo": self.metainfo,
-                    "orthinfo": self.orthinfo,
-                    "syninfo": self.syninfo,
-                    "ellipinfo": self.ellipinfo,
-                    "charinfo": self.charinfo}
-        return analysis
-
-    def _decode_component_text(text):
-        lemma = ""
-        text_len = len(text)
-        ti = 0
-        prev_char = None
-        if text == r"\:":
-            lemma = ":"
-        else:
-            while ti < text_len:
-                current_char = text[ti]
-                nti = ti + 1
-                next_char = text[nti] if nti < text_len else None
-                if current_char == ":":
-                    lemma += prev_char or ""
-                    ti += 1
-                elif next_char != ":":
-                    lemma += current_char
-                    ti += 1
-                    prev_char = current_char
-        return {"lemma": lemma}
-
-    def _decode_analysis(analyses):
-        for analysis in re.finditer(r"([^<]*)(?:<([^>]*)>)?", analyses):
-            text = analysis.group(1)
-            tag = analysis.group(2) or ""
-            component = Analysis._decode_component_text(text)
-            if tag != "":
-                component["tag"] = tag
-            yield component
-
-    def _join_tags(components):
-        result = []
-        current_component = None
-        for component in components:
-            component = component.copy()
-            if current_component is None or component["lemma"] != "":
-                component["tags"] = []
-                result.append(component)
-                current_component = component
-            if "tag" in component:
-                current_component["tags"].append(component["tag"])
-                del component["tag"]
-        return result
-
-    def _join_untagged(components):
-        result = []
-        buf = []
-        for component in components:
-            buf.append(component)
-            if len(component["tags"]) > 0:
-                joined = {"lemma": "",
-                          "tags": []}
-                for component in buf:
-                    joined["lemma"] += component["lemma"]
-                    joined["tags"] += component["tags"]
-                if "+" in component["tags"]:
-                    joined["lemma"] += " + "
-                result.append(joined)
-                buf = []
-        if len(buf) > 0:
-            result = result + buf
-        return result
+def analyze_words(analyzer, words, automaton_type=None):
+    return tuple(analyze_word(analyzer, word, automaton_type) for word in words)
 
 
-def parse(analyses):
-    component_list = []
-    for analysis in analyses:
-        components = Analysis._decode_analysis(analysis)
-        components = Analysis._join_tags(components)
-        components = Analysis._join_untagged(components)
-        if components not in component_list:
-            component_list.append(components)
-            yield Analysis(analysis, [Component(**component) for component in components])
+def generate_words(generator, spec):
+    return tuple(traversal.spec for traversal in generator.generate(spec))
 
 
-def analyse_word(transducer, word):
-    return parse(transducer.analyse(word))
+def seg_lemma(traversal):
+    traversal = traversal.reparse(visible_boundaries=tag.boundary_tags)
+    return traversal.analysis
 
 
-def analyse_words(transducer, words):
-    return tuple(analyse_word(transducer, word) for word in words)
-
-
-def generate_words(transducer, analysis):
-    return tuple(transducer.generate(analysis))
-
-
-def get_analysis_dict(analysis):
-    analysis_dict = {"seg_word": None} | analysis.as_dict()
+def traversal_asdict(traversal):
+    analysis_dict = {"seg_word": None, "seg_lemma": seg_lemma(traversal)} | asdict(traversal)
     return analysis_dict
 
 
-def get_analysis_dicts(analyses):
-    analysis_dicts = [get_analysis_dict(analysis) for analysis in analyses]
+def traversals_asdicts(traversals):
+    analysis_dicts = [traversal_asdict(traversal) for traversal in traversals]
     return analysis_dicts
+
+
+def remove_boundaries(seg, boundaries):
+    for boundary in boundaries:
+        seg = seg.replace(f"<{boundary}>", "")
+    return seg
 
 
 def count_boundaries(seg, boundaries):
@@ -428,7 +134,7 @@ def get_maximal_analyses_per_pos(analyses, key, boundaries):
 def get_matching_seg_words(seg_words, word):
     matching_seg_words = []
     for seg_word in seg_words:
-        if re.sub("<.>", "", seg_word) == word:
+        if remove_boundaries(seg_word, tag.boundary_tags) == word:
             matching_seg_words.append(seg_word)
     return matching_seg_words
 
@@ -471,15 +177,15 @@ def output_dsv(word_analyses, output_file, keys, analyses_keys,
 
     key_format = {"word": term.bold,
                   "analyses": {"seg_word": term.bright_black,
-                               "analysis": term.bright_black,
-                               "lemma": term.bold_underline,
+                               "spec": term.bright_black,
+                               "analysis": term.bold_underline,
                                "seg_lemma": term.bright_black_underline,
-                               "lemma_index": term.underline,
-                               "paradigm_index": term.underline,
-                               "process": term.underline,
+                               "lidx": term.underline,
+                               "pidx": term.underline,
+                               "processes": term.underline,
                                "means": term.underline,
                                "pos": term.underline,
-                               "subcat": term.underline,
+                               "category": term.underline,
                                "auxiliary": term.underline,
                                "degree": plain,
                                "person": plain,
@@ -509,48 +215,38 @@ def output_dsv(word_analyses, output_file, keys, analyses_keys,
             csv_writer.writerow(row)
 
 
-def output_analyses(transducer, transducer2, input_file, output_file,
+def output_analyses(analyzer, generator, input_file, output_file, automaton_type,
                     analysis_string=False, seg_word=False, seg_lemma=False,
-                    lemma_index=False, paradigm_index=False,
-                    wf_process=False, wf_means=False,
-                    minimal=False, maximal=False, empty=True,
+                    minimal=False, maximal=False, empty=False,
                     header=True, plain=False, force_color=False, output_format="tsv"):
     words = tuple(word.strip() for word in input_file.readlines() if word.strip())
-    analyses_tuple = analyse_words(transducer, words)
+    traversals_tuple = analyze_words(analyzer, words, automaton_type)
 
-    if analyses_tuple:
+    if traversals_tuple:
         word_analyses = []
-        for word, analyses in zip(words, analyses_tuple):
-            analyses = get_analysis_dicts(analyses)
+        for word, traversals in zip(words, traversals_tuple):
+            analyses = traversals_asdicts(traversals)
 
             if minimal:
-                analyses = get_minimal_analyses_per_pos(analyses, "seg_lemma", BOUNDARIES_WF)
+                analyses = get_minimal_analyses_per_pos(analyses, "seg_lemma", tag.wf_boundary_tags)
 
             for analysis in analyses:
                 if maximal or seg_word:
-                    words_tuple = generate_words(transducer2, analysis["analysis"])
+                    words_tuple = generate_words(generator, analysis["spec"])
                     seg_words = get_matching_seg_words(words_tuple, word)
                     analysis.update({"seg_word": seg_words[0] if seg_words else word})
 
             if maximal:
-                analyses = get_maximal_analyses_per_pos(analyses, "seg_word", BOUNDARIES_INFL)
-                analyses = get_maximal_analyses_per_pos(analyses, "seg_word", BOUNDARIES_WF)
+                analyses = get_maximal_analyses_per_pos(analyses, "seg_word", tag.infl_boundary_tags)
+                analyses = get_maximal_analyses_per_pos(analyses, "seg_word", tag.wf_boundary_tags)
 
             for analysis in analyses:
                 if not seg_word:
                     del analysis["seg_word"]
                 if not analysis_string:
-                    del analysis["analysis"]
+                    del analysis["spec"]
                 if not seg_lemma:
                     del analysis["seg_lemma"]
-                if not lemma_index:
-                    del analysis["lemma_index"]
-                if not paradigm_index:
-                    del analysis["paradigm_index"]
-                if not wf_process:
-                    del analysis["process"]
-                if not wf_means:
-                    del analysis["means"]
 
                 if not empty:
                     for key, value in list(analysis.items()):
@@ -571,19 +267,11 @@ def output_analyses(transducer, transducer2, input_file, output_file,
             analyses_keys = [key for key, value in LABEL_MAP["analyses"].items() if isinstance(value, str)]
 
             if not analysis_string:
-                analyses_keys.remove("analysis")
+                analyses_keys.remove("spec")
             if not seg_word:
                 analyses_keys.remove("seg_word")
             if not seg_lemma:
                 analyses_keys.remove("seg_lemma")
-            if not lemma_index:
-                analyses_keys.remove("lemma_index")
-            if not paradigm_index:
-                analyses_keys.remove("paradigm_index")
-            if not wf_process:
-                analyses_keys.remove("process")
-            if not wf_means:
-                analyses_keys.remove("means")
 
             if not empty:
                 keys_with_values = {key for word_analyses_dict in word_analyses
@@ -606,6 +294,8 @@ def output_analyses(transducer, transducer2, input_file, output_file,
 
 def main():
     try:
+        automata_dir = automaton.detect_root_dir()
+
         parser = argparse.ArgumentParser()
         parser.add_argument("input", nargs="?", type=argparse.FileType("r"), default=sys.stdin,
                             help="input file (one word form per line; default: stdin)")
@@ -617,44 +307,37 @@ def main():
                             help="output CSV table")
         parser.add_argument("-C", "--force-color", action="store_true",
                             help="preserve color and formatting when piping output")
-        parser.add_argument("-E", "--no-empty", action="store_false",
-                            help="suppress empty columns or values")
+        parser.add_argument("-d", "--automata-dir",
+                            help=f"automata directory (default: {automata_dir})")
+        parser.add_argument("-e", "--empty", action="store_true",
+                            help="show empty columns or values")
         parser.add_argument("-H", "--no-header", action="store_false",
                             help="suppress table header")
-        parser.add_argument("-i", "--lemma-index", action="store_true",
-                            help="output also homographic lemma index")
-        parser.add_argument("-I", "--paradigm-index", action="store_true",
-                            help="output also paradigm index")
         parser.add_argument("-j", "--json", action="store_true",
                             help="output JSON object")
         parser.add_argument("-m", "--minimal", action="store_true",
                             help="prefer lemmas with minimal number of boundaries")
         parser.add_argument("-M", "--maximal", action="store_true",
-                            help="prefer word forms with maximal number of boundaries (requires supplementary transducer file)")
+                            help="prefer word forms with maximal number of boundaries (requires secondary automaton)")
         parser.add_argument("-P", "--plain", action="store_true",
                             help="suppress color and formatting")
         parser.add_argument("-s", "--seg-lemma", action="store_true",
                             help="output also segmented lemma")
         parser.add_argument("-S", "--seg-word", action="store_true",
-                            help="output also segmented word form (requires supplementary transducer file)")
-        parser.add_argument("-t", "--transducer", default=TRANSDUCER,
-                            help=f"path to transducer file in compact format (default: {TRANSDUCER})")
-        parser.add_argument("-T", "--transducer2", default=TRANSDUCER2,
-                            help=f"path to supplementary transducer file in standard format (default: {TRANSDUCER2})")
+                            help="output also segmented word form (requires secondary automaton)")
+        parser.add_argument("-t", "--automaton-type", choices=automaton.automaton_types, default="lemma",
+                            help="type of primary automaton (default: lemma)")
+        parser.add_argument("-T", "--automaton2-type", choices=automaton.automaton_types, default="morph",
+                            help="type of secondary automaton (default: morph)")
         parser.add_argument("-v", "--version", action="version",
                             version=f"{parser.prog} {version}")
-        parser.add_argument("-w", "--wf-process", action="store_true",
-                            help="output also word-formation process")
-        parser.add_argument("-W", "--wf-means", action="store_true",
-                            help="output also word-formation means")
         parser.add_argument("-y", "--yaml", action="store_true",
                             help="output YAML document")
         args = parser.parse_args()
 
-        transducer = sfst_transduce.CompactTransducer(args.transducer)
-        transducer.both_layers = False
-
-        transducer2 = sfst_transduce.Transducer(args.transducer2)
+        automata = automaton.automata(args.automata_dir)
+        analyzer = automata.analyzer(args.automaton_type)
+        generator = automata.generator(args.automaton2_type)
 
         if args.json:
             output_format = "json"
@@ -665,12 +348,13 @@ def main():
         else:
             output_format = "tsv"
 
-        output_analyses(transducer, transducer2, args.input, args.output,
+        output_analyses(analyzer, generator, args.input, args.output, args.automaton_type,
                         args.analysis_string, args.seg_word, args.seg_lemma,
-                        args.lemma_index, args.paradigm_index,
-                        args.wf_process, args.wf_means,
-                        args.minimal, args.maximal, args.no_empty,
+                        args.minimal, args.maximal, args.empty,
                         args.no_header, args.plain, args.force_color, output_format)
+    except automaton.AutomataDirNotFound:
+        print(f"{progname}: automata directory not found", file=sys.stderr)
+        sys.exit(1)
     except KeyboardInterrupt:
         sys.exit(130)
     return 0
