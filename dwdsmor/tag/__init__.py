@@ -67,7 +67,7 @@ tag_values = {
         "means": {
             "concat",
             "hyph",
-            "ident",
+            "ident|Part",
             "pref(un)",
             "prev()",
             "prev(ab)",
@@ -137,16 +137,19 @@ tag_types = {
 }
 
 
-inflection_boundary_tags = "~"
-separable_verb_tag = "|"
-word_formation_tags = "#-"
-other_boundary_tags = "="
-boundary_tags = (
-    inflection_boundary_tags
-    + separable_verb_tag
-    + word_formation_tags
-    + other_boundary_tags
+aff_infl_boundary = "~"
+aff_der_boundary = "-"
+prev_boundary = "|"
+concat_boundary = "#"
+hyph_boundary = "="
+root_boundary = "+"
+
+infl_boundary_tags = aff_infl_boundary
+wf_boundary_tags = (
+    aff_der_boundary + prev_boundary + concat_boundary + hyph_boundary + root_boundary
 )
+boundary_tags = infl_boundary_tags + wf_boundary_tags
+
 
 inflection_tag_seqs = {
     "": (("function", "gender", "case", "number", "inflection"),),

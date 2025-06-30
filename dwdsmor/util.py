@@ -1,16 +1,12 @@
-from dwdsmor.tag import separable_verb_tag
+from dwdsmor.tag import prev_boundary
 from dwdsmor.traversal import Traversal
 
 
 def inflected(spec, generated):
     traversal = Traversal.parse(
-        spec, visible_boundaries=separable_verb_tag, boundary_tag="|"
+        spec, visible_boundaries=prev_boundary, boundary_tag="|"
     )
-    if (
-        traversal.pos == "V"
-        and traversal.nonfinite is None
-        and separable_verb_tag in spec
-    ):
+    if traversal.pos == "V" and traversal.nonfinite is None and prev_boundary in spec:
         parts = traversal.analysis.split("|")
         parts = parts[:-1]
         parts_length = sum(len(p) for p in parts)

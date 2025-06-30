@@ -47,14 +47,16 @@ class Traversal:
             if tag == "":
                 return "", "", s
             elif tag in visible_boundaries:
-                return ("", boundary_tag or f"<{tag}>", s)
+                return "", boundary_tag or f"<{tag}>", s
             elif tag in boundary_tags:
-                return ("", "", s)
+                return "", "", s
             else:
                 return tag_types[tag], tag, s
 
     @staticmethod
-    def parse(s, visible_boundaries="", boundary_tag=None):
+    def parse(
+        s, visible_boundaries="", boundary_tag=None, join_tags=False, idx_to_int=False
+    ):
         spec = s
         surface = ""
         analysis = ""
@@ -66,13 +68,21 @@ class Traversal:
                 s = s[2:]
                 continue
             k, v, s = Traversal.parse_label(s, visible_boundaries, boundary_tag)
-            if k:
+            if join_tags and k in tags and k in ("processes", "means"):
+                tags[k] += f", {v}"
+            elif idx_to_int and k in ("lidx", "pidx"):
+                tags[k] = int(v[3:])
+            elif k:
                 tags[k] = v
             else:
                 analysis += v
             if s.startswith(":"):
                 k, v, s = Traversal.parse_label(s[1:], visible_boundaries, boundary_tag)
-                if k:
+                if join_tags and k in tags and k in ("processes", "means"):
+                    tags[k] += f", {v}"
+                elif idx_to_int and k in ("lidx", "pidx"):
+                    tags[k] = int(v[3:])
+                elif k:
                     tags[k] = v
                 else:
                     surface += v

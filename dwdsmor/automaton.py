@@ -97,11 +97,27 @@ class Generator:
 
     transducer: Transducer
 
-    def generate(self, s: str) -> Iterable[Traversal]:
+    def generate(
+        self,
+        s: str,
+        visible_boundaries="",
+        boundary_tag=None,
+        join_tags=False,
+        idx_to_int=False,
+    ) -> Iterable[Traversal]:
         """
         Generate all traversals of a transducer for the given input string.
         """
-        return (Traversal.parse(traversal) for traversal in self.transducer.generate(s))
+        return (
+            Traversal.parse(
+                traversal,
+                visible_boundaries=visible_boundaries,
+                boundary_tag=boundary_tag,
+                join_tags=join_tags,
+                idx_to_int=idx_to_int,
+            )
+            for traversal in self.transducer.generate(s)
+        )
 
 
 @dataclass
@@ -112,12 +128,28 @@ class Analyzer:
 
     transducer: CompactTransducer
 
-    def analyze(self, s: str) -> Iterable[Traversal]:
+    def analyze(
+        self,
+        s: str,
+        visible_boundaries="",
+        boundary_tag=None,
+        join_tags=False,
+        idx_to_int=False,
+    ) -> Iterable[Traversal]:
         """
         Generate all traversals of a transducer that express
         morphological analyses of an input string.
         """
-        return (Traversal.parse(traversal) for traversal in self.transducer.analyse(s))
+        return (
+            Traversal.parse(
+                traversal,
+                visible_boundaries=visible_boundaries,
+                boundary_tag=boundary_tag,
+                join_tags=join_tags,
+                idx_to_int=idx_to_int,
+            )
+            for traversal in self.transducer.analyse(s)
+        )
 
 
 automaton_types = {"finite", "index", "lemma", "morph", "root"}

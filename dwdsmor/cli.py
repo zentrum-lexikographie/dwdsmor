@@ -7,6 +7,7 @@ from tabulate import tabulate
 from tqdm import tqdm
 
 import dwdsmor
+from dwdsmor.automaton import automaton_types
 from dwdsmor.log import configure_logging
 from dwdsmor.tag import (
     all_tags,
@@ -76,29 +77,38 @@ class Result(Traversal):
         return Result(**asdict(traversal), word=word)
 
     @staticmethod
-    def from_spec(spec: str, word: str):
-        return Result(**asdict(Traversal.parse(spec)), word=word)
+    def from_spec(spec: str, word: str, idx_to_int=False):
+        return Result(**asdict(Traversal.parse(spec, idx_to_int=idx_to_int)), word=word)
 
 
 def main():
     arg_parser = argparse.ArgumentParser(description="Traverse DWDSmor automata.")
+    arg_parser.add_argument("-d", "--automata-dir", type=str, help="automata directory")
     arg_parser.add_argument(
-        "-a", "--automata", type=str, help="Location of automata to use"
+        "-t", "--automaton-type", choices=automaton_types, help="automaton type"
     )
-    arg_parser.add_argument("-g", "--generate", help="Generate", action="store_true")
+    arg_parser.add_argument("-g", "--generate", help="generate", action="store_true")
     arg_parser.add_argument(
-        "-s", "--silent", help="Do not report progress", action="store_true"
+        "-s", "--silent", help="do not report progress", action="store_true"
     )
     arg_parser.add_argument("words", nargs="*")
     args = arg_parser.parse_args()
     configure_logging()
 
     results = []
-    automata = dwdsmor.automata(args.automata)
+    automata = dwdsmor.automata(args.automata_dir)
+
+    automaton = "index" if args.generate else "lemma"
+    automaton = args.automaton_type if args.automaton_type else automaton
+
+    visible_boundaries = "+" if automaton == "root" else ""
+    boundary_tag = " + " if automaton == "root" else None
+    join_tags = True if automaton == "root" else False
+    idx_to_int = True if automaton == "index" else False
 
     if args.generate:
-        analyzer = automata.analyzer("index")
-        generator = automata.generator("index")
+        analyzer = automata.analyzer(automaton)
+        generator = automata.generator(automaton)
         for word in args.words:
             lexeme_specs = set()
             for traversal in analyzer.analyze(word):
@@ -122,15 +132,23 @@ def main():
                     spec = lexeme_spec + "".join(f"<{tag}>" for tag in tagging)
                     for generated in generator.generate(spec):
                         infl_form = inflected(spec, generated.spec)
-                        local_results.append(Result.from_spec(spec, infl_form))
+                        local_results.append(
+                            Result.from_spec(spec, infl_form, idx_to_int=idx_to_int)
+                        )
                 local_results = sorted(local_results, key=lambda r: r.spec)
                 results.extend(local_results)
     else:
-        analyzer = automata.analyzer("lemma")
+        analyzer = automata.analyzer(automaton)
         for word in args.words:
             local_results = []
             max_boundaries = {}
-            for traversal in analyzer.analyze(word):
+            for traversal in analyzer.analyze(
+                word,
+                visible_boundaries=visible_boundaries,
+                boundary_tag=boundary_tag,
+                join_tags=join_tags,
+                idx_to_int=idx_to_int,
+            ):
                 with_boundaries = traversal.reparse(
                     visible_boundaries=boundary_tags, boundary_tag="|"
                 )

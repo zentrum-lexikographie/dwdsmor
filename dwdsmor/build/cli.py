@@ -17,7 +17,7 @@ from huggingface_hub import (
 )
 
 from .benchmark import coverage_headers, compute_coverage
-from ..automaton import automata
+from ..automaton import automata, automaton_types
 from ..log import configure_logging
 from ..tag import all_tags
 from ..traversal import Traversal
@@ -374,22 +374,29 @@ def push_to_hub(edition_dir, tag=None):
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser(description="Build DWDSmor.")
     arg_parser.add_argument(
-        "editions", help="Editions to build (all by default)", nargs="*"
+        "editions", help="editions to build (all by default)", nargs="*"
     )
     arg_parser.add_argument(
-        "--automaton", help="Automaton type to build (all by default)", action="append"
+        "-t",
+        "--automaton-type",
+        choices=automaton_types,
+        help="automaton type to build (all by default)",
+        action="append",
     )
     arg_parser.add_argument(
-        "--force", help="Force building (also current targets)", action="store_true"
+        "-m", "--with-metrics", help="measure UD/de-hdt coverage", action="store_true"
     )
     arg_parser.add_argument(
-        "--with-metrics", help="Measure UD/de-hdt coverage", action="store_true"
+        "-f",
+        "--force",
+        help="force building (also current targets)",
+        action="store_true",
     )
     arg_parser.add_argument(
-        "--release", help="Push automata to HF hub", action="store_true"
+        "--release", help="push automata to HF hub", action="store_true"
     )
     arg_parser.add_argument(
-        "--tag", help="Tag HF hub release with current version", action="store_true"
+        "--tag", help="tag HF hub release with current version", action="store_true"
     )
     args = arg_parser.parse_args()
     configure_logging()
@@ -398,10 +405,8 @@ if __name__ == "__main__":
         if len(args.editions or []) > 0
         else lexicon_dir.iterdir()
     )
-    automaton_types = (
-        tuple(args.automaton)
-        if args.automaton
-        else ("finite", "index", "lemma", "morph", "root")
+    build_automaton_types = (
+        tuple(args.automaton_type) if args.automaton_type else automaton_types
     )
     for edition_dir in editions:
         assert edition_dir.is_dir()
@@ -410,7 +415,7 @@ if __name__ == "__main__":
             logger.info("Skipping edition '%s' without sources", edition_name)
             continue
         edition_built = build_lexicon(edition_dir, force=args.force)
-        for automaton_type in automaton_types:
+        for automaton_type in build_automaton_types:
             edition_built = (
                 build_automaton(edition_dir, automaton_type, force=args.force)
                 or edition_built

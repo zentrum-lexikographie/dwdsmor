@@ -14,7 +14,8 @@ from tqdm import tqdm
 import dwdsmor
 from dwdsmor.log import configure_logging
 
-# mapping between DWDS and DWDSSmor part-of-speech categories
+
+# mapping between DWDS and DWDSmor part-of-speech categories
 pos_map = {
     "Adjektiv": {"ADJ"},
     "Adverb": {"ADV", "PTCL", "INTJ", "CONJ"},
