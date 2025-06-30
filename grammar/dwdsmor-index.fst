@@ -1,6 +1,6 @@
 % dwdsmor-index.fst
-% Version 9.0
-% Andreas Nolda 2025-05-09
+% Version 10.0
+% Andreas Nolda 2025-06-30
 
 #include "symbols.fst"
 #include "stemtype.fst"
@@ -46,7 +46,8 @@ $LEX$ = $LEX$ || $CleanupWF$
 
 % inflection
 
-$MORPH$ = $LEX$ $INFL$ || $InflFilter$
+$MORPH$ = ($LEX$ $INFL$ || $InflFilter$) | \
+          ($LEX$        || $NoInflFilter$)
 
 
 % inflection markers

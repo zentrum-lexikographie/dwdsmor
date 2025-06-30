@@ -1,3 +1,7 @@
+2025-06-30:
+
+* add part-of-speech subcategories to lexical entries, if any
+
 2025-06-12:
 
 * add support for proper names classified as nouns in DWDS articles

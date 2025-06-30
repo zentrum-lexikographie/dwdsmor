@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 14.1
-% Andreas Nolda 2025-06-19
+% Version 15.0
+% Andreas Nolda 2025-06-30
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -154,7 +154,8 @@ $LEX$ = $LEX$ || $CleanupWF$
 
 % inflection
 
-$MORPH$ = $LEX$ $INFL$ || $InflFilter$
+$MORPH$ = ($LEX$ $INFL$ || $InflFilter$) | \
+          ($LEX$        || $NoInflFilter$)
 
 
 % inflection markers

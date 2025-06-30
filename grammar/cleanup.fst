@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 5.7
-% Andreas Nolda 2025-06-18
+% Version 6.0
+% Andreas Nolda 2025-06-30
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -9,7 +9,7 @@
 
 % clean up inflection-related symbols on analysis level
 
-ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #category# \
+ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #cat# #subcat# \
             #stem-type# #suff# #origin# #orthinfo# <Abbr>] \
            <>:[#inflection# #auxiliary# <ge>]
 
@@ -18,9 +18,9 @@ $CleanupInflLv2$ = .*
 
 % clean up lemma and paradigm indices
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #category# \
-            #stem-type# #suff# #origin# #inflection# #auxiliary# #orthinfo# \
-            <Abbr><ge>] \
+ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #cat# \
+            #subcat# #stem-type# #suff# #origin# #inflection# #auxiliary# \
+            #orthinfo# <Abbr><ge>] \
            [#index#]:<>
 
 $CleanupIndex$ = .*
@@ -28,8 +28,9 @@ $CleanupIndex$ = .*
 
 % clean up lexical orthography markers
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #category# \
-            #stem-type# #suff# #origin# #inflection# #auxiliary# <Abbr><ge>] \
+ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #cat# \
+           #subcat# #stem-type# #suff# #origin# #inflection# #auxiliary# \
+           <Abbr><ge>] \
            [#orthinfo#]:<>
 
 $CleanupOrth$ = .*
@@ -54,7 +55,7 @@ $CleanupWBLv2$ = .*
 
 % clean up affixes in root lemmas on the analysis level
 
-ALPHABET = [#wf# #category# #stem-type# #index# #suff# #origin#]
+ALPHABET = [#wf# #cat# #subcat# #stem-type# #index# #suff# #origin#]
 
 $C$ =    [#char# #boundary-trigger#]
 $D$ = <>:[#char# #boundary-trigger#]
@@ -70,30 +71,30 @@ $CleanupAffRootLv2$ = ($Pref$* .* $O$* <Stem> <Abbr>? $C$+ .* $Suff$* .* <HB>? <
 % clean up word-formation-related symbols on analysis level
 
 ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #orthinfo#] \
-           <>:[#entry-type# #category# #stem-type# #suff# #origin# #wf# <Abbr>]
+           <>:[#entry-type# #stem-type# #suff# #origin# #wf# <Abbr>]
 
-$CleanupWFLv2$ = .*
+$CleanupWFLv2$ = (.* <>:[#cat#] <>:[#subcat#]?)* .* [#cat#] [#subcat#]? .*
 
 ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #wf# #orthinfo#] \
-           <>:[#entry-type# #category# #stem-type# #suff# #origin# <Abbr>]
+           <>:[#entry-type# #stem-type# #suff# #origin# <Abbr>]
 
-$CleanupWFRootLv2$ = .*
+$CleanupWFRootLv2$ = (.* <>:[#cat#] <>:[#subcat#]?)* .* [#cat#] [#subcat#]? .*
 
 
 % clean up word-formation-related symbols
 
 ALPHABET = [#char# #surface-trigger# #orth-trigger# #boundary-trigger# \
             #inflection# #auxiliary# <ge>] \
-           [#entry-type# #category# #stem-type# #suff# #origin# #wf# <Abbr>]:<>
+           [#entry-type# #cat# #subcat# #stem-type# #suff# #origin# #wf# <Abbr>]:<>
 
 $CleanupWF$ = .*
 
 
 % clean up categories on analysis level
 
-ALPHABET = [#entry-type# #char# #orth-trigger# #boundary-trigger# #index# \
-            #category# #stem-type# #origin# #wf# #orthinfo#] \
-           <>:[#part-of-speech# #nonfinite# #tense# #function# #auxiliary#]
+ALPHABET = [#entry-type# #char# #orth-trigger# #boundary-trigger# #index# #cat# \
+            #subcat# #stem-type# #origin# #wf# #orthinfo#] \
+           <>:[#nonfinite# #tense# #function# #auxiliary#]
 
 $CleanupCatLv2$ = .*
 

@@ -1,6 +1,6 @@
 % markers.fst
-% Version 9.0
-% Andreas Nolda 2025-06-13
+% Version 9.1
+% Andreas Nolda 2025-06-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -8,8 +8,8 @@
 
 % replace verb stem-final schwa with <e>
 
-ALPHABET = [#entry-type# #char# #boundary-trigger# #category# #stem-type# #suff# \
-            #origin# #inflection# #auxiliary# <Abbr><ge>] \
+ALPHABET = [#entry-type# #char# #boundary-trigger# #cat# #subcat# #stem-type# \
+            #suff# #origin# #inflection# #auxiliary# <Abbr><ge>] \
            e:<e>
 
 $SchwaTrigger$ = e <=> <e> ([lr] <V> .* [<VWeak-el-er><VInf-el-er><VPartPres-el-er><VPres-el-er><VImp-el-er>])

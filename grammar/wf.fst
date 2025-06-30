@@ -1,6 +1,6 @@
 % wf.fst
-% Version 12.1
-% Andreas Nolda 2025-06-19
+% Version 12.2
+% Andreas Nolda 2025-06-30
 
 #include "symbols.fst"
 
@@ -84,7 +84,7 @@ $Comp-hyph$   = <COMP>:<> <hyph>:<>
 % conversion restrictions
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
-            #boundary-trigger# #category# #stem-type# #suff# #origin# \
+            #boundary-trigger# #cat# #subcat# #stem-type# #suff# #origin# \
             #inflection# #auxiliary# <Abbr><ge>]
 
 % exclude "worden" as a conversion basis
@@ -96,8 +96,8 @@ $ConvFilter$ = $ConvRestrLex$
 
 % derivation restrictions
 
-ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #wf# \
-            #category# #stem-type# #suff# #origin# <Abbr>]
+ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #wf# #cat# #subcat# \
+            #stem-type# #suff# #origin# <Abbr>]
 
 $C$ = [#index# #stem-type# #origin#]
 
@@ -110,7 +110,7 @@ $DerRestrLexLv2$ = $DerRestrLexPrevLv2$
 $DerFilterLv2$ = $DerRestrLexLv2$
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
-            #boundary-trigger# #category# #stem-type# #suff# #origin# \
+            #boundary-trigger# #cat# #subcat# #stem-type# #suff# #origin# \
             #inflection# #auxiliary# <Abbr><ge>]
 
 $C$ = .

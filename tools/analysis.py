@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # analysis.py - analyse word forms with DWDSmor
-# Gregor Middell and Andreas Nolda 2025-06-18
+# Gregor Middell and Andreas Nolda 2025-06-30
 # with contributions by Adrien Barbaresi
 
 import argparse
@@ -21,7 +21,7 @@ import sfst_transduce
 import yaml
 
 
-version = 13.1
+version = 13.2
 
 
 ROOT_DIR = detect_root_dir()
@@ -34,6 +34,10 @@ TRANSDUCER2 = path.join(ROOT_DIR, "morph.a")
 BOUNDARIES_INFL = ["<~>"]
 
 BOUNDARIES_WF = ["<#>", "<->", "<|>"]
+
+
+POS = ["ADJ", "ART", "CARD", "DEM", "FRAC", "INDEF", "NN",
+       "NPROP", "ORD", "POSS", "PPRO", "REL", "V", "WPRO"]
 
 
 PROCESSES = ["COMP", "DER", "CONV"]
@@ -94,7 +98,8 @@ class Analysis(tuple):
             analysis = re.sub("<" + means + r"(?:\([^>]+\))?(?:\|[^>]+)?" + ">", "", analysis)
         analysis = re.sub(r"(?:<IDX[1-8]>)?", "", analysis)
         analysis = re.sub(r"(?:<PAR[1-8]>)?", "", analysis)
-        analysis = re.sub(r"<\+[^>]+>.*", "", analysis)
+        for pos in POS:
+            analysis = re.sub(f"<{pos}>(?:<[^>]+>)*", "", analysis)
         if analysis == r"\:":
             analysis = ":"
         return analysis
@@ -114,7 +119,7 @@ class Analysis(tuple):
 
     @cached_property
     def pos(self):
-        return next((tag[1:] for tag in self.tags if re.match(r"\+.", tag)), None)
+        return next((tag for tag in self.tags if tag in POS), None)
 
     @cached_property
     def process(self):

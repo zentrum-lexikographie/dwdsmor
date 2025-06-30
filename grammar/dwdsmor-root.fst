@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 11.1
-% Andreas Nolda 2025-06-19
+% Version 12.0
+% Andreas Nolda 2025-06-30
 
 #include "symbols.fst"
 #include "num.fst"
@@ -144,7 +144,8 @@ $LEX$ = $LEX$ || $CleanupWF$
 
 % inflection
 
-$MORPH$ = $LEX$ $INFL$ || $InflFilter$
+$MORPH$ = ($LEX$ $INFL$ || $InflFilter$) | \
+          ($LEX$        || $NoInflFilter$)
 
 
 % inflection markers

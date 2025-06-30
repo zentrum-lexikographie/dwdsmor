@@ -1,6 +1,6 @@
 % infl.fst
-% Version 12.7
-% Andreas Nolda 2025-06-20
+% Version 13.0
+% Andreas Nolda 2025-06-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -81,99 +81,99 @@ $NDatPlSuff_n$ = {<Nom><Pl>}:{}      | \
 % masculine nouns
 
 % Kopf, Kopf(e)s (measure noun)
-$NMasc0_es$ = {<+NN><Masc>}:{} $NSuff0_es$
+$NMasc0_es$ = {<Masc>}:{} $NSuff0_es$
 
 % Faden, Fadens (measure noun)
-$NMasc0_s$ = {<+NN><Masc>}:{} $NSuff0_s$
+$NMasc0_s$ = {<Masc>}:{} $NSuff0_s$
 
 % Fiskus, Fiskus
-$NMasc|Sg_0$ = {<+NN><Masc>}:{} $NGenSgSuff_0$
+$NMasc|Sg_0$ = {<Masc>}:{} $NGenSgSuff_0$
 
 % Abwasch, Abwasch(e)s; Glanz, Glanzes
-$NMasc|Sg_es$ = {<+NN><Masc>}:{} $NGenSgSuff_es$
+$NMasc|Sg_es$ = {<Masc>}:{} $NGenSgSuff_es$
 
 % Hagel, Hagels; Adel, Adels
-$NMasc|Sg_s$ = {<+NN><Masc>}:{} $NGenSgSuff_s$
+$NMasc|Sg_s$ = {<Masc>}:{} $NGenSgSuff_s$
 
 % Unglaube, Unglaubens
-$NMasc|Sg_ns$ = {<+NN><Masc>}:{} $NGenSgSuff_ns$
+$NMasc|Sg_ns$ = {<Masc>}:{} $NGenSgSuff_ns$
 
 % Bauten, Bauten (suppletive plural)
-$NMasc|Pl_0$ = {<+NN><Masc>}:{} $NDatPlSuff_0$
+$NMasc|Pl_0$ = {<Masc>}:{} $NDatPlSuff_0$
 
 % Revers, Revers, Revers, Revers
-$NMasc_0_0_0$ = {<+NN><Masc>}:{} $NGenSgSuff_0$ | \
-                {<+NN><Masc>}:{} $NDatPlSuff_0$
+$NMasc_0_0_0$ = {<Masc>}:{} $NGenSgSuff_0$ | \
+                {<Masc>}:{} $NDatPlSuff_0$
 
 % Dezember, Dezember, Dezember, Dezembern
-$NMasc_0_0_n$ = {<+NN><Masc>}:{} $NGenSgSuff_0$ | \
-                {<+NN><Masc>}:{} $NDatPlSuff_n$
+$NMasc_0_0_n$ = {<Masc>}:{} $NGenSgSuff_0$ | \
+                {<Masc>}:{} $NDatPlSuff_n$
 
 % Kodex, Kodex, Kodexe, Kodexen
-$NMasc_0_e_n$ = {<+NN><Masc>}:{}      $NGenSgSuff_0$ | \
-                {<+NN><Masc>}:{<SB>e} $NDatPlSuff_n$
+$NMasc_0_e_n$ = {<Masc>}:{}      $NGenSgSuff_0$ | \
+                {<Masc>}:{<SB>e} $NDatPlSuff_n$
 
 % Nimbus, Nimbus, Nimbusse, Nimbussen
 $NMasc_0_e_n~ss$ = $SS$ $NMasc_0_e_n$
 
 % Bypass, Bypass, Bypässe, Bypässen
-$NMasc_0_\$e_n$ = {<+NN><Masc>}:{}           $NGenSgSuff_0$ | \
-                  {<+NN><Masc>}:{<uml><SB>e} $NDatPlSuff_n$
+$NMasc_0_\$e_n$ = {<Masc>}:{}           $NGenSgSuff_0$ | \
+                  {<Masc>}:{<uml><SB>e} $NDatPlSuff_n$
 
 % Obelisk, Obelisk, Obelisken, Obelisken
-$NMasc_0_en_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_0$ | \
-                 {<+NN><Masc>}:{<SB>en} $NDatPlSuff_0$
+$NMasc_0_en_0$ = {<Masc>}:{}       $NGenSgSuff_0$ | \
+                 {<Masc>}:{<SB>en} $NDatPlSuff_0$
 
 % Kanon, Kanon, Kanones, Kanones; Sandwich, Sandwich, Sandwiches, Sandwiches (masculine)
-$NMasc_0_es_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_0$ | \
-                 {<+NN><Masc>}:{<SB>es} $NDatPlSuff_0$
+$NMasc_0_es_0$ = {<Masc>}:{}       $NGenSgSuff_0$ | \
+                 {<Masc>}:{<SB>es} $NDatPlSuff_0$
 
 % Embryo, Embryo, Embryonen, Embryonen (masculine)
-$NMasc_0_nen_0$ = {<+NN><Masc>}:{}        $NGenSgSuff_0$ | \
-                  {<+NN><Masc>}:{n<SB>en} $NDatPlSuff_0$
+$NMasc_0_nen_0$ = {<Masc>}:{}        $NGenSgSuff_0$ | \
+                  {<Masc>}:{n<SB>en} $NDatPlSuff_0$
 
 % Intercity, Intercity, Intercitys, Intercitys; Taxi, Taxi, Taxis, Taxis
-$NMasc_0_s_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_0$ | \
-                {<+NN><Masc>}:{<SB>s} $NDatPlSuff_0$
+$NMasc_0_s_0$ = {<Masc>}:{}      $NGenSgSuff_0$ | \
+                {<Masc>}:{<SB>s} $NDatPlSuff_0$
 
 % Signor, Signor, Signori, Signori
-$NMasc_0_i_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_0$ | \
-                {<+NN><Masc>}:{<SB>i} $NDatPlSuff_0$
+$NMasc_0_i_0$ = {<Masc>}:{}      $NGenSgSuff_0$ | \
+                {<Masc>}:{<SB>i} $NDatPlSuff_0$
 
 % Veda, Veda, Veden, Veden
-$NMasc_0_a/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
-                   {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NMasc_0_a/en_0$ = {<Masc>}:{}                   $NGenSgSuff_0$ | \
+                   {<Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Atlas, Atlas, Atlanten, Atlanten
-$NMasc_0_as/anten_0$ = {<+NN><Masc>}:{}                      $NGenSgSuff_0$ | \
-                       {<+NN><Masc>}:{<del(VC)|Pl>ant<SB>en} $NDatPlSuff_0$
+$NMasc_0_as/anten_0$ = {<Masc>}:{}                      $NGenSgSuff_0$ | \
+                       {<Masc>}:{<del(VC)|Pl>ant<SB>en} $NDatPlSuff_0$
 
 % Carabiniere, Carabiniere, Carabinieri, Carabinieri
-$NMasc_0_e/i_0$ = {<+NN><Masc>}:{}                  $NGenSgSuff_0$ | \
-                  {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NMasc_0_e/i_0$ = {<Masc>}:{}                  $NGenSgSuff_0$ | \
+                  {<Masc>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
 
 % Dens, Dens, Dentes, Dentes
-$NMasc_0_ens/entes_0$ = {<+NN><Masc>}:{}                      $NGenSgSuff_0$ | \
-                        {<+NN><Masc>}:{<del(VC)|Pl>ent<SB>es} $NDatPlSuff_0$
+$NMasc_0_ens/entes_0$ = {<Masc>}:{}                      $NGenSgSuff_0$ | \
+                        {<Masc>}:{<del(VC)|Pl>ent<SB>es} $NDatPlSuff_0$
 
 % Präses, Präses, Präsiden, Präsiden
-$NMasc_0_es/iden_0$ = {<+NN><Masc>}:{}                     $NGenSgSuff_0$ | \
-                      {<+NN><Masc>}:{<del(VC)|Pl>id<SB>en} $NDatPlSuff_0$
+$NMasc_0_es/iden_0$ = {<Masc>}:{}                     $NGenSgSuff_0$ | \
+                      {<Masc>}:{<del(VC)|Pl>id<SB>en} $NDatPlSuff_0$
 
 % Präses, Präses, Präsides, Präsides
-$NMasc_0_es/ides_0$ = {<+NN><Masc>}:{}                     $NGenSgSuff_0$ | \
-                      {<+NN><Masc>}:{<del(VC)|Pl>id<SB>es} $NDatPlSuff_0$
+$NMasc_0_es/ides_0$ = {<Masc>}:{}                     $NGenSgSuff_0$ | \
+                      {<Masc>}:{<del(VC)|Pl>id<SB>es} $NDatPlSuff_0$
 
 % Index, Index, Indizes, Indizes
-$NMasc_0_ex/izes_0$ = {<+NN><Masc>}:{}                     $NGenSgSuff_0$ | \
-                      {<+NN><Masc>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
+$NMasc_0_ex/izes_0$ = {<Masc>}:{}                     $NGenSgSuff_0$ | \
+                      {<Masc>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
 
 % Taxi, Taxi, Taxen, Taxen
 $NMasc_0_i/en_0$ = $NMasc_0_a/en_0$
 
 % Instrumentalis, Instrumentalis, Instrumentales, Instrumentales
-$NMasc_0_is/es_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
-                    {<+NN><Masc>}:{<del(VC)|Pl><SB>es} $NDatPlSuff_0$
+$NMasc_0_is/es_0$ = {<Masc>}:{}                   $NGenSgSuff_0$ | \
+                    {<Masc>}:{<del(VC)|Pl><SB>es} $NDatPlSuff_0$
 
 % Appendix, Appendix, Appendizes, Appendizes
 $NMasc_0_ix/izes_0$ = $NMasc_0_ex/izes_0$
@@ -188,164 +188,164 @@ $NMasc_0_o/i_0$ = $NMasc_0_e/i_0$
 $NMasc_0_os/en_0$ = $NMasc_0_a/en_0$
 
 % Heros, Heros, Heroen, Heroen
-$NMasc_0_os/oen_0$ = {<+NN><Masc>}:{}                    $NGenSgSuff_0$ | \
-                     {<+NN><Masc>}:{<del(VC)|Pl>o<SB>en} $NDatPlSuff_0$
+$NMasc_0_os/oen_0$ = {<Masc>}:{}                    $NGenSgSuff_0$ | \
+                     {<Masc>}:{<del(VC)|Pl>o<SB>en} $NDatPlSuff_0$
 
 % Kustos, Kustos, Kustoden, Kustoden
-$NMasc_0_os/oden_0$ = {<+NN><Masc>}:{}                     $NGenSgSuff_0$ | \
-                      {<+NN><Masc>}:{<del(VC)|Pl>od<SB>en} $NDatPlSuff_0$
+$NMasc_0_os/oden_0$ = {<Masc>}:{}                     $NGenSgSuff_0$ | \
+                      {<Masc>}:{<del(VC)|Pl>od<SB>en} $NDatPlSuff_0$
 
 % Topos, Topos, Topoi, Topoi
-$NMasc_0_os/oi_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
-                    {<+NN><Masc>}:{<del(VC)|Pl>o<SB>i} $NDatPlSuff_0$
+$NMasc_0_os/oi_0$ = {<Masc>}:{}                   $NGenSgSuff_0$ | \
+                    {<Masc>}:{<del(VC)|Pl>o<SB>i} $NDatPlSuff_0$
 
 % Kursus, Kursus, Kurse, Kursen
-$NMasc_0_us/e_n$ = {<+NN><Masc>}:{}                  $NGenSgSuff_0$ | \
-                   {<+NN><Masc>}:{<del(VC)|Pl><SB>e} $NDatPlSuff_n$
+$NMasc_0_us/e_n$ = {<Masc>}:{}                  $NGenSgSuff_0$ | \
+                   {<Masc>}:{<del(VC)|Pl><SB>e} $NDatPlSuff_n$
 
 % Virus, Virus, Viren, Viren
 $NMasc_0_us/en_0$ = $NMasc_0_a/en_0$
 
 % Kaktus, Kaktus, Kakteen, Kakteen
-$NMasc_0_us/een_0$ = {<+NN><Masc>}:{}                    $NGenSgSuff_0$ | \
-                     {<+NN><Masc>}:{<del(VC)|Pl>e<SB>en} $NDatPlSuff_0$
+$NMasc_0_us/een_0$ = {<Masc>}:{}                    $NGenSgSuff_0$ | \
+                     {<Masc>}:{<del(VC)|Pl>e<SB>en} $NDatPlSuff_0$
 
 % Kanonikus, Kanonikus, Kanoniker, Kanonikern
-$NMasc_0_us/er_n$ = {<+NN><Masc>}:{}                   $NGenSgSuff_0$ | \
-                    {<+NN><Masc>}:{<del(VC)|Pl><SB>er} $NDatPlSuff_n$
+$NMasc_0_us/er_n$ = {<Masc>}:{}                   $NGenSgSuff_0$ | \
+                    {<Masc>}:{<del(VC)|Pl><SB>er} $NDatPlSuff_n$
 
 % Intimus, Intimus, Intimi, Intimi
 $NMasc_0_us/i_0$ = $NMasc_0_e/i_0$
 
 % Dinosaurus, Dinosaurus, Dinosaurier, Dinosauriern
-$NMasc_0_us/ier_n$ = {<+NN><Masc>}:{}                    $NGenSgSuff_0$ | \
-                     {<+NN><Masc>}:{<del(VC)|Pl>i<SB>er} $NDatPlSuff_n$
+$NMasc_0_us/ier_n$ = {<Masc>}:{}                    $NGenSgSuff_0$ | \
+                     {<Masc>}:{<del(VC)|Pl>i<SB>er} $NDatPlSuff_n$
 
 % Larynx, Larynx, Laryngen, Laryngen
-$NMasc_0_ynx/yngen_0$ = {<+NN><Masc>}:{}                      $NGenSgSuff_0$ | \
-                        {<+NN><Masc>}:{<del(VC)|Pl>yng<SB>en} $NDatPlSuff_0$
+$NMasc_0_ynx/yngen_0$ = {<Masc>}:{}                      $NGenSgSuff_0$ | \
+                        {<Masc>}:{<del(VC)|Pl>yng<SB>en} $NDatPlSuff_0$
 
 % Tag, Tag(e)s, Tage, Tagen; Kodex, Kodexes, Kodexe, Kodexen
-$NMasc_es_e_n$ = {<+NN><Masc>}:{}      $NGenSgSuff_es$ | \
-                 {<+NN><Masc>}:{<SB>e} $NDatPlSuff_n$
+$NMasc_es_e_n$ = {<Masc>}:{}      $NGenSgSuff_es$ | \
+                 {<Masc>}:{<SB>e} $NDatPlSuff_n$
 
 % Bus, Busses, Busse, Bussen
 $NMasc_es_e_n~ss$ = $SS$ $NMasc_es_e_n$
 
 % Arzt, Arzt(e)s, Ärzte, Ärzten; Kopf, Kopf(e)s, Köpfe, Köpfen
-$NMasc_es_\$e_n$ = {<+NN><Masc>}:{}           $NGenSgSuff_es$ | \
-                   {<+NN><Masc>}:{<uml><SB>e} $NDatPlSuff_n$
+$NMasc_es_\$e_n$ = {<Masc>}:{}           $NGenSgSuff_es$ | \
+                   {<Masc>}:{<uml><SB>e} $NDatPlSuff_n$
 
 % Geist, Geist(e)s, Geister, Geistern
-$NMasc_es_er_n$ = {<+NN><Masc>}:{}       $NGenSgSuff_es$ | \
-                  {<+NN><Masc>}:{<SB>er} $NDatPlSuff_n$
+$NMasc_es_er_n$ = {<Masc>}:{}       $NGenSgSuff_es$ | \
+                  {<Masc>}:{<SB>er} $NDatPlSuff_n$
 
 % Gott, Gott(e)s, Götter, Göttern
-$NMasc_es_\$er_n$ = {<+NN><Masc>}:{}            $NGenSgSuff_es$ | \
-                    {<+NN><Masc>}:{<uml><SB>er} $NDatPlSuff_n$
+$NMasc_es_\$er_n$ = {<Masc>}:{}            $NGenSgSuff_es$ | \
+                    {<Masc>}:{<uml><SB>er} $NDatPlSuff_n$
 
 % Fleck, Fleck(e)s, Flecken, Flecken
-$NMasc_es_en_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_es$ | \
-                  {<+NN><Masc>}:{<SB>en} $NDatPlSuff_0$
+$NMasc_es_en_0$ = {<Masc>}:{}       $NGenSgSuff_es$ | \
+                  {<Masc>}:{<SB>en} $NDatPlSuff_0$
 
 % Bugfix, Bugfix(e)s, Bugfixes, Bugfixes
-$NMasc_es_es_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_es$ | \
-                  {<+NN><Masc>}:{<SB>es} $NDatPlSuff_0$
+$NMasc_es_es_0$ = {<Masc>}:{}       $NGenSgSuff_es$ | \
+                  {<Masc>}:{<SB>es} $NDatPlSuff_0$
 
 % Park, Park(e)s, Parks, Parks
-$NMasc_es_s_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_es$ | \
-                 {<+NN><Masc>}:{<SB>s} $NDatPlSuff_0$
+$NMasc_es_s_0$ = {<Masc>}:{}      $NGenSgSuff_es$ | \
+                 {<Masc>}:{<SB>s} $NDatPlSuff_0$
 
 % Atlas, Atlasses, Atlanten, Atlanten
-$NMasc_es_as/anten_0~ss$ = $SS$ {<+NN><Masc>}:{}                      $NGenSgSuff_es$ | \
-                                {<+NN><Masc>}:{<del(VC)|Pl>ant<SB>en} $NDatPlSuff_0$
+$NMasc_es_as/anten_0~ss$ = $SS$ {<Masc>}:{}                      $NGenSgSuff_es$ | \
+                                {<Masc>}:{<del(VC)|Pl>ant<SB>en} $NDatPlSuff_0$
 
 % Index, Indexes, Indizes, Indizes
-$NMasc_es_ex/izes_0$ = {<+NN><Masc>}:{}                     $NGenSgSuff_es$ | \
-                       {<+NN><Masc>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
+$NMasc_es_ex/izes_0$ = {<Masc>}:{}                     $NGenSgSuff_es$ | \
+                       {<Masc>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
 
 % Appendix, Appendixes, Appendizes, Appendizes
 $NMasc_es_ix/izes_0$ = $NMasc_es_ex/izes_0$
 
 % Virus, Virusses, Viren, Viren
-$NMasc_es_us/en_0~ss$ = $SS$ {<+NN><Masc>}:{}                   $NGenSgSuff_es$ | \
-                             {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NMasc_es_us/en_0~ss$ = $SS$ {<Masc>}:{}                   $NGenSgSuff_es$ | \
+                             {<Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Kaktus, Kaktusses, Kakteen, Kakteen
-$NMasc_es_us/een_0~ss$ = $SS$ {<+NN><Masc>}:{}                    $NGenSgSuff_es$ | \
-                              {<+NN><Masc>}:{<del(VC)|Pl>e<SB>en} $NDatPlSuff_0$
+$NMasc_es_us/een_0~ss$ = $SS$ {<Masc>}:{}                    $NGenSgSuff_es$ | \
+                              {<Masc>}:{<del(VC)|Pl>e<SB>en} $NDatPlSuff_0$
 
 % Intimus, Intimusse, Intimi, Intimi
-$NMasc_es_us/i_0~ss$ = $SS$ {<+NN><Masc>}:{}                  $NGenSgSuff_es$ | \
-                            {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NMasc_es_us/i_0~ss$ = $SS$ {<Masc>}:{}                  $NGenSgSuff_es$ | \
+                            {<Masc>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
 
 % Wagen, Wagens, Wagen, Wagen
-$NMasc_s_0_0$ = {<+NN><Masc>}:{} $NGenSgSuff_s$ | \
-                {<+NN><Masc>}:{} $NDatPlSuff_0$
+$NMasc_s_0_0$ = {<Masc>}:{} $NGenSgSuff_s$ | \
+                {<Masc>}:{} $NDatPlSuff_0$
 
 % Garten, Gartens, Gärten, Gärten; Schaden, Schadens, Schäden; Faden, Fadens, Fäden, Fäden
-$NMasc_s_\$_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_s$ | \
-                 {<+NN><Masc>}:{<uml>} $NDatPlSuff_0$
+$NMasc_s_\$_0$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
+                 {<Masc>}:{<uml>} $NDatPlSuff_0$
 
 % Engel, Engels, Engel, Engeln; Dezember, Dezembers, Dezember, Dezembern
-$NMasc_s_0_n$ = {<+NN><Masc>}:{} $NGenSgSuff_s$ | \
-                {<+NN><Masc>}:{} $NDatPlSuff_n$
+$NMasc_s_0_n$ = {<Masc>}:{} $NGenSgSuff_s$ | \
+                {<Masc>}:{} $NDatPlSuff_n$
 
 % Apfel, Apfels, Äpfel, Äpfeln; Vater, Vaters, Väter, Vätern
-$NMasc_s_\$_n$ = {<+NN><Masc>}:{}      $NGenSgSuff_s$ | \
-                 {<+NN><Masc>}:{<uml>} $NDatPlSuff_n$
+$NMasc_s_\$_n$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
+                 {<Masc>}:{<uml>} $NDatPlSuff_n$
 
 % Drilling, Drillings, Drillinge, Drillingen
-$NMasc_s_e_n$ = {<+NN><Masc>}:{}      $NGenSgSuff_s$ | \
-                {<+NN><Masc>}:{<SB>e} $NDatPlSuff_n$
+$NMasc_s_e_n$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
+                {<Masc>}:{<SB>e} $NDatPlSuff_n$
 
 % Tenor, Tenors, Tenöre, Tenören
-$NMasc_s_\$e_n$ = {<+NN><Masc>}:{}           $NGenSgSuff_s$ | \
-                  {<+NN><Masc>}:{<uml><SB>e} $NDatPlSuff_n$
+$NMasc_s_\$e_n$ = {<Masc>}:{}           $NGenSgSuff_s$ | \
+                  {<Masc>}:{<uml><SB>e} $NDatPlSuff_n$
 
 % Ski, Skis, Skier, Skiern
-$NMasc_s_er_n$ = {<+NN><Masc>}:{}       $NGenSgSuff_s$ | \
-                 {<+NN><Masc>}:{<SB>er} $NDatPlSuff_n$
+$NMasc_s_er_n$ = {<Masc>}:{}       $NGenSgSuff_s$ | \
+                 {<Masc>}:{<SB>er} $NDatPlSuff_n$
 
 % Irrtum, Irrtums, Irrtümer, Irrtümern
-$NMasc_s_\$er_n$ = {<+NN><Masc>}:{}            $NGenSgSuff_s$ | \
-                   {<+NN><Masc>}:{<uml><SB>er} $NDatPlSuff_n$
+$NMasc_s_\$er_n$ = {<Masc>}:{}            $NGenSgSuff_s$ | \
+                   {<Masc>}:{<uml><SB>er} $NDatPlSuff_n$
 
 % Zeh, Zehs, Zehen, Zehen
-$NMasc_s_en_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_s$ | \
-                 {<+NN><Masc>}:{<SB>en} $NDatPlSuff_0$
+$NMasc_s_en_0$ = {<Masc>}:{}       $NGenSgSuff_s$ | \
+                 {<Masc>}:{<SB>en} $NDatPlSuff_0$
 
 % Kanon, Kanons, Kanones, Kanones
-$NMasc_s_es_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_s$ | \
-               {<+NN><Masc>}:{<SB>es} $NDatPlSuff_0$
+$NMasc_s_es_0$ = {<Masc>}:{}       $NGenSgSuff_s$ | \
+               {<Masc>}:{<SB>es} $NDatPlSuff_0$
 
 % Muskel, Muskels, Muskeln, Muskeln; See, Sees, Seen, Seen
-$NMasc_s_n_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_s$ | \
-                {<+NN><Masc>}:{<SB>n} $NDatPlSuff_0$
+$NMasc_s_n_0$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
+                {<Masc>}:{<SB>n} $NDatPlSuff_0$
 
 % Versal, Versals, Versalien, Versalien
-$NMasc_s_ien_0$ = {<+NN><Masc>}:{}        $NGenSgSuff_s$ | \
-                  {<+NN><Masc>}:{i<SB>en} $NDatPlSuff_0$
+$NMasc_s_ien_0$ = {<Masc>}:{}        $NGenSgSuff_s$ | \
+                  {<Masc>}:{i<SB>en} $NDatPlSuff_0$
 
 % Embryo, Embryos, Embryonen, Embryonen (masculine)
-$NMasc_s_nen_0$ = {<+NN><Masc>}:{}        $NGenSgSuff_s$ | \
-                  {<+NN><Masc>}:{n<SB>en} $NDatPlSuff_0$
+$NMasc_s_nen_0$ = {<Masc>}:{}        $NGenSgSuff_s$ | \
+                  {<Masc>}:{n<SB>en} $NDatPlSuff_0$
 
 % Intercity, Intercitys, Intercitys, Intercitys; Taxi, Taxis, Taxis, Taxis
-$NMasc_s_s_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_s$ | \
-                {<+NN><Masc>}:{<SB>s} $NDatPlSuff_0$
+$NMasc_s_s_0$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
+                {<Masc>}:{<SB>s} $NDatPlSuff_0$
 
 % Veda, Vedas, Veden, Veden
-$NMasc_s_a/en_0$ = {<+NN><Masc>}:{}                   $NGenSgSuff_s$ | \
-                   {<+NN><Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NMasc_s_a/en_0$ = {<Masc>}:{}                   $NGenSgSuff_s$ | \
+                   {<Masc>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Carabiniere, Carabinieres, Carabinieri, Carabinieri
-$NMasc_s_e/i_0$ = {<+NN><Masc>}:{}                  $NGenSgSuff_s$ | \
-                  {<+NN><Masc>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NMasc_s_e/i_0$ = {<Masc>}:{}                  $NGenSgSuff_s$ | \
+                  {<Masc>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
 
 % Pater, Paters, Patres, Patres
-$NMasc_s_er/res_0$ = {<+NN><Masc>}:{}                    $NGenSgSuff_s$ | \
-                     {<+NN><Masc>}:{<del(VC)|Pl>r<SB>es} $NDatPlSuff_0$
+$NMasc_s_er/res_0$ = {<Masc>}:{}                    $NGenSgSuff_s$ | \
+                     {<Masc>}:{<del(VC)|Pl>r<SB>es} $NDatPlSuff_0$
 
 % Taxi, Taxis, Taxen, Taxen
 $NMasc_s_i/en_0$ = $NMasc_s_a/en_0$
@@ -357,155 +357,155 @@ $NMasc_s_o/en_0$ = $NMasc_s_a/en_0$
 $NMasc_s_o/i_0$ = $NMasc_s_e/i_0$
 
 % Fels, Felsen, Felsen, Felsen; Mensch, Menschen, Menschen, Menschen
-$NMasc_en_en_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_en$ | \
-                  {<+NN><Masc>}:{<SB>en} $NDatPlSuff_0$
+$NMasc_en_en_0$ = {<Masc>}:{}       $NGenSgSuff_en$ | \
+                  {<Masc>}:{<SB>en} $NDatPlSuff_0$
 
 % Affe, Affen, Affen, Affen; Junge, Jungen, Jungen, Jungen
-$NMasc_n_n_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_n$ | \
-                {<+NN><Masc>}:{<SB>n} $NDatPlSuff_0$
+$NMasc_n_n_0$ = {<Masc>}:{}      $NGenSgSuff_n$ | \
+                {<Masc>}:{<SB>n} $NDatPlSuff_0$
 
 % Junge, Jungen, Jungens, Jungens
-$NMasc_n_ns_0$ = {<+NN><Masc>}:{}       $NGenSgSuff_n$ | \
-                 {<+NN><Masc>}:{<SB>ns} $NDatPlSuff_0$
+$NMasc_n_ns_0$ = {<Masc>}:{}       $NGenSgSuff_n$ | \
+                 {<Masc>}:{<SB>ns} $NDatPlSuff_0$
 
 % Junge, Jungen, Jungs, Jungs
-$NMasc_n_e/s_0$ = {<+NN><Masc>}:{}                  $NGenSgSuff_n$ | \
-                  {<+NN><Masc>}:{<del(VC)|Pl><SB>s} $NDatPlSuff_0$
+$NMasc_n_e/s_0$ = {<Masc>}:{}                  $NGenSgSuff_n$ | \
+                  {<Masc>}:{<del(VC)|Pl><SB>s} $NDatPlSuff_0$
 
 % Name, Namens, Namen, Namen; Buchstabe, Buchstabens, Buchstaben, Buchstaben
-$NMasc_ns_n_0$ = {<+NN><Masc>}:{}      $NGenSgSuff_ns$ | \
-                 {<+NN><Masc>}:{<SB>n} $NDatPlSuff_0$
+$NMasc_ns_n_0$ = {<Masc>}:{}      $NGenSgSuff_ns$ | \
+                 {<Masc>}:{<SB>n} $NDatPlSuff_0$
 
 % Schade, Schadens, Schäden, Schäden
-$NMasc_ns_\$n_0$ = {<+NN><Masc>}:{}           $NGenSgSuff_ns$ | \
-                   {<+NN><Masc>}:{<uml><SB>n} $NDatPlSuff_0$
+$NMasc_ns_\$n_0$ = {<Masc>}:{}           $NGenSgSuff_ns$ | \
+                   {<Masc>}:{<uml><SB>n} $NDatPlSuff_0$
 
 % Beamte(r); Gefreite(r)
-$NMasc-Adj$ = {<+NN><Masc><Nom><Sg><St>}:{<SB>er} | \
-              {<+NN><Masc><Acc><Sg><St>}:{<SB>en} | \
-              {<+NN><Masc><Dat><Sg><St>}:{<SB>em} | \
-              {<+NN><Masc><Gen><Sg><St>}:{<SB>en} | \
-              {<+NN><Masc><Nom><Pl><St>}:{<SB>e}  | \
-              {<+NN><Masc><Acc><Pl><St>}:{<SB>e}  | \
-              {<+NN><Masc><Dat><Pl><St>}:{<SB>en} | \
-              {<+NN><Masc><Gen><Pl><St>}:{<SB>er} | \
-              {<+NN><Masc><Nom><Sg><Wk>}:{<SB>e}  | \
-              {<+NN><Masc><Acc><Sg><Wk>}:{<SB>en} | \
-              {<+NN><Masc><Dat><Sg><Wk>}:{<SB>en} | \
-              {<+NN><Masc><Gen><Sg><Wk>}:{<SB>en} | \
-              {<+NN><Masc><Nom><Pl><Wk>}:{<SB>en} | \
-              {<+NN><Masc><Acc><Pl><Wk>}:{<SB>en} | \
-              {<+NN><Masc><Dat><Pl><Wk>}:{<SB>en} | \
-              {<+NN><Masc><Gen><Pl><Wk>}:{<SB>en}
+$NMasc-Adj$ = {<Masc><Nom><Sg><St>}:{<SB>er} | \
+              {<Masc><Acc><Sg><St>}:{<SB>en} | \
+              {<Masc><Dat><Sg><St>}:{<SB>em} | \
+              {<Masc><Gen><Sg><St>}:{<SB>en} | \
+              {<Masc><Nom><Pl><St>}:{<SB>e}  | \
+              {<Masc><Acc><Pl><St>}:{<SB>e}  | \
+              {<Masc><Dat><Pl><St>}:{<SB>en} | \
+              {<Masc><Gen><Pl><St>}:{<SB>er} | \
+              {<Masc><Nom><Sg><Wk>}:{<SB>e}  | \
+              {<Masc><Acc><Sg><Wk>}:{<SB>en} | \
+              {<Masc><Dat><Sg><Wk>}:{<SB>en} | \
+              {<Masc><Gen><Sg><Wk>}:{<SB>en} | \
+              {<Masc><Nom><Pl><Wk>}:{<SB>en} | \
+              {<Masc><Acc><Pl><Wk>}:{<SB>en} | \
+              {<Masc><Dat><Pl><Wk>}:{<SB>en} | \
+              {<Masc><Gen><Pl><Wk>}:{<SB>en}
 
 
 % neuter nouns
 
 % Paar, Paar(e)s (measure noun)
-$NNeut0_es$ = {<+NN><Neut>}:{} $NSuff0_es$
+$NNeut0_es$ = {<Neut>}:{} $NSuff0_es$
 
 % Kilo, Kilo(s) (measure noun)
-$NNeut0_s$ = {<+NN><Neut>}:{} $NSuff0_s$
+$NNeut0_s$ = {<Neut>}:{} $NSuff0_s$
 
 % Abseits, Abseits
-$NNeut|Sg_0$ = {<+NN><Neut>}:{} $NGenSgSuff_0$
+$NNeut|Sg_0$ = {<Neut>}:{} $NGenSgSuff_0$
 
 % Ausland, Ausland(e)s
-$NNeut|Sg_es$ = {<+NN><Neut>}:{} $NGenSgSuff_es$
+$NNeut|Sg_es$ = {<Neut>}:{} $NGenSgSuff_es$
 
 % Verständnis, Verständnisses
-$NNeut|Sg_es~ss$ = $SS$ {<+NN><Neut>}:{} $NGenSgSuff_es$
+$NNeut|Sg_es~ss$ = $SS$ {<Neut>}:{} $NGenSgSuff_es$
 
 % Abitur, Abiturs
-$NNeut|Sg_s$ = {<+NN><Neut>}:{} $NGenSgSuff_s$
+$NNeut|Sg_s$ = {<Neut>}:{} $NGenSgSuff_s$
 
 % Pluraliatantum, Pluraliatantum (suppletive plural)
-$NNeut|Pl_0$ = {<+NN><Neut>}:{} $NDatPlSuff_0$
+$NNeut|Pl_0$ = {<Neut>}:{} $NDatPlSuff_0$
 
 % Viecher, Viechern (suppletive plural)
-$NNeut|Pl_n$ = {<+NN><Neut>}:{} $NDatPlSuff_n$
+$NNeut|Pl_n$ = {<Neut>}:{} $NDatPlSuff_n$
 
 % Relais, Relais, Relais, Relais; Quiz, Quiz, Quiz, Quiz
-$NNeut_0_0_0$ = {<+NN><Neut>}:{} $NGenSgSuff_0$ | \
-                {<+NN><Neut>}:{} $NDatPlSuff_0$
+$NNeut_0_0_0$ = {<Neut>}:{} $NGenSgSuff_0$ | \
+                {<Neut>}:{} $NDatPlSuff_0$
 
 % Gefolge, Gefolge, Gefolge, Gefolgen
-$NNeut_0_0_n$ = {<+NN><Neut>}:{} $NGenSgSuff_0$ | \
-                {<+NN><Neut>}:{} $NDatPlSuff_n$
+$NNeut_0_0_n$ = {<Neut>}:{} $NGenSgSuff_0$ | \
+                {<Neut>}:{} $NDatPlSuff_n$
 
 % Bakschisch, Bakschisch, Bakschische, Bakschischen
-$NNeut_0_e_n$ = {<+NN><Neut>}:{}      $NGenSgSuff_0$ | \
-                {<+NN><Neut>}:{<SB>e} $NDatPlSuff_n$
+$NNeut_0_e_n$ = {<Neut>}:{}      $NGenSgSuff_0$ | \
+                {<Neut>}:{<SB>e} $NDatPlSuff_n$
 
 % Rhinozeros, Rhinozeros, Rhinozerosse, Rhinozerossen
 $NNeut_0_e_n~ss$ = $SS$ $NNeut_0_e_n$
 
 % Remis, Remis, Remisen, Remisen
-$NNeut_0_en_0$ = {<+NN><Neut>}:{}       $NGenSgSuff_0$ | \
-                 {<+NN><Neut>}:{<SB>en} $NDatPlSuff_0$
+$NNeut_0_en_0$ = {<Neut>}:{}       $NGenSgSuff_0$ | \
+                 {<Neut>}:{<SB>en} $NDatPlSuff_0$
 
 % Sandwich, Sandwich, Sandwiches, Sandwiches (neuter)
-$NNeut_0_es_0$ = {<+NN><Neut>}:{}       $NGenSgSuff_0$ | \
-                 {<+NN><Neut>}:{<SB>es} $NDatPlSuff_0$
+$NNeut_0_es_0$ = {<Neut>}:{}       $NGenSgSuff_0$ | \
+                 {<Neut>}:{<SB>es} $NDatPlSuff_0$
 
 % Embryo, Embryo, Embryonen, Embryonen (neuter)
-$NNeut_0_nen_0$ = {<+NN><Neut>}:{}        $NGenSgSuff_0$ | \
-                  {<+NN><Neut>}:{n<SB>en} $NDatPlSuff_0$
+$NNeut_0_nen_0$ = {<Neut>}:{}        $NGenSgSuff_0$ | \
+                  {<Neut>}:{n<SB>en} $NDatPlSuff_0$
 
 % College, College, Colleges, Colleges
-$NNeut_0_s_0$ = {<+NN><Neut>}:{}      $NGenSgSuff_0$ | \
-                {<+NN><Neut>}:{<SB>s} $NDatPlSuff_0$
+$NNeut_0_s_0$ = {<Neut>}:{}      $NGenSgSuff_0$ | \
+                {<Neut>}:{<SB>s} $NDatPlSuff_0$
 
 % Komma, Komma, Kommata, Kommata
-$NNeut_0_a/ata_0$ = {<+NN><Neut>}:{}       $NGenSgSuff_0$ | \
-                    {<+NN><Neut>}:{t<SB>a} $NDatPlSuff_0$
+$NNeut_0_a/ata_0$ = {<Neut>}:{}       $NGenSgSuff_0$ | \
+                    {<Neut>}:{t<SB>a} $NDatPlSuff_0$
 
 % Dogma, Dogma, Dogmen, Dogmen
-$NNeut_0_a/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_0$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_0_a/en_0$ = {<Neut>}:{}                   $NGenSgSuff_0$ | \
+                   {<Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Determinans, Determinans, Determinantien, Determinantien
-$NNeut_0_ans/antien_0$ = {<+NN><Neut>}:{}                       $NGenSgSuff_0$ | \
-                         {<+NN><Neut>}:{<del(VC)|Pl>anti<SB>en} $NDatPlSuff_0$
+$NNeut_0_ans/antien_0$ = {<Neut>}:{}                       $NGenSgSuff_0$ | \
+                         {<Neut>}:{<del(VC)|Pl>anti<SB>en} $NDatPlSuff_0$
 
 % Stimulans, Stimulans, Stimulanzien, Stimulanzien
-$NNeut_0_ans/anzien_0$ = {<+NN><Neut>}:{}                       $NGenSgSuff_0$ | \
-                         {<+NN><Neut>}:{<del(VC)|Pl>anzi<SB>en} $NDatPlSuff_0$
+$NNeut_0_ans/anzien_0$ = {<Neut>}:{}                       $NGenSgSuff_0$ | \
+                         {<Neut>}:{<del(VC)|Pl>anzi<SB>en} $NDatPlSuff_0$
 
 % Ricercare, Ricercare, Ricercari, Ricercari
-$NNeut_0_e/i_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_0$ | \
-                  {<+NN><Neut>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NNeut_0_e/i_0$ = {<Neut>}:{}                  $NGenSgSuff_0$ | \
+                  {<Neut>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
 
 % Numerale, Numerale, Numeralia, Numeralia
-$NNeut_0_e/ia_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_0$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>ia} $NDatPlSuff_0$
+$NNeut_0_e/ia_0$ = {<Neut>}:{}                   $NGenSgSuff_0$ | \
+                   {<Neut>}:{<del(VC)|Pl><SB>ia} $NDatPlSuff_0$
 
 % Numerale, Numerale, Numeralien, Numeralien
-$NNeut_0_e/ien_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_0$ | \
-                    {<+NN><Neut>}:{<del(VC)|Pl><SB>ien} $NDatPlSuff_0$
+$NNeut_0_e/ien_0$ = {<Neut>}:{}                    $NGenSgSuff_0$ | \
+                    {<Neut>}:{<del(VC)|Pl><SB>ien} $NDatPlSuff_0$
 
 % Requiem, Requiem, Requien, Requien
 $NNeut_0_em/en_0$ = $NNeut_0_a/en_0$
 
 % Examen, Examen, Examina, Examina
-$NNeut_0_en/ina_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_0$ | \
-                     {<+NN><Neut>}:{<del(VC)|Pl>in<SB>a} $NDatPlSuff_0$
+$NNeut_0_en/ina_0$ = {<Neut>}:{}                    $NGenSgSuff_0$ | \
+                     {<Neut>}:{<del(VC)|Pl>in<SB>a} $NDatPlSuff_0$
 
 % Akzidens, Akzidens, Akzidentia, Akzidentia
-$NNeut_0_ens/entia_0$ = {<+NN><Neut>}:{}                      $NGenSgSuff_0$ | \
-                        {<+NN><Neut>}:{<del(VC)|Pl>enti<SB>a} $NDatPlSuff_0$
+$NNeut_0_ens/entia_0$ = {<Neut>}:{}                      $NGenSgSuff_0$ | \
+                        {<Neut>}:{<del(VC)|Pl>enti<SB>a} $NDatPlSuff_0$
 
 % Akzidens, Akzidens, Akzidentien, Akzidentien
-$NNeut_0_ens/entien_0$ = {<+NN><Neut>}:{}                       $NGenSgSuff_0$ | \
-                         {<+NN><Neut>}:{<del(VC)|Pl>enti<SB>en} $NDatPlSuff_0$
+$NNeut_0_ens/entien_0$ = {<Neut>}:{}                       $NGenSgSuff_0$ | \
+                         {<Neut>}:{<del(VC)|Pl>enti<SB>en} $NDatPlSuff_0$
 
 % Akzidens, Akzidens, Akzidenzien, Akzidenzien
-$NNeut_0_ens/enzien_0$ = {<+NN><Neut>}:{}                       $NGenSgSuff_0$ | \
-                         {<+NN><Neut>}:{<del(VC)|Pl>enzi<SB>en} $NDatPlSuff_0$
+$NNeut_0_ens/enzien_0$ = {<Neut>}:{}                       $NGenSgSuff_0$ | \
+                         {<Neut>}:{<del(VC)|Pl>enzi<SB>en} $NDatPlSuff_0$
 
 % Simplex, Simplex, Simplizia, Simplizia
-$NNeut_0_ex/izia_0$ = {<+NN><Neut>}:{}                     $NGenSgSuff_0$ | \
-                      {<+NN><Neut>}:{<del(VC)|Pl>iz<SB>ia} $NDatPlSuff_0$
+$NNeut_0_ex/izia_0$ = {<Neut>}:{}                     $NGenSgSuff_0$ | \
+                      {<Neut>}:{<del(VC)|Pl>iz<SB>ia} $NDatPlSuff_0$
 
 % Taxi, Taxi, Taxen, Taxen
 $NNeut_0_i/en_0$ = $NNeut_0_a/en_0$
@@ -517,8 +517,8 @@ $NNeut_0_o/en_0$ = $NNeut_0_a/en_0$
 $NNeut_0_o/i_0$ = $NNeut_0_e/i_0$
 
 % Oxymoron, Oxymoron, Oxymora, Oxymora
-$NNeut_0_on/a_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_0$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>a} $NDatPlSuff_0$
+$NNeut_0_on/a_0$ = {<Neut>}:{}                  $NGenSgSuff_0$ | \
+                   {<Neut>}:{<del(VC)|Pl><SB>a} $NDatPlSuff_0$
 
 % Stadion, Stadion, Stadien, Stadien
 $NNeut_0_on/en_0$ = $NNeut_0_a/en_0$
@@ -536,126 +536,126 @@ $NNeut_0_um/en_0$ = $NNeut_0_a/en_0$
 $NNeut_0_us/en_0$ = $NNeut_0_a/en_0$
 
 % Genus, Genus, Genera, Genera
-$NNeut_0_us/era_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_0$ | \
-                     {<+NN><Neut>}:{<del(VC)|Pl>er<SB>a} $NDatPlSuff_0$
+$NNeut_0_us/era_0$ = {<Neut>}:{}                    $NGenSgSuff_0$ | \
+                     {<Neut>}:{<del(VC)|Pl>er<SB>a} $NDatPlSuff_0$
 
 % Tempus, Tempus, Tempora, Tempora
-$NNeut_0_us/ora_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_0$ | \
-                     {<+NN><Neut>}:{<del(VC)|Pl>or<SB>a} $NDatPlSuff_0$
+$NNeut_0_us/ora_0$ = {<Neut>}:{}                    $NGenSgSuff_0$ | \
+                     {<Neut>}:{<del(VC)|Pl>or<SB>a} $NDatPlSuff_0$
 
 % Spiel, Spiel(e)s, Spiele, Spielen; Bakschisch, Bakschisch(e)s, Bakschische, Bakschischen
-$NNeut_es_e_n$ = {<+NN><Neut>}:{}      $NGenSgSuff_es$ | \
-                 {<+NN><Neut>}:{<SB>e} $NDatPlSuff_n$
+$NNeut_es_e_n$ = {<Neut>}:{}      $NGenSgSuff_es$ | \
+                 {<Neut>}:{<SB>e} $NDatPlSuff_n$
 
 % Zeugnis, Zeugnisses, Zeugnisse, Zeugnissen; Rhinozeros, Rhinozerosses, Rhinozerosse, Rhinozerossen
 $NNeut_es_e_n~ss$ = $SS$ $NNeut_es_e_n$
 
 % Quiz, Quizzes, Quizze, Quizzen (coll.)
-$NNeut_es_e_n~zz$ = $ZZ$ {<+NN><Neut>}:{}      $NGenSgNonStSuff_es$ | \
-                    $ZZ$ {<+NN><Neut>}:{<SB>e} $NDatPlSuff_n$ {<NonSt>}:{}
+$NNeut_es_e_n~zz$ = $ZZ$ {<Neut>}:{}      $NGenSgNonStSuff_es$ | \
+                    $ZZ$ {<Neut>}:{<SB>e} $NDatPlSuff_n$ {<NonSt>}:{}
 
 % Floß, Floßes, Flöße, Flößen
-$NNeut_es_\$e_n$ = {<+NN><Neut>}:{}           $NGenSgSuff_es$ | \
-                   {<+NN><Neut>}:{<uml><SB>e} $NDatPlSuff_n$
+$NNeut_es_\$e_n$ = {<Neut>}:{}           $NGenSgSuff_es$ | \
+                   {<Neut>}:{<uml><SB>e} $NDatPlSuff_n$
 
 % Schild, Schild(e)s, Schilder, Schildern
-$NNeut_es_er_n$ = {<+NN><Neut>}:{}       $NGenSgSuff_es$ | \
-                  {<+NN><Neut>}:{<SB>er} $NDatPlSuff_n$
+$NNeut_es_er_n$ = {<Neut>}:{}       $NGenSgSuff_es$ | \
+                  {<Neut>}:{<SB>er} $NDatPlSuff_n$
 
 % Buch, Buch(e)s, Bücher, Büchern
-$NNeut_es_\$er_n$ = {<+NN><Neut>}:{}            $NGenSgSuff_es$ | \
-                    {<+NN><Neut>}:{<uml><SB>er} $NDatPlSuff_n$
+$NNeut_es_\$er_n$ = {<Neut>}:{}            $NGenSgSuff_es$ | \
+                    {<Neut>}:{<uml><SB>er} $NDatPlSuff_n$
 
 % Bett, Bett(e)s, Betten, Betten
-$NNeut_es_en_0$ = {<+NN><Neut>}:{}       $NGenSgSuff_es$ | \
-                {<+NN><Neut>}:{<SB>en} $NDatPlSuff_0$
+$NNeut_es_en_0$ = {<Neut>}:{}       $NGenSgSuff_es$ | \
+                {<Neut>}:{<SB>en} $NDatPlSuff_0$
 
 % Match, Match(e)s, Matches, Matches
-$NNeut_es_es_0$ = {<+NN><Neut>}:{}       $NGenSgSuff_es$ | \
-                  {<+NN><Neut>}:{<SB>es} $NDatPlSuff_0$
+$NNeut_es_es_0$ = {<Neut>}:{}       $NGenSgSuff_es$ | \
+                  {<Neut>}:{<SB>es} $NDatPlSuff_0$
 
 % Tablett, Tablett(e)s, Tabletts, Tabletts
-$NNeut_es_s_0$ = {<+NN><Neut>}:{}      $NGenSgSuff_es$ | \
-                 {<+NN><Neut>}:{<SB>s} $NDatPlSuff_0$
+$NNeut_es_s_0$ = {<Neut>}:{}      $NGenSgSuff_es$ | \
+                 {<Neut>}:{<SB>s} $NDatPlSuff_0$
 
 % Indiz, Indizes, Indizien, Indizien
-$NNeut_es_ien_0$ = {<+NN><Neut>}:{}        $NGenSgSuff_es$ | \
-                   {<+NN><Neut>}:{i<SB>en} $NDatPlSuff_0$
+$NNeut_es_ien_0$ = {<Neut>}:{}        $NGenSgSuff_es$ | \
+                   {<Neut>}:{i<SB>en} $NDatPlSuff_0$
 
 % Simplex, Simplexes, Simplizia, Simplizia
-$NNeut_es_ex/izia_0$ = {<+NN><Neut>}:{}                     $NGenSgSuff_es$ | \
-                       {<+NN><Neut>}:{<del(VC)|Pl>iz<SB>ia} $NDatPlSuff_0$
+$NNeut_es_ex/izia_0$ = {<Neut>}:{}                     $NGenSgSuff_es$ | \
+                       {<Neut>}:{<del(VC)|Pl>iz<SB>ia} $NDatPlSuff_0$
 
 % Almosen, Almosens, Almosen, Almosen
-$NNeut_s_0_0$ = {<+NN><Neut>}:{} $NGenSgSuff_s$ | \
-                {<+NN><Neut>}:{} $NDatPlSuff_0$
+$NNeut_s_0_0$ = {<Neut>}:{} $NGenSgSuff_s$ | \
+                {<Neut>}:{} $NDatPlSuff_0$
 
 % Feuer, Feuers, Feuer, Feuern; Gefolge, Gefolges, Gefolge, Gefolgen
-$NNeut_s_0_n$ = {<+NN><Neut>}:{} $NGenSgSuff_s$ | \
-                {<+NN><Neut>}:{} $NDatPlSuff_n$
+$NNeut_s_0_n$ = {<Neut>}:{} $NGenSgSuff_s$ | \
+                {<Neut>}:{} $NDatPlSuff_n$
 
 % Kloster, Klosters, Klöster, Klöstern
-$NNeut_s_\$_n$ = {<+NN><Neut>}:{}      $NGenSgSuff_s$ | \
-                 {<+NN><Neut>}:{<uml>} $NDatPlSuff_n$
+$NNeut_s_\$_n$ = {<Neut>}:{}      $NGenSgSuff_s$ | \
+                 {<Neut>}:{<uml>} $NDatPlSuff_n$
 
 % Reflexiv, Reflexivs, Reflexiva, Reflexiva
-$NNeut_s_a_0$ = {<+NN><Neut>}:{}      $NGenSgSuff_s$ | \
-                {<+NN><Neut>}:{<SB>a} $NDatPlSuff_0$
+$NNeut_s_a_0$ = {<Neut>}:{}      $NGenSgSuff_s$ | \
+                {<Neut>}:{<SB>a} $NDatPlSuff_0$
 
 % Dreieck, Dreiecks, Dreiecke, Dreiecken
-$NNeut_s_e_n$ = {<+NN><Neut>}:{}      $NGenSgSuff_s$ | \
-                {<+NN><Neut>}:{<SB>e} $NDatPlSuff_n$
+$NNeut_s_e_n$ = {<Neut>}:{}      $NGenSgSuff_s$ | \
+                {<Neut>}:{<SB>e} $NDatPlSuff_n$
 
 % Spital, Spitals, Spitäler, Spitälern
-$NNeut_s_\$er_n$ = {<+NN><Neut>}:{}            $NGenSgSuff_s$ | \
-                   {<+NN><Neut>}:{<uml><SB>er} $NDatPlSuff_n$
+$NNeut_s_\$er_n$ = {<Neut>}:{}            $NGenSgSuff_s$ | \
+                   {<Neut>}:{<uml><SB>er} $NDatPlSuff_n$
 
 % Juwel, Juwels, Juwelen, Juwelen
-$NNeut_s_en_0$ = {<+NN><Neut>}:{}       $NGenSgSuff_s$ | \
-                 {<+NN><Neut>}:{<SB>en} $NDatPlSuff_0$
+$NNeut_s_en_0$ = {<Neut>}:{}       $NGenSgSuff_s$ | \
+                 {<Neut>}:{<SB>en} $NDatPlSuff_0$
 
 % Auge, Auges, Augen, Augen
-$NNeut_s_n_0$ = {<+NN><Neut>}:{}      $NGenSgSuff_s$ | \
-                {<+NN><Neut>}:{<SB>n} $NDatPlSuff_0$
+$NNeut_s_n_0$ = {<Neut>}:{}      $NGenSgSuff_s$ | \
+                {<Neut>}:{<SB>n} $NDatPlSuff_0$
 
 % Embryo, Embryos, Embryonen, Embryonen (neuter)
-$NNeut_s_nen_0$ = {<+NN><Neut>}:{}        $NGenSgSuff_s$ | \
-                  {<+NN><Neut>}:{n<SB>en} $NDatPlSuff_0$
+$NNeut_s_nen_0$ = {<Neut>}:{}        $NGenSgSuff_s$ | \
+                  {<Neut>}:{n<SB>en} $NDatPlSuff_0$
 
 % Adverb, Adverbs, Adverbien, Adverbien
-$NNeut_s_ien_0$ = {<+NN><Neut>}:{}        $NGenSgSuff_s$ | \
-                  {<+NN><Neut>}:{i<SB>en} $NDatPlSuff_0$
+$NNeut_s_ien_0$ = {<Neut>}:{}        $NGenSgSuff_s$ | \
+                  {<Neut>}:{i<SB>en} $NDatPlSuff_0$
 
 % Sofa, Sofas, Sofas, Sofas; College, Colleges, Colleges, Colleges
-$NNeut_s_s_0$ = {<+NN><Neut>}:{}      $NGenSgSuff_s$ | \
-                {<+NN><Neut>}:{<SB>s} $NDatPlSuff_0$
+$NNeut_s_s_0$ = {<Neut>}:{}      $NGenSgSuff_s$ | \
+                {<Neut>}:{<SB>s} $NDatPlSuff_0$
 
 % Komma, Kommas, Kommata, Kommata
-$NNeut_s_a/ata_0$ = {<+NN><Neut>}:{}       $NGenSgSuff_s$ | \
-                    {<+NN><Neut>}:{t<SB>a} $NDatPlSuff_0$
+$NNeut_s_a/ata_0$ = {<Neut>}:{}       $NGenSgSuff_s$ | \
+                    {<Neut>}:{t<SB>a} $NDatPlSuff_0$
 
 % Dogma, Dogmas, Dogmen, Dogmen
-$NNeut_s_a/en_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_s$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NNeut_s_a/en_0$ = {<Neut>}:{}                   $NGenSgSuff_s$ | \
+                   {<Neut>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Ricercare, Ricercares, Ricercari, Ricercari
-$NNeut_s_e/i_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_s$ | \
-                  {<+NN><Neut>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NNeut_s_e/i_0$ = {<Neut>}:{}                  $NGenSgSuff_s$ | \
+                  {<Neut>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
 
 % Numerale, Numerales, Numeralia, Numeralia
-$NNeut_s_e/ia_0$ = {<+NN><Neut>}:{}                   $NGenSgSuff_s$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>ia} $NDatPlSuff_0$
+$NNeut_s_e/ia_0$ = {<Neut>}:{}                   $NGenSgSuff_s$ | \
+                   {<Neut>}:{<del(VC)|Pl><SB>ia} $NDatPlSuff_0$
 
 % Numerale, Numerales, Numeralien, Numeralien
-$NNeut_s_e/ien_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_s$ | \
-                    {<+NN><Neut>}:{<del(VC)|Pl><SB>ien} $NDatPlSuff_0$
+$NNeut_s_e/ien_0$ = {<Neut>}:{}                    $NGenSgSuff_s$ | \
+                    {<Neut>}:{<del(VC)|Pl><SB>ien} $NDatPlSuff_0$
 
 % Requiem, Requiems, Requien, Requien
 $NNeut_s_em/en_0$ = $NNeut_s_a/en_0$
 
 % Examen, Examens, Examina, Examina
-$NNeut_s_en/ina_0$ = {<+NN><Neut>}:{}                    $NGenSgSuff_s$ | \
-                     {<+NN><Neut>}:{<del(VC)|Pl>in<SB>a} $NDatPlSuff_0$
+$NNeut_s_en/ina_0$ = {<Neut>}:{}                    $NGenSgSuff_s$ | \
+                     {<Neut>}:{<del(VC)|Pl>in<SB>a} $NDatPlSuff_0$
 
 % Taxi, Taxis, Taxen, Taxen
 $NNeut_s_i/en_0$ = $NNeut_s_a/en_0$
@@ -667,8 +667,8 @@ $NNeut_s_o/en_0$ = $NNeut_s_a/en_0$
 $NNeut_s_o/i_0$ = $NNeut_s_e/i_0$
 
 % Oxymoron, Oxymorons, Oxymora, Oxymora
-$NNeut_s_on/a_0$ = {<+NN><Neut>}:{}                  $NGenSgSuff_s$ | \
-                   {<+NN><Neut>}:{<del(VC)|Pl><SB>a} $NDatPlSuff_0$
+$NNeut_s_on/a_0$ = {<Neut>}:{}                  $NGenSgSuff_s$ | \
+                   {<Neut>}:{<del(VC)|Pl><SB>a} $NDatPlSuff_0$
 
 % Stadion, Stadions, Stadien, Stadien
 $NNeut_s_on/en_0$ = $NNeut_s_a/en_0$
@@ -680,244 +680,244 @@ $NNeut_s_um/a_0$ = $NNeut_s_on/a_0$
 $NNeut_s_um/en_0$ = $NNeut_s_a/en_0$
 
 % Herz, Herzens, Herzen, Herzen
-$NNeut_ens_en_0$ = {<+NN><Neut>}:{}       $NGenSgSuff_ens$ | \
-                   {<+NN><Neut>}:{<SB>en} $NDatPlSuff_0$
+$NNeut_ens_en_0$ = {<Neut>}:{}       $NGenSgSuff_ens$ | \
+                   {<Neut>}:{<SB>en} $NDatPlSuff_0$
 
 % Innere(s)
-$NNeut-Inner$ = {<+NN><Neut><Nom><Sg><St>}:{<SB>es} | \
-                {<+NN><Neut><Acc><Sg><St>}:{<SB>es} | \
-                {<+NN><Neut><Dat><Sg><St>}:{<SB>em} | \
-                {<+NN><Neut><Gen><Sg><St>}:{<SB>en} | \
-                {<+NN><Neut><Gen><Sg><St>}:{<SB>n}  | \
-                {<+NN><Neut><Nom><Sg><Wk>}:{<SB>e}  | \
-                {<+NN><Neut><Acc><Sg><Wk>}:{<SB>e}  | \
-                {<+NN><Neut><Dat><Sg><Wk>}:{<SB>en} | \
-                {<+NN><Neut><Dat><Sg><Wk>}:{<SB>n}  | \
-                {<+NN><Neut><Gen><Sg><Wk>}:{<SB>en} | \
-                {<+NN><Neut><Gen><Sg><Wk>}:{<SB>n}
+$NNeut-Inner$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
+                {<Neut><Acc><Sg><St>}:{<SB>es} | \
+                {<Neut><Dat><Sg><St>}:{<SB>em} | \
+                {<Neut><Gen><Sg><St>}:{<SB>en} | \
+                {<Neut><Gen><Sg><St>}:{<SB>n}  | \
+                {<Neut><Nom><Sg><Wk>}:{<SB>e}  | \
+                {<Neut><Acc><Sg><Wk>}:{<SB>e}  | \
+                {<Neut><Dat><Sg><Wk>}:{<SB>en} | \
+                {<Neut><Dat><Sg><Wk>}:{<SB>n}  | \
+                {<Neut><Gen><Sg><Wk>}:{<SB>en} | \
+                {<Neut><Gen><Sg><Wk>}:{<SB>n}
 
 % Deutsche(s)
-$NNeut-Adj|Sg$ = {<+NN><Neut><Nom><Sg><St>}:{<SB>es} | \
-                 {<+NN><Neut><Acc><Sg><St>}:{<SB>es} | \
-                 {<+NN><Neut><Dat><Sg><St>}:{<SB>em} | \
-                 {<+NN><Neut><Gen><Sg><St>}:{<SB>en} | \
-                 {<+NN><Neut><Nom><Sg><Wk>}:{<SB>e}  | \
-                 {<+NN><Neut><Acc><Sg><Wk>}:{<SB>e}  | \
-                 {<+NN><Neut><Dat><Sg><Wk>}:{<SB>en} | \
-                 {<+NN><Neut><Gen><Sg><Wk>}:{<SB>en}
+$NNeut-Adj|Sg$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
+                 {<Neut><Acc><Sg><St>}:{<SB>es} | \
+                 {<Neut><Dat><Sg><St>}:{<SB>em} | \
+                 {<Neut><Gen><Sg><St>}:{<SB>en} | \
+                 {<Neut><Nom><Sg><Wk>}:{<SB>e}  | \
+                 {<Neut><Acc><Sg><Wk>}:{<SB>e}  | \
+                 {<Neut><Dat><Sg><Wk>}:{<SB>en} | \
+                 {<Neut><Gen><Sg><Wk>}:{<SB>en}
 
 % Junge(s) ('young animal')
-$NNeut-Adj$ = {<+NN><Neut><Nom><Sg><St>}:{<SB>es} | \
-              {<+NN><Neut><Acc><Sg><St>}:{<SB>es} | \
-              {<+NN><Neut><Dat><Sg><St>}:{<SB>em} | \
-              {<+NN><Neut><Gen><Sg><St>}:{<SB>en} | \
-              {<+NN><Neut><Nom><Pl><St>}:{<SB>e}  | \
-              {<+NN><Neut><Acc><Pl><St>}:{<SB>e}  | \
-              {<+NN><Neut><Dat><Pl><St>}:{<SB>en} | \
-              {<+NN><Neut><Gen><Pl><St>}:{<SB>er} | \
-              {<+NN><Neut><Nom><Sg><Wk>}:{<SB>e}  | \
-              {<+NN><Neut><Acc><Sg><Wk>}:{<SB>e}  | \
-              {<+NN><Neut><Dat><Sg><Wk>}:{<SB>en} | \
-              {<+NN><Neut><Gen><Sg><Wk>}:{<SB>en} | \
-              {<+NN><Neut><Nom><Pl><Wk>}:{<SB>en} | \
-              {<+NN><Neut><Acc><Pl><Wk>}:{<SB>en} | \
-              {<+NN><Neut><Dat><Pl><Wk>}:{<SB>en} | \
-              {<+NN><Neut><Gen><Pl><Wk>}:{<SB>en}
+$NNeut-Adj$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
+              {<Neut><Acc><Sg><St>}:{<SB>es} | \
+              {<Neut><Dat><Sg><St>}:{<SB>em} | \
+              {<Neut><Gen><Sg><St>}:{<SB>en} | \
+              {<Neut><Nom><Pl><St>}:{<SB>e}  | \
+              {<Neut><Acc><Pl><St>}:{<SB>e}  | \
+              {<Neut><Dat><Pl><St>}:{<SB>en} | \
+              {<Neut><Gen><Pl><St>}:{<SB>er} | \
+              {<Neut><Nom><Sg><Wk>}:{<SB>e}  | \
+              {<Neut><Acc><Sg><Wk>}:{<SB>e}  | \
+              {<Neut><Dat><Sg><Wk>}:{<SB>en} | \
+              {<Neut><Gen><Sg><Wk>}:{<SB>en} | \
+              {<Neut><Nom><Pl><Wk>}:{<SB>en} | \
+              {<Neut><Acc><Pl><Wk>}:{<SB>en} | \
+              {<Neut><Dat><Pl><Wk>}:{<SB>en} | \
+              {<Neut><Gen><Pl><Wk>}:{<SB>en}
 
 
 % feminine nouns
 
 % Hand (measure noun)
-$NFem0$ = {<+NN><Fem>}:{} $NSuff0$
+$NFem0$ = {<Fem>}:{} $NSuff0$
 
 % Wut, Wut
-$NFem|Sg_0$ = {<+NN><Fem>}:{} $NGenSgSuff_0$
+$NFem|Sg_0$ = {<Fem>}:{} $NGenSgSuff_0$
 
 % Anchorwomen, Anchorwomen (suppletive plural)
-$NFem|Pl_0$ = {<+NN><Fem>}:{} $NDatPlSuff_0$
+$NFem|Pl_0$ = {<Fem>}:{} $NDatPlSuff_0$
 
 % Ananas, Ananas, Ananas, Ananas
-$NFem_0_0_0$ = {<+NN><Fem>}:{} $NGenSgSuff_0$ | \
-               {<+NN><Fem>}:{} $NDatPlSuff_0$
+$NFem_0_0_0$ = {<Fem>}:{} $NGenSgSuff_0$ | \
+               {<Fem>}:{} $NDatPlSuff_0$
 
 % Randale, Randale, Randale, Randalen
-$NFem_0_0_n$ = {<+NN><Fem>}:{} $NGenSgSuff_0$ | \
-               {<+NN><Fem>}:{} $NDatPlSuff_n$
+$NFem_0_0_n$ = {<Fem>}:{} $NGenSgSuff_0$ | \
+               {<Fem>}:{} $NDatPlSuff_n$
 
 % Mutter, Mutter, Mütter, Müttern
-$NFem_0_\$_n$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
-                {<+NN><Fem>}:{<uml>} $NDatPlSuff_n$
+$NFem_0_\$_n$ = {<Fem>}:{}      $NGenSgSuff_0$ | \
+                {<Fem>}:{<uml>} $NDatPlSuff_n$
 
 % Vita, Vita, Vitae, Vitae
-$NFem_0_e_0$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
-               {<+NN><Fem>}:{<SB>e} $NDatPlSuff_0$
+$NFem_0_e_0$ = {<Fem>}:{}      $NGenSgSuff_0$ | \
+               {<Fem>}:{<SB>e} $NDatPlSuff_0$
 
 % Drangsal, Drangsal, Drangsale, Drangsalen
-$NFem_0_e_n$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
-               {<+NN><Fem>}:{<SB>e} $NDatPlSuff_n$
+$NFem_0_e_n$ = {<Fem>}:{}      $NGenSgSuff_0$ | \
+               {<Fem>}:{<SB>e} $NDatPlSuff_n$
 
 % Kenntnis, Kenntnis, Kenntnisse, Kenntnissen
 $NFem_0_e_n~ss$ = $SS$ $NFem_0_e_n$
 
 % Wand, Wand, Wände, Wänden; Hand, Hand, Hände, Händen
-$NFem_0_\$e_n$ = {<+NN><Fem>}:{}           $NGenSgSuff_0$ | \
-                 {<+NN><Fem>}:{<uml><SB>e} $NDatPlSuff_n$
+$NFem_0_\$e_n$ = {<Fem>}:{}           $NGenSgSuff_0$ | \
+                 {<Fem>}:{<uml><SB>e} $NDatPlSuff_n$
 
 % Frau, Frau, Frauen, Frauen; Arbeit, Arbeit, Arbeiten, Arbeiten
-$NFem_0_en_0$ = {<+NN><Fem>}:{}       $NGenSgSuff_0$ | \
-                {<+NN><Fem>}:{<SB>en} $NDatPlSuff_0$
+$NFem_0_en_0$ = {<Fem>}:{}       $NGenSgSuff_0$ | \
+                {<Fem>}:{<SB>en} $NDatPlSuff_0$
 
 % Werkstatt, Werkstatt, Werkstätten, Werkstätten
-$NFem_0_\$en_0$ = {<+NN><Fem>}:{}            $NGenSgSuff_0$ | \
-                  {<+NN><Fem>}:{<uml><SB>en} $NDatPlSuff_0$
+$NFem_0_\$en_0$ = {<Fem>}:{}            $NGenSgSuff_0$ | \
+                  {<Fem>}:{<uml><SB>en} $NDatPlSuff_0$
 
 % Hilfe, Hilfe, Hilfen, Hilfen; Gnade, Gnade, Gnaden, Gnaden
-$NFem_0_n_0$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
-               {<+NN><Fem>}:{<SB>n} $NDatPlSuff_0$
+$NFem_0_n_0$ = {<Fem>}:{}      $NGenSgSuff_0$ | \
+               {<Fem>}:{<SB>n} $NDatPlSuff_0$
 
 % Smartwatch, Smartwatch, Smartwatches, Smartwatches
-$NFem_0_es_0$ = {<+NN><Fem>}:{}       $NGenSgSuff_0$ | \
-                {<+NN><Fem>}:{<SB>es} $NDatPlSuff_0$
+$NFem_0_es_0$ = {<Fem>}:{}       $NGenSgSuff_0$ | \
+                {<Fem>}:{<SB>es} $NDatPlSuff_0$
 
 % Pizza, Pizza, Pizzas, Pizzas; City, City, Citys, Citys
-$NFem_0_s_0$ = {<+NN><Fem>}:{}      $NGenSgSuff_0$ | \
-               {<+NN><Fem>}:{<SB>s} $NDatPlSuff_0$
+$NFem_0_s_0$ = {<Fem>}:{}      $NGenSgSuff_0$ | \
+               {<Fem>}:{<SB>s} $NDatPlSuff_0$
 
 % Vigil, Vigil, Vigilien, Vigilien
-$NFem_0_ien_0$ = {<+NN><Fem>}:{}        $NGenSgSuff_0$ | \
-                 {<+NN><Fem>}:{i<SB>en} $NDatPlSuff_0$
+$NFem_0_ien_0$ = {<Fem>}:{}        $NGenSgSuff_0$ | \
+                 {<Fem>}:{i<SB>en} $NDatPlSuff_0$
 
 % Laudatio, Laudatio, Laudationes, Laudationes
-$NFem_0_nes_0$ = {<+NN><Fem>}:{}        $NGenSgSuff_0$ | \
-                 {<+NN><Fem>}:{n<SB>es} $NDatPlSuff_0$
+$NFem_0_nes_0$ = {<Fem>}:{}        $NGenSgSuff_0$ | \
+                 {<Fem>}:{n<SB>es} $NDatPlSuff_0$
 
 % Pizza, Pizza, Pizze, Pizze
-$NFem_0_a/e_0$ = {<+NN><Fem>}:{}                  $NGenSgSuff_0$ | \
-                 {<+NN><Fem>}:{<del(VC)|Pl><SB>e} $NDatPlSuff_0$
+$NFem_0_a/e_0$ = {<Fem>}:{}                  $NGenSgSuff_0$ | \
+                 {<Fem>}:{<del(VC)|Pl><SB>e} $NDatPlSuff_0$
 
 % Pizza, Pizza, Pizzen, Pizzen; Firma, Firma, Firmen, Firmen
-$NFem_0_a/en_0$ = {<+NN><Fem>}:{}                   $NGenSgSuff_0$ | \
-                  {<+NN><Fem>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
+$NFem_0_a/en_0$ = {<Fem>}:{}                   $NGenSgSuff_0$ | \
+                  {<Fem>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
 % Spirans, Spirans, Spiranten, Spiranten
-$NFem_0_ans/anten_0$ = {<+NN><Fem>}:{}                      $NGenSgSuff_0$ | \
-                       {<+NN><Fem>}:{<del(VC)|Pl>ant<SB>en} $NDatPlSuff_0$
+$NFem_0_ans/anten_0$ = {<Fem>}:{}                      $NGenSgSuff_0$ | \
+                       {<Fem>}:{<del(VC)|Pl>ant<SB>en} $NDatPlSuff_0$
 
 % Phalanx, Phalanx, Phalangen, Phalangen
-$NFem_0_anx/angen_0$ = {<+NN><Fem>}:{}                      $NGenSgSuff_0$ | \
-                       {<+NN><Fem>}:{<del(VC)|Pl>ang<SB>en} $NDatPlSuff_0$
+$NFem_0_anx/angen_0$ = {<Fem>}:{}                      $NGenSgSuff_0$ | \
+                       {<Fem>}:{<del(VC)|Pl>ang<SB>en} $NDatPlSuff_0$
 
 % Minestrone, Minestrone, Minestroni, Minestroni
-$NFem_0_e/i_0$ = {<+NN><Fem>}:{}                  $NGenSgSuff_0$ | \
-                 {<+NN><Fem>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
+$NFem_0_e/i_0$ = {<Fem>}:{}                  $NGenSgSuff_0$ | \
+                 {<Fem>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$
 
 % Spezies, Spezies, Spezien, Spezien
 $NFem_0_es/en_0$ = $NFem_0_a/en_0$
 
 % Lex, Lex, Leges, Leges
-$NFem_0_ex/eges_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
-                     {<+NN><Fem>}:{<del(VC)|Pl>eg<SB>es} $NDatPlSuff_0$
+$NFem_0_ex/eges_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
+                     {<Fem>}:{<del(VC)|Pl>eg<SB>es} $NDatPlSuff_0$
 
 % Basis, Basis, Basen, Basen
 $NFem_0_is/en_0$ = $NFem_0_a/en_0$
 
 % Apsis, Apsis, Apsiden, Apsiden
-$NFem_0_is/iden_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
-                     {<+NN><Fem>}:{<del(VC)|Pl>id<SB>en} $NDatPlSuff_0$
+$NFem_0_is/iden_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
+                     {<Fem>}:{<del(VC)|Pl>id<SB>en} $NDatPlSuff_0$
 
 % Glottis, Glottis, Glottides, Glottides
-$NFem_0_is/ides_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
-                     {<+NN><Fem>}:{<del(VC)|Pl>id<SB>es} $NDatPlSuff_0$
+$NFem_0_is/ides_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
+                     {<Fem>}:{<del(VC)|Pl>id<SB>es} $NDatPlSuff_0$
 
 % Helix, Helix, Helices, Helices
-$NFem_0_ix/ices_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
-                     {<+NN><Fem>}:{<del(VC)|Pl>ic<SB>es} $NDatPlSuff_0$
+$NFem_0_ix/ices_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
+                     {<Fem>}:{<del(VC)|Pl>ic<SB>es} $NDatPlSuff_0$
 
 % Matrix, Matrix, Matrizen, Matrizen
-$NFem_0_ix/izen_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
-                     {<+NN><Fem>}:{<del(VC)|Pl>iz<SB>en} $NDatPlSuff_0$
+$NFem_0_ix/izen_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
+                     {<Fem>}:{<del(VC)|Pl>iz<SB>en} $NDatPlSuff_0$
 
 % Radix, Radix, Radizes, Radizes
-$NFem_0_ix/izes_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
-                     {<+NN><Fem>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
+$NFem_0_ix/izes_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
+                     {<Fem>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
 
 % Dos, Dos, Dotes, Dotes
-$NFem_0_os/otes_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
-                     {<+NN><Fem>}:{<del(VC)|Pl>ot<SB>es} $NDatPlSuff_0$
+$NFem_0_os/otes_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
+                     {<Fem>}:{<del(VC)|Pl>ot<SB>es} $NDatPlSuff_0$
 
 % Vox, Vox, Voces, Voces
-$NFem_0_ox/oces_0$ = {<+NN><Fem>}:{}                     $NGenSgSuff_0$ | \
-                     {<+NN><Fem>}:{<del(VC)|Pl>oc<SB>es} $NDatPlSuff_0$
+$NFem_0_ox/oces_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
+                     {<Fem>}:{<del(VC)|Pl>oc<SB>es} $NDatPlSuff_0$
 
 % Gnade, Gnaden (archaic), Gnaden, Gnaden
-$NFem_n_n_0$ = {<+NN><Fem>}:{}      $NGenSgOldSuff_n$ | \
-               {<+NN><Fem>}:{<SB>n} $NDatPlSuff_0$
+$NFem_n_n_0$ = {<Fem>}:{}      $NGenSgOldSuff_n$ | \
+               {<Fem>}:{<SB>n} $NDatPlSuff_0$
 
 % Freundin, Freundin, Freundinnen
-$NFem-in$ = {<+NN><Fem>}:{}        $NGenSgSuff_0$ | \
-            {<+NN><Fem>}:{n<SB>en} $NDatPlSuff_0$
+$NFem-in$ = {<Fem>}:{}        $NGenSgSuff_0$ | \
+            {<Fem>}:{n<SB>en} $NDatPlSuff_0$
 
 % Frauenbeauftragte; Illustrierte
-$NFem-Adj$ = {<+NN><Fem><Nom><Sg><St>}:{<SB>e}  | \
-             {<+NN><Fem><Acc><Sg><St>}:{<SB>e}  | \
-             {<+NN><Fem><Dat><Sg><St>}:{<SB>er} | \
-             {<+NN><Fem><Gen><Sg><St>}:{<SB>er} | \
-             {<+NN><Fem><Nom><Pl><St>}:{<SB>e}  | \
-             {<+NN><Fem><Acc><Pl><St>}:{<SB>e}  | \
-             {<+NN><Fem><Dat><Pl><St>}:{<SB>en} | \
-             {<+NN><Fem><Gen><Pl><St>}:{<SB>er} | \
-             {<+NN><Fem><Nom><Sg><Wk>}:{<SB>e}  | \
-             {<+NN><Fem><Acc><Sg><Wk>}:{<SB>e}  | \
-             {<+NN><Fem><Dat><Sg><Wk>}:{<SB>en} | \
-             {<+NN><Fem><Gen><Sg><Wk>}:{<SB>en} | \
-             {<+NN><Fem><Nom><Pl><Wk>}:{<SB>en} | \
-             {<+NN><Fem><Acc><Pl><Wk>}:{<SB>en} | \
-             {<+NN><Fem><Dat><Pl><Wk>}:{<SB>en} | \
-             {<+NN><Fem><Gen><Pl><Wk>}:{<SB>en}
+$NFem-Adj$ = {<Fem><Nom><Sg><St>}:{<SB>e}  | \
+             {<Fem><Acc><Sg><St>}:{<SB>e}  | \
+             {<Fem><Dat><Sg><St>}:{<SB>er} | \
+             {<Fem><Gen><Sg><St>}:{<SB>er} | \
+             {<Fem><Nom><Pl><St>}:{<SB>e}  | \
+             {<Fem><Acc><Pl><St>}:{<SB>e}  | \
+             {<Fem><Dat><Pl><St>}:{<SB>en} | \
+             {<Fem><Gen><Pl><St>}:{<SB>er} | \
+             {<Fem><Nom><Sg><Wk>}:{<SB>e}  | \
+             {<Fem><Acc><Sg><Wk>}:{<SB>e}  | \
+             {<Fem><Dat><Sg><Wk>}:{<SB>en} | \
+             {<Fem><Gen><Sg><Wk>}:{<SB>en} | \
+             {<Fem><Nom><Pl><Wk>}:{<SB>en} | \
+             {<Fem><Acc><Pl><Wk>}:{<SB>en} | \
+             {<Fem><Dat><Pl><Wk>}:{<SB>en} | \
+             {<Fem><Gen><Pl><Wk>}:{<SB>en}
 
 
 % pluralia tantum
 
 % Kosten, Kosten
-$NUnmGend|Pl_0$ = {<+NN><UnmGend>}:{} $NDatPlSuff_0$
+$NUnmGend|Pl_0$ = {<UnmGend>}:{} $NDatPlSuff_0$
 
 % Leute, Leuten
-$NUnmGend|Pl_n$ = {<+NN><UnmGend>}:{} $NDatPlSuff_n$
+$NUnmGend|Pl_n$ = {<UnmGend>}:{} $NDatPlSuff_n$
 
 
 % proper names
 
-$NameMasc_0$ = {<+NPROP><Masc>}:{} $NGenSgSuff_0$
+$NameMasc_0$ = {<Masc>}:{} $NGenSgSuff_0$
 
 % Andreas, Andreas'
-$NameMasc_apos$ = {<+NPROP><Masc>}:{} $NGenSgSuff_0$ | \
-                  {<+NPROP><Masc><Gen><Sg>}:{<SB>’}
+$NameMasc_apos$ = {<Masc>}:{} $NGenSgSuff_0$ | \
+                  {<Masc><Gen><Sg>}:{<SB>’}
 
-$NameMasc_es$ = {<+NPROP><Masc>}:{} $NGenSgSuff_es$
+$NameMasc_es$ = {<Masc>}:{} $NGenSgSuff_es$
 
-$NameMasc_s$ = {<+NPROP><Masc>}:{} $NGenSgSuff_s$
+$NameMasc_s$ = {<Masc>}:{} $NGenSgSuff_s$
 
-$NameNeut_0$ = {<+NPROP><Neut>}:{} $NGenSgSuff_0$
+$NameNeut_0$ = {<Neut>}:{} $NGenSgSuff_0$
 
 % Paris, Paris'
-$NameNeut_apos$ = {<+NPROP><Neut>}:{} $NGenSgSuff_0$ | \
-                  {<+NPROP><Neut><Gen><Sg>}:{<SB>’}
+$NameNeut_apos$ = {<Neut>}:{} $NGenSgSuff_0$ | \
+                  {<Neut><Gen><Sg>}:{<SB>’}
 
-$NameNeut_es$ = {<+NPROP><Neut>}:{} $NGenSgSuff_es$
+$NameNeut_es$ = {<Neut>}:{} $NGenSgSuff_es$
 
-$NameNeut_s$ = {<+NPROP><Neut>}:{} $NGenSgSuff_s$
+$NameNeut_s$ = {<Neut>}:{} $NGenSgSuff_s$
 
-$NameFem_0$ = {<+NPROP><Fem>}:{} $NGenSgSuff_0$
+$NameFem_0$ = {<Fem>}:{} $NGenSgSuff_0$
 
 % Felicitas, Felicitas'
-$NameFem_apos$ = {<+NPROP><Fem>}:{} $NGenSgSuff_0$ | \
-                 {<+NPROP><Fem><Gen><Sg>}:{<SB>’}
+$NameFem_apos$ = {<Fem>}:{} $NGenSgSuff_0$ | \
+                 {<Fem><Gen><Sg>}:{<SB>’}
 
-$NameFem_s$ = {<+NPROP><Fem>}:{} $NGenSgSuff_s$
+$NameFem_s$ = {<Fem>}:{} $NGenSgSuff_s$
 
-$NameUnmGend|Pl_0$ = {<+NPROP><UnmGend>}:{} $NDatPlSuff_0$
+$NameUnmGend|Pl_0$ = {<UnmGend>}:{} $NDatPlSuff_0$
 
-$NameUnmGend|Pl_n$ = {<+NPROP><UnmGend>}:{} $NDatPlSuff_n$
+$NameUnmGend|Pl_n$ = {<UnmGend>}:{} $NDatPlSuff_n$
 
 
 % adjectives
@@ -975,32 +975,32 @@ $AdjInflSuff-m$ = {<Attr/Subst><Masc><Dat><Sg><St>}:{<SB>m} | \
                   {<Attr/Subst><Neut><Dat><Sg><St>}:{<SB>m}
 
 % tabu
-$AdjPosPred$ = {<+ADJ><Pos><Pred/Adv>}:{}
+$AdjPosPred$ = {<Pos><Pred/Adv>}:{}
 
 % pleite
-$AdjPosPred-e$ = {<+ADJ><Pos><Pred/Adv>}:{<SB>e}
+$AdjPosPred-e$ = {<Pos><Pred/Adv>}:{<SB>e}
 
 % zig
-$AdjPosAttr0$ = {<+ADJ><Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
+$AdjPosAttr0$ = {<Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
-$AdjPosAttr0-e$ = {<+ADJ><Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{<SB>e}
+$AdjPosAttr0-e$ = {<Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{<SB>e}
 
 % Berliner ('related to Berlin')
-$AdjPosAttrSubst0$ = {<+ADJ><Pos><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
+$AdjPosAttrSubst0$ = {<Pos><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 % vorig-; hoh-
-$AdjPosAttr$ = {<+ADJ><Pos>}:{} $AdjInflSuff$
+$AdjPosAttr$ = {<Pos>}:{} $AdjInflSuff$
 
 % ander-; vorder-
 $AdjPosAttr-er$ = $AdjPosAttr$                               | \
-                  {<+ADJ><Pos>}:{<del(e)|ADJ>} $AdjInflSuff$ | \
-                  {<+ADJ><Pos>}:{} $AdjInflSuff-n$           | \
-                  {<+ADJ><Pos>}:{} $AdjInflSuff-m$
+                  {<Pos>}:{<del(e)|ADJ>} $AdjInflSuff$ | \
+                  {<Pos>}:{} $AdjInflSuff-n$           | \
+                  {<Pos>}:{} $AdjInflSuff-m$
 
 % mittler-
 $AdjPosAttr-ler$ = $AdjPosAttr$                               | \
-                   {<+ADJ><Pos>}:{} $AdjInflSuff-n$           | \
-                   {<+ADJ><Pos>}:{} $AdjInflSuff-m$
+                   {<Pos>}:{} $AdjInflSuff-n$           | \
+                   {<Pos>}:{} $AdjInflSuff-m$
 
 % lila
 $AdjPos0$ = $AdjPosPred$ | \
@@ -1024,26 +1024,26 @@ $AdjPos-e$ = $AdjPosPred-e$ | \
 
 % dunkel
 $AdjPos-el$ = {}:{<del(e)|ADJ>} $AdjPos$                  | \
-              {<+ADJ><Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
-              {<+ADJ><Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
+              {<Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
+              {<Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
 
 % bitter
 $AdjPos-er$ = $AdjPos$                                    | \
               {}:{<del(e)|ADJ>} $AdjPos$                  | \
-              {<+ADJ><Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
-              {<+ADJ><Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
+              {<Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
+              {<Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
 
 % trocken
 $AdjPos-en$ = $AdjPos$ | \
               {}:{<del(e)|ADJ>} $AdjPos$
 
 % mehr; weniger
-$AdjComp0$ = {<+ADJ><Comp><Pred/Adv>}:{} | \
-             {<+ADJ><Comp><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
+$AdjComp0$ = {<Comp><Pred/Adv>}:{} | \
+             {<Comp><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 % besser; höher
-$AdjComp_er$ = {<+ADJ><Comp><Pred/Adv>}:{<SB>er} | \
-               {<+ADJ><Comp>}:{<SB>er} $AdjInflSuff$
+$AdjComp_er$ = {<Comp><Pred/Adv>}:{<SB>er} | \
+               {<Comp>}:{<SB>er} $AdjInflSuff$
 
 % dunkler
 $AdjComp-el_er$ = {}:{<del(e)|ADJ>} $AdjComp_er$
@@ -1055,27 +1055,27 @@ $AdjComp-er_er$ = $AdjComp_er$ | \
 % trock(e)ner
 $AdjComp-en_er$ = $AdjComp-er_er$
 
-$AdjComp_\$er$ = {<+ADJ><Comp><Pred/Adv>}:{<uml><SB>er} | \
-                 {<+ADJ><Comp>}:{<uml><SB>er} $AdjInflSuff$
+$AdjComp_\$er$ = {<Comp><Pred/Adv>}:{<uml><SB>er} | \
+                 {<Comp>}:{<uml><SB>er} $AdjInflSuff$
 
 % vordersten
-$AdjSupAttr_st$ = {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
+$AdjSupAttr_st$ = {<Sup>}:{<SB>st} $AdjInflSuff$
 
-$AdjSupAttr_est$ = {<+ADJ><Sup>}:{<SB>est} $AdjInflSuff$
+$AdjSupAttr_est$ = {<Sup>}:{<SB>est} $AdjInflSuff$
 
 % besten; höchsten
-$AdjSup_st$ = {<+ADJ><Sup><Pred/Adv>}:{<SB>st<SB>en} | \
-              {<+ADJ><Sup>}:{<SB>st} $AdjInflSuff$
+$AdjSup_st$ = {<Sup><Pred/Adv>}:{<SB>st<SB>en} | \
+              {<Sup>}:{<SB>st} $AdjInflSuff$
 
 % fittesten
-$AdjSup_est$ = {<+ADJ><Sup><Pred/Adv>}:{<SB>est<SB>en} | \
-               {<+ADJ><Sup>}:{<SB>est} $AdjInflSuff$
+$AdjSup_est$ = {<Sup><Pred/Adv>}:{<SB>est<SB>en} | \
+               {<Sup>}:{<SB>est} $AdjInflSuff$
 
-$AdjSup_\$st$ = {<+ADJ><Sup><Pred/Adv>}:{<uml><SB>st<SB>en} | \
-                {<+ADJ><Sup>}:{<uml><SB>st} $AdjInflSuff$
+$AdjSup_\$st$ = {<Sup><Pred/Adv>}:{<uml><SB>st<SB>en} | \
+                {<Sup>}:{<uml><SB>st} $AdjInflSuff$
 
-$AdjSup_\$est$ = {<+ADJ><Sup><Pred/Adv>}:{<uml><SB>est<SB>en} | \
-                 {<+ADJ><Sup>}:{<uml><SB>est} $AdjInflSuff$
+$AdjSup_\$est$ = {<Sup><Pred/Adv>}:{<uml><SB>est<SB>en} | \
+                 {<Sup>}:{<uml><SB>est} $AdjInflSuff$
 
 % hell, heller, hellsten
 $Adj_er_st$ = $AdjPos$     | \
@@ -1481,368 +1481,368 @@ $IProDatSgSuff$ = $WProDatSgSuff$
 $IProGenSgSuff$ = {<Gen><Sg>}:{<SB>sen}
 
 % der, die, das (article)
-$ArtDef$ = {<+ART><Def>}:{} $ArtDefSuff$
+$ArtDef$ = $ArtDefSuff$
 
 % der, die, das (relative pronoun)
-$Rel$ = {<+REL>}:{} $RelSuff$
+$Rel$ = $RelSuff$
 
 % der, die, das (demonstrative pronoun)
-$DemDef$ = {<+DEM>}:{} $DemDefSuff$
+$DemDef$ = $DemDefSuff$
 
 % dieser, diese, dieses/dies
-$Dem-dies$ = {<+DEM>}:{} $DemSuff-dies$
+$Dem-dies$ = $DemSuff-dies$
 
 % solcher, solche, solches, solch
-$Dem-solch$ = {<+DEM>}:{} $DemSuff-solch$
+$Dem-solch$ = $DemSuff-solch$
 
 % alldem, alledem
-$Dem-alldem$ = {<+DEM>}:{} $DemSuff-alldem$
+$Dem-alldem$ = $DemSuff-alldem$
 
 % jener, jene, jenes
-$Dem$ = {<+DEM>}:{} $DemSuff$
+$Dem$ = $DemSuff$
 
 % derlei
-$Dem0$ = {<+DEM>}:{} $DemSuff0$
+$Dem0$ = $DemSuff0$
 
 % derjenige; derselbe
-$ArtDef-der+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{} $ArtDef-der+DemMascSuff$
+$ArtDef-der+DemMasc$ = {[<Attr><Subst>]<Masc>}:{} $ArtDef-der+DemMascSuff$
 
 % denjenigen; denselben (masculine)
-$ArtDef-den+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{} $ArtDef-den+DemMascSuff$
+$ArtDef-den+DemMasc$ = {[<Attr><Subst>]<Masc>}:{} $ArtDef-den+DemMascSuff$
 
 % demjenigen; demselben (masculine)
-$ArtDef-dem+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{} $ArtDef-dem+DemMascSuff$
+$ArtDef-dem+DemMasc$ = {[<Attr><Subst>]<Masc>}:{} $ArtDef-dem+DemMascSuff$
 
 % desjenigen; desselben (masculine)
-$ArtDef-des+DemMasc$ = {<+DEM>[<Attr><Subst>]<Masc>}:{} $ArtDef-des+DemMascSuff$
+$ArtDef-des+DemMasc$ = {[<Attr><Subst>]<Masc>}:{} $ArtDef-des+DemMascSuff$
 
 % dasjenige; dasselbe
-$ArtDef-das+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{} $ArtDef-das+DemNeutSuff$
+$ArtDef-das+DemNeut$ = {[<Attr><Subst>]<Neut>}:{} $ArtDef-das+DemNeutSuff$
 
 % demjenigen; demselben (neuter)
-$ArtDef-dem+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{} $ArtDef-dem+DemNeutSuff$
+$ArtDef-dem+DemNeut$ = {[<Attr><Subst>]<Neut>}:{} $ArtDef-dem+DemNeutSuff$
 
 % desjenigen; desselben (neuter)
-$ArtDef-des+DemNeut$ = {<+DEM>[<Attr><Subst>]<Neut>}:{} $ArtDef-des+DemNeutSuff$
+$ArtDef-des+DemNeut$ = {[<Attr><Subst>]<Neut>}:{} $ArtDef-des+DemNeutSuff$
 
 % diejenige; dieselbe
-$ArtDef-die+DemFem$ = {<+DEM>[<Attr><Subst>]<Fem>}:{} $ArtDef-die+DemFemSuff$
+$ArtDef-die+DemFem$ = {[<Attr><Subst>]<Fem>}:{} $ArtDef-die+DemFemSuff$
 
 % derjenigen; derselben (feminine)
-$ArtDef-der+DemFem$ = {<+DEM>[<Attr><Subst>]<Fem>}:{} $ArtDef-der+DemFemSuff$
+$ArtDef-der+DemFem$ = {[<Attr><Subst>]<Fem>}:{} $ArtDef-der+DemFemSuff$
 
 % diejenigen; dieselben
-$ArtDef-die+DemUnmGend$ = {<+DEM>[<Attr><Subst>]<UnmGend>}:{} $ArtDef-die+DemUnmGendSuff$
+$ArtDef-die+DemUnmGend$ = {[<Attr><Subst>]<UnmGend>}:{} $ArtDef-die+DemUnmGendSuff$
 
 % denjenigen; denselben (plural)
-$ArtDef-den+DemUnmGend$ = {<+DEM>[<Attr><Subst>]<UnmGend>}:{} $ArtDef-den+DemUnmGendSuff$
+$ArtDef-den+DemUnmGend$ = {[<Attr><Subst>]<UnmGend>}:{} $ArtDef-den+DemUnmGendSuff$
 
 % derjenigen; derselben (plural)
-$ArtDef-der+DemUnmGend$ = {<+DEM>[<Attr><Subst>]<UnmGend>}:{} $ArtDef-der+DemUnmGendSuff$
+$ArtDef-der+DemUnmGend$ = {[<Attr><Subst>]<UnmGend>}:{} $ArtDef-der+DemUnmGendSuff$
 
 % welcher, welche, welches, welch (interrogative pronoun)
-$W-welch$ = {<+WPRO>}:{} $WSuff-welch$
+$W-welch$ = $WSuff-welch$
 
 % welcher, welche, welches, welch (relative pronoun)
-$Rel-welch$ = {<+REL>}:{} $RelSuff-welch$
+$Rel-welch$ = $RelSuff-welch$
 
 % welcher, welche, welches (indefinite pronoun)
-$Indef-welch$ = {<+INDEF>}:{} $IndefSuff-welch$
+$Indef-welch$ = $IndefSuff-welch$
 
 % irgendwelcher, irgendwelche, irgendwelches (indefinite pronoun)
-$Indef-irgendwelch$ = {<+INDEF>}:{} $IndefSuff-irgendwelch$
+$Indef-irgendwelch$ = $IndefSuff-irgendwelch$
 
 % aller, alle, alles
-$Indef-all$ = {<+INDEF>}:{} $IndefSuff-all$
+$Indef-all$ = $IndefSuff-all$
 
 % jeder, jede, jedes
-$Indef-jed$ = {<+INDEF>}:{} $IndefSuff-jed$
+$Indef-jed$ = $IndefSuff-jed$
 
 % jeglicher, jegliche, jegliches
-$Indef-jeglich$ = {<+INDEF>}:{} $IndefSuff-jeglich$
+$Indef-jeglich$ = $IndefSuff-jeglich$
 
 % sämtlicher, sämtliche, sämtliches
-$Indef-saemtlich$ = {<+INDEF>}:{} $IndefSuff-saemtlich$
+$Indef-saemtlich$ = $IndefSuff-saemtlich$
 
 % beide, beides
-$Indef-beid$ = {<+INDEF>}:{} $IndefSuff-beid$
+$Indef-beid$ = $IndefSuff-beid$
 
 % einiger, einige, einiges
-$Indef-einig$ = {<+INDEF>}:{} $IndefSuff-einig$
+$Indef-einig$ = $IndefSuff-einig$
 
 % mancher, manche, manches, manch
-$Indef-manch$ = {<+INDEF>}:{} $IndefSuff-manch$
+$Indef-manch$ = $IndefSuff-manch$
 
 % mehrere, mehreres
-$Indef-mehrer$ = {<+INDEF>}:{} $IndefSuff-mehrer$
+$Indef-mehrer$ = $IndefSuff-mehrer$
 
 % genug
-$Indef0$ = {<+INDEF>}:{} $IndefSuff0$
+$Indef0$ = $IndefSuff0$
 
 % ein, eine (article)
-$ArtIndef$ = {<+ART><Indef>}:{} $ArtIndefSuff$
+$ArtIndef$ = $ArtIndefSuff$
 
 % 'n, 'ne (clitic article)
-$ArtIndef-n$ = {<+ART><Indef>}:{} $ArtIndefAttrSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 448)
+$ArtIndef-n$ = $ArtIndefAttrSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 448)
 
 % einer, eine, eines (indefinite pronoun)
-$Indef-ein$ = {<+INDEF>}:{} $IndefSuff-ein$
+$Indef-ein$ = $IndefSuff-ein$
 
 % irgendein, irgendeine
-$Indef-irgendein$ = {<+INDEF>}:{} $ArtIndefSuff$
+$Indef-irgendein$ = $ArtIndefSuff$
 
 % kein, keine (article)
-$ArtNeg$ = {<+ART><Neg>}:{} $ArtNegSuff$
+$ArtNeg$ = $ArtNegSuff$
 
 % keiner, keine, keines (indefinite pronoun)
-$Indef-kein$ = {<+INDEF>}:{} $IndefSuff-kein$
+$Indef-kein$ = $IndefSuff-kein$
 
 % mein, meine
-$Poss$ = {<+POSS>}:{} $PossSuff$
+$Poss$ = $PossSuff$
 
 % unser, unsere/unsre
-$Poss-er$ = {<+POSS>}:{<del(e)|PRO>} $PossSuff$
+$Poss-er$ = {}:{<del(e)|PRO>} $PossSuff$
 
 % (die) meinigen/Meinigen
-$Poss|Wk$ = {<+POSS>}:{} $PossSuff|Wk$
+$Poss|Wk$ = $PossSuff|Wk$
 
 % unserige/unsrige
-$Poss|Wk-er$ = {<+POSS>}:{<del(e)|PRO>} $PossSuff|Wk$
+$Poss|Wk-er$ = {}:{<del(e)|PRO>} $PossSuff|Wk$
 
 % etwas
-$IProNeut$ = {<+INDEF><Neut>}:{} $IProSuff0$
+$IProNeut$ = {<Neut>}:{} $IProSuff0$
 
 % jemand
-$IProMasc$ = {<+INDEF><Masc>}:{} $IProSuff$
+$IProMasc$ = {<Masc>}:{} $IProSuff$
 
 % jedermann
-$IPro-jedermann$ = {<+INDEF><Masc>}:{} $IProSuff-jedermann$
+$IPro-jedermann$ = {<Masc>}:{} $IProSuff-jedermann$
 
 % jedefrau
-$IPro-jedefrau$ = {<+INDEF><Fem>}:{} $IProSuff-jedefrau$
+$IPro-jedefrau$ = {<Fem>}:{} $IProSuff-jedefrau$
 
 % jederfrau
-$IPro-jederfrau$ = {<+INDEF><Fem>}:{} $IProSuff-jederfrau$
+$IPro-jederfrau$ = {<Fem>}:{} $IProSuff-jederfrau$
 
 % man
-$IPro-man$ = {<+INDEF><Masc>}:{} $IProSuff-man$
+$IPro-man$ = {<Masc>}:{} $IProSuff-man$
 
 % frau
-$IPro-frau$ = {<+INDEF><Fem>}:{} $IProSuff-man$
+$IPro-frau$ = {<Fem>}:{} $IProSuff-man$
 
 % unsereiner
-$IPro-unsereiner$ = {<+INDEF><Masc>}:{} $IProSuff-unsereiner$
+$IPro-unsereiner$ = {<Masc>}:{} $IProSuff-unsereiner$
 
 % unsereins
-$IPro-unsereins$ = {<+INDEF><Masc>}:{} $IProSuff0$
+$IPro-unsereins$ = {<Masc>}:{} $IProSuff0$
 
 % ich
-$PPro1NomSg$ = {<+PPRO><Pers><1>}:{} $PProNomSgSuff$
+$PPro1NomSg$ = {<1>}:{} $PProNomSgSuff$
 
 % mich (irreflexive)
-$PPro1AccSg$ = {<+PPRO><Pers><1>}:{} $PProAccSgSuff$
+$PPro1AccSg$ = {<1>}:{} $PProAccSgSuff$
 
 % mir (irreflexive)
-$PPro1DatSg$ = {<+PPRO><Pers><1>}:{} $PProDatSgSuff$
+$PPro1DatSg$ = {<1>}:{} $PProDatSgSuff$
 
 % meiner, mein
-$PPro1GenSg$ = {<+PPRO><Pers><1>}:{} $PProGenSgSuff$
+$PPro1GenSg$ = {<1>}:{} $PProGenSgSuff$
 
 % du
-$PPro2NomSg$ = {<+PPRO><Pers><2>}:{} $PProNomSgSuff$
+$PPro2NomSg$ = {<2>}:{} $PProNomSgSuff$
 
 % dich (irreflexive)
-$PPro2AccSg$ = {<+PPRO><Pers><2>}:{} $PProAccSgSuff$
+$PPro2AccSg$ = {<2>}:{} $PProAccSgSuff$
 
 % dir (irreflexive)
-$PPro2DatSg$ = {<+PPRO><Pers><2>}:{} $PProDatSgSuff$
+$PPro2DatSg$ = {<2>}:{} $PProDatSgSuff$
 
 % deiner, dein
-$PPro2GenSg$ = {<+PPRO><Pers><2>}:{} $PProGenSgSuff$
+$PPro2GenSg$ = {<2>}:{} $PProGenSgSuff$
 
 % sie (singular)
-$PProFemNomSg$ = {<+PPRO><Pers><3><Fem>}:{} $PProNomSgSuff$
+$PProFemNomSg$ = {<3><Fem>}:{} $PProNomSgSuff$
 
 % sie (singular)
-$PProFemAccSg$ = {<+PPRO><Pers><3><Fem>}:{} $PProAccSgSuff$
+$PProFemAccSg$ = {<3><Fem>}:{} $PProAccSgSuff$
 
 % ihr
-$PProFemDatSg$ = {<+PPRO><Pers><3><Fem>}:{} $PProDatSgSuff$
+$PProFemDatSg$ = {<3><Fem>}:{} $PProDatSgSuff$
 
 % ihrer, ihr
-$PProFemGenSg$ = {<+PPRO><Pers><3><Fem>}:{} $PProGenSgSuff$
+$PProFemGenSg$ = {<3><Fem>}:{} $PProGenSgSuff$
 
 % er
-$PProMascNomSg$ = {<+PPRO><Pers><3><Masc>}:{} $PProNomSgSuff$
+$PProMascNomSg$ = {<3><Masc>}:{} $PProNomSgSuff$
 
 % ihn
-$PProMascAccSg$ = {<+PPRO><Pers><3><Masc>}:{} $PProAccSgSuff$
+$PProMascAccSg$ = {<3><Masc>}:{} $PProAccSgSuff$
 
 % ihm
-$PProMascDatSg$ = {<+PPRO><Pers><3><Masc>}:{} $PProDatSgSuff$
+$PProMascDatSg$ = {<3><Masc>}:{} $PProDatSgSuff$
 
 % seiner, sein
-$PProMascGenSg$ = {<+PPRO><Pers><3><Masc>}:{} $PProGenSgSuff$
+$PProMascGenSg$ = {<3><Masc>}:{} $PProGenSgSuff$
 
 % es
-$PProNeutNomSg$ = {<+PPRO><Pers><3><Neut>}:{} $PProNomSgSuff$
+$PProNeutNomSg$ = {<3><Neut>}:{} $PProNomSgSuff$
 
 % 's (clitic pronoun)
 $PProNeutNomSg-s$ = $PProNeutNomSg$ {<NonSt>}:{}
 
 % es
-$PProNeutAccSg$ = {<+PPRO><Pers><3><Neut>}:{} $PProAccSgSuff$
+$PProNeutAccSg$ = {<3><Neut>}:{} $PProAccSgSuff$
 
 % 's (clitic pronoun)
 $PProNeutAccSg-s$ = $PProNeutAccSg$ {<NonSt>}:{}
 
 % ihm
-$PProNeutDatSg$ = {<+PPRO><Pers><3><Neut>}:{} $PProDatSgSuff$
+$PProNeutDatSg$ = {<3><Neut>}:{} $PProDatSgSuff$
 
 % seiner
-$PProNeutGenSg$ = {<+PPRO><Pers><3><Neut>}:{} $PProGenSgSuff$
+$PProNeutGenSg$ = {<3><Neut>}:{} $PProGenSgSuff$
 
 % wir
-$PPro1NomPl$ = {<+PPRO><Pers><1>}:{} $PProNomPlSuff$
+$PPro1NomPl$ = {<1>}:{} $PProNomPlSuff$
 
 % uns (irreflexive)
-$PPro1AccPl$ = {<+PPRO><Pers><1>}:{} $PProAccPlSuff$
+$PPro1AccPl$ = {<1>}:{} $PProAccPlSuff$
 
 % uns (irreflexive)
-$PPro1DatPl$ = {<+PPRO><Pers><1>}:{} $PProDatPlSuff$
+$PPro1DatPl$ = {<1>}:{} $PProDatPlSuff$
 
 % unser, unserer/unsrer
-$PPro1GenPl$ = {<+PPRO><Pers><1>}:{} $PProGenPlSuff-er$
+$PPro1GenPl$ = {<1>}:{} $PProGenPlSuff-er$
 
 % ihr
-$PPro2NomPl$ = {<+PPRO><Pers><2>}:{} $PProNomPlSuff$
+$PPro2NomPl$ = {<2>}:{} $PProNomPlSuff$
 
 % euch (irreflexive)
-$PPro2AccPl$ = {<+PPRO><Pers><2>}:{} $PProAccPlSuff$
+$PPro2AccPl$ = {<2>}:{} $PProAccPlSuff$
 
 % euch (irreflexive)
-$PPro2DatPl$ = {<+PPRO><Pers><2>}:{} $PProDatPlSuff$
+$PPro2DatPl$ = {<2>}:{} $PProDatPlSuff$
 
 % euer, eurer
-$PPro2GenPl$ = {<+PPRO><Pers><2>}:{} $PProGenPlSuff-er$
+$PPro2GenPl$ = {<2>}:{} $PProGenPlSuff-er$
 
 % sie (plural)
-$PProUnmGendNomPl$ = {<+PPRO><Pers><3><UnmGend>}:{} $PProNomPlSuff$
+$PProUnmGendNomPl$ = {<3><UnmGend>}:{} $PProNomPlSuff$
 
 % sie (plural)
-$PProUnmGendAccPl$ = {<+PPRO><Pers><3><UnmGend>}:{} $PProAccPlSuff$
+$PProUnmGendAccPl$ = {<3><UnmGend>}:{} $PProAccPlSuff$
 
 % ihr
-$PProUnmGendDatPl$ = {<+PPRO><Pers><3><UnmGend>}:{} $PProDatPlSuff$
+$PProUnmGendDatPl$ = {<3><UnmGend>}:{} $PProDatPlSuff$
 
 % ihrer, ihr
-$PProUnmGendGenPl$ = {<+PPRO><Pers><3><UnmGend>}:{} $PProGenPlSuff$
+$PProUnmGendGenPl$ = {<3><UnmGend>}:{} $PProGenPlSuff$
 
 % mich (reflexive)
-$PRefl1AccSg$ = {<+PPRO><Refl><1>}:{} $PProAccSgSuff$
+$PRefl1AccSg$ = {<1>}:{} $PProAccSgSuff$
 
 % mir (reflexive)
-$PRefl1DatSg$ = {<+PPRO><Refl><1>}:{} $PProDatSgSuff$
+$PRefl1DatSg$ = {<1>}:{} $PProDatSgSuff$
 
 % dich (reflexive)
-$PRefl2AccSg$ = {<+PPRO><Refl><2>}:{} $PProAccSgSuff$
+$PRefl2AccSg$ = {<2>}:{} $PProAccSgSuff$
 
 % dir (reflexive)
-$PRefl2DatSg$ = {<+PPRO><Refl><2>}:{} $PProDatSgSuff$
+$PRefl2DatSg$ = {<2>}:{} $PProDatSgSuff$
 
 % uns (reflexive)
-$PRefl1Pl$ = {<+PPRO><Refl><1>}:{} $PProAccPlSuff$ | \
-             {<+PPRO><Refl><1>}:{} $PProDatPlSuff$
+$PRefl1Pl$ = {<1>}:{} $PProAccPlSuff$ | \
+             {<1>}:{} $PProDatPlSuff$
 
 % euch (reflexive)
-$PRefl2Pl$ = {<+PPRO><Refl><2>}:{} $PProAccPlSuff$ | \
-             {<+PPRO><Refl><2>}:{} $PProDatPlSuff$
+$PRefl2Pl$ = {<2>}:{} $PProAccPlSuff$ | \
+             {<2>}:{} $PProDatPlSuff$
 
 % sich
-$PRefl3$ = {<+PPRO><Refl><3>}:{} $PProAccSgSuff$ | \
-           {<+PPRO><Refl><3>}:{} $PProDatSgSuff$ | \
-           {<+PPRO><Refl><3>}:{} $PProAccPlSuff$ | \
-           {<+PPRO><Refl><3>}:{} $PProDatPlSuff$
+$PRefl3$ = {<3>}:{} $PProAccSgSuff$ | \
+           {<3>}:{} $PProDatSgSuff$ | \
+           {<3>}:{} $PProAccPlSuff$ | \
+           {<3>}:{} $PProDatPlSuff$
 
 % einander
-$PRecPl$ = {<+PPRO><Rec><1>}:{} $PProAccPlSuff$ | \
-           {<+PPRO><Rec><1>}:{} $PProDatPlSuff$ | \
-           {<+PPRO><Rec><2>}:{} $PProDatPlSuff$ | \
-           {<+PPRO><Rec><2>}:{} $PProAccPlSuff$ | \
-           {<+PPRO><Rec><3>}:{} $PProAccPlSuff$ | \
-           {<+PPRO><Rec><3>}:{} $PProDatPlSuff$ % cf. Duden-Grammatik (2016: § 366)
+$PRecPl$ = {<1>}:{} $PProAccPlSuff$ | \
+           {<1>}:{} $PProDatPlSuff$ | \
+           {<2>}:{} $PProDatPlSuff$ | \
+           {<2>}:{} $PProAccPlSuff$ | \
+           {<3>}:{} $PProAccPlSuff$ | \
+           {<3>}:{} $PProDatPlSuff$ % cf. Duden-Grammatik (2016: § 366)
 
 % wer (interrogative pronoun)
-$WProMascNomSg$ = {<+WPRO><Masc>}:{} $WProNomSgSuff$
+$WProMascNomSg$ = {<Masc>}:{} $WProNomSgSuff$
 
 % wen (interrogative pronoun)
-$WProMascAccSg$ = {<+WPRO><Masc>}:{} $WProAccSgSuff$
+$WProMascAccSg$ = {<Masc>}:{} $WProAccSgSuff$
 
 % wem (interrogative pronoun)
-$WProMascDatSg$ = {<+WPRO><Masc>}:{} $WProDatSgSuff$
+$WProMascDatSg$ = {<Masc>}:{} $WProDatSgSuff$
 
 % wessen, wes (interrogative pronoun)
-$WProMascGenSg$ = {<+WPRO><Masc>}:{} $WProGenSgSuff$
+$WProMascGenSg$ = {<Masc>}:{} $WProGenSgSuff$
 
 % was (interrogative pronoun)
-$WProNeutNomSg$ = {<+WPRO><Neut>}:{} $WProNomSgSuff$
+$WProNeutNomSg$ = {<Neut>}:{} $WProNomSgSuff$
 
 % was (interrogative pronoun)
-$WProNeutAccSg$ = {<+WPRO><Neut>}:{} $WProAccSgSuff$
+$WProNeutAccSg$ = {<Neut>}:{} $WProAccSgSuff$
 
 % was (interrogative pronoun)
-$WProNeutDatSg$ = {<+WPRO><Neut>}:{} $WProDatSgSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 404)
+$WProNeutDatSg$ = {<Neut>}:{} $WProDatSgSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 404)
 
 % wessen, wes (interrogative pronoun)
-$WProNeutGenSg$ = {<+WPRO><Neut>}:{} $WProGenSgSuff$
+$WProNeutGenSg$ = {<Neut>}:{} $WProGenSgSuff$
 
 % wer (relative pronoun)
-$RProMascNomSg$ = {<+REL><Masc>}:{} $RProNomSgSuff$
+$RProMascNomSg$ = {<Masc>}:{} $RProNomSgSuff$
 
 % wen (relative pronoun)
-$RProMascAccSg$ = {<+REL><Masc>}:{} $RProAccSgSuff$
+$RProMascAccSg$ = {<Masc>}:{} $RProAccSgSuff$
 
 % wem (relative pronoun)
-$RProMascDatSg$ = {<+REL><Masc>}:{} $RProDatSgSuff$
+$RProMascDatSg$ = {<Masc>}:{} $RProDatSgSuff$
 
 % wessen (relative pronoun)
-$RProMascGenSg$ = {<+REL><Masc>}:{} $RProGenSgSuff$
+$RProMascGenSg$ = {<Masc>}:{} $RProGenSgSuff$
 
 % was (relative pronoun)
-$RProNeutNomSg$ = {<+REL><Neut>}:{} $RProNomSgSuff$
+$RProNeutNomSg$ = {<Neut>}:{} $RProNomSgSuff$
 
 % was (relative pronoun)
-$RProNeutAccSg$ = {<+REL><Neut>}:{} $RProAccSgSuff$
+$RProNeutAccSg$ = {<Neut>}:{} $RProAccSgSuff$
 
 % was (relative pronoun)
-$RProNeutDatSg$ = {<+REL><Neut>}:{} $RProDatSgSuff$ {<NonSt>}:{}
+$RProNeutDatSg$ = {<Neut>}:{} $RProDatSgSuff$ {<NonSt>}:{}
 
 % wessen (relative pronoun)
-$RProNeutGenSg$ = {<+REL><Neut>}:{} $RProGenSgSuff$
+$RProNeutGenSg$ = {<Neut>}:{} $RProGenSgSuff$
 
 % wer (indefinite pronoun)
-$IProMascNomSg$ = {<+INDEF><Masc>}:{} $IProNomSgSuff$
+$IProMascNomSg$ = {<Masc>}:{} $IProNomSgSuff$
 
 % wen (indefinite pronoun)
-$IProMascAccSg$ = {<+INDEF><Masc>}:{} $IProAccSgSuff$
+$IProMascAccSg$ = {<Masc>}:{} $IProAccSgSuff$
 
 % wem (indefinite pronoun)
-$IProMascDatSg$ = {<+INDEF><Masc>}:{} $IProDatSgSuff$
+$IProMascDatSg$ = {<Masc>}:{} $IProDatSgSuff$
 
 % wessen (indefinite pronoun)
-$IProMascGenSg$ = {<+INDEF><Masc>}:{} $IProGenSgSuff$
+$IProMascGenSg$ = {<Masc>}:{} $IProGenSgSuff$
 
 % was (indefinite pronoun)
-$IProNeutNomSg$ = {<+INDEF><Neut>}:{} $IProNomSgSuff$
+$IProNeutNomSg$ = {<Neut>}:{} $IProNomSgSuff$
 
 % was (indefinite pronoun)
-$IProNeutAccSg$ = {<+INDEF><Neut>}:{} $IProAccSgSuff$
+$IProNeutAccSg$ = {<Neut>}:{} $IProAccSgSuff$
 
 % was (indefinite pronoun)
-$IProNeutDatSg$ = {<+INDEF><Neut>}:{} $IProDatSgSuff$ {<NonSt>}:{}
+$IProNeutDatSg$ = {<Neut>}:{} $IProDatSgSuff$ {<NonSt>}:{}
 
 % wessen (indefinite pronoun)
-$IProNeutGenSg$ = {<+INDEF><Neut>}:{} $IProGenSgSuff$
+$IProNeutGenSg$ = {<Neut>}:{} $IProGenSgSuff$
 
 
 % numerals
@@ -1893,73 +1893,49 @@ $CardSuff-sieben$ = $CardSuff0$                                    | \
                     {<Subst><UnmGend><Acc><Pl><Wk><NonSt>}:{<SB>e}     % cf. Duden-Grammatik (2016: § 511)
 
 % ein, eine (cardinal)
-$Card-ein$ = {<+CARD>}:{} $CardSuff-ein$
+$Card-ein$ = $CardSuff-ein$
 
 % kein, keine (cardinal)
-$Card-kein$ = {<+CARD>}:{} $CardSuff-kein$
+$Card-kein$ = $CardSuff-kein$
 
 % zwei, zweien, zweier; drei, dreien, dreier
-$Card-zwei$ = {<+CARD>}:{} $CardSuff-zwei$
+$Card-zwei$ = $CardSuff-zwei$
 
 % vier, vieren; zwölf, zwölfen
-$Card-vier$ = {<+CARD>}:{} $CardSuff-vier$
+$Card-vier$ = $CardSuff-vier$
 
 % sieben
-$Card-sieben$ = {<+CARD>}:{} $CardSuff-sieben$
+$Card-sieben$ = $CardSuff-sieben$
 
 % null; zwo; dreizehn; zwanzig; hundert
-$Card0$ = <+CARD>:<> $CardSuff0$
+$Card0$ = $CardSuff0$
 
 % erst-
-$Ord$ = {<+ORD>}:{} $AdjInflSuff$
+$Ord$ = $AdjInflSuff$
 
 % eineinhalb; anderthalb; drittel
-$Frac0$ = <+FRAC>:<> $CardSuff0$
+$Frac0$ = $CardSuff0$
 
 % 1, 10
-$DigCard$ = {<+CARD><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
+$DigCard$ = {<UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 % 1., 10.
-$DigOrd$ = {<+ORD><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
+$DigOrd$ = {<UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 % 1,5, 10,5
-$DigFrac$ = {<+FRAC><UnmFunc><UnmGend><UnmCase><Pl><UnmInfl>}:{}
+$DigFrac$ = {<UnmFunc><UnmGend><UnmCase><Pl><UnmInfl>}:{}
 
 % I, X
-$Roman$ = {<+CARD><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
-
-
-% adverbs
-
-% oft; gern; sehr
-$Adv$ = {<+ADV>}:{}
-
-% mehr
-$AdvComp0$ = {<+ADV><Comp>}:{}
-
-% öfter; lieber
-$AdvComp_er$ = {<+ADV><Comp>}:{<SB>er}
-
-% liebsten; meisten
-$AdvSup_st$ = {<+ADV><Sup>}:{<SB>st<SB>en}
-
-% öftesten; ehesten
-$AdvSup_est$ = {<+ADV><Sup>}:{<SB>est<SB>en}
-
-% darunter
-$ProAdv$ = {<+PROADV>}:{}
-
-% wo
-$WAdv$ = {<+WADV>}:{}
+$Roman$ = {<UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 
 % verbs
 
-$VInfSuff_en$ = {<+V><Inf><NonCl>}:{<SB>en} | \
-                {<+V><Inf><Cl>}:{<ins(zu)><SB>en}
+$VInfSuff_en$ = {<Inf><NonCl>}:{<SB>en} | \
+                {<Inf><Cl>}:{<ins(zu)><SB>en}
 
-$VInfSuff_n$ = {<+V><Inf><NonCl>}:{<SB>n} | \
-               {<+V><Inf><Cl>}:{<ins(zu)><SB>n}
+$VInfSuff_n$ = {<Inf><NonCl>}:{<SB>n} | \
+               {<Inf><Cl>}:{<ins(zu)><SB>n}
 
 % gehen; sehen; laufen
 $VInf$ = $VInfSuff_en$
@@ -1973,11 +1949,11 @@ $VInf-le$ = $VInfSuff_n$
 % tun
 $VInf_n$ = $VInfSuff_n$
 
-$VPartPresSuff_end$ = {<+V><Part><Pres>}:{<SB>end} | \
-                      {<+V><Part><Pres>}:{<ins(zu)><SB>end<rm|Part>} % cf. Duden-Grammatik (2016: § 829)
+$VPartPresSuff_end$ = {<Part><Pres>}:{<SB>end} | \
+                      {<Part><Pres>}:{<ins(zu)><SB>end<rm|Part>} % cf. Duden-Grammatik (2016: § 829)
 
-$VPartPresSuff_nd$ = {<+V><Part><Pres>}:{<SB>nd} | \
-                     {<+V><Part><Pres>}:{<ins(zu)><SB>nd<rm|Part>} % cf. Duden-Grammatik (2016: § 829)
+$VPartPresSuff_nd$ = {<Part><Pres>}:{<SB>nd} | \
+                     {<Part><Pres>}:{<ins(zu)><SB>nd<rm|Part>} % cf. Duden-Grammatik (2016: § 829)
 
 % gehend; sehend; laufend
 $VPartPres$ = $VPartPresSuff_end$
@@ -1988,15 +1964,15 @@ $VPartPres-el-er$ = $VPartPresSuff_end$
 % downcyclend
 $VPartPres-le$ = $VPartPresSuff_nd$
 
-$VPartPerfSuff_et$ = {<+V><Part><Perf>}:{<ins(ge)><SB><ins(e)>t}
+$VPartPerfSuff_et$ = {<Part><Perf>}:{<ins(ge)><SB><ins(e)>t}
 
-$VPartPerfSuff_t$ = {<+V><Part><Perf>}:{<ins(ge)><SB>t}
+$VPartPerfSuff_t$ = {<Part><Perf>}:{<ins(ge)><SB>t}
 
-$VPartPerfSuff_en$ = {<+V><Part><Perf>}:{<ins(ge)><SB>en}
+$VPartPerfSuff_en$ = {<Part><Perf>}:{<ins(ge)><SB>en}
 
-$VPartPerfSuff_n$ = {<+V><Part><Perf>}:{<ins(ge)><SB>n}
+$VPartPerfSuff_n$ = {<Part><Perf>}:{<ins(ge)><SB>n}
 
-$VPartPerfSuff_ed$ = {<+V><Part><Perf>}:{<ins(ge)><SB>ed}
+$VPartPerfSuff_ed$ = {<Part><Perf>}:{<ins(ge)><SB>ed}
 
 $haben$ = {<haben>}:{}
 
@@ -2050,63 +2026,63 @@ $VPartPerf_ed+haben$ = $VPartPerfSuff_ed$ $haben$
 
 $VPartPerf_ed+sein$ = $VPartPerfSuff_ed$ $sein$
 
-$VPresInd1SgSuff_0$ = {<+V><1><Sg><Pres><Ind>}:{}
+$VPresInd1SgSuff_0$ = {<1><Sg><Pres><Ind>}:{}
 
-$VPresInd1SgNonStSuff_0$ = {<+V><1><Sg><Pres><Ind><NonSt>}:{} % cf. Duden-Grammatik (2016: § 622)
+$VPresInd1SgNonStSuff_0$ = {<1><Sg><Pres><Ind><NonSt>}:{} % cf. Duden-Grammatik (2016: § 622)
 
-$VPresInd1SgSuff_e$ = {<+V><1><Sg><Pres><Ind>}:{<SB>e}
+$VPresInd1SgSuff_e$ = {<1><Sg><Pres><Ind>}:{<SB>e}
 
-$VPresInd2SgSuff_st$ = {<+V><2><Sg><Pres><Ind>}:{<SB>st}
+$VPresInd2SgSuff_st$ = {<2><Sg><Pres><Ind>}:{<SB>st}
 
-$VPresInd2SgSuff_est$ = {<+V><2><Sg><Pres><Ind>}:{<SB><ins(e)>st}
+$VPresInd2SgSuff_est$ = {<2><Sg><Pres><Ind>}:{<SB><ins(e)>st}
 
-$VPresInd2SgSuff-s_est$ = {<+V><2><Sg><Pres><Ind>}:{<SB>st} | \
-                          {<+V><2><Sg><Pres><Ind><Old>}:{<SB>est} % cf. Duden-Grammatik (2016: § 643)
+$VPresInd2SgSuff-s_est$ = {<2><Sg><Pres><Ind>}:{<SB>st} | \
+                          {<2><Sg><Pres><Ind><Old>}:{<SB>est} % cf. Duden-Grammatik (2016: § 643)
 
-$VPresInd3SgSuff_0$ = {<+V><3><Sg><Pres><Ind>}:{}
+$VPresInd3SgSuff_0$ = {<3><Sg><Pres><Ind>}:{}
 
-$VPresInd3SgSuff_et$ = {<+V><3><Sg><Pres><Ind>}:{<SB><ins(e)>t}
+$VPresInd3SgSuff_et$ = {<3><Sg><Pres><Ind>}:{<SB><ins(e)>t}
 
-$VPresInd3SgSuff_t$ = {<+V><3><Sg><Pres><Ind>}:{<SB>t}
+$VPresInd3SgSuff_t$ = {<3><Sg><Pres><Ind>}:{<SB>t}
 
-$VPresIndPlSuff$ = {<+V><1><Pl><Pres><Ind>}:{<SB>en}        | \
-                   {<+V><2><Pl><Pres><Ind>}:{<SB><ins(e)>t} | \
-                   {<+V><3><Pl><Pres><Ind>}:{<SB>en}
+$VPresIndPlSuff$ = {<1><Pl><Pres><Ind>}:{<SB>en}        | \
+                   {<2><Pl><Pres><Ind>}:{<SB><ins(e)>t} | \
+                   {<3><Pl><Pres><Ind>}:{<SB>en}
 
-$VPresIndPlSuff-tun$ = {<+V><1><Pl><Pres><Ind>}:{<SB>n} | \
-                       {<+V><2><Pl><Pres><Ind>}:{<SB>t} | \
-                       {<+V><3><Pl><Pres><Ind>}:{<SB>n}
+$VPresIndPlSuff-tun$ = {<1><Pl><Pres><Ind>}:{<SB>n} | \
+                       {<2><Pl><Pres><Ind>}:{<SB>t} | \
+                       {<3><Pl><Pres><Ind>}:{<SB>n}
 
-$VPresIndPlSuff-signen$ = {<+V><1><Pl><Pres><Ind>}:{<SB>en} | \
-                          {<+V><2><Pl><Pres><Ind>}:{<SB>t}  | \
-                          {<+V><3><Pl><Pres><Ind>}:{<SB>en}
+$VPresIndPlSuff-signen$ = {<1><Pl><Pres><Ind>}:{<SB>en} | \
+                          {<2><Pl><Pres><Ind>}:{<SB>t}  | \
+                          {<3><Pl><Pres><Ind>}:{<SB>en}
 
-$VPresInd13PlSuff-sein$ = {<+V><1><Pl><Pres><Ind>}:{} | \
-                          {<+V><3><Pl><Pres><Ind>}:{}
+$VPresInd13PlSuff-sein$ = {<1><Pl><Pres><Ind>}:{} | \
+                          {<3><Pl><Pres><Ind>}:{}
 
-$VPresInd2PlSuff-sein$ = {<+V><2><Pl><Pres><Ind>}:{}
+$VPresInd2PlSuff-sein$ = {<2><Pl><Pres><Ind>}:{}
 
-$VPresSubjSuff$ = {<+V><1><Sg><Pres><Subj>}:{<SB>e}   | \
-                  {<+V><2><Sg><Pres><Subj>}:{<SB>est} | \
-                  {<+V><3><Sg><Pres><Subj>}:{<SB>e}   | \
-                  {<+V><1><Pl><Pres><Subj>}:{<SB>en}  | \
-                  {<+V><2><Pl><Pres><Subj>}:{<SB>et}  | \
-                  {<+V><3><Pl><Pres><Subj>}:{<SB>en}
+$VPresSubjSuff$ = {<1><Sg><Pres><Subj>}:{<SB>e}   | \
+                  {<2><Sg><Pres><Subj>}:{<SB>est} | \
+                  {<3><Sg><Pres><Subj>}:{<SB>e}   | \
+                  {<1><Pl><Pres><Subj>}:{<SB>en}  | \
+                  {<2><Pl><Pres><Subj>}:{<SB>et}  | \
+                  {<3><Pl><Pres><Subj>}:{<SB>en}
 
-$VPresSubjSuff-le$ = {<+V><1><Sg><Pres><Subj>}:{}       | \
-                     {<+V><2><Sg><Pres><Subj>}:{<SB>st} | \
-                     {<+V><3><Sg><Pres><Subj>}:{}       | \
-                     {<+V><1><Pl><Pres><Subj>}:{<SB>n}  | \
-                     {<+V><2><Pl><Pres><Subj>}:{<SB>t}  | \
-                     {<+V><3><Pl><Pres><Subj>}:{<SB>n}
+$VPresSubjSuff-le$ = {<1><Sg><Pres><Subj>}:{}       | \
+                     {<2><Sg><Pres><Subj>}:{<SB>st} | \
+                     {<3><Sg><Pres><Subj>}:{}       | \
+                     {<1><Pl><Pres><Subj>}:{<SB>n}  | \
+                     {<2><Pl><Pres><Subj>}:{<SB>t}  | \
+                     {<3><Pl><Pres><Subj>}:{<SB>n}
 
-$VPresSubjSuff-sein$ = {<+V><1><Sg><Pres><Subj>}:{}        | \
-                       {<+V><2><Sg><Pres><Subj>}:{<SB>est} | \
-                       {<+V><2><Sg><Pres><Subj>}:{<SB>st}  | \
-                       {<+V><3><Sg><Pres><Subj>}:{}        | \
-                       {<+V><1><Pl><Pres><Subj>}:{<SB>en}  | \
-                       {<+V><2><Pl><Pres><Subj>}:{<SB>et}  | \
-                       {<+V><3><Pl><Pres><Subj>}:{<SB>en}
+$VPresSubjSuff-sein$ = {<1><Sg><Pres><Subj>}:{}        | \
+                       {<2><Sg><Pres><Subj>}:{<SB>est} | \
+                       {<2><Sg><Pres><Subj>}:{<SB>st}  | \
+                       {<3><Sg><Pres><Subj>}:{}        | \
+                       {<1><Pl><Pres><Subj>}:{<SB>en}  | \
+                       {<2><Pl><Pres><Subj>}:{<SB>et}  | \
+                       {<3><Pl><Pres><Subj>}:{<SB>en}
 
 % geh(e), gehst, geht, gehen, geht, gehen
 % denk(e), denkst, denkt, denken, denkt, denken
@@ -2223,72 +2199,72 @@ $VModPresIndSg$ = $VPresInd1SgSuff_0$   | \
 $VModPresNonIndSg$ = $VPresIndPlSuff$ | \
                      $VPresSubjSuff$
 
-$VPastIndWeakSuff_et$ = {<+V><1><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>e}   | \
-                        {<+V><2><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>est} | \
-                        {<+V><3><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>e}   | \
-                        {<+V><1><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>en}  | \
-                        {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>et}  | \
-                        {<+V><3><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>en}
+$VPastIndWeakSuff_et$ = {<1><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>e}   | \
+                        {<2><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>est} | \
+                        {<3><Sg><Past><Ind>}:{<SB><ins(e)>t<SB>e}   | \
+                        {<1><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>en}  | \
+                        {<2><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>et}  | \
+                        {<3><Pl><Past><Ind>}:{<SB><ins(e)>t<SB>en}
 
-$VPastIndWeakSuff_t$ = {<+V><1><Sg><Past><Ind>}:{<SB>t<SB>e}   | \
-                       {<+V><2><Sg><Past><Ind>}:{<SB>t<SB>est} | \
-                       {<+V><3><Sg><Past><Ind>}:{<SB>t<SB>e}   | \
-                       {<+V><1><Pl><Past><Ind>}:{<SB>t<SB>en}  | \
-                       {<+V><2><Pl><Past><Ind>}:{<SB>t<SB>et}  | \
-                       {<+V><3><Pl><Past><Ind>}:{<SB>t<SB>en}
+$VPastIndWeakSuff_t$ = {<1><Sg><Past><Ind>}:{<SB>t<SB>e}   | \
+                       {<2><Sg><Past><Ind>}:{<SB>t<SB>est} | \
+                       {<3><Sg><Past><Ind>}:{<SB>t<SB>e}   | \
+                       {<1><Pl><Past><Ind>}:{<SB>t<SB>en}  | \
+                       {<2><Pl><Past><Ind>}:{<SB>t<SB>et}  | \
+                       {<3><Pl><Past><Ind>}:{<SB>t<SB>en}
 
-$VPastIndStrSuff$ = {<+V><1><Sg><Past><Ind>}:{}               | \
-                    {<+V><2><Sg><Past><Ind>}:{<SB><ins(e)>st} | \
-                    {<+V><2><Sg><Past><Ind>}:{<SB>st}         | \ % cf. Duden-Grammatik (2016: § 642)
-                    {<+V><3><Sg><Past><Ind>}:{}               | \
-                    {<+V><1><Pl><Past><Ind>}:{<SB>en}         | \
-                    {<+V><2><Pl><Past><Ind>}:{<SB><ins(e)>t}  | \
-                    {<+V><3><Pl><Past><Ind>}:{<SB>en}
+$VPastIndStrSuff$ = {<1><Sg><Past><Ind>}:{}               | \
+                    {<2><Sg><Past><Ind>}:{<SB><ins(e)>st} | \
+                    {<2><Sg><Past><Ind>}:{<SB>st}         | \ % cf. Duden-Grammatik (2016: § 642)
+                    {<3><Sg><Past><Ind>}:{}               | \
+                    {<1><Pl><Past><Ind>}:{<SB>en}         | \
+                    {<2><Pl><Past><Ind>}:{<SB><ins(e)>t}  | \
+                    {<3><Pl><Past><Ind>}:{<SB>en}
 
-$VPastIndStrSuff-s$ = {<+V><1><Sg><Past><Ind>}:{}              | \
-                      {<+V><2><Sg><Past><Ind>}:{<SB>st}        | \ % cf. Duden-Grammatik (2016: § 642)
-                      {<+V><2><Sg><Past><Ind>}:{<SB>est}       | \ % cf. Duden-Grammatik (2016: § 643)
-                      {<+V><3><Sg><Past><Ind>}:{}              | \
-                      {<+V><1><Pl><Past><Ind>}:{<SB>en}        | \
-                      {<+V><2><Pl><Past><Ind>}:{<SB>t}         | \
-                      {<+V><2><Pl><Past><Ind><Old>}:{<SB>et}   | \ % cf. Duden-Grammatik (2016: § 643)
-                      {<+V><3><Pl><Past><Ind>}:{<SB>en}
+$VPastIndStrSuff-s$ = {<1><Sg><Past><Ind>}:{}              | \
+                      {<2><Sg><Past><Ind>}:{<SB>st}        | \ % cf. Duden-Grammatik (2016: § 642)
+                      {<2><Sg><Past><Ind>}:{<SB>est}       | \ % cf. Duden-Grammatik (2016: § 643)
+                      {<3><Sg><Past><Ind>}:{}              | \
+                      {<1><Pl><Past><Ind>}:{<SB>en}        | \
+                      {<2><Pl><Past><Ind>}:{<SB>t}         | \
+                      {<2><Pl><Past><Ind><Old>}:{<SB>et}   | \ % cf. Duden-Grammatik (2016: § 643)
+                      {<3><Pl><Past><Ind>}:{<SB>en}
 
-$VPastIndSgSuff-werden$ = {<+V><1><Sg><Past><Ind>}:{<SB>e}   | \
-                          {<+V><2><Sg><Past><Ind>}:{<SB>est} | \
-                          {<+V><3><Sg><Past><Ind>}:{<SB>e}
+$VPastIndSgSuff-werden$ = {<1><Sg><Past><Ind>}:{<SB>e}   | \
+                          {<2><Sg><Past><Ind>}:{<SB>est} | \
+                          {<3><Sg><Past><Ind>}:{<SB>e}
 
-$VPastIndSgSuff-ward$ = {<+V><1><Sg><Past><Ind><Old>}:{}       | \
-                        {<+V><2><Sg><Past><Ind><Old>}:{<SB>st} | \
-                        {<+V><3><Sg><Past><Ind><Old>}:{}
+$VPastIndSgSuff-ward$ = {<1><Sg><Past><Ind><Old>}:{}       | \
+                        {<2><Sg><Past><Ind><Old>}:{<SB>st} | \
+                        {<3><Sg><Past><Ind><Old>}:{}
 
-$VPastIndPlSuff-werden$ = {<+V><1><Pl><Past><Ind>}:{<SB>en}  | \
-                          {<+V><2><Pl><Past><Ind>}:{<SB>et}  | \
-                          {<+V><3><Pl><Past><Ind>}:{<SB>en}
+$VPastIndPlSuff-werden$ = {<1><Pl><Past><Ind>}:{<SB>en}  | \
+                          {<2><Pl><Past><Ind>}:{<SB>et}  | \
+                          {<3><Pl><Past><Ind>}:{<SB>en}
 
-$VPastSubjWeakSuff$ = {<+V><1><Sg><Past><Subj>}:{<SB><ins(e)>t<SB>e}   | \
-                      {<+V><2><Sg><Past><Subj>}:{<SB><ins(e)>t<SB>est} | \
-                      {<+V><3><Sg><Past><Subj>}:{<SB><ins(e)>t<SB>e}   | \
-                      {<+V><1><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>en}  | \
-                      {<+V><2><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>et}  | \
-                      {<+V><3><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>en}
+$VPastSubjWeakSuff$ = {<1><Sg><Past><Subj>}:{<SB><ins(e)>t<SB>e}   | \
+                      {<2><Sg><Past><Subj>}:{<SB><ins(e)>t<SB>est} | \
+                      {<3><Sg><Past><Subj>}:{<SB><ins(e)>t<SB>e}   | \
+                      {<1><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>en}  | \
+                      {<2><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>et}  | \
+                      {<3><Pl><Past><Subj>}:{<SB><ins(e)>t<SB>en}
 
-$VPastSubjWeakSuff_t$ = {<+V><1><Sg><Past><Subj>}:{<SB>t<SB>e}   | \
-                        {<+V><2><Sg><Past><Subj>}:{<SB>t<SB>est} | \
-                        {<+V><3><Sg><Past><Subj>}:{<SB>t<SB>e}   | \
-                        {<+V><1><Pl><Past><Subj>}:{<SB>t<SB>en}  | \
-                        {<+V><2><Pl><Past><Subj>}:{<SB>t<SB>et}  | \
-                        {<+V><3><Pl><Past><Subj>}:{<SB>t<SB>en}
+$VPastSubjWeakSuff_t$ = {<1><Sg><Past><Subj>}:{<SB>t<SB>e}   | \
+                        {<2><Sg><Past><Subj>}:{<SB>t<SB>est} | \
+                        {<3><Sg><Past><Subj>}:{<SB>t<SB>e}   | \
+                        {<1><Pl><Past><Subj>}:{<SB>t<SB>en}  | \
+                        {<2><Pl><Past><Subj>}:{<SB>t<SB>et}  | \
+                        {<3><Pl><Past><Subj>}:{<SB>t<SB>en}
 
-$VPastSubjStrSuff$ = {<+V><1><Sg><Past><Subj>}:{<SB>e}   | \
-                     {<+V><2><Sg><Past><Subj>}:{<SB>est} | \
-                     {<+V><3><Sg><Past><Subj>}:{<SB>e}   | \
-                     {<+V><1><Pl><Past><Subj>}:{<SB>en}  | \
-                     {<+V><2><Pl><Past><Subj>}:{<SB>et}  | \
-                     {<+V><3><Pl><Past><Subj>}:{<SB>en}
+$VPastSubjStrSuff$ = {<1><Sg><Past><Subj>}:{<SB>e}   | \
+                     {<2><Sg><Past><Subj>}:{<SB>est} | \
+                     {<3><Sg><Past><Subj>}:{<SB>e}   | \
+                     {<1><Pl><Past><Subj>}:{<SB>en}  | \
+                     {<2><Pl><Past><Subj>}:{<SB>et}  | \
+                     {<3><Pl><Past><Subj>}:{<SB>en}
 
-$VPastSubj2Suff-sein$ = {<+V><2><Sg><Past><Subj>}:{<SB>st} | \
-                        {<+V><2><Pl><Past><Subj>}:{<SB>t}
+$VPastSubj2Suff-sein$ = {<2><Sg><Past><Subj>}:{<SB>st} | \
+                        {<2><Pl><Past><Subj>}:{<SB>t}
 
 $VPastWeak$ = $VPastIndWeakSuff_et$ | \
               $VPastSubjWeakSuff$
@@ -2362,17 +2338,17 @@ $VPastStr$ = $VPastIndStr$ | \
 $VPastStr-s$ = $VPastIndStr-s$ | \
                $VPastSubjStr$
 
-$VImpSgSuff_0$ = {<+V><Imp><Sg>}:{<rm|Imp>}
+$VImpSgSuff_0$ = {<Imp><Sg>}:{<rm|Imp>}
 
-$VImpSgNonStSuff_0$ = {<+V><Imp><Sg><NonSt>}:{<rm|Imp>} % cf. Duden-Grammatik (2016: § 609)
+$VImpSgNonStSuff_0$ = {<Imp><Sg><NonSt>}:{<rm|Imp>} % cf. Duden-Grammatik (2016: § 609)
 
-$VImpSgSuff_e$ = {<+V><Imp><Sg>}:{<SB>e<rm|Imp>}
+$VImpSgSuff_e$ = {<Imp><Sg>}:{<SB>e<rm|Imp>}
 
-$VImpPlSuff_et$ = {<+V><Imp><Pl>}:{<SB><ins(e)>t<rm|Imp>}
+$VImpPlSuff_et$ = {<Imp><Pl>}:{<SB><ins(e)>t<rm|Imp>}
 
-$VImpPlSuff_t$ = {<+V><Imp><Pl>}:{<SB>t<rm|Imp>}
+$VImpPlSuff_t$ = {<Imp><Pl>}:{<SB>t<rm|Imp>}
 
-$VImpPlSuff-sein$ = {<+V><Imp><Pl>}:{<rm|Imp>}
+$VImpPlSuff-sein$ = {<Imp><Pl>}:{<rm|Imp>}
 
 % sieh(e)
 $VImpSg$ = $VImpSgSuff_0$ | \
@@ -2603,86 +2579,62 @@ $VWeak-ak-ik+sein$ = $VInf$               | \
                      $VImp-ak-ik$
 
 
-% adpositions
+% adverbs
 
-% unter
-$Prep$ = {<+PREP>}:{}
+% mehr
+$AdvComp0$ = {<Comp>}:{}
+
+% öfter; lieber
+$AdvComp_er$ = {<Comp>}:{<SB>er}
+
+% liebsten; meisten
+$AdvSup_st$ = {<Sup>}:{<SB>st<SB>en}
+
+% öftesten; ehesten
+$AdvSup_est$ = {<Sup>}:{<SB>est<SB>en}
+
+
+% prepositions
 
 % unterm
-$Prep+Art-m$ = {<+PREPART><Masc><Dat><Sg>}:{} | \
-               {<+PREPART><Neut><Dat><Sg>}:{}
+$Prep+Art-m$ = {<Masc><Dat><Sg>}:{} | \
+               {<Neut><Dat><Sg>}:{}
 
-$Prep+Art-m-NonSt$ = {<+PREPART><Masc><Dat><Sg><NonSt>}:{} | \
-                     {<+PREPART><Neut><Dat><Sg><NonSt>}:{}
+$Prep+Art-m-NonSt$ = {<Masc><Dat><Sg><NonSt>}:{} | \
+                     {<Neut><Dat><Sg><NonSt>}:{}
 
 % untern
-$Prep+Art-n-NonSt$ = {<+PREPART><Masc><Acc><Sg><NonSt>}:{} % cf. Duden-Grammatik (2016: § 928)
+$Prep+Art-n-NonSt$ = {<Masc><Acc><Sg><NonSt>}:{} % cf. Duden-Grammatik (2016: § 928)
 
 % unters
-$Prep+Art-s$ = {<+PREPART><Neut><Acc><Sg>}:{}
+$Prep+Art-s$ = {<Neut><Acc><Sg>}:{}
 
 % zur
-$Prep+Art-r$ = {<+PREPART><Fem><Dat><Sg>}:{}
-
-% zufolge, willen
-$Postp$ = {<+POSTP>}:{}
-
-
-% other words
-
-% und
-$ConjCoord$ = {<+CONJ><Coord>}:{}
-
-% dass
-$ConjSub$ = {<+CONJ><Sub>}:{}
-
-% um
-$ConjInfCl$ = {<+CONJ><InfCl>}:{}
-
-% als
-$ConjAdjComp$ = {<+CONJ><AdjComp>}:{}
-
-% nicht
-$PtclNeg$ = {<+PTCL><Neg>}:{}
-
-% zu
-$PtclAdjPos$ = {<+PTCL><AdjPos>}:{}
-
-% am
-$PtclAdjSup$ = {<+PTCL><AdjSup>}:{}
-
-% zu
-$PtclInfCl$ = {<+PTCL><InfCl>}:{}
-
-% ein
-$Prev$ = {<+PREV>}:{}
-
-% hallo
-$Intj$ = {<+INTJ>}:{}
+$Prep+Art-r$ = {<Fem><Dat><Sg>}:{}
 
 
 % abbreviations
 
 % Kfm. (= Kaufmann)
-$AbbrNMasc$ = {<+NN><Masc><UnmCase><UnmNum>}:{}
+$AbbrNMasc$ = {<Masc><UnmCase><UnmNum>}:{}
 
 % Gr. (= Gros)
-$AbbrNNeut$ = {<+NN><Neut><UnmCase><UnmNum>}:{}
+$AbbrNNeut$ = {<Neut><UnmCase><UnmNum>}:{}
 
 % Kffr. (= Kauffrau)
-$AbbrNFem$ = {<+NN><Fem><UnmCase><UnmNum>}:{}
+$AbbrNFem$ = {<Fem><UnmCase><UnmNum>}:{}
 
 % Gebr. (= Gebrüder)
-$AbbrNUnmGend$ = {<+NN><UnmGend><UnmCase><Pl>}:{}
+$AbbrNUnmGend$ = {<UnmGend><UnmCase><Pl>}:{}
 
 % f. (= folgende)
-$AbbrAdj$ = {<+ADJ><Pos><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
+$AbbrAdj$ = {<Pos><UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 % Ew. (= Euer)
-$AbbrPoss$ = {<+POSS><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
+$AbbrPoss$ = {<Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 % vgl. (= vergleiche)
-$AbbrVImp$ = {<+V><Imp><UnmNum>}:{}
+$AbbrVImp$ = {<Imp><UnmNum>}:{}
 
 
 % inflection transducer
@@ -2722,7 +2674,6 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<AdjSup_st>               $AdjSup_st$              | \
          <>:<AdjSupAttr_est>          $AdjSupAttr_est$         | \
          <>:<AdjSupAttr_st>           $AdjSupAttr_st$          | \
-         <>:<Adv>                     $Adv$                    | \
          <>:<AdvComp_er>              $AdvComp_er$             | \
          <>:<AdvComp0>                $AdvComp0$               | \
          <>:<AdvSup_est>              $AdvSup_est$             | \
@@ -2749,10 +2700,6 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<Card-sieben>             $Card-sieben$            | \
          <>:<Card-vier>               $Card-vier$              | \
          <>:<Card-zwei>               $Card-zwei$              | \
-         <>:<ConjAdjComp>             $ConjAdjComp$            | \
-         <>:<ConjCoord>               $ConjCoord$              | \
-         <>:<ConjInfCl>               $ConjInfCl$              | \
-         <>:<ConjSub>                 $ConjSub$                | \
          <>:<Dem>                     $Dem$                    | \
          <>:<Dem0>                    $Dem0$                   | \
          <>:<Dem-alldem>              $Dem-alldem$             | \
@@ -2794,7 +2741,6 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<IProNeutDatSg>           $IProNeutDatSg$          | \
          <>:<IProNeutGenSg>           $IProNeutGenSg$          | \
          <>:<IProNeutNomSg>           $IProNeutNomSg$          | \
-         <>:<Intj>                    $Intj$                   | \
          <>:<NameFem_0>               $NameFem_0$              | \
          <>:<NameFem_apos>            $NameFem_apos$           | \
          <>:<NameFem_s>               $NameFem_s$              | \
@@ -3011,7 +2957,6 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<Poss-er>                 $Poss-er$                | \
          <>:<Poss|Wk>                 $Poss|Wk$                | \
          <>:<Poss|Wk-er>              $Poss|Wk-er$             | \
-         <>:<Postp>                   $Postp$                  | \
          <>:<PPro1AccPl>              $PPro1AccPl$             | \
          <>:<PPro1AccSg>              $PPro1AccSg$             | \
          <>:<PPro1DatPl>              $PPro1DatPl$             | \
@@ -3054,18 +2999,11 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<PRefl1Pl>                $PRefl1Pl$               | \
          <>:<PRefl2Pl>                $PRefl2Pl$               | \
          <>:<PRefl3>                  $PRefl3$                 | \
-         <>:<Prep>                    $Prep$                   | \
          <>:<Prep+Art-m>              $Prep+Art-m$             | \
          <>:<Prep+Art-m-NonSt>        $Prep+Art-m-NonSt$       | \
          <>:<Prep+Art-n-NonSt>        $Prep+Art-n-NonSt$       | \
          <>:<Prep+Art-r>              $Prep+Art-r$             | \
          <>:<Prep+Art-s>              $Prep+Art-s$             | \
-         <>:<Prev>                    $Prev$                   | \
-         <>:<ProAdv>                  $ProAdv$                 | \
-         <>:<PtclAdjPos>              $PtclAdjPos$             | \
-         <>:<PtclAdjSup>              $PtclAdjSup$             | \
-         <>:<PtclInfCl>               $PtclInfCl$              | \
-         <>:<PtclNeg>                 $PtclNeg$                | \
          <>:<Rel>                     $Rel$                    | \
          <>:<Rel-welch>               $Rel-welch$              | \
          <>:<RProMascAccSg>           $RProMascAccSg$          | \
@@ -3174,7 +3112,6 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<VWeak-signen>            $VWeak-signen$           | \
          <>:<VWeak-signen><>:<haben>  $VWeak-signen+haben$     | \
          <>:<VWeak-signen><>:<sein>   $VWeak-signen+sein$      | \
-         <>:<WAdv>                    $WAdv$                   | \
          <>:<W-welch>                 $W-welch$                | \
          <>:<WProMascAccSg>           $WProMascAccSg$          | \
          <>:<WProMascDatSg>           $WProMascDatSg$          | \
@@ -3195,5 +3132,7 @@ $=INFL$ = [#inflection#]:<>
 
 $=AUX$ = [#auxiliary#]:<>
 
-$InflFilter$ = (.* $=INFL$ $=AUX$ $=INFL$ $=AUX$ .*) | \
-               (.* $=INFL$ $=INFL$ .*)
+$InflFilter$ = .* $=INFL$ $=AUX$ $=INFL$ $=AUX$ .* | \
+               .* $=INFL$ $=INFL$ .*
+
+$NoInflFilter$ = .*

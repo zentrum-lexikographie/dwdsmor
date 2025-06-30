@@ -1,6 +1,6 @@
 % symbols.fst
 % Version 13.0
-% Andreas Nolda 2025-06-27
+% Andreas Nolda 2025-06-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -82,19 +82,12 @@
 
 #wf# = #wf-process# #wf-means#
 
-#category# = <ADJ><ADV><ART><CARD><CONJ><DEM><FRAC><INDEF><INTJ><NN><NPROP><ORD> \
-             <POSS><POSTP><PPRO><PREP><PREPART><PREV><PROADV><PTCL><PUNCT><REL> \
-             <V><WADV><WPRO>
+#cat# = <ADJ><ADV><ART><CARD><CONJ><DEM><FRAC><INDEF><INTJ><NN><NPROP><ORD> \
+        <POSS><POSTP><PPRO><PREP><PREPART><PREV><PROADV><PTCL><PUNCT><REL><V> \
+        <WADV><WPRO>
 
-#auxiliary# = <haben><sein>
-
-#part-of-speech# = <+ADJ><+ADV><+ART><+CARD><+CONJ><+DEM><+FRAC><+INDEF><+INTJ> \
-                   <+NN><+NPROP><+ORD><+POSS><+POSTP><+PPRO><+PREP><+PREPART> \
-                   <+PREV><+PROADV><+PTCL><+PUNCT><+REL><+V><+WADV><+WPRO>
-
-#subcat# = <Pers><Refl><Rec><Def><Indef><Neg><Coord><Sub><InfCl><AdjPos> \
-           <AdjComp><AdjSup><Comma><Period><Ellip><Quote><Paren><Dash><Slash> \
-           <Other>
+#subcat# = <Pers><Refl><Rec><Def><Indef><Neg><Coord><Sub><Int><InfCl><AdjComp> \
+           <AdjSup><Comma><Period><Ellip><Quote><Paren><Dash><Slash><Other>
 
 #degree# = <Pos><Comp><Sup>
 
@@ -116,9 +109,10 @@
 
 #tense# = <Pres><Past><Perf><UnmTense>
 
-#feature# = #category# #auxiliary# #part-of-speech# #subcat# #degree# #person# \
-            #gender# #case# #number# #infl# #function# #nonfinite# #mood# \
-            #tense#
+#auxiliary# = <haben><sein>
+
+#feature# = #cat# #subcat# #degree# #person# #gender# #case# #number# #infl# \
+            #function# #nonfinite# #mood# #tense# #auxiliary#
 
 #metainfo# = <NonSt><Old>
 
@@ -142,10 +136,10 @@
 
 #index# = #lemma-index# #paradigm-index#
 
-#Abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNUnmGend> \
+#abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNUnmGend> \
                     <AbbrPoss><AbbrVImp>
 
-#Adj-inflection# = <Adj_er_$est><Adj_er_$st><Adj_er_est><Adj_er_st> \
+#adj-inflection# = <Adj_er_$est><Adj_er_$st><Adj_er_est><Adj_er_st> \
                    <AdjComp-el_er><AdjComp-en_er><AdjComp-er_er><AdjComp0> \
                    <AdjComp_er><AdjPos><AdjPos-e><AdjPos-el><AdjPos-en> \
                    <AdjPos-er><AdjPos0><AdjPos0-e><AdjPos0-viel><AdjPosAttr> \
@@ -153,11 +147,11 @@
                    <AdjPosAttrSubst0><AdjPosPred><AdjPosPred-e><AdjSup_est> \
                    <AdjSup_st><AdjSupAttr_est><AdjSupAttr_st>
 
-#Adv-inflection# = <Adv><AdvComp_er><AdvComp0><AdvSup_est><AdvSup_st>
+#adv-inflection# = <AdvComp_er><AdvComp0><AdvSup_est><AdvSup_st>
 
-#Art-inflection# = <ArtDef><ArtIndef><ArtIndef-n><ArtNeg>
+#art-inflection# = <ArtDef><ArtIndef><ArtIndef-n><ArtNeg>
 
-#Noun-inflection# = <NFem0><NFem-Adj><NFem-in><NFem|Pl_0><NFem|Sg_0><NFem_0_$_n> \
+#noun-inflection# = <NFem0><NFem-Adj><NFem-in><NFem|Pl_0><NFem|Sg_0><NFem_0_$_n> \
                     <NFem_0_$e_n><NFem_0_$en_0><NFem_0_0_0><NFem_0_0_n> \
                     <NFem_0_a/e_0><NFem_0_a/en_0><NFem_0_e_0><NFem_0_e_n> \
                     <NFem_0_e_n~ss><NFem_0_ans/anten_0><NFem_0_anx/angen_0> \
@@ -217,15 +211,18 @@
                     <NNeut_s_um/a_0><NNeut_s_um/en_0><NNeut_s_0_0> \
                     <NUnmGend|Pl_0><NUnmGend|Pl_n>
 
-#Name-inflection# = <NameFem_0><NameFem_apos><NameFem_s><NameMasc_0> \
+#name-inflection# = <NameFem_0><NameFem_apos><NameFem_s><NameMasc_0> \
                     <NameMasc_apos><NameMasc_es><NameMasc_s><NameNeut_0> \
                     <NameNeut_apos><NameNeut_es><NameNeut_s><NameUnmGend|Pl_0> \
                     <NameUnmGend|Pl_n>
 
-#Num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier> \
+#num-inflection# = <Card0><Card-ein><Card-kein><Card-sieben><Card-vier> \
                    <Card-zwei><DigCard><DigFrac><DigOrd><Frac0><Ord><Roman>
 
-#Pro-inflection# = <ArtDef-das+DemNeut><ArtDef-dem+DemMasc><ArtDef-dem+DemNeut> \
+#prep-inflection# = <Prep+Art-m><Prep+Art-m-NonSt><Prep+Art-n-NonSt><Prep+Art-r> \
+                    <Prep+Art-s>
+
+#pro-inflection# = <ArtDef-das+DemNeut><ArtDef-dem+DemMasc><ArtDef-dem+DemNeut> \
                    <ArtDef-den+DemMasc><ArtDef-den+DemUnmGend> \
                    <ArtDef-der+DemFem><ArtDef-der+DemMasc> \
                    <ArtDef-der+DemUnmGend><ArtDef-des+DemMasc> \
@@ -255,7 +252,7 @@
                    <WProMascAccSg><WProMascDatSg><WProMascGenSg><WProMascNomSg> \
                    <WProNeutAccSg><WProNeutDatSg><WProNeutGenSg><WProNeutNomSg>
 
-#Verb-inflection# = <VImp><VImp-ak-ik><VImp-d-t><VImp-el-er><VImp-le><VImp-m-n> \
+#verb-inflection# = <VImp><VImp-ak-ik><VImp-d-t><VImp-el-er><VImp-le><VImp-m-n> \
                     <VImpPl><VImpPl-sein><VImpSg><VImpSg0><VInf><VInf-el-er> \
                     <VInf-le><VInf_n><VModPresIndSg><VModPresNonIndSg> \
                     <VPartPerf-d_t><VPartPerf-le><VPartPerf_ed><VPartPerf_n> \
@@ -273,12 +270,7 @@
                     <VPresSubj-sein><VWeak><VWeak-ak-ik><VWeak-d-t><VWeak-el-er> \
                     <VWeak-le><VWeak-m-n><VWeak-s><VWeak-signen>
 
-#Other-inflection# = <ConjAdjComp><ConjCoord><ConjInfCl><ConjSub><Intj> \
-                     <Postp><Prep><Prep+Art-m><Prep+Art-m-NonSt> \
-                     <Prep+Art-n-NonSt><Prep+Art-r><Prep+Art-s><Prev><ProAdv> \
-                     <PtclAdjPos><PtclAdjSup><PtclInfCl><PtclNeg><WAdv>
-
-#inflection# = #Abbr-inflection# #Adj-inflection# #Adv-inflection# \
-               #Art-inflection# #Noun-inflection# #Name-inflection# \
-               #Num-inflection# #Pro-inflection# #Verb-inflection# \
-               #Other-inflection#
+#inflection# = #abbr-inflection# #adj-inflection# #adv-inflection# \
+               #art-inflection# #noun-inflection# #name-inflection# \
+               #num-inflection# #prep-inflection# #pro-inflection# \
+               #verb-inflection#

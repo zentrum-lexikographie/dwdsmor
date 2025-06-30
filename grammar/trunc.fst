@@ -1,6 +1,6 @@
 % trunc.fst
-% Version 2.1
-% Andreas Nolda 2025-06-13
+% Version 3.0
+% Andreas Nolda 2025-06-30
 
 #include "symbols.fst"
 
@@ -27,9 +27,9 @@ $TruncInitial$ = $TruncInitial-CB$
 
 % truncate final morpheme sequence
 
-ALPHABET = [#wf# #part-of-speech#] \
-           <>:[#category# #auxiliary# #subcat# #degree# #person# #gender# #case# \
-               #number# #infl# #function# #nonfinite# #mood# #tense# #info#]
+ALPHABET = [#wf# #cat# #subcat#] \
+           <>:[#auxiliary# #degree# #person# #gender# #case# #number# #infl# \
+               #function# #nonfinite# #mood# #tense# #info#]
 
 $C$ =    [#char# #index# #boundary-trigger# #wf# #syninfo#]
 $T$ = <>:[#char# #index# <PB><SB>]

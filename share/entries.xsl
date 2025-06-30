@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 17.9 -->
-<!-- Andreas Nolda 2025-06-27 -->
+<!-- Version 18.0 -->
+<!-- Andreas Nolda 2025-06-30 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -21,6 +21,7 @@
   <xsl:param name="stem"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="pos"/>
+  <xsl:param name="subcat"/>
   <xsl:param name="class"/>
   <xsl:param name="etymology"/>
   <xsl:text>&lt;Stem&gt;</xsl:text>
@@ -50,13 +51,20 @@
   <xsl:text>&lt;</xsl:text>
   <xsl:value-of select="$pos"/>
   <xsl:text>&gt;</xsl:text>
+  <xsl:if test="string-length($subcat)&gt;0">
+    <xsl:text>&lt;</xsl:text>
+    <xsl:value-of select="$subcat"/>
+    <xsl:text>&gt;</xsl:text>
+  </xsl:if>
   <xsl:text>&lt;base&gt;</xsl:text>
   <xsl:text>&lt;</xsl:text>
   <xsl:value-of select="$etymology"/>
   <xsl:text>&gt;</xsl:text>
-  <xsl:text>&lt;</xsl:text>
-  <xsl:value-of select="$class"/>
-  <xsl:text>&gt;</xsl:text>
+  <xsl:if test="string-length($class)&gt;0">
+    <xsl:text>&lt;</xsl:text>
+    <xsl:value-of select="$class"/>
+    <xsl:text>&gt;</xsl:text>
+  </xsl:if>
   <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
@@ -1298,7 +1306,6 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">ADV</xsl:with-param>
-          <xsl:with-param name="class">Adv</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1349,7 +1356,6 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">ADV</xsl:with-param>
-          <xsl:with-param name="class">Adv</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1405,7 +1411,6 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">ADV</xsl:with-param>
-          <xsl:with-param name="class">Adv</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -1446,6 +1451,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">ART</xsl:with-param>
+          <xsl:with-param name="subcat">Def</xsl:with-param>
           <xsl:with-param name="class">ArtDef</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -1468,6 +1474,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">ART</xsl:with-param>
+          <xsl:with-param name="subcat">Indef</xsl:with-param>
           <xsl:with-param name="class">ArtIndef</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -1482,6 +1489,7 @@
           <xsl:with-param name="stem">’n</xsl:with-param>
           <xsl:with-param name="abbreviation">yes</xsl:with-param>
           <xsl:with-param name="pos">ART</xsl:with-param>
+          <xsl:with-param name="subcat">Indef</xsl:with-param>
           <xsl:with-param name="class">ArtIndef-n</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -1503,6 +1511,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">ART</xsl:with-param>
+          <xsl:with-param name="subcat">Neg</xsl:with-param>
           <xsl:with-param name="class">ArtNeg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5085,6 +5094,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2NomSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5100,6 +5110,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5115,6 +5126,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5130,6 +5142,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2GenSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5147,6 +5160,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2NomSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5162,6 +5176,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5177,6 +5192,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5192,6 +5208,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2GenSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5210,6 +5227,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProMascNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5225,6 +5243,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProMascAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5240,6 +5259,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProMascDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5255,6 +5275,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProMascGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5273,6 +5294,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProNeutNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5286,6 +5308,7 @@
           <xsl:with-param name="stem">’s</xsl:with-param>
           <xsl:with-param name="abbreviation">yes</xsl:with-param>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProNeutNomSg-s</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5300,6 +5323,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProNeutAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5313,6 +5337,7 @@
           <xsl:with-param name="stem">’s</xsl:with-param>
           <xsl:with-param name="abbreviation">yes</xsl:with-param>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProNeutAccSg-s</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5328,6 +5353,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProNeutDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5343,6 +5369,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProNeutGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5360,6 +5387,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro1NomSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5375,6 +5403,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro1AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5390,6 +5419,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro1DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5405,6 +5435,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro1GenSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5422,6 +5453,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2NomPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5437,6 +5469,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2AccPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5452,6 +5485,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2DatPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5467,6 +5501,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2GenPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5484,6 +5519,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2NomPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5499,6 +5535,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2AccPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5514,6 +5551,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2DatPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5529,6 +5567,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro2GenPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5547,6 +5586,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProFemNomSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5561,6 +5601,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProFemAccSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5576,6 +5617,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProFemDatSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5591,6 +5633,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProFemGenSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5608,6 +5651,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProUnmGendNomPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5622,6 +5666,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProUnmGendAccPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5637,6 +5682,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProUnmGendDatPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5652,6 +5698,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProUnmGendGenPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5669,6 +5716,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProUnmGendNomPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5683,6 +5731,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProUnmGendAccPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5698,6 +5747,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProUnmGendDatPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5713,6 +5763,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PProUnmGendGenPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5730,6 +5781,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro1NomPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5745,6 +5797,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro1AccPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5760,6 +5813,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro1DatPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5775,6 +5829,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Pers</xsl:with-param>
           <xsl:with-param name="class">PPro1GenPl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5806,6 +5861,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Refl</xsl:with-param>
           <xsl:with-param name="class">PRefl2AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5821,6 +5877,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Refl</xsl:with-param>
           <xsl:with-param name="class">PRefl2DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5838,6 +5895,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Refl</xsl:with-param>
           <xsl:with-param name="class">PRefl2AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5853,6 +5911,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Refl</xsl:with-param>
           <xsl:with-param name="class">PRefl2DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5870,6 +5929,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Refl</xsl:with-param>
           <xsl:with-param name="class">PRefl2Pl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5887,6 +5947,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Refl</xsl:with-param>
           <xsl:with-param name="class">PRefl2Pl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5904,6 +5965,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Refl</xsl:with-param>
           <xsl:with-param name="class">PRefl1AccSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5919,6 +5981,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Refl</xsl:with-param>
           <xsl:with-param name="class">PRefl1DatSg</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5936,6 +5999,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Refl</xsl:with-param>
           <xsl:with-param name="class">PRefl3</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5953,6 +6017,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">PPRO</xsl:with-param>
+          <xsl:with-param name="subcat">Refl</xsl:with-param>
           <xsl:with-param name="class">PRefl1Pl</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
@@ -5982,6 +6047,7 @@
         <xsl:with-param name="abbreviation"
                         select="$abbreviation"/>
         <xsl:with-param name="pos">PPRO</xsl:with-param>
+        <xsl:with-param name="subcat">Rec</xsl:with-param>
         <xsl:with-param name="class">PRecPl</xsl:with-param>
         <xsl:with-param name="etymology"
                         select="$etymology"/>
@@ -10654,115 +10720,62 @@
   <xsl:if test="string-length($lemma)&gt;0">
     <xsl:choose>
       <xsl:when test="$position='any'">
-        <xsl:variable name="class1">
-          <xsl:call-template name="adposition-class">
-            <xsl:with-param name="lemma"
-                            select="$lemma"/>
-            <xsl:with-param name="position">pre</xsl:with-param>
-            <xsl:with-param name="pronunciations"
-                            select="$pronunciations"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="class2">
-          <xsl:call-template name="adposition-class">
-            <xsl:with-param name="lemma"
-                            select="$lemma"/>
-            <xsl:with-param name="position">post</xsl:with-param>
-            <xsl:with-param name="pronunciations"
-                            select="$pronunciations"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:if test="string-length($class1)&gt;0 and
-                      string-length($class2)&gt;0">
-          <xsl:call-template name="stem-entry">
-            <xsl:with-param name="lemma"
-                            select="$lemma"/>
-            <xsl:with-param name="lemma-index"
-                            select="$lemma-index"/>
-            <xsl:with-param name="paradigm-index"
-                            select="$paradigm-index"/>
-            <xsl:with-param name="abbreviation"
-                            select="$abbreviation"/>
-            <xsl:with-param name="pos">PREP</xsl:with-param>
-            <xsl:with-param name="class"
-                            select="$class1"/>
-            <xsl:with-param name="etymology"
-                            select="$etymology"/>
-          </xsl:call-template>
-          <xsl:call-template name="stem-entry">
-            <xsl:with-param name="lemma"
-                            select="$lemma"/>
-            <xsl:with-param name="lemma-index"
-                            select="$lemma-index"/>
-            <xsl:with-param name="paradigm-index"
-                            select="$paradigm-index"/>
-            <xsl:with-param name="abbreviation"
-                            select="$abbreviation"/>
-            <xsl:with-param name="pos">POSTP</xsl:with-param>
-            <xsl:with-param name="class"
-                            select="$class2"/>
-            <xsl:with-param name="etymology"
-                            select="$etymology"/>
-          </xsl:call-template>
-        </xsl:if>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">PREP</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">POSTP</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
       </xsl:when>
       <xsl:when test="$position='post'">
-        <xsl:variable name="class">
-          <xsl:call-template name="adposition-class">
-            <xsl:with-param name="lemma"
-                            select="$lemma"/>
-            <xsl:with-param name="position"
-                            select="$position"/>
-            <xsl:with-param name="pronunciations"
-                            select="$pronunciations"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:if test="string-length($class)&gt;0">
-          <xsl:call-template name="stem-entry">
-            <xsl:with-param name="lemma"
-                            select="$lemma"/>
-            <xsl:with-param name="lemma-index"
-                            select="$lemma-index"/>
-            <xsl:with-param name="paradigm-index"
-                            select="$paradigm-index"/>
-            <xsl:with-param name="abbreviation"
-                            select="$abbreviation"/>
-            <xsl:with-param name="pos">POSTP</xsl:with-param>
-            <xsl:with-param name="class"
-                            select="$class"/>
-            <xsl:with-param name="etymology"
-                            select="$etymology"/>
-          </xsl:call-template>
-        </xsl:if>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">POSTP</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:variable name="class">
-          <xsl:call-template name="adposition-class">
-            <xsl:with-param name="lemma"
-                            select="$lemma"/>
-            <xsl:with-param name="position"
-                            select="$position"/>
-            <xsl:with-param name="pronunciations"
-                            select="$pronunciations"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:if test="string-length($class)&gt;0">
-          <xsl:call-template name="stem-entry">
-            <xsl:with-param name="lemma"
-                            select="$lemma"/>
-            <xsl:with-param name="lemma-index"
-                            select="$lemma-index"/>
-            <xsl:with-param name="paradigm-index"
-                            select="$paradigm-index"/>
-            <xsl:with-param name="abbreviation"
-                            select="$abbreviation"/>
-            <xsl:with-param name="pos">PREP</xsl:with-param>
-            <xsl:with-param name="class"
-                            select="$class"/>
-            <xsl:with-param name="etymology"
-                            select="$etymology"/>
-          </xsl:call-template>
-        </xsl:if>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">PREP</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:if>
@@ -10871,46 +10884,6 @@
         </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:if>
-</xsl:template>
-
-<!-- conjunctions -->
-<xsl:template name="conjunction-entry-set">
-  <xsl:param name="lemma"/>
-  <xsl:param name="lemma-index"/>
-  <xsl:param name="paradigm-index"/>
-  <xsl:param name="abbreviation"/>
-  <xsl:param name="type"/>
-  <xsl:param name="pronunciations"/>
-  <xsl:param name="etymology"/>
-  <xsl:if test="string-length($lemma)&gt;0">
-    <xsl:variable name="class">
-      <xsl:call-template name="conjunction-class">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-        <xsl:with-param name="type"
-                        select="$type"/>
-        <xsl:with-param name="pronunciations"
-                        select="$pronunciations"/>
-      </xsl:call-template>
-    </xsl:variable>
-    <xsl:if test="string-length($class)&gt;0">
-      <xsl:call-template name="stem-entry">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-        <xsl:with-param name="lemma-index"
-                        select="$lemma-index"/>
-        <xsl:with-param name="paradigm-index"
-                        select="$paradigm-index"/>
-        <xsl:with-param name="abbreviation"
-                        select="$abbreviation"/>
-        <xsl:with-param name="pos">CONJ</xsl:with-param>
-        <xsl:with-param name="class"
-                        select="$class"/>
-        <xsl:with-param name="etymology"
-                        select="$etymology"/>
-      </xsl:call-template>
-    </xsl:if>
   </xsl:if>
 </xsl:template>
 

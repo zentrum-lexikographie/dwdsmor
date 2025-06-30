@@ -61,8 +61,8 @@ The library can be used for lemmatisation:
 ``` python-console
 >>> import dwdsmor
 >>> lemmatizer = dwdsmor.lemmatizer()
->>> assert lemmatizer("getestet", pos={"+V"}).analysis == "testen"
->>> assert lemmatizer("getestet", pos={"+ADJ"}).analysis == "getestet"
+>>> assert lemmatizer("getestet", pos={"V"}).analysis == "testen"
+>>> assert lemmatizer("getestet", pos={"ADJ"}).analysis == "getestet"
 ```
 
 There is also integration with spacy:
@@ -84,8 +84,8 @@ argument:
 ```plaintext
 $ dwdsmor gebildet
 Wordform  	Lemma   	Analysis                           	POS  	Degree  	Function  	Nonfinite  	Tense  	Auxiliary
-gebildet  	bilden  	bild<~>en<+V><Part><Perf><haben>   	+V   	        	          	Part       	Perf   	haben
-gebildet  	gebildet	ge<~>bild<~>et<+ADJ><Pos><Pred/Adv>	+ADJ 	Pos     	Pred/Adv
+gebildet  	bilden  	bild<~>en<+V><Part><Perf><haben>   	V   	        	          	Part       	Perf   	haben
+gebildet  	gebildet	ge<~>bild<~>et<+ADJ><Pos><Pred/Adv>	ADJ 	Pos     	Pred/Adv
 ```
 
 To generate all word forms for a lexical word, pass it (or a form
@@ -97,25 +97,25 @@ $ dwdsmor -g gebildet
 […]
 Wordform  	Lemma   	Analysis                                             	POS  	Degree  	Function  	  Person	Gender  	Case  	Number  	Nonfinite  	Tense  	Mood  	Auxiliary  	Inflection
 […]
-gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Acc><Sg><St>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Acc   	Sg      	           	       	      	           	St
-gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Acc><Sg><Wk>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Acc   	Sg      	           	       	      	           	Wk
-gebildeter	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Dat><Sg><St>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Dat   	Sg      	           	       	      	           	St
-gebildeten	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Dat><Sg><Wk>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Dat   	Sg      	           	       	      	           	Wk
-gebildeter	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Gen><Sg><St>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Gen   	Sg      	           	       	      	           	St
-gebildeten	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Gen><Sg><Wk>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Gen   	Sg      	           	       	      	           	Wk
-gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Nom><Sg><St>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Nom   	Sg      	           	       	      	           	St
-gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Nom><Sg><Wk>    	+ADJ 	Pos     	Attr/Subst	        	Fem     	Nom   	Sg      	           	       	      	           	Wk
-gebildeten	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Masc><Acc><Sg><St>   	+ADJ 	Pos     	Attr/Subst	        	Masc    	Acc   	Sg      	           	       	      	           	St
+gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Acc><Sg><St>    	ADJ 	Pos     	Attr/Subst	        	Fem     	Acc   	Sg      	           	       	      	           	St
+gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Acc><Sg><Wk>    	ADJ 	Pos     	Attr/Subst	        	Fem     	Acc   	Sg      	           	       	      	           	Wk
+gebildeter	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Dat><Sg><St>    	ADJ 	Pos     	Attr/Subst	        	Fem     	Dat   	Sg      	           	       	      	           	St
+gebildeten	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Dat><Sg><Wk>    	ADJ 	Pos     	Attr/Subst	        	Fem     	Dat   	Sg      	           	       	      	           	Wk
+gebildeter	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Gen><Sg><St>    	ADJ 	Pos     	Attr/Subst	        	Fem     	Gen   	Sg      	           	       	      	           	St
+gebildeten	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Gen><Sg><Wk>    	ADJ 	Pos     	Attr/Subst	        	Fem     	Gen   	Sg      	           	       	      	           	Wk
+gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Nom><Sg><St>    	ADJ 	Pos     	Attr/Subst	        	Fem     	Nom   	Sg      	           	       	      	           	St
+gebildete 	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Fem><Nom><Sg><Wk>    	ADJ 	Pos     	Attr/Subst	        	Fem     	Nom   	Sg      	           	       	      	           	Wk
+gebildeten	gebildet	gebildet<+ADJ><Pos><Attr/Subst><Masc><Acc><Sg><St>   	ADJ 	Pos     	Attr/Subst	        	Masc    	Acc   	Sg      	           	       	      	           	St
 […]
-bildeten  	bilden  	bild<~>en<+V><1><Pl><Past><Ind>                      	+V   	        	          	       1	        	      	Pl      	           	Past   	Ind
-bildeten  	bilden  	bild<~>en<+V><1><Pl><Past><Subj>                     	+V   	        	          	       1	        	      	Pl      	           	Past   	Subj
-bilden    	bilden  	bild<~>en<+V><1><Pl><Pres><Ind>                      	+V   	        	          	       1	        	      	Pl      	           	Pres   	Ind
-bilden    	bilden  	bild<~>en<+V><1><Pl><Pres><Subj>                     	+V   	        	          	       1	        	      	Pl      	           	Pres   	Subj
-bildete   	bilden  	bild<~>en<+V><1><Sg><Past><Ind>                      	+V   	        	          	       1	        	      	Sg      	           	Past   	Ind
-bildete   	bilden  	bild<~>en<+V><1><Sg><Past><Subj>                     	+V   	        	          	       1	        	      	Sg      	           	Past   	Subj
-bilde     	bilden  	bild<~>en<+V><1><Sg><Pres><Ind>                      	+V   	        	          	       1	        	      	Sg      	           	Pres   	Ind
-bilde     	bilden  	bild<~>en<+V><1><Sg><Pres><Subj>                     	+V   	        	          	       1	        	      	Sg      	           	Pres   	Subj
-bildetet  	bilden  	bild<~>en<+V><2><Pl><Past><Ind>                      	+V   	        	          	       2	        	      	Pl      	           	Past   	Ind
+bildeten  	bilden  	bild<~>en<+V><1><Pl><Past><Ind>                      	V   	        	          	       1	        	      	Pl      	           	Past   	Ind
+bildeten  	bilden  	bild<~>en<+V><1><Pl><Past><Subj>                     	V   	        	          	       1	        	      	Pl      	           	Past   	Subj
+bilden    	bilden  	bild<~>en<+V><1><Pl><Pres><Ind>                      	V   	        	          	       1	        	      	Pl      	           	Pres   	Ind
+bilden    	bilden  	bild<~>en<+V><1><Pl><Pres><Subj>                     	V   	        	          	       1	        	      	Pl      	           	Pres   	Subj
+bildete   	bilden  	bild<~>en<+V><1><Sg><Past><Ind>                      	V   	        	          	       1	        	      	Sg      	           	Past   	Ind
+bildete   	bilden  	bild<~>en<+V><1><Sg><Past><Subj>                     	V   	        	          	       1	        	      	Sg      	           	Past   	Subj
+bilde     	bilden  	bild<~>en<+V><1><Sg><Pres><Ind>                      	V   	        	          	       1	        	      	Sg      	           	Pres   	Ind
+bilde     	bilden  	bild<~>en<+V><1><Sg><Pres><Subj>                     	V   	        	          	       1	        	      	Sg      	           	Pres   	Subj
+bildetet  	bilden  	bild<~>en<+V><2><Pl><Past><Ind>                      	V   	        	          	       2	        	      	Pl      	           	Past   	Ind
 […]
 ```
 

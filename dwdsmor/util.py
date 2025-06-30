@@ -7,7 +7,7 @@ def inflected(spec, generated):
         spec, visible_boundaries=separable_verb_tag, boundary_tag="|"
     )
     if (
-        traversal.pos == "+V"
+        traversal.pos == "V"
         and traversal.nonfinite is None
         and separable_verb_tag in spec
     ):

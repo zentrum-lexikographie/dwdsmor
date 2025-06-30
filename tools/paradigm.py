@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms with DWDSmor
-# Andreas Nolda 2025-05-09
+# Andreas Nolda 2025-05-30
 
 import argparse
 import csv
@@ -21,7 +21,7 @@ import sfst_transduce
 import yaml
 
 
-version = 17.0
+version = 17.1
 
 
 ROOT_DIR = detect_root_dir()
@@ -276,7 +276,7 @@ def format_paradigm_index(paradigm_index):
 
 
 def format_pos(pos):
-    return "<+" + pos + ">"
+    return "<" + pos + ">"
 
 
 def format_categorisation(categorisation):

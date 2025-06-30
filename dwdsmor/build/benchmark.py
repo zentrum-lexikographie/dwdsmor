@@ -88,10 +88,6 @@ ud_to_dwdsmor_pos = {
     "$(": {"PUNCT"},
 }
 
-dwdsmor_pos_tags = {
-    k: set((f"+{v}" for v in vs)) for k, vs in ud_to_dwdsmor_pos.items()
-}
-
 coverage_headers = [
     "POS",
     "# types",
@@ -116,7 +112,7 @@ def compute_coverage(automata, limit=None, show_progress=False):
     mismatches = defaultdict(Counter)
     for token in tokens:
         form, lemma, xpos = token
-        pos_candidates = {f"+{xpos}"}.union(dwdsmor_pos_tags.get(xpos, set()))
+        pos_candidates = {xpos}.union(ud_to_dwdsmor_pos.get(xpos, set()))
         is_match = lemmatizer(form, pos=pos_candidates) is not None
         if not is_match and lemmatizer(lemma) is not None:
             # skip tokens where we can analyze the given lemma but not the form:

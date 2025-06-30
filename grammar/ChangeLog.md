@@ -1,9 +1,13 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
-2025-06-27:
+2025-06-30:
 
-* replace lexical category `<OTHER>` with `<CONJ>`, `<INTJ>`, `<POSTP>`,
-  `<PREP>`, `<PREPART>`, `<PREV>`, `<PROADV>`, `<PTCL>`, `<PUNCT>`, and `<WADV>`
+* remove `+` from part-of-speech categories
+* use part-of-speech categories and subcategories also in the lexicon
+* remove inflection classes `Adv`, `ConjAdjComp`, `ConjCoord`, `ConjInfCl`,
+  `ConjSub`, `Intj`, `Postp`, `Prep`, `Prev`, `ProAdv`, `PtclAdjPos`,
+  `PtclAdjSup`, `PtclInfCl`, `PtclNeg`, and `WAdv` for uninflected words
+* rename particle subcategory `AdjPos` to `Int` (intensifier)
 
 2025-06-19:
 

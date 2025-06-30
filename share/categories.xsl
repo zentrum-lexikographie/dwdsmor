@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 7.7 -->
-<!-- Andreas Nolda 2025-04-24 -->
+<!-- Version 7.8 -->
+<!-- Andreas Nolda 2025-06-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2158,20 +2158,6 @@
 
 <!-- other classes -->
 
-<xsl:variable name="adposition-class-mapping">
-  <!-- prepositions: -->
-  <class position="pre">Prep</class>
-  <!-- postpositions: -->
-  <class position="post">Postp</class>
-</xsl:variable>
-
-<xsl:template name="adposition-class">
-  <xsl:param name="lemma"/>
-  <xsl:param name="position"/>
-  <xsl:param name="pronunciations"/>
-  <xsl:value-of select="$adposition-class-mapping/class[@position=$position]"/>
-</xsl:template>
-
 <xsl:variable name="contracted-adposition-class-mapping">
   <!-- clitic article: "(de)m" -->
   <class clitic="m">Prep+Art-m</class>
@@ -2186,23 +2172,5 @@
   <xsl:param name="clitic"/>
   <xsl:param name="pronunciations"/>
   <xsl:value-of select="$contracted-adposition-class-mapping/class[@clitic=$clitic]"/>
-</xsl:template>
-
-<xsl:variable name="conjunction-class-mapping">
-  <!-- coordinating conjunctions: -->
-  <class type="coord">ConjCoord</class>
-  <!-- subordinating conjunctions -->
-  <class type="subord">ConjSub</class>
-  <!-- clausal infinitive conjunctions -->
-  <class type="infcl">ConjInfCl</class>
-  <!-- comparative conjunctions -->
-  <class type="adjcomp">ConjAdjComp</class>
-</xsl:variable>
-
-<xsl:template name="conjunction-class">
-  <xsl:param name="lemma"/>
-  <xsl:param name="type"/>
-  <xsl:param name="pronunciations"/>
-  <xsl:value-of select="$conjunction-class-mapping/class[@type=$type]"/>
 </xsl:template>
 </xsl:stylesheet>

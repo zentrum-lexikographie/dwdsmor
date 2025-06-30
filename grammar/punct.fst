@@ -1,6 +1,6 @@
 % punct.fst
-% Version 1.2
-% Andreas Nolda 2024-03-13
+% Version 2.0
+% Andreas Nolda 2025-06-30
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -16,11 +16,11 @@ $PUNCTDASH$   = [#punctdash#]
 $PUNCTSLASH$  = [#punctslash#]
 $PUNCTOTHER$  = [#punctother#]
 
-$PUNCT$ = $PUNCTCOMMA$  {<+PUNCT><Comma>}:{}  | \
-          $PUNCTPERIOD$ {<+PUNCT><Period>}:{} | \
-          $PUNCTELLIP$  {<+PUNCT><Ellip>}:{}  | \
-          $PUNCTQUOTE$  {<+PUNCT><Quote>}:{}  | \
-          $PUNCTPAREN$  {<+PUNCT><Paren>}:{}  | \
-          $PUNCTDASH$   {<+PUNCT><Dash>}:{}   | \
-          $PUNCTSLASH$  {<+PUNCT><Slash>}:{}  | \
-          $PUNCTOTHER$  {<+PUNCT><Other>}:{}
+$PUNCT$ = $PUNCTCOMMA$  {<PUNCT><Comma>}:{}  | \
+          $PUNCTPERIOD$ {<PUNCT><Period>}:{} | \
+          $PUNCTELLIP$  {<PUNCT><Ellip>}:{}  | \
+          $PUNCTQUOTE$  {<PUNCT><Quote>}:{}  | \
+          $PUNCTPAREN$  {<PUNCT><Paren>}:{}  | \
+          $PUNCTDASH$   {<PUNCT><Dash>}:{}   | \
+          $PUNCTSLASH$  {<PUNCT><Slash>}:{}  | \
+          $PUNCTOTHER$  {<PUNCT><Other>}:{}
