@@ -16,28 +16,20 @@ from dwdsmor.automaton import automata, editions
 from dwdsmor.log import configure_logging
 
 
-# mapping between DWDS and DWDSmor part-of-speech categories
+# mapping between relevant DWDS and DWDSmor part-of-speech categories
 pos_map = {
     "Adjektiv": {"ADJ"},
-    "Adverb": {"ADV", "PTCL", "INTJ", "CONJ"},
     "bestimmter Artikel": {"ART"},
     "Bruchzahl": {"FRAC"},
     "Demonstrativpronomen": {"DEM", "PROADV"},
     "Eigenname": {"NPROP"},
     "Indefinitpronomen": {"INDEF", "ART"},
-    "Interjektion": {"INTJ"},
     "Interrogativpronomen": {"WPRO"},
     "Kardinalzahl": {"CARD"},
-    "Konjunktion": {"CONJ", "ADV", "INTJ"},
     "Ordinalzahl": {"ORD"},
-    "Partikel": {"PTCL", "ADV", "INTJ"},
     "partizipiales Adjektiv": {"ADJ"},
-    "partizipiales Adverb": {"ADV"},
     "Personalpronomen": {"PPRO"},
     "Possessivpronomen": {"POSS"},
-    "Präposition": {"PREP", "POSTP"},
-    "Präposition + Artikel": {"PREPART", "PTCL"},
-    "Pronominaladverb": {"PROADV"},
     "Reflexivpronomen": {"PPRO"},
     "Relativpronomen": {"REL"},
     "reziprokes Pronomen": {"PPRO"},
@@ -89,18 +81,36 @@ def parse_entries(wb_dir, xml_file):
                                 return True
                             return False
 
+                        def not_prop(xpath, grammarspec=grammarspec):
+                            for _ in grammarspec.findall(xpath):
+                                return False
+                            return True
+
                         if pos in {"Eigenname", "Substantiv"}:
                             has_grammar = (
                                 prop(qn("Genus")) and prop(qn("Genitiv"))
                             ) or prop(qn("Numeruspraeferenz") + "[.='nur im Plural']")
                         elif pos in {
+                            "Personalpronomen",
+                        }:
+                            has_grammar = not_prop(
+                                qn("Kasuspraeferenz") + "[.!='im Nominativ']"
+                            ) and not_prop(qn("Einschraenkung"))
+                        elif pos in {
                             "bestimmter Artikel",
                             "Demonstrativpronomen",
+                            "Indefinitpronomen",
+                            "Interrogativpronomen",
                             "Possessivpronomen",
                             "Relativpronomen",
                             "unbestimmter Artikel",
                         }:
-                            has_grammar = prop(qn("Genus")) or prop(qn("indeklinabel"))
+                            has_grammar = (
+                                prop(qn("Genus") + "[.='fem.']")
+                                or prop(qn("indeklinabel"))
+                            ) and not_prop(
+                                qn("Kasuspraeferenz") + "[.!='im Nominativ']"
+                            )
                         elif pos == "Verb":
                             has_grammar = (
                                 prop(qn("Praesens"))
@@ -163,7 +173,6 @@ if __name__ == "__main__":
     assert len(wb_xml_files) > 0, f"No lexicon articles found in {wb_dir}"
 
     edition_automata = automata(edition_build_dir)
-    analyzer = edition_automata.analyzer()
     traversals = edition_automata.traversals()
 
     aggregated = not args.debug
@@ -173,63 +182,49 @@ if __name__ == "__main__":
         if not args.quiet:
             wb_xml_files = tqdm(wb_xml_files, "Processing lexicon articles")
 
-    grammar_entries: Dict[str, Dict[bool, int]] = defaultdict(Counter)
-    analyzed_entries: Dict[str, Dict[bool, int]] = defaultdict(Counter)
     generated_entries: Dict[str, Dict[bool, int]] = defaultdict(Counter)
     for wb_xml_file in wb_xml_files:
         for entry in parse_entries(wb_dir, wb_xml_file):
             pos_candidates = pos_map[entry.pos]
-            analyzed = False
             generated = False
-            for a_traversal in analyzer.analyze(entry.lemma):
-                if a_traversal.analysis == entry.lemma:
-                    if a_traversal.pos in pos_candidates:
-                        analyzed = True
-                        break
             for g_traversal in traversals.get(entry.lemma, []):
                 if g_traversal.lidx == entry.lidx and g_traversal.pos in pos_candidates:
                     generated = True
                     break
-            if aggregated:
-                grammar_entries[entry.pos][entry.has_grammar] += 1
-                analyzed_entries[entry.pos][analyzed] += 1
-                generated_entries[entry.pos][generated] += 1
-            if report is not None:
-                if not report_header:
-                    report.writerow(
-                        (
-                            "File",
-                            "Entry Number",
-                            "Lemma",
-                            "Lemma Index",
-                            "POS",
-                            "With Grammar",
-                            "Analyzed",
-                            "Generated",
+            if entry.has_grammar:
+                if aggregated:
+                    # skip entries without appropriate grammatical specifications
+                    generated_entries[entry.pos][generated] += 1
+                if report is not None:
+                    if not report_header:
+                        report.writerow(
+                            (
+                                "File",
+                                "Entry Number",
+                                "Lemma",
+                                "Lemma Index",
+                                "POS",
+                                "Generated",
+                            )
                         )
+                        report_header = True
+                    result_cols = (
+                        entry.file,
+                        entry.entry,
+                        entry.lemma,
+                        entry.lidx,
+                        entry.pos,
+                        "1" if generated else "0",
                     )
-                    report_header = True
-                result_cols = (
-                    entry.file,
-                    entry.entry,
-                    entry.lemma,
-                    entry.lidx,
-                    entry.pos,
-                    "1" if entry.has_grammar else "0",
-                    "1" if analyzed else "0",
-                    "1" if generated else "0",
-                )
-                report.writerow(result_cols)
+                    report.writerow(result_cols)
     if aggregated:
         headers = [
             "POS",
-            "Entries",
-            "% Entries",
-            "% Entries with Grammar",
-            "% Analyzed Entries",
-            "% Generated Entries",
+            "Lemmas",
+            "% Lemmas",
+            "% Generated Lemmas",
         ]
-        colalign = ["left", "right", "right", "right", "right", "right"]
+        colalign = ["left", "right", "right", "right"]
         coverage = []
 
         def pct(v):
@@ -239,42 +234,34 @@ if __name__ == "__main__":
             return "{:,d}".format(v)
 
         total_entries = 0
-        total_with_grammar = 0
-        for pos_key in sorted(grammar_entries.keys()):
-            pos_with_grammar = grammar_entries[pos_key][True]
-            pos_without_grammar = grammar_entries[pos_key][False]
-            total_entries += pos_with_grammar + pos_without_grammar
-            total_with_grammar += pos_with_grammar
-
-        total_analyzed = 0
-        total_generated = 0
-        for pos_key in sorted(grammar_entries.keys()):
-            pos_with_grammar = grammar_entries[pos_key][True]
-            pos_without_grammar = grammar_entries[pos_key][False]
-            pos_total = pos_with_grammar + pos_without_grammar
-            pos_analyzed = analyzed_entries[pos_key][True]
+        for pos_key in sorted(generated_entries.keys()):
             pos_generated = generated_entries[pos_key][True]
+            pos_not_generated = generated_entries[pos_key][False]
+            total_entries += pos_generated + pos_not_generated
+
+        total_generated = 0
+        for pos_key in sorted(generated_entries.keys()):
+            pos_generated = generated_entries[pos_key][True]
+            pos_not_generated = generated_entries[pos_key][False]
+            pos_total = pos_generated + pos_not_generated
             coverage.append(
                 [
                     pos_key,
                     count(pos_total),
                     pct(pos_total / total_entries),
-                    pct(pos_with_grammar / pos_total),
-                    pct(pos_analyzed / pos_total),
                     pct(pos_generated / pos_total),
                 ]
             )
-            total_analyzed += pos_analyzed
             total_generated += pos_generated
+
         coverage.insert(
             0,
             [
                 "Σ",
                 count(total_entries),
                 pct(1),
-                pct(total_with_grammar / total_entries),
-                pct(total_analyzed / total_entries),
                 pct(total_generated / total_entries),
             ],
         )
+
         print(tabulate(coverage, headers=headers, colalign=colalign, tablefmt="tsv"))
