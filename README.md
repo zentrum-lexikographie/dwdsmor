@@ -23,11 +23,11 @@ DWDSmor Python library is provided, using the
 
 The coverage of the DWDSmor automata of the German language depends on
 
-1. the DWDSmor grammar, which defines lemmatisation, inflection, and
-   word-formation rules for written German, and
-2. a DWDSmor lexicon, which declares lexical entries with lemmas, stem
+1. a DWDSmor lexicon, which declares lexical entries with lemmas, stem
    forms, word classes, and inflection classes of the covered lexical
-   words.
+   words, and
+2. the DWDSmor grammar, which defines lemmatisation, inflection, and
+   word-formation rules for written German.
 
 While the DWDSmor grammar for word-formation is still work in progress,
 its inflection grammar is very comprehensive. The inflection grammar as
@@ -36,7 +36,11 @@ well as the lexicon format are based on (heavily modified) code from
 derived from the Stuttgart Morphology
 ([SMOR](https://www.cis.lmu.de/~schmid/tools/SMOR/)).
 
-From the DWDSmor grammar and a DWDSmor lexicon, a DWDSmor edition can be
+As a rule, the entries in a DWDSmor lexicon are extracted from a source
+lexicon comprising a set of XML files in the format of the
+[DWDS dictionary](https://www.dwds.de).
+
+From a DWDSmor lexicon and the DWDSmor grammar, a DWDSmor edition can be
 compiled, containing several automata types in standard (`.a`) and
 compact format (`.ca`):
 
@@ -60,18 +64,18 @@ compact format (`.ca`):
 Currently, the following DWDSmor editions are supported:
 
 1. the **DWDS Edition**, derived from the complete lexical dataset of
-   the [DWDS dictionary](https://www.dwds.de) and available upon
-   request for research purposes, and
-2. the **Open Edition**, based on a subset of the DWDS lemmas and their
-   grammatical specifications.
+   the [DWDS dictionary](https://www.dwds.de), and
+2. the **Open Edition**, based on a sample lexicon of common DWDS lemmas
+   and their grammatical specifications.
 
-The Open Edition covers common German words and is released freely with its
-sample lexicon and the grammar for general use and experiments. For testing
-purposes, DWDSmor also allows for compiling a development edition from
-user-provided lexical data in the DWDS format.
+The automata of the DWDS Edition are available upon request for research
+purposes. The automata of the Open Edition, as well as the sample source
+lexicon, are released freely for general use and experiments. For testing
+purposes, DWDSmor also allows for compiling a development edition from a
+user-provided source lexicon.
 
 Current overall coverage is measured against the
-[German Universal Dependencies treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
+[German Universal Dependencies HDT treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
 and documented on the respective
 [Hugging Face Hub page](https://huggingface.co/zentrum-lexikographie) of
 each edition. In the DWDS Edition, coverage typically ranges from
@@ -154,7 +158,82 @@ bildetet  	bilden  	bild<~>en<+V><2><Pl><Past><Ind>                      	V   	 
 
 More sophisticated tools for analysis and paradigm generation with the
 DWDSmor Python library are provided by the Python scripts `analysis.py`
-and `paradigm.py` in the `tools/` subdirectory.
+and `paradigm.py` in the `tools/` subdirectory:
+
+```plaintext
+$ ./tools/analysis.py -h
+usage: analysis.py [-h] [-a] [-c] [-C] [-d AUTOMATA_DIR] [-e] [-H] [-j] [-m]
+                   [-M] [-P] [-s] [-S] [-t {root,finite,morph,index,lemma}]
+                   [-T {root,finite,morph,index,lemma}] [-v] [-y]
+                   [input] [output]
+
+positional arguments:
+  input                 input file (one word form per line; default: stdin)
+  output                output file (default: stdout)
+
+options:
+  -h, --help            show this help message and exit
+  -a, --analysis-string output also analysis string
+  -c, --csv             output CSV table
+  -C, --force-color     preserve color and formatting when piping output
+  -d AUTOMATA_DIR, --automata-dir AUTOMATA_DIR
+                        automata directory (default: build/open)
+  -e, --empty           show empty columns or values
+  -H, --no-header       suppress table header
+  -j, --json            output JSON object
+  -m, --minimal         prefer lemmas with minimal number of boundaries
+  -M, --maximal         prefer word forms with maximal number of boundaries (requires secondary automaton)
+  -P, --plain           suppress color and formatting
+  -s, --seg-lemma       output also segmented lemma
+  -S, --seg-word        output also segmented word form (requires secondary automaton)
+  -t {root,finite,morph,index,lemma}, --automaton-type {root,finite,morph,index,lemma}
+                        type of primary automaton (default: lemma)
+  -T {root,finite,morph,index,lemma}, --automaton2-type {root,finite,morph,index,lemma}
+                        type of secondary automaton (default: morph)
+  -v, --version         show program's version number and exit
+  -y, --yaml            output YAML document
+```
+
+```plaintext
+$ ./tools/paradigm.py -h
+usage: paradigm.py [-h] [-c] [-C] [-d AUTOMATA_DIR] [-e] [-H]
+                   [-i {1,2,3,4,5,6,7,8}] [-I {1,2,3,4,5,6,7,8}] [-j] [-n] [-N] [-o] [-O]
+                   [-p {NN,NPROP,ADJ,CARD,ORD,FRAC,ART,DEM,INDEF,POSS,PPRO,REL,WPRO,V}]
+                   [-P] [-s] [-S] [-t {lemma,morph,index,finite,root}] [-u] [-v] [-y]
+                   lemma [output]
+
+positional arguments:
+  lemma                 lemma (determiners: Fem Nom Sg; nominalised adjectives: Wk)
+  output                output file (default: stdout)
+
+options:
+  -h, --help            show this help message and exit
+  -c, --csv             output CSV table
+  -C, --force-color     preserve color and formatting when piping output
+  -d AUTOMATA_DIR, --automata-dir AUTOMATA_DIR
+                        automata directory (default: build/dwds)
+  -e, --empty           show empty columns or values
+  -H, --no-header       suppress table header
+  -i {1,2,3,4,5,6,7,8}, --lemma-index {1,2,3,4,5,6,7,8}
+                        homographic lemma index
+  -I {1,2,3,4,5,6,7,8}, --paradigm-index {1,2,3,4,5,6,7,8}
+                        paradigm index
+  -j, --json            output JSON object
+  -n, --no-cats         do not output category names
+  -N, --no-lemma        do not output lemma, lemma index, paradigm index, and lexical categories
+  -o, --old             output also archaic forms
+  -O, --oldorth         output also forms in old spelling
+  -p {NN,NPROP,ADJ,CARD,ORD,FRAC,ART,DEM,INDEF,POSS,PPRO,REL,WPRO,V}, --pos {NN,NPROP,ADJ,CARD,ORD,FRAC,ART,DEM,INDEF,POSS,PPRO,REL,WPRO,V}
+                        part of speech
+  -P, --plain           suppress color and formatting
+  -s, --nonst           output also non-standard forms
+  -S, --ch              output also forms in Swiss spelling
+  -t {lemma,morph,index,finite,root}, --automaton-type {lemma,morph,index,finite,root}
+                        automaton type (default: index)
+  -u, --user-specified  use only user-specified information
+  -v, --version         show program's version number and exit
+  -y, --yaml            output YAML document
+```
 
 
 ## Development
@@ -171,12 +250,13 @@ written German.
   While other UNIX-like operating systems such as MacOS should work,
   too, they are not actively supported.
 * [Python >= v3.10](https://www.python.org/): DWDSmor provides a Python
-  interface for building DWDSmor automata from XML sources of DWDS
-  articles.
-* [Saxon-HE](https://www.saxonica.com/): The extraction of lexical
-  entries from XML sources of DWDS articles is implemented in XSLT 2,
-  for which Saxon-HE is used as an XSLT processor. Saxon requires
-  [Java](https://openjdk.java.net/)) as a runtime environment.
+  interface for building DWDSmor lexica from source lexica in the DWDS XML
+  format and for compiling DWDSmor automata from the resulting DWDSmor
+  lexica and the DWDSmor grammar.
+* [Saxon-HE](https://www.saxonica.com/): The entries in DWDSmor lexica are
+  extracted from source lexica in the DWDS XML format by means of XSLT 2
+  stylesheets, using Saxon-HE as an XSLT processor. Saxon requires a
+  [Java](https://openjdk.java.net/)) runtime environment.
 * [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/): The
   DWDSmor automata are compiled using the SFST C++ library and toolbox
   for finite-state transducers (FSTs).
@@ -211,23 +291,24 @@ Building different editions is facilitated via the script `build-dwdsmor`:
 
 
 ```plaintext
-$ ./build-dwdsmor --help
-usage: cli.py [-h] [--automaton AUTOMATON] [--force] [--with-metrics] [--release] [--tag]
-              [editions ...]
+$ ./build-dwdsmor -h
+usage: cli.py [-h] [-t {morph,finite,lemma,root,index}] [-m] [-f] [-q]
+              [--release] [--tag] [{dev,dwds,open} ...]
 
 Build DWDSmor.
 
 positional arguments:
-  editions              Editions to build (all by default)
+  {dev,dwds,open}       editions to build (default: all)
 
 options:
   -h, --help            show this help message and exit
-  --automaton AUTOMATON
-                        Automaton type to build (all by default)
-  --force               Force building (also current targets)
-  --with-metrics        Measure UD/de-hdt coverage
-  --release             Push automata to HF hub
-  --tag                 Tag HF hub release with current version
+  -t {morph,finite,lemma,root,index}, --automaton-type {morph,finite,lemma,root,index}
+                        automaton type to build (default: all)
+  -m, --with-metrics    measure UD/de-hdt coverage
+  -f, --force           force building (also current targets)
+  -q, --quiet           do not report progress
+  --release             push automata to HF hub
+  --tag                 tag HF hub release with current version
 ```
 
 To build all editions available in the current git checkout, run:
@@ -247,13 +328,14 @@ In order to test basic transducer usage and for potential regressions, run
 
 ## License
 
-As the original SMOR and SMORLemma grammars, the DWDSmor grammar and
-Python library are licensed under the GNU General Public License
-v2.0. The same applies to the open edition of the DWDSmor lexicon.
+As the original SMOR and SMORLemma grammars, the DWDSmor grammar and the
+DWDSmor Python library are licensed under the GNU General Public License
+v2.0. The same applies to the sample source lexicon and the automata of the
+Open Edition.
 
-For the DWDS edition based on the complete DWDS dictionary, all rights
+For the DWDS Edition based on the complete DWDS dictionary, all rights
 are reserved and individual license terms apply. If you are interested
-in the DWDS edition, please contact us.
+in the automata of the DWDS Edition, please contact us.
 
 ## Contact
 
