@@ -18,8 +18,8 @@ transducers
 The DWDSmor automata are compiled and traversed via
 [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/), a C++
 library and toolbox for finite-state transducers (FSTs). In addition, a
-DWDSmor Python library is provided, using
-the [SFST Python bindings](https://github.com/gremid/sfst-transduce).
+DWDSmor Python library is provided, using the
+[SFST Python bindings](https://github.com/gremid/sfst-transduce).
 
 The coverage of the DWDSmor automata of the German language depends on
 
@@ -72,16 +72,16 @@ Current overall coverage is measured against the
 [German Universal Dependencies treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
 and documented on the respective
 [Hugging Face Hub page](https://huggingface.co/zentrum-lexikographie) of
-each edition. Coverage in the DWDS Edition typically ranges between
-95 % and 100 % in most word classes; notable exceptions include
+each edition. In the DWDS Edition, coverage typically ranges from
+95 % to 100 % for most word classes; notable exceptions include
 foreign-language words and named entities, which are barely part of the
 underlying DWDS dictionary and thus poorly covered by DWDSmor.
 
 
 ## Usage
 
-The DWDSmor Python library is available via the Python Package Index
-(PyPI):
+The [DWDSmor Python library](https://pypi.org/project/dwdsmor/) is available via
+the [Python Package Index (PyPI)](https://pypi.org):
 
 ``` plaintext
 pip install dwdsmor
@@ -168,9 +168,9 @@ written German.
   of DWDSmor are performed on [Debian GNU/Linux](https://debian.org/).
   While other UNIX-like operating systems such as MacOS should work,
   too, they are not actively supported.
-* [Python >= v3.10](https://www.python.org/): The DWDSmor Python library
-  provides an interface for building the DWDSmor automata from XML
-  sources of DWDS articles.
+* [Python >= v3.10](https://www.python.org/): DWDSmor provides a Python
+  interface for building DWDSmor automata from XML sources of DWDS
+  articles.
 * [Saxon-HE](https://www.saxonica.com/): The extraction of lexical
   entries from XML sources of DWDS articles is implemented in XSLT 2,
   for which Saxon-HE is used as an XSLT processor. Saxon requires
