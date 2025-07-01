@@ -24,8 +24,7 @@ DWDSmor Python library is provided, using the
 The coverage of the DWDSmor automata of the German language depends on
 
 1. a DWDSmor lexicon, which declares lexical entries with lemmas, stem
-   forms, word classes, and inflection classes of the covered lexical
-   words, and
+   forms, word classes, inflection classes, etc., and
 2. the DWDSmor grammar, which defines lemmatisation, inflection, and
    word-formation rules for written German.
 
@@ -74,14 +73,16 @@ lexicon, are released freely for general use and experiments. For testing
 purposes, DWDSmor also allows for compiling a development edition from a
 user-provided source lexicon.
 
-Current overall coverage is measured against the
+The coverage of the released DWDSmor automata is measured against the
 [German Universal Dependencies HDT treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
-and documented on the respective
-[Hugging Face Hub page](https://huggingface.co/zentrum-lexikographie) of
-each edition. In the DWDS Edition, coverage typically ranges from
-95 % to 100 % for most word classes; notable exceptions include
-foreign-language words and named entities, which are barely part of the
-underlying DWDS dictionary and thus poorly covered by DWDSmor.
+and reported on the
+[Hugging Face Hub page](https://huggingface.co/zentrum-lexikographie) of the
+[DWDS Edition](https://huggingface.co/zentrum-lexikographie/dwdsmor-dwds) and the
+[Open Edition](https://huggingface.co/zentrum-lexikographie/dwdsmor-open).
+In the DWDS Edition, coverage typically ranges from 95 % to 100 % for most
+word classes; notable exceptions include foreign-language words and named
+entities, which are barely part of the underlying DWDS dictionary and thus
+poorly covered by DWDSmor.
 
 
 ## Usage
