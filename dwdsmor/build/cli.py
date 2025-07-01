@@ -374,7 +374,11 @@ def push_to_hub(edition_dir, tag=None):
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser(description="Build DWDSmor.")
     arg_parser.add_argument(
-        "editions", choices=editions, help="editions to build (default: all)", nargs="*"
+        "-e",
+        "--edition",
+        choices=editions,
+        help="edition to build (default: all)",
+        action="append",
     )
     arg_parser.add_argument(
         "-t",
@@ -403,13 +407,11 @@ if __name__ == "__main__":
     )
     args = arg_parser.parse_args()
     configure_logging()
-    edition_dirs = (
-        [lexicon_dir / edition for edition in args.editions]
-        if len(args.editions or []) > 0
-        else lexicon_dir.iterdir()
-    )
+
+    editions = set(args.edition) if args.edition else editions
+    edition_dirs = [lexicon_dir / edition for edition in editions]
     build_automaton_types = (
-        tuple(args.automaton_type) if args.automaton_type else automaton_types
+        set(args.automaton_type) if args.automaton_type else automaton_types
     )
     for edition_dir in edition_dirs:
         assert edition_dir.is_dir()

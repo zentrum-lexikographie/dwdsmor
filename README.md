@@ -36,12 +36,13 @@ derived from the Stuttgart Morphology
 ([SMOR](https://www.cis.lmu.de/~schmid/tools/SMOR/)).
 
 As a rule, the entries in a DWDSmor lexicon are extracted from a source
-lexicon comprising a set of XML files in the format of the
+lexicon comprising a set of XML files in the
+[format](https://github.com/zentrum-lexikographie/lex/tree/master/oxygen/framework/rnc) of the
 [DWDS dictionary](https://www.dwds.de).
 
 From a DWDSmor lexicon and the DWDSmor grammar, a DWDSmor edition can be
-compiled, containing several automata types in standard (`.a`) and
-compact format (`.ca`):
+compiled, containing several automata types in standard (`.a`) for
+generation and in compact format (`.ca`) for analysis:
 
 * `lemma.{a,ca}`: transducer with inflection and word-formation
   components, for lemmatisation and morphological analysis of word
@@ -76,13 +77,14 @@ user-provided source lexicon.
 The coverage of the released DWDSmor automata is measured against the
 [German Universal Dependencies HDT treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
 and reported on the
-[Hugging Face Hub page](https://huggingface.co/zentrum-lexikographie) of the
-[DWDS Edition](https://huggingface.co/zentrum-lexikographie/dwdsmor-dwds) and the
-[Open Edition](https://huggingface.co/zentrum-lexikographie/dwdsmor-open).
-In the DWDS Edition, coverage typically ranges from 95 % to 100 % for most
-word classes; notable exceptions include foreign-language words and named
-entities, which are barely part of the underlying DWDS dictionary and thus
-poorly covered by DWDSmor.
+[Hugging Face Hub page](https://huggingface.co/zentrum-lexikographie).
+In the DWDS Edition, the coverage ratios typically range from 95 % to 100 %
+for most word classes; notable exceptions include foreign-language words
+and named entities, which are barely part of the underlying DWDS dictionary
+and thus poorly covered by DWDSmor. In the
+[Open Edition](https://huggingface.co/zentrum-lexikographie/dwdsmor-open),
+the coverage ratios of open word classes are lower, due to the limited size
+of the sample source lexicon.
 
 
 ## Usage
@@ -251,13 +253,15 @@ written German.
   While other UNIX-like operating systems such as MacOS should work,
   too, they are not actively supported.
 * [Python ≥ v3.10](https://www.python.org/): DWDSmor provides a Python
-  interface for building DWDSmor lexica from source lexica in the DWDS XML
-  format and for compiling DWDSmor automata from the resulting DWDSmor
-  lexica and the DWDSmor grammar.
+  interface for building DWDSmor lexica from source lexica in the DWDS
+  [XML format](https://github.com/zentrum-lexikographie/lex/tree/master/oxygen/framework/rnc)
+  and for compiling DWDSmor automata from the resulting DWDSmor lexica and
+  the DWDSmor grammar.
 * [Saxon-HE](https://www.saxonica.com/): The entries in DWDSmor lexica are
-  extracted from source lexica in the DWDS XML format by means of XSLT 2
-  stylesheets, using Saxon-HE as an XSLT processor. Saxon requires a
-  [Java](https://openjdk.java.net/) runtime environment.
+  extracted from source lexica in the DWDS
+  [XML format](https://github.com/zentrum-lexikographie/lex/tree/master/oxygen/framework/rnc)
+  by means of XSLT 2 stylesheets, using Saxon-HE as an XSLT processor.
+  Saxon requires a [Java](https://openjdk.java.net/) runtime environment.
 * [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/): The
   DWDSmor automata are compiled using the SFST C++ library and toolbox
   for finite-state transducers (FSTs).
@@ -293,17 +297,16 @@ Building different editions is facilitated via the script `build-dwdsmor`:
 
 ```plaintext
 $ ./build-dwdsmor -h
-usage: cli.py [-h] [-t {morph,finite,lemma,root,index}] [-m] [-f] [-q]
-              [--release] [--tag] [{dev,dwds,open} ...]
+usage: cli.py [-h] [-e {open,dwds,dev}] [-t {root,index,morph,finite,lemma}]
+              [-m] [-f] [-q] [--release] [--tag]
 
 Build DWDSmor.
 
-positional arguments:
-  {dev,dwds,open}       editions to build (default: all)
-
 options:
   -h, --help            show this help message and exit
-  -t {morph,finite,lemma,root,index}, --automaton-type {morph,finite,lemma,root,index}
+  -e {open,dwds,dev}, --edition {open,dwds,dev}
+                        edition to build (default: all)
+  -t {root,index,morph,finite,lemma}, --automaton-type {root,index,morph,finite,lemma}
                         automaton type to build (default: all)
   -m, --with-metrics    measure UD/de-hdt coverage
   -f, --force           force building (also current targets)
