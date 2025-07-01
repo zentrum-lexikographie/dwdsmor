@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.7.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.6.0...v0.7.0) (2025-07-01)
+
+
+### Features
+
+* add support for index and root automata to command-line interface ([b523a2b](https://github.com/zentrum-lexikographie/dwdsmor/commit/b523a2b897082002d776dddcbf9b4d594750d353))
+* add support for proper names classified as nouns in DWDS articles ([a593692](https://github.com/zentrum-lexikographie/dwdsmor/commit/a593692f6c62bb710890f13d7338aa05e2a99e55))
+* exclude "sein" as a basis for preverb prefixation ([836d09b](https://github.com/zentrum-lexikographie/dwdsmor/commit/836d09ba023a61b51342d6c0af850447f0ab1499))
+* exclude abbreviated bases for preverb prefixation ([c7e0225](https://github.com/zentrum-lexikographie/dwdsmor/commit/c7e0225c9b0f447f2812cefdfda585de59950c8a))
+
+
+### Bug Fixes
+
+* mark truncated and separated preverbs with the same categories ([9f340c1](https://github.com/zentrum-lexikographie/dwdsmor/commit/9f340c1ee77c6f8199d232f961db01926dca4b48))
+
+
+### Documentation
+
+* also mention development edition in README.md ([c158612](https://github.com/zentrum-lexikographie/dwdsmor/commit/c158612ea95a36bd9d112f066341ed1f464ee1d6))
+* further enhance README.md ([94b1ecd](https://github.com/zentrum-lexikographie/dwdsmor/commit/94b1ecd48b6602bd7ca9369c888b60c26354b27d))
+* improve wording in README.md ([377a853](https://github.com/zentrum-lexikographie/dwdsmor/commit/377a853c29e9757a105f4409ed504b4023dfde92))
+* provide Hugging Face links for the DWDS Edition and the Open Edition ([f32a3b8](https://github.com/zentrum-lexikographie/dwdsmor/commit/f32a3b8d3b173c68ba770a4263f07da367f0232b))
+* update README.md ([facfaa7](https://github.com/zentrum-lexikographie/dwdsmor/commit/facfaa757e81329c9668f7bddcf40ee7306ca61a))
+
 ## [0.6.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.5.0...v0.6.0) (2025-05-30)
 
 
