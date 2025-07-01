@@ -62,11 +62,13 @@ Currently, the following DWDSmor editions are supported:
 1. the **DWDS Edition**, derived from the complete lexical dataset of
    the [DWDS dictionary](https://www.dwds.de) and available upon
    request for research purposes, and
-2. the **Open Edition**, based on a free subset of the grammatical
-   specifications in the DWDS dictionary.
+2. the **Open Edition**, based on a subset of the DWDS lemmas and their
+   grammatical specifications.
 
-The Open Edition covers a sample of common German words and is released
-freely with the grammar for general use and experiments.
+The Open Edition covers common German words and is released freely with its
+sample lexicon and the grammar for general use and experiments. For testing
+purposes, DWDSmor also allows for compiling a development edition from
+user-provided lexical data in the DWDS format.
 
 Current overall coverage is measured against the
 [German Universal Dependencies treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
