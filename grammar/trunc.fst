@@ -1,6 +1,6 @@
 % trunc.fst
-% Version 3.0
-% Andreas Nolda 2025-06-30
+% Version 3.1
+% Andreas Nolda 2025-07-01
 
 #include "symbols.fst"
 
@@ -38,7 +38,7 @@ $TruncFinalLv2-CB$ = $C$* [^<HB>] <CB> \-:<> $T$* .* {<UnmGend><UnmCase><UnmNum>
 
 $TruncFinalLv2-HB$ = $C$* <>:<HB> <CB> \-:<> $T$* .* {<UnmGend><UnmCase><UnmNum>}:{}
 
-$TruncFinalLv2-VB$ = $C$* <VB> \-:<> $T$* .* {<UnmGend><UnmCase><UnmNum>}:{}
+$TruncFinalLv2-VB$ = $C$* <VB> \-:<> $T$* .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{}
 
 $TruncFinalLv2$ = $TruncFinalLv2-CB$ | \
                   $TruncFinalLv2-HB$ | \
