@@ -65,11 +65,11 @@ Currently, the following DWDSmor editions are supported:
 
 1. the **DWDS Edition**, derived from the complete lexical dataset of
    the [DWDS dictionary](https://www.dwds.de), and
-2. the **Open Edition**, based on a sample lexicon of common DWDS lemmas
-   and their grammatical specifications.
+2. the **Open Edition**, based on a sample selection of DWDS lemmas and
+   their grammatical specifications.
 
 The automata of the DWDS Edition are available upon request for research
-purposes. The automata of the Open Edition, as well as the sample source
+purposes. The automata of the Open Edition, as well as its sample source
 lexicon, are released freely for general use and experiments. For testing
 purposes, DWDSmor also allows for compiling a development edition from a
 user-provided source lexicon.
@@ -249,14 +249,14 @@ written German.
   of DWDSmor are performed on [Debian GNU/Linux](https://debian.org/).
   While other UNIX-like operating systems such as MacOS should work,
   too, they are not actively supported.
-* [Python >= v3.10](https://www.python.org/): DWDSmor provides a Python
+* [Python ≥ v3.10](https://www.python.org/): DWDSmor provides a Python
   interface for building DWDSmor lexica from source lexica in the DWDS XML
   format and for compiling DWDSmor automata from the resulting DWDSmor
   lexica and the DWDSmor grammar.
 * [Saxon-HE](https://www.saxonica.com/): The entries in DWDSmor lexica are
   extracted from source lexica in the DWDS XML format by means of XSLT 2
   stylesheets, using Saxon-HE as an XSLT processor. Saxon requires a
-  [Java](https://openjdk.java.net/)) runtime environment.
+  [Java](https://openjdk.java.net/) runtime environment.
 * [SFST](https://www.cis.uni-muenchen.de/~schmid/tools/SFST/): The
   DWDSmor automata are compiled using the SFST C++ library and toolbox
   for finite-state transducers (FSTs).
