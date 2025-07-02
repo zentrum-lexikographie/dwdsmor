@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # analysis.py - analyse word forms with DWDSmor
-# Andreas Nolda 2025-06-30
+# Andreas Nolda 2025-07-02
 
 import argparse
 import csv
@@ -18,7 +18,7 @@ import yaml
 
 progname = Path(__file__).name
 
-version = 14.0
+version = 14.1
 
 
 LABEL_MAP = {"word": "Wordform",
@@ -91,6 +91,13 @@ def remove_boundaries(seg, boundaries):
 def count_boundaries(seg, boundaries):
     count = sum([seg.count(boundary) for boundary in boundaries])
     return count
+
+
+def filter_analyses(analyses, keys):
+    filtered_analyses = analyses
+    for key in keys:
+        filtered_analyses = [analysis for analysis in filtered_analyses if analysis[key] is None]
+    return filtered_analyses
 
 
 def get_minimal_analyses(analyses, key, boundaries):
@@ -217,7 +224,7 @@ def output_dsv(word_analyses, output_file, keys, analyses_keys,
 
 def output_analyses(analyzer, generator, input_file, output_file, automaton_type,
                     analysis_string=False, seg_word=False, seg_lemma=False,
-                    minimal=False, maximal=False, empty=False,
+                    minimal=False, maximal=False, empty=False, info=True,
                     header=True, plain=False, force_color=False, output_format="tsv"):
     words = tuple(word.strip() for word in input_file.readlines() if word.strip())
     traversals_tuple = analyze_words(analyzer, words, automaton_type)
@@ -226,6 +233,9 @@ def output_analyses(analyzer, generator, input_file, output_file, automaton_type
         word_analyses = []
         for word, traversals in zip(words, traversals_tuple):
             analyses = traversals_asdicts(traversals)
+
+            if not info:
+                analyses = filter_analyses(analyses, tag.info_tags)
 
             if minimal:
                 analyses = get_minimal_analyses_per_pos(analyses, "seg_lemma", tag.wf_boundary_tags)
@@ -314,6 +324,8 @@ def main():
                             help="show empty columns or values")
         parser.add_argument("-H", "--no-header", action="store_false",
                             help="suppress table header")
+        parser.add_argument("-I", "--no-info", action="store_false",
+                            help="do not show analyses with info tags")
         parser.add_argument("-j", "--json", action="store_true",
                             help="output JSON object")
         parser.add_argument("-m", "--minimal", action="store_true",
@@ -351,7 +363,7 @@ def main():
 
         output_analyses(analyzer, generator, args.input, args.output, args.automaton_type,
                         args.analysis_string, args.seg_word, args.seg_lemma,
-                        args.minimal, args.maximal, args.empty,
+                        args.minimal, args.maximal, args.empty, args.no_info,
                         args.no_header, args.plain, args.force_color, output_format)
     except automaton.AutomataDirNotFound:
         print(f"{progname}: automata directory not found", file=sys.stderr)

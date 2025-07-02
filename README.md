@@ -164,8 +164,8 @@ and `paradigm.py` in the `tools/` subdirectory:
 
 ```plaintext
 $ ./tools/analysis.py -h
-usage: analysis.py [-h] [-a] [-c] [-C] [-d AUTOMATA_DIR] [-e] [-H] [-j] [-m]
-                   [-M] [-P] [-s] [-S] [-t {root,finite,morph,index,lemma}]
+usage: analysis.py [-h] [-a] [-c] [-C] [-d AUTOMATA_DIR] [-e] [-H] [-I] [-j]
+                   [-m] [-M] [-P] [-s] [-S] [-t {root,finite,morph,index,lemma}]
                    [-T {root,finite,morph,index,lemma}] [-v] [-y]
                    [input] [output]
 
@@ -182,6 +182,7 @@ options:
                         automata directory (default: build/open)
   -e, --empty           show empty columns or values
   -H, --no-header       suppress table header
+  -I, --no-info         do not show analyses with info tags
   -j, --json            output JSON object
   -m, --minimal         prefer lemmas with minimal number of boundaries
   -M, --maximal         prefer word forms with maximal number of boundaries (requires secondary automaton)
