@@ -4,15 +4,14 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dwdsmor)
 ![GitHub License](https://img.shields.io/github/license/zentrum-lexikographie/dwdsmor)
 
-DWDSmor implements the **lemmatisation and morphological analysis** of
-word forms as well as the **generation of paradigms of lexical words**
-in **written German**. Finite state transducers (automata) map word
-forms to specifications of corresponding lexical words and tagging
-which represents morphological properties. By traversing such
-transducers
+DWDSmor implements the **lemmatisation** and **morphosyntactic analysis**
+of word forms as well as the **generation of paradigms** of lexical words
+in **written German**. DWDSmor’s finite state transducers (the DWDSmor
+automata) map word forms to specifications of corresponding lexical words
+and morphosyntactic categories. By traversing such transducers
 
 1. a given word form can be analysed and lemmatised, or
-2. a lexical word together with a set of morphological tagging will
+2. a lexical word together with a set of morphosyntactic tags will
    generate corresponding inflected word forms.
 
 The DWDSmor automata are compiled and traversed via
@@ -29,7 +28,7 @@ The coverage of the DWDSmor automata of the German language depends on
    word-formation rules for written German.
 
 While the DWDSmor grammar for word-formation is still work in progress,
-its inflection grammar is very comprehensive. The inflection grammar as
+its inflection grammar is pretty comprehensive. The inflection grammar as
 well as the lexicon format are based on (heavily modified) code from
 [SMORLemma](https://github.com/rsennrich/SMORLemma), which in turn is
 derived from the Stuttgart Morphology
@@ -45,7 +44,7 @@ compiled, containing several automata types in standard (`.a`) for
 generation and in compact format (`.ca`) for analysis:
 
 * `lemma.{a,ca}`: transducer with inflection and word-formation
-  components, for lemmatisation and morphological analysis of word
+  components, for lemmatisation and morphosyntactic analysis of word
   forms in terms of grammatical categories.
 * `morph.{a,ca}`: transducer with inflection and word-formation
   components, for the generation of morphologically segmented word
@@ -241,8 +240,8 @@ options:
 
 ## Development
 
-DWDSmor is in active development. In its current stage, it supports
-most inflection classes and some productive word-formation patterns of
+DWDSmor is in active development. In its current stage, it supports all
+major inflection classes and some productive word-formation patterns of
 written German.
 
 
@@ -276,7 +275,7 @@ apt-get install python3 default-jdk libsaxonhe-java sfst
 ### Project setup
 
 Optionally, set up a Python virtual environment for project builds,
-i. e. via Python's `venv`:
+i. e. via Python’s `venv`:
 
 ```plaintext
 python3 -m venv .venv
@@ -359,7 +358,7 @@ DWSDmor is based on the following software and datasets:
 3. the [DWDS dictionary](https://www.dwds.de/) (BBAW n.d.) replacing the
    [IMSLex](https://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/imslex/)
    (Fitschen 2004) as the lexical data source for German words, their grammatical
-   categories, and their morphological properties.
+   categories, and their morphosyntactic properties.
 
 ## References
 
