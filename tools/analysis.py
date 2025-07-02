@@ -241,6 +241,7 @@ def output_analyses(analyzer, generator, input_file, output_file, automaton_type
                 analyses = get_maximal_analyses_per_pos(analyses, "seg_word", tag.wf_boundary_tags)
 
             for analysis in analyses:
+                del analysis["surface"]
                 if not seg_word:
                     del analysis["seg_word"]
                 if not analysis_string:
