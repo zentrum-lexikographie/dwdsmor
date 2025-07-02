@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.8.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.7.0...v0.8.0) (2025-07-02)
+
+
+### Features
+
+* add support for colloquial mixed variants of weak masculine nouns ([ea0dacd](https://github.com/zentrum-lexikographie/dwdsmor/commit/ea0dacddf6f70170e04e1b4a2ac3b7c9e15cb75a))
+* improve coverage measure for DWDS lemma generation ([3a78101](https://github.com/zentrum-lexikographie/dwdsmor/commit/3a78101a0885e191f732c8039dddb9d8e809e4b9))
+
+
+### Bug Fixes
+
+* make the edition argument of the build script optional again ([469307f](https://github.com/zentrum-lexikographie/dwdsmor/commit/469307f309b40533e2ff7afd73ceadefe6bb34d5))
+
+
+### Documentation
+
+* clarify README.md ([31ebdbc](https://github.com/zentrum-lexikographie/dwdsmor/commit/31ebdbcba00e261594cd10845f8ca3cfeb5bd33f))
+
 ## [0.7.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.6.0...v0.7.0) (2025-07-01)
 
 
