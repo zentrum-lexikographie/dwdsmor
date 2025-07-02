@@ -1,3 +1,9 @@
+2025-07-02:
+
+* add support for colloquial mixed variants of weak masculine nouns with
+  genitive singular forms ending in "-s" and nominative plural forms ending in
+  "-en"
+
 2025-06-30:
 
 * add part-of-speech subcategories to lexical entries, if any

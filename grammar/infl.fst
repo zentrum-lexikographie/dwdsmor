@@ -1,6 +1,6 @@
 % infl.fst
-% Version 13.0
-% Andreas Nolda 2025-06-30
+% Version 13.1
+% Andreas Nolda 2025-07-02
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -26,9 +26,7 @@ $NGenSgSuff_0$ = {<Nom><Sg>}:{} | \
 
 $NGenSgSuff_en$ = {<Nom><Sg>}:{}        | \
                   {<Acc><Sg>}:{<SB>en}  | \
-                  {<Acc><Sg><NonSt>}:{} | \
                   {<Dat><Sg>}:{<SB>en}  | \
-                  {<Dat><Sg><NonSt>}:{} | \ % cf. Duden-Grammatik (2016: § 333)
                   {<Gen><Sg>}:{<SB>en}
 
 $NGenSgSuff_n$ = {<Nom><Sg>}:{}      | \
@@ -56,6 +54,11 @@ $NGenSgSuff_s$ = {<Nom><Sg>}:{} | \
                  {<Acc><Sg>}:{} | \
                  {<Dat><Sg>}:{} | \
                  {<Gen><Sg>}:{<SB>s}
+
+$NGenSgNonStSuff_s$ = {<Nom><Sg>}:{}        | \
+                      {<Acc><Sg><NonSt>}:{} | \
+                      {<Dat><Sg><NonSt>}:{} | \
+                      {<Gen><Sg><NonSt>}:{<SB>s} % cf. Duden-Grammatik (2016: § 333)
 
 $NGenSgSuff_ns$ = {<Nom><Sg>}:{}      | \
                   {<Acc><Sg>}:{<SB>n} | \
@@ -120,7 +123,7 @@ $NMasc_0_e_n~ss$ = $SS$ $NMasc_0_e_n$
 $NMasc_0_\$e_n$ = {<Masc>}:{}           $NGenSgSuff_0$ | \
                   {<Masc>}:{<uml><SB>e} $NDatPlSuff_n$
 
-% Obelisk, Obelisk, Obelisken, Obelisken
+% Minotaur, Minotaur, Minotauren, Minotauren
 $NMasc_0_en_0$ = {<Masc>}:{}       $NGenSgSuff_0$ | \
                  {<Masc>}:{<SB>en} $NDatPlSuff_0$
 
@@ -315,6 +318,10 @@ $NMasc_s_\$er_n$ = {<Masc>}:{}            $NGenSgSuff_s$ | \
 $NMasc_s_en_0$ = {<Masc>}:{}       $NGenSgSuff_s$ | \
                  {<Masc>}:{<SB>en} $NDatPlSuff_0$
 
+% Bär, Bärs (coll.), Bären, Bären
+$NMascNonSt_s_en_0$ = {<Masc>}:{}       $NGenSgNonStSuff_s$ | \
+                      {<Masc>}:{<SB>en} $NDatPlSuff_0$
+
 % Kanon, Kanons, Kanones, Kanones
 $NMasc_s_es_0$ = {<Masc>}:{}       $NGenSgSuff_s$ | \
                {<Masc>}:{<SB>es} $NDatPlSuff_0$
@@ -356,7 +363,7 @@ $NMasc_s_o/en_0$ = $NMasc_s_a/en_0$
 % Espresso, Espressos, Espressi, Espressi
 $NMasc_s_o/i_0$ = $NMasc_s_e/i_0$
 
-% Fels, Felsen, Felsen, Felsen; Mensch, Menschen, Menschen, Menschen
+% Dirigent, Dirigenten, Dirigenten, Dirigenten; Bär, Bären, Bären, Bären
 $NMasc_en_en_0$ = {<Masc>}:{}       $NGenSgSuff_en$ | \
                   {<Masc>}:{<SB>en} $NDatPlSuff_0$
 
@@ -2870,6 +2877,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMasc_s_o/en_0>          $NMasc_s_o/en_0$         | \
          <>:<NMasc_s_o/i_0>           $NMasc_s_o/i_0$          | \
          <>:<NMasc_s_s_0>             $NMasc_s_s_0$            | \
+         <>:<NMascNonSt_s_en_0>       $NMascNonSt_s_en_0$      | \
          <>:<NNeut0_es>               $NNeut0_es$              | \
          <>:<NNeut0_s>                $NNeut0_s$               | \
          <>:<NNeut-Adj>               $NNeut-Adj$              | \

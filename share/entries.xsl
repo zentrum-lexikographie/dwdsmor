@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 18.0 -->
-<!-- Andreas Nolda 2025-06-30 -->
+<!-- Version 18.1 -->
+<!-- Andreas Nolda 2025-07-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1862,6 +1862,7 @@
   <xsl:param name="paradigm-index"/>
   <xsl:param name="abbreviation"/>
   <xsl:param name="noun-type"/>
+  <xsl:param name="style"/>
   <xsl:param name="gender"/>
   <xsl:param name="number"/>
   <xsl:param name="genitive-singular"/>
@@ -3362,6 +3363,26 @@
                             select="$etymology"/>
           </xsl:call-template>
         </xsl:if>
+      </xsl:when>
+      <!-- colloquial mixed variants of weak masculine nouns -->
+      <xsl:when test="$gender='mask.' and
+                      $genitive-singular-marker='-s' and
+                      $nominative-plural-marker='-en' and
+                      $style='colloquial'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NMascNonSt_s_en_0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
       </xsl:when>
       <!-- other nouns -->
       <xsl:otherwise>

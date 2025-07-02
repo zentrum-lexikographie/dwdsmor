@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 18.0 -->
-<!-- Andreas Nolda 2025-06-29 -->
+<!-- Version 18.1 -->
+<!-- Andreas Nolda 2025-07-02 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -244,7 +244,13 @@
             <xsl:if test="$pos='Substantiv'">
               <xsl:call-template name="get-noun-type-value">
                 <xsl:with-param name="meaning-type"
-                  select="$meaning-type"/>
+                                select="$meaning-type"/>
+              </xsl:call-template>
+            </xsl:if>
+          </xsl:variable>
+          <xsl:variable name="style">
+            <xsl:if test="$pos='Substantiv'">
+              <xsl:call-template name="get-style-value">
               </xsl:call-template>
             </xsl:if>
           </xsl:variable>
@@ -597,6 +603,8 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="noun-type"
                                 select="$noun-type"/>
+                <xsl:with-param name="style"
+                                select="$style"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="number">singular</xsl:with-param>
@@ -623,6 +631,8 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="noun-type"
                                 select="$noun-type"/>
+                <xsl:with-param name="style"
+                                select="$style"/>
                 <xsl:with-param name="number">plural</xsl:with-param>
                 <xsl:with-param name="diminutive"
                                 select="$diminutive"/>
@@ -648,6 +658,8 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="noun-type"
                                 select="$noun-type"/>
+                <xsl:with-param name="style"
+                                select="$style"/>
                 <xsl:with-param name="gender"
                                 select="normalize-space(dwds:Genus)"/>
                 <xsl:with-param name="genitive-singular"
@@ -1745,7 +1757,7 @@
             <xsl:if test="$pos='Substantiv'">
               <xsl:call-template name="get-noun-type-value">
                 <xsl:with-param name="meaning-type"
-                  select="$meaning-type"/>
+                                select="$meaning-type"/>
               </xsl:call-template>
             </xsl:if>
           </xsl:variable>
@@ -1890,7 +1902,7 @@
             <xsl:if test="$pos='Substantiv'">
               <xsl:call-template name="get-noun-type-value">
                 <xsl:with-param name="meaning-type"
-                  select="$meaning-type"/>
+                                select="$meaning-type"/>
               </xsl:call-template>
             </xsl:if>
           </xsl:variable>
@@ -2603,6 +2615,14 @@
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'auch nachgestellt')">any</xsl:when>
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nachgestellt')">post</xsl:when>
     <xsl:otherwise>pre</xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="get-style-value">
+  <xsl:choose>
+    <xsl:when test="normalize-space(*/dwds:Diasystematik/dwds:Stilebene)='umgangssprachlich'">colloquial</xsl:when>
+    <!-- TODO: more style values -->
+    <xsl:otherwise>standard</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 </xsl:stylesheet>

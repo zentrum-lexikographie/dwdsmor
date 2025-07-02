@@ -99,7 +99,6 @@ NN,NMasc_0_is/es_0,Instrumentalis
 NN,"NMasc_0_0_n, NMasc_s_0_n",Dezember
 NN,"NMasc_0_a/en_0, NMasc_s_a/en_0, NMasc_0_s_0, NMasc_s_s_0",Veda
 NN,"NMasc_0_e/i_0, NMasc_s_e/i_0",Carabiniere
-NN,"NMasc_0_e_n, NMasc_0_en_0, NMasc_s_e_n, NMasc_s_en_0, NMasc_en_en_0",Obelisk
 NN,"NMasc_0_e_n, NMasc_0_es_0, NMasc_0_s_0, NMasc_es_e_n, NMasc_es_es_0, NMasc_es_s_0, NNeut_0_e_n ...",Sandwich
 NN,"NMasc_0_e_n, NMasc_0_ex/izes_0, NMasc_es_e_n, NMasc_es_ex/izes_0",Index
 NN,"NMasc_0_e_n, NMasc_0_ix/izes_0, NMasc_es_e_n, Nmasc_es_ix/izes_0, NFem_0_ix/izes_0 ",Appendix
@@ -108,6 +107,7 @@ NN,NMasc_0_e_n~ss,Zirkus
 NN,"NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_as/anten_0, NMasc_s_as/anten_0",Atlas
 NN,"NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/een_0, NMasc_es_us/een_0~ss",Kaktus
 NN,"NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/en_0, NMasc_es_us/en_0~ss",Globus
+NN,NMasc_0_en_0,Minotaur
 NN,NMasc_0_ens/entes_0,Dens
 NN,"NMasc_0_es/iden_0, NMasc_0_es/ides_0",Präses
 NN,"NMasc_0_i/en_0, NMasc_s_i/en_0, NMasc_0_s_0, NMasc_s_s_0, NNeut_0_i/en_0 ...",Taxi
@@ -126,6 +126,7 @@ NN,NMasc_0_us/i_0,Modus
 NN,NMasc_0_us/ier_n,Dinosaurus
 NN,NMasc_0_ynx/yngen_0,Larynx
 NN,NMasc_en_en_0,Dirigent
+NN,"NMasc_en_en_0, NMascNonSt_s_en_0",Bär
 NN,NMasc_es_$e_n,Arzt
 NN,"NMasc_es_$e_n, NMasc_es_s_0",Block
 NN,NMasc_es_$er_n,Gott

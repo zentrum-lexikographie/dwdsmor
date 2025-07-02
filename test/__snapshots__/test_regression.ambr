@@ -18491,79 +18491,6 @@
     ),
     tuple(
       'NN',
-      'NMasc_0_e_n, NMasc_0_en_0, NMasc_s_e_n, NMasc_s_en_0, NMasc_en_en_0',
-      'Obelisk',
-      tuple(
-        'Obelisk<NN><Masc><Acc><Pl>',
-        'Obeliske',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Acc><Pl>',
-        'Obelisken',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Acc><Sg>',
-        'Obelisk',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Acc><Sg>',
-        'Obelisken',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Acc><Sg><NonSt>',
-        'Obelisk',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Dat><Pl>',
-        'Obelisken',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Dat><Sg>',
-        'Obelisk',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Dat><Sg>',
-        'Obelisken',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Dat><Sg><NonSt>',
-        'Obelisk',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Gen><Pl>',
-        'Obeliske',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Gen><Pl>',
-        'Obelisken',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Gen><Sg>',
-        'Obelisk',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Gen><Sg>',
-        'Obelisken',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Gen><Sg>',
-        'Obelisks',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Nom><Pl>',
-        'Obeliske',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Nom><Pl>',
-        'Obelisken',
-      ),
-      tuple(
-        'Obelisk<NN><Masc><Nom><Sg>',
-        'Obelisk',
-      ),
-    ),
-    tuple(
-      'NN',
       'NMasc_0_e_n, NMasc_0_es_0, NMasc_0_s_0, NMasc_es_e_n, NMasc_es_es_0, NMasc_es_s_0, NNeut_0_e_n ...',
       'Sandwich',
       tuple(
@@ -19236,6 +19163,43 @@
       tuple(
         'Globus<NN><Masc><Nom><Sg>',
         'Globus',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NMasc_0_en_0',
+      'Minotaur',
+      tuple(
+        'Minotaur<NN><Masc><Acc><Pl>',
+        'Minotauren',
+      ),
+      tuple(
+        'Minotaur<NN><Masc><Acc><Sg>',
+        'Minotaur',
+      ),
+      tuple(
+        'Minotaur<NN><Masc><Dat><Pl>',
+        'Minotauren',
+      ),
+      tuple(
+        'Minotaur<NN><Masc><Dat><Sg>',
+        'Minotaur',
+      ),
+      tuple(
+        'Minotaur<NN><Masc><Gen><Pl>',
+        'Minotauren',
+      ),
+      tuple(
+        'Minotaur<NN><Masc><Gen><Sg>',
+        'Minotaur',
+      ),
+      tuple(
+        'Minotaur<NN><Masc><Nom><Pl>',
+        'Minotauren',
+      ),
+      tuple(
+        'Minotaur<NN><Masc><Nom><Sg>',
+        'Minotaur',
       ),
     ),
     tuple(
@@ -20144,20 +20108,12 @@
         'Dirigenten',
       ),
       tuple(
-        'Dirigent<NN><Masc><Acc><Sg><NonSt>',
-        'Dirigent',
-      ),
-      tuple(
         'Dirigent<NN><Masc><Dat><Pl>',
         'Dirigenten',
       ),
       tuple(
         'Dirigent<NN><Masc><Dat><Sg>',
         'Dirigenten',
-      ),
-      tuple(
-        'Dirigent<NN><Masc><Dat><Sg><NonSt>',
-        'Dirigent',
       ),
       tuple(
         'Dirigent<NN><Masc><Gen><Pl>',
@@ -20174,6 +20130,55 @@
       tuple(
         'Dirigent<NN><Masc><Nom><Sg>',
         'Dirigent',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NMasc_en_en_0, NMascNonSt_s_en_0',
+      'Bär',
+      tuple(
+        'Bär<NN><Masc><Acc><Pl>',
+        'Bären',
+      ),
+      tuple(
+        'Bär<NN><Masc><Acc><Sg>',
+        'Bären',
+      ),
+      tuple(
+        'Bär<NN><Masc><Acc><Sg><NonSt>',
+        'Bär',
+      ),
+      tuple(
+        'Bär<NN><Masc><Dat><Pl>',
+        'Bären',
+      ),
+      tuple(
+        'Bär<NN><Masc><Dat><Sg>',
+        'Bären',
+      ),
+      tuple(
+        'Bär<NN><Masc><Dat><Sg><NonSt>',
+        'Bär',
+      ),
+      tuple(
+        'Bär<NN><Masc><Gen><Pl>',
+        'Bären',
+      ),
+      tuple(
+        'Bär<NN><Masc><Gen><Sg>',
+        'Bären',
+      ),
+      tuple(
+        'Bär<NN><Masc><Gen><Sg><NonSt>',
+        'Bärs',
+      ),
+      tuple(
+        'Bär<NN><Masc><Nom><Pl>',
+        'Bären',
+      ),
+      tuple(
+        'Bär<NN><Masc><Nom><Sg>',
+        'Bär',
       ),
     ),
     tuple(
@@ -21661,20 +21666,12 @@
         'Prototypen',
       ),
       tuple(
-        'Prototyp<PAR3><NN><Masc><Acc><Sg><NonSt>',
-        'Prototyp',
-      ),
-      tuple(
         'Prototyp<PAR3><NN><Masc><Dat><Pl>',
         'Prototypen',
       ),
       tuple(
         'Prototyp<PAR3><NN><Masc><Dat><Sg>',
         'Prototypen',
-      ),
-      tuple(
-        'Prototyp<PAR3><NN><Masc><Dat><Sg><NonSt>',
-        'Prototyp',
       ),
       tuple(
         'Prototyp<PAR3><NN><Masc><Gen><Pl>',

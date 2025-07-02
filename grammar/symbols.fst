@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 13.0
-% Andreas Nolda 2025-06-30
+% Version 13.1
+% Andreas Nolda 2025-07-02
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -184,12 +184,12 @@
                     <NMasc_s_e/i_0><NMasc_s_er/res_0><NMasc_s_en_0> \
                     <NMasc_s_er_n><NMasc_s_es_0><NMasc_s_i/en_0><NMasc_s_/en_0> \
                     <NMasc_s_n_0><NMasc_s_ien_0><NMasc_s_nen_0><NMasc_s_o/en_0> \
-                    <NMasc_s_o/i_0><NMasc_s_s_0><NNeut0_es><NNeut0_s><NNeut-Adj> \
-                    <NNeut-Adj|Sg><NNeut-Inner><NNeut|Pl_0><NNeut|Pl_n> \
-                    <NNeut|Sg_0><NNeut|Sg_es><NNeut|Sg_es~ss><NNeut|Sg_s> \
-                    <NNeut_0_0_0><NNeut_0_0_n><NNeut_0_a/ata_0><NNeut_0_a/en_0> \
-                    <NNeut_0_ans/antien_0><NNeut_0_ans/anzien_0><NNeut_0_e_n> \
-                    <NNeut_0_e_n~ss><NNeut_0_e/i_0><NNeut_0_e/ia_0> \
+                    <NMasc_s_o/i_0><NMasc_s_s_0><NMascNonSt_s_en_0><NNeut0_es> \
+                    <NNeut0_s><NNeut-Adj><NNeut-Adj|Sg><NNeut-Inner><NNeut|Pl_0> \
+                    <NNeut|Pl_n><NNeut|Sg_0><NNeut|Sg_es><NNeut|Sg_es~ss> \
+                    <NNeut|Sg_s><NNeut_0_0_0><NNeut_0_0_n><NNeut_0_a/ata_0> \
+                    <NNeut_0_a/en_0><NNeut_0_ans/antien_0><NNeut_0_ans/anzien_0> \
+                    <NNeut_0_e_n><NNeut_0_e_n~ss><NNeut_0_e/i_0><NNeut_0_e/ia_0> \
                     <NNeut_0_e/ien_0><NNeut_0_em/en_0><NNeut_0_en_0> \
                     <NNeut_0_en/ina_0><NNeut_0_ens/entia_0> \
                     <NNeut_0_ens/entien_0><NNeut_0_ens/enzien_0><NNeut_0_es_0> \
