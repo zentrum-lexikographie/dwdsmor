@@ -6,7 +6,6 @@ import argparse
 import csv
 import json
 import sys
-from dataclasses import asdict
 from pathlib import Path
 
 from blessings import Terminal
@@ -24,14 +23,14 @@ version = 14.1
 LABEL_MAP = {"word": "Wordform",
              "analyses": {"seg_word": "Segmented Wordform",
                           "spec": "Analysis",
-                          "analysis": "Lemma",
+                          "lemma": "Lemma",
                           "seg_lemma": "Segmented Lemma",
                           "lidx": "Lemma Index",
                           "pidx": "Paradigm Index",
                           "processes": "Processes",
                           "means": "Means",
                           "pos": "POS",
-                          "category": "Subcategory",
+                          "subcat": "Subcategory",
                           "auxiliary": "Auxiliary",
                           "degree": "Degree",
                           "person": "Person",
@@ -73,7 +72,32 @@ def seg_lemma(traversal):
 
 
 def traversal_asdict(traversal):
-    analysis_dict = {"seg_word": None, "seg_lemma": seg_lemma(traversal)} | asdict(traversal)
+    analysis_dict = {"seg_word": None,
+                     "spec": traversal.spec,
+                     "lemma": traversal.analysis,
+                     "seg_lemma": seg_lemma(traversal),
+                     "lidx": traversal.lidx,
+                     "pidx": traversal.pidx,
+                     "processes": traversal.processes,
+                     "means": traversal.means,
+                     "pos": traversal.pos,
+                     "subcat": traversal.category,
+                     "auxiliary": traversal.auxiliary,
+                     "degree": traversal.degree,
+                     "person": traversal.person,
+                     "gender": traversal.gender,
+                     "case": traversal.case,
+                     "number": traversal.number,
+                     "inflection": traversal.inflection,
+                     "nonfinite": traversal.nonfinite,
+                     "function": traversal.function,
+                     "mood": traversal.mood,
+                     "tense": traversal.tense,
+                     "metainfo": traversal.metainfo,
+                     "orthinfo": traversal.orthinfo,
+                     "syninfo": traversal.syninfo,
+                     "ellipinfo": traversal.ellipinfo,
+                     "charinfo": traversal.charinfo}
     return analysis_dict
 
 
@@ -185,14 +209,14 @@ def output_dsv(word_analyses, output_file, keys, analyses_keys,
     key_format = {"word": term.bold,
                   "analyses": {"seg_word": term.bright_black,
                                "spec": term.bright_black,
-                               "analysis": term.bold_underline,
+                               "lemma": term.bold_underline,
                                "seg_lemma": term.bright_black_underline,
                                "lidx": term.underline,
                                "pidx": term.underline,
                                "processes": term.underline,
                                "means": term.underline,
                                "pos": term.underline,
-                               "category": term.underline,
+                               "subcat": term.underline,
                                "auxiliary": term.underline,
                                "degree": plain,
                                "person": plain,
@@ -251,7 +275,6 @@ def output_analyses(analyzer, generator, input_file, output_file, automaton_type
                 analyses = get_maximal_analyses_per_pos(analyses, "seg_word", tag.wf_boundary_tags)
 
             for analysis in analyses:
-                del analysis["surface"]
                 if not seg_word:
                     del analysis["seg_word"]
                 if not analysis_string:
