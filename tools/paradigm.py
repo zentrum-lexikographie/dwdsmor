@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms with DWDSmor
-# Andreas Nolda 2025-06-30
+# Andreas Nolda 2025-07-03
 
 import argparse
 import csv
@@ -21,7 +21,7 @@ import yaml
 
 progname = Path(__file__).name
 
-version = 18.0
+version = 18.1
 
 
 IDX = range(1, 9)
@@ -2164,8 +2164,6 @@ def output_paradigms(generator, analyzer, output_file, automaton_type,
 
 def main():
     try:
-        automata_dir = automaton.detect_root_dir()
-
         parser = argparse.ArgumentParser()
         parser.add_argument("lemma",
                             help="lemma (determiners: Fem Nom Sg; nominalised adjectives: Wk)")
@@ -2176,7 +2174,7 @@ def main():
         parser.add_argument("-C", "--force-color", action="store_true",
                             help="preserve color and formatting when piping output")
         parser.add_argument("-d", "--automata-dir",
-                            help=f"automata directory (default: {automata_dir})")
+                            help="automata directory")
         parser.add_argument("-e", "--empty", action="store_true",
                             help="show empty columns or values")
         parser.add_argument("-H", "--no-header", action="store_false",
@@ -2213,7 +2211,16 @@ def main():
                             help="output YAML document")
         args = parser.parse_args()
 
-        automata = automaton.automata(args.automata_dir)
+        if args.automata_dir:
+            if Path(args.automata_dir).is_dir():
+                automata_dir = args.automata_dir
+            else:
+                print(f"{progname}: {args.automata_dir} is not a directory")
+                sys.exit(1)
+        else:
+            automata_dir = automaton.detect_root_dir()
+
+        automata = automaton.automata(automata_dir)
         analyzer = automata.analyzer(args.automaton_type)
         generator = automata.generator(args.automaton_type)
 
@@ -2232,7 +2239,10 @@ def main():
                          args.no_cats, args.no_lemma, args.empty,
                          args.no_header, args.plain, args.force_color, output_format)
     except automaton.AutomataDirNotFound:
-        print(f"{progname}: automata directory not found", file=sys.stderr)
+        print(f"{progname}: automata directory not found (set it with --automata-dir)", file=sys.stderr)
+        sys.exit(1)
+    except AssertionError as error:
+        print(f"{progname}: {error}", file=sys.stderr)
         sys.exit(1)
     except KeyboardInterrupt:
         sys.exit(130)
