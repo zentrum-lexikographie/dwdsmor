@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.9.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.8.0...v0.9.0) (2025-07-04)
+
+
+### Features
+
+* add --no-info option to tools/analysis.py ([cf06934](https://github.com/zentrum-lexikographie/dwdsmor/commit/cf069345d067bf7fd3869fca90a1ef6935a37d01))
+* add support for conversion of infinitives ([48177ad](https://github.com/zentrum-lexikographie/dwdsmor/commit/48177adb34458af9dde2c53f9627b1e4a10bd4a9))
+
+
+### Bug Fixes
+
+* do not output redundant surface key in tools/analysis.py ([e7cb22b](https://github.com/zentrum-lexikographie/dwdsmor/commit/e7cb22b11a9fa7f3639dee5d3c0c1c785bc4f06f))
+* improve error handling of Python tools ([539d7dd](https://github.com/zentrum-lexikographie/dwdsmor/commit/539d7dda74d9beed1d40766331e79ac585653a98))
+
 ## [0.8.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.7.0...v0.8.0) (2025-07-02)
 
 
