@@ -9,7 +9,7 @@
 
 % clean up inflection-related symbols on analysis level
 
-ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #cat# #subcat# \
+ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #pos# #subcat# \
             #stem-type# #suff# #origin# #orthinfo# <Abbr>] \
            <>:[#inflection# #auxiliary# <ge>]
 
@@ -18,7 +18,7 @@ $CleanupInflLv2$ = .*
 
 % clean up lemma and paradigm indices
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #cat# \
+ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #pos# \
             #subcat# #stem-type# #suff# #origin# #inflection# #auxiliary# \
             #orthinfo# <Abbr><ge>] \
            [#index#]:<>
@@ -28,7 +28,7 @@ $CleanupIndex$ = .*
 
 % clean up lexical orthography markers
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #cat# \
+ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #pos# \
            #subcat# #stem-type# #suff# #origin# #inflection# #auxiliary# \
            <Abbr><ge>] \
            [#orthinfo#]:<>
@@ -55,7 +55,7 @@ $CleanupWBLv2$ = .*
 
 % clean up affixes in root lemmas on the analysis level
 
-ALPHABET = [#wf# #cat# #subcat# #stem-type# #index# #suff# #origin#]
+ALPHABET = [#wf# #pos# #subcat# #stem-type# #index# #suff# #origin#]
 
 $C$ =    [#char# #boundary-trigger#]
 $D$ = <>:[#char# #boundary-trigger#]
@@ -73,26 +73,26 @@ $CleanupAffRootLv2$ = ($Pref$* .* $O$* <Stem> <Abbr>? $C$+ .* $Suff$* .* <HB>? <
 ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #orthinfo#] \
            <>:[#entry-type# #stem-type# #suff# #origin# #wf# <Abbr>]
 
-$CleanupWFLv2$ = (.* <>:[#cat#] <>:[#subcat#]?)* .* [#cat#] [#subcat#]? .*
+$CleanupWFLv2$ = (.* <>:[#pos#] <>:[#subcat#]?)* .* [#pos#] [#subcat#]? .*
 
 ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #wf# #orthinfo#] \
            <>:[#entry-type# #stem-type# #suff# #origin# <Abbr>]
 
-$CleanupWFRootLv2$ = (.* <>:[#cat#] <>:[#subcat#]?)* .* [#cat#] [#subcat#]? .*
+$CleanupWFRootLv2$ = (.* <>:[#pos#] <>:[#subcat#]?)* .* [#pos#] [#subcat#]? .*
 
 
 % clean up word-formation-related symbols
 
 ALPHABET = [#char# #surface-trigger# #orth-trigger# #boundary-trigger# \
             #inflection# #auxiliary# <ge>] \
-           [#entry-type# #cat# #subcat# #stem-type# #suff# #origin# #wf# <Abbr>]:<>
+           [#entry-type# #pos# #subcat# #stem-type# #suff# #origin# #wf# <Abbr>]:<>
 
 $CleanupWF$ = .*
 
 
 % clean up categories on analysis level
 
-ALPHABET = [#entry-type# #char# #orth-trigger# #boundary-trigger# #index# #cat# \
+ALPHABET = [#entry-type# #char# #orth-trigger# #boundary-trigger# #index# #pos# \
             #subcat# #stem-type# #origin# #wf# #orthinfo#] \
            <>:[#nonfinite# #tense# #function# #auxiliary#]
 

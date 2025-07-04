@@ -82,7 +82,7 @@
 
 #wf# = #wf-process# #wf-means#
 
-#cat# = <ADJ><ADV><ART><CARD><CONJ><DEM><FRAC><INDEF><INTJ><NN><NPROP><ORD> \
+#pos# = <ADJ><ADV><ART><CARD><CONJ><DEM><FRAC><INDEF><INTJ><NN><NPROP><ORD> \
         <POSS><POSTP><PPRO><PREP><PREPART><PREV><PROADV><PTCL><PUNCT><REL><V> \
         <WADV><WPRO>
 
@@ -111,7 +111,7 @@
 
 #auxiliary# = <haben><sein>
 
-#feature# = #cat# #subcat# #degree# #person# #gender# #case# #number# #infl# \
+#feature# = #pos# #subcat# #degree# #person# #gender# #case# #number# #infl# \
             #function# #nonfinite# #mood# #tense# #auxiliary#
 
 #metainfo# = <NonSt><Old>

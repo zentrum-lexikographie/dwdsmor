@@ -8,7 +8,7 @@
 
 % replace verb stem-final schwa with <e>
 
-ALPHABET = [#entry-type# #char# #boundary-trigger# #cat# #subcat# #stem-type# \
+ALPHABET = [#entry-type# #char# #boundary-trigger# #pos# #subcat# #stem-type# \
             #suff# #origin# #inflection# #auxiliary# <Abbr><ge>] \
            e:<e>
 

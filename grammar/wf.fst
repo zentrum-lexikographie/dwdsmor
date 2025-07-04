@@ -85,7 +85,7 @@ $Comp-hyph$   = <COMP>:<> <hyph>:<>
 % conversion restrictions
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
-            #boundary-trigger# #cat# #subcat# #stem-type# #suff# #origin# \
+            #boundary-trigger# #pos# #subcat# #stem-type# #suff# #origin# \
             #inflection# #auxiliary# <Abbr><ge>]
 
 % exclude "worden" as a conversion basis
@@ -97,7 +97,7 @@ $ConvFilter$ = $ConvRestrLex$
 
 % derivation restrictions
 
-ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #wf# #cat# #subcat# \
+ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #wf# #pos# #subcat# \
             #stem-type# #suff# #origin# <Abbr>]
 
 $C$ = [#index# #stem-type# #origin#]
@@ -111,7 +111,7 @@ $DerRestrLexLv2$ = $DerRestrLexPrevLv2$
 $DerFilterLv2$ = $DerRestrLexLv2$
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
-            #boundary-trigger# #cat# #subcat# #stem-type# #suff# #origin# \
+            #boundary-trigger# #pos# #subcat# #stem-type# #suff# #origin# \
             #inflection# #auxiliary# <Abbr><ge>]
 
 $C$ = .

@@ -5,7 +5,7 @@
 #include "symbols.fst"
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #index# \
-            #cat# #subcat# #stem-type# #suff# #origin# #inflection# #auxiliary# \
+            #pos# #subcat# #stem-type# #suff# #origin# #inflection# #auxiliary# \
             <Abbr><ge>]
 
 $BaseStemFilter$ = <Stem> .* <base> [^#stem-type#]*
