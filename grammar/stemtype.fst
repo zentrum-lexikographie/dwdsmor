@@ -1,6 +1,6 @@
 % stemtype.fst
-% Version 6.0
-% Andreas Nolda 2025-06-30
+% Version 6.1
+% Andreas Nolda 2025-07-04
 
 #include "symbols.fst"
 
@@ -28,5 +28,6 @@ $BaseStemFilterVPartPerf_d$ = <Stem> .* d
 ALPHABET = [#char# #boundary-trigger# #index# #wf# #stem-type# #origin# \
             #auxiliary#]
 
+$BaseStemFilterVInfNonClLv2$ = (.* <Pref> .*)? <Stem> .* <V> .* <Inf><NonCl> .*
 $BaseStemFilterVPartPresLv2$ = (.* <Pref> .*)? <Stem> .* <V> .* <Part><Pres> .*
 $BaseStemFilterVPartPerfLv2$ = (.* <Pref> .*)? <Stem> .* <V> .* <Part><Perf> .*

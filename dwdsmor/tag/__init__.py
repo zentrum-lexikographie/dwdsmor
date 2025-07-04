@@ -67,6 +67,7 @@ tag_values = {
         "means": {
             "concat",
             "hyph",
+            "ident|Inf",
             "ident|Part",
             "pref(un)",
             "prev()",

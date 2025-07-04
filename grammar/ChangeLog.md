@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-07-04:
+
+* add support for conversion of infinitives
+
 2025-07-02:
 
 * add inflection class `NMascNonSt_s_en_0`

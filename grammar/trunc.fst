@@ -1,6 +1,6 @@
 % trunc.fst
-% Version 3.1
-% Andreas Nolda 2025-07-01
+% Version 3.2
+% Andreas Nolda 2025-07-04
 
 #include "symbols.fst"
 
@@ -27,22 +27,28 @@ $TruncInitial$ = $TruncInitial-CB$
 
 % truncate final morpheme sequence
 
-ALPHABET = [#wf# #cat# #subcat#] \
-           <>:[#auxiliary# #degree# #person# #gender# #case# #number# #infl# \
-               #function# #nonfinite# #mood# #tense# #info#]
+ALPHABET = [#wf# #degree#] \
+           <>:[#auxiliary# #person# #gender# #case# #number# #infl# #function# \
+               #nonfinite# #mood# #tense# #info#]
 
 $C$ =    [#char# #index# #boundary-trigger# #wf# #syninfo#]
 $T$ = <>:[#char# #index# <PB><SB>]
 
-$TruncFinalLv2-CB$ = $C$* [^<HB>] <CB> \-:<> $T$* .* {<UnmGend><UnmCase><UnmNum>}:{}
+$TruncFinalLv2-NN-CB$  = $C$* [^<HB>] <CB> \-:<> $T$* .* <NN>  .* {<UnmGend><UnmCase><UnmNum>}:{}
 
-$TruncFinalLv2-HB$ = $C$* <>:<HB> <CB> \-:<> $T$* .* {<UnmGend><UnmCase><UnmNum>}:{}
+$TruncFinalLv2-NN-HB$  = $C$* <>:<HB> <CB> \-:<> $T$* .* <NN>  .* {<UnmGend><UnmCase><UnmNum>}:{}
 
-$TruncFinalLv2-VB$ = $C$* <VB> \-:<> $T$* .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{}
+$TruncFinalLv2-NN-VB$  = $C$*         <VB> \-:<> $T$* .* <NN>  .* {<UnmGend><UnmCase><UnmNum>}:{}
 
-$TruncFinalLv2$ = $TruncFinalLv2-CB$ | \
-                  $TruncFinalLv2-HB$ | \
-                  $TruncFinalLv2-VB$
+$TruncFinalLv2-ADJ-VB$ = $C$*         <VB> \-:<> $T$* .* <ADJ> .* {<UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
+
+$TruncFinalLv2-V-VB$   = $C$*         <VB> \-:<> $T$* .* <V>   .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{}
+
+$TruncFinalLv2$ = $TruncFinalLv2-NN-CB$  | \
+                  $TruncFinalLv2-NN-HB$  | \
+                  $TruncFinalLv2-NN-VB$  | \
+                  $TruncFinalLv2-ADJ-VB$ | \
+                  $TruncFinalLv2-V-VB$
 
 $C$ = [#char# #boundary-trigger#]
 $T$ = [#char# <PB><SB>]:<>

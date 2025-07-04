@@ -1,6 +1,6 @@
 % dwdsmor-lemma.fst
-% Version 15.0
-% Andreas Nolda 2025-06-30
+% Version 15.1
+% Andreas Nolda 2025-07-04
 
 #include "symbols.fst"
 #include "num.fst"
@@ -72,26 +72,33 @@ $BaseStemsV$ = $BaseStemsV$ || $CleanupWF$
 
 $BaseStemsV$ = $BaseStemsV$ $INFL$ || $InflFilter$
 
+$BaseStemsVInfNonCl$ = $BaseStemFilterVInfNonClLv2$ || $BaseStemsV$
 $BaseStemsVPartPres$ = $BaseStemFilterVPartPresLv2$ || $BaseStemsV$
 $BaseStemsVPartPerf$ = $BaseStemFilterVPartPerfLv2$ || $BaseStemsV$
 
+$BaseStemsVInfNonCl$ = $CleanupCatLv2$ || $BaseStemsVInfNonCl$
 $BaseStemsVPartPres$ = $CleanupCatLv2$ || $BaseStemsVPartPres$
 $BaseStemsVPartPerf$ = $CleanupCatLv2$ || $BaseStemsVPartPerf$
 
+$BaseStemsVInfNonCl$ = $BaseStemsVInfNonCl$ || $MarkerGe$
 $BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $MarkerGe$
 $BaseStemsVPartPerf$ = $BaseStemsVPartPerf$ || $MarkerGe$
 $BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $MarkerZu$
 $BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $MarkerPartConv$
 
+$BaseStemsVInfNonCl$ = <>:<WB> $BaseStemsVInfNonCl$ <>:<WB>
 $BaseStemsVPartPres$ = <>:<WB> $BaseStemsVPartPres$ <>:<WB>
 $BaseStemsVPartPerf$ = <>:<WB> $BaseStemsVPartPerf$ <>:<WB>
 
+$BaseStemsVInfNonCl$ = $BaseStemsVInfNonCl$ || $PHON$
 $BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $PHON$
 $BaseStemsVPartPerf$ = $BaseStemsVPartPerf$ || $PHON$
 
+$BaseStemsVInfNonCl$ = $BaseStemsVInfNonCl$ || $MarkerWB$
 $BaseStemsVPartPres$ = $BaseStemsVPartPres$ || $MarkerWB$
 $BaseStemsVPartPerf$ = $BaseStemsVPartPerf$ || $MarkerWB$
 
+$BaseStemsVInfNonCl$ = ^$BaseStemsVInfNonCl$
 $BaseStemsVPartPres$ = ^$BaseStemsVPartPres$
 $BaseStemsVPartPerf$ = ^$BaseStemsVPartPerf$
 
@@ -99,10 +106,11 @@ $BaseStemsVPartPerf_t$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf_t$
 $BaseStemsVPartPerf_n$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf_n$
 $BaseStemsVPartPerf_d$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf_d$
 
-$ConvBaseStems$ = $BaseStemsVPartPres$   $ConvPartPres$   | \
-                  $BaseStemsVPartPerf_t$ $ConvPartPerf_t$ | \
-                  $BaseStemsVPartPerf_n$ $ConvPartPerf_n$ | \
-                  $BaseStemsVPartPerf_d$ $ConvPartPerf_d$ || $ConvFilter$
+$ConvBaseStems$ = <uc> $BaseStemsVInfNonCl$   $ConvInfNonCl$   | \
+                       $BaseStemsVPartPres$   $ConvPartPres$   | \
+                       $BaseStemsVPartPerf_t$ $ConvPartPerf_t$ | \
+                       $BaseStemsVPartPerf_n$ $ConvPartPerf_n$ | \
+                       $BaseStemsVPartPerf_d$ $ConvPartPerf_d$ || $ConvFilter$
 
 $BaseStems$ = $BaseStems$ | $ConvBaseStems$
 

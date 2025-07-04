@@ -1,11 +1,12 @@
 % wf.fst
-% Version 12.2
-% Andreas Nolda 2025-06-30
+% Version 12.3
+% Andreas Nolda 2025-07-04
 
 #include "symbols.fst"
 
 % processes and means
 
+$ConvInfNonCl$   = <CONV>:<> <ident|Inf>:<>  <NN>  <base> <native> <>:<NNeut|Sg_s>
 $ConvPartPres$   = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPosAttr> % cf. Duden-Grammatik (2016: § 481, § 508, § 829)
 $ConvPartPerf_t$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPos>     % cf. Duden-Grammatik (2016: § 508)
 $ConvPartPerf_n$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPos-en>  % cf. Duden-Grammatik (2016: § 508)
