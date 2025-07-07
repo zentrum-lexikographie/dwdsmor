@@ -47,16 +47,10 @@ tag_values = {
             "V",
             "WPRO",
         },
-        "degree": {"Pos", "Comp", "Sup"},
         "function": {"Attr", "Subst", "UnmFunc"},
-        "person": {"1", "2", "3", "UnmPers"},
-        "gender": {"Fem", "Neut", "Masc", "UnmGend"},
-        "case": {"Nom", "Gen", "Dat", "Acc", "UnmCase"},
+        "gender": {"Masc", "Neut", "Fem", "UnmGend"},
+        "case": {"Nom", "Acc", "Dat", "Gen", "UnmCase"},
         "number": {"Sg", "Pl", "UnmNum"},
-        "nonfinite": {"Inf", "Part"},
-        "tense": {"Pres", "Past", "Perf", "UnmTense"},
-        "mood": {"Ind", "Subj", "Imp", "UnmMood"},
-        "auxiliary": {"haben", "sein"},
         "inflection": {"St", "Wk", "UnmInfl"},
         "metainfo": {"Old", "NonSt"},
         "orthinfo": {"OLDORTH", "CH"},
@@ -69,6 +63,9 @@ tag_values = {
             "hyph",
             "ident|Inf",
             "ident|Part",
+            "ident|Fem",
+            "ident|Masc",
+            "ident|Neut",
             "pref(un)",
             "prev()",
             "prev(ab)",
@@ -102,19 +99,24 @@ tag_values = {
             "suff(lein)",
         },
     },
-    "ADJ": {"function": {"Attr", "Subst", "Attr/Subst", "Pred/Adv"}},
+    "ADJ": {
+        "degree": {"Pos", "Comp", "Sup"},
+        "function": {"Attr", "Subst", "Attr/Subst", "Pred/Adv", "UnmFunc"},
+    },
+    "ADV": {"degree": {"Pos", "Comp", "Sup"}},
     "ART": {
         "category": {"Def", "Indef", "Neg"},
     },
     "CONJ": {"category": {"AdjComp", "Coord", "Sub", "InfCl"}},
     "ORD": {
-        "function": {"Attr/Subst"},
+        "function": {"Attr/Subst", "UnmFunc"},
     },
     "POSS": {
-        "function": {"Attr/Subst"},
+        "function": {"Attr", "Subst", "Attr/Subst"},
     },
     "PPRO": {
         "category": {"Pers", "Refl", "Rec"},
+        "person": {"1", "2", "3", "UnmPers"},
     },
     "PTCL": {"category": {"AdjSup", "InfCl", "Int", "Neg"}},
     "PUNCT": {
@@ -129,7 +131,14 @@ tag_values = {
             "Other",
         },
     },
-    "V": {"function": {"NonCl", "Cl"}},
+    "V": {
+        "nonfinite": {"Inf", "Part"},
+        "function": {"NonCl", "Cl"},
+        "person": {"1", "2", "3", "UnmPers"},
+        "mood": {"Ind", "Subj", "Imp", "UnmMood"},
+        "tense": {"Pres", "Past", "Perf", "UnmTense"},
+        "auxiliary": {"haben", "sein"},
+    },
 }
 
 
@@ -172,6 +181,6 @@ inflection_tag_seqs = {
         ("mood", "number"),
         ("nonfinite", "function"),
         ("nonfinite", "tense", "auxiliary"),
-        ("person", "number", "tense", "mood"),
+        ("person", "number", "mood", "tense"),
     ),
 }
