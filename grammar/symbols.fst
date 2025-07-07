@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 13.2
-% Andreas Nolda 2025-07-04
+% Version 13.3
+% Andreas Nolda 2025-07-07
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -62,7 +62,7 @@
 #orth-trigger# = <dc><uc>
 
 #phon-trigger# = <dbl(s)><dbl(z)><del(e)><del(e)|ADJ><del(e)|Gen><del(e)|PRO> \
-                 <del(VC)|Pl><ins(e)><uml>
+                 <del(-e)><del(VC)|Pl><ins(e)><uml>
 
 #morph-trigger# = <ins(ge)><ins(zu)><rm|Part><rm|Imp>
 
@@ -72,13 +72,14 @@
 
 #wf-process# = <COMP><DER><CONV>
 
-#wf-means# = <concat><hyph><ident|Inf><ident|Part><pref(un)><prev()><prev(ab)> \
-             <prev(an)><prev(auf)><prev(aus)><prev(bei)><prev(durch)><prev(ein)> \
-             <prev(fort)><prev(gegen)><prev(heim)><prev(her)><prev(hin)> \
-             <prev(hinter)><prev(los)><prev(mit)><prev(nach)><prev(ueber)> \
-             <prev(um)><prev(unter)><prev(vor)><prev(weg)><prev(wieder)> \
-             <prev(zu)><prev(zurueck)><prev(zwischen)><suff(chen)><suff(e)> \
-             <suff(er)><suff(lein)>
+#wf-means# = <concat><hyph><ident|Fem><ident|Inf><ident|Masc><ident|Neut> \
+             <ident|Part><pref(un)><prev()><prev(ab)><prev(an)><prev(auf)> \
+             <prev(aus)><prev(bei)><prev(durch)><prev(ein)><prev(fort)> \
+             <prev(gegen)><prev(heim)><prev(her)><prev(hin)><prev(hinter)> \
+             <prev(los)><prev(mit)><prev(nach)><prev(ueber)><prev(um)> \
+             <prev(unter)><prev(vor)><prev(weg)><prev(wieder)><prev(zu)> \
+             <prev(zurueck)><prev(zwischen)><suff(chen)><suff(e)><suff(er)> \
+             <suff(lein)>
 
 #wf# = #wf-process# #wf-means#
 

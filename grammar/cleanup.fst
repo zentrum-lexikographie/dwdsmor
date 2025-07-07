@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 6.0
-% Andreas Nolda 2025-06-30
+% Version 6.1
+% Andreas Nolda 2025-07-07
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -83,7 +83,7 @@ $CleanupWFRootLv2$ = (.* <>:[#pos#] <>:[#subcat#]?)* .* [#pos#] [#subcat#]? .*
 
 % clean up word-formation-related symbols
 
-ALPHABET = [#char# #surface-trigger# #orth-trigger# #boundary-trigger# \
+ALPHABET = [#char# #surface-trigger# #orth-trigger# #boundary-trigger# #phon-trigger# \
             #inflection# #auxiliary# <ge>] \
            [#entry-type# #pos# #subcat# #stem-type# #suff# #origin# #wf# <Abbr>]:<>
 
@@ -94,7 +94,8 @@ $CleanupWF$ = .*
 
 ALPHABET = [#entry-type# #char# #orth-trigger# #boundary-trigger# #index# #pos# \
             #subcat# #stem-type# #origin# #wf# #orthinfo#] \
-           <>:[#nonfinite# #tense# #function# #auxiliary#]
+           <>:[#degree# #gender# #case# #number# #infl# #function# #nonfinite# \
+               #tense# #auxiliary#]
 
 $CleanupCatLv2$ = .*
 

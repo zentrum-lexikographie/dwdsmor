@@ -598,6 +598,18 @@
       'Gebühr<NN><Fem><Nom><Pl>',
     ),
     tuple(
+      'Gebühren',
+      'Gebühr<~>en<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Gebühren',
+      'Gebühr<~>en<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Gebühren',
+      'Gebühr<~>en<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
       'erhoben',
       '<SEP>erheb<~>en<V><3><Pl><Past><Ind>',
     ),
@@ -850,6 +862,18 @@
       'Gebühr<NN><Fem><Nom><Pl>',
     ),
     tuple(
+      'Gebühren',
+      'Gebühr<~>en<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Gebühren',
+      'Gebühr<~>en<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Gebühren',
+      'Gebühr<~>en<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
       'umfassen',
       '<SEP>umfass<~>en<V><3><Pl><Pres><Subj>',
     ),
@@ -1068,6 +1092,18 @@
     tuple(
       'Kosten',
       '<CAP>kost<~>en<V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Kosten',
+      'Kost<~>en<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Kosten',
+      'Kost<~>en<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Kosten',
+      'Kost<~>en<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Kosten',
@@ -1296,6 +1332,18 @@
     tuple(
       'Gebühren',
       'Gebühr<NN><Fem><Nom><Pl>',
+    ),
+    tuple(
+      'Gebühren',
+      'Gebühr<~>en<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Gebühren',
+      'Gebühr<~>en<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Gebühren',
+      'Gebühr<~>en<NN><Neut><Nom><Sg>',
     ),
     tuple(
       '.',
@@ -1879,6 +1927,18 @@
     ),
     tuple(
       'Sachschaden',
+      'Sach<#>schad<~>en<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Sachschaden',
+      'Sach<#>schad<~>en<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Sachschaden',
+      'Sach<#>schad<~>en<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Sachschaden',
       'Sach<#>schade<NN><Masc><Acc><Sg>',
     ),
     tuple(
@@ -2136,6 +2196,18 @@
     tuple(
       'mit',
       'mit<PREP>',
+    ),
+    tuple(
+      'Sachschaden',
+      'Sach<#>schad<~>en<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Sachschaden',
+      'Sach<#>schad<~>en<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Sachschaden',
+      'Sach<#>schad<~>en<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Sachschaden',
@@ -4655,6 +4727,10 @@
     ),
     tuple(
       'Unfallschadens',
+      'Un<->fall<#>schad<~>en<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Unfallschadens',
       'Un<->fall<#>schad<#>ens<NN><Neut><Acc><Sg>',
     ),
     tuple(
@@ -4676,6 +4752,10 @@
     tuple(
       'Unfallschadens',
       'Un<->fall<#>schaden<NN><Masc><Gen><Sg>',
+    ),
+    tuple(
+      'Unfallschadens',
+      'Unfall<#>schad<~>en<NN><Neut><Gen><Sg>',
     ),
     tuple(
       'Unfallschadens',
@@ -4991,6 +5071,18 @@
     ),
     tuple(
       'Sachschaden',
+      'Sach<#>schad<~>en<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Sachschaden',
+      'Sach<#>schad<~>en<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Sachschaden',
+      'Sach<#>schad<~>en<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Sachschaden',
       'Sach<#>schade<NN><Masc><Acc><Sg>',
     ),
     tuple(
@@ -5184,6 +5276,10 @@
     tuple(
       'des',
       'des<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Sachschadens',
+      'Sach<#>schad<~>en<NN><Neut><Gen><Sg>',
     ),
     tuple(
       'Sachschadens',
@@ -5640,6 +5736,18 @@
     tuple(
       'Mitteln',
       '<CAP>mittel<~>n<V><1><Pl><Pres><Ind>',
+    ),
+    tuple(
+      'Mitteln',
+      'Mittel<~>n<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Mitteln',
+      'Mittel<~>n<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Mitteln',
+      'Mittel<~>n<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Mitteln',

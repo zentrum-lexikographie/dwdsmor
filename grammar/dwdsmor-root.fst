@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 12.1
-% Andreas Nolda 2025-07-04
+% Version 13.0
+% Andreas Nolda 2025-07-07
 
 #include "symbols.fst"
 #include "num.fst"
@@ -93,13 +93,45 @@ $BaseStemsVPartPerf_t$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf_t$
 $BaseStemsVPartPerf_n$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf_n$
 $BaseStemsVPartPerf_d$ = $BaseStemsVPartPerf$ || $BaseStemFilterVPartPerf_d$
 
-$ConvBaseStems$ = <uc> $BaseStemsVInfNonCl$   $ConvInfNonCl$   | \
-                       $BaseStemsVPartPres$   $ConvPartPres$   | \
-                       $BaseStemsVPartPerf_t$ $ConvPartPerf_t$ | \
-                       $BaseStemsVPartPerf_n$ $ConvPartPerf_n$ | \
-                       $BaseStemsVPartPerf_d$ $ConvPartPerf_d$ || $ConvFilter$
+$ConvBaseStemsV$ = <uc> $BaseStemsVInfNonCl$   $ConvInfNonCl$   | \
+                        $BaseStemsVPartPres$   $ConvPartPres$   | \
+                        $BaseStemsVPartPerf_t$ $ConvPartPerf_t$ | \
+                        $BaseStemsVPartPerf_n$ $ConvPartPerf_n$ | \
+                        $BaseStemsVPartPerf_d$ $ConvPartPerf_d$ || $ConvFilter$
 
-$BaseStems$ = $BaseStems$ | $ConvBaseStems$
+$BaseStems$ = $BaseStems$ | $ConvBaseStemsV$
+
+$BaseStemsADJ$ = $BaseStems$ || $BaseStemFilterADJ$
+
+$BaseStemsADJ$ = $BaseStemsADJ$ || $CleanupWF$
+
+$BaseStemsADJ$ = $BaseStemsADJ$ $INFL$ || $InflFilter$
+
+$BaseStemsADJMasc$ = $BaseStemFilterADJMascLv2$ || $BaseStemsADJ$
+$BaseStemsADJNeut$ = $BaseStemFilterADJNeutLv2$ || $BaseStemsADJ$
+$BaseStemsADJFem$  = $BaseStemFilterADJFemLv2$  || $BaseStemsADJ$
+
+$BaseStemsADJMasc$ = $CleanupCatLv2$ || $BaseStemsADJMasc$
+$BaseStemsADJNeut$ = $CleanupCatLv2$ || $BaseStemsADJNeut$
+$BaseStemsADJFem$  = $CleanupCatLv2$ || $BaseStemsADJFem$
+
+$BaseStemsADJMasc$ = <>:<WB> $BaseStemsADJMasc$ <>:<WB>
+$BaseStemsADJNeut$ = <>:<WB> $BaseStemsADJNeut$ <>:<WB>
+$BaseStemsADJFem$  = <>:<WB> $BaseStemsADJFem$  <>:<WB>
+
+$BaseStemsADJMasc$ = $BaseStemsADJMasc$ || $PHON$
+$BaseStemsADJNeut$ = $BaseStemsADJNeut$ || $PHON$
+$BaseStemsADJFem$  = $BaseStemsADJFem$  || $PHON$
+
+$BaseStemsADJMasc$ = $BaseStemsADJMasc$ || $MarkerWB$
+$BaseStemsADJNeut$ = $BaseStemsADJNeut$ || $MarkerWB$
+$BaseStemsADJFem$  = $BaseStemsADJFem$  || $MarkerWB$
+
+$ConvBaseStemsADJ$ = <uc> $BaseStemsADJMasc$ $ConvADJMasc$ | \
+                     <uc> $BaseStemsADJNeut$ $ConvADJNeut$ | \
+                     <uc> $BaseStemsADJFem$  $ConvADJFem$  || $ConvFilter$
+
+$BaseStems$ = $BaseStems$ | $ConvBaseStemsADJ$
 
 % derived base stems with affixes
 

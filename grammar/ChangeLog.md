@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-07-07:
+
+* add support for conversion of inflected adjectives
+
 2025-07-04:
 
 * add support for conversion of infinitives

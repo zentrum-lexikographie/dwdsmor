@@ -1,6 +1,6 @@
 % phon.fst
-% Version 6.7
-% Andreas Nolda 2025-06-30
+% Version 6.8
+% Andreas Nolda 2025-07-06
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -69,9 +69,20 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf#
             #feature# #info# <e>] \
            [<SB>st]:<>
 
-$PhonStDeletion$ = ((st) <SB>           <=> <> (s:. t:.)) & \
-                   ((st  <SB>:.) s      <=> <>     (t:.)) & \
-                   ((st  <SB>:.  s:.) t <=> <>)
+$PhonSuffStDeletion$ = ((st) <SB>           <=> <> (s:. t:.)) & \
+                       ((st  <SB>:.) s      <=> <>     (t:.)) & \
+                       ((st  <SB>:.  s:.) t <=> <>)
+
+
+% deletion of "e"-suffixes marked by <del(-e)>
+% <uc>deutsch<SB>e<del(-e)><SB>er -> <uc>deutsch<del(e)><SB>er
+
+ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
+            #feature# #info# <e>] \
+           [<SB>e]:<>
+
+$PhonSuffEDeletion$ = ( <SB>      <=> <> (e:. <del(-e)>)) & \
+                      ((<SB>:.) e <=> <>     (<del(-e)>))
 
 
 % "e"-elision
@@ -225,13 +236,13 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf#
 
 $PhonSuffSubstitution2$ = ([aeiouy]) [mnrsx] <=> <> (<del(VC)|Pl>)
 
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
-           [aeiouy]:<>
-
 % remove vowel in "-a"/"-e"/"-o"
 % remove vowel in "-um"/"-en"/"-on"/"-as"/"-is"/"-os"/"-us"/"-ex"/"-ix"
 % remove vowel in "-ans"/"-ens"/"-anx"/"-ynx"
+
+ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
+            #feature# #info#] \
+           [aeiouy]:<>
 
 $PhonSuffSubstitution3$ = [aeiouy] <=> <> (<del(VC)|Pl>)
 
@@ -323,7 +334,7 @@ $PhonCase$ = $PhonCase1$ || \
              $PhonCase3$
 
 
-% marker deletion
+% trigger deletion
 
 ALPHABET = [#char# #boundary-trigger# #index# #wf# #feature# #info#] \
            [#phon-trigger#]:<>
@@ -334,10 +345,10 @@ $PhonMarker$ = .*
 $PHON$ = $PhonUmlaut$           || \
          $PhonSDuplication$     || \
          $PhonZDuplication$     || \
-         $PhonStDeletion$       || \
+         $PhonSuffStDeletion$   || \
+         $PhonSuffEDeletion$    || \
          $PhonEElision$         || \
          $PhonSDeletion$        || \
-         $PhonEDeletion$        || \
          $PhonEEpenthesis$      || \
          $PhonSuffSubstitution$ || \
          $PhonPref-in$          || \
