@@ -1918,7 +1918,7 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="suffs"
                                 as="item()*"
-                                select="@Suffixe"/>
+                                select="dwds:Derivationsstamm/@Suffixe"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1935,7 +1935,7 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="suffs"
                                 as="item()*"
-                                select="@Suffixe"/>
+                                select="dwds:Derivationsstamm/@Suffixe"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1951,7 +1951,7 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="suffs"
                                 as="item()*"
-                                select="@Suffixe"/>
+                                select="dwds:Derivationsstamm/@Suffixe"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1967,7 +1967,7 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="suffs"
                                 as="item()*"
-                                select="@Suffixe"/>
+                                select="dwds:Derivationsstamm/@Suffixe"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1983,7 +1983,7 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="suffs"
                                 as="item()*"
-                                select="@Suffixe"/>
+                                select="dwds:Derivationsstamm/@Suffixe"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
@@ -1999,7 +1999,7 @@
                                 select="$abbreviation"/>
                 <xsl:with-param name="suffs"
                                 as="item()*"
-                                select="@Suffixe"/>
+                                select="dwds:Derivationsstamm/@Suffixe"/>
                 <xsl:with-param name="etymology"
                                 select="$etymology"/>
               </xsl:call-template>
