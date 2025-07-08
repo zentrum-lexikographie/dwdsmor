@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 6.1
-% Andreas Nolda 2025-07-07
+% Version 6.2
+% Andreas Nolda 2025-07-08
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -57,8 +57,8 @@ $CleanupWBLv2$ = .*
 
 ALPHABET = [#wf# #pos# #subcat# #stem-type# #index# #suff# #origin#]
 
-$C$ =    [#char# #boundary-trigger#]
-$D$ = <>:[#char# #boundary-trigger#]
+$C$ =    [#char# #surface-trigger# #boundary-trigger#]
+$D$ = <>:[#char# #surface-trigger# #boundary-trigger#]
 $O$ = <>:[#orth-trigger#]
 
 $Pref$ =    $O$* .* <Pref> $D$+ <>:[<VB><DB>] $O$*
@@ -70,12 +70,14 @@ $CleanupAffRootLv2$ = ($Pref$* .* $O$* <Stem> <Abbr>? $C$+ .* $Suff$* .* <HB>? <
 
 % clean up word-formation-related symbols on analysis level
 
-ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #orthinfo#] \
+ALPHABET = [#char# #surface-trigger# #orth-trigger# #boundary-trigger# #index# \
+            #orthinfo#] \
            <>:[#entry-type# #stem-type# #suff# #origin# #wf# <Abbr>]
 
 $CleanupWFLv2$ = (.* <>:[#pos#] <>:[#subcat#]?)* .* [#pos#] [#subcat#]? .*
 
-ALPHABET = [#char# #orth-trigger# #boundary-trigger# #index# #wf# #orthinfo#] \
+ALPHABET = [#char# #surface-trigger# #orth-trigger# #boundary-trigger# #index# \
+            #wf# #orthinfo#] \
            <>:[#entry-type# #stem-type# #suff# #origin# <Abbr>]
 
 $CleanupWFRootLv2$ = (.* <>:[#pos#] <>:[#subcat#]?)* .* [#pos#] [#subcat#]? .*

@@ -97,6 +97,7 @@ tag_values = {
             "suff(er)",
             "suff(chen)",
             "suff(lein)",
+            "suff(zig)",
         },
     },
     "ADJ": {

@@ -1,6 +1,6 @@
 % wf.fst
-% Version 12.4
-% Andreas Nolda 2025-07-07
+% Version 12.5
+% Andreas Nolda 2025-07-08
 
 #include "symbols.fst"
 
@@ -16,10 +16,11 @@ $ConvADJNeut$    = <CONV>:<> <ident|Neut>:<> <NN>  <base> <native> <>:<del(-e)><
 $ConvADJFem$     = <CONV>:<> <ident|Fem>:<>  <NN>  <base> <native> <>:<del(-e)><>:<NFem-Adj>
 % ...
 
-$DerSuff-e$    = <DER>:<> <suff(e)>:<>    <Suff> e    <NN> <base> <native> <>:<NMasc_n_n_0>
-$DerSuff-er$   = <DER>:<> <suff(er)>:<>   <Suff> er   <NN> <base> <native> <>:<NMasc_s_0_n>
-$DerSuff-chen$ = <DER>:<> <suff(chen)>:<> <Suff> chen <NN> <base> <native> <>:<NNeut_s_0_0>
-$DerSuff-lein$ = <DER>:<> <suff(lein)>:<> <Suff> lein <NN> <base> <native> <>:<NNeut_s_0_0>
+$DerSuff-e$    = <DER>:<> <suff(e)>:<>    <Suff> e     <NN>   <base> <native> <>:<NMasc_n_n_0>
+$DerSuff-er$   = <DER>:<> <suff(er)>:<>   <Suff> er    <NN>   <base> <native> <>:<NMasc_s_0_n>
+$DerSuff-chen$ = <DER>:<> <suff(chen)>:<> <Suff> chen  <NN>   <base> <native> <>:<NNeut_s_0_0>
+$DerSuff-lein$ = <DER>:<> <suff(lein)>:<> <Suff> lein  <NN>   <base> <native> <>:<NNeut_s_0_0>
+$DerSuff-zig$  = <DER>:<> <suff(zig)>:<>  <Suff> <z>ig <CARD> <base> <native> <>:<Card0>
 % ...
 
 $DerPref-un$ = <DER>:<> <pref(un)>:<> <Pref> un
@@ -119,6 +120,13 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
 
 $C$ = .
 $C$ = $C$-[#entry-type# <CB><VB><HB><DB>]
+
+% restrict suff(zig) to cardinal bases
+$DerRestrCardPOSSuff-zig$ = <Stem> $C$* <CARD> $C$* <DB> ^$DerSuff-zig$
+
+$DerRestrCardPOS$ = $DerRestrCardPOSSuff-zig$
+
+$DerCardFilter$ = $DerRestrCardPOS$
 
 % restrict suff(e) to proper-name bases (?)
 $DerRestrPOSSuff-e$ = [<dc><uc>]* <Stem> $C$* <NPROP> $C$* <DB> ^$DerSuff-e$

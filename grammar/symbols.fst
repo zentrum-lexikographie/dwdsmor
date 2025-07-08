@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 13.3
-% Andreas Nolda 2025-07-07
+% Version 13.4
+% Andreas Nolda 2025-07-08
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -57,7 +57,7 @@
 #char# = #uppercase# #lowercase# #greek# #num# #sup# #sub# #frac# #symbol# \
          #punct#
 
-#surface-trigger# = <e><n>
+#surface-trigger# = <e><z>
 
 #orth-trigger# = <dc><uc>
 
@@ -79,7 +79,7 @@
              <prev(los)><prev(mit)><prev(nach)><prev(ueber)><prev(um)> \
              <prev(unter)><prev(vor)><prev(weg)><prev(wieder)><prev(zu)> \
              <prev(zurueck)><prev(zwischen)><suff(chen)><suff(e)><suff(er)> \
-             <suff(lein)>
+             <suff(lein)><suff(zig)>
 
 #wf# = #wf-process# #wf-means#
 
@@ -127,7 +127,7 @@
 
 #stem-type# = <base><comp><der>
 
-#suff# = <-chen><-e><-er><-lein> % ...
+#suff# = <-chen><-e><-er><-lein><-zig> % ...
 
 #origin# = <native><foreign>
 

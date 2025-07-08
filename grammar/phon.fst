@@ -1,6 +1,6 @@
 % phon.fst
-% Version 6.8
-% Andreas Nolda 2025-07-06
+% Version 6.9
+% Andreas Nolda 2025-07-08
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -15,7 +15,7 @@
 % Schwabe<del(e)><uml><SB>in -> Schwäbe<del(e)><SB>in
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <e>]
+            #feature# #info# <e><z>]
 
 $Cons$ = [#consonant#]
 
@@ -43,7 +43,7 @@ $PhonUmlaut$ = $PhonUmlaut1$ || \
 % Kenntnis<dbl(s)><SB>e -> Kenntniss<SB>e
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <e>] \
+            #feature# #info# <e><z>] \
            <dbl(s)>:[<>s]
 
 $PhonSDuplication$ = ((s) <dbl(s)> <=> s  (<SB> [aeiou])) & \
@@ -55,7 +55,7 @@ $PhonSDuplication$ = ((s) <dbl(s)> <=> s  (<SB> [aeiou])) & \
 % Quiz<dbl(z)><SB>e  -> Quizz<SB>e
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <e>] \
+            #feature# #info# <e><z>] \
            <dbl(z)>:[<>z]
 
 $PhonZDuplication$ = ((z) <dbl(z)> <=> z  (<SB> [aeiou])) & \
@@ -66,7 +66,7 @@ $PhonZDuplication$ = ((z) <dbl(z)> <=> z  (<SB> [aeiou])) & \
 % birst<SB>st -> birst
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <e>] \
+            #feature# #info# <e><z>] \
            [<SB>st]:<>
 
 $PhonSuffStDeletion$ = ((st) <SB>           <=> <> (s:. t:.)) & \
@@ -78,7 +78,7 @@ $PhonSuffStDeletion$ = ((st) <SB>           <=> <> (s:. t:.)) & \
 % <uc>deutsch<SB>e<del(-e)><SB>er -> <uc>deutsch<del(e)><SB>er
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <e>] \
+            #feature# #info# <e><z>] \
            [<SB>e]:<>
 
 $PhonSuffEDeletion$ = ( <SB>      <=> <> (e:. <del(-e)>)) & \
@@ -92,7 +92,7 @@ $PhonSuffEDeletion$ = ( <SB>      <=> <> (e:. <del(-e)>)) & \
 % leise<SB>er -> leis<SB>er
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <e>] \
+            #feature# #info# <e><z>] \
            e:<>
 
 $PhonEElision1$ = ([^<del(VC)|Pl>]) e <=> <> (<SB> e)
@@ -127,7 +127,7 @@ $PhonEElision4$ = e <=> <> ([lnr] <del(e)|ADJ> <SB> e)
 % sich<e>r<SB>e   -> sich<e>r<SB>e, sichr<SB>e
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <e>] \
+            #feature# #info# <e><z>] \
            e:<>
 
 $PhonEElision5$ = (<e>[lr] <SB>) e <=> <> (n)
@@ -137,7 +137,7 @@ $PhonEElision6$ = (<e>r <SB>) e <=> <> (s?t)
 $PhonEElision7$ = (<e>l <SB>) e => <> (s?t)
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <e>] \
+            #feature# #info# <e><z>] \
            <e>:<>
 
 $PhonEElision8$ = <e> <=> <> (n <SB> [eui])
@@ -163,7 +163,7 @@ $PhonEElision$ = $PhonEElision1$ || \
 % feix<SB><ins(e)>st -> feix<SB><ins(e)>t
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+            #feature# #info# <z>] \
            <e>:e \
            s:<>
 
@@ -174,7 +174,7 @@ $PhonSDeletion$ = ([sßxz] <SB><ins(e)>?) s <=> <> (t)
 % Schwäbe<del(e)><SB>in -> Schwäb<del(e)><SB>in
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+            #feature# #info# <z>] \
            e:<>
 
 $PhonEDeletion$ = e <=> <> (<del(e)>)
@@ -189,14 +189,14 @@ $PhonEDeletion$ = e <=> <> (<del(e)>)
 % gewappn<SB><ins(e)>t<SB><ins(e)>st<SB>e -> gewappn<SB>et<SB>st<SB>e
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+            #feature# #info# <z>] \
            <ins(e)>:<>
 
 $PhonEEpenthesis1$ = ([a-df-hj-z]e[rl]t <SB>) <ins(e)> <=> <> (st)
 
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+            #feature# #info# <z>] \
            <ins(e)>:[e<>]
 
 $PhonEEpenthesis2$ = ((((c[hk] | [bdfgkmp])n | [#lowercase#]t) <SB>) <ins(e)> <=> e) & \
@@ -204,7 +204,7 @@ $PhonEEpenthesis2$ = ((((c[hk] | [bdfgkmp])n | [#lowercase#]t) <SB>) <ins(e)> <=
 
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+            #feature# #info# <z>] \
            <ins(e)>:e
 
 $PhonEEpenthesis3$ = (([dt]m? | s[mn] | tw) <SB>) <ins(e)> <=> e
@@ -222,7 +222,7 @@ $PhonEEpenthesis$ = $PhonEEpenthesis1$ || \
 % remove final consonant in "-ans"/"-ens"/"-anx"/"-ynx"
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+            #feature# #info# <z>] \
            [sx]:<>
 
 $PhonSuffSubstitution1$ = ([aeiouy]n) [sx] <=> <> (<del(VC)|Pl>)
@@ -231,7 +231,7 @@ $PhonSuffSubstitution1$ = ([aeiouy]n) [sx] <=> <> (<del(VC)|Pl>)
 % remove pre-final consonant in "-ans"/"-ens"/"-anx"/"-ynx"
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+            #feature# #info# <z>] \
            [mnrsx]:<>
 
 $PhonSuffSubstitution2$ = ([aeiouy]) [mnrsx] <=> <> (<del(VC)|Pl>)
@@ -241,7 +241,7 @@ $PhonSuffSubstitution2$ = ([aeiouy]) [mnrsx] <=> <> (<del(VC)|Pl>)
 % remove vowel in "-ans"/"-ens"/"-anx"/"-ynx"
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+            #feature# #info# <z>] \
            [aeiouy]:<>
 
 $PhonSuffSubstitution3$ = [aeiouy] <=> <> (<del(VC)|Pl>)
@@ -251,19 +251,16 @@ $PhonSuffSubstitution$ = $PhonSuffSubstitution1$ || \
                          $PhonSuffSubstitution3$
 
 
-% allomorphy of "in"-prefixes
-% i<n><DB>loyal     -> il<DB>loyal
-% i<n><DB>materiell -> im<DB>materiell
-% i<n><DB>real      -> ir<DB>real
+% allomorphy of "zig"-prefixes
+% zwan<DB><z>ig -> zwan<DB>zig
+% drei<DB><z>ig -> drei<DB>ßig
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <e>] \
-           <n>:[nlmrn]
+            #feature# #info#] \
+           <z>:[ßz]
 
-$PhonPref-in$ = (<n> <=> n    (<DB> [ac-knoqs-zäöüßAC-KNOQS-ZÄÖÜ])) & \
-                (<n> <=> l    (<DB> [Ll])) & \
-                (<n> <=> m    (<DB> [BbMmPp])) & \
-                (<n> <=> [rn] (<DB> [Rr]))
+$PhonSuff-zig$ = (([^i]<DB>) <z> <=> z) & \
+                 ((   i<DB>) <z> <=> ß)
 
 
 % segment deletion before "lein"-suffixes
@@ -351,10 +348,11 @@ $PHON$ = $PhonUmlaut$           || \
          $PhonSDeletion$        || \
          $PhonEEpenthesis$      || \
          $PhonSuffSubstitution$ || \
-         $PhonPref-in$          || \
+         $PhonSuff-zig$         || \
          $PhonSuff-lein$        || \
          $PhonCase$             || \
          $PhonMarker$
 
-$PHONLv2$ = $PhonSuff-leinLv2$ || \
+$PHONLv2$ = $PhonSuff-zig$     || \
+            $PhonSuff-leinLv2$ || \
             $PhonCase$

@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 13.0
-% Andreas Nolda 2025-07-07
+% Version 14.0
+% Andreas Nolda 2025-07-08
 
 #include "symbols.fst"
 #include "num.fst"
@@ -46,6 +46,14 @@ $CompStems$ = $LEX$ || $CompStemFilter$
 
 
 % word formation
+
+% derived cardinal base stems with affixes
+
+$DerStemsSuff-zig$ = $DerStems$ || $DerStemFilterSuff-zig$
+
+$DerBaseStemsCardSuff$ = $DerStemsSuff-zig$ <DB> $DerSuff-zig$ || $DerCardFilter$
+
+$BaseStems$ = $BaseStems$ | $DerBaseStemsCardSuff$
 
 % derived base stems with preverbs
 
