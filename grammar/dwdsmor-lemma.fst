@@ -1,6 +1,6 @@
 % dwdsmor-lemma.fst
-% Version 17.0
-% Andreas Nolda 2025-07-08
+% Version 18.0
+% Andreas Nolda 2025-07-09
 
 #include "symbols.fst"
 #include "num.fst"
@@ -190,8 +190,8 @@ $CompStems$ = $CompStems$ | $DerCompStemsPref$ | $DerCompStemsPrev$
 
 % compounds
 
-$COMP$ = ([<dc><uc>]? $CompStems$ $Comp-concat$   <CB> | \
-          [<dc><uc>]? $CompStems$ $Comp-hyph$ <HB><CB>)+ \
+$COMP$ = ([<dc><uc>]? $CompStems$ <IB> $Comp-hyph$   <CB> | \
+          [<dc><uc>]? $CompStems$      $Comp-concat$ <CB>)+ \
           [<dc><uc>]? $BaseStems$ || $CompFilter$
 
 $LEX$ = $BASE$ | $COMP$

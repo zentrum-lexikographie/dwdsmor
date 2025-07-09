@@ -25,7 +25,7 @@ $ROMAN10$   = X | XX | XXX | XL | L | LX | LXX | LXXX | XC
 $ROMAN$ =            $ROMAN1$ | \
           ($ROMAN10$ $ROMAN1$?)
 
-$NUM$ = <Stem> $DIGCARD0$ <CARD><base><native><DigCard> | \
-        <Stem> $DIGORD$   <ORD><base><native><DigOrd>   | \
-        <Stem> $DIGFRAC$  <FRAC><base><native><DigFrac> | \
-        <Stem> $ROMAN$    <CARD><base><native><Roman>
+$NUM$ = <Stem> $DIGCARD0$ <CARD> <base> <native> <DigCard> | \
+        <Stem> $DIGORD$   <ORD>  <base> <native> <DigOrd>  | \
+        <Stem> $DIGFRAC$  <FRAC> <base> <native> <DigFrac> | \
+        <Stem> $ROMAN$    <CARD> <base> <native> <Roman>

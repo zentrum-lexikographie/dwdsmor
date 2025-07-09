@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 6.2
-% Andreas Nolda 2025-07-08
+% Version 6.3
+% Andreas Nolda 2025-07-09
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -38,7 +38,7 @@ $CleanupOrth$ = .*
 
 % clean up word boundaries
 
-ALPHABET = [#char# <CB><VB><HB><DB><PB><SB>] \
+ALPHABET = [#char# <CB><VB><DB><IB><PB><SB>] \
            <WB>:<>
 
 $CleanupWB$ = .*
@@ -47,7 +47,7 @@ $CleanupWB$ = .*
 % clean up word boundaries on analysis level
 
 ALPHABET = [#char# #index# #feature# #info# \
-            <CB><VB><HB><DB><PB><SB>] \
+            <CB><VB><DB><IB><PB><SB>] \
            <>:<WB>
 
 $CleanupWBLv2$ = .*
@@ -62,9 +62,10 @@ $D$ = <>:[#char# #surface-trigger# #boundary-trigger#]
 $O$ = <>:[#orth-trigger#]
 
 $Pref$ =    $O$* .* <Pref> $D$+ <>:[<VB><DB>] $O$*
+$Intf$ = <>:<IB> .* <Intf> $D$+ .*
 $Suff$ = <>:<DB> .* <Suff> $D$+ .*
 
-$CleanupAffRootLv2$ = ($Pref$* .* $O$* <Stem> <Abbr>? $C$+ .* $Suff$* .* <HB>? <CB>)* \
+$CleanupAffRootLv2$ = ($Pref$* .* $O$* <Stem> <Abbr>? $C$+ .* $Suff$* .* $Intf$* <CB>)* \
                       ($Pref$* .* $O$* <Stem> <Abbr>? $C$+ .* $Suff$*)
 
 

@@ -1,6 +1,6 @@
 % sep.fst
 % Version 2.0
-% Andreas Nolda 2025-06-30
+% Andreas Nolda 2025-07-09
 
 #include "symbols.fst"
 
@@ -19,10 +19,10 @@ $SepPrev1Lv2$ = $C$* <>:<VB> $T$* <V> .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:
 $SepPrev1RootLv2$ = $W$+ $T$* <V> .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{} | \
                     $SepPrev1Lv2$
 
-$C$ = [#char# #boundary-trigger#]:<>
-$T$ = [#char#]
+$C$ = [#char#]
+$T$ = [#char# #boundary-trigger#]:<>
 
-$SepPrev1$ = <WB> $T$* <VB>:<> $C$* <WB>
+$SepPrev1$ = <WB> $C$* <VB>:<> $T$* <WB>
 
 
 % separate finite verb

@@ -1,11 +1,11 @@
 % symbols.fst
-% Version 13.4
-% Andreas Nolda 2025-07-08
+% Version 13.5
+% Andreas Nolda 2025-07-09
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
 
-#entry-type# = <Stem><Pref><Suff>
+#entry-type# = <Stem><Pref><Intf><Suff>
 
 #uppercase-vowel# = AEIOUÀ-ÆĀĂĄÈ-ËĒĔĖĘĚÌ-ÏĨĪĬĮİĲÒ-ÖŒØŌŎŐŒÙ-ÜŨŪŬŮŰŲYÝ % ...
 
@@ -66,7 +66,7 @@
 
 #morph-trigger# = <ins(ge)><ins(zu)><rm|Part><rm|Imp>
 
-#boundary-trigger# = <WB><CB><VB><HB><DB><PB><SB>
+#boundary-trigger# = <WB><CB><VB><DB><IB><PB><SB>
 
 #morpheme-boundary# = <+><|><#><\=><-><\~>
 

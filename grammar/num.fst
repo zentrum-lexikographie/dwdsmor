@@ -30,7 +30,7 @@ $ROMAN$ =                                     $ROMAN1$   | \
                       ($ROMAN100$  $ROMAN10$? $ROMAN1$?) | \
           ($ROMAN1000$ $ROMAN100$? $ROMAN10$? $ROMAN1$?)
 
-$NUM$ = <Stem> $DIGCARD0$ <CARD><base><native><DigCard> | \
-        <Stem> $DIGORD$   <ORD><base><native><DigOrd>   | \
-        <Stem> $DIGFRAC$  <FRAC><base><native><DigFrac> | \
-        <Stem> $ROMAN$    <CARD><base><native><Roman>
+$NUM$ = <Stem> $DIGCARD0$ <CARD> <base> <native> <DigCard> | \
+        <Stem> $DIGORD$   <ORD>  <base> <native> <DigOrd>   | \
+        <Stem> $DIGFRAC$  <FRAC> <base> <native> <DigFrac> | \
+        <Stem> $ROMAN$    <CARD> <base> <native> <Roman>

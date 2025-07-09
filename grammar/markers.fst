@@ -1,6 +1,6 @@
 % markers.fst
-% Version 9.1
-% Andreas Nolda 2025-06-30
+% Version 10.0
+% Andreas Nolda 2025-07-09
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -78,15 +78,15 @@ $MarkerWB$ = <WB>:<Stem> .* <WB>:<>
 
 ALPHABET = [#char# #index# #feature# #info#]
 
-$MarkerBoundaryLv2$ = (.               | \
-                            <|>:<VB>   | \
-                            <#>:<CB>   | \
-                       {<\=>\-}:{<HB>} | \
-                            <->:<DB>   | \
-                           <\~>:[<PB><SB>])*
+$MarkerBoundaryLv2$ = (.         | \
+                        <|>:<VB> | \
+                        <#>:<CB> | \
+                       <\=>:<IB> | \
+                        <->:<DB> | \
+                       <\~>:[<PB><SB>])*
 
 ALPHABET = [#char# #index# #wf# #feature# #info#] \
-           <>:[<HB><DB>]
+           <>:[<DB><IB>]
 
 $MarkerBoundaryRootLv2$ = (.         | \
                             <+>:<CB> | \
@@ -94,16 +94,15 @@ $MarkerBoundaryRootLv2$ = (.         | \
                            <\~>:[<PB><SB>])*
 
 ALPHABET = [#char#] \
-           [<CB><VB><DB><PB><SB>]:<>
+           [<CB><VB><DB><IB><PB><SB>]:<>
 
-$MarkerBoundary$ = (. | \
-                    <HB>:\-)*
+$MarkerBoundary$ = .*
 
 ALPHABET = [#char#]
 
-$MarkerBoundaryMorph$ = (.                   | \
-                               <VB>:<|>      | \
-                               <CB>:<#>      | \
-                             {<HB>}:{<\=>\-} | \
-                               <DB>:<->      | \
+$MarkerBoundaryMorph$ = (.               | \
+                               <VB>:<|>  | \
+                               <CB>:<#>  | \
+                               <IB>:<\=> | \
+                               <DB>:<->  | \
                          [<PB><SB>]:<\~>)*

@@ -1,6 +1,6 @@
 % wf.fst
-% Version 12.5
-% Andreas Nolda 2025-07-08
+% Version 13.0
+% Andreas Nolda 2025-07-09
 
 #include "symbols.fst"
 
@@ -81,7 +81,7 @@ $DerPrev$ = $DerPrev-ab$      | \
             % ...
 
 $Comp-concat$ = <COMP>:<> <concat>:<>
-$Comp-hyph$   = <COMP>:<> <hyph>:<>
+$Comp-hyph$   = <COMP>:<> <hyph>:<> <Intf> \-
 
 
 % restrictions
@@ -119,7 +119,7 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
             #inflection# #auxiliary# <Abbr><ge>]
 
 $C$ = .
-$C$ = $C$-[#entry-type# <CB><VB><HB><DB>]
+$C$ = $C$-[#entry-type# <CB><VB><DB><IB>]
 
 % restrict suff(zig) to cardinal bases
 $DerRestrCardPOSSuff-zig$ = <Stem> $C$* <CARD> $C$* <DB> ^$DerSuff-zig$
@@ -231,77 +231,104 @@ $Suff$ =        <DB> <Suff> $C$*
 
 % provisionally restrict nominal compounds to nominal,
 % adjectival, or verbal initial or intermediate bases
-$CompRestrPOS$ =  $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP><ADJ><V>] $C$* <HB>? <CB>   \
-                 ($Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP><ADJ><V>] $C$* <HB>? <CB>)* \
+$CompRestrPOS$ = ($Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP><ADJ><V>] $C$* <IB> ^$Comp-hyph$   <CB> | \
+                  $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP><ADJ><V>] $C$*      ^$Comp-concat$ <CB>)  \
+                 ($Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP><ADJ><V>] $C$* <IB> ^$Comp-hyph$   <CB> | \
+                  $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP><ADJ><V>] $C$*      ^$Comp-concat$ <CB>)* \
                   $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>]         $C$*
 
 % in nominal compounds, exclude downcased initial bases
-$CompRestrOrth1$ = !(            <dc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
-                     (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                      <HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
+$CompRestrOrth1$ = !(                          <dc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*))
 
-% in nominal compounds, exclude downcased intermediate bases with a preceding hyphen
-$CompRestrOrth2$ = !(                 $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
-                     (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                      <HB>  <CB> <dc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
-                     (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                      <HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
+% in nominal compounds, exclude downcased intermediate bases with a preceding hyphen interfix
+$CompRestrOrth2$ = !(                               $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                      <IB> ^$Comp-hyph$   <CB> <dc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*))
 
-% in nominal compounds, exclude downcased final bases with a preceding hyphen
-$CompRestrOrth3$ = !(                 $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
-                     (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                      <HB>  <CB> <dc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
+% in nominal compounds, exclude downcased final bases with a preceding hyphen interfix
+$CompRestrOrth3$ = !(                               $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                      <IB> ^$Comp-hyph$   <CB> <dc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
 
-% in nominal compounds, require nominal intermediate bases without a preceding hyphen to be downcased
-$CompRestrOrth4$ =                  $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
-                   (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
-                    <HB>  <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
-                          <CB> <dc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)* \
-                    <HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*
+% in nominal compounds, require nominal intermediate bases without a preceding hyphen interfix to be downcased
+$CompRestrOrth4$ =                                $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
+                   (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
+                         ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
+                    <IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                         ^$Comp-concat$ <CB> <dc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)* \
+                   (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                         ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
 
-% in nominal compounds, require nominal final bases without a preceding hyphen to be downcased
-$CompRestrOrth5$ =                  $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
-                   (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                   (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
-                    <HB>  <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
-                          <CB> <dc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
+% in nominal compounds, require nominal final bases without a preceding hyphen interfix to be downcased
+$CompRestrOrth5$ =                                $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
+                   (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                         ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                   (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
+                         ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
+                    <IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                         ^$Comp-concat$ <CB> <dc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
 
 % in nominal compounds, exclude upcased unprefixed nominal initial bases
-$CompRestrOrth6$ = !(            <uc>         [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*   \
-                     (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                      <HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
+$CompRestrOrth6$ = !(                          <uc>         [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*   \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*))
 
 % in nominal compounds, exclude upcased unprefixed nominal intermediate bases
-$CompRestrOrth7$ = !(                 $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
-                     (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                      <HB>? <CB> <uc>         [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*   \
-                     (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                      <HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
+$CompRestrOrth7$ = !(                               $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                     (<IB> ^$Comp-hyph$   <CB> <uc>         [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                           ^$Comp-concat$ <CB> <uc>         [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)  \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*))
 
 % in nominal compounds, exclude upcased unprefixed nominal final bases
-$CompRestrOrth8$ = !(                 $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
-                     (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                      <HB>? <CB> <uc>         [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
+$CompRestrOrth8$ = !(                               $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
+                     (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                           ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                     (<IB> ^$Comp-hyph$   <CB> <uc>         [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                           ^$Comp-concat$ <CB> <uc>         [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*))
 
 % in nominal compounds, require adjectival or verbal initial bases to be upcased
-$CompRestrOrth9$ = (           <uc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
-                                    $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)  \
-                   (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                    <HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*
+$CompRestrOrth9$ = (                         <uc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
+                                                  $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)  \
+                   (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                         ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                   (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                         ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
 
-% in nominal compounds, require adjectival or verbal intermediate bases with a preceding hyphen to be upcased
-$CompRestrOrth10$ =                  $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
-                    (<HB>  <CB> <uc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
-                           <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
-                     <HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)* \
-                     <HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*
+% in nominal compounds, require adjectival or verbal intermediate bases with a preceding hyphen interfix to be upcased
+$CompRestrOrth10$ =                                $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
+                    (<IB> ^$Comp-hyph$   <CB> <uc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
+                          ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$* | \
+                     <IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                          ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)* \
+                    (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                          ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
 
-% in nominal compounds, exclude upcased adjectival or verbal intermediate bases without a preceding hyphen
-$CompRestrOrth11$ = !(                 $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
-                      (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                             <CB> <uc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$*   \
-                      (<HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
-                       <HB>? <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*)
+% in nominal compounds, exclude upcased adjectival or verbal intermediate bases without a preceding hyphen interfix
+$CompRestrOrth11$ = !(                $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*   \
+                      (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                            ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                            ^$Comp-concat$ <CB> <uc> $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<ADJ><V>]    $C$*   \
+                      (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$* | \
+                            ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$*               $C$*)* \
+                      (<IB> ^$Comp-hyph$   <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$* | \
+                            ^$Comp-concat$ <CB>      $Pref$? [<dc><uc>]* <Stem> $C$* $Suff$* [<NN><NPROP>] $C$*))
 
 $CompRestrOrth$ = $CompRestrOrth1$  & \
                   $CompRestrOrth2$  & \
@@ -315,22 +342,28 @@ $CompRestrOrth$ = $CompRestrOrth1$  & \
                   $CompRestrOrth10$ & \
                   $CompRestrOrth11$
 
-% exclude compounding of abbreviated non-final bases without a following hyphen
-$CompRestrAbbr1$ = !(($Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$* <HB>? <CB>)* \
-                      $Pref$? [<dc><uc>]* <Stem> <Abbr> $C$* $Suff$*       <CB>   \
-                     ($Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$* <HB>? <CB>)* \
+% exclude compounding of abbreviated non-final bases without a following hyphen interfix
+$CompRestrAbbr1$ = !(($Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$* <IB> ^$Comp-hyph$   <CB> | \
+                      $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*      ^$Comp-concat$ <CB>)* \
+                      $Pref$? [<dc><uc>]* <Stem> <Abbr> $C$* $Suff$*      ^$Comp-concat$ <CB>   \
+                     ($Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$* <IB> ^$Comp-hyph$   <CB> | \
+                      $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*      ^$Comp-concat$ <CB>)* \
                       $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*)
 
-% exclude compounding of abbreviated non-final bases without a preceding hyphen
-$CompRestrAbbr2$ = !(($Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$* <HB>? <CB>)* \
-                      $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*       <CB>   \
-                      $Pref$? [<dc><uc>]* <Stem> <Abbr> $C$* $Suff$* <HB>? <CB>   \
-                     ($Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$* <HB>? <CB>)* \
+% exclude compounding of abbreviated non-final bases without a preceding hyphen interfix
+$CompRestrAbbr2$ = !(($Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$* <IB> ^$Comp-hyph$   <CB> | \
+                      $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*      ^$Comp-concat$ <CB>)* \
+                      $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*      ^$Comp-concat$ <CB>   \
+                     ($Pref$? [<dc><uc>]* <Stem> <Abbr> $C$* $Suff$* <IB> ^$Comp-hyph$   <CB> | \
+                      $Pref$? [<dc><uc>]* <Stem> <Abbr> $C$* $Suff$*      ^$Comp-concat$ <CB>)  \
+                     ($Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$* <IB> ^$Comp-hyph$   <CB> | \
+                      $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*      ^$Comp-concat$ <CB>)* \
                       $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*)
 
-% exclude compounding of abbreviated final bases without a preceding hyphen
-$CompRestrAbbr3$ = !(($Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$* <HB>? <CB>)* \
-                      $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*       <CB>   \
+% exclude compounding of abbreviated final bases without a preceding hyphen interfix
+$CompRestrAbbr3$ = !(($Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$* <IB> ^$Comp-hyph$   <CB> | \
+                      $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*      ^$Comp-concat$ <CB>)* \
+                      $Pref$? [<dc><uc>]* <Stem>        $C$* $Suff$*      ^$Comp-concat$ <CB>   \
                       $Pref$? [<dc><uc>]* <Stem> <Abbr> $C$* $Suff$*)
 
 $CompRestrAbbr$ = $CompRestrAbbr1$ & \

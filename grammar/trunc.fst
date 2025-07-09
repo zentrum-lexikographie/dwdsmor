@@ -1,6 +1,6 @@
 % trunc.fst
-% Version 3.2
-% Andreas Nolda 2025-07-04
+% Version 4.0
+% Andreas Nolda 2025-07-09
 
 #include "symbols.fst"
 
@@ -9,20 +9,20 @@
 
 ALPHABET = [#feature# #info#]
 
-$C$ =    [#char# #index# #boundary-trigger# #wf#]
-$T$ = <>:[#char# #index# <HB><SB>]
-$W$ =    [#wf# #syninfo#]
+$C$ = [#char# #index# #boundary-trigger# #wf#]
+$T$ = <>:[#char# #index# <IB><SB>]
+$W$ = [#wf# #syninfo#]
+$H$ = \-:<>
 
-$TruncInitialLv2$ = $T$* \-:<> <CB> $C$* .*
+$TruncInitialLv2$ = $T$* $H$ <CB> $C$* .*
 
-$TruncInitialRootLv2$ = $W$+ $T$* \-:<> <CB> $C$* .*
+$TruncInitialRootLv2$ = $W$+ $T$* $H$ <CB> $C$* .*
 
 $C$ = [#char# #boundary-trigger#]
-$T$ = [#char# <HB><SB>]:<>
+$T$ = [#char# <IB><SB>]:<>
+$H$ = <>:\-
 
-$TruncInitial-CB$ = <WB> $T$* <>:\- <CB> $C$* <WB>
-
-$TruncInitial$ = $TruncInitial-CB$
+$TruncInitial$ = <WB> $T$* $H$ <CB> $C$* <WB>
 
 
 % truncate final morpheme sequence
@@ -30,35 +30,32 @@ $TruncInitial$ = $TruncInitial-CB$
 ALPHABET = [#wf# #degree#] \
            <>:[#auxiliary# #person# #gender# #case# #number# #infl# #function# \
                #nonfinite# #mood# #tense# #info#]
-
-$C$ =    [#char# #index# #boundary-trigger# #wf# #syninfo#]
+$C$ = [#char# #index# #boundary-trigger# #wf# #syninfo#]
 $T$ = <>:[#char# #index# <PB><SB>]
+$I$ = ($C$-[<CB><IB>])* <>:<IB> $T$*
+$H$ = \-:<>
 
-$TruncFinalLv2-NN-CB$  = $C$* [^<HB>] <CB> \-:<> $T$* .* <NN>  .* {<UnmGend><UnmCase><UnmNum>}:{}
+$TruncFinalLv2-NN-CB$  = ($C$* <CB>)? $I$? <CB> $H$ $T$* .* <NN>  .* {<UnmGend><UnmCase><UnmNum>}:{}
 
-$TruncFinalLv2-NN-HB$  = $C$* <>:<HB> <CB> \-:<> $T$* .* <NN>  .* {<UnmGend><UnmCase><UnmNum>}:{}
+$TruncFinalLv2-NN-VB$  = $C$*              <VB> $H$ $T$* .* <NN>  .* {<UnmGend><UnmCase><UnmNum>}:{}
 
-$TruncFinalLv2-NN-VB$  = $C$*         <VB> \-:<> $T$* .* <NN>  .* {<UnmGend><UnmCase><UnmNum>}:{}
+$TruncFinalLv2-ADJ-VB$ = $C$*              <VB> $H$ $T$* .* <ADJ> .* {<UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
-$TruncFinalLv2-ADJ-VB$ = $C$*         <VB> \-:<> $T$* .* <ADJ> .* {<UnmFunc><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
-
-$TruncFinalLv2-V-VB$   = $C$*         <VB> \-:<> $T$* .* <V>   .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{}
+$TruncFinalLv2-V-VB$   = $C$*              <VB> $H$ $T$* .* <V>   .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{}
 
 $TruncFinalLv2$ = $TruncFinalLv2-NN-CB$  | \
-                  $TruncFinalLv2-NN-HB$  | \
                   $TruncFinalLv2-NN-VB$  | \
                   $TruncFinalLv2-ADJ-VB$ | \
                   $TruncFinalLv2-V-VB$
 
 $C$ = [#char# #boundary-trigger#]
 $T$ = [#char# <PB><SB>]:<>
+$I$ = ($C$-[<CB><IB>])* <IB>:<> $T$*
+$H$ = <>:\-
 
-$TruncFinal-CB$ = <WB> $C$* [^<HB>] <CB> <>:\- $T$* <WB>
+$TruncFinal-CB$ = <WB> ($C$* <CB>)? $I$? <CB> $H$ $T$* <WB>
 
-$TruncFinal-HB$ = <WB> $C$* <HB>:<> <CB> <>:\- $T$* <WB>
-
-$TruncFinal-VB$ = <WB> $C$* <VB> <>:\- $T$* <WB>
+$TruncFinal-VB$ = <WB> $C$*              <VB> $H$ $T$* <WB>
 
 $TruncFinal$ = $TruncFinal-CB$ | \
-               $TruncFinal-HB$ | \
                $TruncFinal-VB$
