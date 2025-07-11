@@ -1,6 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-07-10:
+
+* add support for cardinal compounding
+* rename `<hyph>` to `<intf(-)>`
+
 2025-07-09:
+
 * rename `<HB>` to `<IB>` (interfix boundary)
 * introduce hyphen interfix explicitly like other affixes
 

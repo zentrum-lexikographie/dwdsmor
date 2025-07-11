@@ -60,12 +60,13 @@ tag_values = {
         "processes": {"COMP", "DER", "CONV"},
         "means": {
             "concat",
-            "hyph",
             "ident|Inf",
             "ident|Part",
             "ident|Fem",
             "ident|Masc",
             "ident|Neut",
+            "intf(-)",
+            "intf(und)",
             "pref(un)",
             "prev()",
             "prev(ab)",
@@ -150,14 +151,14 @@ tag_types = {
 
 aff_infl_boundary = "~"
 aff_der_boundary = "-"
-prev_boundary = "|"
+intf_boundary = "="
 concat_boundary = "#"
-hyph_boundary = "="
+prev_boundary = "|"
 root_boundary = "+"
 
 infl_boundary_tags = aff_infl_boundary
 wf_boundary_tags = (
-    aff_der_boundary + prev_boundary + concat_boundary + hyph_boundary + root_boundary
+    aff_der_boundary + intf_boundary + concat_boundary + prev_boundary + root_boundary
 )
 boundary_tags = infl_boundary_tags + wf_boundary_tags
 

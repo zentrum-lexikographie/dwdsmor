@@ -2,22 +2,10 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
-      <Schreibung>acht</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
-        <Kompositionsstamm>acht</Kompositionsstamm>
-        <Derivationsstamm Suffixe="zig">acht</Derivationsstamm>
-      </Grammatik>
-      <Diasystematik/>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>achtel</Schreibung>
       <Grammatik>
         <Wortklasse>Bruchzahl</Wortklasse>
       </Grammatik>
-      <Diasystematik/>
     </Formangabe>
   </Artikel>
   <Artikel>
@@ -26,18 +14,6 @@
       <Grammatik>
         <Wortklasse>Ordinalzahl</Wortklasse>
       </Grammatik>
-      <Diasystematik/>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>drei</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
-        <Kompositionsstamm>drei</Kompositionsstamm>
-        <Derivationsstamm Suffixe="zig">drei</Derivationsstamm>
-      </Grammatik>
-      <Diasystematik/>
     </Formangabe>
   </Artikel>
   <Artikel>
@@ -46,7 +22,6 @@
       <Grammatik>
         <Wortklasse>Ordinalzahl</Wortklasse>
       </Grammatik>
-      <Diasystematik/>
     </Formangabe>
   </Artikel>
   <Artikel>
@@ -55,7 +30,6 @@
       <Grammatik>
         <Wortklasse>Bruchzahl</Wortklasse>
       </Grammatik>
-      <Diasystematik/>
     </Formangabe>
   </Artikel>
   <Artikel>
@@ -64,7 +38,6 @@
       <Grammatik>
         <Wortklasse>Bruchzahl</Wortklasse>
       </Grammatik>
-      <Diasystematik/>
     </Formangabe>
   </Artikel>
   <Artikel>
@@ -88,17 +61,6 @@
         <Wortklasse>Kardinalzahl</Wortklasse>
         <Genus>neutr.</Genus>
       </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>fünf</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
-        <Kompositionsstamm>fünf</Kompositionsstamm>
-        <Derivationsstamm Suffixe="zig">fünf</Derivationsstamm>
-      </Grammatik>
-      <Diasystematik/>
     </Formangabe>
   </Artikel>
   <!-- <Artikel>
@@ -126,33 +88,10 @@
   </Artikel> -->
   <Artikel>
     <Formangabe>
-      <Schreibung>neun</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
-        <Kompositionsstamm>neun</Kompositionsstamm>
-        <Derivationsstamm Suffixe="zig">neun</Derivationsstamm>
-      </Grammatik>
-      <Diasystematik/>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>neunzehnte</Schreibung>
       <Grammatik>
         <Wortklasse>Ordinalzahl</Wortklasse>
       </Grammatik>
-      <Diasystematik/>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>sechs</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
-        <Kompositionsstamm>sech</Kompositionsstamm>
-        <Derivationsstamm Suffixe="zig">sech</Derivationsstamm>
-      </Grammatik>
-      <Diasystematik/>
     </Formangabe>
   </Artikel>
   <Artikel>
@@ -161,18 +100,6 @@
       <Grammatik>
         <Wortklasse>Ordinalzahl</Wortklasse>
       </Grammatik>
-      <Diasystematik/>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung hidx="2">sieben</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
-        <Kompositionsstamm>sieb</Kompositionsstamm>
-        <Derivationsstamm Suffixe="zig">sieb</Derivationsstamm>
-      </Grammatik>
-      <Diasystematik/>
     </Formangabe>
   </Artikel>
   <Artikel>
@@ -181,28 +108,6 @@
       <Grammatik>
         <Wortklasse>Ordinalzahl</Wortklasse>
       </Grammatik>
-      <Diasystematik/>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>vier</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
-        <Kompositionsstamm>vier</Kompositionsstamm>
-        <Derivationsstamm Suffixe="zig">vier</Derivationsstamm>
-      </Grammatik>
-      <Diasystematik/>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>zwei</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
-        <Derivationsstamm Suffixe="zig">zwan</Derivationsstamm>
-      </Grammatik>
-      <Diasystematik/>
     </Formangabe>
   </Artikel>
 </DWDS>

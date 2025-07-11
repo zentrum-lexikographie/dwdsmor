@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 18.1 -->
-<!-- Andreas Nolda 2025-07-02 -->
+<!-- Version 18.2 -->
+<!-- Andreas Nolda 2025-07-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2045,7 +2045,10 @@
         </xsl:for-each>
         <!-- compounding stems inferred from links to the compound bases -->
         <xsl:for-each select="../../dwds:Verweise[not(@class='invisible')]
-                                                 [not(@Typ!='Komposition')]
+                                                 [not(@Typ!='Komposition') or
+                                                  @Typ='Zusammenrückung' and
+                                                    ../dwds:Formangabe/dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')]
+                                                                                                     [normalize-space(.)='Kardinalzahl']]
                                                  [dwds:Verweis[not(@class='invisible')]
                                                               [@Typ='Erstglied']]
                                                  [not(dwds:Verweis[not(@class='invisible')]
@@ -2354,6 +2357,11 @@
                                         <xsl:sequence select="$lemma2,'lein'"/>
                                       </xsl:otherwise>
                                     </xsl:choose>
+                                  </xsl:when>
+                                  <!-- "-ßig" -->
+                                  <xsl:when test="$lemma2='ßig'">
+                                    <!-- normalize to "-zig" -->
+                                    <xsl:sequence select="'zig'"/>
                                   </xsl:when>
                                   <!-- ... -->
                                   <xsl:otherwise>

@@ -1,6 +1,6 @@
 % wf.fst
-% Version 13.0
-% Andreas Nolda 2025-07-09
+% Version 13.1
+% Andreas Nolda 2025-07-10
 
 #include "symbols.fst"
 
@@ -81,7 +81,8 @@ $DerPrev$ = $DerPrev-ab$      | \
             % ...
 
 $Comp-concat$ = <COMP>:<> <concat>:<>
-$Comp-hyph$   = <COMP>:<> <hyph>:<> <Intf> \-
+$Comp-hyph$   = <COMP>:<> <intf(-)>:<>   <Intf> \-
+$Comp-und$    = <COMP>:<> <intf(und)>:<> <Intf> und
 
 
 % restrictions
@@ -228,6 +229,13 @@ $DerFilter$ = $DerRestrPOS$ & $DerRestrAbbr$
 
 $Pref$ = [<dc><uc>]* <Pref> $C$* [<DB><VB>]
 $Suff$ =        <DB> <Suff> $C$*
+
+% restrict cardinal compounds to cardinal bases
+$CompCardRestrPOS$ = (<Stem> $C$* <CARD> $C$* $Suff$? <IB> ^$Comp-und$    <CB> | \
+                      <Stem> $C$* <CARD> $C$* $Suff$?      ^$Comp-concat$ <CB>)+ \
+                      <Stem> $C$* <CARD> $C$* $Suff$?
+
+$CompCardFilter$ = $CompCardRestrPOS$
 
 % provisionally restrict nominal compounds to nominal,
 % adjectival, or verbal initial or intermediate bases

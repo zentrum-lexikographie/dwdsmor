@@ -30,6 +30,23 @@ $BaseStemFilterVPartPerf_t$ = <Stem> .* t
 $BaseStemFilterVPartPerf_n$ = <Stem> .* n
 $BaseStemFilterVPartPerf_d$ = <Stem> .* d
 
+ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #index# \
+            #pos# #subcat# #stem-type# #suff# #origin# <Abbr><ge>] \
+           [#inflection# #auxiliary#]:<>
+
+$C$ = .
+$C$ = $C$-[#stem-type#]
+
+$Base2CompStem$ = .* <base>:<comp> $C$*
+
+ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #index# \
+            #pos# #subcat# #wf# #stem-type# #suff# #origin# <Abbr>]
+
+$C$ = .
+$C$ = $C$-[#stem-type#]
+
+$Base2CompStemLv2$ = .* <comp>:<base> $C$*
+
 ALPHABET = [#char# #boundary-trigger# #index# #pos# #subcat# #wf# #stem-type# \
             #origin# #degree# #function# #auxiliary#]
 
