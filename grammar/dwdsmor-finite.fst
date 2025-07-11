@@ -66,12 +66,14 @@ $BaseStems$ = $BaseStems$ | $DerBaseStemsCard20$
 
 % cardinal compounds
 
-$BaseStemsCard1a$   = $BaseStems$ || $BaseStemFilterCard1a$
+$BaseStemsCard1a$ = $BaseStemFilterCard1aLv2$ || $BaseStems$
+
+$BaseStemsCard1b$   = $BaseStems$ || $BaseStemFilterCard1b$
 $BaseStemsCard10$   = $BaseStems$ || $BaseStemFilterCard10$
 $BaseStemsCard11$   = $BaseStems$ || $BaseStemFilterCard11$
 $BaseStemsCard100$  = $BaseStems$ || $BaseStemFilterCard100$
 
-$CompStemsCard1b$   = $CompStems$ || $CompStemFilterCard1b$
+$CompStemsCard1c$   = $CompStems$ || $CompStemFilterCard1c$
 $CompStemsCard3$    = $CompStems$ || $CompStemFilterCard3$
 $CompStemsCard100$  = $CompStems$ || $CompStemFilterCard100$
 
@@ -85,11 +87,11 @@ $CompStemsCard13$ = ^$CompStemsCard13$
 
 $BaseStems$ = $BaseStems$ | $CompBaseStemsCard13$
 
-$CompBaseStemsCard21$ = $CompStemsCard1b$ <IB> $Comp-und$ <CB> $DerBaseStemsCard20$ || $CompCardFilter$
+$CompBaseStemsCard21$ = $CompStemsCard1c$ <IB> $Comp-und$ <CB> $DerBaseStemsCard20$ || $CompCardFilter$
 
 $BaseStems$ = $BaseStems$ | $CompBaseStemsCard21$
 
-$CompBaseStemsCard200$ = $CompStemsCard1b$ $Comp-concat$ <CB> $BaseStemsCard100$ || $CompCardFilter$
+$CompBaseStemsCard200$ = $CompStemsCard1c$ $Comp-concat$ <CB> $BaseStemsCard100$ || $CompCardFilter$
 
 $CompStemsCard200$ =  $CompBaseStemsCard200$ || $Base2CompStem$
 $CompStemsCard200$ = ^$CompStemsCard200$
@@ -105,6 +107,7 @@ $CompStemsCard1100$ = ^$CompStemsCard1100$
 $BaseStems$ = $BaseStems$ | $CompBaseStemsCard1100$
 
 $BaseStemsCard1-99$ = $BaseStemsCard1a$     | \
+                      $BaseStemsCard1b$     | \
                       $BaseStemsCard10$     | \
                       $BaseStemsCard11$     | \
                       $CompBaseStemsCard13$ | \
