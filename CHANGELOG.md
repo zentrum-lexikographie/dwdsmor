@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.10.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.9.0...v0.10.0) (2025-07-11)
+
+
+### Features
+
+* add support for cardinal compounding ([964966c](https://github.com/zentrum-lexikographie/dwdsmor/commit/964966c727b2b7aca5b2ec02d9e7fc3bf8aa7ec1))
+* add support for cardinal derivation by means of "zig"-suffixation ([575c66e](https://github.com/zentrum-lexikographie/dwdsmor/commit/575c66e901d55b2faa5fe0be727811bfb32a3495))
+* also support cardinal compounds like "tausendundein(e)" ([56f2fb0](https://github.com/zentrum-lexikographie/dwdsmor/commit/56f2fb00594ecae129616646a0e523695c21a9dc))
+
 ## [0.9.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.8.0...v0.9.0) (2025-07-07)
 
 
