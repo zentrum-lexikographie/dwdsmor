@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
 <!-- Version 18.2 -->
-<!-- Andreas Nolda 2025-07-08 -->
+<!-- Andreas Nolda 2025-07-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -270,7 +270,7 @@
                           n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
             <xsl:call-template name="stem-entry">
               <xsl:with-param name="lemma"
-                              select="replace($lemma,'(e)$','&lt;SB&gt;$1')"/>
+                              select="n:segment-from-end('e',$lemma)"/>
               <xsl:with-param name="lemma-index"
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
@@ -346,7 +346,7 @@
                           n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
             <xsl:call-template name="stem-entry">
               <xsl:with-param name="lemma"
-                              select="replace($lemma,'(e)$','&lt;SB&gt;$1')"/>
+                              select="n:segment-from-end('e',$lemma)"/>
               <xsl:with-param name="lemma-index"
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
@@ -456,7 +456,7 @@
                               n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
                 <xsl:call-template name="stem-entry">
                   <xsl:with-param name="lemma"
-                                  select="replace($lemma,'(e)$','&lt;SB&gt;$1')"/>
+                                  select="n:segment-from-end('e',$lemma)"/>
                   <xsl:with-param name="lemma-index"
                                   select="$lemma-index"/>
                   <xsl:with-param name="paradigm-index"
@@ -553,7 +553,7 @@
                           n:is-adjective-with-final-schwa-syllable($lemma,$pronunciations)">
             <xsl:call-template name="stem-entry">
               <xsl:with-param name="lemma"
-                              select="replace($lemma,'(e)$','&lt;SB&gt;$1')"/>
+                              select="n:segment-from-end('e',$lemma)"/>
               <xsl:with-param name="lemma-index"
                               select="$lemma-index"/>
               <xsl:with-param name="paradigm-index"
@@ -570,7 +570,7 @@
             <xsl:if test="ends-with($comparative,'er')">
               <xsl:call-template name="stem-entry">
                 <xsl:with-param name="lemma"
-                                select="replace($lemma,'(e)$','&lt;SB&gt;$1')"/>
+                                select="n:segment-from-end('e',$lemma)"/>
                 <xsl:with-param name="lemma-index"
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
@@ -588,7 +588,7 @@
             <xsl:if test="ends-with($superlative,'sten')">
               <xsl:call-template name="stem-entry">
                 <xsl:with-param name="lemma"
-                                select="replace($lemma,'(e)$','&lt;SB&gt;$1')"/>
+                                select="n:segment-from-end('e',$lemma)"/>
                 <xsl:with-param name="lemma-index"
                                 select="$lemma-index"/>
                 <xsl:with-param name="paradigm-index"
@@ -1732,7 +1732,7 @@
     </xsl:variable>
     <xsl:call-template name="stem-entry">
       <xsl:with-param name="lemma"
-                      select="$lemma"/>
+                      select="n:segment-from-end('e',$lemma)"/>
       <xsl:with-param name="lemma-index"
                       select="$lemma-index"/>
       <xsl:with-param name="paradigm-index"
@@ -2128,7 +2128,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="stem"
-                          select="replace($nominative-plural,'(er)$','&lt;SB&gt;$1')"/>
+                          select="n:segment-from-end('er',$nominative-plural)"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
@@ -2173,7 +2173,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="stem"
-                          select="replace($nominative-plural,'(er)$','&lt;SB&gt;$1')"/>
+                          select="n:segment-from-end('er',$nominative-plural)"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
@@ -2218,7 +2218,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="stem"
-                          select="replace($nominative-plural,'(en)$','&lt;SB&gt;$1')"/>
+                          select="n:segment-from-end('en',$nominative-plural)"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
@@ -2263,7 +2263,7 @@
           <xsl:with-param name="paradigm-index"
                           select="$paradigm-index"/>
           <xsl:with-param name="stem"
-                          select="replace($nominative-plural,'(en)$','&lt;SB&gt;$1')"/>
+                          select="n:segment-from-end('en',$nominative-plural)"/>
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
