@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
 <!-- Version 18.2 -->
-<!-- Andreas Nolda 2025-07-10 -->
+<!-- Andreas Nolda 2025-07-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -675,7 +675,7 @@
               </xsl:call-template>
             </xsl:when>
             <!-- cardinals -->
-            <xsl:when test="$pos='Kardinalzahl' and
+            <xsl:when test="$pos='Kardinalzahlwort' and
                             string-length(normalize-space(dwds:Genus))&gt;0">
               <xsl:call-template name="cardinal-entry-set">
                 <xsl:with-param name="lemma"
@@ -694,7 +694,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:when test="$pos='Kardinalzahl'">
+            <xsl:when test="$pos='Kardinalzahlwort'">
               <xsl:call-template name="cardinal-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -711,7 +711,7 @@
               </xsl:call-template>
             </xsl:when>
             <!-- ordinals -->
-            <xsl:when test="$pos='Ordinalzahl'">
+            <xsl:when test="$pos='Ordinalzahlwort'">
               <xsl:call-template name="ordinal-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -728,7 +728,7 @@
               </xsl:call-template>
             </xsl:when>
             <!-- fractions -->
-            <xsl:when test="$pos='Bruchzahl'">
+            <xsl:when test="$pos='Bruchzahlwort'">
               <xsl:call-template name="fraction-entry-set">
                 <xsl:with-param name="lemma"
                                 select="$lemma"/>
@@ -1802,7 +1802,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:when test="$pos='Kardinalzahl' and
+            <xsl:when test="$pos='Kardinalzahlwort' and
                             string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
               <xsl:call-template name="cardinal-comp-entry-set">
                 <xsl:with-param name="lemma"
@@ -1815,7 +1815,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:when test="$pos='Ordinalzahl' and
+            <xsl:when test="$pos='Ordinalzahlwort' and
                             string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
               <xsl:call-template name="ordinal-comp-entry-set">
                 <xsl:with-param name="lemma"
@@ -1828,7 +1828,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:when test="$pos='Bruchzahl' and
+            <xsl:when test="$pos='Bruchzahlwort' and
                             string-length(normalize-space(dwds:Kompositionsstamm))&gt;0">
               <xsl:call-template name="fraction-comp-entry-set">
                 <xsl:with-param name="lemma"
@@ -1858,9 +1858,9 @@
             <!-- <xsl:when test="$pos='Adjektiv' or
                             $pos='Eigenname' or
                             $pos='Substantiv' or
-                            $pos='Kardinalzahl' or
-                            $pos='Ordinalzahl' or
-                            $pos='Bruchzahl' or
+                            $pos='Kardinalzahlwort' or
+                            $pos='Ordinalzahlwort' or
+                            $pos='Bruchzahlwort' or
                             $pos='Verb'">
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
@@ -1956,7 +1956,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:when test="$pos='Kardinalzahl' and
+            <xsl:when test="$pos='Kardinalzahlwort' and
                             string-length(normalize-space(dwds:Derivationsstamm))&gt;0">
               <xsl:call-template name="cardinal-der-entry-set">
                 <xsl:with-param name="lemma"
@@ -1972,7 +1972,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:when test="$pos='Ordinalzahl' and
+            <xsl:when test="$pos='Ordinalzahlwort' and
                             string-length(normalize-space(dwds:Derivationsstamm))&gt;0">
               <xsl:call-template name="ordinal-der-entry-set">
                 <xsl:with-param name="lemma"
@@ -2008,8 +2008,8 @@
             <!-- <xsl:when test="$pos='Adjektiv' or
                             $pos='Eigenname' or
                             $pos='Substantiv' or
-                            $pos='Kardinalzahl' or
-                            $pos='Ordinalzahl' or
+                            $pos='Kardinalzahlwort' or
+                            $pos='Ordinalzahlwort' or
                             $pos='Verb'">
               <xsl:message>
                 <xsl:text>Warning: "</xsl:text>
@@ -2048,7 +2048,7 @@
                                                  [not(@Typ!='Komposition') or
                                                   @Typ='Zusammenrückung' and
                                                     ../dwds:Formangabe/dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')]
-                                                                                                     [normalize-space(.)='Kardinalzahl']]
+                                                                                                     [normalize-space(.)='Kardinalzahlwort']]
                                                  [dwds:Verweis[not(@class='invisible')]
                                                               [@Typ='Erstglied']]
                                                  [not(dwds:Verweis[not(@class='invisible')]
@@ -2179,7 +2179,7 @@
                                                       select="$etymology1"/>
                                     </xsl:call-template>
                                   </xsl:when>
-                                  <xsl:when test="$pos1='Kardinalzahl'">
+                                  <xsl:when test="$pos1='Kardinalzahlwort'">
                                     <xsl:call-template name="cardinal-comp-entry-set">
                                       <xsl:with-param name="lemma"
                                                       select="$lemma1"/>
@@ -2191,7 +2191,7 @@
                                                       select="$etymology1"/>
                                     </xsl:call-template>
                                   </xsl:when>
-                                  <xsl:when test="$pos1='Ordinalzahl'">
+                                  <xsl:when test="$pos1='Ordinalzahlwort'">
                                     <xsl:call-template name="ordinal-comp-entry-set">
                                       <xsl:with-param name="lemma"
                                                       select="$lemma1"/>
@@ -2203,7 +2203,7 @@
                                                       select="$etymology1"/>
                                     </xsl:call-template>
                                   </xsl:when>
-                                  <xsl:when test="$pos1='Bruchzahl'">
+                                  <xsl:when test="$pos1='Bruchzahlwort'">
                                     <xsl:call-template name="fraction-comp-entry-set">
                                       <xsl:with-param name="lemma"
                                                       select="$lemma1"/>
@@ -2413,7 +2413,7 @@
                                                       select="$etymology1"/>
                                     </xsl:call-template>
                                   </xsl:when>
-                                  <xsl:when test="$pos1='Kardinalzahl'">
+                                  <xsl:when test="$pos1='Kardinalzahlwort'">
                                     <xsl:call-template name="cardinal-der-entry-set">
                                       <xsl:with-param name="lemma"
                                                       select="$lemma1"/>
@@ -2427,7 +2427,7 @@
                                                       select="$etymology1"/>
                                     </xsl:call-template>
                                   </xsl:when>
-                                  <xsl:when test="$pos1='Ordinalzahl'">
+                                  <xsl:when test="$pos1='Ordinalzahlwort'">
                                     <xsl:call-template name="ordinal-der-entry-set">
                                       <xsl:with-param name="lemma"
                                                       select="$lemma1"/>

@@ -4,7 +4,7 @@
     <Formangabe>
       <Schreibung>achtel</Schreibung>
       <Grammatik>
-        <Wortklasse>Bruchzahl</Wortklasse>
+        <Wortklasse>Bruchzahlwort</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -12,7 +12,7 @@
     <Formangabe>
       <Schreibung>achtzehnte</Schreibung>
       <Grammatik>
-        <Wortklasse>Ordinalzahl</Wortklasse>
+        <Wortklasse>Ordinalzahlwort</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -20,7 +20,7 @@
     <Formangabe>
       <Schreibung>dreizehnte</Schreibung>
       <Grammatik>
-        <Wortklasse>Ordinalzahl</Wortklasse>
+        <Wortklasse>Ordinalzahlwort</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -28,7 +28,7 @@
     <Formangabe>
       <Schreibung>drittel</Schreibung>
       <Grammatik>
-        <Wortklasse>Bruchzahl</Wortklasse>
+        <Wortklasse>Bruchzahlwort</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -36,7 +36,7 @@
     <Formangabe>
       <Schreibung>elftel</Schreibung>
       <Grammatik>
-        <Wortklasse>Bruchzahl</Wortklasse>
+        <Wortklasse>Bruchzahlwort</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -44,21 +44,21 @@
     <Formangabe>
       <Schreibung hidx="1">ein</Schreibung>
       <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Wortklasse>Kardinalzahlwort</Wortklasse>
         <Genus>mask.</Genus>
       </Grammatik>
     </Formangabe>
     <Formangabe>
       <Schreibung>eine</Schreibung>
       <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Wortklasse>Kardinalzahlwort</Wortklasse>
         <Genus>fem.</Genus>
       </Grammatik>
     </Formangabe>
     <Formangabe>
       <Schreibung hidx="1">ein</Schreibung>
       <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Wortklasse>Kardinalzahlwort</Wortklasse>
         <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>
@@ -67,21 +67,21 @@
     <Formangabe>
       <Schreibung>kein</Schreibung>
       <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Wortklasse>Kardinalzahlwort</Wortklasse>
         <Genus>mask.</Genus>
       </Grammatik>
     </Formangabe>
     <Formangabe>
       <Schreibung>keine</Schreibung>
       <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Wortklasse>Kardinalzahlwort</Wortklasse>
         <Genus>fem.</Genus>
       </Grammatik>
     </Formangabe>
     <Formangabe>
       <Schreibung>kein</Schreibung>
       <Grammatik>
-        <Wortklasse>Kardinalzahl</Wortklasse>
+        <Wortklasse>Kardinalzahlwort</Wortklasse>
         <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>
@@ -90,7 +90,7 @@
     <Formangabe>
       <Schreibung>neunzehnte</Schreibung>
       <Grammatik>
-        <Wortklasse>Ordinalzahl</Wortklasse>
+        <Wortklasse>Ordinalzahlwort</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -98,7 +98,7 @@
     <Formangabe>
       <Schreibung>sechzehnte</Schreibung>
       <Grammatik>
-        <Wortklasse>Ordinalzahl</Wortklasse>
+        <Wortklasse>Ordinalzahlwort</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -106,7 +106,7 @@
     <Formangabe>
       <Schreibung>siebzehnte</Schreibung>
       <Grammatik>
-        <Wortklasse>Ordinalzahl</Wortklasse>
+        <Wortklasse>Ordinalzahlwort</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>

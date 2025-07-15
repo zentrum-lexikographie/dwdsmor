@@ -1,3 +1,7 @@
+2025-07-15:
+
+* update DWDS word classes for numerals
+
 2025-07-02:
 
 * add support for colloquial mixed variants of weak masculine nouns with
