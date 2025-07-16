@@ -24614,131 +24614,131 @@
       'Ord',
       'erste',
       tuple(
-        'erste<ORD><Attr/Subst><Fem><Acc><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Fem><Acc><Sg><St>',
         'erste',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Fem><Acc><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Fem><Acc><Sg><Wk>',
         'erste',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Fem><Dat><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Fem><Dat><Sg><St>',
         'erster',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Fem><Dat><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Fem><Dat><Sg><Wk>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Fem><Gen><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Fem><Gen><Sg><St>',
         'erster',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Fem><Gen><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Fem><Gen><Sg><Wk>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Fem><Nom><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Fem><Nom><Sg><St>',
         'erste',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Fem><Nom><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Fem><Nom><Sg><Wk>',
         'erste',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Masc><Acc><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Masc><Acc><Sg><St>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Masc><Acc><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Masc><Acc><Sg><Wk>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Masc><Dat><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Masc><Dat><Sg><St>',
         'erstem',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Masc><Dat><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Masc><Dat><Sg><Wk>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Masc><Gen><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Masc><Gen><Sg><St>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Masc><Gen><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Masc><Gen><Sg><Wk>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Masc><Nom><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Masc><Nom><Sg><St>',
         'erster',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Masc><Nom><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Masc><Nom><Sg><Wk>',
         'erste',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Neut><Acc><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Neut><Acc><Sg><St>',
         'erstes',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Neut><Acc><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Neut><Acc><Sg><Wk>',
         'erste',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Neut><Dat><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Neut><Dat><Sg><St>',
         'erstem',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Neut><Dat><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Neut><Dat><Sg><Wk>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Neut><Gen><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Neut><Gen><Sg><St>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Neut><Gen><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Neut><Gen><Sg><Wk>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Neut><Nom><Sg><St>',
+        'erst<~>e<ORD><Attr/Subst><Neut><Nom><Sg><St>',
         'erstes',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><Neut><Nom><Sg><Wk>',
+        'erst<~>e<ORD><Attr/Subst><Neut><Nom><Sg><Wk>',
         'erste',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><UnmGend><Acc><Pl><St>',
+        'erst<~>e<ORD><Attr/Subst><UnmGend><Acc><Pl><St>',
         'erste',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><UnmGend><Acc><Pl><Wk>',
+        'erst<~>e<ORD><Attr/Subst><UnmGend><Acc><Pl><Wk>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><UnmGend><Dat><Pl><St>',
+        'erst<~>e<ORD><Attr/Subst><UnmGend><Dat><Pl><St>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><UnmGend><Dat><Pl><Wk>',
+        'erst<~>e<ORD><Attr/Subst><UnmGend><Dat><Pl><Wk>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><UnmGend><Gen><Pl><St>',
+        'erst<~>e<ORD><Attr/Subst><UnmGend><Gen><Pl><St>',
         'erster',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><UnmGend><Gen><Pl><Wk>',
+        'erst<~>e<ORD><Attr/Subst><UnmGend><Gen><Pl><Wk>',
         'ersten',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><UnmGend><Nom><Pl><St>',
+        'erst<~>e<ORD><Attr/Subst><UnmGend><Nom><Pl><St>',
         'erste',
       ),
       tuple(
-        'erste<ORD><Attr/Subst><UnmGend><Nom><Pl><Wk>',
+        'erst<~>e<ORD><Attr/Subst><UnmGend><Nom><Pl><Wk>',
         'ersten',
       ),
     ),

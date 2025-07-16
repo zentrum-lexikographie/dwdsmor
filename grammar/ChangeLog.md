@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-07-15:
+
+* add support for ordinal derivation by means of "(s)t"-suffixation
+
 2025-07-10:
 
 * add support for cardinal compounding

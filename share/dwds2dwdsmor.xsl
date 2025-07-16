@@ -2241,7 +2241,7 @@
             </xsl:for-each>
           </xsl:if>
         </xsl:for-each>
-        <!-- derivation stems inferred from links to the derivation bases -->
+        <!-- derivation stems inferred from links to the derivation base and the affix -->
         <xsl:for-each select="../../dwds:Verweise[not(@class='invisible')]
                                                  [not(@Typ!='Derivation')]
                                                  [dwds:Verweis[not(@class='invisible')]
@@ -2328,16 +2328,7 @@
                             <xsl:variable name="lemma2"
                                           select="substring-after(normalize-space(.),'-')"/><!-- suffix lemma -->
                             <xsl:if test="string-length($lemma2)&gt;0">
-                              <xsl:variable name="der-stem">
-                                <xsl:call-template name="der-stem">
-                                  <xsl:with-param name="lemma"
-                                                  select="$lemma"/>
-                                  <xsl:with-param name="lemma1"
-                                                  select="$lemma1"/>
-                                  <xsl:with-param name="lemma2"
-                                                  select="$lemma2"/>
-                                </xsl:call-template>
-                              </xsl:variable>
+                              <!-- suffixes -->
                               <xsl:variable name="suffs"
                                             as="item()*">
                                 <xsl:choose>
@@ -2360,7 +2351,7 @@
                                   </xsl:when>
                                   <!-- "-ßig" -->
                                   <xsl:when test="$lemma2='ßig'">
-                                    <!-- normalize to "-zig" -->
+                                    <!-- normalise to "-zig" -->
                                     <xsl:sequence select="'zig'"/>
                                   </xsl:when>
                                   <!-- ... -->
@@ -2369,7 +2360,18 @@
                                   </xsl:otherwise>
                                 </xsl:choose>
                               </xsl:variable>
-                              <xsl:if test="string-length($der-stem)&gt;0">
+                              <xsl:variable name="der-stem">
+                                <xsl:call-template name="der-stem">
+                                  <xsl:with-param name="lemma"
+                                                  select="$lemma"/>
+                                  <xsl:with-param name="lemma1"
+                                                  select="$lemma1"/>
+                                  <xsl:with-param name="lemma2"
+                                                  select="$lemma2"/>
+                                </xsl:call-template>
+                              </xsl:variable>
+                              <xsl:if test="count($suffs)&gt;0 and
+                                            string-length($der-stem)&gt;0">
                                 <xsl:choose>
                                   <xsl:when test="$pos1='Adjektiv'">
                                     <xsl:call-template name="adjective-der-entry-set">
@@ -2462,6 +2464,136 @@
                           </xsl:for-each>
                         </xsl:for-each>
                       </xsl:for-each>
+                    </xsl:if>
+                  </xsl:for-each>
+                </xsl:if>
+              </xsl:for-each>
+            </xsl:for-each>
+          </xsl:if>
+        </xsl:for-each>
+        <!-- derivation stems inferred from links to the derivation base only -->
+        <xsl:for-each select="../../dwds:Verweise[not(@class='invisible')]
+                                                 [not(@Typ!='Derivation')]
+                                                 [dwds:Verweis[not(@class='invisible')]
+                                                              [@Typ='Grundform']]">
+
+          <xsl:variable name="basis"
+                        select="normalize-space(dwds:Verweis[not(@class='invisible')]
+                                                            [@Typ='Grundform']/dwds:Ziellemma)"/>
+          <!-- ignore affixes as $lemma and $basis -->
+          <xsl:if test="not(starts-with($lemma,'-') or
+                            ends-with($lemma,'-')) and
+                        not(starts-with($basis,'-') or
+                            ends-with($basis,'-'))">
+            <xsl:variable name="index1"
+                          select="dwds:Verweis[not(@class='invisible')]
+                                              [@Typ='Grundform']/dwds:Ziellemma/@hidx"/>
+            <xsl:variable name="source1"
+                          select="$manifest/source[@lemma=$basis]
+                                                  [@index=$index1 or
+                                                   not(@index) and string-length($index1)=0][1]"/>
+            <xsl:variable name="file1"
+                          select="$source1/@href"/>
+            <xsl:variable name="n1"
+                          select="$source1/@n"/>
+            <xsl:variable name="article1">
+              <xsl:if test="doc-available(n:absolute-path($file1))">
+                <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel[position()=$n1]/*"/>
+              </xsl:if>
+            </xsl:variable>
+            <xsl:for-each select="$article1">
+              <xsl:variable name="etymology1">
+                <xsl:call-template name="get-etymology-value"/>
+              </xsl:variable>
+              <!-- ignore symbols and abbreviations -->
+              <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
+                                                   [not(@Typ='Abkürzung' or
+                                                        @Typ='Symbol')]">
+                <xsl:variable name="pos1"
+                              select="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])"/>
+                <!-- currently, only cardinal bases are supported -->
+                <xsl:if test="$pos1='Kardinalzahlwort'">
+                  <!-- ignore idioms and non-standard spellings -->
+                  <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
+                                                       [not(@Typ)]">
+                    <xsl:variable name="lemma1"
+                                  select="normalize-space(.)"/>
+                    <xsl:if test="string-length($lemma1)&gt;0">
+                      <xsl:variable name="abbreviation1">
+                        <xsl:call-template name="get-abbreviation-value"/>
+                      </xsl:variable>
+                      <xsl:variable name="der-stem">
+                        <xsl:choose>
+                          <xsl:when test="$lemma1='acht'">
+                            <xsl:call-template name="der-stem">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="lemma1"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="lemma2">e</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <xsl:when test="ends-with($lemma1,'ig')">
+                            <xsl:call-template name="der-stem">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="lemma1"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="lemma2">ste</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <xsl:when test="$lemma1='hundert'">
+                            <xsl:call-template name="der-stem">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="lemma1"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="lemma2">ste</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <xsl:when test="$lemma1='tausend'">
+                            <xsl:call-template name="der-stem">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="lemma1"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="lemma2">ste</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <xsl:when test="$lemma1='Million'">
+                            <xsl:call-template name="der-stem">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="lemma1"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="lemma2">ste</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:when>
+                          <!-- ... -->
+                          <xsl:otherwise>
+                            <xsl:call-template name="der-stem">
+                              <xsl:with-param name="lemma"
+                                              select="$lemma"/>
+                              <xsl:with-param name="lemma1"
+                                              select="$lemma1"/>
+                              <xsl:with-param name="lemma2">te</xsl:with-param>
+                            </xsl:call-template>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:variable>
+                      <xsl:if test="string-length($der-stem)&gt;0">
+                        <xsl:call-template name="cardinal-der-entry-set">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma1"/>
+                          <xsl:with-param name="stem"
+                                          select="$der-stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation1"/>
+                          <xsl:with-param name="suffs">st</xsl:with-param>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology1"/>
+                        </xsl:call-template>
+                      </xsl:if>
                     </xsl:if>
                   </xsl:for-each>
                 </xsl:if>

@@ -1,6 +1,7 @@
 2025-07-15:
 
 * update DWDS word classes for numerals
+* add support for inferring derivation stems of cardinals from ordinals
 
 2025-07-02:
 

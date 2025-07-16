@@ -99,7 +99,7 @@
 
 <xsl:variable name="supported-suffs"
               as="item()*"
-              select="'chen','e','er','lein','zig'"/><!-- ... -->
+              select="'chen','e','er','lein','st','zig'"/><!-- ... -->
 
 <!-- derivation stems -->
 <xsl:template name="der-stem-entry">

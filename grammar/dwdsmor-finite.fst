@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 18.1
-% Andreas Nolda 2025-07-10
+% Version 18.2
+% Andreas Nolda 2025-07-15
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -56,15 +56,17 @@ $CompStems$ = $LEX$ || $CompStemFilter$
 
 % word formation
 
-% derived cardinal base stems with affixes
+% derived numeral base stems with affixes
 
-$DerStemsCard2$ = $DerStems$ || $DerStemFilterCard2$
+$DerStemsCard2-st$  = $DerStems$ || $DerStemFilterCard2-st$
+$DerStemsCard2-zig$ = $DerStems$ || $DerStemFilterCard2-zig$
 
-$DerBaseStemsCard20$ = $DerStemsCard2$ <DB> $DerSuff-zig$ || $DerCardFilter$
+$DerBaseStemsOrd2$   = $DerStemsCard2-st$  <DB> $DerSuff-st$  || $DerNumFilter$
+$DerBaseStemsCard20$ = $DerStemsCard2-zig$ <DB> $DerSuff-zig$ || $DerNumFilter$
 
-$BaseStems$ = $BaseStems$ | $DerBaseStemsCard20$
+$BaseStems$ = $BaseStems$ | $DerBaseStemsOrd2$ | $DerBaseStemsCard20$
 
-% cardinal compounds
+% numeral compounds
 
 $BaseStemsCard1a$ = $BaseStemFilterCard1aLv2$ || $BaseStems$
 
@@ -80,18 +82,18 @@ $CompStemsCard100$  = $CompStems$ || $CompStemFilterCard100$
 $CompStemsCard11$ =  $BaseStemsCard11$ || $Base2CompStem$
 $CompStemsCard11$ = ^$CompStemsCard11$
 
-$CompBaseStemsCard13$ = $CompStemsCard3$ $Comp-concat$ <CB> $BaseStemsCard10$ || $CompCardFilter$
+$CompBaseStemsCard13$ = $CompStemsCard3$ $Comp-concat$ <CB> $BaseStemsCard10$ || $CompNumFilter$
 
 $CompStemsCard13$ =  $CompBaseStemsCard13$ || $Base2CompStem$
 $CompStemsCard13$ = ^$CompStemsCard13$
 
 $BaseStems$ = $BaseStems$ | $CompBaseStemsCard13$
 
-$CompBaseStemsCard21$ = $CompStemsCard1c$ <IB> $Comp-und$ <CB> $DerBaseStemsCard20$ || $CompCardFilter$
+$CompBaseStemsCard21$ = $CompStemsCard1c$ <IB> $Comp-und$ <CB> $DerBaseStemsCard20$ || $CompNumFilter$
 
 $BaseStems$ = $BaseStems$ | $CompBaseStemsCard21$
 
-$CompBaseStemsCard200$ = $CompStemsCard1c$ $Comp-concat$ <CB> $BaseStemsCard100$ || $CompCardFilter$
+$CompBaseStemsCard200$ = $CompStemsCard1c$ $Comp-concat$ <CB> $BaseStemsCard100$ || $CompNumFilter$
 
 $CompStemsCard200$ =  $CompBaseStemsCard200$ || $Base2CompStem$
 $CompStemsCard200$ = ^$CompStemsCard200$
@@ -99,7 +101,7 @@ $CompStemsCard200$ = ^$CompStemsCard200$
 $BaseStems$ = $BaseStems$ | $CompBaseStemsCard200$
 
 $CompBaseStemsCard1100$ = $CompStemsCard11$ $Comp-concat$ <CB> $BaseStemsCard100$ | \
-                          $CompStemsCard13$ $Comp-concat$ <CB> $BaseStemsCard100$ || $CompCardFilter$
+                          $CompStemsCard13$ $Comp-concat$ <CB> $BaseStemsCard100$ || $CompNumFilter$
 
 $CompStemsCard1100$ =  $CompBaseStemsCard1100$ || $Base2CompStem$
 $CompStemsCard1100$ = ^$CompStemsCard1100$
@@ -115,17 +117,17 @@ $BaseStemsCard1-99$ = $BaseStemsCard1a$     | \
                       $CompBaseStemsCard21$
 
 $CompBaseStemsCard101$ = $CompStemsCard100$ <IB> $Comp-und$    <CB> $BaseStemsCard1-99$ | \
-                         $CompStemsCard100$      $Comp-concat$ <CB> $BaseStemsCard1-99$ || $CompCardFilter$
+                         $CompStemsCard100$      $Comp-concat$ <CB> $BaseStemsCard1-99$ || $CompNumFilter$
 
 $BaseStems$ = $BaseStems$ | $CompBaseStemsCard101$
 
 $CompBaseStemsCard201$ = $CompStemsCard200$ <IB> $Comp-und$    <CB> $BaseStemsCard1-99$ | \
-                         $CompStemsCard200$      $Comp-concat$ <CB> $BaseStemsCard1-99$ || $CompCardFilter$
+                         $CompStemsCard200$      $Comp-concat$ <CB> $BaseStemsCard1-99$ || $CompNumFilter$
 
 $BaseStems$ = $BaseStems$ | $CompBaseStemsCard201$
 
 $CompBaseStemsCard1101$ = $CompStemsCard1100$ <IB> $Comp-und$    <CB> $BaseStemsCard1-99$ | \
-                          $CompStemsCard1100$      $Comp-concat$ <CB> $BaseStemsCard1-99$ || $CompCardFilter$
+                          $CompStemsCard1100$      $Comp-concat$ <CB> $BaseStemsCard1-99$ || $CompNumFilter$
 
 $BaseStems$ = $BaseStems$ | $CompBaseStemsCard1101$
 

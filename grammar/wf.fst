@@ -1,6 +1,6 @@
 % wf.fst
-% Version 13.1
-% Andreas Nolda 2025-07-10
+% Version 13.2
+% Andreas Nolda 2025-07-15
 
 #include "symbols.fst"
 
@@ -16,10 +16,11 @@ $ConvADJNeut$    = <CONV>:<> <ident|Neut>:<> <NN>  <base> <native> <>:<del(-e)><
 $ConvADJFem$     = <CONV>:<> <ident|Fem>:<>  <NN>  <base> <native> <>:<del(-e)><>:<NFem-Adj>
 % ...
 
-$DerSuff-e$    = <DER>:<> <suff(e)>:<>    <Suff> e     <NN>   <base> <native> <>:<NMasc_n_n_0>
-$DerSuff-er$   = <DER>:<> <suff(er)>:<>   <Suff> er    <NN>   <base> <native> <>:<NMasc_s_0_n>
-$DerSuff-chen$ = <DER>:<> <suff(chen)>:<> <Suff> chen  <NN>   <base> <native> <>:<NNeut_s_0_0>
-$DerSuff-lein$ = <DER>:<> <suff(lein)>:<> <Suff> lein  <NN>   <base> <native> <>:<NNeut_s_0_0>
+$DerSuff-e$    = <DER>:<> <suff(e)>:<>    <Suff> e    <NN> <base> <native> <>:<NMasc_n_n_0>
+$DerSuff-er$   = <DER>:<> <suff(er)>:<>   <Suff> er   <NN> <base> <native> <>:<NMasc_s_0_n>
+$DerSuff-chen$ = <DER>:<> <suff(chen)>:<> <Suff> chen <NN> <base> <native> <>:<NNeut_s_0_0>
+$DerSuff-lein$ = <DER>:<> <suff(lein)>:<> <Suff> lein <NN> <base> <native> <>:<NNeut_s_0_0>
+$DerSuff-st$   = <DER>:<> <suff(st)>:<>   <Suff> <s>t<SB>:<>e:<> <ORD> <base> <native> <>:<Ord>
 $DerSuff-zig$  = <DER>:<> <suff(zig)>:<>  <Suff> <z>ig <CARD> <base> <native> <>:<Card0>
 % ...
 
@@ -122,12 +123,16 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
 $C$ = .
 $C$ = $C$-[#entry-type# <CB><VB><DB><IB>]
 
+% restrict suff(st) to cardinal bases
+$DerRestrNumPOSSuff-st$ = <Stem> $C$* <CARD> $C$* <DB> ^$DerSuff-st$
+
 % restrict suff(zig) to cardinal bases
-$DerRestrCardPOSSuff-zig$ = <Stem> $C$* <CARD> $C$* <DB> ^$DerSuff-zig$
+$DerRestrNumPOSSuff-zig$ = <Stem> $C$* <CARD> $C$* <DB> ^$DerSuff-zig$
 
-$DerRestrCardPOS$ = $DerRestrCardPOSSuff-zig$
+$DerRestrNumPOS$ = $DerRestrNumPOSSuff-st$ | \
+                   $DerRestrNumPOSSuff-zig$
 
-$DerCardFilter$ = $DerRestrCardPOS$
+$DerNumFilter$ = $DerRestrNumPOS$
 
 % restrict suff(e) to proper-name bases (?)
 $DerRestrPOSSuff-e$ = [<dc><uc>]* <Stem> $C$* <NPROP> $C$* <DB> ^$DerSuff-e$
@@ -231,11 +236,11 @@ $Pref$ = [<dc><uc>]* <Pref> $C$* [<DB><VB>]
 $Suff$ =        <DB> <Suff> $C$*
 
 % restrict cardinal compounds to cardinal bases
-$CompCardRestrPOS$ = (<Stem> $C$* <CARD> $C$* $Suff$? <IB> ^$Comp-und$    <CB> | \
-                      <Stem> $C$* <CARD> $C$* $Suff$?      ^$Comp-concat$ <CB>)+ \
-                      <Stem> $C$* <CARD> $C$* $Suff$?
+$CompNumRestrPOS$ = (<Stem> $C$* <CARD> $C$* $Suff$? <IB> ^$Comp-und$    <CB> | \
+                     <Stem> $C$* <CARD> $C$* $Suff$?      ^$Comp-concat$ <CB>)+ \
+                     <Stem> $C$* <CARD> $C$* $Suff$?
 
-$CompCardFilter$ = $CompCardRestrPOS$
+$CompNumFilter$ = $CompNumRestrPOS$
 
 % provisionally restrict nominal compounds to nominal,
 % adjectival, or verbal initial or intermediate bases

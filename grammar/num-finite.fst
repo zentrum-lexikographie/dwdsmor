@@ -1,6 +1,6 @@
 % num-finite.fst
-% Version 2.0
-% Andreas Nolda 2025-07-10
+% Version 2.1
+% Andreas Nolda 2025-07-15
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -38,7 +38,8 @@ $BaseStemsRoman$ = <Stem> $ROMAN$ <CARD> <base> <native> <Roman>
 $CARD1a$   = ein<SB>e
 $CARD1b$   = eins | zwei | drei | vier | fünf | sechs | sieben | acht | neun
 $CARD1c$   = ein  | zwei | drei | vier | fünf | sechs | sieben | acht | neun
-$CARD2$    =        zwan | drei | vier | fünf | sech  | sieb   | acht | neun
+$CARD2a$   =        zwei | drit | vier | fünf | sechs | sieb   | acht | neun
+$CARD2b$    =       zwan | drei | vier | fünf | sech  | sieb   | acht | neun
 $CARD3$    =               drei | vier | fünf | sech  | sieb   | acht | neun
 $CARD10$   = zehn
 $CARD11$   = elf | zwölf
@@ -62,8 +63,11 @@ $BaseStemFilterCard11$ = <Stem> $CARD11$ $I$* <CARD> <base> <native> $C$
 % final basis in cardinal compounds like "einhundert"
 $BaseStemFilterCard100$ = <Stem> $CARD100$ $I$* <CARD> <base> <native> $C$
 
+% bases in derived ordinals like "sechste"
+$DerStemFilterCard2-st$ = <Stem> ($CARD2a$ | $CARD10$ | $CARD11$ | $CARD100$) <CARD> <der> <-st> <native>
+
 % bases in derived cardinals like "sechzig"
-$DerStemFilterCard2$ = <Stem> $CARD2$ <CARD> <der> <-zig> <native>
+$DerStemFilterCard2-zig$ = <Stem> $CARD2b$ <CARD> <der> <-zig> <native>
 
 % initial bases in cardinal compounds like "einundsechzig" and "einhundert"
 $CompStemFilterCard1c$ = <Stem> $CARD1c$ <CARD> <comp> <native>
