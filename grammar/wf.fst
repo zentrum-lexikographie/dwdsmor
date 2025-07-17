@@ -11,9 +11,9 @@ $ConvPartPres$   = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPosAtt
 $ConvPartPerf_t$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPos>     % cf. Duden-Grammatik (2016: § 508)
 $ConvPartPerf_n$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPos-en>  % cf. Duden-Grammatik (2016: § 508)
 $ConvPartPerf_d$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPosPred>
-$ConvADJMasc$    = <CONV>:<> <ident|Masc>:<> <NN>  <base> <native> <>:<del(-e)><>:<NMasc-Adj>
-$ConvADJNeut$    = <CONV>:<> <ident|Neut>:<> <NN>  <base> <native> <>:<del(-e)><>:<NNeut-Adj|Sg>
-$ConvADJFem$     = <CONV>:<> <ident|Fem>:<>  <NN>  <base> <native> <>:<del(-e)><>:<NFem-Adj>
+$ConvMasc$       = <CONV>:<> <ident|Masc>:<> <NN>  <base> <native> <>:<del(-e)><>:<NMasc-Adj>
+$ConvNeut$       = <CONV>:<> <ident|Neut>:<> <NN>  <base> <native> <>:<del(-e)><>:<NNeut-Adj|Sg>
+$ConvFem$        = <CONV>:<> <ident|Fem>:<>  <NN>  <base> <native> <>:<del(-e)><>:<NFem-Adj>
 % ...
 
 $DerSuff-e$    = <DER>:<> <suff(e)>:<>    <Suff> e    <NN> <base> <native> <>:<NMasc_n_n_0>

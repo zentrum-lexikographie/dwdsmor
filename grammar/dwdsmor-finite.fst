@@ -1,6 +1,6 @@
 % dwdsmor-finite.fst
-% Version 18.2
-% Andreas Nolda 2025-07-15
+% Version 18.3
+% Andreas Nolda 2025-07-16
 
 #include "symbols.fst"
 #include "num-finite.fst"
@@ -190,40 +190,64 @@ $ConvBaseStemsV$ = <uc> $BaseStemsVInfNonCl$   $ConvInfNonCl$   | \
 $BaseStems$ = $BaseStems$ | $ConvBaseStemsV$
 
 $BaseStemsADJ$ = $BaseStems$ || $BaseStemFilterADJ$
+$BaseStemsORD$ = $BaseStems$ || $BaseStemFilterORD$
 
 $BaseStemsADJ$ = $BaseStemsADJ$ || $CleanupWF$
+$BaseStemsORD$ = $BaseStemsORD$ || $CleanupWF$
 
 $BaseStemsADJ$ = $BaseStemsADJ$ $INFL$ || $InflFilter$
+$BaseStemsORD$ = $BaseStemsORD$ $INFL$ || $InflFilter$
 
 $BaseStemsADJMasc$ = $BaseStemFilterADJMascLv2$ || $BaseStemsADJ$
 $BaseStemsADJNeut$ = $BaseStemFilterADJNeutLv2$ || $BaseStemsADJ$
 $BaseStemsADJFem$  = $BaseStemFilterADJFemLv2$  || $BaseStemsADJ$
+$BaseStemsORDMasc$ = $BaseStemFilterORDMascLv2$ || $BaseStemsORD$
+$BaseStemsORDNeut$ = $BaseStemFilterORDNeutLv2$ || $BaseStemsORD$
+$BaseStemsORDFem$  = $BaseStemFilterORDFemLv2$  || $BaseStemsORD$
 
 $BaseStemsADJMasc$ = $CleanupCatLv2$ || $BaseStemsADJMasc$
 $BaseStemsADJNeut$ = $CleanupCatLv2$ || $BaseStemsADJNeut$
 $BaseStemsADJFem$  = $CleanupCatLv2$ || $BaseStemsADJFem$
+$BaseStemsORDMasc$ = $CleanupCatLv2$ || $BaseStemsORDMasc$
+$BaseStemsORDNeut$ = $CleanupCatLv2$ || $BaseStemsORDNeut$
+$BaseStemsORDFem$  = $CleanupCatLv2$ || $BaseStemsORDFem$
 
 $BaseStemsADJMasc$ = <>:<WB> $BaseStemsADJMasc$ <>:<WB>
 $BaseStemsADJNeut$ = <>:<WB> $BaseStemsADJNeut$ <>:<WB>
 $BaseStemsADJFem$  = <>:<WB> $BaseStemsADJFem$  <>:<WB>
+$BaseStemsORDMasc$ = <>:<WB> $BaseStemsORDMasc$ <>:<WB>
+$BaseStemsORDNeut$ = <>:<WB> $BaseStemsORDNeut$ <>:<WB>
+$BaseStemsORDFem$  = <>:<WB> $BaseStemsORDFem$  <>:<WB>
 
 $BaseStemsADJMasc$ = $BaseStemsADJMasc$ || $PHON$
 $BaseStemsADJNeut$ = $BaseStemsADJNeut$ || $PHON$
 $BaseStemsADJFem$  = $BaseStemsADJFem$  || $PHON$
+$BaseStemsORDMasc$ = $BaseStemsORDMasc$ || $PHON$
+$BaseStemsORDNeut$ = $BaseStemsORDNeut$ || $PHON$
+$BaseStemsORDFem$  = $BaseStemsORDFem$  || $PHON$
 
 $BaseStemsADJMasc$ = $BaseStemsADJMasc$ || $MarkerWB$
 $BaseStemsADJNeut$ = $BaseStemsADJNeut$ || $MarkerWB$
 $BaseStemsADJFem$  = $BaseStemsADJFem$  || $MarkerWB$
+$BaseStemsORDMasc$ = $BaseStemsORDMasc$ || $MarkerWB$
+$BaseStemsORDNeut$ = $BaseStemsORDNeut$ || $MarkerWB$
+$BaseStemsORDFem$  = $BaseStemsORDFem$  || $MarkerWB$
 
 $BaseStemsADJMasc$ = ^$BaseStemsADJMasc$
 $BaseStemsADJNeut$ = ^$BaseStemsADJNeut$
 $BaseStemsADJFem$  = ^$BaseStemsADJFem$
+$BaseStemsORDMasc$ = ^$BaseStemsORDMasc$
+$BaseStemsORDNeut$ = ^$BaseStemsORDNeut$
+$BaseStemsORDFem$  = ^$BaseStemsORDFem$
 
-$ConvBaseStemsADJ$ = <uc> $BaseStemsADJMasc$ $ConvADJMasc$ | \
-                     <uc> $BaseStemsADJNeut$ $ConvADJNeut$ | \
-                     <uc> $BaseStemsADJFem$  $ConvADJFem$  || $ConvFilter$
+$ConvBaseStemsADJ$ = <uc> $BaseStemsADJMasc$ $ConvMasc$ | \
+                     <uc> $BaseStemsADJNeut$ $ConvNeut$ | \
+                     <uc> $BaseStemsADJFem$  $ConvFem$  || $ConvFilter$
+$ConvBaseStemsORD$ = <uc> $BaseStemsORDMasc$ $ConvMasc$ | \
+                     <uc> $BaseStemsORDNeut$ $ConvNeut$ | \
+                     <uc> $BaseStemsORDFem$  $ConvFem$  || $ConvFilter$
 
-$BaseStems$ = $BaseStems$ | $ConvBaseStemsADJ$
+$BaseStems$ = $BaseStems$ | $ConvBaseStemsADJ$ | $ConvBaseStemsORD$
 
 % derived base stems with affixes
 

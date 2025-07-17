@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-07-16:
+
+* add support for conversion of ordinals
+
 2025-07-15:
 
 * add support for ordinal derivation by means of "(s)t"-suffixation

@@ -1,6 +1,6 @@
 % cleanup.fst
-% Version 6.3
-% Andreas Nolda 2025-07-09
+% Version 6.4
+% Andreas Nolda 2025-07-16
 
 % based on code from SMORLemma by Rico Sennrich
 
@@ -95,8 +95,9 @@ $CleanupWF$ = .*
 
 % clean up categories on analysis level
 
-ALPHABET = [#entry-type# #char# #orth-trigger# #boundary-trigger# #index# #pos# \
-            #subcat# #stem-type# #origin# #wf# #orthinfo#] \
+ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
+            #boundary-trigger# #index# #pos# #subcat# #stem-type# #suff# \
+            #origin# #wf# #orthinfo#] \
            <>:[#degree# #gender# #case# #number# #infl# #function# #nonfinite# \
                #tense# #auxiliary#]
 

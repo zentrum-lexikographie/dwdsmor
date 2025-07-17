@@ -1,6 +1,6 @@
 % stemtype.fst
-% Version 6.3
-% Andreas Nolda 2025-07-08
+% Version 6.4
+% Andreas Nolda 2025-07-16
 
 #include "symbols.fst"
 
@@ -23,6 +23,7 @@ $DerStemFilterSuff-zig$  = <Stem> .* <der> <-zig>  $C$*
 
 $BaseStemFilterV$   = (<Pref> .*)? <Stem> .* <V>   <base> $C$*
 $BaseStemFilterADJ$ = (<Pref> .*)? <Stem> .* <ADJ> <base> $C$*
+$BaseStemFilterORD$ =              <Stem> .* <ORD> <base> $C$*
 
 ALPHABET = [#char# #boundary-trigger#]
 
@@ -47,8 +48,8 @@ $C$ = $C$-[#stem-type#]
 
 $Base2CompStemLv2$ = .* <comp>:<base> $C$*
 
-ALPHABET = [#char# #boundary-trigger# #index# #pos# #subcat# #wf# #stem-type# \
-            #origin# #degree# #function# #auxiliary#]
+ALPHABET = [#char# #surface-trigger# #boundary-trigger# #index# #pos# #subcat# \
+            #wf# #stem-type# #suff# #origin# #degree# #function# #auxiliary#]
 
 $C$ = .
 $C$ = $C$-[#pos#]
@@ -60,3 +61,7 @@ $BaseStemFilterVPartPerfLv2$ = (.* <Pref> .*)? <Stem> .* <V> $C$* <Part><Perf> $
 $BaseStemFilterADJMascLv2$ = (.* <Pref> .*)? <Stem> .* <ADJ> $C$* <Masc><Nom><Sg><Wk> $C$*
 $BaseStemFilterADJFemLv2$  = (.* <Pref> .*)? <Stem> .* <ADJ> $C$* <Fem><Nom><Sg><Wk>  $C$*
 $BaseStemFilterADJNeutLv2$ = (.* <Pref> .*)? <Stem> .* <ADJ> $C$* <Neut><Nom><Sg><Wk> $C$*
+
+$BaseStemFilterORDMascLv2$ = <Stem> .* (.* <Suff> .*)? <ORD> $C$* <Masc><Nom><Sg><Wk> $C$*
+$BaseStemFilterORDFemLv2$  = <Stem> .* (.* <Suff> .*)? <ORD> $C$* <Fem><Nom><Sg><Wk>  $C$*
+$BaseStemFilterORDNeutLv2$ = <Stem> .* (.* <Suff> .*)? <ORD> $C$* <Neut><Nom><Sg><Wk> $C$*
