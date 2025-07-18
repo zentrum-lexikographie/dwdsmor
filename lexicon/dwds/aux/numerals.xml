@@ -10,22 +10,6 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>achtzehnte</Schreibung>
-      <Grammatik>
-        <Wortklasse>Ordinalzahlwort</Wortklasse>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>dreizehnte</Schreibung>
-      <Grammatik>
-        <Wortklasse>Ordinalzahlwort</Wortklasse>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>drittel</Schreibung>
       <Grammatik>
         <Wortklasse>Bruchzahlwort</Wortklasse>
@@ -86,28 +70,4 @@
       </Grammatik>
     </Formangabe>
   </Artikel> -->
-  <Artikel>
-    <Formangabe>
-      <Schreibung>neunzehnte</Schreibung>
-      <Grammatik>
-        <Wortklasse>Ordinalzahlwort</Wortklasse>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>sechzehnte</Schreibung>
-      <Grammatik>
-        <Wortklasse>Ordinalzahlwort</Wortklasse>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>siebzehnte</Schreibung>
-      <Grammatik>
-        <Wortklasse>Ordinalzahlwort</Wortklasse>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
 </DWDS>

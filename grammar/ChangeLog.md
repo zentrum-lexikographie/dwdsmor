@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-07-18:
+
+* add support for ordinal compounding
+
 2025-07-16:
 
 * add support for conversion of ordinals

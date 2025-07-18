@@ -1,6 +1,6 @@
 % wf.fst
-% Version 13.2
-% Andreas Nolda 2025-07-15
+% Version 13.3
+% Andreas Nolda 2025-07-18
 
 #include "symbols.fst"
 
@@ -123,8 +123,11 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
 $C$ = .
 $C$ = $C$-[#entry-type# <CB><VB><DB><IB>]
 
+$Pref$ = [<dc><uc>]* <Pref> $C$* [<DB><VB>]
+$Suff$ =        <DB> <Suff> $C$*
+
 % restrict suff(st) to cardinal bases
-$DerRestrNumPOSSuff-st$ = <Stem> $C$* <CARD> $C$* <DB> ^$DerSuff-st$
+$DerRestrNumPOSSuff-st$ = <Stem> $C$* <CARD> $C$* $Suff$? <DB> ^$DerSuff-st$
 
 % restrict suff(zig) to cardinal bases
 $DerRestrNumPOSSuff-zig$ = <Stem> $C$* <CARD> $C$* <DB> ^$DerSuff-zig$
@@ -232,13 +235,10 @@ $DerFilter$ = $DerRestrPOS$ & $DerRestrAbbr$
 
 % compounding restrictions
 
-$Pref$ = [<dc><uc>]* <Pref> $C$* [<DB><VB>]
-$Suff$ =        <DB> <Suff> $C$*
-
-% restrict cardinal compounds to cardinal bases
-$CompNumRestrPOS$ = (<Stem> $C$* <CARD> $C$* $Suff$? <IB> ^$Comp-und$    <CB> | \
-                     <Stem> $C$* <CARD> $C$* $Suff$?      ^$Comp-concat$ <CB>)+ \
-                     <Stem> $C$* <CARD> $C$* $Suff$?
+% restrict cardinal and ordinal compounds to cardinal initial or intermediate bases
+$CompNumRestrPOS$ = (<Stem> $C$* $Suff$*  <CARD>       $C$* <IB> ^$Comp-und$    <CB> | \
+                     <Stem> $C$* $Suff$*  <CARD>       $C$*      ^$Comp-concat$ <CB>)+ \
+                     <Stem> $C$* $Suff$* [<CARD><ORD>] $C$*
 
 $CompNumFilter$ = $CompNumRestrPOS$
 
