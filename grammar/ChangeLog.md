@@ -1,5 +1,10 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-07-25:
+
+* remove inflection classes `Indef-ein` and `Indef-kein`
+* add inflection classes `IPro-einer` and `IPro-eine`
+
 2025-07-18:
 
 * add support for ordinal compounding

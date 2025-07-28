@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 13.7
-% Andreas Nolda 2025-07-15
+% Version 13.8
+% Andreas Nolda 2025-07-25
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -229,11 +229,11 @@
                    <ArtDef-der+DemUnmGend><ArtDef-des+DemMasc> \
                    <ArtDef-des+DemNeut><ArtDef-die+DemFem> \
                    <ArtDef-die+DemUnmGend><Dem><Dem0><Dem-alldem><Dem-dies> \
-                   <Dem-solch><DemDef><Indef0><Indef-all><Indef-beid><Indef-ein> \
+                   <Dem-solch><DemDef><Indef0><Indef-all><Indef-beid> \
                    <Indef-einig><Indef-irgendein><Indef-irgendwelch><Indef-jed> \
-                   <Indef-jeglich><Indef-kein><Indef-manch><Indef-mehrer> \
-                   <Indef-saemtlich><Indef-welch><IPro-jedefrau><IPro-jederfrau> \
-                   <IPro-jedermann><IPro-frau><IPro-man><IPro-unsereiner> \
+                   <Indef-jeglich><Indef-manch><Indef-mehrer><Indef-saemtlich> \
+                   <Indef-welch><IPro-eine><IPro-einer><IPro-frau><IPro-jedefrau> \
+                   <IPro-jederfrau><IPro-jedermann><IPro-man><IPro-unsereiner> \
                    <IPro-unsereins><IProMasc><IProMascAccSg><IProMascDatSg> \
                    <IProMascGenSg><IProMascNomSg><IProNeut><IProNeutAccSg> \
                    <IProNeutDatSg><IProNeutGenSg><IProNeutNomSg><Poss><Poss-er> \

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 18.2 -->
-<!-- Andreas Nolda 2025-07-15 -->
+<!-- Version 18.3 -->
+<!-- Andreas Nolda 2025-07-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -4231,15 +4231,46 @@
   <xsl:param name="etymology"/>
   <xsl:if test="string-length($lemma)&gt;0">
     <xsl:variable name="stem">
-      <xsl:call-template name="feminine-stem">
-        <xsl:with-param name="lemma"
-                        select="$lemma"/>
-      </xsl:call-template>
+      <xsl:choose>
+        <xsl:when test="$gender='mask.'">
+          <xsl:call-template name="masculine-stem">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:call-template>
+        </xsl:when>
+        <xsl:when test="$gender='fem.'">
+          <xsl:call-template name="feminine-stem">
+            <xsl:with-param name="lemma"
+                            select="$lemma"/>
+          </xsl:call-template>
+        </xsl:when>
+      </xsl:choose>
     </xsl:variable>
     <xsl:choose>
-      <!-- "eine" -->
+      <!-- "einer", "eine"; "keiner", "keine" -->
+      <xsl:when test="$gender='mask.' and
+                      ($lemma='einer' or
+                       $lemma='keiner')">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="n:segment-from-end('er',$lemma)"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+          <xsl:with-param name="stem"
+                          select="$stem"/>
+          <xsl:with-param name="abbreviation"
+                          select="$abbreviation"/>
+          <xsl:with-param name="pos">INDEF</xsl:with-param>
+          <xsl:with-param name="class">IPro-einer</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
       <xsl:when test="$gender='fem.' and
-                      $lemma='eine'">
+                      ($lemma='eine' or
+                       $lemma='keine')">
         <xsl:call-template name="stem-entry">
           <xsl:with-param name="lemma"
                           select="n:segment-from-end('e',$lemma)"/>
@@ -4252,13 +4283,15 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">Indef-ein</xsl:with-param>
+          <xsl:with-param name="class">IPro-eine</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
-      <xsl:when test="$lemma='einer'"/>
-      <xsl:when test="$lemma='eines'"/>
+      <xsl:when test="$lemma='eines' or
+                      $lemma='keines' or
+                      $lemma='eins' or
+                      $lemma='keins'"/>
       <!-- "irgendeine" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='irgendeine'">
@@ -4281,28 +4314,6 @@
       </xsl:when>
       <xsl:when test="$lemma='irgendeiner'"/>
       <xsl:when test="$lemma='irgendeines'"/>
-      <!-- "keine" -->
-      <xsl:when test="$gender='fem.' and
-                      $lemma='keine'">
-        <xsl:call-template name="stem-entry">
-          <xsl:with-param name="lemma"
-                          select="n:segment-from-end('e',$lemma)"/>
-          <xsl:with-param name="lemma-index"
-                          select="$lemma-index"/>
-          <xsl:with-param name="paradigm-index"
-                          select="$paradigm-index"/>
-          <xsl:with-param name="stem"
-                          select="$stem"/>
-          <xsl:with-param name="abbreviation"
-                          select="$abbreviation"/>
-          <xsl:with-param name="pos">INDEF</xsl:with-param>
-          <xsl:with-param name="class">Indef-kein</xsl:with-param>
-          <xsl:with-param name="etymology"
-                          select="$etymology"/>
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:when test="$lemma='keiner'"/>
-      <xsl:when test="$lemma='keines'"/>
       <!-- "welche" -->
       <xsl:when test="$gender='fem.' and
                       $lemma='welche'">

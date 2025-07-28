@@ -2,29 +2,6 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe>
-      <Schreibung hidx="1">ein</Schreibung>
-      <Grammatik>
-        <Wortklasse>unbestimmter Artikel</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>eine</Schreibung>
-      <Grammatik>
-        <Wortklasse>unbestimmter Artikel</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung hidx="1">ein</Schreibung>
-      <Grammatik>
-        <Wortklasse>unbestimmter Artikel</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>kein</Schreibung>
       <Grammatik>
         <Wortklasse>unbestimmter Artikel</Wortklasse>

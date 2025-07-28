@@ -1,6 +1,6 @@
 % infl.fst
-% Version 13.1
-% Andreas Nolda 2025-07-02
+% Version 13.2
+% Andreas Nolda 2025-07-25
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1356,24 +1356,6 @@ $ArtIndefSubstSuff$ = {<Subst><Masc><Nom><Sg><St>}:{<SB>er} | \
 $ArtIndefSuff$ = $ArtIndefAttrSuff$ | \
                  $ArtIndefSubstSuff$
 
-$IndefSuff-ein|St$ = $ArtIndefSubstSuff$
-
-$IndefSuff-ein|Wk$ = {<Subst><Masc><Nom><Sg><Wk>}:{<SB>e}  | \
-                     {<Subst><Masc><Acc><Sg><Wk>}:{<SB>en} | \
-                     {<Subst><Masc><Dat><Sg><Wk>}:{<SB>en} | \
-                     {<Subst><Masc><Gen><Sg><Wk>}:{<SB>en} | \
-                     {<Subst><Neut><Nom><Sg><Wk>}:{<SB>e}  | \
-                     {<Subst><Neut><Acc><Sg><Wk>}:{<SB>e}  | \
-                     {<Subst><Neut><Dat><Sg><Wk>}:{<SB>en} | \
-                     {<Subst><Neut><Gen><Sg><Wk>}:{<SB>en} | \
-                     {<Subst><Fem><Nom><Sg><Wk>}:{<SB>e}   | \
-                     {<Subst><Fem><Acc><Sg><Wk>}:{<SB>e}   | \
-                     {<Subst><Fem><Dat><Sg><Wk>}:{<SB>en}  | \
-                     {<Subst><Fem><Gen><Sg><Wk>}:{<SB>en}
-
-$IndefSuff-ein$ = $IndefSuff-ein|St$ | \
-                  $IndefSuff-ein|Wk$
-
 $ArtNegAttrSuff$ = $ArtIndefAttrSuff$                           | \
                    {<Attr><Masc><Gen><Sg><St><NonSt>}:{<SB>en}  | \ % cf. Duden-Grammatik (2016: § 356, 425)
                    {<Attr><Neut><Gen><Sg><St><NonSt>}:{<SB>en}  | \ % cf. Duden-Grammatik (2016: § 356, 425)
@@ -1390,8 +1372,6 @@ $ArtNegSubstSuff$ = $ArtIndefSubstSuff$                      | \
 
 $ArtNegSuff$ = $ArtNegAttrSuff$ | \
                $ArtNegSubstSuff$
-
-$IndefSuff-kein$ = $ArtNegSubstSuff$
 
 $PossSuff|St$ = $ArtNegSuff$
 
@@ -1423,6 +1403,16 @@ $IProSuff$ = {<Nom><Sg>}:{}       | \
              {<Dat><Sg>}:{<SB>em} | \
              {<Dat><Sg>}:{}       | \
              {<Gen><Sg>}:{<SB>es}
+
+$IProSuff-einer$ = {<Nom><Sg>}:{<SB>er} | \
+                   {<Acc><Sg>}:{<SB>en} | \
+                   {<Dat><Sg>}:{<SB>em} | \
+                   {<Gen><Sg>}:{<SB>es}
+
+$IProSuff-eine$ = {<Nom><Sg>}:{<SB>e}  | \
+                  {<Acc><Sg>}:{<SB>e}  | \
+                  {<Dat><Sg>}:{<SB>er} | \
+                  {<Gen><Sg>}:{<SB>er}
 
 $IProSuff-jedermann$ = {<Nom><Sg>}:{} | \
                        {<Acc><Sg>}:{} | \
@@ -1592,17 +1582,17 @@ $ArtIndef$ = $ArtIndefSuff$
 % 'n, 'ne (clitic article)
 $ArtIndef-n$ = $ArtIndefAttrSuff$ {<NonSt>}:{} % cf. Duden-Grammatik (2016: § 448)
 
-% einer, eine, eines (indefinite pronoun)
-$Indef-ein$ = $IndefSuff-ein$
-
 % irgendein, irgendeine
 $Indef-irgendein$ = $ArtIndefSuff$
 
 % kein, keine (article)
 $ArtNeg$ = $ArtNegSuff$
 
-% keiner, keine, keines (indefinite pronoun)
-$Indef-kein$ = $IndefSuff-kein$
+% einer; keiner (indefinite pronoun)
+$IPro-einer$ = {<Masc>}:{} $IProSuff-einer$
+
+% eine; keine (indefinite pronoun)
+$IPro-eine$ = {<Fem>}:{} $IProSuff-eine$
 
 % mein, meine
 $Poss$ = $PossSuff$
@@ -2720,17 +2710,17 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<Indef0>                  $Indef0$                 | \
          <>:<Indef-all>               $Indef-all$              | \
          <>:<Indef-beid>              $Indef-beid$             | \
-         <>:<Indef-ein>               $Indef-ein$              | \
          <>:<Indef-einig>             $Indef-einig$            | \
          <>:<Indef-irgendein>         $Indef-irgendein$        | \
          <>:<Indef-irgendwelch>       $Indef-irgendwelch$      | \
          <>:<Indef-jed>               $Indef-jed$              | \
          <>:<Indef-jeglich>           $Indef-jeglich$          | \
-         <>:<Indef-kein>              $Indef-kein$             | \
          <>:<Indef-manch>             $Indef-manch$            | \
          <>:<Indef-mehrer>            $Indef-mehrer$           | \
          <>:<Indef-saemtlich>         $Indef-saemtlich$        | \
          <>:<Indef-welch>             $Indef-welch$            | \
+         <>:<IPro-eine>               $IPro-eine$              | \
+         <>:<IPro-einer>              $IPro-einer$             | \
          <>:<IPro-frau>               $IPro-frau$              | \
          <>:<IPro-jedefrau>           $IPro-jedefrau$          | \
          <>:<IPro-jederfrau>          $IPro-jederfrau$         | \

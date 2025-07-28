@@ -1211,6 +1211,22 @@
     ),
     tuple(
       'Festsetzung',
+      'Fest<#>setzung<NN><Fem><Acc><Sg>',
+    ),
+    tuple(
+      'Festsetzung',
+      'Fest<#>setzung<NN><Fem><Dat><Sg>',
+    ),
+    tuple(
+      'Festsetzung',
+      'Fest<#>setzung<NN><Fem><Gen><Sg>',
+    ),
+    tuple(
+      'Festsetzung',
+      'Fest<#>setzung<NN><Fem><Nom><Sg>',
+    ),
+    tuple(
+      'Festsetzung',
       'Festsetzung<NN><Fem><Acc><Sg>',
     ),
     tuple(
@@ -3215,31 +3231,11 @@
     ),
     tuple(
       'eine',
-      'ein<~>e<INDEF><Subst><Neut><Acc><Sg><Wk>',
+      'ein<~>e<INDEF><Fem><Acc><Sg>',
     ),
     tuple(
       'eine',
-      'ein<~>e<INDEF><Subst><Neut><Nom><Sg><Wk>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Acc><Sg><Wk>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Acc><Sg><St>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Nom><Sg><Wk>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Nom><Sg><St>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Masc><Nom><Sg><Wk>',
+      'ein<~>e<INDEF><Fem><Nom><Sg>',
     ),
     tuple(
       'eine',
@@ -3959,31 +3955,11 @@
     ),
     tuple(
       'eine',
-      'ein<~>e<INDEF><Subst><Neut><Acc><Sg><Wk>',
+      'ein<~>e<INDEF><Fem><Acc><Sg>',
     ),
     tuple(
       'eine',
-      'ein<~>e<INDEF><Subst><Neut><Nom><Sg><Wk>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Acc><Sg><Wk>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Acc><Sg><St>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Nom><Sg><Wk>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Nom><Sg><St>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Masc><Nom><Sg><Wk>',
+      'ein<~>e<INDEF><Fem><Nom><Sg>',
     ),
     tuple(
       'eine',
@@ -4171,31 +4147,11 @@
     ),
     tuple(
       'eine',
-      'ein<~>e<INDEF><Subst><Neut><Acc><Sg><Wk>',
+      'ein<~>e<INDEF><Fem><Acc><Sg>',
     ),
     tuple(
       'eine',
-      'ein<~>e<INDEF><Subst><Neut><Nom><Sg><Wk>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Acc><Sg><Wk>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Acc><Sg><St>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Nom><Sg><Wk>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Fem><Nom><Sg><St>',
-    ),
-    tuple(
-      'eine',
-      'ein<~>e<INDEF><Subst><Masc><Nom><Sg><Wk>',
+      'ein<~>e<INDEF><Fem><Nom><Sg>',
     ),
     tuple(
       'eine',
@@ -4663,22 +4619,6 @@
     ),
     tuple(
       'eines',
-      'ein<~>e<INDEF><Subst><Neut><Acc><Sg><St>',
-    ),
-    tuple(
-      'eines',
-      'ein<~>e<INDEF><Subst><Neut><Gen><Sg><St>',
-    ),
-    tuple(
-      'eines',
-      'ein<~>e<INDEF><Subst><Neut><Nom><Sg><St>',
-    ),
-    tuple(
-      'eines',
-      'ein<~>e<INDEF><Subst><Masc><Gen><Sg><St>',
-    ),
-    tuple(
-      'eines',
       'ein<~>e<CARD><Subst><Neut><Acc><Sg><St>',
     ),
     tuple(
@@ -4724,6 +4664,10 @@
     tuple(
       'eines',
       'ein<~>e<ART><Indef><Attr><Masc><Gen><Sg><St>',
+    ),
+    tuple(
+      'eines',
+      'ein<~>er<INDEF><Masc><Gen><Sg>',
     ),
     tuple(
       'Unfallschadens',
@@ -13409,155 +13353,155 @@
       'ArtIndef, ArtIndef-n',
       'eine',
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Fem><Acc><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Fem><Acc><Sg><St>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Fem><Acc><Sg><St><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Fem><Acc><Sg><St><NonSt>',
         '’ne',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Fem><Dat><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Fem><Dat><Sg><St>',
         'einer',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Fem><Dat><Sg><St><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Fem><Dat><Sg><St><NonSt>',
         '’ner',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Fem><Gen><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Fem><Gen><Sg><St>',
         'einer',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Fem><Gen><Sg><St><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Fem><Gen><Sg><St><NonSt>',
         '’ner',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Fem><Nom><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Fem><Nom><Sg><St>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Fem><Nom><Sg><St><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Fem><Nom><Sg><St><NonSt>',
         '’ne',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Masc><Acc><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Masc><Acc><Sg><St>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Masc><Acc><Sg><St><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Masc><Acc><Sg><St><NonSt>',
         '’nen',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Masc><Dat><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Masc><Dat><Sg><St>',
         'einem',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Masc><Dat><Sg><St><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Masc><Dat><Sg><St><NonSt>',
         '’nem',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Masc><Gen><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Masc><Gen><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Masc><Gen><Sg><St><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Masc><Gen><Sg><St><NonSt>',
         '’nes',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Masc><Nom><Sg><UnmInfl>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Masc><Nom><Sg><UnmInfl>',
         'ein',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Masc><Nom><Sg><UnmInfl><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Masc><Nom><Sg><UnmInfl><NonSt>',
         '’n',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Neut><Acc><Sg><UnmInfl>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Neut><Acc><Sg><UnmInfl>',
         'ein',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Neut><Acc><Sg><UnmInfl><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Neut><Acc><Sg><UnmInfl><NonSt>',
         '’n',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Neut><Dat><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Neut><Dat><Sg><St>',
         'einem',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Neut><Dat><Sg><St><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Neut><Dat><Sg><St><NonSt>',
         '’nem',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Neut><Gen><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Neut><Gen><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Neut><Gen><Sg><St><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Neut><Gen><Sg><St><NonSt>',
         '’nes',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Neut><Nom><Sg><UnmInfl>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Neut><Nom><Sg><UnmInfl>',
         'ein',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Attr><Neut><Nom><Sg><UnmInfl><NonSt>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Attr><Neut><Nom><Sg><UnmInfl><NonSt>',
         '’n',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Fem><Acc><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Fem><Acc><Sg><St>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Fem><Dat><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Fem><Dat><Sg><St>',
         'einer',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Fem><Gen><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Fem><Gen><Sg><St>',
         'einer',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Fem><Nom><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Fem><Nom><Sg><St>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Masc><Acc><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Masc><Acc><Sg><St>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Masc><Dat><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Masc><Dat><Sg><St>',
         'einem',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Masc><Gen><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Masc><Gen><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Masc><Nom><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Masc><Nom><Sg><St>',
         'einer',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Neut><Acc><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Neut><Acc><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Neut><Acc><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Neut><Acc><Sg><St>',
         'eins',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Neut><Dat><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Neut><Dat><Sg><St>',
         'einem',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Neut><Gen><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Neut><Gen><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Neut><Nom><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Neut><Nom><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><ART><Indef><Subst><Neut><Nom><Sg><St>',
+        'ein<~>e<IDX1><PAR2><ART><Indef><Subst><Neut><Nom><Sg><St>',
         'eins',
       ),
     ),
@@ -13715,203 +13659,203 @@
       'Card-ein',
       'eine',
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Fem><Acc><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Fem><Acc><Sg><St>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Fem><Acc><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Fem><Acc><Sg><Wk>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Fem><Dat><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Fem><Dat><Sg><St>',
         'einer',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Fem><Dat><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Fem><Dat><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Fem><Gen><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Fem><Gen><Sg><St>',
         'einer',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Fem><Gen><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Fem><Gen><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Fem><Nom><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Fem><Nom><Sg><St>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Fem><Nom><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Fem><Nom><Sg><Wk>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Masc><Acc><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Masc><Acc><Sg><St>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Masc><Acc><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Masc><Acc><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Masc><Dat><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Masc><Dat><Sg><St>',
         'einem',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Masc><Dat><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Masc><Dat><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Masc><Gen><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Masc><Gen><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Masc><Gen><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Masc><Gen><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Masc><Nom><Sg><UnmInfl>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Masc><Nom><Sg><UnmInfl>',
         'ein',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Masc><Nom><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Masc><Nom><Sg><Wk>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Neut><Acc><Sg><UnmInfl>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Neut><Acc><Sg><UnmInfl>',
         'ein',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Neut><Acc><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Neut><Acc><Sg><Wk>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Neut><Dat><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Neut><Dat><Sg><St>',
         'einem',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Neut><Dat><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Neut><Dat><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Neut><Gen><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Neut><Gen><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Neut><Gen><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Neut><Gen><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Neut><Nom><Sg><UnmInfl>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Neut><Nom><Sg><UnmInfl>',
         'ein',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Attr><Neut><Nom><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Attr><Neut><Nom><Sg><Wk>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Fem><Acc><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Fem><Acc><Sg><St>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Fem><Acc><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Fem><Acc><Sg><Wk>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Fem><Dat><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Fem><Dat><Sg><St>',
         'einer',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Fem><Dat><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Fem><Dat><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Fem><Gen><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Fem><Gen><Sg><St>',
         'einer',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Fem><Gen><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Fem><Gen><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Fem><Nom><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Fem><Nom><Sg><St>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Fem><Nom><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Fem><Nom><Sg><Wk>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Masc><Acc><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Masc><Acc><Sg><St>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Masc><Acc><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Masc><Acc><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Masc><Dat><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Masc><Dat><Sg><St>',
         'einem',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Masc><Dat><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Masc><Dat><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Masc><Gen><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Masc><Gen><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Masc><Gen><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Masc><Gen><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Masc><Nom><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Masc><Nom><Sg><St>',
         'einer',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Masc><Nom><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Masc><Nom><Sg><Wk>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Neut><Acc><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Neut><Acc><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Neut><Acc><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Neut><Acc><Sg><St>',
         'eins',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Neut><Acc><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Neut><Acc><Sg><Wk>',
         'eine',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Neut><Dat><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Neut><Dat><Sg><St>',
         'einem',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Neut><Dat><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Neut><Dat><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Neut><Gen><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Neut><Gen><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Neut><Gen><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Neut><Gen><Sg><Wk>',
         'einen',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Neut><Nom><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Neut><Nom><Sg><St>',
         'eines',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Neut><Nom><Sg><St>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Neut><Nom><Sg><St>',
         'eins',
       ),
       tuple(
-        'ein<~>e<PAR2><CARD><Subst><Neut><Nom><Sg><Wk>',
+        'ein<~>e<IDX3><PAR2><CARD><Subst><Neut><Nom><Sg><Wk>',
         'eine',
       ),
     ),
@@ -14921,6 +14865,48 @@
     ),
     tuple(
       'INDEF',
+      'IPro-eine',
+      'eine',
+      tuple(
+        'ein<~>e<IDX2><PAR2><INDEF><Fem><Acc><Sg>',
+        'eine',
+      ),
+      tuple(
+        'ein<~>e<IDX2><PAR2><INDEF><Fem><Dat><Sg>',
+        'einer',
+      ),
+      tuple(
+        'ein<~>e<IDX2><PAR2><INDEF><Fem><Gen><Sg>',
+        'einer',
+      ),
+      tuple(
+        'ein<~>e<IDX2><PAR2><INDEF><Fem><Nom><Sg>',
+        'eine',
+      ),
+    ),
+    tuple(
+      'INDEF',
+      'IPro-einer',
+      'einer',
+      tuple(
+        'ein<~>er<PAR1><INDEF><Masc><Acc><Sg>',
+        'einen',
+      ),
+      tuple(
+        'ein<~>er<PAR1><INDEF><Masc><Dat><Sg>',
+        'einem',
+      ),
+      tuple(
+        'ein<~>er<PAR1><INDEF><Masc><Gen><Sg>',
+        'eines',
+      ),
+      tuple(
+        'ein<~>er<PAR1><INDEF><Masc><Nom><Sg>',
+        'einer',
+      ),
+    ),
+    tuple(
+      'INDEF',
       'IPro-frau',
       'frau',
       tuple(
@@ -15337,115 +15323,6 @@
       tuple(
         'beid<~>e<INDEF><Subst><UnmGend><Nom><Pl><Wk>',
         'beiden',
-      ),
-    ),
-    tuple(
-      'INDEF',
-      'Indef-ein',
-      'eine',
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Fem><Acc><Sg><St>',
-        'eine',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Fem><Acc><Sg><Wk>',
-        'eine',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Fem><Dat><Sg><St>',
-        'einer',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Fem><Dat><Sg><Wk>',
-        'einen',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Fem><Gen><Sg><St>',
-        'einer',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Fem><Gen><Sg><Wk>',
-        'einen',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Fem><Nom><Sg><St>',
-        'eine',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Fem><Nom><Sg><Wk>',
-        'eine',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Masc><Acc><Sg><St>',
-        'einen',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Masc><Acc><Sg><Wk>',
-        'einen',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Masc><Dat><Sg><St>',
-        'einem',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Masc><Dat><Sg><Wk>',
-        'einen',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Masc><Gen><Sg><St>',
-        'eines',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Masc><Gen><Sg><Wk>',
-        'einen',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Masc><Nom><Sg><St>',
-        'einer',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Masc><Nom><Sg><Wk>',
-        'eine',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Neut><Acc><Sg><St>',
-        'eines',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Neut><Acc><Sg><St>',
-        'eins',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Neut><Acc><Sg><Wk>',
-        'eine',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Neut><Dat><Sg><St>',
-        'einem',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Neut><Dat><Sg><Wk>',
-        'einen',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Neut><Gen><Sg><St>',
-        'eines',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Neut><Gen><Sg><Wk>',
-        'einen',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Neut><Nom><Sg><St>',
-        'eines',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Neut><Nom><Sg><St>',
-        'eins',
-      ),
-      tuple(
-        'ein<~>e<PAR2><INDEF><Subst><Neut><Nom><Sg><Wk>',
-        'eine',
       ),
     ),
     tuple(
@@ -16279,83 +16156,6 @@
       tuple(
         'jeglich<~>e<PAR2><INDEF><Subst><UnmGend><Nom><Pl><St>',
         'jegliche',
-      ),
-    ),
-    tuple(
-      'INDEF',
-      'Indef-kein',
-      'keine',
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Fem><Acc><Sg><St>',
-        'keine',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Fem><Dat><Sg><St>',
-        'keiner',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Fem><Gen><Sg><St>',
-        'keiner',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Fem><Nom><Sg><St>',
-        'keine',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Masc><Acc><Sg><St>',
-        'keinen',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Masc><Dat><Sg><St>',
-        'keinem',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Masc><Gen><Sg><St>',
-        'keines',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Masc><Nom><Sg><St>',
-        'keiner',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Neut><Acc><Sg><St>',
-        'keines',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Neut><Acc><Sg><St>',
-        'keins',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Neut><Dat><Sg><St>',
-        'keinem',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Neut><Gen><Sg><St>',
-        'keines',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Neut><Nom><Sg><St>',
-        'keines',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><Neut><Nom><Sg><St>',
-        'keins',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><UnmGend><Acc><Pl><St>',
-        'keine',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><UnmGend><Dat><Pl><St>',
-        'keinen',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><UnmGend><Gen><Pl><St>',
-        'keiner',
-      ),
-      tuple(
-        'kein<~>e<PAR2><INDEF><Subst><UnmGend><Nom><Pl><St>',
-        'keine',
       ),
     ),
     tuple(

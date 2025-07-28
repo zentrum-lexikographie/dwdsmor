@@ -152,7 +152,7 @@
         <Wortklasse>Reflexivpronomen</Wortklasse>
       </Grammatik>
     </Formangabe>
-  </Artikel><!-- currently Red-2 -->
+  </Artikel>
   <Artikel>
     <Formangabe>
       <Schreibung>du</Schreibung>
@@ -189,29 +189,6 @@
       <Schreibung>ebensolches</Schreibung>
       <Grammatik>
         <Wortklasse>Demonstrativpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung hidx="1">ein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Indefinitpronomen</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>eine</Schreibung>
-      <Grammatik>
-        <Wortklasse>Indefinitpronomen</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung hidx="1">ein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>
@@ -353,15 +330,6 @@
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
         <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>genug</Schreibung>
-      <Grammatik>
-        <Wortklasse>Indefinitpronomen</Wortklasse>
-        <indeklinabel/>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -537,7 +505,7 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>kein</Schreibung>
+      <Schreibung>keiner</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>mask.</Genus>
@@ -548,13 +516,6 @@
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>kein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Indefinitpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>
   </Artikel>

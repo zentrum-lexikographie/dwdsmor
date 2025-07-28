@@ -24,29 +24,6 @@
       </Grammatik>
     </Formangabe>
   </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung hidx="1">ein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahlwort</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>eine</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahlwort</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung hidx="1">ein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Kardinalzahlwort</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
   <!-- <Artikel>
     <Formangabe>
       <Schreibung>kein</Schreibung>

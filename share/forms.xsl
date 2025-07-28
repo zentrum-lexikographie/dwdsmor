@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 7.2 -->
-<!-- Andreas Nolda 2025-06-02 -->
+<!-- Version 7.3 -->
+<!-- Andreas Nolda 2025-07-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -66,6 +66,12 @@
       <xsl:value-of select="$form"/>
     </xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<!-- stems of masculine adjectival words -->
+<xsl:template name="masculine-stem">
+  <xsl:param name="lemma"/>
+  <xsl:value-of select="replace($lemma,'er$','')"/>
 </xsl:template>
 
 <!-- stems of feminine adjectival words -->

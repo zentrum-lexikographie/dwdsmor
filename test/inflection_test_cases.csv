@@ -37,6 +37,8 @@ DEM,Dem-solch,solche
 DEM,Dem0,dergleichen
 DEM,DemDef,die
 FRAC,Frac0,anderthalb
+INDEF,IPro-eine,eine
+INDEF,IPro-einer,einer
 INDEF,IPro-frau,frau
 INDEF,IPro-jedefrau,jedefrau
 INDEF,IPro-jedermann,jedermann
@@ -49,13 +51,11 @@ INDEF,IProNeut,etwas
 INDEF,"IProNeutNomSg, IProNeutAccSg, IProNeutDatSg, IProNeutGenSg",was
 INDEF,Indef-all,alle
 INDEF,Indef-beid,beide
-INDEF,Indef-ein,eine
 INDEF,Indef-einig,einige
 INDEF,Indef-irgendein,irgendeine
 INDEF,Indef-irgendwelch,irgendwelche
 INDEF,Indef-jed,jede
 INDEF,Indef-jeglich,jegliche
-INDEF,Indef-kein,keine
 INDEF,Indef-manch,manche
 INDEF,Indef-mehrer,mehrere
 INDEF,Indef-saemtlich,sämtliche
