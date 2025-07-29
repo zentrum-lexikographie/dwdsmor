@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.11.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.10.0...v0.11.0) (2025-07-29)
+
+
+### Features
+
+* add support for conversion of ordinals ([5744767](https://github.com/zentrum-lexikographie/dwdsmor/commit/5744767063ea0650c1b86f096fc3f22aca9a8321))
+* add support for ordinal compounding ([7c6f1da](https://github.com/zentrum-lexikographie/dwdsmor/commit/7c6f1da486098c0d6f2b700ad4f24b2d03bbc846))
+* add support for ordinal derivation by means of "(s)t"-suffixation ([c977d30](https://github.com/zentrum-lexikographie/dwdsmor/commit/c977d30b4d949e2647768f9a33c1d94a8acc4043))
+* add support for the formation of "millionste" and related numerals ([d140bab](https://github.com/zentrum-lexikographie/dwdsmor/commit/d140bab11cd3391e1b694c4e3744acaf89464b1d))
+* add support for the formation of fractional numerals ([7095bf3](https://github.com/zentrum-lexikographie/dwdsmor/commit/7095bf32a9d133fb0e7ac1d9daa1e2cfb57c8348))
+
 ## [0.10.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.9.0...v0.10.0) (2025-07-11)
 
 
