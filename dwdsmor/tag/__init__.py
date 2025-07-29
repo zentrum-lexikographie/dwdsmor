@@ -99,6 +99,7 @@ tag_values = {
             "suff(chen)",
             "suff(lein)",
             "suff(st)",
+            "suff(stel)",
             "suff(zig)",
         },
     },

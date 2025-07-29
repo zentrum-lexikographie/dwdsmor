@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 18.2 -->
-<!-- Andreas Nolda 2025-07-15 -->
+<!-- Version 18.3 -->
+<!-- Andreas Nolda 2025-07-28 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -727,7 +727,7 @@
                                 select="$etymology"/>
               </xsl:call-template>
             </xsl:when>
-            <!-- fractions -->
+            <!-- fractional numerals -->
             <xsl:when test="$pos='Bruchzahlwort'">
               <xsl:call-template name="fraction-entry-set">
                 <xsl:with-param name="lemma"
@@ -2582,6 +2582,22 @@
                         </xsl:choose>
                       </xsl:variable>
                       <xsl:if test="string-length($der-stem)&gt;0">
+                        <!-- suffixes -->
+                        <xsl:variable name="suffs"
+                                      as="item()*">
+                          <xsl:choose>
+                            <!-- "-st" -->
+                            <xsl:when test="$lemma1='zwei'">
+                              <!-- normalise to "-st" -->
+                              <xsl:sequence select="'st'"/>
+                            </xsl:when>
+                            <!-- ... -->
+                            <xsl:otherwise>
+                              <!-- also used for "-stel" -->
+                              <xsl:sequence select="'st','stel'"/>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:variable>
                         <xsl:call-template name="cardinal-der-entry-set">
                           <xsl:with-param name="lemma"
                                           select="$lemma1"/>
@@ -2589,7 +2605,8 @@
                                           select="$der-stem"/>
                           <xsl:with-param name="abbreviation"
                                           select="$abbreviation1"/>
-                          <xsl:with-param name="suffs">st</xsl:with-param>
+                          <xsl:with-param name="suffs"
+                                          select="$suffs"/>
                           <xsl:with-param name="etymology"
                                           select="$etymology1"/>
                         </xsl:call-template>

@@ -1,6 +1,6 @@
 % num.fst
-% Version 2.2
-% Andreas Nolda 2025-07-18
+% Version 2.3
+% Andreas Nolda 2025-07-28
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -44,7 +44,8 @@ $CARD1b$   = eins | zwei | drei | vier | fünf | sechs | sieben | acht | neun
 $CARD1c$   = ein  | zwei | drei | vier | fünf | sechs | sieben | acht | neun
 $CARD2a$   =        zwei | drit | vier | fünf | sechs | sieb   | acht | neun
 $CARD2b$   =        zwan | drei | vier | fünf | sech  | sieb   | acht | neun
-$CARD3$    =               drei | vier | fünf | sech  | sieb   | acht | neun
+$CARD3a$   =               drei | vier | fünf | sech  | sieb   | acht | neun
+$CARD3b$   =               drit | vier | fünf | sechs | sieb   | acht | neun
 $CARD10$   = zehn
 $CARD11$   = elf | zwölf
 $CARD100$  = hundert
@@ -70,6 +71,9 @@ $BaseStemFilterCard10$ = <Stem> $CARD10$ $I$* <CARD> <base> <native> $C$
 % final basis in ordinal compounds like "sechzehnte"
 $BaseStemFilterOrd10$ = <Stem> $CARD10$ $I$* <CARD> <der> <-st> <native> <DB> ^$DerSuff-st$
 
+% final basis in fractional compounds like "sechzehnte"
+$BaseStemFilterFrac10$ = <Stem> $CARD10$ $I$* <CARD> <der> <-stel> <native> <DB> ^$DerSuff-stel$
+
 % final basis in (uninflected) cardinal compounds like "hundertelf" and "hundertundelf"
 $BaseStemFilterCard11$ = <Stem> $CARD11$ $I$* <CARD> <base> <native> $C$
 
@@ -79,11 +83,17 @@ $BaseStemFilterCard100$ = <Stem> $CARD100$ $I$* <CARD> <base> <native> $C$
 % final basis in ordinal compounds like "einhundertste"
 $BaseStemFilterOrd100$ = <Stem> $CARD100$ $I$* <CARD> <der> <-st> <native> <DB> ^$DerSuff-st$
 
+% final basis in fractional compounds like "einhundertstel"
+$BaseStemFilterFrac100$ = <Stem> $CARD100$ $I$* <CARD> <der> <-stel> <native> <DB> ^$DerSuff-stel$
+
 % final basis in cardinal compounds like "eintausend"
 $BaseStemFilterCard1000$ = <Stem> $CARD1000$ $I$* <CARD> <base> <native> $C$
 
 % final basis in ordinal compounds like "eintausendste"
 $BaseStemFilterOrd1000$ = <Stem> $CARD1000$ $I$* <CARD> <der> <-st> <native> <DB> ^$DerSuff-st$
+
+% final basis in fractional compounds like "eintausendstel"
+$BaseStemFilterFrac1000$ = <Stem> $CARD1000$ $I$* <CARD> <der> <-stel> <native> <DB> ^$DerSuff-stel$
 
 % bases in derived cardinals like "sechzig"
 $DerStemFilterCard2-zig$ = <Stem> $CARD2b$ <CARD> <der> <-zig> <native>
@@ -91,20 +101,32 @@ $DerStemFilterCard2-zig$ = <Stem> $CARD2b$ <CARD> <der> <-zig> <native>
 % bases in derived ordinals like "sechste"
 $DerStemFilterCard2-st$ = <Stem> $CARD2a$ <CARD> <der> <-st> <native>
 
+% bases in derived fractional numerals like "sechstel"
+$DerStemFilterCard3-stel$ = <Stem> $CARD3b$ <CARD> <der> <-stel> <native>
+
 % bases in derived ordinals like "zehnte"
 $DerStemFilterCard10-st$ = <Stem> ($CARD10$ | $CARD11$) <CARD> <der> <-st> <native>
 
-% bases in derived ordinals like "hunderste"
+% bases in derived fractional numerals like "zehntel"
+$DerStemFilterCard10-stel$ = <Stem> ($CARD10$ | $CARD11$) <CARD> <der> <-stel> <native>
+
+% bases in derived ordinals like "hundertste"
 $DerStemFilterCard100-st$ = <Stem> $CARD100$ <CARD> <der> <-st> <native>
+
+% bases in derived ordinals like "hundertstel"
+$DerStemFilterCard100-stel$ = <Stem> $CARD100$ <CARD> <der> <-stel> <native>
 
 % bases in derived ordinals like "tausendste"
 $DerStemFilterCard1000-st$ = <Stem> $CARD1000$ <CARD> <der> <-st> <native>
+
+% bases in derived fractional numerals like "tausendste"
+$DerStemFilterCard1000-stel$ = <Stem> $CARD1000$ <CARD> <der> <-stel> <native>
 
 % initial bases in cardinal compounds like "einundsechzig" and "einhundert"
 $CompStemFilterCard1c$ = <Stem> $CARD1c$ <CARD> <comp> <native>
 
 % initial bases in cardinal compounds like "sechzehn"
-$CompStemFilterCard3$  = <Stem> $CARD3$  <CARD> <comp> <native>
+$CompStemFilterCard3$ = <Stem> $CARD3a$ <CARD> <comp> <native>
 
 % initial bases in cardinal compounds like "hunderteins" and "hundertundeins"
 $CompStemFilterCard100$ = <Stem> $CARD100$ <CARD> <comp> <native>

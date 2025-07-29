@@ -1,6 +1,6 @@
 % stemtype.fst
-% Version 6.5
-% Andreas Nolda 2025-07-18
+% Version 6.6
+% Andreas Nolda 2025-07-28
 
 #include "symbols.fst"
 
@@ -21,9 +21,10 @@ $DerStemFilterSuff-chen$ = <Stem> .* <der> <-chen> $C$*
 $DerStemFilterSuff-lein$ = <Stem> .* <der> <-lein> $C$*
 $DerStemFilterSuff-zig$  = <Stem> .* <der> <-zig>  $C$*
 
-$BaseStemFilterV$   = (<Pref> .*)? <Stem> .* <V>   <base> $C$*
-$BaseStemFilterADJ$ = (<Pref> .*)? <Stem> .* <ADJ> <base> $C$*
-$BaseStemFilterORD$ =              <Stem> .* <ORD> <base> $C$*
+$BaseStemFilterV$   = (<Pref> .*)? <Stem> .* <V>    <base> $C$*
+$BaseStemFilterAdj$ = (<Pref> .*)? <Stem> .* <ADJ>  <base> $C$*
+$BaseStemFilterOrd$ =              <Stem> .* <ORD>  <base> $C$*
+$BaseStemFilterFrac$ =             <Stem> .* <FRAC> <base> $C$*
 
 ALPHABET = [#char# #boundary-trigger#]
 
@@ -38,8 +39,9 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #index# \
 $C$ = .
 $C$ = $C$-[#stem-type#]
 
-$Base2CompStem$   = .* <base>:<comp>         $C$*
-$Base2DerStem-st$ = .* <base>:<der> <>:<-st> $C$*
+$Base2CompStem$     = .* <base>:<comp>           $C$*
+$Base2DerStem-st$   = .* <base>:<der> <>:<-st>   $C$*
+$Base2DerStem-stel$ = .* <base>:<der> <>:<-stel> $C$*
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #index# \
             #pos# #subcat# #wf# #stem-type# #suff# #origin# <Abbr>]
@@ -47,8 +49,9 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #boundary-trigger# #index# \
 $C$ = .
 $C$ = $C$-[#stem-type#]
 
-$Base2CompStemLv2$   = .* <comp>:<base>         $C$*
-$Base2DerStem-stLv2$ = .* <der>:<base> <-st>:<> $C$*
+$Base2CompStemLv2$     = .* <comp>:<base>         $C$*
+$Base2DerStem-stLv2$   = .* <der>:<base> <-st>:<> $C$*
+$Base2DerStem-stelLv2$ = .* <der>:<base> <-stel>:<> $C$*
 
 ALPHABET = [#char# #surface-trigger# #boundary-trigger# #index# #pos# #subcat# \
             #wf# #stem-type# #suff# #origin# #degree# #function# #auxiliary#]
@@ -60,10 +63,12 @@ $BaseStemFilterVInfNonClLv2$ = (.* <Pref> .*)? <Stem> .* <V> $C$* <Inf><NonCl> $
 $BaseStemFilterVPartPresLv2$ = (.* <Pref> .*)? <Stem> .* <V> $C$* <Part><Pres> $C$*
 $BaseStemFilterVPartPerfLv2$ = (.* <Pref> .*)? <Stem> .* <V> $C$* <Part><Perf> $C$*
 
-$BaseStemFilterADJMascLv2$ = (.* <Pref> .*)? <Stem> .* <ADJ> $C$* <Masc><Nom><Sg><Wk> $C$*
-$BaseStemFilterADJFemLv2$  = (.* <Pref> .*)? <Stem> .* <ADJ> $C$* <Fem><Nom><Sg><Wk>  $C$*
-$BaseStemFilterADJNeutLv2$ = (.* <Pref> .*)? <Stem> .* <ADJ> $C$* <Neut><Nom><Sg><Wk> $C$*
+$BaseStemFilterAdjMascLv2$ = (.* <Pref> .*)? <Stem> .* <ADJ> $C$* <Attr/Subst><Masc><Nom><Sg><Wk> $C$*
+$BaseStemFilterAdjFemLv2$  = (.* <Pref> .*)? <Stem> .* <ADJ> $C$* <Attr/Subst><Fem><Nom><Sg><Wk>  $C$*
+$BaseStemFilterAdjNeutLv2$ = (.* <Pref> .*)? <Stem> .* <ADJ> $C$* <Attr/Subst><Neut><Nom><Sg><Wk> $C$*
 
-$BaseStemFilterORDMascLv2$ = (<Stem> .* (<Suff> .*)? (<Intf> .*)?)* <Stem> .* (<Suff> .*)* <ORD> $C$* <Masc><Nom><Sg><Wk> $C$*
-$BaseStemFilterORDFemLv2$  = (<Stem> .* (<Suff> .*)? (<Intf> .*)?)* <Stem> .* (<Suff> .*)* <ORD> $C$* <Fem><Nom><Sg><Wk>  $C$*
-$BaseStemFilterORDNeutLv2$ = (<Stem> .* (<Suff> .*)? (<Intf> .*)?)* <Stem> .* (<Suff> .*)* <ORD> $C$* <Neut><Nom><Sg><Wk> $C$*
+$BaseStemFilterOrdMascLv2$ = (<Stem> .* (<Suff> .*)? (<Intf> .*)?)* <Stem> .* (<Suff> .*)* <ORD> $C$* <Attr/Subst><Masc><Nom><Sg><Wk> $C$*
+$BaseStemFilterOrdFemLv2$  = (<Stem> .* (<Suff> .*)? (<Intf> .*)?)* <Stem> .* (<Suff> .*)* <ORD> $C$* <Attr/Subst><Fem><Nom><Sg><Wk>  $C$*
+$BaseStemFilterOrdNeutLv2$ = (<Stem> .* (<Suff> .*)? (<Intf> .*)?)* <Stem> .* (<Suff> .*)* <ORD> $C$* <Attr/Subst><Neut><Nom><Sg><Wk> $C$*
+
+$BaseStemFilterFracLv2$ = (<Stem> .* (<Suff> .*)? (<Intf> .*)?)* <Stem> .* (<Suff> .*)* <DER> <suff(stel)> <Suff> <s>tel <FRAC> $C$* <Subst><UnmGend><UnmCase><Pl><UnmInfl> $C$*

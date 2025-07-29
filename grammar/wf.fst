@@ -1,6 +1,6 @@
 % wf.fst
-% Version 13.3
-% Andreas Nolda 2025-07-18
+% Version 13.4
+% Andreas Nolda 2025-07-28
 
 #include "symbols.fst"
 
@@ -11,9 +11,10 @@ $ConvPartPres$   = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPosAtt
 $ConvPartPerf_t$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPos>     % cf. Duden-Grammatik (2016: § 508)
 $ConvPartPerf_n$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPos-en>  % cf. Duden-Grammatik (2016: § 508)
 $ConvPartPerf_d$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPosPred>
-$ConvMasc$       = <CONV>:<> <ident|Masc>:<> <NN>  <base> <native> <>:<del(-e)><>:<NMasc-Adj>
-$ConvNeut$       = <CONV>:<> <ident|Neut>:<> <NN>  <base> <native> <>:<del(-e)><>:<NNeut-Adj|Sg>
-$ConvFem$        = <CONV>:<> <ident|Fem>:<>  <NN>  <base> <native> <>:<del(-e)><>:<NFem-Adj>
+$ConvAdjMasc$    = <CONV>:<> <ident|Masc>:<> <NN>  <base> <native> <>:<del(-e)><>:<NMasc-Adj>
+$ConvAdjNeut$    = <CONV>:<> <ident|Neut>:<> <NN>  <base> <native> <>:<del(-e)><>:<NNeut-Adj|Sg>
+$ConvAdjFem$     = <CONV>:<> <ident|Fem>:<>  <NN>  <base> <native> <>:<del(-e)><>:<NFem-Adj>
+$ConvFracNeut$   = <CONV>:<> <ident|Neut>:<> <NN>  <base> <native> <>:<NNeut_s_0_n>
 % ...
 
 $DerSuff-e$    = <DER>:<> <suff(e)>:<>    <Suff> e    <NN> <base> <native> <>:<NMasc_n_n_0>
@@ -21,7 +22,8 @@ $DerSuff-er$   = <DER>:<> <suff(er)>:<>   <Suff> er   <NN> <base> <native> <>:<N
 $DerSuff-chen$ = <DER>:<> <suff(chen)>:<> <Suff> chen <NN> <base> <native> <>:<NNeut_s_0_0>
 $DerSuff-lein$ = <DER>:<> <suff(lein)>:<> <Suff> lein <NN> <base> <native> <>:<NNeut_s_0_0>
 $DerSuff-st$   = <DER>:<> <suff(st)>:<>   <Suff> <s>t<SB>:<>e:<> <ORD> <base> <native> <>:<Ord>
-$DerSuff-zig$  = <DER>:<> <suff(zig)>:<>  <Suff> <z>ig <CARD> <base> <native> <>:<Card0>
+$DerSuff-stel$ = <DER>:<> <suff(stel)>:<> <Suff> <s>tel <FRAC> <base> <native> <>:<Frac0>
+$DerSuff-zig$  = <DER>:<> <suff(zig)>:<>  <Suff> <z>ig  <CARD> <base> <native> <>:<Card0>
 % ...
 
 $DerPref-un$ = <DER>:<> <pref(un)>:<> <Pref> un
@@ -129,10 +131,14 @@ $Suff$ =        <DB> <Suff> $C$*
 % restrict suff(st) to cardinal bases
 $DerRestrNumPOSSuff-st$ = <Stem> $C$* <CARD> $C$* $Suff$? <DB> ^$DerSuff-st$
 
+% restrict suff(stel) to cardinal bases
+$DerRestrNumPOSSuff-stel$ = <Stem> $C$* <CARD> $C$* $Suff$? <DB> ^$DerSuff-stel$
+
 % restrict suff(zig) to cardinal bases
 $DerRestrNumPOSSuff-zig$ = <Stem> $C$* <CARD> $C$* <DB> ^$DerSuff-zig$
 
-$DerRestrNumPOS$ = $DerRestrNumPOSSuff-st$ | \
+$DerRestrNumPOS$ = $DerRestrNumPOSSuff-st$   | \
+                   $DerRestrNumPOSSuff-stel$ | \
                    $DerRestrNumPOSSuff-zig$
 
 $DerNumFilter$ = $DerRestrNumPOS$
@@ -235,10 +241,11 @@ $DerFilter$ = $DerRestrPOS$ & $DerRestrAbbr$
 
 % compounding restrictions
 
-% restrict cardinal and ordinal compounds to cardinal initial or intermediate bases
-$CompNumRestrPOS$ = (<Stem> $C$* $Suff$*  <CARD>       $C$* <IB> ^$Comp-und$    <CB> | \
-                     <Stem> $C$* $Suff$*  <CARD>       $C$*      ^$Comp-concat$ <CB>)+ \
-                     <Stem> $C$* $Suff$* [<CARD><ORD>] $C$*
+% restrict cardinal ordinal, and fractional compounds
+% to cardinal initial or intermediate bases
+$CompNumRestrPOS$ = (<Stem> $C$* $Suff$*  <CARD>             $C$* <IB> ^$Comp-und$    <CB> | \
+                     <Stem> $C$* $Suff$*  <CARD>             $C$*      ^$Comp-concat$ <CB>)+ \
+                     <Stem> $C$* $Suff$* [<CARD><ORD><FRAC>] $C$*
 
 $CompNumFilter$ = $CompNumRestrPOS$
 

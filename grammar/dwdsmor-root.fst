@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 15.4
-% Andreas Nolda 2025-07-18
+% Version 15.5
+% Andreas Nolda 2025-07-28
 
 #include "symbols.fst"
 #include "num.fst"
@@ -55,22 +55,36 @@ $DerBaseStemsCard20$ = $DerStemsCard2-zig$ <DB> $DerSuff-zig$ || $DerNumFilter$
 
 $CompStemsCard20$ = $Base2CompStemLv2$ || $DerBaseStemsCard20$ || $Base2CompStem$
 
-$DerStemsCard20-st$ = $Base2DerStem-stLv2$ || $DerBaseStemsCard20$ || $Base2DerStem-st$
+$DerStemsCard20-st$   = $Base2DerStem-stLv2$ || $DerBaseStemsCard20$ || $Base2DerStem-st$
+$DerStemsCard20-stel$ = $Base2DerStem-stelLv2$ || $DerBaseStemsCard20$ || $Base2DerStem-stel$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStemsCard20$
 
-$DerStemsCard2-st$    = $DerStems$ || $DerStemFilterCard2-st$
-$DerStemsCard10-st$   = $DerStems$ || $DerStemFilterCard10-st$
-$DerStemsCard100-st$  = $DerStems$ || $DerStemFilterCard100-st$
-$DerStemsCard1000-st$ = $DerStems$ || $DerStemFilterCard1000-st$
+$DerStemsCard2-st$      = $DerStems$ || $DerStemFilterCard2-st$
+$DerStemsCard3-stel$    = $DerStems$ || $DerStemFilterCard3-stel$
+$DerStemsCard10-st$     = $DerStems$ || $DerStemFilterCard10-st$
+$DerStemsCard10-stel$   = $DerStems$ || $DerStemFilterCard10-stel$
+$DerStemsCard100-st$    = $DerStems$ || $DerStemFilterCard100-st$
+$DerStemsCard100-stel$  = $DerStems$ || $DerStemFilterCard100-stel$
+$DerStemsCard1000-st$   = $DerStems$ || $DerStemFilterCard1000-st$
+$DerStemsCard1000-stel$ = $DerStems$ || $DerStemFilterCard1000-stel$
 
-$DerBaseStemsOrd2$    = $DerStemsCard2-st$    <DB> $DerSuff-st$ || $DerNumFilter$
-$DerBaseStemsOrd10$   = $DerStemsCard10-st$   <DB> $DerSuff-st$ || $DerNumFilter$
-$DerBaseStemsOrd20$   = $DerStemsCard20-st$   <DB> $DerSuff-st$ || $DerNumFilter$
-$DerBaseStemsOrd100$  = $DerStemsCard100-st$  <DB> $DerSuff-st$ || $DerNumFilter$
-$DerBaseStemsOrd1000$ = $DerStemsCard1000-st$ <DB> $DerSuff-st$ || $DerNumFilter$
+$DerBaseStemsOrd2$     = $DerStemsCard2-st$     <DB> $DerSuff-st$   || $DerNumFilter$
+$DerBaseStemsFrac3$    = $DerStemsCard3-stel$   <DB> $DerSuff-stel$ || $DerNumFilter$
+$DerBaseStemsOrd10$    = $DerStemsCard10-st$    <DB> $DerSuff-st$   || $DerNumFilter$
+$DerBaseStemsFrac10$   = $DerStemsCard10-stel$  <DB> $DerSuff-stel$ || $DerNumFilter$
+$DerBaseStemsOrd20$    = $DerStemsCard20-st$    <DB> $DerSuff-st$   || $DerNumFilter$
+$DerBaseStemsFrac20$   = $DerStemsCard20-stel$  <DB> $DerSuff-stel$ || $DerNumFilter$
+$DerBaseStemsOrd100$   = $DerStemsCard100-st$   <DB> $DerSuff-st$   || $DerNumFilter$
+$DerBaseStemsFrac100$  = $DerStemsCard100-stel$ <DB> $DerSuff-stel$ || $DerNumFilter$
+$DerBaseStemsOrd1000$  = $DerStemsCard1000-st$ <DB> $DerSuff-st$ || $DerNumFilter$
+$DerBaseStemsFrac1000$ = $DerStemsCard1000-stel$ <DB> $DerSuff-stel$ || $DerNumFilter$
 
-$BaseStems$ = $BaseStems$ | $DerBaseStemsOrd2$ | $DerBaseStemsOrd10$ | $DerBaseStemsOrd20$ | $DerBaseStemsOrd100$ | $DerBaseStemsOrd1000$
+$BaseStems$ = $BaseStems$ | $DerBaseStemsOrd2$  | $DerBaseStemsFrac3$ | \
+              $DerBaseStemsOrd10$   | $DerBaseStemsFrac10$  | \
+              $DerBaseStemsOrd20$   | $DerBaseStemsFrac20$  | \
+              $DerBaseStemsOrd100$  | $DerBaseStemsFrac100$ | \
+              $DerBaseStemsOrd1000$ | $DerBaseStemsFrac1000$
 
 % numeral compounds
 
@@ -80,11 +94,14 @@ $BaseStemsOrd1$   = $BaseStemFilterOrd1Lv2$   || $BaseStems$
 $BaseStemsCard1b$   = $BaseStems$ || $BaseStemFilterCard1b$
 $BaseStemsCard10$   = $BaseStems$ || $BaseStemFilterCard10$
 $BaseStemsOrd10$    = $BaseStems$ || $BaseStemFilterOrd10$
-$BaseStemsCard11$   = $BaseStems$ || $BaseStemFilterCard11$
-$BaseStemsCard100$  = $BaseStems$ || $BaseStemFilterCard100$
-$BaseStemsOrd100$   = $BaseStems$ || $BaseStemFilterOrd100$
+$BaseStemsFrac10$  = $BaseStems$ || $BaseStemFilterFrac10$
+$BaseStemsCard11$  = $BaseStems$ || $BaseStemFilterCard11$
+$BaseStemsCard100$ = $BaseStems$ || $BaseStemFilterCard100$
+$BaseStemsOrd100$  = $BaseStems$ || $BaseStemFilterOrd100$
+$BaseStemsFrac100$ = $BaseStems$ || $BaseStemFilterFrac100$
 $BaseStemsCard1000$ = $BaseStems$ || $BaseStemFilterCard1000$
 $BaseStemsOrd1000$  = $BaseStems$ || $BaseStemFilterOrd1000$
+$BaseStemsFrac1000$ = $BaseStems$ || $BaseStemFilterFrac1000$
 
 $CompStemsCard1c$   = $CompStems$ || $CompStemFilterCard1c$
 $CompStemsCard3$    = $CompStems$ || $CompStemFilterCard3$
@@ -96,33 +113,38 @@ $CompStemsCard11$ = $Base2CompStemLv2$ || $BaseStemsCard11$ || $Base2CompStem$
 
 $CompBaseStemsCard13$ = $CompStemsCard3$ $Comp-concat$ <CB> $BaseStemsCard10$ || $CompNumFilter$
 $CompBaseStemsOrd13$  = $CompStemsCard3$ $Comp-concat$ <CB> $BaseStemsOrd10$  || $CompNumFilter$
+$CompBaseStemsFrac13$ = $CompStemsCard3$ $Comp-concat$ <CB> $BaseStemsFrac10$ || $CompNumFilter$
 
 $CompStemsCard13$ = $Base2CompStemLv2$ || $CompBaseStemsCard13$ || $Base2CompStem$
 
-$BaseStems$ = $BaseStems$ | $CompBaseStemsCard13$ | $CompBaseStemsOrd13$
+$BaseStems$ = $BaseStems$ | $CompBaseStemsCard13$ | $CompBaseStemsOrd13$ | $CompBaseStemsFrac13$
 
 $CompBaseStemsCard21$ = $CompStemsCard1c$ <IB> $Comp-und$ <CB> $DerBaseStemsCard20$ || $CompNumFilter$
 $CompBaseStemsOrd21$  = $CompStemsCard1c$ <IB> $Comp-und$ <CB> $DerBaseStemsOrd20$  || $CompNumFilter$
+$CompBaseStemsFrac21$ = $CompStemsCard1c$ <IB> $Comp-und$ <CB> $DerBaseStemsFrac20$ || $CompNumFilter$
 
 $CompStemsCard21$ = $Base2CompStemLv2$ || $CompBaseStemsCard21$ || $Base2CompStem$
 
-$BaseStems$ = $BaseStems$ | $CompBaseStemsCard21$ | $CompBaseStemsOrd21$
+$BaseStems$ = $BaseStems$ | $CompBaseStemsCard21$ | $CompBaseStemsOrd21$ | $CompBaseStemsFrac21$
 
 $CompBaseStemsCard200$ = $CompStemsCard1c$ $Comp-concat$ <CB> $BaseStemsCard100$ || $CompNumFilter$
 $CompBaseStemsOrd200$  = $CompStemsCard1c$ $Comp-concat$ <CB> $BaseStemsOrd100$  || $CompNumFilter$
+$CompBaseStemsFrac200$ = $CompStemsCard1c$ $Comp-concat$ <CB> $BaseStemsFrac100$ || $CompNumFilter$
 
 $CompStemsCard200$ = $Base2CompStemLv2$ || $CompBaseStemsCard200$ || $Base2CompStem$
 
-$BaseStems$ = $BaseStems$ | $CompBaseStemsCard200$ | $CompBaseStemsOrd200$
+$BaseStems$ = $BaseStems$ | $CompBaseStemsCard200$ | $CompBaseStemsOrd200$ | $CompBaseStemsFrac200$
 
 $CompBaseStemsCard1100$ = $CompStemsCard11$ $Comp-concat$ <CB> $BaseStemsCard100$ | \
                           $CompStemsCard13$ $Comp-concat$ <CB> $BaseStemsCard100$ || $CompNumFilter$
 $CompBaseStemsOrd1100$  = $CompStemsCard11$ $Comp-concat$ <CB> $BaseStemsOrd100$ | \
                           $CompStemsCard13$ $Comp-concat$ <CB> $BaseStemsOrd100$ || $CompNumFilter$
+$CompBaseStemsFrac1100$ = $CompStemsCard11$ $Comp-concat$ <CB> $BaseStemsFrac100$ | \
+                          $CompStemsCard13$ $Comp-concat$ <CB> $BaseStemsFrac100$ || $CompNumFilter$
 
 $CompStemsCard1100$ = $Base2CompStemLv2$ || $CompBaseStemsCard1100$ || $Base2CompStem$
 
-$BaseStems$ = $BaseStems$ | $CompBaseStemsCard1100$ | $CompBaseStemsOrd1100$
+$BaseStems$ = $BaseStems$ | $CompBaseStemsCard1100$ | $CompBaseStemsOrd1100$ | $CompBaseStemsFrac1100$
 
 $BaseStemsCard1-99$ = $BaseStemsCard1a$     | \
                       $BaseStemsCard1b$     | \
@@ -137,13 +159,20 @@ $BaseStemsOrd1-99$  = $BaseStemsOrd1$      | \
                       $CompBaseStemsOrd13$ | \
                       $DerBaseStemsOrd20$  | \
                       $CompBaseStemsOrd21$
+$BaseStemsFrac3-99$ = $DerBaseStemsFrac3$   | \
+                      $DerBaseStemsFrac10$  | \
+                      $CompBaseStemsFrac13$ | \
+                      $DerBaseStemsFrac20$  | \
+                      $CompBaseStemsFrac21$
 
 $CompBaseStemsCard101$ = $CompStemsCard100$ <IB> $Comp-und$    <CB> $BaseStemsCard1-99$ | \
                          $CompStemsCard100$      $Comp-concat$ <CB> $BaseStemsCard1-99$ || $CompNumFilter$
 $CompBaseStemsOrd101$  = $CompStemsCard100$ <IB> $Comp-und$    <CB> $BaseStemsOrd1-99$ | \
                          $CompStemsCard100$      $Comp-concat$ <CB> $BaseStemsOrd1-99$ || $CompNumFilter$
+$CompBaseStemsFrac103$ = $CompStemsCard100$ <IB> $Comp-und$    <CB> $BaseStemsFrac3-99$ | \
+                         $CompStemsCard100$      $Comp-concat$ <CB> $BaseStemsFrac3-99$ || $CompNumFilter$
 
-$BaseStems$ = $BaseStems$ | $CompBaseStemsCard101$ | $CompBaseStemsOrd101$
+$BaseStems$ = $BaseStems$ | $CompBaseStemsCard101$ | $CompBaseStemsOrd101$ | $CompBaseStemsFrac103$
 
 $CompStemsCard101$ = $Base2CompStemLv2$ || $CompBaseStemsCard101$ || $Base2CompStem$
 
@@ -151,8 +180,10 @@ $CompBaseStemsCard201$ = $CompStemsCard200$ <IB> $Comp-und$    <CB> $BaseStemsCa
                          $CompStemsCard200$      $Comp-concat$ <CB> $BaseStemsCard1-99$ || $CompNumFilter$
 $CompBaseStemsOrd201$  = $CompStemsCard200$ <IB> $Comp-und$    <CB> $BaseStemsOrd1-99$ | \
                          $CompStemsCard200$      $Comp-concat$ <CB> $BaseStemsOrd1-99$ || $CompNumFilter$
+$CompBaseStemsFrac203$ = $CompStemsCard200$ <IB> $Comp-und$    <CB> $BaseStemsFrac3-99$ | \
+                         $CompStemsCard200$      $Comp-concat$ <CB> $BaseStemsFrac3-99$ || $CompNumFilter$
 
-$BaseStems$ = $BaseStems$ | $CompBaseStemsCard201$ | $CompBaseStemsOrd201$
+$BaseStems$ = $BaseStems$ | $CompBaseStemsCard201$ | $CompBaseStemsOrd201$ | $CompBaseStemsFrac203$
 
 $CompStemsCard201$ = $Base2CompStemLv2$ || $CompBaseStemsCard201$ || $Base2CompStem$
 
@@ -160,8 +191,10 @@ $CompBaseStemsCard1101$ = $CompStemsCard1100$ <IB> $Comp-und$    <CB> $BaseStems
                           $CompStemsCard1100$      $Comp-concat$ <CB> $BaseStemsCard1-99$ || $CompNumFilter$
 $CompBaseStemsOrd1101$  = $CompStemsCard1100$ <IB> $Comp-und$    <CB> $BaseStemsOrd1-99$ | \
                           $CompStemsCard1100$      $Comp-concat$ <CB> $BaseStemsOrd1-99$ || $CompNumFilter$
+$CompBaseStemsFrac1103$  = $CompStemsCard1100$ <IB> $Comp-und$    <CB> $BaseStemsFrac3-99$ | \
+                           $CompStemsCard1100$      $Comp-concat$ <CB> $BaseStemsFrac3-99$ || $CompNumFilter$
 
-$BaseStems$ = $BaseStems$ | $CompBaseStemsCard1101$ | $CompBaseStemsOrd1101$
+$BaseStems$ = $BaseStems$ | $CompBaseStemsCard1101$ | $CompBaseStemsOrd1101$ | $CompBaseStemsFrac1103$
 
 $CompStemsCard1-999$ = $CompStemsCard1c$  | \
                        $CompStemsCard10$  | \
@@ -176,10 +209,11 @@ $CompStemsCard1-999$ = $CompStemsCard1c$  | \
 
 $CompBaseStemsCard2000$ = $CompStemsCard1-999$ $Comp-concat$ <CB> $BaseStemsCard1000$ || $CompNumFilter$
 $CompBaseStemsOrd2000$  = $CompStemsCard1-999$ $Comp-concat$ <CB> $BaseStemsOrd1000$ || $CompNumFilter$
+$CompBaseStemsFrac2000$ = $CompStemsCard1-999$ $Comp-concat$ <CB> $BaseStemsFrac1000$ || $CompNumFilter$
 
 $CompStemsCard2000$ = $Base2CompStemLv2$ || $CompBaseStemsCard2000$ || $Base2CompStem$
 
-$BaseStems$ = $BaseStems$ | $CompBaseStemsCard2000$ | $CompBaseStemsOrd2000$
+$BaseStems$ = $BaseStems$ | $CompBaseStemsCard2000$ | $CompBaseStemsOrd2000$ | $CompBaseStemsFrac2000$
 
 $BaseStemsCard1-999$ = $BaseStemsCard1-99$    | \
                        $CompBaseStemsCard200$ | \
@@ -187,20 +221,27 @@ $BaseStemsCard1-999$ = $BaseStemsCard1-99$    | \
 $BaseStemsOrd1-999$  = $BaseStemsOrd1-99$    | \
                        $CompBaseStemsOrd200$ | \
                        $CompBaseStemsOrd201$
+$BaseStemsFrac3-999$ = $BaseStemsFrac3-99$    | \
+                       $CompBaseStemsFrac200$ | \
+                       $CompBaseStemsFrac203$
 
 $CompBaseStemsCard1001$ = $CompStemsCard1000$ <IB> $Comp-und$    <CB> $BaseStemsCard1-999$ | \
                           $CompStemsCard1000$      $Comp-concat$ <CB> $BaseStemsCard1-999$ || $CompNumFilter$
 $CompBaseStemsOrd1001$  = $CompStemsCard1000$ <IB> $Comp-und$    <CB> $BaseStemsOrd1-999$ | \
                           $CompStemsCard1000$      $Comp-concat$ <CB> $BaseStemsOrd1-999$ || $CompNumFilter$
+$CompBaseStemsFrac1003$ = $CompStemsCard1000$ <IB> $Comp-und$    <CB> $BaseStemsFrac3-999$ | \
+                          $CompStemsCard1000$      $Comp-concat$ <CB> $BaseStemsFrac3-999$ || $CompNumFilter$
 
-$BaseStems$ = $BaseStems$ | $CompBaseStemsCard1001$ | $CompBaseStemsOrd1001$
+$BaseStems$ = $BaseStems$ | $CompBaseStemsCard1001$ | $CompBaseStemsOrd1001$ | $CompBaseStemsFrac1003$
 
 $CompBaseStemsCard2001$ = $CompStemsCard2000$ <IB> $Comp-und$    <CB> $BaseStemsCard1-999$ | \
                           $CompStemsCard2000$      $Comp-concat$ <CB> $BaseStemsCard1-999$ || $CompNumFilter$
 $CompBaseStemsOrd2001$  = $CompStemsCard2000$ <IB> $Comp-und$    <CB> $BaseStemsOrd1-999$ | \
                           $CompStemsCard2000$      $Comp-concat$ <CB> $BaseStemsOrd1-999$ || $CompNumFilter$
+$CompBaseStemsFrac2003$ = $CompStemsCard2000$ <IB> $Comp-und$    <CB> $BaseStemsFrac3-999$ | \
+                          $CompStemsCard2000$      $Comp-concat$ <CB> $BaseStemsFrac3-999$ || $CompNumFilter$
 
-$BaseStems$ = $BaseStems$ | $CompBaseStemsCard2001$ | $CompBaseStemsOrd2001$
+$BaseStems$ = $BaseStems$ | $CompBaseStemsCard2001$ | $CompBaseStemsOrd2001$ | $CompBaseStemsFrac2003$
 
 % derived base stems with preverbs
 
@@ -256,58 +297,67 @@ $ConvBaseStemsV$ = <uc> $BaseStemsVInfNonCl$   $ConvInfNonCl$   | \
 
 $BaseStems$ = $BaseStems$ | $ConvBaseStemsV$
 
-$BaseStemsADJ$ = $BaseStems$ || $BaseStemFilterADJ$
-$BaseStemsORD$ = $BaseStems$ || $BaseStemFilterORD$
+$BaseStemsAdj$  = $BaseStems$ || $BaseStemFilterAdj$
+$BaseStemsOrd$  = $BaseStems$ || $BaseStemFilterOrd$
+$BaseStemsFrac$ = $BaseStems$ || $BaseStemFilterFrac$
 
-$BaseStemsADJ$ = $BaseStemsADJ$ || $CleanupWF$
-$BaseStemsORD$ = $BaseStemsORD$ || $CleanupWF$
+$BaseStemsAdj$  = $BaseStemsAdj$ || $CleanupWF$
+$BaseStemsOrd$  = $BaseStemsOrd$ || $CleanupWF$
+$BaseStemsFrac$ = $BaseStemsFrac$ || $CleanupWF$
 
-$BaseStemsADJ$ = $BaseStemsADJ$ $INFL$ || $InflFilter$
-$BaseStemsORD$ = $BaseStemsORD$ $INFL$ || $InflFilter$
+$BaseStemsAdj$  = $BaseStemsAdj$ $INFL$ || $InflFilter$
+$BaseStemsOrd$  = $BaseStemsOrd$ $INFL$ || $InflFilter$
+$BaseStemsFrac$ = $BaseStemsFrac$ $INFL$ || $InflFilter$
 
-$BaseStemsADJMasc$ = $BaseStemFilterADJMascLv2$ || $BaseStemsADJ$
-$BaseStemsADJNeut$ = $BaseStemFilterADJNeutLv2$ || $BaseStemsADJ$
-$BaseStemsADJFem$  = $BaseStemFilterADJFemLv2$  || $BaseStemsADJ$
-$BaseStemsORDMasc$ = $BaseStemFilterORDMascLv2$ || $BaseStemsORD$
-$BaseStemsORDNeut$ = $BaseStemFilterORDNeutLv2$ || $BaseStemsORD$
-$BaseStemsORDFem$  = $BaseStemFilterORDFemLv2$  || $BaseStemsORD$
+$BaseStemsAdjMasc$  = $BaseStemFilterAdjMascLv2$  || $BaseStemsAdj$
+$BaseStemsAdjNeut$  = $BaseStemFilterAdjNeutLv2$  || $BaseStemsAdj$
+$BaseStemsAdjFem$   = $BaseStemFilterAdjFemLv2$   || $BaseStemsAdj$
+$BaseStemsOrdMasc$  = $BaseStemFilterOrdMascLv2$  || $BaseStemsOrd$
+$BaseStemsOrdNeut$  = $BaseStemFilterOrdNeutLv2$  || $BaseStemsOrd$
+$BaseStemsOrdFem$   = $BaseStemFilterOrdFemLv2$   || $BaseStemsOrd$
+$BaseStemsFrac$     = $BaseStemFilterFracLv2$     || $BaseStemsFrac$
 
-$BaseStemsADJMasc$ = $CleanupCatLv2$ || $BaseStemsADJMasc$
-$BaseStemsADJNeut$ = $CleanupCatLv2$ || $BaseStemsADJNeut$
-$BaseStemsADJFem$  = $CleanupCatLv2$ || $BaseStemsADJFem$
-$BaseStemsORDMasc$ = $CleanupCatLv2$ || $BaseStemsORDMasc$
-$BaseStemsORDNeut$ = $CleanupCatLv2$ || $BaseStemsORDNeut$
-$BaseStemsORDFem$  = $CleanupCatLv2$ || $BaseStemsORDFem$
+$BaseStemsAdjMasc$  = $CleanupCatLv2$ || $BaseStemsAdjMasc$
+$BaseStemsAdjNeut$  = $CleanupCatLv2$ || $BaseStemsAdjNeut$
+$BaseStemsAdjFem$   = $CleanupCatLv2$ || $BaseStemsAdjFem$
+$BaseStemsOrdMasc$  = $CleanupCatLv2$ || $BaseStemsOrdMasc$
+$BaseStemsOrdNeut$  = $CleanupCatLv2$ || $BaseStemsOrdNeut$
+$BaseStemsOrdFem$   = $CleanupCatLv2$ || $BaseStemsOrdFem$
+$BaseStemsFrac$     = $CleanupCatLv2$ || $BaseStemsFrac$
 
-$BaseStemsADJMasc$ = <>:<WB> $BaseStemsADJMasc$ <>:<WB>
-$BaseStemsADJNeut$ = <>:<WB> $BaseStemsADJNeut$ <>:<WB>
-$BaseStemsADJFem$  = <>:<WB> $BaseStemsADJFem$  <>:<WB>
-$BaseStemsORDMasc$ = <>:<WB> $BaseStemsORDMasc$ <>:<WB>
-$BaseStemsORDNeut$ = <>:<WB> $BaseStemsORDNeut$ <>:<WB>
-$BaseStemsORDFem$  = <>:<WB> $BaseStemsORDFem$  <>:<WB>
+$BaseStemsAdjMasc$  = <>:<WB> $BaseStemsAdjMasc$ <>:<WB>
+$BaseStemsAdjNeut$  = <>:<WB> $BaseStemsAdjNeut$ <>:<WB>
+$BaseStemsAdjFem$   = <>:<WB> $BaseStemsAdjFem$  <>:<WB>
+$BaseStemsOrdMasc$  = <>:<WB> $BaseStemsOrdMasc$ <>:<WB>
+$BaseStemsOrdNeut$  = <>:<WB> $BaseStemsOrdNeut$ <>:<WB>
+$BaseStemsOrdFem$   = <>:<WB> $BaseStemsOrdFem$  <>:<WB>
+$BaseStemsFrac$     = <>:<WB> $BaseStemsFrac$ <>:<WB>
 
-$BaseStemsADJMasc$ = $BaseStemsADJMasc$ || $PHON$
-$BaseStemsADJNeut$ = $BaseStemsADJNeut$ || $PHON$
-$BaseStemsADJFem$  = $BaseStemsADJFem$  || $PHON$
-$BaseStemsORDMasc$ = $BaseStemsORDMasc$ || $PHON$
-$BaseStemsORDNeut$ = $BaseStemsORDNeut$ || $PHON$
-$BaseStemsORDFem$  = $BaseStemsORDFem$  || $PHON$
+$BaseStemsAdjMasc$  = $BaseStemsAdjMasc$ || $PHON$
+$BaseStemsAdjNeut$  = $BaseStemsAdjNeut$ || $PHON$
+$BaseStemsAdjFem$   = $BaseStemsAdjFem$  || $PHON$
+$BaseStemsOrdMasc$  = $BaseStemsOrdMasc$ || $PHON$
+$BaseStemsOrdNeut$  = $BaseStemsOrdNeut$ || $PHON$
+$BaseStemsOrdFem$   = $BaseStemsOrdFem$  || $PHON$
+$BaseStemsFrac$     = $BaseStemsFrac$    || $PHON$
 
-$BaseStemsADJMasc$ = $BaseStemsADJMasc$ || $MarkerWB$
-$BaseStemsADJNeut$ = $BaseStemsADJNeut$ || $MarkerWB$
-$BaseStemsADJFem$  = $BaseStemsADJFem$  || $MarkerWB$
-$BaseStemsORDMasc$ = $BaseStemsORDMasc$ || $MarkerWB$
-$BaseStemsORDNeut$ = $BaseStemsORDNeut$ || $MarkerWB$
-$BaseStemsORDFem$  = $BaseStemsORDFem$  || $MarkerWB$
+$BaseStemsAdjMasc$  = $BaseStemsAdjMasc$ || $MarkerWB$
+$BaseStemsAdjNeut$  = $BaseStemsAdjNeut$ || $MarkerWB$
+$BaseStemsAdjFem$   = $BaseStemsAdjFem$  || $MarkerWB$
+$BaseStemsOrdMasc$  = $BaseStemsOrdMasc$ || $MarkerWB$
+$BaseStemsOrdNeut$  = $BaseStemsOrdNeut$ || $MarkerWB$
+$BaseStemsOrdFem$   = $BaseStemsOrdFem$  || $MarkerWB$
+$BaseStemsFrac$     = $BaseStemsFrac$    || $MarkerWB$
 
-$ConvBaseStemsADJ$ = <uc> $BaseStemsADJMasc$ $ConvMasc$ | \
-                     <uc> $BaseStemsADJNeut$ $ConvNeut$ | \
-                     <uc> $BaseStemsADJFem$  $ConvFem$  || $ConvFilter$
-$ConvBaseStemsORD$ = <uc> $BaseStemsORDMasc$ $ConvMasc$ | \
-                     <uc> $BaseStemsORDNeut$ $ConvNeut$ | \
-                     <uc> $BaseStemsORDFem$  $ConvFem$  || $ConvFilter$
+$ConvBaseStemsAdj$  = <uc> $BaseStemsAdjMasc$ $ConvAdjMasc$ | \
+                      <uc> $BaseStemsAdjNeut$ $ConvAdjNeut$ | \
+                      <uc> $BaseStemsAdjFem$  $ConvAdjFem$ || $ConvFilter$
+$ConvBaseStemsOrd$  = <uc> $BaseStemsOrdMasc$ $ConvAdjMasc$ | \
+                      <uc> $BaseStemsOrdNeut$ $ConvAdjNeut$ | \
+                      <uc> $BaseStemsOrdFem$  $ConvAdjFem$ || $ConvFilter$
+$ConvBaseStemsFrac$ = <uc> $BaseStemsFrac$    $ConvFracNeut$ || $ConvFilter$
 
-$BaseStems$ = $BaseStems$ | $ConvBaseStemsADJ$ | $ConvBaseStemsORD$
+$BaseStems$ = $BaseStems$ | $ConvBaseStemsAdj$ | $ConvBaseStemsOrd$ | $ConvBaseStemsFrac$
 
 % derived base stems with affixes
 

@@ -1,5 +1,11 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-07-28:
+
+* add support for fractional derivation by means of "(s)tel"-suffixation
+* add support for fractional compounding
+* add support for conversion of fractional numerals
+
 2025-07-25:
 
 * remove inflection classes `Indef-ein` and `Indef-kein`
