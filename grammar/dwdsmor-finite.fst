@@ -85,7 +85,7 @@ $DerBaseStemsFrac20$  = $DerStemsCard20-stel$  <DB> $DerSuff-stel$ || $DerNumFil
 $DerBaseStemsOrd100$  = $DerStemsCard100-st$   <DB> $DerSuff-st$   || $DerNumFilter$
 $DerBaseStemsFrac100$ = $DerStemsCard100-stel$ <DB> $DerSuff-stel$ || $DerNumFilter$
 
-$BaseStems$ = $BaseStems$ | $DerBaseStemsOrd2$  | $DerBaseStemsFrac3$ | \
+$BaseStems$ = $BaseStems$ | $DerBaseStemsOrd2$ | $DerBaseStemsFrac3$ | \
               $DerBaseStemsOrd10$  | $DerBaseStemsFrac10$ | \
               $DerBaseStemsOrd20$  | $DerBaseStemsFrac20$ | \
               $DerBaseStemsOrd100$ | $DerBaseStemsFrac100$
@@ -263,13 +263,13 @@ $BaseStemsAdj$  = $BaseStemsAdj$ $INFL$ || $InflFilter$
 $BaseStemsOrd$  = $BaseStemsOrd$ $INFL$ || $InflFilter$
 $BaseStemsFrac$ = $BaseStemsFrac$ $INFL$ || $InflFilter$
 
-$BaseStemsAdjMasc$  = $BaseStemFilterAdjMascLv2$  || $BaseStemsAdj$
-$BaseStemsAdjNeut$  = $BaseStemFilterAdjNeutLv2$  || $BaseStemsAdj$
-$BaseStemsAdjFem$   = $BaseStemFilterAdjFemLv2$   || $BaseStemsAdj$
-$BaseStemsOrdMasc$  = $BaseStemFilterOrdMascLv2$  || $BaseStemsOrd$
-$BaseStemsOrdNeut$  = $BaseStemFilterOrdNeutLv2$  || $BaseStemsOrd$
-$BaseStemsOrdFem$   = $BaseStemFilterOrdFemLv2$   || $BaseStemsOrd$
-$BaseStemsFrac$     = $BaseStemFilterFracLv2$     || $BaseStemsFrac$
+$BaseStemsAdjMasc$  = $BaseStemFilterAdjMascLv2$ || $BaseStemsAdj$
+$BaseStemsAdjNeut$  = $BaseStemFilterAdjNeutLv2$ || $BaseStemsAdj$
+$BaseStemsAdjFem$   = $BaseStemFilterAdjFemLv2$  || $BaseStemsAdj$
+$BaseStemsOrdMasc$  = $BaseStemFilterOrdMascLv2$ || $BaseStemsOrd$
+$BaseStemsOrdNeut$  = $BaseStemFilterOrdNeutLv2$ || $BaseStemsOrd$
+$BaseStemsOrdFem$   = $BaseStemFilterOrdFemLv2$  || $BaseStemsOrd$
+$BaseStemsFrac$     = $BaseStemFilterFracLv2$    || $BaseStemsFrac$
 
 $BaseStemsAdjMasc$  = $CleanupCatLv2$ || $BaseStemsAdjMasc$
 $BaseStemsAdjNeut$  = $CleanupCatLv2$ || $BaseStemsAdjNeut$
@@ -317,7 +317,7 @@ $ConvBaseStemsAdj$  = <uc> $BaseStemsAdjMasc$ $ConvAdjMasc$ | \
 $ConvBaseStemsOrd$  = <uc> $BaseStemsOrdMasc$ $ConvAdjMasc$ | \
                       <uc> $BaseStemsOrdNeut$ $ConvAdjNeut$ | \
                       <uc> $BaseStemsOrdFem$  $ConvAdjFem$ || $ConvFilter$
-$ConvBaseStemsFrac$ = <uc> $BaseStemsFrac$    $ConvFracNeut$ || $ConvFilter$
+$ConvBaseStemsFrac$ = <uc> $BaseStemsFrac$    $ConvFrac$ || $ConvFilter$
 
 $BaseStems$ = $BaseStems$ | $ConvBaseStemsAdj$ | $ConvBaseStemsOrd$ | $ConvBaseStemsFrac$
 

@@ -60,6 +60,7 @@ tag_values = {
         "processes": {"COMP", "DER", "CONV"},
         "means": {
             "concat",
+            "ident",
             "ident|Inf",
             "ident|Part",
             "ident|Fem",

@@ -1,5 +1,5 @@
 % num.fst
-% Version 2.3
+% Version 2.4
 % Andreas Nolda 2025-07-28
 
 % based on code from SMORLemma by Rico Sennrich
@@ -51,6 +51,8 @@ $CARD11$   = elf | zwölf
 $CARD100$  = hundert
 $CARD1000$ = tausend
 
+$CARD1000000$ = Million | Milliard % derivation stem
+
 $ORD1$ = erst<SB>e
 
 $I$ = [#index#]
@@ -71,7 +73,7 @@ $BaseStemFilterCard10$ = <Stem> $CARD10$ $I$* <CARD> <base> <native> $C$
 % final basis in ordinal compounds like "sechzehnte"
 $BaseStemFilterOrd10$ = <Stem> $CARD10$ $I$* <CARD> <der> <-st> <native> <DB> ^$DerSuff-st$
 
-% final basis in fractional compounds like "sechzehnte"
+% final basis in fractional compounds like "sechzehntel"
 $BaseStemFilterFrac10$ = <Stem> $CARD10$ $I$* <CARD> <der> <-stel> <native> <DB> ^$DerSuff-stel$
 
 % final basis in (uninflected) cardinal compounds like "hundertelf" and "hundertundelf"
@@ -94,6 +96,12 @@ $BaseStemFilterOrd1000$ = <Stem> $CARD1000$ $I$* <CARD> <der> <-st> <native> <DB
 
 % final basis in fractional compounds like "eintausendstel"
 $BaseStemFilterFrac1000$ = <Stem> $CARD1000$ $I$* <CARD> <der> <-stel> <native> <DB> ^$DerSuff-stel$
+
+% final basis in ordinal compounds like "einmillionste"
+$BaseStemFilterOrd1000000$ = <dc> <Stem> $CARD1000000$ $I$* <NN> <der> <-st> <foreign> <DB> ^$DerSuff-st$
+
+% final basis in fractional compounds like "einmillionstel"
+$BaseStemFilterFrac1000000$ = <dc> <Stem> $CARD1000000$ $I$* <NN> <der> <-stel> <foreign> <DB> ^$DerSuff-stel$
 
 % bases in derived cardinals like "sechzig"
 $DerStemFilterCard2-zig$ = <Stem> $CARD2b$ <CARD> <der> <-zig> <native>
@@ -119,8 +127,14 @@ $DerStemFilterCard100-stel$ = <Stem> $CARD100$ <CARD> <der> <-stel> <native>
 % bases in derived ordinals like "tausendste"
 $DerStemFilterCard1000-st$ = <Stem> $CARD1000$ <CARD> <der> <-st> <native>
 
-% bases in derived fractional numerals like "tausendste"
+% bases in derived fractional numerals like "tausendstel"
 $DerStemFilterCard1000-stel$ = <Stem> $CARD1000$ <CARD> <der> <-stel> <native>
+
+% bases in derived ordinals like "millionste"
+$DerStemFilterCard1000000-st$ = <Stem> $CARD1000000$ <NN> <der> <-st> <foreign>
+
+% bases in derived fractional numerals like "millionstel"
+$DerStemFilterCard1000000-stel$ = <Stem> $CARD1000000$ <NN> <der> <-stel> <foreign>
 
 % initial bases in cardinal compounds like "einundsechzig" and "einhundert"
 $CompStemFilterCard1c$ = <Stem> $CARD1c$ <CARD> <comp> <native>

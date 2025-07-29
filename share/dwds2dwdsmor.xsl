@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 18.3 -->
+<!-- Version 18.4 -->
 <!-- Andreas Nolda 2025-07-28 -->
 
 <xsl:stylesheet version="2.0"
@@ -2560,15 +2560,6 @@
                               <xsl:with-param name="lemma2">ste</xsl:with-param>
                             </xsl:call-template>
                           </xsl:when>
-                          <xsl:when test="$lemma1='Million'">
-                            <xsl:call-template name="der-stem">
-                              <xsl:with-param name="lemma"
-                                              select="$lemma"/>
-                              <xsl:with-param name="lemma1"
-                                              select="$lemma1"/>
-                              <xsl:with-param name="lemma2">ste</xsl:with-param>
-                            </xsl:call-template>
-                          </xsl:when>
                           <!-- ... -->
                           <xsl:otherwise>
                             <xsl:call-template name="der-stem">
@@ -2599,6 +2590,51 @@
                           </xsl:choose>
                         </xsl:variable>
                         <xsl:call-template name="cardinal-der-entry-set">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma1"/>
+                          <xsl:with-param name="stem"
+                                          select="$der-stem"/>
+                          <xsl:with-param name="abbreviation"
+                                          select="$abbreviation1"/>
+                          <xsl:with-param name="suffs"
+                                          select="$suffs"/>
+                          <xsl:with-param name="etymology"
+                                          select="$etymology1"/>
+                        </xsl:call-template>
+                      </xsl:if>
+                    </xsl:if>
+                  </xsl:for-each>
+                </xsl:if>
+                <!-- also consider the nouns "Million" and "Milliarde" -->
+                <xsl:if test="$pos1='Substantiv' and
+                              dwds:Schreibung[normalize-space(.)='Million' or
+                                              normalize-space(.)='Milliarde']">
+                  <!-- ignore idioms and non-standard spellings -->
+                  <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
+                                                       [not(@Typ)]">
+                    <xsl:variable name="lemma1"
+                                  select="normalize-space(.)"/>
+                    <xsl:if test="string-length($lemma1)&gt;0">
+                      <xsl:variable name="abbreviation1">
+                        <xsl:call-template name="get-abbreviation-value"/>
+                      </xsl:variable>
+                      <xsl:variable name="der-stem">
+                        <xsl:call-template name="der-stem">
+                          <xsl:with-param name="lemma"
+                                          select="$lemma"/>
+                          <xsl:with-param name="lemma1"
+                                          select="$lemma1"/>
+                          <xsl:with-param name="lemma2">ste</xsl:with-param>
+                        </xsl:call-template>
+                      </xsl:variable>
+                      <xsl:if test="string-length($der-stem)&gt;0">
+                        <!-- suffixes -->
+                        <xsl:variable name="suffs"
+                                      as="item()*">
+                          <!-- also used for "-stel" -->
+                          <xsl:sequence select="'st','stel'"/>
+                        </xsl:variable>
+                        <xsl:call-template name="noun-der-entry-set">
                           <xsl:with-param name="lemma"
                                           select="$lemma1"/>
                           <xsl:with-param name="stem"

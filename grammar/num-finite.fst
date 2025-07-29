@@ -67,7 +67,7 @@ $BaseStemFilterCard10$ = <Stem> $CARD10$ $I$* <CARD> <base> <native> $C$
 % final basis in ordinal compounds like "sechzehnte"
 $BaseStemFilterOrd10$ = <Stem> $CARD10$ $I$* <CARD> <der> <-st> <native> <DB> ^$DerSuff-st$
 
-% final basis in fractional compounds like "sechzehnte"
+% final basis in fractional compounds like "sechzehntel"
 $BaseStemFilterFrac10$ = <Stem> $CARD10$ $I$* <CARD> <der> <-stel> <native> <DB> ^$DerSuff-stel$
 
 % final basis in (uninflected) cardinal compounds like "hundertelf" and "hundertundelf"

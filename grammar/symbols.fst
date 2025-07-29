@@ -1,5 +1,5 @@
 % symbols.fst
-% Version 13.9
+% Version 13.10
 % Andreas Nolda 2025-07-28
 
 % based on code from SMORLemma by Rico Sennrich
@@ -72,7 +72,7 @@
 
 #wf-process# = <COMP><DER><CONV>
 
-#wf-means# = <concat><ident|Fem><ident|Inf><ident|Masc><ident|Neut> \
+#wf-means# = <concat><ident><ident|Fem><ident|Inf><ident|Masc><ident|Neut> \
              <ident|Part><intf(-)><intf(und)><pref(un)><prev()><prev(ab)> \
              <prev(an)><prev(auf)><prev(aus)><prev(bei)><prev(durch)><prev(ein)> \
              <prev(fort)><prev(gegen)><prev(heim)><prev(her)><prev(hin)> \

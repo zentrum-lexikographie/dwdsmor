@@ -23,4 +23,17 @@
       </Grammatik>
     </Formangabe>
   </Artikel> -->
+  <Artikel>
+    <Formangabe>
+      <Schreibung>milliardste</Schreibung>
+      <Grammatik>
+        <Wortklasse>Ordinalzahlwort</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+    <Verweise Typ="Derivation">
+      <Verweis Typ="Grundform">
+        <Ziellemma>Milliarde</Ziellemma>
+      </Verweis>
+    </Verweise>
+  </Artikel>
 </DWDS>

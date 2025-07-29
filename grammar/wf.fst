@@ -1,32 +1,41 @@
 % wf.fst
-% Version 13.4
+% Version 13.5
 % Andreas Nolda 2025-07-28
 
 #include "symbols.fst"
 
 % processes and means
 
-$ConvInfNonCl$   = <CONV>:<> <ident|Inf>:<>  <NN>  <base> <native> <>:<NNeut|Sg_s>
 $ConvPartPres$   = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPosAttr> % cf. Duden-Grammatik (2016: § 481, § 508, § 829)
 $ConvPartPerf_t$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPos>     % cf. Duden-Grammatik (2016: § 508)
 $ConvPartPerf_n$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPos-en>  % cf. Duden-Grammatik (2016: § 508)
 $ConvPartPerf_d$ = <CONV>:<> <ident|Part>:<> <ADJ> <base> <native> <>:<AdjPosPred>
-$ConvAdjMasc$    = <CONV>:<> <ident|Masc>:<> <NN>  <base> <native> <>:<del(-e)><>:<NMasc-Adj>
-$ConvAdjNeut$    = <CONV>:<> <ident|Neut>:<> <NN>  <base> <native> <>:<del(-e)><>:<NNeut-Adj|Sg>
-$ConvAdjFem$     = <CONV>:<> <ident|Fem>:<>  <NN>  <base> <native> <>:<del(-e)><>:<NFem-Adj>
-$ConvFracNeut$   = <CONV>:<> <ident|Neut>:<> <NN>  <base> <native> <>:<NNeut_s_0_n>
+
+$ConvInfNonCl$ = <CONV>:<> <ident|Inf>:<> <NN> <base> <native> <>:<NNeut|Sg_s>
+
+$ConvAdjMasc$ = <CONV>:<> <ident|Masc>:<> <NN> <base> <native> <>:<del(-e)><>:<NMasc-Adj>
+$ConvAdjNeut$ = <CONV>:<> <ident|Neut>:<> <NN> <base> <native> <>:<del(-e)><>:<NNeut-Adj|Sg>
+$ConvAdjFem$  = <CONV>:<> <ident|Fem>:<>  <NN> <base> <native> <>:<del(-e)><>:<NFem-Adj>
+
+$ConvFrac$ = <CONV>:<> <ident>:<> <NN> <base> <native> <>:<NNeut_s_0_n>
+
 % ...
 
 $DerSuff-e$    = <DER>:<> <suff(e)>:<>    <Suff> e    <NN> <base> <native> <>:<NMasc_n_n_0>
 $DerSuff-er$   = <DER>:<> <suff(er)>:<>   <Suff> er   <NN> <base> <native> <>:<NMasc_s_0_n>
 $DerSuff-chen$ = <DER>:<> <suff(chen)>:<> <Suff> chen <NN> <base> <native> <>:<NNeut_s_0_0>
 $DerSuff-lein$ = <DER>:<> <suff(lein)>:<> <Suff> lein <NN> <base> <native> <>:<NNeut_s_0_0>
-$DerSuff-st$   = <DER>:<> <suff(st)>:<>   <Suff> <s>t<SB>:<>e:<> <ORD> <base> <native> <>:<Ord>
+
+$DerSuff-st$ = <DER>:<> <suff(st)>:<> <Suff> <s>t<SB>:<>e:<> <ORD> <base> <native> <>:<Ord>
+
 $DerSuff-stel$ = <DER>:<> <suff(stel)>:<> <Suff> <s>tel <FRAC> <base> <native> <>:<Frac0>
-$DerSuff-zig$  = <DER>:<> <suff(zig)>:<>  <Suff> <z>ig  <CARD> <base> <native> <>:<Card0>
+
+$DerSuff-zig$ = <DER>:<> <suff(zig)>:<> <Suff> <z>ig <CARD> <base> <native> <>:<Card0>
+
 % ...
 
 $DerPref-un$ = <DER>:<> <pref(un)>:<> <Pref> un
+
 % ...
 
 $DerPrev-ab$       = <DER>:<> <prev(ab)>:<>       <Pref> ab
@@ -54,6 +63,7 @@ $DerPrev-wieder$   = <DER>:<> <prev(wieder)>:<>   <Pref> wieder
 $DerPrev-zu$       = <DER>:<> <prev(zu)>:<>       <Pref> zu
 $DerPrev-zurueck$  = <DER>:<> <prev(zurueck)>:<>  <Pref> zurück
 $DerPrev-zwischen$ = <DER>:<> <prev(zwischen)>:<> <Pref> zwischen
+
 % ...
 
 $DerPrev$ = $DerPrev-ab$      | \
@@ -128,14 +138,14 @@ $C$ = $C$-[#entry-type# <CB><VB><DB><IB>]
 $Pref$ = [<dc><uc>]* <Pref> $C$* [<DB><VB>]
 $Suff$ =        <DB> <Suff> $C$*
 
-% restrict suff(st) to cardinal bases
-$DerRestrNumPOSSuff-st$ = <Stem> $C$* <CARD> $C$* $Suff$? <DB> ^$DerSuff-st$
+% restrict suff(st) to cardinal or nominal bases
+$DerRestrNumPOSSuff-st$ = [<dc><uc>]* <Stem> $C$* [<CARD><NN>] $C$* $Suff$? <DB> ^$DerSuff-st$
 
-% restrict suff(stel) to cardinal bases
-$DerRestrNumPOSSuff-stel$ = <Stem> $C$* <CARD> $C$* $Suff$? <DB> ^$DerSuff-stel$
+% restrict suff(stel) to cardinal or nominal bases
+$DerRestrNumPOSSuff-stel$ = [<dc><uc>]* <Stem> $C$* [<CARD><NN>] $C$* $Suff$? <DB> ^$DerSuff-stel$
 
 % restrict suff(zig) to cardinal bases
-$DerRestrNumPOSSuff-zig$ = <Stem> $C$* <CARD> $C$* <DB> ^$DerSuff-zig$
+$DerRestrNumPOSSuff-zig$ = [<dc><uc>]* <Stem> $C$* <CARD> $C$* <DB> ^$DerSuff-zig$
 
 $DerRestrNumPOS$ = $DerRestrNumPOSSuff-st$   | \
                    $DerRestrNumPOSSuff-stel$ | \
@@ -243,9 +253,9 @@ $DerFilter$ = $DerRestrPOS$ & $DerRestrAbbr$
 
 % restrict cardinal ordinal, and fractional compounds
 % to cardinal initial or intermediate bases
-$CompNumRestrPOS$ = (<Stem> $C$* $Suff$*  <CARD>             $C$* <IB> ^$Comp-und$    <CB> | \
-                     <Stem> $C$* $Suff$*  <CARD>             $C$*      ^$Comp-concat$ <CB>)+ \
-                     <Stem> $C$* $Suff$* [<CARD><ORD><FRAC>] $C$*
+$CompNumRestrPOS$ = ([<dc><uc>]* <Stem> $C$* $Suff$*  <CARD>             $C$* <IB> ^$Comp-und$    <CB> | \
+                     [<dc><uc>]* <Stem> $C$* $Suff$*  <CARD>             $C$*      ^$Comp-concat$ <CB>)+ \
+                     [<dc><uc>]* <Stem> $C$* $Suff$* [<CARD><ORD><FRAC>] $C$*
 
 $CompNumFilter$ = $CompNumRestrPOS$
 
