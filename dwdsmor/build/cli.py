@@ -220,7 +220,7 @@ def build_metrics(edition_dir, force=False, quiet=False):
     return True
 
 
-traversal_automaton_types = {"index"}
+traversal_automaton_types = ("index",)
 
 
 def build_traversals(edition_dir, automaton_type, force=False):
@@ -408,10 +408,10 @@ if __name__ == "__main__":
     args = arg_parser.parse_args()
     configure_logging()
 
-    editions = set(args.edition) if args.edition else editions
+    editions = args.edition if args.edition else editions
     edition_dirs = [lexicon_dir / edition for edition in editions]
     build_automaton_types = (
-        set(args.automaton_type) if args.automaton_type else automaton_types
+        args.automaton_type if args.automaton_type else automaton_types
     )
     for edition_dir in edition_dirs:
         assert edition_dir.is_dir()

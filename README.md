@@ -68,10 +68,11 @@ Currently, the following DWDSmor editions are supported:
    their grammatical specifications.
 
 The automata of the DWDS Edition are available upon request for research
-purposes. The automata of the Open Edition, as well as its sample source
-lexicon, are released freely for general use and experiments. For testing
-purposes, DWDSmor also allows for compiling a development edition from a
-user-provided source lexicon.
+purposes. The
+[automata of the Open Edition](https://huggingface.co/zentrum-lexikographie/dwdsmor-open),
+as well as its [sample source lexicon](lexicon/open/wb/open.xml), are released
+freely for general use and experiments. For testing purposes, DWDSmor also
+allows for compiling a development edition from a user-provided source lexicon.
 
 The coverage of the released DWDSmor automata is measured against the
 [German Universal Dependencies HDT treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
@@ -165,8 +166,8 @@ and `paradigm.py` in the `tools/` subdirectory:
 ```plaintext
 $ ./tools/analysis.py -h
 usage: analysis.py [-h] [-a] [-c] [-C] [-d AUTOMATA_DIR] [-e] [-H] [-I] [-j]
-                   [-m] [-M] [-P] [-s] [-S] [-t {root,finite,morph,index,lemma}]
-                   [-T {root,finite,morph,index,lemma}] [-v] [-y]
+                   [-m] [-M] [-P] [-s] [-S] [-t {lemma,morph,finite,root,index}]
+                   [-T {lemma,morph,finite,root,index}] [-v] [-y]
                    [input] [output]
 
 positional arguments:
@@ -179,7 +180,7 @@ options:
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
   -d AUTOMATA_DIR, --automata-dir AUTOMATA_DIR
-                        automata directory (default: build/open)
+                        automata directory
   -e, --empty           show empty columns or values
   -H, --no-header       suppress table header
   -I, --no-info         do not show analyses with info tags
@@ -189,9 +190,9 @@ options:
   -P, --plain           suppress color and formatting
   -s, --seg-lemma       output also segmented lemma
   -S, --seg-word        output also segmented word form (requires secondary automaton)
-  -t {root,finite,morph,index,lemma}, --automaton-type {root,finite,morph,index,lemma}
+  -t {lemma,morph,finite,root,index}, --automaton-type {lemma,morph,finite,root,index}
                         type of primary automaton (default: lemma)
-  -T {root,finite,morph,index,lemma}, --automaton2-type {root,finite,morph,index,lemma}
+  -T {lemma,morph,finite,root,index}, --automaton2-type {lemma,morph,finite,root,index}
                         type of secondary automaton (default: morph)
   -v, --version         show program's version number and exit
   -y, --yaml            output YAML document
@@ -202,7 +203,7 @@ $ ./tools/paradigm.py -h
 usage: paradigm.py [-h] [-c] [-C] [-d AUTOMATA_DIR] [-e] [-H]
                    [-i {1,2,3,4,5,6,7,8}] [-I {1,2,3,4,5,6,7,8}] [-j] [-n] [-N] [-o] [-O]
                    [-p {NN,NPROP,ADJ,CARD,ORD,FRAC,ART,DEM,INDEF,POSS,PPRO,REL,WPRO,V}]
-                   [-P] [-s] [-S] [-t {lemma,morph,index,finite,root}] [-u] [-v] [-y]
+                   [-P] [-s] [-S] [-t {lemma,morph,finite,root,index}] [-u] [-v] [-y]
                    lemma [output]
 
 positional arguments:
@@ -214,7 +215,7 @@ options:
   -c, --csv             output CSV table
   -C, --force-color     preserve color and formatting when piping output
   -d AUTOMATA_DIR, --automata-dir AUTOMATA_DIR
-                        automata directory (default: build/dwds)
+                        automata directory
   -e, --empty           show empty columns or values
   -H, --no-header       suppress table header
   -i {1,2,3,4,5,6,7,8}, --lemma-index {1,2,3,4,5,6,7,8}
@@ -231,12 +232,21 @@ options:
   -P, --plain           suppress color and formatting
   -s, --nonst           output also non-standard forms
   -S, --ch              output also forms in Swiss spelling
-  -t {lemma,morph,index,finite,root}, --automaton-type {lemma,morph,index,finite,root}
+  -t {lemma,morph,finite,root,index}, --automaton-type {lemma,morph,finite,root,index}
                         automaton type (default: index)
   -u, --user-specified  use only user-specified information
   -v, --version         show program's version number and exit
   -y, --yaml            output YAML document
 ```
+
+Automata are searched in the following locations (in this order):
+
+1. in the directory specified with option `-d`,
+2. in edition subdirectories of `build/` if the environment variable
+   `DWDSMOR_DEV` is set (as it is in [`.env.shared`](.env.shared)),
+3. in the value of the environment variable `DWDSMOR_AUTOMATA_DIR`,
+4. in the Hugging Face Hub repository in the value of the environment variable
+   `DWDSMOR_HF_REPO_ID` (by default, `zentrum-lexikographie/dwdsmor-open`).
 
 
 ## Development
@@ -297,16 +307,16 @@ Building different editions is facilitated via the script `build-dwdsmor`:
 
 ```plaintext
 $ ./build-dwdsmor -h
-usage: cli.py [-h] [-e {open,dwds,dev}] [-t {root,index,morph,finite,lemma}]
+usage: cli.py [-h] [-e {dwds,open,dev}] [-t {lemma,morph,finite,root,index}]
               [-m] [-f] [-q] [--release] [--tag]
 
 Build DWDSmor.
 
 options:
   -h, --help            show this help message and exit
-  -e {open,dwds,dev}, --edition {open,dwds,dev}
+  -e {dwds,open,dev}, --edition {dwds,open,dev}
                         edition to build (default: all)
-  -t {root,index,morph,finite,lemma}, --automaton-type {root,index,morph,finite,lemma}
+  -t {lemma,morph,finite,root,index}, --automaton-type {lemma,morph,finite,root,index}
                         automaton type to build (default: all)
   -m, --with-metrics    measure UD/de-hdt coverage
   -f, --force           force building (also current targets)

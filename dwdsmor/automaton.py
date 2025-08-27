@@ -51,7 +51,7 @@ class AutomataDirNotFound(Exception):
     pass
 
 
-editions = {"dev", "dwds", "open"}
+editions = ("dwds", "open", "dev")
 
 
 def detect_dev_root_dir():
@@ -155,8 +155,8 @@ class Analyzer:
         )
 
 
-automaton_types = {"finite", "index", "lemma", "morph", "root"}
-traversal_automaton_types = {"index"}
+automaton_types = ("lemma", "morph", "finite", "root", "index")
+traversal_automaton_types = ("index",)
 
 
 def assert_valid_automaton_type(automaton_type: str, types=automaton_types):

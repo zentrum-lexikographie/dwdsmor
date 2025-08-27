@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # analysis.py - analyse word forms with DWDSmor
-# Andreas Nolda 2025-07-03
+# Andreas Nolda 2025-08-27
 
 import argparse
 import csv
@@ -17,7 +17,7 @@ import yaml
 
 progname = Path(__file__).name
 
-version = 14.1
+version = 14.2
 
 
 LABEL_MAP = {"word": "Wordform",
@@ -369,16 +369,11 @@ def main():
                             help="output YAML document")
         args = parser.parse_args()
 
-        if args.automata_dir:
-            if Path(args.automata_dir).is_dir():
-                automata_dir = args.automata_dir
-            else:
-                print(f"{progname}: {args.automata_dir} is not a directory")
-                sys.exit(1)
-        else:
-            automata_dir = automaton.detect_root_dir()
+        if args.automata_dir and not Path(args.automata_dir).is_dir():
+            print(f"{progname}: {args.automata_dir} is not a directory")
+            sys.exit(1)
 
-        automata = automaton.automata(automata_dir)
+        automata = automaton.automata(args.automata_dir)
         analyzer = automata.analyzer(args.automaton_type)
         generator = automata.generator(args.automaton2_type)
 
