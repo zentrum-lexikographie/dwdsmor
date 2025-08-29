@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-08-29:
+
+* add support for derivation by means of "bar"-suffixation
+
 2025-07-28:
 
 * add support for fractional derivation by means of "(s)tel"-suffixation

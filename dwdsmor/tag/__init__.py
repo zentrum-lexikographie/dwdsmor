@@ -95,6 +95,7 @@ tag_values = {
             "prev(zu)",
             "prev(zurueck)",
             "prev(zwischen)",
+            "suff(bar)",
             "suff(e)",
             "suff(er)",
             "suff(chen)",

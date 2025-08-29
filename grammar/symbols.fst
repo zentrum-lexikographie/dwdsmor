@@ -1,6 +1,6 @@
 % symbols.fst
-% Version 13.10
-% Andreas Nolda 2025-07-28
+% Version 13.11
+% Andreas Nolda 2025-08-29
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -78,8 +78,8 @@
              <prev(fort)><prev(gegen)><prev(heim)><prev(her)><prev(hin)> \
              <prev(hinter)><prev(los)><prev(mit)><prev(nach)><prev(ueber)> \
              <prev(um)><prev(unter)><prev(vor)><prev(weg)><prev(wieder)> \
-             <prev(zu)><prev(zurueck)><prev(zwischen)><suff(chen)><suff(e)> \
-             <suff(er)><suff(lein)><suff(st)><suff(stel)><suff(zig)>
+             <prev(zu)><prev(zurueck)><prev(zwischen)><suff(bar)><suff(chen)> \
+             <suff(e)><suff(er)><suff(lein)><suff(st)><suff(stel)><suff(zig)>
 
 #wf# = #wf-process# #wf-means#
 
@@ -127,7 +127,7 @@
 
 #stem-type# = <base><comp><der>
 
-#suff# = <-chen><-e><-er><-lein><-st><-stel><-zig> % ...
+#suff# = <-bar><-chen><-e><-er><-lein><-st><-stel><-zig> % ...
 
 #origin# = <native><foreign>
 

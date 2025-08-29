@@ -1,6 +1,6 @@
 % wf.fst
-% Version 13.5
-% Andreas Nolda 2025-07-28
+% Version 13.6
+% Andreas Nolda 2025-08-29
 
 #include "symbols.fst"
 
@@ -25,6 +25,8 @@ $DerSuff-e$    = <DER>:<> <suff(e)>:<>    <Suff> e    <NN> <base> <native> <>:<N
 $DerSuff-er$   = <DER>:<> <suff(er)>:<>   <Suff> er   <NN> <base> <native> <>:<NMasc_s_0_n>
 $DerSuff-chen$ = <DER>:<> <suff(chen)>:<> <Suff> chen <NN> <base> <native> <>:<NNeut_s_0_0>
 $DerSuff-lein$ = <DER>:<> <suff(lein)>:<> <Suff> lein <NN> <base> <native> <>:<NNeut_s_0_0>
+
+$DerSuff-bar$ = <DER>:<> <suff(bar)>:<> <Suff> bar <ADJ> <base> <native> <>:<AdjPos>
 
 $DerSuff-st$ = <DER>:<> <suff(st)>:<> <Suff> <s>t<SB>:<>e:<> <ORD> <base> <native> <>:<Ord>
 
@@ -163,9 +165,12 @@ $DerRestrPOSSuff-er$ = [<dc><uc>]* <Stem> $C$* <NPROP> $C$* <DB> ^$DerSuff-er$
 $DerRestrPOSSuff-chen$ = [<dc><uc>]* <Stem> $C$* <NN> $C$* <DB> ^$DerSuff-chen$
 $DerRestrPOSSuff-lein$ = [<dc><uc>]* <Stem> $C$* <NN> $C$* <DB> ^$DerSuff-lein$
 
+% restrict suff(bar) to verbal bases
+$DerRestrPOSSuff-bar$ = $Pref$? [<dc><uc>]* <Stem> $C$* <V> $C$* <DB> ^$DerSuff-bar$
+
 % restrict pref(un) to adjectival and nominal bases
-$DerRestrPOSPref-un$ =      ^$DerPref-un$ <DB>      <Stem> ($C$* <VB>)? $C$* <ADJ> $C$*
-$DerRestrPOSPref-Un$ = <uc> ^$DerPref-un$ <DB> <dc> <Stem> ($C$* <VB>)? $C$* <NN>  $C$*
+$DerRestrPOSPref-un$ =      ^$DerPref-un$ <DB>      $Pref$? <Stem> ($C$* <VB>)? $C$* $Suff$* <ADJ> $C$*
+$DerRestrPOSPref-Un$ = <uc> ^$DerPref-un$ <DB> <dc> $Pref$? <Stem> ($C$* <VB>)? $C$* $Suff$* <NN>  $C$*
 
 % restrict prev() to verbal bases
 $DerRestrPOSPrev-mit$ = ^$DerPrev-mit$ <VB> <Stem> ($C$* <VB>)? $C$* <V> $C$*
@@ -200,6 +205,7 @@ $DerRestrPOS$ = $DerRestrPOSSuff-e$        | \
                 $DerRestrPOSSuff-er$       | \
                 $DerRestrPOSSuff-chen$     | \
                 $DerRestrPOSSuff-lein$     | \
+                $DerRestrPOSSuff-bar$      | \
                 $DerRestrPOSPref-un$       | \
                 $DerRestrPOSPref-Un$       | \
                 $DerRestrPOSPrev-ab$       | \
@@ -235,7 +241,7 @@ $DerRestrAbbrSuff-chen$ = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> ^$DerSuff-chen$)
 $DerRestrAbbrSuff-lein$ = !([<dc><uc>]* <Stem> <Abbr> $C$* <DB> ^$DerSuff-lein$)
 
 % exclude pref(un) for abbreviated bases
-$DerRestrAbbrPref-un$ = !([<dc><uc>]* ^$DerPref-un$ <DB> [<dc><uc>]* <Stem> <Abbr> ($C$* <VB>)? $C$*)
+$DerRestrAbbrPref-un$ = !([<dc><uc>]* ^$DerPref-un$ <DB> [<dc><uc>]* $Pref$? <Stem> <Abbr> ($C$* <VB>)? $C$* $Suff$*)
 
 % exclude prev() for abbreviated bases
 $DerRestrAbbrPrev$ = !(^$DerPrev$ <VB> [<dc><uc>]* <Stem> <Abbr> $C$*)

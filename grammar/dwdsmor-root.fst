@@ -1,6 +1,6 @@
 % dwdsmor-root.fst
-% Version 15.6
-% Andreas Nolda 2025-07-28
+% Version 15.7
+% Andreas Nolda 2025-08-29
 
 #include "symbols.fst"
 #include "num.fst"
@@ -258,13 +258,16 @@ $CompBaseStemsFrac2003$ = $CompStemsCard2000$ <IB> $Comp-und$    <CB> $BaseStems
 
 $BaseStems$ = $BaseStems$ | $CompBaseStemsCard2001$ | $CompBaseStemsOrd2001$ | $CompBaseStemsFrac2003$
 
-% derived base stems with preverbs
+% derived base stems and derivation stems with preverbs
 
 $DerBaseStemsPrev$ = $DerPrev$ <VB> $BaseStems$ || $DerFilter$
+$DerDerStemsPrev$  = $DerPrev$ <VB> $DerStems$  || $DerFilter$
 
 $DerBaseStemsPrev$ = $DerFilterLv2$ || $DerBaseStemsPrev$
+$DerDerStemsPrev$  = $DerFilterLv2$ || $DerDerStemsPrev$
 
 $BaseStems$ = $BaseStems$ | $DerBaseStemsPrev$
+$DerStems$  = $DerStems$  | $DerDerStemsPrev$
 
 % converted base stems
 
@@ -376,20 +379,24 @@ $BaseStems$ = $BaseStems$ | $ConvBaseStemsAdj$ | $ConvBaseStemsOrd$ | $ConvBaseS
 
 % derived base stems with affixes
 
-$DerBaseStemsPref$ = <uc> $DerPref-un$ <DB> <dc> $BaseStems$ | \
-                          $DerPref-un$ <DB>      $BaseStems$ || $DerFilter$
-
 $DerStemsSuff-e$    = $DerStems$ || $DerStemFilterSuff-e$
 $DerStemsSuff-er$   = $DerStems$ || $DerStemFilterSuff-er$
 $DerStemsSuff-chen$ = $DerStems$ || $DerStemFilterSuff-chen$
 $DerStemsSuff-lein$ = $DerStems$ || $DerStemFilterSuff-lein$
+$DerStemsSuff-bar$  = $DerStems$ || $DerStemFilterSuff-bar$
 
 $DerBaseStemsSuff$ = $DerStemsSuff-e$    <DB> $DerSuff-e$    | \
                      $DerStemsSuff-er$   <DB> $DerSuff-er$   | \
                      $DerStemsSuff-chen$ <DB> $DerSuff-chen$ | \
-                     $DerStemsSuff-lein$ <DB> $DerSuff-lein$ || $DerFilter$
+                     $DerStemsSuff-lein$ <DB> $DerSuff-lein$ | \
+                     $DerStemsSuff-bar$  <DB> $DerSuff-bar$ || $DerFilter$
 
-$BaseStems$ = $BaseStems$ | $DerBaseStemsPref$ | $DerBaseStemsSuff$
+$BaseStems$ = $BaseStems$ | $DerBaseStemsSuff$
+
+$DerBaseStemsPref$ = <uc> $DerPref-un$ <DB> <dc> $BaseStems$ | \
+                          $DerPref-un$ <DB>      $BaseStems$ || $DerFilter$
+
+$BaseStems$ = $BaseStems$ | $DerBaseStemsPref$
 
 $BASE$ = $BaseStems$
 

@@ -27,6 +27,42 @@
     ),
     tuple(
       'zurechenbare',
+      'zurechen<->bar<ADJ><Pos><Attr/Subst><UnmGend><Acc><Pl><St>',
+    ),
+    tuple(
+      'zurechenbare',
+      'zurechen<->bar<ADJ><Pos><Attr/Subst><UnmGend><Nom><Pl><St>',
+    ),
+    tuple(
+      'zurechenbare',
+      'zurechen<->bar<ADJ><Pos><Attr/Subst><Neut><Acc><Sg><Wk>',
+    ),
+    tuple(
+      'zurechenbare',
+      'zurechen<->bar<ADJ><Pos><Attr/Subst><Neut><Nom><Sg><Wk>',
+    ),
+    tuple(
+      'zurechenbare',
+      'zurechen<->bar<ADJ><Pos><Attr/Subst><Fem><Acc><Sg><Wk>',
+    ),
+    tuple(
+      'zurechenbare',
+      'zurechen<->bar<ADJ><Pos><Attr/Subst><Fem><Acc><Sg><St>',
+    ),
+    tuple(
+      'zurechenbare',
+      'zurechen<->bar<ADJ><Pos><Attr/Subst><Fem><Nom><Sg><Wk>',
+    ),
+    tuple(
+      'zurechenbare',
+      'zurechen<->bar<ADJ><Pos><Attr/Subst><Fem><Nom><Sg><St>',
+    ),
+    tuple(
+      'zurechenbare',
+      'zurechen<->bar<ADJ><Pos><Attr/Subst><Masc><Nom><Sg><Wk>',
+    ),
+    tuple(
+      'zurechenbare',
       'zurechenbar<ADJ><Pos><Attr/Subst><UnmGend><Acc><Pl><St>',
     ),
     tuple(

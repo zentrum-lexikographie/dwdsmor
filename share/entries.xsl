@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 18.4 -->
-<!-- Andreas Nolda 2025-07-28 -->
+<!-- Version 18.5 -->
+<!-- Andreas Nolda 2025-08-29 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -99,7 +99,7 @@
 
 <xsl:variable name="supported-suffs"
               as="item()*"
-              select="'chen','e','er','lein','st','stel','zig'"/><!-- ... -->
+              select="'bar','chen','e','er','lein','st','stel','zig'"/><!-- ... -->
 
 <!-- derivation stems -->
 <xsl:template name="der-stem-entry">
