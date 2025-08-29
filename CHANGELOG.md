@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.12.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.11.0...v0.12.0) (2025-08-29)
+
+
+### Features
+
+* add Hugging Face Hub support to Python tools ([5dfbbcf](https://github.com/zentrum-lexikographie/dwdsmor/commit/5dfbbcf51e61dccb14946478ce7ce642bfd69994))
+* add support for derivation by means of "bar"-suffixation ([5ca99ba](https://github.com/zentrum-lexikographie/dwdsmor/commit/5ca99babb34ffa33d049d5caa4267ec7a7b883f7))
+
+
+### Bug Fixes
+
+* do not exclude forms in old orthography with linking elements ([ff91520](https://github.com/zentrum-lexikographie/dwdsmor/commit/ff91520446667c99505150bd945a29650cf81df4))
+
 ## [0.11.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.10.0...v0.11.0) (2025-07-29)
 
 
