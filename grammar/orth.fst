@@ -1,6 +1,6 @@
 % orth.fst
-% Version 5.4
-% Andreas Nolda 2025-06-13
+% Version 5.5
+% Andreas Nolda 2025-08-28
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -21,32 +21,35 @@ $ConsNoSS$ = $Cons$               | \
 
 $SSOld$ = {ss}:{ß}
 
-$SyllablesSS$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ ss $Vowel$ $ConsNoSS$?
+$SegSylSS$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ ss $Vowel$ $ConsNoSS$?
 
-$SyllablesSSOld$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $SSOld$
+$SegSylSSOld$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $SSOld$
 
-$SyllablesNoSSOld$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $Vowel$ $Cons$* | \
-                     $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $ConsNoSS$? % ...
+$SegSylNoSSOld$ = $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $Vowel$ $Cons$* | \
+                  $Cons$* ($Vowel$+ $ConsNoSS$?)* $Vowel$ $ConsNoSS$? % ...
 
-$Syllables$ = $SyllablesNoSSOld$ | \
-              $SyllablesSS$      | \
-              $SyllablesSSOld$
+$SegUnsyl$ = $Cons$+
 
-$SyllableInflPref$ = ge <PB>
+$Seg$ = $SegSylNoSSOld$ | \
+        $SegSylSS$      | \
+        $SegSylSSOld$   | \
+        $SegUnsyl$
 
-$SyllableSSInflSuffAdj$ = <SB>? t (<SB>  e(r | st))? (<SB> e[mnrs]?)?
-$SyllableSSInflSuffV$   = <SB>  t  <SB> (e(n | s?t)?)?
+$SegSylInflPref$ = ge <PB>
 
-$SyllableSSInflSuff$ = $SyllableSSInflSuffAdj$ | \
-                       $SyllableSSInflSuffV$
+$SegSylSSInflSuffAdj$ = <SB>? t (<SB>  e(r | st))? (<SB> e[mnrs]?)?
+$SegSylSSInflSuffV$   = <SB>  t  <SB> (e(n | s?t)?)?
 
-$SyllableInflSuff$ = <SB> $Vowel$ (<SB>? $Cons$+ (<SB> $Cons$+)*)? | \
-                     <SB>                $Cons$+ (<SB> $Cons$+)*   | \
-                     $SyllableSSInflSuff$
+$SegSylSSInflSuff$ = $SegSylSSInflSuffAdj$ | \
+                     $SegSylSSInflSuffV$
 
-$SyllablesSSOldInfl$ = $SyllableInflPref$? $SyllablesSSOld$ $SyllableSSInflSuff$?
+$SegSylInflSuff$ = <SB> $Vowel$ (<SB>? $Cons$+ (<SB> $Cons$+)*)? | \
+                   <SB>                $Cons$+ (<SB> $Cons$+)*   | \
+                   $SegSylSSInflSuff$
 
-$SyllablesNoSSOldInfl$ = $SyllableInflPref$? $SyllablesNoSSOld$ $SyllableInflSuff$?
+$SegSylSSOldInfl$ = $SegSylInflPref$? $SegSylSSOld$ $SegSylSSInflSuff$?
+
+$SegSylNoSSOldInfl$ = $SegSylInflPref$? $SegSylNoSSOld$ $SegSylInflSuff$?
 
 $WordSSOld$ = anlä$SSOld$lich | \
               bi$SSOld$chen
@@ -56,12 +59,12 @@ $B$ = [#boundary-trigger# \-]
 
 $BMinusSB$ = $B$-[<SB>]
 
-$OrthOld$ = (($B$+        $Syllables$)*                   \
-             ($B$+        $SyllablesSSOld$)               \
-             ($B$+        $Syllables$)*                   \
-             ($BMinusSB$+ $SyllablesNoSSOldInfl$)) $B$+ | \
-            (($B$+        $Syllables$)*                   \
-             ($BMinusSB$+ $SyllablesSSOldInfl$))   $B$+ | \
+$OrthOld$ = (($B$+        $Seg$)*                      \
+             ($B$+        $SegSylSSOld$)               \
+             ($B$+        $Seg$)*                      \
+             ($BMinusSB$+ $SegSylNoSSOldInfl$)) $B$+ | \
+            (($B$+        $Seg$)*                      \
+             ($BMinusSB$+ $SegSylSSOldInfl$))   $B$+ | \
             ($B$+         $WordSSOld$) $B$+
 
 
