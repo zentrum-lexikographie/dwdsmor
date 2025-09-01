@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 7.8 -->
-<!-- Andreas Nolda 2025-06-29 -->
+<!-- Version 7.9 -->
+<!-- Andreas Nolda 2025-09-01 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -577,19 +577,19 @@
          nominative-plural="-n"
          dative-plural="-">NMasc_n_n_0</class>
   <!-- genitive singular: "-n"
-       nominative plural: "-ns"
+       nominative plural: "-ns" (coll.)
        dative plural: unmarked -->
   <class gender="mask."
          genitive-singular="-n"
          nominative-plural="-ns"
-         dative-plural="-">NMasc_n_ns_0</class>
+         dative-plural="-">NMascNonSt_n_ns_0</class>
   <!-- genitive singular: "-n"
-       nominative plural: "-s" substituted for "-e"
+       nominative plural: "-s" substituted for "-e" (coll.)
        dative plural: unmarked -->
   <class gender="mask."
          genitive-singular="-n"
          nominative-plural="-e/s"
-         dative-plural="-">NMasc_n_e/s_0</class>
+         dative-plural="-">NMascNonSt_n_e/s_0</class>
   <!-- genitive singular: "-ns"
        nominative plural: "-n"
        dative plural: unmarked -->
@@ -870,13 +870,13 @@
          genitive-singular="-ses"
          nominative-plural="-se"
          dative-plural="-n">NNeut_es_e_n~ss</class>
-  <!-- genitive singular: geminate "z" + "-es"
-       nominative plural: geminate "z" + "-e"
+  <!-- genitive singular: geminate "z" + "-es" (coll.)
+       nominative plural: geminate "z" + "-e" (coll.)
        dative plural: "-n" -->
   <class gender="neutr."
          genitive-singular="-zes"
          nominative-plural="-ze"
-         dative-plural="-n">NNeut_es_e_n~zz</class>
+         dative-plural="-n">NNeutNonSt_es_e_n~zz</class>
   <!-- genitive singular: "-(e)s"
        nominative plural: umlaut and "-e"
        dative plural: "-n" -->
@@ -1352,11 +1352,11 @@
          genitive-singular="-"
          nominative-plural="-ox/oces"
          dative-plural="-">NFem_0_ox/oces_0</class>
-  <!-- all forms except nominative singular: "-n" -->
+  <!-- all forms except nominative singular: "-n" (archaic) -->
   <class gender="fem."
          genitive-singular="-n"
          nominative-plural="-n"
-         dative-plural="-">NFem_n_n_0</class>
+         dative-plural="-">NFemOld_n_n_0</class>
   <!-- genitive singular: unmarked
        nominative plural: geminate "n" + "-en"
        dative plural: unmarked -->

@@ -1,5 +1,13 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-09-01:
+
+* rename inflection classes `NMasc_n_e/s_0`, `NMasc_n_ns_0`, `NNeut_es_e_n~zz`,
+  `NNeut|Pl_n`, and `NFem_n_n_0` to `NMascNonSt_n_e/s_0`, `NMascNonSt_n_ns_0`,
+  `NNeutNonSt_es_e_n~zz`, `NNeut|PlNonSt_n`, and `NFemOld_n_n_0`, respectively
+* add inflection classes `NMascNonSt_0_e_n~ss`, `NMascNonSt_es_e_n~ss`,
+  `NMascNonSt_es_$er_n$`, `NNeutNonSt_es_$er_n`, and `NNeutNonSt_es_er_n`
+
 2025-08-29:
 
 * add support for derivation by means of "bar"-suffixation
@@ -143,14 +151,14 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
   `<UnmNum>`, and/or `<UnmInfl>`
 * replace inflection tags `<NoGend>` and `<NoInfl>` with `<UnmGend>` and
   `<UnmInfl>`, respectively
-* rename inflection classes `<NNoGend|Pl_0>`, `<NNoGend|Pl_n>`,
-  `<NameNoGend|Pl_0>`, `<NameNoGend|Pl_n>`, `<ArtDef-den+DemNoGend>`,
-  `<ArtDef-der+DemNoGend>`, `<ArtDef-die+DemNoGend>`, `<PProNoGendAccPl>`,
-  `<PProNoGendDatPl>`, `<PProNoGendGenPl>`, `<PProNoGendNomPl>`, and
-  `<AbbrNNoGend>` to `<NUnmGend|Pl_0>`, `<NUnmGend|Pl_n>`, `<NameUnmGend|Pl_0>`,
-  `<NameUnmGend|Pl_n>`, `<ArtDef-den+DemUnmGend>`, `<ArtDef-der+DemUnmGend>`,
-  `<ArtDef-die+DemUnmGend>`, `<PProUnmGendAccPl>`, `<PProUnmGendDatPl>`,
-  `<PProUnmGendGenPl>`, `<PProUnmGendNomPl>`, and `<AbbrNUnmGend>`, respectively
+* rename inflection classes `NNoGend|Pl_0`, `NNoGend|Pl_n`, `NameNoGend|Pl_0`,
+  `NameNoGend|Pl_n`, `ArtDef-den+DemNoGend`, `ArtDef-der+DemNoGend`,
+  `ArtDef-die+DemNoGend`, `PProNoGendAccPl`, `PProNoGendDatPl`,
+  `PProNoGendGenPl`, `PProNoGendNomPl`, and `AbbrNNoGend` to `NUnmGend|Pl_0`,
+  `NUnmGend|Pl_n`, `NameUnmGend|Pl_0`, `NameUnmGend|Pl_n`,
+  `ArtDef-den+DemUnmGend`, `ArtDef-der+DemUnmGend`, `ArtDef-die+DemUnmGend`,
+  `PProUnmGendAccPl`, `PProUnmGendDatPl`, `PProUnmGendGenPl`,
+  `PProUnmGendNomPl`, and `AbbrNUnmGend`, respectively
 
 2024-11-07:
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 18.5 -->
-<!-- Andreas Nolda 2025-08-29 -->
+<!-- Version 18.6 -->
+<!-- Andreas Nolda 2025-09-01 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2093,7 +2093,7 @@
         </xsl:call-template>
       </xsl:when>
       <!-- lemma: "Vieh"
-           nominative plural: "Viecher" -->
+           nominative plural: "Viecher" (coll.) -->
       <xsl:when test="$gender='neutr.' and
                       $lemma='Vieh' and
                       $nominative-plural='Viecher'">
@@ -2132,13 +2132,13 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NNeut|Pl_n</xsl:with-param>
+          <xsl:with-param name="class">NNeut|PlNonSt_n</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
       </xsl:when>
       <!-- lemma: compound with "Vieh"
-           nominative plural: compound with "Viecher" -->
+           nominative plural: compound with "Viecher" (coll.) -->
       <xsl:when test="$gender='neutr.' and
                       ends-with($lemma,'vieh') and
                       $nominative-plural=replace($lemma,'vieh$','viecher')">
@@ -2177,7 +2177,7 @@
           <xsl:with-param name="abbreviation"
                           select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
-          <xsl:with-param name="class">NNeut|Pl_n</xsl:with-param>
+          <xsl:with-param name="class">NNeut|PlNonSt_n</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>
@@ -3364,7 +3364,9 @@
           </xsl:call-template>
         </xsl:if>
       </xsl:when>
-      <!-- colloquial mixed variants of weak masculine nouns -->
+      <!-- colloquial variants of masculine nouns -->
+      <!-- genitive singular: "-s"
+           nominative plural: "-en" -->
       <xsl:when test="$gender='mask.' and
                       $genitive-singular-marker='-s' and
                       $nominative-plural-marker='-en' and
@@ -3380,6 +3382,115 @@
                             select="$abbreviation"/>
           <xsl:with-param name="pos">NN</xsl:with-param>
           <xsl:with-param name="class">NMascNonSt_s_en_0</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- genitive singular: "-"
+           nominative plural: geminate "s" + "-e" -->
+      <xsl:when test="$gender='mask.' and
+                      $genitive-singular-marker='-' and
+                      $nominative-plural-marker='-se' and
+                      $style='colloquial'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NMascNonSt_0_e_n~ss</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- genitive singular: geminate "s" + "-es"
+           nominative plural: geminate "s" + "-e" -->
+      <xsl:when test="$gender='mask.' and
+                      $genitive-singular-marker='-ses' and
+                      $nominative-plural-marker='-se' and
+                      $style='colloquial'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NMascNonSt_es_e_n~ss</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- genitive singular: "-(e)s"
+           nominative plural: umlaut and "-er" -->
+      <xsl:when test="$gender='mask.' and
+                      ($genitive-singular-marker='-(e)s' or
+                       $genitive-singular-marker='-es') and
+                      $nominative-plural-marker='&#x308;-er' and
+                      $style='colloquial'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NMascNonSt_es_$er_n</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- colloquial variants of neuter nouns -->
+      <!-- genitive singular: "-(e)s"
+           nominative plural: "-er" -->
+      <xsl:when test="$gender='neutr.' and
+                      ($genitive-singular-marker='-(e)s' or
+                       $genitive-singular-marker='-es') and
+                      $nominative-plural-marker='-er' and
+                      $style='colloquial'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NNeutNonSt_es_er_n</xsl:with-param>
+          <xsl:with-param name="etymology"
+                          select="$etymology"/>
+        </xsl:call-template>
+      </xsl:when>
+      <!-- genitive singular: "-(e)s"
+           nominative plural: umlaut and "-er" -->
+      <xsl:when test="$gender='neutr.' and
+                      ($genitive-singular-marker='-(e)s' or
+                       $genitive-singular-marker='-es') and
+                      $nominative-plural-marker='&#x308;-er' and
+                      $style='colloquial'">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="$lemma"/>
+          <xsl:with-param name="lemma-index"
+                          select="$lemma-index"/>
+          <xsl:with-param name="paradigm-index"
+                          select="$paradigm-index"/>
+            <xsl:with-param name="abbreviation"
+                            select="$abbreviation"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NNeutNonSt_es_$er_n</xsl:with-param>
           <xsl:with-param name="etymology"
                           select="$etymology"/>
         </xsl:call-template>

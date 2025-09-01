@@ -1,3 +1,14 @@
+2025-09-01:
+
+* add support for colloquial variants of neuter nouns with genitive singular
+  forms ending in "-(e)s" and nominative plural forms ending in "-er"
+* add support for colloquial variants of masculine or neuter nouns with genitive
+  singular forms ending in "-(e)s" and umlauted nominative plural forms ending
+  in "-er"
+* add support for colloquial variants of masculine nouns with unmarked genitive
+  singular forms or genitive singular forms ending in "-es" and nominative
+  plural forms ending in geminate "s" + "-e"
+
 2025-07-15:
 
 * update DWDS word classes for numerals
@@ -204,9 +215,9 @@
 
 2024-06-27:
 
-* add support for masculine and neuter nouns with unmarked genitive singular
+* add support for masculine or neuter nouns with unmarked genitive singular
   forms and nominative plural forms ending in "-en" or "-es"
-* add support for masculine and neuter nouns with unmarked genitive singular
+* add support for masculine or neuter nouns with unmarked genitive singular
   forms and nominative plural forms ending in "-i" substituted for "-o"
 * add support for masculine nouns with genitive singular forms ending in "-es"
   or unmarked genitive singular forms and nominative plural forms ending in
@@ -216,7 +227,7 @@
 
 * add support for masculine, neuter, and feminine nouns with unmarked genitive
   singular forms and nominative plural forms ending in "-i" substituted for "-e"
-* add support for masculine and neuter nouns with genitive singular forms ending
+* add support for masculine or neuter nouns with genitive singular forms ending
   in "-s" and nominative plural forms ending in "-i" substituted for "-e"
 
 2024-01-26:
@@ -325,7 +336,7 @@
 
 2023-03-28:
 
-* add support for masculine and neuter nouns with unmarked genitive singular
+* add support for masculine or neuter nouns with unmarked genitive singular
   forms and nominative plural forms ending in "-e"
 * add support for masculine nouns with unmarked genitive singular forms and
   umlauted nominative plural forms ending in "-e"
@@ -436,9 +447,9 @@
 
 2022-09-05:
 
-* add support for masculine and neuter nouns with genitive singular forms ending
+* add support for masculine or neuter nouns with genitive singular forms ending
   in "-s" and nominative plural forms ending in "-nen"
-* add support for masculine and neuter nouns with unmarked genitive singular
+* add support for masculine or neuter nouns with unmarked genitive singular
   forms and nominative plural forms ending in "-nen"
 
 2022-09-02:
@@ -604,7 +615,7 @@
 
 2022-03-22:
 
-* add support for masculine and neuter proper names with genitive singular forms
+* add support for masculine or neuter proper names with genitive singular forms
   ending in "-es" or "-s"
 
 2022-03-21:
@@ -630,24 +641,24 @@
 * add support for ungradable adjectives
 * add support for uninflected adjectives
 * add support for irregular adjectives
-* add support for masculine and neuter nouns with nominative plural forms ending
+* add support for masculine or neuter nouns with nominative plural forms ending
   in optional "-s"
 * add support for masculine nouns with nominative plural forms ending in "-e"
   substituted for "-us"
-* add support for masculine and feminine nouns with nominative plural forms that
+* add support for masculine or feminine nouns with nominative plural forms that
   are compounds with "Leute"
 
 2022-02-25:
 
 * simplify processing of nouns with genitive singular forms ending in optional "-s"
-* add support for masculine and neuter nouns with genitive singular forms ending
+* add support for masculine or neuter nouns with genitive singular forms ending
   in "-s" and nominative plural forms ending in "-en" or "-i" substituted for "-o"
 
 2022-02-24:
 
 * add support for masculine nouns with genitive singular forms ending in "-es"
   or "-s" and nominative plural forms ending in "-ten"
-* add support for masculine and neuter nouns with genitive singular forms ending
+* add support for masculine or neuter nouns with genitive singular forms ending
   in optional "-s" and nominative plural forms ending in "-s"
 * add support for singularia tantum with genitive singular forms ending in
   optional "-s"
@@ -659,7 +670,7 @@
 2022-02-22:
 
 * generalise the functions `n:umlaut` and `n:umlaut-re` for geminate vowels
-* add support for masculine and neuter nouns with unmarked genitive singular
+* add support for masculine or neuter nouns with unmarked genitive singular
   forms and nominative plural forms ending in "-s"
 * add support for neuter nouns with genitive singular forms ending in "-s" and
   nominative plural forms ending in "-ina" substituted for "-en"
@@ -679,7 +690,7 @@
   nominative plural forms ending in "-iden" substituted for "-is"
 * add support for feminine nouns with genitive singular forms ending in "-s"
   and nominative plural forms ending in "-ta"
-* add support for masculine and neuter singularia tantum with genitive singular
+* add support for masculine or neuter singularia tantum with genitive singular
   forms ending in "-es" or "-s"
 * add support for singularia tantum with unmarked genitive singular forms
 * add support for pluralia tantum
@@ -687,7 +698,7 @@
 2022-02-17:
 
 * generalise the functions `n:umlaut` and `n:umlaut-re` for capitalised arguments
-* add support for masculine and neuter nouns with genitive singular forms ending
+* add support for masculine or neuter nouns with genitive singular forms ending
   in "-s" and nominative plural forms ending in "-n"
 * add support for masculine nouns with genitive singular forms ending in "-s"
   and umlauted nominative plural forms ending in "-e"
@@ -721,7 +732,7 @@
   umlauted nominative plural forms ending in "-e"
 * add support for feminine nouns with unmarked genitive singular forms and
   nominative plural forms ending in geminate "s" + "-e"
-* add support for masculine and neuter nouns with genitive singular forms ending
+* add support for masculine or neuter nouns with genitive singular forms ending
   in geminate "s" + "-es" and nominative plural forms ending in geminate "s" +
   "-e"
 * add support for masculine nouns with all forms except the nominative singular
@@ -731,15 +742,15 @@
 2022-02-14:
 * add support for neuter nouns with genitive singular forms ending in "-es" or
   "-s" and nominative plural forms ending in "-e" or "-en"
-* add support for masculine and neuter nouns with genitive singular and
+* add support for masculine or neuter nouns with genitive singular and
   nominative plural forms ending in "-s"
-* add support for masculine and neuter nouns with genitive singular forms ending
+* add support for masculine or neuter nouns with genitive singular forms ending
   in "-s" and unmarked or umlauted nominative plural forms
 * add support for masculine nouns with genitive singular forms ending in "-es"
   and nominative plural forms ending in "-er"
 * add support for neuter nouns with genitive singular forms ending in "-es" and
   umlauted nominative plural forms ending in "-er"
-* add support for masculine and neuter nouns with genitive singular forms ending
+* add support for masculine or neuter nouns with genitive singular forms ending
   in "-es" and umlauted nominative plural forms ending in "-e"
 * add support for feminine nouns with nominative plural forms ending in "-n"
 

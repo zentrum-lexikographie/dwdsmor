@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwdsmor.xsl -->
-<!-- Version 18.4 -->
-<!-- Andreas Nolda 2025-07-28 -->
+<!-- Version 18.5 -->
+<!-- Andreas Nolda 2025-09-01 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2814,6 +2814,8 @@
 <xsl:template name="get-style-value">
   <xsl:choose>
     <xsl:when test="normalize-space(*/dwds:Diasystematik/dwds:Stilebene)='umgangssprachlich'">colloquial</xsl:when>
+    <xsl:when test="normalize-space(*/dwds:Diasystematik/dwds:Stilebene)='salopp'">colloquial</xsl:when>
+    <!-- <xsl:when test="normalize-space(*/dwds:Diasystematik/dwds:Gebrauchszeitraum)='veraltet'">archaic</xsl:when> -->
     <!-- TODO: more style values -->
     <xsl:otherwise>standard</xsl:otherwise>
   </xsl:choose>

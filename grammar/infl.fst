@@ -1,6 +1,6 @@
 % infl.fst
-% Version 13.2
-% Andreas Nolda 2025-07-25
+% Version 13.3
+% Andreas Nolda 2025-09-01
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -92,10 +92,12 @@ $NMasc0_s$ = {<Masc>}:{} $NSuff0_s$
 % Fiskus, Fiskus
 $NMasc|Sg_0$ = {<Masc>}:{} $NGenSgSuff_0$
 
-% Abwasch, Abwasch(e)s; Glanz, Glanzes
+% Abwasch, Abwasch(e)s
+% Glanz, Glanzes
 $NMasc|Sg_es$ = {<Masc>}:{} $NGenSgSuff_es$
 
-% Hagel, Hagels; Adel, Adels
+% Hagel, Hagels
+% Adel, Adels
 $NMasc|Sg_s$ = {<Masc>}:{} $NGenSgSuff_s$
 
 % Unglaube, Unglaubens
@@ -119,6 +121,10 @@ $NMasc_0_e_n$ = {<Masc>}:{}      $NGenSgSuff_0$ | \
 % Nimbus, Nimbus, Nimbusse, Nimbussen
 $NMasc_0_e_n~ss$ = $SS$ $NMasc_0_e_n$
 
+% Atlas, Atlas, Atlasse, Atlassen (coll.)
+$NMascNonSt_0_e_n~ss$ = $SS$ {<Masc>}:{}      $NGenSgSuff_0$ | \
+                        $SS$ {<Masc>}:{<SB>e} $NDatPlSuff_n$ {<NonSt>}:{}
+
 % Bypass, Bypass, Bypässe, Bypässen
 $NMasc_0_\$e_n$ = {<Masc>}:{}           $NGenSgSuff_0$ | \
                   {<Masc>}:{<uml><SB>e} $NDatPlSuff_n$
@@ -127,7 +133,8 @@ $NMasc_0_\$e_n$ = {<Masc>}:{}           $NGenSgSuff_0$ | \
 $NMasc_0_en_0$ = {<Masc>}:{}       $NGenSgSuff_0$ | \
                  {<Masc>}:{<SB>en} $NDatPlSuff_0$
 
-% Kanon, Kanon, Kanones, Kanones; Sandwich, Sandwich, Sandwiches, Sandwiches (masculine)
+% Kanon, Kanon, Kanones, Kanones
+% Sandwich, Sandwich, Sandwiches, Sandwiches (masculine)
 $NMasc_0_es_0$ = {<Masc>}:{}       $NGenSgSuff_0$ | \
                  {<Masc>}:{<SB>es} $NDatPlSuff_0$
 
@@ -135,7 +142,8 @@ $NMasc_0_es_0$ = {<Masc>}:{}       $NGenSgSuff_0$ | \
 $NMasc_0_nen_0$ = {<Masc>}:{}        $NGenSgSuff_0$ | \
                   {<Masc>}:{n<SB>en} $NDatPlSuff_0$
 
-% Intercity, Intercity, Intercitys, Intercitys; Taxi, Taxi, Taxis, Taxis
+% Intercity, Intercity, Intercitys, Intercitys
+% Taxi, Taxi, Taxis, Taxis
 $NMasc_0_s_0$ = {<Masc>}:{}      $NGenSgSuff_0$ | \
                 {<Masc>}:{<SB>s} $NDatPlSuff_0$
 
@@ -228,14 +236,21 @@ $NMasc_0_us/ier_n$ = {<Masc>}:{}                    $NGenSgSuff_0$ | \
 $NMasc_0_ynx/yngen_0$ = {<Masc>}:{}                      $NGenSgSuff_0$ | \
                         {<Masc>}:{<del(VC)|Pl>yng<SB>en} $NDatPlSuff_0$
 
-% Tag, Tag(e)s, Tage, Tagen; Kodex, Kodexes, Kodexe, Kodexen
+% Tag, Tag(e)s, Tage, Tagen
+% Kodex, Kodexes, Kodexe, Kodexen
 $NMasc_es_e_n$ = {<Masc>}:{}      $NGenSgSuff_es$ | \
                  {<Masc>}:{<SB>e} $NDatPlSuff_n$
 
 % Bus, Busses, Busse, Bussen
 $NMasc_es_e_n~ss$ = $SS$ $NMasc_es_e_n$
 
-% Arzt, Arzt(e)s, Ärzte, Ärzten; Kopf, Kopf(e)s, Köpfe, Köpfen
+% Atlas, Atlasses, Atlasse, Atlassen (coll.)
+$NMascNonSt_es_e_n~ss$ = $SS$ {<Masc>}:{}      $NGenSgSuff_es$ | \
+                         $SS$ {<Masc>}:{<SB>e} $NDatPlSuff_n$ {<NonSt>}:{}
+
+% Arzt, Arzt(e)s, Ärzte, Ärzten
+% Kopf, Kopf(e)s, Köpfe, Köpfen
+% Klotz, Klotzes, Klötze, Klötzen
 $NMasc_es_\$e_n$ = {<Masc>}:{}           $NGenSgSuff_es$ | \
                    {<Masc>}:{<uml><SB>e} $NDatPlSuff_n$
 
@@ -246,6 +261,10 @@ $NMasc_es_er_n$ = {<Masc>}:{}       $NGenSgSuff_es$ | \
 % Gott, Gott(e)s, Götter, Göttern
 $NMasc_es_\$er_n$ = {<Masc>}:{}            $NGenSgSuff_es$ | \
                     {<Masc>}:{<uml><SB>er} $NDatPlSuff_n$
+
+% Klotz, Klotzes, Klötzer, Klötzern (coll.)
+$NMascNonSt_es_\$er_n$ = {<Masc>}:{}            $NGenSgSuff_es$ | \
+                         {<Masc>}:{<uml><SB>er} $NDatPlSuff_n$ {<NonSt>}:{}
 
 % Fleck, Fleck(e)s, Flecken, Flecken
 $NMasc_es_en_0$ = {<Masc>}:{}       $NGenSgSuff_es$ | \
@@ -286,15 +305,19 @@ $NMasc_es_us/i_0~ss$ = $SS$ {<Masc>}:{}                  $NGenSgSuff_es$ | \
 $NMasc_s_0_0$ = {<Masc>}:{} $NGenSgSuff_s$ | \
                 {<Masc>}:{} $NDatPlSuff_0$
 
-% Garten, Gartens, Gärten, Gärten; Schaden, Schadens, Schäden; Faden, Fadens, Fäden, Fäden
+% Garten, Gartens, Gärten, Gärten
+% Schaden, Schadens, Schäden
+% Faden, Fadens, Fäden, Fäden
 $NMasc_s_\$_0$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
                  {<Masc>}:{<uml>} $NDatPlSuff_0$
 
-% Engel, Engels, Engel, Engeln; Dezember, Dezembers, Dezember, Dezembern
+% Engel, Engels, Engel, Engeln
+% Dezember, Dezembers, Dezember, Dezembern
 $NMasc_s_0_n$ = {<Masc>}:{} $NGenSgSuff_s$ | \
                 {<Masc>}:{} $NDatPlSuff_n$
 
-% Apfel, Apfels, Äpfel, Äpfeln; Vater, Vaters, Väter, Vätern
+% Apfel, Apfels, Äpfel, Äpfeln
+% Vater, Vaters, Väter, Vätern
 $NMasc_s_\$_n$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
                  {<Masc>}:{<uml>} $NDatPlSuff_n$
 
@@ -326,7 +349,8 @@ $NMascNonSt_s_en_0$ = {<Masc>}:{}       $NGenSgNonStSuff_s$ | \
 $NMasc_s_es_0$ = {<Masc>}:{}       $NGenSgSuff_s$ | \
                {<Masc>}:{<SB>es} $NDatPlSuff_0$
 
-% Muskel, Muskels, Muskeln, Muskeln; See, Sees, Seen, Seen
+% Muskel, Muskels, Muskeln, Muskeln
+% See, Sees, Seen, Seen
 $NMasc_s_n_0$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
                 {<Masc>}:{<SB>n} $NDatPlSuff_0$
 
@@ -338,7 +362,8 @@ $NMasc_s_ien_0$ = {<Masc>}:{}        $NGenSgSuff_s$ | \
 $NMasc_s_nen_0$ = {<Masc>}:{}        $NGenSgSuff_s$ | \
                   {<Masc>}:{n<SB>en} $NDatPlSuff_0$
 
-% Intercity, Intercitys, Intercitys, Intercitys; Taxi, Taxis, Taxis, Taxis
+% Intercity, Intercitys, Intercitys, Intercitys
+% Taxi, Taxis, Taxis, Taxis
 $NMasc_s_s_0$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
                 {<Masc>}:{<SB>s} $NDatPlSuff_0$
 
@@ -363,23 +388,26 @@ $NMasc_s_o/en_0$ = $NMasc_s_a/en_0$
 % Espresso, Espressos, Espressi, Espressi
 $NMasc_s_o/i_0$ = $NMasc_s_e/i_0$
 
-% Dirigent, Dirigenten, Dirigenten, Dirigenten; Bär, Bären, Bären, Bären
+% Dirigent, Dirigenten, Dirigenten, Dirigenten
+% Bär, Bären, Bären, Bären
 $NMasc_en_en_0$ = {<Masc>}:{}       $NGenSgSuff_en$ | \
                   {<Masc>}:{<SB>en} $NDatPlSuff_0$
 
-% Affe, Affen, Affen, Affen; Junge, Jungen, Jungen, Jungen
+% Affe, Affen, Affen, Affen
+% Junge, Jungen, Jungen, Jungen
 $NMasc_n_n_0$ = {<Masc>}:{}      $NGenSgSuff_n$ | \
                 {<Masc>}:{<SB>n} $NDatPlSuff_0$
 
-% Junge, Jungen, Jungens, Jungens
-$NMasc_n_ns_0$ = {<Masc>}:{}       $NGenSgSuff_n$ | \
-                 {<Masc>}:{<SB>ns} $NDatPlSuff_0$
+% Junge, Jungen, Jungens, Jungens (coll.)
+$NMascNonSt_n_ns_0$ = {<Masc>}:{}       $NGenSgSuff_n$ | \
+                      {<Masc>}:{<SB>ns} $NDatPlSuff_0$ {<NonSt>}:{}
 
-% Junge, Jungen, Jungs, Jungs
-$NMasc_n_e/s_0$ = {<Masc>}:{}                  $NGenSgSuff_n$ | \
-                  {<Masc>}:{<del(VC)|Pl><SB>s} $NDatPlSuff_0$
+% Junge, Jungen, Jungs, Jungs (coll.)
+$NMascNonSt_n_e/s_0$ = {<Masc>}:{}                  $NGenSgSuff_n$ | \
+                       {<Masc>}:{<del(VC)|Pl><SB>s} $NDatPlSuff_0$ {<NonSt>}:{}
 
-% Name, Namens, Namen, Namen; Buchstabe, Buchstabens, Buchstaben, Buchstaben
+% Name, Namens, Namen, Namen
+% Buchstabe, Buchstabens, Buchstaben, Buchstaben
 $NMasc_ns_n_0$ = {<Masc>}:{}      $NGenSgSuff_ns$ | \
                  {<Masc>}:{<SB>n} $NDatPlSuff_0$
 
@@ -387,7 +415,8 @@ $NMasc_ns_n_0$ = {<Masc>}:{}      $NGenSgSuff_ns$ | \
 $NMasc_ns_\$n_0$ = {<Masc>}:{}           $NGenSgSuff_ns$ | \
                    {<Masc>}:{<uml><SB>n} $NDatPlSuff_0$
 
-% Beamte(r); Gefreite(r)
+% Beamte(r)
+% Gefreite(r)
 $NMasc-Adj$ = {<Masc><Nom><Sg><St>}:{<SB>er} | \
               {<Masc><Acc><Sg><St>}:{<SB>en} | \
               {<Masc><Dat><Sg><St>}:{<SB>em} | \
@@ -429,10 +458,11 @@ $NNeut|Sg_s$ = {<Neut>}:{} $NGenSgSuff_s$
 % Pluraliatantum, Pluraliatantum (suppletive plural)
 $NNeut|Pl_0$ = {<Neut>}:{} $NDatPlSuff_0$
 
-% Viecher, Viechern (suppletive plural)
-$NNeut|Pl_n$ = {<Neut>}:{} $NDatPlSuff_n$
+% Viecher, Viechern (suppletive plural) (coll.)
+$NNeut|PlNonSt_n$ = {<Neut>}:{} $NDatPlSuff_n$ {<NonSt>}:{}
 
-% Relais, Relais, Relais, Relais; Quiz, Quiz, Quiz, Quiz
+% Relais, Relais, Relais, Relais
+% Quiz, Quiz, Quiz, Quiz
 $NNeut_0_0_0$ = {<Neut>}:{} $NGenSgSuff_0$ | \
                 {<Neut>}:{} $NDatPlSuff_0$
 
@@ -550,16 +580,20 @@ $NNeut_0_us/era_0$ = {<Neut>}:{}                    $NGenSgSuff_0$ | \
 $NNeut_0_us/ora_0$ = {<Neut>}:{}                    $NGenSgSuff_0$ | \
                      {<Neut>}:{<del(VC)|Pl>or<SB>a} $NDatPlSuff_0$
 
-% Spiel, Spiel(e)s, Spiele, Spielen; Bakschisch, Bakschisch(e)s, Bakschische, Bakschischen
+% Spiel, Spiel(e)s, Spiele, Spielen
+% Bakschisch, Bakschisch(e)s, Bakschische, Bakschischen
+% Ass, Asses, Asse, Assen
+% Stück, Stück(e)s, Stücke, Stücken
 $NNeut_es_e_n$ = {<Neut>}:{}      $NGenSgSuff_es$ | \
                  {<Neut>}:{<SB>e} $NDatPlSuff_n$
 
-% Zeugnis, Zeugnisses, Zeugnisse, Zeugnissen; Rhinozeros, Rhinozerosses, Rhinozerosse, Rhinozerossen
+% Zeugnis, Zeugnisses, Zeugnisse, Zeugnissen
+% Rhinozeros, Rhinozerosses, Rhinozerosse, Rhinozerossen
 $NNeut_es_e_n~ss$ = $SS$ $NNeut_es_e_n$
 
 % Quiz, Quizzes, Quizze, Quizzen (coll.)
-$NNeut_es_e_n~zz$ = $ZZ$ {<Neut>}:{}      $NGenSgNonStSuff_es$ | \
-                    $ZZ$ {<Neut>}:{<SB>e} $NDatPlSuff_n$ {<NonSt>}:{}
+$NNeutNonSt_es_e_n~zz$ = $ZZ$ {<Neut>}:{}      $NGenSgNonStSuff_es$ | \
+                         $ZZ$ {<Neut>}:{<SB>e} $NDatPlSuff_n$ {<NonSt>}:{}
 
 % Floß, Floßes, Flöße, Flößen
 $NNeut_es_\$e_n$ = {<Neut>}:{}           $NGenSgSuff_es$ | \
@@ -569,9 +603,17 @@ $NNeut_es_\$e_n$ = {<Neut>}:{}           $NGenSgSuff_es$ | \
 $NNeut_es_er_n$ = {<Neut>}:{}       $NGenSgSuff_es$ | \
                   {<Neut>}:{<SB>er} $NDatPlSuff_n$
 
+% Stück, Stück(e)s, Stücker, Stückern (coll.)
+$NNeutNonSt_es_er_n$ = {<Neut>}:{}       $NGenSgSuff_es$ | \
+                       {<Neut>}:{<SB>er} $NDatPlSuff_n$ {<NonSt>}:{}
+
 % Buch, Buch(e)s, Bücher, Büchern
 $NNeut_es_\$er_n$ = {<Neut>}:{}            $NGenSgSuff_es$ | \
                     {<Neut>}:{<uml><SB>er} $NDatPlSuff_n$
+
+% Ass, Asses, Ässer, Ässen (coll.)
+$NNeutNonSt_es_\$er_n$ = {<Neut>}:{}            $NGenSgSuff_es$ | \
+                         {<Neut>}:{<uml><SB>er} $NDatPlSuff_n$ {<NonSt>}:{}
 
 % Bett, Bett(e)s, Betten, Betten
 $NNeut_es_en_0$ = {<Neut>}:{}       $NGenSgSuff_es$ | \
@@ -597,7 +639,8 @@ $NNeut_es_ex/izia_0$ = {<Neut>}:{}                     $NGenSgSuff_es$ | \
 $NNeut_s_0_0$ = {<Neut>}:{} $NGenSgSuff_s$ | \
                 {<Neut>}:{} $NDatPlSuff_0$
 
-% Feuer, Feuers, Feuer, Feuern; Gefolge, Gefolges, Gefolge, Gefolgen
+% Feuer, Feuers, Feuer, Feuern
+% Gefolge, Gefolges, Gefolge, Gefolgen
 $NNeut_s_0_n$ = {<Neut>}:{} $NGenSgSuff_s$ | \
                 {<Neut>}:{} $NDatPlSuff_n$
 
@@ -633,7 +676,8 @@ $NNeut_s_nen_0$ = {<Neut>}:{}        $NGenSgSuff_s$ | \
 $NNeut_s_ien_0$ = {<Neut>}:{}        $NGenSgSuff_s$ | \
                   {<Neut>}:{i<SB>en} $NDatPlSuff_0$
 
-% Sofa, Sofas, Sofas, Sofas; College, Colleges, Colleges, Colleges
+% Sofa, Sofas, Sofas, Sofas
+% College, Colleges, Colleges, Colleges
 $NNeut_s_s_0$ = {<Neut>}:{}      $NGenSgSuff_s$ | \
                 {<Neut>}:{<SB>s} $NDatPlSuff_0$
 
@@ -766,11 +810,13 @@ $NFem_0_e_n$ = {<Fem>}:{}      $NGenSgSuff_0$ | \
 % Kenntnis, Kenntnis, Kenntnisse, Kenntnissen
 $NFem_0_e_n~ss$ = $SS$ $NFem_0_e_n$
 
-% Wand, Wand, Wände, Wänden; Hand, Hand, Hände, Händen
+% Wand, Wand, Wände, Wänden
+% Hand, Hand, Hände, Händen
 $NFem_0_\$e_n$ = {<Fem>}:{}           $NGenSgSuff_0$ | \
                  {<Fem>}:{<uml><SB>e} $NDatPlSuff_n$
 
-% Frau, Frau, Frauen, Frauen; Arbeit, Arbeit, Arbeiten, Arbeiten
+% Frau, Frau, Frauen, Frauen
+% Arbeit, Arbeit, Arbeiten, Arbeiten
 $NFem_0_en_0$ = {<Fem>}:{}       $NGenSgSuff_0$ | \
                 {<Fem>}:{<SB>en} $NDatPlSuff_0$
 
@@ -778,7 +824,8 @@ $NFem_0_en_0$ = {<Fem>}:{}       $NGenSgSuff_0$ | \
 $NFem_0_\$en_0$ = {<Fem>}:{}            $NGenSgSuff_0$ | \
                   {<Fem>}:{<uml><SB>en} $NDatPlSuff_0$
 
-% Hilfe, Hilfe, Hilfen, Hilfen; Gnade, Gnade, Gnaden, Gnaden
+% Hilfe, Hilfe, Hilfen, Hilfen
+% Gnade, Gnade, Gnaden, Gnaden
 $NFem_0_n_0$ = {<Fem>}:{}      $NGenSgSuff_0$ | \
                {<Fem>}:{<SB>n} $NDatPlSuff_0$
 
@@ -786,7 +833,8 @@ $NFem_0_n_0$ = {<Fem>}:{}      $NGenSgSuff_0$ | \
 $NFem_0_es_0$ = {<Fem>}:{}       $NGenSgSuff_0$ | \
                 {<Fem>}:{<SB>es} $NDatPlSuff_0$
 
-% Pizza, Pizza, Pizzas, Pizzas; City, City, Citys, Citys
+% Pizza, Pizza, Pizzas, Pizzas
+% City, City, Citys, Citys
 $NFem_0_s_0$ = {<Fem>}:{}      $NGenSgSuff_0$ | \
                {<Fem>}:{<SB>s} $NDatPlSuff_0$
 
@@ -802,7 +850,8 @@ $NFem_0_nes_0$ = {<Fem>}:{}        $NGenSgSuff_0$ | \
 $NFem_0_a/e_0$ = {<Fem>}:{}                  $NGenSgSuff_0$ | \
                  {<Fem>}:{<del(VC)|Pl><SB>e} $NDatPlSuff_0$
 
-% Pizza, Pizza, Pizzen, Pizzen; Firma, Firma, Firmen, Firmen
+% Pizza, Pizza, Pizzen, Pizzen
+% Firma, Firma, Firmen, Firmen
 $NFem_0_a/en_0$ = {<Fem>}:{}                   $NGenSgSuff_0$ | \
                   {<Fem>}:{<del(VC)|Pl><SB>en} $NDatPlSuff_0$
 
@@ -857,14 +906,15 @@ $NFem_0_ox/oces_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
                      {<Fem>}:{<del(VC)|Pl>oc<SB>es} $NDatPlSuff_0$
 
 % Gnade, Gnaden (archaic), Gnaden, Gnaden
-$NFem_n_n_0$ = {<Fem>}:{}      $NGenSgOldSuff_n$ | \
-               {<Fem>}:{<SB>n} $NDatPlSuff_0$
+$NFemOld_n_n_0$ = {<Fem>}:{}      $NGenSgOldSuff_n$ | \
+                  {<Fem>}:{<SB>n} $NDatPlSuff_0$
 
 % Freundin, Freundin, Freundinnen
 $NFem-in$ = {<Fem>}:{}        $NGenSgSuff_0$ | \
             {<Fem>}:{n<SB>en} $NDatPlSuff_0$
 
-% Frauenbeauftragte; Illustrierte
+% Frauenbeauftragte
+% Illustrierte
 $NFem-Adj$ = {<Fem><Nom><Sg><St>}:{<SB>e}  | \
              {<Fem><Acc><Sg><St>}:{<SB>e}  | \
              {<Fem><Dat><Sg><St>}:{<SB>er} | \
@@ -995,10 +1045,12 @@ $AdjPosAttr0-e$ = {<Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{<SB>e}
 % Berliner ('related to Berlin')
 $AdjPosAttrSubst0$ = {<Pos><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
-% vorig-; hoh-
+% vorig-
+% hoh-
 $AdjPosAttr$ = {<Pos>}:{} $AdjInflSuff$
 
-% ander-; vorder-
+% ander-
+% vorder-
 $AdjPosAttr-er$ = $AdjPosAttr$                               | \
                   {<Pos>}:{<del(e)|ADJ>} $AdjInflSuff$ | \
                   {<Pos>}:{} $AdjInflSuff-n$           | \
@@ -1017,11 +1069,14 @@ $AdjPos0$ = $AdjPosPred$ | \
 $AdjPos0-e$ = $AdjPosPred-e$ | \
               $AdjPosAttr0-e$
 
-% viel; wenig
+% viel
+% wenig
 $AdjPos0-viel$ = $AdjPosPred$ | \
                  $AdjPosAttrSubst0$
 
-% derartig; famos; bloß
+% derartig
+% famos
+% bloß
 $AdjPos$ = $AdjPosPred$ | \
            $AdjPosAttr$
 
@@ -1044,11 +1099,13 @@ $AdjPos-er$ = $AdjPos$                                    | \
 $AdjPos-en$ = $AdjPos$ | \
               {}:{<del(e)|ADJ>} $AdjPos$
 
-% mehr; weniger
+% mehr
+% weniger
 $AdjComp0$ = {<Comp><Pred/Adv>}:{} | \
              {<Comp><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
-% besser; höher
+% besser
+% höher
 $AdjComp_er$ = {<Comp><Pred/Adv>}:{<SB>er} | \
                {<Comp>}:{<SB>er} $AdjInflSuff$
 
@@ -1070,7 +1127,8 @@ $AdjSupAttr_st$ = {<Sup>}:{<SB>st} $AdjInflSuff$
 
 $AdjSupAttr_est$ = {<Sup>}:{<SB>est} $AdjInflSuff$
 
-% besten; höchsten
+% besten
+% höchsten
 $AdjSup_st$ = {<Sup><Pred/Adv>}:{<SB>st<SB>en} | \
               {<Sup>}:{<SB>st} $AdjInflSuff$
 
@@ -1501,40 +1559,52 @@ $Dem$ = $DemSuff$
 % derlei
 $Dem0$ = $DemSuff0$
 
-% derjenige; derselbe
+% derjenige
+% derselbe
 $ArtDef-der+DemMasc$ = {[<Attr><Subst>]<Masc>}:{} $ArtDef-der+DemMascSuff$
 
-% denjenigen; denselben (masculine)
+% denjenigen (masculine)
+% denselben (masculine)
 $ArtDef-den+DemMasc$ = {[<Attr><Subst>]<Masc>}:{} $ArtDef-den+DemMascSuff$
 
-% demjenigen; demselben (masculine)
+% demjenigen (masculine)
+% demselben (masculine)
 $ArtDef-dem+DemMasc$ = {[<Attr><Subst>]<Masc>}:{} $ArtDef-dem+DemMascSuff$
 
-% desjenigen; desselben (masculine)
+% desjenigen (masculine)
+% desselben (masculine)
 $ArtDef-des+DemMasc$ = {[<Attr><Subst>]<Masc>}:{} $ArtDef-des+DemMascSuff$
 
-% dasjenige; dasselbe
+% dasjenige
+% dasselbe
 $ArtDef-das+DemNeut$ = {[<Attr><Subst>]<Neut>}:{} $ArtDef-das+DemNeutSuff$
 
-% demjenigen; demselben (neuter)
+% demjenigen (neuter)
+% demselben (neuter)
 $ArtDef-dem+DemNeut$ = {[<Attr><Subst>]<Neut>}:{} $ArtDef-dem+DemNeutSuff$
 
-% desjenigen; desselben (neuter)
+% desjenigen (neuter)
+% desselben (neuter)
 $ArtDef-des+DemNeut$ = {[<Attr><Subst>]<Neut>}:{} $ArtDef-des+DemNeutSuff$
 
-% diejenige; dieselbe
+% diejenige
+% dieselbe
 $ArtDef-die+DemFem$ = {[<Attr><Subst>]<Fem>}:{} $ArtDef-die+DemFemSuff$
 
-% derjenigen; derselben (feminine)
+% derjenigen (feminine)
+% derselben (feminine)
 $ArtDef-der+DemFem$ = {[<Attr><Subst>]<Fem>}:{} $ArtDef-der+DemFemSuff$
 
-% diejenigen; dieselben
+% diejenigen
+% dieselben
 $ArtDef-die+DemUnmGend$ = {[<Attr><Subst>]<UnmGend>}:{} $ArtDef-die+DemUnmGendSuff$
 
-% denjenigen; denselben (plural)
+% denjenigen (plural)
+% denselben (plural)
 $ArtDef-den+DemUnmGend$ = {[<Attr><Subst>]<UnmGend>}:{} $ArtDef-den+DemUnmGendSuff$
 
-% derjenigen; derselben (plural)
+% derjenigen (plural)
+% derselben (plural)
 $ArtDef-der+DemUnmGend$ = {[<Attr><Subst>]<UnmGend>}:{} $ArtDef-der+DemUnmGendSuff$
 
 % welcher, welche, welches, welch (interrogative pronoun)
@@ -1588,10 +1658,12 @@ $Indef-irgendein$ = $ArtIndefSuff$
 % kein, keine (article)
 $ArtNeg$ = $ArtNegSuff$
 
-% einer; keiner (indefinite pronoun)
+% einer (indefinite pronoun)
+% keiner (indefinite pronoun)
 $IPro-einer$ = {<Masc>}:{} $IProSuff-einer$
 
-% eine; keine (indefinite pronoun)
+% eine (indefinite pronoun)
+% keine (indefinite pronoun)
 $IPro-eine$ = {<Fem>}:{} $IProSuff-eine$
 
 % mein, meine
@@ -1895,22 +1967,30 @@ $Card-ein$ = $CardSuff-ein$
 % kein, keine (cardinal)
 $Card-kein$ = $CardSuff-kein$
 
-% zwei, zweien, zweier; drei, dreien, dreier
+% zwei, zweien, zweier
+% drei, dreien, dreier
 $Card-zwei$ = $CardSuff-zwei$
 
-% vier, vieren; zwölf, zwölfen
+% vier, vieren
+% zwölf, zwölfen
 $Card-vier$ = $CardSuff-vier$
 
 % sieben
 $Card-sieben$ = $CardSuff-sieben$
 
-% null; zwo; dreizehn; zwanzig; hundert
+% null
+% zwo
+% dreizehn
+% zwanzig
+% hundert
 $Card0$ = $CardSuff0$
 
 % erst-
 $Ord$ = $AdjInflSuff$
 
-% eineinhalb; anderthalb; drittel
+% eineinhalb
+% anderthalb
+% drittel
 $Frac0$ = $CardSuff0$
 
 % 1, 10
@@ -1934,7 +2014,9 @@ $VInfSuff_en$ = {<Inf><NonCl>}:{<SB>en} | \
 $VInfSuff_n$ = {<Inf><NonCl>}:{<SB>n} | \
                {<Inf><Cl>}:{<ins(zu)><SB>n}
 
-% gehen; sehen; laufen
+% gehen
+% sehen
+% laufen
 $VInf$ = $VInfSuff_en$
 
 % notwassern (cf. $SchwaTrigger$ in markers.fst)
@@ -1952,7 +2034,9 @@ $VPartPresSuff_end$ = {<Part><Pres>}:{<SB>end} | \
 $VPartPresSuff_nd$ = {<Part><Pres>}:{<SB>nd} | \
                      {<Part><Pres>}:{<ins(zu)><SB>nd<rm|Part>} % cf. Duden-Grammatik (2016: § 829)
 
-% gehend; sehend; laufend
+% gehend
+% sehend
+% laufend
 $VPartPres$ = $VPartPresSuff_end$
 
 % notwassernd (cf. $SchwaTrigger$ in markers.fst)
@@ -1975,21 +2059,25 @@ $haben$ = {<haben>}:{}
 
 $sein$ = {<sein>}:{}
 
-% gehabt; gedacht
+% gehabt
+% gedacht
 $VPartPerfWeak$ = $VPartPerfSuff_et$
 
 $VPartPerfWeak+haben$ = $VPartPerfSuff_et$ $haben$
 
 $VPartPerfWeak+sein$ = $VPartPerfSuff_et$ $sein$
 
-% gegangen; gesehen; gelaufen
+% gegangen
+% gesehen
+% gelaufen
 $VPartPerfStr$ = $VPartPerfSuff_en$
 
 $VPartPerfStr+haben$ = $VPartPerfSuff_en$ $haben$
 
 $VPartPerfStr+sein$ = $VPartPerfSuff_en$ $sein$
 
-% gesandt; gewandt
+% gesandt
+% gewandt
 $VPartPerf-d_t$ = $VPartPerfSuff_t$
 
 $VPartPerf-d_t+haben$ = $VPartPerfSuff_t$ $haben$
@@ -2351,7 +2439,8 @@ $VImpPlSuff-sein$ = {<Imp><Pl>}:{<rm|Imp>}
 $VImpSg$ = $VImpSgSuff_0$ | \
            $VImpSgSuff_e$
 
-% tu; sei
+% tu
+% sei
 $VImpSg0$ = $VImpSgSuff_0$
 
 $VImpSg-d-t$ = $VImpSgNonStSuff_0$ | \
@@ -2363,7 +2452,8 @@ $VImpSg-le$ = $VImpSgSuff_0$
 
 $VImpSg-ak-ik$ = $VImpSgSuff_e$
 
-% seht; tut
+% seht
+% tut
 $VImpPl$ = $VImpPlSuff_et$
 
 % seid
@@ -2399,7 +2489,8 @@ $VImp-ak-ik$ = $VImpSg-ak-ik$ | \
 $VImp-signen$ = $VImpSg$ | \
                 $VImpPl-signen$
 
-% lieben; spielen
+% lieben
+% spielen
 $VWeak$ = $VInf$          | \
           $VPartPres$     | \
           $VPartPerfWeak$ | \
@@ -2421,7 +2512,8 @@ $VWeak+sein$ = $VInf$               | \
                $VPastWeak$          | \
                $VImp$
 
-% arbeiten; reden
+% arbeiten
+% reden
 $VWeak-d-t$ = $VInf$          | \
               $VPartPres$     | \
               $VPartPerfWeak$ | \
@@ -2443,7 +2535,8 @@ $VWeak-d-t+sein$ = $VInf$               | \
                    $VPastWeak$          | \
                    $VImp-d-t$
 
-% atmen; rechnen
+% atmen
+% rechnen
 $VWeak-m-n$ = $VInf$          | \
               $VPartPres$     | \
               $VPartPerfWeak$ | \
@@ -2487,7 +2580,9 @@ $VWeak-s+sein$ = $VInf$               | \
                  $VPastWeak$          | \
                  $VImp$
 
-% segeln; rudern (cf. $SchwaTrigger$ in markers.fst)
+% segeln
+% rudern
+% (cf. $SchwaTrigger$ in markers.fst)
 $VWeak-el-er$ = $VInf-el-er$      | \
                 $VPartPres-el-er$ | \
                 $VPartPerfWeak$   | \
@@ -2553,7 +2648,8 @@ $VWeak-signen+sein$ = $VInf$                  | \
                       $VPast-signen$          | \
                       $VImp-signen$
 
-% faken; liken
+% faken
+% liken
 $VWeak-ak-ik$ = $VInf$           | \
                 $VPartPres$      | \
                 $VPartPerfWeak$  | \
@@ -2581,13 +2677,16 @@ $VWeak-ak-ik+sein$ = $VInf$               | \
 % mehr
 $AdvComp0$ = {<Comp>}:{}
 
-% öfter; lieber
+% öfter
+% lieber
 $AdvComp_er$ = {<Comp>}:{<SB>er}
 
-% liebsten; meisten
+% liebsten
+% meisten
 $AdvSup_st$ = {<Sup>}:{<SB>st<SB>en}
 
-% öftesten; ehesten
+% öftesten
+% ehesten
 $AdvSup_est$ = {<Sup>}:{<SB>est<SB>en}
 
 
@@ -2785,7 +2884,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NFem_0_os/otes_0>        $NFem_0_os/otes_0$       | \
          <>:<NFem_0_ox/oces_0>        $NFem_0_ox/oces_0$       | \
          <>:<NFem_0_s_0>              $NFem_0_s_0$             | \
-         <>:<NFem_n_n_0>              $NFem_n_n_0$             | \
+         <>:<NFemOld_n_n_0>           $NFemOld_n_n_0$          | \
          <>:<NMasc0_es>               $NMasc0_es$              | \
          <>:<NMasc0_s>                $NMasc0_s$               | \
          <>:<NMasc-Adj>               $NMasc-Adj$              | \
@@ -2842,9 +2941,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMasc_es_us/een_0~ss>    $NMasc_es_us/een_0~ss$   | \
          <>:<NMasc_es_us/en_0~ss>     $NMasc_es_us/en_0~ss$    | \
          <>:<NMasc_es_us/i_0~ss>      $NMasc_es_us/i_0~ss$     | \
-         <>:<NMasc_n_e/s_0>           $NMasc_n_e/s_0$          | \
          <>:<NMasc_n_n_0>             $NMasc_n_n_0$            | \
-         <>:<NMasc_n_ns_0>            $NMasc_n_ns_0$           | \
          <>:<NMasc_ns_n_0>            $NMasc_ns_n_0$           | \
          <>:<NMasc_ns_$n_0>           $NMasc_ns_\$n_0$         | \
          <>:<NMasc_s_$_n>             $NMasc_s_\$_n$           | \
@@ -2867,6 +2964,11 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMasc_s_o/en_0>          $NMasc_s_o/en_0$         | \
          <>:<NMasc_s_o/i_0>           $NMasc_s_o/i_0$          | \
          <>:<NMasc_s_s_0>             $NMasc_s_s_0$            | \
+         <>:<NMascNonSt_0_e_n~ss>     $NMascNonSt_0_e_n~ss$    | \
+         <>:<NMascNonSt_es_$er_n>     $NMascNonSt_es_\$er_n$   | \
+         <>:<NMascNonSt_es_e_n~ss>    $NMascNonSt_es_e_n~ss$   | \
+         <>:<NMascNonSt_n_e/s_0>      $NMascNonSt_n_e/s_0$     | \
+         <>:<NMascNonSt_n_ns_0>       $NMascNonSt_n_ns_0$      | \
          <>:<NMascNonSt_s_en_0>       $NMascNonSt_s_en_0$      | \
          <>:<NNeut0_es>               $NNeut0_es$              | \
          <>:<NNeut0_s>                $NNeut0_s$               | \
@@ -2874,7 +2976,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut-Adj|Sg>            $NNeut-Adj|Sg$           | \
          <>:<NNeut-Inner>             $NNeut-Inner$            | \
          <>:<NNeut|Pl_0>              $NNeut|Pl_0$             | \
-         <>:<NNeut|Pl_n>              $NNeut|Pl_n$             | \
+         <>:<NNeut|PlNonSt_n>         $NNeut|PlNonSt_n$        | \
          <>:<NNeut|Sg_0>              $NNeut|Sg_0$             | \
          <>:<NNeut|Sg_es>             $NNeut|Sg_es$            | \
          <>:<NNeut|Sg_es~ss>          $NNeut|Sg_es~ss$         | \
@@ -2916,7 +3018,7 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut_es_$er_n>          $NNeut_es_\$er_n$        | \
          <>:<NNeut_es_e_n>            $NNeut_es_e_n$           | \
          <>:<NNeut_es_e_n~ss>         $NNeut_es_e_n~ss$        | \
-         <>:<NNeut_es_e_n~zz>         $NNeut_es_e_n~zz$        | \
+         <>:<NNeutNonSt_es_e_n~zz>    $NNeutNonSt_es_e_n~zz$   | \
          <>:<NNeut_es_en_0>           $NNeut_es_en_0$          | \
          <>:<NNeut_es_er_n>           $NNeut_es_er_n$          | \
          <>:<NNeut_es_es_0>           $NNeut_es_es_0$          | \
@@ -2948,6 +3050,8 @@ $INFL$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut_s_um/a_0>          $NNeut_s_um/a_0$         | \
          <>:<NNeut_s_um/en_0>         $NNeut_s_um/en_0$        | \
          <>:<NNeut_s_0_0>             $NNeut_s_0_0$            | \
+         <>:<NNeutNonSt_es_$er_n>     $NNeutNonSt_es_\$er_n$   | \
+         <>:<NNeutNonSt_es_er_n>      $NNeutNonSt_es_er_n$     | \
          <>:<NUnmGend|Pl_0>           $NUnmGend|Pl_0$          | \
          <>:<NUnmGend|Pl_n>           $NUnmGend|Pl_n$          | \
          <>:<Ord>                     $Ord$                    | \

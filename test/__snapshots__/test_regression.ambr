@@ -1651,15 +1651,15 @@
     ),
     tuple(
       'gesondert',
+      'sonder<~>n<V><Part><Perf><haben>',
+    ),
+    tuple(
+      'gesondert',
       'ge<~>sonder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'gesondert',
       'gesondert<ADJ><Pos><Pred/Adv>',
-    ),
-    tuple(
-      'gesondert',
-      'sonder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'erhoben',
@@ -2783,11 +2783,11 @@
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'worden',
@@ -3655,11 +3655,11 @@
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'durch',
@@ -4520,6 +4520,18 @@
     tuple(
       'Straßenverkehr',
       'Straße<~>n<#>verkehr<NN><Masc><Nom><Sg>',
+    ),
+    tuple(
+      'Straßenverkehr',
+      'Straßenverkehr<NN><Masc><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehr',
+      'Straßenverkehr<NN><Masc><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehr',
+      'Straßenverkehr<NN><Masc><Nom><Sg>',
     ),
     tuple(
       'begangen',
@@ -5743,6 +5755,10 @@
     ),
     tuple(
       'gestanden',
+      'steh<~>en<V><Part><Perf><haben>',
+    ),
+    tuple(
+      'gestanden',
       'ge<~>stand<~>en<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
@@ -5764,10 +5780,6 @@
     tuple(
       'gestanden',
       'gestanden<ADJ><Pos><Pred/Adv>',
-    ),
-    tuple(
-      'gestanden',
-      'steh<~>en<V><Part><Perf><haben>',
     ),
     tuple(
       'hat',
@@ -17611,70 +17623,50 @@
     ),
     tuple(
       'NN',
-      'NFem_0_n_0, NFem_n_n_0',
+      'NFem_0_n_0, NFemOld_n_n_0',
       'Gnade',
       tuple(
-        'Gnade<PAR1><NN><Fem><Acc><Pl>',
+        'Gnade<NN><Fem><Acc><Pl>',
         'Gnaden',
       ),
       tuple(
-        'Gnade<PAR1><NN><Fem><Acc><Sg>',
+        'Gnade<NN><Fem><Acc><Sg>',
         'Gnade',
       ),
       tuple(
-        'Gnade<PAR1><NN><Fem><Dat><Pl>',
+        'Gnade<NN><Fem><Acc><Sg><Old>',
         'Gnaden',
       ),
       tuple(
-        'Gnade<PAR1><NN><Fem><Dat><Sg>',
+        'Gnade<NN><Fem><Dat><Pl>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<NN><Fem><Dat><Sg>',
         'Gnade',
       ),
       tuple(
-        'Gnade<PAR1><NN><Fem><Gen><Pl>',
+        'Gnade<NN><Fem><Dat><Sg><Old>',
         'Gnaden',
       ),
       tuple(
-        'Gnade<PAR1><NN><Fem><Gen><Sg>',
+        'Gnade<NN><Fem><Gen><Pl>',
+        'Gnaden',
+      ),
+      tuple(
+        'Gnade<NN><Fem><Gen><Sg>',
         'Gnade',
       ),
       tuple(
-        'Gnade<PAR1><NN><Fem><Nom><Pl>',
+        'Gnade<NN><Fem><Gen><Sg><Old>',
         'Gnaden',
       ),
       tuple(
-        'Gnade<PAR1><NN><Fem><Nom><Sg>',
-        'Gnade',
-      ),
-      tuple(
-        'Gnade<PAR2><NN><Fem><Acc><Pl>',
+        'Gnade<NN><Fem><Nom><Pl>',
         'Gnaden',
       ),
       tuple(
-        'Gnade<PAR2><NN><Fem><Acc><Sg><Old>',
-        'Gnaden',
-      ),
-      tuple(
-        'Gnade<PAR2><NN><Fem><Dat><Pl>',
-        'Gnaden',
-      ),
-      tuple(
-        'Gnade<PAR2><NN><Fem><Dat><Sg><Old>',
-        'Gnaden',
-      ),
-      tuple(
-        'Gnade<PAR2><NN><Fem><Gen><Pl>',
-        'Gnaden',
-      ),
-      tuple(
-        'Gnade<PAR2><NN><Fem><Gen><Sg><Old>',
-        'Gnaden',
-      ),
-      tuple(
-        'Gnade<PAR2><NN><Fem><Nom><Pl>',
-        'Gnaden',
-      ),
-      tuple(
-        'Gnade<PAR2><NN><Fem><Nom><Sg>',
+        'Gnade<NN><Fem><Nom><Sg>',
         'Gnade',
       ),
     ),
@@ -18840,86 +18832,62 @@
     ),
     tuple(
       'NN',
-      'NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_as/anten_0, NMasc_s_as/anten_0',
+      'NMasc_0_e_n~ss, NMascNonSt_0_e_n~ss, NMasc_es_e_n~ss, NMascNonSt_es_e_n~ss, NMasc_0_as/anten_0, NMasc_s_as/anten_0',
       'Atlas',
       tuple(
-        'Atlas<IDX1><PAR1><NN><Masc><Acc><Pl>',
+        'Atlas<IDX1><NN><Masc><Acc><Pl>',
         'Atlanten',
       ),
       tuple(
-        'Atlas<IDX1><PAR1><NN><Masc><Acc><Sg>',
-        'Atlas',
-      ),
-      tuple(
-        'Atlas<IDX1><PAR1><NN><Masc><Dat><Pl>',
-        'Atlanten',
-      ),
-      tuple(
-        'Atlas<IDX1><PAR1><NN><Masc><Dat><Sg>',
-        'Atlas',
-      ),
-      tuple(
-        'Atlas<IDX1><PAR1><NN><Masc><Dat><Sg><Old>',
+        'Atlas<IDX1><NN><Masc><Acc><Pl><NonSt>',
         'Atlasse',
       ),
       tuple(
-        'Atlas<IDX1><PAR1><NN><Masc><Gen><Pl>',
+        'Atlas<IDX1><NN><Masc><Acc><Sg>',
+        'Atlas',
+      ),
+      tuple(
+        'Atlas<IDX1><NN><Masc><Dat><Pl>',
         'Atlanten',
       ),
       tuple(
-        'Atlas<IDX1><PAR1><NN><Masc><Gen><Sg>',
-        'Atlas',
-      ),
-      tuple(
-        'Atlas<IDX1><PAR1><NN><Masc><Gen><Sg>',
-        'Atlasses',
-      ),
-      tuple(
-        'Atlas<IDX1><PAR1><NN><Masc><Nom><Pl>',
-        'Atlanten',
-      ),
-      tuple(
-        'Atlas<IDX1><PAR1><NN><Masc><Nom><Sg>',
-        'Atlas',
-      ),
-      tuple(
-        'Atlas<IDX1><PAR2><NN><Masc><Acc><Pl>',
-        'Atlasse',
-      ),
-      tuple(
-        'Atlas<IDX1><PAR2><NN><Masc><Acc><Sg>',
-        'Atlas',
-      ),
-      tuple(
-        'Atlas<IDX1><PAR2><NN><Masc><Dat><Pl>',
+        'Atlas<IDX1><NN><Masc><Dat><Pl><NonSt>',
         'Atlassen',
       ),
       tuple(
-        'Atlas<IDX1><PAR2><NN><Masc><Dat><Sg>',
+        'Atlas<IDX1><NN><Masc><Dat><Sg>',
         'Atlas',
       ),
       tuple(
-        'Atlas<IDX1><PAR2><NN><Masc><Dat><Sg><Old>',
+        'Atlas<IDX1><NN><Masc><Dat><Sg><Old>',
         'Atlasse',
       ),
       tuple(
-        'Atlas<IDX1><PAR2><NN><Masc><Gen><Pl>',
+        'Atlas<IDX1><NN><Masc><Gen><Pl>',
+        'Atlanten',
+      ),
+      tuple(
+        'Atlas<IDX1><NN><Masc><Gen><Pl><NonSt>',
         'Atlasse',
       ),
       tuple(
-        'Atlas<IDX1><PAR2><NN><Masc><Gen><Sg>',
+        'Atlas<IDX1><NN><Masc><Gen><Sg>',
         'Atlas',
       ),
       tuple(
-        'Atlas<IDX1><PAR2><NN><Masc><Gen><Sg>',
+        'Atlas<IDX1><NN><Masc><Gen><Sg>',
         'Atlasses',
       ),
       tuple(
-        'Atlas<IDX1><PAR2><NN><Masc><Nom><Pl>',
+        'Atlas<IDX1><NN><Masc><Nom><Pl>',
+        'Atlanten',
+      ),
+      tuple(
+        'Atlas<IDX1><NN><Masc><Nom><Pl><NonSt>',
         'Atlasse',
       ),
       tuple(
-        'Atlas<IDX1><PAR2><NN><Masc><Nom><Sg>',
+        'Atlas<IDX1><NN><Masc><Nom><Sg>',
         'Atlas',
       ),
       tuple(
@@ -18968,83 +18936,59 @@
       'NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/een_0, NMasc_es_us/een_0~ss',
       'Kaktus',
       tuple(
-        'Kaktus<PAR1><NN><Masc><Acc><Pl>',
+        'Kaktus<NN><Masc><Acc><Pl>',
         'Kakteen',
       ),
       tuple(
-        'Kaktus<PAR1><NN><Masc><Acc><Sg>',
-        'Kaktus',
-      ),
-      tuple(
-        'Kaktus<PAR1><NN><Masc><Dat><Pl>',
-        'Kakteen',
-      ),
-      tuple(
-        'Kaktus<PAR1><NN><Masc><Dat><Sg>',
-        'Kaktus',
-      ),
-      tuple(
-        'Kaktus<PAR1><NN><Masc><Dat><Sg><Old>',
+        'Kaktus<NN><Masc><Acc><Pl><NonSt>',
         'Kaktusse',
       ),
       tuple(
-        'Kaktus<PAR1><NN><Masc><Gen><Pl>',
+        'Kaktus<NN><Masc><Acc><Sg>',
+        'Kaktus',
+      ),
+      tuple(
+        'Kaktus<NN><Masc><Dat><Pl>',
         'Kakteen',
       ),
       tuple(
-        'Kaktus<PAR1><NN><Masc><Gen><Sg>',
-        'Kaktus',
-      ),
-      tuple(
-        'Kaktus<PAR1><NN><Masc><Gen><Sg>',
-        'Kaktusses',
-      ),
-      tuple(
-        'Kaktus<PAR1><NN><Masc><Nom><Pl>',
-        'Kakteen',
-      ),
-      tuple(
-        'Kaktus<PAR1><NN><Masc><Nom><Sg>',
-        'Kaktus',
-      ),
-      tuple(
-        'Kaktus<PAR2><NN><Masc><Acc><Pl>',
-        'Kaktusse',
-      ),
-      tuple(
-        'Kaktus<PAR2><NN><Masc><Acc><Sg>',
-        'Kaktus',
-      ),
-      tuple(
-        'Kaktus<PAR2><NN><Masc><Dat><Pl>',
+        'Kaktus<NN><Masc><Dat><Pl><NonSt>',
         'Kaktussen',
       ),
       tuple(
-        'Kaktus<PAR2><NN><Masc><Dat><Sg>',
+        'Kaktus<NN><Masc><Dat><Sg>',
         'Kaktus',
       ),
       tuple(
-        'Kaktus<PAR2><NN><Masc><Dat><Sg><Old>',
+        'Kaktus<NN><Masc><Dat><Sg><Old>',
         'Kaktusse',
       ),
       tuple(
-        'Kaktus<PAR2><NN><Masc><Gen><Pl>',
+        'Kaktus<NN><Masc><Gen><Pl>',
+        'Kakteen',
+      ),
+      tuple(
+        'Kaktus<NN><Masc><Gen><Pl><NonSt>',
         'Kaktusse',
       ),
       tuple(
-        'Kaktus<PAR2><NN><Masc><Gen><Sg>',
+        'Kaktus<NN><Masc><Gen><Sg>',
         'Kaktus',
       ),
       tuple(
-        'Kaktus<PAR2><NN><Masc><Gen><Sg>',
+        'Kaktus<NN><Masc><Gen><Sg>',
         'Kaktusses',
       ),
       tuple(
-        'Kaktus<PAR2><NN><Masc><Nom><Pl>',
+        'Kaktus<NN><Masc><Nom><Pl>',
+        'Kakteen',
+      ),
+      tuple(
+        'Kaktus<NN><Masc><Nom><Pl><NonSt>',
         'Kaktusse',
       ),
       tuple(
-        'Kaktus<PAR2><NN><Masc><Nom><Sg>',
+        'Kaktus<NN><Masc><Nom><Sg>',
         'Kaktus',
       ),
     ),
@@ -20233,6 +20177,63 @@
     ),
     tuple(
       'NN',
+      'NMasc_es_$e_n, NMascNonSt_es_$er_n',
+      'Klotz',
+      tuple(
+        'Klotz<NN><Masc><Acc><Pl>',
+        'Klötze',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Acc><Pl><NonSt>',
+        'Klötzer',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Acc><Sg>',
+        'Klotz',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Dat><Pl>',
+        'Klötzen',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Dat><Pl><NonSt>',
+        'Klötzern',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Dat><Sg>',
+        'Klotz',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Dat><Sg><Old>',
+        'Klotze',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Gen><Pl>',
+        'Klötze',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Gen><Pl><NonSt>',
+        'Klötzer',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Gen><Sg>',
+        'Klotzes',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Nom><Pl>',
+        'Klötze',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Nom><Pl><NonSt>',
+        'Klötzer',
+      ),
+      tuple(
+        'Klotz<NN><Masc><Nom><Sg>',
+        'Klotz',
+      ),
+    ),
+    tuple(
+      'NN',
       'NMasc_es_$er_n',
       'Gott',
       tuple(
@@ -20665,7 +20666,7 @@
     ),
     tuple(
       'NN',
-      'NMasc_n_n_0, NMasc_n_ns_0, NMasc_n_e/s_0, NMasc-Adj, NNeut-Adj, NFem-Adj',
+      'NMasc_n_n_0, NMascNonSt_n_ns_0, NMascNonSt_n_e/s_0, NMasc-Adj, NNeut-Adj, NFem-Adj',
       'Junge',
       tuple(
         'Jung<~>e<IDX2><NN><Neut><Acc><Pl><St>',
@@ -20860,83 +20861,67 @@
         'Junge',
       ),
       tuple(
-        'Junge<IDX1><PAR1><NN><Masc><Acc><Pl>',
+        'Junge<IDX1><NN><Masc><Acc><Pl>',
         'Jungen',
       ),
       tuple(
-        'Junge<IDX1><PAR1><NN><Masc><Acc><Sg>',
-        'Jungen',
-      ),
-      tuple(
-        'Junge<IDX1><PAR1><NN><Masc><Dat><Pl>',
-        'Jungen',
-      ),
-      tuple(
-        'Junge<IDX1><PAR1><NN><Masc><Dat><Sg>',
-        'Jungen',
-      ),
-      tuple(
-        'Junge<IDX1><PAR1><NN><Masc><Gen><Pl>',
-        'Jungen',
-      ),
-      tuple(
-        'Junge<IDX1><PAR1><NN><Masc><Gen><Sg>',
-        'Jungen',
-      ),
-      tuple(
-        'Junge<IDX1><PAR1><NN><Masc><Nom><Pl>',
-        'Jungen',
-      ),
-      tuple(
-        'Junge<IDX1><PAR1><NN><Masc><Nom><Sg>',
-        'Junge',
-      ),
-      tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Acc><Pl>',
+        'Junge<IDX1><NN><Masc><Acc><Pl><NonSt>',
         'Jungens',
       ),
       tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Acc><Pl>',
+        'Junge<IDX1><NN><Masc><Acc><Pl><NonSt>',
         'Jungs',
       ),
       tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Acc><Sg>',
+        'Junge<IDX1><NN><Masc><Acc><Sg>',
         'Jungen',
       ),
       tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Dat><Pl>',
-        'Jungens',
-      ),
-      tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Dat><Pl>',
-        'Jungs',
-      ),
-      tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Dat><Sg>',
+        'Junge<IDX1><NN><Masc><Dat><Pl>',
         'Jungen',
       ),
       tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Gen><Pl>',
+        'Junge<IDX1><NN><Masc><Dat><Pl><NonSt>',
         'Jungens',
       ),
       tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Gen><Pl>',
+        'Junge<IDX1><NN><Masc><Dat><Pl><NonSt>',
         'Jungs',
       ),
       tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Gen><Sg>',
+        'Junge<IDX1><NN><Masc><Dat><Sg>',
         'Jungen',
       ),
       tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Nom><Pl>',
+        'Junge<IDX1><NN><Masc><Gen><Pl>',
+        'Jungen',
+      ),
+      tuple(
+        'Junge<IDX1><NN><Masc><Gen><Pl><NonSt>',
         'Jungens',
       ),
       tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Nom><Pl>',
+        'Junge<IDX1><NN><Masc><Gen><Pl><NonSt>',
         'Jungs',
       ),
       tuple(
-        'Junge<IDX1><PAR2><NN><Masc><Nom><Sg>',
+        'Junge<IDX1><NN><Masc><Gen><Sg>',
+        'Jungen',
+      ),
+      tuple(
+        'Junge<IDX1><NN><Masc><Nom><Pl>',
+        'Jungen',
+      ),
+      tuple(
+        'Junge<IDX1><NN><Masc><Nom><Pl><NonSt>',
+        'Jungens',
+      ),
+      tuple(
+        'Junge<IDX1><NN><Masc><Nom><Pl><NonSt>',
+        'Jungs',
+      ),
+      tuple(
+        'Junge<IDX1><NN><Masc><Nom><Sg>',
         'Junge',
       ),
     ),
@@ -21432,67 +21417,51 @@
       'NNeut_s_em/en_0, NNeut_s_s_0',
       'Requiem',
       tuple(
-        'Requiem<PAR1><NN><Neut><Acc><Pl>',
+        'Requiem<NN><Neut><Acc><Pl>',
         'Requiems',
       ),
       tuple(
-        'Requiem<PAR1><NN><Neut><Acc><Sg>',
-        'Requiem',
-      ),
-      tuple(
-        'Requiem<PAR1><NN><Neut><Dat><Pl>',
-        'Requiems',
-      ),
-      tuple(
-        'Requiem<PAR1><NN><Neut><Dat><Sg>',
-        'Requiem',
-      ),
-      tuple(
-        'Requiem<PAR1><NN><Neut><Gen><Pl>',
-        'Requiems',
-      ),
-      tuple(
-        'Requiem<PAR1><NN><Neut><Gen><Sg>',
-        'Requiems',
-      ),
-      tuple(
-        'Requiem<PAR1><NN><Neut><Nom><Pl>',
-        'Requiems',
-      ),
-      tuple(
-        'Requiem<PAR1><NN><Neut><Nom><Sg>',
-        'Requiem',
-      ),
-      tuple(
-        'Requiem<PAR2><NN><Neut><Acc><Pl>',
+        'Requiem<NN><Neut><Acc><Pl>',
         'Requien',
       ),
       tuple(
-        'Requiem<PAR2><NN><Neut><Acc><Sg>',
+        'Requiem<NN><Neut><Acc><Sg>',
         'Requiem',
       ),
       tuple(
-        'Requiem<PAR2><NN><Neut><Dat><Pl>',
-        'Requien',
-      ),
-      tuple(
-        'Requiem<PAR2><NN><Neut><Dat><Sg>',
-        'Requiem',
-      ),
-      tuple(
-        'Requiem<PAR2><NN><Neut><Gen><Pl>',
-        'Requien',
-      ),
-      tuple(
-        'Requiem<PAR2><NN><Neut><Gen><Sg>',
+        'Requiem<NN><Neut><Dat><Pl>',
         'Requiems',
       ),
       tuple(
-        'Requiem<PAR2><NN><Neut><Nom><Pl>',
+        'Requiem<NN><Neut><Dat><Pl>',
         'Requien',
       ),
       tuple(
-        'Requiem<PAR2><NN><Neut><Nom><Sg>',
+        'Requiem<NN><Neut><Dat><Sg>',
+        'Requiem',
+      ),
+      tuple(
+        'Requiem<NN><Neut><Gen><Pl>',
+        'Requiems',
+      ),
+      tuple(
+        'Requiem<NN><Neut><Gen><Pl>',
+        'Requien',
+      ),
+      tuple(
+        'Requiem<NN><Neut><Gen><Sg>',
+        'Requiems',
+      ),
+      tuple(
+        'Requiem<NN><Neut><Nom><Pl>',
+        'Requiems',
+      ),
+      tuple(
+        'Requiem<NN><Neut><Nom><Pl>',
+        'Requien',
+      ),
+      tuple(
+        'Requiem<NN><Neut><Nom><Sg>',
         'Requiem',
       ),
     ),
@@ -22132,6 +22101,79 @@
     ),
     tuple(
       'NN',
+      'NNeut0_es, NNeut_es_e_n, NNeutNonSt_es_er_n',
+      'Stück',
+      tuple(
+        'Stück<PAR1><NN><Neut><Acc><Pl>',
+        'Stücke',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Acc><Pl><NonSt>',
+        'Stücker',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Acc><Sg>',
+        'Stück',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Dat><Pl>',
+        'Stücken',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Dat><Pl><NonSt>',
+        'Stückern',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Dat><Sg>',
+        'Stück',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Dat><Sg><Old>',
+        'Stücke',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Gen><Pl>',
+        'Stücke',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Gen><Pl><NonSt>',
+        'Stücker',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Gen><Sg>',
+        'Stückes',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Gen><Sg>',
+        'Stücks',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Nom><Pl>',
+        'Stücke',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Nom><Pl><NonSt>',
+        'Stücker',
+      ),
+      tuple(
+        'Stück<PAR1><NN><Neut><Nom><Sg>',
+        'Stück',
+      ),
+      tuple(
+        'Stück<PAR2><NN><Neut><Gen><Sg>',
+        'Stückes',
+      ),
+      tuple(
+        'Stück<PAR2><NN><Neut><Gen><Sg>',
+        'Stücks',
+      ),
+      tuple(
+        'Stück<PAR2><NN><Neut><UnmCase><UnmNum>',
+        'Stück',
+      ),
+    ),
+    tuple(
+      'NN',
       'NNeut0_s, NNeut_s_s_0',
       'Kilo',
       tuple(
@@ -22267,7 +22309,7 @@
     ),
     tuple(
       'NN',
-      'NNeut_0_0_0, NNeut_es_e_n~zz',
+      'NNeut_0_0_0, NNeutNonSt_es_e_n~zz',
       'Quiz',
       tuple(
         'Quiz<NN><Neut><Acc><Pl>',
@@ -23113,6 +23155,75 @@
     ),
     tuple(
       'NN',
+      'NNeut_es_e_n, NNeutNonSt_es_$er_n',
+      'Ass',
+      tuple(
+        '<OLDORTH>Ass<NN><Neut><Acc><Sg>',
+        'Aß',
+      ),
+      tuple(
+        '<OLDORTH>Ass<NN><Neut><Dat><Sg>',
+        'Aß',
+      ),
+      tuple(
+        '<OLDORTH>Ass<NN><Neut><Nom><Sg>',
+        'Aß',
+      ),
+      tuple(
+        'Ass<NN><Neut><Acc><Pl>',
+        'Asse',
+      ),
+      tuple(
+        'Ass<NN><Neut><Acc><Pl><NonSt>',
+        'Ässer',
+      ),
+      tuple(
+        'Ass<NN><Neut><Acc><Sg>',
+        'Ass',
+      ),
+      tuple(
+        'Ass<NN><Neut><Dat><Pl>',
+        'Assen',
+      ),
+      tuple(
+        'Ass<NN><Neut><Dat><Pl><NonSt>',
+        'Ässern',
+      ),
+      tuple(
+        'Ass<NN><Neut><Dat><Sg>',
+        'Ass',
+      ),
+      tuple(
+        'Ass<NN><Neut><Dat><Sg><Old>',
+        'Asse',
+      ),
+      tuple(
+        'Ass<NN><Neut><Gen><Pl>',
+        'Asse',
+      ),
+      tuple(
+        'Ass<NN><Neut><Gen><Pl><NonSt>',
+        'Ässer',
+      ),
+      tuple(
+        'Ass<NN><Neut><Gen><Sg>',
+        'Asses',
+      ),
+      tuple(
+        'Ass<NN><Neut><Nom><Pl>',
+        'Asse',
+      ),
+      tuple(
+        'Ass<NN><Neut><Nom><Pl><NonSt>',
+        'Ässer',
+      ),
+      tuple(
+        'Ass<NN><Neut><Nom><Sg>',
+        'Ass',
+      ),
+    ),
+    tuple(
+      'NN',
       'NNeut_es_e_n~ss',
       'Zeugnis',
       tuple(
@@ -23854,51 +23965,51 @@
       'NNeut_s_s_0, NNeut_s_o/en_0',
       'Risiko',
       tuple(
-        'Risiko<PAR1><NN><Neut><Acc><Pl>',
+        'Risiko<NN><Neut><Acc><Pl>',
         'Risiken',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Acc><Pl>',
+        'Risiko<NN><Neut><Acc><Pl>',
         'Risikos',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Acc><Sg>',
+        'Risiko<NN><Neut><Acc><Sg>',
         'Risiko',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Dat><Pl>',
+        'Risiko<NN><Neut><Dat><Pl>',
         'Risiken',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Dat><Pl>',
+        'Risiko<NN><Neut><Dat><Pl>',
         'Risikos',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Dat><Sg>',
+        'Risiko<NN><Neut><Dat><Sg>',
         'Risiko',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Gen><Pl>',
+        'Risiko<NN><Neut><Gen><Pl>',
         'Risiken',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Gen><Pl>',
+        'Risiko<NN><Neut><Gen><Pl>',
         'Risikos',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Gen><Sg>',
+        'Risiko<NN><Neut><Gen><Sg>',
         'Risikos',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Nom><Pl>',
+        'Risiko<NN><Neut><Nom><Pl>',
         'Risiken',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Nom><Pl>',
+        'Risiko<NN><Neut><Nom><Pl>',
         'Risikos',
       ),
       tuple(
-        'Risiko<PAR1><NN><Neut><Nom><Sg>',
+        'Risiko<NN><Neut><Nom><Sg>',
         'Risiko',
       ),
     ),
@@ -24028,70 +24139,46 @@
     ),
     tuple(
       'NN',
-      'NNeut|Sg_es, NNeut|Pl_n',
+      'NNeut|Sg_es, NNeut|PlNonSt_n',
       'Vieh',
       tuple(
-        'Vieh<PAR1><NN><Neut><Acc><Sg>',
-        'Vieh',
-      ),
-      tuple(
-        'Vieh<PAR1><NN><Neut><Dat><Sg>',
-        'Vieh',
-      ),
-      tuple(
-        'Vieh<PAR1><NN><Neut><Dat><Sg><Old>',
-        'Viehe',
-      ),
-      tuple(
-        'Vieh<PAR1><NN><Neut><Gen><Sg>',
-        'Viehes',
-      ),
-      tuple(
-        'Vieh<PAR1><NN><Neut><Gen><Sg>',
-        'Viehs',
-      ),
-      tuple(
-        'Vieh<PAR1><NN><Neut><Nom><Sg>',
-        'Vieh',
-      ),
-      tuple(
-        'Vieh<PAR2><NN><Neut><Acc><Pl>',
+        'Vieh<NN><Neut><Acc><Pl><NonSt>',
         'Viecher',
       ),
       tuple(
-        'Vieh<PAR2><NN><Neut><Acc><Sg>',
+        'Vieh<NN><Neut><Acc><Sg>',
         'Vieh',
       ),
       tuple(
-        'Vieh<PAR2><NN><Neut><Dat><Pl>',
+        'Vieh<NN><Neut><Dat><Pl><NonSt>',
         'Viechern',
       ),
       tuple(
-        'Vieh<PAR2><NN><Neut><Dat><Sg>',
+        'Vieh<NN><Neut><Dat><Sg>',
         'Vieh',
       ),
       tuple(
-        'Vieh<PAR2><NN><Neut><Dat><Sg><Old>',
+        'Vieh<NN><Neut><Dat><Sg><Old>',
         'Viehe',
       ),
       tuple(
-        'Vieh<PAR2><NN><Neut><Gen><Pl>',
+        'Vieh<NN><Neut><Gen><Pl><NonSt>',
         'Viecher',
       ),
       tuple(
-        'Vieh<PAR2><NN><Neut><Gen><Sg>',
+        'Vieh<NN><Neut><Gen><Sg>',
         'Viehes',
       ),
       tuple(
-        'Vieh<PAR2><NN><Neut><Gen><Sg>',
+        'Vieh<NN><Neut><Gen><Sg>',
         'Viehs',
       ),
       tuple(
-        'Vieh<PAR2><NN><Neut><Nom><Pl>',
+        'Vieh<NN><Neut><Nom><Pl><NonSt>',
         'Viecher',
       ),
       tuple(
-        'Vieh<PAR2><NN><Neut><Nom><Sg>',
+        'Vieh<NN><Neut><Nom><Sg>',
         'Vieh',
       ),
     ),
@@ -29127,6 +29214,10 @@
       tuple(
         'lik<~>en<V><Inf><NonCl>',
         'liken',
+      ),
+      tuple(
+        'lik<~>en<V><Part><Perf><haben>',
+        'geliked',
       ),
       tuple(
         'lik<~>en<V><Part><Perf><haben>',

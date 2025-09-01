@@ -83,7 +83,7 @@ NN,NFem_0_ix/izen_0,Matrix
 NN,NFem_0_ix/izes_0,Radix
 NN,NFem_0_n_0,Hilfe
 NN,"NFem_0_n_0, NFem_0_e/i_0",Minestrone
-NN,"NFem_0_n_0, NFem_n_n_0",Gnade
+NN,"NFem_0_n_0, NFemOld_n_n_0",Gnade
 NN,NFem_0_nes_0,Laudatio
 NN,NFem_0_os/otes_0,Dos
 NN,NFem_0_ox/oces_0,Vox
@@ -104,7 +104,7 @@ NN,"NMasc_0_e_n, NMasc_0_ex/izes_0, NMasc_es_e_n, NMasc_es_ex/izes_0",Index
 NN,"NMasc_0_e_n, NMasc_0_ix/izes_0, NMasc_es_e_n, Nmasc_es_ix/izes_0, NFem_0_ix/izes_0 ",Appendix
 NN,"NMasc_0_e_n, NMasc_s_e_n",Januar
 NN,NMasc_0_e_n~ss,Zirkus
-NN,"NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_as/anten_0, NMasc_s_as/anten_0",Atlas
+NN,"NMasc_0_e_n~ss, NMascNonSt_0_e_n~ss, NMasc_es_e_n~ss, NMascNonSt_es_e_n~ss, NMasc_0_as/anten_0, NMasc_s_as/anten_0",Atlas
 NN,"NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/een_0, NMasc_es_us/een_0~ss",Kaktus
 NN,"NMasc_0_e_n~ss, NMasc_es_e_n~ss, NMasc_0_us/en_0, NMasc_es_us/en_0~ss",Globus
 NN,NMasc_0_en_0,Minotaur
@@ -129,6 +129,7 @@ NN,NMasc_en_en_0,Dirigent
 NN,"NMasc_en_en_0, NMascNonSt_s_en_0",Bär
 NN,NMasc_es_$e_n,Arzt
 NN,"NMasc_es_$e_n, NMasc_es_s_0",Block
+NN,"NMasc_es_$e_n, NMascNonSt_es_$er_n",Klotz
 NN,NMasc_es_$er_n,Gott
 NN,NMasc_es_e_n,Freund
 NN,NMasc_es_e_n~ss,Bus
@@ -137,7 +138,7 @@ NN,NMasc_es_er_n,Leib
 NN,"NMasc_es_es_0, NMasc_es_s_0",Crash
 NN,"NMasc_es_es_0, NMasc_es_s_0, NNeut_es_es_0 ...",Tennismatch
 NN,NMasc_n_n_0,Affe
-NN,"NMasc_n_n_0, NMasc_n_ns_0, NMasc_n_e/s_0, NMasc-Adj, NNeut-Adj, NFem-Adj",Junge
+NN,"NMasc_n_n_0, NMascNonSt_n_ns_0, NMascNonSt_n_e/s_0, NMasc-Adj, NNeut-Adj, NFem-Adj",Junge
 NN,NMasc_ns_$n_0,Schade
 NN,NMasc_ns_n_0,Gedanke
 NN,NMasc_s_$_0,Garten
@@ -164,10 +165,11 @@ NN,NMasc|Sg_ns,Unglaube
 NN,NMasc|Sg_s,Adel
 NN,NNeut-Inner,Innere
 NN,"NNeut0_es, NNeut_es_e_n",Paar
+NN,"NNeut0_es, NNeut_es_e_n, NNeutNonSt_es_er_n",Stück
 NN,"NNeut0_s, NNeut_s_s_0",Kilo
 NN,NNeut_0_0_0,Ostern
 NN,"NNeut_0_0_0, NNeut_0_en_0",Remis
-NN,"NNeut_0_0_0, NNeut_es_e_n~zz",Quiz
+NN,"NNeut_0_0_0, NNeutNonSt_es_e_n~zz",Quiz
 NN,NNeut_0_0_n,Zuhause
 NN,NNeut_0_ans/antien_0,Determinans
 NN,NNeut_0_ans/anzien_0,Stimulans
@@ -185,6 +187,7 @@ NN,NNeut_es_$e_n,Floß
 NN,NNeut_es_$er_n,Buch
 NN,NNeut_es_e_n,Spiel
 NN,"NNeut_es_e_n, NNeut_es_s_0",Tablett
+NN,"NNeut_es_e_n, NNeutNonSt_es_$er_n",Ass
 NN,NNeut_es_e_n~ss,Zeugnis
 NN,NNeut_es_en_0,Ohr
 NN,NNeut_es_er_n,Lied
@@ -208,7 +211,7 @@ NN,NNeut_s_um/a_0,Maximum
 NN,NNeut_s_um/en_0,Museum
 NN,NNeut|Sg_0,Abseits
 NN,NNeut|Sg_es,Ausland
-NN,"NNeut|Sg_es, NNeut|Pl_n",Vieh
+NN,"NNeut|Sg_es, NNeut|PlNonSt_n",Vieh
 NN,NNeut|Sg_es~ss,Verständnis
 NN,NNeut|Sg_s,Internet
 NN,"NNeut|Sg_s, NNeut|Pl_0",Pluraletantum
