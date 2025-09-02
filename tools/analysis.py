@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # analysis.py - analyse word forms with DWDSmor
-# Andreas Nolda 2025-08-27
+# Andreas Nolda 2025-09-02
 
 import argparse
 import csv
@@ -17,7 +17,7 @@ import yaml
 
 progname = Path(__file__).name
 
-version = 14.2
+version = 14.3
 
 
 LABEL_MAP = {"word": "Wordform",
@@ -375,7 +375,7 @@ def main():
 
         automata = automaton.automata(args.automata_dir)
         analyzer = automata.analyzer(args.automaton_type)
-        generator = automata.generator(args.automaton2_type)
+        generator = automata.generator(args.automaton2_type) if args.maximal or args.seg_word else None
 
         if args.json:
             output_format = "json"
