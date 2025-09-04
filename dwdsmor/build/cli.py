@@ -157,7 +157,8 @@ def build_lexicon(edition_dir, force=False):
     return True
 
 
-fst_sources = [fst_file for fst_file in grammar_dir.glob("*/*.fst")]
+fst_modules = [fst_file for fst_file in grammar_dir.glob("module_*.fst")]
+fst_macros = [fst_file for fst_file in grammar_dir.glob("macro_*.fst")]
 
 
 def build_automaton(edition_dir, automaton_type, force=False):
@@ -173,7 +174,7 @@ def build_automaton(edition_dir, automaton_type, force=False):
     automaton_ca = edition_build_dir / f"{automaton_type}.ca"
     automaton_compile_log = edition_build_dir / f"{automaton_type}.compile.log"
 
-    sources = [lexicon_src, automaton_src, *fst_sources]
+    sources = [lexicon_src, automaton_src, *fst_modules, *fst_macros]
     if (
         not force
         and is_current(automaton_a, sources)
