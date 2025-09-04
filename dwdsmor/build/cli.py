@@ -157,11 +157,7 @@ def build_lexicon(edition_dir, force=False):
     return True
 
 
-fst_sources = [
-    fst_file
-    for fst_file in grammar_dir.glob("*.fst")
-    if not fst_file.name.startswith("dwdsmor-")
-]
+fst_sources = [fst_file for fst_file in grammar_dir.glob("*/*.fst")]
 
 
 def build_automaton(edition_dir, automaton_type, force=False):
@@ -172,7 +168,7 @@ def build_automaton(edition_dir, automaton_type, force=False):
 
     lexicon_src = edition_build_dir / "lex.txt"
     lexicon_symlink = grammar_dir / "lex.txt"
-    automaton_src = grammar_dir / f"dwdsmor-{automaton_type}.fst"
+    automaton_src = grammar_dir / f"{automaton_type}.fst"
     automaton_a = edition_build_dir / f"{automaton_type}.a"
     automaton_ca = edition_build_dir / f"{automaton_type}.ca"
     automaton_compile_log = edition_build_dir / f"{automaton_type}.compile.log"

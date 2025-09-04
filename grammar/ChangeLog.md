@@ -1,5 +1,37 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-09-04:
+
+* rename `dwdsmor-index.fst`, `dwdsmor-finite.fst`, `dwdsmor-lemma.fst`,
+  `dwdsmor-morph.fst`, and `dwdsmor-root.fst` to `index.fst`,`finite.fst`,
+  `lemma.fst`, `morph.fst`, and `root.fst`, respectively
+* rename `cleanup.fst`, `infl.fst`, `markers.fst`, `num.fst`, `num-finite.fst`,
+  `orth.fst`, `phon.fst`, `punct.fst`, `sep.fst`, `stemtype.fst`, `symbols.fst`,
+  `trunc.fst`, and `wf.fst` to `module_cleanup.fst`, `module_infl.fst`,
+  `module_markers.fst`, `module_num.fst`, `module_num-finite.fst`,
+  `module_orth.fst`, `module_phon.fst`, `module_punct.fst`, `module_sep.fst`,
+  `module_stemtype.fst`, `module_symbols.fst`, `module_trunc.fst`, and
+  `module_wf.fst`, respectively
+* replace major redundant parts of `index.fst`, `finite.fst`, `lemma.fst`,
+  `morph.fst`, and `root.fst` by macros (textual replacements with free
+  variables) `macro_boundaries.fst`, `macro_boundaries-morph.fst`,
+  `macro_boundaries-root.fst`, `macro_cap.fst`, `macro_ch.fst`,
+  `macro_comp-finite.fst`, `macro_comp.fst`, `macro_comp-num-finite.fst`,
+  `macro_comp-num.fst`, `macro_comp-num-root.fst`, `macro_conv-adj.fst`,
+  `macro_conv-adj-phon.fst`, `macro_conv-adj-postinfl.fst`,
+  `macro_conv-adj-postphon.fst`, `macro_conv-adj-postwf.fst`,
+  `macro_conv-adj-root.fst`, `macro_conv-adj-surface.fst`, `macro_conv-v.fst`,
+  `macro_conv-v-phon.fst`, `macro_conv-v-postinfl.fst`,
+  `macro_conv-v-postphon.fst`, `macro_conv-v-postwf.fst`,
+  `macro_conv-v-root.fst`, `macro_conv-v-surface.fst`,
+  `macro_der-num-finite.fst`, `macro_der-num.fst`, `macro_der-num-root.fst`,
+  `macro_der-pref.fst`, `macro_der-prev.fst`, `macro_der-suff.fst`,
+  `macro_indices.fst`, `macro_oldorth.fst`, `macro_phon.fst`,
+  `macro_phon-lv2.fst`, `macro_postinfl.fst`, `macro_postinfl-index.fst`,
+  `macro_postlex.fst`, `macro_postphon.fst`, `macro_postwf.fst`,
+  `macro_postwf-root.fst`, `macro_sep.fst`, `macro_sep-root.fst`,
+  `macro_surface.fst`, `macro_trunc.fst`, `macro_trunc-root.fst`
+
 2025-09-01:
 
 * rename inflection classes `NMasc_n_e/s_0`, `NMasc_n_ns_0`, `NNeut_es_e_n~zz`,
