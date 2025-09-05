@@ -1,4 +1,4 @@
-% macro_boundaries.fst
+% macro_boundaries-lemma2.fst
 % Version 1.0
 % Andreas Nolda 2025-09-05
 
@@ -6,4 +6,4 @@
 
 $Words$ = $MarkerBoundaryLv2$ || $Words$
 
-$Words$ = $Words$ || $MarkerBoundaryEmpty$
+$Words$ = $Words$ || $MarkerBoundary$

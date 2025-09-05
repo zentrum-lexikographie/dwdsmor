@@ -6,4 +6,4 @@
 
 $Words$ = $MarkerBoundaryRootLv2$ || $Words$
 
-$Words$ = $Words$ || $MarkerBoundary$
+$Words$ = $Words$ || $MarkerBoundaryEmpty$

@@ -1,6 +1,6 @@
 % module_markers.fst
 % Version 10.0
-% Andreas Nolda 2025-07-09
+% Andreas Nolda 2025-09-05
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -92,16 +92,16 @@ $MarkerBoundaryRootLv2$ = (.         | \
                             <|>:<VB> | \
                            <\~>:[<PB><SB>])*
 
+ALPHABET = [#char#]
+
+$MarkerBoundary$ = (.               | \
+                                <VB>:<|>  | \
+                                <CB>:<#>  | \
+                                <IB>:<\=> | \
+                                <DB>:<->  | \
+                          [<PB><SB>]:<\~>)*
+
 ALPHABET = [#char#] \
            [<CB><VB><DB><IB><PB><SB>]:<>
 
-$MarkerBoundary$ = .*
-
-ALPHABET = [#char#]
-
-$MarkerBoundaryMorph$ = (.               | \
-                               <VB>:<|>  | \
-                               <CB>:<#>  | \
-                               <IB>:<\=> | \
-                               <DB>:<->  | \
-                         [<PB><SB>]:<\~>)*
+$MarkerBoundaryEmpty$ = .*

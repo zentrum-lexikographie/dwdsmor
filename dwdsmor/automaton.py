@@ -155,7 +155,7 @@ class Analyzer:
         )
 
 
-automaton_types = ("lemma", "morph", "finite", "root", "index")
+automaton_types = ("lemma", "lemma2", "finite", "root", "root2", "index")
 traversal_automaton_types = ("index",)
 
 

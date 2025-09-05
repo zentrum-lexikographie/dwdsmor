@@ -1,5 +1,11 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-09-05:
+
+* rename `morph.fst` to `lemma2.fst`
+* add `root2.fst` as a variant of `root.fst` for the generation of
+  morphologically segmented word forms
+
 2025-09-04:
 
 * rename `dwdsmor-index.fst`, `dwdsmor-finite.fst`, `dwdsmor-lemma.fst`,

@@ -361,8 +361,8 @@ def main():
                             help="output also segmented word form (requires secondary automaton)")
         parser.add_argument("-t", "--automaton-type", choices=automaton.automaton_types, default="lemma",
                             help="type of primary automaton (default: lemma)")
-        parser.add_argument("-T", "--automaton2-type", choices=automaton.automaton_types, default="morph",
-                            help="type of secondary automaton (default: morph)")
+        parser.add_argument("-T", "--automaton2-type", choices=automaton.automaton_types, default="lemma2",
+                            help="type of secondary automaton (default: lemma2)")
         parser.add_argument("-v", "--version", action="version",
                             version=f"{parser.prog} {version}")
         parser.add_argument("-y", "--yaml", action="store_true",

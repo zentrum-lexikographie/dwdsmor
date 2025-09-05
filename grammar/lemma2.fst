@@ -1,6 +1,6 @@
-% morph.fst
+% lemma2.fst
 % Version 10.0
-% Andreas Nolda 2025-09-04
+% Andreas Nolda 2025-09-05
 
 #include "module_symbols.fst"
 #include "module_stemtype.fst"
@@ -79,7 +79,7 @@ $Words$ = ($BaseStems$ $Infl$ || $InflFilter$) | \
 
 #include "macro_postphon.fst"
 
-#include "macro_boundaries-morph.fst"
+#include "macro_boundaries-lemma2.fst"
 
 #include "macro_indices.fst"
 

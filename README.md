@@ -39,26 +39,28 @@ lexicon comprising a set of XML files in the
 [format](https://github.com/zentrum-lexikographie/lex/tree/master/oxygen/framework/rnc) of the
 [DWDS dictionary](https://www.dwds.de).
 
-From a DWDSmor lexicon and the DWDSmor grammar, a DWDSmor edition can be
-compiled, containing several automata types in standard (`.a`) for
-generation and in compact format (`.ca`) for analysis:
+From a DWDSmor lexicon and the DWDSmor grammar, a DWDSmor edition with several
+automata types can be compiled:
 
-* `lemma.{a,ca}`: transducer with inflection and word-formation
-  components, for lemmatisation and morphosyntactic analysis of word
-  forms in terms of grammatical categories.
-* `morph.{a,ca}`: transducer with inflection and word-formation
-  components, for the generation of morphologically segmented word
-  forms.
-* `finite.{a,ca}`: transducer with an inflection component and a
-  finite word-formation component, for testing purposes.
-* `root.{a,ca}`: transducer with inflection and word-formation
-  components, for lexical analysis of word forms in terms of root
-  lemmas (i.e., lemmas of ultimate word-formation bases),
-  word-formation process, word-formation means, and grammatical
-  categories in term of the Pattern-and-Restriction Theory of word
+* `lemma`: automaton with inflection and word-formation components, for
+  lemmatisation and morphosyntactic analysis of word forms in terms of
+  grammatical categories.
+* `lemma2`: variant of `lemma`, for the generation of morphologically segmented
+  word forms.
+* `finite`: variant of `lemma` with a finite word-formation component, for
+  testing purposes.
+* `root`: automaton with inflection and word-formation components, for lexical
+  analysis of word forms in terms of root lemmas (i.e., lemmas of ultimate
+  word-formation bases), word-formation process, word-formation means, and
+  grammatical categories in term of the Pattern-and-Restriction Theory of word
   formation (Nolda 2022).
-* `index.{a,ca}`: transducer with an inflection component only with
-  DWDS homographic lemma indices, for paradigm generation.
+* `root2`: variant of `root`, for the generation of morphologically segmented
+  word forms.
+* `index`: automaton with an inflection component only with DWDS homographic
+  lemma indices, for paradigm generation.
+
+Automata are built in two formats: in standard format (with file extension `.a`)
+for generation and in compact format (with file extension `.ca`) for analysis.
 
 Currently, the following DWDSmor editions are supported:
 
@@ -166,8 +168,8 @@ and `paradigm.py` in the `tools/` subdirectory:
 ```plaintext
 $ ./tools/analysis.py -h
 usage: analysis.py [-h] [-a] [-c] [-C] [-d AUTOMATA_DIR] [-e] [-H] [-I] [-j]
-                   [-m] [-M] [-P] [-s] [-S] [-t {lemma,morph,finite,root,index}]
-                   [-T {lemma,morph,finite,root,index}] [-v] [-y]
+                   [-m] [-M] [-P] [-s] [-S] [-t {lemma,lemma2,finite,root,root2,index}]
+                   [-T {lemma,lemma2,finite,root,root2,index}] [-v] [-y]
                    [input] [output]
 
 positional arguments:
@@ -190,10 +192,10 @@ options:
   -P, --plain           suppress color and formatting
   -s, --seg-lemma       output also segmented lemma
   -S, --seg-word        output also segmented word form (requires secondary automaton)
-  -t {lemma,morph,finite,root,index}, --automaton-type {lemma,morph,finite,root,index}
+  -t {lemma,lemma2,finite,root,root2,index}, --automaton-type {lemma,lemma2,finite,root,root2,index}
                         type of primary automaton (default: lemma)
-  -T {lemma,morph,finite,root,index}, --automaton2-type {lemma,morph,finite,root,index}
-                        type of secondary automaton (default: morph)
+  -T {lemma,lemma2,finite,root,root2,index}, --automaton2-type {lemma,lemma2,finite,root,root2,index}
+                        type of secondary automaton (default: lemma2)
   -v, --version         show program's version number and exit
   -y, --yaml            output YAML document
 ```
@@ -203,7 +205,7 @@ $ ./tools/paradigm.py -h
 usage: paradigm.py [-h] [-c] [-C] [-d AUTOMATA_DIR] [-e] [-H]
                    [-i {1,2,3,4,5,6,7,8}] [-I {1,2,3,4,5,6,7,8}] [-j] [-n] [-N] [-o] [-O]
                    [-p {NN,NPROP,ADJ,CARD,ORD,FRAC,ART,DEM,INDEF,POSS,PPRO,REL,WPRO,V}]
-                   [-P] [-s] [-S] [-t {lemma,morph,finite,root,index}] [-u] [-v] [-y]
+                   [-P] [-s] [-S] [-t {lemma,lemma2,finite,root,root2,index}] [-u] [-v] [-y]
                    lemma [output]
 
 positional arguments:
@@ -232,7 +234,7 @@ options:
   -P, --plain           suppress color and formatting
   -s, --nonst           output also non-standard forms
   -S, --ch              output also forms in Swiss spelling
-  -t {lemma,morph,finite,root,index}, --automaton-type {lemma,morph,finite,root,index}
+  -t {lemma,lemma2,finite,root,root2,index}, --automaton-type {lemma,lemma2,finite,root,root2,index}
                         automaton type (default: index)
   -u, --user-specified  use only user-specified information
   -v, --version         show program's version number and exit
@@ -307,7 +309,7 @@ Building different editions is facilitated via the script `build-dwdsmor`:
 
 ```plaintext
 $ ./build-dwdsmor -h
-usage: cli.py [-h] [-e {dwds,open,dev}] [-t {lemma,morph,finite,root,index}]
+usage: cli.py [-h] [-e {dwds,open,dev}] [-t {lemma,lemma2,finite,root,root2,index}]
               [-m] [-f] [-q] [--release] [--tag]
 
 Build DWDSmor.
@@ -316,7 +318,7 @@ options:
   -h, --help            show this help message and exit
   -e {dwds,open,dev}, --edition {dwds,open,dev}
                         edition to build (default: all)
-  -t {lemma,morph,finite,root,index}, --automaton-type {lemma,morph,finite,root,index}
+  -t {lemma,lemma2,finite,root,root2,index}, --automaton-type {lemma,lemma2,finite,root,root2,index}
                         automaton type to build (default: all)
   -m, --with-metrics    measure UD/de-hdt coverage
   -f, --force           force building (also current targets)
@@ -336,7 +338,7 @@ edition.
 
 ### Testing
 
-In order to test basic transducer usage and for potential regressions, run
+In order to test for basic automata functionality and potential regressions, run
 
     pytest
 
