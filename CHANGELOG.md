@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.12.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.11.0...v0.12.0) (2025-09-05)
+
+
+### Features
+
+* add `root2` automaton and rename `morph` automaton to `lemma2` ([a2c2c34](https://github.com/zentrum-lexikographie/dwdsmor/commit/a2c2c34ba7997e851ca82d26f16304c05d7a461c))
+* add Hugging Face Hub support to Python tools ([5dfbbcf](https://github.com/zentrum-lexikographie/dwdsmor/commit/5dfbbcf51e61dccb14946478ce7ce642bfd69994))
+* add support for derivation by means of "bar"-suffixation ([5ca99ba](https://github.com/zentrum-lexikographie/dwdsmor/commit/5ca99babb34ffa33d049d5caa4267ec7a7b883f7))
+* add support for more colloquial noun variants ([8b58b7e](https://github.com/zentrum-lexikographie/dwdsmor/commit/8b58b7e2829ebf5b9a1b0c33e181dafd5365f568))
+
+
+### Bug Fixes
+
+* do not exclude forms in old orthography with linking elements ([ff91520](https://github.com/zentrum-lexikographie/dwdsmor/commit/ff91520446667c99505150bd945a29650cf81df4))
+
+
+### Performance Improvements
+
+* do not load generator in tools/analysis.py unless needed ([6a58a1b](https://github.com/zentrum-lexikographie/dwdsmor/commit/6a58a1b8fda36a355940d5e80b59a90fe829dc01))
+
 ## [0.11.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.10.0...v0.11.0) (2025-07-29)
 
 
