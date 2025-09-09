@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-09-09:
+
+* rename `lex.txt` to `lex.fst`
+
 2025-09-05:
 
 * rename `morph.fst` to `lemma2.fst`

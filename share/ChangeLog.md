@@ -1,3 +1,11 @@
+2025-09-09:
+
+* create an intermediate, generic lexicon `lexicon.xml` from DWDS articles
+  before deriving the DWDSmor lexicon `lex.fst` from it
+* rename `dwds2dwdsmor.xsl` to `dwds2lexicon.xsl`
+* rewrite part-of-speech specific templates in `entries.xsl` to operate on
+  lexical entries in `lexicon.xml` and move them to `lexicon2dwdsmor.xsl`
+
 2025-09-01:
 
 * add support for colloquial variants of neuter nouns with genitive singular

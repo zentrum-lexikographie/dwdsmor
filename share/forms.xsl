@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 7.3 -->
-<!-- Andreas Nolda 2025-07-25 -->
+<!-- Version 7.4 -->
+<!-- Andreas Nolda 2025-09-09 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:dwds="http://www.dwds.de/ns/1.0"
                 xmlns:n="http://andreas.nolda.org/ns/lib">
 
 <!-- extract inflection markers from nominal form specification, if any;
@@ -229,9 +228,8 @@
 
 <!-- participle prefixes -->
 <xsl:template name="participle-prefix">
-  <xsl:param name="form"
-             select="normalize-space(dwds:Partizip_II)"/>
   <xsl:param name="lemma"/>
+  <xsl:param name="form"/>
   <xsl:variable name="participle-stem">
     <xsl:call-template name="participle-stem">
       <xsl:with-param name="form"

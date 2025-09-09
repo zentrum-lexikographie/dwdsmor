@@ -1,6 +1,6 @@
 % finite.fst
 % Version 19.0
-% Andreas Nolda 2025-09-04
+% Andreas Nolda 2025-09-09
 
 #include "module_symbols.fst"
 #include "module_stemtype.fst"
@@ -18,7 +18,7 @@
 
 % lexicon
 
-$Lex$ = "lex.txt"
+$Lex$ = "lex.fst"
 
 $Lex$ = $Lex$ | $NumLex$
 

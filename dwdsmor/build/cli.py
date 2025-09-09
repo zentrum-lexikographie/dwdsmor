@@ -76,17 +76,35 @@ def git_rev(git_dir):
 project_git_rev = git_rev(project_dir)
 
 
-def saxon(xsl, *args, **kwargs):
-    "Run an XSLT transformation via Saxon-HE."
+saxon = [
+    "java",
+    "-Xmx8g",
+    "-cp",
+    "/usr/share/java/Saxon-HE.jar",
+    "net.sf.saxon.Transform",
+]
+
+
+def saxon_with_source_file(xml, xsl, *args, **kwargs):
+    "Run an XSLT transformation of an XML source file via Saxon-HE."
     return run(
         [
-            "java",
-            "-Xmx8g",
-            "-cp",
-            "/usr/share/java/Saxon-HE.jar",
-            "net.sf.saxon.Transform",
+            *saxon,
+            f"-s:{xml.as_posix()}",
             f"-xsl:{xsl.as_posix()}",
+            *args,
+        ],
+        **kwargs,
+    )
+
+
+def saxon_with_initial_template(xsl, *args, **kwargs):
+    "Run an XSLT transformation with an initial template via Saxon-HE."
+    return run(
+        [
+            *saxon,
             "-it",
+            f"-xsl:{xsl.as_posix()}",
             *args,
         ],
         **kwargs,
@@ -125,14 +143,26 @@ def build_lexicon(edition_dir, force=False):
     edition_build_dir = build_dir / edition_name
     manifest_xml = edition_build_dir / "manifest.xml"
     manifest_log = edition_build_dir / "manifest.log"
-    lex_txt = edition_build_dir / "lex.txt"
+    lexicon_xml = edition_build_dir / "lexicon.xml"
+    lexicon_log = edition_build_dir / "lexicon.log"
+    lex_fst = edition_build_dir / "lex.fst"
     lex_log = edition_build_dir / "lex.log"
 
-    if not force and is_current(lex_txt, sources):
-        logger.debug("Skip building lexicon '%s'", edition_name)
+    if not force and is_current(manifest_xml, sources):
+        logger.debug("Skip building manifest '%s/manifest.xml'", edition_name)
         return False
 
-    logger.info("Building lexicon '%s'", edition_name)
+    if not force and is_current(lexicon_xml, sources):
+        logger.debug(
+            "Skip building intermediate lexicon '%s/lexicon.xml'", edition_name
+        )
+        return False
+
+    if not force and is_current(lex_fst, sources):
+        logger.debug("Skip building lexicon '%s/lex.fst'", edition_name)
+        return False
+
+    logger.info("Building manifest '%s/manifest.xml'", edition_name)
     edition_build_dir.mkdir(parents=True, exist_ok=True)
     exclude_file = edition_dir / "exclude.xml"
     xsl_params = [f"dwds-dir={src_dir.as_posix()}"]
@@ -140,20 +170,31 @@ def build_lexicon(edition_dir, force=False):
         xsl_params.append(f"aux-dir={aux_dir.as_posix()}")
     if exclude_file.is_file():
         xsl_params.append(f"exclude-file={exclude_file.as_posix()}")
-    saxon(
+    saxon_with_initial_template(
         xsl_dir / "dwds2manifest.xsl",
         *xsl_params,
         cwd=edition_dir,
         output_file=manifest_xml,
         log_file=manifest_log,
     )
-    lexicon = saxon(
-        xsl_dir / "dwds2dwdsmor.xsl",
+
+    logger.info("Building intermediate lexicon '%s/lexicon.xml'", edition_name)
+    saxon_with_initial_template(
+        xsl_dir / "dwds2lexicon.xsl",
         f"manifest-file={manifest_xml.as_posix()}",
+        cwd=edition_dir,
+        output_file=lexicon_xml,
+        log_file=lexicon_log,
+    )
+
+    logger.info("Building lexicon '%s/lex.fst'", edition_name)
+    lex = saxon_with_source_file(
+        lexicon_xml,
+        xsl_dir / "lexicon2dwdsmor.xsl",
         cwd=edition_dir,
         log_file=lex_log,
     )
-    lex_txt.write_text("\n".join(sorted(set(lexicon.stdout.splitlines()))))
+    lex_fst.write_text("\n".join(sorted(set(lex.stdout.splitlines()))))
     return True
 
 
@@ -167,12 +208,12 @@ def build_automaton(edition_dir, automaton_type, force=False):
 
     edition_build_dir = build_dir / edition_name
 
-    lexicon_src = edition_build_dir / "lex.txt"
-    lexicon_symlink = grammar_dir / "lex.txt"
+    lexicon_src = edition_build_dir / "lex.fst"
+    lexicon_symlink = grammar_dir / "lex.fst"
     automaton_src = grammar_dir / f"{automaton_type}.fst"
     automaton_a = edition_build_dir / f"{automaton_type}.a"
     automaton_ca = edition_build_dir / f"{automaton_type}.ca"
-    automaton_compile_log = edition_build_dir / f"{automaton_type}.compile.log"
+    automaton_compile_log = edition_build_dir / f"{automaton_type}.log"
 
     sources = [lexicon_src, automaton_src, *fst_modules, *fst_macros]
     if (
