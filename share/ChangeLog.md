@@ -1,6 +1,10 @@
 2025-09-10:
 
 * add support for `<Eigenname>` as a word-formation link
+* ignore unproductive word-formation stems with low type frequency (i.e. the
+  ratio of the number of entries for the word-formation stem in the intermediate
+  lexicon and the number of entries for all word-formation stems of the same
+  lemma)
 
 2025-09-09:
 

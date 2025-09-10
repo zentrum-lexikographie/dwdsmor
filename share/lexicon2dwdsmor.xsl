@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 19.0 -->
-<!-- Andreas Nolda 2025-09-09 -->
+<!-- Version 19.1 -->
+<!-- Andreas Nolda 2025-09-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -536,8 +536,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-comp-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="comp-stem-entry">
         <xsl:with-param name="pos">ADJ</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -553,8 +558,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-der-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="der-stem-entry">
         <xsl:with-param name="pos">ADJ</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -720,8 +730,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-comp-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="comp-stem-entry">
         <xsl:with-param name="pos">CARD</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -739,8 +754,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-der-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="der-stem-entry">
         <xsl:with-param name="pos">CARD</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -778,8 +798,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-comp-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="comp-stem-entry">
         <xsl:with-param name="pos">ORD</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -797,8 +822,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-der-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="der-stem-entry">
         <xsl:with-param name="pos">ORD</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -826,8 +856,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-comp-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="comp-stem-entry">
         <xsl:with-param name="pos">FRAC</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -845,8 +880,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-der-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="der-stem-entry">
         <xsl:with-param name="pos">FRAC</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -917,8 +957,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-comp-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="comp-stem-entry">
         <xsl:with-param name="pos">NPROP</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -934,8 +979,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-der-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="der-stem-entry">
         <xsl:with-param name="pos">NPROP</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -1661,8 +1711,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-comp-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="comp-stem-entry">
         <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -1678,8 +1733,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-der-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="der-stem-entry">
         <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -5935,8 +5995,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-comp-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="comp-stem-entry">
         <xsl:with-param name="pos">V</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -5952,8 +6017,13 @@
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
                       @abbreviation='no')">
+      <xsl:variable name="frequency">
+        <xsl:call-template name="get-der-stem-frequency"/>
+      </xsl:variable>
       <xsl:call-template name="der-stem-entry">
         <xsl:with-param name="pos">V</xsl:with-param>
+        <xsl:with-param name="frequency"
+                        select="$frequency"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:if>
@@ -6271,6 +6341,34 @@
 </xsl:template>
 
 <!-- helper templates -->
+
+<xsl:template name="get-comp-stem-frequency">
+  <xsl:variable name="same-lemma"
+                select="count(../entry[@pos=current()/@pos]
+                                      [@type=current()/@type]
+                                      [@lemma=current()/@lemma])"/>
+  <xsl:variable name="same-stem"
+                      select="count(../entry[@pos=current()/@pos]
+                                            [@type=current()/@type]
+                                            [@lemma=current()/@lemma]
+                                            [@stem=current()/@stem])"/>
+  <xsl:value-of select="format-number($same-stem div $same-lemma,'0.##')"/>
+</xsl:template>
+
+<xsl:template name="get-der-stem-frequency">
+  <xsl:variable name="same-lemma"
+                select="count(../entry[@pos=current()/@pos]
+                                      [@type=current()/@type]
+                                      [@suffs=current()/@suffs]
+                                      [@lemma=current()/@lemma])"/>
+  <xsl:variable name="same-stem"
+                      select="count(../entry[@pos=current()/@pos]
+                                            [@type=current()/@type]
+                                            [@suffs=current()/@suffs]
+                                            [@lemma=current()/@lemma]
+                                            [@stem=current()/@stem])"/>
+  <xsl:value-of select="format-number($same-stem div $same-lemma,'0.##')"/>
+</xsl:template>
 
 <xsl:template name="apply-templates-to-singular">
   <xsl:variable name="entry" as="element()">

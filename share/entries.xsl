@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 19.0 -->
-<!-- Andreas Nolda 2025-09-09 -->
+<!-- Version 19.1 -->
+<!-- Andreas Nolda 2025-09-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -10,6 +10,8 @@
 <xsl:include href="forms.xsl"/>
 
 <xsl:include href="strings.xsl"/>
+
+<xsl:variable name="minimal-frequency">0.1</xsl:variable>
 
 <!-- stems -->
 <xsl:template name="stem-entry">
@@ -80,30 +82,48 @@
   <xsl:param name="etymology"
              select="@etymology"/>
   <xsl:param name="pos"/>
+  <xsl:param name="frequency"/>
   <xsl:if test="string-length($lemma)&gt;0 and
                 string-length($pos)&gt;0">
-    <xsl:text>&lt;Stem&gt;</xsl:text>
-    <xsl:if test="$abbreviation='yes'">
-      <xsl:text>&lt;Abbr&gt;</xsl:text>
-    </xsl:if>
     <xsl:choose>
-      <xsl:when test="string-length($stem)&gt;0">
-        <xsl:value-of select="n:pair($lemma,n:segment($lemma,$stem))"/>
+      <xsl:when test="$frequency&gt;=$minimal-frequency">
+        <xsl:text>&lt;Stem&gt;</xsl:text>
+        <xsl:if test="$abbreviation='yes'">
+          <xsl:text>&lt;Abbr&gt;</xsl:text>
+        </xsl:if>
+        <xsl:choose>
+          <xsl:when test="string-length($stem)&gt;0">
+            <xsl:value-of select="n:pair($lemma,n:segment($lemma,$stem))"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$lemma"/>
+          </xsl:otherwise>
+        </xsl:choose>
+        <xsl:text>&lt;</xsl:text>
+        <xsl:value-of select="$pos"/>
+        <xsl:text>&gt;</xsl:text>
+        <xsl:text>&lt;comp&gt;</xsl:text>
+        <xsl:if test="string-length($etymology)&gt;0">
+          <xsl:text>&lt;</xsl:text>
+          <xsl:value-of select="$etymology"/>
+          <xsl:text>&gt;</xsl:text>
+        </xsl:if>
+        <xsl:text>&#xA;</xsl:text>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="$lemma"/>
+        <xsl:message>
+          <xsl:text>Warning: "</xsl:text>
+          <xsl:value-of select="$lemma"/>
+          <xsl:text>" has compounding stem "</xsl:text>
+          <xsl:value-of select="$stem"/>
+          <xsl:text>" with type frequency </xsl:text>
+          <xsl:value-of select="$frequency"/>
+          <xsl:text disable-output-escaping="yes"> &lt; minimum type frequency </xsl:text>
+          <xsl:value-of select="$minimal-frequency"/>
+          <xsl:text>.</xsl:text>
+        </xsl:message>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:text>&lt;</xsl:text>
-    <xsl:value-of select="$pos"/>
-    <xsl:text>&gt;</xsl:text>
-    <xsl:text>&lt;comp&gt;</xsl:text>
-    <xsl:if test="string-length($etymology)&gt;0">
-      <xsl:text>&lt;</xsl:text>
-      <xsl:value-of select="$etymology"/>
-      <xsl:text>&gt;</xsl:text>
-    </xsl:if>
-    <xsl:text>&#xA;</xsl:text>
   </xsl:if>
 </xsl:template>
 
@@ -120,36 +140,54 @@
   <xsl:param name="suffs"
              select="@suffs"/>
   <xsl:param name="pos"/>
+  <xsl:param name="frequency"/>
   <xsl:if test="string-length($lemma)&gt;0 and
                 string-length($pos)&gt;0 and
                 string-length($suffs)&gt;0">
-    <xsl:for-each select="tokenize($suffs,'&#x20;')">
-      <xsl:text>&lt;Stem&gt;</xsl:text>
-      <xsl:if test="$abbreviation='yes'">
-        <xsl:text>&lt;Abbr&gt;</xsl:text>
-      </xsl:if>
-      <xsl:choose>
-        <xsl:when test="string-length($stem)&gt;0">
-          <xsl:value-of select="n:pair($lemma,n:segment($lemma,$stem))"/>
-        </xsl:when>
-        <xsl:otherwise>
+    <xsl:choose>
+      <xsl:when test="$frequency&gt;=$minimal-frequency">
+        <xsl:for-each select="tokenize($suffs,'&#x20;')">
+          <xsl:text>&lt;Stem&gt;</xsl:text>
+          <xsl:if test="$abbreviation='yes'">
+            <xsl:text>&lt;Abbr&gt;</xsl:text>
+          </xsl:if>
+          <xsl:choose>
+            <xsl:when test="string-length($stem)&gt;0">
+              <xsl:value-of select="n:pair($lemma,n:segment($lemma,$stem))"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$lemma"/>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:text>&lt;</xsl:text>
+          <xsl:value-of select="$pos"/>
+          <xsl:text>&gt;</xsl:text>
+          <xsl:text>&lt;der&gt;</xsl:text>
+          <xsl:text>&lt;-</xsl:text>
+          <xsl:value-of select="."/>
+          <xsl:text>&gt;</xsl:text>
+          <xsl:if test="string-length($etymology)&gt;0">
+            <xsl:text>&lt;</xsl:text>
+            <xsl:value-of select="$etymology"/>
+            <xsl:text>&gt;</xsl:text>
+          </xsl:if>
+          <xsl:text>&#xA;</xsl:text>
+        </xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message>
+          <xsl:text>Warning: "</xsl:text>
           <xsl:value-of select="$lemma"/>
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:text>&lt;</xsl:text>
-      <xsl:value-of select="$pos"/>
-      <xsl:text>&gt;</xsl:text>
-      <xsl:text>&lt;der&gt;</xsl:text>
-      <xsl:text>&lt;-</xsl:text>
-      <xsl:value-of select="."/>
-      <xsl:text>&gt;</xsl:text>
-      <xsl:if test="string-length($etymology)&gt;0">
-        <xsl:text>&lt;</xsl:text>
-        <xsl:value-of select="$etymology"/>
-        <xsl:text>&gt;</xsl:text>
-      </xsl:if>
-      <xsl:text>&#xA;</xsl:text>
-    </xsl:for-each>
+          <xsl:text>" has derivation stem "</xsl:text>
+          <xsl:value-of select="$stem"/>
+          <xsl:text>" with type frequency </xsl:text>
+          <xsl:value-of select="$frequency"/>
+          <xsl:text disable-output-escaping="yes"> &lt; minimum type frequency </xsl:text>
+          <xsl:value-of select="$minimal-frequency"/>
+          <xsl:text>.</xsl:text>
+        </xsl:message>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:if>
 </xsl:template>
 
