@@ -1,3 +1,7 @@
+2025-09-10:
+
+* add support for `<Eigenname>` as a word-formation link
+
 2025-09-09:
 
 * create an intermediate, generic lexicon `lexicon.xml` from DWDS articles

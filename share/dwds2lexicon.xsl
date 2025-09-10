@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 19.0 -->
-<!-- Andreas Nolda 2025-09-09 -->
+<!-- Version 19.1 -->
+<!-- Andreas Nolda 2025-09-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2714,17 +2714,29 @@
                                                     ../dwds:Formangabe/dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')]
                                                                                                      [normalize-space(.)='Kardinalzahlwort']]
                                                  [dwds:Verweis[not(@class='invisible')]
-                                                              [@Typ='Erstglied']]
+                                                              [@Typ='Erstglied'] or
+                                                  dwds:Eigenname[not(@class='invisible')]
+                                                                [@Typ='Erstglied']]
                                                  [not(dwds:Verweis[not(@class='invisible')]
-                                                                  [@Typ='Binnenglied'])]
+                                                                  [@Typ='Binnenglied'] or
+                                                      dwds:Eigenname[not(@class='invisible')]
+                                                                    [@Typ='Binnenglied'])]
                                                  [dwds:Verweis[not(@class='invisible')]
-                                                              [@Typ='Letztglied']]">
-          <xsl:variable name="basis1"
-                        select="normalize-space(dwds:Verweis[not(@class='invisible')]
-                                                            [@Typ='Erstglied']/dwds:Ziellemma)"/>
-          <xsl:variable name="basis2"
-                        select="normalize-space(dwds:Verweis[not(@class='invisible')]
-                                                            [@Typ='Letztglied']/dwds:Ziellemma)"/>
+                                                              [@Typ='Letztglied'] or
+                                                  dwds:Eigenname[not(@class='invisible')]
+                                                                [@Typ='Letztglied']]">
+          <xsl:variable name="ref1"
+                        select="dwds:Verweis[not(@class='invisible')]
+                                            [@Typ='Erstglied']/dwds:Ziellemma |
+                                dwds:Eigenname[not(@class='invisible')]
+                                              [@Typ='Erstglied']"/>
+          <xsl:variable name="ref2"
+                        select="dwds:Verweis[not(@class='invisible')]
+                                            [@Typ='Letztglied']/dwds:Ziellemma |
+                                dwds:Eigenname[not(@class='invisible')]
+                                              [@Typ='Letztglied']"/>
+          <xsl:variable name="basis1" select="normalize-space($ref1[1])"/>
+          <xsl:variable name="basis2" select="normalize-space($ref2[1])"/>
           <!-- ignore affixes -->
           <xsl:if test="not(starts-with($lemma,'-') or
                             ends-with($lemma,'-')) and
@@ -2733,11 +2745,9 @@
                         not(starts-with($basis2,'-') or
                             ends-with($basis2,'-'))">
             <xsl:variable name="index1"
-                          select="dwds:Verweis[not(@class='invisible')]
-                                              [@Typ='Erstglied']/dwds:Ziellemma/@hidx"/>
+                          select="$ref1/@hidx"/>
             <xsl:variable name="index2"
-                          select="dwds:Verweis[not(@class='invisible')]
-                                              [@Typ='Letztglied']/dwds:Ziellemma/@hidx"/>
+                          select="$ref2/@hidx"/>
             <xsl:variable name="source1"
                           select="$manifest/source[@lemma=$basis1]
                                                   [@index=$index1 or
@@ -2947,18 +2957,30 @@
         <xsl:for-each select="../../dwds:Verweise[not(@class='invisible')]
                                                  [not(@Typ!='Derivation')]
                                                  [dwds:Verweis[not(@class='invisible')]
-                                                              [@Typ='Erstglied']]
+                                                              [@Typ='Erstglied'] or
+                                                  dwds:Eigenname[not(@class='invisible')]
+                                                                [@Typ='Erstglied']]
                                                  [not(dwds:Verweis[not(@class='invisible')]
-                                                                  [@Typ='Binnenglied'])]
+                                                                  [@Typ='Binnenglied'] or
+                                                      dwds:Eigenname[not(@class='invisible')]
+                                                                    [@Typ='Binnenglied'])]
                                                  [dwds:Verweis[not(@class='invisible')]
-                                                              [@Typ='Letztglied']]">
+                                                              [@Typ='Letztglied'] or
+                                                  dwds:Eigenname[not(@class='invisible')]
+                                                                [@Typ='Letztglied']]">
 
-          <xsl:variable name="basis"
-                        select="normalize-space(dwds:Verweis[not(@class='invisible')]
-                                                            [@Typ='Erstglied']/dwds:Ziellemma)"/>
-          <xsl:variable name="affix"
-                        select="normalize-space(dwds:Verweis[not(@class='invisible')]
-                                                            [@Typ='Letztglied']/dwds:Ziellemma)"/><!-- suffix -->
+          <xsl:variable name="ref1"
+                        select="dwds:Verweis[not(@class='invisible')]
+                                            [@Typ='Erstglied']/dwds:Ziellemma |
+                                dwds:Eigenname[not(@class='invisible')]
+                                              [@Typ='Erstglied']"/>
+          <xsl:variable name="ref2"
+                        select="dwds:Verweis[not(@class='invisible')]
+                                            [@Typ='Letztglied']/dwds:Ziellemma |
+                                dwds:Eigenname[not(@class='invisible')]
+                                              [@Typ='Letztglied']"/>
+          <xsl:variable name="basis" select="normalize-space($ref1[1])"/>
+          <xsl:variable name="affix" select="normalize-space($ref2[1])"/><!-- suffix -->
           <!-- ignore affixes as $lemma and $basis,
                and ensure that $affix is a suffix -->
           <xsl:if test="not(starts-with($lemma,'-') or
@@ -2968,11 +2990,9 @@
                         starts-with($affix,'-') and
                         not(ends-with($affix,'-'))">
             <xsl:variable name="index1"
-                          select="dwds:Verweis[not(@class='invisible')]
-                                              [@Typ='Erstglied']/dwds:Ziellemma/@hidx"/>
+                          select="$ref1/@hidx"/>
             <xsl:variable name="index2"
-                          select="dwds:Verweis[not(@class='invisible')]
-                                              [@Typ='Letztglied']/dwds:Ziellemma/@hidx"/>
+                          select="$ref2/@hidx"/>
             <xsl:variable name="source1"
                           select="$manifest/source[@lemma=$basis]
                                                   [@index=$index1 or
@@ -3098,7 +3118,7 @@
                                         <xsl:value-of select="$lemma"/>
                                         <xsl:text>" in </xsl:text>
                                         <xsl:value-of select="$file"/>
-                                        <xsl:text> has a word-formation analysis with unsupported suffix "-</xsl:text>
+                                        <xsl:text> has a word-formation analysis with unsupported suffix "</xsl:text>
                                         <xsl:value-of select="."/>
                                         <xsl:text>".</xsl:text>
                                       </xsl:message>
@@ -3264,17 +3284,17 @@
                                                  [dwds:Verweis[not(@class='invisible')]
                                                               [@Typ='Grundform']]">
 
-          <xsl:variable name="basis"
-                        select="normalize-space(dwds:Verweis[not(@class='invisible')]
-                                                            [@Typ='Grundform']/dwds:Ziellemma)"/>
+          <xsl:variable name="ref1"
+                        select="dwds:Verweis[not(@class='invisible')]
+                                            [@Typ='Grundform']/dwds:Ziellemma"/>
+          <xsl:variable name="basis" select="normalize-space($ref1)"/>
           <!-- ignore affixes as $lemma and $basis -->
           <xsl:if test="not(starts-with($lemma,'-') or
                             ends-with($lemma,'-')) and
                         not(starts-with($basis,'-') or
                             ends-with($basis,'-'))">
             <xsl:variable name="index1"
-                          select="dwds:Verweis[not(@class='invisible')]
-                                              [@Typ='Grundform']/dwds:Ziellemma/@hidx"/>
+                          select="$ref1/@hidx"/>
             <xsl:variable name="source1"
                           select="$manifest/source[@lemma=$basis]
                                                   [@index=$index1 or
