@@ -1,5 +1,5 @@
 % module_wf.fst
-% Version 13.7
+% Version 13.8
 % Andreas Nolda 2025-09-12
 
 % processes and means
@@ -115,18 +115,26 @@ $ConvFilter$ = $ConvRestrLex$
 
 % derivation restrictions
 
-ALPHABET = [#entry-type# #char# #boundary-trigger# #index# #wf# #pos# #subcat# \
-            #stem-type# #suff# #origin# <Abbr>]
+ALPHABET = [#entry-type# #char# #orth-trigger# #boundary-trigger# #index# #wf# \
+            #pos# #subcat# #stem-type# #suff# #origin# <Abbr>]
 
-$C$ = [#index# #stem-type# #origin#]
+$C$ = .
+$C$ = $C$-[#entry-type#]
+
+$CMinusCharPos$ = $C$-[#char# #orth-trigger# #boundary-trigger# #pos#]
+
+% exclude pref(un) for converted infinitives
+$DerRestrWFLv2-un$ = !([<dc><uc>]* _$DerPref-un$ <DB> [<dc><uc>]* <Stem> $C$* _$ConvInfNonCl$)
+
+$DerRestrWFLv2$ = $DerRestrWFLv2-un$
 
 % exclude "sein" as a basis for preverb prefixation
 % cf. Deutsche Rechtschreibung (2024: § 35)
-$DerRestrLexPrevLv2$ = !(_$DerPrev$ <VB> <Stem> sei<SB>n $C$* <V> $C$*)
+$DerRestrLexPrevLv2$ = !(_$DerPrev$ <VB> <Stem> sei<SB>n $CMinusCharPos$* <V> $CMinusCharPos$*)
 
 $DerRestrLexLv2$ = $DerRestrLexPrevLv2$
 
-$DerFilterLv2$ = $DerRestrLexLv2$
+$DerFilterLv2$ = $DerRestrWFLv2$ & $DerRestrLexLv2$
 
 ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
             #boundary-trigger# #pos# #subcat# #stem-type# #suff# #origin# \

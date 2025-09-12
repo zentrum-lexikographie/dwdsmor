@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-09-12:
+
+* exclude "un"-prefixation for converted infinitives
+
 2025-09-09:
 
 * rename `lex.txt` to `lex.fst`
