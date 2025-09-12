@@ -1,3 +1,7 @@
+2025-09-12:
+
+* properly segment compounding stems and derivation stems of verbs
+
 2025-09-10:
 
 * add support for `<Eigenname>` as a word-formation link

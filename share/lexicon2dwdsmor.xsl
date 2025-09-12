@@ -5998,8 +5998,7 @@
       <xsl:variable name="frequency">
         <xsl:call-template name="get-comp-stem-frequency"/>
       </xsl:variable>
-      <xsl:call-template name="comp-stem-entry">
-        <xsl:with-param name="pos">V</xsl:with-param>
+      <xsl:call-template name="verb-comp-stem-entry">
         <xsl:with-param name="frequency"
                         select="$frequency"/>
       </xsl:call-template>
@@ -6020,8 +6019,7 @@
       <xsl:variable name="frequency">
         <xsl:call-template name="get-der-stem-frequency"/>
       </xsl:variable>
-      <xsl:call-template name="der-stem-entry">
-        <xsl:with-param name="pos">V</xsl:with-param>
+      <xsl:call-template name="verb-der-stem-entry">
         <xsl:with-param name="frequency"
                         select="$frequency"/>
       </xsl:call-template>

@@ -1,6 +1,6 @@
 % module_wf.fst
-% Version 13.6
-% Andreas Nolda 2025-08-29
+% Version 13.7
+% Andreas Nolda 2025-09-12
 
 % processes and means
 
@@ -133,10 +133,12 @@ ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
             #inflection# #auxiliary# <Abbr><ge>]
 
 $C$ = .
-$C$ = $C$-[#entry-type# <CB><VB><DB><IB>]
+$C$ = $C$-[#entry-type#]
 
-$Pref$ = [<dc><uc>]* <Pref> $C$* [<DB><VB>]
-$Suff$ =        <DB> <Suff> $C$*
+$CMinusB$ = $C$-[<CB><VB><DB><IB>]
+
+$Pref$ = [<dc><uc>]* <Pref> $CMinusB$* [<DB><VB>]
+$Suff$ =        <DB> <Suff> $CMinusB$*
 
 % restrict suff(st) to cardinal or nominal bases
 $DerRestrNumPOSSuff-st$ = [<dc><uc>]* <Stem> $C$* [<CARD><NN>] $C$* $Suff$? <DB> ^$DerSuff-st$
@@ -171,33 +173,33 @@ $DerRestrPOSPref-un$ =      ^$DerPref-un$ <DB>      $Pref$? <Stem> ($C$* <VB>)? 
 $DerRestrPOSPref-Un$ = <uc> ^$DerPref-un$ <DB> <dc> $Pref$? <Stem> ($C$* <VB>)? $C$* $Suff$* <NN>  $C$*
 
 % restrict prev() to verbal bases
-$DerRestrPOSPrev-mit$ = ^$DerPrev-mit$ <VB> <Stem> ($C$* <VB>)? $C$* <V> $C$*
+$DerRestrPOSPrev-mit$ = ^$DerPrev-mit$ <VB> <Stem> $C$* <V> $C$*
 
 % restrict prev() to verbal bases without preverb
-$DerRestrPOSPrev-ab$       = ^$DerPrev-ab$       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-an$       = ^$DerPrev-an$       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-auf$      = ^$DerPrev-auf$      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-aus$      = ^$DerPrev-aus$      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-bei$      = ^$DerPrev-bei$      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-durch$    = ^$DerPrev-durch$    <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-ein$      = ^$DerPrev-ein$      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-fort$     = ^$DerPrev-fort$     <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-gegen$    = ^$DerPrev-gegen$    <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-heim$     = ^$DerPrev-heim$     <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-her$      = ^$DerPrev-her$      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-hin$      = ^$DerPrev-hin$      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-hinter$   = ^$DerPrev-hinter$   <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-los$      = ^$DerPrev-los$      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-nach$     = ^$DerPrev-nach$     <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-ueber$    = ^$DerPrev-ueber$    <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-um$       = ^$DerPrev-um$       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-unter$    = ^$DerPrev-unter$    <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-vor$      = ^$DerPrev-vor$      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-weg$      = ^$DerPrev-weg$      <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-wieder$   = ^$DerPrev-wieder$   <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-zu$       = ^$DerPrev-zu$       <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-zurueck$  = ^$DerPrev-zurueck$  <VB> <Stem> $C$* <V> $C$*
-$DerRestrPOSPrev-zwischen$ = ^$DerPrev-zwischen$ <VB> <Stem> $C$* <V> $C$*
+$DerRestrPOSPrev-ab$       = ^$DerPrev-ab$       <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-an$       = ^$DerPrev-an$       <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-auf$      = ^$DerPrev-auf$      <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-aus$      = ^$DerPrev-aus$      <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-bei$      = ^$DerPrev-bei$      <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-durch$    = ^$DerPrev-durch$    <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-ein$      = ^$DerPrev-ein$      <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-fort$     = ^$DerPrev-fort$     <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-gegen$    = ^$DerPrev-gegen$    <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-heim$     = ^$DerPrev-heim$     <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-her$      = ^$DerPrev-her$      <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-hin$      = ^$DerPrev-hin$      <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-hinter$   = ^$DerPrev-hinter$   <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-los$      = ^$DerPrev-los$      <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-nach$     = ^$DerPrev-nach$     <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-ueber$    = ^$DerPrev-ueber$    <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-um$       = ^$DerPrev-um$       <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-unter$    = ^$DerPrev-unter$    <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-vor$      = ^$DerPrev-vor$      <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-weg$      = ^$DerPrev-weg$      <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-wieder$   = ^$DerPrev-wieder$   <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-zu$       = ^$DerPrev-zu$       <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-zurueck$  = ^$DerPrev-zurueck$  <VB> <Stem> $CMinusB$* <V> $C$*
+$DerRestrPOSPrev-zwischen$ = ^$DerPrev-zwischen$ <VB> <Stem> $CMinusB$* <V> $C$*
 
 $DerRestrPOS$ = $DerRestrPOSSuff-e$        | \
                 $DerRestrPOSSuff-er$       | \
