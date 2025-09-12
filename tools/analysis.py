@@ -50,7 +50,7 @@ LABEL_MAP = {"word": "Wordform",
 
 
 def analyze_word(analyzer, word, automaton_type=None):
-    if automaton_type == "root":
+    if automaton_type == "root" or automaton_type == "root2":
         return analyzer.analyze(word, visible_boundaries="+", boundary_tag=" + ", join_tags=True)
     elif automaton_type == "index":
         return analyzer.analyze(word, idx_to_int=True)
