@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 19.1 -->
-<!-- Andreas Nolda 2025-09-10 -->
+<!-- Version 19.2 -->
+<!-- Andreas Nolda 2025-09-11 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:dwds="http://www.dwds.de/ns/1.0"
                 xmlns:n="http://andreas.nolda.org/ns/lib"
-                exclude-result-prefixes="dwds n">
+                exclude-result-prefixes="dwds n xs">
 
 <xsl:include href="files.xsl"/>
 
@@ -71,6 +71,8 @@
   <!-- ignore idioms and other syntactically complex units -->
   <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
                                        [dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]]">
+    <xsl:variable name="entry-type"
+                  select="@Typ"/>
     <xsl:variable name="diminutive">
       <xsl:if test="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])='Substantiv'">
         <xsl:choose>
@@ -2778,10 +2780,8 @@
               <xsl:variable name="etymology1">
                 <xsl:call-template name="get-etymology-value"/>
               </xsl:variable>
-              <!-- ignore symbols and abbreviations -->
               <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
-                                                   [not(@Typ='Abkürzung' or
-                                                        @Typ='Symbol')]">
+                                                   [@Typ=$entry-type]">
                 <xsl:variable name="pos1"
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])"/>
                 <xsl:if test="string-length($pos1)&gt;0">
@@ -2795,10 +2795,10 @@
                         <xsl:call-template name="get-abbreviation-value"/>
                       </xsl:variable>
                       <xsl:for-each select="$article2">
-                        <!-- ignore symbols and abbreviations -->
+                        <!-- only consider primary entries for the second basis -->
                         <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
-                                                             [not(@Typ='Abkürzung' or
-                                                                  @Typ='Symbol')]">
+                                                             [@Typ='Hauptform']
+                                                             [@Typ=$entry-type]">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                [not(@Typ)]">
@@ -3023,10 +3023,8 @@
               <xsl:variable name="etymology1">
                 <xsl:call-template name="get-etymology-value"/>
               </xsl:variable>
-              <!-- ignore symbols and abbreviations -->
               <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
-                                                   [not(@Typ='Abkürzung' or
-                                                        @Typ='Symbol')]">
+                                                   [@Typ=$entry-type]">
                 <xsl:variable name="pos1"
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])"/>
                 <xsl:if test="string-length($pos1)&gt;0">
@@ -3040,10 +3038,10 @@
                         <xsl:call-template name="get-abbreviation-value"/>
                       </xsl:variable>
                       <xsl:for-each select="$article2">
-                        <!-- ignore symbols abbreviations -->
+                        <!-- only consider primary entries for the suffix -->
                         <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
-                                                             [not(@Typ='Abkürzung' or
-                                                                  @Typ='Symbol')]">
+                                                             [@Typ='Hauptform']
+                                                             [@Typ=$entry-type]">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                [not(@Typ)]">
