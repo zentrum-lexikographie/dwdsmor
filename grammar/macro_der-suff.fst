@@ -2,7 +2,7 @@
 % Version 1.0
 % Andreas Nolda 2025-09-04
 
-% derived base stems with suffixes
+% derived stems with suffixes
 
 $DerStemsSuff-e$    = $DerStems$ || $DerStemFilterSuff-e$
 $DerStemsSuff-er$   = $DerStems$ || $DerStemFilterSuff-er$

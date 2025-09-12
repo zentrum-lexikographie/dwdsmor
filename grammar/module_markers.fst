@@ -1,6 +1,6 @@
 % module_markers.fst
-% Version 10.0
-% Andreas Nolda 2025-09-05
+% Version 10.1
+% Andreas Nolda 2025-09-12
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -21,10 +21,12 @@ $SurfaceTriggers$ = $SchwaTrigger$
 $C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #boundary-trigger# \
        <rm|Imp><rm|Part><ins(zu)>]
 
+$CMinusCBVB$ = $C$-[<CB><VB>]
+
 $MarkerGe$ = $C$* | \
-             $C$* <ge>:<> {<>}:{ge<PB>} $C$* <ins(ge)>:<> $C$* | \
-             $C$* <ge>:<>               $C$*                   | \
-             $C$*                       $C$* <ins(ge)>:<> $C$*
+             $C$* <ge>:<> {<>}:{ge<PB>} $CMinusCBVB$* <ins(ge)>:<> $C$* | \
+             $C$* <ge>:<>               $CMinusCBVB$*                   | \
+             $C$*                       $CMinusCBVB$* <ins(ge)>:<> $C$*
 
 
 % process <ins(zu)> marker
@@ -32,13 +34,10 @@ $MarkerGe$ = $C$* | \
 $C$ = [#char# #surface-trigger# #phon-trigger# #orth-trigger# #boundary-trigger# \
        <rm|Imp><rm|Part>]
 
-$CMinusCB$ = $C$-[<CB>]
-$CMinusVB$ = $C$-[<VB>]
+$CMinusCBVB$ = $C$-[<CB><VB>]
 
-$MarkerZu$ = ($CMinusCB$* <CB>)*                                $CMinusCB$* | \
-            (($CMinusVB$* <VB>)? $CMinusVB$* <VB>)?             $CMinusVB$* | \
-             ($CMinusCB$* <CB>)* $CMinusCB$* <CB> {<>}:{zu<PB>} $CMinusCB$* <ins(zu)>:<> $CMinusCB$* | \
-             ($CMinusVB$* <VB>)? $CMinusVB$* <VB> {<>}:{zu<PB>} $CMinusVB$* <ins(zu)>:<> $CMinusVB$*
+$MarkerZu$ = $C$* | \
+             $C$* [<CB><VB>] {<>}:{zu<PB>} $CMinusCBVB$* <ins(zu)>:<> $C$*
 
 
 % process <rm|Part> marker
