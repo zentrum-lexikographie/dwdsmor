@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 19.2 -->
-<!-- Andreas Nolda 2025-09-11 -->
+<!-- Version 19.3 -->
+<!-- Andreas Nolda 2025-09-17 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -71,8 +71,6 @@
   <!-- ignore idioms and other syntactically complex units -->
   <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
                                        [dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]]">
-    <xsl:variable name="entry-type"
-                  select="@Typ"/>
     <xsl:variable name="diminutive">
       <xsl:if test="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])='Substantiv'">
         <xsl:choose>
@@ -2780,8 +2778,10 @@
               <xsl:variable name="etymology1">
                 <xsl:call-template name="get-etymology-value"/>
               </xsl:variable>
+              <!-- ignore symbols and abbreviations -->
               <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
-                                                   [@Typ=$entry-type]">
+                                                   [not(@Typ='Abkürzung' or
+                                                        @Typ='Symbol')]">
                 <xsl:variable name="pos1"
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])"/>
                 <xsl:if test="string-length($pos1)&gt;0">
@@ -2790,21 +2790,20 @@
                                                        [not(@Typ)]">
                     <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
-                    <xsl:if test="string-length($lemma1)&gt;0">
+                    <xsl:if test="$lemma1=$basis1">
                       <xsl:variable name="abbreviation1">
                         <xsl:call-template name="get-abbreviation-value"/>
                       </xsl:variable>
                       <xsl:for-each select="$article2">
                         <!-- only consider primary entries for the second basis -->
                         <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
-                                                             [@Typ='Hauptform']
-                                                             [@Typ=$entry-type]">
+                                                             [@Typ='Hauptform']">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                [not(@Typ)]">
                             <xsl:variable name="lemma2"
                                           select="normalize-space(.)"/>
-                            <xsl:if test="string-length($lemma2)&gt;0">
+                            <xsl:if test="$lemma2=$basis2">
                               <xsl:variable name="comp-stem">
                                 <xsl:call-template name="comp-stem">
                                   <xsl:with-param name="lemma"
@@ -2815,7 +2814,7 @@
                                                   select="$lemma2"/>
                                 </xsl:call-template>
                               </xsl:variable>
-                              <xsl:if test="string-length($comp-stem)&gt;0">
+                              <xsl:if test="n:is-comp-stem($comp-stem,$lemma1)">
                                 <xsl:choose>
                                   <xsl:when test="$pos1='Adjektiv'">
                                     <entry pos="adjective"
@@ -2968,7 +2967,6 @@
                                                               [@Typ='Letztglied'] or
                                                   dwds:Eigenname[not(@class='invisible')]
                                                                 [@Typ='Letztglied']]">
-
           <xsl:variable name="ref1"
                         select="dwds:Verweis[not(@class='invisible')]
                                             [@Typ='Erstglied']/dwds:Ziellemma |
@@ -3023,8 +3021,10 @@
               <xsl:variable name="etymology1">
                 <xsl:call-template name="get-etymology-value"/>
               </xsl:variable>
+              <!-- ignore symbols and abbreviations -->
               <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
-                                                   [@Typ=$entry-type]">
+                                                   [not(@Typ='Abkürzung' or
+                                                        @Typ='Symbol')]">
                 <xsl:variable name="pos1"
                               select="normalize-space(dwds:Grammatik/dwds:Wortklasse[not(@class='invisible')])"/>
                 <xsl:if test="string-length($pos1)&gt;0">
@@ -3033,21 +3033,20 @@
                                                        [not(@Typ)]">
                     <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
-                    <xsl:if test="string-length($lemma1)&gt;0">
+                    <xsl:if test="$lemma1=$basis">
                       <xsl:variable name="abbreviation1">
                         <xsl:call-template name="get-abbreviation-value"/>
                       </xsl:variable>
                       <xsl:for-each select="$article2">
                         <!-- only consider primary entries for the suffix -->
                         <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
-                                                             [@Typ='Hauptform']
-                                                             [@Typ=$entry-type]">
+                                                             [@Typ='Hauptform']">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                [not(@Typ)]">
                             <xsl:variable name="lemma2"
                                           select="substring-after(normalize-space(.),'-')"/><!-- suffix lemma -->
-                            <xsl:if test="string-length($lemma2)&gt;0">
+                            <xsl:if test="$lemma2=substring-after($affix,'-')">
                               <xsl:variable name="der-stem">
                                 <xsl:call-template name="der-stem">
                                   <xsl:with-param name="lemma"
@@ -3058,7 +3057,7 @@
                                                   select="$lemma2"/>
                                 </xsl:call-template>
                               </xsl:variable>
-                              <xsl:if test="string-length($der-stem)&gt;0">
+                              <xsl:if test="n:is-der-stem($der-stem,$lemma1)">
                                 <!-- suffixes -->
                                 <xsl:variable name="suffs" as="xs:string*">
                                   <xsl:choose>
@@ -3281,7 +3280,6 @@
                                                  [not(@Typ!='Derivation')]
                                                  [dwds:Verweis[not(@class='invisible')]
                                                               [@Typ='Grundform']]">
-
           <xsl:variable name="ref1"
                         select="dwds:Verweis[not(@class='invisible')]
                                             [@Typ='Grundform']/dwds:Ziellemma"/>
@@ -3323,7 +3321,7 @@
                                                        [not(@Typ)]">
                     <xsl:variable name="lemma1"
                                   select="normalize-space(.)"/>
-                    <xsl:if test="string-length($lemma1)&gt;0">
+                    <xsl:if test="$lemma1=$basis">
                       <xsl:variable name="abbreviation1">
                         <xsl:call-template name="get-abbreviation-value"/>
                       </xsl:variable>
@@ -3377,7 +3375,7 @@
                           </xsl:otherwise>
                         </xsl:choose>
                       </xsl:variable>
-                      <xsl:if test="string-length($der-stem)&gt;0">
+                      <xsl:if test="n:is-der-stem($der-stem,$lemma1)">
                         <!-- suffixes -->
                         <xsl:variable name="suffs">
                           <xsl:choose>

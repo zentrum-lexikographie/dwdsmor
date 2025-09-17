@@ -1,7 +1,10 @@
+2025-09-17:
+
+* add tests for proper compounding stems and derivation stems
+
 2025-09-12:
 
 * properly segment compounding stems and derivation stems of verbs
-* match entry types when inferring word-formation stems
 
 2025-09-10:
 
