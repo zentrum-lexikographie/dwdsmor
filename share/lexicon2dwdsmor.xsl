@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 19.1 -->
-<!-- Andreas Nolda 2025-09-10 -->
+<!-- Version 19.2 -->
+<!-- Andreas Nolda 2025-09-19 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1385,7 +1385,7 @@
     <!-- nominative plural: "-(n)" -->
     <xsl:when test="$nominative-plural-marker='-(n)'">
       <xsl:choose>
-        <!-- nominalised adjectives -->
+        <!-- nominalised adjectives with plural forms -->
         <xsl:when test="$genitive-singular-marker='-n'">
           <xsl:variable name="class">
             <xsl:call-template name="noun-class"/>
@@ -1429,6 +1429,30 @@
           </xsl:if>
         </xsl:otherwise>
       </xsl:choose>
+    </xsl:when>
+    <!-- nominalised adjectives without plural forms -->
+    <xsl:when test="$genitive-singular-marker='-n' and
+                    @number='singular'">
+      <xsl:variable name="class">
+        <xsl:choose>
+          <xsl:when test="@gender='neuter' and
+                          @lemma='Innere'">NNeut-Inner</xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="noun-class"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:if test="string-length($class)&gt;0">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="n:segment-from-end('e',@lemma)"/>
+          <xsl:with-param name="stem"
+                          select="replace(@lemma,'e$','')"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class"
+                          select="$class"/>
+        </xsl:call-template>
+      </xsl:if>
     </xsl:when>
     <!-- abbreviated nouns without markers -->
     <xsl:when test="string-length($genitive-singular-marker)=0 and
@@ -1557,20 +1581,6 @@
       </xsl:choose>
     </xsl:when>
     <!-- special cases -->
-    <!-- lemma: "Innere" -->
-    <xsl:when test="@gender='neuter' and
-                    @lemma='Innere' and
-                    $genitive-singular-marker='-n' and
-                    @number='singular'">
-      <xsl:call-template name="stem-entry">
-        <xsl:with-param name="lemma"
-                        select="n:segment-from-end('e',@lemma)"/>
-        <xsl:with-param name="stem"
-                        select="replace(@lemma,'e$','')"/>
-        <xsl:with-param name="pos">NN</xsl:with-param>
-        <xsl:with-param name="class">NNeut-Inner</xsl:with-param>
-      </xsl:call-template>
-    </xsl:when>
     <!-- lemma: "Regime" (with unpronounced final "e")
          nominative plural: unmarked (with pronounced final schwa) -->
     <xsl:when test="@gender='neuter' and

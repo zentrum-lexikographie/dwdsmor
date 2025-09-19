@@ -17950,6 +17950,38 @@
       'NMasc-Adj, NNeut-Adj|Sg, NFem-Adj',
       'Deutsche',
       tuple(
+        'Deutsch<~>e<IDX1><PAR2><NN><Neut><Acc><Sg><St>',
+        'Deutsches',
+      ),
+      tuple(
+        'Deutsch<~>e<IDX1><PAR2><NN><Neut><Acc><Sg><Wk>',
+        'Deutsche',
+      ),
+      tuple(
+        'Deutsch<~>e<IDX1><PAR2><NN><Neut><Dat><Sg><St>',
+        'Deutschem',
+      ),
+      tuple(
+        'Deutsch<~>e<IDX1><PAR2><NN><Neut><Dat><Sg><Wk>',
+        'Deutschen',
+      ),
+      tuple(
+        'Deutsch<~>e<IDX1><PAR2><NN><Neut><Gen><Sg><St>',
+        'Deutschen',
+      ),
+      tuple(
+        'Deutsch<~>e<IDX1><PAR2><NN><Neut><Gen><Sg><Wk>',
+        'Deutschen',
+      ),
+      tuple(
+        'Deutsch<~>e<IDX1><PAR2><NN><Neut><Nom><Sg><St>',
+        'Deutsches',
+      ),
+      tuple(
+        'Deutsch<~>e<IDX1><PAR2><NN><Neut><Nom><Sg><Wk>',
+        'Deutsche',
+      ),
+      tuple(
         'Deutsch<~>e<IDX2><NN><Fem><Acc><Pl><St>',
         'Deutsche',
       ),
@@ -18075,38 +18107,6 @@
       ),
       tuple(
         'Deutsch<~>e<IDX2><NN><Masc><Nom><Sg><Wk>',
-        'Deutsche',
-      ),
-      tuple(
-        'Deutsche<IDX1><PAR2><NN><Neut><Acc><Sg><St>',
-        'Deutsches',
-      ),
-      tuple(
-        'Deutsche<IDX1><PAR2><NN><Neut><Acc><Sg><Wk>',
-        'Deutsche',
-      ),
-      tuple(
-        'Deutsche<IDX1><PAR2><NN><Neut><Dat><Sg><St>',
-        'Deutschem',
-      ),
-      tuple(
-        'Deutsche<IDX1><PAR2><NN><Neut><Dat><Sg><Wk>',
-        'Deutschen',
-      ),
-      tuple(
-        'Deutsche<IDX1><PAR2><NN><Neut><Gen><Sg><St>',
-        'Deutschen',
-      ),
-      tuple(
-        'Deutsche<IDX1><PAR2><NN><Neut><Gen><Sg><Wk>',
-        'Deutschen',
-      ),
-      tuple(
-        'Deutsche<IDX1><PAR2><NN><Neut><Nom><Sg><St>',
-        'Deutsches',
-      ),
-      tuple(
-        'Deutsche<IDX1><PAR2><NN><Neut><Nom><Sg><Wk>',
         'Deutsche',
       ),
     ),

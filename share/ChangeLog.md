@@ -1,3 +1,7 @@
+2025-09-19:
+
+* properly segment nominalised adjectives
+
 2025-09-17:
 
 * add tests for proper compounding stems and derivation stems
