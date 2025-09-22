@@ -1,6 +1,6 @@
 % module_wf.fst
-% Version 13.8
-% Andreas Nolda 2025-09-12
+% Version 13.9
+% Andreas Nolda 2025-09-22
 
 % processes and means
 
@@ -115,28 +115,29 @@ $ConvFilter$ = $ConvRestrLex$
 
 % derivation restrictions
 
-ALPHABET = [#entry-type# #char# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #pos# #subcat# #stem-type# #suff# #origin# <Abbr>]
+ALPHABET = [#weight# #entry-type# #char# #orth-trigger# #boundary-trigger# \
+            #index# #wf# #pos# #subcat# #stem-type# #suff# #origin# <Abbr>]
 
 $C$ = .
 $C$ = $C$-[#entry-type#]
+$W$ = [#weight#]
 
 $CMinusCharPos$ = $C$-[#char# #orth-trigger# #boundary-trigger# #pos#]
 
 % exclude pref(un) for converted infinitives
-$DerRestrWFLv2-un$ = !([<dc><uc>]* _$DerPref-un$ <DB> [<dc><uc>]* <Stem> $C$* _$ConvInfNonCl$)
+$DerRestrWFLv2-un$ = !([<dc><uc>]* _$DerPref-un$ <DB> [<dc><uc>]* $W$* <Stem> $C$* _$ConvInfNonCl$)
 
 $DerRestrWFLv2$ = $DerRestrWFLv2-un$
 
 % exclude "sein" as a basis for preverb prefixation
 % cf. Deutsche Rechtschreibung (2024: § 35)
-$DerRestrLexPrevLv2$ = !(_$DerPrev$ <VB> <Stem> sei<SB>n $CMinusCharPos$* <V> $CMinusCharPos$*)
+$DerRestrLexPrevLv2$ = !(_$DerPrev$ <VB> $W$* <Stem> sei<SB>n $CMinusCharPos$* <V> $CMinusCharPos$*)
 
 $DerRestrLexLv2$ = $DerRestrLexPrevLv2$
 
 $DerFilterLv2$ = $DerRestrWFLv2$ & $DerRestrLexLv2$
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
+ALPHABET = [#weight# #entry-type# #char# #surface-trigger# #orth-trigger# \
             #boundary-trigger# #pos# #subcat# #stem-type# #suff# #origin# \
             #inflection# #auxiliary# <Abbr><ge>]
 
@@ -149,7 +150,7 @@ $Pref$ = [<dc><uc>]* <Pref> $CMinusB$* [<DB><VB>]
 $Suff$ =        <DB> <Suff> $CMinusB$*
 
 % restrict suff(st) to cardinal or nominal bases
-$DerRestrNumPOSSuff-st$ = [<dc><uc>]* <Stem> $C$* [<CARD><NN>] $C$* $Suff$? <DB> ^$DerSuff-st$
+$DerRestrNumPOSSuff-st$ = [<dc><uc>]* $W$* <Stem> $C$* [<CARD><NN>] $C$* $Suff$? <DB> ^$DerSuff-st$
 
 % restrict suff(stel) to cardinal or nominal bases
 $DerRestrNumPOSSuff-stel$ = [<dc><uc>]* <Stem> $C$* [<CARD><NN>] $C$* $Suff$? <DB> ^$DerSuff-stel$

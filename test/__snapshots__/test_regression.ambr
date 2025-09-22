@@ -271,27 +271,27 @@
     ),
     tuple(
       'EU-Fahrgastrechte-Kraftomnibus-Gesetz',
-      'EU<=>-<#>Fahr<#>gast<#>recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Acc><Sg>',
+      'EU<=>-<#>Fahr<#>gast<#><W->recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Acc><Sg>',
     ),
     tuple(
       'EU-Fahrgastrechte-Kraftomnibus-Gesetz',
-      'EU<=>-<#>Fahr<#>gast<#>recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Dat><Sg>',
+      'EU<=>-<#>Fahr<#>gast<#><W->recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Dat><Sg>',
     ),
     tuple(
       'EU-Fahrgastrechte-Kraftomnibus-Gesetz',
-      'EU<=>-<#>Fahr<#>gast<#>recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Nom><Sg>',
+      'EU<=>-<#>Fahr<#>gast<#><W->recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'EU-Fahrgastrechte-Kraftomnibus-Gesetz',
-      'EU<=>-<#>Fahrgast<#>recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Acc><Sg>',
+      'EU<=>-<#>Fahrgast<#><W->recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Acc><Sg>',
     ),
     tuple(
       'EU-Fahrgastrechte-Kraftomnibus-Gesetz',
-      'EU<=>-<#>Fahrgast<#>recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Dat><Sg>',
+      'EU<=>-<#>Fahrgast<#><W->recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Dat><Sg>',
     ),
     tuple(
       'EU-Fahrgastrechte-Kraftomnibus-Gesetz',
-      'EU<=>-<#>Fahrgast<#>recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Nom><Sg>',
+      'EU<=>-<#>Fahrgast<#><W->recht<~>e<=>-<#>Kraft<#>omnibus<=>-<#>Gesetz<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'werden',
@@ -1651,15 +1651,15 @@
     ),
     tuple(
       'gesondert',
-      'sonder<~>n<V><Part><Perf><haben>',
-    ),
-    tuple(
-      'gesondert',
       'ge<~>sonder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'gesondert',
       'gesondert<ADJ><Pos><Pred/Adv>',
+    ),
+    tuple(
+      'gesondert',
+      'sonder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'erhoben',
@@ -2783,11 +2783,11 @@
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'worden',
@@ -2884,6 +2884,18 @@
     tuple(
       'den',
       'd<~>ie<ART><Def><Attr><Masc><Acc><Sg><St>',
+    ),
+    tuple(
+      'Feststellungen',
+      'Fest<#><W->stell<#>un<->gen<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Feststellungen',
+      'Fest<#><W->stell<#>un<->gen<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Feststellungen',
+      'Fest<#><W->stell<#>un<->gen<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Feststellungen',
@@ -3655,11 +3667,11 @@
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'durch',
@@ -4719,6 +4731,22 @@
     ),
     tuple(
       'Unfallschadens',
+      'Un<->fall<#><W->schad<#>ens<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Unfallschadens',
+      'Un<->fall<#><W->schad<#>ens<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Unfallschadens',
+      'Un<->fall<#><W->schad<#>ens<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Unfallschadens',
+      'Un<->fall<#><W->schad<#>ens<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Unfallschadens',
       'Un<->fall<#>schad<~>en<NN><Neut><Gen><Sg>',
     ),
     tuple(
@@ -4744,6 +4772,22 @@
     tuple(
       'Unfallschadens',
       'Un<->fall<#>schaden<NN><Masc><Gen><Sg>',
+    ),
+    tuple(
+      'Unfallschadens',
+      'Unfall<#><W->schad<#>ens<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Unfallschadens',
+      'Unfall<#><W->schad<#>ens<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Unfallschadens',
+      'Unfall<#><W->schad<#>ens<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Unfallschadens',
+      'Unfall<#><W->schad<#>ens<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Unfallschadens',
@@ -5271,6 +5315,22 @@
     ),
     tuple(
       'Sachschadens',
+      'Sach<#><W->schad<#>ens<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Sachschadens',
+      'Sach<#><W->schad<#>ens<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Sachschadens',
+      'Sach<#><W->schad<#>ens<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Sachschadens',
+      'Sach<#><W->schad<#>ens<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Sachschadens',
       'Sach<#>schad<~>en<NN><Neut><Gen><Sg>',
     ),
     tuple(
@@ -5755,10 +5815,6 @@
     ),
     tuple(
       'gestanden',
-      'steh<~>en<V><Part><Perf><haben>',
-    ),
-    tuple(
-      'gestanden',
       'ge<~>stand<~>en<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
@@ -5780,6 +5836,10 @@
     tuple(
       'gestanden',
       'gestanden<ADJ><Pos><Pred/Adv>',
+    ),
+    tuple(
+      'gestanden',
+      'steh<~>en<V><Part><Perf><haben>',
     ),
     tuple(
       'hat',

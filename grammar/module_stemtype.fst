@@ -1,8 +1,8 @@
 % module_stemtype.fst
-% Version 6.8
-% Andreas Nolda 2025-08-29
+% Version 6.9
+% Andreas Nolda 2025-09-22
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
+ALPHABET = [#weight# #entry-type# #char# #surface-trigger# #orth-trigger# \
             #boundary-trigger# #index# #pos# #subcat# #stem-type# #suff# \
             #origin# #inflection# #auxiliary# <Abbr><ge>]
 
@@ -44,7 +44,7 @@ $Base2CompStem$     = .* <base>:<comp>           $C$*
 $Base2DerStem-st$   = .* <base>:<der> <>:<-st>   $C$*
 $Base2DerStem-stel$ = .* <base>:<der> <>:<-stel> $C$*
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
+ALPHABET = [#weight# #entry-type# #char# #surface-trigger# #orth-trigger# \
             #boundary-trigger# #index# #pos# #subcat# #wf# #stem-type# #suff# \
             #origin# <Abbr>]
 
@@ -55,7 +55,7 @@ $Base2CompStemLv2$     = .* <comp>:<base>         $C$*
 $Base2DerStem-stLv2$   = .* <der>:<base> <-st>:<> $C$*
 $Base2DerStem-stelLv2$ = .* <der>:<base> <-stel>:<> $C$*
 
-ALPHABET = [#entry-type# #char# #surface-trigger# #orth-trigger# \
+ALPHABET = [#weight# #entry-type# #char# #surface-trigger# #orth-trigger# \
             #boundary-trigger# #index# #pos# #subcat# #wf# #stem-type# #suff# \
             #origin# #degree# #function# #auxiliary#]
 

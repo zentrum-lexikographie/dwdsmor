@@ -1,3 +1,4 @@
+stat_tags = ("weights",)
 lexeme_tags = ("lidx", "pidx", "pos")
 inflection_tags = (
     "category",
@@ -16,10 +17,17 @@ inflection_tags = (
 info_tags = ("metainfo", "orthinfo", "charinfo", "syninfo", "ellipinfo")
 wordformation_tags = ("processes", "means")
 
-all_tags = (*lexeme_tags, *inflection_tags, *info_tags, *wordformation_tags)
+all_tags = (
+    *stat_tags,
+    *lexeme_tags,
+    *inflection_tags,
+    *info_tags,
+    *wordformation_tags,
+)
 
 tag_values = {
     "": {
+        "weights": {"W-"},
         "lidx": {f"IDX{i}" for i in range(1, 9)},
         "pidx": {f"PAR{i}" for i in range(1, 9)},
         "pos": {

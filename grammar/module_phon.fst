@@ -1,6 +1,6 @@
 % module_phon.fst
-% Version 6.10
-% Andreas Nolda 2025-09-04
+% Version 6.11
+% Andreas Nolda 2025-09-22
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -252,8 +252,8 @@ $PhonSuffSubstitution$ = $PhonSuffSubstitution1$ || \
 % zwan<DB><z>ig -> zwan<DB>zig
 % drei<DB><z>ig -> drei<DB>ßig
 
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <s>] \
+ALPHABET = [#weight# #char# #phon-trigger# #orth-trigger# #boundary-trigger# \
+            #index# #wf# #feature# #info# <s>] \
            <z>:[ßz]
 
 $PhonSuff-zig$ = (([^i]<DB>) <z> <=> z (ig)) & \
@@ -265,8 +265,8 @@ $PhonSuff-zig$ = (([^i]<DB>) <z> <=> z (ig)) & \
 % "t"-deletion before "(s)t"-suffixes
 % acht<DB><s>t<SB>e -> acht<DB><s>t<SB>e
 
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info# <s>] \
+ALPHABET = [#weight# #char# #phon-trigger# #orth-trigger# #boundary-trigger# \
+            #index# #wf# #feature# #info# <s>] \
            t:<>
 
 $PhonSuff-st1$ = (ch) t <=> <> (<DB> <s>t)
@@ -281,8 +281,8 @@ $PhonSuff-st1$ = (ch) t <=> <> (<DB> <s>t)
 % milliard<DB><s>t<SB>e    -> milliard<DB>st<SB>e
 % x<IB>-<DB><s>t<SB>e      -> x<IB>-<DB>st<SB>e
 
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+ALPHABET = [#weight# #char# #phon-trigger# #orth-trigger# #boundary-trigger# \
+            #index# #wf# #feature# #info#] \
            <s>:[s<>]
 
 $PhonSuff-st2$ = ((ig|nd|on|r[dt]|\-)<DB>) <s> <=> s (t)
@@ -296,8 +296,8 @@ $PhonSuff-st$ = $PhonSuff-st1$ || \
 % "l"-deletion before "lein"-suffixes
 % Engel<DB>lein -> Enge<DB>lein
 
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+ALPHABET = [#weight# #char# #phon-trigger# #orth-trigger# #boundary-trigger# \
+            #index# #wf# #feature# #info#] \
            l:<>
 
 $PhonSuff-lein1$ = (e) l <=> <> (<DB> lein)
@@ -305,8 +305,8 @@ $PhonSuff-lein1$ = (e) l <=> <> (<DB> lein)
 % optional "e"-elision before "lein"-suffixes
 % Enge<DB>lein -> Eng<DB>lein
 
-ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
-            #feature# #info#] \
+ALPHABET = [#weight# #char# #phon-trigger# #orth-trigger# #boundary-trigger# \
+            #index# #wf# #feature# #info#] \
            e:<>
 
 $PhonSuff-lein2$ = e => <> (<DB> lein)
@@ -328,8 +328,8 @@ $PhonSuff-leinLv2$ = $PhonSuff-lein1$ || \
 % remove spurious orthography triggers
 % <WB>Sommer<CB><dc><uc>un<DB><dc>Wetter<WB> -> <WB>Sommer<CB><dc>un<DB><dc>Wetter<WB>
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #index# #wf# #feature# \
-            #info#]
+ALPHABET = [#weight# #char# #phon-trigger# #boundary-trigger# #index# #wf# \
+            #feature# #info#]
 
 $PhonCase1$ = .* ([<WB><CB><DB>] [#orth-trigger#] ([#orth-trigger#]:<>)* .*)*
 
@@ -337,22 +337,22 @@ $PhonCase1$ = .* ([<WB><CB><DB>] [#orth-trigger#] ([#orth-trigger#]:<>)* .*)*
 % <WB>Sommer<CB><dc>Wetter<WB>            -> <WB>Sommer<CB>wetter<WB>
 % <WB>Sommer<CB><dc>un<DB><dc>Wetter<WB> -> <WB>Sommer<CB>un<DB>wetter<WB>
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #index# #wf# #feature# \
-            #info# <uc>] \
+ALPHABET = [#weight# #char# #phon-trigger# #boundary-trigger# #index# #wf# \
+            #feature# #info# <uc>] \
            [#uppercase#]:[#lowercase#] \
            <dc>:<>
 
-$PhonCase2$ = ([<WB><CB><DB>] <dc>:<>) [#uppercase#] <=> [#lowercase#]
+$PhonCase2$ = ([<WB><CB><DB>] <dc>:<> [#weight#]*) [#uppercase#] <=> [#lowercase#]
 
 % upcase
 % <WB><uc>un<DB><dc>Wetter<WB>                -> <WB>Un<DB>wetter<WB>
 
-ALPHABET = [#char# #phon-trigger# #boundary-trigger# #index# #wf# #feature# \
-            #info# <dc>] \
+ALPHABET = [#weight# #char# #phon-trigger# #boundary-trigger# #index# #wf# \
+            #feature# #info# <dc>] \
            [#lowercase#]:[#uppercase#] \
            <uc>:<>
 
-$PhonCase3$ = ([<WB><CB><DB>] <uc>:<>) [#lowercase#] <=> [#uppercase#]
+$PhonCase3$ = ([<WB><CB><DB>] <uc>:<> [#weight#]*) [#lowercase#] <=> [#uppercase#]
 
 $PhonCase$ = $PhonCase1$ || \
              $PhonCase2$ || \

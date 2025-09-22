@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # analysis.py - analyse word forms with DWDSmor
-# Andreas Nolda 2025-09-02
+# Andreas Nolda 2025-09-22
 
 import argparse
 import csv
@@ -17,7 +17,7 @@ import yaml
 
 progname = Path(__file__).name
 
-version = 14.3
+version = 14.4
 
 
 LABEL_MAP = {"word": "Wordform",
@@ -25,6 +25,7 @@ LABEL_MAP = {"word": "Wordform",
                           "spec": "Analysis",
                           "lemma": "Lemma",
                           "seg_lemma": "Segmented Lemma",
+                          "weights": "Weights",
                           "lidx": "Lemma Index",
                           "pidx": "Paradigm Index",
                           "processes": "Processes",
@@ -53,9 +54,9 @@ def analyze_word(analyzer, word, automaton_type=None):
     if automaton_type == "root" or automaton_type == "root2":
         return analyzer.analyze(word, visible_boundaries="+", boundary_tag=" + ", join_tags=True)
     elif automaton_type == "index":
-        return analyzer.analyze(word, idx_to_int=True)
+        return analyzer.analyze(word, idx_to_int=True, join_tags=True)
     else:
-        return analyzer.analyze(word)
+        return analyzer.analyze(word, join_tags=True)
 
 
 def analyze_words(analyzer, words, automaton_type=None):
@@ -76,6 +77,7 @@ def traversal_asdict(traversal):
                      "spec": traversal.spec,
                      "lemma": traversal.analysis,
                      "seg_lemma": seg_lemma(traversal),
+                     "weights": traversal.weights,
                      "lidx": traversal.lidx,
                      "pidx": traversal.pidx,
                      "processes": traversal.processes,
@@ -211,6 +213,7 @@ def output_dsv(word_analyses, output_file, keys, analyses_keys,
                                "spec": term.bright_black,
                                "lemma": term.bold_underline,
                                "seg_lemma": term.bright_black_underline,
+                               "weights": term.underline,
                                "lidx": term.underline,
                                "pidx": term.underline,
                                "processes": term.underline,

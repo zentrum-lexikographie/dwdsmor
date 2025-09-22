@@ -1,6 +1,6 @@
 % module_symbols.fst
-% Version 13.12
-% Andreas Nolda 2025-09-01
+% Version 13.13
+% Andreas Nolda 2025-09-22
 
 % must be loaded first
 
@@ -84,6 +84,8 @@
              <suff(e)><suff(er)><suff(lein)><suff(st)><suff(stel)><suff(zig)>
 
 #wf# = #wf-process# #wf-means#
+
+#weight# = <W->
 
 #pos# = <ADJ><ADV><ART><CARD><CONJ><DEM><FRAC><INDEF><INTJ><NN><NPROP><ORD> \
         <POSS><POSTP><PPRO><PREP><PREPART><PREV><PROADV><PTCL><PUNCT><REL><V> \

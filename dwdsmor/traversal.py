@@ -8,6 +8,7 @@ class Traversal:
     spec: str
     surface: str
     analysis: str
+    weights: str | None = None
     lidx: str | None = None
     pidx: str | None = None
     pos: str | None = None
@@ -68,7 +69,7 @@ class Traversal:
                 s = s[2:]
                 continue
             k, v, s = Traversal.parse_label(s, visible_boundaries, boundary_tag)
-            if join_tags and k in tags and k in ("processes", "means"):
+            if join_tags and k in tags and k in ("weights", "processes", "means"):
                 tags[k] += f", {v}"
             elif idx_to_int and k in ("lidx", "pidx"):
                 tags[k] = int(v[3:])
@@ -78,7 +79,7 @@ class Traversal:
                 analysis += v
             if s.startswith(":"):
                 k, v, s = Traversal.parse_label(s[1:], visible_boundaries, boundary_tag)
-                if join_tags and k in tags and k in ("processes", "means"):
+                if join_tags and k in tags and k in ("weights", "processes", "means"):
                     tags[k] += f", {v}"
                 elif idx_to_int and k in ("lidx", "pidx"):
                     tags[k] = int(v[3:])

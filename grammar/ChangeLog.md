@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2025-09-22:
+
+* mark unproductive word-formation stems with negative weight `<W->`
+
 2025-09-12:
 
 * exclude "un"-prefixation for converted infinitives

@@ -1,19 +1,19 @@
 % module_trunc.fst
-% Version 4.0
-% Andreas Nolda 2025-07-09
+% Version 4.1
+% Andreas Nolda 2025-09-22
 
 % truncate initial morpheme sequence
 
 ALPHABET = [#feature# #info#]
 
-$C$ = [#char# #index# #boundary-trigger# #wf#]
-$T$ = <>:[#char# #index# <IB><SB>]
-$W$ = [#wf# #syninfo#]
+$C$ = [#weight# #char# #index# #boundary-trigger# #wf#]
+$T$ = <>:[#weight# #char# #index# <IB><SB>]
+$F$ = [#wf# #syninfo#]
 $H$ = \-:<>
 
 $TruncInitialLv2$ = $T$* $H$ <CB> $C$* .*
 
-$TruncInitialRootLv2$ = $W$+ $T$* $H$ <CB> $C$* .*
+$TruncInitialRootLv2$ = $F$+ $T$* $H$ <CB> $C$* .*
 
 $C$ = [#char# #boundary-trigger#]
 $T$ = [#char# <IB><SB>]:<>
@@ -27,8 +27,8 @@ $TruncInitial$ = <WB> $T$* $H$ <CB> $C$* <WB>
 ALPHABET = [#wf# #degree#] \
            <>:[#auxiliary# #person# #gender# #case# #number# #infl# #function# \
                #nonfinite# #mood# #tense# #info#]
-$C$ = [#char# #index# #boundary-trigger# #wf# #syninfo#]
-$T$ = <>:[#char# #index# <PB><SB>]
+$C$ = [#weight# #char# #index# #boundary-trigger# #wf# #syninfo#]
+$T$ = <>:[#weight# #char# #index# <PB><SB>]
 $I$ = ($C$-[<CB><IB>])* <>:<IB> $T$*
 $H$ = \-:<>
 

@@ -1,19 +1,19 @@
 % module_sep.fst
-% Version 2.0
-% Andreas Nolda 2025-07-09
+% Version 2.1
+% Andreas Nolda 2025-09-22
 
 % separate preverb
 
 ALPHABET = <>:[#auxiliary# #degree# #person# #gender# #case# #number# #infl# \
                #function# #nonfinite# #mood# #tense# #info#]
 
-$C$ =    [#char# #index#]
-$T$ = <>:[#char# #index# #boundary-trigger#]
-$W$ =    [#wf#]
+$C$ = [#weight# #char# #index#]
+$T$ = <>:[#weight# #char# #index# #boundary-trigger#]
+$F$ = [#wf#]
 
 $SepPrev1Lv2$ = $C$* <>:<VB> $T$* <V> .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{}
 
-$SepPrev1RootLv2$ = $W$+ $T$* <V> .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{} | \
+$SepPrev1RootLv2$ = $F$+ $T$* <V> .* {<UnmPers><UnmNum><UnmTense><UnmMood>}:{} | \
                     $SepPrev1Lv2$
 
 $C$ = [#char#]
@@ -26,13 +26,13 @@ $SepPrev1$ = <WB> $C$* <VB>:<> $T$* <WB>
 
 ALPHABET = [#wf# #feature# #info#]-[#nonfinite#]
 
-$C$ =    [#char# #index# #wf# <PB><SB>]
-$T$ = <>:[#char# #index# <VB>]
-$W$ =    [#wf-process#] <prev()>:[#wf-means#]
+$C$ = [#weight# #char# #index# #wf# <PB><SB>]
+$T$ = <>:[#weight# #char# #index# <VB>]
+$F$ = [#wf-process#] <prev()>:[#wf-means#]
 
 $SepPrev2Lv2$ = $T$* <>:<VB> $C$* <V> .*
 
-$SepPrev2RootLv2$ = $W$+ $C$* <V> .* | \
+$SepPrev2RootLv2$ = $F$+ $C$* <V> .* | \
                     $SepPrev2Lv2$
 
 $C$ = [#char# <PB><SB>]

@@ -1,12 +1,12 @@
 % macro_postlex.fst
-% Version 1.0
-% Andreas Nolda 2025-09-04
+% Version 1.1
+% Andreas Nolda 2025-09-22
 
 % cleanup of level-specific symbols
 
 $Lex$ = $CleanupInflLv2$ || $Lex$
 
-$Lex$ = $Lex$ || $CleanupIndex$ || $CleanupOrth$
+$Lex$ = $Lex$ || $CleanupIndex$ || $CleanupOrth$ || $CleanupWeight$
 
 
 % surface triggers

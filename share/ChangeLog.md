@@ -1,3 +1,8 @@
+2025-09-22:
+
+* mark unproductive word-formation stems with a negative weight instead of
+  ignoring them
+
 2025-09-19:
 
 * properly segment nominalised adjectives

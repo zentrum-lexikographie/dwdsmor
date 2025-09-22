@@ -25,9 +25,10 @@ headers = {
     "spec": "Analysis",
     "analysis": "Lemma",
     "segmented": "Segmented Wordform",
+    "weights": "Weights",
     "lidx": "Lemma Index",
     "pidx": "Paradigm Index",
-    "process": "Process",
+    "processes": "Processes",
     "means": "Means",
     "pos": "POS",
     "category": "Subcategory",
@@ -101,10 +102,10 @@ def main():
     automaton = "index" if args.generate else "lemma"
     automaton = args.automaton_type if args.automaton_type else automaton
 
-    visible_boundaries = "+" if automaton == "root" else ""
-    boundary_tag = " + " if automaton == "root" else None
-    join_tags = True if automaton == "root" else False
+    visible_boundaries = "+" if automaton == "root" or automaton == "root2" else ""
+    boundary_tag = " + " if automaton == "root" or automaton == "root2" else None
     idx_to_int = True if automaton == "index" else False
+    join_tags = True
 
     if args.generate:
         analyzer = automata.analyzer(automaton)
@@ -146,8 +147,8 @@ def main():
                 word,
                 visible_boundaries=visible_boundaries,
                 boundary_tag=boundary_tag,
-                join_tags=join_tags,
                 idx_to_int=idx_to_int,
+                join_tags=join_tags,
             ):
                 with_boundaries = traversal.reparse(
                     visible_boundaries=boundary_tags, boundary_tag="|"
