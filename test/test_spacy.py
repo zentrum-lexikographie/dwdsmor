@@ -9,9 +9,8 @@ import dwdsmor.spacy  # noqa
 from .conftest import if_dwds_available
 
 spacy_model_package = (
-    "de_hdt_lg @ https://huggingface.co/zentrum-lexikographie/de_hdt_lg/"
-    "resolve/main/de_hdt_lg-any-py3-none-any.whl"
-    "#sha256=44bd0b0299865341ee1756efd60670fa148dbfd2a14d0c1d5ab99c61af08236a"
+    "de_hdt_lg @ https://repo.zdl.org/repository/pypi/packages/"
+    "de-hdt-lg/2.2.0/de_hdt_lg-2.2.0-py3-none-any.whl"
 )
 
 

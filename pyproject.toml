@@ -37,13 +37,13 @@ dependencies = [
 dev = [
     "coverage",
     "conllu",
-    "datasets",
+    "datasets<4.0.0",
     "flake8",
     "flake8-bugbear",
     "mypy",
     "pre-commit",
     "pytest",
-    "spacy==3.7.5",
+    "spacy",
     "syrupy",
     "tqdm",
     "Jinja2"
