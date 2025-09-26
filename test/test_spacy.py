@@ -1,6 +1,4 @@
-from subprocess import check_call
-
-import spacy
+import zdl_spacy
 from datasets import load_dataset
 from pytest import fixture
 
@@ -8,19 +6,10 @@ import dwdsmor.spacy  # noqa
 
 from .conftest import if_dwds_available
 
-spacy_model_package = (
-    "de_hdt_lg @ https://repo.zdl.org/repository/pypi/packages/"
-    "de-hdt-lg/2.2.0/de_hdt_lg-2.2.0-py3-none-any.whl"
-)
-
 
 @fixture(scope="module")
 def nlp():
-    try:
-        nlp = spacy.load("de_hdt_lg")
-    except OSError:
-        check_call(["pip", "install", "-qqq", spacy_model_package])
-        nlp = spacy.load("de_hdt_lg")
+    nlp = zdl_spacy.load("lg")
     nlp.add_pipe("dwdsmor", config={"automata_location": "build/dwds"})
     return nlp
 

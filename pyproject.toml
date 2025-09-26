@@ -43,7 +43,7 @@ dev = [
     "mypy",
     "pre-commit",
     "pytest",
-    "spacy",
+    "spacy-models @ git+https://github.com/zentrum-lexikographie/spacy-models.git@v2.3.0",
     "syrupy",
     "tqdm",
     "Jinja2"
