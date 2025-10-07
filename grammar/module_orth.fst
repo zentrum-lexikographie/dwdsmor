@@ -1,6 +1,6 @@
 % module_orth.fst
-% Version 5.6
-% Andreas Nolda 2025-09-22
+% Version 5.7
+% Andreas Nolda 2025-10-07
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -82,4 +82,21 @@ $OrthCH$ = ($C$* {ß}:{ss})+ $C$*
 
 % generate capitalised variants
 
-$OrthCap$ = [#lowercase#]:[#uppercase#] [#char# #morpheme-boundary#]*
+$C$ = [#char# #morpheme-boundary#]
+
+$UC$ = [#lowercase#]:[#uppercase#]
+
+$OrthCap$ = $UC$ $C$*
+
+
+% generate all-caps variants
+
+$C$ = [#char# #morpheme-boundary#]-[#lowercase#]
+
+$OrthCaps$ = ($UC$ $UC$+ | \
+              $C$+ $UC$+)  \
+             ($C$+ $UC$+)* $C$*
+
+$C$ = [#char# #morpheme-boundary#]-[ẞ]
+
+$OrthSZ2SS$ = ($C$* {ẞ}:{SS})+ $C$*
