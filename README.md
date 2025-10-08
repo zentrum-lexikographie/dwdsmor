@@ -264,7 +264,7 @@ written German.
   of DWDSmor are performed on [Debian GNU/Linux](https://debian.org/).
   While other UNIX-like operating systems such as MacOS should work,
   too, they are not actively supported.
-* [Python ≥ v3.10](https://www.python.org/): DWDSmor provides a Python
+* [Python ≥ v3.12](https://www.python.org/): DWDSmor provides a Python
   interface for building DWDSmor lexica from source lexica in the DWDS
   [XML format](https://github.com/zentrum-lexikographie/lex/tree/master/oxygen/framework/rnc)
   and for compiling DWDSmor automata from the resulting DWDSmor lexica and

@@ -23,7 +23,7 @@ classifiers = [
     "Topic :: Scientific/Engineering",
     "Topic :: Text Processing :: Linguistic"
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dynamic = ["readme", "version"]
 dependencies = [
     "blessings",
