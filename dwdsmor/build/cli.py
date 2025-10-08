@@ -2,7 +2,7 @@
 
 import argparse
 import csv
-from datetime import datetime
+from datetime import datetime, timezone
 import logging
 import lzma
 from pathlib import Path
@@ -318,7 +318,7 @@ def stamp_build(edition_dir):
 
     (edition_build_dir / "GIT_REV").write_text(project_git_rev)
     (edition_build_dir / "GIT_REV_LEX").write_text(git_rev(edition_wb_dir))
-    (edition_build_dir / "BUILT").write_text(datetime.utcnow().isoformat())
+    (edition_build_dir / "BUILT").write_text(datetime.now(timezone.utc).isoformat())
 
 
 edition_hub_coordinates = {
@@ -426,7 +426,13 @@ if __name__ == "__main__":
         action="append",
     )
     arg_parser.add_argument(
-        "-m", "--with-metrics", help="measure UD/de-hdt coverage", action="store_true"
+        "-T",
+        "--with-traversal",
+        help="build full automaton traversal (if applicable)",
+        action="store_true",
+    )
+    arg_parser.add_argument(
+        "-M", "--with-metrics", help="measure UD/de-hdt coverage", action="store_true"
     )
     arg_parser.add_argument(
         "-f",
@@ -463,7 +469,9 @@ if __name__ == "__main__":
                 build_automaton(edition_dir, automaton_type, force=args.force)
                 or edition_built
             )
-            if automaton_type in traversal_automaton_types:
+            if automaton_type in traversal_automaton_types and (
+                args.with_traversal or args.release
+            ):
                 edition_built = (
                     build_traversals(edition_dir, automaton_type, force=args.force)
                     or edition_built
