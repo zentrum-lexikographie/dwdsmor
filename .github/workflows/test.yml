@@ -25,6 +25,6 @@ jobs:
     - name: Lint sources
       run: pre-commit run --all-files
     - name: Build
-      run: ./build-dwdsmor
+      run: ./build-dwdsmor --with-traversal
     - name: Run tests
       run: pytest --snapshot-warn-unused
