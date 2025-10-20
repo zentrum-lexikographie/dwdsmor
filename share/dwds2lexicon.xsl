@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 19.3 -->
-<!-- Andreas Nolda 2025-09-17 -->
+<!-- Version 19.4 -->
+<!-- Andreas Nolda 2025-10-08 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -3038,9 +3038,10 @@
                         <xsl:call-template name="get-abbreviation-value"/>
                       </xsl:variable>
                       <xsl:for-each select="$article2">
-                        <!-- only consider primary entries for the suffix -->
+                        <!-- ignore symbols abbreviations -->
                         <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
-                                                             [@Typ='Hauptform']">
+                                                             [not(@Typ='Abkürzung' or
+                                                                  @Typ='Symbol')]">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                [not(@Typ)]">
