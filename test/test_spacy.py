@@ -1,4 +1,4 @@
-import zdl_spacy
+import spacy
 from datasets import load_dataset
 from pytest import fixture
 
@@ -9,7 +9,7 @@ from .conftest import if_dwds_available
 
 @fixture(scope="module")
 def nlp():
-    nlp = zdl_spacy.load("lg")
+    nlp = spacy.load("de_zdl_lg")
     nlp.add_pipe("dwdsmor", config={"automata_location": "build/dwds"})
     return nlp
 
@@ -42,7 +42,7 @@ def test_lemmatisation(nlp, sentences, snapshot):
 def test_particle_lemmatization(nlp):
     sentences = [
         "Sie nimmt nicht an der Wahl teil.",
-        "Wir arbeiten dennoch weiter.",
+        "Wir arbeiten beständig weiter.",
     ]
     docs = nlp.pipe(sentences)
     tokens = [[t._.dwdsmor.analysis for t in doc] for doc in docs]
@@ -55,7 +55,7 @@ def test_particle_lemmatization(nlp):
         [
             "wir",
             "arbeiten",
-            "dennoch",
+            "beständig",
             "weiter",
             ".",
         ],
