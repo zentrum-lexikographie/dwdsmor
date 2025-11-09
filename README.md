@@ -110,7 +110,7 @@ The library can be used for lemmatisation:
 There is also integration with spacy:
 
 ```plaintext
-pip install 'de_zdl_lg @ https://repo.zdl.org/repository/pypi/packages/de-zdl-lg/3.0.0/de_zdl_lg-3.0.0-py3-none-any.whl'
+pip install 'de_zdl_lg @ https://repo.zdl.org/repository/pypi/packages/de-zdl-lg/3.1.0/de_zdl_lg-3.1.0-py3-none-any.whl'
 ```
 
 ``` python-console

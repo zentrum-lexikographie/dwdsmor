@@ -38,7 +38,7 @@ dev = [
     "coverage",
     "conllu",
     "datasets<4.0.0",
-    "de_zdl_lg @ https://repo.zdl.org/repository/pypi/packages/de-zdl-lg/3.0.0/de_zdl_lg-3.0.0-py3-none-any.whl",
+    "de_zdl_lg @ https://repo.zdl.org/repository/pypi/packages/de-zdl-lg/3.1.0/de_zdl_lg-3.1.0-py3-none-any.whl",
     "flake8",
     "flake8-bugbear",
     "mypy",
