@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms with DWDSmor
-# Andreas Nolda 2025-08-27
+# Andreas Nolda 2025-11-10
 
 import argparse
 import csv
@@ -10,7 +10,7 @@ from collections import defaultdict, namedtuple
 from itertools import filterfalse, product
 from pathlib import Path
 
-from analysis import analyze_word, generate_words, seg_lemma
+from analysis import analyze_word, check_automata_location, generate_words, seg_lemma
 
 from blessings import Terminal
 
@@ -21,7 +21,7 @@ import yaml
 
 progname = Path(__file__).name
 
-version = 18.2
+version = 18.3
 
 
 IDX = range(1, 9)
@@ -2173,8 +2173,8 @@ def main():
                             help="output CSV table")
         parser.add_argument("-C", "--force-color", action="store_true",
                             help="preserve color and formatting when piping output")
-        parser.add_argument("-d", "--automata-dir",
-                            help="automata directory")
+        parser.add_argument("-d", "--automata-location",
+                            help="automata location (directory or Hugging Face repo ID)")
         parser.add_argument("-e", "--empty", action="store_true",
                             help="show empty columns or values")
         parser.add_argument("-H", "--no-header", action="store_false",
@@ -2211,11 +2211,9 @@ def main():
                             help="output YAML document")
         args = parser.parse_args()
 
-        if args.automata_dir and not Path(args.automata_dir).is_dir():
-            print(f"{progname}: {args.automata_dir} is not a directory")
-            sys.exit(1)
+        check_automata_location(args.automata_location)
 
-        automata = automaton.automata(args.automata_dir)
+        automata = automaton.automata(args.automata_location)
         analyzer = automata.analyzer(args.automaton_type)
         generator = automata.generator(args.automaton_type)
 

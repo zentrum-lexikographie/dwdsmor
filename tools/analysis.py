@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # analysis.py - analyse word forms with DWDSmor
-# Andreas Nolda 2025-09-22
+# Andreas Nolda 2025-11-10
 
 import argparse
 import csv
@@ -18,6 +18,10 @@ import yaml
 progname = Path(__file__).name
 
 version = 14.4
+
+
+REPO_IDS = ("zentrum-lexikographie/dwdsmor-dwds",
+            "zentrum-lexikographie/dwdsmor-open")
 
 
 LABEL_MAP = {"word": "Wordform",
@@ -329,6 +333,16 @@ def output_analyses(analyzer, generator, input_file, output_file, automaton_type
                            header, plain, force_color)
 
 
+def check_automata_location(location):
+    if location and Path(location).is_dir():
+        pass
+    elif location in REPO_IDS:
+        pass
+    elif location:
+        print(f"{progname}: {location} is no a directory or a valid Hugging Face repo ID")
+        sys.exit(1)
+
+
 def main():
     try:
         parser = argparse.ArgumentParser()
@@ -342,8 +356,8 @@ def main():
                             help="output CSV table")
         parser.add_argument("-C", "--force-color", action="store_true",
                             help="preserve color and formatting when piping output")
-        parser.add_argument("-d", "--automata-dir",
-                            help="automata directory")
+        parser.add_argument("-d", "--automata-location",
+                            help="automata location (directory or Hugging Face repo ID)")
         parser.add_argument("-e", "--empty", action="store_true",
                             help="show empty columns or values")
         parser.add_argument("-H", "--no-header", action="store_false",
@@ -372,11 +386,9 @@ def main():
                             help="output YAML document")
         args = parser.parse_args()
 
-        if args.automata_dir and not Path(args.automata_dir).is_dir():
-            print(f"{progname}: {args.automata_dir} is not a directory")
-            sys.exit(1)
+        check_automata_location(args.automata_location)
 
-        automata = automaton.automata(args.automata_dir)
+        automata = automaton.automata(args.automata_location)
         analyzer = automata.analyzer(args.automaton_type)
         generator = automata.generator(args.automaton2_type) if args.maximal or args.seg_word else None
 
