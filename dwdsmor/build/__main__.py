@@ -1,15 +1,23 @@
 #!/usr/bin/env python
 
 import argparse
+import csv
 import logging
 import subprocess
+from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
+from itertools import batched
 from pathlib import Path
 from shutil import rmtree
 
+import requests
+
 from .util import is_current
+from .traversal import traverse
 from .. import automaton_types
 from ..log import configure_logging
+from ..traversal import Traversal
 
 logger = logging.getLogger("dwdsmor")
 
@@ -212,7 +220,84 @@ def build_automaton(edition_dir, automata_dir, automaton_type, force=False):
     return True
 
 
-traversal_automaton_types = ("index",)
+def build_ppm_table(automata_dir, force=False):
+    index_automaton_a = automata_dir / "index.a"
+    if not index_automaton_a.is_file():
+        return False
+
+    ppm_table = automata_dir / "ppm.csv"
+    if not force and is_current(ppm_table, (index_automaton_a,)):
+        logger.debug("Skip building PPM table")
+        return False
+
+    lexdb_corpora = ("dibilit", "dwdsxl", "dtaxl", "wikipedia")
+
+    with ThreadPoolExecutor(max_workers=len(lexdb_corpora)) as lexdb_threads:
+
+        def lexdb_query(query, to_result):
+            def qf(corpus, query=query):
+                url = f"https://ddc.dwds.de/dstar/{corpus}/lexdb/export.perl"
+                r = requests.post(url, data=(query | {"fmt": "json"}))
+                r.raise_for_status()
+                return r.json()
+
+            futures = (lexdb_threads.submit(qf, c) for c in lexdb_corpora)
+            for c, f in zip(lexdb_corpora, futures):
+                yield (c, to_result(f.result()))
+
+        lexdb_corpus_sizes = dict(
+            lexdb_query(
+                {"select": "sum(f)", "from": "lex"},
+                lambda r: int(r.get("rows", [["0"]])[0][0]),
+            )
+        )
+
+        def sql_quote_lemma(lemma):
+            lemma = lemma.replace("'", "")
+            return f"'{lemma}'"
+
+        def get_ppms(lemmata):
+            query = {
+                "select": "l, sum(f)",
+                "from": "lex",
+                "where": f"l in ({','.join(map(sql_quote_lemma, lemmata))})",
+                "groupby": "l",
+                "limit": str(len(lemmata)),
+            }
+
+            ppms = {}
+            for corpus, freqs in lexdb_query(query, lambda r: r.get("rows", [])):
+                for lemma, n in freqs:
+                    ppms[lemma] = max(
+                        (int(n) * 1000000) / lexdb_corpus_sizes[corpus],
+                        ppms.get(lemma, 0),
+                    )
+            for lemma in lemmata:
+                yield lemma, ppms.get(lemma, 0)
+
+        logger.info("Building PPM table")
+
+        analyses = defaultdict(set)
+        for surface, spec in traverse(index_automaton_a):
+            t = Traversal.parse(spec)
+            if any(
+                (t.pidx, t.orthinfo, t.metainfo, t.charinfo, t.syninfo, t.ellipinfo)
+            ):
+                continue
+            analyses[(surface, t.pos)].add(t.analysis)
+
+        ambiguous_analyses = set()
+        for _surface, surface_analyses in analyses.items():
+            if len(surface_analyses) > 1:
+                ambiguous_analyses |= surface_analyses
+
+        with ppm_table.open("wt") as ppm_table_f:
+            ppm_table_csv = csv.writer(ppm_table_f)
+            for batch in batched(sorted(ambiguous_analyses), 100):
+                for lemma, ppm in get_ppms(batch):
+                    ppm_table_csv.writerow((lemma, str(ppm)))
+
+        return True
 
 
 arg_parser = argparse.ArgumentParser(description="Build DWDSmor.")
@@ -267,6 +352,7 @@ for automaton_type in build_automaton_types:
         build_automaton(edition_dir, automata_dir, automaton_type, force=args.force)
         or edition_built
     )
+edition_built = build_ppm_table(automata_dir, force=args.force) or edition_built
 if edition_built:
     (automata_dir / "BUILT").write_text(build_time)
     (automata_dir / "EDITION").write_text(edition)

@@ -62,6 +62,10 @@ omit = ["dwdsmor/cli.py", "test/**/*.py"]
 profile = "black"
 
 [[tool.mypy.overrides]]
+module = "requests"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
 module = "tabulate"
 ignore_missing_imports = true
 
@@ -80,4 +84,4 @@ version = {attr = "dwdsmor.version.__version__"}
 exclude = ["lexicon*", "test"]
 
 [tool.setuptools.package-data]
-"dwdsmor.automata" = ["*.a", "*.ca", "*.csv.xz", "BUILT", "EDITION", "GIT_REV"]
+"dwdsmor.automata" = ["*.a", "*.ca", "*.csv", "BUILT", "EDITION", "GIT_REV"]

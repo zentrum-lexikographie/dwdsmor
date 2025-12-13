@@ -38,4 +38,4 @@ version = {file = ["VERSION"]}
 exclude = ["test"]
 
 [tool.setuptools.package-data]
-"dwdsmor_dwds.automata" = ["*.a", "*.ca", "*.csv.xz", "BUILT", "EDITION", "GIT_REV"]
+"dwdsmor_dwds.automata" = ["*.a", "*.ca", "*.csv", "BUILT", "EDITION", "GIT_REV"]

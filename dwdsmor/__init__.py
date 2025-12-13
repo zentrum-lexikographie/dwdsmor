@@ -11,6 +11,7 @@ __all__ = [
     "__version__",
 ]
 
+import csv
 import logging
 from dataclasses import dataclass
 from pathlib import Path
@@ -102,7 +103,6 @@ class Analyzer:
 
 
 automaton_types = ("lemma", "lemma2", "finite", "root", "root2", "index")
-traversal_automaton_types = ("index",)
 
 
 def assert_valid_automaton_type(automaton_type: str, types=automaton_types):
@@ -137,6 +137,12 @@ def generator(
     return Generator(transducer(automaton_type, automata_dir))  # type: ignore
 
 
+def lemma_freqs(automata_dir=default_automata_dir):
+    ppm_table = automata_dir / "ppm.csv"
+    with ppm_table.open("rt") as ppm_table_f:
+        return {lemma: float(ppm) for lemma, ppm in csv.reader(ppm_table_f)}
+
+
 def analyzer(
     automaton_type="lemma", automata_dir=default_automata_dir, both_layers=False
 ) -> Analyzer:
@@ -151,6 +157,7 @@ def analyzer(
 class Lemmatizer:
     def __init__(self, automaton_type="lemma", automata_dir=default_automata_dir):
         self.analyzer = analyzer(automaton_type, automata_dir)
+        self.lemma_freqs = lemma_freqs(automata_dir)
 
     def __call__(self, word, **criteria):
         traversals = tuple(self.analyzer.analyze(word))
@@ -162,7 +169,9 @@ class Lemmatizer:
             attr, attr_vals = criteria_stack.pop()
             filtered = tuple((t for t in traversals if getattr(t, attr) in attr_vals))
             traversals = filtered or traversals
-        traversals = sorted(traversals, key=lambda t: len(t.spec))
+        traversals = sorted(
+            traversals, key=lambda t: -self.lemma_freqs.get(t.analysis, 0)
+        )
         for traversal in traversals:
             return traversal
 
