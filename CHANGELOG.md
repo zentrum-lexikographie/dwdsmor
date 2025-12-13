@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.12.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.11.0...v0.12.0) (2025-12-13)
+
+
+### Features
+
+* add (currently disabled) support for all-caps variants ([e6ac2d9](https://github.com/zentrum-lexikographie/dwdsmor/commit/e6ac2d967328cc17ea855bd5b220c722111335ce))
+* add `root2` automaton and rename `morph` automaton to `lemma2` ([a2c2c34](https://github.com/zentrum-lexikographie/dwdsmor/commit/a2c2c34ba7997e851ca82d26f16304c05d7a461c))
+* add Hugging Face Hub support to Python tools ([5dfbbcf](https://github.com/zentrum-lexikographie/dwdsmor/commit/5dfbbcf51e61dccb14946478ce7ce642bfd69994))
+* add support for &lt;Eigenname&gt; as a word-formation link ([9af2fc3](https://github.com/zentrum-lexikographie/dwdsmor/commit/9af2fc318bf47d18898aaeb597ae5066b34f31c6))
+* add support for derivation by means of "bar"-suffixation ([5ca99ba](https://github.com/zentrum-lexikographie/dwdsmor/commit/5ca99babb34ffa33d049d5caa4267ec7a7b883f7))
+* add support for more colloquial noun variants ([8b58b7e](https://github.com/zentrum-lexikographie/dwdsmor/commit/8b58b7e2829ebf5b9a1b0c33e181dafd5365f568))
+* add tests for proper compounding stems and derivation stems ([b4c7b3a](https://github.com/zentrum-lexikographie/dwdsmor/commit/b4c7b3ac858e4feea12fa7140f76e61ee597bbf3))
+* exclude "un"-prefixation for converted infinitives ([4334e74](https://github.com/zentrum-lexikographie/dwdsmor/commit/4334e7440e393014860edc3a6a05f6ca252e0ff8))
+* ignore unproductive word-formation stems with low type frequency ([af483c3](https://github.com/zentrum-lexikographie/dwdsmor/commit/af483c3fd82f349bfc01149abd81b2dfbc90acc1))
+* mark unproductive word-formation stems with a negative weight ([deac1d0](https://github.com/zentrum-lexikographie/dwdsmor/commit/deac1d0fdff18ede4e2b784ac55eb443be6950ba))
+* match entry types when inferring word-formation stems ([5d38796](https://github.com/zentrum-lexikographie/dwdsmor/commit/5d387960e62deff93a822c0c34686bfb154e19ff))
+* properly segment compounding stems and derivation stems of verbs ([523afd0](https://github.com/zentrum-lexikographie/dwdsmor/commit/523afd0a469ca71f5d84ec690384034b4211d46e))
+* properly segment nominalised adjectives ([1c825d8](https://github.com/zentrum-lexikographie/dwdsmor/commit/1c825d8286508960213f39e23908ed6549a075fa))
+
+
+### Bug Fixes
+
+* do not exclude forms in old orthography with linking elements ([ff91520](https://github.com/zentrum-lexikographie/dwdsmor/commit/ff91520446667c99505150bd945a29650cf81df4))
+* do not match entry types when inferring derivation stems ([79095d2](https://github.com/zentrum-lexikographie/dwdsmor/commit/79095d2e00ad82038fb8802116a40ff7d59e0af8))
+
+
+### Performance Improvements
+
+* do not load generator in tools/analysis.py unless needed ([6a58a1b](https://github.com/zentrum-lexikographie/dwdsmor/commit/6a58a1b8fda36a355940d5e80b59a90fe829dc01))
+
 ## [0.11.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.10.0...v0.11.0) (2025-07-29)
 
 
