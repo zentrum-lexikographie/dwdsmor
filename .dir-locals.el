@@ -1,1 +1,1 @@
-((python-mode . ((eval . (pyvenv-workon "dwdsmor")))))
+((python-mode . ((pyvenv-workon "dwdsmor"))))
