@@ -1,5 +1,4 @@
 import argparse
-import sys
 from dataclasses import asdict, astuple, dataclass
 from itertools import product
 
@@ -7,9 +6,10 @@ from tabulate import tabulate
 from tqdm import tqdm
 
 import dwdsmor
-from dwdsmor.automaton import automaton_types
-from dwdsmor.log import configure_logging
-from dwdsmor.tag import (
+
+from . import edition
+from .log import configure_logging
+from .tag import (
     all_tags,
     boundary_tags,
     inflection_tag_seqs,
@@ -17,8 +17,9 @@ from dwdsmor.tag import (
     lexeme_tags,
     tag_values,
 )
-from dwdsmor.traversal import Traversal
-from dwdsmor.util import inflected
+from .traversal import Traversal
+from .util import inflected
+from .version import __version__
 
 headers = {
     "word": "Wordform",
@@ -84,20 +85,25 @@ class Result(Traversal):
 
 def main():
     arg_parser = argparse.ArgumentParser(description="Traverse DWDSmor automata.")
-    arg_parser.add_argument("-d", "--automata-dir", type=str, help="automata directory")
     arg_parser.add_argument(
-        "-t", "--automaton-type", choices=automaton_types, help="automaton type"
+        "-t", "--automaton-type", choices=dwdsmor.automaton_types, help="automaton type"
     )
     arg_parser.add_argument("-g", "--generate", help="generate", action="store_true")
     arg_parser.add_argument(
         "-q", "--quiet", help="do not report progress", action="store_true"
     )
+    arg_parser.add_argument(
+        "-v", "--version", help="show version and exit", action="store_true"
+    )
     arg_parser.add_argument("words", nargs="*")
     args = arg_parser.parse_args()
     configure_logging()
 
+    if args.version:
+        print(f"DWDSmor v{__version__} (edition: {edition})")
+        return 0
+
     results = []
-    automata = dwdsmor.automata(args.automata_dir)
 
     automaton = "index" if args.generate else "lemma"
     automaton = args.automaton_type if args.automaton_type else automaton
@@ -108,8 +114,8 @@ def main():
     join_tags = True
 
     if args.generate:
-        analyzer = automata.analyzer(automaton)
-        generator = automata.generator(automaton)
+        analyzer = dwdsmor.analyzer(automaton)
+        generator = dwdsmor.generator(automaton)
         for word in args.words:
             lexeme_specs = set()
             for traversal in analyzer.analyze(word):
@@ -139,7 +145,7 @@ def main():
                 local_results = sorted(local_results, key=lambda r: r.spec)
                 results.extend(local_results)
     else:
-        analyzer = automata.analyzer(automaton)
+        analyzer = dwdsmor.analyzer(automaton)
         for word in args.words:
             local_results = []
             max_boundaries = {}
@@ -188,7 +194,3 @@ def main():
     )
 
     return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())

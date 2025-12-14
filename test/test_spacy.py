@@ -1,8 +1,10 @@
+from itertools import islice
+
 import spacy
-from datasets import load_dataset
 from pytest import fixture
 
 import dwdsmor.spacy  # noqa
+from dwdsmor.build.ud import download_gsd
 
 from .conftest import if_dwds_available
 
@@ -10,24 +12,18 @@ from .conftest import if_dwds_available
 @fixture(scope="module")
 def nlp():
     nlp = spacy.load("de_zdl_lg")
-    nlp.add_pipe("dwdsmor", config={"automata_location": "build/dwds"})
+    nlp.add_pipe("dwdsmor")
     return nlp
 
 
 @fixture(scope="module")
 def sentences():
-    ds = load_dataset(
-        "universal_dependencies",
-        "de_gsd",
-        split="train",
-        trust_remote_code=True,
-    )
-    return tuple(s["text"] for s in ds.select(range(100)))
+    sentences = (s.metadata["text"] for s in download_gsd())
+    return tuple(islice(sentences, 10))
 
 
 @if_dwds_available
 def test_lemmatisation(nlp, sentences, snapshot):
-    sentences = sentences[:10]
     docs = nlp.pipe(sentences)
     tokens = (
         (t.text, t.tag_, t.lemma_, t._.dwdsmor.analysis)

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dwdsmor-dwds"
+description = "DWDS-based Lexicon for DWDSmor"
+authors = [
+    {name = "Andreas Nolda", email = "andreas.nolda@bbaw.de"},
+]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Text Processing :: Linguistic"
+]
+requires-python = ">=3.12"
+dynamic = ["readme", "version"]
+dependencies = [
+    "dwdsmor"
+]
+
+[project.urls]
+Homepage = "https://github.com/zentrum-lexikographie/dwdsmor"
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"], content-type = "text/markdown"}
+version = {file = ["VERSION"]}
+
+[tool.setuptools.packages.find]
+exclude = ["test"]
+
+[tool.setuptools.package-data]
+"dwdsmor_dwds.automata" = ["*.a", "*.ca", "*.csv.xz", "BUILT", "EDITION", "GIT_REV"]

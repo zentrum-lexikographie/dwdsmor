@@ -6,22 +6,11 @@ from pathlib import Path
 
 from pytest import mark
 
-from dwdsmor import automata
+from dwdsmor import edition
 
-project_dir = Path(__file__).parent.parent
-build_dir = project_dir / "build"
-
-
-def is_edition_available(edition):
-    return (build_dir / edition).is_dir()
-
-
-def automata_edition(edition):
-    assert is_edition_available(edition)
-    return automata(build_dir / edition)
-
+test_dir = Path(__file__).parent
 
 if_dwds_available = mark.skipif(
-    not is_edition_available("dwds"),
+    edition != "dwds",
     reason="Automata edition 'dwds' not available",
 )

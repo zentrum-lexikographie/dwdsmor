@@ -10,13 +10,13 @@ from collections import defaultdict, namedtuple
 from itertools import filterfalse, product
 from pathlib import Path
 
-from analysis import analyze_word, check_automata_location, generate_words, seg_lemma
-
+import yaml
 from blessings import Terminal
 
-from dwdsmor import automaton, tag
+import dwdsmor
+from dwdsmor import tag
 
-import yaml
+from analysis import analyze_word, check_automata_location, generate_words, seg_lemma
 
 
 progname = Path(__file__).name
@@ -2201,7 +2201,7 @@ def main():
                             help="output also non-standard forms")
         parser.add_argument("-S", "--ch", action="store_true",
                             help="output also forms in Swiss spelling")
-        parser.add_argument("-t", "--automaton-type", choices=automaton.automaton_types, default="index",
+        parser.add_argument("-t", "--automaton-type", choices=dwdsmor.automaton_types, default="index",
                             help="automaton type (default: index)")
         parser.add_argument("-u", "--user-specified", action="store_true",
                             help="use only user-specified information")
@@ -2213,9 +2213,8 @@ def main():
 
         check_automata_location(args.automata_location)
 
-        automata = automaton.automata(args.automata_location)
-        analyzer = automata.analyzer(args.automaton_type)
-        generator = automata.generator(args.automaton_type)
+        analyzer = dwdsmor.analyzer(args.automaton_type)
+        generator = dwdsmor.generator(args.automaton_type)
 
         if args.json:
             output_format = "json"
@@ -2231,9 +2230,6 @@ def main():
                          args.pos, args.user_specified, args.nonst, args.old, args.oldorth, args.ch,
                          args.no_cats, args.no_lemma, args.empty,
                          args.no_header, args.plain, args.force_color, output_format)
-    except automaton.AutomataDirNotFound:
-        print(f"{progname}: automata directory not found (set it with --automata-dir)", file=sys.stderr)
-        sys.exit(1)
     except AssertionError as error:
         print(f"{progname}: {error}", file=sys.stderr)
         sys.exit(1)

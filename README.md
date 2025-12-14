@@ -62,37 +62,32 @@ automata types can be compiled:
 Automata are built in two formats: in standard format (with file extension `.a`)
 for generation and in compact format (with file extension `.ca`) for analysis.
 
-Currently, the following DWDSmor editions are supported:
+DWDSmor is released in two editions:
 
+1. the **Open Edition**, based on a sample selection of DWDS lemmas and
+   their grammatical specifications, and
 1. the **DWDS Edition**, derived from the complete lexical dataset of
-   the [DWDS dictionary](https://www.dwds.de), and
-2. the **Open Edition**, based on a sample selection of DWDS lemmas and
-   their grammatical specifications.
+   the [DWDS dictionary](https://www.dwds.de).
 
-The automata of the DWDS Edition are available upon request for research
-purposes. The
-[automata of the Open Edition](https://huggingface.co/zentrum-lexikographie/dwdsmor-open),
-as well as its [sample source lexicon](lexicon/open/wb/open.xml), are released
-freely for general use and experiments. For testing purposes, DWDSmor also
-allows for compiling a development edition from a user-provided source lexicon.
+The _DWDS Edition_ is only available upon request for research
+purposes while the _Open Edition_ is released freely for general use
+and experiments.
 
-The coverage of the released DWDSmor automata is measured against the
-[German Universal Dependencies HDT treebank](https://universaldependencies.org/treebanks/de_hdt/index.html)
-and reported on the
-[Hugging Face Hub page](https://huggingface.co/zentrum-lexikographie).
-In the DWDS Edition, the coverage ratios typically range from 95 % to 100 %
-for most word classes; notable exceptions include foreign-language words
-and named entities, which are barely part of the underlying DWDS dictionary
-and thus poorly covered by DWDSmor. In the
-[Open Edition](https://huggingface.co/zentrum-lexikographie/dwdsmor-open),
-the coverage ratios of open word classes are lower, due to the limited size
-of the sample source lexicon.
+The coverage of DWDSmor is benchmarked regularly against the [German
+Universal Dependencies HDT
+treebank](https://universaldependencies.org/treebanks/de_hdt/index.html).
+In the _DWDS Edition_, the coverage ratios typically range from 95 %
+to 100 % for most word classes; notable exceptions include
+foreign-language words and named entities, which are barely part of
+the underlying DWDS dictionary and thus poorly covered by DWDSmor. In
+the _Open Edition_, the coverage ratios of open word classes are
+lower, due to the limited size of the sample source lexicon.
 
 
 ## Usage
 
-The [DWDSmor Python library](https://pypi.org/project/dwdsmor/) is available via
-the [Python Package Index (PyPI)](https://pypi.org):
+The [DWDSmor Open Edition](https://pypi.org/project/dwdsmor/) is
+available via the [Python Package Index (PyPI)](https://pypi.org):
 
 ``` plaintext
 pip install dwdsmor
@@ -107,10 +102,10 @@ The library can be used for lemmatisation:
 >>> assert lemmatizer("getestet", pos={"ADJ"}).analysis == "getestet"
 ```
 
-There is also integration with spacy:
+There is also integration with spaCy:
 
 ```plaintext
-pip install 'de_zdl_lg @ https://repo.zdl.org/repository/pypi/packages/de-zdl-lg/3.1.0/de_zdl_lg-3.1.0-py3-none-any.whl'
+pip install 'de_zdl_lg' --extra-index-url https://gitup.uni-potsdam.de/api/v4/projects/21461/packages/pypi/simple
 ```
 
 ``` python-console
@@ -119,8 +114,8 @@ pip install 'de_zdl_lg @ https://repo.zdl.org/repository/pypi/packages/de-zdl-lg
 >>> nlp = spacy.load("de_zdl_lg")
 >>> nlp.add_pipe("dwdsmor")
 <dwdsmor.spacy.Component object at 0x7f99e634f220>
->>> tuple((t._.dwdsmor.analysis, t._.dwdsmor.spec) for t in nlp("Das ist ein Test."))
-(('die', '<CAP>d<~>ie<DEM><Attr><Neut><Nom><Sg><St>'), ('sein', 'sei<~>n<V><3><Sg><Pres><Ind>'), ('eine', 'ein<~>e<ART><Indef><Attr><Masc><Nom><Sg><UnmInfl>'), ('Test', 'Test<NN><Masc><Acc><Sg>'), ('.', '.<PUNCT><Period>'))
+>>> tuple(t._.dwdsmor.analysis for t in nlp("Man sah neben diversen ICEs auch viele schöne Altbauten."))
+('man', 'sehen', 'neben', 'divers', 'ICE', 'auch', 'viel', 'schön', 'Altbau', '.')
 ```
 
 In addition to the Python API, the package provides a simple
@@ -171,89 +166,10 @@ and `paradigm.py` in the `tools/` subdirectory:
 
 ```plaintext
 $ ./tools/analysis.py -h
-usage: analysis.py [-h] [-a] [-c] [-C] [-d AUTOMATA_DIR] [-e] [-H] [-I] [-j]
-                   [-m] [-M] [-P] [-s] [-S] [-t {lemma,lemma2,finite,root,root2,index}]
-                   [-T {lemma,lemma2,finite,root,root2,index}] [-v] [-y]
-                   [input] [output]
-
-positional arguments:
-  input                 input file (one word form per line; default: stdin)
-  output                output file (default: stdout)
-
-options:
-  -h, --help            show this help message and exit
-  -a, --analysis-string output also analysis string
-  -c, --csv             output CSV table
-  -C, --force-color     preserve color and formatting when piping output
-  -d AUTOMATA_DIR, --automata-dir AUTOMATA_DIR
-                        automata directory
-  -e, --empty           show empty columns or values
-  -H, --no-header       suppress table header
-  -I, --no-info         do not show analyses with info tags
-  -j, --json            output JSON object
-  -m, --minimal         prefer lemmas with minimal number of boundaries
-  -M, --maximal         prefer word forms with maximal number of boundaries (requires secondary automaton)
-  -P, --plain           suppress color and formatting
-  -s, --seg-lemma       output also segmented lemma
-  -S, --seg-word        output also segmented word form (requires secondary automaton)
-  -t {lemma,lemma2,finite,root,root2,index}, --automaton-type {lemma,lemma2,finite,root,root2,index}
-                        type of primary automaton (default: lemma)
-  -T {lemma,lemma2,finite,root,root2,index}, --automaton2-type {lemma,lemma2,finite,root,root2,index}
-                        type of secondary automaton (default: lemma2)
-  -v, --version         show program's version number and exit
-  -y, --yaml            output YAML document
-```
-
-```plaintext
+[…]
 $ ./tools/paradigm.py -h
-usage: paradigm.py [-h] [-c] [-C] [-d AUTOMATA_DIR] [-e] [-H]
-                   [-i {1,2,3,4,5,6,7,8}] [-I {1,2,3,4,5,6,7,8}] [-j] [-n] [-N] [-o] [-O]
-                   [-p {NN,NPROP,ADJ,CARD,ORD,FRAC,ART,DEM,INDEF,POSS,PPRO,REL,WPRO,V}]
-                   [-P] [-s] [-S] [-t {lemma,lemma2,finite,root,root2,index}] [-u] [-v] [-y]
-                   lemma [output]
-
-positional arguments:
-  lemma                 lemma (determiners: Fem Nom Sg; nominalised adjectives: Wk)
-  output                output file (default: stdout)
-
-options:
-  -h, --help            show this help message and exit
-  -c, --csv             output CSV table
-  -C, --force-color     preserve color and formatting when piping output
-  -d AUTOMATA_DIR, --automata-dir AUTOMATA_DIR
-                        automata directory
-  -e, --empty           show empty columns or values
-  -H, --no-header       suppress table header
-  -i {1,2,3,4,5,6,7,8}, --lemma-index {1,2,3,4,5,6,7,8}
-                        homographic lemma index
-  -I {1,2,3,4,5,6,7,8}, --paradigm-index {1,2,3,4,5,6,7,8}
-                        paradigm index
-  -j, --json            output JSON object
-  -n, --no-cats         do not output category names
-  -N, --no-lemma        do not output lemma, lemma index, paradigm index, and lexical categories
-  -o, --old             output also archaic forms
-  -O, --oldorth         output also forms in old spelling
-  -p {NN,NPROP,ADJ,CARD,ORD,FRAC,ART,DEM,INDEF,POSS,PPRO,REL,WPRO,V}, --pos {NN,NPROP,ADJ,CARD,ORD,FRAC,ART,DEM,INDEF,POSS,PPRO,REL,WPRO,V}
-                        part of speech
-  -P, --plain           suppress color and formatting
-  -s, --nonst           output also non-standard forms
-  -S, --ch              output also forms in Swiss spelling
-  -t {lemma,lemma2,finite,root,root2,index}, --automaton-type {lemma,lemma2,finite,root,root2,index}
-                        automaton type (default: index)
-  -u, --user-specified  use only user-specified information
-  -v, --version         show program's version number and exit
-  -y, --yaml            output YAML document
+[…]
 ```
-
-Automata are searched in the following locations (in this order):
-
-1. in the directory specified with option `-d`,
-2. in edition subdirectories of `build/` if the environment variable
-   `DWDSMOR_DEV` is set (as it is in [`.env.shared`](.env.shared)),
-3. in the value of the environment variable `DWDSMOR_AUTOMATA_DIR`,
-4. in the Hugging Face Hub repository in the value of the environment variable
-   `DWDSMOR_HF_REPO_ID` (by default, `zentrum-lexikographie/dwdsmor-open`).
-
 
 ## Development
 
@@ -302,44 +218,32 @@ source .venv/bin/activate
 Then install DWDSmor, including development dependencies:
 
 ```plaintext
-pip install -U pip setuptools &&\
-    pip install -e '.[dev]' --extra-index-url https://gitup.uni-potsdam.de/api/v4/projects/21461/packages/pypi/simple
+pip install -U pip setuptools && pip install -r requirements.dev.txt
 ```
 
+### Building the DWDS edition
+
+Install additional dependencies:
+
+```plaintext
+pip install -U pip setuptools && pip install -r requirements.dwds.txt
+```
+
+Download the lexicon:
+
+```
+GITUP_PRIVATE_TOKEN="…"  python -m dwdsmor.build.dwdswb
+```
 
 ### Building lexica and automata
 
-Building different editions is facilitated via the script `build-dwdsmor`:
-
-
-```plaintext
-$ ./build-dwdsmor -h
-usage: cli.py [-h] [-e {dwds,open,dev}] [-t {lemma,lemma2,finite,root,root2,index}]
-              [-m] [-f] [-q] [--release] [--tag]
-
-Build DWDSmor.
-
-options:
-  -h, --help            show this help message and exit
-  -e {dwds,open,dev}, --edition {dwds,open,dev}
-                        edition to build (default: all)
-  -t {lemma,lemma2,finite,root,root2,index}, --automaton-type {lemma,lemma2,finite,root,root2,index}
-                        automaton type to build (default: all)
-  -m, --with-metrics    measure UD/de-hdt coverage
-  -f, --force           force building (also current targets)
-  -q, --quiet           do not report progress
-  --release             push automata to HF hub
-  --tag                 tag HF hub release with current version
-```
-
-To build all editions available in the current git checkout, run:
+Building different editions and automata is facilitated via the
+`dwdsmor.build` module, aka. to build the default, openly available
+edition, simply run:
 
 ```plaintext
-./build-dwdsmor
+python -m dwdsmor.build
 ```
-
-The build result can be found in `build/` with one subdirectory per
-edition.
 
 ### Testing
 

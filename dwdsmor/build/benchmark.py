@@ -5,32 +5,12 @@ import csv
 import sys
 from collections import Counter, defaultdict
 from itertools import islice
-from pathlib import Path
-
-from datasets import load_dataset
 from tabulate import tabulate
 from tqdm import tqdm
 
-from dwdsmor.automaton import Lemmatizer, automata, editions
-from dwdsmor.log import configure_logging
-
-
-def ud_de_hdt_tokens():
-    sentences = load_dataset(
-        "universal_dependencies",
-        "de_hdt",
-        split="train",
-        trust_remote_code=True,
-    )
-    for s in sentences:
-        tokens = zip(s["tokens"], s["lemmas"], s["xpos"])
-        for token in tokens:
-            form, lemma, xpos = token
-            if lemma in {"unknown", "NULL"}:
-                continue  # remove unknown lemmata
-            if "-" in form:
-                continue  # remove Bindestrich-Komposita
-            yield form, lemma, xpos
+from .ud import download_hdt
+from .. import Lemmatizer
+from ..log import configure_logging
 
 
 ud_to_dwdsmor_pos = {
@@ -102,18 +82,29 @@ coverage_headers = [
 ]
 
 
-def compute_coverage(automata, round_digits=4, limit=None, debug=False, quiet=False):
-    lemmatizer = Lemmatizer(automata)
-    tokens = ud_de_hdt_tokens()
+def compute_coverage(round_digits=4, limit=None, debug=False, quiet=False):
+    lemmatizer = Lemmatizer()
+
+    def hdt_tokens():
+        for sentence in download_hdt():
+            for token in sentence:
+                lemma = token.get("lemma") or "NULL"
+                if lemma in {"unknown", "NULL"}:
+                    continue  # remove unknown lemmata
+                form = token.get("form") or "-"
+                if "-" in form:
+                    continue  # remove Bindestrich-Komposita
+                pos = token.get("xpos") or "XY"
+                yield form, lemma, pos
+
+    tokens = hdt_tokens()
     if limit is not None:
         tokens = islice(tokens, max(0, limit))
     if debug:
         report = csv.writer(sys.stdout)
         report.writerow(("Form", "Lemma", "POS", "Lemmatized"))
     if not debug or quiet:
-        tokens = tqdm(
-            tokens, unit="token", desc="Lemmatizing UD/de-hdt", total=(limit or 2700000)
-        )
+        tokens = tqdm(tokens, unit="token", desc="Lemmatizing UD/de-hdt", total=limit)
     matches = defaultdict(Counter)
     mismatches = defaultdict(Counter)
     for token in tokens:
@@ -187,14 +178,6 @@ if __name__ == "__main__":
         description="Benchmarks coverage of DWDSmor against German-UD/HDT.",
     )
     arg_parser.add_argument(
-        "-e",
-        "--edition",
-        choices=editions,
-        help="edition to run the benchmark against (default: dwds)",
-        type=str,
-        default="dwds",
-    )
-    arg_parser.add_argument(
         "-d", "--debug", help="print coverage data to stdout", action="store_true"
     )
     arg_parser.add_argument(
@@ -207,9 +190,6 @@ if __name__ == "__main__":
     )
     args = arg_parser.parse_args()
     configure_logging()
-
-    project_dir = Path(".").resolve()
-    edition_build_dir = project_dir / "build" / args.edition
 
     colalign = ["left", "right", "right", "right", "right", "right", "right"]
 
@@ -240,7 +220,6 @@ if __name__ == "__main__":
         ]
 
     coverage = compute_coverage(
-        automata(edition_build_dir),
         limit=args.limit,
         debug=args.debug,
         quiet=args.quiet,

@@ -23,6 +23,11 @@ BUILD
 
 manifest.xml
 
+/dwdsmor/automata/
+/lexicon/dwds/package/build/
+/lexicon/dwds/package/dist/
+/lexicon/dwds/package/dwdsmor_dwds/automata/
+/lexicon/dwds/wb/
 /lexicon/open/src/
 
 /build/
