@@ -214,6 +214,7 @@ def load_from_hub(
     repo_id: Optional[str] = None, revision: Optional[str] = None, **kwargs
 ):
     repo_id = repo_id or default_repo_id
+    assert repo_id is not None
     revision = revision or f"v{__version__}"
     logger.debug("Load automata from Huggingface repo %s @ %s", repo_id, revision)
     try:
