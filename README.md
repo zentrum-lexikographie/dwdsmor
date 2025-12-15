@@ -109,14 +109,18 @@ The library can be used for lemmatisation:
 
 There is also integration with spacy:
 
+```plaintext
+pip install 'de_zdl_lg @ https://repo.zdl.org/repository/pypi/packages/de-zdl-lg/3.1.0/de_zdl_lg-3.1.0-py3-none-any.whl'
+```
+
 ``` python-console
 >>> import spacy
 >>> import dwdsmor.spacy
->>> nlp = spacy.load("de_hdt_lg")
+>>> nlp = spacy.load("de_zdl_lg")
 >>> nlp.add_pipe("dwdsmor")
 <dwdsmor.spacy.Component object at 0x7f99e634f220>
->>> tuple((t.lemma_, t._.dwdsmor.analysis) for t in nlp("Das ist ein Test."))
-(('der', 'die'), ('sein', 'sein'), ('ein', 'eine'), ('Test', 'Test'), ('.', '.'))
+>>> tuple((t._.dwdsmor.analysis, t._.dwdsmor.spec) for t in nlp("Das ist ein Test."))
+(('die', '<CAP>d<~>ie<DEM><Attr><Neut><Nom><Sg><St>'), ('sein', 'sei<~>n<V><3><Sg><Pres><Ind>'), ('eine', 'ein<~>e<ART><Indef><Attr><Masc><Nom><Sg><UnmInfl>'), ('Test', 'Test<NN><Masc><Acc><Sg>'), ('.', '.<PUNCT><Period>'))
 ```
 
 In addition to the Python API, the package provides a simple
@@ -298,7 +302,8 @@ source .venv/bin/activate
 Then install DWDSmor, including development dependencies:
 
 ```plaintext
-pip install -U pip setuptools && pip install -e '.[dev]'
+pip install -U pip setuptools &&\
+    pip install -e '.[dev]' --extra-index-url https://gitup.uni-potsdam.de/api/v4/projects/21461/packages/pypi/simple
 ```
 
 
