@@ -195,6 +195,6 @@ inflection_tag_seqs = {
         ("mood", "number"),
         ("nonfinite", "function"),
         ("nonfinite", "tense", "auxiliary"),
-        ("person", "number", "mood", "tense"),
+        ("person", "number", "tense", "mood"),
     ),
 }
