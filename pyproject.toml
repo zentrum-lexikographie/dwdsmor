@@ -28,7 +28,8 @@ dynamic = ["readme", "version"]
 dependencies = [
     "blessings",
     "sfst-transduce",
-    "tabulate"
+    "tabulate",
+    "tqdm"
 ]
 
 [project.optional-dependencies]
@@ -44,7 +45,6 @@ dev = [
     "pytest",
     "spacy",
     "syrupy",
-    "tqdm",
     "twine",
     "Jinja2"
 ]
