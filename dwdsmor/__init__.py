@@ -27,9 +27,15 @@ from .version import __version__
 
 logger = logging.getLogger("dwdsmor")
 
-automata_dir = Path(__file__).parent / "automata"
+default_automata_dir = Path(__file__).parent / "automata"
+try:
+    import dwdsmor_dwds  # type: ignore
 
-edition_file = automata_dir / "EDITION"
+    default_automata_dir = Path(dwdsmor_dwds.__file__).parent / "automata"
+except ModuleNotFoundError:
+    pass
+
+edition_file = default_automata_dir / "EDITION"
 
 edition = "n/a"
 if edition_file.is_file():
@@ -111,7 +117,10 @@ def assert_valid_automaton_type(automaton_type: str, types=automaton_types):
 
 
 def transducer(
-    automaton_type="lemma", generate=True, both_layers=False
+    automaton_type="lemma",
+    automata_dir=default_automata_dir,
+    generate=True,
+    both_layers=False,
 ) -> Union[Transducer, CompactTransducer]:
     file_suffix = "a" if generate else "ca"
     transducer_file = automata_dir / f"{automaton_type}.{file_suffix}"
@@ -124,19 +133,28 @@ def transducer(
         return Transducer(transducer_file.as_posix())
 
 
-def generator(automaton_type="index") -> Generator:
+def generator(
+    automaton_type="index",
+    automata_dir=default_automata_dir,
+) -> Generator:
     assert_valid_automaton_type(automaton_type)
-    return Generator(transducer(automaton_type))  # type: ignore
+    return Generator(transducer(automaton_type, automata_dir))  # type: ignore
 
 
-def analyzer(automaton_type="lemma", both_layers=False) -> Analyzer:
+def analyzer(
+    automaton_type="lemma", automata_dir=default_automata_dir, both_layers=False
+) -> Analyzer:
     assert_valid_automaton_type(automaton_type)
     return Analyzer(
-        transducer(automaton_type, generate=False, both_layers=both_layers)  # type: ignore
-    )
+        transducer(
+            automaton_type, automata_dir, generate=False, both_layers=both_layers
+        )
+    )  # type: ignore
 
 
-def traversals(automaton_type="index") -> Dict[str, List[Traversal]]:
+def traversals(
+    automaton_type="index", automata_dir=default_automata_dir
+) -> Dict[str, List[Traversal]]:
     assert_valid_automaton_type(automaton_type, types=traversal_automaton_types)
     traversals_file = automata_dir / f"{automaton_type}.csv.xz"
     traversals = defaultdict(list)
@@ -149,8 +167,8 @@ def traversals(automaton_type="index") -> Dict[str, List[Traversal]]:
 
 
 class Lemmatizer:
-    def __init__(self, automaton_type="lemma"):
-        self.analyzer = analyzer(automaton_type)
+    def __init__(self, automaton_type="lemma", automata_dir=default_automata_dir):
+        self.analyzer = analyzer(automaton_type, automata_dir)
 
     def __call__(self, word, **criteria):
         traversals = tuple(self.analyzer.analyze(word))
@@ -167,5 +185,5 @@ class Lemmatizer:
             return traversal
 
 
-def lemmatizer(*args, automaton_type="lemma", **kwargs):
-    return Lemmatizer(automaton_type)
+def lemmatizer(automaton_type="lemma", automata_dir=default_automata_dir):
+    return Lemmatizer(automaton_type, automata_dir)

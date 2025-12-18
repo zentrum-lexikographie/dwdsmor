@@ -14,7 +14,7 @@ def morph(token_morph, k):
 
 
 class Component:
-    def __init__(self, automata_location=None):
+    def __init__(self):
         self.lemmatizer = lemmatizer()
 
     def __call__(self, doc):
