@@ -1,0 +1,26 @@
+variables:
+  TWINE_REPO: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi"
+  TWINE_USERNAME: "gitlab-ci-token"
+  TWINE_PASSWORD: "${CI_JOB_TOKEN}"
+
+deploy:
+  stage: deploy
+  image: python:3.13
+  before_script:
+    - git config --global credential.helper store
+    - echo "https://gitlab-ci-token:${CI_JOB_TOKEN}@gitup.uni-potsdam.de" > ~/.git-credentials
+  script:
+    - apt-get update && apt-get install -y default-jdk libsaxonhe-java sfst
+    - python3 -m venv .venv && source .venv/bin/activate
+    - pip install -r requirements.dwds.txt
+    - python -m dwdsmor.build.dwdswb
+    - python -m dwdsmor.build --with-traversal --edition dwds --automata-dir lexicon/dwds/package/dwdsmor_dwds/automata
+    - cd lexicon/dwds/package
+    - date '+%Y.%m.%d' >VERSION
+    - python -m build
+    - twine upload --repository-url $TWINE_REPO dist/*.whl
+  only:
+    - release/dwds-edition
+  tags:
+    - zdl
+    - build

@@ -1,14 +1,13 @@
 import csv
-from pathlib import Path
 
-from .conftest import automata_edition, if_dwds_available
+import dwdsmor
 
-test_dir = Path(__file__).parent
+from .conftest import if_dwds_available, test_dir
 
 
 @if_dwds_available
 def test_analysis(snapshot):
-    analyzer = automata_edition("dwds").analyzer()
+    analyzer = dwdsmor.analyzer()
     data_dir = test_dir / "gesetze"
     data_files = sorted(data_dir.rglob("*.tok"))
     tokens = [t for f in data_files for t in f.read_text().splitlines()]
@@ -18,7 +17,7 @@ def test_analysis(snapshot):
 
 @if_dwds_available
 def test_generation(snapshot):
-    traversals = automata_edition("dwds").traversals()
+    traversals = dwdsmor.traversals()
     test_cases_file = test_dir / "inflection_test_cases.csv"
     result = []
     with test_cases_file.open("rt") as f:

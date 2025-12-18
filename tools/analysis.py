@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # analysis.py - analyse word forms with DWDSmor
-# Andreas Nolda 2025-11-10
+# Andreas Nolda 2025-12-18
 
 import argparse
 import csv
@@ -8,20 +8,16 @@ import json
 import sys
 from pathlib import Path
 
+import yaml
 from blessings import Terminal
 
-from dwdsmor import automaton, tag
-
-import yaml
+import dwdsmor
+from dwdsmor import tag
 
 
 progname = Path(__file__).name
 
-version = 14.4
-
-
-REPO_IDS = ("zentrum-lexikographie/dwdsmor-dwds",
-            "zentrum-lexikographie/dwdsmor-open")
+version = 15.0
 
 
 LABEL_MAP = {"word": "Wordform",
@@ -333,14 +329,12 @@ def output_analyses(analyzer, generator, input_file, output_file, automaton_type
                            header, plain, force_color)
 
 
-def check_automata_location(location):
-    if location and Path(location).is_dir():
-        pass
-    elif location in REPO_IDS:
-        pass
-    elif location:
-        print(f"{progname}: {location} is no a directory or a valid Hugging Face repo ID")
-        sys.exit(1)
+def format_path(path):
+    cwd = Path.cwd()
+    if path.is_relative_to(cwd):
+        return path.relative_to(cwd)
+    else:
+        return path
 
 
 def main():
@@ -357,7 +351,7 @@ def main():
         parser.add_argument("-C", "--force-color", action="store_true",
                             help="preserve color and formatting when piping output")
         parser.add_argument("-d", "--automata-location",
-                            help="automata location (directory or Hugging Face repo ID)")
+                            help=f"automata location (default: {format_path(dwdsmor.automata_dir)})")
         parser.add_argument("-e", "--empty", action="store_true",
                             help="show empty columns or values")
         parser.add_argument("-H", "--no-header", action="store_false",
@@ -376,9 +370,9 @@ def main():
                             help="output also segmented lemma")
         parser.add_argument("-S", "--seg-word", action="store_true",
                             help="output also segmented word form (requires secondary automaton)")
-        parser.add_argument("-t", "--automaton-type", choices=automaton.automaton_types, default="lemma",
+        parser.add_argument("-t", "--automaton-type", choices=dwdsmor.automaton_types, default="lemma",
                             help="type of primary automaton (default: lemma)")
-        parser.add_argument("-T", "--automaton2-type", choices=automaton.automaton_types, default="lemma2",
+        parser.add_argument("-T", "--automaton2-type", choices=dwdsmor.automaton_types, default="lemma2",
                             help="type of secondary automaton (default: lemma2)")
         parser.add_argument("-v", "--version", action="version",
                             version=f"{parser.prog} {version}")
@@ -386,11 +380,11 @@ def main():
                             help="output YAML document")
         args = parser.parse_args()
 
-        check_automata_location(args.automata_location)
+        if args.automata_location:
+            dwdsmor.automata_dir = Path(args.automata_location)
 
-        automata = automaton.automata(args.automata_location)
-        analyzer = automata.analyzer(args.automaton_type)
-        generator = automata.generator(args.automaton2_type) if args.maximal or args.seg_word else None
+        analyzer = dwdsmor.analyzer(args.automaton_type)
+        generator = dwdsmor.generator(args.automaton2_type) if args.maximal or args.seg_word else None
 
         if args.json:
             output_format = "json"
@@ -405,9 +399,6 @@ def main():
                         args.analysis_string, args.seg_word, args.seg_lemma,
                         args.minimal, args.maximal, args.empty, args.no_info,
                         args.no_header, args.plain, args.force_color, output_format)
-    except automaton.AutomataDirNotFound:
-        print(f"{progname}: automata directory not found (set it with --automata-dir)", file=sys.stderr)
-        sys.exit(1)
     except AssertionError as error:
         print(f"{progname}: {error}", file=sys.stderr)
         sys.exit(1)

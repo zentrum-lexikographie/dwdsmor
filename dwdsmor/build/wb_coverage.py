@@ -12,8 +12,8 @@ from xml.etree.ElementTree import parse
 from tabulate import tabulate
 from tqdm import tqdm
 
-from dwdsmor.automaton import automata, editions
-from dwdsmor.log import configure_logging
+from .. import traversals
+from ..log import configure_logging
 
 
 # mapping between relevant DWDS and DWDSmor part-of-speech categories
@@ -142,10 +142,8 @@ if __name__ == "__main__":
     arg_parser.add_argument(
         "-e",
         "--edition",
-        choices=editions,
-        help="edition to run the benchmark against (default: dwds)",
-        type=str,
-        default="dwds",
+        help="edition to run the benchmark against (default: open)",
+        default="open",
     )
     arg_parser.add_argument(
         "-d", "--debug", help="print coverage data to stdout", action="store_true"
@@ -172,8 +170,7 @@ if __name__ == "__main__":
 
     assert len(wb_xml_files) > 0, f"No lexicon articles found in {wb_dir}"
 
-    edition_automata = automata(edition_build_dir)
-    traversals = edition_automata.traversals()
+    index_traversals = traversals()
 
     aggregated = not args.debug
     report = csv.writer(sys.stdout) if not aggregated else None
@@ -187,7 +184,7 @@ if __name__ == "__main__":
         for entry in parse_entries(wb_dir, wb_xml_file):
             pos_candidates = pos_map[entry.pos]
             generated = False
-            for g_traversal in traversals.get(entry.lemma, []):
+            for g_traversal in index_traversals.get(entry.lemma, []):
                 if g_traversal.lidx == entry.lidx and g_traversal.pos in pos_candidates:
                     generated = True
                     break

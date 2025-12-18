@@ -9,11 +9,11 @@ authors = [
     {name = "Andreas Nolda", email = "andreas.nolda@bbaw.de"},
     {name = "Gregor Middell", email = "gregor.middell@bbaw.de"}
 ]
+license = "GPL-2.0-only"
 classifiers = [
     "Development Status :: 1 - Planning",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -27,17 +27,15 @@ requires-python = ">=3.12"
 dynamic = ["readme", "version"]
 dependencies = [
     "blessings",
-    "huggingface_hub[cli]",
-    "python-dotenv",
     "sfst-transduce",
     "tabulate"
 ]
 
 [project.optional-dependencies]
 dev = [
+    "build",
     "coverage",
     "conllu",
-    "datasets<4.0.0",
     "de_zdl_lg",
     "flake8",
     "flake8-bugbear",
@@ -47,7 +45,11 @@ dev = [
     "spacy",
     "syrupy",
     "tqdm",
+    "twine",
     "Jinja2"
+]
+dwds = [
+    "dwdswb-dataset @ git+https://gitup.uni-potsdam.de/zentrum-lexikographie/dwdswb-dataset.git"
 ]
 
 [project.scripts]
@@ -61,18 +63,6 @@ omit = ["dwdsmor/cli.py", "test/**/*.py"]
 
 [tool.isort]
 profile = "black"
-
-[[tool.mypy.overrides]]
-module = "datasets"
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = "huggingface_hub"
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = "huggingface_hub.utils"
-ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
 module = "tabulate"
@@ -91,3 +81,6 @@ version = {attr = "dwdsmor.version.__version__"}
 
 [tool.setuptools.packages.find]
 exclude = ["test"]
+
+[tool.setuptools.package-data]
+"dwdsmor.automata" = ["*.a", "*.ca", "*.csv.xz", "BUILT", "EDITION", "GIT_REV"]
