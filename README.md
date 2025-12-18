@@ -162,13 +162,15 @@ bildetet  	bilden  	bild<~>en<+V><2><Pl><Past><Ind>                      	V   	 
 
 More sophisticated tools for analysis and paradigm generation with the
 DWDSmor Python library are provided by the Python scripts `analysis.py`
-and `paradigm.py` in the `tools/` subdirectory:
+and `paradigm.py` in the `tools/` subdirectory. For their usage, cf. the
+output of the following commands:
 
 ```plaintext
-$ ./tools/analysis.py -h
-[…]
-$ ./tools/paradigm.py -h
-[…]
+$ tools/analysis.py -h
+```
+
+```plaintext
+$ tools/paradigm.py -h
 ```
 
 ## Development
@@ -238,12 +240,18 @@ GITUP_PRIVATE_TOKEN="…"  python -m dwdsmor.build.dwdswb
 ### Building lexica and automata
 
 Building different editions and automata is facilitated via the
-`dwdsmor.build` module, aka. to build the default, openly available
-edition, simply run:
+`dwdsmor.build` module. To build the default Open Edition, simply run:
 
 ```plaintext
 python -m dwdsmor.build
 ```
+
+For more build options, run:
+
+```plaintext
+python -m dwdsmor.build -h
+```
+
 
 ### Testing
 
