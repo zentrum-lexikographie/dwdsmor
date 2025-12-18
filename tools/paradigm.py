@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms with DWDSmor
-# Andreas Nolda 2025-11-10
+# Andreas Nolda 2025-12-18
 
 import argparse
 import csv
@@ -16,12 +16,12 @@ from blessings import Terminal
 import dwdsmor
 from dwdsmor import tag
 
-from analysis import analyze_word, check_automata_location, generate_words, seg_lemma
+from analysis import analyze_word, format_path, generate_words, seg_lemma
 
 
 progname = Path(__file__).name
 
-version = 18.3
+version = 19.0
 
 
 IDX = range(1, 9)
@@ -2174,7 +2174,7 @@ def main():
         parser.add_argument("-C", "--force-color", action="store_true",
                             help="preserve color and formatting when piping output")
         parser.add_argument("-d", "--automata-location",
-                            help="automata location (directory or Hugging Face repo ID)")
+                            help=f"automata location (default: {format_path(dwdsmor.automata_dir)})")
         parser.add_argument("-e", "--empty", action="store_true",
                             help="show empty columns or values")
         parser.add_argument("-H", "--no-header", action="store_false",
@@ -2211,7 +2211,8 @@ def main():
                             help="output YAML document")
         args = parser.parse_args()
 
-        check_automata_location(args.automata_location)
+        if args.automata_location:
+            dwdsmor.automata_dir = Path(args.automata_location)
 
         analyzer = dwdsmor.analyzer(args.automaton_type)
         generator = dwdsmor.generator(args.automaton_type)
