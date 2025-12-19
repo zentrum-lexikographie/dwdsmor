@@ -4,7 +4,6 @@ __all__ = [
     "Analyzer",
     "generator",
     "Generator",
-    "traversals",
     "lemmatizer",
     "Lemmatizer",
     "automaton_types",
@@ -12,13 +11,10 @@ __all__ = [
     "__version__",
 ]
 
-import csv
 import logging
-import lzma
-from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, List, Union
+from typing import Iterable, Union
 
 from sfst_transduce import CompactTransducer, Transducer
 
@@ -148,22 +144,8 @@ def analyzer(
     return Analyzer(
         transducer(
             automaton_type, automata_dir, generate=False, both_layers=both_layers
-        )
-    )  # type: ignore
-
-
-def traversals(
-    automaton_type="index", automata_dir=default_automata_dir
-) -> Dict[str, List[Traversal]]:
-    assert_valid_automaton_type(automaton_type, types=traversal_automaton_types)
-    traversals_file = automata_dir / f"{automaton_type}.csv.xz"
-    traversals = defaultdict(list)
-    with lzma.open(traversals_file, "rt") as traversals_csv:
-        for traversal in csv.DictReader(traversals_csv):
-            del traversal["inflected"]
-            traversal_obj = Traversal(**traversal)
-            traversals[traversal_obj.analysis].append(traversal_obj)
-    return traversals
+        )  # type: ignore
+    )
 
 
 class Lemmatizer:

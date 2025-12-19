@@ -2,6 +2,9 @@ variables:
   TWINE_REPO: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi"
   TWINE_USERNAME: "gitlab-ci-token"
   TWINE_PASSWORD: "${CI_JOB_TOKEN}"
+  INDEX_PACKAGE_NAME: "dwdsmor-dwds-index.csv.xz"
+  INDEX_PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/dwdsmor-dwds-index"
+
 
 deploy:
   stage: deploy
@@ -14,7 +17,18 @@ deploy:
     - python3 -m venv .venv && source .venv/bin/activate
     - pip install -r requirements.dwds.txt
     - python -m dwdsmor.build.dwdswb
-    - python -m dwdsmor.build --with-traversal --edition dwds --automata-dir lexicon/dwds/package/dwdsmor_dwds/automata
+    - |
+      python -m dwdsmor.build \
+      --edition dwds \
+      --automata-dir lexicon/dwds/package/dwdsmor_dwds/automata
+    - |
+      python -m dwdsmor.build.traversal \
+      -i lexicon/dwds/package/dwdsmor_dwds/automata/index.a | \
+      xz >${INDEX_PACKAGE_NAME}
+    - |
+      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+      --upload-file ${INDEX_PACKAGE_NAME} \
+      "${INDEX_PACKAGE_REGISTRY_URL}/$(date '+%Y.%m.%d')/${INDEX_PACKAGE_NAME}"
     - cd lexicon/dwds/package
     - date '+%Y.%m.%d' >VERSION
     - python -m build

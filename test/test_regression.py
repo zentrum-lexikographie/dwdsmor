@@ -1,6 +1,9 @@
 import csv
+from collections import defaultdict
 
 import dwdsmor
+from dwdsmor.build.traversal import traverse
+from dwdsmor.traversal import Traversal
 
 from .conftest import if_dwds_available, test_dir
 
@@ -17,15 +20,21 @@ def test_analysis(snapshot):
 
 @if_dwds_available
 def test_generation(snapshot):
-    traversals = dwdsmor.traversals()
     test_cases_file = test_dir / "inflection_test_cases.csv"
+
+    traversals = defaultdict(list)
+    for surface, spec in traverse(dwdsmor.default_automata_dir / "index.a"):
+        t = Traversal.parse(spec)
+        traversals[(t.analysis, t.pos)].append((t, surface))
+
     result = []
+
     with test_cases_file.open("rt") as f:
         for n, (pos, inflection_classes, lemma) in enumerate(csv.reader(f)):
             if n == 0:
                 continue
             lemma_traversals = sorted(
-                ((t.spec, t.surface) for t in traversals.get(lemma, []) if t.pos == pos)
+                (t.spec, surface) for t, surface in traversals.get((lemma, pos), [])
             )
             result.append((pos, inflection_classes, lemma, *lemma_traversals))
     assert result == snapshot

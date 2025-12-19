@@ -1,6 +1,5 @@
 import argparse
 from dataclasses import asdict, astuple, dataclass
-from itertools import product
 
 from tabulate import tabulate
 from tqdm import tqdm
@@ -9,14 +8,7 @@ import dwdsmor
 
 from . import edition
 from .log import configure_logging
-from .tag import (
-    all_tags,
-    boundary_tags,
-    inflection_tag_seqs,
-    info_tags,
-    lexeme_tags,
-    tag_values,
-)
+from .tag import all_tags, boundary_tags, get_taggings, lexeme_tags
 from .traversal import Traversal
 from .util import inflected
 from .version import __version__
@@ -52,24 +44,6 @@ headers = {
 }
 
 
-def get_taggings(pos, with_info=False):
-    tag_seqs = inflection_tag_seqs.get(pos) or inflection_tag_seqs.get("")
-    if with_info:
-        tag_seqs(ts + info_tags for ts in tag_seqs)
-
-    taggings = set()
-    for tag_seq in tag_seqs:
-        tagging_values = []
-        for tag_type in tag_seq:
-            tag_type_values = (
-                tag_values.get(pos, dict()).get(tag_type) or tag_values[""][tag_type]
-            )
-            tagging_values.append(tag_type_values | {None})
-        for tagging in product(*tagging_values):
-            taggings.add(tuple((t for t in tagging if t is not None)))
-    return taggings
-
-
 @dataclass
 class Result(Traversal):
     word: str | None = None
@@ -81,6 +55,34 @@ class Result(Traversal):
     @staticmethod
     def from_spec(spec: str, word: str, idx_to_int=False):
         return Result(**asdict(Traversal.parse(spec, idx_to_int=idx_to_int)), word=word)
+
+
+def generate(analyzer, generator, word, quiet=True, idx_to_int=False):
+    lexeme_specs = set()
+    for traversal in analyzer.analyze(word):
+        traversal = traversal.reparse(visible_boundaries=boundary_tags)
+        lexeme_spec = traversal.analysis
+        for lexeme_tag in lexeme_tags:
+            tag = getattr(traversal, lexeme_tag)
+            if tag is not None:
+                lexeme_spec += f"<{tag}>"
+        lexeme_specs.add((traversal.pos, lexeme_spec))
+    for pos, lexeme_spec in sorted(lexeme_specs):
+        results = []
+        taggings = get_taggings(pos)
+        if not quiet:
+            taggings = tqdm(
+                taggings,
+                desc=f"Inflection patterns ({pos})",
+                total=len(taggings),
+            )
+        for tagging in taggings:
+            spec = lexeme_spec + "".join(f"<{tag}>" for tag in tagging)
+            for generated in generator.generate(spec):
+                infl_form = inflected(spec, generated.spec)
+                results.append(Result.from_spec(spec, infl_form, idx_to_int=idx_to_int))
+        for result in sorted(results, key=lambda r: r.spec):
+            yield result
 
 
 def main():
@@ -117,33 +119,8 @@ def main():
         analyzer = dwdsmor.analyzer(automaton)
         generator = dwdsmor.generator(automaton)
         for word in args.words:
-            lexeme_specs = set()
-            for traversal in analyzer.analyze(word):
-                traversal = traversal.reparse(visible_boundaries=boundary_tags)
-                lexeme_spec = traversal.analysis
-                for lexeme_tag in lexeme_tags:
-                    tag = getattr(traversal, lexeme_tag)
-                    if tag is not None:
-                        lexeme_spec += f"<{tag}>"
-                lexeme_specs.add((traversal.pos, lexeme_spec))
-            for pos, lexeme_spec in sorted(lexeme_specs):
-                local_results = []
-                taggings = get_taggings(pos)
-                if not args.quiet:
-                    taggings = tqdm(
-                        taggings,
-                        desc=f"Inflection patterns ({pos})",
-                        total=len(taggings),
-                    )
-                for tagging in taggings:
-                    spec = lexeme_spec + "".join(f"<{tag}>" for tag in tagging)
-                    for generated in generator.generate(spec):
-                        infl_form = inflected(spec, generated.spec)
-                        local_results.append(
-                            Result.from_spec(spec, infl_form, idx_to_int=idx_to_int)
-                        )
-                local_results = sorted(local_results, key=lambda r: r.spec)
-                results.extend(local_results)
+            for result in generate(analyzer, generator, word, args.quiet, idx_to_int):
+                results.append(result)
     else:
         analyzer = dwdsmor.analyzer(automaton)
         for word in args.words:

@@ -11,5 +11,3 @@ def test_automata():
                 for generated in generator.generate(analyzed.spec):
                     assert inflected == generated.surface
                     break
-        traversals = dwdsmor.traversals()
-        assert len(traversals.get("testen", [])) > 0

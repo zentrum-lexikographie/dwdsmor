@@ -8812,8 +8812,16 @@
         'bittrere',
       ),
       tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Fem><Acc><Sg><St>',
+        'bittrere',
+      ),
+      tuple(
         'bitter<ADJ><Comp><Attr/Subst><Fem><Acc><Sg><Wk>',
         'bitterere',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Fem><Acc><Sg><Wk>',
+        'bittrere',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Fem><Acc><Sg><Wk>',
@@ -8828,8 +8836,16 @@
         'bittrerer',
       ),
       tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Fem><Dat><Sg><St>',
+        'bittrerer',
+      ),
+      tuple(
         'bitter<ADJ><Comp><Attr/Subst><Fem><Dat><Sg><Wk>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Fem><Dat><Sg><Wk>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Fem><Dat><Sg><Wk>',
@@ -8844,6 +8860,10 @@
         'bittrerer',
       ),
       tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Fem><Gen><Sg><St>',
+        'bittrerer',
+      ),
+      tuple(
         'bitter<ADJ><Comp><Attr/Subst><Fem><Gen><Sg><Wk>',
         'bittereren',
       ),
@@ -8852,8 +8872,16 @@
         'bittreren',
       ),
       tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Fem><Gen><Sg><Wk>',
+        'bittreren',
+      ),
+      tuple(
         'bitter<ADJ><Comp><Attr/Subst><Fem><Nom><Sg><St>',
         'bitterere',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Fem><Nom><Sg><St>',
+        'bittrere',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Fem><Nom><Sg><St>',
@@ -8862,6 +8890,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Fem><Nom><Sg><Wk>',
         'bitterere',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Fem><Nom><Sg><Wk>',
+        'bittrere',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Fem><Nom><Sg><Wk>',
@@ -8870,6 +8902,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Acc><Sg><St>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Masc><Acc><Sg><St>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Acc><Sg><St>',
@@ -8878,6 +8914,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Acc><Sg><Wk>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Masc><Acc><Sg><Wk>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Acc><Sg><Wk>',
@@ -8892,6 +8932,10 @@
         'bittrerem',
       ),
       tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Masc><Dat><Sg><St>',
+        'bittrerem',
+      ),
+      tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Dat><Sg><Wk>',
         'bittereren',
       ),
@@ -8900,8 +8944,16 @@
         'bittreren',
       ),
       tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Masc><Dat><Sg><Wk>',
+        'bittreren',
+      ),
+      tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Gen><Sg><St>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Masc><Gen><Sg><St>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Gen><Sg><St>',
@@ -8910,6 +8962,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Gen><Sg><Wk>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Masc><Gen><Sg><Wk>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Gen><Sg><Wk>',
@@ -8924,8 +8980,16 @@
         'bittrerer',
       ),
       tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Masc><Nom><Sg><St>',
+        'bittrerer',
+      ),
+      tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Nom><Sg><Wk>',
         'bitterere',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Masc><Nom><Sg><Wk>',
+        'bittrere',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Masc><Nom><Sg><Wk>',
@@ -8940,8 +9004,16 @@
         'bittreres',
       ),
       tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Neut><Acc><Sg><St>',
+        'bittreres',
+      ),
+      tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Acc><Sg><Wk>',
         'bitterere',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Neut><Acc><Sg><Wk>',
+        'bittrere',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Acc><Sg><Wk>',
@@ -8956,6 +9028,10 @@
         'bittrerem',
       ),
       tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Neut><Dat><Sg><St>',
+        'bittrerem',
+      ),
+      tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Dat><Sg><Wk>',
         'bittereren',
       ),
@@ -8964,8 +9040,16 @@
         'bittreren',
       ),
       tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Neut><Dat><Sg><Wk>',
+        'bittreren',
+      ),
+      tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Gen><Sg><St>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Neut><Gen><Sg><St>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Gen><Sg><St>',
@@ -8974,6 +9058,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Gen><Sg><Wk>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Neut><Gen><Sg><Wk>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Gen><Sg><Wk>',
@@ -8982,6 +9070,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Nom><Sg><St>',
         'bittereres',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Neut><Nom><Sg><St>',
+        'bittreres',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Nom><Sg><St>',
@@ -8990,6 +9082,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Nom><Sg><Wk>',
         'bitterere',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><Neut><Nom><Sg><Wk>',
+        'bittrere',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><Neut><Nom><Sg><Wk>',
@@ -8998,6 +9094,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Acc><Pl><St>',
         'bitterere',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><UnmGend><Acc><Pl><St>',
+        'bittrere',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Acc><Pl><St>',
@@ -9006,6 +9106,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Acc><Pl><Wk>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><UnmGend><Acc><Pl><Wk>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Acc><Pl><Wk>',
@@ -9014,6 +9118,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Dat><Pl><St>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><UnmGend><Dat><Pl><St>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Dat><Pl><St>',
@@ -9022,6 +9130,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Dat><Pl><Wk>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><UnmGend><Dat><Pl><Wk>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Dat><Pl><Wk>',
@@ -9030,6 +9142,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Gen><Pl><St>',
         'bittererer',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><UnmGend><Gen><Pl><St>',
+        'bittrerer',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Gen><Pl><St>',
@@ -9038,6 +9154,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Gen><Pl><Wk>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><UnmGend><Gen><Pl><Wk>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Gen><Pl><Wk>',
@@ -9046,6 +9166,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Nom><Pl><St>',
         'bitterere',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><UnmGend><Nom><Pl><St>',
+        'bittrere',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Nom><Pl><St>',
@@ -9054,6 +9178,10 @@
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Nom><Pl><Wk>',
         'bittereren',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Attr/Subst><UnmGend><Nom><Pl><Wk>',
+        'bittreren',
       ),
       tuple(
         'bitter<ADJ><Comp><Attr/Subst><UnmGend><Nom><Pl><Wk>',
@@ -9062,6 +9190,10 @@
       tuple(
         'bitter<ADJ><Comp><Pred/Adv>',
         'bitterer',
+      ),
+      tuple(
+        'bitter<ADJ><Comp><Pred/Adv>',
+        'bittrer',
       ),
       tuple(
         'bitter<ADJ><Comp><Pred/Adv>',
@@ -16861,6 +16993,38 @@
       'NFem0, NFem_0_$e_n',
       'Hand',
       tuple(
+        'Hand<NN><Fem><Acc><Pl>',
+        'Hände',
+      ),
+      tuple(
+        'Hand<NN><Fem><Acc><Sg>',
+        'Hand',
+      ),
+      tuple(
+        'Hand<NN><Fem><Dat><Pl>',
+        'Händen',
+      ),
+      tuple(
+        'Hand<NN><Fem><Dat><Sg>',
+        'Hand',
+      ),
+      tuple(
+        'Hand<NN><Fem><Gen><Pl>',
+        'Hände',
+      ),
+      tuple(
+        'Hand<NN><Fem><Gen><Sg>',
+        'Hand',
+      ),
+      tuple(
+        'Hand<NN><Fem><Nom><Pl>',
+        'Hände',
+      ),
+      tuple(
+        'Hand<NN><Fem><Nom><Sg>',
+        'Hand',
+      ),
+      tuple(
         'Hand<PAR1><NN><Fem><Acc><Pl>',
         'Hände',
       ),
@@ -17187,6 +17351,10 @@
       tuple(
         'Milch<NN><Fem><Acc><Sg>',
         'Milch',
+      ),
+      tuple(
+        'Milch<NN><Fem><Dat><Pl>',
+        'Milchen',
       ),
       tuple(
         'Milch<NN><Fem><Dat><Pl>',
@@ -18175,55 +18343,43 @@
       'NMasc0_es, NMasc_es_$e_n',
       'Kopf',
       tuple(
-        'Kopf<PAR1><NN><Masc><Acc><Pl>',
+        'Kopf<NN><Masc><Acc><Pl>',
         'Köpfe',
       ),
       tuple(
-        'Kopf<PAR1><NN><Masc><Acc><Sg>',
+        'Kopf<NN><Masc><Acc><Sg>',
         'Kopf',
       ),
       tuple(
-        'Kopf<PAR1><NN><Masc><Dat><Pl>',
+        'Kopf<NN><Masc><Dat><Pl>',
         'Köpfen',
       ),
       tuple(
-        'Kopf<PAR1><NN><Masc><Dat><Sg>',
+        'Kopf<NN><Masc><Dat><Sg>',
         'Kopf',
       ),
       tuple(
-        'Kopf<PAR1><NN><Masc><Dat><Sg><Old>',
+        'Kopf<NN><Masc><Dat><Sg><Old>',
         'Kopfe',
       ),
       tuple(
-        'Kopf<PAR1><NN><Masc><Gen><Pl>',
+        'Kopf<NN><Masc><Gen><Pl>',
         'Köpfe',
       ),
       tuple(
-        'Kopf<PAR1><NN><Masc><Gen><Sg>',
+        'Kopf<NN><Masc><Gen><Sg>',
         'Kopfes',
       ),
       tuple(
-        'Kopf<PAR1><NN><Masc><Gen><Sg>',
+        'Kopf<NN><Masc><Gen><Sg>',
         'Kopfs',
       ),
       tuple(
-        'Kopf<PAR1><NN><Masc><Nom><Pl>',
+        'Kopf<NN><Masc><Nom><Pl>',
         'Köpfe',
       ),
       tuple(
-        'Kopf<PAR1><NN><Masc><Nom><Sg>',
-        'Kopf',
-      ),
-      tuple(
-        'Kopf<PAR2><NN><Masc><Gen><Sg>',
-        'Kopfes',
-      ),
-      tuple(
-        'Kopf<PAR2><NN><Masc><Gen><Sg>',
-        'Kopfs',
-      ),
-      tuple(
-        'Kopf<PAR2><NN><Masc><UnmCase><UnmNum>',
+        'Kopf<NN><Masc><Nom><Sg>',
         'Kopf',
       ),
     ),
@@ -18231,6 +18387,42 @@
       'NN',
       'NMasc0_s, NMasc_s_$_0',
       'Faden',
+      tuple(
+        'Faden<NN><Masc><Acc><Pl>',
+        'Fäden',
+      ),
+      tuple(
+        'Faden<NN><Masc><Acc><Sg>',
+        'Faden',
+      ),
+      tuple(
+        'Faden<NN><Masc><Dat><Pl>',
+        'Fäden',
+      ),
+      tuple(
+        'Faden<NN><Masc><Dat><Sg>',
+        'Faden',
+      ),
+      tuple(
+        'Faden<NN><Masc><Gen><Pl>',
+        'Fäden',
+      ),
+      tuple(
+        'Faden<NN><Masc><Gen><Sg>',
+        'Fadens',
+      ),
+      tuple(
+        'Faden<NN><Masc><Nom><Pl>',
+        'Fäden',
+      ),
+      tuple(
+        'Faden<NN><Masc><Nom><Sg>',
+        'Faden',
+      ),
+      tuple(
+        'Faden<NN><Masc><UnmCase><UnmNum>',
+        'Faden',
+      ),
       tuple(
         'Faden<PAR1><NN><Masc><Acc><Pl>',
         'Fäden',
@@ -19505,6 +19697,10 @@
       ),
       tuple(
         'Espresso<IDX1><NN><Masc><Acc><Pl>',
+        'Espresso',
+      ),
+      tuple(
+        'Espresso<IDX1><NN><Masc><Acc><Pl>',
         'Espressos',
       ),
       tuple(
@@ -19517,6 +19713,10 @@
       ),
       tuple(
         'Espresso<IDX1><NN><Masc><Dat><Pl>',
+        'Espresso',
+      ),
+      tuple(
+        'Espresso<IDX1><NN><Masc><Dat><Pl>',
         'Espressos',
       ),
       tuple(
@@ -19526,6 +19726,10 @@
       tuple(
         'Espresso<IDX1><NN><Masc><Gen><Pl>',
         'Espressi',
+      ),
+      tuple(
+        'Espresso<IDX1><NN><Masc><Gen><Pl>',
+        'Espresso',
       ),
       tuple(
         'Espresso<IDX1><NN><Masc><Gen><Pl>',
@@ -19542,6 +19746,10 @@
       tuple(
         'Espresso<IDX1><NN><Masc><Nom><Pl>',
         'Espressi',
+      ),
+      tuple(
+        'Espresso<IDX1><NN><Masc><Nom><Pl>',
+        'Espresso',
       ),
       tuple(
         'Espresso<IDX1><NN><Masc><Nom><Pl>',
@@ -22107,55 +22315,43 @@
       'NNeut0_es, NNeut_es_e_n',
       'Paar',
       tuple(
-        'Paar<PAR1><NN><Neut><Acc><Pl>',
+        'Paar<NN><Neut><Acc><Pl>',
         'Paare',
       ),
       tuple(
-        'Paar<PAR1><NN><Neut><Acc><Sg>',
+        'Paar<NN><Neut><Acc><Sg>',
         'Paar',
       ),
       tuple(
-        'Paar<PAR1><NN><Neut><Dat><Pl>',
+        'Paar<NN><Neut><Dat><Pl>',
         'Paaren',
       ),
       tuple(
-        'Paar<PAR1><NN><Neut><Dat><Sg>',
+        'Paar<NN><Neut><Dat><Sg>',
         'Paar',
       ),
       tuple(
-        'Paar<PAR1><NN><Neut><Dat><Sg><Old>',
+        'Paar<NN><Neut><Dat><Sg><Old>',
         'Paare',
       ),
       tuple(
-        'Paar<PAR1><NN><Neut><Gen><Pl>',
+        'Paar<NN><Neut><Gen><Pl>',
         'Paare',
       ),
       tuple(
-        'Paar<PAR1><NN><Neut><Gen><Sg>',
+        'Paar<NN><Neut><Gen><Sg>',
         'Paares',
       ),
       tuple(
-        'Paar<PAR1><NN><Neut><Gen><Sg>',
+        'Paar<NN><Neut><Gen><Sg>',
         'Paars',
       ),
       tuple(
-        'Paar<PAR1><NN><Neut><Nom><Pl>',
+        'Paar<NN><Neut><Nom><Pl>',
         'Paare',
       ),
       tuple(
-        'Paar<PAR1><NN><Neut><Nom><Sg>',
-        'Paar',
-      ),
-      tuple(
-        'Paar<PAR2><NN><Neut><Gen><Sg>',
-        'Paares',
-      ),
-      tuple(
-        'Paar<PAR2><NN><Neut><Gen><Sg>',
-        'Paars',
-      ),
-      tuple(
-        'Paar<PAR2><NN><Neut><UnmCase><UnmNum>',
+        'Paar<NN><Neut><Nom><Sg>',
         'Paar',
       ),
     ),
@@ -22164,71 +22360,59 @@
       'NNeut0_es, NNeut_es_e_n, NNeutNonSt_es_er_n',
       'Stück',
       tuple(
-        'Stück<PAR1><NN><Neut><Acc><Pl>',
+        'Stück<NN><Neut><Acc><Pl>',
         'Stücke',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Acc><Pl><NonSt>',
+        'Stück<NN><Neut><Acc><Pl><NonSt>',
         'Stücker',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Acc><Sg>',
+        'Stück<NN><Neut><Acc><Sg>',
         'Stück',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Dat><Pl>',
+        'Stück<NN><Neut><Dat><Pl>',
         'Stücken',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Dat><Pl><NonSt>',
+        'Stück<NN><Neut><Dat><Pl><NonSt>',
         'Stückern',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Dat><Sg>',
+        'Stück<NN><Neut><Dat><Sg>',
         'Stück',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Dat><Sg><Old>',
+        'Stück<NN><Neut><Dat><Sg><Old>',
         'Stücke',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Gen><Pl>',
+        'Stück<NN><Neut><Gen><Pl>',
         'Stücke',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Gen><Pl><NonSt>',
+        'Stück<NN><Neut><Gen><Pl><NonSt>',
         'Stücker',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Gen><Sg>',
+        'Stück<NN><Neut><Gen><Sg>',
         'Stückes',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Gen><Sg>',
+        'Stück<NN><Neut><Gen><Sg>',
         'Stücks',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Nom><Pl>',
+        'Stück<NN><Neut><Nom><Pl>',
         'Stücke',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Nom><Pl><NonSt>',
+        'Stück<NN><Neut><Nom><Pl><NonSt>',
         'Stücker',
       ),
       tuple(
-        'Stück<PAR1><NN><Neut><Nom><Sg>',
-        'Stück',
-      ),
-      tuple(
-        'Stück<PAR2><NN><Neut><Gen><Sg>',
-        'Stückes',
-      ),
-      tuple(
-        'Stück<PAR2><NN><Neut><Gen><Sg>',
-        'Stücks',
-      ),
-      tuple(
-        'Stück<PAR2><NN><Neut><UnmCase><UnmNum>',
+        'Stück<NN><Neut><Nom><Sg>',
         'Stück',
       ),
     ),
@@ -22236,6 +22420,54 @@
       'NN',
       'NNeut0_s, NNeut_s_s_0',
       'Kilo',
+      tuple(
+        'Kilo<NN><Neut><Acc><Pl>',
+        'Kilo',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Acc><Pl>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Acc><Sg>',
+        'Kilo',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Dat><Pl>',
+        'Kilo',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Dat><Pl>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Dat><Sg>',
+        'Kilo',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Gen><Pl>',
+        'Kilo',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Gen><Pl>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Gen><Sg>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Nom><Pl>',
+        'Kilo',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Nom><Pl>',
+        'Kilos',
+      ),
+      tuple(
+        'Kilo<NN><Neut><Nom><Sg>',
+        'Kilo',
+      ),
       tuple(
         'Kilo<PAR1><NN><Neut><Acc><Pl>',
         'Kilos',
@@ -22994,8 +23226,40 @@
         'Flösse',
       ),
       tuple(
+        '<CH>Floß<NN><Neut><Acc><Pl>',
+        'Flösse',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Acc><Pl>',
+        'Flösse',
+      ),
+      tuple(
         '<CH>Floß<NN><Neut><Acc><Sg>',
         'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Acc><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Acc><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Acc><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Acc><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Dat><Pl>',
+        'Flössen',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Dat><Pl>',
+        'Flössen',
       ),
       tuple(
         '<CH>Floß<NN><Neut><Dat><Pl>',
@@ -23006,8 +23270,44 @@
         'Floss',
       ),
       tuple(
+        '<CH>Floß<NN><Neut><Dat><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Dat><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Dat><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Dat><Sg>',
+        'Floss',
+      ),
+      tuple(
         '<CH>Floß<NN><Neut><Dat><Sg><Old>',
         'Flosse',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Dat><Sg><Old>',
+        'Flosse',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Dat><Sg><Old>',
+        'Flosse',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Dat><Sg><Old>',
+        'Flosse',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Gen><Pl>',
+        'Flösse',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Gen><Pl>',
+        'Flösse',
       ),
       tuple(
         '<CH>Floß<NN><Neut><Gen><Pl>',
@@ -23018,8 +23318,44 @@
         'Flosses',
       ),
       tuple(
+        '<CH>Floß<NN><Neut><Gen><Sg>',
+        'Flosses',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Gen><Sg>',
+        'Flosses',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Gen><Sg>',
+        'Flosses',
+      ),
+      tuple(
         '<CH>Floß<NN><Neut><Nom><Pl>',
         'Flösse',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Nom><Pl>',
+        'Flösse',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Nom><Pl>',
+        'Flösse',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Nom><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Nom><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Nom><Sg>',
+        'Floss',
+      ),
+      tuple(
+        '<CH>Floß<NN><Neut><Nom><Sg>',
+        'Floss',
       ),
       tuple(
         '<CH>Floß<NN><Neut><Nom><Sg>',
@@ -25276,6 +25612,10 @@
       ),
       tuple(
         'unser<~>e<PAR2><POSS><Subst><Neut><Acc><Sg><St>',
+        'unsers',
+      ),
+      tuple(
+        'unser<~>e<PAR2><POSS><Subst><Neut><Acc><Sg><St>',
         'unsres',
       ),
       tuple(
@@ -25337,6 +25677,10 @@
       tuple(
         'unser<~>e<PAR2><POSS><Subst><Neut><Nom><Sg><St>',
         'unseres',
+      ),
+      tuple(
+        'unser<~>e<PAR2><POSS><Subst><Neut><Nom><Sg><St>',
+        'unsers',
       ),
       tuple(
         'unser<~>e<PAR2><POSS><Subst><Neut><Nom><Sg><St>',
@@ -25791,6 +26135,26 @@
       ),
       tuple(
         'sie<IDX2><PPRO><Pers><3><UnmGend><Nom><Pl>',
+        'sie',
+      ),
+      tuple(
+        'sie<PPRO><Pers><3><UnmGend><Acc><Pl>',
+        'sie',
+      ),
+      tuple(
+        'sie<PPRO><Pers><3><UnmGend><Dat><Pl>',
+        'ihnen',
+      ),
+      tuple(
+        'sie<PPRO><Pers><3><UnmGend><Gen><Pl>',
+        'ihrer',
+      ),
+      tuple(
+        'sie<PPRO><Pers><3><UnmGend><Gen><Pl><Old>',
+        'ihr',
+      ),
+      tuple(
+        'sie<PPRO><Pers><3><UnmGend><Nom><Pl>',
         'sie',
       ),
     ),
@@ -26291,6 +26655,10 @@
         'schwammst',
       ),
       tuple(
+        'schwimm<~>en<V><2><Sg><Past><Ind>',
+        'schwammst',
+      ),
+      tuple(
         'schwimm<~>en<V><2><Sg><Past><Subj>',
         'schwämmest',
       ),
@@ -26430,6 +26798,10 @@
       tuple(
         'geh<~>en<V><2><Pl><Pres><Subj>',
         'gehet',
+      ),
+      tuple(
+        'geh<~>en<V><2><Sg><Past><Ind>',
+        'gingst',
       ),
       tuple(
         'geh<~>en<V><2><Sg><Past><Ind>',
@@ -27082,6 +27454,10 @@
         'sahst',
       ),
       tuple(
+        'seh<~>en<V><2><Sg><Past><Ind>',
+        'sahst',
+      ),
+      tuple(
         'seh<~>en<V><2><Sg><Past><Subj>',
         'sähest',
       ),
@@ -27466,6 +27842,10 @@
       tuple(
         'lauf<~>en<V><2><Pl><Pres><Subj>',
         'laufet',
+      ),
+      tuple(
+        'lauf<~>en<V><2><Sg><Past><Ind>',
+        'liefst',
       ),
       tuple(
         'lauf<~>en<V><2><Sg><Past><Ind>',
@@ -27947,8 +28327,100 @@
         'weiss',
       ),
       tuple(
+        '<CH>wiss<~>en<V><1><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><1><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><1><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><1><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><1><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><1><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><1><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><1><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
         '<CH>wiss<~>en<V><2><Sg><Pres><Ind>',
         'weisst',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><2><Sg><Pres><Ind>',
+        'weisst',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><2><Sg><Pres><Ind>',
+        'weisst',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><2><Sg><Pres><Ind>',
+        'weisst',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><2><Sg><Pres><Ind>',
+        'weisst',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><2><Sg><Pres><Ind>',
+        'weisst',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><2><Sg><Pres><Ind>',
+        'weisst',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><2><Sg><Pres><Ind>',
+        'weisst',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><3><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><3><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><3><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><3><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><3><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><3><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><3><Sg><Pres><Ind>',
+        'weiss',
+      ),
+      tuple(
+        '<CH>wiss<~>en<V><3><Sg><Pres><Ind>',
+        'weiss',
       ),
       tuple(
         '<CH>wiss<~>en<V><3><Sg><Pres><Ind>',
@@ -28956,6 +29428,10 @@
       tuple(
         'sei<~>n<IDX3><V><2><Pl><Pres><Subj>',
         'seiet',
+      ),
+      tuple(
+        'sei<~>n<IDX3><V><2><Sg><Past><Ind>',
+        'warst',
       ),
       tuple(
         'sei<~>n<IDX3><V><2><Sg><Past><Ind>',
@@ -30412,11 +30888,107 @@
         'hiessen',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Subj>',
         'hiessen',
       ),
       tuple(
         '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Pl><Pres><Subj>',
         'heissen',
       ),
       tuple(
@@ -30428,8 +31000,92 @@
         'hiess',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Subj>',
         'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind>',
+        'heisse',
       ),
       tuple(
         '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind>',
@@ -30440,6 +31096,70 @@
         'heiss',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><1><Sg><Pres><Subj>',
         'heisse',
       ),
@@ -30448,7 +31168,79 @@
         'hiesst',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind><Old>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind><Old>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind><Old>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind><Old>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind><Old>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind><Old>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Ind><Old>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Subj>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Subj>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Subj>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Subj>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Subj>',
+        'hiesset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Past><Subj>',
         'hiesset',
       ),
       tuple(
@@ -30460,8 +31252,84 @@
         'heisst',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Subj>',
         'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiessest',
       ),
       tuple(
         '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
@@ -30472,6 +31340,58 @@
         'hiesst',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Ind>',
+        'hiesst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Subj>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Subj>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Subj>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Subj>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Subj>',
+        'hiessest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Subj>',
+        'hiessest',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><2><Sg><Past><Subj>',
         'hiessest',
       ),
@@ -30480,7 +31400,83 @@
         'heisst',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><2><Sg><Pres><Subj>',
         'heissest',
       ),
       tuple(
@@ -30492,11 +31488,107 @@
         'hiessen',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Ind>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Subj>',
+        'hiessen',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><3><Pl><Past><Subj>',
         'hiessen',
       ),
       tuple(
         '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Pl><Pres><Subj>',
         'heissen',
       ),
       tuple(
@@ -30508,6 +31600,66 @@
         'hiess',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Ind>',
+        'hiess',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Subj>',
+        'hiesse',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><3><Sg><Past><Subj>',
         'hiesse',
       ),
@@ -30516,8 +31668,88 @@
         'heisst',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Subj>',
         'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Pl>',
+        'heisst',
       ),
       tuple(
         '<CH>heiß<~>en<IDX1><V><Imp><Pl>',
@@ -30529,7 +31761,83 @@
       ),
       tuple(
         '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
         'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Inf><NonCl>',
+        'heissen',
       ),
       tuple(
         '<CH>heiß<~>en<IDX1><V><Inf><NonCl>',
@@ -30540,11 +31848,119 @@
         'geheissen',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Perf><haben>',
+        'geheissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Perf><haben>',
+        'geheissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Perf><haben>',
+        'geheissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Perf><haben>',
+        'geheissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Perf><haben>',
+        'geheissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Perf><haben>',
+        'geheissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Perf><haben>',
+        'geheissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX1><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX1><V><Part><Pres>',
         'heissend',
       ),
       tuple(
         '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Past><Subj>',
         'heissten',
       ),
       tuple(
@@ -30556,11 +31972,115 @@
         'heissen',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX2><V><1><Pl><Pres><Subj>',
         'heissen',
       ),
       tuple(
         '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Past><Subj>',
         'heisste',
       ),
       tuple(
@@ -30572,6 +32092,70 @@
         'heisse',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
+        'heiss',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Ind><NonSt>',
         'heiss',
       ),
@@ -30580,7 +32164,87 @@
         'heisse',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><1><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Ind>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Ind>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Ind>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Ind>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Ind>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Ind>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Ind>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Ind>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Subj>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Subj>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Subj>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Subj>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Subj>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Subj>',
+        'heisstet',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Past><Subj>',
         'heisstet',
       ),
       tuple(
@@ -30592,11 +32256,119 @@
         'heisst',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Subj>',
+        'heisset',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX2><V><2><Pl><Pres><Subj>',
         'heisset',
       ),
       tuple(
         '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Ind>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Ind>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Ind>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Ind>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Ind>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Ind>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Ind>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Ind>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Subj>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Subj>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Subj>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Subj>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Subj>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Subj>',
+        'heisstest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Past><Subj>',
         'heisstest',
       ),
       tuple(
@@ -30608,7 +32380,83 @@
         'heisst',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Ind><Old>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Subj>',
+        'heissest',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><2><Sg><Pres><Subj>',
         'heissest',
       ),
       tuple(
@@ -30620,11 +32468,115 @@
         'heissten',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Ind>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Subj>',
+        'heissten',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX2><V><3><Pl><Past><Subj>',
         'heissten',
       ),
       tuple(
         '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Ind>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Subj>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Pl><Pres><Subj>',
         'heissen',
       ),
       tuple(
@@ -30636,6 +32588,62 @@
         'heisste',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Ind>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Subj>',
+        'heisste',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX2><V><3><Sg><Past><Subj>',
         'heisste',
       ),
@@ -30644,8 +32652,88 @@
         'heisst',
       ),
       tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Ind>',
+        'heisst',
+      ),
+      tuple(
         '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Subj>',
         'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><3><Sg><Pres><Subj>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Pl>',
+        'heisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Pl>',
+        'heisst',
       ),
       tuple(
         '<CH>heiß<~>en<IDX2><V><Imp><Pl>',
@@ -30657,7 +32745,83 @@
       ),
       tuple(
         '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heiss',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
         'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Imp><Sg>',
+        'heisse',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Inf><NonCl>',
+        'heissen',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Inf><NonCl>',
+        'heissen',
       ),
       tuple(
         '<CH>heiß<~>en<IDX2><V><Inf><NonCl>',
@@ -30666,6 +32830,58 @@
       tuple(
         '<CH>heiß<~>en<IDX2><V><Part><Perf><haben>',
         'geheisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Perf><haben>',
+        'geheisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Perf><haben>',
+        'geheisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Perf><haben>',
+        'geheisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Perf><haben>',
+        'geheisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Perf><haben>',
+        'geheisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Perf><haben>',
+        'geheisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Perf><haben>',
+        'geheisst',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Pres>',
+        'heissend',
+      ),
+      tuple(
+        '<CH>heiß<~>en<IDX2><V><Part><Pres>',
+        'heissend',
       ),
       tuple(
         '<CH>heiß<~>en<IDX2><V><Part><Pres>',

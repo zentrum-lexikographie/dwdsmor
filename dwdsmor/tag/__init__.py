@@ -1,3 +1,5 @@
+from itertools import product
+
 stat_tags = ("weights",)
 lexeme_tags = ("lidx", "pidx", "pos")
 inflection_tags = (
@@ -198,3 +200,21 @@ inflection_tag_seqs = {
         ("person", "number", "tense", "mood"),
     ),
 }
+
+
+def get_taggings(pos, with_info=False):
+    tag_seqs = inflection_tag_seqs.get(pos) or inflection_tag_seqs.get("")
+    if with_info:
+        tag_seqs(ts + info_tags for ts in tag_seqs)
+
+    taggings = set()
+    for tag_seq in tag_seqs:
+        tagging_values = []
+        for tag_type in tag_seq:
+            tag_type_values = (
+                tag_values.get(pos, dict()).get(tag_type) or tag_values[""][tag_type]
+            )
+            tagging_values.append(tag_type_values | {None})
+        for tagging in product(*tagging_values):
+            taggings.add(tuple((t for t in tagging if t is not None)))
+    return taggings

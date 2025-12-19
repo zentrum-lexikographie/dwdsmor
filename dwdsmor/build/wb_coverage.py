@@ -12,7 +12,9 @@ from xml.etree.ElementTree import parse
 from tabulate import tabulate
 from tqdm import tqdm
 
-from .. import traversals
+from .traversal import traverse
+from .. import default_automata_dir
+from ..traversal import Traversal
 from ..log import configure_logging
 
 
@@ -170,7 +172,10 @@ if __name__ == "__main__":
 
     assert len(wb_xml_files) > 0, f"No lexicon articles found in {wb_dir}"
 
-    index_traversals = traversals()
+    traversals = defaultdict(list)
+    for _surface, spec in traverse(default_automata_dir / "index.a"):
+        t = Traversal.parse(spec)
+        traversals[t.analysis].append(t)
 
     aggregated = not args.debug
     report = csv.writer(sys.stdout) if not aggregated else None
@@ -184,7 +189,7 @@ if __name__ == "__main__":
         for entry in parse_entries(wb_dir, wb_xml_file):
             pos_candidates = pos_map[entry.pos]
             generated = False
-            for g_traversal in index_traversals.get(entry.lemma, []):
+            for g_traversal in traversals.get(entry.lemma, []):
                 if g_traversal.lidx == entry.lidx and g_traversal.pos in pos_candidates:
                     generated = True
                     break

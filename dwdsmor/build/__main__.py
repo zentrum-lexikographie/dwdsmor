@@ -1,20 +1,15 @@
 #!/usr/bin/env python
 
 import argparse
-import csv
 import logging
-import lzma
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from shutil import rmtree
 
+from .util import is_current
 from .. import automaton_types
 from ..log import configure_logging
-from ..tag import all_tags
-from ..traversal import Traversal
-from ..util import inflected
-from .benchmark import coverage_headers, compute_coverage
 
 logger = logging.getLogger("dwdsmor")
 
@@ -100,14 +95,6 @@ def saxon_with_initial_template(xsl, *args, **kwargs):
         ],
         **kwargs,
     )
-
-
-def is_current(target, sources):
-    "Check whether a target file is current, given the mtime of its sources."
-    if not target.exists():
-        return False
-    target_m_time = target.stat().st_mtime
-    return not any((target_m_time < source.stat().st_mtime for source in sources))
 
 
 def has_sources(edition_dir):
@@ -225,64 +212,7 @@ def build_automaton(edition_dir, automata_dir, automaton_type, force=False):
     return True
 
 
-def build_metrics(automata_dir, force=False, quiet=False):
-    automaton_ca = automata_dir / "lemma.ca"
-    metrics_csv = automata_dir / "lemma.metrics.csv"
-    if not force and is_current(metrics_csv, (automaton_ca,)):
-        logger.debug("Skip measuring UD/de-hdt coverage for 'lemma'")
-        return False
-    logger.info("Measuring UD/de-hdt coverage of 'lemma'")
-    coverage = compute_coverage(quiet=quiet)
-    with metrics_csv.open("wt", encoding="utf-8") as metrics_f:
-        csv.writer(metrics_f).writerows((coverage_headers, *coverage))
-    return True
-
-
 traversal_automaton_types = ("index",)
-
-
-def build_traversals(edition_dir, automata_dir, automaton_type, force=False):
-    automaton_a = automata_dir / f"{automaton_type}.a"
-    automaton_traversal = automata_dir / f"{automaton_type}.csv.xz"
-
-    if not force and is_current(automaton_traversal, [automaton_a]):
-        logger.debug("Skip building full traversal of '%s'", automaton_type)
-        return False
-
-    logger.info("Building full traversal of '%s'", automaton_type)
-    fst_generate = subprocess.Popen(
-        ["fst-generate", "-b", automaton_a.as_posix()],
-        stdout=subprocess.PIPE,
-    )
-    with subprocess.Popen(
-        ["sort", "-u"],
-        encoding="utf-8",
-        stdin=fst_generate.stdout,
-        stdout=subprocess.PIPE,
-    ) as traversals, lzma.open(automaton_traversal, "wt") as traversals_csv:
-        table = csv.writer(traversals_csv)
-        table.writerow(
-            [
-                "spec",
-                "analysis",
-                "surface",
-                "inflected",
-                *all_tags,
-            ]
-        )
-        for traversal_str in traversals.stdout:
-            surface, spec = traversal_str.split()
-            traversal = Traversal.parse(spec)
-            table.writerow(
-                [
-                    spec,
-                    traversal.analysis,
-                    surface,
-                    inflected(spec, surface),
-                    *(getattr(traversal, tt) for tt in all_tags),
-                ]
-            )
-    return True
 
 
 arg_parser = argparse.ArgumentParser(description="Build DWDSmor.")
@@ -303,15 +233,6 @@ arg_parser.add_argument(
     choices=automaton_types,
     help="automaton type to build (default: all)",
     action="append",
-)
-arg_parser.add_argument(
-    "-T",
-    "--with-traversal",
-    help="build full automaton traversal (if applicable)",
-    action="store_true",
-)
-arg_parser.add_argument(
-    "-M", "--with-metrics", help="measure UD/de-hdt coverage", action="store_true"
 )
 arg_parser.add_argument(
     "-f",
@@ -346,16 +267,7 @@ for automaton_type in build_automaton_types:
         build_automaton(edition_dir, automata_dir, automaton_type, force=args.force)
         or edition_built
     )
-    if automaton_type in traversal_automaton_types and args.with_traversal:
-        edition_built = (
-            build_traversals(
-                edition_dir, automata_dir, automaton_type, force=args.force
-            )
-            or edition_built
-        )
 if edition_built:
-    if args.with_metrics:
-        build_metrics(automata_dir, force=args.force, quiet=args.quiet)
     (automata_dir / "BUILT").write_text(build_time)
     (automata_dir / "EDITION").write_text(edition)
     (automata_dir / "GIT_REV").write_text(project_git_rev)

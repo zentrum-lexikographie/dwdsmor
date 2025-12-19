@@ -173,6 +173,21 @@ $ tools/analysis.py -h
 $ tools/paradigm.py -h
 ```
 
+### Installing the DWDS Edition
+
+Should you have been granted access to the DWDS edition, please add
+your private access token to `$HOME/.netrc`:
+
+```plaintext
+machine gitup.uni-potsdam.de login gitlab-ci-token password glpat-…
+```
+
+Then install the edition:
+
+```plaintext
+pip install dwdsmor-dwds --index-url https://gitup.uni-potsdam.de/api/v4/projects/21585/packages/pypi/simple
+```
+
 ## Development
 
 DWDSmor is in active development. In its current stage, it supports all
