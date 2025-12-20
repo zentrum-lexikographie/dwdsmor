@@ -48,9 +48,6 @@ dev = [
     "twine",
     "Jinja2"
 ]
-dwds = [
-    "dwdswb-dataset @ git+https://gitup.uni-potsdam.de/zentrum-lexikographie/dwdswb-dataset.git"
-]
 
 [project.scripts]
 dwdsmor = "dwdsmor.cli:main"
