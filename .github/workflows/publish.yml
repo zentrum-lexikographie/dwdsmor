@@ -3,9 +3,6 @@ on:
   release:
     types:
       - released
-  push:
-    branches:
-      - main
 jobs:
   build:
     name: Build
@@ -35,21 +32,21 @@ jobs:
       with:
         name: python-package-distribution
         path: dist/
-  # publish:
-  #   name: Publish
-  #   needs:
-  #     - build
-  #   runs-on: ubuntu-latest
-  #   environment:
-  #     name: pypi
-  #     url: https://pypi.org/p/dwdsmor
-  #   permissions:
-  #     id-token: write
-  #   steps:
-  #   - name: Download all the dists
-  #     uses: actions/download-artifact@v4
-  #     with:
-  #       name: python-package-distribution
-  #       path: dist/
-  #   - name: Publish distribution to PyPI
-  #     uses: pypa/gh-action-pypi-publish@release/v1
+  publish:
+    name: Publish
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/dwdsmor
+    permissions:
+      id-token: write
+    steps:
+    - name: Download all the dists
+      uses: actions/download-artifact@v4
+      with:
+        name: python-package-distribution
+        path: dist/
+    - name: Publish distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
