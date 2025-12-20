@@ -1,5 +1,4 @@
 name: Publish
-
 on:
   release:
     types:
@@ -7,25 +6,30 @@ on:
   push:
     branches:
       - main
-
 jobs:
-  # test:
-  #   name: Test
-  #   uses: ./.github/workflows/test.yml
   build:
     name: Build
-    # needs:
-    #   - test
     runs-on: ubuntu-latest
     steps:
     - name: Check out sources
       uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-    - name: Install PyPA build
-      run: pip install build --user
+    - name: Install OS dependencies
+      run: |
+        sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+            python3\
+            default-jdk\
+            libsaxonhe-java\
+            sfst
+    - name: Install Python dependencies
+      run: pip install -U pip setuptools && pip install -r requirements.dev.txt
+    - name: Lint sources
+      run: pre-commit run --all-files
+    - name: Build
+      run: python -m dwdsmor.build
+    - name: Run tests
+      run: pytest --snapshot-warn-unused
     - name: Build distribution
-      run: python3 -m build
+      run: python -m build
     - name: Store the distribution packages
       uses: actions/upload-artifact@v4
       with:

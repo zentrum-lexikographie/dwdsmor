@@ -6,7 +6,8 @@ on:
   push:
     branches:
       - main
-  workflow_call:
+    tags-ignore:
+      - v*
 jobs:
   test:
     runs-on: ubuntu-latest

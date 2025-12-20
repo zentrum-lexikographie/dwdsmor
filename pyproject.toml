@@ -80,7 +80,7 @@ readme = {file = ["README.md"], content-type = "text/markdown"}
 version = {attr = "dwdsmor.version.__version__"}
 
 [tool.setuptools.packages.find]
-exclude = ["test"]
+exclude = ["lexicon", "test"]
 
 [tool.setuptools.package-data]
 "dwdsmor.automata" = ["*.a", "*.ca", "*.csv.xz", "BUILT", "EDITION", "GIT_REV"]
