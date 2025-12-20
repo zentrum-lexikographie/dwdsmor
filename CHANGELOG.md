@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.2](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.12.1...v0.12.2) (2025-12-20)
+
+
+### Bug Fixes
+
+* make dependency on spaCy explicit in installation instructions ([dc9e7fa](https://github.com/zentrum-lexikographie/dwdsmor/commit/dc9e7fa756ff7cd76282073da1b7eccc851399f4))
+
 ## [0.12.1](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.12.0...v0.12.1) (2025-12-20)
 
 
