@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.1](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.12.0...v0.12.1) (2025-12-20)
+
+
+### Bug Fixes
+
+* move direct dependency on dwdswb-dataset out of pyproject.toml ([c83a2bf](https://github.com/zentrum-lexikographie/dwdsmor/commit/c83a2bfdbd7cbc16e0a6ea71bc5bc82484b68724))
+
 ## [0.12.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.11.0...v0.12.0) (2025-12-20)
 
 
