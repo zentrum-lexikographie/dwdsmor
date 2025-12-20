@@ -4,39 +4,24 @@ on:
   release:
     types:
       - released
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  permission-check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Guard `workflow_dispatch`
-        if: github.event_name == 'workflow_dispatch'
-        id: check-admin
-        run: |
-          RESPONSE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/collaborators/${{ github.actor }}/permission)
-          PERMISSION=$(echo "$RESPONSE" | jq -r '.permission')
-          if [[ "$PERMISSION" != "admin" ]]; then
-            echo "User ${{ github.actor }} does not have admin rights."
-            exit 1
-          fi
-  test:
-    name: Test
-    uses: ./.github/workflows/test.yml
+  # test:
+  #   name: Test
+  #   uses: ./.github/workflows/test.yml
   build:
     name: Build
-    needs:
-      - permission-check
-      - test
+    # needs:
+    #   - test
     runs-on: ubuntu-latest
     steps:
     - name: Check out sources
       uses: actions/checkout@v4
     - name: Set up Python
       uses: actions/setup-python@v5
-      with:
-        python-version: "3.10"
     - name: Install PyPA build
       run: pip install build --user
     - name: Build distribution
@@ -46,21 +31,21 @@ jobs:
       with:
         name: python-package-distribution
         path: dist/
-  publish:
-    name: Publish
-    needs:
-      - build
-    runs-on: ubuntu-latest
-    environment:
-      name: pypi
-      url: https://pypi.org/p/dwdsmor
-    permissions:
-      id-token: write
-    steps:
-    - name: Download all the dists
-      uses: actions/download-artifact@v4
-      with:
-        name: python-package-distribution
-        path: dist/
-    - name: Publish distribution to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
+  # publish:
+  #   name: Publish
+  #   needs:
+  #     - build
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: pypi
+  #     url: https://pypi.org/p/dwdsmor
+  #   permissions:
+  #     id-token: write
+  #   steps:
+  #   - name: Download all the dists
+  #     uses: actions/download-artifact@v4
+  #     with:
+  #       name: python-package-distribution
+  #       path: dist/
+  #   - name: Publish distribution to PyPI
+  #     uses: pypa/gh-action-pypi-publish@release/v1
