@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.12.2...v0.13.0) (2025-12-21)
+
+
+### Features
+
+* use corpus frequency as tie-breaker for ambiguous lemmatization ([a82ab01](https://github.com/zentrum-lexikographie/dwdsmor/commit/a82ab0120327343868570a77b7477233585fdeb8))
+
 ## [0.12.2](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.12.1...v0.12.2) (2025-12-20)
 
 
