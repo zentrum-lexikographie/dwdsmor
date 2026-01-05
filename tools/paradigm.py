@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms with DWDSmor
-# Andreas Nolda 2025-12-18
+# Andreas Nolda 2026-01-05
 
 import argparse
 import csv
@@ -21,7 +21,7 @@ from analysis import analyze_word, format_path, generate_words, seg_lemma
 
 progname = Path(__file__).name
 
-version = 19.0
+version = 19.1
 
 
 IDX = range(1, 9)
@@ -2173,8 +2173,8 @@ def main():
                             help="output CSV table")
         parser.add_argument("-C", "--force-color", action="store_true",
                             help="preserve color and formatting when piping output")
-        parser.add_argument("-d", "--automata-location",
-                            help=f"automata location (default: {format_path(dwdsmor.automata_dir)})")
+        parser.add_argument("-d", "--automata-location", default=dwdsmor.default_automata_dir,
+                            help=f"automata location (default: {format_path(dwdsmor.default_automata_dir)})")
         parser.add_argument("-e", "--empty", action="store_true",
                             help="show empty columns or values")
         parser.add_argument("-H", "--no-header", action="store_false",
@@ -2211,11 +2211,8 @@ def main():
                             help="output YAML document")
         args = parser.parse_args()
 
-        if args.automata_location:
-            dwdsmor.automata_dir = Path(args.automata_location)
-
-        analyzer = dwdsmor.analyzer(args.automaton_type)
-        generator = dwdsmor.generator(args.automaton_type)
+        analyzer = dwdsmor.analyzer(args.automaton_type, Path(args.automata_location))
+        generator = dwdsmor.generator(args.automaton_type, Path(args.automata_location))
 
         if args.json:
             output_format = "json"
