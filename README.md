@@ -215,11 +215,11 @@ written German.
   DWDSmor automata are compiled using the SFST C++ library and toolbox
   for finite-state transducers (FSTs).
 
-On a Debian-based distribution, the following command install the
+On a Debian-based distribution, the following command installs the
 required software:
 
 ```plaintext
-apt-get install python3 default-jdk libsaxonhe-java sfst
+sudo apt install python3 default-jdk libsaxonhe-java sfst
 ```
 
 ### Project setup
