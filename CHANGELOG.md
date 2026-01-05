@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.14.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.13.0...v0.14.0) (2026-01-05)
+
+
+### Features
+
+* make Python tools available as dwdsmor-analysis and dwdsmor-paradigm ([ef26841](https://github.com/zentrum-lexikographie/dwdsmor/commit/ef2684141103a35ff340ad0c8042e9bf0be02ac3))
+
+
+### Documentation
+
+* fix typo in README.md and substitute "apt" for "apt-get" ([164b5b3](https://github.com/zentrum-lexikographie/dwdsmor/commit/164b5b3558e9b0951d3e7f88b7827df88deeeb85))
+
 ## [0.13.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.12.2...v0.13.0) (2025-12-21)
 
 
