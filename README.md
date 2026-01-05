@@ -161,17 +161,37 @@ bildetet  	bilden  	bild<~>en<+V><2><Pl><Past><Ind>                      	V   	 
 ```
 
 More sophisticated tools for analysis and paradigm generation with the
-DWDSmor Python library are provided by the Python scripts `analysis.py`
-and `paradigm.py` in the `tools/` subdirectory. For their usage, cf. the
-output of the following commands:
+DWDSmor Python library are provided by the Python commands `dwdsmor-analysis`
+and `dwdsmor-paradigm`:
 
 ```plaintext
-$ tools/analysis.py -h
+$ echo gebildet | dwdsmor-analysis
+Wordform  Lemma     POS  Auxiliary  Degree  Nonfinite  Function  Tense
+gebildet  bilden    V    haben              Part                 Perf
+gebildet  gebildet  ADJ             Pos                Pred/Adv
 ```
 
 ```plaintext
-$ tools/paradigm.py -h
+$ dwdsmor-paradigm gebildet
+Lemma     POS  Degree  Gender   Case  Number  Inflection  Function    Paradigm Forms
+gebildet  ADJ  Pos                                        Pred/Adv    gebildet
+gebildet  ADJ  Pos     Masc     Nom   Sg      St          Attr/Subst  gebildeter
+gebildet  ADJ  Pos     Masc     Nom   Sg      Wk          Attr/Subst  gebildete
+[…]
+gebildet  ADJ  Pos     Neut     Nom   Sg      St          Attr/Subst  gebildetes
+gebildet  ADJ  Pos     Neut     Nom   Sg      Wk          Attr/Subst  gebildete
+[…]
+gebildet  ADJ  Pos     Fem      Nom   Sg      St          Attr/Subst  gebildete
+gebildet  ADJ  Pos     Fem      Nom   Sg      Wk          Attr/Subst  gebildete
+[…]
+gebildet  ADJ  Pos     UnmGend  Nom   Pl      St          Attr/Subst  gebildete
+gebildet  ADJ  Pos     UnmGend  Nom   Pl      Wk          Attr/Subst  gebildeten
+[…]
 ```
+
+For more options, cf. the output of `dwdsmor-analysis -h` and
+`dwdsmor-paradigm -h`.
+
 
 ### Installing the DWDS Edition
 

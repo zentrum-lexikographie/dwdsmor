@@ -27,6 +27,7 @@ requires-python = ">=3.12"
 dynamic = ["readme", "version"]
 dependencies = [
     "blessings",
+    "PyYAML",
     "sfst-transduce",
     "tabulate",
     "tqdm"
@@ -51,15 +52,21 @@ dev = [
 
 [project.scripts]
 dwdsmor = "dwdsmor.cli:main"
+dwdsmor-analysis = "dwdsmor.tools.analysis:main"
+dwdsmor-paradigm = "dwdsmor.tools.paradigm:main"
 
 [project.urls]
 Homepage = "https://github.com/zentrum-lexikographie/dwdsmor"
 
 [tool.coverage.run]
-omit = ["dwdsmor/cli.py", "test/**/*.py"]
+omit = ["dwdsmor/cli.py", "dwdsmor/tools/*.py", "test/**/*.py"]
 
 [tool.isort]
 profile = "black"
+
+[[tool.mypy.overrides]]
+module = "blessings"
+ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
 module = "requests"
@@ -71,6 +78,10 @@ ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
 module = "tqdm"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "yaml"
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

@@ -16,10 +16,10 @@ from blessings import Terminal
 import dwdsmor
 from dwdsmor import tag
 
-from analysis import analyze_word, format_path, generate_words, seg_lemma
+from .analysis import analyze_word, format_path, generate_words, seg_lemma
 
 
-progname = Path(__file__).name
+progname = "dwdsmor-paradigm"
 
 version = 19.1
 

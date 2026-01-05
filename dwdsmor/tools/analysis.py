@@ -12,10 +12,10 @@ import yaml
 from blessings import Terminal
 
 import dwdsmor
-from dwdsmor import tag
+from .. import tag
 
 
-progname = Path(__file__).name
+progname = "dwdsmor-analysis"
 
 version = 15.1
 
