@@ -1,0 +1,4 @@
+# .gitignore
+# Andreas Nolda 2025-05-06
+
+**/*.xml

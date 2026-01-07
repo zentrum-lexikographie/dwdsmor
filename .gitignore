@@ -1,5 +1,5 @@
 # .gitignore
-# Andreas Nolda 2025-04-24
+# Andreas Nolda 2026-01-07
 
 *~
 \#*
@@ -27,8 +27,7 @@ manifest.xml
 /lexicon/dwds/package/build/
 /lexicon/dwds/package/dist/
 /lexicon/dwds/package/dwdsmor_dwds/automata/
-/lexicon/dwds/wb/
-/lexicon/open/src/
+/lexicon/dev*/
 
 /build/
 /dist/
