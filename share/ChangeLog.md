@@ -1,3 +1,7 @@
+2026-01-07:
+
+* add support for imperative forms of "wissen"
+
 2025-09-22:
 
 * mark unproductive word-formation stems with a negative weight instead of

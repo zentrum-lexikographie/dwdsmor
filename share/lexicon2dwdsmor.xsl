@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 19.2 -->
-<!-- Andreas Nolda 2025-09-19 -->
+<!-- Version 19.3 -->
+<!-- Andreas Nolda 2026-01-07 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -3837,13 +3837,85 @@
                     <xsl:with-param name="class">VImp-d-t</xsl:with-param>
                   </xsl:call-template>
                 </xsl:when>
-                <!-- preterite-present verbs -->
+                <!-- preterite-present verbs with imperative forms -->
+                <xsl:when test="ends-with($lemma-without-particle,'wissen')">
+                  <xsl:call-template name="verb-stem-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma-without-particle"/>
+                    <xsl:with-param name="stem"
+                                    select="$stem"/>
+                    <xsl:with-param name="participle"
+                                    select="$participle-without-particle"/>
+                    <xsl:with-param name="auxiliary"/>
+                    <xsl:with-param name="particle"
+                                    select="$particle"/>
+                    <xsl:with-param name="particle2"
+                                    select="$particle2"/>
+                    <xsl:with-param name="class">VInf</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="verb-stem-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma-without-particle"/>
+                    <xsl:with-param name="stem"
+                                    select="$stem"/>
+                    <xsl:with-param name="participle"
+                                    select="$participle-without-particle"/>
+                    <xsl:with-param name="auxiliary"/>
+                    <xsl:with-param name="particle"
+                                    select="$particle"/>
+                    <xsl:with-param name="particle2"
+                                    select="$particle2"/>
+                    <xsl:with-param name="class">VPartPres</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="verb-stem-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma-without-particle"/>
+                    <xsl:with-param name="stem"
+                                    select="$present-stem"/>
+                    <xsl:with-param name="participle"
+                                    select="$participle-without-particle"/>
+                    <xsl:with-param name="auxiliary"/>
+                    <xsl:with-param name="particle"
+                                    select="$particle"/>
+                    <xsl:with-param name="particle2"
+                                    select="$particle2"/>
+                    <xsl:with-param name="class">VModPresIndSg</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="verb-stem-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma-without-particle"/>
+                    <xsl:with-param name="stem"
+                                    select="$stem"/>
+                    <xsl:with-param name="participle"
+                                    select="$participle-without-particle"/>
+                    <xsl:with-param name="auxiliary"/>
+                    <xsl:with-param name="particle"
+                                    select="$particle"/>
+                    <xsl:with-param name="particle2"
+                                    select="$particle2"/>
+                    <xsl:with-param name="class">VModPresNonIndSg</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="verb-stem-entry">
+                    <xsl:with-param name="lemma"
+                                    select="$lemma-without-particle"/>
+                    <xsl:with-param name="stem"
+                                    select="$stem"/>
+                    <xsl:with-param name="participle"
+                                    select="$participle-without-particle"/>
+                    <xsl:with-param name="auxiliary"/>
+                    <xsl:with-param name="particle"
+                                    select="$particle"/>
+                    <xsl:with-param name="particle2"
+                                    select="$particle2"/>
+                    <xsl:with-param name="class">VImp-m-n</xsl:with-param>
+                  </xsl:call-template>
+                </xsl:when>
+                <!-- other preterite-present verbs -->
                 <xsl:when test="ends-with($lemma-without-particle,'dürfen') or
                                 ends-with($lemma-without-particle,'können') or
                                 ends-with($lemma-without-particle,'mögen') or
                                 ends-with($lemma-without-particle,'müssen') or
                                 ends-with($lemma-without-particle,'sollen') or
-                                ends-with($lemma-without-particle,'wissen') or
                                 ends-with($lemma-without-particle,'wollen')">
                   <xsl:call-template name="verb-stem-entry">
                     <xsl:with-param name="lemma"
