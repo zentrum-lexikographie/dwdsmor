@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 13.3
-% Andreas Nolda 2025-09-04
+% Version 14.0
+% Andreas Nolda 2026-01-08
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -10,14 +10,6 @@ $ZZ$ = <>:<dbl(z)>
 
 
 % nouns
-
-$NSuff0$ = {<UnmCase><UnmNum>}:{}
-
-$NSuff0_es$ = $NSuff0$ | \
-              {<Gen><Sg>}:{<SB>es<del(e)|Gen>}
-
-$NSuff0_s$ = $NSuff0$ | \
-             {<Gen><Sg>}:{<SB>s}
 
 $NGenSgSuff_0$ = {<Nom><Sg>}:{} | \
                  {<Acc><Sg>}:{} | \
@@ -80,14 +72,16 @@ $NDatPlSuff_n$ = {<Nom><Pl>}:{}      | \
                  {<Dat><Pl>}:{<SB>n} | \
                  {<Gen><Pl>}:{}
 
+$N-MeasSuff$ = {<UnmCase><UnmNum><MEAS>}:{}
+
+$N-MeasSuff_es$ = $N-MeasSuff$ | \
+                  {<Gen><Sg>}:{<SB>es<del(e)|Gen>}
+
+$N-MeasSuff_s$ = $N-MeasSuff$ | \
+                 {<Gen><Sg>}:{<SB>s}
+
 
 % masculine nouns
-
-% Kopf, Kopf(e)s (measure noun)
-$NMasc0_es$ = {<Masc>}:{} $NSuff0_es$
-
-% Faden, Fadens (measure noun)
-$NMasc0_s$ = {<Masc>}:{} $NSuff0_s$
 
 % Fiskus, Fiskus
 $NMasc|Sg_0$ = {<Masc>}:{} $NGenSgSuff_0$
@@ -415,6 +409,12 @@ $NMasc_ns_n_0$ = {<Masc>}:{}      $NGenSgSuff_ns$ | \
 $NMasc_ns_\$n_0$ = {<Masc>}:{}           $NGenSgSuff_ns$ | \
                    {<Masc>}:{<uml><SB>n} $NDatPlSuff_0$
 
+% Kopf, Kopf(e)s (measure noun)
+$NMasc-Meas_es$ = {<Masc>}:{} $N-MeasSuff_es$
+
+% Faden, Fadens (measure noun)
+$NMasc-Meas_s$ = {<Masc>}:{} $N-MeasSuff_s$
+
 % Beamte(r)
 % Gefreite(r)
 $NMasc-Adj$ = {<Masc><Nom><Sg><St>}:{<SB>er} | \
@@ -436,12 +436,6 @@ $NMasc-Adj$ = {<Masc><Nom><Sg><St>}:{<SB>er} | \
 
 
 % neuter nouns
-
-% Paar, Paar(e)s (measure noun)
-$NNeut0_es$ = {<Neut>}:{} $NSuff0_es$
-
-% Kilo, Kilo(s) (measure noun)
-$NNeut0_s$ = {<Neut>}:{} $NSuff0_s$
 
 % Abseits, Abseits
 $NNeut|Sg_0$ = {<Neut>}:{} $NGenSgSuff_0$
@@ -747,6 +741,12 @@ $NNeut-Inner$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
                 {<Neut><Gen><Sg><Wk>}:{<SB>en} | \
                 {<Neut><Gen><Sg><Wk>}:{<SB>n}
 
+% Paar, Paar(e)s (measure noun)
+$NNeut-Meas_es$ = {<Neut>}:{} $N-MeasSuff_es$
+
+% Kilo, Kilo(s) (measure noun)
+$NNeut-Meas_s$ = {<Neut>}:{} $N-MeasSuff_s$
+
 % Deutsche(s)
 $NNeut-Adj|Sg$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
                  {<Neut><Acc><Sg><St>}:{<SB>es} | \
@@ -777,9 +777,6 @@ $NNeut-Adj$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
 
 
 % feminine nouns
-
-% Hand (measure noun)
-$NFem0$ = {<Fem>}:{} $NSuff0$
 
 % Wut, Wut
 $NFem|Sg_0$ = {<Fem>}:{} $NGenSgSuff_0$
@@ -912,6 +909,9 @@ $NFemOld_n_n_0$ = {<Fem>}:{}      $NGenSgOldSuff_n$ | \
 % Freundin, Freundin, Freundinnen
 $NFem-in$ = {<Fem>}:{}        $NGenSgSuff_0$ | \
             {<Fem>}:{n<SB>en} $NDatPlSuff_0$
+
+% Hand (measure noun)
+$NFem-Meas$ = {<Fem>}:{} $N-MeasSuff$
 
 % Frauenbeauftragte
 % Illustrierte
@@ -2850,9 +2850,9 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NameNeut_s>              $NameNeut_s$             | \
          <>:<NameUnmGend|Pl_0>        $NameUnmGend|Pl_0$       | \
          <>:<NameUnmGend|Pl_n>        $NameUnmGend|Pl_n$       | \
-         <>:<NFem0>                   $NFem0$                  | \
          <>:<NFem-Adj>                $NFem-Adj$               | \
          <>:<NFem-in>                 $NFem-in$                | \
+         <>:<NFem-Meas>               $NFem-Meas$              | \
          <>:<NFem|Pl_0>               $NFem|Pl_0$              | \
          <>:<NFem|Sg_0>               $NFem|Sg_0$              | \
          <>:<NFem_0_$_n>              $NFem_0_\$_n$            | \
@@ -2885,9 +2885,9 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NFem_0_ox/oces_0>        $NFem_0_ox/oces_0$       | \
          <>:<NFem_0_s_0>              $NFem_0_s_0$             | \
          <>:<NFemOld_n_n_0>           $NFemOld_n_n_0$          | \
-         <>:<NMasc0_es>               $NMasc0_es$              | \
-         <>:<NMasc0_s>                $NMasc0_s$               | \
          <>:<NMasc-Adj>               $NMasc-Adj$              | \
+         <>:<NMasc-Meas_es>           $NMasc-Meas_es$          | \
+         <>:<NMasc-Meas_s>            $NMasc-Meas_s$           | \
          <>:<NMasc|Pl_0>              $NMasc|Pl_0$             | \
          <>:<NMasc|Sg_0>              $NMasc|Sg_0$             | \
          <>:<NMasc|Sg_es>             $NMasc|Sg_es$            | \
@@ -2970,11 +2970,11 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMascNonSt_n_e/s_0>      $NMascNonSt_n_e/s_0$     | \
          <>:<NMascNonSt_n_ns_0>       $NMascNonSt_n_ns_0$      | \
          <>:<NMascNonSt_s_en_0>       $NMascNonSt_s_en_0$      | \
-         <>:<NNeut0_es>               $NNeut0_es$              | \
-         <>:<NNeut0_s>                $NNeut0_s$               | \
          <>:<NNeut-Adj>               $NNeut-Adj$              | \
          <>:<NNeut-Adj|Sg>            $NNeut-Adj|Sg$           | \
          <>:<NNeut-Inner>             $NNeut-Inner$            | \
+         <>:<NNeut-Meas_es>           $NNeut-Meas_es$          | \
+         <>:<NNeut-Meas_s>            $NNeut-Meas_s$           | \
          <>:<NNeut|Pl_0>              $NNeut|Pl_0$             | \
          <>:<NNeut|PlNonSt_n>         $NNeut|PlNonSt_n$        | \
          <>:<NNeut|Sg_0>              $NNeut|Sg_0$             | \

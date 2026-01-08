@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms with DWDSmor
-# Andreas Nolda 2026-01-05
+# Andreas Nolda 2026-01-08
 
 import argparse
 import csv
@@ -21,7 +21,7 @@ from .analysis import analyze_word, format_path, generate_words, seg_lemma
 
 progname = "dwdsmor-paradigm"
 
-version = 19.1
+version = 19.2
 
 
 IDX = range(1, 9)
@@ -51,6 +51,8 @@ MOODS = ("Ind", "Subj")
 TENSES = ("Pres", "Perf", "Past", "PastPerf", "Fut", "FutPerf")
 
 AUXILIARIES = ("haben", "sein")
+
+SYNINFO = ("MEAS",)
 
 
 NONST = "NonSt"
@@ -107,7 +109,8 @@ PARCAT = ["degree",
           "nonfinite",
           "function",
           "mood",
-          "tense"]
+          "tense",
+          "syninfo"]
 
 
 LABEL_MAP = {"lemma": "Lemma",
@@ -130,6 +133,7 @@ LABEL_MAP = {"lemma": "Lemma",
                           "function": "Function",
                           "mood": "Mood",
                           "tense": "Tense",
+                          "syninfo": "Syntax",
                           "forms": "Paradigm Forms"}}
 
 
@@ -242,6 +246,21 @@ def filter_categorisations(categorisations, pos):
                                       categorisations)
         # Pred/Adv does not co-occur with any category.
         categorisations = filterfalse(lambda cat: "Pred/Adv" in cat and len(cat) > 1,
+                                      categorisations)
+    if pos == "NN":
+        # Sg and Pl do not co-occur with MEAS.
+        categorisations = filterfalse(lambda cat: "Sg" in cat and "MEAS" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Pl" in cat and "MEAS" in cat,
+                                      categorisations)
+        # Nom, Acc, Dat, and Gen do not co-occur with MEAS.
+        categorisations = filterfalse(lambda cat: "Nom" in cat and "MEAS" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Acc" in cat and "MEAS" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Dat" in cat and "MEAS" in cat,
+                                      categorisations)
+        categorisations = filterfalse(lambda cat: "Gen" in cat and "MEAS" in cat,
                                       categorisations)
     if pos == "V":
         # Ind and Subj do not co-occur with UnmNum.
@@ -512,6 +531,52 @@ def get_noun_formdict(generator, lidx, pidx, seg,
                           case,
                           number,
                           inflection]
+        forms = generate_forms(generator, lidx, pidx, seg,
+                               pos, categorisation)
+        add_forms(formdict, lidx, pidx,
+                  lexcat, parcat, forms)
+        if nonst:
+            # no such forms
+            pass
+        if old:
+            # no such forms
+            pass
+        if oldorth:
+            oldorth_forms = generate_forms(generator, lidx, pidx, seg,
+                                           pos, categorisation, OLDORTH)
+            add_special_forms(formdict, lidx, pidx,
+                              lexcat, parcat, oldorth_forms,
+                              [TAG_OLDORTH])
+            if nonst:
+                # no such forms
+                pass
+            if old:
+                # no such forms
+                pass
+        if ch:
+            ch_forms = generate_forms(generator, lidx, pidx, seg,
+                                      pos, categorisation, CH)
+            add_special_forms(formdict, lidx, pidx,
+                              lexcat, parcat, ch_forms,
+                              [TAG_CH])
+            if nonst:
+                # no such forms
+                pass
+            if old:
+                # no such forms
+                pass
+
+    # measure nouns
+    categorisations = product(NUMBERS, CASES, SYNINFO)
+    categorisations = filter_categorisations(categorisations, pos)
+    for number, case, syninfo in categorisations:
+        parcat = Parcat(case=case,
+                        number=number,
+                        syninfo=syninfo)
+        categorisation = [gender,
+                          case,
+                          number,
+                          syninfo]
         forms = generate_forms(generator, lidx, pidx, seg,
                                pos, categorisation)
         add_forms(formdict, lidx, pidx,
@@ -2056,6 +2121,7 @@ def output_dsv(paradigms, output_file, keys, paradigm_keys,
                                "function": plain,
                                "mood": plain,
                                "tense": plain,
+                               "syninfo": plain,
                                "forms": term.bold}}
 
     if header:

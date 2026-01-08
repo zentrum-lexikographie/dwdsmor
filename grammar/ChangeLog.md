@@ -1,5 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2026-01-08:
+
+* rename inflection classes `NMasc0_es`, `NMasc0_s`, `NNeut0_es`, `NNeut0_s`,
+  and `NFem0` to `NMasc-Meas_es`, `NMasc-Meas_s`, `NNeut-Meas_es`,
+  `NNeut-Meas_s`, and `NFem-Meas`, respectively
+* add syntax tag `<MEAS>` to uninflected forms of measure nouns
+
 2025-10-07:
 
 * add support for all-caps variants, without actually enabling it

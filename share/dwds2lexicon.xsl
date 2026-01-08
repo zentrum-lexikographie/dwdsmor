@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 19.4 -->
-<!-- Andreas Nolda 2025-10-08 -->
+<!-- Version 19.5 -->
+<!-- Andreas Nolda 2026-01-08 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -3605,8 +3605,9 @@
   <xsl:choose>
     <xsl:when test="normalize-space(dwds:Funktionspraeferenz[not(@Frequenz!='nur')])='als Eigenname'">proper-name</xsl:when>
     <xsl:when test="normalize-space(dwds:Funktionspraeferenz)='nur als Eigenname'">proper-name</xsl:when>
-    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Maßangabe')">measure-noun</xsl:when>
+    <xsl:when test="dwds:Plural[@Typ='Mengenangabe']">measure-noun</xsl:when>
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Mengenangabe')">measure-noun</xsl:when>
+    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Maßangabe')">measure-noun</xsl:when>
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Wertangabe')">measure-noun</xsl:when>
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'mit Mengenangabe')">measure-noun</xsl:when>
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nach Zahlenangabe')">measure-noun</xsl:when>

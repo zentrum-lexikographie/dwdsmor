@@ -16990,7 +16990,7 @@
     ),
     tuple(
       'NN',
-      'NFem0, NFem_0_$e_n',
+      'NFem_0_$e_n, NFem-Meas',
       'Hand',
       tuple(
         'Hand<NN><Fem><Acc><Pl>',
@@ -17025,39 +17025,7 @@
         'Hand',
       ),
       tuple(
-        'Hand<PAR1><NN><Fem><Acc><Pl>',
-        'Hände',
-      ),
-      tuple(
-        'Hand<PAR1><NN><Fem><Acc><Sg>',
-        'Hand',
-      ),
-      tuple(
-        'Hand<PAR1><NN><Fem><Dat><Pl>',
-        'Händen',
-      ),
-      tuple(
-        'Hand<PAR1><NN><Fem><Dat><Sg>',
-        'Hand',
-      ),
-      tuple(
-        'Hand<PAR1><NN><Fem><Gen><Pl>',
-        'Hände',
-      ),
-      tuple(
-        'Hand<PAR1><NN><Fem><Gen><Sg>',
-        'Hand',
-      ),
-      tuple(
-        'Hand<PAR1><NN><Fem><Nom><Pl>',
-        'Hände',
-      ),
-      tuple(
-        'Hand<PAR1><NN><Fem><Nom><Sg>',
-        'Hand',
-      ),
-      tuple(
-        'Hand<PAR2><NN><Fem><UnmCase><UnmNum>',
+        'Hand<NN><Fem><UnmCase><UnmNum><MEAS>',
         'Hand',
       ),
     ),
@@ -18340,7 +18308,7 @@
     ),
     tuple(
       'NN',
-      'NMasc0_es, NMasc_es_$e_n',
+      'NMasc_es_$e_n, NMasc-Meas_es',
       'Kopf',
       tuple(
         'Kopf<NN><Masc><Acc><Pl>',
@@ -18382,10 +18350,14 @@
         'Kopf<NN><Masc><Nom><Sg>',
         'Kopf',
       ),
+      tuple(
+        'Kopf<NN><Masc><UnmCase><UnmNum><MEAS>',
+        'Kopf',
+      ),
     ),
     tuple(
       'NN',
-      'NMasc0_s, NMasc_s_$_0',
+      'NMasc_s_$_0, NMasc-Meas_s',
       'Faden',
       tuple(
         'Faden<NN><Masc><Acc><Pl>',
@@ -18420,47 +18392,7 @@
         'Faden',
       ),
       tuple(
-        'Faden<NN><Masc><UnmCase><UnmNum>',
-        'Faden',
-      ),
-      tuple(
-        'Faden<PAR1><NN><Masc><Acc><Pl>',
-        'Fäden',
-      ),
-      tuple(
-        'Faden<PAR1><NN><Masc><Acc><Sg>',
-        'Faden',
-      ),
-      tuple(
-        'Faden<PAR1><NN><Masc><Dat><Pl>',
-        'Fäden',
-      ),
-      tuple(
-        'Faden<PAR1><NN><Masc><Dat><Sg>',
-        'Faden',
-      ),
-      tuple(
-        'Faden<PAR1><NN><Masc><Gen><Pl>',
-        'Fäden',
-      ),
-      tuple(
-        'Faden<PAR1><NN><Masc><Gen><Sg>',
-        'Fadens',
-      ),
-      tuple(
-        'Faden<PAR1><NN><Masc><Nom><Pl>',
-        'Fäden',
-      ),
-      tuple(
-        'Faden<PAR1><NN><Masc><Nom><Sg>',
-        'Faden',
-      ),
-      tuple(
-        'Faden<PAR2><NN><Masc><Gen><Sg>',
-        'Fadens',
-      ),
-      tuple(
-        'Faden<PAR2><NN><Masc><UnmCase><UnmNum>',
+        'Faden<NN><Masc><UnmCase><UnmNum><MEAS>',
         'Faden',
       ),
     ),
@@ -19697,10 +19629,6 @@
       ),
       tuple(
         'Espresso<IDX1><NN><Masc><Acc><Pl>',
-        'Espresso',
-      ),
-      tuple(
-        'Espresso<IDX1><NN><Masc><Acc><Pl>',
         'Espressos',
       ),
       tuple(
@@ -19710,10 +19638,6 @@
       tuple(
         'Espresso<IDX1><NN><Masc><Dat><Pl>',
         'Espressi',
-      ),
-      tuple(
-        'Espresso<IDX1><NN><Masc><Dat><Pl>',
-        'Espresso',
       ),
       tuple(
         'Espresso<IDX1><NN><Masc><Dat><Pl>',
@@ -19729,10 +19653,6 @@
       ),
       tuple(
         'Espresso<IDX1><NN><Masc><Gen><Pl>',
-        'Espresso',
-      ),
-      tuple(
-        'Espresso<IDX1><NN><Masc><Gen><Pl>',
         'Espressos',
       ),
       tuple(
@@ -19749,14 +19669,14 @@
       ),
       tuple(
         'Espresso<IDX1><NN><Masc><Nom><Pl>',
-        'Espresso',
-      ),
-      tuple(
-        'Espresso<IDX1><NN><Masc><Nom><Pl>',
         'Espressos',
       ),
       tuple(
         'Espresso<IDX1><NN><Masc><Nom><Sg>',
+        'Espresso',
+      ),
+      tuple(
+        'Espresso<IDX1><NN><Masc><UnmCase><UnmNum><MEAS>',
         'Espresso',
       ),
       tuple(
@@ -22312,7 +22232,7 @@
     ),
     tuple(
       'NN',
-      'NNeut0_es, NNeut_es_e_n',
+      'NNeut_es_e_n, NNeut-Meas_es',
       'Paar',
       tuple(
         'Paar<NN><Neut><Acc><Pl>',
@@ -22354,10 +22274,14 @@
         'Paar<NN><Neut><Nom><Sg>',
         'Paar',
       ),
+      tuple(
+        'Paar<NN><Neut><UnmCase><UnmNum><MEAS>',
+        'Paar',
+      ),
     ),
     tuple(
       'NN',
-      'NNeut0_es, NNeut_es_e_n, NNeutNonSt_es_er_n',
+      'NNeut_es_e_n, NNeutNonSt_es_er_n, NNeut-Meas_es',
       'Stück',
       tuple(
         'Stück<NN><Neut><Acc><Pl>',
@@ -22415,25 +22339,21 @@
         'Stück<NN><Neut><Nom><Sg>',
         'Stück',
       ),
+      tuple(
+        'Stück<NN><Neut><UnmCase><UnmNum><MEAS>',
+        'Stück',
+      ),
     ),
     tuple(
       'NN',
-      'NNeut0_s, NNeut_s_s_0',
+      'NNeut_s_s_0, NNeut-Meas_s',
       'Kilo',
-      tuple(
-        'Kilo<NN><Neut><Acc><Pl>',
-        'Kilo',
-      ),
       tuple(
         'Kilo<NN><Neut><Acc><Pl>',
         'Kilos',
       ),
       tuple(
         'Kilo<NN><Neut><Acc><Sg>',
-        'Kilo',
-      ),
-      tuple(
-        'Kilo<NN><Neut><Dat><Pl>',
         'Kilo',
       ),
       tuple(
@@ -22446,19 +22366,11 @@
       ),
       tuple(
         'Kilo<NN><Neut><Gen><Pl>',
-        'Kilo',
-      ),
-      tuple(
-        'Kilo<NN><Neut><Gen><Pl>',
         'Kilos',
       ),
       tuple(
         'Kilo<NN><Neut><Gen><Sg>',
         'Kilos',
-      ),
-      tuple(
-        'Kilo<NN><Neut><Nom><Pl>',
-        'Kilo',
       ),
       tuple(
         'Kilo<NN><Neut><Nom><Pl>',
@@ -22469,43 +22381,7 @@
         'Kilo',
       ),
       tuple(
-        'Kilo<PAR1><NN><Neut><Acc><Pl>',
-        'Kilos',
-      ),
-      tuple(
-        'Kilo<PAR1><NN><Neut><Acc><Sg>',
-        'Kilo',
-      ),
-      tuple(
-        'Kilo<PAR1><NN><Neut><Dat><Pl>',
-        'Kilos',
-      ),
-      tuple(
-        'Kilo<PAR1><NN><Neut><Dat><Sg>',
-        'Kilo',
-      ),
-      tuple(
-        'Kilo<PAR1><NN><Neut><Gen><Pl>',
-        'Kilos',
-      ),
-      tuple(
-        'Kilo<PAR1><NN><Neut><Gen><Sg>',
-        'Kilos',
-      ),
-      tuple(
-        'Kilo<PAR1><NN><Neut><Nom><Pl>',
-        'Kilos',
-      ),
-      tuple(
-        'Kilo<PAR1><NN><Neut><Nom><Sg>',
-        'Kilo',
-      ),
-      tuple(
-        'Kilo<PAR2><NN><Neut><Gen><Sg>',
-        'Kilos',
-      ),
-      tuple(
-        'Kilo<PAR2><NN><Neut><UnmCase><UnmNum>',
+        'Kilo<NN><Neut><UnmCase><UnmNum><MEAS>',
         'Kilo',
       ),
     ),
@@ -26137,26 +26013,6 @@
         'sie<IDX2><PPRO><Pers><3><UnmGend><Nom><Pl>',
         'sie',
       ),
-      tuple(
-        'sie<PPRO><Pers><3><UnmGend><Acc><Pl>',
-        'sie',
-      ),
-      tuple(
-        'sie<PPRO><Pers><3><UnmGend><Dat><Pl>',
-        'ihnen',
-      ),
-      tuple(
-        'sie<PPRO><Pers><3><UnmGend><Gen><Pl>',
-        'ihrer',
-      ),
-      tuple(
-        'sie<PPRO><Pers><3><UnmGend><Gen><Pl><Old>',
-        'ihr',
-      ),
-      tuple(
-        'sie<PPRO><Pers><3><UnmGend><Nom><Pl>',
-        'sie',
-      ),
     ),
     tuple(
       'PPRO',
@@ -28479,6 +28335,10 @@
         'wüßte',
       ),
       tuple(
+        '<OLDORTH>wiss<~>en<V><Imp><Pl>',
+        'wißt',
+      ),
+      tuple(
         '<OLDORTH>wiss<~>en<V><Part><Perf><haben>',
         'gewußt',
       ),
@@ -28576,6 +28436,14 @@
       ),
       tuple(
         'wiss<~>en<V><3><Sg><Pres><Subj>',
+        'wisse',
+      ),
+      tuple(
+        'wiss<~>en<V><Imp><Pl>',
+        'wisst',
+      ),
+      tuple(
+        'wiss<~>en<V><Imp><Sg>',
         'wisse',
       ),
       tuple(

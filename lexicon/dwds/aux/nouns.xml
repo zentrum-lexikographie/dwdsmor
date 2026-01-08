@@ -57,20 +57,9 @@
         <Plural>
           <Wert>Fäden</Wert>
         </Plural>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>Faden</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>mask.</Genus>
-        <Genitiv>
-          <Wert>-(s)</Wert>
-        </Genitiv>
-        <Plural>
+        <Plural Typ="Mengenangabe">
           <Wert>-</Wert>
         </Plural>
-        <Einschraenkung>bei Maßangabe</Einschraenkung>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -104,20 +93,9 @@
         <Plural>
           <Wert>Hände</Wert>
         </Plural>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>Hand</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>fem.</Genus>
-        <Genitiv>
-          <Wert>-</Wert>
-        </Genitiv>
-        <Plural>
+        <Plural Typ="Mengenangabe">
           <Wert>-</Wert>
         </Plural>
-        <Einschraenkung>bei Maßangabe</Einschraenkung>
       </Grammatik>
     </Formangabe>
   </Artikel>
@@ -131,35 +109,6 @@
           <Wert>-n</Wert>
         </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>Kilo</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>neutr.</Genus>
-        <Genitiv>
-          <Wert>-s</Wert>
-        </Genitiv>
-        <Plural>
-          <Wert>-s</Wert>
-        </Plural>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>Kilo</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>neutr.</Genus>
-        <Genitiv>
-          <Wert>-(s)</Wert>
-        </Genitiv>
-        <Plural>
-          <Wert>-</Wert>
-        </Plural>
-        <Einschraenkung>bei Maßangabe</Einschraenkung>
       </Grammatik>
     </Formangabe>
   </Artikel>

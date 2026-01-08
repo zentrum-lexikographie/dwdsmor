@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 19.3 -->
-<!-- Andreas Nolda 2026-01-07 -->
+<!-- Version 19.4 -->
+<!-- Andreas Nolda 2026-01-08 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1022,7 +1022,7 @@
                     $nominative-plural-marker='-'">
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="pos">NN</xsl:with-param>
-        <xsl:with-param name="class">NMasc0_es</xsl:with-param>
+        <xsl:with-param name="class">NMasc-Meas_es</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
     <!-- genitive singular: "-s"
@@ -1034,7 +1034,7 @@
                     $nominative-plural-marker='-'">
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="pos">NN</xsl:with-param>
-        <xsl:with-param name="class">NMasc0_s</xsl:with-param>
+        <xsl:with-param name="class">NMasc-Meas_s</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
     <!-- neuter measure nouns -->
@@ -1047,7 +1047,7 @@
                     $nominative-plural-marker='-'">
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="pos">NN</xsl:with-param>
-        <xsl:with-param name="class">NNeut0_es</xsl:with-param>
+        <xsl:with-param name="class">NNeut-Meas_es</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
     <!-- genitive singular: "-s"
@@ -1059,7 +1059,7 @@
                     $nominative-plural-marker='-'">
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="pos">NN</xsl:with-param>
-        <xsl:with-param name="class">NNeut0_s</xsl:with-param>
+        <xsl:with-param name="class">NNeut-Meas_s</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
     <!-- feminine measure nouns -->
@@ -1071,7 +1071,7 @@
                     $nominative-plural-marker='-'">
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="pos">NN</xsl:with-param>
-        <xsl:with-param name="class">NFem0</xsl:with-param>
+        <xsl:with-param name="class">NFem-Meas</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
     <!-- nouns with suppletive plural -->

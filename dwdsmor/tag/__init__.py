@@ -65,7 +65,7 @@ tag_values = {
         "metainfo": {"Old", "NonSt"},
         "orthinfo": {"OLDORTH", "CH"},
         "charinfo": {"CAP"},
-        "syninfo": {"SEP"},
+        "syninfo": {"MEAS", "SEP"},
         "ellipinfo": {"TRUNC"},
         "processes": {"COMP", "DER", "CONV"},
         "means": {

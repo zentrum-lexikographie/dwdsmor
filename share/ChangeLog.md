@@ -1,3 +1,7 @@
+2026-01-08:
+
+* add support for `<Plural Typ="Mengenangabe">`
+
 2026-01-07:
 
 * add support for imperative forms of "wissen"
