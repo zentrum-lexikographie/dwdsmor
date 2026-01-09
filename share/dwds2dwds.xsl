@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2dwds.xsl -->
-<!-- Version 2.0 -->
-<!-- Andreas Nolda 2025-05-26 -->
+<!-- Version 2.1 -->
+<!-- Andreas Nolda 2026-01-09 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -128,7 +128,6 @@
                      Komparativ |
                      Numeruspraeferenz[not(@class='invisible')] |
                      Partizip_II |
-                     Plural |
                      Positivvariante |
                      Praesens |
                      Praeteritum |
@@ -137,6 +136,13 @@
   <xsl:element name="{name()}">
     <xsl:apply-templates/>
   </xsl:element>
+</xsl:template>
+
+<xsl:template match="Plural">
+  <Plural>
+    <xsl:copy-of select="@Typ"/>
+    <xsl:apply-templates/>
+  </Plural>
 </xsl:template>
 
 <xsl:template match="Funktionspraeferenz">

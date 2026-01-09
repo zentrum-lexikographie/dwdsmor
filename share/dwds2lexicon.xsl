@@ -2216,6 +2216,39 @@
             <!-- particles: -->
             <xsl:when test="$pos='Partikel'">
               <xsl:choose>
+                <xsl:when test="$lemma='danke' or
+                                $lemma='gä' or
+                                $lemma='ge' or
+                                $lemma='gell' or
+                                $lemma='gelle' or
+                                $lemma='gelt' or
+                                $lemma='nein'">
+                  <entry pos="interjection"
+                         type="base">
+                    <xsl:attribute name="lemma"
+                                   select="$lemma"/>
+                    <xsl:if test="string-length($lemma-index)&gt;0">
+                      <xsl:attribute name="lemma-index"
+                                     select="$lemma-index"/>
+                    </xsl:if>
+                    <xsl:if test="string-length($paradigm-index)&gt;0">
+                      <xsl:attribute name="paradigm-index"
+                                     select="$paradigm-index"/>
+                    </xsl:if>
+                    <xsl:if test="string-length($abbreviation)&gt;0">
+                      <xsl:attribute name="abbreviation"
+                                     select="$abbreviation"/>
+                    </xsl:if>
+                    <xsl:if test="count($pronunciations)&gt;0">
+                      <xsl:attribute name="pronunciations"
+                                     select="$pronunciations"/>
+                    </xsl:if>
+                    <xsl:if test="string-length($etymology)&gt;0">
+                      <xsl:attribute name="etymology"
+                                     select="$etymology"/>
+                    </xsl:if>
+                  </entry>
+                </xsl:when>
                 <xsl:when test="$lemma='ja' or
                                 $lemma='bitte'">
                   <entry pos="interjection"
@@ -2244,38 +2277,6 @@
                     </xsl:if>
                   </entry>
                   <entry pos="adverb"
-                         type="base">
-                    <xsl:attribute name="lemma"
-                                   select="$lemma"/>
-                    <xsl:if test="string-length($lemma-index)&gt;0">
-                      <xsl:attribute name="lemma-index"
-                                     select="$lemma-index"/>
-                    </xsl:if>
-                    <xsl:if test="string-length($paradigm-index)&gt;0">
-                      <xsl:attribute name="paradigm-index"
-                                     select="$paradigm-index"/>
-                    </xsl:if>
-                    <xsl:if test="string-length($abbreviation)&gt;0">
-                      <xsl:attribute name="abbreviation"
-                                     select="$abbreviation"/>
-                    </xsl:if>
-                    <xsl:if test="count($pronunciations)&gt;0">
-                      <xsl:attribute name="pronunciations"
-                                     select="$pronunciations"/>
-                    </xsl:if>
-                    <xsl:if test="string-length($etymology)&gt;0">
-                      <xsl:attribute name="etymology"
-                                     select="$etymology"/>
-                    </xsl:if>
-                  </entry>
-                </xsl:when>
-                <xsl:when test="$lemma='gä' or
-                                $lemma='ge' or
-                                $lemma='gell' or
-                                $lemma='gelle' or
-                                $lemma='gelt' or
-                                $lemma='nein'">
-                  <entry pos="interjection"
                          type="base">
                     <xsl:attribute name="lemma"
                                    select="$lemma"/>

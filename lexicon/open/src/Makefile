@@ -1,5 +1,5 @@
 # lexicon/sample/src/Makefile
-# Andreas Nolda 2025-05-02
+# Andreas Nolda 2026-01-08
 
 SAXON = java -cp /usr/share/java/Saxon-HE.jar net.sf.saxon.Transform
 
@@ -11,7 +11,7 @@ XSLDIR    = $(abspath $(CURDIR)/../../../share)
 
 MANIFEST = $(CURDIR)/manifest.xml
 
-LEXSRC = $(LEXSRCDIR)/open.xml
+LEXSRC = $(LEXSRCDIR)/openwb.xml
 
 MANIFESTXSL   = $(XSLDIR)/dwds2manifest.xsl
 LEXSRCXSL     = $(XSLDIR)/dwds2dwds.xsl
