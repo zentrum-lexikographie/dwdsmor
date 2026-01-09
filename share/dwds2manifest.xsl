@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2manifest.xsl -->
-<!-- Version 2.2 -->
-<!-- Andreas Nolda 2024-03-18 -->
+<!-- Version 2.3 -->
+<!-- Andreas Nolda 2026-01-09 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -72,33 +72,42 @@
 <xsl:template match="dwds:Artikel">
   <xsl:variable name="file"
                 select="n:relative-path(document-uri(/))"/>
+  <xsl:variable name="id"
+                      select="@id"/><!-- may be empty -->
   <!-- position of article in file -->
   <xsl:variable name="n"
                 select="position()"/>
-  <!-- ignore duplicate lemma-index pairs -->
-  <!-- ignore idioms and non-standard spellings -->
-  <xsl:for-each-group select="dwds:Formangabe[not(@class='invisible')]/dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
-                                                                                      [not(@Typ)]"
-                      group-by="normalize-space(.)">
-    <xsl:variable name="lemma"
-                  select="normalize-space(.)"/>
-    <xsl:for-each-group select="current-group()"
-                        group-by="if (@hidx) then @hidx else 0">
-      <xsl:variable name="index"
-                    select="@hidx"/>
-      <source>
-        <xsl:attribute name="lemma"
-                       select="$lemma"/>
-        <xsl:if test="@hidx">
-          <xsl:attribute name="index"
-                         select="$index"/>
-        </xsl:if>
-        <xsl:attribute name="n"
-                       select="$n"/>
-        <xsl:attribute name="href"
-                       select="$file"/>
-      </source>
+  <xsl:if test="not(string-length($id)&gt;0 and
+                    exists($exclude/source[ends-with(@href,$id)]))"><!-- by convention, Artikel/@id = source/@href minus the "wb/" subdirectory prefix -->
+    <!-- ignore duplicate lemma-index pairs -->
+    <!-- ignore idioms and non-standard spellings -->
+    <xsl:for-each-group select="dwds:Formangabe[not(@class='invisible')]/dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
+                                                                                        [not(@Typ)]"
+                        group-by="normalize-space(.)">
+      <xsl:variable name="lemma"
+                    select="normalize-space(.)"/>
+      <xsl:for-each-group select="current-group()"
+                          group-by="if (@hidx) then @hidx else 0">
+        <xsl:variable name="index"
+                      select="@hidx"/>
+        <source>
+          <xsl:attribute name="lemma"
+                         select="$lemma"/>
+          <xsl:if test="@hidx">
+            <xsl:attribute name="index"
+                           select="$index"/>
+          </xsl:if>
+          <xsl:attribute name="n"
+                         select="$n"/>
+          <xsl:if test="string-length($id)&gt;0">
+            <xsl:attribute name="id"
+                           select="$id"/>
+          </xsl:if>
+          <xsl:attribute name="href"
+                         select="$file"/>
+        </source>
+      </xsl:for-each-group>
     </xsl:for-each-group>
-  </xsl:for-each-group>
+  </xsl:if>
 </xsl:template>
 </xsl:stylesheet>

@@ -1,3 +1,8 @@
+2026-01-09:
+
+* add support to `dwds2manifest.xsl` for excluding articles in multi-article
+  source files via `Artikel/@id` matching `source/@href` in `exclude.xml`
+
 2026-01-08:
 
 * add support for `<Plural Typ="Mengenangabe">`
