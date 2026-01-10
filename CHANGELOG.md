@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.15.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.14.0...v0.15.0) (2026-01-10)
+
+
+### Features
+
+* add support for excluding articles in multi-article source files ([57e0b85](https://github.com/zentrum-lexikographie/dwdsmor/commit/57e0b85aee2abb21ffec1caeb27fa5171c7b4404))
+* mark uninflected forms of measure nouns with syntax tag MEAS ([1afd8bc](https://github.com/zentrum-lexikographie/dwdsmor/commit/1afd8bcec4a348d607365e7132076a5269c864ef))
+
+
+### Bug Fixes
+
+* add support for imperative forms of "wissen" ([06265df](https://github.com/zentrum-lexikographie/dwdsmor/commit/06265df83ec0f690786c17a24f8c4ce909e5d977))
+
+
+### Performance Improvements
+
+* make lexicon generation more efficient ([1c45eb3](https://github.com/zentrum-lexikographie/dwdsmor/commit/1c45eb39d2c4bdd8e4c16c2eb0b6431c554e4c61))
+
 ## [0.14.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.13.0...v0.14.0) (2026-01-05)
 
 
