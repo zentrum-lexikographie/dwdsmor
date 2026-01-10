@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 19.4 -->
-<!-- Andreas Nolda 2026-01-08 -->
+<!-- Version 19.5 -->
+<!-- Andreas Nolda 2026-01-09 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -13,6 +13,11 @@
 
 <xsl:output method="text"
             encoding="UTF-8"/>
+
+<!-- usage: key('entry-by-lemma',concat($lemma,'/',$pos,':',$type)) -->
+<xsl:key name="entry-by-lemma"
+         match="entry"
+         use="concat(@lemma,'/',@pos,':',@type)"/>
 
 <xsl:template match="/">
   <xsl:apply-templates select="lexicon/entry"/>
@@ -6423,31 +6428,27 @@
 <!-- helper templates -->
 
 <xsl:template name="get-comp-stem-frequency">
-  <xsl:variable name="same-lemma"
-                select="count(../entry[@pos=current()/@pos]
-                                      [@type=current()/@type]
-                                      [@lemma=current()/@lemma])"/>
-  <xsl:variable name="same-stem"
-                      select="count(../entry[@pos=current()/@pos]
-                                            [@type=current()/@type]
-                                            [@lemma=current()/@lemma]
-                                            [@stem=current()/@stem])"/>
-  <xsl:value-of select="format-number($same-stem div $same-lemma,'0.##')"/>
+  <xsl:variable name="same-lemmas"
+                select="key('entry-by-lemma',concat(@lemma,'/',@pos,':',@type))"/>
+  <xsl:variable name="stem"
+                select="@stem"/>
+  <xsl:variable name="same-stems"
+                select="$same-lemmas[@stem=$stem]"/>
+  <xsl:value-of select="format-number(count($same-stems) div count($same-lemmas),'0.##')"/>
 </xsl:template>
 
 <xsl:template name="get-der-stem-frequency">
-  <xsl:variable name="same-lemma"
-                select="count(../entry[@pos=current()/@pos]
-                                      [@type=current()/@type]
-                                      [@suffs=current()/@suffs]
-                                      [@lemma=current()/@lemma])"/>
-  <xsl:variable name="same-stem"
-                      select="count(../entry[@pos=current()/@pos]
-                                            [@type=current()/@type]
-                                            [@suffs=current()/@suffs]
-                                            [@lemma=current()/@lemma]
-                                            [@stem=current()/@stem])"/>
-  <xsl:value-of select="format-number($same-stem div $same-lemma,'0.##')"/>
+  <xsl:variable name="same-lemmas"
+                select="key('entry-by-lemma',concat(@lemma,'/',@pos,':',@type))"/>
+  <xsl:variable name="suffs"
+                select="@suffs"/>
+  <xsl:variable name="same-lemmas-and-suffs"
+                select="$same-lemmas[@suffs=$suffs]"/>
+  <xsl:variable name="stem"
+                select="@stem"/>
+  <xsl:variable name="same-stems"
+                select="$same-lemmas-and-suffs[@stem=$stem]"/>
+  <xsl:value-of select="format-number(count($same-stems) div count($same-lemmas-and-suffs),'0.##')"/>
 </xsl:template>
 
 <xsl:template name="apply-templates-to-singular">

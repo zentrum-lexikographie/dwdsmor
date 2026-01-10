@@ -99,10 +99,10 @@
           </xsl:if>
           <xsl:attribute name="n"
                          select="$n"/>
-          <xsl:if test="string-length($id)&gt;0">
+          <!-- <xsl:if test="string-length($id)&gt;0">
             <xsl:attribute name="id"
                            select="$id"/>
-          </xsl:if>
+          </xsl:if> -->
           <xsl:attribute name="href"
                          select="$file"/>
         </source>

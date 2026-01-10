@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 19.5 -->
-<!-- Andreas Nolda 2026-01-08 -->
+<!-- Version 19.6 -->
+<!-- Andreas Nolda 2026-01-09 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -31,6 +31,21 @@
   </xsl:if>
 </xsl:variable>
 
+<!-- usage: key('source-by-file',concat($file),$manifest) -->
+<xsl:key name="source-by-file"
+         match="source"
+         use="@href"/>
+
+<!-- usage: key('source-by-lemma',concat($lemma,'#',$lemma-index),$manifest) -->
+<xsl:key name="source-by-lemma"
+         match="source"
+         use="concat(@lemma,'#',@index)"/>
+
+<!-- usage: key('article-by-position',$n,$file) -->
+<xsl:key name="article-by-position"
+         match="dwds:DWDS/dwds:Artikel"
+         use="count(preceding-sibling::dwds:Artikel) + 1"/><!-- position() does not work here -->
+
 <!-- process sources listed in $manifest-file -->
 <xsl:template name="xsl:initial-template">
   <lexicon>
@@ -46,10 +61,14 @@
 <xsl:template name="process-sources">
   <xsl:param name="file"/>
   <xsl:for-each select="doc(n:absolute-path($file))">
-    <xsl:apply-templates select="/dwds:DWDS/dwds:Artikel[not(@Status!='Red-f')]">
-      <xsl:with-param name="file"
-                      select="$file"/>
-    </xsl:apply-templates>
+    <xsl:variable name="articles"
+                  select="key('source-by-file',$file,$manifest)"/>
+    <xsl:for-each select="distinct-values($articles/@n)">
+      <xsl:apply-templates select="key('article-by-position',number(.),doc(n:absolute-path($file)))">
+        <xsl:with-param name="file"
+                        select="$file"/>
+      </xsl:apply-templates>
+    </xsl:for-each>
   </xsl:for-each>
 </xsl:template>
 
@@ -2750,13 +2769,9 @@
             <xsl:variable name="index2"
                           select="$ref2/@hidx"/>
             <xsl:variable name="source1"
-                          select="$manifest/source[@lemma=$basis1]
-                                                  [@index=$index1 or
-                                                   not(@index) and string-length($index1)=0][1]"/>
+                          select="key('source-by-lemma',concat($basis1,'#',$index1),$manifest)[1]"/>
             <xsl:variable name="source2"
-                          select="$manifest/source[@lemma=$basis2]
-                                                  [@index=$index2 or
-                                                   not(@index) and string-length($index2)=0][1]"/>
+                          select="key('source-by-lemma',concat($basis2,'#',$index2),$manifest)[1]"/>
             <xsl:variable name="file1"
                           select="$source1/@href"/>
             <xsl:variable name="file2"
@@ -2767,12 +2782,12 @@
                           select="$source2/@n"/>
             <xsl:variable name="article1">
               <xsl:if test="doc-available(n:absolute-path($file1))">
-                <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel[position()=$n1]/*"/>
+                <xsl:copy-of select="key('article-by-position',number($n1),doc(n:absolute-path($file1)))/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:variable name="article2">
               <xsl:if test="doc-available(n:absolute-path($file2))">
-                <xsl:copy-of select="doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel[position()=$n2]/*"/>
+                <xsl:copy-of select="key('article-by-position',number($n2),doc(n:absolute-path($file2)))/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:for-each select="$article1">
@@ -2993,13 +3008,9 @@
             <xsl:variable name="index2"
                           select="$ref2/@hidx"/>
             <xsl:variable name="source1"
-                          select="$manifest/source[@lemma=$basis]
-                                                  [@index=$index1 or
-                                                   not(@index) and string-length($index1)=0][1]"/>
+                          select="key('source-by-lemma',concat($basis,'#',$index1),$manifest)[1]"/>
             <xsl:variable name="source2"
-                          select="$manifest/source[@lemma=$affix]
-                                                  [@index=$index2 or
-                                                   not(@index) and string-length($index2)=0][1]"/>
+                          select="key('source-by-lemma',concat($affix,'#',$index2),$manifest)[1]"/>
             <xsl:variable name="file1"
                           select="$source1/@href"/>
             <xsl:variable name="file2"
@@ -3010,12 +3021,12 @@
                           select="$source2/@n"/>
             <xsl:variable name="article1">
               <xsl:if test="doc-available(n:absolute-path($file1))">
-                <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel[position()=$n1]/*"/>
+                <xsl:copy-of select="key('article-by-position',number($n1),doc(n:absolute-path($file1)))/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:variable name="article2">
               <xsl:if test="doc-available(n:absolute-path($file2))">
-                <xsl:copy-of select="doc(n:absolute-path($file2))/dwds:DWDS/dwds:Artikel[position()=$n2]/*"/>
+                <xsl:copy-of select="key('article-by-position',number($n2),doc(n:absolute-path($file2)))/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:for-each select="$article1">
@@ -3294,16 +3305,14 @@
             <xsl:variable name="index1"
                           select="$ref1/@hidx"/>
             <xsl:variable name="source1"
-                          select="$manifest/source[@lemma=$basis]
-                                                  [@index=$index1 or
-                                                   not(@index) and string-length($index1)=0][1]"/>
+                          select="key('source-by-lemma',concat($basis,'#',$index1),$manifest)[1]"/>
             <xsl:variable name="file1"
                           select="$source1/@href"/>
             <xsl:variable name="n1"
                           select="$source1/@n"/>
             <xsl:variable name="article1">
               <xsl:if test="doc-available(n:absolute-path($file1))">
-                <xsl:copy-of select="doc(n:absolute-path($file1))/dwds:DWDS/dwds:Artikel[position()=$n1]/*"/>
+                <xsl:copy-of select="key('article-by-position',number($n1),doc(n:absolute-path($file1)))/*"/>
               </xsl:if>
             </xsl:variable>
             <xsl:for-each select="$article1">
