@@ -31,7 +31,7 @@
   </xsl:if>
 </xsl:variable>
 
-<!-- usage: key('source-by-file',concat($file),$manifest) -->
+<!-- usage: key('source-by-file',$file,$manifest) -->
 <xsl:key name="source-by-file"
          match="source"
          use="@href"/>
@@ -61,9 +61,9 @@
 <xsl:template name="process-sources">
   <xsl:param name="file"/>
   <xsl:for-each select="doc(n:absolute-path($file))">
-    <xsl:variable name="articles"
+    <xsl:variable name="sources"
                   select="key('source-by-file',$file,$manifest)"/>
-    <xsl:for-each select="distinct-values($articles/@n)">
+    <xsl:for-each select="distinct-values($sources/@n)">
       <xsl:apply-templates select="key('article-by-position',number(.),doc(n:absolute-path($file)))">
         <xsl:with-param name="file"
                         select="$file"/>
