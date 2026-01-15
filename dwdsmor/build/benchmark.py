@@ -47,7 +47,7 @@ ud_to_dwdsmor_pos = {
     "PTKA": {"PTCL"},
     "PTKANT": {"INTJ", "PTCL"},
     "PTKNEG": {"PTCL"},
-    "PTKVZ": {"ADV", "VPART", "ADJ", "PREP"},
+    "PTKVZ": {"ADV", "ADJ", "PREP", "PREV", "V"},
     "PTKZU": {"PTCL"},
     "PWAT": {"WPRO"},
     "PWAV": {"ADV", "PROADV"},

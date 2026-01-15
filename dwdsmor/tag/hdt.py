@@ -37,7 +37,7 @@ pos_map = {
     "PTKA": {"PTCL"},
     "PTKANT": {"INTJ", "PTCL"},
     "PTKNEG": {"PTCL"},
-    "PTKVZ": {"ADV", "PREP", "VPART"},
+    "PTKVZ": {"ADV", "ADJ", "PREP", "PREV", "V"},
     "PTKZU": {"PTCL"},
     "PWAT": {"WPRO"},
     "PWAV": {"ADV"},
