@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.1](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.15.0...v0.15.1) (2026-01-15)
+
+
+### Bug Fixes
+
+* particles of separable verbs are lemmatized with PoS 'V' ([f5e3f01](https://github.com/zentrum-lexikographie/dwdsmor/commit/f5e3f0108e74183645be03f020042fd68c7774b2))
+
 ## [0.15.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.14.0...v0.15.0) (2026-01-10)
 
 
