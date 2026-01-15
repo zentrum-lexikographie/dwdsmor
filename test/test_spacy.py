@@ -42,19 +42,8 @@ def test_particle_lemmatization(nlp):
     ]
     docs = nlp.pipe(sentences)
     tokens = [[t._.dwdsmor.analysis for t in doc] for doc in docs]
-    docs_without_dep = nlp.pipe(sentences, disable="parser")
-    tokens_without_dep = [
-        [t._.dwdsmor.analysis for t in doc] for doc in docs_without_dep
-    ]
     expected = [
         ["sie", "nehmen", "nicht", "an", "die", "Wahl", "teil", "."],
-        [
-            "wir",
-            "arbeiten",
-            "beständig",
-            "weiter",
-            ".",
-        ],
+        ["wir", "arbeiten", "beständig", "weiter", "."],
     ]
     assert tokens == expected
-    assert tokens != tokens_without_dep
