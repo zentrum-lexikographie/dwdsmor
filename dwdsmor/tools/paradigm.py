@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms with DWDSmor
-# Andreas Nolda 2026-01-08
+# Andreas Nolda 2026-01-19
 
 import argparse
 import csv
@@ -21,7 +21,7 @@ from .analysis import analyze_word, format_path, generate_words, seg_lemma
 
 progname = "dwdsmor-paradigm"
 
-version = 19.2
+version = 19.3
 
 
 IDX = range(1, 9)
@@ -36,7 +36,7 @@ DEGREES = ("Pos", "Comp", "Sup")
 
 PERSONS = ("1", "2", "3")
 
-GENDERS = ("Masc", "Neut", "Fem", "UnmGend")
+GENDERS = ("Neut", "Masc", "Fem", "UnmGend")
 
 CASES = ("Nom", "Acc", "Dat", "Gen", "UnmCase")
 

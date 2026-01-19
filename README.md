@@ -175,11 +175,11 @@ gebildet  gebildet  ADJ             Pos                Pred/Adv
 $ dwdsmor-paradigm gebildet
 Lemma     POS  Degree  Gender   Case  Number  Inflection  Function    Paradigm Forms
 gebildet  ADJ  Pos                                        Pred/Adv    gebildet
-gebildet  ADJ  Pos     Masc     Nom   Sg      St          Attr/Subst  gebildeter
-gebildet  ADJ  Pos     Masc     Nom   Sg      Wk          Attr/Subst  gebildete
-[…]
 gebildet  ADJ  Pos     Neut     Nom   Sg      St          Attr/Subst  gebildetes
 gebildet  ADJ  Pos     Neut     Nom   Sg      Wk          Attr/Subst  gebildete
+[…]
+gebildet  ADJ  Pos     Masc     Nom   Sg      St          Attr/Subst  gebildeter
+gebildet  ADJ  Pos     Masc     Nom   Sg      Wk          Attr/Subst  gebildete
 […]
 gebildet  ADJ  Pos     Fem      Nom   Sg      St          Attr/Subst  gebildete
 gebildet  ADJ  Pos     Fem      Nom   Sg      Wk          Attr/Subst  gebildete
