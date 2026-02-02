@@ -61,29 +61,6 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>dein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>deine</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>dein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>Dein</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
@@ -258,29 +235,6 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>euer</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>eure</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>euer</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>Euer</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
@@ -319,29 +273,6 @@
     </Formangabe>
     <Formangabe>
       <Schreibung>Eurige</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung hidx="2">ihr</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>ihre</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung hidx="2">ihr</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
         <Genus>neutr.</Genus>
@@ -521,29 +452,6 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>mein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>meine</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>mein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>mich</Schreibung>
       <Grammatik>
         <Wortklasse>Reflexivpronomen</Wortklasse>
@@ -578,29 +486,6 @@
       <Schreibung>sämtliches</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung hidx="1">sein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>seine</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung hidx="1">sein</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
         <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>
@@ -650,29 +535,6 @@
       <Schreibung>uns</Schreibung>
       <Grammatik>
         <Wortklasse>Reflexivpronomen</Wortklasse>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>unser</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>unsere</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>unser</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
       </Grammatik>
     </Formangabe>
   </Artikel>
