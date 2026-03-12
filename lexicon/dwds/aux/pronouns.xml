@@ -132,6 +132,14 @@
   </Artikel>
   <Artikel>
     <Formangabe>
+      <Schreibung>Du</Schreibung>
+      <Grammatik>
+        <Wortklasse>Personalpronomen</Wortklasse>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
       <Schreibung>ebbes</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
@@ -273,29 +281,6 @@
     </Formangabe>
     <Formangabe>
       <Schreibung>Eurige</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung hidx="2">Ihr</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>Ihre</Schreibung>
-      <Grammatik>
-        <Wortklasse>Possessivpronomen</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung hidx="2">Ihr</Schreibung>
       <Grammatik>
         <Wortklasse>Possessivpronomen</Wortklasse>
         <Genus>neutr.</Genus>
@@ -487,23 +472,6 @@
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
         <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung hidx="1">sie</Schreibung>
-      <Grammatik>
-        <Wortklasse>Personalpronomen</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung hidx="2">sie</Schreibung>
-      <Grammatik>
-        <Wortklasse>Personalpronomen</Wortklasse>
       </Grammatik>
     </Formangabe>
   </Artikel>

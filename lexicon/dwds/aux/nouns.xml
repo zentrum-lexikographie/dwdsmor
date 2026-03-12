@@ -46,24 +46,6 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe>
-      <Schreibung>Faden</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>mask.</Genus>
-        <Genitiv>
-          <Wert>-s</Wert>
-        </Genitiv>
-        <Plural>
-          <Wert>Fäden</Wert>
-        </Plural>
-        <Plural Typ="Mengenangabe">
-          <Wert>-</Wert>
-        </Plural>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
     <Formangabe Typ="Symbol">
       <Schreibung>°</Schreibung>
       <Grammatik>

@@ -1651,15 +1651,15 @@
     ),
     tuple(
       'gesondert',
+      'sonder<~>n<V><Part><Perf><haben>',
+    ),
+    tuple(
+      'gesondert',
       'ge<~>sonder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'gesondert',
       'gesondert<ADJ><Pos><Pred/Adv>',
-    ),
-    tuple(
-      'gesondert',
-      'sonder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'erhoben',
@@ -2783,11 +2783,11 @@
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'worden',
@@ -3667,11 +3667,11 @@
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'durch',
@@ -5815,6 +5815,10 @@
     ),
     tuple(
       'gestanden',
+      'steh<~>en<V><Part><Perf><haben>',
+    ),
+    tuple(
+      'gestanden',
       'ge<~>stand<~>en<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
@@ -5836,10 +5840,6 @@
     tuple(
       'gestanden',
       'gestanden<ADJ><Pos><Pred/Adv>',
-    ),
-    tuple(
-      'gestanden',
-      'steh<~>en<V><Part><Perf><haben>',
     ),
     tuple(
       'hat',
@@ -20307,59 +20307,99 @@
       'NMasc_es_$e_n, NMasc_es_s_0',
       'Block',
       tuple(
-        'Block<NN><Masc><Acc><Pl>',
+        'Block<IDX1><NN><Masc><Acc><Pl>',
         'Blocks',
       ),
       tuple(
-        'Block<NN><Masc><Acc><Pl>',
+        'Block<IDX1><NN><Masc><Acc><Pl>',
         'Blöcke',
       ),
       tuple(
-        'Block<NN><Masc><Acc><Sg>',
+        'Block<IDX1><NN><Masc><Acc><Sg>',
         'Block',
       ),
       tuple(
-        'Block<NN><Masc><Dat><Pl>',
+        'Block<IDX1><NN><Masc><Dat><Pl>',
         'Blocks',
       ),
       tuple(
-        'Block<NN><Masc><Dat><Pl>',
+        'Block<IDX1><NN><Masc><Dat><Pl>',
         'Blöcken',
       ),
       tuple(
-        'Block<NN><Masc><Dat><Sg>',
+        'Block<IDX1><NN><Masc><Dat><Sg>',
         'Block',
       ),
       tuple(
-        'Block<NN><Masc><Dat><Sg><Old>',
+        'Block<IDX1><NN><Masc><Dat><Sg><Old>',
         'Blocke',
       ),
       tuple(
-        'Block<NN><Masc><Gen><Pl>',
+        'Block<IDX1><NN><Masc><Gen><Pl>',
         'Blocks',
       ),
       tuple(
-        'Block<NN><Masc><Gen><Pl>',
+        'Block<IDX1><NN><Masc><Gen><Pl>',
         'Blöcke',
       ),
       tuple(
-        'Block<NN><Masc><Gen><Sg>',
+        'Block<IDX1><NN><Masc><Gen><Sg>',
         'Blockes',
       ),
       tuple(
-        'Block<NN><Masc><Gen><Sg>',
+        'Block<IDX1><NN><Masc><Gen><Sg>',
         'Blocks',
       ),
       tuple(
-        'Block<NN><Masc><Nom><Pl>',
+        'Block<IDX1><NN><Masc><Nom><Pl>',
         'Blocks',
       ),
       tuple(
-        'Block<NN><Masc><Nom><Pl>',
+        'Block<IDX1><NN><Masc><Nom><Pl>',
         'Blöcke',
       ),
       tuple(
-        'Block<NN><Masc><Nom><Sg>',
+        'Block<IDX1><NN><Masc><Nom><Sg>',
+        'Block',
+      ),
+      tuple(
+        'Block<IDX2><NN><Masc><Acc><Pl>',
+        'Blocks',
+      ),
+      tuple(
+        'Block<IDX2><NN><Masc><Acc><Sg>',
+        'Block',
+      ),
+      tuple(
+        'Block<IDX2><NN><Masc><Dat><Pl>',
+        'Blocks',
+      ),
+      tuple(
+        'Block<IDX2><NN><Masc><Dat><Sg>',
+        'Block',
+      ),
+      tuple(
+        'Block<IDX2><NN><Masc><Dat><Sg><Old>',
+        'Blocke',
+      ),
+      tuple(
+        'Block<IDX2><NN><Masc><Gen><Pl>',
+        'Blocks',
+      ),
+      tuple(
+        'Block<IDX2><NN><Masc><Gen><Sg>',
+        'Blockes',
+      ),
+      tuple(
+        'Block<IDX2><NN><Masc><Gen><Sg>',
+        'Blocks',
+      ),
+      tuple(
+        'Block<IDX2><NN><Masc><Nom><Pl>',
+        'Blocks',
+      ),
+      tuple(
+        'Block<IDX2><NN><Masc><Nom><Sg>',
         'Block',
       ),
     ),
