@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.16.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.15.1...v0.16.0) (2026-03-16)
+
+
+### Features
+
+* improve lexical processing of abbreviations and symbols ([19b417e](https://github.com/zentrum-lexikographie/dwdsmor/commit/19b417e3ea4f4599dd862ae144ce3d340e7efc8e))
+* improve support for verbs borrowed from English ([78e0bbd](https://github.com/zentrum-lexikographie/dwdsmor/commit/78e0bbdfa623f11f5fc98a32bfe754494570bfa1))
+
 ## [0.15.1](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.15.0...v0.15.1) (2026-01-15)
 
 
