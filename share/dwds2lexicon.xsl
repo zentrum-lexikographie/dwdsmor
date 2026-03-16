@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 19.6 -->
-<!-- Andreas Nolda 2026-01-09 -->
+<!-- Version 19.7 -->
+<!-- Andreas Nolda 2026-03-16 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -137,7 +137,8 @@
     <xsl:variable name="flat-grammar-specs">
       <!-- ignore idioms and other syntactically complex units
            except for reflexive verbs and phrasal verbs -->
-      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse[not(@class='invisible')] or
+      <xsl:for-each-group select="dwds:Grammatik/*[self::dwds:Wortklasse[not(@class='invisible')]
+                                                                        [string-length(normalize-space(.))&gt;0] or
                                                    self::dwds:Genus[not(normalize-space(.)='ohne erkennbares Genus')] or
                                                    self::dwds:indeklinabel or
                                                    self::dwds:Genitiv[count(tokenize(normalize-space(dwds:Wert[not(@Typ)]),'&#x20;'))=1] or
@@ -160,7 +161,11 @@
                                                    self::dwds:Auxiliar or
                                                    self::dwds:Funktionspraeferenz[not(normalize-space(.)='adverbiell')] or
                                                    self::dwds:Numeruspraeferenz[not(@class='invisible')] or
-                                                   self::dwds:Einschraenkung]"
+                                                   self::dwds:Einschraenkung] |
+                                  dwds:Grammatik[parent::dwds:Formangabe[@Typ='Abkürzung' or
+                                                                         @Typ='Symbol']]/../../dwds:Formangabe[not(@class='invisible')]/dwds:Grammatik/*[self::dwds:Wortklasse[not(@class='invisible')]
+                                                                                                                                                                              [string-length(normalize-space(.))&gt;0] or
+                                                                                                                                                         self::dwds:Genus[not(normalize-space(.)='ohne erkennbares Genus')]]"
                           group-by="name()">
         <xsl:element name="{name()}">
           <xsl:copy-of select="current-group()"/>
@@ -496,7 +501,7 @@
                             normalize-space(dwds:Numeruspraeferenz[not(@class='invisible')])='nur im Singular' and
                             (($gender!='none' and
                               string-length(normalize-space(dwds:Genitiv/dwds:Wert))&gt;0) or
-                             $abbreviation='yes')">
+                             $abbreviation!='none')">
               <xsl:variable name="genitive-singular"
                             select="normalize-space(dwds:Genitiv/dwds:Wert)"/>
               <entry pos="name"
@@ -581,7 +586,7 @@
                             normalize-space(dwds:Numeruspraeferenz[not(@class='invisible')])='nur im Singular' and
                             $gender!='none' and
                             (string-length(normalize-space(dwds:Genitiv/dwds:Wert))&gt;0 or
-                             $abbreviation='yes')">
+                             $abbreviation!='none')">
               <xsl:variable name="genitive-singular"
                             select="normalize-space(dwds:Genitiv/dwds:Wert)"/>
               <entry pos="noun"
@@ -680,7 +685,7 @@
                             $gender!='none' and
                             ((string-length(normalize-space(dwds:Genitiv/dwds:Wert))&gt;0 and
                               string-length(normalize-space(dwds:Plural/dwds:Wert))&gt;0) or
-                             $abbreviation='yes')">
+                             $abbreviation!='none')">
               <xsl:variable name="genitive-singular"
                             select="normalize-space(dwds:Genitiv/dwds:Wert)"/>
               <xsl:variable name="nominative-plural"
@@ -1009,8 +1014,8 @@
                               string-length(normalize-space(dwds:Praeteritum/dwds:Wert))&gt;0 and
                               string-length(normalize-space(dwds:Partizip_II/dwds:Wert))&gt;0 and
                               $auxiliary!='none') or
-                             $inflection='no' or
-                             $abbreviation='yes')">
+                             $inflection='uninflected' or
+                             $abbreviation!='none')">
               <xsl:variable name="present">
                 <!-- remove "sich", if any -->
                 <xsl:choose>
@@ -3556,35 +3561,35 @@
 
 <xsl:template name="get-abbreviation-value">
   <xsl:choose>
-    <!-- abbreviations with final period -->
-    <xsl:when test="ends-with(normalize-space(.),'.')">yes</xsl:when>
-    <!-- acronyms in uppercase letters with optional numbers and lowercase letters -->
-    <xsl:when test="matches(normalize-space(.),'^\p{N}*\p{Lu}([\p{L}\p{N}]*\p{Lu})*\p{N}*$')">yes</xsl:when>
-    <!-- acronyms consisting of uppercase letters preceded by a lowercase letter -->
-    <xsl:when test="matches(normalize-space(.),'^\p{Ll}\p{Lu}+$')">yes</xsl:when>
-    <!-- acronyms consisting of an uppercase consonant letter
-         followed by lowercase consonant letters -->
-    <xsl:when test="matches(normalize-space(.),'^[\p{Lu}-[AEIOUÄÖÜ]][\p{Ll}-[aeiouäöü]]+$')">yes</xsl:when>
-    <!-- symbols -->
-    <xsl:when test="matches(normalize-space(.),'^\p{Po}+$')">yes</xsl:when>
-    <!-- spellings marked as symbols -->
-    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]
-                                           [@Typ='Symbol']">yes</xsl:when>
     <!-- spellings marked as abbreviation -->
     <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]
-                                           [@Typ='Abkürzung']">yes</xsl:when>
+                                           [@Typ='Abkürzung']">abbreviation</xsl:when>
+    <!-- abbreviations with final period -->
+    <xsl:when test="ends-with(normalize-space(.),'.')">abbreviation</xsl:when>
+    <!-- spellings marked as symbols -->
+    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]
+                                           [@Typ='Symbol']">symbol</xsl:when>
+    <!-- symbols -->
+    <xsl:when test="matches(normalize-space(.),'^\p{Po}+$')">symbol</xsl:when>
     <!-- letter names -->
     <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Generalisierung']
-                                                                                                                                            [normalize-space(.)='Buchstabe']">yes</xsl:when>
+                                                                                                                                            [normalize-space(.)='Buchstabe']">name</xsl:when>
     <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Basis']
-                                                                                                                                            [matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]">yes</xsl:when>
+                                                                                                                                            [matches(normalize-space(.),'^der .+ Buchstabe des Alphabets$')]">name</xsl:when>
     <!-- sound names -->
     <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Basis']
-                                                                                                                                            [matches(normalize-space(.),'^der Laut \p{L}$')]">yes</xsl:when>
+                                                                                                                                            [matches(normalize-space(.),'^der Laut \p{L}$')]">name</xsl:when>
     <!-- note names -->
     <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Generalisierung']
-                                                                                                                                            [normalize-space(.)='Tonbezeichnung']">yes</xsl:when>
-    <xsl:otherwise>no</xsl:otherwise>
+                                                                                                                                            [normalize-space(.)='Tonbezeichnung']">name</xsl:when>
+    <!-- acronyms in uppercase letters with optional numbers and lowercase letters -->
+    <xsl:when test="matches(normalize-space(.),'^\p{N}*\p{Lu}([\p{L}\p{N}]*\p{Lu})*\p{N}*$')">acronym</xsl:when>
+    <!-- acronyms consisting of uppercase letters preceded by a lowercase letter -->
+    <xsl:when test="matches(normalize-space(.),'^\p{Ll}\p{Lu}+$')">acronym</xsl:when>
+    <!-- acronyms consisting of an uppercase consonant letter
+         followed by lowercase consonant letters -->
+    <xsl:when test="matches(normalize-space(.),'^[\p{Lu}-[AEIOUÄÖÜ]][\p{Ll}-[aeiouäöü]]+$')">acronym</xsl:when>
+    <xsl:otherwise>none</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 
@@ -3629,9 +3634,9 @@
 
 <xsl:template name="get-inflection-value">
   <xsl:choose>
-    <xsl:when test="dwds:indeklinabel">no</xsl:when>
-    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur im Infinitiv'">no</xsl:when>
-    <xsl:otherwise>yes</xsl:otherwise>
+    <xsl:when test="dwds:indeklinabel">uninflected</xsl:when>
+    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur im Infinitiv'">uninflected</xsl:when>
+    <xsl:otherwise>inflected</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 

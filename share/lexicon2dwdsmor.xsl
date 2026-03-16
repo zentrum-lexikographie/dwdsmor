@@ -30,7 +30,7 @@
                 select="tokenize(@pronunciations,'&#x20;')"/>
   <xsl:choose>
     <!-- abbreviated adjectives ("ff.") -->
-    <xsl:when test="@abbreviation='yes'">
+    <xsl:when test="@abbreviation!='none'">
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="pos">ADJ</xsl:with-param>
         <xsl:with-param name="class">AbbrAdj</xsl:with-param>
@@ -61,7 +61,7 @@
       </xsl:choose>
     </xsl:when>
     <!-- uninflected adjectives -->
-    <xsl:when test="@inflection='no'">
+    <xsl:when test="@inflection='uninflected'">
       <xsl:choose>
         <!-- attributive-only location adjectives -->
         <xsl:when test="matches(@lemma,'^\p{Lu}.*er$')">
@@ -540,7 +540,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-comp-stem-frequency"/>
       </xsl:variable>
@@ -562,7 +562,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-der-stem-frequency"/>
       </xsl:variable>
@@ -734,7 +734,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-comp-stem-frequency"/>
       </xsl:variable>
@@ -758,7 +758,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-der-stem-frequency"/>
       </xsl:variable>
@@ -802,7 +802,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-comp-stem-frequency"/>
       </xsl:variable>
@@ -826,7 +826,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-der-stem-frequency"/>
       </xsl:variable>
@@ -860,7 +860,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-comp-stem-frequency"/>
       </xsl:variable>
@@ -884,7 +884,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-der-stem-frequency"/>
       </xsl:variable>
@@ -961,7 +961,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-comp-stem-frequency"/>
       </xsl:variable>
@@ -983,7 +983,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-der-stem-frequency"/>
       </xsl:variable>
@@ -1462,13 +1462,10 @@
     <!-- abbreviated nouns without markers -->
     <xsl:when test="string-length($genitive-singular-marker)=0 and
                     string-length($nominative-plural-marker)=0 and
-                    @abbreviation='yes'">
+                    @abbreviation!='none'">
       <xsl:choose>
-        <!-- acronyms in uppercase letters or
-             acronyms consisting of an uppercase consonant letter
-             followed by lowercase consonant letters -->
-        <xsl:when test="matches(@lemma,'^\p{Lu}+$') or
-                        matches(@lemma,'^[\p{Lu}-[AEIOUÄÖÜ]][\p{Ll}-[aeiouäöü]]+$')">
+        <!-- acronyms -->
+        <xsl:when test="@abbreviation='acronym'">
           <xsl:choose>
             <!-- masculine acronyms ("PC", "Pkw") -->
             <xsl:when test="@gender='masculine'">
@@ -1725,7 +1722,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-comp-stem-frequency"/>
       </xsl:variable>
@@ -1747,7 +1744,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-der-stem-frequency"/>
       </xsl:variable>
@@ -2956,7 +2953,7 @@
   </xsl:variable>
   <xsl:choose>
     <!-- abbreviated possessive pronouns ("Ew.") -->
-    <xsl:when test="@abbreviation='yes'">
+    <xsl:when test="@abbreviation!='none'">
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="stem"
                         select="$stem"/>
@@ -3170,7 +3167,7 @@
                 select="tokenize(@pronunciations,'&#x20;')"/>
   <xsl:choose>
     <!-- abbreviated verbs ("vgl.") -->
-    <xsl:when test="@abbreviation='yes'">
+    <xsl:when test="@abbreviation!='none'">
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="pos">V</xsl:with-param>
         <xsl:with-param name="class">AbbrVImp</xsl:with-param>
@@ -3179,7 +3176,7 @@
     <xsl:otherwise>
       <xsl:choose>
         <!-- uninflected verbs (infinitive only) -->
-        <xsl:when test="@inflection='no'">
+        <xsl:when test="@inflection='uninflected'">
           <xsl:variable name="stem">
             <xsl:call-template name="verb-stem">
               <xsl:with-param name="lemma"
@@ -5721,7 +5718,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-comp-stem-frequency"/>
       </xsl:variable>
@@ -5742,7 +5739,7 @@
                                             [deep-equal(.,current())])">
     <!-- ignore single letters unless they are marked as abbreviations -->
     <xsl:if test="not(matches(@stem,'^\p{L}$') and
-                      @abbreviation='no')">
+                      @abbreviation='none')">
       <xsl:variable name="frequency">
         <xsl:call-template name="get-der-stem-frequency"/>
       </xsl:variable>

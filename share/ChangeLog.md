@@ -1,3 +1,9 @@
+2026-03-16:
+
+* in case of abbreviations and symbols without proper grammar specification fall
+  back to grammar specification of normal spellings
+* improve detection of uninflected and inflected abbreviations
+
 2026-03-13:
 
 * improve support for verbs borrowed from English

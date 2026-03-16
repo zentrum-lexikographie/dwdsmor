@@ -9,14 +9,6 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung>bzw.</Schreibung>
-      <Grammatik>
-        <Wortklasse>Konjunktion</Wortklasse>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
     <Formangabe>
       <Schreibung>inwieweit</Schreibung>
       <Grammatik>
@@ -43,14 +35,6 @@
   <Artikel>
     <Formangabe>
       <Schreibung>seitdem</Schreibung>
-      <Grammatik>
-        <Wortklasse>Konjunktion</Wortklasse>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung>&amp;</Schreibung>
       <Grammatik>
         <Wortklasse>Konjunktion</Wortklasse>
       </Grammatik>

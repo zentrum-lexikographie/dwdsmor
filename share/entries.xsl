@@ -29,7 +29,7 @@
   <xsl:if test="string-length($lemma)&gt;0 and
                 string-length($pos)&gt;0">
     <xsl:text>&lt;Stem&gt;</xsl:text>
-    <xsl:if test="$abbreviation='yes'">
+    <xsl:if test="$abbreviation!='none'">
       <xsl:text>&lt;Abbr&gt;</xsl:text>
     </xsl:if>
     <xsl:choose>
@@ -90,7 +90,7 @@
       <xsl:text>&lt;W-&gt;</xsl:text>
     </xsl:if>
     <xsl:text>&lt;Stem&gt;</xsl:text>
-    <xsl:if test="$abbreviation='yes'">
+    <xsl:if test="$abbreviation!='none'">
       <xsl:text>&lt;Abbr&gt;</xsl:text>
     </xsl:if>
     <xsl:choose>
@@ -137,7 +137,7 @@
         <xsl:text>&lt;W-&gt;</xsl:text>
       </xsl:if>
       <xsl:text>&lt;Stem&gt;</xsl:text>
-      <xsl:if test="$abbreviation='yes'">
+      <xsl:if test="$abbreviation!='none'">
         <xsl:text>&lt;Abbr&gt;</xsl:text>
       </xsl:if>
       <xsl:choose>
@@ -199,7 +199,7 @@
     <xsl:variable name="segmented-lemma"
                   select="n:segment($verb-stem,$lemma)"/>
     <xsl:text>&lt;Stem&gt;</xsl:text>
-    <xsl:if test="$abbreviation='yes'">
+    <xsl:if test="$abbreviation!='none'">
       <xsl:text>&lt;Abbr&gt;</xsl:text>
     </xsl:if>
     <xsl:if test="string-length($particle)&gt;0">
@@ -275,7 +275,7 @@
         <xsl:variable name="segmented-lemma"
                       select="n:segment($verb-stem,$lemma)"/>
         <xsl:text>&lt;Stem&gt;</xsl:text>
-        <xsl:if test="$abbreviation='yes'">
+        <xsl:if test="$abbreviation!='none'">
           <xsl:text>&lt;Abbr&gt;</xsl:text>
         </xsl:if>
         <xsl:if test="string-length($particle)&gt;0">
@@ -355,7 +355,7 @@
           <xsl:variable name="segmented-lemma"
                         select="n:segment($verb-stem,$lemma)"/>
           <xsl:text>&lt;Stem&gt;</xsl:text>
-          <xsl:if test="$abbreviation='yes'">
+          <xsl:if test="$abbreviation!='none'">
             <xsl:text>&lt;Abbr&gt;</xsl:text>
           </xsl:if>
           <xsl:if test="string-length($particle)&gt;0">

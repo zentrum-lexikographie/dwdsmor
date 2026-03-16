@@ -2,15 +2,6 @@
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
     <Formangabe Typ="Abkürzung">
-      <Schreibung>Bl.</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
       <Schreibung>BGBl.</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -21,15 +12,6 @@
   <Artikel>
     <Formangabe Typ="Symbol">
       <Schreibung>$</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung hidx="1">Dr.</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
@@ -48,15 +30,6 @@
   <Artikel>
     <Formangabe Typ="Symbol">
       <Schreibung>°</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung hidx="2">g</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>neutr.</Genus>
@@ -95,80 +68,8 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung>kg</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung>km</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung hidx="2">l</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung hidx="2">m</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung>ml</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung>mm</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung>min</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
     <Formangabe Typ="Symbol">
       <Schreibung>′</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung>Nr.</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>fem.</Genus>
@@ -204,33 +105,6 @@
   </Artikel>
   <Artikel>
     <Formangabe Typ="Abkürzung">
-      <Schreibung hidx="1">Prof.</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Symbol">
-      <Schreibung>‰</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Symbol">
-      <Schreibung>%</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
       <Schreibung>S.</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
@@ -257,35 +131,8 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung hidx="2">h</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>fem.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung>Tel.</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>neutr.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
     <Formangabe Typ="Symbol">
       <Schreibung>¥</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>mask.</Genus>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe Typ="Abkürzung">
-      <Schreibung>cm</Schreibung>
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
