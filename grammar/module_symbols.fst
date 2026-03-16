@@ -1,6 +1,6 @@
 % module_symbols.fst
-% Version 14.0
-% Andreas Nolda 2026-01-08
+% Version 14.1
+% Andreas Nolda 2026-03-13
 
 % must be loaded first
 
@@ -261,22 +261,24 @@
                    <WProMascAccSg><WProMascDatSg><WProMascGenSg><WProMascNomSg> \
                    <WProNeutAccSg><WProNeutDatSg><WProNeutGenSg><WProNeutNomSg>
 
-#verb-inflection# = <VImp><VImp-ak-ik><VImp-d-t><VImp-el-er><VImp-le><VImp-m-n> \
-                    <VImpPl><VImpPl-sein><VImpSg><VImpSg0><VInf><VInf-el-er> \
-                    <VInf-le><VInf_n><VModPresIndSg><VModPresNonIndSg> \
-                    <VPartPerf-d_t><VPartPerf-le><VPartPerf_ed><VPartPerf_n> \
-                    <VPartPerfStr><VPartPerfWeak><VPartPres><VPartPres-el-er> \
-                    <VPartPres-le><VPastInd-d-t_t><VPastInd-le><VPastInd-werden> \
-                    <VPastIndPl-werden><VPastIndSg-ward><VPastIndOld> \
-                    <VPastIndStr><VPastIndStr-s><VPastIndWeak><VPastStr> \
-                    <VPastStr-s><VPastSubj-haben><VPastSubj-le><VPastSubj2-sein> \
-                    <VPastSubjOld><VPastSubjStr><VPastSubjWeak><VPres> \
-                    <VPres-ak-ik><VPres-el-er><VPres-le><VPres-m-n><VPres-s> \
+#verb-inflection# = <VImp><VImp-d-t><VImp-e><VImp-e/0><VImp-el-er><VImp-le> \
+                    <VImp-m-n><VImpPl><VImpPl-sein><VImpSg><VImpSg0><VImpSg-e> \
+                    <VInf><VInf-e><VInf-el-er><VInf-le><VInf_n><VModPresIndSg> \
+                    <VModPresNonIndSg><VPartPerf-d_t><VPartPerf-e> \
+                    <VPartPerf-e_d><VPartPerf-le><VPartPerf_ed><VPartPerf_n> \
+                    <VPartPerfStr><VPartPerfWeak><VPartPres><VPartPres-e> \
+                    <VPartPres-el-er><VPartPres-le><VPastInd-d-t_t><VPastInd-e> \
+                    <VPastInd-le><VPastInd-werden><VPastIndPl-werden> \
+                    <VPastIndSg-ward><VPastIndOld><VPastIndStr><VPastIndStr-s> \
+                    <VPastIndWeak><VPastStr><VPastStr-s><VPastSubj-e> \
+                    <VPastSubj-haben><VPastSubj-le><VPastSubj2-sein> \
+                    <VPastSubjOld><VPastSubjStr><VPastSubjWeak><VPres><VPres-e> \
+                    <VPres-e/0><VPres-el-er><VPres-le><VPres-m-n><VPres-s> \
                     <VPres-tun><VPresInd13Pl-sein><VPresInd1Sg-sein> \
                     <VPresInd23Sg><VPresInd23Sg-d_t><VPresInd23Sg-t_0> \
                     <VPresInd2Pl-sein><VPresInd2Sg-sein><VPresInd2Sg-werden> \
                     <VPresInd3Sg-sein><VPresInd3Sg-werden><VPresNonInd23Sg> \
-                    <VPresSubj-sein><VWeak><VWeak-ak-ik><VWeak-d-t><VWeak-el-er> \
+                    <VPresSubj-sein><VWeak><VWeak-d-t><VWeak-e><VWeak-el-er> \
                     <VWeak-le><VWeak-m-n><VWeak-s><VWeak-signen>
 
 #inflection# = #abbr-inflection# #adj-inflection# #adv-inflection# \

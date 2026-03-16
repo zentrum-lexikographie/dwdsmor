@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- strings.xsl -->
-<!-- Version 7.5 -->
-<!-- Andreas Nolda 2025-09-17 -->
+<!-- Version 8.0 -->
+<!-- Andreas Nolda 2026-03-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -257,6 +257,130 @@
           <xsl:sequence select="false()"/>
         </xsl:otherwise>
       </xsl:choose>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
+
+<!-- return true if string is a verb borrowed from English with stem-final "e" -->
+<xsl:function name="n:is-verb-borrowed-from-english-with-stem-final-e" as="xs:boolean">
+  <xsl:param name="string"/>
+  <xsl:param name="pronunciations"/>
+  <xsl:choose>
+    <!-- string ends in "raten" and is pronounced as /reitən/ -->
+    <xsl:when test="ends-with($string,'raten') and
+                    (some $p in $pronunciations satisfies matches($p,'[ɹʀ]ɛɪ&#x32F;t(ən|n&#x329;?)$'))">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "skaten" and is pronounced as /skeitən/ -->
+    <xsl:when test="ends-with($string,'skaten') and
+                    (some $p in $pronunciations satisfies matches($p,'sk(ɛɪ&#x32F;|e&#x2D0;)t(ən|n&#x329;?)$'))">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "facen" -->
+    <xsl:when test="ends-with($string,'facen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "piercen" -->
+    <xsl:when test="ends-with($string,'piercen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "sourcen" -->
+    <xsl:when test="ends-with($string,'sourcen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string is "bladen" -->
+    <xsl:when test="$string='bladen'">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "graden" or "traden" -->
+    <xsl:when test="matches($string,'[gt]raden$')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "hedgen" -->
+    <xsl:when test="ends-with($string,'hedgen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "cachen" -->
+    <xsl:when test="ends-with($string,'cachen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "faken" -->
+    <xsl:when test="ends-with($string,'faken')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "biken" or "liken" -->
+    <xsl:when test="matches($string,'[bl]iken$')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "cyclen" -->
+    <xsl:when test="ends-with($string,'cyclen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "togglen" -->
+    <xsl:when test="ends-with($string,'togglen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "googlen" -->
+    <xsl:when test="ends-with($string,'googlen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "samplen" -->
+    <xsl:when test="ends-with($string,'samplen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "stylen" -->
+    <xsl:when test="ends-with($string,'stylen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "hypen" -->
+    <xsl:when test="ends-with($string,'hypen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "skypen" -->
+    <xsl:when test="ends-with($string,'skypen')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "featuren" -->
+    <xsl:when test="ends-with($string,'featuren')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "kiten" -->
+    <xsl:when test="ends-with($string,'kiten')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "raven" -->
+    <xsl:when test="ends-with($string,'raven')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <!-- string ends in "grooven" -->
+    <xsl:when test="ends-with($string,'grooven')">
+      <!-- string has an English pronunciation -->
+      <xsl:sequence select="true()"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <!-- string does not have a final schwa-syllable -->
+      <xsl:sequence select="false()"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:function>

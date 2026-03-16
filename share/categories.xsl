@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- categories.xsl -->
-<!-- Version 8.0 -->
-<!-- Andreas Nolda 2025-09-09 -->
+<!-- Version 8.1 -->
+<!-- Andreas Nolda 2026-03-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2128,10 +2128,14 @@
              select="@past"/>
   <xsl:param name="participle"
              select="@participle"/>
+  <xsl:variable name="pronunciations"
+                select="tokenize(@pronunciations,'&#x20;')"/>
   <xsl:variable name="stem">
     <xsl:call-template name="verb-stem">
       <xsl:with-param name="lemma"
                       select="$lemma"/>
+      <xsl:with-param name="pronunciations"
+                      select="$pronunciations"/>
     </xsl:call-template>
   </xsl:variable>
   <xsl:variable name="infinitive-marker">

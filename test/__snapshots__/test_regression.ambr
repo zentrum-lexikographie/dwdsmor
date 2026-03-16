@@ -26480,7 +26480,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastStr, VPres, VPastIndStr, VPastSubjStr, VPastSubjOld, VImp',
+      'VInf, VPartPres, VPartPerfStr, VPres, VPastIndStr, VPastSubjStr, VPastSubjOld, VImp',
       'schwimmen',
       tuple(
         'schwimm<~>en<V><1><Pl><Past><Ind>',
@@ -26641,7 +26641,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastStr, VPres, VPastStr, VImp',
+      'VInf, VPartPres, VPartPerfStr, VPres, VPastStr, VImp',
       'gehen',
       tuple(
         'geh<~>en<V><1><Pl><Past><Ind>',
@@ -26774,7 +26774,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastStr, VPres, VPresInd23Sg-d_t, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImp, VImp-d-t',
+      'VInf, VPartPres, VPartPerfStr, VPres, VPresInd23Sg-d_t, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImp, VImp-d-t',
       'laden',
       tuple(
         'lad<~>en<IDX1><PAR1><V><1><Pl><Past><Ind>',
@@ -27291,7 +27291,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImpSg, VImpPl',
+      'VInf, VPartPres, VPartPerfStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImpSg, VImpPl',
       'sehen',
       tuple(
         'seh<~>en<V><1><Pl><Past><Ind>',
@@ -27424,7 +27424,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr-s, VPastSubjStr, VImpSg0, VImpPl',
+      'VInf, VPartPres, VPartPerfStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr-s, VPastSubjStr, VImpSg0, VImpPl',
       'lesen',
       tuple(
         'les<~>en<IDX1><V><1><Pl><Past><Ind>',
@@ -27685,7 +27685,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastStr, VImp',
+      'VInf, VPartPres, VPartPerfStr, VPresInd23Sg, VPresNonInd23Sg, VPastStr, VImp',
       'laufen',
       tuple(
         'lauf<~>en<V><1><Pl><Past><Ind>',
@@ -27822,7 +27822,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastStr, VPresInd23Sg-t_0, VPresNonInd23Sg, VPastStr, VImp-d-t',
+      'VInf, VPartPres, VPartPerfStr, VPresInd23Sg-t_0, VPresNonInd23Sg, VPastStr, VImp-d-t',
       'halten',
       tuple(
         'halt<~>en<V><1><Pl><Past><Ind>',
@@ -27955,7 +27955,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastStr, VPresInd2Sg-werden, VPresInd3Sg-werden, VPresNonInd23Sg, VPastInd-werden,',
+      'VInf, VPartPres, VPartPerfStr, VPresInd2Sg-werden, VPresInd3Sg-werden, VPresNonInd23Sg, VPastInd-werden,',
       'werden',
       tuple(
         'werd<~>en<PAR1><V><1><Pl><Past><Ind>',
@@ -28216,7 +28216,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak',
+      'VInf, VPartPres, VPartPerfWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak',
       'wissen',
       tuple(
         '<CH>wiss<~>en<V><1><Sg><Pres><Ind>',
@@ -28501,7 +28501,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastWeak, VPPastStr, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak',
+      'VInf, VPartPres, VPartPerfWeak, VPartPerfStr, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak',
       'können',
       tuple(
         'könn<~>en<V><1><Pl><Past><Ind>',
@@ -28618,7 +28618,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp',
+      'VInf, VPartPres, VPartPerfWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp',
       'denken',
       tuple(
         'denk<~>en<V><1><Pl><Past><Ind>',
@@ -28747,7 +28747,7 @@
     ),
     tuple(
       'V',
-      'VInf, VPPres, VPPastWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-d-t_t, VPastSubj-haben, VImp',
+      'VInf, VPartPres, VPartPerfWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-d-t_t, VPastSubj-haben, VImp',
       'haben',
       tuple(
         'hab<~>en<V><1><Pl><Past><Ind>',
@@ -28876,7 +28876,7 @@
     ),
     tuple(
       'V',
-      'VInf-el-er, VPPres-el-er, VPPastWeak, VPres-el-er, VPastIndWeak, VPastSubjWeak, VImp-el-er',
+      'VInf-el-er, VPartPres-el-er, VPartPerfWeak, VPres-el-er, VPastIndWeak, VPastSubjWeak, VImp-el-er',
       'notwassern',
       tuple(
         'not<#>wasser<~>n<V><1><Pl><Past><Ind>',
@@ -29029,7 +29029,7 @@
     ),
     tuple(
       'V',
-      'VInf-le, VPPres-le, VPPast-le, VPres-le, VPastInd-le, VPastSubj-le, VImp-le',
+      'VInf-le, VPartPres-le, VPartPerf-le, VPres-le, VPastInd-le, VPastSubj-le, VImp-le',
       'downcyclen',
       tuple(
         'down<#>cycle<~>n<PAR2><V><1><Pl><Past><Ind>',
@@ -29154,7 +29154,7 @@
     ),
     tuple(
       'V',
-      'VInf_n, VPPres, VPPast_n, VPres-tun, VPastIndStr, VPastSubjStr, VImpSg0, VImpPl',
+      'VInf_n, VPartPres, VPartPerf_n, VPres-tun, VPastIndStr, VPastSubjStr, VImpSg0, VImpPl',
       'tun',
       tuple(
         'tu<~>n<V><1><Pl><Past><Ind>',
@@ -29283,7 +29283,7 @@
     ),
     tuple(
       'V',
-      'VPastIndSg-ward, VPastIndPl-werden, VPastSubjStr, VImp-d-t, VInf_n, VPPres, VPPastStr, VPresInd1Sg-sein, VPresInd2Sg-sein, VPresInd3Sg-sein, VPresInd13Pl-sein, VPresInd2Pl-sein, VPresSubj-sein, VPastIndStr, VPastSubjStr, VPastSubj2-sein, VImpSg0, VImpPl-sein',
+      'VPastIndSg-ward, VPastIndPl-werden, VPastSubjStr, VImp-d-t, VInf_n, VPartPres, VPartPerfStr, VPresInd1Sg-sein, VPresInd2Sg-sein, VPresInd3Sg-sein, VPresInd13Pl-sein, VPresInd2Pl-sein, VPresSubj-sein, VPastIndStr, VPastSubjStr, VPastSubj2-sein, VImpSg0, VImpPl-sein',
       'sein',
       tuple(
         'sei<~>n<IDX3><V><1><Pl><Past><Ind>',
@@ -29549,252 +29549,127 @@
     ),
     tuple(
       'V',
-      'VWeak-ak-ik',
+      'VInf-ak-ik, VPartPres-ak-ik, VPartPerf-ak-ik, VPartPerf-ak-ik_d, VPres-ak-ik, VPastInd-ak-ik, VPastSubj-ak-ik, VImp-ak-ik',
       'liken',
       tuple(
-        'lik<~>en<V><1><Pl><Past><Ind>',
+        'like<~>n<V><1><Pl><Past><Ind>',
         'likten',
       ),
       tuple(
-        'lik<~>en<V><1><Pl><Past><Subj>',
+        'like<~>n<V><1><Pl><Past><Subj>',
         'likten',
       ),
       tuple(
-        'lik<~>en<V><1><Pl><Pres><Ind>',
+        'like<~>n<V><1><Pl><Pres><Ind>',
         'liken',
       ),
       tuple(
-        'lik<~>en<V><1><Pl><Pres><Subj>',
+        'like<~>n<V><1><Pl><Pres><Subj>',
         'liken',
       ),
       tuple(
-        'lik<~>en<V><1><Sg><Past><Ind>',
+        'like<~>n<V><1><Sg><Past><Ind>',
         'likte',
       ),
       tuple(
-        'lik<~>en<V><1><Sg><Past><Subj>',
+        'like<~>n<V><1><Sg><Past><Subj>',
         'likte',
       ),
       tuple(
-        'lik<~>en<V><1><Sg><Pres><Ind>',
+        'like<~>n<V><1><Sg><Pres><Ind>',
         'like',
       ),
       tuple(
-        'lik<~>en<V><1><Sg><Pres><Subj>',
+        'like<~>n<V><1><Sg><Pres><Subj>',
         'like',
       ),
       tuple(
-        'lik<~>en<V><2><Pl><Past><Ind>',
+        'like<~>n<V><2><Pl><Past><Ind>',
         'liktet',
       ),
       tuple(
-        'lik<~>en<V><2><Pl><Past><Subj>',
+        'like<~>n<V><2><Pl><Past><Subj>',
         'liktet',
       ),
       tuple(
-        'lik<~>en<V><2><Pl><Pres><Ind>',
+        'like<~>n<V><2><Pl><Pres><Ind>',
         'likt',
       ),
       tuple(
-        'lik<~>en<V><2><Pl><Pres><Subj>',
+        'like<~>n<V><2><Pl><Pres><Subj>',
         'liket',
       ),
       tuple(
-        'lik<~>en<V><2><Sg><Past><Ind>',
+        'like<~>n<V><2><Sg><Past><Ind>',
         'liktest',
       ),
       tuple(
-        'lik<~>en<V><2><Sg><Past><Subj>',
+        'like<~>n<V><2><Sg><Past><Subj>',
         'liktest',
       ),
       tuple(
-        'lik<~>en<V><2><Sg><Pres><Ind>',
+        'like<~>n<V><2><Sg><Pres><Ind>',
         'likst',
       ),
       tuple(
-        'lik<~>en<V><2><Sg><Pres><Subj>',
+        'like<~>n<V><2><Sg><Pres><Subj>',
         'likest',
       ),
       tuple(
-        'lik<~>en<V><3><Pl><Past><Ind>',
+        'like<~>n<V><3><Pl><Past><Ind>',
         'likten',
       ),
       tuple(
-        'lik<~>en<V><3><Pl><Past><Subj>',
+        'like<~>n<V><3><Pl><Past><Subj>',
         'likten',
       ),
       tuple(
-        'lik<~>en<V><3><Pl><Pres><Ind>',
+        'like<~>n<V><3><Pl><Pres><Ind>',
         'liken',
       ),
       tuple(
-        'lik<~>en<V><3><Pl><Pres><Subj>',
+        'like<~>n<V><3><Pl><Pres><Subj>',
         'liken',
       ),
       tuple(
-        'lik<~>en<V><3><Sg><Past><Ind>',
+        'like<~>n<V><3><Sg><Past><Ind>',
         'likte',
       ),
       tuple(
-        'lik<~>en<V><3><Sg><Past><Subj>',
+        'like<~>n<V><3><Sg><Past><Subj>',
         'likte',
       ),
       tuple(
-        'lik<~>en<V><3><Sg><Pres><Ind>',
+        'like<~>n<V><3><Sg><Pres><Ind>',
         'likt',
       ),
       tuple(
-        'lik<~>en<V><3><Sg><Pres><Subj>',
+        'like<~>n<V><3><Sg><Pres><Subj>',
         'like',
       ),
       tuple(
-        'lik<~>en<V><Imp><Pl>',
+        'like<~>n<V><Imp><Pl>',
         'likt',
       ),
       tuple(
-        'lik<~>en<V><Imp><Sg>',
+        'like<~>n<V><Imp><Sg>',
         'like',
       ),
       tuple(
-        'lik<~>en<V><Inf><NonCl>',
+        'like<~>n<V><Inf><NonCl>',
         'liken',
       ),
       tuple(
-        'lik<~>en<V><Part><Perf><haben>',
+        'like<~>n<V><Part><Perf><haben>',
         'geliked',
       ),
       tuple(
-        'lik<~>en<V><Part><Perf><haben>',
+        'like<~>n<V><Part><Perf><haben>',
         'gelikt',
       ),
       tuple(
-        'lik<~>en<V><Part><Pres>',
+        'like<~>n<V><Part><Pres>',
         'likend',
-      ),
-    ),
-    tuple(
-      'V',
-      'VWeak-ak-ik, VInf, VPPres, VPPast_ed, VPres-ak-ik, VPastIndWeak, VPastSubjWeak, VImp-ak-ik',
-      'faken',
-      tuple(
-        'fak<~>en<V><1><Pl><Past><Ind>',
-        'fakten',
-      ),
-      tuple(
-        'fak<~>en<V><1><Pl><Past><Subj>',
-        'fakten',
-      ),
-      tuple(
-        'fak<~>en<V><1><Pl><Pres><Ind>',
-        'faken',
-      ),
-      tuple(
-        'fak<~>en<V><1><Pl><Pres><Subj>',
-        'faken',
-      ),
-      tuple(
-        'fak<~>en<V><1><Sg><Past><Ind>',
-        'fakte',
-      ),
-      tuple(
-        'fak<~>en<V><1><Sg><Past><Subj>',
-        'fakte',
-      ),
-      tuple(
-        'fak<~>en<V><1><Sg><Pres><Ind>',
-        'fake',
-      ),
-      tuple(
-        'fak<~>en<V><1><Sg><Pres><Subj>',
-        'fake',
-      ),
-      tuple(
-        'fak<~>en<V><2><Pl><Past><Ind>',
-        'faktet',
-      ),
-      tuple(
-        'fak<~>en<V><2><Pl><Past><Subj>',
-        'faktet',
-      ),
-      tuple(
-        'fak<~>en<V><2><Pl><Pres><Ind>',
-        'fakt',
-      ),
-      tuple(
-        'fak<~>en<V><2><Pl><Pres><Subj>',
-        'faket',
-      ),
-      tuple(
-        'fak<~>en<V><2><Sg><Past><Ind>',
-        'faktest',
-      ),
-      tuple(
-        'fak<~>en<V><2><Sg><Past><Subj>',
-        'faktest',
-      ),
-      tuple(
-        'fak<~>en<V><2><Sg><Pres><Ind>',
-        'fakst',
-      ),
-      tuple(
-        'fak<~>en<V><2><Sg><Pres><Subj>',
-        'fakest',
-      ),
-      tuple(
-        'fak<~>en<V><3><Pl><Past><Ind>',
-        'fakten',
-      ),
-      tuple(
-        'fak<~>en<V><3><Pl><Past><Subj>',
-        'fakten',
-      ),
-      tuple(
-        'fak<~>en<V><3><Pl><Pres><Ind>',
-        'faken',
-      ),
-      tuple(
-        'fak<~>en<V><3><Pl><Pres><Subj>',
-        'faken',
-      ),
-      tuple(
-        'fak<~>en<V><3><Sg><Past><Ind>',
-        'fakte',
-      ),
-      tuple(
-        'fak<~>en<V><3><Sg><Past><Subj>',
-        'fakte',
-      ),
-      tuple(
-        'fak<~>en<V><3><Sg><Pres><Ind>',
-        'fakt',
-      ),
-      tuple(
-        'fak<~>en<V><3><Sg><Pres><Subj>',
-        'fake',
-      ),
-      tuple(
-        'fak<~>en<V><Imp><Pl>',
-        'fakt',
-      ),
-      tuple(
-        'fak<~>en<V><Imp><Sg>',
-        'fake',
-      ),
-      tuple(
-        'fak<~>en<V><Inf><NonCl>',
-        'faken',
-      ),
-      tuple(
-        'fak<~>en<V><Part><Perf><haben>',
-        'gefaked',
-      ),
-      tuple(
-        'fak<~>en<V><Part><Perf><haben>',
-        'gefakt',
-      ),
-      tuple(
-        'fak<~>en<V><Part><Pres>',
-        'fakend',
       ),
     ),
     tuple(
@@ -29928,7 +29803,7 @@
     ),
     tuple(
       'V',
-      'VWeak-d-t, VInf, VPPres, VPPast-d_t, VPres, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t',
+      'VWeak-d-t, VInf, VPartPres, VPartPerf-d_t, VPres, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t',
       'senden',
       tuple(
         'send<~>en<PAR1><V><1><Pl><Past><Ind>',
@@ -30789,7 +30664,7 @@
     ),
     tuple(
       'V',
-      'VWeak-s, VInf, VPPres, VPPastStr, VPres-s, VPastStr-s, VImp',
+      'VWeak-s, VInf, VPartPres, VPartPerfStr, VPres-s, VPastStr-s, VImp',
       'heißen',
       tuple(
         '<CH>heiß<~>en<IDX1><V><1><Pl><Past><Ind>',
@@ -33091,6 +32966,10 @@
       tuple(
         'design<~>en<V><1><Sg><Pres><Ind>',
         'designe',
+      ),
+      tuple(
+        'design<~>en<V><1><Sg><Pres><Ind><NonSt>',
+        'design',
       ),
       tuple(
         'design<~>en<V><1><Sg><Pres><Subj>',

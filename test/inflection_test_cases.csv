@@ -248,32 +248,31 @@ REL,"RProMascNomSg, RProMascAccSg, RProMascDatSg, RProMascGenSg, RProNeutNomSg .
 REL,"RProMascNomSg, RProMascAccSg, RProMascDatSg, RProMascGenSg, RProNeutNomSg ...",wer
 REL,Rel,die
 REL,Rel-welch,welche
-V,"VInf, VPPres, VPPastStr, VPres, VPastIndStr, VPastSubjStr, VPastSubjOld, VImp",schwimmen
-V,"VInf, VPPres, VPPastStr, VPres, VPastStr, VImp",gehen
-V,"VInf, VPPres, VPPastStr, VPres, VPresInd23Sg-d_t, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImp, VImp-d-t",laden
-V,"VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImpSg, VImpPl",sehen
-V,"VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr-s, VPastSubjStr, VImpSg0, VImpPl",lesen
-V,"VInf, VPPres, VPPastStr, VPresInd23Sg, VPresNonInd23Sg, VPastStr, VImp",laufen
-V,"VInf, VPPres, VPPastStr, VPresInd23Sg-t_0, VPresNonInd23Sg, VPastStr, VImp-d-t",halten
-V,"VInf, VPPres, VPPastStr, VPresInd2Sg-werden, VPresInd3Sg-werden, VPresNonInd23Sg, VPastInd-werden,",werden
-V,"VInf, VPPres, VPPastWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak",wissen
-V,"VInf, VPPres, VPPastWeak, VPPastStr, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak",können
-V,"VInf, VPPres, VPPastWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp",denken
-V,"VInf, VPPres, VPPastWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-d-t_t, VPastSubj-haben, VImp",haben
-V,"VInf-el-er, VPPres-el-er, VPPastWeak, VPres-el-er, VPastIndWeak, VPastSubjWeak, VImp-el-er",notwassern
-V,"VInf-le, VPPres-le, VPPast-le, VPres-le, VPastInd-le, VPastSubj-le, VImp-le",downcyclen
-V,"VInf_n, VPPres, VPPast_n, VPres-tun, VPastIndStr, VPastSubjStr, VImpSg0, VImpPl",tun
-V,"VPastIndSg-ward, VPastIndPl-werden, VPastSubjStr, VImp-d-t, VInf_n, VPPres, VPPastStr, VPresInd1Sg-sein, VPresInd2Sg-sein, VPresInd3Sg-sein, VPresInd13Pl-sein, VPresInd2Pl-sein, VPresSubj-sein, VPastIndStr, VPastSubjStr, VPastSubj2-sein, VImpSg0, VImpPl-sein",sein
+V,"VInf, VPartPres, VPartPerfStr, VPres, VPastIndStr, VPastSubjStr, VPastSubjOld, VImp",schwimmen
+V,"VInf, VPartPres, VPartPerfStr, VPres, VPastStr, VImp",gehen
+V,"VInf, VPartPres, VPartPerfStr, VPres, VPresInd23Sg-d_t, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImp, VImp-d-t",laden
+V,"VInf, VPartPres, VPartPerfStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr, VPastSubjStr, VImpSg, VImpPl",sehen
+V,"VInf, VPartPres, VPartPerfStr, VPresInd23Sg, VPresNonInd23Sg, VPastIndStr-s, VPastSubjStr, VImpSg0, VImpPl",lesen
+V,"VInf, VPartPres, VPartPerfStr, VPresInd23Sg, VPresNonInd23Sg, VPastStr, VImp",laufen
+V,"VInf, VPartPres, VPartPerfStr, VPresInd23Sg-t_0, VPresNonInd23Sg, VPastStr, VImp-d-t",halten
+V,"VInf, VPartPres, VPartPerfStr, VPresInd2Sg-werden, VPresInd3Sg-werden, VPresNonInd23Sg, VPastInd-werden,",werden
+V,"VInf, VPartPres, VPartPerfWeak, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak",wissen
+V,"VInf, VPartPres, VPartPerfWeak, VPartPerfStr, VModPresIndSg, VModPresNonIndSg, VPastIndWeak, VPastSubjWeak",können
+V,"VInf, VPartPres, VPartPerfWeak, VPres, VPastIndWeak, VPastSubjWeak, VImp",denken
+V,"VInf, VPartPres, VPartPerfWeak, VPresInd23Sg, VPresNonInd23Sg, VPastInd-d-t_t, VPastSubj-haben, VImp",haben
+V,"VInf-el-er, VPartPres-el-er, VPartPerfWeak, VPres-el-er, VPastIndWeak, VPastSubjWeak, VImp-el-er",notwassern
+V,"VInf-le, VPartPres-le, VPartPerf-le, VPres-le, VPastInd-le, VPastSubj-le, VImp-le",downcyclen
+V,"VInf_n, VPartPres, VPartPerf_n, VPres-tun, VPastIndStr, VPastSubjStr, VImpSg0, VImpPl",tun
+V,"VPastIndSg-ward, VPastIndPl-werden, VPastSubjStr, VImp-d-t, VInf_n, VPartPres, VPartPerfStr, VPresInd1Sg-sein, VPresInd2Sg-sein, VPresInd3Sg-sein, VPresInd13Pl-sein, VPresInd2Pl-sein, VPresSubj-sein, VPastIndStr, VPastSubjStr, VPastSubj2-sein, VImpSg0, VImpPl-sein",sein
 V,VWeak,spielen
-V,VWeak-ak-ik,liken
-V,"VWeak-ak-ik, VInf, VPPres, VPPast_ed, VPres-ak-ik, VPastIndWeak, VPastSubjWeak, VImp-ak-ik",faken
+V,"VInf-ak-ik, VPartPres-ak-ik, VPartPerf-ak-ik, VPartPerf-ak-ik_d, VPres-ak-ik, VPastInd-ak-ik, VPastSubj-ak-ik, VImp-ak-ik",liken
 V,VWeak-d-t,arbeiten
-V,"VWeak-d-t, VInf, VPPres, VPPast-d_t, VPres, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t",senden
+V,"VWeak-d-t, VInf, VPartPres, VPartPerf-d_t, VPres, VPastInd-d-t_t, VPastSubjWeak, VImp-d-t",senden
 V,VWeak-el-er,segeln
 V,VWeak-le,recyclen
 V,VWeak-m-n,atmen
 V,VWeak-s,küssen
-V,"VWeak-s, VInf, VPPres, VPPastStr, VPres-s, VPastStr-s, VImp",heißen
+V,"VWeak-s, VInf, VPartPres, VPartPerfStr, VPres-s, VPastStr-s, VImp",heißen
 V,VWeak-signen,designen
 WPRO,W-welch,welche
 WPRO,"WProMascNomSg, WProMascA,ccSg, WProMascDatSg, WProMascGenSg, WProNeutNomSg ...",wer

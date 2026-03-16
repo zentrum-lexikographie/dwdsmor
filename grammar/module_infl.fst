@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 14.0
-% Andreas Nolda 2026-01-08
+% Version 15.0
+% Andreas Nolda 2026-03-13
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1051,13 +1051,13 @@ $AdjPosAttr$ = {<Pos>}:{} $AdjInflSuff$
 
 % ander-
 % vorder-
-$AdjPosAttr-er$ = $AdjPosAttr$                               | \
+$AdjPosAttr-er$ = $AdjPosAttr$                         | \
                   {<Pos>}:{<del(e)|ADJ>} $AdjInflSuff$ | \
                   {<Pos>}:{} $AdjInflSuff-n$           | \
                   {<Pos>}:{} $AdjInflSuff-m$
 
 % mittler-
-$AdjPosAttr-ler$ = $AdjPosAttr$                               | \
+$AdjPosAttr-ler$ = $AdjPosAttr$                         | \
                    {<Pos>}:{} $AdjInflSuff-n$           | \
                    {<Pos>}:{} $AdjInflSuff-m$
 
@@ -1085,13 +1085,13 @@ $AdjPos-e$ = $AdjPosPred-e$ | \
              $AdjPosAttr$
 
 % dunkel
-$AdjPos-el$ = {}:{<del(e)|ADJ>} $AdjPos$                  | \
+$AdjPos-el$ = {}:{<del(e)|ADJ>} $AdjPos$            | \
               {<Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
               {<Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
 
 % bitter
-$AdjPos-er$ = $AdjPos$                                    | \
-              {}:{<del(e)|ADJ>} $AdjPos$                  | \
+$AdjPos-er$ = $AdjPos$                              | \
+              {}:{<del(e)|ADJ>} $AdjPos$            | \
               {<Pos>}:{} $AdjInflSuff-n$ {<Old>}:{} | \ % cf. Duden-Grammatik (2016: § 494)
               {<Pos>}:{} $AdjInflSuff-m$ {<Old>}:{}     % cf. Duden-Grammatik (2016: § 494)
 
@@ -2025,6 +2025,9 @@ $VInf-el-er$ = $VInfSuff_en$
 % downcyclen
 $VInf-le$ = $VInfSuff_n$
 
+% liken
+$VInf-e$ = $VInfSuff_n$
+
 % tun
 $VInf_n$ = $VInfSuff_n$
 
@@ -2045,6 +2048,9 @@ $VPartPres-el-er$ = $VPartPresSuff_end$
 % downcyclend
 $VPartPres-le$ = $VPartPresSuff_nd$
 
+% likend
+$VPartPres-e$ = $VPartPresSuff_nd$
+
 $VPartPerfSuff_et$ = {<Part><Perf>}:{<ins(ge)><SB><ins(e)>t}
 
 $VPartPerfSuff_t$ = {<Part><Perf>}:{<ins(ge)><SB>t}
@@ -2054,6 +2060,8 @@ $VPartPerfSuff_en$ = {<Part><Perf>}:{<ins(ge)><SB>en}
 $VPartPerfSuff_n$ = {<Part><Perf>}:{<ins(ge)><SB>n}
 
 $VPartPerfSuff_ed$ = {<Part><Perf>}:{<ins(ge)><SB>ed}
+
+$VPartPerfSuff_d$ = {<Part><Perf>}:{<ins(ge)><SB>d}
 
 $haben$ = {<haben>}:{}
 
@@ -2098,18 +2106,32 @@ $VPartPerf-le+haben$ = $VPartPerfSuff_t$ $haben$
 
 $VPartPerf-le+sein$ = $VPartPerfSuff_t$ $sein$
 
+% gelikt
+$VPartPerf-e$ = $VPartPerfSuff_t$
+
+$VPartPerf-e+haben$ = $VPartPerfSuff_t$ $haben$
+
+$VPartPerf-e+sein$ = $VPartPerfSuff_t$ $sein$
+
 $VPartPerf-signen$ = $VPartPerfSuff_t$
 
 $VPartPerf-signen+haben$ = $VPartPerfSuff_t$ $haben$
 
 $VPartPerf-signen+sein$ = $VPartPerfSuff_t$ $sein$
 
-% gefaked
+% designed
 $VPartPerf_ed$ = $VPartPerfSuff_ed$
 
 $VPartPerf_ed+haben$ = $VPartPerfSuff_ed$ $haben$
 
 $VPartPerf_ed+sein$ = $VPartPerfSuff_ed$ $sein$
+
+% geliked
+$VPartPerf-e_d$ = $VPartPerfSuff_d$
+
+$VPartPerf-e_d+haben$ = $VPartPerfSuff_d$ $haben$
+
+$VPartPerf-e_d+sein$ = $VPartPerfSuff_d$ $sein$
 
 $VPresInd1SgSuff_0$ = {<1><Sg><Pres><Ind>}:{}
 
@@ -2118,6 +2140,8 @@ $VPresInd1SgNonStSuff_0$ = {<1><Sg><Pres><Ind><NonSt>}:{} % cf. Duden-Grammatik 
 $VPresInd1SgSuff_e$ = {<1><Sg><Pres><Ind>}:{<SB>e}
 
 $VPresInd2SgSuff_st$ = {<2><Sg><Pres><Ind>}:{<SB>st}
+
+$VPresInd2SgSuff-e/0_st$ = {<2><Sg><Pres><Ind>}:{<del(e)><SB>st}
 
 $VPresInd2SgSuff_est$ = {<2><Sg><Pres><Ind>}:{<SB><ins(e)>st}
 
@@ -2130,9 +2154,15 @@ $VPresInd3SgSuff_et$ = {<3><Sg><Pres><Ind>}:{<SB><ins(e)>t}
 
 $VPresInd3SgSuff_t$ = {<3><Sg><Pres><Ind>}:{<SB>t}
 
+$VPresInd3SgSuff-e/0_t$ = {<3><Sg><Pres><Ind>}:{<del(e)><SB>t}
+
 $VPresIndPlSuff$ = {<1><Pl><Pres><Ind>}:{<SB>en}        | \
                    {<2><Pl><Pres><Ind>}:{<SB><ins(e)>t} | \
                    {<3><Pl><Pres><Ind>}:{<SB>en}
+
+$VPresIndPlSuff-e/0$ = {<1><Pl><Pres><Ind>}:{<SB>n}         | \
+                       {<2><Pl><Pres><Ind>}:{<del(e)><SB>t} | \
+                       {<3><Pl><Pres><Ind>}:{<SB>n}
 
 $VPresIndPlSuff-tun$ = {<1><Pl><Pres><Ind>}:{<SB>n} | \
                        {<2><Pl><Pres><Ind>}:{<SB>t} | \
@@ -2160,6 +2190,13 @@ $VPresSubjSuff-le$ = {<1><Sg><Pres><Subj>}:{}       | \
                      {<1><Pl><Pres><Subj>}:{<SB>n}  | \
                      {<2><Pl><Pres><Subj>}:{<SB>t}  | \
                      {<3><Pl><Pres><Subj>}:{<SB>n}
+
+$VPresSubjSuff-e$ = {<1><Sg><Pres><Subj>}:{}       | \
+                    {<2><Sg><Pres><Subj>}:{<SB>st} | \
+                    {<3><Sg><Pres><Subj>}:{}       | \
+                    {<1><Pl><Pres><Subj>}:{<SB>n}  | \
+                    {<2><Pl><Pres><Subj>}:{<SB>t}  | \
+                    {<3><Pl><Pres><Subj>}:{<SB>n}
 
 $VPresSubjSuff-sein$ = {<1><Sg><Pres><Subj>}:{}        | \
                        {<2><Sg><Pres><Subj>}:{<SB>est} | \
@@ -2204,17 +2241,25 @@ $VPres-le$ = $VPresInd1SgSuff_0$  | \
              $VPresIndPlSuff-tun$ | \
              $VPresSubjSuff-le$
 
-% fake, fakst, fakt, faken, fakt, faken
-$VPres-ak-ik$ = $VPresInd1SgSuff_e$   | \
-                $VPresInd2SgSuff_est$ | \
-                $VPresInd3SgSuff_et$  | \
-                $VPresIndPlSuff$      | \
-                $VPresSubjSuff$
+% upgrade, upgradest, upgradet, upgraden, upgradet, upgraden
+$VPres-e$ = $VPresInd1SgSuff_0$  | \
+            $VPresInd2SgSuff_st$ | \
+            $VPresInd3SgSuff_t$  | \
+            $VPresIndPlSuff$     | \
+            $VPresSubjSuff-e$
 
-$VPres-signen$ = $VPresInd1SgSuff_e$     | \
-                 $VPresInd2SgSuff_st$    | \
-                 $VPresInd3SgSuff_t$     | \
-                 $VPresIndPlSuff-signen$ | \
+% like, likst, likt, liken, likt, liken
+$VPres-e/0$ = $VPresInd1SgSuff_0$      | \
+              $VPresInd2SgSuff-e/0_st$ | \
+              $VPresInd3SgSuff-e/0_t$  | \
+              $VPresIndPlSuff-e/0$     | \
+              $VPresSubjSuff-e$
+
+$VPres-signen$ = $VPresInd1SgSuff_e$      | \
+                 $VPresInd1SgNonStSuff_0$ | \
+                 $VPresInd2SgSuff_st$     | \
+                 $VPresInd3SgSuff_t$      | \
+                 $VPresIndPlSuff-signen$  | \
                  $VPresSubjSuff$
 
 % siehst, sieht
@@ -2372,6 +2417,9 @@ $VPastInd-d-t_t$ = $VPastIndWeakSuff_t$
 % downcyclete, downcycletest, downcyclete, downcycleten, downcycletet, downcycleten
 $VPastInd-le$ = $VPastIndWeakSuff_t$
 
+% likte, liktest, likte, likten, liktet, likten
+$VPastInd-e$ = $VPastIndWeakSuff_t$
+
 % sah, sahst, sah, sahen, saht, sahen
 % fand, fand(e)st, fand, fanden, fandet, fanden
 $VPastIndStr$ = $VPastIndStrSuff$
@@ -2399,6 +2447,9 @@ $VPastSubjWeak$ = $VPastSubjWeakSuff$
 
 % downcyclete, downcycletest, downcyclete, downcycleten, downcycletet, downcycleten
 $VPastSubj-le$ = $VPastSubjWeakSuff_t$
+
+% likte, liktest, likte, likten, liktet, likten
+$VPastSubj-e$ = $VPastSubjWeakSuff_t$
 
 % sähe, sähest, sähe, sähen, sähet, sähen
 % täte, tätest, täte, täten, tätet, täten
@@ -2450,7 +2501,8 @@ $VImpSg-m-n$ = $VImpSgSuff_e$
 
 $VImpSg-le$ = $VImpSgSuff_0$
 
-$VImpSg-ak-ik$ = $VImpSgSuff_e$
+% like
+$VImpSg-e$ = $VImpSgSuff_0$
 
 % seht
 % tut
@@ -2458,6 +2510,10 @@ $VImpPl$ = $VImpPlSuff_et$
 
 % seid
 $VImpPl-sein$ = $VImpPlSuff-sein$
+
+$VImpPl-e$ = $VImpPlSuff_t$
+
+$VImpPl-e/0$ = {}:{<del(e)>} $VImpPlSuff_t$
 
 $VImpPl-signen$ = $VImpPlSuff_t$
 
@@ -2482,9 +2538,13 @@ $VImp-el-er$ = $VImpSg-d-t$ | \
 $VImp-le$ = $VImpSg-le$ | \
             $VImpPl$
 
-% fake
-$VImp-ak-ik$ = $VImpSg-ak-ik$ | \
-               $VImpPl$
+% upgrade, upgradet
+$VImp-e$ = $VImpSg-e$ | \
+           $VImpPl-e$
+
+% like, likt
+$VImp-e/0$ = $VImpSg-e$ | \
+             $VImpPl-e/0$
 
 $VImp-signen$ = $VImpSg$ | \
                 $VImpPl-signen$
@@ -2626,6 +2686,28 @@ $VWeak-le+sein$ = $VInf-le$           | \
                   $VPast-le$          | \
                   $VImp-le$
 
+% skaten
+$VWeak-e$ = $VInf-e$      | \
+            $VPartPres-e$ | \
+            $VPartPerf-e$ | \
+            $VPres-e$     | \
+            $VPastWeak$   | \
+            $VImp-e$
+
+$VWeak-e+haben$ = $VInf-e$            | \
+                  $VPartPres-e$       | \
+                  $VPartPerf-e+haben$ | \
+                  $VPres-e$           | \
+                  $VPastWeak$         | \
+                  $VImp-e$
+
+$VWeak-e+sein$ = $VInf-e$           | \
+                 $VPartPres-e$      | \
+                 $VPartPerf-e+sein$ | \
+                 $VPres-e$          | \
+                 $VPastWeak$        | \
+                 $VImp-e$
+
 % designen
 $VWeak-signen$ = $VInf$             | \
                  $VPartPres$        | \
@@ -2647,29 +2729,6 @@ $VWeak-signen+sein$ = $VInf$                  | \
                       $VPres-signen$          | \
                       $VPast-signen$          | \
                       $VImp-signen$
-
-% faken
-% liken
-$VWeak-ak-ik$ = $VInf$           | \
-                $VPartPres$      | \
-                $VPartPerfWeak$  | \
-                $VPres-ak-ik$    | \
-                $VPastWeak$      | \
-                $VImp-ak-ik$
-
-$VWeak-ak-ik+haben$ = $VInf$                | \
-                      $VPartPres$           | \
-                      $VPartPerfWeak+haben$ | \
-                      $VPres-ak-ik$         | \
-                      $VPastWeak$           | \
-                      $VImp-ak-ik$
-
-$VWeak-ak-ik+sein$ = $VInf$               | \
-                     $VPartPres$          | \
-                     $VPartPerfWeak+sein$ | \
-                     $VPres-ak-ik$        | \
-                     $VPastWeak$          | \
-                     $VImp-ak-ik$
 
 
 % adverbs
@@ -3118,8 +3177,9 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<RProNeutNomSg>           $RProNeutNomSg$          | \
          <>:<Roman>                   $Roman$                  | \
          <>:<VImp>                    $VImp$                   | \
-         <>:<VImp-ak-ik>              $VImp-ak-ik$               | \
          <>:<VImp-d-t>                $VImp-d-t$               | \
+         <>:<VImp-e>                  $VImp-e$                 | \
+         <>:<VImp-e/0>                $VImp-e/0$               | \
          <>:<VImp-el-er>              $VImp-el-er$             | \
          <>:<VImp-le>                 $VImp-le$                | \
          <>:<VImp-m-n>                $VImp-m-n$               | \
@@ -3127,7 +3187,9 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<VImpPl-sein>             $VImpPl-sein$            | \
          <>:<VImpSg>                  $VImpSg$                 | \
          <>:<VImpSg0>                 $VImpSg0$                | \
+         <>:<VImpSg-e>                $VImpSg-e$               | \
          <>:<VInf>                    $VInf$                   | \
+         <>:<VInf-e>                  $VInf-e$                 | \
          <>:<VInf-el-er>              $VInf-el-er$             | \
          <>:<VInf-le>                 $VInf-le$                | \
          <>:<VInf_n>                  $VInf_n$                 | \
@@ -3136,6 +3198,12 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<VPartPerf-d_t>           $VPartPerf-d_t$          | \
          <>:<VPartPerf-d_t><>:<haben> $VPartPerf-d_t+haben$    | \
          <>:<VPartPerf-d_t><>:<sein>  $VPartPerf-d_t+sein$     | \
+         <>:<VPartPerf-e>             $VPartPerf-e$            | \
+         <>:<VPartPerf-e><>:<haben>   $VPartPerf-e+haben$      | \
+         <>:<VPartPerf-e><>:<sein>    $VPartPerf-e+sein$       | \
+         <>:<VPartPerf-e_d>           $VPartPerf-e_d$          | \
+         <>:<VPartPerf-e_d><>:<haben> $VPartPerf-e_d+haben$    | \
+         <>:<VPartPerf-e_d><>:<sein>  $VPartPerf-e_d+sein$     | \
          <>:<VPartPerf-le>            $VPartPerf-le$           | \
          <>:<VPartPerf-le><>:<haben>  $VPartPerf-le+haben$     | \
          <>:<VPartPerf-le><>:<sein>   $VPartPerf-le+sein$      | \
@@ -3152,9 +3220,11 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<VPartPerfWeak><>:<haben> $VPartPerfWeak+haben$    | \
          <>:<VPartPerfWeak><>:<sein>  $VPartPerfWeak+sein$     | \
          <>:<VPartPres>               $VPartPres$              | \
+         <>:<VPartPres-e>             $VPartPres-e$            | \
          <>:<VPartPres-el-er>         $VPartPres-el-er$        | \
          <>:<VPartPres-le>            $VPartPres-le$           | \
          <>:<VPastInd-d-t_t>          $VPastInd-d-t_t$         | \
+         <>:<VPastInd-e>              $VPastInd-e$             | \
          <>:<VPastInd-le>             $VPastInd-le$            | \
          <>:<VPastInd-werden>         $VPastInd-werden$        | \
          <>:<VPastIndPl-werden>       $VPastIndPl-werden$      | \
@@ -3165,6 +3235,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<VPastIndWeak>            $VPastIndWeak$           | \
          <>:<VPastStr>                $VPastStr$               | \
          <>:<VPastStr-s>              $VPastStr-s$             | \
+         <>:<VPastSubj-e>             $VPastSubj-e$            | \
          <>:<VPastSubj-haben>         $VPastSubj-haben$        | \
          <>:<VPastSubj-le>            $VPastSubj-le$           | \
          <>:<VPastSubj2-sein>         $VPastSubj2-sein$        | \
@@ -3172,7 +3243,8 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<VPastSubjStr>            $VPastSubjStr$           | \
          <>:<VPastSubjWeak>           $VPastSubjWeak$          | \
          <>:<VPres>                   $VPres$                  | \
-         <>:<VPres-ak-ik>             $VPres-ak-ik$            | \
+         <>:<VPres-e>                 $VPres-e$                | \
+         <>:<VPres-e/0>               $VPres-e/0$              | \
          <>:<VPres-el-er>             $VPres-el-er$            | \
          <>:<VPres-le>                $VPres-le$               | \
          <>:<VPres-m-n>               $VPres-m-n$              | \
@@ -3193,12 +3265,12 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<VWeak>                   $VWeak$                  | \
          <>:<VWeak><>:<haben>         $VWeak+haben$            | \
          <>:<VWeak><>:<sein>          $VWeak+sein$             | \
-         <>:<VWeak-ak-ik>             $VWeak-ak-ik$            | \
-         <>:<VWeak-ak-ik><>:<haben>   $VWeak-ak-ik+haben$      | \
-         <>:<VWeak-ak-ik><>:<sein>    $VWeak-ak-ik+sein$       | \
          <>:<VWeak-d-t>               $VWeak-d-t$              | \
          <>:<VWeak-d-t><>:<haben>     $VWeak-d-t+haben$        | \
          <>:<VWeak-d-t><>:<sein>      $VWeak-d-t+sein$         | \
+         <>:<VWeak-e>                 $VWeak-e$                | \
+         <>:<VWeak-e><>:<haben>       $VWeak-e+haben$          | \
+         <>:<VWeak-e><>:<sein>        $VWeak-e+sein$           | \
          <>:<VWeak-el-er>             $VWeak-el-er$            | \
          <>:<VWeak-el-er><>:<haben>   $VWeak-el-er+haben$      | \
          <>:<VWeak-el-er><>:<sein>    $VWeak-el-er+sein$       | \

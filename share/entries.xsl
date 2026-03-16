@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- entries.xsl -->
-<!-- Version 19.3 -->
-<!-- Andreas Nolda 2025-09-22 -->
+<!-- Version 19.4 -->
+<!-- Andreas Nolda 2026-03-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -182,6 +182,8 @@
   <xsl:param name="particle"/>
   <xsl:param name="particle2"/>
   <xsl:param name="class"/>
+  <xsl:variable name="pronunciations"
+                select="tokenize(@pronunciations,'&#x20;')"/>
   <xsl:if test="string-length($lemma)&gt;0 and
                 string-length($stem)&gt;0 and
                 string-length($participle)&gt;0 and
@@ -190,6 +192,8 @@
       <xsl:call-template name="verb-stem">
         <xsl:with-param name="lemma"
                         select="$lemma"/>
+        <xsl:with-param name="pronunciations"
+                        select="$pronunciations"/>
       </xsl:call-template>
     </xsl:variable>
     <xsl:variable name="segmented-lemma"
@@ -207,10 +211,12 @@
       <xsl:text>&lt;VB&gt;</xsl:text>
     </xsl:if>
     <xsl:call-template name="participle-prefix">
-      <xsl:with-param name="lemma"
-                      select="$lemma"/>
       <xsl:with-param name="form"
                       select="$participle"/>
+      <xsl:with-param name="lemma"
+                      select="$lemma"/>
+      <xsl:with-param name="pronunciations"
+                      select="$pronunciations"/>
     </xsl:call-template>
     <xsl:value-of select="n:pair($segmented-lemma,$stem)"/>
     <xsl:call-template name="insert-lemma-index">
@@ -253,6 +259,8 @@
   <xsl:param name="particle"/>
   <xsl:param name="particle2"/>
   <xsl:param name="frequency"/>
+  <xsl:variable name="pronunciations"
+                select="tokenize(@pronunciations,'&#x20;')"/>
   <xsl:if test="string-length($lemma)&gt;0">
     <xsl:choose>
       <xsl:when test="$frequency&gt;=$minimal-frequency">
@@ -260,6 +268,8 @@
           <xsl:call-template name="verb-stem">
             <xsl:with-param name="lemma"
                             select="$lemma"/>
+            <xsl:with-param name="pronunciations"
+                            select="$pronunciations"/>
           </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="segmented-lemma"
@@ -327,6 +337,8 @@
   <xsl:param name="particle"/>
   <xsl:param name="particle2"/>
   <xsl:param name="frequency"/>
+  <xsl:variable name="pronunciations"
+                select="tokenize(@pronunciations,'&#x20;')"/>
   <xsl:if test="string-length($lemma)&gt;0 and
                 string-length($suffs)&gt;0">
     <xsl:choose>
@@ -336,6 +348,8 @@
             <xsl:call-template name="verb-stem">
               <xsl:with-param name="lemma"
                               select="$lemma"/>
+              <xsl:with-param name="pronunciations"
+                              select="$pronunciations"/>
             </xsl:call-template>
           </xsl:variable>
           <xsl:variable name="segmented-lemma"

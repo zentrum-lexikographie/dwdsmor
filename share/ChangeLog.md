@@ -1,5 +1,10 @@
+2026-03-13:
+
+* improve support for verbs borrowed from English
+
 2026-01-09:
 
+* use `<xsl:key>s` in order to make lexicon generation more efficient
 * add support to `dwds2manifest.xsl` for excluding articles in multi-article
   source files via `Artikel/@id` matching `source/@href` in `exclude.xml`
 

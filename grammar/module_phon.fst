@@ -1,6 +1,6 @@
 % module_phon.fst
-% Version 6.11
-% Andreas Nolda 2025-09-22
+% Version 6.12
+% Andreas Nolda 2026-03-13
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -169,6 +169,7 @@ $PhonSDeletion$ = ([sßxz] <SB><ins(e)>?) s <=> <> (t)
 
 % deletion of stem-final "e" marked by <del(e)>
 % Schwäbe<del(e)><SB>in -> Schwäb<del(e)><SB>in
+% like<del(e)><SB>t     -> lik<del(e)><SB>t
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
             #feature# #info# <s><z>] \
@@ -374,6 +375,7 @@ $Phon$ = $PhonUmlaut$           || \
          $PhonSuffEDeletion$    || \
          $PhonEElision$         || \
          $PhonSDeletion$        || \
+         $PhonEDeletion$        || \
          $PhonEEpenthesis$      || \
          $PhonSuffSubstitution$ || \
          $PhonSuff-zig$         || \

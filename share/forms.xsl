@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- forms.xsl -->
-<!-- Version 8.0 -->
-<!-- Andreas Nolda 2025-09-17 -->
+<!-- Version 9.0 -->
+<!-- Andreas Nolda 2026-03-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -83,13 +83,14 @@
 <!-- base stems of verbs -->
 <xsl:template name="verb-stem">
   <xsl:param name="lemma"/>
+  <xsl:param name="pronunciations"/>
   <xsl:choose>
     <!-- lemmas ending in consonant + "een" or "ien" -->
     <xsl:when test="matches($lemma,'[^aeiouäöü][ei]en$')">
       <xsl:value-of select="replace($lemma,'n$','')"/>
     </xsl:when>
-    <!-- lemmas ending in "c", "g", or "p" + "len" -->
-    <xsl:when test="matches($lemma,'[cgp]len$')">
+    <!-- lemmas borrowed from English with stem-final "e" -->
+    <xsl:when test="n:is-verb-borrowed-from-english-with-stem-final-e($lemma,$pronunciations)">
       <xsl:value-of select="replace($lemma,'n$','')"/>
     </xsl:when>
     <!-- other lemmas -->
@@ -103,13 +104,14 @@
 <xsl:template name="present-stem">
   <xsl:param name="form"/>
   <xsl:param name="lemma"/>
+  <xsl:param name="pronunciations"/>
   <xsl:choose>
     <!-- forms ending in consonant + "eet" or "iet" -->
     <xsl:when test="matches($form,'[^aeiouäöü][ei]et$')">
       <xsl:value-of select="replace($form,'t$','')"/>
     </xsl:when>
-    <!-- forms ending in "c", "g", or "p" + "let" -->
-    <xsl:when test="matches($form,'[cgp]let$')">
+    <!-- forms of verbs borrowed from English with stem-final "e" -->
+    <xsl:when test="n:is-verb-borrowed-from-english-with-stem-final-e($lemma,$pronunciations)">
       <xsl:value-of select="replace($form,'t$','')"/>
     </xsl:when>
     <!-- forms ending in "tt" -->
@@ -141,13 +143,15 @@
 <!-- past stems -->
 <xsl:template name="past-stem">
   <xsl:param name="form"/>
+  <xsl:param name="lemma"/>
+  <xsl:param name="pronunciations"/>
   <xsl:choose>
     <!-- weak forms ending in consonant + "eete" or "iete" -->
     <xsl:when test="matches($form,'[^aeiouäöü][ei]ete$')">
       <xsl:value-of select="replace($form,'te$','')"/>
     </xsl:when>
-    <!-- weak forms ending in "c", "g", or "p" + "lete" -->
-    <xsl:when test="matches($form,'[cgp]lete$')">
+    <!-- forms of verbs borrowed from English with stem-final "e" -->
+    <xsl:when test="n:is-verb-borrowed-from-english-with-stem-final-e($lemma,$pronunciations)">
       <xsl:value-of select="replace($form,'te$','')"/>
     </xsl:when>
     <!-- other weak forms -->
@@ -165,6 +169,7 @@
 <xsl:template name="participle-stem">
   <xsl:param name="form"/>
   <xsl:param name="lemma"/>
+  <xsl:param name="pronunciations"/>
   <xsl:choose>
     <!-- weak forms with "ge-" prefix ending in consonant + "eet" or "iet" -->
     <xsl:when test="matches($form,'^ge.*[^aeiouäöü][ei]et$') and
@@ -175,21 +180,38 @@
     <xsl:when test="matches($form,'^.*[^aeiouäöü][ei]et$')">
       <xsl:value-of select="replace($form,'t$','')"/>
     </xsl:when>
-    <!-- weak forms with "ge-" prefix ending in "c", "g", or "p" + "let" -->
-    <xsl:when test="matches($form,'^ge.*[cgp]let$') and
+    <!-- weak forms lemmas borrowed from English with stem-final "e"
+         with "ge-" prefix ending in "et" -->
+    <xsl:when test="n:is-verb-borrowed-from-english-with-stem-final-e($lemma,$pronunciations) and
+                    matches($form,'^ge.+et$') and
                     not(matches($form,concat('^',substring($lemma,1,3))))">
       <xsl:value-of select="replace($form,'^ge(.+)t$','$1')"/>
     </xsl:when>
-    <!-- weak forms without "ge-" prefix ending in "c", "g", or "p" + "let" -->
-    <xsl:when test="matches($form,'^.*[cgp]let$')">
+    <!-- weak forms lemmas borrowed from English with stem-final "e"
+         without "ge-" prefix ending in "t" -->
+    <xsl:when test="n:is-verb-borrowed-from-english-with-stem-final-e($lemma,$pronunciations) and
+                    matches($form,'^.+et$')">
       <xsl:value-of select="replace($form,'t$','')"/>
     </xsl:when>
-    <!-- weak forms with "-ed" suffix and "ge-" prefix -->
+    <!-- weak forms lemmas borrowed from English with stem-final "e"
+         with "ge-" prefix ending in "ed" -->
+    <xsl:when test="n:is-verb-borrowed-from-english-with-stem-final-e($lemma,$pronunciations) and
+                    matches($form,'^ge.+ed$') and
+                    not(matches($form,concat('^',substring($lemma,1,3))))">
+      <xsl:value-of select="replace($form,'^ge(.+)d$','$1')"/>
+    </xsl:when>
+    <!-- weak forms lemmas borrowed from English with stem-final "e"
+         without "ge-" prefix ending in "ed" -->
+    <xsl:when test="n:is-verb-borrowed-from-english-with-stem-final-e($lemma,$pronunciations) and
+                    matches($form,'^.+ed$')">
+      <xsl:value-of select="replace($form,'d$','')"/>
+    </xsl:when>
+    <!-- weak forms with "ge-" prefix ending in "ed"  -->
     <xsl:when test="matches($form,'^ge.+ed$') and
                     not(matches($form,concat('^',substring($lemma,1,3))))">
       <xsl:value-of select="replace($form,'^ge(.+)ed$','$1')"/>
     </xsl:when>
-    <!-- weak forms with "-ed" suffix and without "ge-" prefix -->
+    <!-- weak forms without "ge-" prefix ending in "ed" -->
     <xsl:when test="matches($form,'^.+ed$')">
       <xsl:value-of select="replace($form,'ed$','')"/>
     </xsl:when>
@@ -229,20 +251,69 @@
 
 <!-- participle prefixes -->
 <xsl:template name="participle-prefix">
-  <xsl:param name="lemma"/>
   <xsl:param name="form"/>
+  <xsl:param name="lemma"/>
+  <xsl:param name="pronunciations"/>
   <xsl:variable name="participle-stem">
     <xsl:call-template name="participle-stem">
       <xsl:with-param name="form"
                       select="$form"/>
       <xsl:with-param name="lemma"
                       select="$lemma"/>
+      <xsl:with-param name="pronunciations"
+                      select="$pronunciations"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:if test="matches($form,concat('^ge',$participle-stem,'(e?[nt]|ed)$'))">
+  <xsl:if test="matches($form,concat('^ge',$participle-stem,'(e?[nt]|e?d)$'))">
     <xsl:text>&lt;ge&gt;</xsl:text>
   </xsl:if>
 </xsl:template>
+
+<!-- return a segmented version of lemma if it is a back-formed verb -->
+<xsl:function name="n:segment-verb-if-backformed">
+  <xsl:param name="participle-stem"/>
+  <xsl:param name="lemma"/>
+  <xsl:choose>
+    <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                    matches($lemma,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
+      <xsl:sequence select="replace($lemma,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')(e?n)$'),'$1&lt;CB&gt;$2$3')"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:sequence select="$lemma"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
+
+<!-- return a segmented version of non-participle stem if its lemma is a back-formed verb -->
+<xsl:function name="n:segment-stem-if-backformed">
+  <xsl:param name="stem"/>
+  <xsl:param name="participle-stem"/>
+  <xsl:param name="lemma"/>
+  <xsl:choose>
+    <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                    matches($lemma,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
+      <xsl:sequence select="replace($stem,concat('^(',substring-before($participle-stem,'ge'),')(',substring-after($participle-stem,'ge'),')$'),'$1&lt;CB&gt;$2')"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:sequence select="$stem"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
+
+<!-- return a segmented version of participle stem if its lemma is a back-formed verb -->
+<xsl:function name="n:segment-participle-stem-if-backformed">
+  <xsl:param name="participle-stem"/>
+  <xsl:param name="lemma"/>
+  <xsl:choose>
+    <xsl:when test="matches($participle-stem,'^.+ge.+$') and
+                    matches($lemma,concat('^',substring-before($participle-stem,'ge'),substring-after($participle-stem,'ge'),'e?n$'))">
+      <xsl:sequence select="replace($participle-stem,'^(.+)(ge)(.+)$','$1&lt;CB&gt;$2&lt;PB&gt;$3')"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:sequence select="$participle-stem"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
 
 <!-- return true if stem is a compounding stem of lemma -->
 <xsl:function name="n:is-comp-stem" as="xs:boolean">

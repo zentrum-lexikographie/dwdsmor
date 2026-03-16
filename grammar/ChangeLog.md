@@ -1,5 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2026-03-13:
+
+* add inflection classes `VWeak-e`, `VInf-e`, `VPartPres-e`, `VPartPerf-e`,
+  `VPartPerf-e_d`, `VPres-e`, `VPres-e/0`, `VPastInd-e`, `VPastSubj-e`,
+  `VImp-e`, `VImp-e/0`, and `VImpSg-e`
+* remove inflection class `VWeak-ak-ik`
+
 2026-01-08:
 
 * rename inflection classes `NMasc0_es`, `NMasc0_s`, `NNeut0_es`, `NNeut0_s`,
