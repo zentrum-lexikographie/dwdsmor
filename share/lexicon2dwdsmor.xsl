@@ -1390,6 +1390,17 @@
     <!-- nominative plural: "-(n)" -->
     <xsl:when test="$nominative-plural-marker='-(n)'">
       <xsl:choose>
+        <!-- "Dunkle" with alternative genitive singular "Dunkeln" -->
+        <xsl:when test="@genitive-singular='Dunkeln'">
+          <xsl:call-template name="stem-entry">
+            <xsl:with-param name="lemma"
+                            select="n:segment-from-end('e',@lemma)"/>
+            <xsl:with-param name="stem"
+                            select="replace(@genitive-singular,'n$','')"/>
+            <xsl:with-param name="pos">NN</xsl:with-param>
+            <xsl:with-param name="class">NNeut-Dunkel</xsl:with-param>
+          </xsl:call-template>
+        </xsl:when>
         <!-- nominalised adjectives with plural forms -->
         <xsl:when test="$genitive-singular-marker='-n'">
           <xsl:variable name="class">

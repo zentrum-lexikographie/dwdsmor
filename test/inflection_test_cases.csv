@@ -163,6 +163,7 @@ NN,NMasc|Sg_es,Kitsch
 NN,"NMasc|Sg_es, NMasc|Pl_0, NMasc_es_e_n",Bau
 NN,NMasc|Sg_ns,Unglaube
 NN,NMasc|Sg_s,Adel
+NN,"NNeut-Adj, NNeut-Dunkel",Dunkle
 NN,NNeut-Inner,Innere
 NN,"NNeut_es_e_n, NNeut-Meas_es",Paar
 NN,"NNeut_es_e_n, NNeutNonSt_es_er_n, NNeut-Meas_es",Stück
@@ -213,7 +214,7 @@ NN,NNeut|Sg_0,Abseits
 NN,NNeut|Sg_es,Ausland
 NN,"NNeut|Sg_es, NNeut|PlNonSt_n",Vieh
 NN,NNeut|Sg_es~ss,Verständnis
-NN,NNeut|Sg_s,Internet
+NN,NNeut|Sg_s,Dunkel
 NN,"NNeut|Sg_s, NNeut|Pl_0",Pluraletantum
 NN,NUnmGend|Pl_0,Kosten
 NN,NUnmGend|Pl_n,Leute

@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2026-03-18:
+
+* add inflection class `NNeut-Dunkel`
+
 2026-03-13:
 
 * add inflection classes `VWeak-e`, `VInf-e`, `VPartPres-e`, `VPartPerf-e`,

@@ -1,5 +1,5 @@
 % module_infl.fst
-% Version 15.1
+% Version 15.2
 % Andreas Nolda 2026-03-18
 
 % based on code from SMORLemma by Rico Sennrich
@@ -447,6 +447,7 @@ $NNeut|Sg_es$ = {<Neut>}:{} $NGenSgSuff_es$
 $NNeut|Sg_es~ss$ = $SS$ {<Neut>}:{} $NGenSgSuff_es$
 
 % Abitur, Abiturs
+% Dunkel, Dunkels
 $NNeut|Sg_s$ = {<Neut>}:{} $NGenSgSuff_s$
 
 % Pluraliatantum, Pluraliatantum (suppletive plural)
@@ -728,19 +729,6 @@ $NNeut_s_um/en_0$ = $NNeut_s_a/en_0$
 $NNeut_ens_en_0$ = {<Neut>}:{}       $NGenSgSuff_ens$ | \
                    {<Neut>}:{<SB>en} $NDatPlSuff_0$
 
-% Innere(s)
-$NNeut-Inner$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
-                {<Neut><Acc><Sg><St>}:{<SB>es} | \
-                {<Neut><Dat><Sg><St>}:{<SB>em} | \
-                {<Neut><Gen><Sg><St>}:{<SB>en} | \
-                {<Neut><Gen><Sg><St>}:{<SB>n}  | \
-                {<Neut><Nom><Sg><Wk>}:{<SB>e}  | \
-                {<Neut><Acc><Sg><Wk>}:{<SB>e}  | \
-                {<Neut><Dat><Sg><Wk>}:{<SB>en} | \
-                {<Neut><Dat><Sg><Wk>}:{<SB>n}  | \
-                {<Neut><Gen><Sg><Wk>}:{<SB>en} | \
-                {<Neut><Gen><Sg><Wk>}:{<SB>n}
-
 % Paar, Paar(e)s (measure noun)
 $NNeut-Meas_es$ = {<Neut>}:{} $N-MeasSuff_es$
 
@@ -758,6 +746,7 @@ $NNeut-Adj|Sg$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
                  {<Neut><Gen><Sg><Wk>}:{<SB>en}
 
 % Junge(s) ('young animal')
+% Dunkle(s)
 $NNeut-Adj$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
               {<Neut><Acc><Sg><St>}:{<SB>es} | \
               {<Neut><Dat><Sg><St>}:{<SB>em} | \
@@ -774,6 +763,30 @@ $NNeut-Adj$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
               {<Neut><Acc><Pl><Wk>}:{<SB>en} | \
               {<Neut><Dat><Pl><Wk>}:{<SB>en} | \
               {<Neut><Gen><Pl><Wk>}:{<SB>en}
+
+% Dunkeln, Dunkelm (alternative forms, non-archaic)
+$NNeut-Dunkel$ = {<Neut><Dat><Sg><St>}:{<SB>m} | \
+                 {<Neut><Gen><Sg><St>}:{<SB>n} | \
+                 % {<Neut><Dat><Pl><St>}:{<SB>n} | \
+                 {<Neut><Dat><Sg><Wk>}:{<SB>n} | \
+                 {<Neut><Gen><Sg><Wk>}:{<SB>n} % | \
+                 % {<Neut><Nom><Pl><Wk>}:{<SB>n} | \
+                 % {<Neut><Acc><Pl><Wk>}:{<SB>n} | \
+                 % {<Neut><Dat><Pl><Wk>}:{<SB>n} | \
+                 % {<Neut><Gen><Pl><Wk>}:{<SB>n}
+
+% Innere(s)
+$NNeut-Inner$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
+                {<Neut><Acc><Sg><St>}:{<SB>es} | \
+                {<Neut><Dat><Sg><St>}:{<SB>em} | \
+                {<Neut><Gen><Sg><St>}:{<SB>en} | \
+                {<Neut><Gen><Sg><St>}:{<SB>n}  | \
+                {<Neut><Nom><Sg><Wk>}:{<SB>e}  | \
+                {<Neut><Acc><Sg><Wk>}:{<SB>e}  | \
+                {<Neut><Dat><Sg><Wk>}:{<SB>en} | \
+                {<Neut><Dat><Sg><Wk>}:{<SB>n}  | \
+                {<Neut><Gen><Sg><Wk>}:{<SB>en} | \
+                {<Neut><Gen><Sg><Wk>}:{<SB>n}
 
 
 % feminine nouns
@@ -3035,6 +3048,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMascNonSt_s_en_0>       $NMascNonSt_s_en_0$      | \
          <>:<NNeut-Adj>               $NNeut-Adj$              | \
          <>:<NNeut-Adj|Sg>            $NNeut-Adj|Sg$           | \
+         <>:<NNeut-Dunkel>            $NNeut-Dunkel$           | \
          <>:<NNeut-Inner>             $NNeut-Inner$            | \
          <>:<NNeut-Meas_es>           $NNeut-Meas_es$          | \
          <>:<NNeut-Meas_s>            $NNeut-Meas_s$           | \

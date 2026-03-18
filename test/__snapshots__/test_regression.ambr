@@ -1651,15 +1651,15 @@
     ),
     tuple(
       'gesondert',
-      'sonder<~>n<V><Part><Perf><haben>',
-    ),
-    tuple(
-      'gesondert',
       'ge<~>sonder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'gesondert',
       'gesondert<ADJ><Pos><Pred/Adv>',
+    ),
+    tuple(
+      'gesondert',
+      'sonder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'erhoben',
@@ -2791,11 +2791,11 @@
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'worden',
@@ -3691,11 +3691,11 @@
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'durch',
@@ -5843,10 +5843,6 @@
     ),
     tuple(
       'gestanden',
-      'steh<~>en<V><Part><Perf><haben>',
-    ),
-    tuple(
-      'gestanden',
       'ge<~>stand<~>en<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
@@ -5868,6 +5864,10 @@
     tuple(
       'gestanden',
       'gestanden<ADJ><Pos><Pred/Adv>',
+    ),
+    tuple(
+      'gestanden',
+      'steh<~>en<V><Part><Perf><haben>',
     ),
     tuple(
       'hat',
@@ -22251,6 +22251,91 @@
     ),
     tuple(
       'NN',
+      'NNeut-Adj, NNeut-Dunkel',
+      'Dunkle',
+      tuple(
+        'Dunkl<~>e<NN><Neut><Acc><Pl><St>',
+        'Dunkle',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Acc><Pl><Wk>',
+        'Dunklen',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Acc><Sg><St>',
+        'Dunkles',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Acc><Sg><Wk>',
+        'Dunkle',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Dat><Pl><St>',
+        'Dunklen',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Dat><Pl><Wk>',
+        'Dunklen',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Dat><Sg><St>',
+        'Dunkelm',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Dat><Sg><St>',
+        'Dunklem',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Dat><Sg><Wk>',
+        'Dunkeln',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Dat><Sg><Wk>',
+        'Dunklen',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Gen><Pl><St>',
+        'Dunkler',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Gen><Pl><Wk>',
+        'Dunklen',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Gen><Sg><St>',
+        'Dunkeln',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Gen><Sg><St>',
+        'Dunklen',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Gen><Sg><Wk>',
+        'Dunkeln',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Gen><Sg><Wk>',
+        'Dunklen',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Nom><Pl><St>',
+        'Dunkle',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Nom><Pl><Wk>',
+        'Dunklen',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Nom><Sg><St>',
+        'Dunkles',
+      ),
+      tuple(
+        'Dunkl<~>e<NN><Neut><Nom><Sg><Wk>',
+        'Dunkle',
+      ),
+    ),
+    tuple(
+      'NN',
       'NNeut-Inner',
       'Innere',
       tuple(
@@ -24566,22 +24651,22 @@
     tuple(
       'NN',
       'NNeut|Sg_s',
-      'Internet',
+      'Dunkel',
       tuple(
-        'Internet<NN><Neut><Acc><Sg>',
-        'Internet',
+        'Dunkel<NN><Neut><Acc><Sg>',
+        'Dunkel',
       ),
       tuple(
-        'Internet<NN><Neut><Dat><Sg>',
-        'Internet',
+        'Dunkel<NN><Neut><Dat><Sg>',
+        'Dunkel',
       ),
       tuple(
-        'Internet<NN><Neut><Gen><Sg>',
-        'Internets',
+        'Dunkel<NN><Neut><Gen><Sg>',
+        'Dunkels',
       ),
       tuple(
-        'Internet<NN><Neut><Nom><Sg>',
-        'Internet',
+        'Dunkel<NN><Neut><Nom><Sg>',
+        'Dunkel',
       ),
     ),
     tuple(

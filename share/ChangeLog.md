@@ -1,3 +1,7 @@
+2026-03-18:
+
+* add support for alternative forms of "Dunkle" with stem "Dunkel"
+
 2026-03-16:
 
 * in case of abbreviations and symbols without proper grammar specification fall
