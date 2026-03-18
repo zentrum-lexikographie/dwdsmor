@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 15.0
-% Andreas Nolda 2026-03-13
+% Version 15.1
+% Andreas Nolda 2026-03-18
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -2160,6 +2160,10 @@ $VPresIndPlSuff$ = {<1><Pl><Pres><Ind>}:{<SB>en}        | \
                    {<2><Pl><Pres><Ind>}:{<SB><ins(e)>t} | \
                    {<3><Pl><Pres><Ind>}:{<SB>en}
 
+$VPresIndPlSuff-e$ = {<1><Pl><Pres><Ind>}:{<SB>n} | \
+                     {<2><Pl><Pres><Ind>}:{<SB>t} | \
+                     {<3><Pl><Pres><Ind>}:{<SB>n}
+
 $VPresIndPlSuff-e/0$ = {<1><Pl><Pres><Ind>}:{<SB>n}         | \
                        {<2><Pl><Pres><Ind>}:{<del(e)><SB>t} | \
                        {<3><Pl><Pres><Ind>}:{<SB>n}
@@ -2245,7 +2249,7 @@ $VPres-le$ = $VPresInd1SgSuff_0$  | \
 $VPres-e$ = $VPresInd1SgSuff_0$  | \
             $VPresInd2SgSuff_st$ | \
             $VPresInd3SgSuff_t$  | \
-            $VPresIndPlSuff$     | \
+            $VPresIndPlSuff-e$   | \
             $VPresSubjSuff-e$
 
 % like, likst, likt, liken, likt, liken
