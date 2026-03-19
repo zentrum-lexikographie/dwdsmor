@@ -3,6 +3,11 @@
 * add support for predicative-only comparative and superlative forms
 * add support for adjectives with umlauted comparative forms and non-umlauted
   superlative forms
+* add support for masculine nouns with genitive singular forms ending in "-es"
+  or unmarked genitive singular forms and nominative plural forms ending in
+  "-ices" substituted for "-ex" or "-ix"
+* add support for masculine nouns with genitive singular forms ending in "-s"
+  and nominative plural forms ending in "-en" substituted for "-on"
 
 2026-03-18:
 

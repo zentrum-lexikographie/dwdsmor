@@ -17663,43 +17663,6 @@
     ),
     tuple(
       'NN',
-      'NFem_0_ix/ices_0',
-      'Helix',
-      tuple(
-        'Helix<NN><Fem><Acc><Pl>',
-        'Helices',
-      ),
-      tuple(
-        'Helix<NN><Fem><Acc><Sg>',
-        'Helix',
-      ),
-      tuple(
-        'Helix<NN><Fem><Dat><Pl>',
-        'Helices',
-      ),
-      tuple(
-        'Helix<NN><Fem><Dat><Sg>',
-        'Helix',
-      ),
-      tuple(
-        'Helix<NN><Fem><Gen><Pl>',
-        'Helices',
-      ),
-      tuple(
-        'Helix<NN><Fem><Gen><Sg>',
-        'Helix',
-      ),
-      tuple(
-        'Helix<NN><Fem><Nom><Pl>',
-        'Helices',
-      ),
-      tuple(
-        'Helix<NN><Fem><Nom><Sg>',
-        'Helix',
-      ),
-    ),
-    tuple(
-      'NN',
       'NFem_0_ix/izen_0',
       'Matrix',
       tuple(
@@ -18813,11 +18776,15 @@
     ),
     tuple(
       'NN',
-      'NMasc_0_e_n, NMasc_0_ex/izes_0, NMasc_es_e_n, NMasc_es_ex/izes_0',
+      'NMasc_0_e_n, NMasc_0_ex/izes_0, NMasc_0_ex/ices_0, NMasc_es_e_n, NMasc_es_ex/izes_0, NMasc_es_ex/ices_0',
       'Index',
       tuple(
         'Index<NN><Masc><Acc><Pl>',
         'Indexe',
+      ),
+      tuple(
+        'Index<NN><Masc><Acc><Pl>',
+        'Indices',
       ),
       tuple(
         'Index<NN><Masc><Acc><Pl>',
@@ -18830,6 +18797,10 @@
       tuple(
         'Index<NN><Masc><Dat><Pl>',
         'Indexen',
+      ),
+      tuple(
+        'Index<NN><Masc><Dat><Pl>',
+        'Indices',
       ),
       tuple(
         'Index<NN><Masc><Dat><Pl>',
@@ -18849,6 +18820,10 @@
       ),
       tuple(
         'Index<NN><Masc><Gen><Pl>',
+        'Indices',
+      ),
+      tuple(
+        'Index<NN><Masc><Gen><Pl>',
         'Indizes',
       ),
       tuple(
@@ -18865,6 +18840,10 @@
       ),
       tuple(
         'Index<NN><Masc><Nom><Pl>',
+        'Indices',
+      ),
+      tuple(
+        'Index<NN><Masc><Nom><Pl>',
         'Indizes',
       ),
       tuple(
@@ -18874,8 +18853,12 @@
     ),
     tuple(
       'NN',
-      'NMasc_0_e_n, NMasc_0_ix/izes_0, NMasc_es_e_n, Nmasc_es_ix/izes_0, NFem_0_ix/izes_0 ',
+      'NMasc_0_e_n, NMasc_0_ix/izes_0, NMasc_0_ix/ices_0, NMasc_es_e_n, NMasc_es_ix/izes_0, NMasc_es_ix/ices_0, NFem_0_ix/izes_0, NFem_0_ix/ices_0',
       'Appendix',
+      tuple(
+        'Appendix<PAR1><NN><Masc><Acc><Pl>',
+        'Appendices',
+      ),
       tuple(
         'Appendix<PAR1><NN><Masc><Acc><Pl>',
         'Appendixe',
@@ -18887,6 +18870,10 @@
       tuple(
         'Appendix<PAR1><NN><Masc><Acc><Sg>',
         'Appendix',
+      ),
+      tuple(
+        'Appendix<PAR1><NN><Masc><Dat><Pl>',
+        'Appendices',
       ),
       tuple(
         'Appendix<PAR1><NN><Masc><Dat><Pl>',
@@ -18906,6 +18893,10 @@
       ),
       tuple(
         'Appendix<PAR1><NN><Masc><Gen><Pl>',
+        'Appendices',
+      ),
+      tuple(
+        'Appendix<PAR1><NN><Masc><Gen><Pl>',
         'Appendixe',
       ),
       tuple(
@@ -18919,6 +18910,10 @@
       tuple(
         'Appendix<PAR1><NN><Masc><Gen><Sg>',
         'Appendixes',
+      ),
+      tuple(
+        'Appendix<PAR1><NN><Masc><Nom><Pl>',
+        'Appendices',
       ),
       tuple(
         'Appendix<PAR1><NN><Masc><Nom><Pl>',
@@ -19775,6 +19770,75 @@
       tuple(
         'Espresso<IDX2><NN><Neut><Nom><Sg>',
         'Espresso',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NMasc_s_on/en_0, NNeut_s_on/en_0',
+      'Rhododendron',
+      tuple(
+        'Rhododendron<NN><Masc><Acc><Pl>',
+        'Rhododendren',
+      ),
+      tuple(
+        'Rhododendron<NN><Masc><Acc><Sg>',
+        'Rhododendron',
+      ),
+      tuple(
+        'Rhododendron<NN><Masc><Dat><Pl>',
+        'Rhododendren',
+      ),
+      tuple(
+        'Rhododendron<NN><Masc><Dat><Sg>',
+        'Rhododendron',
+      ),
+      tuple(
+        'Rhododendron<NN><Masc><Gen><Pl>',
+        'Rhododendren',
+      ),
+      tuple(
+        'Rhododendron<NN><Masc><Gen><Sg>',
+        'Rhododendrons',
+      ),
+      tuple(
+        'Rhododendron<NN><Masc><Nom><Pl>',
+        'Rhododendren',
+      ),
+      tuple(
+        'Rhododendron<NN><Masc><Nom><Sg>',
+        'Rhododendron',
+      ),
+      tuple(
+        'Rhododendron<NN><Neut><Acc><Pl>',
+        'Rhododendren',
+      ),
+      tuple(
+        'Rhododendron<NN><Neut><Acc><Sg>',
+        'Rhododendron',
+      ),
+      tuple(
+        'Rhododendron<NN><Neut><Dat><Pl>',
+        'Rhododendren',
+      ),
+      tuple(
+        'Rhododendron<NN><Neut><Dat><Sg>',
+        'Rhododendron',
+      ),
+      tuple(
+        'Rhododendron<NN><Neut><Gen><Pl>',
+        'Rhododendren',
+      ),
+      tuple(
+        'Rhododendron<NN><Neut><Gen><Sg>',
+        'Rhododendrons',
+      ),
+      tuple(
+        'Rhododendron<NN><Neut><Nom><Pl>',
+        'Rhododendren',
+      ),
+      tuple(
+        'Rhododendron<NN><Neut><Nom><Sg>',
+        'Rhododendron',
       ),
     ),
     tuple(
@@ -24453,6 +24517,43 @@
       tuple(
         'Risiko<NN><Neut><Nom><Sg>',
         'Risiko',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NNeut_s_ten_0',
+      'Mastodon',
+      tuple(
+        'Mastodon<NN><Neut><Acc><Pl>',
+        'Mastodonten',
+      ),
+      tuple(
+        'Mastodon<NN><Neut><Acc><Sg>',
+        'Mastodon',
+      ),
+      tuple(
+        'Mastodon<NN><Neut><Dat><Pl>',
+        'Mastodonten',
+      ),
+      tuple(
+        'Mastodon<NN><Neut><Dat><Sg>',
+        'Mastodon',
+      ),
+      tuple(
+        'Mastodon<NN><Neut><Gen><Pl>',
+        'Mastodonten',
+      ),
+      tuple(
+        'Mastodon<NN><Neut><Gen><Sg>',
+        'Mastodons',
+      ),
+      tuple(
+        'Mastodon<NN><Neut><Nom><Pl>',
+        'Mastodonten',
+      ),
+      tuple(
+        'Mastodon<NN><Neut><Nom><Sg>',
+        'Mastodon',
       ),
     ),
     tuple(

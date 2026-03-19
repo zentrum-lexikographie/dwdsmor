@@ -1,5 +1,5 @@
 % module_infl.fst
-% Version 15.3
+% Version 15.4
 % Andreas Nolda 2026-03-19
 
 % based on code from SMORLemma by Rico Sennrich
@@ -173,6 +173,10 @@ $NMasc_0_es/ides_0$ = {<Masc>}:{}                     $NGenSgSuff_0$ | \
 $NMasc_0_ex/izes_0$ = {<Masc>}:{}                     $NGenSgSuff_0$ | \
                       {<Masc>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
 
+% Index, Index, Indices, Indices
+$NMasc_0_ex/ices_0$ = {<Masc>}:{}                     $NGenSgSuff_0$ | \
+                      {<Masc>}:{<del(VC)|Pl>ic<SB>es} $NDatPlSuff_0$
+
 % Taxi, Taxi, Taxen, Taxen
 $NMasc_0_i/en_0$ = $NMasc_0_a/en_0$
 
@@ -183,11 +187,17 @@ $NMasc_0_is/es_0$ = {<Masc>}:{}                   $NGenSgSuff_0$ | \
 % Appendix, Appendix, Appendizes, Appendizes
 $NMasc_0_ix/izes_0$ = $NMasc_0_ex/izes_0$
 
+% Appendix, Appendix, Appendices, Appendices
+$NMasc_0_ix/ices_0$ = $NMasc_0_ex/ices_0$
+
 % Saldo, Saldo, Salden, Salden
 $NMasc_0_o/en_0$ = $NMasc_0_a/en_0$
 
 % Espresso, Espresso, Espressi, Espressi
 $NMasc_0_o/i_0$ = $NMasc_0_e/i_0$
+
+% Rhododendron, Rhododendron, Rhododendren, Rhododendren
+$NMasc_0_on/en_0$ = $NMasc_0_a/en_0$
 
 % Mythos, Mythos, Mythen, Mythen
 $NMasc_0_os/en_0$ = $NMasc_0_a/en_0$
@@ -280,8 +290,15 @@ $NMasc_es_as/anten_0~ss$ = $SS$ {<Masc>}:{}                      $NGenSgSuff_es$
 $NMasc_es_ex/izes_0$ = {<Masc>}:{}                     $NGenSgSuff_es$ | \
                        {<Masc>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
 
+% Index, Indexes, Indices, Indices
+$NMasc_es_ex/ices_0$ = {<Masc>}:{}                     $NGenSgSuff_es$ | \
+                       {<Masc>}:{<del(VC)|Pl>ic<SB>es} $NDatPlSuff_0$
+
 % Appendix, Appendixes, Appendizes, Appendizes
 $NMasc_es_ix/izes_0$ = $NMasc_es_ex/izes_0$
+
+% Appendix, Appendixes, Appendices, Appendices
+$NMasc_es_ix/ices_0$ = $NMasc_es_ex/ices_0$
 
 % Virus, Virusses, Viren, Viren
 $NMasc_es_us/en_0~ss$ = $SS$ {<Masc>}:{}                   $NGenSgSuff_es$ | \
@@ -381,6 +398,9 @@ $NMasc_s_o/en_0$ = $NMasc_s_a/en_0$
 
 % Espresso, Espressos, Espressi, Espressi
 $NMasc_s_o/i_0$ = $NMasc_s_e/i_0$
+
+% Rhododendron, Rhododendrons, Rhododendren, Rhododendren
+$NMasc_s_on/en_0$ = $NMasc_s_a/en_0$
 
 % Dirigent, Dirigenten, Dirigenten, Dirigenten
 % Bär, Bären, Bären, Bären
@@ -484,6 +504,10 @@ $NNeut_0_es_0$ = {<Neut>}:{}       $NGenSgSuff_0$ | \
 $NNeut_0_nen_0$ = {<Neut>}:{}        $NGenSgSuff_0$ | \
                   {<Neut>}:{n<SB>en} $NDatPlSuff_0$
 
+% Mastodon, Mastodon, Mastodonten, Mastodonten
+$NNeut_0_ten_0$ = {<Neut>}:{}        $NGenSgSuff_0$ | \
+                  {<Neut>}:{t<SB>en} $NDatPlSuff_0$
+
 % College, College, Colleges, Colleges
 $NNeut_0_s_0$ = {<Neut>}:{}      $NGenSgSuff_0$ | \
                 {<Neut>}:{<SB>s} $NDatPlSuff_0$
@@ -539,6 +563,10 @@ $NNeut_0_ens/enzien_0$ = {<Neut>}:{}                       $NGenSgSuff_0$ | \
 $NNeut_0_ex/izia_0$ = {<Neut>}:{}                     $NGenSgSuff_0$ | \
                       {<Neut>}:{<del(VC)|Pl>iz<SB>ia} $NDatPlSuff_0$
 
+% Simplex, Simplex, Simplicia, Simplicia
+$NNeut_0_ex/icia_0$ = {<Neut>}:{}                     $NGenSgSuff_0$ | \
+                      {<Neut>}:{<del(VC)|Pl>ic<SB>ia} $NDatPlSuff_0$
+
 % Taxi, Taxi, Taxen, Taxen
 $NNeut_0_i/en_0$ = $NNeut_0_a/en_0$
 
@@ -553,6 +581,7 @@ $NNeut_0_on/a_0$ = {<Neut>}:{}                  $NGenSgSuff_0$ | \
                    {<Neut>}:{<del(VC)|Pl><SB>a} $NDatPlSuff_0$
 
 % Stadion, Stadion, Stadien, Stadien
+% Rhododendron, Rhododendron, Rhododendren, Rhododendren
 $NNeut_0_on/en_0$ = $NNeut_0_a/en_0$
 
 % Epos, Epos, Epen, Epen
@@ -630,6 +659,10 @@ $NNeut_es_ien_0$ = {<Neut>}:{}        $NGenSgSuff_es$ | \
 $NNeut_es_ex/izia_0$ = {<Neut>}:{}                     $NGenSgSuff_es$ | \
                        {<Neut>}:{<del(VC)|Pl>iz<SB>ia} $NDatPlSuff_0$
 
+% Simplex, Simplexes, Simplicia, Simplicia
+$NNeut_es_ex/icia_0$ = {<Neut>}:{}                     $NGenSgSuff_es$ | \
+                       {<Neut>}:{<del(VC)|Pl>ic<SB>ia} $NDatPlSuff_0$
+
 % Almosen, Almosens, Almosen, Almosen
 $NNeut_s_0_0$ = {<Neut>}:{} $NGenSgSuff_s$ | \
                 {<Neut>}:{} $NDatPlSuff_0$
@@ -666,6 +699,10 @@ $NNeut_s_n_0$ = {<Neut>}:{}      $NGenSgSuff_s$ | \
 % Embryo, Embryos, Embryonen, Embryonen (neuter)
 $NNeut_s_nen_0$ = {<Neut>}:{}        $NGenSgSuff_s$ | \
                   {<Neut>}:{n<SB>en} $NDatPlSuff_0$
+
+% Mastodon, Mastodons, Mastodonten, Mastodonten
+$NNeut_s_ten_0$ = {<Neut>}:{}        $NGenSgSuff_s$ | \
+                  {<Neut>}:{t<SB>en} $NDatPlSuff_0$
 
 % Adverb, Adverbs, Adverbien, Adverbien
 $NNeut_s_ien_0$ = {<Neut>}:{}        $NGenSgSuff_s$ | \
@@ -717,6 +754,7 @@ $NNeut_s_on/a_0$ = {<Neut>}:{}                  $NGenSgSuff_s$ | \
                    {<Neut>}:{<del(VC)|Pl><SB>a} $NDatPlSuff_0$
 
 % Stadion, Stadions, Stadien, Stadien
+% Rhododendron, Rhododendrons, Rhododendren, Rhododendren
 $NNeut_s_on/en_0$ = $NNeut_s_a/en_0$
 
 % Aktivum, Aktivums, Aktiva, Aktiva
@@ -895,10 +933,6 @@ $NFem_0_is/iden_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
 $NFem_0_is/ides_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
                      {<Fem>}:{<del(VC)|Pl>id<SB>es} $NDatPlSuff_0$
 
-% Helix, Helix, Helices, Helices
-$NFem_0_ix/ices_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
-                     {<Fem>}:{<del(VC)|Pl>ic<SB>es} $NDatPlSuff_0$
-
 % Matrix, Matrix, Matrizen, Matrizen
 $NFem_0_ix/izen_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
                      {<Fem>}:{<del(VC)|Pl>iz<SB>en} $NDatPlSuff_0$
@@ -906,6 +940,10 @@ $NFem_0_ix/izen_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
 % Radix, Radix, Radizes, Radizes
 $NFem_0_ix/izes_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
                      {<Fem>}:{<del(VC)|Pl>iz<SB>es} $NDatPlSuff_0$
+
+% Radix, Radix, Radices, Radices
+$NFem_0_ix/ices_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
+                     {<Fem>}:{<del(VC)|Pl>ic<SB>es} $NDatPlSuff_0$
 
 % Dos, Dos, Dotes, Dotes
 $NFem_0_os/otes_0$ = {<Fem>}:{}                     $NGenSgSuff_0$ | \
@@ -2994,7 +3032,9 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMasc_0_es/iden_0>       $NMasc_0_es/iden_0$      | \
          <>:<NMasc_0_es/ides_0>       $NMasc_0_es/ides_0$      | \
          <>:<NMasc_0_es_0>            $NMasc_0_es_0$           | \
+         <>:<NMasc_0_ex/ices_0>       $NMasc_0_ex/ices_0$      | \
          <>:<NMasc_0_ex/izes_0>       $NMasc_0_ex/izes_0$      | \
+         <>:<NMasc_0_ix/ices_0>       $NMasc_0_ix/ices_0$      | \
          <>:<NMasc_0_ix/izes_0>       $NMasc_0_ix/izes_0$      | \
          <>:<NMasc_0_i/en_0>          $NMasc_0_i/en_0$         | \
          <>:<NMasc_0_i_0>             $NMasc_0_i_0$            | \
@@ -3002,6 +3042,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMasc_0_nen_0>           $NMasc_0_nen_0$          | \
          <>:<NMasc_0_o/en_0>          $NMasc_0_o/en_0$         | \
          <>:<NMasc_0_o/i_0>           $NMasc_0_o/i_0$          | \
+         <>:<NMasc_0_on/en_0>         $NMasc_0_on/en_0$        | \
          <>:<NMasc_0_os/en_0>         $NMasc_0_os/en_0$        | \
          <>:<NMasc_0_os/oden_0>       $NMasc_0_os/oden_0$      | \
          <>:<NMasc_0_os/oen_0>        $NMasc_0_os/oen_0$       | \
@@ -3024,7 +3065,9 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMasc_es_er_n>           $NMasc_es_er_n$          | \
          <>:<NMasc_es_es_0>           $NMasc_es_es_0$          | \
          <>:<NMasc_es_s_0>            $NMasc_es_s_0$           | \
+         <>:<NMasc_es_ex/ices_0>      $NMasc_es_ex/ices_0$     | \
          <>:<NMasc_es_ex/izes_0>      $NMasc_es_ex/izes_0$     | \
+         <>:<NMasc_es_ix/ices_0>      $NMasc_es_ix/ices_0$     | \
          <>:<NMasc_es_ix/izes_0>      $NMasc_es_ix/izes_0$     | \
          <>:<NMasc_es_us/een_0~ss>    $NMasc_es_us/een_0~ss$   | \
          <>:<NMasc_es_us/en_0~ss>     $NMasc_es_us/en_0~ss$    | \
@@ -3051,6 +3094,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMasc_s_nen_0>           $NMasc_s_nen_0$          | \
          <>:<NMasc_s_o/en_0>          $NMasc_s_o/en_0$         | \
          <>:<NMasc_s_o/i_0>           $NMasc_s_o/i_0$          | \
+         <>:<NMasc_s_on/en_0>         $NMasc_s_on/en_0$        | \
          <>:<NMasc_s_s_0>             $NMasc_s_s_0$            | \
          <>:<NMascNonSt_0_e_n~ss>     $NMascNonSt_0_e_n~ss$    | \
          <>:<NMascNonSt_es_$er_n>     $NMascNonSt_es_\$er_n$   | \
@@ -3088,6 +3132,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut_0_ens/entien_0>    $NNeut_0_ens/entien_0$   | \
          <>:<NNeut_0_ens/enzien_0>    $NNeut_0_ens/enzien_0$   | \
          <>:<NNeut_0_es_0>            $NNeut_0_es_0$           | \
+         <>:<NNeut_0_ex/icia_0>       $NNeut_0_ex/icia_0$      | \
          <>:<NNeut_0_ex/izia_0>       $NNeut_0_ex/izia_0$      | \
          <>:<NNeut_0_i/en_0>          $NNeut_0_i/en_0$         | \
          <>:<NNeut_0_nen_0>           $NNeut_0_nen_0$          | \
@@ -3097,6 +3142,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut_0_on/en_0>         $NNeut_0_on/en_0$        | \
          <>:<NNeut_0_os/en_0>         $NNeut_0_os/en_0$        | \
          <>:<NNeut_0_s_0>             $NNeut_0_s_0$            | \
+         <>:<NNeut_0_ten_0>           $NNeut_0_ten_0$          | \
          <>:<NNeut_0_um/a_0>          $NNeut_0_um/a_0$         | \
          <>:<NNeut_0_um/en_0>         $NNeut_0_um/en_0$        | \
          <>:<NNeut_0_us/en_0>         $NNeut_0_us/en_0$        | \
@@ -3111,6 +3157,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut_es_en_0>           $NNeut_es_en_0$          | \
          <>:<NNeut_es_er_n>           $NNeut_es_er_n$          | \
          <>:<NNeut_es_es_0>           $NNeut_es_es_0$          | \
+         <>:<NNeut_es_ex/icia_0>      $NNeut_es_ex/icia_0$     | \
          <>:<NNeut_es_ex/izia_0>      $NNeut_es_ex/izia_0$     | \
          <>:<NNeut_es_ien_0>          $NNeut_es_ien_0$         | \
          <>:<NNeut_es_s_0>            $NNeut_es_s_0$           | \
@@ -3136,6 +3183,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut_s_on/a_0>          $NNeut_s_on/a_0$         | \
          <>:<NNeut_s_on/en_0>         $NNeut_s_on/en_0$        | \
          <>:<NNeut_s_s_0>             $NNeut_s_s_0$            | \
+         <>:<NNeut_s_ten_0>           $NNeut_s_ten_0$          | \
          <>:<NNeut_s_um/a_0>          $NNeut_s_um/a_0$         | \
          <>:<NNeut_s_um/en_0>         $NNeut_s_um/en_0$        | \
          <>:<NNeut_s_0_0>             $NNeut_s_0_0$            | \

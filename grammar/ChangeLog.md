@@ -4,7 +4,11 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 * rename inflection classes `Adj_er_$st` and `Adj_er_$est` to  `Adj_$er_$st`
   and `Adj_$er_$est`, respectively
-* add inflection classes `AdjCompPred_er`, `AdjSupPred_st`, and `AdjSupPred_est`
+* add inflection classes `AdjCompPred_er`, `AdjSupPred_st`, and
+  `AdjSupPred_est`, `NMasc_0_ex/ices_0`, `NMasc_0_ix/ices_0`,
+  `NMasc_es_ex/ices_0`, `NMasc_es_ix/ices_0`, `NNeut_0_ex/icia_0`,
+  `NNeut_es_ex/icia_0`, `NMasc_0_on/en_0`, `NMasc_s_on/en_0`, `NNeut_0_ten_0`,
+  and `NNeut_s_ten_0`
 
 2026-03-18:
 

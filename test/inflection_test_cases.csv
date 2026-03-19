@@ -79,7 +79,6 @@ NN,NFem_0_ien_0,Vigil
 NN,NFem_0_is/en_0,Basis
 NN,NFem_0_is/iden_0,Apsis
 NN,NFem_0_is/ides_0,Glottis
-NN,NFem_0_ix/ices_0,Helix
 NN,NFem_0_ix/izen_0,Matrix
 NN,NFem_0_ix/izes_0,Radix
 NN,NFem_0_n_0,Hilfe
@@ -101,8 +100,8 @@ NN,"NMasc_0_0_n, NMasc_s_0_n",Dezember
 NN,"NMasc_0_a/en_0, NMasc_s_a/en_0, NMasc_0_s_0, NMasc_s_s_0",Veda
 NN,"NMasc_0_e/i_0, NMasc_s_e/i_0",Carabiniere
 NN,"NMasc_0_e_n, NMasc_0_es_0, NMasc_0_s_0, NMasc_es_e_n, NMasc_es_es_0, NMasc_es_s_0, NNeut_0_e_n ...",Sandwich
-NN,"NMasc_0_e_n, NMasc_0_ex/izes_0, NMasc_es_e_n, NMasc_es_ex/izes_0",Index
-NN,"NMasc_0_e_n, NMasc_0_ix/izes_0, NMasc_es_e_n, Nmasc_es_ix/izes_0, NFem_0_ix/izes_0 ",Appendix
+NN,"NMasc_0_e_n, NMasc_0_ex/izes_0, NMasc_0_ex/ices_0, NMasc_es_e_n, NMasc_es_ex/izes_0, NMasc_es_ex/ices_0",Index
+NN,"NMasc_0_e_n, NMasc_0_ix/izes_0, NMasc_0_ix/ices_0, NMasc_es_e_n, NMasc_es_ix/izes_0, NMasc_es_ix/ices_0, NFem_0_ix/izes_0, NFem_0_ix/ices_0",Appendix
 NN,"NMasc_0_e_n, NMasc_s_e_n",Januar
 NN,NMasc_0_e_n~ss,Zirkus
 NN,"NMasc_0_e_n~ss, NMascNonSt_0_e_n~ss, NMasc_es_e_n~ss, NMascNonSt_es_e_n~ss, NMasc_0_as/anten_0, NMasc_s_as/anten_0",Atlas
@@ -115,6 +114,7 @@ NN,"NMasc_0_i/en_0, NMasc_s_i/en_0, NMasc_0_s_0, NMasc_s_s_0, NNeut_0_i/en_0 ...
 NN,NMasc_0_i_0,Signor
 NN,"NMasc_0_nen_0, NMasc_0_s_0, NMasc_s_nen_0, NMasc_s_s_0, NNeut_0_nen_0 ...",Embryo
 NN,"NMasc_0_o/i_0, NMasc_0_s_0, NMasc_s_o/i_0, NMasc_s_s_0, NNeut_0_s_0 ...",Espresso
+NN,"NMasc_s_on/en_0, NNeut_s_on/en_0",Rhododendron
 NN,NMasc_0_os/en_0,Mythos
 NN,NMasc_0_os/oden_0,Kustos
 NN,NMasc_0_os/oen_0,Heros
@@ -209,6 +209,7 @@ NN,NNeut_s_on/en_0,Stadion
 NN,NNeut_s_s_0,Sofa
 NN,"NNeut_s_s_0, NNeut_s_a/ata_0",Komma
 NN,"NNeut_s_s_0, NNeut_s_o/en_0",Risiko
+NN,NNeut_s_ten_0,Mastodon
 NN,NNeut_s_um/a_0,Maximum
 NN,NNeut_s_um/en_0,Museum
 NN,NNeut|Sg_0,Abseits
