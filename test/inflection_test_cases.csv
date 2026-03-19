@@ -11,6 +11,7 @@ ADJ,AdjPos0-e,klasse
 ADJ,AdjPosAttr0,zig
 ADJ,AdjPosAttrSubst0,Berliner
 ADJ,AdjPosPred,tabu
+ADJ,"AdjPosPred, AdjCompPred_er, AdjSupPred_st",wohl
 ADJ,"AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_est",fit
 ADJ,"AdjPosPred, AdjPosAttr, AdjComp_er, AdjSup_st",hoch
 ADJ,AdjPosPred-e,pleite

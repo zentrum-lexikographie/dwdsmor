@@ -1,3 +1,9 @@
+2026-03-19:
+
+* add support for predicative-only comparative and superlative forms
+* add support for adjectives with umlauted comparative forms and non-umlauted
+  superlative forms
+
 2026-03-18:
 
 * add support for alternative forms of "Dunkle" with stem "Dunkel"

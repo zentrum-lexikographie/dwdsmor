@@ -1,6 +1,6 @@
 % module_symbols.fst
-% Version 14.2
-% Andreas Nolda 2026-03-18
+% Version 14.3
+% Andreas Nolda 2026-03-19
 
 % must be loaded first
 
@@ -144,13 +144,14 @@
 #abbr-inflection# = <AbbrAdj><AbbrNFem><AbbrNMasc><AbbrNNeut><AbbrNUnmGend> \
                     <AbbrPoss><AbbrVImp>
 
-#adj-inflection# = <Adj_er_$est><Adj_er_$st><Adj_er_est><Adj_er_st> \
+#adj-inflection# = <Adj_$er_$est><Adj_$er_$st><Adj_er_est><Adj_er_st> \
                    <AdjComp-el_er><AdjComp-en_er><AdjComp-er_er><AdjComp0> \
-                   <AdjComp_er><AdjPos><AdjPos-e><AdjPos-el><AdjPos-en> \
-                   <AdjPos-er><AdjPos0><AdjPos0-e><AdjPos0-viel><AdjPosAttr> \
-                   <AdjPosAttr-er><AdjPosAttr-ler><AdjPosAttr0> \
+                   <AdjComp_er><AdjCompPred_er><AdjPos><AdjPos-e><AdjPos-el> \
+                   <AdjPos-en><AdjPos-er><AdjPos0><AdjPos0-e><AdjPos0-viel> \
+                   <AdjPosAttr><AdjPosAttr-er><AdjPosAttr-ler><AdjPosAttr0> \
                    <AdjPosAttrSubst0><AdjPosPred><AdjPosPred-e><AdjSup_est> \
-                   <AdjSup_st><AdjSupAttr_est><AdjSupAttr_st>
+                   <AdjSup_st><AdjSupAttr_est><AdjSupAttr_st><AdjSupPred_est> \
+                   <AdjSupPred_st>
 
 #adv-inflection# = <AdvComp_er><AdvComp0><AdvSup_est><AdvSup_st>
 

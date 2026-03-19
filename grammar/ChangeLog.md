@@ -1,5 +1,11 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2026-03-19:
+
+* rename inflection classes `Adj_er_$st` and `Adj_er_$est` to  `Adj_$er_$st`
+  and `Adj_$er_$est`, respectively
+* add inflection classes `AdjCompPred_er`, `AdjSupPred_st`, and `AdjSupPred_est`
+
 2026-03-18:
 
 * add inflection class `NNeut-Dunkel`

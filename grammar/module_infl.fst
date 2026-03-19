@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 15.2
-% Andreas Nolda 2026-03-18
+% Version 15.3
+% Andreas Nolda 2026-03-19
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1044,6 +1044,7 @@ $AdjInflSuff-n$ = {<Attr/Subst><Masc><Acc><Sg><St>}:{<SB>n}    | \
 $AdjInflSuff-m$ = {<Attr/Subst><Masc><Dat><Sg><St>}:{<SB>m} | \
                   {<Attr/Subst><Neut><Dat><Sg><St>}:{<SB>m}
 
+% wohl
 % tabu
 $AdjPosPred$ = {<Pos><Pred/Adv>}:{}
 
@@ -1117,6 +1118,9 @@ $AdjPos-en$ = $AdjPos$ | \
 $AdjComp0$ = {<Comp><Pred/Adv>}:{} | \
              {<Comp><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
+% wohler
+$AdjCompPred_er$ = {<Comp><Pred/Adv>}:{<SB>er}
+
 % besser
 % höher
 $AdjComp_er$ = {<Comp><Pred/Adv>}:{<SB>er} | \
@@ -1134,6 +1138,11 @@ $AdjComp-en_er$ = $AdjComp-er_er$
 
 $AdjComp_\$er$ = {<Comp><Pred/Adv>}:{<uml><SB>er} | \
                  {<Comp>}:{<uml><SB>er} $AdjInflSuff$
+
+% wohlsten
+$AdjSupPred_st$ = {<Sup><Pred/Adv>}:{<SB>st<SB>en}
+
+$AdjSupPred_est$ = {<Sup><Pred/Adv>}:{<SB>est<SB>en}
 
 % vordersten
 $AdjSupAttr_st$ = {<Sup>}:{<SB>st} $AdjInflSuff$
@@ -1166,14 +1175,14 @@ $Adj_er_est$ = $AdjPos$     | \
                $AdjSup_est$
 
 % warm, wärmer, wärmsten
-$Adj_er_\$st$ = $AdjPos$       | \
-                $AdjComp_\$er$ | \
-                $AdjSup_\$st$
+$Adj_\$er_\$st$ = $AdjPos$       | \
+                  $AdjComp_\$er$ | \
+                  $AdjSup_\$st$
 
 % kalt, kälter, kältesten
-$Adj_er_\$est$ = $AdjPos$       | \
-                 $AdjComp_\$er$ | \
-                 $AdjSup_\$est$
+$Adj_\$er_\$est$ = $AdjPos$       | \
+                   $AdjComp_\$er$ | \
+                   $AdjSup_\$est$
 
 
 % articles and pronouns
@@ -2818,8 +2827,8 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<AbbrNUnmGend>            $AbbrNUnmGend$           | \
          <>:<AbbrPoss>                $AbbrPoss$               | \
          <>:<AbbrVImp>                $AbbrVImp$               | \
-         <>:<Adj_er_$est>             $Adj_er_\$est$           | \
-         <>:<Adj_er_$st>              $Adj_er_\$st$            | \
+         <>:<Adj_$er_$est>            $Adj_\$er_\$est$         | \
+         <>:<Adj_$er_$st>             $Adj_\$er_\$st$          | \
          <>:<Adj_er_est>              $Adj_er_est$             | \
          <>:<Adj_er_st>               $Adj_er_st$              | \
          <>:<AdjComp-el_er>           $AdjComp-el_er$          | \
@@ -2827,6 +2836,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<AdjComp-er_er>           $AdjComp-er_er$          | \
          <>:<AdjComp0>                $AdjComp0$               | \
          <>:<AdjComp_er>              $AdjComp_er$             | \
+         <>:<AdjCompPred_er>          $AdjCompPred_er$        | \
          <>:<AdjPos>                  $AdjPos$                 | \
          <>:<AdjPos-e>                $AdjPos-e$               | \
          <>:<AdjPos-el>               $AdjPos-el$              | \
@@ -2846,6 +2856,8 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<AdjSup_st>               $AdjSup_st$              | \
          <>:<AdjSupAttr_est>          $AdjSupAttr_est$         | \
          <>:<AdjSupAttr_st>           $AdjSupAttr_st$          | \
+         <>:<AdjSupPred_est>          $AdjSupPred_est$         | \
+         <>:<AdjSupPred_st>           $AdjSupPred_st$          | \
          <>:<AdvComp_er>              $AdvComp_er$             | \
          <>:<AdvComp0>                $AdvComp0$               | \
          <>:<AdvSup_est>              $AdvSup_est$             | \

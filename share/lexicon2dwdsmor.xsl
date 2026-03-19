@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 20.0 -->
-<!-- Andreas Nolda 2026-03-13 -->
+<!-- Version 20.1 -->
+<!-- Andreas Nolda 2026-03-19 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -50,6 +50,31 @@
             <xsl:with-param name="pos">ADJ</xsl:with-param>
             <xsl:with-param name="class">AdjPosPred-e</xsl:with-param>
           </xsl:call-template>
+          <xsl:if test="ends-with(@comparative,'er')">
+            <xsl:call-template name="stem-entry">
+              <xsl:with-param name="lemma"
+                              select="n:segment-from-end('e',@lemma)"/>
+              <xsl:with-param name="stem"
+                              select="replace(@comparative,'er$','')"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjCompPred_er</xsl:with-param>
+            </xsl:call-template>
+          </xsl:if>
+          <xsl:if test="ends-with(@superlative,'sten')">
+            <xsl:call-template name="stem-entry">
+              <xsl:with-param name="lemma"
+                              select="n:segment-from-end('e',@lemma)"/>
+              <xsl:with-param name="stem"
+                              select="replace(@superlative,'^am (.*?[aeiouäöü].*?)e?sten$','$1')"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">
+                <xsl:choose>
+                  <xsl:when test="matches(@superlative,'^am .*[aeiouäöü].*esten$')">AdjSupPred_est</xsl:when>
+                  <xsl:otherwise>AdjSupPred_st</xsl:otherwise>
+                </xsl:choose>
+              </xsl:with-param>
+            </xsl:call-template>
+          </xsl:if>
         </xsl:when>
         <!-- other predicative-only adjectives -->
         <xsl:otherwise>
@@ -57,6 +82,27 @@
             <xsl:with-param name="pos">ADJ</xsl:with-param>
             <xsl:with-param name="class">AdjPosPred</xsl:with-param>
           </xsl:call-template>
+          <xsl:if test="ends-with(@comparative,'er')">
+            <xsl:call-template name="stem-entry">
+              <xsl:with-param name="stem"
+                              select="replace(@comparative,'er$','')"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjCompPred_er</xsl:with-param>
+            </xsl:call-template>
+          </xsl:if>
+          <xsl:if test="ends-with(@superlative,'sten')">
+            <xsl:call-template name="stem-entry">
+              <xsl:with-param name="stem"
+                              select="replace(@superlative,'^am (.*?[aeiouäöü].*?)e?sten$','$1')"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">
+                <xsl:choose>
+                  <xsl:when test="matches(@superlative,'^am .*[aeiouäöü].*esten$')">AdjSupPred_est</xsl:when>
+                  <xsl:otherwise>AdjSupPred_st</xsl:otherwise>
+                </xsl:choose>
+              </xsl:with-param>
+            </xsl:call-template>
+          </xsl:if>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:when>
@@ -439,6 +485,37 @@
             </xsl:with-param>
           </xsl:call-template>
         </xsl:when>
+        <!-- adjectives with umlauted comparative forms
+             and non-umlauted superlative forms -->
+        <xsl:when test="ends-with(@comparative,'er') and
+                        matches($comparative-marker,'^&#x308;-') and
+                        matches($superlative-marker,'^-')">
+          <xsl:call-template name="stem-entry">
+            <xsl:with-param name="pos">ADJ</xsl:with-param>
+            <xsl:with-param name="class">AdjPos</xsl:with-param>
+          </xsl:call-template>
+          <xsl:if test="ends-with(@comparative,'er')">
+            <xsl:call-template name="stem-entry">
+              <xsl:with-param name="stem"
+                              select="replace(@comparative,'er$','')"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjComp_er</xsl:with-param>
+            </xsl:call-template>
+          </xsl:if>
+          <xsl:if test="ends-with(@superlative,'sten')">
+            <xsl:call-template name="stem-entry">
+              <xsl:with-param name="stem"
+                              select="replace(@superlative,'^am (.*?[aeiouäöü].*?)e?sten$','$1')"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">
+                <xsl:choose>
+                  <xsl:when test="matches(@superlative,'^am .*[aeiouäöü].*esten$')">AdjSup_est</xsl:when>
+                  <xsl:otherwise>AdjSup_st</xsl:otherwise>
+                </xsl:choose>
+              </xsl:with-param>
+            </xsl:call-template>
+          </xsl:if>
+        </xsl:when>
         <!-- adjectives with word-internal comparative and superlative markers -->
         <xsl:when test="string-length(@comparative)&gt;0 and
                         string-length(@superlative)&gt;0 and
@@ -456,7 +533,7 @@
           </xsl:call-template>
           <xsl:call-template name="stem-entry">
             <xsl:with-param name="lemma"
-                            select="replace(@superlative,'^(am )?(.+)$','$2')"/>
+                            select="replace(@superlative,'^(am )?(.+)en$','$2')"/>
             <xsl:with-param name="pos">ADJ</xsl:with-param>
             <xsl:with-param name="class">AdjPos</xsl:with-param>
           </xsl:call-template>

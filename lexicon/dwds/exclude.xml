@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <exclude>
-  <source href="wb/DWDS/billes-006/hochrangig.xml"/>
-  <source href="wb/DWDS/billes-008/hochklassig.xml"/>
   <source href="wb/Neuartikel/Neuartikel-003/toeggelen-E_8753205.xml"/>
   <source href="wb/Neuartikel/Neuartikel-008/derethalben-1-E_4628633.xml"/>
   <source href="wb/Neuartikel/Neuartikel-008/derethalben-2-E_2090554.xml"/>
