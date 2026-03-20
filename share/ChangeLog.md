@@ -1,5 +1,6 @@
 2026-03-20:
 
+* simplify rules for identifying measure nouns
 * add support for uninflected "zigtausend"
 
 2026-03-19:

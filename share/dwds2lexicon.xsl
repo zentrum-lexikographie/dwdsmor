@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 19.7 -->
-<!-- Andreas Nolda 2026-03-16 -->
+<!-- Version 20.0 -->
+<!-- Andreas Nolda 2026-03-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -248,9 +248,6 @@
         <!-- homograph index -->
         <xsl:variable name="lemma-index"
                       select="@hidx"/>
-        <xsl:variable name="meaning-type">
-          <xsl:call-template name="get-meaning-type-value"/>
-        </xsl:variable>
         <xsl:variable name="abbreviation">
           <xsl:call-template name="get-abbreviation-value"/>
         </xsl:variable>
@@ -294,10 +291,7 @@
           </xsl:variable>
           <xsl:variable name="noun-type">
             <xsl:if test="$pos='Substantiv'">
-              <xsl:call-template name="get-noun-type-value">
-                <xsl:with-param name="meaning-type"
-                                select="$meaning-type"/>
-              </xsl:call-template>
+              <xsl:call-template name="get-noun-type-value"/>
             </xsl:if>
           </xsl:variable>
           <xsl:variable name="style">
@@ -2398,10 +2392,7 @@
                         select="normalize-space(dwds:Wortklasse[not(@class='invisible')])"/>
           <xsl:variable name="noun-type">
             <xsl:if test="$pos='Substantiv'">
-              <xsl:call-template name="get-noun-type-value">
-                <xsl:with-param name="meaning-type"
-                                select="$meaning-type"/>
-              </xsl:call-template>
+              <xsl:call-template name="get-noun-type-value"/>
             </xsl:if>
           </xsl:variable>
           <xsl:variable name="comp-stem"
@@ -3546,19 +3537,6 @@
   </xsl:choose>
 </xsl:template>
 
-<xsl:template name="get-meaning-type-value">
-  <xsl:choose>
-    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Generalisierung']
-                                                                                                                                            [starts-with(normalize-space(.),'Maßangabe')]">measure</xsl:when>
-    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Generalisierung']
-                                                                                                                                            [starts-with(normalize-space(.),'Maßeinheit')]">measure</xsl:when>
-    <xsl:when test="parent::dwds:Formangabe[not(@class='invisible')]/following-sibling::dwds:Lesart[not(@class='invisible')]/dwds:Definition[@Typ='Basis']
-                                                                                                                                            [starts-with(normalize-space(.),'Maßeinheit')]">measure</xsl:when>
-    <!-- TODO: more meaning-type values -->
-    <xsl:otherwise>any</xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
 <xsl:template name="get-abbreviation-value">
   <xsl:choose>
     <!-- spellings marked as abbreviation -->
@@ -3616,7 +3594,6 @@
 </xsl:template>
 
 <xsl:template name="get-noun-type-value">
-  <xsl:param name="meaning-type"/>
   <xsl:choose>
     <xsl:when test="normalize-space(dwds:Funktionspraeferenz[not(@Frequenz!='nur')])='als Eigenname'">proper-name</xsl:when>
     <xsl:when test="normalize-space(dwds:Funktionspraeferenz)='nur als Eigenname'">proper-name</xsl:when>
@@ -3626,7 +3603,6 @@
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Wertangabe')">measure-noun</xsl:when>
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'mit Mengenangabe')">measure-noun</xsl:when>
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nach Zahlenangabe')">measure-noun</xsl:when>
-    <xsl:when test="$meaning-type='measure'">measure-noun</xsl:when>
     <!-- TODO: more noun-type values -->
     <xsl:otherwise>any</xsl:otherwise>
   </xsl:choose>
