@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.17.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.16.0...v0.17.0) (2026-03-20)
+
+
+### Features
+
+* add support for alternative forms of "Dunkle" with stem "Dunkel" ([bdeb23d](https://github.com/zentrum-lexikographie/dwdsmor/commit/bdeb23d285ac3d98c1fe5f6df90e75049081c89f))
+* add support for uninflected "zigtausend" ([2be51fc](https://github.com/zentrum-lexikographie/dwdsmor/commit/2be51fcc2e157249d439c6b8330a2b11e1ff431d))
+* improve support for special cases of comparatives and superlatives ([8937bce](https://github.com/zentrum-lexikographie/dwdsmor/commit/8937bce73bae4f8597b15a89f438495ca6ffded6))
+* improve support for special cases of loan-word inflection ([624d162](https://github.com/zentrum-lexikographie/dwdsmor/commit/624d162a4984a5b4210c498a8df5742c824f9ece))
+* simplify rules for identifying measure nouns ([ded8c6f](https://github.com/zentrum-lexikographie/dwdsmor/commit/ded8c6f40064229084da99e890005719924334f7))
+
+
+### Bug Fixes
+
+* correct definition of VPres-e inflection class ([84daae0](https://github.com/zentrum-lexikographie/dwdsmor/commit/84daae010823eea00856c481f7a8ff00716d2232))
+
 ## [0.16.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.15.1...v0.16.0) (2026-03-16)
 
 
