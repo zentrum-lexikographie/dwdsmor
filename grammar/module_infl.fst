@@ -1094,6 +1094,7 @@ $AdjPosAttr0$ = {<Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
 $AdjPosAttr0-e$ = {<Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{<SB>e}
 
+% zigtausend
 % Berliner ('related to Berlin')
 $AdjPosAttrSubst0$ = {<Pos><Attr/Subst><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 

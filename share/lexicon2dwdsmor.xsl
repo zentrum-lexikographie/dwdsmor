@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 20.1 -->
-<!-- Andreas Nolda 2026-03-19 -->
+<!-- Version 20.2 -->
+<!-- Andreas Nolda 2026-03-20 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -430,6 +430,17 @@
               </xsl:with-param>
             </xsl:call-template>
           </xsl:if>
+        </xsl:when>
+        <!-- other adjectives with uninflected forms -->
+        <xsl:when test="@lemma='zigtausend'">
+          <xsl:call-template name="stem-entry">
+            <xsl:with-param name="pos">ADJ</xsl:with-param>
+            <xsl:with-param name="class">AdjPos</xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="stem-entry">
+            <xsl:with-param name="pos">ADJ</xsl:with-param>
+            <xsl:with-param name="class">AdjPosAttrSubst0</xsl:with-param>
+          </xsl:call-template>
         </xsl:when>
         <!-- adjectives with irregular comparative forms -->
         <xsl:when test="ends-with(@comparative,'er') and

@@ -1,3 +1,7 @@
+2026-03-20:
+
+* add support for uninflected "zigtausend"
+
 2026-03-19:
 
 * add support for predicative-only comparative and superlative forms
