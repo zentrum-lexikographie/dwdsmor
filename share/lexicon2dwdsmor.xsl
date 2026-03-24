@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 20.2 -->
-<!-- Andreas Nolda 2026-03-20 -->
+<!-- Version 20.3 -->
+<!-- Andreas Nolda 2026-03-24 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -432,11 +432,8 @@
           </xsl:if>
         </xsl:when>
         <!-- other adjectives with uninflected forms -->
-        <xsl:when test="@lemma='zigtausend'">
-          <xsl:call-template name="stem-entry">
-            <xsl:with-param name="pos">ADJ</xsl:with-param>
-            <xsl:with-param name="class">AdjPos</xsl:with-param>
-          </xsl:call-template>
+        <xsl:when test="@lemma='aberhundert' or
+                        @lemma='zigtausend'">
           <xsl:call-template name="stem-entry">
             <xsl:with-param name="pos">ADJ</xsl:with-param>
             <xsl:with-param name="class">AdjPosAttrSubst0</xsl:with-param>
@@ -1154,6 +1151,27 @@
         <xsl:with-param name="pos">NN</xsl:with-param>
         <xsl:with-param name="class">NNeut-Meas_s</xsl:with-param>
       </xsl:call-template>
+      <!-- numeratives with lowercase variants -->
+      <xsl:if test="@lemma='Dutzend' or ends-with(@lemma,'dutzend') or
+                    @lemma='Hundert' or ends-with(@lemma,'hundert') or
+                    @lemma='Tausend' or ends-with(@lemma,'tausend')">
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="lower-case(@lemma)"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NNeut-Meas_s</xsl:with-param>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NNeut-Tausend</xsl:with-param>
+        </xsl:call-template>
+        <xsl:call-template name="stem-entry">
+          <xsl:with-param name="lemma"
+                          select="lower-case(@lemma)"/>
+          <xsl:with-param name="pos">NN</xsl:with-param>
+          <xsl:with-param name="class">NNeut-Tausend</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
     </xsl:when>
     <!-- feminine measure nouns -->
     <!-- genitive singular: "-"
@@ -1165,6 +1183,24 @@
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="pos">NN</xsl:with-param>
         <xsl:with-param name="class">NFem-Meas</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <!-- pseudo-numeratives with lowercase variants -->
+    <xsl:when test="@gender='neuter' and
+                    (@lemma='Dutzend' or ends-with(@lemma,'dutzend') or
+                     @lemma='Hundert' or ends-with(@lemma,'hundert') or
+                     @lemma='Tausend' or ends-with(@lemma,'tausend')) and
+                    $genitive-singular-marker='-s' and
+                    $nominative-plural-marker='-e'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NNeut_s_e_n</xsl:with-param>
+      </xsl:call-template>
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="lemma"
+                        select="lower-case(@lemma)"/>
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NNeut_s_e_n</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
     <!-- nouns with suppletive plural -->

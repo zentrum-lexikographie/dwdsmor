@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DWDS xmlns="http://www.dwds.de/ns/1.0">
   <Artikel>
+    <Formangabe>
+      <Schreibung>Aberhundert</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
+        <Plural>
+          <Wert>-e</Wert>
+        </Plural>
+        <Plural Typ="Mengenangabe">
+          <Wert>-</Wert>
+        </Plural>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
     <Formangabe Typ="Abkürzung">
       <Schreibung>BGBl.</Schreibung>
       <Grammatik>
@@ -136,6 +154,24 @@
       <Grammatik>
         <Wortklasse>Substantiv</Wortklasse>
         <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>Zigtausend</Schreibung>
+      <Grammatik>
+        <Wortklasse>Substantiv</Wortklasse>
+        <Genus>neutr.</Genus>
+        <Genitiv>
+          <Wert>-s</Wert>
+        </Genitiv>
+        <Plural>
+          <Wert>-e</Wert>
+        </Plural>
+        <Plural Typ="Mengenangabe">
+          <Wert>-</Wert>
+        </Plural>
       </Grammatik>
     </Formangabe>
   </Artikel>

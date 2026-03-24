@@ -1,6 +1,6 @@
 % module_symbols.fst
-% Version 14.4
-% Andreas Nolda 2026-03-19
+% Version 14.5
+% Andreas Nolda 2026-03-24
 
 % must be loaded first
 
@@ -197,9 +197,9 @@
                     <NMascNonSt_es_e_n~ss><NMascNonSt_n_e/s_0> \
                     <NMascNonSt_n_ns_0><NMascNonSt_s_en_0><NNeut-Meas_es> \
                     <NNeut-Meas_s><NNeut-Adj><NNeut-Adj|Sg><NNeut-Dunkel> \
-                    <NNeut-Inner><NNeut|Pl_0><NNeut|PlNonSt_n><NNeut|Sg_0> \
-                    <NNeut|Sg_es><NNeut|Sg_es~ss><NNeut|Sg_s><NNeut_0_0_0> \
-                    <NNeut_0_0_n><NNeut_0_a/ata_0><NNeut_0_a/en_0> \
+                    <NNeut-Inner><NNeut-Tausend><NNeut|Pl_0><NNeut|PlNonSt_n> \
+                    <NNeut|Sg_0><NNeut|Sg_es><NNeut|Sg_es~ss><NNeut|Sg_s> \
+                    <NNeut_0_0_0><NNeut_0_0_n><NNeut_0_a/ata_0><NNeut_0_a/en_0> \
                     <NNeut_0_ans/antien_0><NNeut_0_ans/anzien_0><NNeut_0_e_n> \
                     <NNeut_0_e_n~ss><NNeut_0_e/i_0><NNeut_0_e/ia_0> \
                     <NNeut_0_e/ien_0><NNeut_0_em/en_0><NNeut_0_en_0> \

@@ -202,6 +202,7 @@ NN,NNeut_s_a/en_0,Dogma
 NN,NNeut_s_a_0,Reflexiv
 NN,"NNeut_s_e/ia_0, NNeut_s_e/ien_0",Numerale
 NN,NNeut_s_e_n,Signal
+NN,"NNeut_s_e_n, NNeut-Meas_s, NNeut-Tausend",Tausend
 NN,NNeut_s_ien_0,Material
 NN,NNeut_s_n_0,Auge
 NN,NNeut_s_on/a_0,Paradoxon

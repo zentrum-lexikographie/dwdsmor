@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 15.4
-% Andreas Nolda 2026-03-19
+% Version 15.5
+% Andreas Nolda 2026-03-24
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -825,6 +825,16 @@ $NNeut-Inner$ = {<Neut><Nom><Sg><St>}:{<SB>es} | \
                 {<Neut><Dat><Sg><Wk>}:{<SB>n}  | \
                 {<Neut><Gen><Sg><Wk>}:{<SB>en} | \
                 {<Neut><Gen><Sg><Wk>}:{<SB>n}
+
+% Tausend(e)
+$NNeut-Tausend$ = {<Neut><Nom><Pl><St>}:{<SB>e}  | \
+                  {<Neut><Acc><Pl><St>}:{<SB>e}  | \
+                  {<Neut><Dat><Pl><St>}:{<SB>en} | \
+                  {<Neut><Gen><Pl><St>}:{<SB>er} | \
+                  {<Neut><Nom><Pl><Wk><NonSt>}:{<SB>en} | \ % cf. Duden-Grammatik (2016: § 512)
+                  {<Neut><Acc><Pl><Wk><NonSt>}:{<SB>en} | \ % cf. Duden-Grammatik (2016: § 512)
+                  {<Neut><Dat><Pl><Wk><NonSt>}:{<SB>en} | \ % cf. Duden-Grammatik (2016: § 512)
+                  {<Neut><Gen><Pl><Wk><NonSt>}:{<SB>en}     % cf. Duden-Grammatik (2016: § 512)
 
 
 % feminine nouns
@@ -3107,6 +3117,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut-Adj|Sg>            $NNeut-Adj|Sg$           | \
          <>:<NNeut-Dunkel>            $NNeut-Dunkel$           | \
          <>:<NNeut-Inner>             $NNeut-Inner$            | \
+         <>:<NNeut-Tausend>           $NNeut-Tausend$          | \
          <>:<NNeut-Meas_es>           $NNeut-Meas_es$          | \
          <>:<NNeut-Meas_s>            $NNeut-Meas_s$           | \
          <>:<NNeut|Pl_0>              $NNeut|Pl_0$             | \

@@ -1651,15 +1651,15 @@
     ),
     tuple(
       'gesondert',
-      'sonder<~>n<V><Part><Perf><haben>',
-    ),
-    tuple(
-      'gesondert',
       'ge<~>sonder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'gesondert',
       'gesondert<ADJ><Pos><Pred/Adv>',
+    ),
+    tuple(
+      'gesondert',
+      'sonder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'erhoben',
@@ -2791,11 +2791,11 @@
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'worden',
@@ -3691,11 +3691,11 @@
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'durch',
@@ -5843,10 +5843,6 @@
     ),
     tuple(
       'gestanden',
-      'steh<~>en<V><Part><Perf><haben>',
-    ),
-    tuple(
-      'gestanden',
       'ge<~>stand<~>en<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
@@ -5868,6 +5864,10 @@
     tuple(
       'gestanden',
       'gestanden<ADJ><Pos><Pred/Adv>',
+    ),
+    tuple(
+      'gestanden',
+      'steh<~>en<V><Part><Perf><haben>',
     ),
     tuple(
       'hat',
@@ -22335,83 +22335,83 @@
       'NNeut-Adj, NNeut-Dunkel',
       'Dunkle',
       tuple(
-        'Dunkl<~>e<NN><Neut><Acc><Pl><St>',
+        'Dunkl<~>e<PAR1><NN><Neut><Acc><Pl><St>',
         'Dunkle',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Acc><Pl><Wk>',
+        'Dunkl<~>e<PAR1><NN><Neut><Acc><Pl><Wk>',
         'Dunklen',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Acc><Sg><St>',
+        'Dunkl<~>e<PAR1><NN><Neut><Acc><Sg><St>',
         'Dunkles',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Acc><Sg><Wk>',
+        'Dunkl<~>e<PAR1><NN><Neut><Acc><Sg><Wk>',
         'Dunkle',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Dat><Pl><St>',
+        'Dunkl<~>e<PAR1><NN><Neut><Dat><Pl><St>',
         'Dunklen',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Dat><Pl><Wk>',
+        'Dunkl<~>e<PAR1><NN><Neut><Dat><Pl><Wk>',
         'Dunklen',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Dat><Sg><St>',
+        'Dunkl<~>e<PAR1><NN><Neut><Dat><Sg><St>',
         'Dunkelm',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Dat><Sg><St>',
+        'Dunkl<~>e<PAR1><NN><Neut><Dat><Sg><St>',
         'Dunklem',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Dat><Sg><Wk>',
+        'Dunkl<~>e<PAR1><NN><Neut><Dat><Sg><Wk>',
         'Dunkeln',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Dat><Sg><Wk>',
+        'Dunkl<~>e<PAR1><NN><Neut><Dat><Sg><Wk>',
         'Dunklen',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Gen><Pl><St>',
+        'Dunkl<~>e<PAR1><NN><Neut><Gen><Pl><St>',
         'Dunkler',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Gen><Pl><Wk>',
+        'Dunkl<~>e<PAR1><NN><Neut><Gen><Pl><Wk>',
         'Dunklen',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Gen><Sg><St>',
+        'Dunkl<~>e<PAR1><NN><Neut><Gen><Sg><St>',
         'Dunkeln',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Gen><Sg><St>',
+        'Dunkl<~>e<PAR1><NN><Neut><Gen><Sg><St>',
         'Dunklen',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Gen><Sg><Wk>',
+        'Dunkl<~>e<PAR1><NN><Neut><Gen><Sg><Wk>',
         'Dunkeln',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Gen><Sg><Wk>',
+        'Dunkl<~>e<PAR1><NN><Neut><Gen><Sg><Wk>',
         'Dunklen',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Nom><Pl><St>',
+        'Dunkl<~>e<PAR1><NN><Neut><Nom><Pl><St>',
         'Dunkle',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Nom><Pl><Wk>',
+        'Dunkl<~>e<PAR1><NN><Neut><Nom><Pl><Wk>',
         'Dunklen',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Nom><Sg><St>',
+        'Dunkl<~>e<PAR1><NN><Neut><Nom><Sg><St>',
         'Dunkles',
       ),
       tuple(
-        'Dunkl<~>e<NN><Neut><Nom><Sg><Wk>',
+        'Dunkl<~>e<PAR1><NN><Neut><Nom><Sg><Wk>',
         'Dunkle',
       ),
     ),
@@ -24230,6 +24230,111 @@
     ),
     tuple(
       'NN',
+      'NNeut_s_e_n, NNeut-Meas_s, NNeut-Tausend',
+      'Tausend',
+      tuple(
+        'Tausend<IDX1><NN><Neut><Acc><Pl>',
+        'Tausende',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Acc><Pl><St>',
+        'Tausende',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Acc><Pl><Wk><NonSt>',
+        'Tausenden',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Acc><Sg>',
+        'Tausend',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Dat><Pl>',
+        'Tausenden',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Dat><Pl><St>',
+        'Tausenden',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Dat><Pl><Wk><NonSt>',
+        'Tausenden',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Dat><Sg>',
+        'Tausend',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Gen><Pl>',
+        'Tausende',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Gen><Pl><St>',
+        'Tausender',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Gen><Pl><Wk><NonSt>',
+        'Tausenden',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Gen><Sg>',
+        'Tausends',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Nom><Pl>',
+        'Tausende',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Nom><Pl><St>',
+        'Tausende',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Nom><Pl><Wk><NonSt>',
+        'Tausenden',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><Nom><Sg>',
+        'Tausend',
+      ),
+      tuple(
+        'Tausend<IDX1><NN><Neut><UnmCase><UnmNum><MEAS>',
+        'Tausend',
+      ),
+      tuple(
+        'Tausend<IDX2><NN><Fem><Acc><Pl>',
+        'Tausenden',
+      ),
+      tuple(
+        'Tausend<IDX2><NN><Fem><Acc><Sg>',
+        'Tausend',
+      ),
+      tuple(
+        'Tausend<IDX2><NN><Fem><Dat><Pl>',
+        'Tausenden',
+      ),
+      tuple(
+        'Tausend<IDX2><NN><Fem><Dat><Sg>',
+        'Tausend',
+      ),
+      tuple(
+        'Tausend<IDX2><NN><Fem><Gen><Pl>',
+        'Tausenden',
+      ),
+      tuple(
+        'Tausend<IDX2><NN><Fem><Gen><Sg>',
+        'Tausend',
+      ),
+      tuple(
+        'Tausend<IDX2><NN><Fem><Nom><Pl>',
+        'Tausenden',
+      ),
+      tuple(
+        'Tausend<IDX2><NN><Fem><Nom><Sg>',
+        'Tausend',
+      ),
+    ),
+    tuple(
+      'NN',
       'NNeut_s_ien_0',
       'Material',
       tuple(
@@ -24771,19 +24876,19 @@
       'NNeut|Sg_s',
       'Dunkel',
       tuple(
-        'Dunkel<NN><Neut><Acc><Sg>',
+        'Dunkel<PAR2><NN><Neut><Acc><Sg>',
         'Dunkel',
       ),
       tuple(
-        'Dunkel<NN><Neut><Dat><Sg>',
+        'Dunkel<PAR2><NN><Neut><Dat><Sg>',
         'Dunkel',
       ),
       tuple(
-        'Dunkel<NN><Neut><Gen><Sg>',
+        'Dunkel<PAR2><NN><Neut><Gen><Sg>',
         'Dunkels',
       ),
       tuple(
-        'Dunkel<NN><Neut><Nom><Sg>',
+        'Dunkel<PAR2><NN><Neut><Nom><Sg>',
         'Dunkel',
       ),
     ),

@@ -1,3 +1,7 @@
+2026-03-24:
+
+* improve support for (pseudo-)numeratives
+
 2026-03-20:
 
 * simplify rules for identifying measure nouns
