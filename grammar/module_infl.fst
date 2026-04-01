@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 15.5
-% Andreas Nolda 2026-03-24
+% Version 15.6
+% Andreas Nolda 2026-04-01
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1101,6 +1101,9 @@ $AdjPosPred-e$ = {<Pos><Pred/Adv>}:{<SB>e}
 
 % zig
 $AdjPosAttr0$ = {<Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
+
+% lecker (coll.)
+$AdjPosAttr0NonSt$ = {<Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl><NonSt>}:{}
 
 $AdjPosAttr0-e$ = {<Pos><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>}:{<SB>e}
 
@@ -2898,6 +2901,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<AdjPosAttr-er>           $AdjPosAttr-er$          | \
          <>:<AdjPosAttr-ler>          $AdjPosAttr-ler$         | \
          <>:<AdjPosAttr0>             $AdjPosAttr0$            | \
+         <>:<AdjPosAttr0NonSt>        $AdjPosAttr0NonSt$       | \
          <>:<AdjPosAttrSubst0>        $AdjPosAttrSubst0$       | \
          <>:<AdjPosPred>              $AdjPosPred$             | \
          <>:<AdjPosPred-e>            $AdjPosPred-e$           | \

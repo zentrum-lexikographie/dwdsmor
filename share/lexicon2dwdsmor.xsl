@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 20.3 -->
-<!-- Andreas Nolda 2026-03-24 -->
+<!-- Version 20.4 -->
+<!-- Andreas Nolda 2026-04-01 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -244,7 +244,41 @@
             </xsl:call-template>
           </xsl:if>
         </xsl:when>
-        <!-- adjectives with a final schwa-syllable -->
+        <!-- adjectives with a final schwa-syllable and
+             a colloquial uninflected attributive form -->
+        <xsl:when test="ends-with(@lemma,'lecker') and
+                        n:is-adjective-with-final-schwa-syllable(@lemma,$pronunciations)">
+          <xsl:call-template name="stem-entry">
+            <xsl:with-param name="pos">ADJ</xsl:with-param>
+            <xsl:with-param name="class">AdjPos-er</xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="stem-entry">
+            <xsl:with-param name="pos">ADJ</xsl:with-param>
+            <xsl:with-param name="class">AdjPosAttr0NonSt</xsl:with-param>
+          </xsl:call-template>
+          <xsl:if test="ends-with(@comparative,'er')">
+            <xsl:call-template name="stem-entry">
+              <xsl:with-param name="stem"
+                              select="replace(@comparative,'er$','')"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">AdjComp-er_er</xsl:with-param>
+            </xsl:call-template>
+          </xsl:if>
+          <xsl:if test="ends-with(@superlative,'sten')">
+            <xsl:call-template name="stem-entry">
+              <xsl:with-param name="stem"
+                              select="replace(@superlative,'^am (.*?[aeiouäöü].*?)e?sten$','$1')"/>
+              <xsl:with-param name="pos">ADJ</xsl:with-param>
+              <xsl:with-param name="class">
+                <xsl:choose>
+                  <xsl:when test="matches(@superlative,'^am .*[aeiouäöü].*esten$')">AdjSup_est</xsl:when>
+                  <xsl:otherwise>AdjSup_st</xsl:otherwise>
+                </xsl:choose>
+              </xsl:with-param>
+            </xsl:call-template>
+          </xsl:if>
+        </xsl:when>
+        <!-- other adjectives with a final schwa-syllable -->
         <xsl:when test="ends-with(@lemma,'e') and
                         n:is-adjective-with-final-schwa-syllable(@lemma,$pronunciations)">
           <xsl:call-template name="stem-entry">

@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2026-04-01:
+
+* add inflection class `AdjPosAttr0NonSt`
+
 2026-03-24:
 
 * add inflection class `NNeut-Tausend`

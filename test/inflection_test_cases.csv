@@ -6,6 +6,7 @@ ADJ,"AdjPos-e, AdjComp_er, AdjSup_est",leise
 ADJ,"AdjPos-el, AdjComp-el_er, AdjSup_st",dunkel
 ADJ,"AdjPos-en, AdjComp-en_er, AdjSup_st",trocken
 ADJ,"AdjPos-er, AdjComp-er_er, AdjSup_st",bitter
+ADJ,"AdjPos-er, AdjPosAttr0NonSt, AdjComp-er_er, AdjSup_st",lecker
 ADJ,AdjPos0,lila
 ADJ,AdjPos0-e,klasse
 ADJ,AdjPosAttr0,zig

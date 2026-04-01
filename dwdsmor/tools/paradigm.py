@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms with DWDSmor
-# Andreas Nolda 2026-03-24
+# Andreas Nolda 2026-04-01
 
 import argparse
 import csv
@@ -21,7 +21,7 @@ from .analysis import analyze_word, format_path, generate_words, seg_lemma
 
 progname = "dwdsmor-paradigm"
 
-version = 19.4
+version = 19.5
 
 
 IDX = range(1, 9)
@@ -541,7 +541,6 @@ def get_noun_formdict(generator, lidx, pidx, seg,
             add_special_forms(formdict, lidx, pidx,
                               lexcat, parcat, nonst_forms,
                               [TAG_NONST])
-            pass
         if old:
             # no such forms
             pass
@@ -557,7 +556,6 @@ def get_noun_formdict(generator, lidx, pidx, seg,
                 add_special_forms(formdict, lidx, pidx,
                                   lexcat, parcat, nonst_oldorth_forms,
                                   [TAG_NONST, TAG_OLDORTH])
-                pass
             if old:
                 # no such forms
                 pass
@@ -573,7 +571,6 @@ def get_noun_formdict(generator, lidx, pidx, seg,
                 add_special_forms(formdict, lidx, pidx,
                                   lexcat, parcat, nonst_ch_forms,
                                   [TAG_NONST, TAG_CH])
-                pass
             if old:
                 # no such forms
                 pass
@@ -769,8 +766,11 @@ def get_adjective_formdict(generator, lidx, pidx, seg,
             add_forms(formdict, lidx, pidx,
                       lexcat, parcat, forms)
             if nonst:
-                # no such forms
-                pass
+                nonst_forms = generate_forms(generator, lidx, pidx, seg,
+                                             pos, categorisation + [NONST])
+                add_special_forms(formdict, lidx, pidx,
+                                  lexcat, parcat, nonst_forms,
+                                  [TAG_NONST])
             if old:
                 old_forms = generate_forms(generator, lidx, pidx, seg,
                                            pos, categorisation + [OLD])
@@ -784,8 +784,11 @@ def get_adjective_formdict(generator, lidx, pidx, seg,
                                   lexcat, parcat, oldorth_forms,
                                   [TAG_OLDORTH])
                 if nonst:
-                    # no such forms
-                    pass
+                    nonst_oldorth_forms = generate_forms(generator, lidx, pidx, seg,
+                                                         pos, categorisation + [NONST], OLDORTH)
+                    add_special_forms(formdict, lidx, pidx,
+                                      lexcat, parcat, nonst_oldorth_forms,
+                                      [TAG_NONST, TAG_OLDORTH])
                 if old:
                     old_oldorth_forms = generate_forms(generator, lidx, pidx, seg,
                                                        pos, categorisation + [OLD], OLDORTH)
@@ -799,8 +802,11 @@ def get_adjective_formdict(generator, lidx, pidx, seg,
                                   lexcat, parcat, ch_forms,
                                   [TAG_CH])
                 if nonst:
-                    # no such forms
-                    pass
+                    nonst_ch_forms = generate_forms(generator, lidx, pidx, seg,
+                                                    pos, categorisation + [NONST], CH)
+                    add_special_forms(formdict, lidx, pidx,
+                                      lexcat, parcat, nonst_ch_forms,
+                                      [TAG_NONST, TAG_CH])
                 if old:
                     old_ch_forms = generate_forms(generator, lidx, pidx, seg,
                                                   pos, categorisation + [OLD], CH)

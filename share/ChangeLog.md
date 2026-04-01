@@ -1,3 +1,7 @@
+2026-04-01:
+
+* add support for colloquial uninflected attributive adjective forms
+
 2026-03-24:
 
 * improve support for (pseudo-)numeratives
