@@ -1,6 +1,6 @@
 % module_symbols.fst
-% Version 14.6
-% Andreas Nolda 2026-04-01
+% Version 14.7
+% Andreas Nolda 2026-04-07
 
 % must be loaded first
 
@@ -241,30 +241,31 @@
                    <ArtDef-der+DemFem><ArtDef-der+DemMasc> \
                    <ArtDef-der+DemUnmGend><ArtDef-des+DemMasc> \
                    <ArtDef-des+DemNeut><ArtDef-die+DemFem> \
-                   <ArtDef-die+DemUnmGend><Dem><Dem0><Dem-alldem><Dem-dies> \
-                   <Dem-solch><DemDef><Indef0><Indef-all><Indef-beid> \
-                   <Indef-einig><Indef-irgendein><Indef-irgendwelch><Indef-jed> \
+                   <ArtDef-die+DemUnmGend><Dem><Dem-alldem><Dem-dies><Dem-solch> \
+                   <DemDef><Indef0><Indef-all><Indef-beid><Indef-einig> \
+                   <Indef-irgendein><Indef-irgendwelch><Indef-jed> \
                    <Indef-jeglich><Indef-manch><Indef-mehrer><Indef-saemtlich> \
                    <Indef-welch><IPro-eine><IPro-einer><IPro-frau><IPro-jedefrau> \
                    <IPro-jederfrau><IPro-jedermann><IPro-man><IPro-unsereiner> \
-                   <IPro-unsereins><IProMasc><IProMascAccSg><IProMascDatSg> \
-                   <IProMascGenSg><IProMascNomSg><IProNeut><IProNeutAccSg> \
-                   <IProNeutDatSg><IProNeutGenSg><IProNeutNomSg><Poss><Poss-er> \
-                   <Poss|Wk><Poss|Wk-er><PPro1AccPl><PPro1AccSg><PPro1DatPl> \
-                   <PPro1DatSg><PPro1GenPl><PPro1GenSg><PPro1NomPl><PPro1NomSg> \
-                   <PPro2AccPl><PPro2AccSg><PPro2DatPl><PPro2DatSg><PPro2GenPl> \
-                   <PPro2GenSg><PPro2NomPl><PPro2NomSg><PProFemAccSg> \
-                   <PProFemDatSg><PProFemGenSg><PProFemNomSg><PProMascAccSg> \
-                   <PProMascDatSg><PProMascGenSg><PProMascNomSg><PProNeutAccSg> \
-                   <PProNeutAccSg-s><PProNeutDatSg><PProNeutGenSg> \
-                   <PProNeutNomSg><PProNeutNomSg-s><PProUnmGendAccPl> \
-                   <PProUnmGendDatPl><PProUnmGendGenPl><PProUnmGendNomPl> \
-                   <PRecPl><PRefl1AccSg><PRefl1DatSg><PRefl2AccSg><PRefl2DatSg> \
-                   <PRefl1Pl><PRefl2Pl><PRefl3><Rel><Rel-welch><RProMascAccSg> \
-                   <RProMascDatSg><RProMascGenSg><RProMascNomSg><RProNeutAccSg> \
-                   <RProNeutDatSg><RProNeutGenSg><RProNeutNomSg><W-welch> \
-                   <WProMascAccSg><WProMascDatSg><WProMascGenSg><WProMascNomSg> \
-                   <WProNeutAccSg><WProNeutDatSg><WProNeutGenSg><WProNeutNomSg>
+                   <IProMasc0><IProMasc><IProMascAccSg><IProMascDatSg> \
+                   <IProMascGenSg><IProMascNomSg><IProNeut0><IProNeutAccSg> \
+                   <IProNeutDatSg><IProNeutGenSg><IProNeutNomSg><IProUnmGend0> \
+                   <Poss><Poss-er><Poss|Wk><Poss|Wk-er><PPro1AccPl><PPro1AccSg> \
+                   <PPro1DatPl><PPro1DatSg><PPro1GenPl><PPro1GenSg><PPro1NomPl> \
+                   <PPro1NomSg><PPro2AccPl><PPro2AccSg><PPro2DatPl><PPro2DatSg> \
+                   <PPro2GenPl><PPro2GenSg><PPro2NomPl><PPro2NomSg> \
+                   <PProFemAccSg><PProFemDatSg><PProFemGenSg><PProFemNomSg> \
+                   <PProMascAccSg><PProMascDatSg><PProMascGenSg><PProMascNomSg> \
+                   <PProNeutAccSg><PProNeutAccSg-s><PProNeutDatSg> \
+                   <PProNeutGenSg><PProNeutNomSg><PProNeutNomSg-s> \
+                   <PProUnmGendAccPl><PProUnmGendDatPl><PProUnmGendGenPl> \
+                   <PProUnmGendNomPl><PRecPl><PRefl1AccSg><PRefl1DatSg> \
+                   <PRefl2AccSg><PRefl2DatSg><PRefl1Pl><PRefl2Pl><PRefl3><Rel> \
+                   <Rel-welch><RProMascAccSg><RProMascDatSg><RProMascGenSg> \
+                   <RProMascNomSg><RProNeutAccSg><RProNeutDatSg><RProNeutGenSg> \
+                   <RProNeutNomSg><W-welch><WProMascAccSg><WProMascDatSg> \
+                   <WProMascGenSg><WProMascNomSg><WProNeutAccSg><WProNeutDatSg> \
+                   <WProNeutGenSg><WProNeutNomSg>
 
 #verb-inflection# = <VImp><VImp-d-t><VImp-e><VImp-e/0><VImp-el-er><VImp-le> \
                     <VImp-m-n><VImpPl><VImpPl-sein><VImpSg><VImpSg0><VImpSg-e> \

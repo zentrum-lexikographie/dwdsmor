@@ -25,15 +25,6 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>allerlei</Schreibung>
-      <Grammatik>
-        <Wortklasse>Indefinitpronomen</Wortklasse>
-        <indeklinabel/>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>beide</Schreibung>
       <Grammatik>
         <Wortklasse>Indefinitpronomen</Wortklasse>
@@ -107,9 +98,9 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>dergleichen</Schreibung>
+      <Schreibung>derlei</Schreibung>
       <Grammatik>
-        <Wortklasse>Demonstrativpronomen</Wortklasse>
+        <Wortklasse>Indefinitpronomen</Wortklasse>
         <indeklinabel/>
       </Grammatik>
     </Formangabe>

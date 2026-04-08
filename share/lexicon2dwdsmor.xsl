@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 20.4 -->
-<!-- Andreas Nolda 2026-04-01 -->
+<!-- Version 20.5 -->
+<!-- Andreas Nolda 2026-04-07 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2210,16 +2210,6 @@
         <xsl:with-param name="class">Dem-alldem</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
-    <!-- "dergleichen", "derlei" -->
-    <xsl:when test="@lemma='dergleichen' or
-                    @lemma='derlei'">
-      <xsl:call-template name="stem-entry">
-        <xsl:with-param name="stem"
-                        select="$stem"/>
-        <xsl:with-param name="pos">DEM</xsl:with-param>
-        <xsl:with-param name="class">Dem0</xsl:with-param>
-      </xsl:call-template>
-    </xsl:when>
   </xsl:choose>
 </xsl:template>
 
@@ -2432,6 +2422,24 @@
         <xsl:with-param name="class">Indef-saemtlich</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
+    <!-- "dergleichen" -->
+    <xsl:when test="@lemma='dergleichen'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="stem"
+                        select="$stem"/>
+        <xsl:with-param name="pos">INDEF</xsl:with-param>
+        <xsl:with-param name="class">Indef0</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <!-- "seinesgleichen" -->
+    <xsl:when test="ends-with(@lemma,'gleichen')">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="stem"
+                        select="$stem"/>
+        <xsl:with-param name="pos">INDEF</xsl:with-param>
+        <xsl:with-param name="class">IProUnmGend0</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
     <!-- "jedermann" -->
     <xsl:when test="@lemma='jedermann'">
       <xsl:call-template name="stem-entry">
@@ -2492,7 +2500,7 @@
         <xsl:with-param name="stem"
                         select="$stem"/>
         <xsl:with-param name="pos">INDEF</xsl:with-param>
-        <xsl:with-param name="class">IPro-unsereins</xsl:with-param>
+        <xsl:with-param name="class">IProMasc0</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
     <!-- "jemand", "irgendjemand" -->
@@ -2520,7 +2528,7 @@
         <xsl:with-param name="stem"
                         select="$stem"/>
         <xsl:with-param name="pos">INDEF</xsl:with-param>
-        <xsl:with-param name="class">IProNeut</xsl:with-param>
+        <xsl:with-param name="class">IProNeut0</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
     <!-- "was", "irgendwas", "sonstwas" -->
@@ -2585,7 +2593,7 @@
         <xsl:with-param name="stem"
                         select="$stem"/>
         <xsl:with-param name="pos">INDEF</xsl:with-param>
-        <xsl:with-param name="class">IProNeut</xsl:with-param>
+        <xsl:with-param name="class">IProNeut0</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
     <!-- "bisschen" -->
@@ -2615,9 +2623,8 @@
         <xsl:with-param name="class">Indef0</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
-    <!-- "allerlei", "beiderlei" -->
-    <xsl:when test="@lemma='allerlei' or
-                    @lemma='beiderlei'">
+    <!-- "allerlei", "beiderlei", "derlei" -->
+    <xsl:when test="ends-with(@lemma,'erlei')">
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="stem"
                         select="$stem"/>

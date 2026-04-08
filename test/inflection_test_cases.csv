@@ -36,7 +36,6 @@ DEM,Dem,jene
 DEM,Dem-alldem,alldem
 DEM,Dem-dies,diese
 DEM,Dem-solch,solche
-DEM,Dem0,dergleichen
 DEM,DemDef,die
 FRAC,Frac0,anderthalb
 INDEF,IPro-eine,eine
@@ -46,11 +45,12 @@ INDEF,IPro-jedefrau,jedefrau
 INDEF,IPro-jedermann,jedermann
 INDEF,IPro-man,man
 INDEF,IPro-unsereiner,unsereiner
-INDEF,IPro-unsereins,unsereins
+INDEF,IProMasc0,unsereins
 INDEF,IProMasc,jemand
 INDEF,"IProMascNomSg, IProMascAccSg, IProMascDatSg, IProMascGenSg",wer
-INDEF,IProNeut,etwas
+INDEF,IProNeut0,etwas
 INDEF,"IProNeutNomSg, IProNeutAccSg, IProNeutDatSg, IProNeutGenSg",was
+INDEF,IProUnmGend0,seinesgleichen
 INDEF,Indef-all,alle
 INDEF,Indef-beid,beide
 INDEF,Indef-einig,einige

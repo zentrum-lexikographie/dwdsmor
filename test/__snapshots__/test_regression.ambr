@@ -15716,19 +15716,6 @@
     ),
     tuple(
       'DEM',
-      'Dem0',
-      'dergleichen',
-      tuple(
-        'dergleichen<DEM><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>',
-        'dergleichen',
-      ),
-      tuple(
-        'dergleichen<DEM><Subst><UnmGend><UnmCase><UnmNum><UnmInfl>',
-        'dergleichen',
-      ),
-    ),
-    tuple(
-      'DEM',
       'DemDef',
       'die',
       tuple(
@@ -16002,7 +15989,7 @@
     ),
     tuple(
       'INDEF',
-      'IPro-unsereins',
+      'IProMasc0',
       'unsereins',
       tuple(
         'unsereins<INDEF><Masc><UnmCase><UnmNum>',
@@ -16061,7 +16048,7 @@
     ),
     tuple(
       'INDEF',
-      'IProNeut',
+      'IProNeut0',
       'etwas',
       tuple(
         'etwas<INDEF><Neut><UnmCase><UnmNum>',
@@ -16087,6 +16074,15 @@
       tuple(
         'was<IDX2><INDEF><Neut><Nom><Sg>',
         'was',
+      ),
+    ),
+    tuple(
+      'INDEF',
+      'IProUnmGend0',
+      'seinesgleichen',
+      tuple(
+        'seinesgleichen<INDEF><UnmGend><UnmCase><UnmNum>',
+        'seinesgleichen',
       ),
     ),
     tuple(

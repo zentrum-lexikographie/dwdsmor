@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 15.6
-% Andreas Nolda 2026-04-01
+% Version 15.7
+% Andreas Nolda 2026-04-07
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1330,8 +1330,6 @@ $DemSuff-solch$ = $DemSuff-solch|St$ | \
 
 $DemSuff-alldem$ = {<Subst><Neut><Dat><Sg><St>}:{<SB>em}
 
-$DemSuff0$ = {[<Attr><Subst>]<UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
-
 $ArtDef-der+DemMascSuff$ = {<Nom><Sg><Wk>}:{<SB>e}
 
 $ArtDef-den+DemMascSuff$ = {<Acc><Sg><Wk>}:{<SB>en}
@@ -1630,9 +1628,6 @@ $Dem-alldem$ = $DemSuff-alldem$
 % jener, jene, jenes
 $Dem$ = $DemSuff$
 
-% derlei
-$Dem0$ = $DemSuff0$
-
 % derjenige
 % derselbe
 $ArtDef-der+DemMasc$ = {[<Attr><Subst>]<Masc>}:{} $ArtDef-der+DemMascSuff$
@@ -1752,32 +1747,35 @@ $Poss|Wk$ = $PossSuff|Wk$
 % unserige/unsrige
 $Poss|Wk-er$ = {}:{<del(e)|PRO>} $PossSuff|Wk$
 
-% etwas
-$IProNeut$ = {<Neut>}:{} $IProSuff0$
-
 % jemand
 $IProMasc$ = {<Masc>}:{} $IProSuff$
 
-% jedermann
-$IPro-jedermann$ = {<Masc>}:{} $IProSuff-jedermann$
-
-% jedefrau
-$IPro-jedefrau$ = {<Fem>}:{} $IProSuff-jedefrau$
-
-% jederfrau
-$IPro-jederfrau$ = {<Fem>}:{} $IProSuff-jederfrau$
-
-% man
-$IPro-man$ = {<Masc>}:{} $IProSuff-man$
-
-% frau
-$IPro-frau$ = {<Fem>}:{} $IProSuff-man$
+% unsereins
+$IProMasc0$ = {<Masc>}:{} $IProSuff0$
 
 % unsereiner
 $IPro-unsereiner$ = {<Masc>}:{} $IProSuff-unsereiner$
 
-% unsereins
-$IPro-unsereins$ = {<Masc>}:{} $IProSuff0$
+% man
+$IPro-man$ = {<Masc>}:{} $IProSuff-man$
+
+% jedermann
+$IPro-jedermann$ = {<Masc>}:{} $IProSuff-jedermann$
+
+% etwas
+$IProNeut0$ = {<Neut>}:{} $IProSuff0$
+
+% jedefrau
+$IPro-jedefrau$ = {<Fem>}:{} $IProSuff-jedefrau$
+
+% frau
+$IPro-frau$ = {<Fem>}:{} $IProSuff-man$
+
+% jederfrau
+$IPro-jederfrau$ = {<Fem>}:{} $IProSuff-jederfrau$
+
+% seinesgleichen
+$IProUnmGend0$ = {<UnmGend>}:{} $IProSuff0$
 
 % ich
 $PPro1NomSg$ = {<1>}:{} $PProNomSgSuff$
@@ -2938,7 +2936,6 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<Card-vier>               $Card-vier$              | \
          <>:<Card-zwei>               $Card-zwei$              | \
          <>:<Dem>                     $Dem$                    | \
-         <>:<Dem0>                    $Dem0$                   | \
          <>:<Dem-alldem>              $Dem-alldem$             | \
          <>:<Dem-dies>                $Dem-dies$               | \
          <>:<Dem-solch>               $Dem-solch$              | \
@@ -2967,17 +2964,18 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<IPro-jedermann>          $IPro-jedermann$         | \
          <>:<IPro-man>                $IPro-man$               | \
          <>:<IPro-unsereiner>         $IPro-unsereiner$        | \
-         <>:<IPro-unsereins>          $IPro-unsereins$         | \
+         <>:<IProMasc0>               $IProMasc0$              | \
          <>:<IProMasc>                $IProMasc$               | \
          <>:<IProMascAccSg>           $IProMascAccSg$          | \
          <>:<IProMascDatSg>           $IProMascDatSg$          | \
          <>:<IProMascGenSg>           $IProMascGenSg$          | \
          <>:<IProMascNomSg>           $IProMascNomSg$          | \
-         <>:<IProNeut>                $IProNeut$               | \
+         <>:<IProNeut0>               $IProNeut0$              | \
          <>:<IProNeutAccSg>           $IProNeutAccSg$          | \
          <>:<IProNeutDatSg>           $IProNeutDatSg$          | \
          <>:<IProNeutGenSg>           $IProNeutGenSg$          | \
          <>:<IProNeutNomSg>           $IProNeutNomSg$          | \
+         <>:<IProUnmGend0>            $IProUnmGend0$           | \
          <>:<NameFem_0>               $NameFem_0$              | \
          <>:<NameFem_apos>            $NameFem_apos$           | \
          <>:<NameFem_s>               $NameFem_s$              | \

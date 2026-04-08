@@ -1,5 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2026-04-07:
+
+* add inflection class `IProUnmGend0`
+* rename inflection classes `IPro-unsereins` and `IProNeut` to `IProMasc0` and
+  `IProNeut0`, respectively
+* remove inflection class `Dem0`
+
 2026-04-01:
 
 * add inflection class `AdjPosAttr0NonSt`

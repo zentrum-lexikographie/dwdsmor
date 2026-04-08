@@ -1,3 +1,8 @@
+2026-04-07:
+
+* recategorise "dergleichen" and "derlei" as indefinite pronouns
+* add support for "seinesgleichen" and related indefinite pronouns
+
 2026-04-01:
 
 * add support for colloquial uninflected attributive adjective forms
