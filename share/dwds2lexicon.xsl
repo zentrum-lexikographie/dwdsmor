@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 20.0 -->
-<!-- Andreas Nolda 2026-03-20 -->
+<!-- Version 20.1 -->
+<!-- Andreas Nolda 2026-04-09 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -297,6 +297,12 @@
           <xsl:variable name="style">
             <xsl:if test="$pos='Substantiv'">
               <xsl:call-template name="get-style-value">
+              </xsl:call-template>
+            </xsl:if>
+          </xsl:variable>
+          <xsl:variable name="region">
+            <xsl:if test="$pos='Substantiv'">
+              <xsl:call-template name="get-region-value">
               </xsl:call-template>
             </xsl:if>
           </xsl:variable>
@@ -607,6 +613,10 @@
                   <xsl:attribute name="style"
                                  select="$style"/>
                 </xsl:if>
+                <xsl:if test="string-length($region)&gt;0">
+                  <xsl:attribute name="region"
+                                 select="$region"/>
+                </xsl:if>
                 <xsl:if test="string-length($gender)&gt;0">
                   <xsl:attribute name="gender"
                                  select="$gender"/>
@@ -655,6 +665,10 @@
                 <xsl:if test="string-length($style)&gt;0">
                   <xsl:attribute name="style"
                                  select="$style"/>
+                </xsl:if>
+                <xsl:if test="string-length($region)&gt;0">
+                  <xsl:attribute name="region"
+                                 select="$region"/>
                 </xsl:if>
                 <xsl:if test="string-length($gender)&gt;0">
                   <xsl:attribute name="gender"
@@ -707,6 +721,10 @@
                 <xsl:if test="string-length($style)&gt;0">
                   <xsl:attribute name="style"
                                  select="$style"/>
+                </xsl:if>
+                <xsl:if test="string-length($region)&gt;0">
+                  <xsl:attribute name="region"
+                                 select="$region"/>
                 </xsl:if>
                 <xsl:if test="string-length($gender)&gt;0">
                   <xsl:attribute name="gender"
@@ -3629,6 +3647,18 @@
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'auch nachgestellt')">any</xsl:when>
     <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nachgestellt')">post</xsl:when>
     <xsl:otherwise>pre</xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="get-region-value">
+  <xsl:choose>
+    <xsl:when test="*/dwds:Diasystematik/dwds:Sprachareal">
+      <xsl:value-of select="sort(*/dwds:Diasystematik/dwds:Sprachareal[string-length(normalize-space(.))&gt;0])"/>
+    </xsl:when>
+    <xsl:when test="*/dwds:Diasystematik/dwds:Sprachraum">
+      <xsl:value-of select="sort(*/dwds:Diasystematik/dwds:Sprachraum[string-length(normalize-space(.))&gt;0])"/>
+    </xsl:when>
+    <xsl:otherwise>any</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 

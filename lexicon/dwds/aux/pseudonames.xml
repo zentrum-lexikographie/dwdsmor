@@ -28,19 +28,6 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung>Mama</Schreibung>
-      <Grammatik>
-        <Wortklasse>Eigenname</Wortklasse>
-        <Genus>fem.</Genus>
-        <Genitiv>
-          <Wert>-s</Wert>
-        </Genitiv>
-        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
       <Schreibung>Mami</Schreibung>
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
@@ -54,7 +41,7 @@
   </Artikel>
   <Artikel>
     <Formangabe>
-      <Schreibung hidx="1">Mutter</Schreibung>
+      <Schreibung>Mutter</Schreibung>
       <Grammatik>
         <Wortklasse>Eigenname</Wortklasse>
         <Genus>fem.</Genus>
@@ -63,45 +50,9 @@
         </Genitiv>
         <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
       </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>Mutti</Schreibung>
-      <Grammatik>
-        <Wortklasse>Eigenname</Wortklasse>
-        <Genus>fem.</Genus>
-        <Genitiv>
-          <Wert>-s</Wert>
-        </Genitiv>
-        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>Oma</Schreibung>
-      <Grammatik>
-        <Wortklasse>Eigenname</Wortklasse>
-        <Genus>fem.</Genus>
-        <Genitiv>
-          <Wert>-s</Wert>
-        </Genitiv>
-        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
-    <Formangabe>
-      <Schreibung>Omi</Schreibung>
-      <Grammatik>
-        <Wortklasse>Eigenname</Wortklasse>
-        <Genus>fem.</Genus>
-        <Genitiv>
-          <Wert>-s</Wert>
-        </Genitiv>
-        <Numeruspraeferenz>nur im Singular</Numeruspraeferenz>
-      </Grammatik>
+      <Diasystematik>
+        <Stilfaerbung>familiär</Stilfaerbung>
+      </Diasystematik>
     </Formangabe>
   </Artikel>
   <Artikel>

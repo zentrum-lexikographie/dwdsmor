@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # paradigm.py -- generate paradigms with DWDSmor
-# Andreas Nolda 2026-04-01
+# Andreas Nolda 2026-04-09
 
 import argparse
 import csv
@@ -21,7 +21,7 @@ from .analysis import analyze_word, format_path, generate_words, seg_lemma
 
 progname = "dwdsmor-paradigm"
 
-version = 19.5
+version = 20.0
 
 
 IDX = range(1, 9)
@@ -63,6 +63,8 @@ OLDORTH = "OLDORTH"
 
 CH = "CH"
 
+REG = "Reg"
+
 
 TAG_NONST = "ugs."
 
@@ -71,6 +73,8 @@ TAG_OLD = "va."
 TAG_OLDORTH = "ung."
 
 TAG_CH = "CH"
+
+TAG_REG = "reg."
 
 
 SEG_HABEN = "hab<~>en"
@@ -516,7 +520,8 @@ def add_special_imp_double_prev_verb_forms(formdict, lidx, pidx,
 
 
 def get_noun_formdict(generator, lidx, pidx, seg,
-                      pos, gender, nonst=False, old=False, oldorth=False, ch=False):
+                      pos, gender,
+                      nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     lexcat = Lexcat(pos=pos,
                     gender=gender)
@@ -574,6 +579,9 @@ def get_noun_formdict(generator, lidx, pidx, seg,
             if old:
                 # no such forms
                 pass
+        if reg:
+            # no such forms
+            pass
 
     # measure nouns
     categorisations = product(NUMBERS, CASES, SYNINFO)
@@ -620,6 +628,9 @@ def get_noun_formdict(generator, lidx, pidx, seg,
             if old:
                 # no such forms
                 pass
+        if reg:
+            # no such forms
+            pass
 
     # other nouns
     categorisations = product(NUMBERS, CASES)
@@ -682,11 +693,24 @@ def get_noun_formdict(generator, lidx, pidx, seg,
                 add_special_forms(formdict, lidx, pidx,
                                   lexcat, parcat, old_ch_forms,
                                   [TAG_OLD, TAG_CH])
+        if reg:
+            reg_forms = generate_forms(generator, lidx, pidx, seg,
+                                       pos, categorisation + [REG])
+            add_special_forms(formdict, lidx, pidx,
+                              lexcat, parcat, reg_forms,
+                              [TAG_REG])
+            if nonst:
+                # no such forms
+                pass
+            if old:
+                # no such forms
+                pass
     return formdict
 
 
 def get_adjective_formdict(generator, lidx, pidx, seg,
-                           pos, nonst=False, old=False, oldorth=False, ch=False):
+                           pos,
+                           nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     lexcat = Lexcat(pos=pos)
     for degree in DEGREES:
@@ -743,6 +767,9 @@ def get_adjective_formdict(generator, lidx, pidx, seg,
             if old:
                 # no such forms
                 pass
+        if reg:
+            # no such forms
+            pass
 
     for degree in DEGREES:
         # forms inflected for degree, gender, case, number, and inflectional strength
@@ -813,11 +840,15 @@ def get_adjective_formdict(generator, lidx, pidx, seg,
                     add_special_forms(formdict, lidx, pidx,
                                       lexcat, parcat, old_ch_forms,
                                       [TAG_OLD, TAG_CH])
+            if reg:
+                # no such forms
+                pass
     return formdict
 
 
 def get_article_formdict(generator, lidx, pidx, seg,
-                         pos, subcat, nonst=False, old=False, oldorth=False, ch=False):
+                         pos, subcat,
+                         nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     lexcat = Lexcat(pos=pos,
                     subcat=subcat)
@@ -854,11 +885,15 @@ def get_article_formdict(generator, lidx, pidx, seg,
         if ch:
             # no such forms
             pass
+        if reg:
+            # no such forms
+            pass
     return formdict
 
 
 def get_cardinal_formdict(generator, lidx, pidx, seg,
-                          pos, nonst=False, old=False, oldorth=False, ch=False):
+                          pos,
+                          nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     lexcat = Lexcat(pos=pos)
     # forms inflected for function, gender, case, number, and inflectional strength
@@ -906,11 +941,15 @@ def get_cardinal_formdict(generator, lidx, pidx, seg,
             if old:
                 # no such forms
                 pass
+        if reg:
+            # no such forms
+            pass
     return formdict
 
 
 def get_ordinal_formdict(generator, lidx, pidx, seg,
-                         pos, nonst=False, old=False, oldorth=False, ch=False):
+                         pos,
+                         nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     lexcat = Lexcat(pos=pos)
     categorisations = product(GENDERS, NUMBERS, CASES, INFLECTIONS, FUNCTIONS)
@@ -951,11 +990,15 @@ def get_ordinal_formdict(generator, lidx, pidx, seg,
             if old:
                 # no such forms
                 pass
+        if reg:
+            # no such forms
+            pass
     return formdict
 
 
 def get_fraction_formdict(generator, lidx, pidx, seg,
-                          pos, nonst=False, old=False, oldorth=False, ch=False):
+                          pos,
+                          nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     lexcat = Lexcat(pos=pos)
     # forms inflected for function, gender, case, number, and inflectional strength
@@ -997,11 +1040,15 @@ def get_fraction_formdict(generator, lidx, pidx, seg,
             if old:
                 # no such forms
                 pass
+        if reg:
+            # no such forms
+            pass
     return formdict
 
 
 def get_adjectival_pronoun_formdict(generator, lidx, pidx, seg,
-                                    pos, nonst=False, old=False, oldorth=False, ch=False):
+                                    pos,
+                                    nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     lexcat = Lexcat(pos=pos)
     # forms inflected for function, gender, case, number, and inflectional strength
@@ -1037,11 +1084,15 @@ def get_adjectival_pronoun_formdict(generator, lidx, pidx, seg,
         if ch:
             # no such forms
             pass
+        if reg:
+            # no such forms
+            pass
     return formdict
 
 
 def get_substantival_pronoun_formdict(generator, lidx, pidx, seg,
-                                      pos, subcat, person, gender, nonst=False, old=False, oldorth=False, ch=False):
+                                      pos, subcat, person, gender,
+                                      nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     categorisations = product(NUMBERS, CASES)
     categorisations = filter_categorisations(categorisations, pos)
@@ -1090,11 +1141,15 @@ def get_substantival_pronoun_formdict(generator, lidx, pidx, seg,
         if ch:
             # no such forms
             pass
+        if reg:
+            # no such forms
+            pass
     return formdict
 
 
 def get_other_pronoun_formdict(generator, lidx, pidx, seg,
-                               pos, gender, nonst=False, old=False, oldorth=False, ch=False):
+                               pos, gender,
+                               nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     # fixed gender
     lexcat = Lexcat(pos=pos,
@@ -1128,6 +1183,9 @@ def get_other_pronoun_formdict(generator, lidx, pidx, seg,
             # no such forms
             pass
         if ch:
+            # no such forms
+            pass
+        if reg:
             # no such forms
             pass
 
@@ -1166,11 +1224,15 @@ def get_other_pronoun_formdict(generator, lidx, pidx, seg,
         if ch:
             # no such forms
             pass
+        if reg:
+            # no such forms
+            pass
     return formdict
 
 
 def get_verb_formdict(generator, lidx, pidx, seg,
-                      pos, nonst=False, old=False, oldorth=False, ch=False):
+                      pos,
+                      nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     word_list = seg.split(f"<{tag.prev_boundary}>")
     word_count = len(word_list)
@@ -1232,6 +1294,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                 if old:
                     # no such forms
                     pass
+            if reg:
+                # no such forms
+                pass
 
             parcat = Parcat(nonfinite="Inf",
                             function="Cl",
@@ -1278,6 +1343,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                 if old:
                     # no such forms
                     pass
+            if reg:
+                # no such forms
+                pass
 
             parcat = Parcat(nonfinite="Inf",
                             function="NonCl",
@@ -1310,6 +1378,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                 if old:
                     # no such forms
                     pass
+            if reg:
+                # no such forms
+                pass
 
             parcat = Parcat(nonfinite="Inf",
                             function="Cl",
@@ -1342,6 +1413,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                 if old:
                     # no such forms
                     pass
+            if reg:
+                # no such forms
+                pass
 
             # participles
             parcat = Parcat(nonfinite="Part",
@@ -1382,6 +1456,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                 if old:
                     # no such forms
                     pass
+            if reg:
+                # no such forms
+                pass
 
             parcat = Parcat(nonfinite="Part",
                             tense="Perf")
@@ -1416,6 +1493,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                 if old:
                     # no such forms
                     pass
+            if reg:
+                # no such forms
+                pass
 
             # indicative and subjunctive forms
             categorisations = product(TENSES, MOODS, NUMBERS, PERSONS)
@@ -1473,6 +1553,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                         if old:
                             # no such forms
                             pass
+                    if reg:
+                        # no such forms
+                        pass
 
                 if tense == "PastPerf":
                     categorisation = [person,
@@ -1513,6 +1596,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                         if old:
                             # no such forms
                             pass
+                    if reg:
+                        # no such forms
+                        pass
 
                 elif tense == "Fut":
                     categorisation = [person,
@@ -1554,6 +1640,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                         if old:
                             # no such forms
                             pass
+                    if reg:
+                        # no such forms
+                        pass
 
                 elif tense == "FutPerf":
                     categorisation = [person,
@@ -1595,6 +1684,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                         if old:
                             # no such forms
                             pass
+                    if reg:
+                        # no such forms
+                        pass
 
                 else:
                     categorisation = [person,
@@ -1654,6 +1746,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                                 add_special_double_prev_verb_forms(formdict, lidx, pidx,
                                                                    lexcat, parcat, old_ch_forms, prev, prev2,
                                                                    [TAG_OLD, TAG_CH])
+                        if reg:
+                            # no such forms
+                            pass
 
                     elif prev:
                         forms = generate_forms(generator, lidx, pidx, seg,
@@ -1708,6 +1803,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                                 add_special_prev_verb_forms(formdict, lidx, pidx,
                                                             lexcat, parcat, old_ch_forms, prev,
                                                             [TAG_OLD, TAG_CH])
+                        if reg:
+                            # no such forms
+                            pass
 
                     else:
                         forms = generate_forms(generator, lidx, pidx, seg,
@@ -1762,6 +1860,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                                 add_special_forms(formdict, lidx, pidx,
                                                   lexcat, parcat, old_ch_forms,
                                                   [TAG_OLD, TAG_CH])
+                        if reg:
+                            # no such forms
+                            pass
 
             # imperative forms
             for number in NUMBERS:
@@ -1813,6 +1914,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                         if old:
                             # no such forms
                             pass
+                    if reg:
+                        # no such forms
+                        pass
 
                 elif prev:
                     forms = generate_forms(generator, lidx, pidx, seg,
@@ -1859,6 +1963,9 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                             # no such forms
                             pass
 
+                    if reg:
+                        # no such forms
+                        pass
                 else:
                     forms = generate_forms(generator, lidx, pidx, seg,
                                            pos, categorisation)
@@ -1903,52 +2010,66 @@ def get_verb_formdict(generator, lidx, pidx, seg,
                         if old:
                             # no such forms
                             pass
+                    if reg:
+                        # no such forms
+                        pass
     return formdict
 
 
 def get_formdict(generator, lidx, pidx, seg,
-                 pos, subcat, person, gender, nonst=False, old=False, oldorth=False, ch=False):
+                 pos, subcat, person, gender,
+                 nonst=False, old=False, oldorth=False, ch=False, reg=False):
     formdict = defaultdict(list)
     # nouns
     if pos in ["NN", "NPROP"]:
         formdict = get_noun_formdict(generator, lidx, pidx, seg,
-                                     pos, gender, nonst, old, oldorth, ch)
+                                     pos, gender,
+                                     nonst, old, oldorth, ch, reg)
     # adjectives
     elif pos == "ADJ":
         formdict = get_adjective_formdict(generator, lidx, pidx, seg,
-                                          pos, nonst, old, oldorth, ch)
+                                          pos,
+                                          nonst, old, oldorth, ch, reg)
     # articles
     elif pos == "ART":
         formdict = get_article_formdict(generator, lidx, pidx, seg,
-                                        pos, subcat, nonst, old, oldorth, ch)
+                                        pos, subcat,
+                                        nonst, old, oldorth, ch, reg)
     # cardinals
     elif pos == "CARD":
         formdict = get_cardinal_formdict(generator, lidx, pidx, seg,
-                                         pos, nonst, old, oldorth, ch)
+                                         pos,
+                                         nonst, old, oldorth, ch, reg)
     # ordinals
     elif pos == "ORD":
         formdict = get_ordinal_formdict(generator, lidx, pidx, seg,
-                                        pos, nonst, old, oldorth, ch)
+                                        pos,
+                                        nonst, old, oldorth, ch, reg)
     # fractions
     elif pos == "FRAC":
         formdict = get_fraction_formdict(generator, lidx, pidx, seg,
-                                         pos, nonst, old, oldorth, ch)
+                                         pos,
+                                         nonst, old, oldorth, ch, reg)
     # demonstrative and possessive pronouns
     elif pos in ["DEM", "POSS"]:
         formdict = get_adjectival_pronoun_formdict(generator, lidx, pidx, seg,
-                                                   pos, nonst, old, oldorth, ch)
+                                                   pos,
+                                                   nonst, old, oldorth, ch, reg)
     # personal pronouns
     elif pos == "PPRO":
         formdict = get_substantival_pronoun_formdict(generator, lidx, pidx, seg,
-                                                     pos, subcat, person, gender, nonst, old, oldorth, ch)
+                                                     pos, subcat, person, gender,
+                                                     nonst, old, oldorth, ch, reg)
     # other pronouns
     elif pos in ["INDEF", "REL", "WPRO"]:
         formdict = get_other_pronoun_formdict(generator, lidx, pidx, seg,
-                                              pos, gender, nonst, old, oldorth, ch)
+                                              pos, gender,
+                                              nonst, old, oldorth, ch, reg)
     # verbs
     elif pos == "V":
         formdict = get_verb_formdict(generator, lidx, pidx, seg,
-                                     pos, nonst, old, oldorth, ch)
+                                     pos,
+                                     nonst, old, oldorth, ch, reg)
     return formdict
 
 
@@ -1981,7 +2102,8 @@ def sort_form(form):
 
 def create_formdict(generator, analyzer, automaton_type,
                     lemma, lidx=None, pidx=None,
-                    pos=None, user_specified=False, nonst=False, old=False, oldorth=False, ch=False):
+                    pos=None, user_specified=False,
+                    nonst=False, old=False, oldorth=False, ch=False, reg=False):
     lemmaspecs = []
     if user_specified:
         seg = lemma
@@ -2028,7 +2150,7 @@ def create_formdict(generator, analyzer, automaton_type,
                           if lemmaspec.pos == pos]
     formdict = defaultdict(list)
     for lemmaspec in lemmaspecs:
-        formdict_for_lemmaspec = get_formdict(generator, *lemmaspec, nonst=nonst, old=old, oldorth=oldorth, ch=ch)
+        formdict_for_lemmaspec = get_formdict(generator, *lemmaspec, nonst=nonst, old=old, oldorth=oldorth, ch=ch, reg=reg)
         for key, value in formdict_for_lemmaspec.items():
             formdict[key] = sorted(set(formdict[key] + value), key=sort_form)
 
@@ -2156,14 +2278,16 @@ def output_dsv(paradigms, output_file, keys, paradigm_keys,
 
 def output_paradigms(generator, analyzer, output_file, automaton_type,
                      lemma, lidx=None, pidx=None,
-                     pos=None, user_specified=False, nonst=False, old=False, oldorth=False, ch=False,
+                     pos=None, user_specified=False,
+                     nonst=False, old=False, oldorth=False, ch=False, reg=False,
                      no_cats=False, no_lemma=False, empty=False,
                      header=True, plain=False, force_color=False, output_format="tsv"):
     kind = "dumb" if plain else None
     term = Terminal(kind=kind, force_styling=force_color)
     formdict = create_formdict(generator, analyzer, automaton_type,
                                lemma, lidx, pidx,
-                               pos, user_specified, nonst, old, oldorth, ch)
+                               pos, user_specified,
+                               nonst, old, oldorth, ch, reg)
 
     if formdict:
         paradigms = get_paradigm_dicts(lemma, formdict,
@@ -2281,6 +2405,8 @@ def main():
                             help="part of speech")
         parser.add_argument("-P", "--plain", action="store_true",
                             help="suppress color and formatting")
+        parser.add_argument("-r", "--reg", action="store_true",
+                            help="output also regional forms")
         parser.add_argument("-s", "--nonst", action="store_true",
                             help="output also non-standard forms")
         parser.add_argument("-S", "--ch", action="store_true",
@@ -2309,7 +2435,8 @@ def main():
 
         output_paradigms(generator, analyzer, args.output, args.automaton_type,
                          args.lemma, args.lemma_index, args.paradigm_index,
-                         args.pos, args.user_specified, args.nonst, args.old, args.oldorth, args.ch,
+                         args.pos, args.user_specified,
+                         args.nonst, args.old, args.oldorth, args.ch, args.reg,
                          args.no_cats, args.no_lemma, args.empty,
                          args.no_header, args.plain, args.force_color, output_format)
     except AssertionError as error:

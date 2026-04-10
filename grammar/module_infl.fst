@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 15.7
-% Andreas Nolda 2026-04-07
+% Version 15.8
+% Andreas Nolda 2026-04-10
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -51,6 +51,11 @@ $NGenSgNonStSuff_s$ = {<Nom><Sg>}:{}        | \
                       {<Acc><Sg><NonSt>}:{} | \
                       {<Dat><Sg><NonSt>}:{} | \
                       {<Gen><Sg><NonSt>}:{<SB>s} % cf. Duden-Grammatik (2016: § 333)
+
+$NGenSgRegSuff_s$ = {<Nom><Sg>}:{}           | \
+                    {<Acc><Sg><Reg>}:{<SB>n} | \ % cf. Duden-Grammatik (2016: § 327)
+                    {<Dat><Sg><Reg>}:{<SB>n} | \ % cf. Duden-Grammatik (2016: § 327)
+                    {<Gen><Sg>}:{<SB>s}
 
 $NGenSgSuff_ns$ = {<Nom><Sg>}:{}      | \
                   {<Acc><Sg>}:{<SB>n} | \
@@ -254,9 +259,12 @@ $NMascNonSt_es_e_n~ss$ = $SS$ {<Masc>}:{}      $NGenSgSuff_es$ | \
 
 % Arzt, Arzt(e)s, Ärzte, Ärzten
 % Kopf, Kopf(e)s, Köpfe, Köpfen
-% Klotz, Klotzes, Klötze, Klötzen
 $NMasc_es_\$e_n$ = {<Masc>}:{}           $NGenSgSuff_es$ | \
                    {<Masc>}:{<uml><SB>e} $NDatPlSuff_n$
+
+% Park, Park(e)s, Pärke, Pärken (regional)
+$NMascReg_es_\$e_n$ = {<Masc>}:{}           $NGenSgSuff_es$ | \
+                      {<Masc>}:{<uml><SB>e} $NDatPlSuff_n$ {<Reg>}:{}
 
 % Geist, Geist(e)s, Geister, Geistern
 $NMasc_es_er_n$ = {<Masc>}:{}       $NGenSgSuff_es$ | \
@@ -266,9 +274,13 @@ $NMasc_es_er_n$ = {<Masc>}:{}       $NGenSgSuff_es$ | \
 $NMasc_es_\$er_n$ = {<Masc>}:{}            $NGenSgSuff_es$ | \
                     {<Masc>}:{<uml><SB>er} $NDatPlSuff_n$
 
-% Klotz, Klotzes, Klötzer, Klötzern (coll.)
+% Geschmack, Geschmack(e)s, Geschmäcker, Geschmäckern (coll.)
 $NMascNonSt_es_\$er_n$ = {<Masc>}:{}            $NGenSgSuff_es$ | \
                          {<Masc>}:{<uml><SB>er} $NDatPlSuff_n$ {<NonSt>}:{}
+
+% Klotz, Klotz(e)s, Klötzer, Klötzern (regional)
+$NMascReg_es_\$er_n$ = {<Masc>}:{}            $NGenSgSuff_es$ | \
+                       {<Masc>}:{<uml><SB>er} $NDatPlSuff_n$ {<Reg>}:{}
 
 % Fleck, Fleck(e)s, Flecken, Flecken
 $NMasc_es_en_0$ = {<Masc>}:{}       $NGenSgSuff_es$ | \
@@ -321,6 +333,10 @@ $NMasc_s_0_0$ = {<Masc>}:{} $NGenSgSuff_s$ | \
 % Faden, Fadens, Fäden, Fäden
 $NMasc_s_\$_0$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
                  {<Masc>}:{<uml>} $NDatPlSuff_0$
+
+% Wagen, Wagen, Wägen, Wägen (regional)
+$NMascReg_s_\$_0$ = {<Masc>}:{}      $NGenSgSuff_s$ | \
+                    {<Masc>}:{<uml>} $NDatPlSuff_0$ {<Reg>}:{}
 
 % Engel, Engels, Engel, Engeln
 % Dezember, Dezembers, Dezember, Dezembern
@@ -472,6 +488,9 @@ $NNeut|Sg_s$ = {<Neut>}:{} $NGenSgSuff_s$
 
 % Pluraliatantum, Pluraliatantum (suppletive plural)
 $NNeut|Pl_0$ = {<Neut>}:{} $NDatPlSuff_0$
+
+% Risken, Risken (suppletive plural) (regional)
+$NNeut|PlReg_0$ = {<Neut>}:{} $NDatPlSuff_0$ {<Reg>}:{}
 
 % Viecher, Viechern (suppletive plural) (coll.)
 $NNeut|PlNonSt_n$ = {<Neut>}:{} $NDatPlSuff_n$ {<NonSt>}:{}
@@ -627,6 +646,10 @@ $NNeut_es_\$e_n$ = {<Neut>}:{}           $NGenSgSuff_es$ | \
 $NNeut_es_er_n$ = {<Neut>}:{}       $NGenSgSuff_es$ | \
                   {<Neut>}:{<SB>er} $NDatPlSuff_n$
 
+% Scheit, Scheit(e)s, Scheiter, Scheitern (regional)
+$NNeutReg_es_er_n$ = {<Neut>}:{}       $NGenSgSuff_es$ | \
+                     {<Neut>}:{<SB>er} $NDatPlSuff_n$ {<Reg>}:{}
+
 % Stück, Stück(e)s, Stücker, Stückern (coll.)
 $NNeutNonSt_es_er_n$ = {<Neut>}:{}       $NGenSgSuff_es$ | \
                        {<Neut>}:{<SB>er} $NDatPlSuff_n$ {<NonSt>}:{}
@@ -655,6 +678,10 @@ $NNeut_es_s_0$ = {<Neut>}:{}      $NGenSgSuff_es$ | \
 $NNeut_es_ien_0$ = {<Neut>}:{}        $NGenSgSuff_es$ | \
                    {<Neut>}:{i<SB>en} $NDatPlSuff_0$
 
+% Seminar, Seminar(e)s, Seminarien, Seminarien (regional)
+$NNeutReg_es_ien_0$ = {<Neut>}:{}        $NGenSgSuff_es$ | \
+                      {<Neut>}:{i<SB>en} $NDatPlSuff_0$ {<Reg>}:{}
+
 % Simplex, Simplexes, Simplizia, Simplizia
 $NNeut_es_ex/izia_0$ = {<Neut>}:{}                     $NGenSgSuff_es$ | \
                        {<Neut>}:{<del(VC)|Pl>iz<SB>ia} $NDatPlSuff_0$
@@ -675,6 +702,10 @@ $NNeut_s_0_n$ = {<Neut>}:{} $NGenSgSuff_s$ | \
 % Kloster, Klosters, Klöster, Klöstern
 $NNeut_s_\$_n$ = {<Neut>}:{}      $NGenSgSuff_s$ | \
                  {<Neut>}:{<uml>} $NDatPlSuff_n$
+
+% Polster, Polsters, Pölster, Pölstern (regional)
+$NNeutReg_s_\$_n$ = {<Neut>}:{}      $NGenSgSuff_s$ | \
+                    {<Neut>}:{<uml>} $NDatPlSuff_n$ {<Reg>}:{}
 
 % Reflexiv, Reflexivs, Reflexiva, Reflexiva
 $NNeut_s_a_0$ = {<Neut>}:{}      $NGenSgSuff_s$ | \
@@ -748,6 +779,10 @@ $NNeut_s_o/en_0$ = $NNeut_s_a/en_0$
 
 % Intermezzo, Intermezzos, Intermezzi, Intermezzi
 $NNeut_s_o/i_0$ = $NNeut_s_e/i_0$
+
+% Konto, Kontos, Konti, Konti (regional)
+$NNeutReg_s_o/i_0$ = {<Neut>}:{}                  $NGenSgSuff_s$ | \
+                     {<Neut>}:{<del(VC)|Pl><SB>i} $NDatPlSuff_0$ {<Reg>}:{}
 
 % Oxymoron, Oxymorons, Oxymora, Oxymora
 $NNeut_s_on/a_0$ = {<Neut>}:{}                  $NGenSgSuff_s$ | \
@@ -877,6 +912,10 @@ $NFem_0_\$e_n$ = {<Fem>}:{}           $NGenSgSuff_0$ | \
 % Arbeit, Arbeit, Arbeiten, Arbeiten
 $NFem_0_en_0$ = {<Fem>}:{}       $NGenSgSuff_0$ | \
                 {<Fem>}:{<SB>en} $NDatPlSuff_0$
+
+% Saison, Saison, Saisonen, Saisonen (regional)
+$NFemReg_0_en_0$ = {<Fem>}:{}       $NGenSgSuff_0$ | \
+                   {<Fem>}:{<SB>en} $NDatPlSuff_0$ {<Reg>}:{}
 
 % Werkstatt, Werkstatt, Werkstätten, Werkstätten
 $NFem_0_\$en_0$ = {<Fem>}:{}            $NGenSgSuff_0$ | \
@@ -1032,6 +1071,9 @@ $NameFem_apos$ = {<Fem>}:{} $NGenSgSuff_0$ | \
                  {<Fem><Gen><Sg>}:{<SB>’}
 
 $NameFem_s$ = {<Fem>}:{} $NGenSgSuff_s$
+
+% Mutter, Muttern, Mutters (regional)
+$NameFemReg_s$ = {<Fem>}:{} $NGenSgRegSuff_s$
 
 $NameUnmGend|Pl_0$ = {<UnmGend>}:{} $NDatPlSuff_0$
 
@@ -2979,6 +3021,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NameFem_0>               $NameFem_0$              | \
          <>:<NameFem_apos>            $NameFem_apos$           | \
          <>:<NameFem_s>               $NameFem_s$              | \
+         <>:<NameFemReg_s>            $NameFemReg_s$           | \
          <>:<NameMasc_0>              $NameMasc_0$             | \
          <>:<NameMasc_apos>           $NameMasc_apos$          | \
          <>:<NameMasc_es>             $NameMasc_es$            | \
@@ -3024,6 +3067,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NFem_0_ox/oces_0>        $NFem_0_ox/oces_0$       | \
          <>:<NFem_0_s_0>              $NFem_0_s_0$             | \
          <>:<NFemOld_n_n_0>           $NFemOld_n_n_0$          | \
+         <>:<NFemReg_0_en_0>          $NFemReg_0_en_0$         | \
          <>:<NMasc-Adj>               $NMasc-Adj$              | \
          <>:<NMasc-Meas_es>           $NMasc-Meas_es$          | \
          <>:<NMasc-Meas_s>            $NMasc-Meas_s$           | \
@@ -3115,6 +3159,9 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NMascNonSt_n_e/s_0>      $NMascNonSt_n_e/s_0$     | \
          <>:<NMascNonSt_n_ns_0>       $NMascNonSt_n_ns_0$      | \
          <>:<NMascNonSt_s_en_0>       $NMascNonSt_s_en_0$      | \
+         <>:<NMascReg_es_$e_n>        $NMascReg_es_\$e_n$      | \
+         <>:<NMascReg_es_$er_n>       $NMascReg_es_\$er_n$     | \
+         <>:<NMascReg_s_$_0>          $NMascReg_s_\$_0$        | \
          <>:<NNeut-Adj>               $NNeut-Adj$              | \
          <>:<NNeut-Adj|Sg>            $NNeut-Adj|Sg$           | \
          <>:<NNeut-Dunkel>            $NNeut-Dunkel$           | \
@@ -3124,6 +3171,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut-Meas_s>            $NNeut-Meas_s$           | \
          <>:<NNeut|Pl_0>              $NNeut|Pl_0$             | \
          <>:<NNeut|PlNonSt_n>         $NNeut|PlNonSt_n$        | \
+         <>:<NNeut|PlReg_0>           $NNeut|PlReg_0$          | \
          <>:<NNeut|Sg_0>              $NNeut|Sg_0$             | \
          <>:<NNeut|Sg_es>             $NNeut|Sg_es$            | \
          <>:<NNeut|Sg_es~ss>          $NNeut|Sg_es~ss$         | \
@@ -3203,6 +3251,10 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut_s_0_0>             $NNeut_s_0_0$            | \
          <>:<NNeutNonSt_es_$er_n>     $NNeutNonSt_es_\$er_n$   | \
          <>:<NNeutNonSt_es_er_n>      $NNeutNonSt_es_er_n$     | \
+         <>:<NNeutReg_es_er_n>        $NNeutReg_es_er_n$       | \
+         <>:<NNeutReg_es_ien_0>       $NNeutReg_es_ien_0$      | \
+         <>:<NNeutReg_s_$_n>          $NNeutReg_s_\$_n$        | \
+         <>:<NNeutReg_s_o/i_0>        $NNeutReg_s_o/i_0$       | \
          <>:<NUnmGend|Pl_0>           $NUnmGend|Pl_0$          | \
          <>:<NUnmGend|Pl_n>           $NUnmGend|Pl_n$          | \
          <>:<Ord>                     $Ord$                    | \

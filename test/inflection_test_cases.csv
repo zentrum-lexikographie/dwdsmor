@@ -90,6 +90,7 @@ NN,NFem_0_os/otes_0,Dos
 NN,NFem_0_ox/oces_0,Vox
 NN,NFem_0_s_0,Oma
 NN,"NFem_0_s_0, NFem_0_a/e_0, NFem_0_a/en_0",Pizza
+NN,"NFem_0_s_0, NFemReg_0_en_0",Wintersaison
 NN,NFem|Sg_0,Ruhe
 NN,"NFem|Sg_0, NFem|Pl_0",Anchorwoman
 NN,"NMasc-Adj, NNeut-Adj|Sg, NFem-Adj",Deutsche
@@ -131,7 +132,8 @@ NN,NMasc_en_en_0,Dirigent
 NN,"NMasc_en_en_0, NMascNonSt_s_en_0",Bär
 NN,NMasc_es_$e_n,Arzt
 NN,"NMasc_es_$e_n, NMasc_es_s_0",Block
-NN,"NMasc_es_$e_n, NMascNonSt_es_$er_n",Klotz
+NN,"NMasc_es_$e_n, NMascNonSt_es_$er_n",Geschmack
+NN,"NMasc_es_$e_n, NMascReg_es_$er_n",Klotz
 NN,NMasc_es_$er_n,Gott
 NN,NMasc_es_e_n,Freund
 NN,NMasc_es_e_n~ss,Bus
@@ -139,6 +141,7 @@ NN,NMasc_es_en_0,Schmerz
 NN,NMasc_es_er_n,Leib
 NN,"NMasc_es_es_0, NMasc_es_s_0",Crash
 NN,"NMasc_es_es_0, NMasc_es_s_0, NNeut_es_es_0 ...",Tennismatch
+NN,"NMasc_es_s_0, NMasc_es_e_n, NMascReg_es_$e_n",Park
 NN,NMasc_n_n_0,Affe
 NN,"NMasc_n_n_0, NMascNonSt_n_ns_0, NMascNonSt_n_e/s_0, NMasc-Adj, NNeut-Adj, NFem-Adj",Junge
 NN,NMasc_ns_$n_0,Schade
@@ -149,6 +152,7 @@ NN,NMasc_s_$e_n,Unfall
 NN,NMasc_s_$er_n,Irrtum
 NN,NMasc_s_0_0,Daumen
 NN,"NMasc_s_0_0, NMasc_s_er_n",Ski
+NN,"NNasc_s_0_0, NMascReg_s_$_0",Wagen
 NN,NMasc_s_0_n,Engel
 NN,"NMasc_s_0_n, NMasc_s_s_n, NFem_0_0_n ...",Vize
 NN,NMasc_s_e_n,Abend
@@ -169,6 +173,7 @@ NN,"NNeut-Adj, NNeut-Dunkel",Dunkle
 NN,NNeut-Inner,Innere
 NN,"NNeut_es_e_n, NNeut-Meas_es",Paar
 NN,"NNeut_es_e_n, NNeutNonSt_es_er_n, NNeut-Meas_es",Stück
+NN,"NNeut_es_e_n, NNeutReg_es_ien_0",Seminar
 NN,"NNeut_s_s_0, NNeut-Meas_s",Kilo
 NN,NNeut_0_0_0,Ostern
 NN,"NNeut_0_0_0, NNeut_0_en_0",Remis
@@ -191,6 +196,7 @@ NN,NNeut_es_$er_n,Buch
 NN,NNeut_es_e_n,Spiel
 NN,"NNeut_es_e_n, NNeut_es_s_0",Tablett
 NN,"NNeut_es_e_n, NNeutNonSt_es_$er_n",Ass
+NN,"NNeut_es_e_n, NNeutReg_es_er_n",Scheit
 NN,NNeut_es_e_n~ss,Zeugnis
 NN,NNeut_es_en_0,Ohr
 NN,NNeut_es_er_n,Lied
@@ -199,6 +205,7 @@ NN,NNeut_s_$_n,Kloster
 NN,NNeut_s_0_0,Zeichen
 NN,"NNeut_s_0_0, NNeut_s_en/ina_0",Examen
 NN,NNeut_s_0_n,Feuer
+NN,"NNeut_s_0_n, NNeutReg_s_$_n",Kopfpolster
 NN,NNeut_s_a/en_0,Dogma
 NN,NNeut_s_a_0,Reflexiv
 NN,"NNeut_s_e/ia_0, NNeut_s_e/ien_0",Numerale
@@ -210,7 +217,8 @@ NN,NNeut_s_on/a_0,Paradoxon
 NN,NNeut_s_on/en_0,Stadion
 NN,NNeut_s_s_0,Sofa
 NN,"NNeut_s_s_0, NNeut_s_a/ata_0",Komma
-NN,"NNeut_s_s_0, NNeut_s_o/en_0",Risiko
+NN,"NNeut_s_s_0, NNeut_s_o/en_0, NNeut|Sg_s, NNeut|PlReg_0",Risiko
+NN,"NNeut_s_s_0, NNeut_s_o/en_0, NNeutReg_s_o/i_0",Konto
 NN,NNeut_s_ten_0,Mastodon
 NN,NNeut_s_um/a_0,Maximum
 NN,NNeut_s_um/en_0,Museum

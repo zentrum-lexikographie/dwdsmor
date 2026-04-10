@@ -1,3 +1,7 @@
+2026-04-10:
+
+* add support for inflectional regional variants
+
 2026-04-07:
 
 * recategorise "dergleichen" and "derlei" as indefinite pronouns

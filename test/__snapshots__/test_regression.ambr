@@ -18719,35 +18719,35 @@
       'NFem_0_s_0',
       'Oma',
       tuple(
-        'Oma<NN><Fem><Acc><Pl>',
+        'Oma<PAR1><NN><Fem><Acc><Pl>',
         'Omas',
       ),
       tuple(
-        'Oma<NN><Fem><Acc><Sg>',
+        'Oma<PAR1><NN><Fem><Acc><Sg>',
         'Oma',
       ),
       tuple(
-        'Oma<NN><Fem><Dat><Pl>',
+        'Oma<PAR1><NN><Fem><Dat><Pl>',
         'Omas',
       ),
       tuple(
-        'Oma<NN><Fem><Dat><Sg>',
+        'Oma<PAR1><NN><Fem><Dat><Sg>',
         'Oma',
       ),
       tuple(
-        'Oma<NN><Fem><Gen><Pl>',
+        'Oma<PAR1><NN><Fem><Gen><Pl>',
         'Omas',
       ),
       tuple(
-        'Oma<NN><Fem><Gen><Sg>',
+        'Oma<PAR1><NN><Fem><Gen><Sg>',
         'Oma',
       ),
       tuple(
-        'Oma<NN><Fem><Nom><Pl>',
+        'Oma<PAR1><NN><Fem><Nom><Pl>',
         'Omas',
       ),
       tuple(
-        'Oma<NN><Fem><Nom><Sg>',
+        'Oma<PAR1><NN><Fem><Nom><Sg>',
         'Oma',
       ),
     ),
@@ -18818,6 +18818,59 @@
       tuple(
         'Pizza<NN><Fem><Nom><Sg>',
         'Pizza',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NFem_0_s_0, NFemReg_0_en_0',
+      'Wintersaison',
+      tuple(
+        'Wintersaison<NN><Fem><Acc><Pl>',
+        'Wintersaisons',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Acc><Pl><Reg>',
+        'Wintersaisonen',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Acc><Sg>',
+        'Wintersaison',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Dat><Pl>',
+        'Wintersaisons',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Dat><Pl><Reg>',
+        'Wintersaisonen',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Dat><Sg>',
+        'Wintersaison',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Gen><Pl>',
+        'Wintersaisons',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Gen><Pl><Reg>',
+        'Wintersaisonen',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Gen><Sg>',
+        'Wintersaison',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Nom><Pl>',
+        'Wintersaisons',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Nom><Pl><Reg>',
+        'Wintersaisonen',
+      ),
+      tuple(
+        'Wintersaison<NN><Fem><Nom><Sg>',
+        'Wintersaison',
       ),
     ),
     tuple(
@@ -21244,13 +21297,74 @@
     tuple(
       'NN',
       'NMasc_es_$e_n, NMascNonSt_es_$er_n',
+      'Geschmack',
+      tuple(
+        'Geschmack<NN><Masc><Acc><Pl>',
+        'Geschmäcke',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Acc><Pl><NonSt>',
+        'Geschmäcker',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Acc><Sg>',
+        'Geschmack',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Dat><Pl>',
+        'Geschmäcken',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Dat><Pl><NonSt>',
+        'Geschmäckern',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Dat><Sg>',
+        'Geschmack',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Dat><Sg><Old>',
+        'Geschmacke',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Gen><Pl>',
+        'Geschmäcke',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Gen><Pl><NonSt>',
+        'Geschmäcker',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Gen><Sg>',
+        'Geschmackes',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Gen><Sg>',
+        'Geschmacks',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Nom><Pl>',
+        'Geschmäcke',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Nom><Pl><NonSt>',
+        'Geschmäcker',
+      ),
+      tuple(
+        'Geschmack<NN><Masc><Nom><Sg>',
+        'Geschmack',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NMasc_es_$e_n, NMascReg_es_$er_n',
       'Klotz',
       tuple(
         'Klotz<NN><Masc><Acc><Pl>',
         'Klötze',
       ),
       tuple(
-        'Klotz<NN><Masc><Acc><Pl><NonSt>',
+        'Klotz<NN><Masc><Acc><Pl><Reg>',
         'Klötzer',
       ),
       tuple(
@@ -21262,7 +21376,7 @@
         'Klötzen',
       ),
       tuple(
-        'Klotz<NN><Masc><Dat><Pl><NonSt>',
+        'Klotz<NN><Masc><Dat><Pl><Reg>',
         'Klötzern',
       ),
       tuple(
@@ -21278,7 +21392,7 @@
         'Klötze',
       ),
       tuple(
-        'Klotz<NN><Masc><Gen><Pl><NonSt>',
+        'Klotz<NN><Masc><Gen><Pl><Reg>',
         'Klötzer',
       ),
       tuple(
@@ -21290,7 +21404,7 @@
         'Klötze',
       ),
       tuple(
-        'Klotz<NN><Masc><Nom><Pl><NonSt>',
+        'Klotz<NN><Masc><Nom><Pl><Reg>',
         'Klötzer',
       ),
       tuple(
@@ -21691,6 +21805,83 @@
       tuple(
         'Tennismatch<PAR2><NN><Masc><Nom><Sg>',
         'Tennismatch',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NMasc_es_s_0, NMasc_es_e_n, NMascReg_es_$e_n',
+      'Park',
+      tuple(
+        'Park<NN><Masc><Acc><Pl>',
+        'Parke',
+      ),
+      tuple(
+        'Park<NN><Masc><Acc><Pl>',
+        'Parks',
+      ),
+      tuple(
+        'Park<NN><Masc><Acc><Pl><Reg>',
+        'Pärke',
+      ),
+      tuple(
+        'Park<NN><Masc><Acc><Sg>',
+        'Park',
+      ),
+      tuple(
+        'Park<NN><Masc><Dat><Pl>',
+        'Parken',
+      ),
+      tuple(
+        'Park<NN><Masc><Dat><Pl>',
+        'Parks',
+      ),
+      tuple(
+        'Park<NN><Masc><Dat><Pl><Reg>',
+        'Pärken',
+      ),
+      tuple(
+        'Park<NN><Masc><Dat><Sg>',
+        'Park',
+      ),
+      tuple(
+        'Park<NN><Masc><Dat><Sg><Old>',
+        'Parke',
+      ),
+      tuple(
+        'Park<NN><Masc><Gen><Pl>',
+        'Parke',
+      ),
+      tuple(
+        'Park<NN><Masc><Gen><Pl>',
+        'Parks',
+      ),
+      tuple(
+        'Park<NN><Masc><Gen><Pl><Reg>',
+        'Pärke',
+      ),
+      tuple(
+        'Park<NN><Masc><Gen><Sg>',
+        'Parkes',
+      ),
+      tuple(
+        'Park<NN><Masc><Gen><Sg>',
+        'Parks',
+      ),
+      tuple(
+        'Park<NN><Masc><Nom><Pl>',
+        'Parke',
+      ),
+      tuple(
+        'Park<NN><Masc><Nom><Pl>',
+        'Parks',
+      ),
+      tuple(
+        'Park<NN><Masc><Nom><Pl><Reg>',
+        'Pärke',
+      ),
+      tuple(
+        'Park<NN><Masc><Nom><Sg>',
+        'Park',
       ),
     ),
     tuple(
@@ -22301,6 +22492,59 @@
       tuple(
         'Ski<NN><Masc><Nom><Sg>',
         'Ski',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NNasc_s_0_0, NMascReg_s_$_0',
+      'Wagen',
+      tuple(
+        'Wagen<NN><Masc><Acc><Pl>',
+        'Wagen',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Acc><Pl><Reg>',
+        'Wägen',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Acc><Sg>',
+        'Wagen',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Dat><Pl>',
+        'Wagen',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Dat><Pl><Reg>',
+        'Wägen',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Dat><Sg>',
+        'Wagen',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Gen><Pl>',
+        'Wagen',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Gen><Pl><Reg>',
+        'Wägen',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Gen><Sg>',
+        'Wagens',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Nom><Pl>',
+        'Wagen',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Nom><Pl><Reg>',
+        'Wägen',
+      ),
+      tuple(
+        'Wagen<NN><Masc><Nom><Sg>',
+        'Wagen',
       ),
     ),
     tuple(
@@ -23251,7 +23495,7 @@
         'Stücke',
       ),
       tuple(
-        'Stück<NN><Neut><Acc><Pl><NonSt>',
+        'Stück<NN><Neut><Acc><Pl><Reg>',
         'Stücker',
       ),
       tuple(
@@ -23263,7 +23507,7 @@
         'Stücken',
       ),
       tuple(
-        'Stück<NN><Neut><Dat><Pl><NonSt>',
+        'Stück<NN><Neut><Dat><Pl><Reg>',
         'Stückern',
       ),
       tuple(
@@ -23279,7 +23523,7 @@
         'Stücke',
       ),
       tuple(
-        'Stück<NN><Neut><Gen><Pl><NonSt>',
+        'Stück<NN><Neut><Gen><Pl><Reg>',
         'Stücker',
       ),
       tuple(
@@ -23295,7 +23539,7 @@
         'Stücke',
       ),
       tuple(
-        'Stück<NN><Neut><Nom><Pl><NonSt>',
+        'Stück<NN><Neut><Nom><Pl><Reg>',
         'Stücker',
       ),
       tuple(
@@ -23305,6 +23549,67 @@
       tuple(
         'Stück<NN><Neut><UnmCase><UnmNum><MEAS>',
         'Stück',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NNeut_es_e_n, NNeutReg_es_ien_0',
+      'Seminar',
+      tuple(
+        'Seminar<NN><Neut><Acc><Pl>',
+        'Seminare',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Acc><Pl><Reg>',
+        'Seminarien',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Acc><Sg>',
+        'Seminar',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Dat><Pl>',
+        'Seminaren',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Dat><Pl><Reg>',
+        'Seminarien',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Dat><Sg>',
+        'Seminar',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Dat><Sg><Old>',
+        'Seminare',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Gen><Pl>',
+        'Seminare',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Gen><Pl><Reg>',
+        'Seminarien',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Gen><Sg>',
+        'Seminares',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Gen><Sg>',
+        'Seminars',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Nom><Pl>',
+        'Seminare',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Nom><Pl><Reg>',
+        'Seminarien',
+      ),
+      tuple(
+        'Seminar<NN><Neut><Nom><Sg>',
+        'Seminar',
       ),
     ),
     tuple(
@@ -24459,6 +24764,67 @@
     ),
     tuple(
       'NN',
+      'NNeut_es_e_n, NNeutReg_es_er_n',
+      'Scheit',
+      tuple(
+        'Scheit<NN><Neut><Acc><Pl>',
+        'Scheite',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Acc><Pl><Reg>',
+        'Scheiter',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Acc><Sg>',
+        'Scheit',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Dat><Pl>',
+        'Scheiten',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Dat><Pl><Reg>',
+        'Scheitern',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Dat><Sg>',
+        'Scheit',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Dat><Sg><Old>',
+        'Scheite',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Gen><Pl>',
+        'Scheite',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Gen><Pl><Reg>',
+        'Scheiter',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Gen><Sg>',
+        'Scheites',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Gen><Sg>',
+        'Scheits',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Nom><Pl>',
+        'Scheite',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Nom><Pl><Reg>',
+        'Scheiter',
+      ),
+      tuple(
+        'Scheit<NN><Neut><Nom><Sg>',
+        'Scheit',
+      ),
+    ),
+    tuple(
+      'NN',
       'NNeut_es_e_n~ss',
       'Zeugnis',
       tuple(
@@ -24791,6 +25157,59 @@
       tuple(
         'Feuer<NN><Neut><Nom><Sg>',
         'Feuer',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NNeut_s_0_n, NNeutReg_s_$_n',
+      'Kopfpolster',
+      tuple(
+        'Kopfpolster<NN><Neut><Acc><Pl>',
+        'Kopfpolster',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Acc><Pl><Reg>',
+        'Kopfpölster',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Acc><Sg>',
+        'Kopfpolster',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Dat><Pl>',
+        'Kopfpolstern',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Dat><Pl><Reg>',
+        'Kopfpölstern',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Dat><Sg>',
+        'Kopfpolster',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Gen><Pl>',
+        'Kopfpolster',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Gen><Pl><Reg>',
+        'Kopfpölster',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Gen><Sg>',
+        'Kopfpolsters',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Nom><Pl>',
+        'Kopfpolster',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Nom><Pl><Reg>',
+        'Kopfpölster',
+      ),
+      tuple(
+        'Kopfpolster<NN><Neut><Nom><Sg>',
+        'Kopfpolster',
       ),
     ),
     tuple(
@@ -25302,7 +25721,7 @@
     ),
     tuple(
       'NN',
-      'NNeut_s_s_0, NNeut_s_o/en_0',
+      'NNeut_s_s_0, NNeut_s_o/en_0, NNeut|Sg_s, NNeut|PlReg_0',
       'Risiko',
       tuple(
         'Risiko<NN><Neut><Acc><Pl>',
@@ -25311,6 +25730,10 @@
       tuple(
         'Risiko<NN><Neut><Acc><Pl>',
         'Risikos',
+      ),
+      tuple(
+        'Risiko<NN><Neut><Acc><Pl><Reg>',
+        'Risken',
       ),
       tuple(
         'Risiko<NN><Neut><Acc><Sg>',
@@ -25325,6 +25748,10 @@
         'Risikos',
       ),
       tuple(
+        'Risiko<NN><Neut><Dat><Pl><Reg>',
+        'Risken',
+      ),
+      tuple(
         'Risiko<NN><Neut><Dat><Sg>',
         'Risiko',
       ),
@@ -25335,6 +25762,10 @@
       tuple(
         'Risiko<NN><Neut><Gen><Pl>',
         'Risikos',
+      ),
+      tuple(
+        'Risiko<NN><Neut><Gen><Pl><Reg>',
+        'Risken',
       ),
       tuple(
         'Risiko<NN><Neut><Gen><Sg>',
@@ -25349,8 +25780,81 @@
         'Risikos',
       ),
       tuple(
+        'Risiko<NN><Neut><Nom><Pl><Reg>',
+        'Risken',
+      ),
+      tuple(
         'Risiko<NN><Neut><Nom><Sg>',
         'Risiko',
+      ),
+    ),
+    tuple(
+      'NN',
+      'NNeut_s_s_0, NNeut_s_o/en_0, NNeutReg_s_o/i_0',
+      'Konto',
+      tuple(
+        'Konto<NN><Neut><Acc><Pl>',
+        'Konten',
+      ),
+      tuple(
+        'Konto<NN><Neut><Acc><Pl>',
+        'Kontos',
+      ),
+      tuple(
+        'Konto<NN><Neut><Acc><Pl><Reg>',
+        'Konti',
+      ),
+      tuple(
+        'Konto<NN><Neut><Acc><Sg>',
+        'Konto',
+      ),
+      tuple(
+        'Konto<NN><Neut><Dat><Pl>',
+        'Konten',
+      ),
+      tuple(
+        'Konto<NN><Neut><Dat><Pl>',
+        'Kontos',
+      ),
+      tuple(
+        'Konto<NN><Neut><Dat><Pl><Reg>',
+        'Konti',
+      ),
+      tuple(
+        'Konto<NN><Neut><Dat><Sg>',
+        'Konto',
+      ),
+      tuple(
+        'Konto<NN><Neut><Gen><Pl>',
+        'Konten',
+      ),
+      tuple(
+        'Konto<NN><Neut><Gen><Pl>',
+        'Kontos',
+      ),
+      tuple(
+        'Konto<NN><Neut><Gen><Pl><Reg>',
+        'Konti',
+      ),
+      tuple(
+        'Konto<NN><Neut><Gen><Sg>',
+        'Kontos',
+      ),
+      tuple(
+        'Konto<NN><Neut><Nom><Pl>',
+        'Konten',
+      ),
+      tuple(
+        'Konto<NN><Neut><Nom><Pl>',
+        'Kontos',
+      ),
+      tuple(
+        'Konto<NN><Neut><Nom><Pl><Reg>',
+        'Konti',
+      ),
+      tuple(
+        'Konto<NN><Neut><Nom><Sg>',
+        'Konto',
       ),
     ),
     tuple(
@@ -25751,19 +26255,19 @@
       'NameFem_s',
       'Oma',
       tuple(
-        'Oma<NPROP><Fem><Acc><Sg>',
+        'Oma<PAR2><NPROP><Fem><Acc><Sg>',
         'Oma',
       ),
       tuple(
-        'Oma<NPROP><Fem><Dat><Sg>',
+        'Oma<PAR2><NPROP><Fem><Dat><Sg>',
         'Oma',
       ),
       tuple(
-        'Oma<NPROP><Fem><Gen><Sg>',
+        'Oma<PAR2><NPROP><Fem><Gen><Sg>',
         'Omas',
       ),
       tuple(
-        'Oma<NPROP><Fem><Nom><Sg>',
+        'Oma<PAR2><NPROP><Fem><Nom><Sg>',
         'Oma',
       ),
     ),

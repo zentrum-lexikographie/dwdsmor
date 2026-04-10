@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 20.5 -->
-<!-- Andreas Nolda 2026-04-07 -->
+<!-- Version 20.6 -->
+<!-- Andreas Nolda 2026-04-10 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1055,6 +1055,17 @@
         </xsl:call-template>
       </xsl:if>
     </xsl:when>
+    <!-- regional variants of feminine proper names -->
+    <!-- genitive singular: "-s"
+         accusative/dative singular: "-n" -->
+    <xsl:when test="@gender='feminine' and
+                    @lemma='Mutter' and
+                    $genitive-singular-marker='-s'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NameFemReg_s</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
     <!-- other proper names -->
     <xsl:otherwise>
       <xsl:variable name="class">
@@ -1794,6 +1805,118 @@
                           select="$class"/>
         </xsl:call-template>
       </xsl:if>
+    </xsl:when>
+    <!-- regional variants of masculine nouns -->
+    <!-- genitive singular: "-(e)s"
+         nominative plural: umlaut and "-e" -->
+    <xsl:when test="@gender='masculine' and
+                    ($genitive-singular-marker='-(e)s' or
+                     $genitive-singular-marker='-es') and
+                    $nominative-plural-marker='&#x308;-e' and
+                    @region!='any'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NMascReg_es_$e_n</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <!-- genitive singular: "-(e)s"
+         nominative plural: umlaut and "-er" -->
+    <xsl:when test="@gender='masculine' and
+                    ($genitive-singular-marker='-(e)s' or
+                     $genitive-singular-marker='-es') and
+                    $nominative-plural-marker='&#x308;-er' and
+                    @region!='any'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NMascReg_es_$er_n</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <!-- genitive singular: "-s"
+         nominative plural: umlaut -->
+    <xsl:when test="@gender='masculine' and
+                    $genitive-singular-marker='-s' and
+                    $nominative-plural-marker='&#x308;-' and
+                    @region!='any'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NMascReg_s_$_0</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <!-- regional variants of neuter nouns -->
+    <!-- genitive singular: "-(e)s"
+         nominative plural: "-e" -->
+    <xsl:when test="@gender='neuter' and
+                    ($genitive-singular-marker='-(e)s' or
+                     $genitive-singular-marker='-es') and
+                    $nominative-plural-marker='-er' and
+                    @region!='any'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NNeutReg_es_er_n</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <!-- genitive singular: "-(e)s"
+         nominative plural: "-ien" -->
+    <xsl:when test="@gender='neuter' and
+                    ($genitive-singular-marker='-(e)s' or
+                     $genitive-singular-marker='-es') and
+                    $nominative-plural-marker='-ien' and
+                    @region!='any'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NNeutReg_es_ien_0</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <!-- genitive singular: "-s"
+         nominative plural: umlaut -->
+    <xsl:when test="@gender='neuter' and
+                    $genitive-singular-marker='-s' and
+                    $nominative-plural-marker='&#x308;-' and
+                    @region!='any'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NNeutReg_s_$_n</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <!-- genitive singular: "-s"
+         nominative plural: "-i" substituted for "-o" -->
+    <xsl:when test="@gender='neuter' and
+                    $genitive-singular-marker='-s' and
+                    not(starts-with($nominative-plural-marker,'-')) and
+                    ends-with(@lemma,'o') and
+                    @nominative-plural=replace(@lemma,'o$','i') and
+                    @region!='any'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NNeutReg_s_o/i_0</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <!-- lemma: "Risiko"
+         suppletive plural: "Risken" -->
+    <xsl:when test="@gender='neuter' and
+                    $genitive-singular-marker='-s' and
+                    @lemma='Risiko' and
+                    @nominative-plural=replace(@lemma,'iko$','ken') and
+                    @region!='any'">
+      <xsl:call-template name="apply-templates-to-singular"/>
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="stem"
+                        select="replace(@lemma,'iko$','k&lt;SB&gt;en')"/>
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NNeut|PlReg_0</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <!-- regional variants of feminine nouns -->
+    <!-- genitive singular: "-"
+         nominative plural: "-ien" -->
+    <xsl:when test="@gender='feminine' and
+                    $genitive-singular-marker='-' and
+                    $nominative-plural-marker='-en' and
+                    @region!='any'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="pos">NN</xsl:with-param>
+        <xsl:with-param name="class">NFemReg_0_en_0</xsl:with-param>
+      </xsl:call-template>
     </xsl:when>
     <!-- colloquial variants of masculine nouns -->
     <!-- genitive singular: "-s"

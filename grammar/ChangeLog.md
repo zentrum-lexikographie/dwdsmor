@@ -1,5 +1,12 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2026-04-10:
+
+* tag inflectional regional variants with `<Reg>`
+* add inflection classes `NMascReg_es_$e_n`, `NMascReg_es_$er_n`,
+  `NMascReg_s_$_0`, `NNeut|PlReg_0`, `NNeutReg_es_er_n`, `NNeutReg_es_ien_0`,
+  `NNeutReg_s_$_n`, `NNeutReg_s_o/i_0`, `NFemReg_0_en_0`, and `NameFemReg_s`
+
 2026-04-07:
 
 * add inflection class `IProUnmGend0`

@@ -62,7 +62,7 @@ tag_values = {
         "case": {"Nom", "Acc", "Dat", "Gen", "UnmCase"},
         "number": {"Sg", "Pl", "UnmNum"},
         "inflection": {"St", "Wk", "UnmInfl"},
-        "metainfo": {"Old", "NonSt"},
+        "metainfo": {"Old", "NonSt", "Reg"},
         "orthinfo": {"OLDORTH", "CH"},
         "charinfo": {"CAP"},
         "syninfo": {"MEAS", "SEP"},
