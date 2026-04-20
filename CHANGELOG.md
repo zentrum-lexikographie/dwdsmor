@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.18.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.17.0...v0.18.0) (2026-04-20)
+
+
+### Features
+
+* add support for colloquial uninflected attributive adjective forms ([7079ed8](https://github.com/zentrum-lexikographie/dwdsmor/commit/7079ed8fea9a976e9327953695ab9bae1c0f2dac))
+* add support for inflectional regional variants ([00c4295](https://github.com/zentrum-lexikographie/dwdsmor/commit/00c429542dfa2b11b71fdea78f9c07fe73b5651d))
+* improve support for (pseudo-)numeratives ([cfe7f35](https://github.com/zentrum-lexikographie/dwdsmor/commit/cfe7f355ab2d97e550e43a8ec619b63df40dea78))
+* improve support for indefinite pronouns ([387ae9b](https://github.com/zentrum-lexikographie/dwdsmor/commit/387ae9b2bf1fb6a8b8c49fc61ae60a9f1ec8083b))
+
 ## [0.17.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.16.0...v0.17.0) (2026-03-20)
 
 
