@@ -95,34 +95,6 @@
     </Formangabe>
   </Artikel>
   <Artikel>
-    <Formangabe>
-      <Schreibung>Mutter</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>fem.</Genus>
-        <Genitiv>
-          <Wert>-</Wert>
-        </Genitiv>
-        <Plural>
-          <Wert>Mütter</Wert>
-        </Plural>
-      </Grammatik>
-    </Formangabe>
-    <Formangabe>
-      <Schreibung>Mutter</Schreibung>
-      <Grammatik>
-        <Wortklasse>Substantiv</Wortklasse>
-        <Genus>fem.</Genus>
-        <Genitiv>
-          <Wert>-</Wert>
-        </Genitiv>
-        <Plural>
-          <Wert>Muttern</Wert>
-        </Plural>
-      </Grammatik>
-    </Formangabe>
-  </Artikel>
-  <Artikel>
     <Formangabe Typ="Symbol">
       <Schreibung>§</Schreibung>
       <Grammatik>
