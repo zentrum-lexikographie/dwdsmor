@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2026-05-21:
+
+* remove inflectional class `NNeut|PlReg_0`
+
 2026-04-10:
 
 * tag inflectional regional variants with `<Reg>`

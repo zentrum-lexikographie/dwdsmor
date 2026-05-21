@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 20.6 -->
-<!-- Andreas Nolda 2026-04-10 -->
+<!-- Version 20.7 -->
+<!-- Andreas Nolda 2026-05-21 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -1889,21 +1889,6 @@
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="pos">NN</xsl:with-param>
         <xsl:with-param name="class">NNeutReg_s_o/i_0</xsl:with-param>
-      </xsl:call-template>
-    </xsl:when>
-    <!-- lemma: "Risiko"
-         suppletive plural: "Risken" -->
-    <xsl:when test="@gender='neuter' and
-                    $genitive-singular-marker='-s' and
-                    @lemma='Risiko' and
-                    @nominative-plural=replace(@lemma,'iko$','ken') and
-                    @region!='any'">
-      <xsl:call-template name="apply-templates-to-singular"/>
-      <xsl:call-template name="stem-entry">
-        <xsl:with-param name="stem"
-                        select="replace(@lemma,'iko$','k&lt;SB&gt;en')"/>
-        <xsl:with-param name="pos">NN</xsl:with-param>
-        <xsl:with-param name="class">NNeut|PlReg_0</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
     <!-- regional variants of feminine nouns -->

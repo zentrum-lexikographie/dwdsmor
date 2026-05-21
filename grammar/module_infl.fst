@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 15.8
-% Andreas Nolda 2026-04-10
+% Version 15.9
+% Andreas Nolda 2026-05-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -488,9 +488,6 @@ $NNeut|Sg_s$ = {<Neut>}:{} $NGenSgSuff_s$
 
 % Pluraliatantum, Pluraliatantum (suppletive plural)
 $NNeut|Pl_0$ = {<Neut>}:{} $NDatPlSuff_0$
-
-% Risken, Risken (suppletive plural) (regional)
-$NNeut|PlReg_0$ = {<Neut>}:{} $NDatPlSuff_0$ {<Reg>}:{}
 
 % Viecher, Viechern (suppletive plural) (coll.)
 $NNeut|PlNonSt_n$ = {<Neut>}:{} $NDatPlSuff_n$ {<NonSt>}:{}
@@ -3171,7 +3168,6 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<NNeut-Meas_s>            $NNeut-Meas_s$           | \
          <>:<NNeut|Pl_0>              $NNeut|Pl_0$             | \
          <>:<NNeut|PlNonSt_n>         $NNeut|PlNonSt_n$        | \
-         <>:<NNeut|PlReg_0>           $NNeut|PlReg_0$          | \
          <>:<NNeut|Sg_0>              $NNeut|Sg_0$             | \
          <>:<NNeut|Sg_es>             $NNeut|Sg_es$            | \
          <>:<NNeut|Sg_es~ss>          $NNeut|Sg_es~ss$         | \
