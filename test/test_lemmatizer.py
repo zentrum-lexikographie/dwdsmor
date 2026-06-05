@@ -19,3 +19,16 @@ def test_lemmatizer(lemmatizer):
 def test_ptkvz_lemmatization(lemmatizer):
     assert lemmatizer("besser", pos={"V"}, syninfo={"SEP"}).analysis == "besser"
     assert lemmatizer("besser", pos={"ADJ"}).analysis == "gut"
+
+
+@if_dwds_available
+def test_lemmatizer_for_word_in_ppm_table(lemmatizer):
+    assert lemmatizer("Puls", pos={"NN"}).analysis == "Puls"
+
+
+@if_dwds_available
+def test_lemmatizer_with_minimal_wfb(lemmatizer):
+    assert (
+        lemmatizer("Berufssoldaten", pos={"NN"}, number={"Pl"}).analysis
+        == "Berufssoldat"
+    )
