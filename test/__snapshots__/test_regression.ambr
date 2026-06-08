@@ -199,11 +199,43 @@
     ),
     tuple(
       'Eisenbahn-Bundesamtes',
+      'Eisen<#>bahn<=>-<#>Bund<~>es<#><W->amt<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Eisenbahn-Bundesamtes',
+      'Eisen<#>bahn<=>-<#>Bund<~>es<#><W->amt<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Eisenbahn-Bundesamtes',
+      'Eisen<#>bahn<=>-<#>Bund<~>es<#><W->amt<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Eisenbahn-Bundesamtes',
+      'Eisen<#>bahn<=>-<#>Bund<~>es<#><W->amt<#>es<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Eisenbahn-Bundesamtes',
       'Eisen<#>bahn<=>-<#>Bund<~>es<#>amt<NN><Neut><Gen><Sg>',
     ),
     tuple(
       'Eisenbahn-Bundesamtes',
       'Eisen<#>bahn<=>-<#>Bundesamt<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Eisenbahn-Bundesamtes',
+      'Eisenbahn<=>-<#>Bund<~>es<#><W->amt<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Eisenbahn-Bundesamtes',
+      'Eisenbahn<=>-<#>Bund<~>es<#><W->amt<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Eisenbahn-Bundesamtes',
+      'Eisenbahn<=>-<#>Bund<~>es<#><W->amt<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Eisenbahn-Bundesamtes',
+      'Eisenbahn<=>-<#>Bund<~>es<#><W->amt<#>es<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Eisenbahn-Bundesamtes',
@@ -1647,6 +1679,22 @@
     ),
     tuple(
       'Bundesgebührengesetzes',
+      'Bund<~>es<#>gebühr<~>en<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Bundesgebührengesetzes',
+      'Bund<~>es<#>gebühr<~>en<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Bundesgebührengesetzes',
+      'Bund<~>es<#>gebühr<~>en<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Bundesgebührengesetzes',
+      'Bund<~>es<#>gebühr<~>en<#>gesetz<#>es<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Bundesgebührengesetzes',
       'Bund<~>es<#>gebühr<~>en<#>gesetz<NN><Neut><Gen><Sg>',
     ),
     tuple(
@@ -2123,7 +2171,39 @@
     ),
     tuple(
       'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
       'Straße<~>n<#>verkehr<~>s<#>un<->fall<#>statistik<#>gesetz<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Straßenverkehrsunfallstatistikgesetzes',
@@ -2131,11 +2211,59 @@
     ),
     tuple(
       'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehrsunfall<#>statistik<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehrsunfall<#>statistik<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehrsunfall<#>statistik<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehrsunfall<#>statistik<#>gesetz<#>es<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
       'Straße<~>n<#>verkehrsunfall<#>statistik<#>gesetz<NN><Neut><Gen><Sg>',
     ),
     tuple(
       'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
       'Straßenverkehr<~>s<#>un<->fall<#>statistik<#>gesetz<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Straßenverkehrsunfallstatistikgesetzes',
@@ -2459,7 +2587,39 @@
     ),
     tuple(
       'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
       'Straße<~>n<#>verkehr<~>s<#>un<->fall<#>statistik<#>gesetz<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Straßenverkehrsunfallstatistikgesetzes',
@@ -2467,11 +2627,59 @@
     ),
     tuple(
       'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehrsunfall<#>statistik<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehrsunfall<#>statistik<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehrsunfall<#>statistik<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straße<~>n<#>verkehrsunfall<#>statistik<#>gesetz<#>es<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
       'Straße<~>n<#>verkehrsunfall<#>statistik<#>gesetz<NN><Neut><Gen><Sg>',
     ),
     tuple(
       'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>un<->fall<#>statistik<#>gesetz<#>es<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
       'Straßenverkehr<~>s<#>un<->fall<#>statistik<#>gesetz<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Straßenverkehrsunfallstatistikgesetzes',
+      'Straßenverkehr<~>s<#>unfall<#>statistik<#>gesetz<#>es<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Straßenverkehrsunfallstatistikgesetzes',
@@ -2640,6 +2848,22 @@
     tuple(
       'des',
       'des<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Gesetzes',
+      'Gesetz<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Gesetzes',
+      'Gesetz<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Gesetzes',
+      'Gesetz<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Gesetzes',
+      'Gesetz<#>es<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Gesetzes',
@@ -3168,6 +3392,22 @@
     tuple(
       'des',
       'des<NN><Neut><Nom><Sg>',
+    ),
+    tuple(
+      'Polizeidienstes',
+      'Polizei<#>dienst<#>es<NN><Neut><Acc><Sg>',
+    ),
+    tuple(
+      'Polizeidienstes',
+      'Polizei<#>dienst<#>es<NN><Neut><Dat><Sg>',
+    ),
+    tuple(
+      'Polizeidienstes',
+      'Polizei<#>dienst<#>es<NN><Neut><Gen><Sg>',
+    ),
+    tuple(
+      'Polizeidienstes',
+      'Polizei<#>dienst<#>es<NN><Neut><Nom><Sg>',
     ),
     tuple(
       'Polizeidienstes',
