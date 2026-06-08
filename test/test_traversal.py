@@ -63,36 +63,3 @@ def test_wb_count_ignore_symbols_not_in_boundary_tag():
         means=None,
     )
     assert t.wb_count("#-") == 2
-
-
-def test_wb_count_with_non_default_boundary_tag():
-    t = Traversal(
-        spec="Beruf°~°s°#°soldat°~°en°#°verein°NN°°Masc°°Dat°°Pl°",
-        surface="Berufssoldatenverein",
-        analysis="Berufssoldatenverein",
-        weights=None,
-        lidx=None,
-        pidx=None,
-        pos="NN",
-        category=None,
-        degree=None,
-        function=None,
-        person=None,
-        gender="Masc",
-        case="Dat",
-        number="Pl",
-        nonfinite=None,
-        tense=None,
-        mood=None,
-        auxiliary=None,
-        inflection=None,
-        metainfo=None,
-        orthinfo=None,
-        charinfo=None,
-        syninfo=None,
-        ellipinfo=None,
-        processes=None,
-        means=None,
-    )
-    assert t.wb_count("#", boundary_tag="°") == 2
-    assert t.wb_count("#~", boundary_tag="°") == 4

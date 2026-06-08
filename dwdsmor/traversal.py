@@ -91,14 +91,5 @@ class Traversal:
                 surface += v
         return Traversal(spec, surface, analysis, **tags)
 
-    def wb_count(self, wf_boundary_tags="", boundary_tag=None):
-        return sum(
-            [
-                self.spec.count(
-                    f"{boundary_tag}{b}{boundary_tag}"
-                    if boundary_tag is not None
-                    else f"<{b}>"
-                )
-                for b in wf_boundary_tags
-            ]
-        )
+    def wb_count(self, wf_boundary_tags=""):
+        return sum([self.spec.count(f"<{b}>") for b in wf_boundary_tags])
