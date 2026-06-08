@@ -169,9 +169,19 @@ class Lemmatizer:
             attr, attr_vals = criteria_stack.pop()
             filtered = tuple((t for t in traversals if getattr(t, attr) in attr_vals))
             traversals = filtered or traversals
+        if len(traversals) == 1:
+            return traversals[0]
         traversals = sorted(
-            traversals, key=lambda t: -self.lemma_freqs.get(t.analysis, 0)
+            traversals, key=lambda t: t.wb_count(wf_boundary_tags="#|-")
         )
+        traversals_with_ppm = [
+            (t, f)
+            for t in traversals
+            if (f := (-self.lemma_freqs.get(t.analysis, -1))) < 0
+        ]
+        traversals_with_ppm = sorted(traversals_with_ppm, key=lambda t: t[1])
+        if traversals_with_ppm:
+            return traversals_with_ppm[0][0]
         for traversal in traversals:
             return traversal
 

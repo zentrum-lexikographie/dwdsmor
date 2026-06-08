@@ -90,3 +90,6 @@ class Traversal:
             elif not k:
                 surface += v
         return Traversal(spec, surface, analysis, **tags)
+
+    def wb_count(self, wf_boundary_tags=""):
+        return sum([self.spec.count(f"<{b}>") for b in wf_boundary_tags])
