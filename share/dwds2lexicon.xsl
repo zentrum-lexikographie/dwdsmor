@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 20.1 -->
-<!-- Andreas Nolda 2026-04-09 -->
+<!-- Version 20.2 -->
+<!-- Andreas Nolda 2026-06-25 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2825,9 +2825,8 @@
                         <xsl:call-template name="get-abbreviation-value"/>
                       </xsl:variable>
                       <xsl:for-each select="$article2">
-                        <!-- only consider primary entries for the second basis -->
-                        <xsl:for-each select="dwds:Formangabe[not(@class='invisible')]
-                                                             [@Typ='Hauptform']">
+                        <!-- only consider the first entry for the second basis -->
+                        <xsl:for-each select="dwds:Formangabe[not(@class='invisible')][1]">
                           <!-- ignore idioms and non-standard spellings -->
                           <xsl:for-each select="dwds:Schreibung[count(tokenize(normalize-space(.),'&#x20;'))=1]
                                                                [not(@Typ)]">
