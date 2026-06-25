@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.19.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.18.0...v0.19.0) (2026-06-25)
+
+
+### Features
+
+* add method to count word formation boundaries ([3e580bc](https://github.com/zentrum-lexikographie/dwdsmor/commit/3e580bca8771d73d027fd967f1225aa8857e445f))
+* remove boundary_tag as parameter for wb_count method ([dae0e60](https://github.com/zentrum-lexikographie/dwdsmor/commit/dae0e600779c4121fe5b0657e3920825878b5412))
+* use minimal word formation boundary count for disambiguation in lemmatization ([47edc84](https://github.com/zentrum-lexikographie/dwdsmor/commit/47edc8425a6a36a9e1f50ca3d3177203a49880af))
+
 ## [0.18.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.17.0...v0.18.0) (2026-04-20)
 
 
