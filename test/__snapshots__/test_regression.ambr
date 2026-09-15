@@ -5479,6 +5479,22 @@
     ),
     tuple(
       'Rücksicht',
+      'Rück<#>sicht<NN><Fem><Acc><Sg>',
+    ),
+    tuple(
+      'Rücksicht',
+      'Rück<#>sicht<NN><Fem><Dat><Sg>',
+    ),
+    tuple(
+      'Rücksicht',
+      'Rück<#>sicht<NN><Fem><Gen><Sg>',
+    ),
+    tuple(
+      'Rücksicht',
+      'Rück<#>sicht<NN><Fem><Nom><Sg>',
+    ),
+    tuple(
+      'Rücksicht',
       'Rücksicht<NN><Fem><Acc><Sg>',
     ),
     tuple(
@@ -19065,51 +19081,67 @@
       'NFem_0_s_0, NFemReg_0_en_0',
       'Wintersaison',
       tuple(
-        'Wintersaison<NN><Fem><Acc><Pl>',
+        'Wintersaison<PAR1><NN><Fem><Acc><Pl>',
         'Wintersaisons',
       ),
       tuple(
-        'Wintersaison<NN><Fem><Acc><Pl><Reg>',
-        'Wintersaisonen',
-      ),
-      tuple(
-        'Wintersaison<NN><Fem><Acc><Sg>',
+        'Wintersaison<PAR1><NN><Fem><Acc><Sg>',
         'Wintersaison',
       ),
       tuple(
-        'Wintersaison<NN><Fem><Dat><Pl>',
+        'Wintersaison<PAR1><NN><Fem><Dat><Pl>',
         'Wintersaisons',
       ),
       tuple(
-        'Wintersaison<NN><Fem><Dat><Pl><Reg>',
-        'Wintersaisonen',
-      ),
-      tuple(
-        'Wintersaison<NN><Fem><Dat><Sg>',
+        'Wintersaison<PAR1><NN><Fem><Dat><Sg>',
         'Wintersaison',
       ),
       tuple(
-        'Wintersaison<NN><Fem><Gen><Pl>',
+        'Wintersaison<PAR1><NN><Fem><Gen><Pl>',
         'Wintersaisons',
       ),
       tuple(
-        'Wintersaison<NN><Fem><Gen><Pl><Reg>',
-        'Wintersaisonen',
-      ),
-      tuple(
-        'Wintersaison<NN><Fem><Gen><Sg>',
+        'Wintersaison<PAR1><NN><Fem><Gen><Sg>',
         'Wintersaison',
       ),
       tuple(
-        'Wintersaison<NN><Fem><Nom><Pl>',
+        'Wintersaison<PAR1><NN><Fem><Nom><Pl>',
         'Wintersaisons',
       ),
       tuple(
-        'Wintersaison<NN><Fem><Nom><Pl><Reg>',
+        'Wintersaison<PAR1><NN><Fem><Nom><Sg>',
+        'Wintersaison',
+      ),
+      tuple(
+        'Wintersaison<PAR2><NN><Fem><Acc><Pl>',
         'Wintersaisonen',
       ),
       tuple(
-        'Wintersaison<NN><Fem><Nom><Sg>',
+        'Wintersaison<PAR2><NN><Fem><Acc><Sg>',
+        'Wintersaison',
+      ),
+      tuple(
+        'Wintersaison<PAR2><NN><Fem><Dat><Pl>',
+        'Wintersaisonen',
+      ),
+      tuple(
+        'Wintersaison<PAR2><NN><Fem><Dat><Sg>',
+        'Wintersaison',
+      ),
+      tuple(
+        'Wintersaison<PAR2><NN><Fem><Gen><Pl>',
+        'Wintersaisonen',
+      ),
+      tuple(
+        'Wintersaison<PAR2><NN><Fem><Gen><Sg>',
+        'Wintersaison',
+      ),
+      tuple(
+        'Wintersaison<PAR2><NN><Fem><Nom><Pl>',
+        'Wintersaisonen',
+      ),
+      tuple(
+        'Wintersaison<PAR2><NN><Fem><Nom><Sg>',
         'Wintersaison',
       ),
     ),
@@ -23633,47 +23665,79 @@
       'NNeut-Inner',
       'Innere',
       tuple(
-        'Inner<~>e<NN><Neut><Acc><Sg><St>',
+        'Inner<~>e<IDX1><NN><Neut><Acc><Sg><St>',
         'Inneres',
       ),
       tuple(
-        'Inner<~>e<NN><Neut><Acc><Sg><Wk>',
+        'Inner<~>e<IDX1><NN><Neut><Acc><Sg><Wk>',
         'Innere',
       ),
       tuple(
-        'Inner<~>e<NN><Neut><Dat><Sg><St>',
+        'Inner<~>e<IDX1><NN><Neut><Dat><Sg><St>',
         'Innerem',
       ),
       tuple(
-        'Inner<~>e<NN><Neut><Dat><Sg><Wk>',
+        'Inner<~>e<IDX1><NN><Neut><Dat><Sg><Wk>',
         'Inneren',
       ),
       tuple(
-        'Inner<~>e<NN><Neut><Dat><Sg><Wk>',
+        'Inner<~>e<IDX1><NN><Neut><Dat><Sg><Wk>',
         'Innern',
       ),
       tuple(
-        'Inner<~>e<NN><Neut><Gen><Sg><St>',
+        'Inner<~>e<IDX1><NN><Neut><Gen><Sg><St>',
         'Inneren',
       ),
       tuple(
-        'Inner<~>e<NN><Neut><Gen><Sg><St>',
+        'Inner<~>e<IDX1><NN><Neut><Gen><Sg><St>',
         'Innern',
       ),
       tuple(
-        'Inner<~>e<NN><Neut><Gen><Sg><Wk>',
+        'Inner<~>e<IDX1><NN><Neut><Gen><Sg><Wk>',
         'Inneren',
       ),
       tuple(
-        'Inner<~>e<NN><Neut><Gen><Sg><Wk>',
+        'Inner<~>e<IDX1><NN><Neut><Gen><Sg><Wk>',
         'Innern',
       ),
       tuple(
-        'Inner<~>e<NN><Neut><Nom><Sg><St>',
+        'Inner<~>e<IDX1><NN><Neut><Nom><Sg><St>',
         'Inneres',
       ),
       tuple(
-        'Inner<~>e<NN><Neut><Nom><Sg><Wk>',
+        'Inner<~>e<IDX1><NN><Neut><Nom><Sg><Wk>',
+        'Innere',
+      ),
+      tuple(
+        'Innere<IDX2><NN><Fem><Acc><Pl>',
+        'Inneren',
+      ),
+      tuple(
+        'Innere<IDX2><NN><Fem><Acc><Sg><Old>',
+        'Inneren',
+      ),
+      tuple(
+        'Innere<IDX2><NN><Fem><Dat><Pl>',
+        'Inneren',
+      ),
+      tuple(
+        'Innere<IDX2><NN><Fem><Dat><Sg><Old>',
+        'Inneren',
+      ),
+      tuple(
+        'Innere<IDX2><NN><Fem><Gen><Pl>',
+        'Inneren',
+      ),
+      tuple(
+        'Innere<IDX2><NN><Fem><Gen><Sg><Old>',
+        'Inneren',
+      ),
+      tuple(
+        'Innere<IDX2><NN><Fem><Nom><Pl>',
+        'Inneren',
+      ),
+      tuple(
+        'Innere<IDX2><NN><Fem><Nom><Sg>',
         'Innere',
       ),
     ),
