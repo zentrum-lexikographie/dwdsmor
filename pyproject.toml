@@ -43,10 +43,14 @@ dev = [
     "flake8-bugbear",
     "mypy",
     "pre-commit",
+    "python-gitlab",
     "pytest",
+    "rassumfrassum",
+    "ruff",
     "spacy",
     "syrupy",
     "twine",
+    "ty",
     "Jinja2"
 ]
 

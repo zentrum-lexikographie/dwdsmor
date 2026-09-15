@@ -27,7 +27,29 @@ def traverse(automata_file, sorted=False):
             yield traversal_str.split()
 
 
-project_dir = Path(__file__).parent.parent.parent
+def traversal_to_csv(automata_file, csv_file):
+    table = csv.writer(csv_file)
+    table.writerow(
+        [
+            "spec",
+            "analysis",
+            "surface",
+            "inflected",
+            *all_tags,
+        ]
+    )
+    for surface, spec in traverse(automata_file, sorted=True):
+        traversal = Traversal.parse(spec)
+        table.writerow(
+            [
+                spec,
+                traversal.analysis,
+                surface,
+                inflected(spec, surface),
+                *(getattr(traversal, tt) for tt in all_tags),
+            ]
+        )
+
 
 arg_parser = argparse.ArgumentParser(description="Traverse DWDSmor automaton.")
 arg_parser.add_argument(
@@ -46,33 +68,6 @@ arg_parser.add_argument(
 )
 
 
-def main():
-    args = arg_parser.parse_args()
-    input_file = args.input_file
-    output_file = args.output_file
-
-    table = csv.writer(output_file)
-    table.writerow(
-        [
-            "spec",
-            "analysis",
-            "surface",
-            "inflected",
-            *all_tags,
-        ]
-    )
-    for surface, spec in traverse(input_file, sorted=True):
-        traversal = Traversal.parse(spec)
-        table.writerow(
-            [
-                spec,
-                traversal.analysis,
-                surface,
-                inflected(spec, surface),
-                *(getattr(traversal, tt) for tt in all_tags),
-            ]
-        )
-
-
 if __name__ == "__main__":
-    main()
+    args = arg_parser.parse_args()
+    traversal_to_csv(args.input_file, args.output_file)

@@ -33,3 +33,5 @@ manifest.xml
 /dist/
 /lib/
 /releases/
+
+.envrc
