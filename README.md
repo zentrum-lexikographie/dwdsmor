@@ -260,16 +260,10 @@ pip install -U pip setuptools && pip install -r requirements.dev.txt
 
 ### Building the DWDS edition
 
-Install additional dependencies:
-
-```plaintext
-pip install -U pip setuptools && pip install -r requirements.dwds.txt
-```
-
 Download the lexicon:
 
 ```
-GITUP_PRIVATE_TOKEN="…"  python -m dwdsmor.build.dwdswb
+DWDSMOR_GITUP_PAT="…"  python -m dwdsmor.build.dwds.wb_download
 ```
 
 ### Building lexica and automata
