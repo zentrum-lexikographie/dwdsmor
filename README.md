@@ -105,7 +105,7 @@ The library can be used for lemmatisation:
 There is also integration with spaCy:
 
 ```plaintext
-pip install spacy de_zdl_lg --extra-index-url https://gitup.uni-potsdam.de/api/v4/projects/21461/packages/pypi/simple
+pip install spacy de_zdl_lg --extra-index-url https://gitup.uni-potsdam.de/api/v4/projects/21675/packages/pypi/simple
 ```
 
 ``` python-console
