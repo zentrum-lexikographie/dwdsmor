@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 20.2 -->
-<!-- Andreas Nolda 2026-06-25 -->
+<!-- Version 20.3 -->
+<!-- Andreas Nolda 2026-09-15 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -3590,12 +3590,12 @@
 
 <xsl:template name="get-function-value">
   <xsl:choose>
-    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='attributiv'">attr</xsl:when>
-    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur attributiv'">attr</xsl:when>
-    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nur'])='prädikativ'">nonattr</xsl:when>
-    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur prädikativ'">nonattr</xsl:when>
-    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[@Frequenz='nicht'])='attributiv'">nonattr</xsl:when>
-    <xsl:when test="normalize-space(dwds:Einschraenkung)='nicht attributiv'">nonattr</xsl:when>
+    <xsl:when test="dwds:Funktionspraeferenz[@Frequenz='nur'][normalize-space(.)='attributiv']">attr</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[normalize-space(.)='nur attributiv']">attr</xsl:when>
+    <xsl:when test="dwds:Funktionspraeferenz[@Frequenz='nur'][normalize-space(.)='prädikativ']">nonattr</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[normalize-space(.)='nur prädikativ']">nonattr</xsl:when>
+    <xsl:when test="dwds:Funktionspraeferenz[@Frequenz='nicht'][normalize-space(.)='attributiv']">nonattr</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[normalize-space(.)='nicht attributiv']">nonattr</xsl:when>
     <!-- no test for "nicht prädikativ", which may still allow for adverbial use -->
     <xsl:otherwise>any</xsl:otherwise>
   </xsl:choose>
@@ -3603,23 +3603,23 @@
 
 <xsl:template name="get-gender-value">
   <xsl:choose>
-    <xsl:when test="normalize-space(dwds:Genus)='mask.'">masculine</xsl:when>
-    <xsl:when test="normalize-space(dwds:Genus)='neutr.'">neuter</xsl:when>
-    <xsl:when test="normalize-space(dwds:Genus)='fem.'">feminine</xsl:when>
+    <xsl:when test="dwds:Genus[normalize-space(.)='mask.']">masculine</xsl:when>
+    <xsl:when test="dwds:Genus[normalize-space(.)='neutr.']">neuter</xsl:when>
+    <xsl:when test="dwds:Genus[normalize-space(.)='fem.']">feminine</xsl:when>
     <xsl:otherwise>none</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 
 <xsl:template name="get-noun-type-value">
   <xsl:choose>
-    <xsl:when test="normalize-space(dwds:Funktionspraeferenz[not(@Frequenz!='nur')])='als Eigenname'">proper-name</xsl:when>
-    <xsl:when test="normalize-space(dwds:Funktionspraeferenz)='nur als Eigenname'">proper-name</xsl:when>
+    <xsl:when test="dwds:Funktionspraeferenz[not(@Frequenz!='nur')][normalize-space(.)='als Eigenname']">proper-name</xsl:when>
+    <xsl:when test="dwds:Funktionspraeferenz[normalize-space(.)='nur als Eigenname']">proper-name</xsl:when>
     <xsl:when test="dwds:Plural[@Typ='Mengenangabe']">measure-noun</xsl:when>
-    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Mengenangabe')">measure-noun</xsl:when>
-    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Maßangabe')">measure-noun</xsl:when>
-    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'bei Wertangabe')">measure-noun</xsl:when>
-    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'mit Mengenangabe')">measure-noun</xsl:when>
-    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nach Zahlenangabe')">measure-noun</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[contains(normalize-space(.),'bei Mengenangabe')]">measure-noun</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[contains(normalize-space(.),'bei Maßangabe')]">measure-noun</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[contains(normalize-space(.),'bei Wertangabe')]">measure-noun</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[contains(normalize-space(.),'mit Mengenangabe')]">measure-noun</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[contains(normalize-space(.),'nach Zahlenangabe')]">measure-noun</xsl:when>
     <!-- TODO: more noun-type values -->
     <xsl:otherwise>any</xsl:otherwise>
   </xsl:choose>
@@ -3628,23 +3628,23 @@
 <xsl:template name="get-inflection-value">
   <xsl:choose>
     <xsl:when test="dwds:indeklinabel">uninflected</xsl:when>
-    <xsl:when test="normalize-space(dwds:Einschraenkung)='nur im Infinitiv'">uninflected</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[normalize-space(.)='nur im Infinitiv']">uninflected</xsl:when>
     <xsl:otherwise>inflected</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 
 <xsl:template name="get-auxiliary-value">
   <xsl:choose>
-    <xsl:when test="normalize-space(dwds:Auxiliar/dwds:Wert)='hat'">haben</xsl:when>
-    <xsl:when test="normalize-space(dwds:Auxiliar/dwds:Wert)='ist'">sein</xsl:when>
+    <xsl:when test="dwds:Auxiliar/dwds:Wert[normalize-space(.)='hat']">haben</xsl:when>
+    <xsl:when test="dwds:Auxiliar/dwds:Wert[normalize-space(.)='ist']">sein</xsl:when>
     <xsl:otherwise>none</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 
 <xsl:template name="get-position-value">
   <xsl:choose>
-    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'auch nachgestellt')">any</xsl:when>
-    <xsl:when test="contains(normalize-space(dwds:Einschraenkung),'nachgestellt')">post</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[contains(normalize-space(.),'auch nachgestellt')]">any</xsl:when>
+    <xsl:when test="dwds:Einschraenkung[contains(normalize-space(.),'nachgestellt')]">post</xsl:when>
     <xsl:otherwise>pre</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -3663,8 +3663,8 @@
 
 <xsl:template name="get-style-value">
   <xsl:choose>
-    <xsl:when test="normalize-space(*/dwds:Diasystematik/dwds:Stilebene)='umgangssprachlich'">colloquial</xsl:when>
-    <xsl:when test="normalize-space(*/dwds:Diasystematik/dwds:Stilebene)='salopp'">colloquial</xsl:when>
+    <xsl:when test="*/dwds:Diasystematik/dwds:Stilebene[normalize-space(.)='umgangssprachlich']">colloquial</xsl:when>
+    <xsl:when test="*/dwds:Diasystematik/dwds:Stilebene[normalize-space(.)='salopp']">colloquial</xsl:when>
     <!-- <xsl:when test="normalize-space(*/dwds:Diasystematik/dwds:Gebrauchszeitraum)='veraltet'">archaic</xsl:when> -->
     <!-- TODO: more style values -->
     <xsl:otherwise>standard</xsl:otherwise>
