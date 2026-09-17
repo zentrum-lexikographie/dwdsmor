@@ -756,6 +756,19 @@
       </xsl:call-template>
     </xsl:when>
     <xsl:when test="@lemma='kein'"/>
+    <!-- "keinste" ("in keinster Weise") -->
+    <xsl:when test="@gender='feminine' and
+                    @lemma='keinste'">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="lemma"
+                        select="n:segment-from-end('e',@lemma)"/>
+        <xsl:with-param name="stem"
+                        select="$stem"/>
+        <xsl:with-param name="pos">ART</xsl:with-param>
+        <xsl:with-param name="class">ArtNeg-keinst</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="@lemma='keinst'"/>
   </xsl:choose>
 </xsl:template>
 

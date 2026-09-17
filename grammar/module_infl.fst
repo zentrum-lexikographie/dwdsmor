@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 15.9
-% Andreas Nolda 2026-05-21
+% Version 15.10
+% Andreas Nolda 2026-09-17
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1542,6 +1542,13 @@ $ArtNegSubstSuff$ = $ArtIndefSubstSuff$                      | \
 $ArtNegSuff$ = $ArtNegAttrSuff$ | \
                $ArtNegSubstSuff$
 
+$ArtNegSuff-keinst$ = {<Attr><Masc><Acc><Sg><St>}:{<SB>en} | \
+                      {<Attr><Masc><Dat><Sg><St>}:{<SB>em} | \
+                      {<Attr><Neut><Acc><Sg><St>}:{<SB>es} | \
+                      {<Attr><Neut><Dat><Sg><St>}:{<SB>em} | \
+                      {<Attr><Fem><Acc><Sg><St>}:{<SB>e}   | \
+                      {<Attr><Fem><Dat><Sg><St>}:{<SB>er}
+
 $PossSuff|St$ = $ArtNegSuff$
 
 $PossSuff|Wk$ = {<Subst><Masc><Nom><Sg><Wk>}:{<SB>e}     | \
@@ -1765,6 +1772,9 @@ $Indef-irgendein$ = $ArtIndefSuff$
 
 % kein, keine (article)
 $ArtNeg$ = $ArtNegSuff$
+
+% keinste ("in keinster Weise")
+$ArtNeg-keinst$ = $ArtNegSuff-keinst$
 
 % einer (indefinite pronoun)
 % keiner (indefinite pronoun)
@@ -2968,6 +2978,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<ArtIndef>                $ArtIndef$               | \
          <>:<ArtIndef-n>              $ArtIndef-n$             | \
          <>:<ArtNeg>                  $ArtNeg$                 | \
+         <>:<ArtNeg-keinst>           $ArtNeg-keinst$          | \
          <>:<Card0>                   $Card0$                  | \
          <>:<Card-ein>                $Card-ein$               | \
          <>:<Card-kein>               $Card-kein$              | \

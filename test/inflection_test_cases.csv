@@ -26,6 +26,7 @@ ADJ,"Adj_er_st, Adj_er_est",neu
 ART,ArtDef,die
 ART,"ArtIndef, ArtIndef-n",eine
 ART,ArtNeg,keine
+ART,ArtNeg-keinst,keinste
 CARD,Card-ein,eine
 CARD,Card-sieben,sieben
 CARD,Card-vier,vier

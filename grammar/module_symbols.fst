@@ -1,6 +1,6 @@
 % module_symbols.fst
-% Version 14.9
-% Andreas Nolda 2026-05-21
+% Version 14.10
+% Andreas Nolda 2026-09-17
 
 % must be loaded first
 
@@ -155,7 +155,7 @@
 
 #adv-inflection# = <AdvComp_er><AdvComp0><AdvSup_est><AdvSup_st>
 
-#art-inflection# = <ArtDef><ArtIndef><ArtIndef-n><ArtNeg>
+#art-inflection# = <ArtDef><ArtIndef><ArtIndef-n><ArtNeg><ArtNeg-keinst>
 
 #noun-inflection# = <NFem-Adj><NFem-in><NFem-Meas><NFem|Pl_0><NFem|Sg_0> \
                     <NFem_0_$_n><NFem_0_$e_n><NFem_0_$en_0><NFem_0_0_0> \

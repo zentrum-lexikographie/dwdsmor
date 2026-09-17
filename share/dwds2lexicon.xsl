@@ -296,14 +296,12 @@
           </xsl:variable>
           <xsl:variable name="style">
             <xsl:if test="$pos='Substantiv'">
-              <xsl:call-template name="get-style-value">
-              </xsl:call-template>
+              <xsl:call-template name="get-style-value"/>
             </xsl:if>
           </xsl:variable>
           <xsl:variable name="region">
             <xsl:if test="$pos='Substantiv'">
-              <xsl:call-template name="get-region-value">
-              </xsl:call-template>
+              <xsl:call-template name="get-region-value"/>
             </xsl:if>
           </xsl:variable>
           <xsl:variable name="position">

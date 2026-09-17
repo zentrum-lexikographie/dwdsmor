@@ -23,4 +23,27 @@
       </Grammatik>
     </Formangabe>
   </Artikel>
+  <Artikel>
+    <Formangabe>
+      <Schreibung>keinst</Schreibung>
+      <Grammatik>
+        <Wortklasse>unbestimmter Artikel</Wortklasse>
+        <Genus>mask.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>keinste</Schreibung>
+      <Grammatik>
+        <Wortklasse>unbestimmter Artikel</Wortklasse>
+        <Genus>fem.</Genus>
+      </Grammatik>
+    </Formangabe>
+    <Formangabe>
+      <Schreibung>keinst</Schreibung>
+      <Grammatik>
+        <Wortklasse>unbestimmter Artikel</Wortklasse>
+        <Genus>neutr.</Genus>
+      </Grammatik>
+    </Formangabe>
+  </Artikel>
 </DWDS>

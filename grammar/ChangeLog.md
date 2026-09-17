@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2026-09-17:
+
+* add inflection class `ArtNeg-keinst`
+
 2026-05-21:
 
 * remove inflectional class `NNeut|PlReg_0`

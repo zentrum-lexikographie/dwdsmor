@@ -1,3 +1,7 @@
+2026-09-17:
+
+* add support for pseudo-superlative "keinst"
+
 2026-04-10:
 
 * add support for inflectional regional variants

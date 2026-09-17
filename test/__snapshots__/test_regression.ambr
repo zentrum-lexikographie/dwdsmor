@@ -14929,6 +14929,35 @@
       ),
     ),
     tuple(
+      'ART',
+      'ArtNeg-keinst',
+      'keinste',
+      tuple(
+        'keinst<~>e<PAR2><ART><Attr><Fem><Acc><Sg><St>',
+        'keinste',
+      ),
+      tuple(
+        'keinst<~>e<PAR2><ART><Attr><Fem><Dat><Sg><St>',
+        'keinster',
+      ),
+      tuple(
+        'keinst<~>e<PAR2><ART><Attr><Masc><Acc><Sg><St>',
+        'keinsten',
+      ),
+      tuple(
+        'keinst<~>e<PAR2><ART><Attr><Masc><Dat><Sg><St>',
+        'keinstem',
+      ),
+      tuple(
+        'keinst<~>e<PAR2><ART><Attr><Neut><Acc><Sg><St>',
+        'keinstes',
+      ),
+      tuple(
+        'keinst<~>e<PAR2><ART><Attr><Neut><Dat><Sg><St>',
+        'keinstem',
+      ),
+    ),
+    tuple(
       'CARD',
       'Card-ein',
       'eine',
