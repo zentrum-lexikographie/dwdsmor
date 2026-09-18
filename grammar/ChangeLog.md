@@ -1,5 +1,9 @@
 This file logs the changes in FST files, starting from the DSDSmor fork.
 
+2026-09-18:
+
+* add inflection class `W-welcherlei`
+
 2026-09-17:
 
 * add inflection class `ArtNeg-keinst`

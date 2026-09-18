@@ -1,6 +1,6 @@
 % module_symbols.fst
-% Version 14.10
-% Andreas Nolda 2026-09-17
+% Version 14.11
+% Andreas Nolda 2026-09-18
 
 % must be loaded first
 
@@ -265,9 +265,9 @@
                    <PRefl2AccSg><PRefl2DatSg><PRefl1Pl><PRefl2Pl><PRefl3><Rel> \
                    <Rel-welch><RProMascAccSg><RProMascDatSg><RProMascGenSg> \
                    <RProMascNomSg><RProNeutAccSg><RProNeutDatSg><RProNeutGenSg> \
-                   <RProNeutNomSg><W-welch><WProMascAccSg><WProMascDatSg> \
-                   <WProMascGenSg><WProMascNomSg><WProNeutAccSg><WProNeutDatSg> \
-                   <WProNeutGenSg><WProNeutNomSg>
+                   <RProNeutNomSg><W-welch><W-welcherlei><WProMascAccSg> \
+                   <WProMascDatSg><WProMascGenSg><WProMascNomSg><WProNeutAccSg> \
+                   <WProNeutDatSg><WProNeutGenSg><WProNeutNomSg>
 
 #verb-inflection# = <VImp><VImp-d-t><VImp-e><VImp-e/0><VImp-el-er><VImp-le> \
                     <VImp-m-n><VImpPl><VImpPl-sein><VImpSg><VImpSg0><VImpSg-e> \

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 20.7 -->
-<!-- Andreas Nolda 2026-05-21 -->
+<!-- Version 20.8 -->
+<!-- Andreas Nolda 2026-09-18 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -2744,7 +2744,7 @@
         <xsl:with-param name="class">Indef0</xsl:with-param>
       </xsl:call-template>
     </xsl:when>
-    <!-- "allerlei", "beiderlei", "derlei" -->
+    <!-- "allerlei", "derlei" -->
     <xsl:when test="ends-with(@lemma,'erlei')">
       <xsl:call-template name="stem-entry">
         <xsl:with-param name="stem"
@@ -2831,6 +2831,15 @@
     </xsl:when>
     <xsl:when test="@lemma='welcher'"/>
     <xsl:when test="@lemma='welches'"/>
+    <!-- "welcherlei", "wievielerlei" -->
+    <xsl:when test="ends-with(@lemma,'erlei')">
+      <xsl:call-template name="stem-entry">
+        <xsl:with-param name="stem"
+                        select="$stem"/>
+        <xsl:with-param name="pos">WPRO</xsl:with-param>
+        <xsl:with-param name="class">W-welcherlei</xsl:with-param>
+      </xsl:call-template>
+    </xsl:when>
   </xsl:choose>
 </xsl:template>
 

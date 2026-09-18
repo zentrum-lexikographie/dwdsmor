@@ -35044,6 +35044,19 @@
     ),
     tuple(
       'WPRO',
+      'W-welcherlei',
+      'welcherlei',
+      tuple(
+        'welcherlei<WPRO><Attr><UnmGend><UnmCase><UnmNum><UnmInfl>',
+        'welcherlei',
+      ),
+      tuple(
+        'welcherlei<WPRO><Subst><UnmGend><UnmCase><UnmNum><UnmInfl>',
+        'welcherlei',
+      ),
+    ),
+    tuple(
+      'WPRO',
       'WProMascNomSg, WProMascA,ccSg, WProMascDatSg, WProMascGenSg, WProNeutNomSg ...',
       'wer',
       tuple(

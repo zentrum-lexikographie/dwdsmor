@@ -1,3 +1,7 @@
+2026-09-18:
+
+* add support for "welcherlei" and "wievielerlei"
+
 2026-09-17:
 
 * add support for pseudo-superlative "keinst"

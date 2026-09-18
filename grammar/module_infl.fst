@@ -1,6 +1,6 @@
 % module_infl.fst
-% Version 15.10
-% Andreas Nolda 2026-09-17
+% Version 15.11
+% Andreas Nolda 2026-09-18
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -1494,6 +1494,8 @@ $IndefSuff-mehrer$ = {[<Attr><Subst>]<Neut><Nom><Sg><St>}:{<SB>es}    | \
 
 $IndefSuff0$ = {[<Attr><Subst>]<UnmGend><UnmCase><UnmNum><UnmInfl>}:{}
 
+$WSuff-welcherlei$ = $IndefSuff0$
+
 $ArtIndefAttrSuff$ = {<Attr><Masc><Nom><Sg><UnmInfl>}:{}    | \
                      {<Attr><Masc><Acc><Sg><St>}:{<SB>en}   | \
                      {<Attr><Masc><Dat><Sg><St>}:{<SB>em}   | \
@@ -1725,6 +1727,9 @@ $ArtDef-der+DemUnmGend$ = {[<Attr><Subst>]<UnmGend>}:{} $ArtDef-der+DemUnmGendSu
 % welcher, welche, welches, welch (interrogative pronoun)
 $W-welch$ = $WSuff-welch$
 
+% welcherlei
+$W-welcherlei$ = $WSuff-welcherlei$
+
 % welcher, welche, welches, welch (relative pronoun)
 $Rel-welch$ = $RelSuff-welch$
 
@@ -1758,7 +1763,7 @@ $Indef-manch$ = $IndefSuff-manch$
 % mehrere, mehreres
 $Indef-mehrer$ = $IndefSuff-mehrer$
 
-% genug
+% genug, allerlei
 $Indef0$ = $IndefSuff0$
 
 % ein, eine (article)
@@ -3438,6 +3443,7 @@ $Infl$ = <>:<AbbrAdj>                 $AbbrAdj$                | \
          <>:<VWeak-signen><>:<haben>  $VWeak-signen+haben$     | \
          <>:<VWeak-signen><>:<sein>   $VWeak-signen+sein$      | \
          <>:<W-welch>                 $W-welch$                | \
+         <>:<W-welcherlei>            $W-welcherlei$           | \
          <>:<WProMascAccSg>           $WProMascAccSg$          | \
          <>:<WProMascDatSg>           $WProMascDatSg$          | \
          <>:<WProMascGenSg>           $WProMascGenSg$          | \
