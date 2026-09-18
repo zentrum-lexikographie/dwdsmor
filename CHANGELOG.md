@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.19.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.18.0...v0.19.0) (2026-09-18)
+
+
+### Features
+
+* add method to count word formation boundaries ([3e580bc](https://github.com/zentrum-lexikographie/dwdsmor/commit/3e580bca8771d73d027fd967f1225aa8857e445f))
+* add support for "welcherlei" and "wievielerlei" ([72236fd](https://github.com/zentrum-lexikographie/dwdsmor/commit/72236fd349f7ea64b60634627d89443b237fd4ca))
+* add support for various pseudo-superlatives ([043731a](https://github.com/zentrum-lexikographie/dwdsmor/commit/043731aea66eac9447158e97881b3ca6fdf9a51f))
+* Continuously build DWDS edition ([bfe51dd](https://github.com/zentrum-lexikographie/dwdsmor/commit/bfe51dd3ee518441da91b653f796563c3d1248fc))
+* remove boundary_tag as parameter for wb_count method ([dae0e60](https://github.com/zentrum-lexikographie/dwdsmor/commit/dae0e600779c4121fe5b0657e3920825878b5412))
+* use minimal word formation boundary count for disambiguation in lemmatization ([47edc84](https://github.com/zentrum-lexikographie/dwdsmor/commit/47edc8425a6a36a9e1f50ca3d3177203a49880af))
+
+
+### Bug Fixes
+
+* do not apply normalize-space() to sequences ([b337af9](https://github.com/zentrum-lexikographie/dwdsmor/commit/b337af9db2bca4256db32c1c996007b0804be045))
+
 ## [0.18.0](https://github.com/zentrum-lexikographie/dwdsmor/compare/v0.17.0...v0.18.0) (2026-04-20)
 
 
