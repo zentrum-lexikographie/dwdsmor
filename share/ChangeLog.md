@@ -1,3 +1,7 @@
+2026-10-05:
+
+* add support for "vervollkommnen" and related verbs
+
 2026-09-18:
 
 * add support for "welcherlei" and "wievielerlei"

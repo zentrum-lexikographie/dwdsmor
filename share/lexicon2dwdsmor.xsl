@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- lexicon2dwdsmor.xsl -->
-<!-- Version 20.8 -->
-<!-- Andreas Nolda 2026-09-18 -->
+<!-- Version 20.9 -->
+<!-- Andreas Nolda 2026-10-05 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -3725,8 +3725,9 @@
                   </xsl:call-template>
                 </xsl:when>
                 <!-- regular verbs with stem-final "n" or "m", preceded
-                     by "b", "d", "f", "g", "k", "p", "s", "t", or "ch" -->
-                <xsl:when test="matches($present-stem,'([bdfgkpst]|ch)[mn]$')">
+                     by "b", "d", "f", "g", "k", "p", "s", "t", or "ch", or
+                     with stem-final "mn" -->
+                <xsl:when test="matches($present-stem,'(([bdfgkpst]|ch)[mn]|mn)$')">
                   <xsl:call-template name="verb-stem-entry">
                     <xsl:with-param name="lemma"
                                     select="$lemma-without-particle"/>
@@ -4717,9 +4718,10 @@
                   </xsl:call-template>
                 </xsl:when>
                 <!-- uniform present stem with stem-final "n" or "m", preceded
-                     by "b", "d", "f", "g", "k", "p", "s", "t", or "ch" -->
+                     by "b", "d", "f", "g", "k", "p", "s", "t", or "ch", or
+                     with stem-final "mn" -->
                 <xsl:when test="$stem=$present-stem and
-                                matches($present-stem,'([bdfgkpst]|ch)[mn]$')">
+                                matches($present-stem,'(([bdfgkpst]|ch)[mn]|mn)$')">
                   <xsl:call-template name="verb-stem-entry">
                     <xsl:with-param name="lemma"
                                     select="n:segment-verb-if-backformed($participle-stem,$lemma-without-particle)"/>
