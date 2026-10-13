@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- dwds2lexicon.xsl -->
-<!-- Version 20.3 -->
-<!-- Andreas Nolda 2026-09-15 -->
+<!-- Version 20.4 -->
+<!-- Andreas Nolda 2026-10-13 -->
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -104,7 +104,8 @@
                                                                                                              normalize-space(.)='-li']">lein</xsl:when>
           <xsl:when test="../dwds:Verweise[not(@class='invisible')]
                                           [@Typ='Derivation']/dwds:Verweis[not(@class='invisible')]
-                                                                          [@Typ='Letztglied']/dwds:Ziellemma[normalize-space(.)='-l']">l</xsl:when>
+                                                                          [@Typ='Letztglied']/dwds:Ziellemma[normalize-space(.)='-el' or
+                                                                                                             normalize-space(.)='-l']">l</xsl:when>
           <!-- TODO: more diminutive values -->
         </xsl:choose>
       </xsl:if>

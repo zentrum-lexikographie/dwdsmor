@@ -1,3 +1,7 @@
+2026-10-13:
+
+* add support for "Küchle" and related nouns
+
 2026-10-05:
 
 * add support for "vervollkommnen" and related verbs
