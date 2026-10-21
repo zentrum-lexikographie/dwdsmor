@@ -1,6 +1,6 @@
 % module_phon.fst
-% Version 6.12
-% Andreas Nolda 2026-03-13
+% Version 6.13
+% Andreas Nolda 2026-10-21
 
 % based on code from SMORLemma by Rico Sennrich
 % which is in turn based on code from SMOR by Helmut Schmid
@@ -13,6 +13,8 @@
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
             #feature# #info# <e><s><z>]
+
+$Vowel$ = [#vowel#]
 
 $Cons$ = [#consonant#]
 
@@ -139,7 +141,11 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf#
 
 $PhonEElision8$ = <e> <=> <> (n <SB> [eui])
 
-$PhonEElision9$ = <e> => <> ([lr] <SB> [eui])
+$PhonCons$ = $Cons$ | ng | sch | ch | ck | ll % ...
+
+$PhonCoda$ = ($PhonCons$ ($PhonCons$ | ft | st | scht | ps)?)?
+
+$PhonEElision9$ = ($Vowel$ $PhonCoda$?) <e> => <> ([lr] <SB> [eui])
 
 $PhonEElision10$ = <e> <=> <> (l <SB> es?t)
 
