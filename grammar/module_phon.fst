@@ -129,11 +129,11 @@ ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf#
             #feature# #info# <e><s><z>] \
            e:<>
 
-$PhonEElision5$ = (<e>[lr] <SB>) e <=> <> (n)
+$PhonEElision5$ = (<e> ([lr] | rl) <SB>) e <=> <> (n)
 
-$PhonEElision6$ = (<e>r <SB>) e <=> <> (s?t)
+$PhonEElision6$ = (<e> r <SB>) e <=> <> (s?t)
 
-$PhonEElision7$ = (<e>l <SB>) e => <> (s?t)
+$PhonEElision7$ = (<e> l <SB>) e => <> (s?t)
 
 ALPHABET = [#char# #phon-trigger# #orth-trigger# #boundary-trigger# #index# #wf# \
             #feature# #info# <e><s><z>] \

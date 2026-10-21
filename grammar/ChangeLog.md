@@ -2,6 +2,7 @@ This file logs the changes in FST files, starting from the DSDSmor fork.
 
 2026-10-21:
 
+* add support for Bavarian verbs ending in "-erln"
 * restrict codas of verb stems ending in "el"/"er" for "e"-elision
 
 2026-09-18:
