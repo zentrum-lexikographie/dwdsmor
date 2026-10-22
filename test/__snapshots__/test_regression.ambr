@@ -1699,15 +1699,15 @@
     ),
     tuple(
       'gesondert',
+      'sonder<~>n<V><Part><Perf><haben>',
+    ),
+    tuple(
+      'gesondert',
       'ge<~>sonder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'gesondert',
       'gesondert<ADJ><Pos><Pred/Adv>',
-    ),
-    tuple(
-      'gesondert',
-      'sonder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'erhoben',
@@ -3015,11 +3015,11 @@
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'worden',
@@ -3931,11 +3931,11 @@
     ),
     tuple(
       'geändert',
-      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
+      'änder<~>n<V><Part><Perf><haben>',
     ),
     tuple(
       'geändert',
-      'änder<~>n<V><Part><Perf><haben>',
+      'ge<~>änder<~>t<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
       'durch',
@@ -6099,6 +6099,10 @@
     ),
     tuple(
       'gestanden',
+      'steh<~>en<V><Part><Perf><haben>',
+    ),
+    tuple(
+      'gestanden',
       'ge<~>stand<~>en<ADJ><Pos><Pred/Adv>',
     ),
     tuple(
@@ -6120,10 +6124,6 @@
     tuple(
       'gestanden',
       'gestanden<ADJ><Pos><Pred/Adv>',
-    ),
-    tuple(
-      'gestanden',
-      'steh<~>en<V><Part><Perf><haben>',
     ),
     tuple(
       'hat',
