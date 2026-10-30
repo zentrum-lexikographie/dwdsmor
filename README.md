@@ -105,7 +105,7 @@ The library can be used for lemmatisation:
 There is also integration with spaCy:
 
 ```plaintext
-pip install spacy de_zdl_lg --extra-index-url https://gitup.uni-potsdam.de/api/v4/projects/21675/packages/pypi/simple
+pip install spacy de_zdl_lg --extra-index-url https://gitlab.bbaw.science-berlin.de/api/v4/projects/5/packages/pypi/simple
 ```
 
 ``` python-console
@@ -199,13 +199,13 @@ Should you have been granted access to the DWDS edition, please add
 your private access token to `$HOME/.netrc`:
 
 ```plaintext
-machine gitup.uni-potsdam.de login gitlab-ci-token password glpat-…
+machine gitlab.bbaw.science-berlin.de login gitlab-ci-token password glpat-…
 ```
 
 Then install the edition:
 
 ```plaintext
-pip install dwdsmor-dwds --index-url https://gitup.uni-potsdam.de/api/v4/projects/21585/packages/pypi/simple
+pip install dwdsmor-dwds --index-url https://gitlab.bbaw.science-berlin.de/api/v4/projects/7/packages/pypi/simple
 ```
 
 ## Development
@@ -263,7 +263,7 @@ pip install -U pip setuptools && pip install -r requirements.dev.txt
 Download the lexicon:
 
 ```
-DWDSMOR_GITUP_PAT="…"  python -m dwdsmor.build.dwds.wb_download
+GITLAB_PAT="…"  python -m dwdsmor.build.dwds.wb_download
 ```
 
 ### Building lexica and automata

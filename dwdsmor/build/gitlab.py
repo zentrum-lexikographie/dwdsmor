@@ -2,15 +2,16 @@ from os import environ
 
 from gitlab import Gitlab
 
-gitup_url = environ.get("DWDSMOR_GITUP_URL", "https://gitup.uni-potsdam.de")
-job_token = environ.get("CI_JOB_TOKEN")
-private_token = environ.get("DWDSMOR_GITUP_PAT")
+gitlab_url = environ.get("GITLAB_URL", "https://gitlab.bbaw.science-berlin.de")
 
-dwdsmor_project_id = int(environ.get("DWDSMOR_GITUP_PROJECT_ID", "21585"))
-dwdswb_project_id = int(environ.get("DWDSMOR_GITUP_DWDSWB_PROJECT_ID", "21451"))
+dwdswb_project_id = int(environ.get("GITLAB_DWDSWB_PROJECT_ID", "6"))
+dwdsmor_project_id = int(environ.get("GITLAB_DWDSMOR_PROJECT_ID", "7"))
+
+job_token = environ.get("CI_JOB_TOKEN")
+private_token = environ.get("GITLAB_PAT")
 
 api = Gitlab(
-    gitup_url,
+    gitlab_url,
     private_token=private_token,
     job_token=(job_token if not private_token else None),
 )

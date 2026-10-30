@@ -8,7 +8,7 @@ build:
     TWINE_USERNAME: "gitlab-ci-token"
     TWINE_PASSWORD: "${CI_JOB_TOKEN}"
   before_script:
-    - echo -e "machine gitup.uni-potsdam.de login gitlab-ci-token password ${CI_JOB_TOKEN}" > ~/.netrc
+    - echo -e "machine gitlab.bbaw.science-berlin.de login gitlab-ci-token password ${CI_JOB_TOKEN}" > ~/.netrc
   script:
     - apt-get update && apt-get install -y default-jdk libsaxonhe-java sfst
     - python3 -m venv .venv && source .venv/bin/activate

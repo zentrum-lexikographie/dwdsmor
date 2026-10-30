@@ -4,7 +4,7 @@ from io import BytesIO
 from pathlib import Path
 from shutil import copyfileobj
 
-from dwdsmor.build.gitup import dwdswb_project, dwdswb_date
+from dwdsmor.build.gitlab import dwdswb_project, dwdswb_date
 from dwdsmor.log import configure_logging
 
 configure_logging()

@@ -7,7 +7,7 @@ from pathlib import Path
 from subprocess import check_call
 from tempfile import NamedTemporaryFile
 
-from dwdsmor.build.gitup import dwdsmor_project, dwdsmor_versions, dwdswb_date
+from dwdsmor.build.gitlab import dwdsmor_project, dwdsmor_versions, dwdswb_date
 from dwdsmor.build.traversal import traversal_to_csv
 from dwdsmor.log import configure_logging
 
